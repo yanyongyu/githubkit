@@ -12,14 +12,39 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
-class OrgsOrgActionsVariablesPostBodyType(TypedDict):
-    """OrgsOrgActionsVariablesPostBody"""
 
-    name: str
-    value: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+class WebhookWatchStartedType(TypedDict):
+    """watch started event"""
+
+    action: Literal["started"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-__all__ = ("OrgsOrgActionsVariablesPostBodyType",)
+class WebhookWatchStartedTypeForResponse(TypedDict):
+    """watch started event"""
+
+    action: Literal["started"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookWatchStartedType",
+    "WebhookWatchStartedTypeForResponse",
+)

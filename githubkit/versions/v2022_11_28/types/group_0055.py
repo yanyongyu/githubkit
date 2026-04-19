@@ -9,35 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
 
+class IssueFieldValueType(TypedDict):
+    """Issue Field Value
 
-class GistCommitType(TypedDict):
-    """Gist Commit
-
-    Gist Commit
+    A value assigned to an issue field
     """
 
-    url: str
-    version: str
-    user: Union[None, SimpleUserType]
-    change_status: GistCommitPropChangeStatusType
-    committed_at: datetime
+    issue_field_id: int
+    node_id: str
+    data_type: Literal["text", "single_select", "number", "date"]
+    value: Union[str, float, int, None]
+    single_select_option: NotRequired[
+        Union[IssueFieldValuePropSingleSelectOptionType, None]
+    ]
 
 
-class GistCommitPropChangeStatusType(TypedDict):
-    """GistCommitPropChangeStatus"""
+class IssueFieldValueTypeForResponse(TypedDict):
+    """Issue Field Value
 
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
+    A value assigned to an issue field
+    """
+
+    issue_field_id: int
+    node_id: str
+    data_type: Literal["text", "single_select", "number", "date"]
+    value: Union[str, float, int, None]
+    single_select_option: NotRequired[
+        Union[IssueFieldValuePropSingleSelectOptionTypeForResponse, None]
+    ]
+
+
+class IssueFieldValuePropSingleSelectOptionType(TypedDict):
+    """IssueFieldValuePropSingleSelectOption
+
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int
+    name: str
+    color: str
+
+
+class IssueFieldValuePropSingleSelectOptionTypeForResponse(TypedDict):
+    """IssueFieldValuePropSingleSelectOption
+
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int
+    name: str
+    color: str
 
 
 __all__ = (
-    "GistCommitPropChangeStatusType",
-    "GistCommitType",
+    "IssueFieldValuePropSingleSelectOptionType",
+    "IssueFieldValuePropSingleSelectOptionTypeForResponse",
+    "IssueFieldValueType",
+    "IssueFieldValueTypeForResponse",
 )

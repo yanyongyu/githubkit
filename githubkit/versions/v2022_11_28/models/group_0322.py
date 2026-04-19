@@ -9,45 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class CodespacesPermissionsCheckForDevcontainer(GitHubModel):
+    """Codespaces Permissions Check
 
-class UnlabeledIssueEvent(GitHubModel):
-    """Unlabeled Issue Event
-
-    Unlabeled Issue Event
+    Permission check result for a given devcontainer config.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["unlabeled"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    label: UnlabeledIssueEventPropLabel = Field()
+    accepted: bool = Field(
+        description="Whether the user has accepted the permissions defined by the devcontainer config"
+    )
 
 
-class UnlabeledIssueEventPropLabel(GitHubModel):
-    """UnlabeledIssueEventPropLabel"""
+model_rebuild(CodespacesPermissionsCheckForDevcontainer)
 
-    name: str = Field()
-    color: str = Field()
-
-
-model_rebuild(UnlabeledIssueEvent)
-model_rebuild(UnlabeledIssueEventPropLabel)
-
-__all__ = (
-    "UnlabeledIssueEvent",
-    "UnlabeledIssueEventPropLabel",
-)
+__all__ = ("CodespacesPermissionsCheckForDevcontainer",)

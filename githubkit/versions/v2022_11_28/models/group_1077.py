@@ -18,27 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBody"""
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-    state: Literal["dismissed", "open"] = Field(
-        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`."
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy for which repositories can use Copilot coding agent. Can be one of `all`, `selected`, or `none`."
     )
-    dismissed_reason: Missing[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ] = Field(
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
-    )
-    dismissed_comment: Missing[str] = Field(
-        max_length=280,
-        default=UNSET,
-        description="An optional comment associated with dismissing the alert.",
+        description="The URL for the selected repositories endpoint. Only present when `enabled_repositories` is `selected`.",
     )
 
 
-model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBody)
+model_rebuild(OrgsOrgCopilotCodingAgentPermissionsGetResponse200)
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBody",)
+__all__ = ("OrgsOrgCopilotCodingAgentPermissionsGetResponse200",)

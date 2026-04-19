@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -17,49 +18,154 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0095 import CodeScanningAnalysisTool
+from .group_0003 import SimpleUser
+from .group_0019 import LicenseSimple
 
 
-class CodeScanningAnalysis(GitHubModel):
-    """CodeScanningAnalysis"""
+class TeamRepository(GitHubModel):
+    """Team Repository
 
-    ref: str = Field(
-        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`."
+    A team's access to a repository.
+    """
+
+    id: int = Field(description="Unique identifier of the repository")
+    node_id: str = Field()
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field()
+    license_: Union[None, LicenseSimple] = Field(alias="license")
+    forks: int = Field()
+    permissions: Missing[TeamRepositoryPropPermissions] = Field(default=UNSET)
+    role_name: Missing[str] = Field(default=UNSET)
+    owner: Union[None, SimpleUser] = Field()
+    private: bool = Field(
+        default=False, description="Whether the repository is private or public."
     )
-    commit_sha: str = Field(
-        min_length=40,
-        max_length=40,
-        pattern="^[0-9a-fA-F]+$",
-        description="The SHA of the commit to which the analysis you are uploading relates.",
-    )
-    analysis_key: str = Field(
-        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name."
-    )
-    environment: str = Field(
-        description="Identifies the variable values associated with the environment in which this analysis was performed."
-    )
-    category: Missing[str] = Field(
+    html_url: str = Field()
+    description: Union[str, None] = Field()
+    fork: bool = Field()
+    url: str = Field()
+    archive_url: str = Field()
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    deployments_url: str = Field()
+    downloads_url: str = Field()
+    events_url: str = Field()
+    forks_url: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    git_url: str = Field()
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    languages_url: str = Field()
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    notifications_url: str = Field()
+    pulls_url: str = Field()
+    releases_url: str = Field()
+    ssh_url: str = Field()
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    trees_url: str = Field()
+    clone_url: str = Field()
+    mirror_url: Union[str, None] = Field()
+    hooks_url: str = Field()
+    svn_url: str = Field()
+    homepage: Union[str, None] = Field()
+    language: Union[str, None] = Field()
+    forks_count: int = Field()
+    stargazers_count: int = Field()
+    watchers_count: int = Field()
+    size: int = Field()
+    default_branch: str = Field(description="The default branch of the repository.")
+    open_issues_count: int = Field()
+    is_template: Missing[bool] = Field(
         default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
+        description="Whether this repository acts as a template that can be used to generate new repositories.",
     )
-    error: str = Field()
-    created_at: datetime = Field(
-        description="The time that the analysis was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    topics: Missing[list[str]] = Field(default=UNSET)
+    has_issues: bool = Field(default=True, description="Whether issues are enabled.")
+    has_projects: bool = Field(
+        default=True, description="Whether projects are enabled."
     )
-    results_count: int = Field(
-        description="The total number of results in the analysis."
+    has_wiki: bool = Field(default=True, description="Whether the wiki is enabled.")
+    has_pages: bool = Field()
+    has_downloads: bool = Field(
+        default=True, description="Whether downloads are enabled."
     )
-    rules_count: int = Field(
-        description="The total number of rules used in the analysis."
+    archived: bool = Field(
+        default=False, description="Whether the repository is archived."
     )
-    id: int = Field(description="Unique identifier for this analysis.")
-    url: str = Field(description="The REST API URL of the analysis resource.")
-    sarif_id: str = Field(description="An identifier for the upload.")
-    tool: CodeScanningAnalysisTool = Field()
-    deletable: bool = Field()
-    warning: str = Field(description="Warning generated when processing the analysis")
+    disabled: bool = Field(
+        description="Returns whether or not this repository disabled."
+    )
+    visibility: Missing[str] = Field(
+        default=UNSET,
+        description="The repository visibility: public, private, or internal.",
+    )
+    pushed_at: Union[_dt.datetime, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
+    allow_rebase_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow rebase merges for pull requests."
+    )
+    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
+    allow_squash_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow squash merges for pull requests."
+    )
+    allow_auto_merge: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to allow Auto-merge to be used on pull requests.",
+    )
+    delete_branch_on_merge: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to delete head branches when pull requests are merged",
+    )
+    allow_merge_commit: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow merge commits for pull requests."
+    )
+    allow_forking: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow forking this repo"
+    )
+    web_commit_signoff_required: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to require contributors to sign off on web-based commits",
+    )
+    subscribers_count: Missing[int] = Field(default=UNSET)
+    network_count: Missing[int] = Field(default=UNSET)
+    open_issues: int = Field()
+    watchers: int = Field()
+    master_branch: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAnalysis)
+class TeamRepositoryPropPermissions(GitHubModel):
+    """TeamRepositoryPropPermissions"""
 
-__all__ = ("CodeScanningAnalysis",)
+    admin: bool = Field()
+    pull: bool = Field()
+    triage: Missing[bool] = Field(default=UNSET)
+    push: bool = Field()
+    maintain: Missing[bool] = Field(default=UNSET)
+
+
+model_rebuild(TeamRepository)
+model_rebuild(TeamRepositoryPropPermissions)
+
+__all__ = (
+    "TeamRepository",
+    "TeamRepositoryPropPermissions",
+)

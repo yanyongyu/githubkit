@@ -9,72 +9,125 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0224 import DeploymentType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0522 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
 
 
-class WebhookWorkflowJobWaitingType(TypedDict):
-    """workflow_job waiting event"""
+class WebhookReleaseEditedType(TypedDict):
+    """release edited event"""
 
-    action: Literal["waiting"]
+    action: Literal["edited"]
+    changes: WebhookReleaseEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhooksReleaseType
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
-    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJobType
-    deployment: NotRequired[DeploymentType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookWorkflowJobWaitingPropWorkflowJobType(TypedDict):
-    """WebhookWorkflowJobWaitingPropWorkflowJob"""
+class WebhookReleaseEditedTypeForResponse(TypedDict):
+    """release edited event"""
 
-    check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[str, None]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: list[str]
-    name: str
-    node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    started_at: datetime
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
-    status: Literal["queued", "in_progress", "completed", "waiting"]
-    steps: list[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType]
-    url: str
+    action: Literal["edited"]
+    changes: WebhookReleaseEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    release: WebhooksReleaseTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
-class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType(TypedDict):
-    """Workflow Step"""
+class WebhookReleaseEditedPropChangesType(TypedDict):
+    """WebhookReleaseEditedPropChanges"""
 
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
-    name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["completed", "in_progress", "queued", "pending", "waiting"]
+    body: NotRequired[WebhookReleaseEditedPropChangesPropBodyType]
+    name: NotRequired[WebhookReleaseEditedPropChangesPropNameType]
+    tag_name: NotRequired[WebhookReleaseEditedPropChangesPropTagNameType]
+    make_latest: NotRequired[WebhookReleaseEditedPropChangesPropMakeLatestType]
+
+
+class WebhookReleaseEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChanges"""
+
+    body: NotRequired[WebhookReleaseEditedPropChangesPropBodyTypeForResponse]
+    name: NotRequired[WebhookReleaseEditedPropChangesPropNameTypeForResponse]
+    tag_name: NotRequired[WebhookReleaseEditedPropChangesPropTagNameTypeForResponse]
+    make_latest: NotRequired[
+        WebhookReleaseEditedPropChangesPropMakeLatestTypeForResponse
+    ]
+
+
+class WebhookReleaseEditedPropChangesPropBodyType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropNameType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropName"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropName"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropTagNameType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropTagName"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropTagNameTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropTagName"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropMakeLatestType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropMakeLatest"""
+
+    to: bool
+
+
+class WebhookReleaseEditedPropChangesPropMakeLatestTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropMakeLatest"""
+
+    to: bool
 
 
 __all__ = (
-    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType",
-    "WebhookWorkflowJobWaitingPropWorkflowJobType",
-    "WebhookWorkflowJobWaitingType",
+    "WebhookReleaseEditedPropChangesPropBodyType",
+    "WebhookReleaseEditedPropChangesPropBodyTypeForResponse",
+    "WebhookReleaseEditedPropChangesPropMakeLatestType",
+    "WebhookReleaseEditedPropChangesPropMakeLatestTypeForResponse",
+    "WebhookReleaseEditedPropChangesPropNameType",
+    "WebhookReleaseEditedPropChangesPropNameTypeForResponse",
+    "WebhookReleaseEditedPropChangesPropTagNameType",
+    "WebhookReleaseEditedPropChangesPropTagNameTypeForResponse",
+    "WebhookReleaseEditedPropChangesType",
+    "WebhookReleaseEditedPropChangesTypeForResponse",
+    "WebhookReleaseEditedType",
+    "WebhookReleaseEditedTypeForResponse",
 )

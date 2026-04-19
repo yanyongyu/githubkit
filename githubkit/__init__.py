@@ -1,6 +1,7 @@
 from . import lazy_module
 
-lazy_module.apply()
+if not lazy_module.is_lazy_disabled():
+    lazy_module.apply()
 
 from .auth import ActionAuthStrategy as ActionAuthStrategy
 from .auth import AppAuthStrategy as AppAuthStrategy

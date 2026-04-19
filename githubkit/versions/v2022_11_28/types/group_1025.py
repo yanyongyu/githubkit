@@ -9,14 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoActionsVariablesNamePatchBodyType(TypedDict):
-    """ReposOwnerRepoActionsVariablesNamePatchBody"""
+class OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
+    labels: list[str]
 
 
-__all__ = ("ReposOwnerRepoActionsVariablesNamePatchBodyType",)
+class OrgsOrgActionsRunnersRunnerIdLabelsPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
+
+    labels: list[str]
+
+
+__all__ = (
+    "OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType",
+    "OrgsOrgActionsRunnersRunnerIdLabelsPutBodyTypeForResponse",
+)

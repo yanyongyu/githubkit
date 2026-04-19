@@ -17,7 +17,7 @@ from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     from typing import Literal, Union
@@ -45,25 +45,27 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType,
         EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType,
         EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType,
-        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type,
-        OrganizationSecretScanningAlertType,
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
+        OrganizationSecretScanningAlertTypeForResponse,
         OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType,
         OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType,
         OrgsOrgSecretScanningPatternConfigurationsPatchBodyType,
-        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType,
-        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse,
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType,
-        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type,
-        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse,
+        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
+        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
+        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type,
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
-        SecretScanningAlertType,
-        SecretScanningBypassRequestType,
-        SecretScanningDismissalRequestType,
-        SecretScanningLocationType,
-        SecretScanningPatternConfigurationType,
-        SecretScanningPushProtectionBypassType,
-        SecretScanningScanHistoryType,
+        SecretScanningAlertTypeForResponse,
+        SecretScanningBypassRequestTypeForResponse,
+        SecretScanningDismissalRequestTypeForResponse,
+        SecretScanningLocationTypeForResponse,
+        SecretScanningPatternConfigurationTypeForResponse,
+        SecretScanningPushProtectionBypassTypeForResponse,
+        SecretScanningScanHistoryTypeForResponse,
     )
 
 
@@ -82,13 +84,281 @@ class SecretScanningClient:
             "Do not use this client after the client has been collected."
         )
 
+    def list_enterprise_bypass_requests(
+        self,
+        enterprise: str,
+        *,
+        organization_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal[
+                "completed",
+                "cancelled",
+                "approved",
+                "expired",
+                "deleted",
+                "denied",
+                "open",
+                "all",
+            ]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[SecretScanningBypassRequest],
+        list[SecretScanningBypassRequestTypeForResponse],
+    ]:
+        """secret-scanning/list-enterprise-bypass-requests
+
+        GET /enterprises/{enterprise}/bypass-requests/secret-scanning
+
+        List requests to bypass secret scanning push protection in an enterprise.
+
+        Delegated bypass must be enabled on repositories in the enterprise and the user must be a bypass reviewer to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-enterprise
+        """
+
+        from ..models import BasicError, SecretScanningBypassRequest
+
+        url = f"/enterprises/{enterprise}/bypass-requests/secret-scanning"
+
+        params = {
+            "organization_name": organization_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[SecretScanningBypassRequest],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_list_enterprise_bypass_requests(
+        self,
+        enterprise: str,
+        *,
+        organization_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal[
+                "completed",
+                "cancelled",
+                "approved",
+                "expired",
+                "deleted",
+                "denied",
+                "open",
+                "all",
+            ]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[SecretScanningBypassRequest],
+        list[SecretScanningBypassRequestTypeForResponse],
+    ]:
+        """secret-scanning/list-enterprise-bypass-requests
+
+        GET /enterprises/{enterprise}/bypass-requests/secret-scanning
+
+        List requests to bypass secret scanning push protection in an enterprise.
+
+        Delegated bypass must be enabled on repositories in the enterprise and the user must be a bypass reviewer to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-enterprise
+        """
+
+        from ..models import BasicError, SecretScanningBypassRequest
+
+        url = f"/enterprises/{enterprise}/bypass-requests/secret-scanning"
+
+        params = {
+            "organization_name": organization_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[SecretScanningBypassRequest],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def list_enterprise_dismissal_requests(
+        self,
+        enterprise: str,
+        *,
+        organization_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal[
+                "completed", "cancelled", "approved", "expired", "denied", "open", "all"
+            ]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[SecretScanningDismissalRequest],
+        list[SecretScanningDismissalRequestTypeForResponse],
+    ]:
+        """secret-scanning/list-enterprise-dismissal-requests
+
+        GET /enterprises/{enterprise}/dismissal-requests/secret-scanning
+
+        Lists requests to dismiss secret scanning alerts in an enterprise.
+
+        The authenticated user must be an enterprise owner or an enterprise security manager to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-enterprise
+        """
+
+        from ..models import BasicError, SecretScanningDismissalRequest
+
+        url = f"/enterprises/{enterprise}/dismissal-requests/secret-scanning"
+
+        params = {
+            "organization_name": organization_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[SecretScanningDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_list_enterprise_dismissal_requests(
+        self,
+        enterprise: str,
+        *,
+        organization_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal[
+                "completed", "cancelled", "approved", "expired", "denied", "open", "all"
+            ]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[SecretScanningDismissalRequest],
+        list[SecretScanningDismissalRequestTypeForResponse],
+    ]:
+        """secret-scanning/list-enterprise-dismissal-requests
+
+        GET /enterprises/{enterprise}/dismissal-requests/secret-scanning
+
+        Lists requests to dismiss secret scanning alerts in an enterprise.
+
+        The authenticated user must be an enterprise owner or an enterprise security manager to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-enterprise
+        """
+
+        from ..models import BasicError, SecretScanningDismissalRequest
+
+        url = f"/enterprises/{enterprise}/dismissal-requests/secret-scanning"
+
+        params = {
+            "organization_name": organization_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[SecretScanningDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
     def list_alerts_for_enterprise(
         self,
         enterprise: str,
         *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
+        exclude_secret_types: Missing[str] = UNSET,
+        exclude_providers: Missing[str] = UNSET,
+        providers: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
+        assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
@@ -101,7 +371,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
+        list[OrganizationSecretScanningAlert],
+        list[OrganizationSecretScanningAlertTypeForResponse],
     ]:
         """secret-scanning/list-alerts-for-enterprise
 
@@ -124,7 +395,11 @@ class SecretScanningClient:
         params = {
             "state": state,
             "secret_type": secret_type,
+            "exclude_secret_types": exclude_secret_types,
+            "exclude_providers": exclude_providers,
+            "providers": providers,
             "resolution": resolution,
+            "assignee": assignee,
             "sort": sort,
             "direction": direction,
             "per_page": per_page,
@@ -141,7 +416,7 @@ class SecretScanningClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationSecretScanningAlert],
@@ -157,7 +432,11 @@ class SecretScanningClient:
         *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
+        exclude_secret_types: Missing[str] = UNSET,
+        exclude_providers: Missing[str] = UNSET,
+        providers: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
+        assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
@@ -170,7 +449,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
+        list[OrganizationSecretScanningAlert],
+        list[OrganizationSecretScanningAlertTypeForResponse],
     ]:
         """secret-scanning/list-alerts-for-enterprise
 
@@ -193,7 +473,11 @@ class SecretScanningClient:
         params = {
             "state": state,
             "secret_type": secret_type,
+            "exclude_secret_types": exclude_secret_types,
+            "exclude_providers": exclude_providers,
+            "providers": providers,
             "resolution": resolution,
+            "assignee": assignee,
             "sort": sort,
             "direction": direction,
             "per_page": per_page,
@@ -210,7 +494,7 @@ class SecretScanningClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationSecretScanningAlert],
@@ -227,7 +511,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        SecretScanningPatternConfiguration, SecretScanningPatternConfigurationType
+        SecretScanningPatternConfiguration,
+        SecretScanningPatternConfigurationTypeForResponse,
     ]:
         """secret-scanning/list-enterprise-pattern-configs
 
@@ -265,7 +550,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        SecretScanningPatternConfiguration, SecretScanningPatternConfigurationType
+        SecretScanningPatternConfiguration,
+        SecretScanningPatternConfigurationTypeForResponse,
     ]:
         """secret-scanning/list-enterprise-pattern-configs
 
@@ -306,7 +592,7 @@ class SecretScanningClient:
         data: EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType,
     ) -> Response[
         EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200,
-        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type,
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -330,7 +616,7 @@ class SecretScanningClient:
         ] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200,
-        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type,
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]: ...
 
     def update_enterprise_pattern_configs(
@@ -345,7 +631,7 @@ class SecretScanningClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200,
-        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type,
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]:
         """secret-scanning/update-enterprise-pattern-configs
 
@@ -406,7 +692,7 @@ class SecretScanningClient:
         data: EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType,
     ) -> Response[
         EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200,
-        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type,
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -430,7 +716,7 @@ class SecretScanningClient:
         ] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200,
-        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type,
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]: ...
 
     async def async_update_enterprise_pattern_configs(
@@ -445,7 +731,7 @@ class SecretScanningClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200,
-        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type,
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]:
         """secret-scanning/update-enterprise-pattern-configs
 
@@ -521,7 +807,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
+        list[SecretScanningBypassRequest],
+        list[SecretScanningBypassRequestTypeForResponse],
     ]:
         """secret-scanning/list-org-bypass-requests
 
@@ -554,7 +841,7 @@ class SecretScanningClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SecretScanningBypassRequest],
@@ -589,7 +876,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
+        list[SecretScanningBypassRequest],
+        list[SecretScanningBypassRequestTypeForResponse],
     ]:
         """secret-scanning/list-org-bypass-requests
 
@@ -622,7 +910,7 @@ class SecretScanningClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SecretScanningBypassRequest],
@@ -650,7 +938,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[SecretScanningDismissalRequest], list[SecretScanningDismissalRequestType]
+        list[SecretScanningDismissalRequest],
+        list[SecretScanningDismissalRequestTypeForResponse],
     ]:
         """secret-scanning/list-org-dismissal-requests
 
@@ -683,7 +972,7 @@ class SecretScanningClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SecretScanningDismissalRequest],
@@ -712,7 +1001,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[SecretScanningDismissalRequest], list[SecretScanningDismissalRequestType]
+        list[SecretScanningDismissalRequest],
+        list[SecretScanningDismissalRequestTypeForResponse],
     ]:
         """secret-scanning/list-org-dismissal-requests
 
@@ -745,7 +1035,7 @@ class SecretScanningClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SecretScanningDismissalRequest],
@@ -762,7 +1052,11 @@ class SecretScanningClient:
         *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
+        exclude_secret_types: Missing[str] = UNSET,
+        exclude_providers: Missing[str] = UNSET,
+        providers: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
+        assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         page: Missing[int] = UNSET,
@@ -776,7 +1070,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
+        list[OrganizationSecretScanningAlert],
+        list[OrganizationSecretScanningAlertTypeForResponse],
     ]:
         """secret-scanning/list-alerts-for-org
 
@@ -802,7 +1097,11 @@ class SecretScanningClient:
         params = {
             "state": state,
             "secret_type": secret_type,
+            "exclude_secret_types": exclude_secret_types,
+            "exclude_providers": exclude_providers,
+            "providers": providers,
             "resolution": resolution,
+            "assignee": assignee,
             "sort": sort,
             "direction": direction,
             "page": page,
@@ -820,7 +1119,7 @@ class SecretScanningClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationSecretScanningAlert],
@@ -836,7 +1135,11 @@ class SecretScanningClient:
         *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
+        exclude_secret_types: Missing[str] = UNSET,
+        exclude_providers: Missing[str] = UNSET,
+        providers: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
+        assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         page: Missing[int] = UNSET,
@@ -850,7 +1153,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
+        list[OrganizationSecretScanningAlert],
+        list[OrganizationSecretScanningAlertTypeForResponse],
     ]:
         """secret-scanning/list-alerts-for-org
 
@@ -876,7 +1180,11 @@ class SecretScanningClient:
         params = {
             "state": state,
             "secret_type": secret_type,
+            "exclude_secret_types": exclude_secret_types,
+            "exclude_providers": exclude_providers,
+            "providers": providers,
             "resolution": resolution,
+            "assignee": assignee,
             "sort": sort,
             "direction": direction,
             "page": page,
@@ -894,7 +1202,7 @@ class SecretScanningClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationSecretScanningAlert],
@@ -911,7 +1219,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        SecretScanningPatternConfiguration, SecretScanningPatternConfigurationType
+        SecretScanningPatternConfiguration,
+        SecretScanningPatternConfigurationTypeForResponse,
     ]:
         """secret-scanning/list-org-pattern-configs
 
@@ -919,7 +1228,7 @@ class SecretScanningClient:
 
         Lists the secret scanning pattern configurations for an organization.
 
-        Personal access tokens (classic) need the `write:org` scope to use this endpoint.
+        Personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#list-organization-pattern-configurations
         """
@@ -949,7 +1258,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        SecretScanningPatternConfiguration, SecretScanningPatternConfigurationType
+        SecretScanningPatternConfiguration,
+        SecretScanningPatternConfigurationTypeForResponse,
     ]:
         """secret-scanning/list-org-pattern-configs
 
@@ -957,7 +1267,7 @@ class SecretScanningClient:
 
         Lists the secret scanning pattern configurations for an organization.
 
-        Personal access tokens (classic) need the `write:org` scope to use this endpoint.
+        Personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#list-organization-pattern-configurations
         """
@@ -990,7 +1300,7 @@ class SecretScanningClient:
         data: OrgsOrgSecretScanningPatternConfigurationsPatchBodyType,
     ) -> Response[
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
-        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1014,7 +1324,7 @@ class SecretScanningClient:
         ] = UNSET,
     ) -> Response[
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
-        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]: ...
 
     def update_org_pattern_configs(
@@ -1027,7 +1337,7 @@ class SecretScanningClient:
         **kwargs,
     ) -> Response[
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
-        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]:
         """secret-scanning/update-org-pattern-configs
 
@@ -1088,7 +1398,7 @@ class SecretScanningClient:
         data: OrgsOrgSecretScanningPatternConfigurationsPatchBodyType,
     ) -> Response[
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
-        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1112,7 +1422,7 @@ class SecretScanningClient:
         ] = UNSET,
     ) -> Response[
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
-        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]: ...
 
     async def async_update_org_pattern_configs(
@@ -1125,7 +1435,7 @@ class SecretScanningClient:
         **kwargs,
     ) -> Response[
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
-        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]:
         """secret-scanning/update-org-pattern-configs
 
@@ -1201,7 +1511,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
+        list[SecretScanningBypassRequest],
+        list[SecretScanningBypassRequestTypeForResponse],
     ]:
         """secret-scanning/list-repo-bypass-requests
 
@@ -1233,7 +1544,7 @@ class SecretScanningClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SecretScanningBypassRequest],
@@ -1269,7 +1580,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
+        list[SecretScanningBypassRequest],
+        list[SecretScanningBypassRequestTypeForResponse],
     ]:
         """secret-scanning/list-repo-bypass-requests
 
@@ -1301,7 +1613,7 @@ class SecretScanningClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SecretScanningBypassRequest],
@@ -1320,7 +1632,9 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SecretScanningBypassRequest, SecretScanningBypassRequestType]:
+    ) -> Response[
+        SecretScanningBypassRequest, SecretScanningBypassRequestTypeForResponse
+    ]:
         """secret-scanning/get-bypass-request
 
         GET /repos/{owner}/{repo}/bypass-requests/secret-scanning/{bypass_request_number}
@@ -1360,7 +1674,9 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SecretScanningBypassRequest, SecretScanningBypassRequestType]:
+    ) -> Response[
+        SecretScanningBypassRequest, SecretScanningBypassRequestTypeForResponse
+    ]:
         """secret-scanning/get-bypass-request
 
         GET /repos/{owner}/{repo}/bypass-requests/secret-scanning/{bypass_request_number}
@@ -1404,7 +1720,7 @@ class SecretScanningClient:
         data: ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType,
     ) -> Response[
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
-        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1421,7 +1737,7 @@ class SecretScanningClient:
         message: str,
     ) -> Response[
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
-        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse,
     ]: ...
 
     def review_bypass_request(
@@ -1438,7 +1754,7 @@ class SecretScanningClient:
         **kwargs,
     ) -> Response[
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
-        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse,
     ]:
         """secret-scanning/review-bypass-request
 
@@ -1502,7 +1818,7 @@ class SecretScanningClient:
         data: ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType,
     ) -> Response[
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
-        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1519,7 +1835,7 @@ class SecretScanningClient:
         message: str,
     ) -> Response[
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
-        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse,
     ]: ...
 
     async def async_review_bypass_request(
@@ -1536,7 +1852,7 @@ class SecretScanningClient:
         **kwargs,
     ) -> Response[
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
-        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse,
     ]:
         """secret-scanning/review-bypass-request
 
@@ -1686,7 +2002,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[SecretScanningDismissalRequest], list[SecretScanningDismissalRequestType]
+        list[SecretScanningDismissalRequest],
+        list[SecretScanningDismissalRequestTypeForResponse],
     ]:
         """secret-scanning/list-repo-dismissal-requests
 
@@ -1718,7 +2035,7 @@ class SecretScanningClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SecretScanningDismissalRequest],
@@ -1747,7 +2064,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[SecretScanningDismissalRequest], list[SecretScanningDismissalRequestType]
+        list[SecretScanningDismissalRequest],
+        list[SecretScanningDismissalRequestTypeForResponse],
     ]:
         """secret-scanning/list-repo-dismissal-requests
 
@@ -1779,7 +2097,7 @@ class SecretScanningClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SecretScanningDismissalRequest],
@@ -1798,7 +2116,9 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SecretScanningDismissalRequest, SecretScanningDismissalRequestType]:
+    ) -> Response[
+        SecretScanningDismissalRequest, SecretScanningDismissalRequestTypeForResponse
+    ]:
         """secret-scanning/get-dismissal-request
 
         GET /repos/{owner}/{repo}/dismissal-requests/secret-scanning/{alert_number}
@@ -1839,7 +2159,9 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SecretScanningDismissalRequest, SecretScanningDismissalRequestType]:
+    ) -> Response[
+        SecretScanningDismissalRequest, SecretScanningDismissalRequestTypeForResponse
+    ]:
         """secret-scanning/get-dismissal-request
 
         GET /repos/{owner}/{repo}/dismissal-requests/secret-scanning/{alert_number}
@@ -1884,7 +2206,7 @@ class SecretScanningClient:
         data: ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType,
     ) -> Response[
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
-        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type,
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1901,7 +2223,7 @@ class SecretScanningClient:
         message: str,
     ) -> Response[
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
-        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type,
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse,
     ]: ...
 
     def review_dismissal_request(
@@ -1918,7 +2240,7 @@ class SecretScanningClient:
         **kwargs,
     ) -> Response[
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
-        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type,
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse,
     ]:
         """secret-scanning/review-dismissal-request
 
@@ -1982,7 +2304,7 @@ class SecretScanningClient:
         data: ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType,
     ) -> Response[
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
-        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type,
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1999,7 +2321,7 @@ class SecretScanningClient:
         message: str,
     ) -> Response[
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
-        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type,
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse,
     ]: ...
 
     async def async_review_dismissal_request(
@@ -2016,7 +2338,7 @@ class SecretScanningClient:
         **kwargs,
     ) -> Response[
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
-        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type,
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse,
     ]:
         """secret-scanning/review-dismissal-request
 
@@ -2075,7 +2397,11 @@ class SecretScanningClient:
         *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
+        exclude_secret_types: Missing[str] = UNSET,
+        exclude_providers: Missing[str] = UNSET,
+        providers: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
+        assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         page: Missing[int] = UNSET,
@@ -2088,7 +2414,7 @@ class SecretScanningClient:
         hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
+    ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertTypeForResponse]]:
         """secret-scanning/list-alerts-for-repo
 
         GET /repos/{owner}/{repo}/secret-scanning/alerts
@@ -2112,7 +2438,11 @@ class SecretScanningClient:
         params = {
             "state": state,
             "secret_type": secret_type,
+            "exclude_secret_types": exclude_secret_types,
+            "exclude_providers": exclude_providers,
+            "providers": providers,
             "resolution": resolution,
+            "assignee": assignee,
             "sort": sort,
             "direction": direction,
             "page": page,
@@ -2130,7 +2460,7 @@ class SecretScanningClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SecretScanningAlert],
@@ -2146,7 +2476,11 @@ class SecretScanningClient:
         *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
+        exclude_secret_types: Missing[str] = UNSET,
+        exclude_providers: Missing[str] = UNSET,
+        providers: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
+        assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         page: Missing[int] = UNSET,
@@ -2159,7 +2493,7 @@ class SecretScanningClient:
         hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
+    ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertTypeForResponse]]:
         """secret-scanning/list-alerts-for-repo
 
         GET /repos/{owner}/{repo}/secret-scanning/alerts
@@ -2183,7 +2517,11 @@ class SecretScanningClient:
         params = {
             "state": state,
             "secret_type": secret_type,
+            "exclude_secret_types": exclude_secret_types,
+            "exclude_providers": exclude_providers,
+            "providers": providers,
             "resolution": resolution,
+            "assignee": assignee,
             "sort": sort,
             "direction": direction,
             "page": page,
@@ -2201,7 +2539,7 @@ class SecretScanningClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SecretScanningAlert],
@@ -2219,7 +2557,7 @@ class SecretScanningClient:
         hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]:
         """secret-scanning/get-alert
 
         GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
@@ -2249,7 +2587,7 @@ class SecretScanningClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=SecretScanningAlert,
@@ -2267,7 +2605,7 @@ class SecretScanningClient:
         hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]:
         """secret-scanning/get-alert
 
         GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
@@ -2297,7 +2635,7 @@ class SecretScanningClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=SecretScanningAlert,
@@ -2315,8 +2653,12 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
+        data: Union[
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type,
+        ],
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     @overload
     def update_alert(
@@ -2335,7 +2677,48 @@ class SecretScanningClient:
             ]
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
+        assignee: Missing[Union[str, None]] = UNSET,
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
+
+    @overload
+    def update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        state: Missing[Literal["open", "resolved"]] = UNSET,
+        resolution: Missing[
+            Union[
+                None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
+            ]
+        ] = UNSET,
+        resolution_comment: Missing[Union[str, None]] = UNSET,
+        assignee: Union[str, None],
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
+
+    @overload
+    def update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        state: Missing[Literal["open", "resolved"]] = UNSET,
+        resolution: Missing[
+            Union[
+                None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
+            ]
+        ] = UNSET,
+        resolution_comment: Missing[Union[str, None]] = UNSET,
+        assignee: Missing[Union[str, None]] = UNSET,
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     def update_alert(
         self,
@@ -2346,15 +2729,21 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[
-            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
+            Union[
+                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
+                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
+                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type,
+            ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]:
         """secret-scanning/update-alert
 
         PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
 
         Updates the status of a secret scanning alert in an eligible repository.
+
+        You can also use this endpoint to assign or unassign an alert to a user who has write access to the repository.
 
         The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
 
@@ -2363,9 +2752,13 @@ class SecretScanningClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert
         """
 
+        from typing import Union
+
         from ..models import (
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2,
             SecretScanningAlert,
         )
 
@@ -2380,7 +2773,12 @@ class SecretScanningClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody, json
+                Union[
+                    ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
+                    ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
+                    ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2,
+                ],
+                json,
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2405,8 +2803,12 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
+        data: Union[
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type,
+        ],
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     @overload
     async def async_update_alert(
@@ -2425,7 +2827,48 @@ class SecretScanningClient:
             ]
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
+        assignee: Missing[Union[str, None]] = UNSET,
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
+
+    @overload
+    async def async_update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        state: Missing[Literal["open", "resolved"]] = UNSET,
+        resolution: Missing[
+            Union[
+                None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
+            ]
+        ] = UNSET,
+        resolution_comment: Missing[Union[str, None]] = UNSET,
+        assignee: Union[str, None],
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
+
+    @overload
+    async def async_update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        state: Missing[Literal["open", "resolved"]] = UNSET,
+        resolution: Missing[
+            Union[
+                None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
+            ]
+        ] = UNSET,
+        resolution_comment: Missing[Union[str, None]] = UNSET,
+        assignee: Missing[Union[str, None]] = UNSET,
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     async def async_update_alert(
         self,
@@ -2436,15 +2879,21 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[
-            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
+            Union[
+                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
+                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
+                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type,
+            ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]:
         """secret-scanning/update-alert
 
         PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
 
         Updates the status of a secret scanning alert in an eligible repository.
+
+        You can also use this endpoint to assign or unassign an alert to a user who has write access to the repository.
 
         The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
 
@@ -2453,9 +2902,13 @@ class SecretScanningClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert
         """
 
+        from typing import Union
+
         from ..models import (
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2,
             SecretScanningAlert,
         )
 
@@ -2470,7 +2923,12 @@ class SecretScanningClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody, json
+                Union[
+                    ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
+                    ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
+                    ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2,
+                ],
+                json,
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2496,7 +2954,9 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SecretScanningLocation], list[SecretScanningLocationType]]:
+    ) -> Response[
+        list[SecretScanningLocation], list[SecretScanningLocationTypeForResponse]
+    ]:
         """secret-scanning/list-locations-for-alert
 
         GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations
@@ -2527,7 +2987,7 @@ class SecretScanningClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SecretScanningLocation],
@@ -2546,7 +3006,9 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SecretScanningLocation], list[SecretScanningLocationType]]:
+    ) -> Response[
+        list[SecretScanningLocation], list[SecretScanningLocationTypeForResponse]
+    ]:
         """secret-scanning/list-locations-for-alert
 
         GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations
@@ -2577,7 +3039,7 @@ class SecretScanningClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SecretScanningLocation],
@@ -2596,7 +3058,8 @@ class SecretScanningClient:
         stream: bool = False,
         data: ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
     ) -> Response[
-        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+        SecretScanningPushProtectionBypass,
+        SecretScanningPushProtectionBypassTypeForResponse,
     ]: ...
 
     @overload
@@ -2611,7 +3074,8 @@ class SecretScanningClient:
         reason: Literal["false_positive", "used_in_tests", "will_fix_later"],
         placeholder_id: str,
     ) -> Response[
-        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+        SecretScanningPushProtectionBypass,
+        SecretScanningPushProtectionBypassTypeForResponse,
     ]: ...
 
     def create_push_protection_bypass(
@@ -2626,7 +3090,8 @@ class SecretScanningClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[
-        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+        SecretScanningPushProtectionBypass,
+        SecretScanningPushProtectionBypassTypeForResponse,
     ]:
         """secret-scanning/create-push-protection-bypass
 
@@ -2684,7 +3149,8 @@ class SecretScanningClient:
         stream: bool = False,
         data: ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
     ) -> Response[
-        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+        SecretScanningPushProtectionBypass,
+        SecretScanningPushProtectionBypassTypeForResponse,
     ]: ...
 
     @overload
@@ -2699,7 +3165,8 @@ class SecretScanningClient:
         reason: Literal["false_positive", "used_in_tests", "will_fix_later"],
         placeholder_id: str,
     ) -> Response[
-        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+        SecretScanningPushProtectionBypass,
+        SecretScanningPushProtectionBypassTypeForResponse,
     ]: ...
 
     async def async_create_push_protection_bypass(
@@ -2714,7 +3181,8 @@ class SecretScanningClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[
-        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+        SecretScanningPushProtectionBypass,
+        SecretScanningPushProtectionBypassTypeForResponse,
     ]:
         """secret-scanning/create-push-protection-bypass
 
@@ -2769,12 +3237,15 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryType]:
+    ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryTypeForResponse]:
         """secret-scanning/get-scan-history
 
         GET /repos/{owner}/{repo}/secret-scanning/scan-history
 
         Lists the latest default incremental and backfill scans by type for a repository. Scans from Copilot Secret Scanning are not included.
+
+        > [!NOTE]
+        > This endpoint requires [GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest//get-started/learning-about-github/about-github-advanced-security)."
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
@@ -2808,12 +3279,15 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryType]:
+    ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryTypeForResponse]:
         """secret-scanning/get-scan-history
 
         GET /repos/{owner}/{repo}/secret-scanning/scan-history
 
         Lists the latest default incremental and backfill scans by type for a repository. Scans from Copilot Secret Scanning are not included.
+
+        > [!NOTE]
+        > This endpoint requires [GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest//get-started/learning-about-github/about-github-advanced-security)."
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,20 +17,27 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0155 import RepositoryRulePullRequestPropParameters
+
+class OrganizationUpdateIssueType(GitHubModel):
+    """OrganizationUpdateIssueType"""
+
+    name: str = Field(description="Name of the issue type.")
+    is_enabled: bool = Field(
+        description="Whether or not the issue type is enabled at the organization level."
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the issue type."
+    )
+    color: Missing[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ] = Field(default=UNSET, description="Color for the issue type.")
 
 
-class RepositoryRulePullRequest(GitHubModel):
-    """pull_request
+model_rebuild(OrganizationUpdateIssueType)
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
-    """
-
-    type: Literal["pull_request"] = Field()
-    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
-
-
-model_rebuild(RepositoryRulePullRequest)
-
-__all__ = ("RepositoryRulePullRequest",)
+__all__ = ("OrganizationUpdateIssueType",)

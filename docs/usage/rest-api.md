@@ -66,7 +66,7 @@ If you are calling an API that requires request body parameters, you can pass th
 
 !!! tip
 
-    By default, githubkit will validate the request body against the API schema. If you want to skip the validation, you can set the client config `rest_api_validate_body` to `False`. See [Configuration](./configuration.md#rest_api_validate_body) for more information.
+    By default, githubkit will validate the request body against the API schema. If you want to skip the validation, you can set the client config `rest_api_validate_body` to `False`. See [Configuration](./getting-started/configuration.md#rest_api_validate_body) for more information.
 
 Or you can pass the json request body as a dictionary:
 
@@ -177,32 +177,6 @@ In some cases, you may need to pass additional headers to the API request. You c
         headers={"Accept": "application/vnd.github.raw+json"},
     )
     content = resp.text
-    ```
-
-## Reusing Client
-
-You can make multiple requests with the same client instance in one context:
-
-=== "Sync"
-
-    ```python hl_lines="4"
-    from githubkit import GitHub, Response
-    from githubkit.versions.latest.models import FullRepository
-
-    with GitHub("<your_token_here>") as github:
-        resp: Response[FullRepository] = github.rest.repos.get(owner="owner", repo="repo")
-        repo: FullRepository = resp.parsed_data
-    ```
-
-=== "Async"
-
-    ```python hl_lines="4"
-    from githubkit import GitHub, Response
-    from githubkit.versions.latest.models import FullRepository
-
-    async with GitHub("<your_token_here>") as github:
-        resp: Response[FullRepository] = await github.rest.repos.async_get(owner="owner", repo="repo")
-        repo: FullRepository = resp.parsed_data
     ```
 
 ## Data Validation
@@ -321,9 +295,11 @@ You can also get the latest version name of GitHub API and version-module mappin
 from githubkit.versions import LATEST_VERSION, VERSIONS
 ```
 
-Current supported versions are: (you can find it in the section `[[tool.codegen.descriptions]]` of the `pyproject.toml` file)
+Current supported versions are: (you can also find it in the section `[[descriptions]]` of the `githubkit/versions/versions.lock` file)
 
-- 2022-11-28 (latest)
+- 2026-03-10 (latest)
+- ghec-2026-03-10
+- 2022-11-28
 - ghec-2022-11-28
 
 ## REST API Pagination

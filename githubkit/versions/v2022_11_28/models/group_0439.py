@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,77 +18,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0010 import Integration
-from .group_0217 import PullRequestMinimal
-from .group_0244 import DeploymentSimple
-from .group_0438 import SimpleCheckSuite
 
+class SecretScanningPushProtectionBypass(GitHubModel):
+    """SecretScanningPushProtectionBypass"""
 
-class CheckRunWithSimpleCheckSuite(GitHubModel):
-    """CheckRun
-
-    A check performed on the code of a given code change
-    """
-
-    app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    reason: Missing[Literal["false_positive", "used_in_tests", "will_fix_later"]] = (
+        Field(default=UNSET, description="The reason for bypassing push protection.")
     )
-    check_suite: SimpleCheckSuite = Field(
-        description="A suite of checks performed on the code of a given code change"
-    )
-    completed_at: Union[datetime, None] = Field()
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ] = Field()
-    deployment: Missing[DeploymentSimple] = Field(
+    expire_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        title="Deployment",
-        description="A deployment created as the result of an Actions check run from a workflow that references an environment",
+        description="The time that the bypass will expire in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    details_url: str = Field()
-    external_id: str = Field()
-    head_sha: str = Field(description="The SHA of the commit that is being checked.")
-    html_url: str = Field()
-    id: int = Field(description="The id of the check.")
-    name: str = Field(description="The name of the check.")
-    node_id: str = Field()
-    output: CheckRunWithSimpleCheckSuitePropOutput = Field()
-    pull_requests: list[PullRequestMinimal] = Field()
-    started_at: datetime = Field()
-    status: Literal["queued", "in_progress", "completed", "pending"] = Field(
-        description="The phase of the lifecycle that the check is currently in."
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The token type this bypass is for."
     )
-    url: str = Field()
 
 
-class CheckRunWithSimpleCheckSuitePropOutput(GitHubModel):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
+model_rebuild(SecretScanningPushProtectionBypass)
 
-    annotations_count: int = Field()
-    annotations_url: str = Field()
-    summary: Union[str, None] = Field()
-    text: Union[str, None] = Field()
-    title: Union[str, None] = Field()
-
-
-model_rebuild(CheckRunWithSimpleCheckSuite)
-model_rebuild(CheckRunWithSimpleCheckSuitePropOutput)
-
-__all__ = (
-    "CheckRunWithSimpleCheckSuite",
-    "CheckRunWithSimpleCheckSuitePropOutput",
-)
+__all__ = ("SecretScanningPushProtectionBypass",)

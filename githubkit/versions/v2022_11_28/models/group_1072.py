@@ -9,23 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoCommentsCommentIdReactionsPostBody(GitHubModel):
-    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(
-        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the commit comment."
-    )
+    The total number of seats set to "pending cancellation" for members of the
+    specified team(s).
+    """
+
+    seats_cancelled: int = Field()
 
 
-model_rebuild(ReposOwnerRepoCommentsCommentIdReactionsPostBody)
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200)
 
-__all__ = ("ReposOwnerRepoCommentsCommentIdReactionsPostBody",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200",)

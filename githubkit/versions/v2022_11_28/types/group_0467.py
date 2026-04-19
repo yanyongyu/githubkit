@@ -9,31 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
+from typing_extensions import TypedDict
 
 
-class ProjectsV2StatusUpdateType(TypedDict):
-    """Projects v2 Status Update
+class CodespacesUserPublicKeyType(TypedDict):
+    """CodespacesUserPublicKey
 
-    An status update belonging to a project
+    The public key used for setting user Codespaces' Secrets.
     """
 
-    id: float
-    node_id: str
-    project_node_id: NotRequired[str]
-    creator: NotRequired[SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    status: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ]
-    start_date: NotRequired[date]
-    target_date: NotRequired[date]
-    body: NotRequired[Union[str, None]]
+    key_id: str
+    key: str
 
 
-__all__ = ("ProjectsV2StatusUpdateType",)
+class CodespacesUserPublicKeyTypeForResponse(TypedDict):
+    """CodespacesUserPublicKey
+
+    The public key used for setting user Codespaces' Secrets.
+    """
+
+    key_id: str
+    key: str
+
+
+__all__ = (
+    "CodespacesUserPublicKeyType",
+    "CodespacesUserPublicKeyTypeForResponse",
+)

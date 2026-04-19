@@ -12,21 +12,44 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0206 import RateLimit
-from .group_0208 import RateLimitOverviewPropResources
+
+class RepositoryRuleRequiredStatusChecksPropParameters(GitHubModel):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
+
+    do_not_enforce_on_create: Missing[bool] = Field(
+        default=UNSET,
+        description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
+    )
+    required_status_checks: list[RepositoryRuleParamsStatusCheckConfiguration] = Field(
+        description="Status checks that are required."
+    )
+    strict_required_status_checks_policy: bool = Field(
+        description="Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled."
+    )
 
 
-class RateLimitOverview(GitHubModel):
-    """Rate Limit Overview
+class RepositoryRuleParamsStatusCheckConfiguration(GitHubModel):
+    """StatusCheckConfiguration
 
-    Rate Limit Overview
+    Required status check
     """
 
-    resources: RateLimitOverviewPropResources = Field()
-    rate: RateLimit = Field(title="Rate Limit")
+    context: str = Field(
+        description="The status check context name that must be present on the commit."
+    )
+    integration_id: Missing[int] = Field(
+        default=UNSET,
+        description="The optional integration ID that this status check must originate from.",
+    )
 
 
-model_rebuild(RateLimitOverview)
+model_rebuild(RepositoryRuleRequiredStatusChecksPropParameters)
+model_rebuild(RepositoryRuleParamsStatusCheckConfiguration)
 
-__all__ = ("RateLimitOverview",)
+__all__ = (
+    "RepositoryRuleParamsStatusCheckConfiguration",
+    "RepositoryRuleRequiredStatusChecksPropParameters",
+)

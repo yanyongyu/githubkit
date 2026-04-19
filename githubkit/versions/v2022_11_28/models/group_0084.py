@@ -9,24 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsGetDefaultWorkflowPermissions(GitHubModel):
-    """ActionsGetDefaultWorkflowPermissions"""
+class MarketplaceListingPlan(GitHubModel):
+    """Marketplace Listing Plan
 
-    default_workflow_permissions: Literal["read", "write"] = Field(
-        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows."
-    )
-    can_approve_pull_request_reviews: bool = Field(
-        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk."
-    )
+    Marketplace Listing Plan
+    """
+
+    url: str = Field()
+    accounts_url: str = Field()
+    id: int = Field()
+    number: int = Field()
+    name: str = Field()
+    description: str = Field()
+    monthly_price_in_cents: int = Field()
+    yearly_price_in_cents: int = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    has_free_trial: bool = Field()
+    unit_name: Union[str, None] = Field()
+    state: str = Field()
+    bullets: list[str] = Field()
 
 
-model_rebuild(ActionsGetDefaultWorkflowPermissions)
+model_rebuild(MarketplaceListingPlan)
 
-__all__ = ("ActionsGetDefaultWorkflowPermissions",)
+__all__ = ("MarketplaceListingPlan",)

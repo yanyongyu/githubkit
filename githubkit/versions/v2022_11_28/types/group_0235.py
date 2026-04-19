@@ -9,19 +9,126 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
 
-class GitUserType(TypedDict):
-    """Git User
+class RuleSuitePullRequestType(TypedDict):
+    """Pull request rule suite metadata
 
-    Metaproperties for Git author/committer information.
+    Metadata for a pull request rule evaluation result.
     """
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[datetime]
+    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestType]
 
 
-__all__ = ("GitUserType",)
+class RuleSuitePullRequestTypeForResponse(TypedDict):
+    """Pull request rule suite metadata
+
+    Metadata for a pull request rule evaluation result.
+    """
+
+    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestTypeForResponse]
+
+
+class RuleSuitePullRequestPropPullRequestType(TypedDict):
+    """RuleSuitePullRequestPropPullRequest
+
+    The pull request associated with the rule evaluation.
+    """
+
+    id: NotRequired[int]
+    number: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserType]
+    reviews: NotRequired[list[RuleSuitePullRequestPropPullRequestPropReviewsItemsType]]
+
+
+class RuleSuitePullRequestPropPullRequestTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequest
+
+    The pull request associated with the rule evaluation.
+    """
+
+    id: NotRequired[int]
+    number: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserTypeForResponse]
+    reviews: NotRequired[
+        list[RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse]
+    ]
+
+
+class RuleSuitePullRequestPropPullRequestPropUserType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropUser
+
+    The user who created the pull request.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropUserTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropUser
+
+    The user who created the pull request.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType]
+    state: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: NotRequired[int]
+    user: NotRequired[
+        RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse
+    ]
+    state: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+
+    The user who submitted the review.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse(
+    TypedDict
+):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+
+    The user who submitted the review.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+__all__ = (
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsType",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropUserType",
+    "RuleSuitePullRequestPropPullRequestPropUserTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestType",
+    "RuleSuitePullRequestPropPullRequestTypeForResponse",
+    "RuleSuitePullRequestType",
+    "RuleSuitePullRequestTypeForResponse",
+)

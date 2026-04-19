@@ -11,18 +11,23 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0934 import (
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems,
+)
 
 
-class OrgsOrgCopilotBillingSelectedUsersPostBody(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
 
-    selected_usernames: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The usernames of the organization members to be granted access to GitHub Copilot.",
-    )
+    sessions: Missing[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems]
+    ] = Field(default=UNSET, description="Sessions associated with this task")
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersPostBody)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1)
 
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostBody",)
+__all__ = ("AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1",)

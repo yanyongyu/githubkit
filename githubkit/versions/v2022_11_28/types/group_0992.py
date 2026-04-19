@@ -9,14 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ProjectsColumnsColumnIdCardsPostBodyOneof0Type(TypedDict):
-    """ProjectsColumnsColumnIdCardsPostBodyOneof0"""
+class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
+    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    note: Union[str, None]
+    default_level: Literal["public", "internal"]
 
 
-__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof0Type",)
+class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(
+    TypedDict
+):
+    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+
+    default_level: Literal["public", "internal"]
+
+
+__all__ = (
+    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
+    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
+)

@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Optional
 from weakref import ref
 
 from githubkit.typing import Missing
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
@@ -31,12 +31,12 @@ if TYPE_CHECKING:
         SimpleClassroomAssignment,
     )
     from ..types import (
-        ClassroomAcceptedAssignmentType,
-        ClassroomAssignmentGradeType,
-        ClassroomAssignmentType,
-        ClassroomType,
-        SimpleClassroomAssignmentType,
-        SimpleClassroomType,
+        ClassroomAcceptedAssignmentTypeForResponse,
+        ClassroomAssignmentGradeTypeForResponse,
+        ClassroomAssignmentTypeForResponse,
+        ClassroomTypeForResponse,
+        SimpleClassroomAssignmentTypeForResponse,
+        SimpleClassroomTypeForResponse,
     )
 
 
@@ -61,7 +61,7 @@ class ClassroomClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ClassroomAssignment, ClassroomAssignmentType]:
+    ) -> Response[ClassroomAssignment, ClassroomAssignmentTypeForResponse]:
         """classroom/get-an-assignment
 
         GET /assignments/{assignment_id}
@@ -94,7 +94,7 @@ class ClassroomClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ClassroomAssignment, ClassroomAssignmentType]:
+    ) -> Response[ClassroomAssignment, ClassroomAssignmentTypeForResponse]:
         """classroom/get-an-assignment
 
         GET /assignments/{assignment_id}
@@ -130,7 +130,8 @@ class ClassroomClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[ClassroomAcceptedAssignment], list[ClassroomAcceptedAssignmentType]
+        list[ClassroomAcceptedAssignment],
+        list[ClassroomAcceptedAssignmentTypeForResponse],
     ]:
         """classroom/list-accepted-assignments-for-an-assignment
 
@@ -155,7 +156,7 @@ class ClassroomClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ClassroomAcceptedAssignment],
@@ -170,7 +171,8 @@ class ClassroomClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[ClassroomAcceptedAssignment], list[ClassroomAcceptedAssignmentType]
+        list[ClassroomAcceptedAssignment],
+        list[ClassroomAcceptedAssignmentTypeForResponse],
     ]:
         """classroom/list-accepted-assignments-for-an-assignment
 
@@ -195,7 +197,7 @@ class ClassroomClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ClassroomAcceptedAssignment],
@@ -207,7 +209,9 @@ class ClassroomClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ClassroomAssignmentGrade], list[ClassroomAssignmentGradeType]]:
+    ) -> Response[
+        list[ClassroomAssignmentGrade], list[ClassroomAssignmentGradeTypeForResponse]
+    ]:
         """classroom/get-assignment-grades
 
         GET /assignments/{assignment_id}/grades
@@ -240,7 +244,9 @@ class ClassroomClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ClassroomAssignmentGrade], list[ClassroomAssignmentGradeType]]:
+    ) -> Response[
+        list[ClassroomAssignmentGrade], list[ClassroomAssignmentGradeTypeForResponse]
+    ]:
         """classroom/get-assignment-grades
 
         GET /assignments/{assignment_id}/grades
@@ -274,7 +280,7 @@ class ClassroomClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleClassroom], list[SimpleClassroomType]]:
+    ) -> Response[list[SimpleClassroom], list[SimpleClassroomTypeForResponse]]:
         """classroom/list-classrooms
 
         GET /classrooms
@@ -298,7 +304,7 @@ class ClassroomClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleClassroom],
@@ -311,7 +317,7 @@ class ClassroomClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleClassroom], list[SimpleClassroomType]]:
+    ) -> Response[list[SimpleClassroom], list[SimpleClassroomTypeForResponse]]:
         """classroom/list-classrooms
 
         GET /classrooms
@@ -335,7 +341,7 @@ class ClassroomClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleClassroom],
@@ -347,7 +353,7 @@ class ClassroomClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Classroom, ClassroomType]:
+    ) -> Response[Classroom, ClassroomTypeForResponse]:
         """classroom/get-a-classroom
 
         GET /classrooms/{classroom_id}
@@ -380,7 +386,7 @@ class ClassroomClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Classroom, ClassroomType]:
+    ) -> Response[Classroom, ClassroomTypeForResponse]:
         """classroom/get-a-classroom
 
         GET /classrooms/{classroom_id}
@@ -415,7 +421,9 @@ class ClassroomClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentType]]:
+    ) -> Response[
+        list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentTypeForResponse]
+    ]:
         """classroom/list-assignments-for-a-classroom
 
         GET /classrooms/{classroom_id}/assignments
@@ -439,7 +447,7 @@ class ClassroomClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleClassroomAssignment],
@@ -453,7 +461,9 @@ class ClassroomClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentType]]:
+    ) -> Response[
+        list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentTypeForResponse]
+    ]:
         """classroom/list-assignments-for-a-classroom
 
         GET /classrooms/{classroom_id}/assignments
@@ -477,7 +487,7 @@ class ClassroomClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleClassroomAssignment],

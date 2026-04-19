@@ -9,41 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0034 import DependabotAlertPackage
 
 
-class DependabotAlertWithRepositoryPropDependency(GitHubModel):
-    """DependabotAlertWithRepositoryPropDependency
+class CopilotUsageMetrics1DayReport(GitHubModel):
+    """Copilot Metrics 1 Day Report
 
-    Details for the vulnerable dependency.
+    Links to download the Copilot usage metrics report for an
+    enterprise/organization for a specific day.
     """
 
-    package: Missing[DependabotAlertPackage] = Field(
-        default=UNSET, description="Details for the vulnerable package."
+    download_links: list[str] = Field(
+        description="The URLs to download the Copilot usage metrics report for the enterprise/organization for the specified day."
     )
-    manifest_path: Missing[str] = Field(
-        default=UNSET,
-        description="The full path to the dependency manifest file, relative to the root of the repository.",
-    )
-    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
-        default=UNSET, description="The execution scope of the vulnerable dependency."
-    )
-    relationship: Missing[
-        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
-    ] = Field(
-        default=UNSET,
-        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
+    report_day: _dt.date = Field(
+        description="The day of the report in `YYYY-MM-DD` format."
     )
 
 
-model_rebuild(DependabotAlertWithRepositoryPropDependency)
+model_rebuild(CopilotUsageMetrics1DayReport)
 
-__all__ = ("DependabotAlertWithRepositoryPropDependency",)
+__all__ = ("CopilotUsageMetrics1DayReport",)

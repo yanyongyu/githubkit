@@ -9,17 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ApiInsightsSummaryStatsType(TypedDict):
-    """Summary Stats
+class ActionsArtifactAndLogRetentionType(TypedDict):
+    """ActionsArtifactAndLogRetention"""
 
-    API Insights usage summary stats for an organization
-    """
-
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    days: int
 
 
-__all__ = ("ApiInsightsSummaryStatsType",)
+class ActionsArtifactAndLogRetentionTypeForResponse(TypedDict):
+    """ActionsArtifactAndLogRetention"""
+
+    days: int
+
+
+__all__ = (
+    "ActionsArtifactAndLogRetentionType",
+    "ActionsArtifactAndLogRetentionTypeForResponse",
+)

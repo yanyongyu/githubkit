@@ -9,97 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0145 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
-from .group_0146 import RepositoryRuleUpdateType
-from .group_0148 import RepositoryRuleRequiredLinearHistoryType
-from .group_0149 import RepositoryRuleMergeQueueType
-from .group_0151 import RepositoryRuleRequiredDeploymentsType
-from .group_0154 import RepositoryRulePullRequestType
-from .group_0156 import RepositoryRuleRequiredStatusChecksType
-from .group_0158 import RepositoryRuleCommitMessagePatternType
-from .group_0160 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0162 import RepositoryRuleCommitterEmailPatternType
-from .group_0164 import RepositoryRuleBranchNamePatternType
-from .group_0166 import RepositoryRuleTagNamePatternType
-from .group_0168 import RepositoryRuleFilePathRestrictionType
-from .group_0170 import RepositoryRuleMaxFilePathLengthType
-from .group_0172 import RepositoryRuleFileExtensionRestrictionType
-from .group_0174 import RepositoryRuleMaxFileSizeType
-from .group_0177 import RepositoryRuleWorkflowsType
-from .group_0179 import RepositoryRuleCodeScanningType
-from .group_0780 import (
-    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0165 import ProjectsV2Type, ProjectsV2TypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
+class WebhookProjectsV2ProjectCreatedType(TypedDict):
+    """WebhookProjectsV2ProjectCreated
 
-    added: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
-    deleted: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
-    updated: NotRequired[
-        list[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType]
-    ]
+    A project was created
+    """
+
+    action: Literal["created"]
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    projects_v2: ProjectsV2Type
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropRulesType",)
+class WebhookProjectsV2ProjectCreatedTypeForResponse(TypedDict):
+    """WebhookProjectsV2ProjectCreated
+
+    A project was created
+    """
+
+    action: Literal["created"]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2: ProjectsV2TypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookProjectsV2ProjectCreatedType",
+    "WebhookProjectsV2ProjectCreatedTypeForResponse",
+)

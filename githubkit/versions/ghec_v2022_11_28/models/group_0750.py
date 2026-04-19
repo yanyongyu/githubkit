@@ -9,43 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0497 import RepositoryWebhooks
-from .group_0751 import WebhookPingPropHook
+from .group_0745 import WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreator
 
 
-class WebhookPing(GitHubModel):
-    """WebhookPing"""
+class WebhookIssueCommentPinnedPropIssueMergedMilestone(GitHubModel):
+    """WebhookIssueCommentPinnedPropIssueMergedMilestone"""
 
-    hook: Missing[WebhookPingPropHook] = Field(
-        default=UNSET, title="Webhook", description="The webhook that is being pinged"
-    )
-    hook_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the webhook that triggered the ping."
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    zen: Missing[str] = Field(default=UNSET, description="Random string of GitHub zen.")
+    closed_at: Union[_dt.datetime, None] = Field()
+    closed_issues: int = Field()
+    created_at: _dt.datetime = Field()
+    creator: Union[
+        WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreator, None
+    ] = Field(title="User")
+    description: Union[str, None] = Field()
+    due_on: Union[_dt.datetime, None] = Field()
+    html_url: str = Field()
+    id: int = Field()
+    labels_url: str = Field()
+    node_id: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    open_issues: int = Field()
+    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
+    title: str = Field(description="The title of the milestone.")
+    updated_at: _dt.datetime = Field()
+    url: str = Field()
 
 
-model_rebuild(WebhookPing)
+model_rebuild(WebhookIssueCommentPinnedPropIssueMergedMilestone)
 
-__all__ = ("WebhookPing",)
+__all__ = ("WebhookIssueCommentPinnedPropIssueMergedMilestone",)

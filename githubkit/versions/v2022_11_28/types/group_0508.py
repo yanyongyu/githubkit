@@ -9,25 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0127 import CustomPropertyType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
+from .group_0268 import SimpleCommitType, SimpleCommitTypeForResponse
 
 
-class WebhookCustomPropertyCreatedType(TypedDict):
-    """custom property created event"""
+class MergeGroupType(TypedDict):
+    """Merge Group
 
-    action: Literal["created"]
-    definition: CustomPropertyType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    A group of pull requests that the merge queue has grouped together to be merged.
+    """
+
+    head_sha: str
+    head_ref: str
+    base_sha: str
+    base_ref: str
+    head_commit: SimpleCommitType
 
 
-__all__ = ("WebhookCustomPropertyCreatedType",)
+class MergeGroupTypeForResponse(TypedDict):
+    """Merge Group
+
+    A group of pull requests that the merge queue has grouped together to be merged.
+    """
+
+    head_sha: str
+    head_ref: str
+    base_sha: str
+    base_ref: str
+    head_commit: SimpleCommitTypeForResponse
+
+
+__all__ = (
+    "MergeGroupType",
+    "MergeGroupTypeForResponse",
+)

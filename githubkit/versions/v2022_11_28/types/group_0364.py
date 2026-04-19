@@ -9,33 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
+from .group_0363 import HookResponseType, HookResponseTypeForResponse
 
 
-class ReleaseAssetType(TypedDict):
-    """Release Asset
+class HookType(TypedDict):
+    """Webhook
 
-    Data related to a release.
+    Webhooks for repositories.
     """
 
-    url: str
-    browser_download_url: str
+    type: str
     id: int
-    node_id: str
     name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
-    created_at: datetime
-    updated_at: datetime
-    uploader: Union[None, SimpleUserType]
+    active: bool
+    events: list[str]
+    config: WebhookConfigType
+    updated_at: _dt.datetime
+    created_at: _dt.datetime
+    url: str
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseType
 
 
-__all__ = ("ReleaseAssetType",)
+class HookTypeForResponse(TypedDict):
+    """Webhook
+
+    Webhooks for repositories.
+    """
+
+    type: str
+    id: int
+    name: str
+    active: bool
+    events: list[str]
+    config: WebhookConfigTypeForResponse
+    updated_at: str
+    created_at: str
+    url: str
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseTypeForResponse
+
+
+__all__ = (
+    "HookType",
+    "HookTypeForResponse",
+)

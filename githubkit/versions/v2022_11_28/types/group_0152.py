@@ -9,13 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
+class OrganizationUpdateIssueFieldType(TypedDict):
+    """OrganizationUpdateIssueField"""
 
-    required_deployment_environments: list[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[list[OrganizationUpdateIssueFieldPropOptionsItemsType]]
 
 
-__all__ = ("RepositoryRuleRequiredDeploymentsPropParametersType",)
+class OrganizationUpdateIssueFieldTypeForResponse(TypedDict):
+    """OrganizationUpdateIssueField"""
+
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[
+        list[OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse]
+    ]
+
+
+class OrganizationUpdateIssueFieldPropOptionsItemsType(TypedDict):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
+
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
+
+
+class OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
+
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
+
+
+__all__ = (
+    "OrganizationUpdateIssueFieldPropOptionsItemsType",
+    "OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse",
+    "OrganizationUpdateIssueFieldType",
+    "OrganizationUpdateIssueFieldTypeForResponse",
+)

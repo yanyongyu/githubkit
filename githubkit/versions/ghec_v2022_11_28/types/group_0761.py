@@ -9,27 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
-from .group_0529 import WebhooksProjectColumnType
-
-
-class WebhookProjectColumnCreatedType(TypedDict):
-    """project_column created event"""
-
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+from .group_0756 import (
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+)
 
 
-__all__ = ("WebhookProjectColumnCreatedType",)
+class WebhookIssueCommentUnpinnedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssueCommentUnpinnedPropIssueMergedMilestone"""
+
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorType, None
+    ]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
+    url: str
+
+
+class WebhookIssueCommentUnpinnedPropIssueMergedMilestoneTypeForResponse(TypedDict):
+    """WebhookIssueCommentUnpinnedPropIssueMergedMilestone"""
+
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+        None,
+    ]
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
+
+
+__all__ = (
+    "WebhookIssueCommentUnpinnedPropIssueMergedMilestoneType",
+    "WebhookIssueCommentUnpinnedPropIssueMergedMilestoneTypeForResponse",
+)

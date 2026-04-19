@@ -13,16 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type(TypedDict):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-    language: Literal[
-        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "rust", "swift"
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
     ]
-    query_pack: str
-    repositories: list[str]
-    repository_lists: NotRequired[list[str]]
-    repository_owners: NotRequired[list[str]]
 
 
-__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type",)
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
+
+
+__all__ = (
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse",
+)

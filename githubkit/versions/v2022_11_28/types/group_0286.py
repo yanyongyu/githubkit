@@ -9,41 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class ContentFileType(TypedDict):
-    """Content File
+class GitUserType(TypedDict):
+    """Git User
 
-    Content File
+    Metaproperties for Git author/committer information.
     """
 
-    type: Literal["file"]
-    encoding: str
-    size: int
-    name: str
-    path: str
-    content: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentFilePropLinksType
-    target: NotRequired[str]
-    submodule_git_url: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[_dt.datetime]
 
 
-class ContentFilePropLinksType(TypedDict):
-    """ContentFilePropLinks"""
+class GitUserTypeForResponse(TypedDict):
+    """Git User
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    Metaproperties for Git author/committer information.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[str]
 
 
 __all__ = (
-    "ContentFilePropLinksType",
-    "ContentFileType",
+    "GitUserType",
+    "GitUserTypeForResponse",
 )

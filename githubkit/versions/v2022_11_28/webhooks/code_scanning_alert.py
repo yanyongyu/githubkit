@@ -21,6 +21,7 @@ from ..models import (
     WebhookCodeScanningAlertFixed,
     WebhookCodeScanningAlertReopened,
     WebhookCodeScanningAlertReopenedByUser,
+    WebhookCodeScanningAlertUpdatedAssignment,
 )
 
 Event: TypeAlias = Annotated[
@@ -31,6 +32,7 @@ Event: TypeAlias = Annotated[
         WebhookCodeScanningAlertFixed,
         WebhookCodeScanningAlertReopened,
         WebhookCodeScanningAlertReopenedByUser,
+        WebhookCodeScanningAlertUpdatedAssignment,
     ],
     Field(discriminator="action"),
 ]
@@ -44,6 +46,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "fixed": WebhookCodeScanningAlertFixed,
     "reopened": WebhookCodeScanningAlertReopened,
     "reopened_by_user": WebhookCodeScanningAlertReopenedByUser,
+    "updated_assignment": WebhookCodeScanningAlertUpdatedAssignment,
 }  # pyright: ignore[reportAssignmentType]
 
 code_scanning_alert_action_types = action_types

@@ -9,39 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId(GitHubModel):
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
 
-class RepositoryAdvisoryCredit(GitHubModel):
-    """RepositoryAdvisoryCredit
-
-    A credit given to a user for a repository security advisory.
-    """
-
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ] = Field(description="The type of credit the user is receiving.")
-    state: Literal["accepted", "declined", "pending"] = Field(
-        description="The state of the user's acceptance of the credit."
+    repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass.",
     )
 
 
-model_rebuild(RepositoryAdvisoryCredit)
+model_rebuild(RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId)
 
-__all__ = ("RepositoryAdvisoryCredit",)
+__all__ = ("RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId",)

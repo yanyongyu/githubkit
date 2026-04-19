@@ -18,17 +18,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+class AgentsReposOwnerRepoTasksGetResponse401(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse401
 
-    default_for_new_repos: Missing[
-        Literal["all", "none", "private_and_internal", "public"]
-    ] = Field(
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[list[AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems]] = (
+        Field(
+            default=UNSET,
+            description="List of validation errors (present only for 422 responses)",
+        )
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
         default=UNSET,
-        description="Specify which types of repository this security configuration should be applied to by default.",
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse401)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",)
+__all__ = (
+    "AgentsReposOwnerRepoTasksGetResponse401",
+    "AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems",
+)

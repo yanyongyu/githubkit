@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,51 +17,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0166 import ReactionRollup
+from .group_0380 import CodeScanningVariantAnalysisRepository
 
 
-class TimelineCommentEvent(GitHubModel):
-    """Timeline Comment Event
+class CodeScanningVariantAnalysisPropScannedRepositoriesItems(GitHubModel):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    Timeline Comment Event
-    """
-
-    event: Literal["commented"] = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    id: int = Field(description="Unique identifier of the issue comment")
-    node_id: str = Field()
-    url: str = Field(description="URL for the issue comment")
-    body: Missing[str] = Field(
-        default=UNSET, description="Contents of the issue comment"
+    repository: CodeScanningVariantAnalysisRepository = Field(
+        title="Repository Identifier", description="Repository Identifier"
     )
-    body_text: Missing[str] = Field(default=UNSET)
-    body_html: Missing[str] = Field(default=UNSET)
-    html_url: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    issue_url: str = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
     ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+        description="The new status of the CodeQL variant analysis repository task."
     )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    result_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
     )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    artifact_size_in_bytes: Missing[int] = Field(
+        default=UNSET,
+        description="The size of the artifact. This is only available for successful analyses.",
+    )
+    failure_message: Missing[str] = Field(
+        default=UNSET,
+        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
+    )
 
 
-model_rebuild(TimelineCommentEvent)
+model_rebuild(CodeScanningVariantAnalysisPropScannedRepositoriesItems)
 
-__all__ = ("TimelineCommentEvent",)
+__all__ = ("CodeScanningVariantAnalysisPropScannedRepositoriesItems",)

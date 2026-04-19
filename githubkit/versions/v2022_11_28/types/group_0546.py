@@ -12,24 +12,49 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0446 import DiscussionType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0547 import (
+    WebhookCodeScanningAlertAppearedInBranchPropAlertType,
+    WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse,
+)
 
 
-class WebhookDiscussionUnlockedType(TypedDict):
-    """discussion unlocked event"""
+class WebhookCodeScanningAlertAppearedInBranchType(TypedDict):
+    """code_scanning_alert appeared_in_branch event"""
 
-    action: Literal["unlocked"]
-    discussion: DiscussionType
+    action: Literal["appeared_in_branch"]
+    alert: WebhookCodeScanningAlertAppearedInBranchPropAlertType
+    commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    ref: str
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookDiscussionUnlockedType",)
+class WebhookCodeScanningAlertAppearedInBranchTypeForResponse(TypedDict):
+    """code_scanning_alert appeared_in_branch event"""
+
+    action: Literal["appeared_in_branch"]
+    alert: WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse
+    commit_oid: str
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    ref: str
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookCodeScanningAlertAppearedInBranchType",
+    "WebhookCodeScanningAlertAppearedInBranchTypeForResponse",
+)

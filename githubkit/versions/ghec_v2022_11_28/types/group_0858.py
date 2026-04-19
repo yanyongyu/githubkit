@@ -9,27 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
-from .group_0542 import SecretScanningAlertWebhookType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0596 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
 
 
-class WebhookSecretScanningAlertPubliclyLeakedType(TypedDict):
-    """secret_scanning_alert publicly leaked event"""
+class WebhookProjectCardEditedType(TypedDict):
+    """project_card edited event"""
 
-    action: Literal["publicly_leaked"]
-    alert: SecretScanningAlertWebhookType
+    action: Literal["edited"]
+    changes: WebhookProjectCardEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    project_card: WebhooksProjectCardType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookSecretScanningAlertPubliclyLeakedType",)
+class WebhookProjectCardEditedTypeForResponse(TypedDict):
+    """project_card edited event"""
+
+    action: Literal["edited"]
+    changes: WebhookProjectCardEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project_card: WebhooksProjectCardTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookProjectCardEditedPropChangesType(TypedDict):
+    """WebhookProjectCardEditedPropChanges"""
+
+    note: WebhookProjectCardEditedPropChangesPropNoteType
+
+
+class WebhookProjectCardEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectCardEditedPropChanges"""
+
+    note: WebhookProjectCardEditedPropChangesPropNoteTypeForResponse
+
+
+class WebhookProjectCardEditedPropChangesPropNoteType(TypedDict):
+    """WebhookProjectCardEditedPropChangesPropNote"""
+
+    from_: Union[str, None]
+
+
+class WebhookProjectCardEditedPropChangesPropNoteTypeForResponse(TypedDict):
+    """WebhookProjectCardEditedPropChangesPropNote"""
+
+    from_: Union[str, None]
+
+
+__all__ = (
+    "WebhookProjectCardEditedPropChangesPropNoteType",
+    "WebhookProjectCardEditedPropChangesPropNoteTypeForResponse",
+    "WebhookProjectCardEditedPropChangesType",
+    "WebhookProjectCardEditedPropChangesTypeForResponse",
+    "WebhookProjectCardEditedType",
+    "WebhookProjectCardEditedTypeForResponse",
+)

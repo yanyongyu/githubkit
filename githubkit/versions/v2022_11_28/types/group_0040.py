@@ -12,50 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class SecretScanningLocationIssueTitleType(TypedDict):
-    """SecretScanningLocationIssueTitle
+class DependabotAlertPackageType(TypedDict):
+    """DependabotAlertPackage
 
-    Represents an 'issue_title' secret scanning location type. This location type
-    shows that a secret was detected in the title of an issue.
+    Details for the vulnerable package.
     """
 
-    issue_title_url: str
+    ecosystem: str
+    name: str
 
 
-class SecretScanningLocationIssueCommentType(TypedDict):
-    """SecretScanningLocationIssueComment
+class DependabotAlertPackageTypeForResponse(TypedDict):
+    """DependabotAlertPackage
 
-    Represents an 'issue_comment' secret scanning location type. This location type
-    shows that a secret was detected in a comment on an issue.
+    Details for the vulnerable package.
     """
 
-    issue_comment_url: str
-
-
-class SecretScanningLocationPullRequestTitleType(TypedDict):
-    """SecretScanningLocationPullRequestTitle
-
-    Represents a 'pull_request_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a pull request.
-    """
-
-    pull_request_title_url: str
-
-
-class SecretScanningLocationPullRequestReviewCommentType(TypedDict):
-    """SecretScanningLocationPullRequestReviewComment
-
-    Represents a 'pull_request_review_comment' secret scanning location type. This
-    location type shows that a secret was detected in a review comment on a pull
-    request.
-    """
-
-    pull_request_review_comment_url: str
+    ecosystem: str
+    name: str
 
 
 __all__ = (
-    "SecretScanningLocationIssueCommentType",
-    "SecretScanningLocationIssueTitleType",
-    "SecretScanningLocationPullRequestReviewCommentType",
-    "SecretScanningLocationPullRequestTitleType",
+    "DependabotAlertPackageType",
+    "DependabotAlertPackageTypeForResponse",
 )

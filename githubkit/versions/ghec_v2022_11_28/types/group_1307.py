@@ -11,11 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoTagsProtectionPostBodyType(TypedDict):
-    """ReposOwnerRepoTagsProtectionPostBody"""
-
-    pattern: str
+from .group_0335 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-__all__ = ("ReposOwnerRepoTagsProtectionPostBodyType",)
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[ActionsSecretType]
+
+
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
+
+
+__all__ = (
+    "ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type",
+    "ReposOwnerRepoActionsOrganizationSecretsGetResponse200TypeForResponse",
+)

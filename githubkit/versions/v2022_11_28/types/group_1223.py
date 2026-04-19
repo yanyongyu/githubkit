@@ -9,44 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0264 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class UsersUsernameAttestationsBulkListPostResponse200Type(TypedDict):
-    """UsersUsernameAttestationsBulkListPostResponse200"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
 
-    attestations_subject_digests: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
-    ]
-    page_info: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType
-    ]
+    total_count: int
+    secrets: list[ActionsSecretType]
 
 
-UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
 
-Mapping of subject digest to bundles.
-"""
-
-
-class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
-    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
-
-    Information about the current page.
-    """
-
-    has_next: NotRequired[bool]
-    has_previous: NotRequired[bool]
-    next_: NotRequired[str]
-    previous: NotRequired[str]
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
-    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType",
-    "UsersUsernameAttestationsBulkListPostResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse",
 )

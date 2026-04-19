@@ -9,56 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0444 import WebhooksUserType
+from .group_0647 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
+)
 
 
-class WebhookMemberEditedType(TypedDict):
-    """member edited event"""
+class WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppType(TypedDict):
+    """WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp"""
 
-    action: Literal["edited"]
-    changes: WebhookMemberEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhooksUserType, None]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookMemberEditedPropChangesType(TypedDict):
-    """WebhookMemberEditedPropChanges
-
-    The changes to the collaborator permissions
-    """
-
-    old_permission: NotRequired[WebhookMemberEditedPropChangesPropOldPermissionType]
-    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionType]
-
-
-class WebhookMemberEditedPropChangesPropOldPermissionType(TypedDict):
-    """WebhookMemberEditedPropChangesPropOldPermission"""
-
-    from_: str
+    created_at: Union[_dt.datetime, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
 
 
-class WebhookMemberEditedPropChangesPropPermissionType(TypedDict):
-    """WebhookMemberEditedPropChangesPropPermission"""
+class WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppTypeForResponse(
+    TypedDict
+):
+    """WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp"""
 
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    created_at: Union[str, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookMemberEditedPropChangesPropOldPermissionType",
-    "WebhookMemberEditedPropChangesPropPermissionType",
-    "WebhookMemberEditedPropChangesType",
-    "WebhookMemberEditedType",
+    "WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppType",
+    "WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppTypeForResponse",
 )

@@ -9,26 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0275 import Link
-
-
-class PullRequestSimplePropLinks(GitHubModel):
-    """PullRequestSimplePropLinks"""
-
-    comments: Link = Field(title="Link", description="Hypermedia Link")
-    commits: Link = Field(title="Link", description="Hypermedia Link")
-    statuses: Link = Field(title="Link", description="Hypermedia Link")
-    html: Link = Field(title="Link", description="Hypermedia Link")
-    issue: Link = Field(title="Link", description="Hypermedia Link")
-    review_comments: Link = Field(title="Link", description="Hypermedia Link")
-    review_comment: Link = Field(title="Link", description="Hypermedia Link")
-    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(PullRequestSimplePropLinks)
+class Autolink(GitHubModel):
+    """Autolink reference
 
-__all__ = ("PullRequestSimplePropLinks",)
+    An autolink reference.
+    """
+
+    id: int = Field()
+    key_prefix: str = Field(description="The prefix of a key that is linkified.")
+    url_template: str = Field(
+        description="A template for the target URL that is generated if a key was found."
+    )
+    is_alphanumeric: bool = Field(
+        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
+    )
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+
+
+model_rebuild(Autolink)
+
+__all__ = ("Autolink",)

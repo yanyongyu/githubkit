@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,141 +18,79 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0076 import Team
-from .group_0168 import Issue
+from .group_0210 import PullRequestMinimal
+from .group_0366 import DeploymentSimple
 
 
-class IssueEvent(GitHubModel):
-    """Issue Event
+class CheckRun(GitHubModel):
+    """CheckRun
 
-    Issue Event
+    A check performed on the code of a given code change
     """
 
-    id: int = Field()
+    id: int = Field(description="The id of the check.")
+    head_sha: str = Field(description="The SHA of the commit that is being checked.")
     node_id: str = Field()
+    external_id: Union[str, None] = Field()
     url: str = Field()
-    actor: Union[None, SimpleUser] = Field()
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: datetime = Field()
-    issue: Missing[Union[None, Issue]] = Field(default=UNSET)
-    label: Missing[IssueEventLabel] = Field(
-        default=UNSET, title="Issue Event Label", description="Issue Event Label"
-    )
-    assignee: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    assigner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    review_requester: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    requested_reviewer: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    requested_team: Missing[Team] = Field(
-        default=UNSET,
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
-    )
-    dismissed_review: Missing[IssueEventDismissedReview] = Field(
-        default=UNSET, title="Issue Event Dismissed Review"
-    )
-    milestone: Missing[IssueEventMilestone] = Field(
-        default=UNSET,
-        title="Issue Event Milestone",
-        description="Issue Event Milestone",
-    )
-    project_card: Missing[IssueEventProjectCard] = Field(
-        default=UNSET,
-        title="Issue Event Project Card",
-        description="Issue Event Project Card",
-    )
-    rename: Missing[IssueEventRename] = Field(
-        default=UNSET, title="Issue Event Rename", description="Issue Event Rename"
-    )
-    author_association: Missing[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
+    html_url: Union[str, None] = Field()
+    details_url: Union[str, None] = Field()
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
     ] = Field(
+        description="The phase of the lifecycle that the check is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check runs."
+    )
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ] = Field()
+    started_at: Union[_dt.datetime, None] = Field()
+    completed_at: Union[_dt.datetime, None] = Field()
+    output: CheckRunPropOutput = Field()
+    name: str = Field(description="The name of the check.")
+    check_suite: Union[CheckRunPropCheckSuite, None] = Field()
+    app: Union[None, Integration, None] = Field()
+    pull_requests: list[PullRequestMinimal] = Field(
+        description="Pull requests that are open with a `head_sha` or `head_branch` that matches the check. The returned pull requests do not necessarily indicate pull requests that triggered the check."
+    )
+    deployment: Missing[DeploymentSimple] = Field(
         default=UNSET,
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+        title="Deployment",
+        description="A deployment created as the result of an Actions check run from a workflow that references an environment",
     )
 
 
-class IssueEventLabel(GitHubModel):
-    """Issue Event Label
+class CheckRunPropOutput(GitHubModel):
+    """CheckRunPropOutput"""
 
-    Issue Event Label
-    """
-
-    name: Union[str, None] = Field()
-    color: Union[str, None] = Field()
-
-
-class IssueEventDismissedReview(GitHubModel):
-    """Issue Event Dismissed Review"""
-
-    state: str = Field()
-    review_id: int = Field()
-    dismissal_message: Union[str, None] = Field()
-    dismissal_commit_id: Missing[Union[str, None]] = Field(default=UNSET)
+    title: Union[str, None] = Field()
+    summary: Union[str, None] = Field()
+    text: Union[str, None] = Field()
+    annotations_count: int = Field()
+    annotations_url: str = Field()
 
 
-class IssueEventMilestone(GitHubModel):
-    """Issue Event Milestone
+class CheckRunPropCheckSuite(GitHubModel):
+    """CheckRunPropCheckSuite"""
 
-    Issue Event Milestone
-    """
-
-    title: str = Field()
-
-
-class IssueEventProjectCard(GitHubModel):
-    """Issue Event Project Card
-
-    Issue Event Project Card
-    """
-
-    url: str = Field()
     id: int = Field()
-    project_url: str = Field()
-    project_id: int = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
 
 
-class IssueEventRename(GitHubModel):
-    """Issue Event Rename
-
-    Issue Event Rename
-    """
-
-    from_: str = Field(alias="from")
-    to: str = Field()
-
-
-model_rebuild(IssueEvent)
-model_rebuild(IssueEventLabel)
-model_rebuild(IssueEventDismissedReview)
-model_rebuild(IssueEventMilestone)
-model_rebuild(IssueEventProjectCard)
-model_rebuild(IssueEventRename)
+model_rebuild(CheckRun)
+model_rebuild(CheckRunPropOutput)
+model_rebuild(CheckRunPropCheckSuite)
 
 __all__ = (
-    "IssueEvent",
-    "IssueEventDismissedReview",
-    "IssueEventLabel",
-    "IssueEventMilestone",
-    "IssueEventProjectCard",
-    "IssueEventRename",
+    "CheckRun",
+    "CheckRunPropCheckSuite",
+    "CheckRunPropOutput",
 )

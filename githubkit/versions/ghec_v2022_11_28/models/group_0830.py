@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0241 import RepositoryAdvisory
-from .group_0494 import EnterpriseWebhooks
-from .group_0495 import SimpleInstallation
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0497 import RepositoryWebhooks
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
+from .group_0577 import WebhooksUser
 
 
-class WebhookRepositoryAdvisoryPublished(GitHubModel):
-    """Repository advisory published event"""
+class WebhookOrgBlockUnblocked(GitHubModel):
+    """org_block unblocked event"""
 
-    action: Literal["published"] = Field()
+    action: Literal["unblocked"] = Field()
+    blocked_user: Union[WebhooksUser, None] = Field(title="User")
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,23 +40,18 @@ class WebhookRepositoryAdvisoryPublished(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    repository_advisory: RepositoryAdvisory = Field(
-        description="A repository security advisory."
-    )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryAdvisoryPublished)
+model_rebuild(WebhookOrgBlockUnblocked)
 
-__all__ = ("WebhookRepositoryAdvisoryPublished",)
+__all__ = ("WebhookOrgBlockUnblocked",)

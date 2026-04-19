@@ -13,14 +13,77 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class VerificationType(TypedDict):
-    """Verification"""
+class RuleSuiteRequiredStatusChecksType(TypedDict):
+    """Required status checks rule suite metadata
 
-    verified: bool
-    reason: str
-    payload: Union[str, None]
-    signature: Union[str, None]
-    verified_at: NotRequired[Union[str, None]]
+    Metadata for a required status checks rule evaluation result.
+    """
+
+    checks: NotRequired[list[RuleSuiteRequiredStatusChecksPropChecksItemsType]]
 
 
-__all__ = ("VerificationType",)
+class RuleSuiteRequiredStatusChecksTypeForResponse(TypedDict):
+    """Required status checks rule suite metadata
+
+    Metadata for a required status checks rule evaluation result.
+    """
+
+    checks: NotRequired[
+        list[RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse]
+    ]
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsType(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItems"""
+
+    id: NotRequired[int]
+    context: NotRequired[str]
+    state: NotRequired[str]
+    type: NotRequired[str]
+    app: NotRequired[
+        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType, None]
+    ]
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItems"""
+
+    id: NotRequired[int]
+    context: NotRequired[str]
+    state: NotRequired[str]
+    type: NotRequired[str]
+    app: NotRequired[
+        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse, None]
+    ]
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
+
+    The GitHub App associated with the status check.
+    """
+
+    id: NotRequired[int]
+    slug: NotRequired[str]
+    name: NotRequired[str]
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
+
+    The GitHub App associated with the status check.
+    """
+
+    id: NotRequired[int]
+    slug: NotRequired[str]
+    name: NotRequired[str]
+
+
+__all__ = (
+    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsType",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse",
+    "RuleSuiteRequiredStatusChecksType",
+    "RuleSuiteRequiredStatusChecksTypeForResponse",
+)

@@ -12,46 +12,72 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0514 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
 
 
-class WebhookRepositoryRenamedType(TypedDict):
-    """repository renamed event"""
+class WebhookProjectColumnEditedType(TypedDict):
+    """project_column edited event"""
 
-    action: Literal["renamed"]
-    changes: WebhookRepositoryRenamedPropChangesType
+    action: Literal["edited"]
+    changes: WebhookProjectColumnEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    project_column: WebhooksProjectColumnType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookRepositoryRenamedPropChangesType(TypedDict):
-    """WebhookRepositoryRenamedPropChanges"""
+class WebhookProjectColumnEditedTypeForResponse(TypedDict):
+    """project_column edited event"""
 
-    repository: WebhookRepositoryRenamedPropChangesPropRepositoryType
+    action: Literal["edited"]
+    changes: WebhookProjectColumnEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project_column: WebhooksProjectColumnTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
-class WebhookRepositoryRenamedPropChangesPropRepositoryType(TypedDict):
-    """WebhookRepositoryRenamedPropChangesPropRepository"""
+class WebhookProjectColumnEditedPropChangesType(TypedDict):
+    """WebhookProjectColumnEditedPropChanges"""
 
-    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType
+    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameType]
 
 
-class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType(TypedDict):
-    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
+class WebhookProjectColumnEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectColumnEditedPropChanges"""
+
+    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameTypeForResponse]
+
+
+class WebhookProjectColumnEditedPropChangesPropNameType(TypedDict):
+    """WebhookProjectColumnEditedPropChangesPropName"""
+
+    from_: str
+
+
+class WebhookProjectColumnEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookProjectColumnEditedPropChangesPropName"""
 
     from_: str
 
 
 __all__ = (
-    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType",
-    "WebhookRepositoryRenamedPropChangesPropRepositoryType",
-    "WebhookRepositoryRenamedPropChangesType",
-    "WebhookRepositoryRenamedType",
+    "WebhookProjectColumnEditedPropChangesPropNameType",
+    "WebhookProjectColumnEditedPropChangesPropNameTypeForResponse",
+    "WebhookProjectColumnEditedPropChangesType",
+    "WebhookProjectColumnEditedPropChangesTypeForResponse",
+    "WebhookProjectColumnEditedType",
+    "WebhookProjectColumnEditedTypeForResponse",
 )

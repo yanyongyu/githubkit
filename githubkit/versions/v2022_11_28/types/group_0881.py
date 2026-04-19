@@ -10,13 +10,44 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0527 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
+class WebhookSponsorshipCancelledType(TypedDict):
+    """sponsorship cancelled event"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
+    action: Literal["cancelled"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType",)
+class WebhookSponsorshipCancelledTypeForResponse(TypedDict):
+    """sponsorship cancelled event"""
+
+    action: Literal["cancelled"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
+
+
+__all__ = (
+    "WebhookSponsorshipCancelledType",
+    "WebhookSponsorshipCancelledTypeForResponse",
+)

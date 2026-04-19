@@ -9,36 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0647 import (
-    WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
 
 
-class WebhookIssueCommentDeletedPropIssueMergedMilestoneType(TypedDict):
-    """WebhookIssueCommentDeletedPropIssueMergedMilestone"""
+class WebhookCustomPropertyDeletedType(TypedDict):
+    """custom property deleted event"""
 
-    closed_at: Union[datetime, None]
-    closed_issues: int
-    created_at: datetime
-    creator: Union[
-        WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType, None
-    ]
-    description: Union[str, None]
-    due_on: Union[datetime, None]
-    html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: datetime
-    url: str
+    action: Literal["deleted"]
+    definition: WebhookCustomPropertyDeletedPropDefinitionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookIssueCommentDeletedPropIssueMergedMilestoneType",)
+class WebhookCustomPropertyDeletedTypeForResponse(TypedDict):
+    """custom property deleted event"""
+
+    action: Literal["deleted"]
+    definition: WebhookCustomPropertyDeletedPropDefinitionTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+class WebhookCustomPropertyDeletedPropDefinitionType(TypedDict):
+    """WebhookCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
+
+
+class WebhookCustomPropertyDeletedPropDefinitionTypeForResponse(TypedDict):
+    """WebhookCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
+
+
+__all__ = (
+    "WebhookCustomPropertyDeletedPropDefinitionType",
+    "WebhookCustomPropertyDeletedPropDefinitionTypeForResponse",
+    "WebhookCustomPropertyDeletedType",
+    "WebhookCustomPropertyDeletedTypeForResponse",
+)

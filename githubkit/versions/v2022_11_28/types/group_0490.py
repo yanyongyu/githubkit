@@ -9,16 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class WebhookCheckRunCompletedFormEncodedType(TypedDict):
-    """Check Run Completed Event
+class WebhooksWorkflowType(TypedDict):
+    """Workflow"""
 
-    The check_run.completed webhook encoded with URL encoding
-    """
+    badge_url: str
+    created_at: _dt.datetime
+    html_url: str
+    id: int
+    name: str
+    node_id: str
+    path: str
+    state: str
+    updated_at: _dt.datetime
+    url: str
 
-    payload: str
+
+class WebhooksWorkflowTypeForResponse(TypedDict):
+    """Workflow"""
+
+    badge_url: str
+    created_at: str
+    html_url: str
+    id: int
+    name: str
+    node_id: str
+    path: str
+    state: str
+    updated_at: str
+    url: str
 
 
-__all__ = ("WebhookCheckRunCompletedFormEncodedType",)
+__all__ = (
+    "WebhooksWorkflowType",
+    "WebhooksWorkflowTypeForResponse",
+)

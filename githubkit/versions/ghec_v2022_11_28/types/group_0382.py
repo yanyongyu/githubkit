@@ -9,43 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0076 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0383 import (
+    CodeScanningVariantAnalysisPropScannedRepositoriesItemsType,
+    CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse,
+)
+from .group_0384 import (
+    CodeScanningVariantAnalysisPropSkippedRepositoriesType,
+    CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse,
+)
 
 
-class ConvertedNoteToIssueIssueEventType(TypedDict):
-    """Converted Note to Issue Issue Event
+class CodeScanningVariantAnalysisType(TypedDict):
+    """Variant Analysis
 
-    Converted Note to Issue Issue Event
+    A run of a CodeQL query against one or more repositories.
     """
 
     id: int
-    node_id: str
-    url: str
+    controller_repo: SimpleRepositoryType
     actor: SimpleUserType
-    event: Literal["converted_note_to_issue"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
-    project_card: NotRequired[ConvertedNoteToIssueIssueEventPropProjectCardType]
+    query_language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ]
+    query_pack_url: str
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
+    actions_workflow_run_id: NotRequired[int]
+    failure_reason: NotRequired[
+        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    ]
+    scanned_repositories: NotRequired[
+        list[CodeScanningVariantAnalysisPropScannedRepositoriesItemsType]
+    ]
+    skipped_repositories: NotRequired[
+        CodeScanningVariantAnalysisPropSkippedRepositoriesType
+    ]
 
 
-class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
+class CodeScanningVariantAnalysisTypeForResponse(TypedDict):
+    """Variant Analysis
+
+    A run of a CodeQL query against one or more repositories.
+    """
 
     id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    controller_repo: SimpleRepositoryTypeForResponse
+    actor: SimpleUserTypeForResponse
+    query_language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ]
+    query_pack_url: str
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
+    actions_workflow_run_id: NotRequired[int]
+    failure_reason: NotRequired[
+        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    ]
+    scanned_repositories: NotRequired[
+        list[CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse]
+    ]
+    skipped_repositories: NotRequired[
+        CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse
+    ]
 
 
 __all__ = (
-    "ConvertedNoteToIssueIssueEventPropProjectCardType",
-    "ConvertedNoteToIssueIssueEventType",
+    "CodeScanningVariantAnalysisType",
+    "CodeScanningVariantAnalysisTypeForResponse",
 )

@@ -12,65 +12,42 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0476 import WebhooksReleaseType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0511 import (
+    PersonalAccessTokenRequestType,
+    PersonalAccessTokenRequestTypeForResponse,
+)
 
 
-class WebhookReleaseEditedType(TypedDict):
-    """release edited event"""
+class WebhookPersonalAccessTokenRequestCreatedType(TypedDict):
+    """personal_access_token_request created event"""
 
-    action: Literal["edited"]
-    changes: WebhookReleaseEditedPropChangesType
+    action: Literal["created"]
+    personal_access_token_request: PersonalAccessTokenRequestType
     enterprise: NotRequired[EnterpriseWebhooksType]
+    organization: OrganizationSimpleWebhooksType
+    sender: SimpleUserType
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksReleaseType
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
 
 
-class WebhookReleaseEditedPropChangesType(TypedDict):
-    """WebhookReleaseEditedPropChanges"""
+class WebhookPersonalAccessTokenRequestCreatedTypeForResponse(TypedDict):
+    """personal_access_token_request created event"""
 
-    body: NotRequired[WebhookReleaseEditedPropChangesPropBodyType]
-    name: NotRequired[WebhookReleaseEditedPropChangesPropNameType]
-    tag_name: NotRequired[WebhookReleaseEditedPropChangesPropTagNameType]
-    make_latest: NotRequired[WebhookReleaseEditedPropChangesPropMakeLatestType]
-
-
-class WebhookReleaseEditedPropChangesPropBodyType(TypedDict):
-    """WebhookReleaseEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookReleaseEditedPropChangesPropNameType(TypedDict):
-    """WebhookReleaseEditedPropChangesPropName"""
-
-    from_: str
-
-
-class WebhookReleaseEditedPropChangesPropTagNameType(TypedDict):
-    """WebhookReleaseEditedPropChangesPropTagName"""
-
-    from_: str
-
-
-class WebhookReleaseEditedPropChangesPropMakeLatestType(TypedDict):
-    """WebhookReleaseEditedPropChangesPropMakeLatest"""
-
-    to: bool
+    action: Literal["created"]
+    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
 
 
 __all__ = (
-    "WebhookReleaseEditedPropChangesPropBodyType",
-    "WebhookReleaseEditedPropChangesPropMakeLatestType",
-    "WebhookReleaseEditedPropChangesPropNameType",
-    "WebhookReleaseEditedPropChangesPropTagNameType",
-    "WebhookReleaseEditedPropChangesType",
-    "WebhookReleaseEditedType",
+    "WebhookPersonalAccessTokenRequestCreatedType",
+    "WebhookPersonalAccessTokenRequestCreatedTypeForResponse",
 )

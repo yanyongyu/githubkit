@@ -17,7 +17,7 @@ from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     from typing import Literal
@@ -29,16 +29,12 @@ if TYPE_CHECKING:
 
     from ..models import Reaction
     from ..types import (
-        OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-        OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
-        ReactionType,
+        ReactionTypeForResponse,
         ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
         ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
         ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
         ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
         ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
-        TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-        TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
     )
 
 
@@ -57,702 +53,6 @@ class ReactionsClient:
             "Do not use this client after the client has been collected."
         )
 
-    def list_for_team_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        content: Missing[
-            Literal[
-                "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-            ]
-        ] = UNSET,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
-        """reactions/list-for-team-discussion-comment-in-org
-
-        GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
-
-        List the reactions to a [team discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment).
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-comment
-        """
-
-        from ..models import Reaction
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
-
-        params = {
-            "content": content,
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[Reaction],
-        )
-
-    async def async_list_for_team_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        content: Missing[
-            Literal[
-                "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-            ]
-        ] = UNSET,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
-        """reactions/list-for-team-discussion-comment-in-org
-
-        GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
-
-        List the reactions to a [team discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment).
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-comment
-        """
-
-        from ..models import Reaction
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
-
-        params = {
-            "content": content,
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[Reaction],
-        )
-
-    @overload
-    def create_for_team_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
-
-    @overload
-    def create_for_team_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        content: Literal[
-            "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-        ],
-    ) -> Response[Reaction, ReactionType]: ...
-
-    def create_for_team_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[Reaction, ReactionType]:
-        """reactions/create-for-team-discussion-comment-in-org
-
-        POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
-
-        Create a reaction to a [team discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment).
-
-        A response with an HTTP `200` status means that you already added the reaction type to this team discussion comment.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion-comment
-        """
-
-        from ..models import (
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
-            Reaction,
-        )
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
-                json,
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=Reaction,
-        )
-
-    @overload
-    async def async_create_for_team_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
-
-    @overload
-    async def async_create_for_team_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        content: Literal[
-            "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-        ],
-    ) -> Response[Reaction, ReactionType]: ...
-
-    async def async_create_for_team_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[Reaction, ReactionType]:
-        """reactions/create-for-team-discussion-comment-in-org
-
-        POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
-
-        Create a reaction to a [team discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment).
-
-        A response with an HTTP `200` status means that you already added the reaction type to this team discussion comment.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion-comment
-        """
-
-        from ..models import (
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
-            Reaction,
-        )
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
-                json,
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=Reaction,
-        )
-
-    def delete_for_team_discussion_comment(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        reaction_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """reactions/delete-for-team-discussion-comment
-
-        DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
-
-        > [!NOTE]
-        > You can also specify a team or organization with `team_id` and `org_id` using the route `DELETE /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions/:reaction_id`.
-
-        Delete a reaction to a [team discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment).
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-team-discussion-comment-reaction
-        """
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-        )
-
-    async def async_delete_for_team_discussion_comment(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        reaction_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """reactions/delete-for-team-discussion-comment
-
-        DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
-
-        > [!NOTE]
-        > You can also specify a team or organization with `team_id` and `org_id` using the route `DELETE /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions/:reaction_id`.
-
-        Delete a reaction to a [team discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment).
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-team-discussion-comment-reaction
-        """
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-        )
-
-    def list_for_team_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        content: Missing[
-            Literal[
-                "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-            ]
-        ] = UNSET,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
-        """reactions/list-for-team-discussion-in-org
-
-        GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
-
-        List the reactions to a [team discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion).
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion
-        """
-
-        from ..models import Reaction
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
-
-        params = {
-            "content": content,
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[Reaction],
-        )
-
-    async def async_list_for_team_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        content: Missing[
-            Literal[
-                "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-            ]
-        ] = UNSET,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
-        """reactions/list-for-team-discussion-in-org
-
-        GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
-
-        List the reactions to a [team discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion).
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion
-        """
-
-        from ..models import Reaction
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
-
-        params = {
-            "content": content,
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[Reaction],
-        )
-
-    @overload
-    def create_for_team_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
-
-    @overload
-    def create_for_team_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        content: Literal[
-            "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-        ],
-    ) -> Response[Reaction, ReactionType]: ...
-
-    def create_for_team_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[Reaction, ReactionType]:
-        """reactions/create-for-team-discussion-in-org
-
-        POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
-
-        Create a reaction to a [team discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion).
-
-        A response with an HTTP `200` status means that you already added the reaction type to this team discussion.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion
-        """
-
-        from ..models import (
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody,
-            Reaction,
-        )
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=Reaction,
-        )
-
-    @overload
-    async def async_create_for_team_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
-
-    @overload
-    async def async_create_for_team_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        content: Literal[
-            "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-        ],
-    ) -> Response[Reaction, ReactionType]: ...
-
-    async def async_create_for_team_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[Reaction, ReactionType]:
-        """reactions/create-for-team-discussion-in-org
-
-        POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
-
-        Create a reaction to a [team discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion).
-
-        A response with an HTTP `200` status means that you already added the reaction type to this team discussion.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion
-        """
-
-        from ..models import (
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody,
-            Reaction,
-        )
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=Reaction,
-        )
-
-    def delete_for_team_discussion(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        reaction_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """reactions/delete-for-team-discussion
-
-        DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
-
-        > [!NOTE]
-        > You can also specify a team or organization with `team_id` and `org_id` using the route `DELETE /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions/:reaction_id`.
-
-        Delete a reaction to a [team discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion).
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-team-discussion-reaction
-        """
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-        )
-
-    async def async_delete_for_team_discussion(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        reaction_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """reactions/delete-for-team-discussion
-
-        DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
-
-        > [!NOTE]
-        > You can also specify a team or organization with `team_id` and `org_id` using the route `DELETE /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions/:reaction_id`.
-
-        Delete a reaction to a [team discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion).
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-team-discussion-reaction
-        """
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-        )
-
     def list_for_commit_comment(
         self,
         owner: str,
@@ -768,7 +68,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-commit-comment
 
         GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
@@ -793,7 +93,7 @@ class ReactionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Reaction],
@@ -817,7 +117,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-commit-comment
 
         GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
@@ -842,7 +142,7 @@ class ReactionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Reaction],
@@ -861,7 +161,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     def create_for_commit_comment(
@@ -876,7 +176,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     def create_for_commit_comment(
         self,
@@ -888,7 +188,7 @@ class ReactionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-commit-comment
 
         POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
@@ -941,7 +241,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     async def async_create_for_commit_comment(
@@ -956,7 +256,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     async def async_create_for_commit_comment(
         self,
@@ -968,7 +268,7 @@ class ReactionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-commit-comment
 
         POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
@@ -1092,7 +392,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-issue-comment
 
         GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
@@ -1117,7 +417,7 @@ class ReactionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Reaction],
@@ -1141,7 +441,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-issue-comment
 
         GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
@@ -1166,7 +466,7 @@ class ReactionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Reaction],
@@ -1185,7 +485,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     def create_for_issue_comment(
@@ -1200,7 +500,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     def create_for_issue_comment(
         self,
@@ -1214,7 +514,7 @@ class ReactionsClient:
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-issue-comment
 
         POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
@@ -1267,7 +567,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     async def async_create_for_issue_comment(
@@ -1282,7 +582,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     async def async_create_for_issue_comment(
         self,
@@ -1296,7 +596,7 @@ class ReactionsClient:
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-issue-comment
 
         POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
@@ -1420,7 +720,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-issue
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
@@ -1445,7 +745,7 @@ class ReactionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Reaction],
@@ -1470,7 +770,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-issue
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
@@ -1495,7 +795,7 @@ class ReactionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Reaction],
@@ -1515,7 +815,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     def create_for_issue(
@@ -1530,7 +830,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     def create_for_issue(
         self,
@@ -1542,7 +842,7 @@ class ReactionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-issue
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
@@ -1595,7 +895,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     async def async_create_for_issue(
@@ -1610,7 +910,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     async def async_create_for_issue(
         self,
@@ -1622,7 +922,7 @@ class ReactionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-issue
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
@@ -1746,7 +1046,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-pull-request-review-comment
 
         GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
@@ -1771,7 +1071,7 @@ class ReactionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Reaction],
@@ -1795,7 +1095,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-pull-request-review-comment
 
         GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
@@ -1820,7 +1120,7 @@ class ReactionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Reaction],
@@ -1839,7 +1139,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     def create_for_pull_request_review_comment(
@@ -1854,7 +1154,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     def create_for_pull_request_review_comment(
         self,
@@ -1868,7 +1168,7 @@ class ReactionsClient:
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-pull-request-review-comment
 
         POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
@@ -1921,7 +1221,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     async def async_create_for_pull_request_review_comment(
@@ -1936,7 +1236,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     async def async_create_for_pull_request_review_comment(
         self,
@@ -1950,7 +1250,7 @@ class ReactionsClient:
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-pull-request-review-comment
 
         POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
@@ -2076,7 +1376,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-release
 
         GET /repos/{owner}/{repo}/releases/{release_id}/reactions
@@ -2101,7 +1401,7 @@ class ReactionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Reaction],
@@ -2123,7 +1423,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-release
 
         GET /repos/{owner}/{repo}/releases/{release_id}/reactions
@@ -2148,7 +1448,7 @@ class ReactionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Reaction],
@@ -2167,7 +1467,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     def create_for_release(
@@ -2180,7 +1480,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     def create_for_release(
         self,
@@ -2192,7 +1492,7 @@ class ReactionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-release
 
         POST /repos/{owner}/{repo}/releases/{release_id}/reactions
@@ -2245,7 +1545,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     async def async_create_for_release(
@@ -2258,7 +1558,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     async def async_create_for_release(
         self,
@@ -2270,7 +1570,7 @@ class ReactionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-release
 
         POST /repos/{owner}/{repo}/releases/{release_id}/reactions
@@ -2377,542 +1677,4 @@ class ReactionsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
-        )
-
-    def list_for_team_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        content: Missing[
-            Literal[
-                "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-            ]
-        ] = UNSET,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
-        """DEPRECATED reactions/list-for-team-discussion-comment-legacy
-
-        GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List reactions for a team discussion comment`](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-comment) endpoint.
-
-        List the reactions to a [team discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment).
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy
-        """
-
-        from ..models import Reaction
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
-
-        params = {
-            "content": content,
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[Reaction],
-        )
-
-    async def async_list_for_team_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        content: Missing[
-            Literal[
-                "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-            ]
-        ] = UNSET,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
-        """DEPRECATED reactions/list-for-team-discussion-comment-legacy
-
-        GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List reactions for a team discussion comment`](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-comment) endpoint.
-
-        List the reactions to a [team discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment).
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy
-        """
-
-        from ..models import Reaction
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
-
-        params = {
-            "content": content,
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[Reaction],
-        )
-
-    @overload
-    def create_for_team_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
-
-    @overload
-    def create_for_team_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        content: Literal[
-            "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-        ],
-    ) -> Response[Reaction, ReactionType]: ...
-
-    def create_for_team_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[Reaction, ReactionType]:
-        """DEPRECATED reactions/create-for-team-discussion-comment-legacy
-
-        POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new "[Create reaction for a team discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion-comment)" endpoint.
-
-        Create a reaction to a [team discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment).
-
-        A response with an HTTP `200` status means that you already added the reaction type to this team discussion comment.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion-comment-legacy
-        """
-
-        from ..models import (
-            Reaction,
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
-        )
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
-                json,
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=Reaction,
-        )
-
-    @overload
-    async def async_create_for_team_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
-
-    @overload
-    async def async_create_for_team_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        content: Literal[
-            "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-        ],
-    ) -> Response[Reaction, ReactionType]: ...
-
-    async def async_create_for_team_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[Reaction, ReactionType]:
-        """DEPRECATED reactions/create-for-team-discussion-comment-legacy
-
-        POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new "[Create reaction for a team discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion-comment)" endpoint.
-
-        Create a reaction to a [team discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment).
-
-        A response with an HTTP `200` status means that you already added the reaction type to this team discussion comment.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion-comment-legacy
-        """
-
-        from ..models import (
-            Reaction,
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
-        )
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
-                json,
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=Reaction,
-        )
-
-    def list_for_team_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        content: Missing[
-            Literal[
-                "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-            ]
-        ] = UNSET,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
-        """DEPRECATED reactions/list-for-team-discussion-legacy
-
-        GET /teams/{team_id}/discussions/{discussion_number}/reactions
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List reactions for a team discussion`](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion) endpoint.
-
-        List the reactions to a [team discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion).
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy
-        """
-
-        from ..models import Reaction
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/reactions"
-
-        params = {
-            "content": content,
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[Reaction],
-        )
-
-    async def async_list_for_team_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        content: Missing[
-            Literal[
-                "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-            ]
-        ] = UNSET,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
-        """DEPRECATED reactions/list-for-team-discussion-legacy
-
-        GET /teams/{team_id}/discussions/{discussion_number}/reactions
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List reactions for a team discussion`](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion) endpoint.
-
-        List the reactions to a [team discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion).
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy
-        """
-
-        from ..models import Reaction
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/reactions"
-
-        params = {
-            "content": content,
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[Reaction],
-        )
-
-    @overload
-    def create_for_team_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
-
-    @overload
-    def create_for_team_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        content: Literal[
-            "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-        ],
-    ) -> Response[Reaction, ReactionType]: ...
-
-    def create_for_team_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[Reaction, ReactionType]:
-        """DEPRECATED reactions/create-for-team-discussion-legacy
-
-        POST /teams/{team_id}/discussions/{discussion_number}/reactions
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create reaction for a team discussion`](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion) endpoint.
-
-        Create a reaction to a [team discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion).
-
-        A response with an HTTP `200` status means that you already added the reaction type to this team discussion.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion-legacy
-        """
-
-        from ..models import (
-            Reaction,
-            TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody,
-        )
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/reactions"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=Reaction,
-        )
-
-    @overload
-    async def async_create_for_team_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
-
-    @overload
-    async def async_create_for_team_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        content: Literal[
-            "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-        ],
-    ) -> Response[Reaction, ReactionType]: ...
-
-    async def async_create_for_team_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[Reaction, ReactionType]:
-        """DEPRECATED reactions/create-for-team-discussion-legacy
-
-        POST /teams/{team_id}/discussions/{discussion_number}/reactions
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create reaction for a team discussion`](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion) endpoint.
-
-        Create a reaction to a [team discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion).
-
-        A response with an HTTP `200` status means that you already added the reaction type to this team discussion.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion-legacy
-        """
-
-        from ..models import (
-            Reaction,
-            TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody,
-        )
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/reactions"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=Reaction,
         )

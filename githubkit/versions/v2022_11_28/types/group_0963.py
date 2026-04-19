@@ -11,14 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0129 import CustomPropertyValueType
+
+class ApplicationsClientIdTokenDeleteBodyType(TypedDict):
+    """ApplicationsClientIdTokenDeleteBody"""
+
+    access_token: str
 
 
-class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
+class ApplicationsClientIdTokenDeleteBodyTypeForResponse(TypedDict):
+    """ApplicationsClientIdTokenDeleteBody"""
 
-    repository_names: list[str]
-    properties: list[CustomPropertyValueType]
+    access_token: str
 
 
-__all__ = ("OrgsOrgPropertiesValuesPatchBodyType",)
+__all__ = (
+    "ApplicationsClientIdTokenDeleteBodyType",
+    "ApplicationsClientIdTokenDeleteBodyTypeForResponse",
+)

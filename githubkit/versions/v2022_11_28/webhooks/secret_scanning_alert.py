@@ -15,19 +15,23 @@ from pydantic import Field
 from githubkit.compat import GitHubModel
 
 from ..models import (
+    WebhookSecretScanningAlertAssigned,
     WebhookSecretScanningAlertCreated,
     WebhookSecretScanningAlertPubliclyLeaked,
     WebhookSecretScanningAlertReopened,
     WebhookSecretScanningAlertResolved,
+    WebhookSecretScanningAlertUnassigned,
     WebhookSecretScanningAlertValidated,
 )
 
 Event: TypeAlias = Annotated[
     Union[
+        WebhookSecretScanningAlertAssigned,
         WebhookSecretScanningAlertCreated,
         WebhookSecretScanningAlertPubliclyLeaked,
         WebhookSecretScanningAlertReopened,
         WebhookSecretScanningAlertResolved,
+        WebhookSecretScanningAlertUnassigned,
         WebhookSecretScanningAlertValidated,
     ],
     Field(discriminator="action"),
@@ -36,10 +40,12 @@ Event: TypeAlias = Annotated[
 SecretScanningAlertEvent: TypeAlias = Event
 
 action_types: dict[str, type[GitHubModel]] = {
+    "assigned": WebhookSecretScanningAlertAssigned,
     "created": WebhookSecretScanningAlertCreated,
     "publicly_leaked": WebhookSecretScanningAlertPubliclyLeaked,
     "reopened": WebhookSecretScanningAlertReopened,
     "resolved": WebhookSecretScanningAlertResolved,
+    "unassigned": WebhookSecretScanningAlertUnassigned,
     "validated": WebhookSecretScanningAlertValidated,
 }  # pyright: ignore[reportAssignmentType]
 

@@ -9,43 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0235 import GitUserType
-from .group_0236 import VerificationType
+from typing_extensions import TypedDict
 
 
-class CommitSearchResultItemPropCommitType(TypedDict):
-    """CommitSearchResultItemPropCommit"""
+class ReleaseNotesContentType(TypedDict):
+    """Generated Release Notes Content
 
-    author: CommitSearchResultItemPropCommitPropAuthorType
-    committer: Union[None, GitUserType]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeType
-    url: str
-    verification: NotRequired[VerificationType]
-
-
-class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
+    Generated name and body describing a release
+    """
 
     name: str
-    email: str
-    date: datetime
+    body: str
 
 
-class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
+class ReleaseNotesContentTypeForResponse(TypedDict):
+    """Generated Release Notes Content
 
-    sha: str
-    url: str
+    Generated name and body describing a release
+    """
+
+    name: str
+    body: str
 
 
 __all__ = (
-    "CommitSearchResultItemPropCommitPropAuthorType",
-    "CommitSearchResultItemPropCommitPropTreeType",
-    "CommitSearchResultItemPropCommitType",
+    "ReleaseNotesContentType",
+    "ReleaseNotesContentTypeForResponse",
 )

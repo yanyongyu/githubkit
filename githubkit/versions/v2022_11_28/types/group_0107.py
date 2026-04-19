@@ -9,39 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgHookType(TypedDict):
-    """Org Hook
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
 
-    Org Hook
+    Actions OIDC Subject customization
     """
 
-    id: int
-    url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    name: str
-    events: list[str]
-    active: bool
-    config: OrgHookPropConfigType
-    updated_at: datetime
-    created_at: datetime
-    type: str
+    include_claim_keys: list[str]
 
 
-class OrgHookPropConfigType(TypedDict):
-    """OrgHookPropConfig"""
+class OidcCustomSubTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
 
-    url: NotRequired[str]
-    insecure_ssl: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str]
 
 
 __all__ = (
-    "OrgHookPropConfigType",
-    "OrgHookType",
+    "OidcCustomSubType",
+    "OidcCustomSubTypeForResponse",
 )

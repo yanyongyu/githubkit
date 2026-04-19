@@ -9,37 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0467 import ProjectsV2StatusUpdateType
 
+class CodespaceExportDetailsType(TypedDict):
+    """Fetches information about an export of a codespace.
 
-class ProjectsV2Type(TypedDict):
-    """Projects v2 Project
-
-    A projects v2 project
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
     """
 
-    id: float
-    node_id: str
-    owner: SimpleUserType
-    creator: SimpleUserType
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[datetime, None]
-    created_at: datetime
-    updated_at: datetime
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[datetime, None]
-    deleted_by: Union[None, SimpleUserType]
-    state: NotRequired[Literal["open", "closed"]]
-    latest_status_update: NotRequired[Union[None, ProjectsV2StatusUpdateType]]
-    is_template: NotRequired[bool]
+    state: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    branch: NotRequired[Union[str, None]]
+    sha: NotRequired[Union[str, None]]
+    id: NotRequired[str]
+    export_url: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
-__all__ = ("ProjectsV2Type",)
+class CodespaceExportDetailsTypeForResponse(TypedDict):
+    """Fetches information about an export of a codespace.
+
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
+    """
+
+    state: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[str, None]]
+    branch: NotRequired[Union[str, None]]
+    sha: NotRequired[Union[str, None]]
+    id: NotRequired[str]
+    export_url: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "CodespaceExportDetailsType",
+    "CodespaceExportDetailsTypeForResponse",
+)

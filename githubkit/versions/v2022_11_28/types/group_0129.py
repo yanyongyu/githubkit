@@ -9,18 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertyValueType(TypedDict):
-    """Custom Property Value
+class CodeScanningAlertLocationType(TypedDict):
+    """CodeScanningAlertLocation
 
-    Custom property name and associated value
+    Describe a region within a file for the alert.
     """
 
-    property_name: str
-    value: Union[str, list[str], None]
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
 
 
-__all__ = ("CustomPropertyValueType",)
+class CodeScanningAlertLocationTypeForResponse(TypedDict):
+    """CodeScanningAlertLocation
+
+    Describe a region within a file for the alert.
+    """
+
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+
+
+__all__ = (
+    "CodeScanningAlertLocationType",
+    "CodeScanningAlertLocationTypeForResponse",
+)

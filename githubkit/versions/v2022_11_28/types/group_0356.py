@@ -9,20 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0355 import (
+    CustomDeploymentRuleAppType,
+    CustomDeploymentRuleAppTypeForResponse,
+)
 
 
-class PullRequestPropLabelsItemsType(TypedDict):
-    """PullRequestPropLabelsItems"""
+class DeploymentProtectionRuleType(TypedDict):
+    """Deployment protection rule
+
+    Deployment protection rule
+    """
 
     id: int
     node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    enabled: bool
+    app: CustomDeploymentRuleAppType
 
 
-__all__ = ("PullRequestPropLabelsItemsType",)
+class DeploymentProtectionRuleTypeForResponse(TypedDict):
+    """Deployment protection rule
+
+    Deployment protection rule
+    """
+
+    id: int
+    node_id: str
+    enabled: bool
+    app: CustomDeploymentRuleAppTypeForResponse
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[list[DeploymentProtectionRuleType]]
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[
+        list[DeploymentProtectionRuleTypeForResponse]
+    ]
+
+
+__all__ = (
+    "DeploymentProtectionRuleType",
+    "DeploymentProtectionRuleTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse",
+)

@@ -9,37 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0130 import RepositoryRuleFileExtensionRestrictionPropParameters
+from .group_0358 import Verification
 
 
-class RepositoryRuleDetailedOneof17(GitHubModel):
-    """RepositoryRuleDetailedOneof17"""
+class GitTag(GitHubModel):
+    """Git Tag
 
-    type: Literal["file_extension_restriction"] = Field()
-    parameters: Missing[RepositoryRuleFileExtensionRestrictionPropParameters] = Field(
-        default=UNSET
-    )
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
-        default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
-    )
-    ruleset_source: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
-    )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
-    )
+    Metadata for a Git tag
+    """
+
+    node_id: str = Field()
+    tag: str = Field(description="Name of the tag")
+    sha: str = Field()
+    url: str = Field(description="URL for the tag")
+    message: str = Field(description="Message describing the purpose of the tag")
+    tagger: GitTagPropTagger = Field()
+    object_: GitTagPropObject = Field(alias="object")
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
 
 
-model_rebuild(RepositoryRuleDetailedOneof17)
+class GitTagPropTagger(GitHubModel):
+    """GitTagPropTagger"""
 
-__all__ = ("RepositoryRuleDetailedOneof17",)
+    date: str = Field()
+    email: str = Field()
+    name: str = Field()
+
+
+class GitTagPropObject(GitHubModel):
+    """GitTagPropObject"""
+
+    sha: str = Field()
+    type: str = Field()
+    url: str = Field()
+
+
+model_rebuild(GitTag)
+model_rebuild(GitTagPropTagger)
+model_rebuild(GitTagPropObject)
+
+__all__ = (
+    "GitTag",
+    "GitTagPropObject",
+    "GitTagPropTagger",
+)

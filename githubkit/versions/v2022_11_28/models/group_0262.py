@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,46 +18,93 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0032 import SimpleRepository
+
+class Job(GitHubModel):
+    """Job
+
+    Information of a job execution in a workflow run
+    """
+
+    id: int = Field(description="The id of the job.")
+    run_id: int = Field(description="The id of the associated workflow run.")
+    run_url: str = Field()
+    run_attempt: Missing[int] = Field(
+        default=UNSET,
+        description="Attempt number of the associated workflow run, 1 for first attempt and higher if the workflow was re-run.",
+    )
+    node_id: str = Field()
+    head_sha: str = Field(description="The SHA of the commit that is being run.")
+    url: str = Field()
+    html_url: Union[str, None] = Field()
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ] = Field(description="The phase of the lifecycle that the job is currently in.")
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ] = Field(description="The outcome of the job.")
+    created_at: _dt.datetime = Field(
+        description="The time that the job created, in ISO 8601 format."
+    )
+    started_at: _dt.datetime = Field(
+        description="The time that the job started, in ISO 8601 format."
+    )
+    completed_at: Union[_dt.datetime, None] = Field(
+        description="The time that the job finished, in ISO 8601 format."
+    )
+    name: str = Field(description="The name of the job.")
+    steps: Missing[list[JobPropStepsItems]] = Field(
+        default=UNSET, description="Steps in this job."
+    )
+    check_run_url: str = Field()
+    labels: list[str] = Field(
+        description='Labels for the workflow job. Specified by the "runs_on" attribute in the action\'s workflow file.'
+    )
+    runner_id: Union[int, None] = Field(
+        description="The ID of the runner to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
+    )
+    runner_name: Union[str, None] = Field(
+        description="The name of the runner to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
+    )
+    runner_group_id: Union[int, None] = Field(
+        description="The ID of the runner group to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
+    )
+    runner_group_name: Union[str, None] = Field(
+        description="The name of the runner group to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
+    )
+    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
+    head_branch: Union[str, None] = Field(description="The name of the current branch.")
 
 
-class CodeScanningVariantAnalysisRepoTask(GitHubModel):
-    """CodeScanningVariantAnalysisRepoTask"""
+class JobPropStepsItems(GitHubModel):
+    """JobPropStepsItems"""
 
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
+    status: Literal["queued", "in_progress", "completed"] = Field(
+        description="The phase of the lifecycle that the job is currently in."
     )
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ] = Field(
-        description="The new status of the CodeQL variant analysis repository task."
+    conclusion: Union[str, None] = Field(description="The outcome of the job.")
+    name: str = Field(description="The name of the job.")
+    number: int = Field()
+    started_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET, description="The time that the step started, in ISO 8601 format."
     )
-    artifact_size_in_bytes: Missing[int] = Field(
-        default=UNSET,
-        description="The size of the artifact. This is only available for successful analyses.",
-    )
-    result_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
-    )
-    failure_message: Missing[str] = Field(
-        default=UNSET,
-        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
-    )
-    database_commit_sha: Missing[str] = Field(
-        default=UNSET,
-        description="The SHA of the commit the CodeQL database was built against. This is only available for successful analyses.",
-    )
-    source_location_prefix: Missing[str] = Field(
-        default=UNSET,
-        description="The source location prefix to use. This is only available for successful analyses.",
-    )
-    artifact_url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL of the artifact. This is only available for successful analyses.",
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET, description="The time that the job finished, in ISO 8601 format."
     )
 
 
-model_rebuild(CodeScanningVariantAnalysisRepoTask)
+model_rebuild(Job)
+model_rebuild(JobPropStepsItems)
 
-__all__ = ("CodeScanningVariantAnalysisRepoTask",)
+__all__ = (
+    "Job",
+    "JobPropStepsItems",
+)

@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0224 import Deployment
-from .group_0433 import EnterpriseWebhooks
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
+from .group_0482 import EnterpriseWebhooks
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0485 import RepositoryWebhooks
+from .group_0522 import WebhooksRelease
 
 
-class WebhookWorkflowJobWaiting(GitHubModel):
-    """workflow_job waiting event"""
+class WebhookReleaseEdited(GitHubModel):
+    """release edited event"""
 
-    action: Literal["waiting"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookReleaseEditedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,68 +45,77 @@ class WebhookWorkflowJobWaiting(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    release: WebhooksRelease = Field(
+        title="Release",
+        description="The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.",
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJob = Field()
-    deployment: Missing[Deployment] = Field(
-        default=UNSET,
-        title="Deployment",
-        description="A request for a specific ref(branch,sha,tag) to be deployed",
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-class WebhookWorkflowJobWaitingPropWorkflowJob(GitHubModel):
-    """WebhookWorkflowJobWaitingPropWorkflowJob"""
+class WebhookReleaseEditedPropChanges(GitHubModel):
+    """WebhookReleaseEditedPropChanges"""
 
-    check_run_url: str = Field()
-    completed_at: Union[str, None] = Field()
-    conclusion: Union[str, None] = Field()
-    created_at: str = Field(description="The time that the job created.")
-    head_sha: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels: list[str] = Field()
-    name: str = Field()
-    node_id: str = Field()
-    run_attempt: int = Field()
-    run_id: int = Field()
-    run_url: str = Field()
-    runner_group_id: Union[int, None] = Field()
-    runner_group_name: Union[str, None] = Field()
-    runner_id: Union[int, None] = Field()
-    runner_name: Union[str, None] = Field()
-    started_at: datetime = Field()
-    head_branch: Union[str, None] = Field(description="The name of the current branch.")
-    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
-    status: Literal["queued", "in_progress", "completed", "waiting"] = Field()
-    steps: list[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems] = Field()
-    url: str = Field()
-
-
-class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems(GitHubModel):
-    """Workflow Step"""
-
-    completed_at: Union[str, None] = Field()
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
-        Field()
-    )
-    name: str = Field()
-    number: int = Field()
-    started_at: Union[str, None] = Field()
-    status: Literal["completed", "in_progress", "queued", "pending", "waiting"] = (
-        Field()
+    body: Missing[WebhookReleaseEditedPropChangesPropBody] = Field(default=UNSET)
+    name: Missing[WebhookReleaseEditedPropChangesPropName] = Field(default=UNSET)
+    tag_name: Missing[WebhookReleaseEditedPropChangesPropTagName] = Field(default=UNSET)
+    make_latest: Missing[WebhookReleaseEditedPropChangesPropMakeLatest] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(WebhookWorkflowJobWaiting)
-model_rebuild(WebhookWorkflowJobWaitingPropWorkflowJob)
-model_rebuild(WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems)
+class WebhookReleaseEditedPropChangesPropBody(GitHubModel):
+    """WebhookReleaseEditedPropChangesPropBody"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the body if the action was `edited`.",
+    )
+
+
+class WebhookReleaseEditedPropChangesPropName(GitHubModel):
+    """WebhookReleaseEditedPropChangesPropName"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the name if the action was `edited`.",
+    )
+
+
+class WebhookReleaseEditedPropChangesPropTagName(GitHubModel):
+    """WebhookReleaseEditedPropChangesPropTagName"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the tag_name if the action was `edited`.",
+    )
+
+
+class WebhookReleaseEditedPropChangesPropMakeLatest(GitHubModel):
+    """WebhookReleaseEditedPropChangesPropMakeLatest"""
+
+    to: bool = Field(
+        description="Whether this release was explicitly `edited` to be the latest."
+    )
+
+
+model_rebuild(WebhookReleaseEdited)
+model_rebuild(WebhookReleaseEditedPropChanges)
+model_rebuild(WebhookReleaseEditedPropChangesPropBody)
+model_rebuild(WebhookReleaseEditedPropChangesPropName)
+model_rebuild(WebhookReleaseEditedPropChangesPropTagName)
+model_rebuild(WebhookReleaseEditedPropChangesPropMakeLatest)
 
 __all__ = (
-    "WebhookWorkflowJobWaiting",
-    "WebhookWorkflowJobWaitingPropWorkflowJob",
-    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems",
+    "WebhookReleaseEdited",
+    "WebhookReleaseEditedPropChanges",
+    "WebhookReleaseEditedPropChangesPropBody",
+    "WebhookReleaseEditedPropChangesPropMakeLatest",
+    "WebhookReleaseEditedPropChangesPropName",
+    "WebhookReleaseEditedPropChangesPropTagName",
 )

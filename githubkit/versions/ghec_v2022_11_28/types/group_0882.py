@@ -9,15 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0299 import ProjectsV2Type, ProjectsV2TypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof1Type(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
 
-    date: str
-    email: NotRequired[str]
-    name: NotRequired[str]
+class WebhookProjectsV2ProjectReopenedType(TypedDict):
+    """Projects v2 Project Reopened Event"""
+
+    action: Literal["reopened"]
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    projects_v2: ProjectsV2Type
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof1Type",)
+class WebhookProjectsV2ProjectReopenedTypeForResponse(TypedDict):
+    """Projects v2 Project Reopened Event"""
+
+    action: Literal["reopened"]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2: ProjectsV2TypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookProjectsV2ProjectReopenedType",
+    "WebhookProjectsV2ProjectReopenedTypeForResponse",
+)

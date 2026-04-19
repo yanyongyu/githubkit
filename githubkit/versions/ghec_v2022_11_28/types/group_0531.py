@@ -9,37 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0530 import ProjectsV2StatusUpdateType
+from .group_0529 import MetaType, MetaTypeForResponse
 
 
-class ProjectsV2Type(TypedDict):
-    """Projects v2 Project
+class ScimEnterpriseGroupResponseAllof1Type(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1"""
 
-    A projects v2 project
-    """
-
-    id: float
-    node_id: str
-    owner: SimpleUserType
-    creator: SimpleUserType
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[datetime, None]
-    created_at: datetime
-    updated_at: datetime
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[datetime, None]
-    deleted_by: Union[None, SimpleUserType]
-    state: NotRequired[Literal["open", "closed"]]
-    latest_status_update: NotRequired[Union[None, ProjectsV2StatusUpdateType]]
-    is_template: NotRequired[bool]
+    id: NotRequired[str]
+    members: NotRequired[list[ScimEnterpriseGroupResponseAllof1PropMembersItemsType]]
+    meta: NotRequired[MetaType]
 
 
-__all__ = ("ProjectsV2Type",)
+class ScimEnterpriseGroupResponseAllof1TypeForResponse(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1"""
+
+    id: NotRequired[str]
+    members: NotRequired[
+        list[ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse]
+    ]
+    meta: NotRequired[MetaTypeForResponse]
+
+
+class ScimEnterpriseGroupResponseAllof1PropMembersItemsType(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+
+    value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+
+    value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
+
+
+__all__ = (
+    "ScimEnterpriseGroupResponseAllof1PropMembersItemsType",
+    "ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse",
+    "ScimEnterpriseGroupResponseAllof1Type",
+    "ScimEnterpriseGroupResponseAllof1TypeForResponse",
+)

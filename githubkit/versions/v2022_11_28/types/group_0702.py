@@ -12,23 +12,51 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0468 import ProjectsV2Type
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0703 import (
+    WebhookIssuesOpenedPropChangesType,
+    WebhookIssuesOpenedPropChangesTypeForResponse,
+)
+from .group_0705 import (
+    WebhookIssuesOpenedPropIssueType,
+    WebhookIssuesOpenedPropIssueTypeForResponse,
+)
 
 
-class WebhookProjectsV2ProjectCreatedType(TypedDict):
-    """WebhookProjectsV2ProjectCreated
+class WebhookIssuesOpenedType(TypedDict):
+    """issues opened event"""
 
-    A project was created
-    """
-
-    action: Literal["created"]
+    action: Literal["opened"]
+    changes: NotRequired[WebhookIssuesOpenedPropChangesType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
+    issue: WebhookIssuesOpenedPropIssueType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookProjectsV2ProjectCreatedType",)
+class WebhookIssuesOpenedTypeForResponse(TypedDict):
+    """issues opened event"""
+
+    action: Literal["opened"]
+    changes: NotRequired[WebhookIssuesOpenedPropChangesTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    issue: WebhookIssuesOpenedPropIssueTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookIssuesOpenedType",
+    "WebhookIssuesOpenedTypeForResponse",
+)

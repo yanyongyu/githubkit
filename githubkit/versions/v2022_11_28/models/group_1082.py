@@ -16,12 +16,12 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDeploymentsPostResponse202(GitHubModel):
-    """ReposOwnerRepoDeploymentsPostResponse202"""
+class OrgsOrgCopilotContentExclusionPutResponse200(GitHubModel):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
     message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoDeploymentsPostResponse202)
+model_rebuild(OrgsOrgCopilotContentExclusionPutResponse200)
 
-__all__ = ("ReposOwnerRepoDeploymentsPostResponse202",)
+__all__ = ("OrgsOrgCopilotContentExclusionPutResponse200",)

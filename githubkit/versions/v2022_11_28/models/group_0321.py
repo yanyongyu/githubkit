@@ -9,45 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class CodeownersErrors(GitHubModel):
+    """CODEOWNERS errors
 
-class LabeledIssueEvent(GitHubModel):
-    """Labeled Issue Event
-
-    Labeled Issue Event
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["labeled"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    label: LabeledIssueEventPropLabel = Field()
+    errors: list[CodeownersErrorsPropErrorsItems] = Field()
 
 
-class LabeledIssueEventPropLabel(GitHubModel):
-    """LabeledIssueEventPropLabel"""
+class CodeownersErrorsPropErrorsItems(GitHubModel):
+    """CodeownersErrorsPropErrorsItems"""
 
-    name: str = Field()
-    color: str = Field()
+    line: int = Field(description="The line number where this errors occurs.")
+    column: int = Field(description="The column number where this errors occurs.")
+    source: Missing[str] = Field(
+        default=UNSET, description="The contents of the line where the error occurs."
+    )
+    kind: str = Field(description="The type of error.")
+    suggestion: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
+    )
+    message: str = Field(
+        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
+    )
+    path: str = Field(description="The path of the file where the error occured.")
 
 
-model_rebuild(LabeledIssueEvent)
-model_rebuild(LabeledIssueEventPropLabel)
+model_rebuild(CodeownersErrors)
+model_rebuild(CodeownersErrorsPropErrorsItems)
 
 __all__ = (
-    "LabeledIssueEvent",
-    "LabeledIssueEventPropLabel",
+    "CodeownersErrors",
+    "CodeownersErrorsPropErrorsItems",
 )

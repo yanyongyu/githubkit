@@ -9,16 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0072 import ActionsHostedRunnerType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0525 import (
+    SecretScanningAlertWebhookType,
+    SecretScanningAlertWebhookTypeForResponse,
+)
 
 
-class OrgsOrgActionsHostedRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersGetResponse200"""
+class WebhookSecretScanningAlertUnassignedType(TypedDict):
+    """secret_scanning_alert unassigned event"""
 
-    total_count: int
-    runners: list[ActionsHostedRunnerType]
+    action: Literal["unassigned"]
+    alert: SecretScanningAlertWebhookType
+    assignee: NotRequired[SimpleUserType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("OrgsOrgActionsHostedRunnersGetResponse200Type",)
+class WebhookSecretScanningAlertUnassignedTypeForResponse(TypedDict):
+    """secret_scanning_alert unassigned event"""
+
+    action: Literal["unassigned"]
+    alert: SecretScanningAlertWebhookTypeForResponse
+    assignee: NotRequired[SimpleUserTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "WebhookSecretScanningAlertUnassignedType",
+    "WebhookSecretScanningAlertUnassignedTypeForResponse",
+)

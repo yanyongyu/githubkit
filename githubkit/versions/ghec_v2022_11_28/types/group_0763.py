@@ -12,41 +12,48 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
-from .group_0529 import WebhooksProjectColumnType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0209 import IssueType, IssueTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookProjectColumnEditedType(TypedDict):
-    """project_column edited event"""
+class WebhookIssueDependenciesBlockedByAddedType(TypedDict):
+    """blocked by issue added event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectColumnEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["blocked_by_added"]
+    blocked_issue_id: NotRequired[float]
+    blocked_issue: NotRequired[IssueType]
+    blocking_issue_id: NotRequired[float]
+    blocking_issue: NotRequired[IssueType]
+    blocking_issue_repo: NotRequired[RepositoryType]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    organization: OrganizationSimpleWebhooksType
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookProjectColumnEditedPropChangesType(TypedDict):
-    """WebhookProjectColumnEditedPropChanges"""
+class WebhookIssueDependenciesBlockedByAddedTypeForResponse(TypedDict):
+    """blocked by issue added event"""
 
-    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameType]
-
-
-class WebhookProjectColumnEditedPropChangesPropNameType(TypedDict):
-    """WebhookProjectColumnEditedPropChangesPropName"""
-
-    from_: str
+    action: Literal["blocked_by_added"]
+    blocked_issue_id: NotRequired[float]
+    blocked_issue: NotRequired[IssueTypeForResponse]
+    blocking_issue_id: NotRequired[float]
+    blocking_issue: NotRequired[IssueTypeForResponse]
+    blocking_issue_repo: NotRequired[RepositoryTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectColumnEditedPropChangesPropNameType",
-    "WebhookProjectColumnEditedPropChangesType",
-    "WebhookProjectColumnEditedType",
+    "WebhookIssueDependenciesBlockedByAddedType",
+    "WebhookIssueDependenciesBlockedByAddedTypeForResponse",
 )

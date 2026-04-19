@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,61 +18,85 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0362 import HookResponse
-
-
-class WebhookPingPropHook(GitHubModel):
-    """Webhook
-
-    The webhook that is being pinged
-    """
-
-    active: bool = Field(
-        description="Determines whether the hook is actually triggered for the events it subscribes to."
-    )
-    app_id: Missing[int] = Field(
-        default=UNSET,
-        description="Only included for GitHub Apps. When you register a new GitHub App, GitHub sends a ping event to the webhook URL you specified during registration. The GitHub App ID sent in this field is required for authenticating an app.",
-    )
-    config: WebhookPingPropHookPropConfig = Field()
-    created_at: datetime = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    events: list[str] = Field(
-        description="Determines what events the hook is triggered for. Default: ['push']."
-    )
-    id: int = Field(description="Unique identifier of the webhook.")
-    last_response: Missing[HookResponse] = Field(default=UNSET, title="Hook Response")
-    name: Literal["web"] = Field(
-        description="The type of webhook. The only valid value is 'web'."
-    )
-    ping_url: Missing[str] = Field(default=UNSET)
-    test_url: Missing[str] = Field(default=UNSET)
-    type: str = Field()
-    updated_at: datetime = Field()
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookPingPropHookPropConfig(GitHubModel):
-    """WebhookPingPropHookPropConfig"""
-
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
-    )
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
-    )
-
-
-model_rebuild(WebhookPingPropHook)
-model_rebuild(WebhookPingPropHookPropConfig)
-
-__all__ = (
-    "WebhookPingPropHook",
-    "WebhookPingPropHookPropConfig",
+from .group_0747 import (
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
 )
+
+
+class WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp(GitHubModel):
+    """WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp"""
+
+    created_at: Union[_dt.datetime, None] = Field()
+    description: Union[str, None] = Field()
+    events: Missing[
+        list[
+            Literal[
+                "branch_protection_rule",
+                "check_run",
+                "check_suite",
+                "code_scanning_alert",
+                "commit_comment",
+                "content_reference",
+                "create",
+                "delete",
+                "deployment",
+                "deployment_review",
+                "deployment_status",
+                "deploy_key",
+                "discussion",
+                "discussion_comment",
+                "fork",
+                "gollum",
+                "issues",
+                "issue_comment",
+                "label",
+                "member",
+                "membership",
+                "milestone",
+                "organization",
+                "org_block",
+                "page_build",
+                "project",
+                "project_card",
+                "project_column",
+                "public",
+                "pull_request",
+                "pull_request_review",
+                "pull_request_review_comment",
+                "push",
+                "registry_package",
+                "release",
+                "repository",
+                "repository_dispatch",
+                "secret_scanning_alert",
+                "star",
+                "status",
+                "team",
+                "team_add",
+                "watch",
+                "workflow_dispatch",
+                "workflow_run",
+            ]
+        ]
+    ] = Field(default=UNSET, description="The list of events for the GitHub app")
+    external_url: Union[str, None] = Field()
+    html_url: str = Field()
+    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
+    name: str = Field(description="The name of the GitHub app")
+    node_id: str = Field()
+    owner: Union[
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
+    ] = Field(title="User")
+    permissions: Missing[
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
+    slug: Missing[str] = Field(
+        default=UNSET, description="The slug name of the GitHub app"
+    )
+    updated_at: Union[_dt.datetime, None] = Field()
+
+
+model_rebuild(WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp)
+
+__all__ = ("WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp",)

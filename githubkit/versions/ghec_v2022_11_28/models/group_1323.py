@@ -12,17 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0336 import ActionsVariable
 
 
-class TeamsTeamIdProjectsProjectIdPutResponse403(GitHubModel):
-    """TeamsTeamIdProjectsProjectIdPutResponse403"""
+class ReposOwnerRepoActionsVariablesGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsVariablesGetResponse200"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    total_count: int = Field()
+    variables: list[ActionsVariable] = Field()
 
 
-model_rebuild(TeamsTeamIdProjectsProjectIdPutResponse403)
+model_rebuild(ReposOwnerRepoActionsVariablesGetResponse200)
 
-__all__ = ("TeamsTeamIdProjectsProjectIdPutResponse403",)
+__all__ = ("ReposOwnerRepoActionsVariablesGetResponse200",)

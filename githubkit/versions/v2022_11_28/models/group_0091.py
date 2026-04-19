@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -18,36 +19,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamSimple(GitHubModel):
-    """Team Simple
+class ThreadSubscription(GitHubModel):
+    """Thread Subscription
 
-    Groups of organization members that gives permissions on specified repositories.
+    Thread Subscription
     """
 
-    id: int = Field(description="Unique identifier of the team")
-    node_id: str = Field()
-    url: str = Field(description="URL for the team")
-    members_url: str = Field()
-    name: str = Field(description="Name of the team")
-    description: Union[str, None] = Field(description="Description of the team")
-    permission: str = Field(
-        description="Permission that the team will have for its repositories"
-    )
-    privacy: Missing[str] = Field(
-        default=UNSET, description="The level of privacy this team should have"
-    )
-    notification_setting: Missing[str] = Field(
-        default=UNSET, description="The notification setting the team has set"
-    )
-    html_url: str = Field()
-    repositories_url: str = Field()
-    slug: str = Field()
-    ldap_dn: Missing[str] = Field(
-        default=UNSET,
-        description="Distinguished Name (DN) that team maps to within LDAP environment",
-    )
+    subscribed: bool = Field()
+    ignored: bool = Field()
+    reason: Union[str, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
+    url: str = Field()
+    thread_url: Missing[str] = Field(default=UNSET)
+    repository_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(TeamSimple)
+model_rebuild(ThreadSubscription)
 
-__all__ = ("TeamSimple",)
+__all__ = ("ThreadSubscription",)

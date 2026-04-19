@@ -9,75 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, Union
+import datetime as _dt
+from typing import Any, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class OrganizationProgrammaticAccessGrantRequestType(TypedDict):
-    """Simple Organization Programmatic Access Grant Request
+class BaseGistType(TypedDict):
+    """Base Gist
 
-    Minimal representation of an organization programmatic access grant request for
-    enumerations
+    Base Gist
     """
 
-    id: int
-    reason: Union[str, None]
-    owner: SimpleUserType
-    repository_selection: Literal["none", "all", "subset"]
-    repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissionsType
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: BaseGistPropFilesType
+    public: bool
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserType]
+    comments_url: str
+    owner: NotRequired[SimpleUserType]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
+
+
+class BaseGistTypeForResponse(TypedDict):
+    """Base Gist
+
+    Base Gist
+    """
+
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: BaseGistPropFilesTypeForResponse
+    public: bool
     created_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
+    updated_at: str
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserTypeForResponse]
+    comments_url: str
+    owner: NotRequired[SimpleUserTypeForResponse]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsType(TypedDict):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissions
-
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType
-    ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType
-    ]
-    other: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType
-    ]
-
-
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
+BaseGistPropFilesType: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
 """
 
 
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
-"""
-
-
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType: TypeAlias = (
-    dict[str, Any]
-)
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
+BaseGistPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
 """
 
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsType",
-    "OrganizationProgrammaticAccessGrantRequestType",
+    "BaseGistPropFilesType",
+    "BaseGistPropFilesTypeForResponse",
+    "BaseGistType",
+    "BaseGistTypeForResponse",
 )

@@ -18,26 +18,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCodespacesSecretsSecretNamePutBody(GitHubModel):
-    """OrgsOrgCodespacesSecretsSecretNamePutBody"""
+class AgentsReposOwnerRepoTasksPostResponse401(GitHubModel):
+    """AgentsReposOwnerRepoTasksPostResponse401
 
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[list[AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems]] = (
+        Field(
+            default=UNSET,
+            description="List of validation errors (present only for 422 responses)",
+        )
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
         default=UNSET,
-        description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key) endpoint.",
-    )
-    key_id: Missing[str] = Field(
-        default=UNSET, description="The ID of the key you used to encrypt the secret."
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret."
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="An array of repository IDs that can access the organization secret. You can only provide a list of repository IDs when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(OrgsOrgCodespacesSecretsSecretNamePutBody)
+model_rebuild(AgentsReposOwnerRepoTasksPostResponse401)
+model_rebuild(AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems)
 
-__all__ = ("OrgsOrgCodespacesSecretsSecretNamePutBody",)
+__all__ = (
+    "AgentsReposOwnerRepoTasksPostResponse401",
+    "AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems",
+)

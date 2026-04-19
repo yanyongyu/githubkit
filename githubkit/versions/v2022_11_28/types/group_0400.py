@@ -12,11 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ParticipationStatsType(TypedDict):
-    """Participation Stats"""
+class PageBuildStatusType(TypedDict):
+    """Page Build Status
 
-    all_: list[int]
-    owner: list[int]
+    Page Build Status
+    """
+
+    url: str
+    status: str
 
 
-__all__ = ("ParticipationStatsType",)
+class PageBuildStatusTypeForResponse(TypedDict):
+    """Page Build Status
+
+    Page Build Status
+    """
+
+    url: str
+    status: str
+
+
+__all__ = (
+    "PageBuildStatusType",
+    "PageBuildStatusTypeForResponse",
+)

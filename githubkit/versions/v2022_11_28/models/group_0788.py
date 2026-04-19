@@ -18,36 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0390 import SecretScanningLocation
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
-from .group_0479 import SecretScanningAlertWebhook
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0515 import WebhooksProjectChanges
+from .group_0516 import ProjectsV2Item
 
 
-class WebhookSecretScanningAlertLocationCreated(GitHubModel):
-    """Secret Scanning Alert Location Created Event"""
+class WebhookProjectsV2ItemRestored(GitHubModel):
+    """Projects v2 Item Restored Event"""
 
-    action: Literal["created"] = Field()
-    alert: SecretScanningAlertWebhook = Field()
+    action: Literal["restored"] = Field()
+    changes: WebhooksProjectChanges = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    location: SecretScanningLocation = Field()
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    projects_v2_item: ProjectsV2Item = Field(
+        title="Projects v2 Item", description="An item belonging to a project"
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookSecretScanningAlertLocationCreated)
+model_rebuild(WebhookProjectsV2ItemRestored)
 
-__all__ = ("WebhookSecretScanningAlertLocationCreated",)
+__all__ = ("WebhookProjectsV2ItemRestored",)

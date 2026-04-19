@@ -25,7 +25,7 @@ if TYPE_CHECKING:
 
     from ..models import AppHookDeliveriesDeliveryIdAttemptsPostResponse202
     from ..types import (
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
         CredentialsRevokePostBodyType,
     )
 
@@ -54,7 +54,7 @@ class CredentialsClient:
         data: CredentialsRevokePostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -67,7 +67,7 @@ class CredentialsClient:
         credentials: list[str],
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     def revoke(
@@ -79,7 +79,7 @@ class CredentialsClient:
         **kwargs,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """credentials/revoke
 
@@ -88,8 +88,12 @@ class CredentialsClient:
         Submit a list of credentials to be revoked. This endpoint is intended to revoke credentials the caller does not own and may have found exposed on GitHub.com or elsewhere. It can also be used for credentials associated with an old user account that you no longer have access to. Credential owners will be notified of the revocation.
 
         This endpoint currently accepts the following credential types:
-        - Personal access tokens (classic)
-        - Fine-grained personal access tokens
+        - Personal access tokens (classic) (`ghp_`)
+        - Fine-grained personal access tokens (`github_pat_`)
+        - OAuth app access tokens (`gho_`)
+        - User-to-server tokens from GitHub Apps (`ghu_`)
+        - Refresh tokens from GitHub Apps (`ghr_`)
+
 
         Revoked credentials may impact users on GitHub Free, Pro, & Team and GitHub Enterprise Cloud, and GitHub Enterprise Cloud with Enterprise Managed Users.
         GitHub cannot reactivate any credentials that have been revoked; new credentials will need to be generated.
@@ -144,7 +148,7 @@ class CredentialsClient:
         data: CredentialsRevokePostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -157,7 +161,7 @@ class CredentialsClient:
         credentials: list[str],
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     async def async_revoke(
@@ -169,7 +173,7 @@ class CredentialsClient:
         **kwargs,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """credentials/revoke
 
@@ -178,8 +182,12 @@ class CredentialsClient:
         Submit a list of credentials to be revoked. This endpoint is intended to revoke credentials the caller does not own and may have found exposed on GitHub.com or elsewhere. It can also be used for credentials associated with an old user account that you no longer have access to. Credential owners will be notified of the revocation.
 
         This endpoint currently accepts the following credential types:
-        - Personal access tokens (classic)
-        - Fine-grained personal access tokens
+        - Personal access tokens (classic) (`ghp_`)
+        - Fine-grained personal access tokens (`github_pat_`)
+        - OAuth app access tokens (`gho_`)
+        - User-to-server tokens from GitHub Apps (`ghu_`)
+        - Refresh tokens from GitHub Apps (`ghr_`)
+
 
         Revoked credentials may impact users on GitHub Free, Pro, & Team and GitHub Enterprise Cloud, and GitHub Enterprise Cloud with Enterprise Managed Users.
         GitHub cannot reactivate any credentials that have been revoked; new credentials will need to be generated.

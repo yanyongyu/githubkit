@@ -9,70 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Any, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GpgKeyType(TypedDict):
-    """GPG Key
+class RepositoryRuleDetailedOneof9Type(TypedDict):
+    """RepositoryRuleDetailedOneof9"""
 
-    A unique encryption key
-    """
-
-    id: int
-    name: NotRequired[Union[str, None]]
-    primary_key_id: Union[int, None]
-    key_id: str
-    public_key: str
-    emails: list[GpgKeyPropEmailsItemsType]
-    subkeys: list[GpgKeyPropSubkeysItemsType]
-    can_sign: bool
-    can_encrypt_comms: bool
-    can_encrypt_storage: bool
-    can_certify: bool
-    created_at: datetime
-    expires_at: Union[datetime, None]
-    revoked: bool
-    raw_key: Union[str, None]
+    type: Literal["non_fast_forward"]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class GpgKeyPropEmailsItemsType(TypedDict):
-    """GpgKeyPropEmailsItems"""
+class RepositoryRuleDetailedOneof9TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof9"""
 
-    email: NotRequired[str]
-    verified: NotRequired[bool]
-
-
-class GpgKeyPropSubkeysItemsType(TypedDict):
-    """GpgKeyPropSubkeysItems"""
-
-    id: NotRequired[int]
-    primary_key_id: NotRequired[int]
-    key_id: NotRequired[str]
-    public_key: NotRequired[str]
-    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsType]]
-    subkeys: NotRequired[list[Any]]
-    can_sign: NotRequired[bool]
-    can_encrypt_comms: NotRequired[bool]
-    can_encrypt_storage: NotRequired[bool]
-    can_certify: NotRequired[bool]
-    created_at: NotRequired[str]
-    expires_at: NotRequired[Union[str, None]]
-    raw_key: NotRequired[Union[str, None]]
-    revoked: NotRequired[bool]
-
-
-class GpgKeyPropSubkeysItemsPropEmailsItemsType(TypedDict):
-    """GpgKeyPropSubkeysItemsPropEmailsItems"""
-
-    email: NotRequired[str]
-    verified: NotRequired[bool]
+    type: Literal["non_fast_forward"]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "GpgKeyPropEmailsItemsType",
-    "GpgKeyPropSubkeysItemsPropEmailsItemsType",
-    "GpgKeyPropSubkeysItemsType",
-    "GpgKeyType",
+    "RepositoryRuleDetailedOneof9Type",
+    "RepositoryRuleDetailedOneof9TypeForResponse",
 )

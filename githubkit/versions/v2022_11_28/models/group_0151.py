@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,22 +17,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0152 import RepositoryRuleRequiredDeploymentsPropParameters
 
+class OrganizationCreateIssueField(GitHubModel):
+    """OrganizationCreateIssueField"""
 
-class RepositoryRuleRequiredDeployments(GitHubModel):
-    """required_deployments
-
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
-    """
-
-    type: Literal["required_deployments"] = Field()
-    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
-        default=UNSET
+    name: str = Field(description="Name of the issue field.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the issue field."
+    )
+    data_type: Literal["text", "date", "single_select", "number"] = Field(
+        description="The data type of the issue field."
+    )
+    visibility: Missing[Literal["organization_members_only", "all"]] = Field(
+        default=UNSET,
+        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled. Defaults to `organization_members_only`.",
+    )
+    options: Missing[
+        Union[list[OrganizationCreateIssueFieldPropOptionsItems], None]
+    ] = Field(
+        default=UNSET,
+        description="Options for single select fields. Required when data_type is 'single_select'.",
     )
 
 
-model_rebuild(RepositoryRuleRequiredDeployments)
+class OrganizationCreateIssueFieldPropOptionsItems(GitHubModel):
+    """OrganizationCreateIssueFieldPropOptionsItems"""
 
-__all__ = ("RepositoryRuleRequiredDeployments",)
+    name: str = Field(description="Name of the option.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the option."
+    )
+    color: Literal[
+        "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+    ] = Field(description="Color for the option.")
+    priority: int = Field(description="Priority of the option for ordering.")
+
+
+model_rebuild(OrganizationCreateIssueField)
+model_rebuild(OrganizationCreateIssueFieldPropOptionsItems)
+
+__all__ = (
+    "OrganizationCreateIssueField",
+    "OrganizationCreateIssueFieldPropOptionsItems",
+)

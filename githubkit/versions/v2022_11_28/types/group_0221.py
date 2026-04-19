@@ -12,11 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReviewCustomGatesCommentRequiredType(TypedDict):
-    """ReviewCustomGatesCommentRequired"""
+class RepositoryRuleMaxFilePathLengthPropParametersType(TypedDict):
+    """RepositoryRuleMaxFilePathLengthPropParameters"""
 
-    environment_name: str
-    comment: str
+    max_file_path_length: int
 
 
-__all__ = ("ReviewCustomGatesCommentRequiredType",)
+class RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleMaxFilePathLengthPropParameters"""
+
+    max_file_path_length: int
+
+
+__all__ = (
+    "RepositoryRuleMaxFilePathLengthPropParametersType",
+    "RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse",
+)

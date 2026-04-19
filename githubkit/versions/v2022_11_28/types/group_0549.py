@@ -9,124 +9,299 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0551 import WebhookForkPropForkeeAllof0PropPermissionsType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class WebhookForkPropForkeeType(TypedDict):
-    """WebhookForkPropForkee
+class WebhookCodeScanningAlertClosedByUserPropAlertType(TypedDict):
+    """WebhookCodeScanningAlertClosedByUserPropAlert
 
-    The created [`repository`](https://docs.github.com/rest/repos/repos#get-a-
-    repository) resource.
+    The code scanning alert involved in the event.
     """
 
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: datetime
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
-    description: Union[Union[str, None], None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: Literal[True]
-    forks: int
-    forks_count: int
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    homepage: Union[Union[str, None], None]
-    hooks_url: str
+    assignees: NotRequired[list[SimpleUserType]]
+    created_at: _dt.datetime
+    dismissed_at: _dt.datetime
+    dismissed_by: Union[
+        WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedByType, None
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    fixed_at: NotRequired[Union[_dt.datetime, None]]
     html_url: str
-    id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[None, None]
-    languages_url: str
-    license_: Union[WebhookForkPropForkeeMergedLicenseType, None]
-    master_branch: NotRequired[str]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[None, None]
-    name: str
-    node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: WebhookForkPropForkeeMergedOwnerType
-    permissions: NotRequired[WebhookForkPropForkeeAllof0PropPermissionsType]
-    private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: datetime
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
-    updated_at: datetime
+    most_recent_instance: NotRequired[
+        Union[
+            WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstanceType,
+            None,
+        ]
+    ]
+    number: int
+    rule: WebhookCodeScanningAlertClosedByUserPropAlertPropRuleType
+    state: Literal["dismissed", "fixed"]
+    tool: WebhookCodeScanningAlertClosedByUserPropAlertPropToolType
     url: str
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
-    web_commit_signoff_required: NotRequired[bool]
+    dismissal_approved_by: NotRequired[
+        Union[
+            WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedByType,
+            None,
+        ]
+    ]
 
 
-class WebhookForkPropForkeeMergedLicenseType(TypedDict):
-    """WebhookForkPropForkeeMergedLicense"""
+class WebhookCodeScanningAlertClosedByUserPropAlertTypeForResponse(TypedDict):
+    """WebhookCodeScanningAlertClosedByUserPropAlert
 
-    key: str
+    The code scanning alert involved in the event.
+    """
+
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    created_at: str
+    dismissed_at: str
+    dismissed_by: Union[
+        WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedByTypeForResponse,
+        None,
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    fixed_at: NotRequired[Union[str, None]]
+    html_url: str
+    most_recent_instance: NotRequired[
+        Union[
+            WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstanceTypeForResponse,
+            None,
+        ]
+    ]
+    number: int
+    rule: WebhookCodeScanningAlertClosedByUserPropAlertPropRuleTypeForResponse
+    state: Literal["dismissed", "fixed"]
+    tool: WebhookCodeScanningAlertClosedByUserPropAlertPropToolTypeForResponse
+    url: str
+    dismissal_approved_by: NotRequired[
+        Union[
+            WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedByTypeForResponse,
+            None,
+        ]
+    ]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedByType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedByTypeForResponse(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstanceType(
+    TypedDict
+):
+    """Alert Instance"""
+
+    analysis_key: str
+    category: NotRequired[str]
+    classifications: NotRequired[list[str]]
+    commit_sha: NotRequired[str]
+    environment: str
+    location: NotRequired[
+        WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocationType
+    ]
+    message: NotRequired[
+        WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessageType
+    ]
+    ref: str
+    state: Literal["open", "dismissed", "fixed"]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstanceTypeForResponse(
+    TypedDict
+):
+    """Alert Instance"""
+
+    analysis_key: str
+    category: NotRequired[str]
+    classifications: NotRequired[list[str]]
+    commit_sha: NotRequired[str]
+    environment: str
+    location: NotRequired[
+        WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocationTypeForResponse
+    ]
+    message: NotRequired[
+        WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessageTypeForResponse
+    ]
+    ref: str
+    state: Literal["open", "dismissed", "fixed"]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocationType(
+    TypedDict
+):
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocation"""
+
+    end_column: NotRequired[int]
+    end_line: NotRequired[int]
+    path: NotRequired[str]
+    start_column: NotRequired[int]
+    start_line: NotRequired[int]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocationTypeForResponse(
+    TypedDict
+):
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocation"""
+
+    end_column: NotRequired[int]
+    end_line: NotRequired[int]
+    path: NotRequired[str]
+    start_column: NotRequired[int]
+    start_line: NotRequired[int]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessageType(
+    TypedDict
+):
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessage"""
+
+    text: NotRequired[str]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessageTypeForResponse(
+    TypedDict
+):
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessage"""
+
+    text: NotRequired[str]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropRuleType(TypedDict):
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropRule"""
+
+    description: str
+    full_description: NotRequired[str]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
+    id: str
+    name: NotRequired[str]
+    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    tags: NotRequired[Union[list[str], None]]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropRuleTypeForResponse(TypedDict):
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropRule"""
+
+    description: str
+    full_description: NotRequired[str]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
+    id: str
+    name: NotRequired[str]
+    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    tags: NotRequired[Union[list[str], None]]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropToolType(TypedDict):
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropTool"""
+
+    guid: NotRequired[Union[str, None]]
     name: str
-    node_id: str
-    spdx_id: str
-    url: Union[str, None]
+    version: Union[str, None]
 
 
-class WebhookForkPropForkeeMergedOwnerType(TypedDict):
-    """WebhookForkPropForkeeMergedOwner"""
+class WebhookCodeScanningAlertClosedByUserPropAlertPropToolTypeForResponse(TypedDict):
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropTool"""
+
+    guid: NotRequired[Union[str, None]]
+    name: str
+    version: Union[str, None]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedByType(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedByTypeForResponse(
+    TypedDict
+):
+    """User"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -153,7 +328,20 @@ class WebhookForkPropForkeeMergedOwnerType(TypedDict):
 
 
 __all__ = (
-    "WebhookForkPropForkeeMergedLicenseType",
-    "WebhookForkPropForkeeMergedOwnerType",
-    "WebhookForkPropForkeeType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedByType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedByTypeForResponse",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedByType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedByTypeForResponse",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocationType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocationTypeForResponse",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessageType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessageTypeForResponse",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstanceType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstanceTypeForResponse",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropRuleType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropRuleTypeForResponse",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropToolType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropToolTypeForResponse",
+    "WebhookCodeScanningAlertClosedByUserPropAlertType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertTypeForResponse",
 )

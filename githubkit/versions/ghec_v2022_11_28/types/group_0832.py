@@ -12,22 +12,46 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
 
 
-class WebhookRepositoryArchivedType(TypedDict):
-    """repository archived event"""
+class WebhookOrganizationCustomPropertyDeletedType(TypedDict):
+    """organization custom property deleted event"""
 
-    action: Literal["archived"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["deleted"]
+    definition: WebhookOrganizationCustomPropertyDeletedPropDefinitionType
+    enterprise: EnterpriseWebhooksType
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookRepositoryArchivedType",)
+class WebhookOrganizationCustomPropertyDeletedTypeForResponse(TypedDict):
+    """organization custom property deleted event"""
+
+    action: Literal["deleted"]
+    definition: WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse
+    enterprise: EnterpriseWebhooksTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+class WebhookOrganizationCustomPropertyDeletedPropDefinitionType(TypedDict):
+    """WebhookOrganizationCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
+
+
+class WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse(TypedDict):
+    """WebhookOrganizationCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
+
+
+__all__ = (
+    "WebhookOrganizationCustomPropertyDeletedPropDefinitionType",
+    "WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse",
+    "WebhookOrganizationCustomPropertyDeletedType",
+    "WebhookOrganizationCustomPropertyDeletedTypeForResponse",
+)

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -17,44 +18,93 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0494 import EnterpriseWebhooks
-from .group_0495 import SimpleInstallation
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0497 import RepositoryWebhooks
-from .group_0498 import WebhooksRule
+from .group_0542 import SearchResultTextMatchesItems
 
 
-class WebhookBranchProtectionRuleCreated(GitHubModel):
-    """branch protection rule created event"""
+class TopicSearchResultItem(GitHubModel):
+    """Topic Search Result Item
 
-    action: Literal["created"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+    Topic Search Result Item
+    """
+
+    name: str = Field()
+    display_name: Union[str, None] = Field()
+    short_description: Union[str, None] = Field()
+    description: Union[str, None] = Field()
+    created_by: Union[str, None] = Field()
+    released: Union[str, None] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    featured: bool = Field()
+    curated: bool = Field()
+    score: float = Field()
+    repository_count: Missing[Union[int, None]] = Field(default=UNSET)
+    logo_url: Missing[Union[str, None]] = Field(default=UNSET)
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
     )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    related: Missing[Union[list[TopicSearchResultItemPropRelatedItems], None]] = Field(
+        default=UNSET
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    aliases: Missing[Union[list[TopicSearchResultItemPropAliasesItems], None]] = Field(
+        default=UNSET
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    rule: WebhooksRule = Field(
-        title="branch protection rule",
-        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/enterprise-cloud@latest//github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookBranchProtectionRuleCreated)
+class TopicSearchResultItemPropRelatedItems(GitHubModel):
+    """TopicSearchResultItemPropRelatedItems"""
 
-__all__ = ("WebhookBranchProtectionRuleCreated",)
+    topic_relation: Missing[TopicSearchResultItemPropRelatedItemsPropTopicRelation] = (
+        Field(default=UNSET)
+    )
+
+
+class TopicSearchResultItemPropRelatedItemsPropTopicRelation(GitHubModel):
+    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    topic_id: Missing[int] = Field(default=UNSET)
+    relation_type: Missing[str] = Field(default=UNSET)
+
+
+class TopicSearchResultItemPropAliasesItems(GitHubModel):
+    """TopicSearchResultItemPropAliasesItems"""
+
+    topic_relation: Missing[TopicSearchResultItemPropAliasesItemsPropTopicRelation] = (
+        Field(default=UNSET)
+    )
+
+
+class TopicSearchResultItemPropAliasesItemsPropTopicRelation(GitHubModel):
+    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    topic_id: Missing[int] = Field(default=UNSET)
+    relation_type: Missing[str] = Field(default=UNSET)
+
+
+class SearchTopicsGetResponse200(GitHubModel):
+    """SearchTopicsGetResponse200"""
+
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[TopicSearchResultItem] = Field()
+
+
+model_rebuild(TopicSearchResultItem)
+model_rebuild(TopicSearchResultItemPropRelatedItems)
+model_rebuild(TopicSearchResultItemPropRelatedItemsPropTopicRelation)
+model_rebuild(TopicSearchResultItemPropAliasesItems)
+model_rebuild(TopicSearchResultItemPropAliasesItemsPropTopicRelation)
+model_rebuild(SearchTopicsGetResponse200)
+
+__all__ = (
+    "SearchTopicsGetResponse200",
+    "TopicSearchResultItem",
+    "TopicSearchResultItemPropAliasesItems",
+    "TopicSearchResultItemPropAliasesItemsPropTopicRelation",
+    "TopicSearchResultItemPropRelatedItems",
+    "TopicSearchResultItemPropRelatedItemsPropTopicRelation",
+)

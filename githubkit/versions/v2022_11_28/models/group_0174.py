@@ -17,20 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0175 import RepositoryRuleMaxFileSizePropParameters
+
+class ProjectsV2FieldSingleSelectOption(GitHubModel):
+    """ProjectsV2FieldSingleSelectOption"""
+
+    name: Missing[str] = Field(
+        default=UNSET, description="The display name of the option."
+    )
+    color: Missing[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ] = Field(default=UNSET, description="The color associated with the option.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the option."
+    )
 
 
-class RepositoryRuleMaxFileSize(GitHubModel):
-    """max_file_size
+model_rebuild(ProjectsV2FieldSingleSelectOption)
 
-    Prevent commits with individual files that exceed the specified limit from being
-    pushed to the commit graph.
-    """
-
-    type: Literal["max_file_size"] = Field()
-    parameters: Missing[RepositoryRuleMaxFileSizePropParameters] = Field(default=UNSET)
-
-
-model_rebuild(RepositoryRuleMaxFileSize)
-
-__all__ = ("RepositoryRuleMaxFileSize",)
+__all__ = ("ProjectsV2FieldSingleSelectOption",)

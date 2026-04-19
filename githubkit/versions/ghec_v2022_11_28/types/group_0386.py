@@ -9,82 +9,76 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class TimelineCommittedEventType(TypedDict):
-    """Timeline Committed Event
+class CodeScanningDefaultSetupType(TypedDict):
+    """CodeScanningDefaultSetup
 
-    Timeline Committed Event
+    Configuration for code scanning default setup.
     """
 
-    event: NotRequired[Literal["committed"]]
-    sha: str
-    node_id: str
-    url: str
-    author: TimelineCommittedEventPropAuthorType
-    committer: TimelineCommittedEventPropCommitterType
-    message: str
-    tree: TimelineCommittedEventPropTreeType
-    parents: list[TimelineCommittedEventPropParentsItemsType]
-    verification: TimelineCommittedEventPropVerificationType
-    html_url: str
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "javascript",
+                "python",
+                "ruby",
+                "typescript",
+                "swift",
+            ]
+        ]
+    ]
+    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_label: NotRequired[Union[str, None]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    schedule: NotRequired[Union[None, Literal["weekly"]]]
 
 
-class TimelineCommittedEventPropAuthorType(TypedDict):
-    """TimelineCommittedEventPropAuthor
+class CodeScanningDefaultSetupTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetup
 
-    Identifying information for the git-user
+    Configuration for code scanning default setup.
     """
 
-    date: datetime
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropCommitterType(TypedDict):
-    """TimelineCommittedEventPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: datetime
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropTreeType(TypedDict):
-    """TimelineCommittedEventPropTree"""
-
-    sha: str
-    url: str
-
-
-class TimelineCommittedEventPropParentsItemsType(TypedDict):
-    """TimelineCommittedEventPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class TimelineCommittedEventPropVerificationType(TypedDict):
-    """TimelineCommittedEventPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "javascript",
+                "python",
+                "ruby",
+                "typescript",
+                "swift",
+            ]
+        ]
+    ]
+    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_label: NotRequired[Union[str, None]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
+    updated_at: NotRequired[Union[str, None]]
+    schedule: NotRequired[Union[None, Literal["weekly"]]]
 
 
 __all__ = (
-    "TimelineCommittedEventPropAuthorType",
-    "TimelineCommittedEventPropCommitterType",
-    "TimelineCommittedEventPropParentsItemsType",
-    "TimelineCommittedEventPropTreeType",
-    "TimelineCommittedEventPropVerificationType",
-    "TimelineCommittedEventType",
+    "CodeScanningDefaultSetupType",
+    "CodeScanningDefaultSetupTypeForResponse",
 )

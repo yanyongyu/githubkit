@@ -10,48 +10,90 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Optional, overload
+from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
 from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
+    import datetime as _dt
+    from typing import Literal
+
     from githubkit import GitHubCore
     from githubkit.response import Response
     from githubkit.typing import Missing
     from githubkit.utils import UNSET
 
     from ..models import (
+        CopilotEnterpriseContentExclusionDetails,
+        CopilotOrganizationContentExclusionDetails,
         CopilotOrganizationDetails,
         CopilotSeatDetails,
+        CopilotUsageMetrics1DayReport,
+        CopilotUsageMetrics28DayReport,
         CopilotUsageMetricsDay,
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsGetResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
         EnterprisesEnterpriseMembersUsernameCopilotGetResponse200,
         OrgsOrgCopilotBillingSeatsGetResponse200,
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
+        OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
+        OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200,
     )
     from ..types import (
-        CopilotOrganizationDetailsType,
-        CopilotSeatDetailsType,
-        CopilotUsageMetricsDayType,
-        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
-        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type,
-        OrgsOrgCopilotBillingSeatsGetResponse200Type,
+        CopilotEnterpriseContentExclusionDetailsTypeForResponse,
+        CopilotOrganizationContentExclusionDetailsTypeForResponse,
+        CopilotOrganizationDetailsTypeForResponse,
+        CopilotSeatDetailsTypeForResponse,
+        CopilotUsageMetrics1DayReportTypeForResponse,
+        CopilotUsageMetrics28DayReportTypeForResponse,
+        CopilotUsageMetricsDayTypeForResponse,
+        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse,
+        EnterprisesEnterpriseCopilotContentExclusionPutBodyType,
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse,
+        EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse,
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse,
+        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse,
+        OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse,
         OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse,
         OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
-        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse,
         OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
-        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
         OrgsOrgCopilotBillingSelectedUsersPostBodyType,
-        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
+        OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse,
+        OrgsOrgCopilotCodingAgentPermissionsPutBodyType,
+        OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse,
+        OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType,
+        OrgsOrgCopilotContentExclusionPutBodyType,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
     )
 
 
@@ -80,7 +122,7 @@ class CopilotClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
-        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse,
     ]:
         """copilot/list-copilot-seats-for-enterprise
 
@@ -122,7 +164,7 @@ class CopilotClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
@@ -144,7 +186,7 @@ class CopilotClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
-        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse,
     ]:
         """copilot/list-copilot-seats-for-enterprise
 
@@ -186,7 +228,7 @@ class CopilotClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
@@ -195,6 +237,1570 @@ class CopilotClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+            },
+        )
+
+    @overload
+    def add_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse,
+    ]: ...
+
+    @overload
+    def add_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_enterprise_teams: list[str],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse,
+    ]: ...
+
+    def add_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse,
+    ]:
+        """copilot/add-copilot-seats-for-enterprise-teams
+
+        POST /enterprises/{enterprise}/copilot/billing/selected_enterprise_teams
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Purchases a GitHub Copilot seat for all users within each specified enterprise team. The enterprise will be billed accordingly.
+
+        Only enterprise owners can purchase Copilot seats for their enterprise members.
+
+        The response contains the total number of new seats that were created and existing seats that were refreshed.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-enterprise-teams-to-the-copilot-subscription-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody,
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/selected_enterprise_teams"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_add_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_add_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_enterprise_teams: list[str],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse,
+    ]: ...
+
+    async def async_add_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse,
+    ]:
+        """copilot/add-copilot-seats-for-enterprise-teams
+
+        POST /enterprises/{enterprise}/copilot/billing/selected_enterprise_teams
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Purchases a GitHub Copilot seat for all users within each specified enterprise team. The enterprise will be billed accordingly.
+
+        Only enterprise owners can purchase Copilot seats for their enterprise members.
+
+        The response contains the total number of new seats that were created and existing seats that were refreshed.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-enterprise-teams-to-the-copilot-subscription-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody,
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/selected_enterprise_teams"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def cancel_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def cancel_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_enterprise_teams: list[str],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse,
+    ]: ...
+
+    def cancel_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse,
+    ]:
+        """copilot/cancel-copilot-seats-for-enterprise-teams
+
+        DELETE /enterprises/{enterprise}/copilot/billing/selected_enterprise_teams
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets seats for all members of each enterprise team specified to "pending cancellation".
+        This will cause the members of the specified enterprise team(s) to lose access to GitHub Copilot at the end of the current billing cycle unless they retain access through another enterprise team.
+
+        Only enterprise owners can cancel Copilot seats for their enterprise members.
+
+        The response contains the total number of seats set to "pending cancellation".
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-enterprise-teams-from-the-copilot-subscription-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody,
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/selected_enterprise_teams"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_cancel_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_cancel_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_enterprise_teams: list[str],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse,
+    ]: ...
+
+    async def async_cancel_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse,
+    ]:
+        """copilot/cancel-copilot-seats-for-enterprise-teams
+
+        DELETE /enterprises/{enterprise}/copilot/billing/selected_enterprise_teams
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets seats for all members of each enterprise team specified to "pending cancellation".
+        This will cause the members of the specified enterprise team(s) to lose access to GitHub Copilot at the end of the current billing cycle unless they retain access through another enterprise team.
+
+        Only enterprise owners can cancel Copilot seats for their enterprise members.
+
+        The response contains the total number of seats set to "pending cancellation".
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-enterprise-teams-from-the-copilot-subscription-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody,
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/selected_enterprise_teams"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def add_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse,
+    ]: ...
+
+    @overload
+    def add_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_usernames: list[str],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse,
+    ]: ...
+
+    def add_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse,
+    ]:
+        """copilot/add-copilot-seats-for-enterprise-users
+
+        POST /enterprises/{enterprise}/copilot/billing/selected_users
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Purchases a GitHub Copilot seat for each user specified.
+        The enterprise will be billed accordingly.
+
+        Only enterprise owners can purchase Copilot seats for their enterprise members.
+
+        The response contains the total number of new seats that were created and existing seats that were refreshed.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody,
+            EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/selected_users"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_add_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_add_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_usernames: list[str],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse,
+    ]: ...
+
+    async def async_add_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse,
+    ]:
+        """copilot/add-copilot-seats-for-enterprise-users
+
+        POST /enterprises/{enterprise}/copilot/billing/selected_users
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Purchases a GitHub Copilot seat for each user specified.
+        The enterprise will be billed accordingly.
+
+        Only enterprise owners can purchase Copilot seats for their enterprise members.
+
+        The response contains the total number of new seats that were created and existing seats that were refreshed.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody,
+            EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/selected_users"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def cancel_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def cancel_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_usernames: list[str],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
+    ]: ...
+
+    def cancel_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
+    ]:
+        """copilot/cancel-copilot-seats-for-enterprise-users
+
+        DELETE /enterprises/{enterprise}/copilot/billing/selected_users
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets seats for all users specified to "pending cancellation".
+        This will cause the specified users to lose access to GitHub Copilot at the end of the current billing cycle unless they retain access through team or organization membership.
+
+        Only enterprise owners can cancel Copilot seats for their enterprise members.
+
+        The response contains the total number of seats set to "pending cancellation".
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody,
+            EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/selected_users"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_cancel_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_cancel_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_usernames: list[str],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
+    ]: ...
+
+    async def async_cancel_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
+    ]:
+        """copilot/cancel-copilot-seats-for-enterprise-users
+
+        DELETE /enterprises/{enterprise}/copilot/billing/selected_users
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets seats for all users specified to "pending cancellation".
+        This will cause the specified users to lose access to GitHub Copilot at the end of the current billing cycle unless they retain access through team or organization membership.
+
+        Only enterprise owners can cancel Copilot seats for their enterprise members.
+
+        The response contains the total number of seats set to "pending cancellation".
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody,
+            EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/selected_users"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def copilot_content_exclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotEnterpriseContentExclusionDetails,
+        CopilotEnterpriseContentExclusionDetailsTypeForResponse,
+    ]:
+        """copilot/copilot-content-exclusion-for-enterprise
+
+        GET /enterprises/{enterprise}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets information about an enterprise's Copilot content exclusion path rules.
+        To configure these settings, go to the enterprise's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-enterprise)."
+
+        Enterprise owners can view details about Copilot content exclusion rules for the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need either the `read:enterprise` or `copilot` scopes to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. This endpoint will not return any comments in the existing rules.
+        > * At this time, the API does not support duplicate keys. If your content exclusion configuration contains duplicate keys, the API will return only the last occurrence of that key. For example, if duplicate entries are present, only the final value will be included in the response.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-enterprise
+        """
+
+        from ..models import BasicError, CopilotEnterpriseContentExclusionDetails
+
+        url = f"/enterprises/{enterprise}/copilot/content_exclusion"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotEnterpriseContentExclusionDetails,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_content_exclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotEnterpriseContentExclusionDetails,
+        CopilotEnterpriseContentExclusionDetailsTypeForResponse,
+    ]:
+        """copilot/copilot-content-exclusion-for-enterprise
+
+        GET /enterprises/{enterprise}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets information about an enterprise's Copilot content exclusion path rules.
+        To configure these settings, go to the enterprise's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-enterprise)."
+
+        Enterprise owners can view details about Copilot content exclusion rules for the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need either the `read:enterprise` or `copilot` scopes to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. This endpoint will not return any comments in the existing rules.
+        > * At this time, the API does not support duplicate keys. If your content exclusion configuration contains duplicate keys, the API will return only the last occurrence of that key. For example, if duplicate entries are present, only the final value will be included in the response.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-enterprise
+        """
+
+        from ..models import BasicError, CopilotEnterpriseContentExclusionDetails
+
+        url = f"/enterprises/{enterprise}/copilot/content_exclusion"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotEnterpriseContentExclusionDetails,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_copilot_content_exclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotContentExclusionPutBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def set_copilot_content_exclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    def set_copilot_content_exclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseCopilotContentExclusionPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse,
+    ]:
+        """copilot/set-copilot-content-exclusion-for-enterprise
+
+        PUT /enterprises/{enterprise}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets Copilot content exclusion path rules for an enterprise.
+        To configure these settings, go to the enterprise's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-enterprise)."
+
+        Enterprise owners can set Copilot content exclusion rules for the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need either the `admin:enterprise` or `copilot` scopes to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. When using this endpoint, any existing comments in your rules will be deleted.
+        > * At this time, the API does not support duplicate keys. If you submit content exclusions through the API with duplicate keys, only the last occurrence will be saved. Earlier entries with the same key will be overwritten.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotContentExclusionPutBody,
+            EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+            ValidationErrorSimple,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/content_exclusion"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotContentExclusionPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "413": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_set_copilot_content_exclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotContentExclusionPutBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_set_copilot_content_exclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    async def async_set_copilot_content_exclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseCopilotContentExclusionPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse,
+    ]:
+        """copilot/set-copilot-content-exclusion-for-enterprise
+
+        PUT /enterprises/{enterprise}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets Copilot content exclusion path rules for an enterprise.
+        To configure these settings, go to the enterprise's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-enterprise)."
+
+        Enterprise owners can set Copilot content exclusion rules for the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need either the `admin:enterprise` or `copilot` scopes to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. When using this endpoint, any existing comments in your rules will be deleted.
+        > * At this time, the API does not support duplicate keys. If you submit content exclusions through the API with duplicate keys, only the last occurrence will be saved. Earlier entries with the same key will be overwritten.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotContentExclusionPutBody,
+            EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+            ValidationErrorSimple,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/content_exclusion"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotContentExclusionPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "413": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def get_copilot_custom_agents_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsGetResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-copilot-custom-agents-for-enterprise
+
+        GET /enterprises/{enterprise}/copilot/custom-agents
+
+        Gets the list of all custom agents defined in the /agents/*.md files in the .github-private repository for the enterprise.
+
+        If no source repository has been configured, returns `null` for `custom_agents`.
+
+        Enterprise owners with read access to AI Controls can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#get-custom-agents-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotCustomAgentsGetResponse200,
+            EnterprisesEnterpriseCopilotCustomAgentsGetResponse404,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/custom-agents"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotCustomAgentsGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": EnterprisesEnterpriseCopilotCustomAgentsGetResponse404,
+            },
+        )
+
+    async def async_get_copilot_custom_agents_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsGetResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-copilot-custom-agents-for-enterprise
+
+        GET /enterprises/{enterprise}/copilot/custom-agents
+
+        Gets the list of all custom agents defined in the /agents/*.md files in the .github-private repository for the enterprise.
+
+        If no source repository has been configured, returns `null` for `custom_agents`.
+
+        Enterprise owners with read access to AI Controls can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#get-custom-agents-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotCustomAgentsGetResponse200,
+            EnterprisesEnterpriseCopilotCustomAgentsGetResponse404,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/custom-agents"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotCustomAgentsGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": EnterprisesEnterpriseCopilotCustomAgentsGetResponse404,
+            },
+        )
+
+    def get_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-copilot-custom-agents-source-for-enterprise
+
+        GET /enterprises/{enterprise}/copilot/custom-agents/source
+
+        Gets the organization and repository configured as the source for custom agent definitions in an enterprise.
+
+        Custom agents are enterprise-defined AI agents stored as markdown files in a special repository.
+        An enterprise admin configures one organization as the "source" and that org must have a repo named
+        `.github-private` containing agent definitions in `/agents/*.md`.
+
+        Enterprise owners with read access to AI Controls can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#get-the-source-organization-for-custom-agents-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/custom-agents/source"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-copilot-custom-agents-source-for-enterprise
+
+        GET /enterprises/{enterprise}/copilot/custom-agents/source
+
+        Gets the organization and repository configured as the source for custom agent definitions in an enterprise.
+
+        Custom agents are enterprise-defined AI agents stored as markdown files in a special repository.
+        An enterprise admin configures one organization as the "source" and that org must have a repo named
+        `.github-private` containing agent definitions in `/agents/*.md`.
+
+        Enterprise owners with read access to AI Controls can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#get-the-source-organization-for-custom-agents-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/custom-agents/source"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def set_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        organization_id: int,
+        create_ruleset: Missing[bool] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse,
+    ]: ...
+
+    def set_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse,
+    ]:
+        """copilot/set-copilot-custom-agents-source-for-enterprise
+
+        PUT /enterprises/{enterprise}/copilot/custom-agents/source
+
+        Sets an organization as the source for custom agent definitions in the enterprise.
+        The organization must have a `.github-private` repository containing agent definitions.
+
+        By default, this endpoint also creates an enterprise-level ruleset to protect
+        agent definition files (agents/*.md and .github/agents/*.md). You can opt out
+        of ruleset creation by setting `create_ruleset` to `false`.
+
+        Enterprise owners with write access to AI Controls can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#set-the-source-organization-for-custom-agents-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody,
+            EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+            EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/custom-agents/source"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422,
+            },
+        )
+
+    @overload
+    async def async_set_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_set_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        organization_id: int,
+        create_ruleset: Missing[bool] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse,
+    ]: ...
+
+    async def async_set_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse,
+    ]:
+        """copilot/set-copilot-custom-agents-source-for-enterprise
+
+        PUT /enterprises/{enterprise}/copilot/custom-agents/source
+
+        Sets an organization as the source for custom agent definitions in the enterprise.
+        The organization must have a `.github-private` repository containing agent definitions.
+
+        By default, this endpoint also creates an enterprise-level ruleset to protect
+        agent definition files (agents/*.md and .github/agents/*.md). You can opt out
+        of ruleset creation by setting `create_ruleset` to `false`.
+
+        Enterprise owners with write access to AI Controls can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#set-the-source-organization-for-custom-agents-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody,
+            EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+            EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/custom-agents/source"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422,
+            },
+        )
+
+    def delete_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """copilot/delete-copilot-custom-agents-source-for-enterprise
+
+        DELETE /enterprises/{enterprise}/copilot/custom-agents/source
+
+        Removes the custom agents source configuration for the enterprise.
+        This effectively disables custom agents for the enterprise by removing
+        the reference to the source organization's `.github-private` repository.
+
+        Note: This does not delete the `.github-private` repository or any agent
+        definition files. It only removes the association between the enterprise
+        and the source repository.
+
+        Enterprise owners with write access to AI Controls can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#delete-the-custom-agents-source-for-an-enterprise
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/copilot/custom-agents/source"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    async def async_delete_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """copilot/delete-copilot-custom-agents-source-for-enterprise
+
+        DELETE /enterprises/{enterprise}/copilot/custom-agents/source
+
+        Removes the custom agents source configuration for the enterprise.
+        This effectively disables custom agents for the enterprise by removing
+        the reference to the source organization's `.github-private` repository.
+
+        Note: This does not delete the `.github-private` repository or any agent
+        definition files. It only removes the association between the enterprise
+        and the source repository.
+
+        Enterprise owners with write access to AI Controls can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#delete-the-custom-agents-source-for-an-enterprise
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/copilot/custom-agents/source"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
             },
         )
 
@@ -208,14 +1814,16 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
+    ) -> Response[
+        list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
+    ]:
         """copilot/copilot-metrics-for-enterprise
 
         GET /enterprises/{enterprise}/copilot/metrics
 
         Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
 
-        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        The response contains metrics for up to 100 days prior. Metrics are processed once per day for the previous day,
         and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
         they must have telemetry enabled in their IDE.
 
@@ -243,7 +1851,7 @@ class CopilotClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[CopilotUsageMetricsDay],
@@ -265,14 +1873,16 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
+    ) -> Response[
+        list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
+    ]:
         """copilot/copilot-metrics-for-enterprise
 
         GET /enterprises/{enterprise}/copilot/metrics
 
         Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
 
-        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        The response contains metrics for up to 100 days prior. Metrics are processed once per day for the previous day,
         and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
         they must have telemetry enabled in their IDE.
 
@@ -300,7 +1910,7 @@ class CopilotClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[CopilotUsageMetricsDay],
@@ -309,6 +1919,374 @@ class CopilotClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": BasicError,
+            },
+        )
+
+    def copilot_enterprise_one_day_usage_metrics(
+        self,
+        enterprise: str,
+        *,
+        day: _dt.date,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-enterprise-one-day-usage-metrics
+
+        GET /enterprises/{enterprise}/copilot/metrics/reports/enterprise-1-day
+
+        Use this endpoint to retrieve download links for the Copilot enterprise usage metrics report for a specific day. The report provides comprehensive usage data for Copilot features across the enterprise.
+
+        The report contains aggregated metrics for the specified day, including usage statistics for various Copilot features, user engagement data, and feature adoption metrics. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed. Reports are available starting from October 10, 2025, and historical data can be accessed for up to 1 year from the current date.
+
+        Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-enterprise-usage-metrics-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/enterprises/{enterprise}/copilot/metrics/reports/enterprise-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_enterprise_one_day_usage_metrics(
+        self,
+        enterprise: str,
+        *,
+        day: _dt.date,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-enterprise-one-day-usage-metrics
+
+        GET /enterprises/{enterprise}/copilot/metrics/reports/enterprise-1-day
+
+        Use this endpoint to retrieve download links for the Copilot enterprise usage metrics report for a specific day. The report provides comprehensive usage data for Copilot features across the enterprise.
+
+        The report contains aggregated metrics for the specified day, including usage statistics for various Copilot features, user engagement data, and feature adoption metrics. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed. Reports are available starting from October 10, 2025, and historical data can be accessed for up to 1 year from the current date.
+
+        Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-enterprise-usage-metrics-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/enterprises/{enterprise}/copilot/metrics/reports/enterprise-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def copilot_enterprise_usage_metrics(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
+    ]:
+        """copilot/copilot-enterprise-usage-metrics
+
+        GET /enterprises/{enterprise}/copilot/metrics/reports/enterprise-28-day/latest
+
+        Use this endpoint to retrieve download links for the latest 28-day enterprise Copilot usage metrics report. The report provides comprehensive usage data for Copilot features across the enterprise.
+
+        The report contains aggregated metrics for the previous 28 days, including usage statistics for various Copilot features, user engagement data, and feature adoption metrics. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date range covered by the report. The report covers a complete 28-day period ending on the most recent day for which data has been processed.
+
+        Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-enterprise-usage-metrics
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics28DayReport
+
+        url = f"/enterprises/{enterprise}/copilot/metrics/reports/enterprise-28-day/latest"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics28DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_enterprise_usage_metrics(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
+    ]:
+        """copilot/copilot-enterprise-usage-metrics
+
+        GET /enterprises/{enterprise}/copilot/metrics/reports/enterprise-28-day/latest
+
+        Use this endpoint to retrieve download links for the latest 28-day enterprise Copilot usage metrics report. The report provides comprehensive usage data for Copilot features across the enterprise.
+
+        The report contains aggregated metrics for the previous 28 days, including usage statistics for various Copilot features, user engagement data, and feature adoption metrics. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date range covered by the report. The report covers a complete 28-day period ending on the most recent day for which data has been processed.
+
+        Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-enterprise-usage-metrics
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics28DayReport
+
+        url = f"/enterprises/{enterprise}/copilot/metrics/reports/enterprise-28-day/latest"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics28DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def copilot_users_one_day_usage_metrics(
+        self,
+        enterprise: str,
+        *,
+        day: _dt.date,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-users-one-day-usage-metrics
+
+        GET /enterprises/{enterprise}/copilot/metrics/reports/users-1-day
+
+        Use this endpoint to retrieve download links for the Copilot user usage metrics report for a specific day. The report provides detailed user-level usage data and engagement metrics for Copilot features across the enterprise.
+
+        The report contains user-specific metrics for the specified day, including individual user engagement statistics, feature usage patterns, and adoption metrics broken down by user. This report allows authorized users to analyze Copilot usage at the user level to understand adoption patterns and identify opportunities for increased engagement.
+
+        Reports are generated daily and made available for download through signed URLs with a limited expiration time. The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed. Reports are available starting from October 10, 2025, and historical data can be accessed for up to 1 year from the current date.
+
+        Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-users-usage-metrics-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/enterprises/{enterprise}/copilot/metrics/reports/users-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_users_one_day_usage_metrics(
+        self,
+        enterprise: str,
+        *,
+        day: _dt.date,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-users-one-day-usage-metrics
+
+        GET /enterprises/{enterprise}/copilot/metrics/reports/users-1-day
+
+        Use this endpoint to retrieve download links for the Copilot user usage metrics report for a specific day. The report provides detailed user-level usage data and engagement metrics for Copilot features across the enterprise.
+
+        The report contains user-specific metrics for the specified day, including individual user engagement statistics, feature usage patterns, and adoption metrics broken down by user. This report allows authorized users to analyze Copilot usage at the user level to understand adoption patterns and identify opportunities for increased engagement.
+
+        Reports are generated daily and made available for download through signed URLs with a limited expiration time. The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed. Reports are available starting from October 10, 2025, and historical data can be accessed for up to 1 year from the current date.
+
+        Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-users-usage-metrics-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/enterprises/{enterprise}/copilot/metrics/reports/users-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def copilot_users_usage_metrics(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
+    ]:
+        """copilot/copilot-users-usage-metrics
+
+        GET /enterprises/{enterprise}/copilot/metrics/reports/users-28-day/latest
+
+        Use this endpoint to retrieve download links for the latest 28-day enterprise users Copilot usage metrics report. The report provides detailed user-level usage data and engagement metrics for Copilot features across the enterprise.
+
+        The report contains user-specific metrics for the previous 28 days, including individual user engagement statistics, feature usage patterns, and adoption metrics broken down by user. This report allows authorized users to analyze Copilot usage at the user level to understand adoption patterns and identify opportunities for increased engagement.
+
+        Reports are generated daily and made available for download through signed URLs with a limited expiration time. The response includes download links to the report files, along with the specific date range covered by the report. The report covers a complete 28-day period ending on the most recent day for which data has been processed.
+
+        Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-users-usage-metrics
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics28DayReport
+
+        url = f"/enterprises/{enterprise}/copilot/metrics/reports/users-28-day/latest"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics28DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_users_usage_metrics(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
+    ]:
+        """copilot/copilot-users-usage-metrics
+
+        GET /enterprises/{enterprise}/copilot/metrics/reports/users-28-day/latest
+
+        Use this endpoint to retrieve download links for the latest 28-day enterprise users Copilot usage metrics report. The report provides detailed user-level usage data and engagement metrics for Copilot features across the enterprise.
+
+        The report contains user-specific metrics for the previous 28 days, including individual user engagement statistics, feature usage patterns, and adoption metrics broken down by user. This report allows authorized users to analyze Copilot usage at the user level to understand adoption patterns and identify opportunities for increased engagement.
+
+        Reports are generated daily and made available for download through signed URLs with a limited expiration time. The response includes download links to the report files, along with the specific date range covered by the report. The report covers a complete 28-day period ending on the most recent day for which data has been processed.
+
+        Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-users-usage-metrics
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics28DayReport
+
+        url = f"/enterprises/{enterprise}/copilot/metrics/reports/users-28-day/latest"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics28DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
             },
         )
 
@@ -321,7 +2299,7 @@ class CopilotClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseMembersUsernameCopilotGetResponse200,
-        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type,
+        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse,
     ]:
         """copilot/get-copilot-seat-details-for-enterprise-user
 
@@ -373,7 +2351,7 @@ class CopilotClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseMembersUsernameCopilotGetResponse200,
-        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type,
+        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse,
     ]:
         """copilot/get-copilot-seat-details-for-enterprise-user
 
@@ -427,7 +2405,9 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
+    ) -> Response[
+        list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
+    ]:
         """copilot/copilot-metrics-for-enterprise-team
 
         GET /enterprises/{enterprise}/team/{team_slug}/copilot/metrics
@@ -437,7 +2417,7 @@ class CopilotClient:
 
         Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
 
-        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        The response contains metrics for up to 100 days prior. Metrics are processed once per day for the previous day,
         and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
         they must have telemetry enabled in their IDE.
 
@@ -468,7 +2448,7 @@ class CopilotClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[CopilotUsageMetricsDay],
@@ -491,7 +2471,9 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
+    ) -> Response[
+        list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
+    ]:
         """copilot/copilot-metrics-for-enterprise-team
 
         GET /enterprises/{enterprise}/team/{team_slug}/copilot/metrics
@@ -501,7 +2483,7 @@ class CopilotClient:
 
         Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
 
-        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        The response contains metrics for up to 100 days prior. Metrics are processed once per day for the previous day,
         and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
         they must have telemetry enabled in their IDE.
 
@@ -532,7 +2514,7 @@ class CopilotClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[CopilotUsageMetricsDay],
@@ -550,7 +2532,9 @@ class CopilotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CopilotOrganizationDetails, CopilotOrganizationDetailsType]:
+    ) -> Response[
+        CopilotOrganizationDetails, CopilotOrganizationDetailsTypeForResponse
+    ]:
         """copilot/get-copilot-organization-details
 
         GET /orgs/{org}/copilot/billing
@@ -595,7 +2579,9 @@ class CopilotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CopilotOrganizationDetails, CopilotOrganizationDetailsType]:
+    ) -> Response[
+        CopilotOrganizationDetails, CopilotOrganizationDetailsTypeForResponse
+    ]:
         """copilot/get-copilot-organization-details
 
         GET /orgs/{org}/copilot/billing
@@ -644,7 +2630,7 @@ class CopilotClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotBillingSeatsGetResponse200,
-        OrgsOrgCopilotBillingSeatsGetResponse200Type,
+        OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse,
     ]:
         """copilot/list-copilot-seats
 
@@ -678,7 +2664,7 @@ class CopilotClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgCopilotBillingSeatsGetResponse200,
@@ -700,7 +2686,7 @@ class CopilotClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotBillingSeatsGetResponse200,
-        OrgsOrgCopilotBillingSeatsGetResponse200Type,
+        OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse,
     ]:
         """copilot/list-copilot-seats
 
@@ -734,7 +2720,7 @@ class CopilotClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgCopilotBillingSeatsGetResponse200,
@@ -756,7 +2742,7 @@ class CopilotClient:
         data: OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
-        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -770,7 +2756,7 @@ class CopilotClient:
         selected_teams: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
-        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse,
     ]: ...
 
     def add_copilot_seats_for_teams(
@@ -783,7 +2769,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
-        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse,
     ]:
         """copilot/add-copilot-seats-for-teams
 
@@ -852,7 +2838,7 @@ class CopilotClient:
         data: OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
-        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -866,7 +2852,7 @@ class CopilotClient:
         selected_teams: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
-        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse,
     ]: ...
 
     async def async_add_copilot_seats_for_teams(
@@ -879,7 +2865,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
-        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse,
     ]:
         """copilot/add-copilot-seats-for-teams
 
@@ -948,7 +2934,7 @@ class CopilotClient:
         data: OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -962,7 +2948,7 @@ class CopilotClient:
         selected_teams: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse,
     ]: ...
 
     def cancel_copilot_seat_assignment_for_teams(
@@ -975,7 +2961,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse,
     ]:
         """copilot/cancel-copilot-seat-assignment-for-teams
 
@@ -1043,7 +3029,7 @@ class CopilotClient:
         data: OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1057,7 +3043,7 @@ class CopilotClient:
         selected_teams: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse,
     ]: ...
 
     async def async_cancel_copilot_seat_assignment_for_teams(
@@ -1070,7 +3056,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse,
     ]:
         """copilot/cancel-copilot-seat-assignment-for-teams
 
@@ -1138,7 +3124,7 @@ class CopilotClient:
         data: OrgsOrgCopilotBillingSelectedUsersPostBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
-        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -1152,7 +3138,7 @@ class CopilotClient:
         selected_usernames: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
-        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]: ...
 
     def add_copilot_seats_for_users(
@@ -1165,7 +3151,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
-        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]:
         """copilot/add-copilot-seats-for-users
 
@@ -1234,7 +3220,7 @@ class CopilotClient:
         data: OrgsOrgCopilotBillingSelectedUsersPostBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
-        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -1248,7 +3234,7 @@ class CopilotClient:
         selected_usernames: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
-        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]: ...
 
     async def async_add_copilot_seats_for_users(
@@ -1261,7 +3247,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
-        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]:
         """copilot/add-copilot-seats-for-users
 
@@ -1330,7 +3316,7 @@ class CopilotClient:
         data: OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1344,7 +3330,7 @@ class CopilotClient:
         selected_usernames: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]: ...
 
     def cancel_copilot_seat_assignment_for_users(
@@ -1357,7 +3343,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]:
         """copilot/cancel-copilot-seat-assignment-for-users
 
@@ -1425,7 +3411,7 @@ class CopilotClient:
         data: OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1439,7 +3425,7 @@ class CopilotClient:
         selected_usernames: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]: ...
 
     async def async_cancel_copilot_seat_assignment_for_users(
@@ -1452,7 +3438,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]:
         """copilot/cancel-copilot-seat-assignment-for-users
 
@@ -1510,6 +3496,1046 @@ class CopilotClient:
             },
         )
 
+    def get_copilot_coding_agent_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
+        OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-copilot-coding-agent-permissions-organization
+
+        GET /orgs/{org}/copilot/coding-agent/permissions
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets information about which repositories in an organization have been enabled
+        or disabled for the Copilot coding agent.
+
+        Organization owners can configure whether Copilot coding agent is enabled for
+        all repositories, selected repositories, or no repositories owned by organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#get-copilot-coding-agent-permissions-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
+        )
+
+        url = f"/orgs/{org}/copilot/coding-agent/permissions"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_copilot_coding_agent_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
+        OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-copilot-coding-agent-permissions-organization
+
+        GET /orgs/{org}/copilot/coding-agent/permissions
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets information about which repositories in an organization have been enabled
+        or disabled for the Copilot coding agent.
+
+        Organization owners can configure whether Copilot coding agent is enabled for
+        all repositories, selected repositories, or no repositories owned by organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#get-copilot-coding-agent-permissions-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
+        )
+
+        url = f"/orgs/{org}/copilot/coding-agent/permissions"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_copilot_coding_agent_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotCodingAgentPermissionsPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_copilot_coding_agent_permissions_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        enabled_repositories: Literal["all", "selected", "none"],
+    ) -> Response: ...
+
+    def set_copilot_coding_agent_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotCodingAgentPermissionsPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/set-copilot-coding-agent-permissions-organization
+
+        PUT /orgs/{org}/copilot/coding-agent/permissions
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets the policy for which repositories in an organization can use Copilot coding agent.
+
+        Organization owners can configure whether Copilot coding agent is enabled for
+        all repositories, selected repositories, or no repositories owned by the organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#set-copilot-coding-agent-permissions-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotCodingAgentPermissionsPutBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/copilot/coding-agent/permissions"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgCopilotCodingAgentPermissionsPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_copilot_coding_agent_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotCodingAgentPermissionsPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_copilot_coding_agent_permissions_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        enabled_repositories: Literal["all", "selected", "none"],
+    ) -> Response: ...
+
+    async def async_set_copilot_coding_agent_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotCodingAgentPermissionsPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/set-copilot-coding-agent-permissions-organization
+
+        PUT /orgs/{org}/copilot/coding-agent/permissions
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets the policy for which repositories in an organization can use Copilot coding agent.
+
+        Organization owners can configure whether Copilot coding agent is enabled for
+        all repositories, selected repositories, or no repositories owned by the organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#set-copilot-coding-agent-permissions-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotCodingAgentPermissionsPutBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/copilot/coding-agent/permissions"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgCopilotCodingAgentPermissionsPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def list_copilot_coding_agent_selected_repositories_for_organization(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
+        OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse,
+    ]:
+        """copilot/list-copilot-coding-agent-selected-repositories-for-organization
+
+        GET /orgs/{org}/copilot/coding-agent/permissions/repositories
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Lists the selected repositories that are enabled for Copilot coding agent in an organization.
+
+        Organization owners can use this endpoint when the coding agent repository policy
+        is set to `selected` to see which repositories have been enabled.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#list-repositories-enabled-for-copilot-coding-agent-in-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
+        )
+
+        url = f"/orgs/{org}/copilot/coding-agent/permissions/repositories"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    async def async_list_copilot_coding_agent_selected_repositories_for_organization(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
+        OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse,
+    ]:
+        """copilot/list-copilot-coding-agent-selected-repositories-for-organization
+
+        GET /orgs/{org}/copilot/coding-agent/permissions/repositories
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Lists the selected repositories that are enabled for Copilot coding agent in an organization.
+
+        Organization owners can use this endpoint when the coding agent repository policy
+        is set to `selected` to see which repositories have been enabled.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#list-repositories-enabled-for-copilot-coding-agent-in-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
+        )
+
+        url = f"/orgs/{org}/copilot/coding-agent/permissions/repositories"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    @overload
+    def set_copilot_coding_agent_selected_repositories_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_copilot_coding_agent_selected_repositories_for_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_repository_ids: list[int],
+    ) -> Response: ...
+
+    def set_copilot_coding_agent_selected_repositories_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/set-copilot-coding-agent-selected-repositories-for-organization
+
+        PUT /orgs/{org}/copilot/coding-agent/permissions/repositories
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Replaces the list of selected repositories that are enabled for Copilot coding
+        agent in an organization. This method can only be called when the coding agent
+        repository policy is set to `selected`.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#set-selected-repositories-for-copilot-coding-agent-in-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/copilot/coding-agent/permissions/repositories"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_copilot_coding_agent_selected_repositories_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_copilot_coding_agent_selected_repositories_for_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_repository_ids: list[int],
+    ) -> Response: ...
+
+    async def async_set_copilot_coding_agent_selected_repositories_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/set-copilot-coding-agent-selected-repositories-for-organization
+
+        PUT /orgs/{org}/copilot/coding-agent/permissions/repositories
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Replaces the list of selected repositories that are enabled for Copilot coding
+        agent in an organization. This method can only be called when the coding agent
+        repository policy is set to `selected`.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#set-selected-repositories-for-copilot-coding-agent-in-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/copilot/coding-agent/permissions/repositories"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def enable_copilot_coding_agent_for_repository_in_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """copilot/enable-copilot-coding-agent-for-repository-in-organization
+
+        PUT /orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Adds a repository to the list of selected repositories enabled for Copilot
+        coding agent in an organization. This method can only be called when the
+        coding agent repository policy is set to `selected`.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#enable-a-repository-for-copilot-coding-agent-in-an-organization
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = (
+            f"/orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_enable_copilot_coding_agent_for_repository_in_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """copilot/enable-copilot-coding-agent-for-repository-in-organization
+
+        PUT /orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Adds a repository to the list of selected repositories enabled for Copilot
+        coding agent in an organization. This method can only be called when the
+        coding agent repository policy is set to `selected`.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#enable-a-repository-for-copilot-coding-agent-in-an-organization
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = (
+            f"/orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def disable_copilot_coding_agent_for_repository_in_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """copilot/disable-copilot-coding-agent-for-repository-in-organization
+
+        DELETE /orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Removes a repository from the list of selected repositories enabled for Copilot
+        coding agent in an organization. This method can only be called when the
+        coding agent repository policy is set to `selected`.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#disable-a-repository-for-copilot-coding-agent-in-an-organization
+        """
+
+        from ..models import BasicError
+
+        url = (
+            f"/orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    async def async_disable_copilot_coding_agent_for_repository_in_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """copilot/disable-copilot-coding-agent-for-repository-in-organization
+
+        DELETE /orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Removes a repository from the list of selected repositories enabled for Copilot
+        coding agent in an organization. This method can only be called when the
+        coding agent repository policy is set to `selected`.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#disable-a-repository-for-copilot-coding-agent-in-an-organization
+        """
+
+        from ..models import BasicError
+
+        url = (
+            f"/orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    def copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotOrganizationContentExclusionDetails,
+        CopilotOrganizationContentExclusionDetailsTypeForResponse,
+    ]:
+        """copilot/copilot-content-exclusion-for-organization
+
+        GET /orgs/{org}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets information about an organization's Copilot content exclusion path rules.
+        To configure these settings, go to the organization's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
+
+        Organization owners can view details about Copilot content exclusion rules for the organization.
+
+        OAuth app tokens and personal access tokens (classic) need either the `copilot` or `read:org` scopes to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. This endpoint will not return any comments in the existing rules.
+        > * At this time, the API does not support duplicate keys. If your content exclusion configuration contains duplicate keys, the API will return only the last occurrence of that key. For example, if duplicate entries are present, only the final value will be included in the response.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-organization
+        """
+
+        from ..models import BasicError, CopilotOrganizationContentExclusionDetails
+
+        url = f"/orgs/{org}/copilot/content_exclusion"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotOrganizationContentExclusionDetails,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotOrganizationContentExclusionDetails,
+        CopilotOrganizationContentExclusionDetailsTypeForResponse,
+    ]:
+        """copilot/copilot-content-exclusion-for-organization
+
+        GET /orgs/{org}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets information about an organization's Copilot content exclusion path rules.
+        To configure these settings, go to the organization's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
+
+        Organization owners can view details about Copilot content exclusion rules for the organization.
+
+        OAuth app tokens and personal access tokens (classic) need either the `copilot` or `read:org` scopes to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. This endpoint will not return any comments in the existing rules.
+        > * At this time, the API does not support duplicate keys. If your content exclusion configuration contains duplicate keys, the API will return only the last occurrence of that key. For example, if duplicate entries are present, only the final value will be included in the response.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-organization
+        """
+
+        from ..models import BasicError, CopilotOrganizationContentExclusionDetails
+
+        url = f"/orgs/{org}/copilot/content_exclusion"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotOrganizationContentExclusionDetails,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotContentExclusionPutBodyType,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    def set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotContentExclusionPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]:
+        """copilot/set-copilot-content-exclusion-for-organization
+
+        PUT /orgs/{org}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets Copilot content exclusion path rules for an organization.
+        To configure these settings, go to the organization's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
+
+        Organization owners can set Copilot content exclusion rules for the organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `copilot` scope to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. When using this endpoint, any existing comments in your rules will be deleted.
+        > * At this time, the API does not support duplicate keys. If you submit content exclusions through the API with duplicate keys, only the last occurrence will be saved. Earlier entries with the same key will be overwritten.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotContentExclusionPutBody,
+            OrgsOrgCopilotContentExclusionPutResponse200,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/copilot/content_exclusion"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgCopilotContentExclusionPutBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotContentExclusionPutResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "413": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotContentExclusionPutBodyType,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    async def async_set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotContentExclusionPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]:
+        """copilot/set-copilot-content-exclusion-for-organization
+
+        PUT /orgs/{org}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets Copilot content exclusion path rules for an organization.
+        To configure these settings, go to the organization's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
+
+        Organization owners can set Copilot content exclusion rules for the organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `copilot` scope to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. When using this endpoint, any existing comments in your rules will be deleted.
+        > * At this time, the API does not support duplicate keys. If you submit content exclusions through the API with duplicate keys, only the last occurrence will be saved. Earlier entries with the same key will be overwritten.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotContentExclusionPutBody,
+            OrgsOrgCopilotContentExclusionPutResponse200,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/copilot/content_exclusion"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgCopilotContentExclusionPutBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotContentExclusionPutResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "413": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
     def copilot_metrics_for_organization(
         self,
         org: str,
@@ -1520,7 +4546,9 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
+    ) -> Response[
+        list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
+    ]:
         """copilot/copilot-metrics-for-organization
 
         GET /orgs/{org}/copilot/metrics
@@ -1530,7 +4558,7 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint will only return results for a given day if the organization contained **five or more members with active Copilot licenses** on that day, as evaluated at the end of that day.
 
-        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        The response contains metrics for up to 100 days prior. Metrics are processed once per day for the previous day,
         and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
         they must have telemetry enabled in their IDE.
 
@@ -1558,7 +4586,7 @@ class CopilotClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[CopilotUsageMetricsDay],
@@ -1580,7 +4608,9 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
+    ) -> Response[
+        list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
+    ]:
         """copilot/copilot-metrics-for-organization
 
         GET /orgs/{org}/copilot/metrics
@@ -1590,7 +4620,7 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint will only return results for a given day if the organization contained **five or more members with active Copilot licenses** on that day, as evaluated at the end of that day.
 
-        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        The response contains metrics for up to 100 days prior. Metrics are processed once per day for the previous day,
         and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
         they must have telemetry enabled in their IDE.
 
@@ -1618,7 +4648,7 @@ class CopilotClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[CopilotUsageMetricsDay],
@@ -1630,6 +4660,390 @@ class CopilotClient:
             },
         )
 
+    def copilot_organization_one_day_usage_metrics(
+        self,
+        org: str,
+        *,
+        day: _dt.date,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-one-day-usage-metrics
+
+        GET /orgs/{org}/copilot/metrics/reports/organization-1-day
+
+        Use this endpoint to retrieve download links for the Copilot organization usage metrics report for a specific day. The report provides comprehensive usage data for Copilot features across the organization.
+
+        The report contains aggregated metrics for the specified day, including usage statistics for various Copilot features, user engagement data, and feature adoption metrics. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-usage-metrics-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/organization-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_organization_one_day_usage_metrics(
+        self,
+        org: str,
+        *,
+        day: _dt.date,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-one-day-usage-metrics
+
+        GET /orgs/{org}/copilot/metrics/reports/organization-1-day
+
+        Use this endpoint to retrieve download links for the Copilot organization usage metrics report for a specific day. The report provides comprehensive usage data for Copilot features across the organization.
+
+        The report contains aggregated metrics for the specified day, including usage statistics for various Copilot features, user engagement data, and feature adoption metrics. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-usage-metrics-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/organization-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def copilot_organization_usage_metrics(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-usage-metrics
+
+        GET /orgs/{org}/copilot/metrics/reports/organization-28-day/latest
+
+        Use this endpoint to retrieve download links for the latest 28-day organization Copilot usage metrics report. The report provides comprehensive usage data for Copilot features across the organization.
+
+        The report contains aggregated metrics for the previous 28 days, including usage statistics for various Copilot features, user engagement data, and feature adoption metrics. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date range covered by the report. The report covers a complete 28-day period ending on the most recent day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-usage-metrics
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics28DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/organization-28-day/latest"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics28DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_organization_usage_metrics(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-usage-metrics
+
+        GET /orgs/{org}/copilot/metrics/reports/organization-28-day/latest
+
+        Use this endpoint to retrieve download links for the latest 28-day organization Copilot usage metrics report. The report provides comprehensive usage data for Copilot features across the organization.
+
+        The report contains aggregated metrics for the previous 28 days, including usage statistics for various Copilot features, user engagement data, and feature adoption metrics. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date range covered by the report. The report covers a complete 28-day period ending on the most recent day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-usage-metrics
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics28DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/organization-28-day/latest"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics28DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def copilot_organization_users_one_day_usage_metrics(
+        self,
+        org: str,
+        *,
+        day: _dt.date,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-users-one-day-usage-metrics
+
+        GET /orgs/{org}/copilot/metrics/reports/users-1-day
+
+        Use this endpoint to retrieve download links for the Copilot organization user usage metrics report for a specific day. The report provides detailed user-level usage data and engagement metrics for Copilot features across the organization.
+
+        The report contains user-specific metrics for the specified day, including individual user engagement statistics, feature usage patterns, and adoption metrics broken down by user. This report allows authorized users to analyze Copilot usage at the user level to understand adoption patterns and identify opportunities for increased engagement.
+
+        Reports are generated daily and made available for download through signed URLs with a limited expiration time. The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-users-usage-metrics-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/users-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_organization_users_one_day_usage_metrics(
+        self,
+        org: str,
+        *,
+        day: _dt.date,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-users-one-day-usage-metrics
+
+        GET /orgs/{org}/copilot/metrics/reports/users-1-day
+
+        Use this endpoint to retrieve download links for the Copilot organization user usage metrics report for a specific day. The report provides detailed user-level usage data and engagement metrics for Copilot features across the organization.
+
+        The report contains user-specific metrics for the specified day, including individual user engagement statistics, feature usage patterns, and adoption metrics broken down by user. This report allows authorized users to analyze Copilot usage at the user level to understand adoption patterns and identify opportunities for increased engagement.
+
+        Reports are generated daily and made available for download through signed URLs with a limited expiration time. The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-users-usage-metrics-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/users-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def copilot_organization_users_usage_metrics(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-users-usage-metrics
+
+        GET /orgs/{org}/copilot/metrics/reports/users-28-day/latest
+
+        Use this endpoint to retrieve download links for the latest 28-day organization users Copilot usage metrics report. The report provides detailed user-level usage data and engagement metrics for Copilot features across the organization.
+
+        The report contains user-specific metrics for the previous 28 days, including individual user engagement statistics, feature usage patterns, and adoption metrics broken down by user. This report allows authorized users to analyze Copilot usage at the user level to understand adoption patterns and identify opportunities for increased engagement.
+
+        Reports are generated daily and made available for download through signed URLs with a limited expiration time. The response includes download links to the report files, along with the specific date range covered by the report. The report covers a complete 28-day period ending on the most recent day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-users-usage-metrics
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics28DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/users-28-day/latest"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics28DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_organization_users_usage_metrics(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-users-usage-metrics
+
+        GET /orgs/{org}/copilot/metrics/reports/users-28-day/latest
+
+        Use this endpoint to retrieve download links for the latest 28-day organization users Copilot usage metrics report. The report provides detailed user-level usage data and engagement metrics for Copilot features across the organization.
+
+        The report contains user-specific metrics for the previous 28 days, including individual user engagement statistics, feature usage patterns, and adoption metrics broken down by user. This report allows authorized users to analyze Copilot usage at the user level to understand adoption patterns and identify opportunities for increased engagement.
+
+        Reports are generated daily and made available for download through signed URLs with a limited expiration time. The response includes download links to the report files, along with the specific date range covered by the report. The report covers a complete 28-day period ending on the most recent day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-users-usage-metrics
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics28DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/users-28-day/latest"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics28DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
     def get_copilot_seat_details_for_user(
         self,
         org: str,
@@ -1637,7 +5051,7 @@ class CopilotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CopilotSeatDetails, CopilotSeatDetailsType]:
+    ) -> Response[CopilotSeatDetails, CopilotSeatDetailsTypeForResponse]:
         """copilot/get-copilot-seat-details-for-user
 
         GET /orgs/{org}/members/{username}/copilot
@@ -1684,7 +5098,7 @@ class CopilotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CopilotSeatDetails, CopilotSeatDetailsType]:
+    ) -> Response[CopilotSeatDetails, CopilotSeatDetailsTypeForResponse]:
         """copilot/get-copilot-seat-details-for-user
 
         GET /orgs/{org}/members/{username}/copilot
@@ -1735,7 +5149,9 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
+    ) -> Response[
+        list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
+    ]:
         """copilot/copilot-metrics-for-team
 
         GET /orgs/{org}/team/{team_slug}/copilot/metrics
@@ -1745,7 +5161,7 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint will only return results for a given day if the team had **five or more members with active Copilot licenses** on that day, as evaluated at the end of that day.
 
-        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        The response contains metrics for up to 100 days prior. Metrics are processed once per day for the previous day,
         and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
         they must have telemetry enabled in their IDE.
 
@@ -1773,7 +5189,7 @@ class CopilotClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[CopilotUsageMetricsDay],
@@ -1796,7 +5212,9 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
+    ) -> Response[
+        list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
+    ]:
         """copilot/copilot-metrics-for-team
 
         GET /orgs/{org}/team/{team_slug}/copilot/metrics
@@ -1806,7 +5224,7 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint will only return results for a given day if the team had **five or more members with active Copilot licenses** on that day, as evaluated at the end of that day.
 
-        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        The response contains metrics for up to 100 days prior. Metrics are processed once per day for the previous day,
         and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
         they must have telemetry enabled in their IDE.
 
@@ -1834,7 +5252,7 @@ class CopilotClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[CopilotUsageMetricsDay],

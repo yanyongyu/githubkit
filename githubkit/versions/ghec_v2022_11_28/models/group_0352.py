@@ -9,26 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0353 import (
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
+)
 
-class DeploymentBranchPolicyNamePatternWithType(GitHubModel):
-    """Deployment branch and tag policy name pattern"""
 
-    name: str = Field(
-        description="The name pattern that branches or tags must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch)."
+class ProtectedBranchPullRequestReview(GitHubModel):
+    """Protected Branch Pull Request Review
+
+    Protected Branch Pull Request Review
+    """
+
+    url: Missing[str] = Field(default=UNSET)
+    dismissal_restrictions: Missing[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictions
+    ] = Field(default=UNSET)
+    bypass_pull_request_allowances: Missing[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+    ] = Field(
+        default=UNSET,
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
     )
-    type: Missing[Literal["branch", "tag"]] = Field(
-        default=UNSET, description="Whether this rule targets a branch or tag"
+    dismiss_stale_reviews: bool = Field()
+    require_code_owner_reviews: bool = Field()
+    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
+    require_last_push_approval: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
     )
 
 
-model_rebuild(DeploymentBranchPolicyNamePatternWithType)
+model_rebuild(ProtectedBranchPullRequestReview)
 
-__all__ = ("DeploymentBranchPolicyNamePatternWithType",)
+__all__ = ("ProtectedBranchPullRequestReview",)

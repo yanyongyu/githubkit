@@ -9,31 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType(
-    TypedDict
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
-
-    include: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
-    exclude: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
-    """Repository ruleset property targeting definition
+class OrganizationInvitationType(TypedDict):
+    """Organization Invitation
 
-    Parameters for a targeting a repository property
+    Organization Invitation
     """
 
-    name: str
-    property_values: list[str]
-    source: NotRequired[Literal["custom", "system"]]
+    id: int
+    login: Union[str, None]
+    email: Union[str, None]
+    role: str
+    created_at: str
+    failed_at: NotRequired[Union[str, None]]
+    failed_reason: NotRequired[Union[str, None]]
+    inviter: SimpleUserType
+    team_count: int
+    node_id: str
+    invitation_teams_url: str
+    invitation_source: NotRequired[str]
+
+
+class OrganizationInvitationTypeForResponse(TypedDict):
+    """Organization Invitation
+
+    Organization Invitation
+    """
+
+    id: int
+    login: Union[str, None]
+    email: Union[str, None]
+    role: str
+    created_at: str
+    failed_at: NotRequired[Union[str, None]]
+    failed_reason: NotRequired[Union[str, None]]
+    inviter: SimpleUserTypeForResponse
+    team_count: int
+    node_id: str
+    invitation_teams_url: str
+    invitation_source: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertySpecType",
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
+    "OrganizationInvitationType",
+    "OrganizationInvitationTypeForResponse",
 )

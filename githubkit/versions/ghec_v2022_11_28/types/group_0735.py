@@ -9,80 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
-from .group_0507 import WebhooksUserType
+from .group_0734 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+)
 
 
-class WebhookOrganizationMemberInvitedType(TypedDict):
-    """organization member_invited event"""
+class WebhookIssueCommentEditedPropIssueAllof0PropMilestoneType(TypedDict):
+    """Milestone
 
-    action: Literal["member_invited"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    invitation: WebhookOrganizationMemberInvitedPropInvitationType
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    user: NotRequired[Union[WebhooksUserType, None]]
-
-
-class WebhookOrganizationMemberInvitedPropInvitationType(TypedDict):
-    """WebhookOrganizationMemberInvitedPropInvitation
-
-    The invitation for the user or email if the action is `member_invited`.
+    A collection of related issues and pull requests.
     """
 
-    created_at: datetime
-    email: Union[str, None]
-    failed_at: Union[datetime, None]
-    failed_reason: Union[str, None]
-    id: float
-    invitation_teams_url: str
-    inviter: Union[WebhookOrganizationMemberInvitedPropInvitationPropInviterType, None]
-    login: Union[str, None]
-    node_id: str
-    role: str
-    team_count: float
-    invitation_source: NotRequired[str]
-
-
-class WebhookOrganizationMemberInvitedPropInvitationPropInviterType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType, None
+    ]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
+    html_url: str
     id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
+    url: str
+
+
+class WebhookIssueCommentEditedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+        None,
+    ]
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "WebhookOrganizationMemberInvitedPropInvitationPropInviterType",
-    "WebhookOrganizationMemberInvitedPropInvitationType",
-    "WebhookOrganizationMemberInvitedType",
+    "WebhookIssueCommentEditedPropIssueAllof0PropMilestoneType",
+    "WebhookIssueCommentEditedPropIssueAllof0PropMilestoneTypeForResponse",
 )

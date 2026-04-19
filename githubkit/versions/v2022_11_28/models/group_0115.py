@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,26 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCreateIssueType(GitHubModel):
-    """OrganizationCreateIssueType"""
+class SelfHostedRunnersSettings(GitHubModel):
+    """SelfHostedRunnersSettings"""
 
-    name: str = Field(description="Name of the issue type.")
-    is_enabled: bool = Field(
-        description="Whether or not the issue type is enabled at the organization level."
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy that controls whether self-hosted runners can be used by repositories in the organization"
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the issue type."
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL to the endpoint for managing selected repositories for self-hosted runners in the organization",
     )
-    color: Missing[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ] = Field(default=UNSET, description="Color for the issue type.")
 
 
-model_rebuild(OrganizationCreateIssueType)
+model_rebuild(SelfHostedRunnersSettings)
 
-__all__ = ("OrganizationCreateIssueType",)
+__all__ = ("SelfHostedRunnersSettings",)

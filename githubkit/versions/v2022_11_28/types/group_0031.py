@@ -10,16 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0028 import CodeSecurityConfigurationType
+from typing_extensions import TypedDict
 
 
-class CodeSecurityDefaultConfigurationsItemsType(TypedDict):
-    """CodeSecurityDefaultConfigurationsItems"""
+class OidcCustomPropertyInclusionType(TypedDict):
+    """Actions OIDC Custom Property Inclusion
 
-    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    An OIDC custom property inclusion for repository properties
+    """
+
+    custom_property_name: str
+    inclusion_source: Literal["organization", "enterprise"]
 
 
-__all__ = ("CodeSecurityDefaultConfigurationsItemsType",)
+class OidcCustomPropertyInclusionTypeForResponse(TypedDict):
+    """Actions OIDC Custom Property Inclusion
+
+    An OIDC custom property inclusion for repository properties
+    """
+
+    custom_property_name: str
+    inclusion_source: Literal["organization", "enterprise"]
+
+
+__all__ = (
+    "OidcCustomPropertyInclusionType",
+    "OidcCustomPropertyInclusionTypeForResponse",
+)

@@ -9,45 +9,165 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0362 import HookResponseType
+from .group_0747 import (
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
+)
 
 
-class WebhookPingPropHookType(TypedDict):
-    """Webhook
+class WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppType(TypedDict):
+    """WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp"""
 
-    The webhook that is being pinged
-    """
+    created_at: Union[_dt.datetime, None]
+    description: Union[str, None]
+    events: NotRequired[
+        list[
+            Literal[
+                "branch_protection_rule",
+                "check_run",
+                "check_suite",
+                "code_scanning_alert",
+                "commit_comment",
+                "content_reference",
+                "create",
+                "delete",
+                "deployment",
+                "deployment_review",
+                "deployment_status",
+                "deploy_key",
+                "discussion",
+                "discussion_comment",
+                "fork",
+                "gollum",
+                "issues",
+                "issue_comment",
+                "label",
+                "member",
+                "membership",
+                "milestone",
+                "organization",
+                "org_block",
+                "page_build",
+                "project",
+                "project_card",
+                "project_column",
+                "public",
+                "pull_request",
+                "pull_request_review",
+                "pull_request_review_comment",
+                "push",
+                "registry_package",
+                "release",
+                "repository",
+                "repository_dispatch",
+                "secret_scanning_alert",
+                "star",
+                "status",
+                "team",
+                "team_add",
+                "watch",
+                "workflow_dispatch",
+                "workflow_run",
+            ]
+        ]
+    ]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
 
-    active: bool
-    app_id: NotRequired[int]
-    config: WebhookPingPropHookPropConfigType
-    created_at: datetime
-    deliveries_url: NotRequired[str]
-    events: list[str]
-    id: int
-    last_response: NotRequired[HookResponseType]
-    name: Literal["web"]
-    ping_url: NotRequired[str]
-    test_url: NotRequired[str]
-    type: str
-    updated_at: datetime
-    url: NotRequired[str]
 
+class WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppTypeForResponse(
+    TypedDict
+):
+    """WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp"""
 
-class WebhookPingPropHookPropConfigType(TypedDict):
-    """WebhookPingPropHookPropConfig"""
-
-    content_type: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    secret: NotRequired[str]
-    url: NotRequired[str]
+    created_at: Union[str, None]
+    description: Union[str, None]
+    events: NotRequired[
+        list[
+            Literal[
+                "branch_protection_rule",
+                "check_run",
+                "check_suite",
+                "code_scanning_alert",
+                "commit_comment",
+                "content_reference",
+                "create",
+                "delete",
+                "deployment",
+                "deployment_review",
+                "deployment_status",
+                "deploy_key",
+                "discussion",
+                "discussion_comment",
+                "fork",
+                "gollum",
+                "issues",
+                "issue_comment",
+                "label",
+                "member",
+                "membership",
+                "milestone",
+                "organization",
+                "org_block",
+                "page_build",
+                "project",
+                "project_card",
+                "project_column",
+                "public",
+                "pull_request",
+                "pull_request_review",
+                "pull_request_review_comment",
+                "push",
+                "registry_package",
+                "release",
+                "repository",
+                "repository_dispatch",
+                "secret_scanning_alert",
+                "star",
+                "status",
+                "team",
+                "team_add",
+                "watch",
+                "workflow_dispatch",
+                "workflow_run",
+            ]
+        ]
+    ]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookPingPropHookPropConfigType",
-    "WebhookPingPropHookType",
+    "WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppType",
+    "WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppTypeForResponse",
 )

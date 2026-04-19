@@ -12,26 +12,14 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ApiInsightsSummaryStats(GitHubModel):
-    """Summary Stats
+class ActionsArtifactAndLogRetention(GitHubModel):
+    """ActionsArtifactAndLogRetention"""
 
-    API Insights usage summary stats for an organization
-    """
-
-    total_request_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of requests within the queried time period",
-    )
-    rate_limited_request_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of requests that were rate limited within the queried time period",
-    )
+    days: int = Field(description="The number of days to retain artifacts and logs")
 
 
-model_rebuild(ApiInsightsSummaryStats)
+model_rebuild(ActionsArtifactAndLogRetention)
 
-__all__ = ("ApiInsightsSummaryStats",)
+__all__ = ("ActionsArtifactAndLogRetention",)

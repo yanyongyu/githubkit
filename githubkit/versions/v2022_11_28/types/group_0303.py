@@ -11,19 +11,28 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0304 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType
+
+class CodeScanningAutofixCommitsType(TypedDict):
+    """CodeScanningAutofixCommits
+
+    Commit an autofix for a code scanning alert
+    """
+
+    target_ref: NotRequired[str]
+    message: NotRequired[str]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class CodeScanningAutofixCommitsTypeForResponse(TypedDict):
+    """CodeScanningAutofixCommits
 
-    id: int
-    node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
-    ]
+    Commit an autofix for a code scanning alert
+    """
+
+    target_ref: NotRequired[str]
+    message: NotRequired[str]
 
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1Type",)
+__all__ = (
+    "CodeScanningAutofixCommitsType",
+    "CodeScanningAutofixCommitsTypeForResponse",
+)

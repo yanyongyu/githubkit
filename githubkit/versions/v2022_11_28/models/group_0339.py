@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -19,88 +18,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TimelineCommittedEvent(GitHubModel):
-    """Timeline Committed Event
+class Contributor(GitHubModel):
+    """Contributor
 
-    Timeline Committed Event
+    Contributor
     """
 
-    event: Missing[Literal["committed"]] = Field(default=UNSET)
-    sha: str = Field(description="SHA for the commit")
-    node_id: str = Field()
-    url: str = Field()
-    author: TimelineCommittedEventPropAuthor = Field(
-        description="Identifying information for the git-user"
-    )
-    committer: TimelineCommittedEventPropCommitter = Field(
-        description="Identifying information for the git-user"
-    )
-    message: str = Field(description="Message describing the purpose of the commit")
-    tree: TimelineCommittedEventPropTree = Field()
-    parents: list[TimelineCommittedEventPropParentsItems] = Field()
-    verification: TimelineCommittedEventPropVerification = Field()
-    html_url: str = Field()
+    login: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[Union[str, None]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    type: str = Field()
+    site_admin: Missing[bool] = Field(default=UNSET)
+    contributions: int = Field()
+    email: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class TimelineCommittedEventPropAuthor(GitHubModel):
-    """TimelineCommittedEventPropAuthor
+model_rebuild(Contributor)
 
-    Identifying information for the git-user
-    """
-
-    date: datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class TimelineCommittedEventPropCommitter(GitHubModel):
-    """TimelineCommittedEventPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class TimelineCommittedEventPropTree(GitHubModel):
-    """TimelineCommittedEventPropTree"""
-
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-
-
-class TimelineCommittedEventPropParentsItems(GitHubModel):
-    """TimelineCommittedEventPropParentsItems"""
-
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-    html_url: str = Field()
-
-
-class TimelineCommittedEventPropVerification(GitHubModel):
-    """TimelineCommittedEventPropVerification"""
-
-    verified: bool = Field()
-    reason: str = Field()
-    signature: Union[str, None] = Field()
-    payload: Union[str, None] = Field()
-    verified_at: Union[str, None] = Field()
-
-
-model_rebuild(TimelineCommittedEvent)
-model_rebuild(TimelineCommittedEventPropAuthor)
-model_rebuild(TimelineCommittedEventPropCommitter)
-model_rebuild(TimelineCommittedEventPropTree)
-model_rebuild(TimelineCommittedEventPropParentsItems)
-model_rebuild(TimelineCommittedEventPropVerification)
-
-__all__ = (
-    "TimelineCommittedEvent",
-    "TimelineCommittedEventPropAuthor",
-    "TimelineCommittedEventPropCommitter",
-    "TimelineCommittedEventPropParentsItems",
-    "TimelineCommittedEventPropTree",
-    "TimelineCommittedEventPropVerification",
-)
+__all__ = ("Contributor",)

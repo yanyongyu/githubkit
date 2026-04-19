@@ -9,32 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class WebhooksChanges(GitHubModel):
-    """WebhooksChanges
+class Traffic(GitHubModel):
+    """Traffic"""
 
-    The changes to the comment.
-    """
-
-    body: Missing[WebhooksChangesPropBody] = Field(default=UNSET)
-
-
-class WebhooksChangesPropBody(GitHubModel):
-    """WebhooksChangesPropBody"""
-
-    from_: str = Field(alias="from", description="The previous version of the body.")
+    timestamp: _dt.datetime = Field()
+    uniques: int = Field()
+    count: int = Field()
 
 
-model_rebuild(WebhooksChanges)
-model_rebuild(WebhooksChangesPropBody)
+model_rebuild(Traffic)
 
-__all__ = (
-    "WebhooksChanges",
-    "WebhooksChangesPropBody",
-)
+__all__ = ("Traffic",)

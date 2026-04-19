@@ -12,24 +12,36 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
-from .group_0544 import WebhooksSponsorshipType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0299 import ProjectsV2Type, ProjectsV2TypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
 
 
-class WebhookSponsorshipCreatedType(TypedDict):
-    """sponsorship created event"""
+class WebhookProjectsV2ProjectClosedType(TypedDict):
+    """Projects v2 Project Closed Event"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["closed"]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
+    organization: OrganizationSimpleWebhooksType
+    projects_v2: ProjectsV2Type
     sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("WebhookSponsorshipCreatedType",)
+class WebhookProjectsV2ProjectClosedTypeForResponse(TypedDict):
+    """Projects v2 Project Closed Event"""
+
+    action: Literal["closed"]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2: ProjectsV2TypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookProjectsV2ProjectClosedType",
+    "WebhookProjectsV2ProjectClosedTypeForResponse",
+)

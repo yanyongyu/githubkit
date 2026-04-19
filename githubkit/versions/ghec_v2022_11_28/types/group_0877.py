@@ -12,23 +12,36 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0600 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookStarDeletedType(TypedDict):
-    """star deleted event"""
+class WebhookProjectsV2ItemCreatedType(TypedDict):
+    """Projects v2 Item Created Event"""
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["created"]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
-    starred_at: None
 
 
-__all__ = ("WebhookStarDeletedType",)
+class WebhookProjectsV2ItemCreatedTypeForResponse(TypedDict):
+    """Projects v2 Item Created Event"""
+
+    action: Literal["created"]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_item: ProjectsV2ItemTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookProjectsV2ItemCreatedType",
+    "WebhookProjectsV2ItemCreatedTypeForResponse",
+)

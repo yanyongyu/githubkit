@@ -9,21 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0275 import Link
+
+class HookResponse(GitHubModel):
+    """Hook Response"""
+
+    code: Union[int, None] = Field()
+    status: Union[str, None] = Field()
+    message: Union[str, None] = Field()
 
 
-class ReviewCommentPropLinks(GitHubModel):
-    """ReviewCommentPropLinks"""
+model_rebuild(HookResponse)
 
-    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
-    html: Link = Field(title="Link", description="Hypermedia Link")
-    pull_request: Link = Field(title="Link", description="Hypermedia Link")
-
-
-model_rebuild(ReviewCommentPropLinks)
-
-__all__ = ("ReviewCommentPropLinks",)
+__all__ = ("HookResponse",)

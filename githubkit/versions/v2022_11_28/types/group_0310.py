@@ -9,23 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0309 import (
+    CodeScanningVariantAnalysisRepositoryType,
+    CodeScanningVariantAnalysisRepositoryTypeForResponse,
+)
 
 
-class BlobType(TypedDict):
-    """Blob
+class CodeScanningVariantAnalysisSkippedRepoGroupType(TypedDict):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
 
-    Blob
-    """
-
-    content: str
-    encoding: str
-    url: str
-    sha: str
-    size: Union[int, None]
-    node_id: str
-    highlighted_content: NotRequired[str]
+    repository_count: int
+    repositories: list[CodeScanningVariantAnalysisRepositoryType]
 
 
-__all__ = ("BlobType",)
+class CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+
+    repository_count: int
+    repositories: list[CodeScanningVariantAnalysisRepositoryTypeForResponse]
+
+
+__all__ = (
+    "CodeScanningVariantAnalysisSkippedRepoGroupType",
+    "CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse",
+)

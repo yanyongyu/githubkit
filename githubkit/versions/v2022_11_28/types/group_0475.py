@@ -9,89 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class WebhooksReviewType(TypedDict):
-    """WebhooksReview
+class SshSigningKeyType(TypedDict):
+    """SSH Signing Key
 
-    The review that was affected.
+    A public SSH key used to sign Git commits
     """
 
-    links: WebhooksReviewPropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: Union[str, None]
-    commit_id: str
-    html_url: str
+    key: str
     id: int
-    node_id: str
-    pull_request_url: str
-    state: str
-    submitted_at: Union[datetime, None]
-    user: Union[WebhooksReviewPropUserType, None]
+    title: str
+    created_at: _dt.datetime
 
 
-class WebhooksReviewPropUserType(TypedDict):
-    """User"""
+class SshSigningKeyTypeForResponse(TypedDict):
+    """SSH Signing Key
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
+    A public SSH key used to sign Git commits
+    """
+
+    key: str
     id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksReviewPropLinksType(TypedDict):
-    """WebhooksReviewPropLinks"""
-
-    html: WebhooksReviewPropLinksPropHtmlType
-    pull_request: WebhooksReviewPropLinksPropPullRequestType
-
-
-class WebhooksReviewPropLinksPropHtmlType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewPropLinksPropPullRequestType(TypedDict):
-    """Link"""
-
-    href: str
+    title: str
+    created_at: str
 
 
 __all__ = (
-    "WebhooksReviewPropLinksPropHtmlType",
-    "WebhooksReviewPropLinksPropPullRequestType",
-    "WebhooksReviewPropLinksType",
-    "WebhooksReviewPropUserType",
-    "WebhooksReviewType",
+    "SshSigningKeyType",
+    "SshSigningKeyTypeForResponse",
 )

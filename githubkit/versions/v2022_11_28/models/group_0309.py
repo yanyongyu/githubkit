@@ -9,21 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ShortBlob(GitHubModel):
-    """Short Blob
+class CodeScanningVariantAnalysisRepository(GitHubModel):
+    """Repository Identifier
 
-    Short Blob
+    Repository Identifier
     """
 
-    url: str = Field()
-    sha: str = Field()
+    id: int = Field(description="A unique identifier of the repository.")
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field(
+        description="The full, globally unique, name of the repository."
+    )
+    private: bool = Field(description="Whether the repository is private.")
+    stargazers_count: int = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
 
 
-model_rebuild(ShortBlob)
+model_rebuild(CodeScanningVariantAnalysisRepository)
 
-__all__ = ("ShortBlob",)
+__all__ = ("CodeScanningVariantAnalysisRepository",)

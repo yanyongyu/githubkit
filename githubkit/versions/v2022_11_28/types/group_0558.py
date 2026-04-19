@@ -9,46 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0018 import InstallationType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0444 import WebhooksUserType
-from .group_0450 import WebhooksRepositoriesAddedItemsType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0559 import (
+    WebhookCodeScanningAlertUpdatedAssignmentPropAlertType,
+    WebhookCodeScanningAlertUpdatedAssignmentPropAlertTypeForResponse,
+)
 
 
-class WebhookInstallationRepositoriesAddedType(TypedDict):
-    """installation_repositories added event"""
+class WebhookCodeScanningAlertUpdatedAssignmentType(TypedDict):
+    """code_scanning_alert updated_assignment event"""
 
-    action: Literal["added"]
+    action: Literal["updated_assignment"]
+    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlertType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories_added: list[WebhooksRepositoriesAddedItemsType]
-    repositories_removed: list[
-        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType
-    ]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_selection: Literal["all", "selected"]
-    requester: Union[WebhooksUserType, None]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType(TypedDict):
-    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
+class WebhookCodeScanningAlertUpdatedAssignmentTypeForResponse(TypedDict):
+    """code_scanning_alert updated_assignment event"""
 
-    full_name: NotRequired[str]
-    id: NotRequired[int]
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    private: NotRequired[bool]
+    action: Literal["updated_assignment"]
+    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlertTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType",
-    "WebhookInstallationRepositoriesAddedType",
+    "WebhookCodeScanningAlertUpdatedAssignmentType",
+    "WebhookCodeScanningAlertUpdatedAssignmentTypeForResponse",
 )

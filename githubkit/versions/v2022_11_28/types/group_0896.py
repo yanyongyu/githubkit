@@ -9,13 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0056 import IssueType, IssueTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
+class WebhookSubIssuesSubIssueAddedType(TypedDict):
+    """sub-issue added event"""
 
-    labels: list[str]
+    action: Literal["sub_issue_added"]
+    sub_issue_id: float
+    sub_issue: IssueType
+    sub_issue_repo: RepositoryType
+    parent_issue_id: float
+    parent_issue: IssueType
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType",)
+class WebhookSubIssuesSubIssueAddedTypeForResponse(TypedDict):
+    """sub-issue added event"""
+
+    action: Literal["sub_issue_added"]
+    sub_issue_id: float
+    sub_issue: IssueTypeForResponse
+    sub_issue_repo: RepositoryTypeForResponse
+    parent_issue_id: float
+    parent_issue: IssueTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "WebhookSubIssuesSubIssueAddedType",
+    "WebhookSubIssuesSubIssueAddedTypeForResponse",
+)

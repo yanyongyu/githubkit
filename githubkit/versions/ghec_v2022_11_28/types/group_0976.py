@@ -9,27 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0611 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
 
-class GistsGistIdGetResponse403Type(TypedDict):
-    """GistsGistIdGetResponse403"""
 
-    block: NotRequired[GistsGistIdGetResponse403PropBlockType]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+class WebhookSponsorshipEditedType(TypedDict):
+    """sponsorship edited event"""
+
+    action: Literal["edited"]
+    changes: WebhookSponsorshipEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
 
-class GistsGistIdGetResponse403PropBlockType(TypedDict):
-    """GistsGistIdGetResponse403PropBlock"""
+class WebhookSponsorshipEditedTypeForResponse(TypedDict):
+    """sponsorship edited event"""
 
-    reason: NotRequired[str]
-    created_at: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    action: Literal["edited"]
+    changes: WebhookSponsorshipEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
+
+
+class WebhookSponsorshipEditedPropChangesType(TypedDict):
+    """WebhookSponsorshipEditedPropChanges"""
+
+    privacy_level: NotRequired[WebhookSponsorshipEditedPropChangesPropPrivacyLevelType]
+
+
+class WebhookSponsorshipEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookSponsorshipEditedPropChanges"""
+
+    privacy_level: NotRequired[
+        WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse
+    ]
+
+
+class WebhookSponsorshipEditedPropChangesPropPrivacyLevelType(TypedDict):
+    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
+
+    from_: str
+
+
+class WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse(TypedDict):
+    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
+
+    from_: str
 
 
 __all__ = (
-    "GistsGistIdGetResponse403PropBlockType",
-    "GistsGistIdGetResponse403Type",
+    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelType",
+    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse",
+    "WebhookSponsorshipEditedPropChangesType",
+    "WebhookSponsorshipEditedPropChangesTypeForResponse",
+    "WebhookSponsorshipEditedType",
+    "WebhookSponsorshipEditedTypeForResponse",
 )

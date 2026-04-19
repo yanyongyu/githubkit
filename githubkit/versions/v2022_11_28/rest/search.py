@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Literal, Optional
 from weakref import ref
 
 from githubkit.typing import Missing
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     from typing import Literal
@@ -34,13 +34,13 @@ if TYPE_CHECKING:
         SearchUsersGetResponse200,
     )
     from ..types import (
-        SearchCodeGetResponse200Type,
-        SearchCommitsGetResponse200Type,
-        SearchIssuesGetResponse200Type,
-        SearchLabelsGetResponse200Type,
-        SearchRepositoriesGetResponse200Type,
-        SearchTopicsGetResponse200Type,
-        SearchUsersGetResponse200Type,
+        SearchCodeGetResponse200TypeForResponse,
+        SearchCommitsGetResponse200TypeForResponse,
+        SearchIssuesGetResponse200TypeForResponse,
+        SearchLabelsGetResponse200TypeForResponse,
+        SearchRepositoriesGetResponse200TypeForResponse,
+        SearchTopicsGetResponse200TypeForResponse,
+        SearchUsersGetResponse200TypeForResponse,
     )
 
 
@@ -69,7 +69,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchCodeGetResponse200, SearchCodeGetResponse200Type]:
+    ) -> Response[SearchCodeGetResponse200, SearchCodeGetResponse200TypeForResponse]:
         """search/code
 
         GET /search/code
@@ -93,6 +93,9 @@ class SearchClient:
         *   You must always include at least one search term when searching source code. For example, searching for [`language:go`](https://github.com/search?utf8=%E2%9C%93&q=language%3Ago&type=Code) is not valid, while [`amazing
         language:go`](https://github.com/search?utf8=%E2%9C%93&q=amazing+language%3Ago&type=Code) is.
 
+        > [!NOTE]
+        > `repository.description`, `repository.owner.type`, and `repository.owner.node_id` are closing down on this endpoint and will return `null` in a future API version. Use the [Get a repository](https://docs.github.com/rest/repos/repos#get-a-repository) endpoint (`GET /repos/{owner}/{repo}`) to retrieve full repository metadata.
+
         This endpoint requires you to authenticate and limits you to 10 requests per minute.
 
         See also: https://docs.github.com/rest/search/search#search-code
@@ -100,7 +103,7 @@ class SearchClient:
 
         from ..models import (
             BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             SearchCodeGetResponse200,
             ValidationError,
         )
@@ -120,12 +123,12 @@ class SearchClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=SearchCodeGetResponse200,
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
                 "422": ValidationError,
                 "403": BasicError,
             },
@@ -141,7 +144,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchCodeGetResponse200, SearchCodeGetResponse200Type]:
+    ) -> Response[SearchCodeGetResponse200, SearchCodeGetResponse200TypeForResponse]:
         """search/code
 
         GET /search/code
@@ -165,6 +168,9 @@ class SearchClient:
         *   You must always include at least one search term when searching source code. For example, searching for [`language:go`](https://github.com/search?utf8=%E2%9C%93&q=language%3Ago&type=Code) is not valid, while [`amazing
         language:go`](https://github.com/search?utf8=%E2%9C%93&q=amazing+language%3Ago&type=Code) is.
 
+        > [!NOTE]
+        > `repository.description`, `repository.owner.type`, and `repository.owner.node_id` are closing down on this endpoint and will return `null` in a future API version. Use the [Get a repository](https://docs.github.com/rest/repos/repos#get-a-repository) endpoint (`GET /repos/{owner}/{repo}`) to retrieve full repository metadata.
+
         This endpoint requires you to authenticate and limits you to 10 requests per minute.
 
         See also: https://docs.github.com/rest/search/search#search-code
@@ -172,7 +178,7 @@ class SearchClient:
 
         from ..models import (
             BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             SearchCodeGetResponse200,
             ValidationError,
         )
@@ -192,12 +198,12 @@ class SearchClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=SearchCodeGetResponse200,
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
                 "422": ValidationError,
                 "403": BasicError,
             },
@@ -213,7 +219,9 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchCommitsGetResponse200, SearchCommitsGetResponse200Type]:
+    ) -> Response[
+        SearchCommitsGetResponse200, SearchCommitsGetResponse200TypeForResponse
+    ]:
         """search/commits
 
         GET /search/commits
@@ -247,7 +255,7 @@ class SearchClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=SearchCommitsGetResponse200,
@@ -263,7 +271,9 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchCommitsGetResponse200, SearchCommitsGetResponse200Type]:
+    ) -> Response[
+        SearchCommitsGetResponse200, SearchCommitsGetResponse200TypeForResponse
+    ]:
         """search/commits
 
         GET /search/commits
@@ -297,7 +307,7 @@ class SearchClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=SearchCommitsGetResponse200,
@@ -326,23 +336,36 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         advanced_search: Missing[str] = UNSET,
+        search_type: Missing[Literal["semantic", "hybrid"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchIssuesGetResponse200, SearchIssuesGetResponse200Type]:
-        """DEPRECATED search/issues-and-pull-requests
+    ) -> Response[
+        SearchIssuesGetResponse200, SearchIssuesGetResponse200TypeForResponse
+    ]:
+        """search/issues-and-pull-requests
 
         GET /search/issues
 
-        > [!WARNING]
-        > **Notice:** Search for issues and pull requests will be overridden by advanced search on September 4, 2025.
-        > You can read more about this change on [the GitHub blog](https://github.blog/changelog/2025-03-06-github-issues-projects-api-support-for-issues-advanced-search-and-more/).
+        Find issues by state and keyword. This method returns up to 100 results [per page](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api).
+
+        When searching for issues, you can get text match metadata for the issue **title**, issue **body**, and issue **comment body** fields when you pass the `text-match` media type. For more details about how to receive highlighted
+        search results, see [Text match metadata](https://docs.github.com/rest/search/search#text-match-metadata).
+
+        For example, if you want to find the oldest unresolved Python bugs on Windows. Your query might look something like this.
+
+        `q=windows+label:bug+language:python+state:open&sort=created&order=asc`
+
+        This query searches for the keyword `windows`, within any open issue that is labeled as `bug`. The search runs across repositories whose primary language is Python. The results are sorted by creation date in ascending order, which means the oldest issues appear first in the search results.
+
+        > [!NOTE]
+        > For requests made by GitHub Apps with a user access token, you can't retrieve a combination of issues and pull requests in a single query. Requests that don't include the `is:issue` or `is:pull-request` qualifier will receive an HTTP `422 Unprocessable Entity` response. To get results for both issues and pull requests, you must send separate queries for issues and pull requests. For more information about the `is` qualifier, see "[Searching only issues or pull requests](https://docs.github.com/github/searching-for-information-on-github/searching-issues-and-pull-requests#search-only-issues-or-pull-requests)."
 
         See also: https://docs.github.com/rest/search/search#search-issues-and-pull-requests
         """
 
         from ..models import (
             BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             SearchIssuesGetResponse200,
             ValidationError,
         )
@@ -356,6 +379,7 @@ class SearchClient:
             "per_page": per_page,
             "page": page,
             "advanced_search": advanced_search,
+            "search_type": search_type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -363,14 +387,15 @@ class SearchClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=SearchIssuesGetResponse200,
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
                 "422": ValidationError,
                 "403": BasicError,
+                "401": BasicError,
             },
         )
 
@@ -397,23 +422,36 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         advanced_search: Missing[str] = UNSET,
+        search_type: Missing[Literal["semantic", "hybrid"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchIssuesGetResponse200, SearchIssuesGetResponse200Type]:
-        """DEPRECATED search/issues-and-pull-requests
+    ) -> Response[
+        SearchIssuesGetResponse200, SearchIssuesGetResponse200TypeForResponse
+    ]:
+        """search/issues-and-pull-requests
 
         GET /search/issues
 
-        > [!WARNING]
-        > **Notice:** Search for issues and pull requests will be overridden by advanced search on September 4, 2025.
-        > You can read more about this change on [the GitHub blog](https://github.blog/changelog/2025-03-06-github-issues-projects-api-support-for-issues-advanced-search-and-more/).
+        Find issues by state and keyword. This method returns up to 100 results [per page](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api).
+
+        When searching for issues, you can get text match metadata for the issue **title**, issue **body**, and issue **comment body** fields when you pass the `text-match` media type. For more details about how to receive highlighted
+        search results, see [Text match metadata](https://docs.github.com/rest/search/search#text-match-metadata).
+
+        For example, if you want to find the oldest unresolved Python bugs on Windows. Your query might look something like this.
+
+        `q=windows+label:bug+language:python+state:open&sort=created&order=asc`
+
+        This query searches for the keyword `windows`, within any open issue that is labeled as `bug`. The search runs across repositories whose primary language is Python. The results are sorted by creation date in ascending order, which means the oldest issues appear first in the search results.
+
+        > [!NOTE]
+        > For requests made by GitHub Apps with a user access token, you can't retrieve a combination of issues and pull requests in a single query. Requests that don't include the `is:issue` or `is:pull-request` qualifier will receive an HTTP `422 Unprocessable Entity` response. To get results for both issues and pull requests, you must send separate queries for issues and pull requests. For more information about the `is` qualifier, see "[Searching only issues or pull requests](https://docs.github.com/github/searching-for-information-on-github/searching-issues-and-pull-requests#search-only-issues-or-pull-requests)."
 
         See also: https://docs.github.com/rest/search/search#search-issues-and-pull-requests
         """
 
         from ..models import (
             BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             SearchIssuesGetResponse200,
             ValidationError,
         )
@@ -427,6 +465,7 @@ class SearchClient:
             "per_page": per_page,
             "page": page,
             "advanced_search": advanced_search,
+            "search_type": search_type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -434,14 +473,15 @@ class SearchClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=SearchIssuesGetResponse200,
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
                 "422": ValidationError,
                 "403": BasicError,
+                "401": BasicError,
             },
         )
 
@@ -456,7 +496,9 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchLabelsGetResponse200, SearchLabelsGetResponse200Type]:
+    ) -> Response[
+        SearchLabelsGetResponse200, SearchLabelsGetResponse200TypeForResponse
+    ]:
         """search/labels
 
         GET /search/labels
@@ -492,7 +534,7 @@ class SearchClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=SearchLabelsGetResponse200,
@@ -514,7 +556,9 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchLabelsGetResponse200, SearchLabelsGetResponse200Type]:
+    ) -> Response[
+        SearchLabelsGetResponse200, SearchLabelsGetResponse200TypeForResponse
+    ]:
         """search/labels
 
         GET /search/labels
@@ -550,7 +594,7 @@ class SearchClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=SearchLabelsGetResponse200,
@@ -574,7 +618,8 @@ class SearchClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        SearchRepositoriesGetResponse200, SearchRepositoriesGetResponse200Type
+        SearchRepositoriesGetResponse200,
+        SearchRepositoriesGetResponse200TypeForResponse,
     ]:
         """search/repos
 
@@ -594,7 +639,7 @@ class SearchClient:
         """
 
         from ..models import (
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             SearchRepositoriesGetResponse200,
             ValidationError,
         )
@@ -614,12 +659,12 @@ class SearchClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=SearchRepositoriesGetResponse200,
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
                 "422": ValidationError,
             },
         )
@@ -637,7 +682,8 @@ class SearchClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        SearchRepositoriesGetResponse200, SearchRepositoriesGetResponse200Type
+        SearchRepositoriesGetResponse200,
+        SearchRepositoriesGetResponse200TypeForResponse,
     ]:
         """search/repos
 
@@ -657,7 +703,7 @@ class SearchClient:
         """
 
         from ..models import (
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             SearchRepositoriesGetResponse200,
             ValidationError,
         )
@@ -677,12 +723,12 @@ class SearchClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=SearchRepositoriesGetResponse200,
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
                 "422": ValidationError,
             },
         )
@@ -695,7 +741,9 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchTopicsGetResponse200, SearchTopicsGetResponse200Type]:
+    ) -> Response[
+        SearchTopicsGetResponse200, SearchTopicsGetResponse200TypeForResponse
+    ]:
         r"""search/topics
 
         GET /search/topics
@@ -728,7 +776,7 @@ class SearchClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=SearchTopicsGetResponse200,
@@ -742,7 +790,9 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchTopicsGetResponse200, SearchTopicsGetResponse200Type]:
+    ) -> Response[
+        SearchTopicsGetResponse200, SearchTopicsGetResponse200TypeForResponse
+    ]:
         r"""search/topics
 
         GET /search/topics
@@ -775,7 +825,7 @@ class SearchClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=SearchTopicsGetResponse200,
@@ -791,7 +841,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchUsersGetResponse200, SearchUsersGetResponse200Type]:
+    ) -> Response[SearchUsersGetResponse200, SearchUsersGetResponse200TypeForResponse]:
         """search/users
 
         GET /search/users
@@ -812,7 +862,7 @@ class SearchClient:
         """
 
         from ..models import (
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             SearchUsersGetResponse200,
             ValidationError,
         )
@@ -832,12 +882,12 @@ class SearchClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=SearchUsersGetResponse200,
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
                 "422": ValidationError,
             },
         )
@@ -852,7 +902,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchUsersGetResponse200, SearchUsersGetResponse200Type]:
+    ) -> Response[SearchUsersGetResponse200, SearchUsersGetResponse200TypeForResponse]:
         """search/users
 
         GET /search/users
@@ -873,7 +923,7 @@ class SearchClient:
         """
 
         from ..models import (
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             SearchUsersGetResponse200,
             ValidationError,
         )
@@ -893,12 +943,12 @@ class SearchClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=SearchUsersGetResponse200,
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
                 "422": ValidationError,
             },
         )

@@ -43,4 +43,37 @@ class SimpleUserType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-__all__ = ("SimpleUserType",)
+class SimpleUserTypeForResponse(TypedDict):
+    """Simple User
+
+    A GitHub user.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+__all__ = (
+    "SimpleUserType",
+    "SimpleUserTypeForResponse",
+)

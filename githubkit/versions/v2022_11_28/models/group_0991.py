@@ -12,14 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ProjectsColumnsColumnIdPatchBody(GitHubModel):
-    """ProjectsColumnsColumnIdPatchBody"""
+class OrganizationsOrgDependabotRepositoryAccessPatchBody(GitHubModel):
+    """OrganizationsOrgDependabotRepositoryAccessPatchBody
 
-    name: str = Field(description="Name of the project column")
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to add."
+    )
+    repository_ids_to_remove: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to remove."
+    )
 
 
-model_rebuild(ProjectsColumnsColumnIdPatchBody)
+model_rebuild(OrganizationsOrgDependabotRepositoryAccessPatchBody)
 
-__all__ = ("ProjectsColumnsColumnIdPatchBody",)
+__all__ = ("OrganizationsOrgDependabotRepositoryAccessPatchBody",)

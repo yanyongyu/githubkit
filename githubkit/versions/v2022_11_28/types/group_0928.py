@@ -9,13 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
+class AgentsReposOwnerRepoTasksPostResponse422Type(TypedDict):
+    """AgentsReposOwnerRepoTasksPostResponse422
 
-    selected_repository_ids: list[int]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksPostResponse422PropErrorsItemsType]
+    ]
+    documentation_url: str
 
 
-__all__ = ("OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType",)
+class AgentsReposOwnerRepoTasksPostResponse422TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksPostResponse422
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksPostResponse422PropErrorsItemsTypeForResponse]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksPostResponse422PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksPostResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksPostResponse422PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksPostResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+__all__ = (
+    "AgentsReposOwnerRepoTasksPostResponse422PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksPostResponse422PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksPostResponse422Type",
+    "AgentsReposOwnerRepoTasksPostResponse422TypeForResponse",
+)

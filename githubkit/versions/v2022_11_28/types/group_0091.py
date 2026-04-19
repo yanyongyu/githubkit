@@ -9,29 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamSimpleType(TypedDict):
-    """Team Simple
+class ThreadSubscriptionType(TypedDict):
+    """Thread Subscription
 
-    Groups of organization members that gives permissions on specified repositories.
+    Thread Subscription
     """
 
-    id: int
-    node_id: str
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[_dt.datetime, None]
     url: str
-    members_url: str
-    name: str
-    description: Union[str, None]
-    permission: str
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    html_url: str
-    repositories_url: str
-    slug: str
-    ldap_dn: NotRequired[str]
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
-__all__ = ("TeamSimpleType",)
+class ThreadSubscriptionTypeForResponse(TypedDict):
+    """Thread Subscription
+
+    Thread Subscription
+    """
+
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[str, None]
+    url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
+
+
+__all__ = (
+    "ThreadSubscriptionType",
+    "ThreadSubscriptionTypeForResponse",
+)

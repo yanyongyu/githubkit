@@ -16,11 +16,15 @@ if TYPE_CHECKING:
     from .ghec_v2022_11_28.webhooks import (
         WebhookNamespace as GhecV20221128WebhookNamespace,
     )
+    from .ghec_v2026_03_10.webhooks import (
+        WebhookNamespace as GhecV20260310WebhookNamespace,
+    )
     from .v2022_11_28.webhooks import WebhookNamespace as V20221128WebhookNamespace
+    from .v2026_03_10.webhooks import WebhookNamespace as V20260310WebhookNamespace
 
 if TYPE_CHECKING:
 
-    class _VersionProxy(V20221128WebhookNamespace): ...
+    class _VersionProxy(V20260310WebhookNamespace): ...
 
 else:
     _VersionProxy = object
@@ -47,9 +51,17 @@ class WebhooksVersionSwitcher(_VersionProxy):
     def __call__(
         self, version: Literal["ghec-2022-11-28"]
     ) -> "GhecV20221128WebhookNamespace": ...
+    @overload
+    def __call__(
+        self, version: Literal["2026-03-10"]
+    ) -> "V20260310WebhookNamespace": ...
+    @overload
+    def __call__(
+        self, version: Literal["ghec-2026-03-10"]
+    ) -> "GhecV20260310WebhookNamespace": ...
 
     @overload
-    def __call__(self) -> "V20221128WebhookNamespace": ...
+    def __call__(self) -> "V20260310WebhookNamespace": ...
 
     def __call__(self, version: VERSION_TYPE = LATEST_VERSION) -> Any:
         if version in self._cached_namespaces:

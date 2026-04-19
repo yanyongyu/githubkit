@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal
 
 from pydantic import Field
@@ -19,39 +18,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCodespacesSecretsGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
+class AgentsReposOwnerRepoTasksPostResponse400(GitHubModel):
+    """AgentsReposOwnerRepoTasksPostResponse400
 
-    total_count: int = Field()
-    secrets: list[CodespacesOrgSecret] = Field()
-
-
-class CodespacesOrgSecret(GitHubModel):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    name: str = Field(description="The name of the secret")
-    created_at: datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    updated_at: datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    errors: Missing[list[AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems]] = (
+        Field(
+            default=UNSET,
+            description="List of validation errors (present only for 422 responses)",
+        )
     )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that the secret is visible to"
-    )
-    selected_repositories_url: Missing[str] = Field(
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
         default=UNSET,
-        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(OrgsOrgCodespacesSecretsGetResponse200)
-model_rebuild(CodespacesOrgSecret)
+model_rebuild(AgentsReposOwnerRepoTasksPostResponse400)
+model_rebuild(AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems)
 
 __all__ = (
-    "CodespacesOrgSecret",
-    "OrgsOrgCodespacesSecretsGetResponse200",
+    "AgentsReposOwnerRepoTasksPostResponse400",
+    "AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems",
 )

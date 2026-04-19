@@ -11,18 +11,50 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0092 import TeamType
 
+class GitRefType(TypedDict):
+    """Git Reference
 
-class PullRequestReviewRequestType(TypedDict):
-    """Pull Request Review Request
-
-    Pull Request Review Request
+    Git references within a repository
     """
 
-    users: list[SimpleUserType]
-    teams: list[TeamType]
+    ref: str
+    node_id: str
+    url: str
+    object_: GitRefPropObjectType
 
 
-__all__ = ("PullRequestReviewRequestType",)
+class GitRefTypeForResponse(TypedDict):
+    """Git Reference
+
+    Git references within a repository
+    """
+
+    ref: str
+    node_id: str
+    url: str
+    object_: GitRefPropObjectTypeForResponse
+
+
+class GitRefPropObjectType(TypedDict):
+    """GitRefPropObject"""
+
+    type: str
+    sha: str
+    url: str
+
+
+class GitRefPropObjectTypeForResponse(TypedDict):
+    """GitRefPropObject"""
+
+    type: str
+    sha: str
+    url: str
+
+
+__all__ = (
+    "GitRefPropObjectType",
+    "GitRefPropObjectTypeForResponse",
+    "GitRefType",
+    "GitRefTypeForResponse",
+)

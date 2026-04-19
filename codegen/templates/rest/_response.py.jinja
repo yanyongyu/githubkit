@@ -6,7 +6,7 @@
 
 {% macro build_response_json_type(response) %}
 {% if response and response.response_schema %}
-{{ response.response_schema.get_param_type_string() }}
+{{ response.response_schema.get_response_type_string() }}
 {%- endif %}
 {% endmacro %}
 

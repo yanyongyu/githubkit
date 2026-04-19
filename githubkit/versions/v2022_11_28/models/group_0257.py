@@ -9,30 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0255 import RateLimit
 
 
-class CodeScanningVariantAnalysisRepository(GitHubModel):
-    """Repository Identifier
+class RateLimitOverviewPropResources(GitHubModel):
+    """RateLimitOverviewPropResources"""
 
-    Repository Identifier
-    """
-
-    id: int = Field(description="A unique identifier of the repository.")
-    name: str = Field(description="The name of the repository.")
-    full_name: str = Field(
-        description="The full, globally unique, name of the repository."
+    core: RateLimit = Field(title="Rate Limit")
+    graphql: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    search: RateLimit = Field(title="Rate Limit")
+    code_search: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    source_import: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    integration_manifest: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    code_scanning_upload: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    actions_runner_registration: Missing[RateLimit] = Field(
+        default=UNSET, title="Rate Limit"
     )
-    private: bool = Field(description="Whether the repository is private.")
-    stargazers_count: int = Field()
-    updated_at: Union[datetime, None] = Field()
+    scim: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    dependency_snapshots: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    dependency_sbom: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    code_scanning_autofix: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
 
 
-model_rebuild(CodeScanningVariantAnalysisRepository)
+model_rebuild(RateLimitOverviewPropResources)
 
-__all__ = ("CodeScanningVariantAnalysisRepository",)
+__all__ = ("RateLimitOverviewPropResources",)

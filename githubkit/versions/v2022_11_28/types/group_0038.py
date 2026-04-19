@@ -9,24 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0034 import DependabotAlertPackageType
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
-    """DependabotAlertWithRepositoryPropDependency
+class CopilotUsageMetrics1DayReportType(TypedDict):
+    """Copilot Metrics 1 Day Report
 
-    Details for the vulnerable dependency.
+    Links to download the Copilot usage metrics report for an
+    enterprise/organization for a specific day.
     """
 
-    package: NotRequired[DependabotAlertPackageType]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
-    relationship: NotRequired[
-        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
-    ]
+    download_links: list[str]
+    report_day: _dt.date
 
 
-__all__ = ("DependabotAlertWithRepositoryPropDependencyType",)
+class CopilotUsageMetrics1DayReportTypeForResponse(TypedDict):
+    """Copilot Metrics 1 Day Report
+
+    Links to download the Copilot usage metrics report for an
+    enterprise/organization for a specific day.
+    """
+
+    download_links: list[str]
+    report_day: str
+
+
+__all__ = (
+    "CopilotUsageMetrics1DayReportType",
+    "CopilotUsageMetrics1DayReportTypeForResponse",
+)

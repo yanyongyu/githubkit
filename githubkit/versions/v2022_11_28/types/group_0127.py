@@ -13,23 +13,39 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertyType(TypedDict):
-    """Organization Custom Property
+class CodeScanningAlertRuleSummaryType(TypedDict):
+    """CodeScanningAlertRuleSummary"""
 
-    Custom property defined on an organization
-    """
-
-    property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: Literal["string", "single_select", "multi_select", "true_false"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
+    security_severity_level: NotRequired[
+        Union[None, Literal["low", "medium", "high", "critical"]]
     ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
-__all__ = ("CustomPropertyType",)
+class CodeScanningAlertRuleSummaryTypeForResponse(TypedDict):
+    """CodeScanningAlertRuleSummary"""
+
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
+    security_severity_level: NotRequired[
+        Union[None, Literal["low", "medium", "high", "critical"]]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "CodeScanningAlertRuleSummaryType",
+    "CodeScanningAlertRuleSummaryTypeForResponse",
+)

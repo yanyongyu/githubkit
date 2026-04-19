@@ -9,49 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class OrgsOrgPrivateRegistriesGetResponse200Type(TypedDict):
-    """OrgsOrgPrivateRegistriesGetResponse200"""
+class AppManifestsCodeConversionsPostResponse201Allof1Type(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201Allof1"""
 
-    total_count: int
-    configurations: list[OrgPrivateRegistryConfigurationType]
+    client_id: str
+    client_secret: str
+    webhook_secret: Union[str, None]
+    pem: str
 
 
-class OrgPrivateRegistryConfigurationType(TypedDict):
-    """Organization private registry
+class AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201Allof1"""
 
-    Private registry configuration for an organization
-    """
-
-    name: str
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    username: NotRequired[Union[str, None]]
-    visibility: Literal["all", "private", "selected"]
-    created_at: datetime
-    updated_at: datetime
+    client_id: str
+    client_secret: str
+    webhook_secret: Union[str, None]
+    pem: str
 
 
 __all__ = (
-    "OrgPrivateRegistryConfigurationType",
-    "OrgsOrgPrivateRegistriesGetResponse200Type",
+    "AppManifestsCodeConversionsPostResponse201Allof1Type",
+    "AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse",
 )

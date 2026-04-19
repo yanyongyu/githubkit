@@ -9,69 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0457 import SearchResultTextMatchesItems
 
-class WebhooksMembership(GitHubModel):
-    """Membership
 
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
+class LabelSearchResultItem(GitHubModel):
+    """Label Search Result Item
+
+    Label Search Result Item
     """
 
-    organization_url: str = Field()
-    role: str = Field()
-    direct_membership: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the user has direct membership in the organization.",
-    )
-    enterprise_teams_providing_indirect_membership: Missing[list[str]] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="The slugs of the enterprise teams providing the user with indirect membership in the organization.\nA limit of 100 enterprise team slugs is returned.",
-    )
-    state: str = Field()
-    url: str = Field()
-    user: Union[WebhooksMembershipPropUser, None] = Field(title="User")
-
-
-class WebhooksMembershipPropUser(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
     id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    node_id: str = Field()
+    url: str = Field()
+    name: str = Field()
+    color: str = Field()
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    score: float = Field()
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
 
 
-model_rebuild(WebhooksMembership)
-model_rebuild(WebhooksMembershipPropUser)
+class SearchLabelsGetResponse200(GitHubModel):
+    """SearchLabelsGetResponse200"""
+
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[LabelSearchResultItem] = Field()
+
+
+model_rebuild(LabelSearchResultItem)
+model_rebuild(SearchLabelsGetResponse200)
 
 __all__ = (
-    "WebhooksMembership",
-    "WebhooksMembershipPropUser",
+    "LabelSearchResultItem",
+    "SearchLabelsGetResponse200",
 )

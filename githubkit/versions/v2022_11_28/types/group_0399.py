@@ -9,33 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ContributorActivityType(TypedDict):
-    """Contributor Activity
+class PageBuildType(TypedDict):
+    """Page Build
 
-    Contributor Activity
+    Page Build
     """
 
-    author: Union[None, SimpleUserType]
-    total: int
-    weeks: list[ContributorActivityPropWeeksItemsType]
+    url: str
+    status: str
+    error: PageBuildPropErrorType
+    pusher: Union[None, SimpleUserType]
+    commit: str
+    duration: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class ContributorActivityPropWeeksItemsType(TypedDict):
-    """ContributorActivityPropWeeksItems"""
+class PageBuildTypeForResponse(TypedDict):
+    """Page Build
 
-    w: NotRequired[int]
-    a: NotRequired[int]
-    d: NotRequired[int]
-    c: NotRequired[int]
+    Page Build
+    """
+
+    url: str
+    status: str
+    error: PageBuildPropErrorTypeForResponse
+    pusher: Union[None, SimpleUserTypeForResponse]
+    commit: str
+    duration: int
+    created_at: str
+    updated_at: str
+
+
+class PageBuildPropErrorType(TypedDict):
+    """PageBuildPropError"""
+
+    message: Union[str, None]
+
+
+class PageBuildPropErrorTypeForResponse(TypedDict):
+    """PageBuildPropError"""
+
+    message: Union[str, None]
 
 
 __all__ = (
-    "ContributorActivityPropWeeksItemsType",
-    "ContributorActivityType",
+    "PageBuildPropErrorType",
+    "PageBuildPropErrorTypeForResponse",
+    "PageBuildType",
+    "PageBuildTypeForResponse",
 )

@@ -9,13 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class RepositoryRuleMaxFilePathLengthPropParametersType(TypedDict):
-    """RepositoryRuleMaxFilePathLengthPropParameters"""
+class ProjectsV2DraftIssueType(TypedDict):
+    """Draft Issue
 
-    max_file_path_length: int
+    A draft issue in a project
+    """
+
+    id: float
+    node_id: str
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[None, SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-__all__ = ("RepositoryRuleMaxFilePathLengthPropParametersType",)
+class ProjectsV2DraftIssueTypeForResponse(TypedDict):
+    """Draft Issue
+
+    A draft issue in a project
+    """
+
+    id: float
+    node_id: str
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+
+
+__all__ = (
+    "ProjectsV2DraftIssueType",
+    "ProjectsV2DraftIssueTypeForResponse",
+)

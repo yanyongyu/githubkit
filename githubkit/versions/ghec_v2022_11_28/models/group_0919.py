@@ -17,51 +17,42 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
+from .group_0920 import WebhookRegistryPackagePublishedPropRegistryPackage
 
-class EnterprisesEnterpriseActionsHostedRunnersPostBody(GitHubModel):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
 
-    name: str = Field(
-        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
-    )
-    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage = Field(
-        description="The image of runner. To list all available images, use `GET /actions/hosted-runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`."
-    )
-    size: str = Field(
-        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`"
-    )
-    runner_group_id: int = Field(
-        description="The existing runner group to add this runner to."
-    )
-    maximum_runners: Missing[int] = Field(
+class WebhookRegistryPackagePublished(GitHubModel):
+    """WebhookRegistryPackagePublished"""
+
+    action: Literal["published"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
-    enable_static_ip: Missing[bool] = Field(
+    installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
-        description="Whether this runner should be created with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-
-
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage(GitHubModel):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
-
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
-    """
-
-    id: Missing[str] = Field(
-        default=UNSET, description="The unique identifier of the runner image."
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    source: Missing[Literal["github", "partner", "custom"]] = Field(
-        default=UNSET, description="The source of the runner image."
+    registry_package: WebhookRegistryPackagePublishedPropRegistryPackage = Field()
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(EnterprisesEnterpriseActionsHostedRunnersPostBody)
-model_rebuild(EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage)
+model_rebuild(WebhookRegistryPackagePublished)
 
-__all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersPostBody",
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage",
-)
+__all__ = ("WebhookRegistryPackagePublished",)

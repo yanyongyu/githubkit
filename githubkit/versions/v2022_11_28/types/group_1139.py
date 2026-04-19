@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_1138 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type
-
-
-class ReposOwnerRepoPagesPutBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof0"""
-
-    cname: NotRequired[Union[str, None]]
-    https_enforced: NotRequired[bool]
-    build_type: Literal["legacy", "workflow"]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-        ]
-    ]
+from .group_0264 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof0Type",)
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[ActionsSecretType]
+
+
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
+
+
+__all__ = (
+    "ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type",
+    "ReposOwnerRepoActionsOrganizationSecretsGetResponse200TypeForResponse",
+)

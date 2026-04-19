@@ -9,21 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0355 import BranchProtection
+from .group_0360 import Commit
 
 
-class HookResponse(GitHubModel):
-    """Hook Response"""
+class BranchWithProtection(GitHubModel):
+    """Branch With Protection
 
-    code: Union[int, None] = Field()
-    status: Union[str, None] = Field()
-    message: Union[str, None] = Field()
+    Branch With Protection
+    """
+
+    name: str = Field()
+    commit: Commit = Field(title="Commit", description="Commit")
+    links: BranchWithProtectionPropLinks = Field(alias="_links")
+    protected: bool = Field()
+    protection: BranchProtection = Field(
+        title="Branch Protection", description="Branch Protection"
+    )
+    protection_url: str = Field()
+    pattern: Missing[str] = Field(default=UNSET)
+    required_approving_review_count: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(HookResponse)
+class BranchWithProtectionPropLinks(GitHubModel):
+    """BranchWithProtectionPropLinks"""
 
-__all__ = ("HookResponse",)
+    html: str = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(BranchWithProtection)
+model_rebuild(BranchWithProtectionPropLinks)
+
+__all__ = (
+    "BranchWithProtection",
+    "BranchWithProtectionPropLinks",
+)

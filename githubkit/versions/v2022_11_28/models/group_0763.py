@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0191 import RepositoryAdvisory
-from .group_0433 import EnterpriseWebhooks
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
+from .group_0482 import EnterpriseWebhooks
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0485 import RepositoryWebhooks
+from .group_0512 import WebhooksProjectCard
 
 
-class WebhookRepositoryAdvisoryReported(GitHubModel):
-    """Repository advisory reported event"""
+class WebhookProjectCardCreated(GitHubModel):
+    """project_card created event"""
 
-    action: Literal["reported"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,18 +44,15 @@ class WebhookRepositoryAdvisoryReported(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    project_card: WebhooksProjectCard = Field(title="Project Card")
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    repository_advisory: RepositoryAdvisory = Field(
-        description="A repository security advisory."
-    )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryAdvisoryReported)
+model_rebuild(WebhookProjectCardCreated)
 
-__all__ = ("WebhookRepositoryAdvisoryReported",)
+__all__ = ("WebhookProjectCardCreated",)

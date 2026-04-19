@@ -14,17 +14,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReviewCustomGatesCommentRequired(GitHubModel):
-    """ReviewCustomGatesCommentRequired"""
+class RepositoryRuleMaxFilePathLengthPropParameters(GitHubModel):
+    """RepositoryRuleMaxFilePathLengthPropParameters"""
 
-    environment_name: str = Field(
-        description="The name of the environment to approve or reject."
+    max_file_path_length: int = Field(
+        le=32767.0,
+        ge=1.0,
+        description="The maximum amount of characters allowed in file paths.",
     )
-    comment: str = Field(
-        description="Comment associated with the pending deployment protection rule. **Required when state is not provided.**"
-    )
 
 
-model_rebuild(ReviewCustomGatesCommentRequired)
+model_rebuild(RepositoryRuleMaxFilePathLengthPropParameters)
 
-__all__ = ("ReviewCustomGatesCommentRequired",)
+__all__ = ("RepositoryRuleMaxFilePathLengthPropParameters",)

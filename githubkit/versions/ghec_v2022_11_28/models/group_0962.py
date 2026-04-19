@@ -13,31 +13,47 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
+from .group_0609 import SecretScanningAlertWebhook
 
-class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    name: Missing[str] = Field(
+class WebhookSecretScanningAlertReopened(GitHubModel):
+    """secret_scanning_alert reopened event"""
+
+    action: Literal["reopened"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, `.`, `-`, and `_`.",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
-    compute_service: Missing[Literal["none", "actions"]] = Field(
+    installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
-        description="The hosted compute service to use for the network configuration.",
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    network_settings_ids: Missing[list[str]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
-        description="The identifier of the network settings to use for the network configuration. Exactly one network settings must be specified.",
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-model_rebuild(EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody)
+model_rebuild(WebhookSecretScanningAlertReopened)
 
-__all__ = ("EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody",)
+__all__ = ("WebhookSecretScanningAlertReopened",)

@@ -9,22 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0275 import LinkType
-
-
-class PullRequestSimplePropLinksType(TypedDict):
-    """PullRequestSimplePropLinks"""
-
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-__all__ = ("PullRequestSimplePropLinksType",)
+class AutolinkType(TypedDict):
+    """Autolink reference
+
+    An autolink reference.
+    """
+
+    id: int
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+
+
+class AutolinkTypeForResponse(TypedDict):
+    """Autolink reference
+
+    An autolink reference.
+    """
+
+    id: int
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
+    updated_at: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "AutolinkType",
+    "AutolinkTypeForResponse",
+)

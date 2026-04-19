@@ -12,27 +12,42 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
-from .group_0168 import IssueType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0573 import WebhooksDeployKeyType, WebhooksDeployKeyTypeForResponse
 
 
-class WebhookIssueDependenciesBlockedByRemovedType(TypedDict):
-    """blocked by issue removed event"""
+class WebhookDeployKeyDeletedType(TypedDict):
+    """deploy_key deleted event"""
 
-    action: Literal["blocked_by_removed"]
-    blocked_issue_id: float
-    blocked_issue: IssueType
-    blocking_issue_id: float
-    blocking_issue: IssueType
-    blocking_issue_repo: RepositoryType
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
+    key: WebhooksDeployKeyType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssueDependenciesBlockedByRemovedType",)
+class WebhookDeployKeyDeletedTypeForResponse(TypedDict):
+    """deploy_key deleted event"""
+
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    key: WebhooksDeployKeyTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookDeployKeyDeletedType",
+    "WebhookDeployKeyDeletedTypeForResponse",
+)

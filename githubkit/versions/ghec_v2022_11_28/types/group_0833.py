@@ -12,22 +12,36 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0106 import (
+    OrganizationCustomPropertyType,
+    OrganizationCustomPropertyTypeForResponse,
+)
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
 
 
-class WebhookRepositoryCreatedType(TypedDict):
-    """repository created event"""
+class WebhookOrganizationCustomPropertyUpdatedType(TypedDict):
+    """organization custom property updated event"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["updated"]
+    definition: OrganizationCustomPropertyType
+    enterprise: EnterpriseWebhooksType
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookRepositoryCreatedType",)
+class WebhookOrganizationCustomPropertyUpdatedTypeForResponse(TypedDict):
+    """organization custom property updated event"""
+
+    action: Literal["updated"]
+    definition: OrganizationCustomPropertyTypeForResponse
+    enterprise: EnterpriseWebhooksTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "WebhookOrganizationCustomPropertyUpdatedType",
+    "WebhookOrganizationCustomPropertyUpdatedTypeForResponse",
+)

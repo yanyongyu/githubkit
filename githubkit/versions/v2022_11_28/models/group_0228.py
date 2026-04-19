@@ -12,24 +12,44 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Autolink(GitHubModel):
-    """Autolink reference
+class RepositoryRuleWorkflowsPropParameters(GitHubModel):
+    """RepositoryRuleWorkflowsPropParameters"""
 
-    An autolink reference.
+    do_not_enforce_on_create: Missing[bool] = Field(
+        default=UNSET,
+        description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
+    )
+    workflows: list[RepositoryRuleParamsWorkflowFileReference] = Field(
+        description="Workflows that must pass for this rule to pass."
+    )
+
+
+class RepositoryRuleParamsWorkflowFileReference(GitHubModel):
+    """WorkflowFileReference
+
+    A workflow that must run for this rule to pass
     """
 
-    id: int = Field()
-    key_prefix: str = Field(description="The prefix of a key that is linkified.")
-    url_template: str = Field(
-        description="A template for the target URL that is generated if a key was found."
+    path: str = Field(description="The path to the workflow file")
+    ref: Missing[str] = Field(
+        default=UNSET, description="The ref (branch or tag) of the workflow file to use"
     )
-    is_alphanumeric: bool = Field(
-        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
+    repository_id: int = Field(
+        description="The ID of the repository where the workflow is defined"
+    )
+    sha: Missing[str] = Field(
+        default=UNSET, description="The commit SHA of the workflow file to use"
     )
 
 
-model_rebuild(Autolink)
+model_rebuild(RepositoryRuleWorkflowsPropParameters)
+model_rebuild(RepositoryRuleParamsWorkflowFileReference)
 
-__all__ = ("Autolink",)
+__all__ = (
+    "RepositoryRuleParamsWorkflowFileReference",
+    "RepositoryRuleWorkflowsPropParameters",
+)

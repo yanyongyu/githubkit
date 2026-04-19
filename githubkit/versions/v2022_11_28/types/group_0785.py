@@ -12,24 +12,36 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0478 import WebhooksAlertType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0516 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookRepositoryVulnerabilityAlertReopenType(TypedDict):
-    """repository_vulnerability_alert reopen event"""
+class WebhookProjectsV2ItemDeletedType(TypedDict):
+    """Projects v2 Item Deleted Event"""
 
-    action: Literal["reopen"]
-    alert: WebhooksAlertType
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertReopenType",)
+class WebhookProjectsV2ItemDeletedTypeForResponse(TypedDict):
+    """Projects v2 Item Deleted Event"""
+
+    action: Literal["deleted"]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_item: ProjectsV2ItemTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookProjectsV2ItemDeletedType",
+    "WebhookProjectsV2ItemDeletedTypeForResponse",
+)

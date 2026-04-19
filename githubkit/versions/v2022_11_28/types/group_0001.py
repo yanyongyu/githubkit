@@ -20,7 +20,21 @@ class CvssSeveritiesType(TypedDict):
     cvss_v4: NotRequired[Union[CvssSeveritiesPropCvssV4Type, None]]
 
 
+class CvssSeveritiesTypeForResponse(TypedDict):
+    """CvssSeverities"""
+
+    cvss_v3: NotRequired[Union[CvssSeveritiesPropCvssV3TypeForResponse, None]]
+    cvss_v4: NotRequired[Union[CvssSeveritiesPropCvssV4TypeForResponse, None]]
+
+
 class CvssSeveritiesPropCvssV3Type(TypedDict):
+    """CvssSeveritiesPropCvssV3"""
+
+    vector_string: Union[str, None]
+    score: Union[float, None]
+
+
+class CvssSeveritiesPropCvssV3TypeForResponse(TypedDict):
     """CvssSeveritiesPropCvssV3"""
 
     vector_string: Union[str, None]
@@ -34,8 +48,18 @@ class CvssSeveritiesPropCvssV4Type(TypedDict):
     score: Union[float, None]
 
 
+class CvssSeveritiesPropCvssV4TypeForResponse(TypedDict):
+    """CvssSeveritiesPropCvssV4"""
+
+    vector_string: Union[str, None]
+    score: Union[float, None]
+
+
 __all__ = (
     "CvssSeveritiesPropCvssV3Type",
+    "CvssSeveritiesPropCvssV3TypeForResponse",
     "CvssSeveritiesPropCvssV4Type",
+    "CvssSeveritiesPropCvssV4TypeForResponse",
     "CvssSeveritiesType",
+    "CvssSeveritiesTypeForResponse",
 )

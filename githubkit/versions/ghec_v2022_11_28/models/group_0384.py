@@ -9,34 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0385 import TimelineCrossReferencedEventPropSource
+from .group_0381 import CodeScanningVariantAnalysisSkippedRepoGroup
 
 
-class TimelineCrossReferencedEvent(GitHubModel):
-    """Timeline Cross Referenced Event
+class CodeScanningVariantAnalysisPropSkippedRepositories(GitHubModel):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
 
-    Timeline Cross Referenced Event
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
     """
 
-    event: Literal["cross-referenced"] = Field()
-    actor: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos = Field()
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+
+
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos(GitHubModel):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+
+    repository_count: int = Field(
+        description="The total number of repositories that were skipped for this reason."
     )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    source: TimelineCrossReferencedEventPropSource = Field()
+    repository_full_names: list[str] = Field(
+        description="A list of full repository names that were skipped. This list may not include all repositories that were skipped."
+    )
 
 
-model_rebuild(TimelineCrossReferencedEvent)
+model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositories)
+model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos)
 
-__all__ = ("TimelineCrossReferencedEvent",)
+__all__ = (
+    "CodeScanningVariantAnalysisPropSkippedRepositories",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos",
+)

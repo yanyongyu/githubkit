@@ -12,63 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoContentsPathDeleteBody(GitHubModel):
-    """ReposOwnerRepoContentsPathDeleteBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
 
-    message: str = Field(description="The commit message.")
-    sha: str = Field(description="The blob SHA of the file being deleted.")
-    branch: Missing[str] = Field(
-        default=UNSET,
-        description="The branch name. Default: the repository’s default branch",
-    )
-    committer: Missing[ReposOwnerRepoContentsPathDeleteBodyPropCommitter] = Field(
-        default=UNSET, description="object containing information about the committer."
-    )
-    author: Missing[ReposOwnerRepoContentsPathDeleteBodyPropAuthor] = Field(
-        default=UNSET, description="object containing information about the author."
-    )
-
-
-class ReposOwnerRepoContentsPathDeleteBodyPropCommitter(GitHubModel):
-    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
-
-    object containing information about the committer.
+    The total number of seats set to "pending cancellation" for the specified users.
     """
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the author (or committer) of the commit"
-    )
-    email: Missing[str] = Field(
-        default=UNSET,
-        description="The email of the author (or committer) of the commit",
-    )
+    seats_cancelled: int = Field()
 
 
-class ReposOwnerRepoContentsPathDeleteBodyPropAuthor(GitHubModel):
-    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteResponse200)
 
-    object containing information about the author.
-    """
-
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the author (or committer) of the commit"
-    )
-    email: Missing[str] = Field(
-        default=UNSET,
-        description="The email of the author (or committer) of the commit",
-    )
-
-
-model_rebuild(ReposOwnerRepoContentsPathDeleteBody)
-model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropCommitter)
-model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropAuthor)
-
-__all__ = (
-    "ReposOwnerRepoContentsPathDeleteBody",
-    "ReposOwnerRepoContentsPathDeleteBodyPropAuthor",
-    "ReposOwnerRepoContentsPathDeleteBodyPropCommitter",
-)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",)

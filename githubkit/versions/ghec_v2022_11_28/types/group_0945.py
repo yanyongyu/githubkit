@@ -12,18 +12,48 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0174 import RepositoryRulesetType, RepositoryRulesetTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0946 import (
+    WebhookRepositoryRulesetEditedPropChangesType,
+    WebhookRepositoryRulesetEditedPropChangesTypeForResponse,
+)
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    PatchBody
-    """
 
-    repository_selection: Literal["all", "selected"]
-    repositories: NotRequired[list[str]]
+class WebhookRepositoryRulesetEditedType(TypedDict):
+    """repository ruleset edited event"""
+
+    action: Literal["edited"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_ruleset: RepositoryRulesetType
+    changes: NotRequired[WebhookRepositoryRulesetEditedPropChangesType]
+    sender: SimpleUserType
+
+
+class WebhookRepositoryRulesetEditedTypeForResponse(TypedDict):
+    """repository ruleset edited event"""
+
+    action: Literal["edited"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository_ruleset: RepositoryRulesetTypeForResponse
+    changes: NotRequired[WebhookRepositoryRulesetEditedPropChangesTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType",
+    "WebhookRepositoryRulesetEditedType",
+    "WebhookRepositoryRulesetEditedTypeForResponse",
 )

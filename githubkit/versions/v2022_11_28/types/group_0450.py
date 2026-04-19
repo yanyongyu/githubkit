@@ -12,14 +12,49 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class WebhooksRepositoriesAddedItemsType(TypedDict):
-    """WebhooksRepositoriesAddedItems"""
+class TagType(TypedDict):
+    """Tag
 
-    full_name: str
-    id: int
+    Tag
+    """
+
     name: str
+    commit: TagPropCommitType
+    zipball_url: str
+    tarball_url: str
     node_id: str
-    private: bool
 
 
-__all__ = ("WebhooksRepositoriesAddedItemsType",)
+class TagTypeForResponse(TypedDict):
+    """Tag
+
+    Tag
+    """
+
+    name: str
+    commit: TagPropCommitTypeForResponse
+    zipball_url: str
+    tarball_url: str
+    node_id: str
+
+
+class TagPropCommitType(TypedDict):
+    """TagPropCommit"""
+
+    sha: str
+    url: str
+
+
+class TagPropCommitTypeForResponse(TypedDict):
+    """TagPropCommit"""
+
+    sha: str
+    url: str
+
+
+__all__ = (
+    "TagPropCommitType",
+    "TagPropCommitTypeForResponse",
+    "TagType",
+    "TagTypeForResponse",
+)

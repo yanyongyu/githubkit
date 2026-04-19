@@ -9,16 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0099 import CodespaceType
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
 
-    total_count: int
-    codespaces: list[CodespaceType]
+    A GitHub user
+    """
+
+    id: NotRequired[int]
 
 
-__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200Type",)
+class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
+
+    A GitHub user
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+
+    A GitHub user
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+
+    A GitHub user
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
+
+    The repository this task belongs to
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
+
+    The repository this task belongs to
+    """
+
+    id: NotRequired[int]
+
+
+__all__ = (
+    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type",
+    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType",
+    "AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType",
+    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse",
+)

@@ -9,24 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0135 import RepositoryRulesetConditionsPropRefNameType
-from .group_0141 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+
+class ApiInsightsSubjectStatsItemsType(TypedDict):
+    """ApiInsightsSubjectStatsItems"""
+
+    subject_type: NotRequired[str]
+    subject_name: NotRequired[str]
+    subject_id: NotRequired[int]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
+
+
+class ApiInsightsSubjectStatsItemsTypeForResponse(TypedDict):
+    """ApiInsightsSubjectStatsItems"""
+
+    subject_type: NotRequired[str]
+    subject_name: NotRequired[str]
+    subject_id: NotRequired[int]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
+
+
+__all__ = (
+    "ApiInsightsSubjectStatsItemsType",
+    "ApiInsightsSubjectStatsItemsTypeForResponse",
 )
-
-
-class OrgRulesetConditionsOneof2Type(TypedDict):
-    """repository_property_and_ref_name
-
-    Conditions to target repositories by property and refs by name
-    """
-
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
-
-
-__all__ = ("OrgRulesetConditionsOneof2Type",)

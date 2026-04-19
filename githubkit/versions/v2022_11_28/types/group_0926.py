@@ -13,13 +13,75 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodespacesSecretsSecretNamePutBodyType(TypedDict):
-    """OrgsOrgCodespacesSecretsSecretNamePutBody"""
+class AgentsReposOwnerRepoTasksPostResponse401Type(TypedDict):
+    """AgentsReposOwnerRepoTasksPostResponse401
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsType]
+    ]
+    documentation_url: str
 
 
-__all__ = ("OrgsOrgCodespacesSecretsSecretNamePutBodyType",)
+class AgentsReposOwnerRepoTasksPostResponse401TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksPostResponse401
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsTypeForResponse]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+__all__ = (
+    "AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksPostResponse401Type",
+    "AgentsReposOwnerRepoTasksPostResponse401TypeForResponse",
+)

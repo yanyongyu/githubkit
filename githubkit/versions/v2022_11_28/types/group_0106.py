@@ -9,30 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
+from typing_extensions import TypedDict
 
 
-class OrganizationInvitationType(TypedDict):
-    """Organization Invitation
+class ActionsHostedRunnerLimitsType(TypedDict):
+    """ActionsHostedRunnerLimits"""
 
-    Organization Invitation
+    public_ips: ActionsHostedRunnerLimitsPropPublicIpsType
+
+
+class ActionsHostedRunnerLimitsTypeForResponse(TypedDict):
+    """ActionsHostedRunnerLimits"""
+
+    public_ips: ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse
+
+
+class ActionsHostedRunnerLimitsPropPublicIpsType(TypedDict):
+    """Static public IP Limits for GitHub-hosted Hosted Runners.
+
+    Provides details of static public IP limits for GitHub-hosted Hosted Runners
     """
 
-    id: int
-    login: Union[str, None]
-    email: Union[str, None]
-    role: str
-    created_at: str
-    failed_at: NotRequired[Union[str, None]]
-    failed_reason: NotRequired[Union[str, None]]
-    inviter: SimpleUserType
-    team_count: int
-    node_id: str
-    invitation_teams_url: str
-    invitation_source: NotRequired[str]
+    maximum: int
+    current_usage: int
 
 
-__all__ = ("OrganizationInvitationType",)
+class ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse(TypedDict):
+    """Static public IP Limits for GitHub-hosted Hosted Runners.
+
+    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    """
+
+    maximum: int
+    current_usage: int
+
+
+__all__ = (
+    "ActionsHostedRunnerLimitsPropPublicIpsType",
+    "ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse",
+    "ActionsHostedRunnerLimitsType",
+    "ActionsHostedRunnerLimitsTypeForResponse",
+)

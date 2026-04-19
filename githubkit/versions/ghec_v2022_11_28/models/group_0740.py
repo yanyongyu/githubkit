@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -17,76 +18,37 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0741 import WebhookPackagePublishedPropPackagePropPackageVersion
-
-
-class WebhookPackagePublishedPropPackage(GitHubModel):
-    """WebhookPackagePublishedPropPackage
-
-    Information about the package.
-    """
-
-    created_at: Union[str, None] = Field()
-    description: Union[str, None] = Field()
-    ecosystem: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field()
-    namespace: str = Field()
-    owner: Union[WebhookPackagePublishedPropPackagePropOwner, None] = Field(
-        title="User"
-    )
-    package_type: str = Field()
-    package_version: Union[
-        WebhookPackagePublishedPropPackagePropPackageVersion, None
-    ] = Field()
-    registry: Union[WebhookPackagePublishedPropPackagePropRegistry, None] = Field()
-    updated_at: Union[str, None] = Field()
-
-
-class WebhookPackagePublishedPropPackagePropOwner(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhookPackagePublishedPropPackagePropRegistry(GitHubModel):
-    """WebhookPackagePublishedPropPackagePropRegistry"""
-
-    about_url: str = Field()
-    name: str = Field()
-    type: str = Field()
-    url: str = Field()
-    vendor: str = Field()
-
-
-model_rebuild(WebhookPackagePublishedPropPackage)
-model_rebuild(WebhookPackagePublishedPropPackagePropOwner)
-model_rebuild(WebhookPackagePublishedPropPackagePropRegistry)
-
-__all__ = (
-    "WebhookPackagePublishedPropPackage",
-    "WebhookPackagePublishedPropPackagePropOwner",
-    "WebhookPackagePublishedPropPackagePropRegistry",
+from .group_0736 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
 )
+
+
+class WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp(GitHubModel):
+    """WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp"""
+
+    created_at: Union[_dt.datetime, None] = Field()
+    description: Union[str, None] = Field()
+    events: Missing[list[str]] = Field(
+        default=UNSET, description="The list of events for the GitHub app"
+    )
+    external_url: Union[str, None] = Field()
+    html_url: str = Field()
+    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
+    name: str = Field(description="The name of the GitHub app")
+    node_id: str = Field()
+    owner: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
+    ] = Field(title="User")
+    permissions: Missing[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
+    slug: Missing[str] = Field(
+        default=UNSET, description="The slug name of the GitHub app"
+    )
+    updated_at: Union[_dt.datetime, None] = Field()
+
+
+model_rebuild(WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp)
+
+__all__ = ("WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp",)

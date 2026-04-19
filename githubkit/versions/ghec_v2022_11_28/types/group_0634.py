@@ -9,160 +9,535 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0165 import IssueTypeType
-from .group_0167 import IssueDependenciesSummaryType, SubIssuesSummaryType
-from .group_0635 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropAssigneeType,
-    WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItemsType,
-    WebhookIssueCommentCreatedPropIssueAllof0PropPullRequestType,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0637 import WebhookIssueCommentCreatedPropIssueAllof0PropMilestoneType
-from .group_0639 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppType,
-)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0Type(TypedDict):
-    """Issue
+class WebhookCheckSuiteRerequestedType(TypedDict):
+    """check_suite rerequested event"""
 
-    The [issue](https://docs.github.com/enterprise-
-    cloud@latest//rest/issues/issues#get-an-issue) itself.
+    action: Literal["rerequested"]
+    check_suite: WebhookCheckSuiteRerequestedPropCheckSuiteType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+
+
+class WebhookCheckSuiteRerequestedTypeForResponse(TypedDict):
+    """check_suite rerequested event"""
+
+    action: Literal["rerequested"]
+    check_suite: WebhookCheckSuiteRerequestedPropCheckSuiteTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuiteType(TypedDict):
+    """WebhookCheckSuiteRerequestedPropCheckSuite
+
+    The [check_suite](https://docs.github.com/enterprise-
+    cloud@latest//rest/checks/suites#get-a-check-suite).
     """
 
-    active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+    after: Union[str, None]
+    app: WebhookCheckSuiteRerequestedPropCheckSuitePropAppType
+    before: Union[str, None]
+    check_runs_url: str
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+        ],
     ]
-    assignee: NotRequired[
-        Union[WebhookIssueCommentCreatedPropIssueAllof0PropAssigneeType, None]
-    ]
-    assignees: list[
-        Union[WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItemsType, None]
-    ]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: Union[str, None]
-    closed_at: Union[datetime, None]
-    comments: int
-    comments_url: str
-    created_at: datetime
-    draft: NotRequired[bool]
-    events_url: str
-    html_url: str
+    created_at: _dt.datetime
+    head_branch: Union[str, None]
+    head_commit: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitType
+    head_sha: str
     id: int
-    labels: NotRequired[
-        list[WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItemsType]
-    ]
-    labels_url: str
-    locked: NotRequired[bool]
-    milestone: Union[WebhookIssueCommentCreatedPropIssueAllof0PropMilestoneType, None]
+    latest_check_runs_count: int
     node_id: str
+    pull_requests: list[
+        WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsType
+    ]
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
+    status: Union[None, Literal["requested", "in_progress", "completed", "queued"]]
+    updated_at: _dt.datetime
+    url: str
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuiteTypeForResponse(TypedDict):
+    """WebhookCheckSuiteRerequestedPropCheckSuite
+
+    The [check_suite](https://docs.github.com/enterprise-
+    cloud@latest//rest/checks/suites#get-a-check-suite).
+    """
+
+    after: Union[str, None]
+    app: WebhookCheckSuiteRerequestedPropCheckSuitePropAppTypeForResponse
+    before: Union[str, None]
+    check_runs_url: str
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+        ],
+    ]
+    created_at: str
+    head_branch: Union[str, None]
+    head_commit: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitTypeForResponse
+    head_sha: str
+    id: int
+    latest_check_runs_count: int
+    node_id: str
+    pull_requests: list[
+        WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsTypeForResponse
+    ]
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
+    status: Union[None, Literal["requested", "in_progress", "completed", "queued"]]
+    updated_at: str
+    url: str
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropAppType(TypedDict):
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[_dt.datetime, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    client_id: NotRequired[Union[str, None]]
+    name: str
+    node_id: str
+    owner: Union[WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerType, None]
+    permissions: NotRequired[
+        WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropAppTypeForResponse(TypedDict):
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[str, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    client_id: NotRequired[Union[str, None]]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerTypeForResponse, None
+    ]
+    permissions: NotRequired[
+        WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerTypeForResponse(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsType(TypedDict):
+    """WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions
+
+    The set of permissions for the GitHub app
+    """
+
+    actions: NotRequired[Literal["read", "write"]]
+    administration: NotRequired[Literal["read", "write"]]
+    artifact_metadata: NotRequired[Literal["read", "write"]]
+    attestations: NotRequired[Literal["read", "write"]]
+    checks: NotRequired[Literal["read", "write"]]
+    content_references: NotRequired[Literal["read", "write"]]
+    contents: NotRequired[Literal["read", "write"]]
+    copilot_requests: NotRequired[Literal["write"]]
+    deployments: NotRequired[Literal["read", "write"]]
+    discussions: NotRequired[Literal["read", "write"]]
+    emails: NotRequired[Literal["read", "write"]]
+    environments: NotRequired[Literal["read", "write"]]
+    issues: NotRequired[Literal["read", "write"]]
+    keys: NotRequired[Literal["read", "write"]]
+    members: NotRequired[Literal["read", "write"]]
+    merge_queues: NotRequired[Literal["read", "write"]]
+    metadata: NotRequired[Literal["read", "write"]]
+    models: NotRequired[Literal["read", "write"]]
+    organization_administration: NotRequired[Literal["read", "write"]]
+    organization_hooks: NotRequired[Literal["read", "write"]]
+    organization_packages: NotRequired[Literal["read", "write"]]
+    organization_plan: NotRequired[Literal["read", "write"]]
+    organization_projects: NotRequired[Literal["read", "write", "admin"]]
+    organization_secrets: NotRequired[Literal["read", "write"]]
+    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
+    organization_user_blocking: NotRequired[Literal["read", "write"]]
+    packages: NotRequired[Literal["read", "write"]]
+    pages: NotRequired[Literal["read", "write"]]
+    pull_requests: NotRequired[Literal["read", "write"]]
+    repository_hooks: NotRequired[Literal["read", "write"]]
+    repository_projects: NotRequired[Literal["read", "write", "admin"]]
+    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
+    secrets: NotRequired[Literal["read", "write"]]
+    security_events: NotRequired[Literal["read", "write"]]
+    security_scanning_alert: NotRequired[Literal["read", "write"]]
+    single_file: NotRequired[Literal["read", "write"]]
+    statuses: NotRequired[Literal["read", "write"]]
+    vulnerability_alerts: NotRequired[Literal["read", "write"]]
+    workflows: NotRequired[Literal["read", "write"]]
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsTypeForResponse(
+    TypedDict
+):
+    """WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions
+
+    The set of permissions for the GitHub app
+    """
+
+    actions: NotRequired[Literal["read", "write"]]
+    administration: NotRequired[Literal["read", "write"]]
+    artifact_metadata: NotRequired[Literal["read", "write"]]
+    attestations: NotRequired[Literal["read", "write"]]
+    checks: NotRequired[Literal["read", "write"]]
+    content_references: NotRequired[Literal["read", "write"]]
+    contents: NotRequired[Literal["read", "write"]]
+    copilot_requests: NotRequired[Literal["write"]]
+    deployments: NotRequired[Literal["read", "write"]]
+    discussions: NotRequired[Literal["read", "write"]]
+    emails: NotRequired[Literal["read", "write"]]
+    environments: NotRequired[Literal["read", "write"]]
+    issues: NotRequired[Literal["read", "write"]]
+    keys: NotRequired[Literal["read", "write"]]
+    members: NotRequired[Literal["read", "write"]]
+    merge_queues: NotRequired[Literal["read", "write"]]
+    metadata: NotRequired[Literal["read", "write"]]
+    models: NotRequired[Literal["read", "write"]]
+    organization_administration: NotRequired[Literal["read", "write"]]
+    organization_hooks: NotRequired[Literal["read", "write"]]
+    organization_packages: NotRequired[Literal["read", "write"]]
+    organization_plan: NotRequired[Literal["read", "write"]]
+    organization_projects: NotRequired[Literal["read", "write", "admin"]]
+    organization_secrets: NotRequired[Literal["read", "write"]]
+    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
+    organization_user_blocking: NotRequired[Literal["read", "write"]]
+    packages: NotRequired[Literal["read", "write"]]
+    pages: NotRequired[Literal["read", "write"]]
+    pull_requests: NotRequired[Literal["read", "write"]]
+    repository_hooks: NotRequired[Literal["read", "write"]]
+    repository_projects: NotRequired[Literal["read", "write", "admin"]]
+    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
+    secrets: NotRequired[Literal["read", "write"]]
+    security_events: NotRequired[Literal["read", "write"]]
+    security_scanning_alert: NotRequired[Literal["read", "write"]]
+    single_file: NotRequired[Literal["read", "write"]]
+    statuses: NotRequired[Literal["read", "write"]]
+    vulnerability_alerts: NotRequired[Literal["read", "write"]]
+    workflows: NotRequired[Literal["read", "write"]]
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitType(TypedDict):
+    """SimpleCommit"""
+
+    author: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorType
+    committer: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterType
+    id: str
+    message: str
+    timestamp: str
+    tree_id: str
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitTypeForResponse(
+    TypedDict
+):
+    """SimpleCommit"""
+
+    author: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorTypeForResponse
+    committer: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterTypeForResponse
+    id: str
+    message: str
+    timestamp: str
+    tree_id: str
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorType(TypedDict):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: NotRequired[_dt.datetime]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorTypeForResponse(
+    TypedDict
+):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: NotRequired[str]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterType(
+    TypedDict
+):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: NotRequired[_dt.datetime]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterTypeForResponse(
+    TypedDict
+):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: NotRequired[str]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsType(TypedDict):
+    """Check Run Pull Request"""
+
+    base: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseType
+    head: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadType
+    id: int
     number: int
-    performed_via_github_app: NotRequired[
-        Union[
-            WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppType, None
-        ]
-    ]
-    pull_request: NotRequired[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPullRequestType
-    ]
-    reactions: WebhookIssueCommentCreatedPropIssueAllof0PropReactionsType
-    repository_url: str
-    sub_issues_summary: NotRequired[SubIssuesSummaryType]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    title: str
-    type: NotRequired[Union[IssueTypeType, None]]
-    updated_at: datetime
-    url: str
-    user: Union[WebhookIssueCommentCreatedPropIssueAllof0PropUserType, None]
-
-
-class WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItemsType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssueCommentCreatedPropIssueAllof0PropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
     url: str
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropUserType(TypedDict):
-    """User"""
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsTypeForResponse(
+    TypedDict
+):
+    """Check Run Pull Request"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
+    base: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseTypeForResponse
+    head: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadTypeForResponse
     id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    number: int
+    url: str
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseType(
+    TypedDict
+):
+    """WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase"""
+
+    ref: str
+    repo: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType
+    sha: str
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseTypeForResponse(
+    TypedDict
+):
+    """WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase"""
+
+    ref: str
+    repo: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoTypeForResponse
+    sha: str
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType(
+    TypedDict
+):
+    """Repo Ref"""
+
+    id: int
+    name: str
+    url: str
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoTypeForResponse(
+    TypedDict
+):
+    """Repo Ref"""
+
+    id: int
+    name: str
+    url: str
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadType(
+    TypedDict
+):
+    """WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead"""
+
+    ref: str
+    repo: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType
+    sha: str
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadTypeForResponse(
+    TypedDict
+):
+    """WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead"""
+
+    ref: str
+    repo: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoTypeForResponse
+    sha: str
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType(
+    TypedDict
+):
+    """Repo Ref"""
+
+    id: int
+    name: str
+    url: str
+
+
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoTypeForResponse(
+    TypedDict
+):
+    """Repo Ref"""
+
+    id: int
+    name: str
+    url: str
 
 
 __all__ = (
-    "WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItemsType",
-    "WebhookIssueCommentCreatedPropIssueAllof0PropReactionsType",
-    "WebhookIssueCommentCreatedPropIssueAllof0PropUserType",
-    "WebhookIssueCommentCreatedPropIssueAllof0Type",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuiteType",
+    "WebhookCheckSuiteRerequestedPropCheckSuiteTypeForResponse",
+    "WebhookCheckSuiteRerequestedType",
+    "WebhookCheckSuiteRerequestedTypeForResponse",
 )

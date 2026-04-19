@@ -9,35 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0309 import CodeScanningVariantAnalysisRepository
 
 
-class GitRef(GitHubModel):
-    """Git Reference
+class CodeScanningVariantAnalysisPropScannedRepositoriesItems(GitHubModel):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    Git references within a repository
-    """
+    repository: CodeScanningVariantAnalysisRepository = Field(
+        title="Repository Identifier", description="Repository Identifier"
+    )
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ] = Field(
+        description="The new status of the CodeQL variant analysis repository task."
+    )
+    result_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
+    )
+    artifact_size_in_bytes: Missing[int] = Field(
+        default=UNSET,
+        description="The size of the artifact. This is only available for successful analyses.",
+    )
+    failure_message: Missing[str] = Field(
+        default=UNSET,
+        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
+    )
 
-    ref: str = Field()
-    node_id: str = Field()
-    url: str = Field()
-    object_: GitRefPropObject = Field(alias="object")
 
+model_rebuild(CodeScanningVariantAnalysisPropScannedRepositoriesItems)
 
-class GitRefPropObject(GitHubModel):
-    """GitRefPropObject"""
-
-    type: str = Field()
-    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
-    url: str = Field()
-
-
-model_rebuild(GitRef)
-model_rebuild(GitRefPropObject)
-
-__all__ = (
-    "GitRef",
-    "GitRefPropObject",
-)
+__all__ = ("CodeScanningVariantAnalysisPropScannedRepositoriesItems",)

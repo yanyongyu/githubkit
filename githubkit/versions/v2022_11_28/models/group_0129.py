@@ -9,25 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CustomPropertyValue(GitHubModel):
-    """Custom Property Value
+class CodeScanningAlertLocation(GitHubModel):
+    """CodeScanningAlertLocation
 
-    Custom property name and associated value
+    Describe a region within a file for the alert.
     """
 
-    property_name: str = Field(description="The name of the property")
-    value: Union[str, list[str], None] = Field(
-        description="The value assigned to the property"
-    )
+    path: Missing[str] = Field(default=UNSET)
+    start_line: Missing[int] = Field(default=UNSET)
+    end_line: Missing[int] = Field(default=UNSET)
+    start_column: Missing[int] = Field(default=UNSET)
+    end_column: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(CustomPropertyValue)
+model_rebuild(CodeScanningAlertLocation)
 
-__all__ = ("CustomPropertyValue",)
+__all__ = ("CodeScanningAlertLocation",)

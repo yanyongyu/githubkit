@@ -9,81 +9,122 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0039 import (
-    SecretScanningLocationCommitType,
-    SecretScanningLocationDiscussionCommentType,
-    SecretScanningLocationDiscussionTitleType,
-    SecretScanningLocationIssueBodyType,
-    SecretScanningLocationPullRequestBodyType,
-    SecretScanningLocationPullRequestReviewType,
-    SecretScanningLocationWikiCommitType,
-)
-from .group_0040 import (
-    SecretScanningLocationIssueCommentType,
-    SecretScanningLocationIssueTitleType,
-    SecretScanningLocationPullRequestReviewCommentType,
-    SecretScanningLocationPullRequestTitleType,
-)
-from .group_0041 import (
-    SecretScanningLocationDiscussionBodyType,
-    SecretScanningLocationPullRequestCommentType,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class SecretScanningAlertType(TypedDict):
-    """SecretScanningAlert"""
+class TimelineReviewedEventType(TypedDict):
+    """Timeline Reviewed Event
 
-    number: NotRequired[int]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[Union[None, datetime]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    locations_url: NotRequired[str]
-    state: NotRequired[Literal["open", "resolved"]]
-    resolution: NotRequired[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    Timeline Reviewed Event
+    """
+
+    event: Literal["reviewed"]
+    id: int
+    node_id: str
+    user: SimpleUserType
+    body: Union[str, None]
+    state: str
+    html_url: str
+    pull_request_url: str
+    links: TimelineReviewedEventPropLinksType
+    submitted_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    commit_id: str
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
-    resolved_at: NotRequired[Union[datetime, None]]
-    resolved_by: NotRequired[Union[None, SimpleUserType]]
-    resolution_comment: NotRequired[Union[str, None]]
-    secret_type: NotRequired[str]
-    secret_type_display_name: NotRequired[str]
-    secret: NotRequired[str]
-    push_protection_bypassed: NotRequired[Union[bool, None]]
-    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
-    push_protection_bypassed_at: NotRequired[Union[datetime, None]]
-    push_protection_bypass_request_reviewer: NotRequired[Union[None, SimpleUserType]]
-    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
-    validity: NotRequired[Literal["active", "inactive", "unknown"]]
-    publicly_leaked: NotRequired[Union[bool, None]]
-    multi_repo: NotRequired[Union[bool, None]]
-    is_base64_encoded: NotRequired[Union[bool, None]]
-    first_location_detected: NotRequired[
-        Union[
-            None,
-            SecretScanningLocationCommitType,
-            SecretScanningLocationWikiCommitType,
-            SecretScanningLocationIssueTitleType,
-            SecretScanningLocationIssueBodyType,
-            SecretScanningLocationIssueCommentType,
-            SecretScanningLocationDiscussionTitleType,
-            SecretScanningLocationDiscussionBodyType,
-            SecretScanningLocationDiscussionCommentType,
-            SecretScanningLocationPullRequestTitleType,
-            SecretScanningLocationPullRequestBodyType,
-            SecretScanningLocationPullRequestCommentType,
-            SecretScanningLocationPullRequestReviewType,
-            SecretScanningLocationPullRequestReviewCommentType,
-        ]
+
+
+class TimelineReviewedEventTypeForResponse(TypedDict):
+    """Timeline Reviewed Event
+
+    Timeline Reviewed Event
+    """
+
+    event: Literal["reviewed"]
+    id: int
+    node_id: str
+    user: SimpleUserTypeForResponse
+    body: Union[str, None]
+    state: str
+    html_url: str
+    pull_request_url: str
+    links: TimelineReviewedEventPropLinksTypeForResponse
+    submitted_at: NotRequired[str]
+    updated_at: NotRequired[Union[str, None]]
+    commit_id: str
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
-    has_more_locations: NotRequired[bool]
 
 
-__all__ = ("SecretScanningAlertType",)
+class TimelineReviewedEventPropLinksType(TypedDict):
+    """TimelineReviewedEventPropLinks"""
+
+    html: TimelineReviewedEventPropLinksPropHtmlType
+    pull_request: TimelineReviewedEventPropLinksPropPullRequestType
+
+
+class TimelineReviewedEventPropLinksTypeForResponse(TypedDict):
+    """TimelineReviewedEventPropLinks"""
+
+    html: TimelineReviewedEventPropLinksPropHtmlTypeForResponse
+    pull_request: TimelineReviewedEventPropLinksPropPullRequestTypeForResponse
+
+
+class TimelineReviewedEventPropLinksPropHtmlType(TypedDict):
+    """TimelineReviewedEventPropLinksPropHtml"""
+
+    href: str
+
+
+class TimelineReviewedEventPropLinksPropHtmlTypeForResponse(TypedDict):
+    """TimelineReviewedEventPropLinksPropHtml"""
+
+    href: str
+
+
+class TimelineReviewedEventPropLinksPropPullRequestType(TypedDict):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
+
+    href: str
+
+
+class TimelineReviewedEventPropLinksPropPullRequestTypeForResponse(TypedDict):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
+
+    href: str
+
+
+__all__ = (
+    "TimelineReviewedEventPropLinksPropHtmlType",
+    "TimelineReviewedEventPropLinksPropHtmlTypeForResponse",
+    "TimelineReviewedEventPropLinksPropPullRequestType",
+    "TimelineReviewedEventPropLinksPropPullRequestTypeForResponse",
+    "TimelineReviewedEventPropLinksType",
+    "TimelineReviewedEventPropLinksTypeForResponse",
+    "TimelineReviewedEventType",
+    "TimelineReviewedEventTypeForResponse",
+)

@@ -9,95 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0001 import CvssSeveritiesType
+from .group_0242 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0542 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
-class WebhooksSecurityAdvisoryType(TypedDict):
-    """WebhooksSecurityAdvisory
+class CodeSearchResultItemType(TypedDict):
+    """Code Search Result Item
 
-    The details of the security advisory, including summary, description, and
-    severity.
+    Code Search Result Item
     """
 
-    cvss: WebhooksSecurityAdvisoryPropCvssType
-    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    cwes: list[WebhooksSecurityAdvisoryPropCwesItemsType]
-    description: str
-    ghsa_id: str
-    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItemsType]
-    published_at: str
-    references: list[WebhooksSecurityAdvisoryPropReferencesItemsType]
-    severity: str
-    summary: str
-    updated_at: str
-    vulnerabilities: list[WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType]
-    withdrawn_at: Union[str, None]
-
-
-class WebhooksSecurityAdvisoryPropCvssType(TypedDict):
-    """WebhooksSecurityAdvisoryPropCvss"""
-
-    score: float
-    vector_string: Union[str, None]
-
-
-class WebhooksSecurityAdvisoryPropCwesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str
     name: str
-
-
-class WebhooksSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str
-    value: str
-
-
-class WebhooksSecurityAdvisoryPropReferencesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropReferencesItems"""
-
+    path: str
+    sha: str
     url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryType
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[_dt.datetime]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
+class CodeSearchResultItemTypeForResponse(TypedDict):
+    """Code Search Result Item
 
-    first_patched_version: Union[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
-        None,
-    ]
-    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
-    severity: str
-    vulnerable_version_range: str
+    Code Search Result Item
+    """
 
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
-    TypedDict
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
-
-    identifier: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(TypedDict):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
-
-    ecosystem: str
     name: str
+    path: str
+    sha: str
+    url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryTypeForResponse
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[str]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+
+
+class SearchCodeGetResponse200Type(TypedDict):
+    """SearchCodeGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemType]
+
+
+class SearchCodeGetResponse200TypeForResponse(TypedDict):
+    """SearchCodeGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "WebhooksSecurityAdvisoryPropCvssType",
-    "WebhooksSecurityAdvisoryPropCwesItemsType",
-    "WebhooksSecurityAdvisoryPropIdentifiersItemsType",
-    "WebhooksSecurityAdvisoryPropReferencesItemsType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType",
-    "WebhooksSecurityAdvisoryType",
+    "CodeSearchResultItemType",
+    "CodeSearchResultItemTypeForResponse",
+    "SearchCodeGetResponse200Type",
+    "SearchCodeGetResponse200TypeForResponse",
 )

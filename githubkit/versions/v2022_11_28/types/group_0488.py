@@ -9,173 +9,119 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0437 import WebhooksRuleType
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0057 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0295 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
+from .group_0487 import SimpleCheckSuiteType, SimpleCheckSuiteTypeForResponse
 
 
-class WebhookBranchProtectionRuleEditedType(TypedDict):
-    """branch protection rule edited event"""
+class CheckRunWithSimpleCheckSuiteType(TypedDict):
+    """CheckRun
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookBranchProtectionRuleEditedPropChangesType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    rule: WebhooksRuleType
-    sender: SimpleUserType
-
-
-class WebhookBranchProtectionRuleEditedPropChangesType(TypedDict):
-    """WebhookBranchProtectionRuleEditedPropChanges
-
-    If the action was `edited`, the changes to the rule.
+    A check performed on the code of a given code change
     """
 
-    admin_enforced: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType
+    app: Union[IntegrationType, None]
+    check_suite: SimpleCheckSuiteType
+    completed_at: Union[_dt.datetime, None]
+    conclusion: Union[
+        None,
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
     ]
-    authorized_actor_names: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType
-    ]
-    authorized_actors_only: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType
-    ]
-    authorized_dismissal_actors_only: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType
-    ]
-    linear_history_requirement_enforcement_level: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType
-    ]
-    lock_branch_enforcement_level: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType
-    ]
-    lock_allows_fork_sync: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType
-    ]
-    pull_request_reviews_enforcement_level: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType
-    ]
-    require_last_push_approval: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalType
-    ]
-    required_status_checks: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType
-    ]
-    required_status_checks_enforcement_level: NotRequired[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType
-    ]
+    deployment: NotRequired[DeploymentSimpleType]
+    details_url: str
+    external_id: str
+    head_sha: str
+    html_url: str
+    id: int
+    name: str
+    node_id: str
+    output: CheckRunWithSimpleCheckSuitePropOutputType
+    pull_requests: list[PullRequestMinimalType]
+    started_at: _dt.datetime
+    status: Literal["queued", "in_progress", "completed", "pending"]
+    url: str
 
 
-class WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType(TypedDict):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced"""
+class CheckRunWithSimpleCheckSuiteTypeForResponse(TypedDict):
+    """CheckRun
 
-    from_: Union[bool, None]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
-
-    from_: list[str]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly"""
-
-    from_: Union[bool, None]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly"""
-
-    from_: Union[bool, None]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcem
-    entLevel
+    A check performed on the code of a given code change
     """
 
-    from_: Literal["off", "non_admins", "everyone"]
+    app: Union[IntegrationTypeForResponse, None]
+    check_suite: SimpleCheckSuiteTypeForResponse
+    completed_at: Union[str, None]
+    conclusion: Union[
+        None,
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    deployment: NotRequired[DeploymentSimpleTypeForResponse]
+    details_url: str
+    external_id: str
+    head_sha: str
+    html_url: str
+    id: int
+    name: str
+    node_id: str
+    output: CheckRunWithSimpleCheckSuitePropOutputTypeForResponse
+    pull_requests: list[PullRequestMinimalTypeForResponse]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed", "pending"]
+    url: str
 
 
-class WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel"""
+class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
 
-    from_: Literal["off", "non_admins", "everyone"]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType(TypedDict):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync"""
-
-    from_: Union[bool, None]
+    annotations_count: int
+    annotations_url: str
+    summary: Union[str, None]
+    text: Union[str, None]
+    title: Union[str, None]
 
 
-class WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLev
-    el
-    """
+class CheckRunWithSimpleCheckSuitePropOutputTypeForResponse(TypedDict):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
 
-    from_: Literal["off", "non_admins", "everyone"]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalType(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval"""
-
-    from_: Union[bool, None]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
-
-    from_: list[str]
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType(
-    TypedDict
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementL
-    evel
-    """
-
-    from_: Literal["off", "non_admins", "everyone"]
+    annotations_count: int
+    annotations_url: str
+    summary: Union[str, None]
+    text: Union[str, None]
+    title: Union[str, None]
 
 
 __all__ = (
-    "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType",
-    "WebhookBranchProtectionRuleEditedPropChangesType",
-    "WebhookBranchProtectionRuleEditedType",
+    "CheckRunWithSimpleCheckSuitePropOutputType",
+    "CheckRunWithSimpleCheckSuitePropOutputTypeForResponse",
+    "CheckRunWithSimpleCheckSuiteType",
+    "CheckRunWithSimpleCheckSuiteTypeForResponse",
 )

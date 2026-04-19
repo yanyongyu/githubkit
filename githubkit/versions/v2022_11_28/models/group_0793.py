@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,18 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0433 import EnterpriseWebhooks
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
-from .group_0479 import SecretScanningAlertWebhook
+from .group_0482 import EnterpriseWebhooks
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0485 import RepositoryWebhooks
 
 
-class WebhookSecretScanningAlertValidated(GitHubModel):
-    """secret_scanning_alert validated event"""
+class WebhookPublic(GitHubModel):
+    """public event"""
 
-    action: Literal["validated"] = Field()
-    alert: SecretScanningAlertWebhook = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,11 +44,9 @@ class WebhookSecretScanningAlertValidated(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookSecretScanningAlertValidated)
+model_rebuild(WebhookPublic)
 
-__all__ = ("WebhookSecretScanningAlertValidated",)
+__all__ = ("WebhookPublic",)

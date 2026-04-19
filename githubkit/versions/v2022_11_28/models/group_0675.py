@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,72 +17,53 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0676 import WebhookPackageUpdatedPropPackagePropPackageVersion
+from .group_0003 import SimpleUser
+from .group_0020 import Repository
+from .group_0056 import Issue
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0485 import RepositoryWebhooks
 
 
-class WebhookPackageUpdatedPropPackage(GitHubModel):
-    """WebhookPackageUpdatedPropPackage
+class WebhookIssueDependenciesBlockedByRemoved(GitHubModel):
+    """blocked by issue removed event"""
 
-    Information about the package.
-    """
-
-    created_at: str = Field()
-    description: Union[str, None] = Field()
-    ecosystem: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field()
-    namespace: str = Field()
-    owner: Union[WebhookPackageUpdatedPropPackagePropOwner, None] = Field(title="User")
-    package_type: str = Field()
-    package_version: WebhookPackageUpdatedPropPackagePropPackageVersion = Field()
-    registry: Union[WebhookPackageUpdatedPropPackagePropRegistry, None] = Field()
-    updated_at: str = Field()
-
-
-class WebhookPackageUpdatedPropPackagePropOwner(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    action: Literal["blocked_by_removed"] = Field()
+    blocked_issue_id: Missing[float] = Field(
+        default=UNSET, description="The ID of the blocked issue."
+    )
+    blocked_issue: Missing[Issue] = Field(
+        default=UNSET,
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    blocking_issue_id: Missing[float] = Field(
+        default=UNSET, description="The ID of the blocking issue."
+    )
+    blocking_issue: Missing[Issue] = Field(
+        default=UNSET,
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    blocking_issue_repo: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookPackageUpdatedPropPackagePropRegistry(GitHubModel):
-    """WebhookPackageUpdatedPropPackagePropRegistry"""
+model_rebuild(WebhookIssueDependenciesBlockedByRemoved)
 
-    about_url: str = Field()
-    name: str = Field()
-    type: str = Field()
-    url: str = Field()
-    vendor: str = Field()
-
-
-model_rebuild(WebhookPackageUpdatedPropPackage)
-model_rebuild(WebhookPackageUpdatedPropPackagePropOwner)
-model_rebuild(WebhookPackageUpdatedPropPackagePropRegistry)
-
-__all__ = (
-    "WebhookPackageUpdatedPropPackage",
-    "WebhookPackageUpdatedPropPackagePropOwner",
-    "WebhookPackageUpdatedPropPackagePropRegistry",
-)
+__all__ = ("WebhookIssueDependenciesBlockedByRemoved",)

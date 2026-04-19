@@ -9,32 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class SubIssuesSummary(GitHubModel):
-    """Sub-issues Summary"""
+class OrganizationSimple(GitHubModel):
+    """Organization Simple
 
-    total: int = Field()
-    completed: int = Field()
-    percent_completed: int = Field()
+    A GitHub organization.
+    """
+
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    hooks_url: str = Field()
+    issues_url: str = Field()
+    members_url: str = Field()
+    public_members_url: str = Field()
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
 
 
-class IssueDependenciesSummary(GitHubModel):
-    """Issue Dependencies Summary"""
+model_rebuild(OrganizationSimple)
 
-    blocked_by: int = Field()
-    blocking: int = Field()
-    total_blocked_by: int = Field()
-    total_blocking: int = Field()
-
-
-model_rebuild(SubIssuesSummary)
-model_rebuild(IssueDependenciesSummary)
-
-__all__ = (
-    "IssueDependenciesSummary",
-    "SubIssuesSummary",
-)
+__all__ = ("OrganizationSimple",)

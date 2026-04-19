@@ -9,19 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
-    """OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
+class AgentsReposOwnerRepoTasksPostResponse422(GitHubModel):
+    """AgentsReposOwnerRepoTasksPostResponse422
 
-    selected_repository_ids: list[int] = Field(
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints."
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[list[AgentsReposOwnerRepoTasksPostResponse422PropErrorsItems]] = (
+        Field(
+            default=UNSET,
+            description="List of validation errors (present only for 422 responses)",
+        )
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsReposOwnerRepoTasksPostResponse422PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksPostResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody)
+model_rebuild(AgentsReposOwnerRepoTasksPostResponse422)
+model_rebuild(AgentsReposOwnerRepoTasksPostResponse422PropErrorsItems)
 
-__all__ = ("OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",)
+__all__ = (
+    "AgentsReposOwnerRepoTasksPostResponse422",
+    "AgentsReposOwnerRepoTasksPostResponse422PropErrorsItems",
+)

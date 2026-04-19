@@ -9,18 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0209 import IssueType, IssueTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
-class OrganizationsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessPatchBody
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
+class WebhookSubIssuesParentIssueAddedType(TypedDict):
+    """parent issue added event"""
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    action: Literal["parent_issue_added"]
+    parent_issue_id: float
+    parent_issue: IssueType
+    parent_issue_repo: RepositoryType
+    sub_issue_id: float
+    sub_issue: IssueType
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("OrganizationsOrgDependabotRepositoryAccessPatchBodyType",)
+class WebhookSubIssuesParentIssueAddedTypeForResponse(TypedDict):
+    """parent issue added event"""
+
+    action: Literal["parent_issue_added"]
+    parent_issue_id: float
+    parent_issue: IssueTypeForResponse
+    parent_issue_repo: RepositoryTypeForResponse
+    sub_issue_id: float
+    sub_issue: IssueTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "WebhookSubIssuesParentIssueAddedType",
+    "WebhookSubIssuesParentIssueAddedTypeForResponse",
+)

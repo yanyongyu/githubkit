@@ -9,13 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodespacesAccessSelectedUsersPostBodyType(TypedDict):
-    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
+class AgentsReposOwnerRepoTasksPostBodyType(TypedDict):
+    """AgentsReposOwnerRepoTasksPostBody"""
 
-    selected_usernames: list[str]
+    prompt: str
+    model: NotRequired[str]
+    create_pull_request: NotRequired[bool]
+    base_ref: NotRequired[str]
 
 
-__all__ = ("OrgsOrgCodespacesAccessSelectedUsersPostBodyType",)
+class AgentsReposOwnerRepoTasksPostBodyTypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksPostBody"""
+
+    prompt: str
+    model: NotRequired[str]
+    create_pull_request: NotRequired[bool]
+    base_ref: NotRequired[str]
+
+
+__all__ = (
+    "AgentsReposOwnerRepoTasksPostBodyType",
+    "AgentsReposOwnerRepoTasksPostBodyTypeForResponse",
+)

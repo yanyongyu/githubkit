@@ -9,45 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class TeamProjectType(TypedDict):
-    """Team Project
+class RepositoryRuleMergeQueuePropParametersType(TypedDict):
+    """RepositoryRuleMergeQueuePropParameters"""
 
-    A team's access to a project.
-    """
-
-    owner_url: str
-    url: str
-    html_url: str
-    columns_url: str
-    id: int
-    node_id: str
-    name: str
-    body: Union[str, None]
-    number: int
-    state: str
-    creator: SimpleUserType
-    created_at: str
-    updated_at: str
-    organization_permission: NotRequired[str]
-    private: NotRequired[bool]
-    permissions: TeamProjectPropPermissionsType
+    check_response_timeout_minutes: int
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
+    max_entries_to_build: int
+    max_entries_to_merge: int
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
+    min_entries_to_merge: int
+    min_entries_to_merge_wait_minutes: int
 
 
-class TeamProjectPropPermissionsType(TypedDict):
-    """TeamProjectPropPermissions"""
+class RepositoryRuleMergeQueuePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleMergeQueuePropParameters"""
 
-    read: bool
-    write: bool
-    admin: bool
+    check_response_timeout_minutes: int
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
+    max_entries_to_build: int
+    max_entries_to_merge: int
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
+    min_entries_to_merge: int
+    min_entries_to_merge_wait_minutes: int
 
 
 __all__ = (
-    "TeamProjectPropPermissionsType",
-    "TeamProjectType",
+    "RepositoryRuleMergeQueuePropParametersType",
+    "RepositoryRuleMergeQueuePropParametersTypeForResponse",
 )

@@ -9,54 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class WebhooksChanges8(GitHubModel):
-    """WebhooksChanges8"""
-
-    tier: WebhooksChanges8PropTier = Field()
+from .group_0357 import GitUser
+from .group_0358 import Verification
 
 
-class WebhooksChanges8PropTier(GitHubModel):
-    """WebhooksChanges8PropTier"""
+class CommitSearchResultItemPropCommit(GitHubModel):
+    """CommitSearchResultItemPropCommit"""
 
-    from_: WebhooksChanges8PropTierPropFrom = Field(
-        alias="from",
-        title="Sponsorship Tier",
-        description="The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.",
-    )
+    author: CommitSearchResultItemPropCommitPropAuthor = Field()
+    committer: Union[None, GitUser] = Field()
+    comment_count: int = Field()
+    message: str = Field()
+    tree: CommitSearchResultItemPropCommitPropTree = Field()
+    url: str = Field()
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
 
 
-class WebhooksChanges8PropTierPropFrom(GitHubModel):
-    """Sponsorship Tier
+class CommitSearchResultItemPropCommitPropAuthor(GitHubModel):
+    """CommitSearchResultItemPropCommitPropAuthor"""
 
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
-    """
-
-    created_at: str = Field()
-    description: str = Field()
-    is_custom_ammount: Missing[bool] = Field(default=UNSET)
-    is_custom_amount: Missing[bool] = Field(default=UNSET)
-    is_one_time: bool = Field()
-    monthly_price_in_cents: int = Field()
-    monthly_price_in_dollars: int = Field()
     name: str = Field()
-    node_id: str = Field()
+    email: str = Field()
+    date: _dt.datetime = Field()
 
 
-model_rebuild(WebhooksChanges8)
-model_rebuild(WebhooksChanges8PropTier)
-model_rebuild(WebhooksChanges8PropTierPropFrom)
+class CommitSearchResultItemPropCommitPropTree(GitHubModel):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(CommitSearchResultItemPropCommit)
+model_rebuild(CommitSearchResultItemPropCommitPropAuthor)
+model_rebuild(CommitSearchResultItemPropCommitPropTree)
 
 __all__ = (
-    "WebhooksChanges8",
-    "WebhooksChanges8PropTier",
-    "WebhooksChanges8PropTierPropFrom",
+    "CommitSearchResultItemPropCommit",
+    "CommitSearchResultItemPropCommitPropAuthor",
+    "CommitSearchResultItemPropCommitPropTree",
 )

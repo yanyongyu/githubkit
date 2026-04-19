@@ -9,21 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class RepositoryRuleMaxFilePathLengthPropParameters(GitHubModel):
-    """RepositoryRuleMaxFilePathLengthPropParameters"""
+class ProjectsV2DraftIssue(GitHubModel):
+    """Draft Issue
 
-    max_file_path_length: int = Field(
-        le=32767.0,
-        ge=1.0,
-        description="The maximum amount of characters allowed in file paths.",
+    A draft issue in a project
+    """
+
+    id: float = Field(description="The ID of the draft issue")
+    node_id: str = Field(description="The node ID of the draft issue")
+    title: str = Field(description="The title of the draft issue")
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The body content of the draft issue"
+    )
+    user: Union[None, SimpleUser] = Field()
+    created_at: _dt.datetime = Field(description="The time the draft issue was created")
+    updated_at: _dt.datetime = Field(
+        description="The time the draft issue was last updated"
     )
 
 
-model_rebuild(RepositoryRuleMaxFilePathLengthPropParameters)
+model_rebuild(ProjectsV2DraftIssue)
 
-__all__ = ("RepositoryRuleMaxFilePathLengthPropParameters",)
+__all__ = ("ProjectsV2DraftIssue",)

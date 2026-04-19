@@ -9,36 +9,129 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0349 import (
+    DeploymentBranchPolicySettingsType,
+    DeploymentBranchPolicySettingsTypeForResponse,
+)
+from .group_0351 import (
+    EnvironmentPropProtectionRulesItemsAnyof1Type,
+    EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
+)
 
 
-class PageBuildType(TypedDict):
-    """Page Build
+class EnvironmentType(TypedDict):
+    """Environment
 
-    Page Build
+    Details of a deployment environment
     """
 
+    id: int
+    node_id: str
+    name: str
     url: str
-    status: str
-    error: PageBuildPropErrorType
-    pusher: Union[None, SimpleUserType]
-    commit: str
-    duration: int
-    created_at: datetime
-    updated_at: datetime
+    html_url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    protection_rules: NotRequired[
+        list[
+            Union[
+                EnvironmentPropProtectionRulesItemsAnyof0Type,
+                EnvironmentPropProtectionRulesItemsAnyof1Type,
+                EnvironmentPropProtectionRulesItemsAnyof2Type,
+            ]
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsType, None]
+    ]
 
 
-class PageBuildPropErrorType(TypedDict):
-    """PageBuildPropError"""
+class EnvironmentTypeForResponse(TypedDict):
+    """Environment
 
-    message: Union[str, None]
+    Details of a deployment environment
+    """
+
+    id: int
+    node_id: str
+    name: str
+    url: str
+    html_url: str
+    created_at: str
+    updated_at: str
+    protection_rules: NotRequired[
+        list[
+            Union[
+                EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse,
+                EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
+                EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse,
+            ]
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
+    ]
+
+
+class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof0"""
+
+    id: int
+    node_id: str
+    type: str
+    wait_timer: NotRequired[int]
+
+
+class EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof0"""
+
+    id: int
+    node_id: str
+    type: str
+    wait_timer: NotRequired[int]
+
+
+class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof2"""
+
+    id: int
+    node_id: str
+    type: str
+
+
+class EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof2"""
+
+    id: int
+    node_id: str
+    type: str
+
+
+class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsGetResponse200"""
+
+    total_count: NotRequired[int]
+    environments: NotRequired[list[EnvironmentType]]
+
+
+class ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoEnvironmentsGetResponse200"""
+
+    total_count: NotRequired[int]
+    environments: NotRequired[list[EnvironmentTypeForResponse]]
 
 
 __all__ = (
-    "PageBuildPropErrorType",
-    "PageBuildType",
+    "EnvironmentPropProtectionRulesItemsAnyof0Type",
+    "EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse",
+    "EnvironmentPropProtectionRulesItemsAnyof2Type",
+    "EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse",
+    "EnvironmentType",
+    "EnvironmentTypeForResponse",
+    "ReposOwnerRepoEnvironmentsGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse",
 )

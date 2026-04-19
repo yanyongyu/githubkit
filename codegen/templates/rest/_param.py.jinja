@@ -1,31 +1,31 @@
 {% macro path_params(endpoint) %}
 {% for path_param in endpoint.path_params %}
-{{ path_param.get_param_defination() }},
+{{ path_param.get_param_definition() }},
 {% endfor %}
 {% endmacro %}
 
 {% macro query_params(endpoint) %}
 {% for query_param in endpoint.query_params %}
-{{ query_param.get_param_defination() }},
+{{ query_param.get_param_definition() }},
 {% endfor %}
 {% endmacro %}
 
 {% macro header_params(endpoint) %}
 {% for header_param in endpoint.header_params %}
-{{ header_param.get_param_defination() }},
+{{ header_param.get_param_definition() }},
 {% endfor %}
 {% endmacro %}
 
 {% macro cookie_params(endpoint) %}
 {% for cookie_param in endpoint.cookie_params %}
-{{ cookie_param.get_param_defination() }},
+{{ cookie_param.get_param_definition() }},
 {% endfor %}
 {% endmacro %}
 
 {% macro body_params(model, exclude=[]) %}
 {% for prop in model.properties %}
 {% if prop.prop_name not in exclude %}
-{{ prop.get_param_defination() }},
+{{ prop.get_param_definition() }},
 {% endif %}
 {% endfor %}
 {% endmacro %}

@@ -9,32 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositorySubscription(GitHubModel):
-    """Repository Invitation
+class PageDeployment(GitHubModel):
+    """GitHub Pages
 
-    Repository invitations let you manage who you collaborate with.
+    The GitHub Pages deployment status.
     """
 
-    subscribed: bool = Field(
-        description="Determines if notifications should be received from this repository."
+    id: Union[int, str] = Field(
+        description="The ID of the GitHub Pages deployment. This is the Git SHA of the deployed commit."
     )
-    ignored: bool = Field(
-        description="Determines if all notifications should be blocked from this repository."
+    status_url: str = Field(
+        description="The URI to monitor GitHub Pages deployment status."
     )
-    reason: Union[str, None] = Field()
-    created_at: datetime = Field()
-    url: str = Field()
-    repository_url: str = Field()
+    page_url: str = Field(description="The URI to the deployed GitHub Pages.")
+    preview_url: Missing[str] = Field(
+        default=UNSET, description="The URI to the deployed GitHub Pages preview."
+    )
 
 
-model_rebuild(RepositorySubscription)
+model_rebuild(PageDeployment)
 
-__all__ = ("RepositorySubscription",)
+__all__ = ("PageDeployment",)

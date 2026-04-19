@@ -12,72 +12,78 @@ from __future__ import annotations
 from typing import Any, Literal, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0003 import SimpleUserType
+from githubkit.typing import UniqueList
 
 
-class OrganizationProgrammaticAccessGrantRequestType(TypedDict):
-    """Simple Organization Programmatic Access Grant Request
+class ArtifactDeploymentRecordType(TypedDict):
+    """Artifact Deployment Record
 
-    Minimal representation of an organization programmatic access grant request for
-    enumerations
+    Artifact Metadata Deployment Record
     """
 
-    id: int
-    reason: Union[str, None]
-    owner: SimpleUserType
-    repository_selection: Literal["none", "all", "subset"]
-    repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissionsType
-    created_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
+    id: NotRequired[int]
+    digest: NotRequired[str]
+    logical_environment: NotRequired[str]
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: NotRequired[str]
+    tags: NotRequired[ArtifactDeploymentRecordPropTagsType]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    attestation_id: NotRequired[Union[int, None]]
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsType(TypedDict):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissions
+class ArtifactDeploymentRecordTypeForResponse(TypedDict):
+    """Artifact Deployment Record
 
-    Permissions requested, categorized by type of permission.
+    Artifact Metadata Deployment Record
     """
 
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType
+    id: NotRequired[int]
+    digest: NotRequired[str]
+    logical_environment: NotRequired[str]
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: NotRequired[str]
+    tags: NotRequired[ArtifactDeploymentRecordPropTagsTypeForResponse]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
     ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType
-    ]
-    other: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType
-    ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    attestation_id: NotRequired[Union[int, None]]
 
 
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
+ArtifactDeploymentRecordPropTagsType: TypeAlias = dict[str, Any]
+"""ArtifactDeploymentRecordPropTags
 """
 
 
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
-"""
-
-
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType: TypeAlias = (
-    dict[str, Any]
-)
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
+ArtifactDeploymentRecordPropTagsTypeForResponse: TypeAlias = dict[str, Any]
+"""ArtifactDeploymentRecordPropTags
 """
 
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsType",
-    "OrganizationProgrammaticAccessGrantRequestType",
+    "ArtifactDeploymentRecordPropTagsType",
+    "ArtifactDeploymentRecordPropTagsTypeForResponse",
+    "ArtifactDeploymentRecordType",
+    "ArtifactDeploymentRecordTypeForResponse",
 )

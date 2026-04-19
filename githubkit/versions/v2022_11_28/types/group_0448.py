@@ -9,20 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class WebhooksLabelType(TypedDict):
-    """Label"""
+class ParticipationStatsType(TypedDict):
+    """Participation Stats"""
 
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
+    all_: list[int]
+    owner: list[int]
 
 
-__all__ = ("WebhooksLabelType",)
+class ParticipationStatsTypeForResponse(TypedDict):
+    """Participation Stats"""
+
+    all_: list[int]
+    owner: list[int]
+
+
+__all__ = (
+    "ParticipationStatsType",
+    "ParticipationStatsTypeForResponse",
+)

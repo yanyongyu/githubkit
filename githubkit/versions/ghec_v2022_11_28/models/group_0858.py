@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0494 import EnterpriseWebhooks
-from .group_0495 import SimpleInstallation
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0497 import RepositoryWebhooks
-from .group_0542 import SecretScanningAlertWebhook
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
+from .group_0596 import WebhooksProjectCard
 
 
-class WebhookSecretScanningAlertPubliclyLeaked(GitHubModel):
-    """secret_scanning_alert publicly leaked event"""
+class WebhookProjectCardEdited(GitHubModel):
+    """project_card edited event"""
 
-    action: Literal["publicly_leaked"] = Field()
-    alert: SecretScanningAlertWebhook = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookProjectCardEditedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,15 +45,33 @@ class WebhookSecretScanningAlertPubliclyLeaked(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    project_card: WebhooksProjectCard = Field(title="Project Card")
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookSecretScanningAlertPubliclyLeaked)
+class WebhookProjectCardEditedPropChanges(GitHubModel):
+    """WebhookProjectCardEditedPropChanges"""
 
-__all__ = ("WebhookSecretScanningAlertPubliclyLeaked",)
+    note: WebhookProjectCardEditedPropChangesPropNote = Field()
+
+
+class WebhookProjectCardEditedPropChangesPropNote(GitHubModel):
+    """WebhookProjectCardEditedPropChangesPropNote"""
+
+    from_: Union[str, None] = Field(alias="from")
+
+
+model_rebuild(WebhookProjectCardEdited)
+model_rebuild(WebhookProjectCardEditedPropChanges)
+model_rebuild(WebhookProjectCardEditedPropChangesPropNote)
+
+__all__ = (
+    "WebhookProjectCardEdited",
+    "WebhookProjectCardEditedPropChanges",
+    "WebhookProjectCardEditedPropChangesPropNote",
+)

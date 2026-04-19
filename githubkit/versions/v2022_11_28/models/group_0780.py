@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,128 +17,31 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0145 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0146 import RepositoryRuleUpdate
-from .group_0148 import RepositoryRuleRequiredLinearHistory
-from .group_0149 import RepositoryRuleMergeQueue
-from .group_0151 import RepositoryRuleRequiredDeployments
-from .group_0154 import RepositoryRulePullRequest
-from .group_0156 import RepositoryRuleRequiredStatusChecks
-from .group_0158 import RepositoryRuleCommitMessagePattern
-from .group_0160 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0162 import RepositoryRuleCommitterEmailPattern
-from .group_0164 import RepositoryRuleBranchNamePattern
-from .group_0166 import RepositoryRuleTagNamePattern
-from .group_0168 import RepositoryRuleFilePathRestriction
-from .group_0170 import RepositoryRuleMaxFilePathLength
-from .group_0172 import RepositoryRuleFileExtensionRestriction
-from .group_0174 import RepositoryRuleMaxFileSize
-from .group_0177 import RepositoryRuleWorkflows
-from .group_0179 import RepositoryRuleCodeScanning
+from .group_0003 import SimpleUser
+from .group_0165 import ProjectsV2
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems"""
+class WebhookProjectsV2ProjectDeleted(GitHubModel):
+    """Projects v2 Project Deleted Event"""
 
-    rule: Missing[
-        Union[
-            RepositoryRuleCreation,
-            RepositoryRuleUpdate,
-            RepositoryRuleDeletion,
-            RepositoryRuleRequiredLinearHistory,
-            RepositoryRuleMergeQueue,
-            RepositoryRuleRequiredDeployments,
-            RepositoryRuleRequiredSignatures,
-            RepositoryRulePullRequest,
-            RepositoryRuleRequiredStatusChecks,
-            RepositoryRuleNonFastForward,
-            RepositoryRuleCommitMessagePattern,
-            RepositoryRuleCommitAuthorEmailPattern,
-            RepositoryRuleCommitterEmailPattern,
-            RepositoryRuleBranchNamePattern,
-            RepositoryRuleTagNamePattern,
-            RepositoryRuleFilePathRestriction,
-            RepositoryRuleMaxFilePathLength,
-            RepositoryRuleFileExtensionRestriction,
-            RepositoryRuleMaxFileSize,
-            RepositoryRuleWorkflows,
-            RepositoryRuleCodeScanning,
-        ]
-    ] = Field(default=UNSET, title="Repository Rule", description="A repository rule.")
-    changes: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges
-    ] = Field(default=UNSET)
+    action: Literal["deleted"] = Field()
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    projects_v2: ProjectsV2 = Field(
+        title="Projects v2 Project", description="A projects v2 project"
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges"""
+model_rebuild(WebhookProjectsV2ProjectDeleted)
 
-    configuration: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration
-    ] = Field(default=UNSET)
-    rule_type: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType
-    ] = Field(default=UNSET)
-    pattern: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern
-    ] = Field(default=UNSET)
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pConfiguration
-    """
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pRuleType
-    """
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pPattern
-    """
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern
-)
-
-__all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType",
-)
+__all__ = ("WebhookProjectsV2ProjectDeleted",)

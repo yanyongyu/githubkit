@@ -9,18 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    Update the source for the repository. Must include the branch name and path.
+    Actions OIDC subject customization for a repository
     """
 
-    branch: str
-    path: Literal["/", "/docs"]
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
 
 
-__all__ = ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",)
+class ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
+    """Actions OIDC subject customization for a repository
+
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
+
+
+__all__ = (
+    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
+    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse",
+)

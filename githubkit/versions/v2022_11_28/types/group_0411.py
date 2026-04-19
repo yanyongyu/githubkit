@@ -9,44 +9,111 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0063 import MinimalRepositoryType
-from .group_0410 import SearchResultTextMatchesItemsType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0051 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0412 import (
+    ReviewCommentPropLinksType,
+    ReviewCommentPropLinksTypeForResponse,
+)
 
 
-class CodeSearchResultItemType(TypedDict):
-    """Code Search Result Item
+class ReviewCommentType(TypedDict):
+    """Legacy Review Comment
 
-    Code Search Result Item
+    Legacy Review Comment
     """
 
-    name: str
-    path: str
-    sha: str
     url: str
-    git_url: str
+    pull_request_review_id: Union[int, None]
+    id: int
+    node_id: str
+    diff_hunk: str
+    path: str
+    position: Union[int, None]
+    original_position: int
+    commit_id: str
+    original_commit_id: str
+    in_reply_to_id: NotRequired[int]
+    user: Union[None, SimpleUserType]
+    body: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     html_url: str
-    repository: MinimalRepositoryType
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[datetime]
-    line_numbers: NotRequired[list[str]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    pull_request_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    links: ReviewCommentPropLinksType
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    reactions: NotRequired[ReactionRollupType]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
+    line: NotRequired[int]
+    original_line: NotRequired[int]
+    start_line: NotRequired[Union[int, None]]
+    original_start_line: NotRequired[Union[int, None]]
+    subject_type: NotRequired[Literal["line", "file"]]
 
 
-class SearchCodeGetResponse200Type(TypedDict):
-    """SearchCodeGetResponse200"""
+class ReviewCommentTypeForResponse(TypedDict):
+    """Legacy Review Comment
 
-    total_count: int
-    incomplete_results: bool
-    items: list[CodeSearchResultItemType]
+    Legacy Review Comment
+    """
+
+    url: str
+    pull_request_review_id: Union[int, None]
+    id: int
+    node_id: str
+    diff_hunk: str
+    path: str
+    position: Union[int, None]
+    original_position: int
+    commit_id: str
+    original_commit_id: str
+    in_reply_to_id: NotRequired[int]
+    user: Union[None, SimpleUserTypeForResponse]
+    body: str
+    created_at: str
+    updated_at: str
+    html_url: str
+    pull_request_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    links: ReviewCommentPropLinksTypeForResponse
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
+    line: NotRequired[int]
+    original_line: NotRequired[int]
+    start_line: NotRequired[Union[int, None]]
+    original_start_line: NotRequired[Union[int, None]]
+    subject_type: NotRequired[Literal["line", "file"]]
 
 
 __all__ = (
-    "CodeSearchResultItemType",
-    "SearchCodeGetResponse200Type",
+    "ReviewCommentType",
+    "ReviewCommentTypeForResponse",
 )

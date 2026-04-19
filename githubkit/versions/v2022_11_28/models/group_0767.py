@@ -9,66 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0433 import EnterpriseWebhooks
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
 
+class WebhookProjectCardMovedPropProjectCardAllof0(GitHubModel):
+    """Project Card"""
 
-class WebhookRepositoryDispatchSample(GitHubModel):
-    """repository_dispatch event"""
-
-    action: str = Field(
-        description="The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body."
+    after_id: Missing[Union[int, None]] = Field(default=UNSET)
+    archived: bool = Field(description="Whether or not the card is archived")
+    column_id: int = Field()
+    column_url: str = Field()
+    content_url: Missing[str] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    creator: Union[WebhookProjectCardMovedPropProjectCardAllof0PropCreator, None] = (
+        Field(title="User")
     )
-    branch: str = Field()
-    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayload, None] = (
-        Field(
-            description="The `client_payload` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body."
-        )
-    )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
-    )
-    installation: SimpleInstallation = Field(
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    id: int = Field(description="The project card's ID")
+    node_id: str = Field()
+    note: Union[str, None] = Field()
+    project_url: str = Field()
+    updated_at: _dt.datetime = Field()
+    url: str = Field()
 
 
-class WebhookRepositoryDispatchSamplePropClientPayload(ExtraGitHubModel):
-    """WebhookRepositoryDispatchSamplePropClientPayload
+class WebhookProjectCardMovedPropProjectCardAllof0PropCreator(GitHubModel):
+    """User"""
 
-    The `client_payload` that was specified in the `POST
-    /repos/{owner}/{repo}/dispatches` request body.
-    """
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookRepositoryDispatchSample)
-model_rebuild(WebhookRepositoryDispatchSamplePropClientPayload)
+model_rebuild(WebhookProjectCardMovedPropProjectCardAllof0)
+model_rebuild(WebhookProjectCardMovedPropProjectCardAllof0PropCreator)
 
 __all__ = (
-    "WebhookRepositoryDispatchSample",
-    "WebhookRepositoryDispatchSamplePropClientPayload",
+    "WebhookProjectCardMovedPropProjectCardAllof0",
+    "WebhookProjectCardMovedPropProjectCardAllof0PropCreator",
 )

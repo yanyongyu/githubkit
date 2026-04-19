@@ -9,41 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0258 import CodeScanningVariantAnalysisSkippedRepoGroup
 
+class ActionsCacheList(GitHubModel):
+    """Repository actions caches
 
-class CodeScanningVariantAnalysisPropSkippedRepositories(GitHubModel):
-    """CodeScanningVariantAnalysisPropSkippedRepositories
-
-    Information about repositories that were skipped from processing. This
-    information is only available to the user that initiated the variant analysis.
+    Repository actions caches
     """
 
-    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
-    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos = Field()
-    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
-    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
-
-
-class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos(GitHubModel):
-    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
-
-    repository_count: int = Field(
-        description="The total number of repositories that were skipped for this reason."
-    )
-    repository_full_names: list[str] = Field(
-        description="A list of full repository names that were skipped. This list may not include all repositories that were skipped."
+    total_count: int = Field(description="Total number of caches")
+    actions_caches: list[ActionsCacheListPropActionsCachesItems] = Field(
+        description="Array of caches"
     )
 
 
-model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositories)
-model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos)
+class ActionsCacheListPropActionsCachesItems(GitHubModel):
+    """ActionsCacheListPropActionsCachesItems"""
+
+    id: Missing[int] = Field(default=UNSET)
+    ref: Missing[str] = Field(default=UNSET)
+    key: Missing[str] = Field(default=UNSET)
+    version: Missing[str] = Field(default=UNSET)
+    last_accessed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    size_in_bytes: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(ActionsCacheList)
+model_rebuild(ActionsCacheListPropActionsCachesItems)
 
 __all__ = (
-    "CodeScanningVariantAnalysisPropSkippedRepositories",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos",
+    "ActionsCacheList",
+    "ActionsCacheListPropActionsCachesItems",
 )

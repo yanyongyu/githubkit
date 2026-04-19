@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Annotated, Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,61 +17,161 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0035 import DependabotAlertSecurityVulnerability
-from .group_0036 import DependabotAlertSecurityAdvisory
-from .group_0293 import DependabotAlertPropDependency
+from .group_0283 import BranchRestrictionPolicy
+from .group_0293 import ProtectedBranchPropRequiredPullRequestReviews
 
 
-class DependabotAlert(GitHubModel):
-    """DependabotAlert
+class ProtectedBranch(GitHubModel):
+    """Protected Branch
 
-    A Dependabot alert.
+    Branch protections protect branches
     """
 
-    number: int = Field(description="The security alert number.")
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
-        description="The state of the Dependabot alert."
+    url: str = Field()
+    required_status_checks: Missing[StatusCheckPolicy] = Field(
+        default=UNSET, title="Status Check Policy", description="Status Check Policy"
     )
-    dependency: DependabotAlertPropDependency = Field(
-        description="Details for the vulnerable dependency."
+    required_pull_request_reviews: Missing[
+        ProtectedBranchPropRequiredPullRequestReviews
+    ] = Field(default=UNSET)
+    required_signatures: Missing[ProtectedBranchPropRequiredSignatures] = Field(
+        default=UNSET
     )
-    security_advisory: DependabotAlertSecurityAdvisory = Field(
-        description="Details for the GitHub Security Advisory."
+    enforce_admins: Missing[ProtectedBranchPropEnforceAdmins] = Field(default=UNSET)
+    required_linear_history: Missing[ProtectedBranchPropRequiredLinearHistory] = Field(
+        default=UNSET
     )
-    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
-        description="Details pertaining to one vulnerable version range for the advisory."
+    allow_force_pushes: Missing[ProtectedBranchPropAllowForcePushes] = Field(
+        default=UNSET
     )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    created_at: datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    updated_at: datetime = Field(
-        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_at: Union[datetime, None] = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_by: Union[None, SimpleUser] = Field()
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ] = Field(description="The reason that the alert was dismissed.")
-    dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
-        description="An optional comment associated with the alert's dismissal."
-    )
-    fixed_at: Union[datetime, None] = Field(
-        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    auto_dismissed_at: Missing[Union[datetime, None]] = Field(
+    allow_deletions: Missing[ProtectedBranchPropAllowDeletions] = Field(default=UNSET)
+    restrictions: Missing[BranchRestrictionPolicy] = Field(
         default=UNSET,
-        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        title="Branch Restriction Policy",
+        description="Branch Restriction Policy",
+    )
+    required_conversation_resolution: Missing[
+        ProtectedBranchPropRequiredConversationResolution
+    ] = Field(default=UNSET)
+    block_creations: Missing[ProtectedBranchPropBlockCreations] = Field(default=UNSET)
+    lock_branch: Missing[ProtectedBranchPropLockBranch] = Field(
+        default=UNSET,
+        description="Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.",
+    )
+    allow_fork_syncing: Missing[ProtectedBranchPropAllowForkSyncing] = Field(
+        default=UNSET,
+        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.",
     )
 
 
-model_rebuild(DependabotAlert)
+class ProtectedBranchPropRequiredSignatures(GitHubModel):
+    """ProtectedBranchPropRequiredSignatures"""
 
-__all__ = ("DependabotAlert",)
+    url: str = Field()
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropEnforceAdmins(GitHubModel):
+    """ProtectedBranchPropEnforceAdmins"""
+
+    url: str = Field()
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropRequiredLinearHistory(GitHubModel):
+    """ProtectedBranchPropRequiredLinearHistory"""
+
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropAllowForcePushes(GitHubModel):
+    """ProtectedBranchPropAllowForcePushes"""
+
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropAllowDeletions(GitHubModel):
+    """ProtectedBranchPropAllowDeletions"""
+
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropRequiredConversationResolution(GitHubModel):
+    """ProtectedBranchPropRequiredConversationResolution"""
+
+    enabled: Missing[bool] = Field(default=UNSET)
+
+
+class ProtectedBranchPropBlockCreations(GitHubModel):
+    """ProtectedBranchPropBlockCreations"""
+
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropLockBranch(GitHubModel):
+    """ProtectedBranchPropLockBranch
+
+    Whether to set the branch as read-only. If this is true, users will not be able
+    to push to the branch.
+    """
+
+    enabled: Missing[bool] = Field(default=UNSET)
+
+
+class ProtectedBranchPropAllowForkSyncing(GitHubModel):
+    """ProtectedBranchPropAllowForkSyncing
+
+    Whether users can pull changes from upstream when the branch is locked. Set to
+    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+    """
+
+    enabled: Missing[bool] = Field(default=UNSET)
+
+
+class StatusCheckPolicy(GitHubModel):
+    """Status Check Policy
+
+    Status Check Policy
+    """
+
+    url: str = Field()
+    strict: bool = Field()
+    contexts: list[str] = Field()
+    checks: list[StatusCheckPolicyPropChecksItems] = Field()
+    contexts_url: str = Field()
+
+
+class StatusCheckPolicyPropChecksItems(GitHubModel):
+    """StatusCheckPolicyPropChecksItems"""
+
+    context: str = Field()
+    app_id: Union[int, None] = Field()
+
+
+model_rebuild(ProtectedBranch)
+model_rebuild(ProtectedBranchPropRequiredSignatures)
+model_rebuild(ProtectedBranchPropEnforceAdmins)
+model_rebuild(ProtectedBranchPropRequiredLinearHistory)
+model_rebuild(ProtectedBranchPropAllowForcePushes)
+model_rebuild(ProtectedBranchPropAllowDeletions)
+model_rebuild(ProtectedBranchPropRequiredConversationResolution)
+model_rebuild(ProtectedBranchPropBlockCreations)
+model_rebuild(ProtectedBranchPropLockBranch)
+model_rebuild(ProtectedBranchPropAllowForkSyncing)
+model_rebuild(StatusCheckPolicy)
+model_rebuild(StatusCheckPolicyPropChecksItems)
+
+__all__ = (
+    "ProtectedBranch",
+    "ProtectedBranchPropAllowDeletions",
+    "ProtectedBranchPropAllowForcePushes",
+    "ProtectedBranchPropAllowForkSyncing",
+    "ProtectedBranchPropBlockCreations",
+    "ProtectedBranchPropEnforceAdmins",
+    "ProtectedBranchPropLockBranch",
+    "ProtectedBranchPropRequiredConversationResolution",
+    "ProtectedBranchPropRequiredLinearHistory",
+    "ProtectedBranchPropRequiredSignatures",
+    "StatusCheckPolicy",
+    "StatusCheckPolicyPropChecksItems",
+)

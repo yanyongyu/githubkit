@@ -17,10 +17,10 @@ from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
     from typing import Literal, Union
 
     from githubkit import GitHubCore
@@ -41,14 +41,14 @@ if TYPE_CHECKING:
         ReviewComment,
     )
     from ..types import (
-        CommitType,
-        DiffEntryType,
-        PullRequestMergeResultType,
-        PullRequestReviewCommentType,
-        PullRequestReviewRequestType,
-        PullRequestReviewType,
-        PullRequestSimpleType,
-        PullRequestType,
+        CommitTypeForResponse,
+        DiffEntryTypeForResponse,
+        PullRequestMergeResultTypeForResponse,
+        PullRequestReviewCommentTypeForResponse,
+        PullRequestReviewRequestTypeForResponse,
+        PullRequestReviewTypeForResponse,
+        PullRequestSimpleTypeForResponse,
+        PullRequestTypeForResponse,
         ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
         ReposOwnerRepoPullsPostBodyType,
         ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
@@ -64,8 +64,8 @@ if TYPE_CHECKING:
         ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
         ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
         ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType,
-        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type,
-        ReviewCommentType,
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse,
+        ReviewCommentTypeForResponse,
     )
 
 
@@ -100,7 +100,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
+    ) -> Response[list[PullRequestSimple], list[PullRequestSimpleTypeForResponse]]:
         """pulls/list
 
         GET /repos/{owner}/{repo}/pulls
@@ -142,7 +142,7 @@ class PullsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PullRequestSimple],
@@ -167,7 +167,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
+    ) -> Response[list[PullRequestSimple], list[PullRequestSimpleTypeForResponse]]:
         """pulls/list
 
         GET /repos/{owner}/{repo}/pulls
@@ -209,7 +209,7 @@ class PullsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PullRequestSimple],
@@ -227,7 +227,7 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsPostBodyType,
-    ) -> Response[PullRequest, PullRequestType]: ...
+    ) -> Response[PullRequest, PullRequestTypeForResponse]: ...
 
     @overload
     def create(
@@ -246,7 +246,7 @@ class PullsClient:
         maintainer_can_modify: Missing[bool] = UNSET,
         draft: Missing[bool] = UNSET,
         issue: Missing[int] = UNSET,
-    ) -> Response[PullRequest, PullRequestType]: ...
+    ) -> Response[PullRequest, PullRequestTypeForResponse]: ...
 
     def create(
         self,
@@ -257,7 +257,7 @@ class PullsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequest, PullRequestType]:
+    ) -> Response[PullRequest, PullRequestTypeForResponse]:
         """pulls/create
 
         POST /repos/{owner}/{repo}/pulls
@@ -320,7 +320,7 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsPostBodyType,
-    ) -> Response[PullRequest, PullRequestType]: ...
+    ) -> Response[PullRequest, PullRequestTypeForResponse]: ...
 
     @overload
     async def async_create(
@@ -339,7 +339,7 @@ class PullsClient:
         maintainer_can_modify: Missing[bool] = UNSET,
         draft: Missing[bool] = UNSET,
         issue: Missing[int] = UNSET,
-    ) -> Response[PullRequest, PullRequestType]: ...
+    ) -> Response[PullRequest, PullRequestTypeForResponse]: ...
 
     async def async_create(
         self,
@@ -350,7 +350,7 @@ class PullsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequest, PullRequestType]:
+    ) -> Response[PullRequest, PullRequestTypeForResponse]:
         """pulls/create
 
         POST /repos/{owner}/{repo}/pulls
@@ -411,12 +411,14 @@ class PullsClient:
         *,
         sort: Missing[Literal["created", "updated", "created_at"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
+    ) -> Response[
+        list[PullRequestReviewComment], list[PullRequestReviewCommentTypeForResponse]
+    ]:
         """pulls/list-review-comments-for-repo
 
         GET /repos/{owner}/{repo}/pulls/comments
@@ -451,7 +453,7 @@ class PullsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PullRequestReviewComment],
@@ -464,12 +466,14 @@ class PullsClient:
         *,
         sort: Missing[Literal["created", "updated", "created_at"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
+    ) -> Response[
+        list[PullRequestReviewComment], list[PullRequestReviewCommentTypeForResponse]
+    ]:
         """pulls/list-review-comments-for-repo
 
         GET /repos/{owner}/{repo}/pulls/comments
@@ -504,7 +508,7 @@ class PullsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PullRequestReviewComment],
@@ -518,7 +522,7 @@ class PullsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentTypeForResponse]:
         """pulls/get-review-comment
 
         GET /repos/{owner}/{repo}/pulls/comments/{comment_id}
@@ -560,7 +564,7 @@ class PullsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentTypeForResponse]:
         """pulls/get-review-comment
 
         GET /repos/{owner}/{repo}/pulls/comments/{comment_id}
@@ -672,7 +676,9 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
+    ) -> Response[
+        PullRequestReviewComment, PullRequestReviewCommentTypeForResponse
+    ]: ...
 
     @overload
     def update_review_comment(
@@ -685,7 +691,9 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
+    ) -> Response[
+        PullRequestReviewComment, PullRequestReviewCommentTypeForResponse
+    ]: ...
 
     def update_review_comment(
         self,
@@ -697,7 +705,7 @@ class PullsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentTypeForResponse]:
         """pulls/update-review-comment
 
         PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}
@@ -753,7 +761,9 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
+    ) -> Response[
+        PullRequestReviewComment, PullRequestReviewCommentTypeForResponse
+    ]: ...
 
     @overload
     async def async_update_review_comment(
@@ -766,7 +776,9 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
+    ) -> Response[
+        PullRequestReviewComment, PullRequestReviewCommentTypeForResponse
+    ]: ...
 
     async def async_update_review_comment(
         self,
@@ -778,7 +790,7 @@ class PullsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentTypeForResponse]:
         """pulls/update-review-comment
 
         PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}
@@ -832,7 +844,7 @@ class PullsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PullRequest, PullRequestType]:
+    ) -> Response[PullRequest, PullRequestTypeForResponse]:
         """pulls/get
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}
@@ -864,11 +876,7 @@ class PullsClient:
         See also: https://docs.github.com/rest/pulls/pulls#get-a-pull-request
         """
 
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            PullRequest,
-        )
+        from ..models import BasicError, EventsGetResponse503, PullRequest
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
@@ -884,7 +892,7 @@ class PullsClient:
                 "404": BasicError,
                 "406": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -896,7 +904,7 @@ class PullsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PullRequest, PullRequestType]:
+    ) -> Response[PullRequest, PullRequestTypeForResponse]:
         """pulls/get
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}
@@ -928,11 +936,7 @@ class PullsClient:
         See also: https://docs.github.com/rest/pulls/pulls#get-a-pull-request
         """
 
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            PullRequest,
-        )
+        from ..models import BasicError, EventsGetResponse503, PullRequest
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
@@ -948,7 +952,7 @@ class PullsClient:
                 "404": BasicError,
                 "406": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -962,7 +966,7 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
-    ) -> Response[PullRequest, PullRequestType]: ...
+    ) -> Response[PullRequest, PullRequestTypeForResponse]: ...
 
     @overload
     def update(
@@ -979,7 +983,7 @@ class PullsClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         base: Missing[str] = UNSET,
         maintainer_can_modify: Missing[bool] = UNSET,
-    ) -> Response[PullRequest, PullRequestType]: ...
+    ) -> Response[PullRequest, PullRequestTypeForResponse]: ...
 
     def update(
         self,
@@ -991,7 +995,7 @@ class PullsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequest, PullRequestType]:
+    ) -> Response[PullRequest, PullRequestTypeForResponse]:
         """pulls/update
 
         PATCH /repos/{owner}/{repo}/pulls/{pull_number}
@@ -1053,7 +1057,7 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
-    ) -> Response[PullRequest, PullRequestType]: ...
+    ) -> Response[PullRequest, PullRequestTypeForResponse]: ...
 
     @overload
     async def async_update(
@@ -1070,7 +1074,7 @@ class PullsClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         base: Missing[str] = UNSET,
         maintainer_can_modify: Missing[bool] = UNSET,
-    ) -> Response[PullRequest, PullRequestType]: ...
+    ) -> Response[PullRequest, PullRequestTypeForResponse]: ...
 
     async def async_update(
         self,
@@ -1082,7 +1086,7 @@ class PullsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequest, PullRequestType]:
+    ) -> Response[PullRequest, PullRequestTypeForResponse]:
         """pulls/update
 
         PATCH /repos/{owner}/{repo}/pulls/{pull_number}
@@ -1142,12 +1146,14 @@ class PullsClient:
         *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
+    ) -> Response[
+        list[PullRequestReviewComment], list[PullRequestReviewCommentTypeForResponse]
+    ]:
         """pulls/list-review-comments
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
@@ -1182,7 +1188,7 @@ class PullsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PullRequestReviewComment],
@@ -1196,12 +1202,14 @@ class PullsClient:
         *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
+    ) -> Response[
+        list[PullRequestReviewComment], list[PullRequestReviewCommentTypeForResponse]
+    ]:
         """pulls/list-review-comments
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
@@ -1236,7 +1244,7 @@ class PullsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PullRequestReviewComment],
@@ -1252,7 +1260,9 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
+    ) -> Response[
+        PullRequestReviewComment, PullRequestReviewCommentTypeForResponse
+    ]: ...
 
     @overload
     def create_review_comment(
@@ -1274,7 +1284,9 @@ class PullsClient:
         start_side: Missing[Literal["LEFT", "RIGHT", "side"]] = UNSET,
         in_reply_to: Missing[int] = UNSET,
         subject_type: Missing[Literal["line", "file"]] = UNSET,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
+    ) -> Response[
+        PullRequestReviewComment, PullRequestReviewCommentTypeForResponse
+    ]: ...
 
     def create_review_comment(
         self,
@@ -1286,7 +1298,7 @@ class PullsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentTypeForResponse]:
         """pulls/create-review-comment
 
         POST /repos/{owner}/{repo}/pulls/{pull_number}/comments
@@ -1355,7 +1367,9 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
+    ) -> Response[
+        PullRequestReviewComment, PullRequestReviewCommentTypeForResponse
+    ]: ...
 
     @overload
     async def async_create_review_comment(
@@ -1377,7 +1391,9 @@ class PullsClient:
         start_side: Missing[Literal["LEFT", "RIGHT", "side"]] = UNSET,
         in_reply_to: Missing[int] = UNSET,
         subject_type: Missing[Literal["line", "file"]] = UNSET,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
+    ) -> Response[
+        PullRequestReviewComment, PullRequestReviewCommentTypeForResponse
+    ]: ...
 
     async def async_create_review_comment(
         self,
@@ -1389,7 +1405,7 @@ class PullsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentTypeForResponse]:
         """pulls/create-review-comment
 
         POST /repos/{owner}/{repo}/pulls/{pull_number}/comments
@@ -1459,7 +1475,9 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
+    ) -> Response[
+        PullRequestReviewComment, PullRequestReviewCommentTypeForResponse
+    ]: ...
 
     @overload
     def create_reply_for_review_comment(
@@ -1473,7 +1491,9 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
+    ) -> Response[
+        PullRequestReviewComment, PullRequestReviewCommentTypeForResponse
+    ]: ...
 
     def create_reply_for_review_comment(
         self,
@@ -1488,7 +1508,7 @@ class PullsClient:
             ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentTypeForResponse]:
         """pulls/create-reply-for-review-comment
 
         POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
@@ -1552,7 +1572,9 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
+    ) -> Response[
+        PullRequestReviewComment, PullRequestReviewCommentTypeForResponse
+    ]: ...
 
     @overload
     async def async_create_reply_for_review_comment(
@@ -1566,7 +1588,9 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
+    ) -> Response[
+        PullRequestReviewComment, PullRequestReviewCommentTypeForResponse
+    ]: ...
 
     async def async_create_reply_for_review_comment(
         self,
@@ -1581,7 +1605,7 @@ class PullsClient:
             ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentTypeForResponse]:
         """pulls/create-reply-for-review-comment
 
         POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
@@ -1644,7 +1668,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Commit], list[CommitType]]:
+    ) -> Response[list[Commit], list[CommitTypeForResponse]]:
         """pulls/list-commits
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
@@ -1677,7 +1701,7 @@ class PullsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Commit],
@@ -1693,7 +1717,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Commit], list[CommitType]]:
+    ) -> Response[list[Commit], list[CommitTypeForResponse]]:
         """pulls/list-commits
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
@@ -1726,7 +1750,7 @@ class PullsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Commit],
@@ -1742,7 +1766,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[DiffEntry], list[DiffEntryType]]:
+    ) -> Response[list[DiffEntry], list[DiffEntryTypeForResponse]]:
         """pulls/list-files
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}/files
@@ -1765,7 +1789,7 @@ class PullsClient:
         from ..models import (
             BasicError,
             DiffEntry,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ValidationError,
         )
 
@@ -1781,14 +1805,14 @@ class PullsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[DiffEntry],
             error_models={
                 "422": ValidationError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1802,7 +1826,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[DiffEntry], list[DiffEntryType]]:
+    ) -> Response[list[DiffEntry], list[DiffEntryTypeForResponse]]:
         """pulls/list-files
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}/files
@@ -1825,7 +1849,7 @@ class PullsClient:
         from ..models import (
             BasicError,
             DiffEntry,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ValidationError,
         )
 
@@ -1841,14 +1865,14 @@ class PullsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[DiffEntry],
             error_models={
                 "422": ValidationError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1924,7 +1948,7 @@ class PullsClient:
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
-    ) -> Response[PullRequestMergeResult, PullRequestMergeResultType]: ...
+    ) -> Response[PullRequestMergeResult, PullRequestMergeResultTypeForResponse]: ...
 
     @overload
     def merge(
@@ -1940,7 +1964,7 @@ class PullsClient:
         commit_message: Missing[str] = UNSET,
         sha: Missing[str] = UNSET,
         merge_method: Missing[Literal["merge", "squash", "rebase"]] = UNSET,
-    ) -> Response[PullRequestMergeResult, PullRequestMergeResultType]: ...
+    ) -> Response[PullRequestMergeResult, PullRequestMergeResultTypeForResponse]: ...
 
     def merge(
         self,
@@ -1954,7 +1978,7 @@ class PullsClient:
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestMergeResult, PullRequestMergeResultType]:
+    ) -> Response[PullRequestMergeResult, PullRequestMergeResultTypeForResponse]:
         """pulls/merge
 
         PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
@@ -2019,7 +2043,7 @@ class PullsClient:
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
-    ) -> Response[PullRequestMergeResult, PullRequestMergeResultType]: ...
+    ) -> Response[PullRequestMergeResult, PullRequestMergeResultTypeForResponse]: ...
 
     @overload
     async def async_merge(
@@ -2035,7 +2059,7 @@ class PullsClient:
         commit_message: Missing[str] = UNSET,
         sha: Missing[str] = UNSET,
         merge_method: Missing[Literal["merge", "squash", "rebase"]] = UNSET,
-    ) -> Response[PullRequestMergeResult, PullRequestMergeResultType]: ...
+    ) -> Response[PullRequestMergeResult, PullRequestMergeResultTypeForResponse]: ...
 
     async def async_merge(
         self,
@@ -2049,7 +2073,7 @@ class PullsClient:
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestMergeResult, PullRequestMergeResultType]:
+    ) -> Response[PullRequestMergeResult, PullRequestMergeResultTypeForResponse]:
         """pulls/merge
 
         PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
@@ -2110,7 +2134,7 @@ class PullsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PullRequestReviewRequest, PullRequestReviewRequestType]:
+    ) -> Response[PullRequestReviewRequest, PullRequestReviewRequestTypeForResponse]:
         """pulls/list-requested-reviewers
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
@@ -2142,7 +2166,7 @@ class PullsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PullRequestReviewRequest, PullRequestReviewRequestType]:
+    ) -> Response[PullRequestReviewRequest, PullRequestReviewRequestTypeForResponse]:
         """pulls/list-requested-reviewers
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
@@ -2181,7 +2205,7 @@ class PullsClient:
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
             ]
         ] = UNSET,
-    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]: ...
 
     @overload
     def request_reviewers(
@@ -2195,7 +2219,7 @@ class PullsClient:
         stream: bool = False,
         reviewers: list[str],
         team_reviewers: Missing[list[str]] = UNSET,
-    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]: ...
 
     @overload
     def request_reviewers(
@@ -2209,7 +2233,7 @@ class PullsClient:
         stream: bool = False,
         reviewers: Missing[list[str]] = UNSET,
         team_reviewers: list[str],
-    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]: ...
 
     def request_reviewers(
         self,
@@ -2226,7 +2250,7 @@ class PullsClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestSimple, PullRequestSimpleType]:
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]:
         """pulls/request-reviewers
 
         POST /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
@@ -2292,7 +2316,7 @@ class PullsClient:
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
             ]
         ] = UNSET,
-    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]: ...
 
     @overload
     async def async_request_reviewers(
@@ -2306,7 +2330,7 @@ class PullsClient:
         stream: bool = False,
         reviewers: list[str],
         team_reviewers: Missing[list[str]] = UNSET,
-    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]: ...
 
     @overload
     async def async_request_reviewers(
@@ -2320,7 +2344,7 @@ class PullsClient:
         stream: bool = False,
         reviewers: Missing[list[str]] = UNSET,
         team_reviewers: list[str],
-    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]: ...
 
     async def async_request_reviewers(
         self,
@@ -2337,7 +2361,7 @@ class PullsClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestSimple, PullRequestSimpleType]:
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]:
         """pulls/request-reviewers
 
         POST /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
@@ -2398,7 +2422,7 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
-    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]: ...
 
     @overload
     def remove_requested_reviewers(
@@ -2412,7 +2436,7 @@ class PullsClient:
         stream: bool = False,
         reviewers: list[str],
         team_reviewers: Missing[list[str]] = UNSET,
-    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]: ...
 
     def remove_requested_reviewers(
         self,
@@ -2426,7 +2450,7 @@ class PullsClient:
             ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestSimple, PullRequestSimpleType]:
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]:
         """pulls/remove-requested-reviewers
 
         DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
@@ -2479,7 +2503,7 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
-    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]: ...
 
     @overload
     async def async_remove_requested_reviewers(
@@ -2493,7 +2517,7 @@ class PullsClient:
         stream: bool = False,
         reviewers: list[str],
         team_reviewers: Missing[list[str]] = UNSET,
-    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]: ...
 
     async def async_remove_requested_reviewers(
         self,
@@ -2507,7 +2531,7 @@ class PullsClient:
             ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestSimple, PullRequestSimpleType]:
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]:
         """pulls/remove-requested-reviewers
 
         DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
@@ -2560,7 +2584,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PullRequestReview], list[PullRequestReviewType]]:
+    ) -> Response[list[PullRequestReview], list[PullRequestReviewTypeForResponse]]:
         """pulls/list-reviews
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
@@ -2591,7 +2615,7 @@ class PullsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PullRequestReview],
@@ -2607,7 +2631,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PullRequestReview], list[PullRequestReviewType]]:
+    ) -> Response[list[PullRequestReview], list[PullRequestReviewTypeForResponse]]:
         """pulls/list-reviews
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
@@ -2638,7 +2662,7 @@ class PullsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PullRequestReview],
@@ -2654,7 +2678,7 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
-    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]: ...
 
     @overload
     def create_review(
@@ -2672,7 +2696,7 @@ class PullsClient:
         comments: Missing[
             list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
         ] = UNSET,
-    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]: ...
 
     def create_review(
         self,
@@ -2684,7 +2708,7 @@ class PullsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReview, PullRequestReviewType]:
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]:
         """pulls/create-review
 
         POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews
@@ -2755,7 +2779,7 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
-    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]: ...
 
     @overload
     async def async_create_review(
@@ -2773,7 +2797,7 @@ class PullsClient:
         comments: Missing[
             list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
         ] = UNSET,
-    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]: ...
 
     async def async_create_review(
         self,
@@ -2785,7 +2809,7 @@ class PullsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReview, PullRequestReviewType]:
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]:
         """pulls/create-review
 
         POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews
@@ -2855,7 +2879,7 @@ class PullsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PullRequestReview, PullRequestReviewType]:
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]:
         """pulls/get-review
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
@@ -2898,7 +2922,7 @@ class PullsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PullRequestReview, PullRequestReviewType]:
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]:
         """pulls/get-review
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
@@ -2943,7 +2967,7 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
-    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]: ...
 
     @overload
     def update_review(
@@ -2957,7 +2981,7 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]: ...
 
     def update_review(
         self,
@@ -2970,7 +2994,7 @@ class PullsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReview, PullRequestReviewType]:
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]:
         """pulls/update-review
 
         PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
@@ -3031,7 +3055,7 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
-    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]: ...
 
     @overload
     async def async_update_review(
@@ -3045,7 +3069,7 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]: ...
 
     async def async_update_review(
         self,
@@ -3058,7 +3082,7 @@ class PullsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReview, PullRequestReviewType]:
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]:
         """pulls/update-review
 
         PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
@@ -3117,7 +3141,7 @@ class PullsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PullRequestReview, PullRequestReviewType]:
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]:
         """pulls/delete-pending-review
 
         DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
@@ -3161,7 +3185,7 @@ class PullsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PullRequestReview, PullRequestReviewType]:
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]:
         """pulls/delete-pending-review
 
         DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
@@ -3207,7 +3231,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ReviewComment], list[ReviewCommentType]]:
+    ) -> Response[list[ReviewComment], list[ReviewCommentTypeForResponse]]:
         """pulls/list-comments-for-review
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
@@ -3238,7 +3262,7 @@ class PullsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ReviewComment],
@@ -3258,7 +3282,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ReviewComment], list[ReviewCommentType]]:
+    ) -> Response[list[ReviewComment], list[ReviewCommentTypeForResponse]]:
         """pulls/list-comments-for-review
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
@@ -3289,7 +3313,7 @@ class PullsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ReviewComment],
@@ -3309,7 +3333,7 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
-    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]: ...
 
     @overload
     def dismiss_review(
@@ -3324,7 +3348,7 @@ class PullsClient:
         stream: bool = False,
         message: str,
         event: Missing[Literal["DISMISS"]] = UNSET,
-    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]: ...
 
     def dismiss_review(
         self,
@@ -3339,7 +3363,7 @@ class PullsClient:
             ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReview, PullRequestReviewType]:
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]:
         """pulls/dismiss-review
 
         PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
@@ -3407,7 +3431,7 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
-    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]: ...
 
     @overload
     async def async_dismiss_review(
@@ -3422,7 +3446,7 @@ class PullsClient:
         stream: bool = False,
         message: str,
         event: Missing[Literal["DISMISS"]] = UNSET,
-    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]: ...
 
     async def async_dismiss_review(
         self,
@@ -3437,7 +3461,7 @@ class PullsClient:
             ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReview, PullRequestReviewType]:
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]:
         """pulls/dismiss-review
 
         PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
@@ -3505,7 +3529,7 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
-    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]: ...
 
     @overload
     def submit_review(
@@ -3520,7 +3544,7 @@ class PullsClient:
         stream: bool = False,
         body: Missing[str] = UNSET,
         event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"],
-    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]: ...
 
     def submit_review(
         self,
@@ -3535,7 +3559,7 @@ class PullsClient:
             ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReview, PullRequestReviewType]:
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]:
         """pulls/submit-review
 
         POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
@@ -3599,7 +3623,7 @@ class PullsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
-    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]: ...
 
     @overload
     async def async_submit_review(
@@ -3614,7 +3638,7 @@ class PullsClient:
         stream: bool = False,
         body: Missing[str] = UNSET,
         event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"],
-    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]: ...
 
     async def async_submit_review(
         self,
@@ -3629,7 +3653,7 @@ class PullsClient:
             ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReview, PullRequestReviewType]:
+    ) -> Response[PullRequestReview, PullRequestReviewTypeForResponse]:
         """pulls/submit-review
 
         POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
@@ -3696,7 +3720,7 @@ class PullsClient:
         ] = UNSET,
     ) -> Response[
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
-        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type,
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -3712,7 +3736,7 @@ class PullsClient:
         expected_head_sha: Missing[str] = UNSET,
     ) -> Response[
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
-        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type,
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse,
     ]: ...
 
     def update_branch(
@@ -3729,7 +3753,7 @@ class PullsClient:
         **kwargs,
     ) -> Response[
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
-        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type,
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse,
     ]:
         """pulls/update-branch
 
@@ -3792,7 +3816,7 @@ class PullsClient:
         ] = UNSET,
     ) -> Response[
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
-        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type,
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -3808,7 +3832,7 @@ class PullsClient:
         expected_head_sha: Missing[str] = UNSET,
     ) -> Response[
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
-        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type,
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse,
     ]: ...
 
     async def async_update_branch(
@@ -3825,7 +3849,7 @@ class PullsClient:
         **kwargs,
     ) -> Response[
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
-        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type,
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse,
     ]:
         """pulls/update-branch
 

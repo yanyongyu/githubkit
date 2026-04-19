@@ -18,36 +18,34 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0020 import Repository
-from .group_0047 import Issue
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
+from .group_0048 import Discussion
+from .group_0482 import EnterpriseWebhooks
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0485 import RepositoryWebhooks
+from .group_0598 import WebhookDiscussionTransferredPropChanges
 
 
-class WebhookIssueDependenciesBlockedByAdded(GitHubModel):
-    """blocked by issue added event"""
+class WebhookDiscussionTransferred(GitHubModel):
+    """discussion transferred event"""
 
-    action: Literal["blocked_by_added"] = Field()
-    blocked_issue_id: float = Field(description="The ID of the blocked issue.")
-    blocked_issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    action: Literal["transferred"] = Field()
+    changes: WebhookDiscussionTransferredPropChanges = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
     )
-    blocking_issue_id: float = Field(description="The ID of the blocking issue.")
-    blocking_issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    blocking_issue_repo: Repository = Field(
-        title="Repository", description="A repository on GitHub."
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: OrganizationSimpleWebhooks = Field(
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
@@ -58,6 +56,6 @@ class WebhookIssueDependenciesBlockedByAdded(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssueDependenciesBlockedByAdded)
+model_rebuild(WebhookDiscussionTransferred)
 
-__all__ = ("WebhookIssueDependenciesBlockedByAdded",)
+__all__ = ("WebhookDiscussionTransferred",)

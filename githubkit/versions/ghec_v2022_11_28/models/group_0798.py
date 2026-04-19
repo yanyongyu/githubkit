@@ -18,17 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0494 import EnterpriseWebhooks
-from .group_0495 import SimpleInstallation
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0497 import RepositoryWebhooks
-from .group_0534 import PullRequestWebhook
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
+from .group_0587 import WebhooksIssue2
+from .group_0799 import WebhookIssuesTransferredPropChanges
 
 
-class WebhookPullRequestReadyForReview(GitHubModel):
-    """pull_request ready_for_review event"""
+class WebhookIssuesTransferred(GitHubModel):
+    """issues transferred event"""
 
-    action: Literal["ready_for_review"] = Field()
+    action: Literal["transferred"] = Field()
+    changes: WebhookIssuesTransferredPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,13 +41,15 @@ class WebhookPullRequestReadyForReview(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    number: int = Field(description="The pull request number.")
+    issue: WebhooksIssue2 = Field(
+        title="Issue",
+        description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.",
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: PullRequestWebhook = Field()
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -53,6 +57,6 @@ class WebhookPullRequestReadyForReview(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestReadyForReview)
+model_rebuild(WebhookIssuesTransferred)
 
-__all__ = ("WebhookPullRequestReadyForReview",)
+__all__ = ("WebhookIssuesTransferred",)

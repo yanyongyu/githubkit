@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,15 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody"""
+class GistsGistIdGetResponse403(GitHubModel):
+    """GistsGistIdGetResponse403"""
 
-    permission: Missing[Literal["read", "write", "admin"]] = Field(
-        default=UNSET,
-        description="The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see \"[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method).\"",
-    )
+    block: Missing[GistsGistIdGetResponse403PropBlock] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody)
+class GistsGistIdGetResponse403PropBlock(GitHubModel):
+    """GistsGistIdGetResponse403PropBlock"""
 
-__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody",)
+    reason: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    html_url: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(GistsGistIdGetResponse403)
+model_rebuild(GistsGistIdGetResponse403PropBlock)
+
+__all__ = (
+    "GistsGistIdGetResponse403",
+    "GistsGistIdGetResponse403PropBlock",
+)

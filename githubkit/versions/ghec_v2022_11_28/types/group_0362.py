@@ -9,16 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0355 import BranchProtectionType, BranchProtectionTypeForResponse
+from .group_0360 import CommitType, CommitTypeForResponse
 
 
-class HookResponseType(TypedDict):
-    """Hook Response"""
+class BranchWithProtectionType(TypedDict):
+    """Branch With Protection
 
-    code: Union[int, None]
-    status: Union[str, None]
-    message: Union[str, None]
+    Branch With Protection
+    """
+
+    name: str
+    commit: CommitType
+    links: BranchWithProtectionPropLinksType
+    protected: bool
+    protection: BranchProtectionType
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
 
 
-__all__ = ("HookResponseType",)
+class BranchWithProtectionTypeForResponse(TypedDict):
+    """Branch With Protection
+
+    Branch With Protection
+    """
+
+    name: str
+    commit: CommitTypeForResponse
+    links: BranchWithProtectionPropLinksTypeForResponse
+    protected: bool
+    protection: BranchProtectionTypeForResponse
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
+
+
+class BranchWithProtectionPropLinksType(TypedDict):
+    """BranchWithProtectionPropLinks"""
+
+    html: str
+    self_: str
+
+
+class BranchWithProtectionPropLinksTypeForResponse(TypedDict):
+    """BranchWithProtectionPropLinks"""
+
+    html: str
+    self_: str
+
+
+__all__ = (
+    "BranchWithProtectionPropLinksType",
+    "BranchWithProtectionPropLinksTypeForResponse",
+    "BranchWithProtectionType",
+    "BranchWithProtectionTypeForResponse",
+)

@@ -9,13 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-
-class RepositoryRuleFilePathRestrictionPropParametersType(TypedDict):
-    """RepositoryRuleFilePathRestrictionPropParameters"""
-
-    restricted_file_paths: list[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-__all__ = ("RepositoryRuleFilePathRestrictionPropParametersType",)
+class PullRequestSimplePropHeadType(TypedDict):
+    """PullRequestSimplePropHead"""
+
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
+    sha: str
+    user: Union[None, SimpleUserType]
+
+
+class PullRequestSimplePropHeadTypeForResponse(TypedDict):
+    """PullRequestSimplePropHead"""
+
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryTypeForResponse]
+    sha: str
+    user: Union[None, SimpleUserTypeForResponse]
+
+
+class PullRequestSimplePropBaseType(TypedDict):
+    """PullRequestSimplePropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: Union[None, SimpleUserType]
+
+
+class PullRequestSimplePropBaseTypeForResponse(TypedDict):
+    """PullRequestSimplePropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryTypeForResponse
+    sha: str
+    user: Union[None, SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "PullRequestSimplePropBaseType",
+    "PullRequestSimplePropBaseTypeForResponse",
+    "PullRequestSimplePropHeadType",
+    "PullRequestSimplePropHeadTypeForResponse",
+)

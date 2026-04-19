@@ -9,24 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0254 import ArtifactDeploymentRecord
 
 
-class ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody"""
+class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200(GitHubModel):
+    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
 
-    status: Literal["approve", "deny"] = Field(
-        description="The review action to perform on the bypass request."
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of deployment records for this digest and organization",
     )
-    message: str = Field(
-        description="A message to include with the review. Has a maximum character length of 2048."
-    )
+    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody)
+model_rebuild(OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200)
 
-__all__ = ("ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody",)
+__all__ = ("OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200",)

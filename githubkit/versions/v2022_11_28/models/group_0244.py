@@ -9,49 +9,86 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0010 import Integration
 
+class SecretScanningLocationIssueTitle(GitHubModel):
+    """SecretScanningLocationIssueTitle
 
-class DeploymentSimple(GitHubModel):
-    """Deployment
-
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    Represents an 'issue_title' secret scanning location type. This location type
+    shows that a secret was detected in the title of an issue.
     """
 
-    url: str = Field()
-    id: int = Field(description="Unique identifier of the deployment")
-    node_id: str = Field()
-    task: str = Field(description="Parameter to specify a task to execute")
-    original_environment: Missing[str] = Field(default=UNSET)
-    environment: str = Field(description="Name for the target deployment environment.")
-    description: Union[str, None] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    statuses_url: str = Field()
-    repository_url: str = Field()
-    transient_environment: Missing[bool] = Field(
+    issue_title_url: str = Field(
+        description="The API URL to get the issue where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
         default=UNSET,
-        description="Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
+        description="The GitHub URL for the issue where the secret was detected.",
     )
-    production_environment: Missing[bool] = Field(
+
+
+class SecretScanningLocationIssueComment(GitHubModel):
+    """SecretScanningLocationIssueComment
+
+    Represents an 'issue_comment' secret scanning location type. This location type
+    shows that a secret was detected in a comment on an issue.
+    """
+
+    issue_comment_url: str = Field(
+        description="The API URL to get the issue comment where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
         default=UNSET,
-        description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+        description="The GitHub URL for the issue comment where the secret was detected.",
     )
 
 
-model_rebuild(DeploymentSimple)
+class SecretScanningLocationPullRequestTitle(GitHubModel):
+    """SecretScanningLocationPullRequestTitle
 
-__all__ = ("DeploymentSimple",)
+    Represents a 'pull_request_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a pull request.
+    """
+
+    pull_request_title_url: str = Field(
+        description="The API URL to get the pull request where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the pull request where the secret was detected.",
+    )
+
+
+class SecretScanningLocationPullRequestReviewComment(GitHubModel):
+    """SecretScanningLocationPullRequestReviewComment
+
+    Represents a 'pull_request_review_comment' secret scanning location type. This
+    location type shows that a secret was detected in a review comment on a pull
+    request.
+    """
+
+    pull_request_review_comment_url: str = Field(
+        description="The API URL to get the pull request review comment where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the pull request review comment where the secret was detected.",
+    )
+
+
+model_rebuild(SecretScanningLocationIssueTitle)
+model_rebuild(SecretScanningLocationIssueComment)
+model_rebuild(SecretScanningLocationPullRequestTitle)
+model_rebuild(SecretScanningLocationPullRequestReviewComment)
+
+__all__ = (
+    "SecretScanningLocationIssueComment",
+    "SecretScanningLocationIssueTitle",
+    "SecretScanningLocationPullRequestReviewComment",
+    "SecretScanningLocationPullRequestTitle",
+)

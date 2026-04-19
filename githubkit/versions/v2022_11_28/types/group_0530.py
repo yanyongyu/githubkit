@@ -9,24 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0446 import DiscussionType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionCategoryChangedType(TypedDict):
-    """discussion category changed event"""
+class WebhookBranchProtectionConfigurationDisabledType(TypedDict):
+    """branch protection configuration disabled event"""
 
-    action: Literal["category_changed"]
-    changes: WebhookDiscussionCategoryChangedPropChangesType
-    discussion: DiscussionType
+    action: Literal["disabled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -34,36 +33,18 @@ class WebhookDiscussionCategoryChangedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionCategoryChangedPropChangesType(TypedDict):
-    """WebhookDiscussionCategoryChangedPropChanges"""
+class WebhookBranchProtectionConfigurationDisabledTypeForResponse(TypedDict):
+    """branch protection configuration disabled event"""
 
-    category: WebhookDiscussionCategoryChangedPropChangesPropCategoryType
-
-
-class WebhookDiscussionCategoryChangedPropChangesPropCategoryType(TypedDict):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
-
-    from_: WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType
-
-
-class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType(TypedDict):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
-
-    created_at: datetime
-    description: str
-    emoji: str
-    id: int
-    is_answerable: bool
-    name: str
-    node_id: NotRequired[str]
-    repository_id: int
-    slug: str
-    updated_at: str
+    action: Literal["disabled"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType",
-    "WebhookDiscussionCategoryChangedPropChangesPropCategoryType",
-    "WebhookDiscussionCategoryChangedPropChangesType",
-    "WebhookDiscussionCategoryChangedType",
+    "WebhookBranchProtectionConfigurationDisabledType",
+    "WebhookBranchProtectionConfigurationDisabledTypeForResponse",
 )

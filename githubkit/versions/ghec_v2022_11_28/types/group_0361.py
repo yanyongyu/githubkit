@@ -9,33 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0357 import GitUserType, GitUserTypeForResponse
+from .group_0358 import VerificationType, VerificationTypeForResponse
 
-class GitTreeType(TypedDict):
-    """Git Tree
 
-    The hierarchy between files in a Git repository.
-    """
+class CommitPropCommitType(TypedDict):
+    """CommitPropCommit"""
+
+    url: str
+    author: Union[None, GitUserType]
+    committer: Union[None, GitUserType]
+    message: str
+    comment_count: int
+    tree: CommitPropCommitPropTreeType
+    verification: NotRequired[VerificationType]
+
+
+class CommitPropCommitTypeForResponse(TypedDict):
+    """CommitPropCommit"""
+
+    url: str
+    author: Union[None, GitUserTypeForResponse]
+    committer: Union[None, GitUserTypeForResponse]
+    message: str
+    comment_count: int
+    tree: CommitPropCommitPropTreeTypeForResponse
+    verification: NotRequired[VerificationTypeForResponse]
+
+
+class CommitPropCommitPropTreeType(TypedDict):
+    """CommitPropCommitPropTree"""
 
     sha: str
-    url: NotRequired[str]
-    truncated: bool
-    tree: list[GitTreePropTreeItemsType]
+    url: str
 
 
-class GitTreePropTreeItemsType(TypedDict):
-    """GitTreePropTreeItems"""
+class CommitPropCommitPropTreeTypeForResponse(TypedDict):
+    """CommitPropCommitPropTree"""
 
-    path: str
-    mode: str
-    type: str
     sha: str
-    size: NotRequired[int]
-    url: NotRequired[str]
+    url: str
 
 
 __all__ = (
-    "GitTreePropTreeItemsType",
-    "GitTreeType",
+    "CommitPropCommitPropTreeType",
+    "CommitPropCommitPropTreeTypeForResponse",
+    "CommitPropCommitType",
+    "CommitPropCommitTypeForResponse",
 )

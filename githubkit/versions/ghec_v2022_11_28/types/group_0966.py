@@ -9,51 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
-        ]
+class WebhookSecretScanningScanCompletedType(TypedDict):
+    """secret_scanning_scan completed event"""
+
+    action: Literal["completed"]
+    type: Literal["backfill", "custom-pattern-backfill", "pattern-version-backfill"]
+    source: Literal["git", "issues", "pull-requests", "discussions", "wiki"]
+    started_at: _dt.datetime
+    completed_at: _dt.datetime
+    secret_types: NotRequired[Union[list[str], None]]
+    custom_pattern_name: NotRequired[Union[str, None]]
+    custom_pattern_scope: NotRequired[
+        Union[None, Literal["repository", "organization", "enterprise"]]
     ]
-    custom_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
-        ]
+    repository: NotRequired[RepositoryWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    sender: NotRequired[SimpleUserType]
+
+
+class WebhookSecretScanningScanCompletedTypeForResponse(TypedDict):
+    """secret_scanning_scan completed event"""
+
+    action: Literal["completed"]
+    type: Literal["backfill", "custom-pattern-backfill", "pattern-version-backfill"]
+    source: Literal["git", "issues", "pull-requests", "discussions", "wiki"]
+    started_at: str
+    completed_at: str
+    secret_types: NotRequired[Union[list[str], None]]
+    custom_pattern_name: NotRequired[Union[str, None]]
+    custom_pattern_scope: NotRequired[
+        Union[None, Literal["repository", "organization", "enterprise"]]
     ]
-
-
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
-    ternSettingsItems
-    """
-
-    token_type: NotRequired[str]
-    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
-
-
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
-    rnSettingsItems
-    """
-
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType",
+    "WebhookSecretScanningScanCompletedType",
+    "WebhookSecretScanningScanCompletedTypeForResponse",
 )

@@ -9,22 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    assignees: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._",
+    fields: list[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems] = (
+        Field(description="A list of field updates to apply.")
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBody)
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",)
+    id: int = Field(description="The ID of the project field to update.")
+    value: Union[str, float, None] = Field(
+        description="The new value for the field:\n- For text, number, and date fields, provide the new value directly.\n- For single select and iteration fields, provide the ID of the option or iteration.\n- To clear the field, set this to null."
+    )
+
+
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems)
+
+__all__ = (
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
+)

@@ -9,13 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0001 import CvssSeveritiesType
-from .group_0002 import SecurityAdvisoryEpssType
-from .group_0005 import GlobalAdvisoryPropCreditsItemsType
+from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
+from .group_0002 import SecurityAdvisoryEpssType, SecurityAdvisoryEpssTypeForResponse
+from .group_0005 import (
+    GlobalAdvisoryPropCreditsItemsType,
+    GlobalAdvisoryPropCreditsItemsTypeForResponse,
+)
 
 
 class GlobalAdvisoryType(TypedDict):
@@ -36,11 +39,11 @@ class GlobalAdvisoryType(TypedDict):
     source_code_location: Union[str, None]
     identifiers: Union[list[GlobalAdvisoryPropIdentifiersItemsType], None]
     references: Union[list[str], None]
-    published_at: datetime
-    updated_at: datetime
-    github_reviewed_at: Union[datetime, None]
-    nvd_published_at: Union[datetime, None]
-    withdrawn_at: Union[datetime, None]
+    published_at: _dt.datetime
+    updated_at: _dt.datetime
+    github_reviewed_at: Union[_dt.datetime, None]
+    nvd_published_at: Union[_dt.datetime, None]
+    withdrawn_at: Union[_dt.datetime, None]
     vulnerabilities: Union[list[VulnerabilityType], None]
     cvss: Union[GlobalAdvisoryPropCvssType, None]
     cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
@@ -49,7 +52,45 @@ class GlobalAdvisoryType(TypedDict):
     credits_: Union[list[GlobalAdvisoryPropCreditsItemsType], None]
 
 
+class GlobalAdvisoryTypeForResponse(TypedDict):
+    """GlobalAdvisory
+
+    A GitHub Security Advisory.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
+    url: str
+    html_url: str
+    repository_advisory_url: Union[str, None]
+    summary: str
+    description: Union[str, None]
+    type: Literal["reviewed", "unreviewed", "malware"]
+    severity: Literal["critical", "high", "medium", "low", "unknown"]
+    source_code_location: Union[str, None]
+    identifiers: Union[list[GlobalAdvisoryPropIdentifiersItemsTypeForResponse], None]
+    references: Union[list[str], None]
+    published_at: str
+    updated_at: str
+    github_reviewed_at: Union[str, None]
+    nvd_published_at: Union[str, None]
+    withdrawn_at: Union[str, None]
+    vulnerabilities: Union[list[VulnerabilityTypeForResponse], None]
+    cvss: Union[GlobalAdvisoryPropCvssTypeForResponse, None]
+    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
+    epss: NotRequired[Union[SecurityAdvisoryEpssTypeForResponse, None]]
+    cwes: Union[list[GlobalAdvisoryPropCwesItemsTypeForResponse], None]
+    credits_: Union[list[GlobalAdvisoryPropCreditsItemsTypeForResponse], None]
+
+
 class GlobalAdvisoryPropIdentifiersItemsType(TypedDict):
+    """GlobalAdvisoryPropIdentifiersItems"""
+
+    type: Literal["CVE", "GHSA"]
+    value: str
+
+
+class GlobalAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
     """GlobalAdvisoryPropIdentifiersItems"""
 
     type: Literal["CVE", "GHSA"]
@@ -63,7 +104,21 @@ class GlobalAdvisoryPropCvssType(TypedDict):
     score: Union[float, None]
 
 
+class GlobalAdvisoryPropCvssTypeForResponse(TypedDict):
+    """GlobalAdvisoryPropCvss"""
+
+    vector_string: Union[str, None]
+    score: Union[float, None]
+
+
 class GlobalAdvisoryPropCwesItemsType(TypedDict):
+    """GlobalAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class GlobalAdvisoryPropCwesItemsTypeForResponse(TypedDict):
     """GlobalAdvisoryPropCwesItems"""
 
     cwe_id: str
@@ -78,6 +133,19 @@ class VulnerabilityType(TypedDict):
     """
 
     package: Union[VulnerabilityPropPackageType, None]
+    vulnerable_version_range: Union[str, None]
+    first_patched_version: Union[str, None]
+    vulnerable_functions: Union[list[str], None]
+
+
+class VulnerabilityTypeForResponse(TypedDict):
+    """Vulnerability
+
+    A vulnerability describing the product and its affected versions within a GitHub
+    Security Advisory.
+    """
+
+    package: Union[VulnerabilityPropPackageTypeForResponse, None]
     vulnerable_version_range: Union[str, None]
     first_patched_version: Union[str, None]
     vulnerable_functions: Union[list[str], None]
@@ -107,11 +175,41 @@ class VulnerabilityPropPackageType(TypedDict):
     name: Union[str, None]
 
 
+class VulnerabilityPropPackageTypeForResponse(TypedDict):
+    """VulnerabilityPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: Union[str, None]
+
+
 __all__ = (
     "GlobalAdvisoryPropCvssType",
+    "GlobalAdvisoryPropCvssTypeForResponse",
     "GlobalAdvisoryPropCwesItemsType",
+    "GlobalAdvisoryPropCwesItemsTypeForResponse",
     "GlobalAdvisoryPropIdentifiersItemsType",
+    "GlobalAdvisoryPropIdentifiersItemsTypeForResponse",
     "GlobalAdvisoryType",
+    "GlobalAdvisoryTypeForResponse",
     "VulnerabilityPropPackageType",
+    "VulnerabilityPropPackageTypeForResponse",
     "VulnerabilityType",
+    "VulnerabilityTypeForResponse",
 )

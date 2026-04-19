@@ -11,16 +11,36 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0135 import RepositoryRulesetConditionsPropRefNameType
 
+class CodespacesPublicKeyType(TypedDict):
+    """CodespacesPublicKey
 
-class RepositoryRulesetConditionsType(TypedDict):
-    """Repository ruleset conditions for ref names
-
-    Parameters for a repository ruleset ref name condition
+    The public key used for setting Codespaces secrets.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-__all__ = ("RepositoryRulesetConditionsType",)
+class CodespacesPublicKeyTypeForResponse(TypedDict):
+    """CodespacesPublicKey
+
+    The public key used for setting Codespaces secrets.
+    """
+
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
+
+
+__all__ = (
+    "CodespacesPublicKeyType",
+    "CodespacesPublicKeyTypeForResponse",
+)

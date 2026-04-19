@@ -11,26 +11,49 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0947 import WebhookRepositoryRulesetEditedPropChangesPropConditions
+from .group_0949 import WebhookRepositoryRulesetEditedPropChangesPropRules
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    AddPatchBody
-    """
+class WebhookRepositoryRulesetEditedPropChanges(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChanges"""
 
-    repositories: list[str] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
-        description="The repository names to add to the installation.",
+    name: Missing[WebhookRepositoryRulesetEditedPropChangesPropName] = Field(
+        default=UNSET
+    )
+    enforcement: Missing[WebhookRepositoryRulesetEditedPropChangesPropEnforcement] = (
+        Field(default=UNSET)
+    )
+    conditions: Missing[WebhookRepositoryRulesetEditedPropChangesPropConditions] = (
+        Field(default=UNSET)
+    )
+    rules: Missing[WebhookRepositoryRulesetEditedPropChangesPropRules] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody
-)
+class WebhookRepositoryRulesetEditedPropChangesPropName(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropEnforcement(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+model_rebuild(WebhookRepositoryRulesetEditedPropChanges)
+model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropName)
+model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropEnforcement)
 
 __all__ = (
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody",
+    "WebhookRepositoryRulesetEditedPropChanges",
+    "WebhookRepositoryRulesetEditedPropChangesPropEnforcement",
+    "WebhookRepositoryRulesetEditedPropChangesPropName",
 )

@@ -9,71 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0819 import (
-    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0577 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookRegistryPackagePublishedPropRegistryPackageType(TypedDict):
-    """WebhookRegistryPackagePublishedPropRegistryPackage"""
+class WebhookMemberRemovedType(TypedDict):
+    """member removed event"""
 
-    created_at: Union[str, None]
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType
-    package_type: str
-    package_version: Union[
-        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType, None
-    ]
-    registry: Union[
-        WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType, None
-    ]
-    updated_at: Union[str, None]
+    action: Literal["removed"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    member: Union[WebhooksUserType, None]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType(TypedDict):
-    """WebhookRegistryPackagePublishedPropRegistryPackagePropOwner"""
+class WebhookMemberRemovedTypeForResponse(TypedDict):
+    """member removed event"""
 
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: str
-    html_url: str
-    id: int
-    login: str
-    node_id: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
-    user_view_type: NotRequired[str]
-
-
-class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType(TypedDict):
-    """WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry"""
-
-    about_url: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    vendor: NotRequired[str]
+    action: Literal["removed"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    member: Union[WebhooksUserTypeForResponse, None]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType",
-    "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType",
-    "WebhookRegistryPackagePublishedPropRegistryPackageType",
+    "WebhookMemberRemovedType",
+    "WebhookMemberRemovedTypeForResponse",
 )

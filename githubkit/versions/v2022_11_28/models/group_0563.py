@@ -18,22 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0433 import EnterpriseWebhooks
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
-from .group_0564 import WebhookIssueCommentCreatedPropComment
-from .group_0565 import WebhookIssueCommentCreatedPropIssue
+from .group_0482 import EnterpriseWebhooks
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
 
 
-class WebhookIssueCommentCreated(GitHubModel):
-    """issue_comment created event"""
+class WebhookCustomPropertyDeleted(GitHubModel):
+    """custom property deleted event"""
 
-    action: Literal["created"] = Field()
-    comment: WebhookIssueCommentCreatedPropComment = Field(
-        title="issue comment",
-        description="The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment) itself.",
-    )
+    action: Literal["deleted"] = Field()
+    definition: WebhookCustomPropertyDeletedPropDefinition = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,21 +38,26 @@ class WebhookIssueCommentCreated(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssueCommentCreatedPropIssue = Field(
-        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) the comment belongs to."
-    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssueCommentCreated)
+class WebhookCustomPropertyDeletedPropDefinition(GitHubModel):
+    """WebhookCustomPropertyDeletedPropDefinition"""
 
-__all__ = ("WebhookIssueCommentCreated",)
+    property_name: str = Field(description="The name of the property that was deleted.")
+
+
+model_rebuild(WebhookCustomPropertyDeleted)
+model_rebuild(WebhookCustomPropertyDeletedPropDefinition)
+
+__all__ = (
+    "WebhookCustomPropertyDeleted",
+    "WebhookCustomPropertyDeletedPropDefinition",
+)

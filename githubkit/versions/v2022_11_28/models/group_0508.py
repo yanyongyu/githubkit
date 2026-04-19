@@ -9,49 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0127 import CustomProperty
-from .group_0433 import EnterpriseWebhooks
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
+from .group_0268 import SimpleCommit
 
 
-class WebhookCustomPropertyCreated(GitHubModel):
-    """custom property created event"""
+class MergeGroup(GitHubModel):
+    """Merge Group
 
-    action: Literal["created"] = Field()
-    definition: CustomProperty = Field(
-        title="Organization Custom Property",
-        description="Custom property defined on an organization",
+    A group of pull requests that the merge queue has grouped together to be merged.
+    """
+
+    head_sha: str = Field(description="The SHA of the merge group.")
+    head_ref: str = Field(description="The full ref of the merge group.")
+    base_sha: str = Field(description="The SHA of the merge group's parent commit.")
+    base_ref: str = Field(
+        description="The full ref of the branch the merge group will be merged into."
     )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
 
 
-model_rebuild(WebhookCustomPropertyCreated)
+model_rebuild(MergeGroup)
 
-__all__ = ("WebhookCustomPropertyCreated",)
+__all__ = ("MergeGroup",)

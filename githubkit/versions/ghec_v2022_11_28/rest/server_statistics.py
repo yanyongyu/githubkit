@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Optional
 from weakref import ref
 
 from githubkit.typing import Missing
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
@@ -23,7 +23,7 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import ServerStatisticsItems
-    from ..types import ServerStatisticsItemsType
+    from ..types import ServerStatisticsItemsTypeForResponse
 
 
 class ServerStatisticsClient:
@@ -49,7 +49,9 @@ class ServerStatisticsClient:
         date_end: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ServerStatisticsItems], list[ServerStatisticsItemsType]]:
+    ) -> Response[
+        list[ServerStatisticsItems], list[ServerStatisticsItemsTypeForResponse]
+    ]:
         """enterprise-admin/get-server-statistics
 
         GET /enterprise-installation/{enterprise_or_org}/server-statistics
@@ -79,7 +81,7 @@ class ServerStatisticsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ServerStatisticsItems],
@@ -93,7 +95,9 @@ class ServerStatisticsClient:
         date_end: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ServerStatisticsItems], list[ServerStatisticsItemsType]]:
+    ) -> Response[
+        list[ServerStatisticsItems], list[ServerStatisticsItemsTypeForResponse]
+    ]:
         """enterprise-admin/get-server-statistics
 
         GET /enterprise-installation/{enterprise_or_org}/server-statistics
@@ -123,7 +127,7 @@ class ServerStatisticsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ServerStatisticsItems],

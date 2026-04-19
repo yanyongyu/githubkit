@@ -9,27 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class DeployKeyType(TypedDict):
-    """Deploy Key
-
-    An SSH key granting access to a single repository.
-    """
-
-    id: int
-    key: str
-    url: str
-    title: str
-    verified: bool
-    created_at: str
-    read_only: bool
-    added_by: NotRequired[Union[str, None]]
-    last_used: NotRequired[Union[datetime, None]]
-    enabled: NotRequired[bool]
+from .group_0344 import MetadataType, MetadataTypeForResponse
 
 
-__all__ = ("DeployKeyType",)
+class DependencyType(TypedDict):
+    """Dependency"""
+
+    package_url: NotRequired[str]
+    metadata: NotRequired[MetadataType]
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[list[str]]
+
+
+class DependencyTypeForResponse(TypedDict):
+    """Dependency"""
+
+    package_url: NotRequired[str]
+    metadata: NotRequired[MetadataTypeForResponse]
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[list[str]]
+
+
+__all__ = (
+    "DependencyType",
+    "DependencyTypeForResponse",
+)

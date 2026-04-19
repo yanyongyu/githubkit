@@ -9,95 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0036 import SimpleRepository
+from .group_0312 import CodeScanningVariantAnalysisPropScannedRepositoriesItems
+from .group_0313 import CodeScanningVariantAnalysisPropSkippedRepositories
 
 
-class GitCommit(GitHubModel):
-    """Git Commit
+class CodeScanningVariantAnalysis(GitHubModel):
+    """Variant Analysis
 
-    Low-level Git commit operations within a repository
+    A run of a CodeQL query against one or more repositories.
     """
 
-    sha: str = Field(description="SHA for the commit")
-    node_id: str = Field()
-    url: str = Field()
-    author: GitCommitPropAuthor = Field(
-        description="Identifying information for the git-user"
+    id: int = Field(description="The ID of the variant analysis.")
+    controller_repo: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
     )
-    committer: GitCommitPropCommitter = Field(
-        description="Identifying information for the git-user"
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    query_language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ] = Field(description="The language targeted by the CodeQL query")
+    query_pack_url: str = Field(description="The download url for the query pack.")
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time at which the variant analysis was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
     )
-    message: str = Field(description="Message describing the purpose of the commit")
-    tree: GitCommitPropTree = Field()
-    parents: list[GitCommitPropParentsItems] = Field()
-    verification: GitCommitPropVerification = Field()
-    html_url: str = Field()
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time at which the variant analysis was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+    )
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The date and time at which the variant analysis was completed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the variant analysis has not yet completed or this information is not available.",
+    )
+    status: Literal["in_progress", "succeeded", "failed", "cancelled"] = Field()
+    actions_workflow_run_id: Missing[int] = Field(
+        default=UNSET,
+        description="The GitHub Actions workflow run used to execute this variant analysis. This is only available if the workflow run has started.",
+    )
+    failure_reason: Missing[
+        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    ] = Field(
+        default=UNSET,
+        description="The reason for a failure of the variant analysis. This is only available if the variant analysis has failed.",
+    )
+    scanned_repositories: Missing[
+        list[CodeScanningVariantAnalysisPropScannedRepositoriesItems]
+    ] = Field(default=UNSET)
+    skipped_repositories: Missing[
+        CodeScanningVariantAnalysisPropSkippedRepositories
+    ] = Field(
+        default=UNSET,
+        description="Information about repositories that were skipped from processing. This information is only available to the user that initiated the variant analysis.",
+    )
 
 
-class GitCommitPropAuthor(GitHubModel):
-    """GitCommitPropAuthor
+model_rebuild(CodeScanningVariantAnalysis)
 
-    Identifying information for the git-user
-    """
-
-    date: datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class GitCommitPropCommitter(GitHubModel):
-    """GitCommitPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class GitCommitPropTree(GitHubModel):
-    """GitCommitPropTree"""
-
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-
-
-class GitCommitPropParentsItems(GitHubModel):
-    """GitCommitPropParentsItems"""
-
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-    html_url: str = Field()
-
-
-class GitCommitPropVerification(GitHubModel):
-    """GitCommitPropVerification"""
-
-    verified: bool = Field()
-    reason: str = Field()
-    signature: Union[str, None] = Field()
-    payload: Union[str, None] = Field()
-    verified_at: Union[str, None] = Field()
-
-
-model_rebuild(GitCommit)
-model_rebuild(GitCommitPropAuthor)
-model_rebuild(GitCommitPropCommitter)
-model_rebuild(GitCommitPropTree)
-model_rebuild(GitCommitPropParentsItems)
-model_rebuild(GitCommitPropVerification)
-
-__all__ = (
-    "GitCommit",
-    "GitCommitPropAuthor",
-    "GitCommitPropCommitter",
-    "GitCommitPropParentsItems",
-    "GitCommitPropTree",
-    "GitCommitPropVerification",
-)
+__all__ = ("CodeScanningVariantAnalysis",)

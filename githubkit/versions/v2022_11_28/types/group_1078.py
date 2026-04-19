@@ -9,29 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class OrgsOrgCopilotCodingAgentPermissionsPutBodyType(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsPutBody"""
 
-    total_count: int
-    secrets: list[DependabotSecretType]
+    enabled_repositories: Literal["all", "selected", "none"]
 
 
-class DependabotSecretType(TypedDict):
-    """Dependabot Secret
+class OrgsOrgCopilotCodingAgentPermissionsPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsPutBody"""
 
-    Set secrets for Dependabot.
-    """
-
-    name: str
-    created_at: datetime
-    updated_at: datetime
+    enabled_repositories: Literal["all", "selected", "none"]
 
 
 __all__ = (
-    "DependabotSecretType",
-    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
+    "OrgsOrgCopilotCodingAgentPermissionsPutBodyType",
+    "OrgsOrgCopilotCodingAgentPermissionsPutBodyTypeForResponse",
 )

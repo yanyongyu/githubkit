@@ -9,27 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class InteractionLimitResponse(GitHubModel):
-    """Interaction Limits
+class ActionsForkPrWorkflowsPrivateReposRequest(GitHubModel):
+    """ActionsForkPrWorkflowsPrivateReposRequest"""
 
-    Interaction limit settings.
-    """
-
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
-        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
+    run_workflows_from_fork_pull_requests: bool = Field(
+        description="Whether workflows triggered by pull requests from forks are allowed to run on private repositories."
     )
-    origin: str = Field()
-    expires_at: datetime = Field()
+    send_write_tokens_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether GitHub Actions can create pull requests or submit approving pull request reviews from a workflow triggered by a fork pull request.",
+    )
+    send_secrets_and_variables: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to make secrets and variables available to workflows triggered by pull requests from forks.",
+    )
+    require_approval_for_fork_pr_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether workflows triggered by pull requests from forks require approval from a repository administrator to run.",
+    )
 
 
-model_rebuild(InteractionLimitResponse)
+model_rebuild(ActionsForkPrWorkflowsPrivateReposRequest)
 
-__all__ = ("InteractionLimitResponse",)
+__all__ = ("ActionsForkPrWorkflowsPrivateReposRequest",)

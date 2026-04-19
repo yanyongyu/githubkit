@@ -15,20 +15,61 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0047 import Issue
+
+class RepositoryRuleViolationError(GitHubModel):
+    """RepositoryRuleViolationError
+
+    Repository rule violation was detected
+    """
+
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    metadata: Missing[RepositoryRuleViolationErrorPropMetadata] = Field(default=UNSET)
 
 
-class TimelineCrossReferencedEventPropSource(GitHubModel):
-    """TimelineCrossReferencedEventPropSource"""
+class RepositoryRuleViolationErrorPropMetadata(GitHubModel):
+    """RepositoryRuleViolationErrorPropMetadata"""
 
-    type: Missing[str] = Field(default=UNSET)
-    issue: Missing[Issue] = Field(
+    secret_scanning: Missing[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanning
+    ] = Field(default=UNSET)
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanning(GitHubModel):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+
+    bypass_placeholders: Missing[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
+        ]
+    ] = Field(default=UNSET)
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems(
+    GitHubModel
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
+    """
+
+    placeholder_id: Missing[str] = Field(
         default=UNSET,
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes.",
     )
+    token_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(TimelineCrossReferencedEventPropSource)
+model_rebuild(RepositoryRuleViolationError)
+model_rebuild(RepositoryRuleViolationErrorPropMetadata)
+model_rebuild(RepositoryRuleViolationErrorPropMetadataPropSecretScanning)
+model_rebuild(
+    RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
+)
 
-__all__ = ("TimelineCrossReferencedEventPropSource",)
+__all__ = (
+    "RepositoryRuleViolationError",
+    "RepositoryRuleViolationErrorPropMetadata",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanning",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems",
+)

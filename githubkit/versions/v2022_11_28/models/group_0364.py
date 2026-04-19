@@ -9,40 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0011 import WebhookConfig
+from .group_0363 import HookResponse
 
 
-class ReleaseAsset(GitHubModel):
-    """Release Asset
+class Hook(GitHubModel):
+    """Webhook
 
-    Data related to a release.
+    Webhooks for repositories.
     """
 
-    url: str = Field()
-    browser_download_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field(description="The file name of the asset.")
-    label: Union[str, None] = Field()
-    state: Literal["uploaded", "open"] = Field(
-        description="State of the release asset."
+    type: str = Field()
+    id: int = Field(description="Unique identifier of the webhook.")
+    name: str = Field(
+        description="The name of a valid service, use 'web' for a webhook."
     )
-    content_type: str = Field()
-    size: int = Field()
-    digest: Union[str, None] = Field()
-    download_count: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    uploader: Union[None, SimpleUser] = Field()
+    active: bool = Field(
+        description="Determines whether the hook is actually triggered on pushes."
+    )
+    events: list[str] = Field(
+        description="Determines what events the hook is triggered for. Default: ['push']."
+    )
+    config: WebhookConfig = Field(
+        title="Webhook Configuration", description="Configuration object of the webhook"
+    )
+    updated_at: _dt.datetime = Field()
+    created_at: _dt.datetime = Field()
+    url: str = Field()
+    test_url: str = Field()
+    ping_url: str = Field()
+    deliveries_url: Missing[str] = Field(default=UNSET)
+    last_response: HookResponse = Field(title="Hook Response")
 
 
-model_rebuild(ReleaseAsset)
+model_rebuild(Hook)
 
-__all__ = ("ReleaseAsset",)
+__all__ = ("Hook",)

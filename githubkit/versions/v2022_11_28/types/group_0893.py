@@ -12,13 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
+class WebhookStatusPropCommitPropCommitPropCommitterAllof1Type(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
-__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",)
+class WebhookStatusPropCommitPropCommitPropCommitterAllof1TypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
+
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
+
+
+__all__ = (
+    "WebhookStatusPropCommitPropCommitPropCommitterAllof1Type",
+    "WebhookStatusPropCommitPropCommitPropCommitterAllof1TypeForResponse",
+)

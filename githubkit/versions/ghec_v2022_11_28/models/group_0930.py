@@ -9,53 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
+from .group_0606 import WebhooksRelease
 
-class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
 
-    total_count: float = Field()
-    runner_groups: list[RunnerGroupsEnterprise] = Field()
+class WebhookReleaseReleased(GitHubModel):
+    """release released event"""
 
-
-class RunnerGroupsEnterprise(GitHubModel):
-    """RunnerGroupsEnterprise"""
-
-    id: float = Field()
-    name: str = Field()
-    visibility: str = Field()
-    default: bool = Field()
-    selected_organizations_url: Missing[str] = Field(default=UNSET)
-    runners_url: str = Field()
-    hosted_runners_url: Missing[str] = Field(default=UNSET)
-    network_configuration_id: Missing[str] = Field(
+    action: Literal["released"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
-    allows_public_repositories: bool = Field()
-    workflow_restrictions_read_only: Missing[bool] = Field(
+    installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
-        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    restricted_to_workflows: Missing[bool] = Field(
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    selected_workflows: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+    release: WebhooksRelease = Field(
+        title="Release",
+        description="The [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases/#get-a-release) object.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsGetResponse200)
-model_rebuild(RunnerGroupsEnterprise)
+model_rebuild(WebhookReleaseReleased)
 
-__all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200",
-    "RunnerGroupsEnterprise",
-)
+__all__ = ("WebhookReleaseReleased",)

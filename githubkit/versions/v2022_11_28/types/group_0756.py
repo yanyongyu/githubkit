@@ -12,24 +12,42 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0476 import WebhooksReleaseType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0511 import (
+    PersonalAccessTokenRequestType,
+    PersonalAccessTokenRequestTypeForResponse,
+)
 
 
-class WebhookReleaseDeletedType(TypedDict):
-    """release deleted event"""
+class WebhookPersonalAccessTokenRequestCancelledType(TypedDict):
+    """personal_access_token_request cancelled event"""
 
-    action: Literal["deleted"]
+    action: Literal["cancelled"]
+    personal_access_token_request: PersonalAccessTokenRequestType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksReleaseType
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
     sender: SimpleUserType
+    installation: SimpleInstallationType
 
 
-__all__ = ("WebhookReleaseDeletedType",)
+class WebhookPersonalAccessTokenRequestCancelledTypeForResponse(TypedDict):
+    """personal_access_token_request cancelled event"""
+
+    action: Literal["cancelled"]
+    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    installation: SimpleInstallationTypeForResponse
+
+
+__all__ = (
+    "WebhookPersonalAccessTokenRequestCancelledType",
+    "WebhookPersonalAccessTokenRequestCancelledTypeForResponse",
+)

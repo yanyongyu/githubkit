@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,193 +18,194 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0030 import CodeScanningDefaultSetupOptions
+
+class AgentsReposOwnerRepoTasksGetResponse200(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse200"""
+
+    tasks: list[AgentsReposOwnerRepoTasksGetResponse200PropTasksItems] = Field(
+        description="List of tasks"
+    )
+    total_active_count: Missing[int] = Field(
+        default=UNSET, description="Total count of active (non-archived) tasks"
+    )
+    total_archived_count: Missing[int] = Field(
+        default=UNSET, description="Total count of archived tasks"
+    )
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody"""
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItems"""
 
+    id: str = Field(description="Unique task identifier")
+    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
+    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
     name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the code security configuration. Must be unique within the organization.",
+        default=UNSET, description="Human-readable name derived from the task prompt"
     )
-    description: Missing[str] = Field(
-        max_length=255,
-        default=UNSET,
-        description="A description of the code security configuration",
+    creator: Missing[
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0
+    ] = Field(default=UNSET, description="The entity who created this task")
+    creator_type: Missing[Literal["user", "organization"]] = Field(
+        default=UNSET, description="Type of the task creator"
     )
-    advanced_security: Missing[
-        Literal["enabled", "disabled", "code_security", "secret_protection"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of GitHub Advanced Security features. `enabled` will enable both Code Security and Secret Protection features.\n\n> [!WARNING]\n> `code_security` and `secret_protection` are deprecated values for this field. Prefer the individual `code_security` and `secret_protection` fields to set the status of these features.\n",
-    )
-    code_security: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET,
-        description="The enablement status of GitHub Code Security features.",
-    )
-    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependency Graph"
-    )
-    dependency_graph_autosubmit_action: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of Automatic dependency submission",
-    )
-    dependency_graph_autosubmit_action_options: Missing[
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
-    ] = Field(
-        default=UNSET, description="Feature options for Automatic dependency submission"
-    )
-    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependabot alerts"
-    )
-    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of Dependabot security updates",
-        )
-    )
-    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of code scanning default setup",
-        )
-    )
-    code_scanning_default_setup_options: Missing[
-        Union[CodeScanningDefaultSetupOptions, None]
-    ] = Field(
-        default=UNSET, description="Feature options for code scanning default setup"
-    )
-    code_scanning_delegated_alert_dismissal: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of code scanning delegated alert dismissal",
-    )
-    secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET,
-        description="The enablement status of GitHub Secret Protection features.",
-    )
-    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of secret scanning"
-    )
-    secret_scanning_push_protection: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning push protection",
-    )
-    secret_scanning_delegated_bypass: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning delegated bypass",
-    )
-    secret_scanning_delegated_bypass_options: Missing[
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions
-    ] = Field(
-        default=UNSET,
-        description="Feature options for secret scanning delegated bypass",
-    )
-    secret_scanning_validity_checks: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning validity checks",
-    )
-    secret_scanning_non_provider_patterns: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning non-provider patterns",
-    )
-    secret_scanning_generic_secrets: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET, description="The enablement status of Copilot secret scanning"
-    )
-    secret_scanning_delegated_alert_dismissal: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning delegated alert dismissal",
-    )
-    private_vulnerability_reporting: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of private vulnerability reporting",
-    )
-    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
-        default=UNSET, description="The enforcement status for a security configuration"
-    )
-
-
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions(
-    GitHubModel
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAuto
-    submitActionOptions
-
-    Feature options for Automatic dependency submission
-    """
-
-    labeled_runners: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
-    )
-
-
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions(
-    GitHubModel
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDeleg
-    atedBypassOptions
-
-    Feature options for secret scanning delegated bypass
-    """
-
-    reviewers: Missing[
+    user_collaborators: Missing[
         list[
-            OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems
+            AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
         ]
+    ] = Field(default=UNSET, description="User objects of collaborators on this task")
+    owner: Missing[AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner] = (
+        Field(default=UNSET, description="The owner of the repository")
+    )
+    repository: Missing[
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository
+    ] = Field(default=UNSET, description="The repository this task belongs to")
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ] = Field(
+        description="Current state of the task, derived from its most recent session"
+    )
+    session_count: Missing[int] = Field(
+        default=UNSET, description="Number of sessions in this task"
+    )
+    artifacts: Missing[
+        list[AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems]
     ] = Field(
         default=UNSET,
-        description="The bypass reviewers for secret scanning delegated bypass",
+        description="Resources created by this task (PRs, branches, etc.)",
     )
+    archived_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="Timestamp when the task was archived, null if not archived",
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="Timestamp of the most recent update"
+    )
+    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems(
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0(
     GitHubModel
 ):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDeleg
-    atedBypassOptionsPropReviewersItems
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0
+
+    A GitHub user
     """
 
-    reviewer_id: int = Field(
-        description="The ID of the team or role selected as a bypass reviewer"
-    )
-    reviewer_type: Literal["TEAM", "ROLE"] = Field(
-        description="The type of the bypass reviewer"
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody)
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
+
+    A GitHub user
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner
+
+    The owner of the repository
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository
+
+    The repository this task belongs to
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the repository"
+    )
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems
+
+    A resource generated by the task
+    """
+
+    provider: Literal["github"] = Field(description="Provider namespace")
+    type: Literal["pull", "branch"] = Field(
+        description="Type of artifact. Available Values: `pull`, `branch`.\n"
+    )
+    data: Union[
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0,
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1,
+    ] = Field(description="Resource data (shape depends on type)")
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataO
+    neof0
+
+    A GitHub resource (pull request, issue, etc.)
+    """
+
+    id: int = Field(description="GitHub resource ID")
+    global_id: Missing[str] = Field(default=UNSET, description="GraphQL global ID")
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataO
+    neof1
+
+    A Git branch reference
+    """
+
+    head_ref: str = Field(description="Head branch name")
+    base_ref: str = Field(description="Base branch name")
+
+
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse200)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse200PropTasksItems)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0)
 model_rebuild(
-    OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
+    AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
+)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems)
+model_rebuild(
+    AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0
 )
 model_rebuild(
-    OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions
-)
-model_rebuild(
-    OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems
+    AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1
 )
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
+    "AgentsReposOwnerRepoTasksGetResponse200",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItems",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems",
 )

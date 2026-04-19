@@ -9,33 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class GroupResponseType(TypedDict):
-    """GroupResponse"""
-
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[GroupResponsePropMembersItemsType]]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0458 import (
+    TimelineCrossReferencedEventPropSourceType,
+    TimelineCrossReferencedEventPropSourceTypeForResponse,
+)
 
 
-class GroupResponsePropMembersItemsType(TypedDict):
-    """GroupResponsePropMembersItems"""
+class TimelineCrossReferencedEventType(TypedDict):
+    """Timeline Cross Referenced Event
 
-    value: str
-    ref: str
-    display: NotRequired[str]
+    Timeline Cross Referenced Event
+    """
+
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    source: TimelineCrossReferencedEventPropSourceType
+
+
+class TimelineCrossReferencedEventTypeForResponse(TypedDict):
+    """Timeline Cross Referenced Event
+
+    Timeline Cross Referenced Event
+    """
+
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    source: TimelineCrossReferencedEventPropSourceTypeForResponse
 
 
 __all__ = (
-    "GroupResponsePropMembersItemsType",
-    "GroupResponseType",
+    "TimelineCrossReferencedEventType",
+    "TimelineCrossReferencedEventTypeForResponse",
 )

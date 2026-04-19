@@ -9,46 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0091 import TeamSimpleType
 
+class RunnerApplicationType(TypedDict):
+    """Runner Application
 
-class TeamRoleAssignmentType(TypedDict):
-    """A Role Assignment for a Team
-
-    The Relationship a Team has with a role.
+    Runner Application
     """
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleType]
+    os: str
+    architecture: str
+    download_url: str
+    filename: str
+    temp_download_token: NotRequired[str]
+    sha256_checksum: NotRequired[str]
 
 
-class TeamRoleAssignmentPropPermissionsType(TypedDict):
-    """TeamRoleAssignmentPropPermissions"""
+class RunnerApplicationTypeForResponse(TypedDict):
+    """Runner Application
 
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    Runner Application
+    """
+
+    os: str
+    architecture: str
+    download_url: str
+    filename: str
+    temp_download_token: NotRequired[str]
+    sha256_checksum: NotRequired[str]
 
 
 __all__ = (
-    "TeamRoleAssignmentPropPermissionsType",
-    "TeamRoleAssignmentType",
+    "RunnerApplicationType",
+    "RunnerApplicationTypeForResponse",
 )

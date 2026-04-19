@@ -9,31 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
 
 
-class SecretScanningPushProtectionBypass(GitHubModel):
-    """SecretScanningPushProtectionBypass"""
+class TimelineAssignedIssueEvent(GitHubModel):
+    """Timeline Assigned Issue Event
 
-    reason: Missing[Literal["false_positive", "used_in_tests", "will_fix_later"]] = (
-        Field(default=UNSET, description="The reason for bypassing push protection.")
-    )
-    expire_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the bypass will expire in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    token_type: Missing[str] = Field(
-        default=UNSET, description="The token type this bypass is for."
-    )
+    Timeline Assigned Issue Event
+    """
+
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["assigned"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(SecretScanningPushProtectionBypass)
+model_rebuild(TimelineAssignedIssueEvent)
 
-__all__ = ("SecretScanningPushProtectionBypass",)
+__all__ = ("TimelineAssignedIssueEvent",)

@@ -11,27 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubModel):
-    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
+class OrgsOrgCopilotBillingSelectedUsersPostBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
 
-    body: str = Field(description="The contents of the comment.")
-    path: Missing[str] = Field(
-        default=UNSET, description="Relative path of the file to comment on."
-    )
-    position: Missing[int] = Field(
-        default=UNSET, description="Line index in the diff to comment on."
-    )
-    line: Missing[int] = Field(
-        default=UNSET,
-        description="**Closing down notice**. Use **position** parameter instead. Line number in the file to comment on.",
+    selected_usernames: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The usernames of the organization members to be granted access to GitHub Copilot.",
     )
 
 
-model_rebuild(ReposOwnerRepoCommitsCommitShaCommentsPostBody)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersPostBody)
 
-__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostBody",)

@@ -9,39 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsBillingUsageType(TypedDict):
-    """ActionsBillingUsage"""
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
 
-    total_minutes_used: int
-    total_paid_minutes_used: int
-    included_minutes: int
-    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdownType
+    include: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+    exclude: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
 
 
-class ActionsBillingUsagePropMinutesUsedBreakdownType(TypedDict):
-    """ActionsBillingUsagePropMinutesUsedBreakdown"""
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
 
-    ubuntu: NotRequired[int]
-    macos: NotRequired[int]
-    windows: NotRequired[int]
-    ubuntu_4_core: NotRequired[int]
-    ubuntu_8_core: NotRequired[int]
-    ubuntu_16_core: NotRequired[int]
-    ubuntu_32_core: NotRequired[int]
-    ubuntu_64_core: NotRequired[int]
-    windows_4_core: NotRequired[int]
-    windows_8_core: NotRequired[int]
-    windows_16_core: NotRequired[int]
-    windows_32_core: NotRequired[int]
-    windows_64_core: NotRequired[int]
-    macos_12_core: NotRequired[int]
-    total: NotRequired[int]
+    include: NotRequired[
+        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
+    ]
+    exclude: NotRequired[
+        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
+    ]
+
+
+class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a repository property
+    """
+
+    name: str
+    property_values: list[str]
+    source: NotRequired[Literal["custom", "system"]]
+
+
+class RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse(TypedDict):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a repository property
+    """
+
+    name: str
+    property_values: list[str]
+    source: NotRequired[Literal["custom", "system"]]
 
 
 __all__ = (
-    "ActionsBillingUsagePropMinutesUsedBreakdownType",
-    "ActionsBillingUsageType",
+    "RepositoryRulesetConditionsRepositoryPropertySpecType",
+    "RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse",
 )

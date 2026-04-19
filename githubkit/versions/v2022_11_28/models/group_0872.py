@@ -17,51 +17,43 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0482 import EnterpriseWebhooks
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0485 import RepositoryWebhooks
+from .group_0525 import SecretScanningAlertWebhook
 
-class OrgsOrgActionsHostedRunnersPostBody(GitHubModel):
-    """OrgsOrgActionsHostedRunnersPostBody"""
 
-    name: str = Field(
-        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
-    )
-    image: OrgsOrgActionsHostedRunnersPostBodyPropImage = Field(
-        description="The image of runner. To list all available images, use `GET /actions/hosted-runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`."
-    )
-    size: str = Field(
-        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`"
-    )
-    runner_group_id: int = Field(
-        description="The existing runner group to add this runner to."
-    )
-    maximum_runners: Missing[int] = Field(
+class WebhookSecretScanningAlertValidated(GitHubModel):
+    """secret_scanning_alert validated event"""
+
+    action: Literal["validated"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
-    enable_static_ip: Missing[bool] = Field(
+    installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
-        description="Whether this runner should be created with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-class OrgsOrgActionsHostedRunnersPostBodyPropImage(GitHubModel):
-    """OrgsOrgActionsHostedRunnersPostBodyPropImage
+model_rebuild(WebhookSecretScanningAlertValidated)
 
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
-    """
-
-    id: Missing[str] = Field(
-        default=UNSET, description="The unique identifier of the runner image."
-    )
-    source: Missing[Literal["github", "partner", "custom"]] = Field(
-        default=UNSET, description="The source of the runner image."
-    )
-
-
-model_rebuild(OrgsOrgActionsHostedRunnersPostBody)
-model_rebuild(OrgsOrgActionsHostedRunnersPostBodyPropImage)
-
-__all__ = (
-    "OrgsOrgActionsHostedRunnersPostBody",
-    "OrgsOrgActionsHostedRunnersPostBodyPropImage",
-)
+__all__ = ("WebhookSecretScanningAlertValidated",)

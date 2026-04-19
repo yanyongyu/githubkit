@@ -18,17 +18,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0494 import EnterpriseWebhooks
-from .group_0495 import SimpleInstallation
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0497 import RepositoryWebhooks
-from .group_0524 import WebhooksMilestone3
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
+from .group_0583 import WebhooksIssueComment
+from .group_0584 import WebhooksChanges
+from .group_0731 import WebhookIssueCommentEditedPropIssue
 
 
-class WebhookMilestoneOpened(GitHubModel):
-    """milestone opened event"""
+class WebhookIssueCommentEdited(GitHubModel):
+    """issue_comment edited event"""
 
-    action: Literal["opened"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhooksChanges = Field(description="The changes to the comment.")
+    comment: WebhooksIssueComment = Field(
+        title="issue comment",
+        description="The [comment](https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment) itself.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,9 +46,8 @@ class WebhookMilestoneOpened(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    milestone: WebhooksMilestone3 = Field(
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
+    issue: WebhookIssueCommentEditedPropIssue = Field(
+        description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) the comment belongs to."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -55,6 +61,6 @@ class WebhookMilestoneOpened(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookMilestoneOpened)
+model_rebuild(WebhookIssueCommentEdited)
 
-__all__ = ("WebhookMilestoneOpened",)
+__all__ = ("WebhookIssueCommentEdited",)

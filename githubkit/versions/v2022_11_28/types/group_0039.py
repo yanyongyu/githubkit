@@ -9,101 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class SecretScanningLocationCommitType(TypedDict):
-    """SecretScanningLocationCommit
+class CopilotUsageMetrics28DayReportType(TypedDict):
+    """Copilot Metrics 28 Day Report
 
-    Represents a 'commit' secret scanning location type. This location type shows
-    that a secret was detected inside a commit to a repository.
+    Links to download the latest Copilot usage metrics report for an
+    enterprise/organization.
     """
 
-    path: str
-    start_line: float
-    end_line: float
-    start_column: float
-    end_column: float
-    blob_sha: str
-    blob_url: str
-    commit_sha: str
-    commit_url: str
+    download_links: list[str]
+    report_start_day: _dt.date
+    report_end_day: _dt.date
 
 
-class SecretScanningLocationWikiCommitType(TypedDict):
-    """SecretScanningLocationWikiCommit
+class CopilotUsageMetrics28DayReportTypeForResponse(TypedDict):
+    """Copilot Metrics 28 Day Report
 
-    Represents a 'wiki_commit' secret scanning location type. This location type
-    shows that a secret was detected inside a commit to a repository wiki.
+    Links to download the latest Copilot usage metrics report for an
+    enterprise/organization.
     """
 
-    path: str
-    start_line: float
-    end_line: float
-    start_column: float
-    end_column: float
-    blob_sha: str
-    page_url: str
-    commit_sha: str
-    commit_url: str
-
-
-class SecretScanningLocationIssueBodyType(TypedDict):
-    """SecretScanningLocationIssueBody
-
-    Represents an 'issue_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of an issue.
-    """
-
-    issue_body_url: str
-
-
-class SecretScanningLocationDiscussionTitleType(TypedDict):
-    """SecretScanningLocationDiscussionTitle
-
-    Represents a 'discussion_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a discussion.
-    """
-
-    discussion_title_url: str
-
-
-class SecretScanningLocationDiscussionCommentType(TypedDict):
-    """SecretScanningLocationDiscussionComment
-
-    Represents a 'discussion_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a discussion.
-    """
-
-    discussion_comment_url: str
-
-
-class SecretScanningLocationPullRequestBodyType(TypedDict):
-    """SecretScanningLocationPullRequestBody
-
-    Represents a 'pull_request_body' secret scanning location type. This location
-    type shows that a secret was detected in the body of a pull request.
-    """
-
-    pull_request_body_url: str
-
-
-class SecretScanningLocationPullRequestReviewType(TypedDict):
-    """SecretScanningLocationPullRequestReview
-
-    Represents a 'pull_request_review' secret scanning location type. This location
-    type shows that a secret was detected in a review on a pull request.
-    """
-
-    pull_request_review_url: str
+    download_links: list[str]
+    report_start_day: str
+    report_end_day: str
 
 
 __all__ = (
-    "SecretScanningLocationCommitType",
-    "SecretScanningLocationDiscussionCommentType",
-    "SecretScanningLocationDiscussionTitleType",
-    "SecretScanningLocationIssueBodyType",
-    "SecretScanningLocationPullRequestBodyType",
-    "SecretScanningLocationPullRequestReviewType",
-    "SecretScanningLocationWikiCommitType",
+    "CopilotUsageMetrics28DayReportType",
+    "CopilotUsageMetrics28DayReportTypeForResponse",
 )

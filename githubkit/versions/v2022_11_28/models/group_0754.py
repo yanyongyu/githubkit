@@ -9,195 +9,108 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0670 import WebhookRubygemsMetadata
+from .group_0003 import SimpleUser
+from .group_0482 import EnterpriseWebhooks
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0485 import RepositoryWebhooks
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion(GitHubModel):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion"""
+class WebhookPageBuild(GitHubModel):
+    """page_build event"""
 
-    author: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor = Field()
-    body: str = Field()
-    body_html: str = Field()
-    created_at: str = Field()
-    description: str = Field()
-    docker_metadata: Missing[
-        list[
-            Union[
-                WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItems,
-                None,
-            ]
-        ]
-    ] = Field(default=UNSET)
-    draft: Missing[bool] = Field(default=UNSET)
-    html_url: str = Field()
+    build: WebhookPageBuildPropBuild = Field(
+        description="The [List GitHub Pages builds](https://docs.github.com/rest/pages/pages#list-github-pages-builds) itself."
+    )
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
+    )
     id: int = Field()
-    installation_command: str = Field()
-    manifest: Missing[str] = Field(default=UNSET)
-    metadata: list[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItems
-    ] = Field()
-    name: str = Field()
-    package_files: list[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItems
-    ] = Field()
-    package_url: str = Field()
-    prerelease: Missing[bool] = Field(default=UNSET)
-    release: Missing[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease
-    ] = Field(default=UNSET)
-    rubygems_metadata: Missing[list[WebhookRubygemsMetadata]] = Field(default=UNSET)
-    summary: str = Field()
-    tag_name: Missing[str] = Field(default=UNSET)
-    target_commitish: str = Field()
-    target_oid: str = Field()
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+class WebhookPageBuildPropBuild(GitHubModel):
+    """WebhookPageBuildPropBuild
+
+    The [List GitHub Pages builds](https://docs.github.com/rest/pages/pages#list-
+    github-pages-builds) itself.
+    """
+
+    commit: Union[str, None] = Field()
+    created_at: str = Field()
+    duration: int = Field()
+    error: WebhookPageBuildPropBuildPropError = Field()
+    pusher: Union[WebhookPageBuildPropBuildPropPusher, None] = Field(title="User")
+    status: str = Field()
     updated_at: str = Field()
-    version: str = Field()
+    url: str = Field()
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor(
-    GitHubModel
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor"""
+class WebhookPageBuildPropBuildPropError(GitHubModel):
+    """WebhookPageBuildPropBuildPropError"""
 
-    avatar_url: str = Field()
-    events_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    gravatar_id: str = Field()
-    html_url: str = Field()
+    message: Union[str, None] = Field()
+
+
+class WebhookPageBuildPropBuildPropPusher(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
     id: int = Field()
     login: str = Field()
-    node_id: str = Field()
-    organizations_url: str = Field()
-    received_events_url: str = Field()
-    repos_url: str = Field()
-    site_admin: bool = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    type: str = Field()
-    url: str = Field()
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItems(
-    GitHubModel
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMeta
-    dataItems
-    """
-
-    tags: Missing[list[str]] = Field(default=UNSET)
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItems(
-    ExtraGitHubModel
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataIt
-    ems
-    """
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItems(
-    GitHubModel
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFil
-    esItems
-    """
-
-    content_type: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    download_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    md5: Missing[Union[str, None]] = Field(default=UNSET)
     name: Missing[str] = Field(default=UNSET)
-    sha1: Missing[Union[str, None]] = Field(default=UNSET)
-    sha256: Missing[str] = Field(default=UNSET)
-    size: Missing[int] = Field(default=UNSET)
-    state: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease(
-    GitHubModel
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease"""
-
-    author: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthor = Field()
-    created_at: str = Field()
-    draft: bool = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field()
-    prerelease: bool = Field()
-    published_at: str = Field()
-    tag_name: str = Field()
-    target_commitish: str = Field()
-    url: str = Field()
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthor(
-    GitHubModel
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePro
-    pAuthor
-    """
-
-    avatar_url: str = Field()
-    events_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    gravatar_id: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    login: str = Field()
-    node_id: str = Field()
-    organizations_url: str = Field()
-    received_events_url: str = Field()
-    repos_url: str = Field()
-    site_admin: bool = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    type: str = Field()
-    url: str = Field()
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion)
-model_rebuild(
-    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor
-)
-model_rebuild(
-    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItems
-)
-model_rebuild(
-    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItems
-)
-model_rebuild(
-    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItems
-)
-model_rebuild(
-    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease
-)
-model_rebuild(
-    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthor
-)
+model_rebuild(WebhookPageBuild)
+model_rebuild(WebhookPageBuildPropBuild)
+model_rebuild(WebhookPageBuildPropBuildPropError)
+model_rebuild(WebhookPageBuildPropBuildPropPusher)
 
 __all__ = (
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItems",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItems",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItems",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthor",
+    "WebhookPageBuild",
+    "WebhookPageBuildPropBuild",
+    "WebhookPageBuildPropBuildPropError",
+    "WebhookPageBuildPropBuildPropPusher",
 )

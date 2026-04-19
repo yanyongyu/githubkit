@@ -9,45 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0236 import VerificationType
+from .group_0310 import (
+    CodeScanningVariantAnalysisSkippedRepoGroupType,
+    CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse,
+)
 
 
-class GitTagType(TypedDict):
-    """Git Tag
+class CodeScanningVariantAnalysisPropSkippedRepositoriesType(TypedDict):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
 
-    Metadata for a Git tag
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
     """
 
-    node_id: str
-    tag: str
-    sha: str
-    url: str
-    message: str
-    tagger: GitTagPropTaggerType
-    object_: GitTagPropObjectType
-    verification: NotRequired[VerificationType]
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    not_found_repos: (
+        CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType
+    )
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
 
 
-class GitTagPropTaggerType(TypedDict):
-    """GitTagPropTagger"""
+class CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
 
-    date: str
-    email: str
-    name: str
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
+    """
+
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
 
 
-class GitTagPropObjectType(TypedDict):
-    """GitTagPropObject"""
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType(
+    TypedDict
+):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
 
-    sha: str
-    type: str
-    url: str
+    repository_count: int
+    repository_full_names: list[str]
+
+
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse(
+    TypedDict
+):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+
+    repository_count: int
+    repository_full_names: list[str]
 
 
 __all__ = (
-    "GitTagPropObjectType",
-    "GitTagPropTaggerType",
-    "GitTagType",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesType",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse",
 )

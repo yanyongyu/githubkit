@@ -9,17 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0275 import LinkType
+
+class HookResponseType(TypedDict):
+    """Hook Response"""
+
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
-class ReviewCommentPropLinksType(TypedDict):
-    """ReviewCommentPropLinks"""
+class HookResponseTypeForResponse(TypedDict):
+    """Hook Response"""
 
-    self_: LinkType
-    html: LinkType
-    pull_request: LinkType
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
-__all__ = ("ReviewCommentPropLinksType",)
+__all__ = (
+    "HookResponseType",
+    "HookResponseTypeForResponse",
+)

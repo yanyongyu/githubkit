@@ -12,26 +12,47 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0454 import WebhooksMilestoneType
-from .group_0616 import WebhookIssuesDemilestonedPropIssueType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0018 import InstallationType, InstallationTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0497 import (
+    WebhooksRepositoriesItemsType,
+    WebhooksRepositoriesItemsTypeForResponse,
+)
 
 
-class WebhookIssuesDemilestonedType(TypedDict):
-    """issues demilestoned event"""
+class WebhookInstallationSuspendType(TypedDict):
+    """installation suspend event"""
 
-    action: Literal["demilestoned"]
+    action: Literal["suspend"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesDemilestonedPropIssueType
-    milestone: NotRequired[WebhooksMilestoneType]
+    installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
+    repository: NotRequired[RepositoryWebhooksType]
+    requester: NotRequired[None]
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesDemilestonedType",)
+class WebhookInstallationSuspendTypeForResponse(TypedDict):
+    """installation suspend event"""
+
+    action: Literal["suspend"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: InstallationTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    requester: NotRequired[None]
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookInstallationSuspendType",
+    "WebhookInstallationSuspendTypeForResponse",
+)

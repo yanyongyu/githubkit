@@ -9,35 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0284 import BranchProtectionType, BranchProtectionTypeForResponse
 
-class ContentDirectoryItemsType(TypedDict):
-    """ContentDirectoryItems"""
 
-    type: Literal["dir", "file", "submodule", "symlink"]
-    size: int
+class ShortBranchType(TypedDict):
+    """Short Branch
+
+    Short Branch
+    """
+
     name: str
-    path: str
-    content: NotRequired[str]
+    commit: ShortBranchPropCommitType
+    protected: bool
+    protection: NotRequired[BranchProtectionType]
+    protection_url: NotRequired[str]
+
+
+class ShortBranchTypeForResponse(TypedDict):
+    """Short Branch
+
+    Short Branch
+    """
+
+    name: str
+    commit: ShortBranchPropCommitTypeForResponse
+    protected: bool
+    protection: NotRequired[BranchProtectionTypeForResponse]
+    protection_url: NotRequired[str]
+
+
+class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
+
     sha: str
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentDirectoryItemsPropLinksType
 
 
-class ContentDirectoryItemsPropLinksType(TypedDict):
-    """ContentDirectoryItemsPropLinks"""
+class ShortBranchPropCommitTypeForResponse(TypedDict):
+    """ShortBranchPropCommit"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    sha: str
+    url: str
 
 
 __all__ = (
-    "ContentDirectoryItemsPropLinksType",
-    "ContentDirectoryItemsType",
+    "ShortBranchPropCommitType",
+    "ShortBranchPropCommitTypeForResponse",
+    "ShortBranchType",
+    "ShortBranchTypeForResponse",
 )

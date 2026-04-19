@@ -9,42 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhooksChanges8Type(TypedDict):
-    """WebhooksChanges8"""
-
-    tier: WebhooksChanges8PropTierType
+from .group_0357 import GitUserType, GitUserTypeForResponse
+from .group_0358 import VerificationType, VerificationTypeForResponse
 
 
-class WebhooksChanges8PropTierType(TypedDict):
-    """WebhooksChanges8PropTier"""
+class CommitSearchResultItemPropCommitType(TypedDict):
+    """CommitSearchResultItemPropCommit"""
 
-    from_: WebhooksChanges8PropTierPropFromType
+    author: CommitSearchResultItemPropCommitPropAuthorType
+    committer: Union[None, GitUserType]
+    comment_count: int
+    message: str
+    tree: CommitSearchResultItemPropCommitPropTreeType
+    url: str
+    verification: NotRequired[VerificationType]
 
 
-class WebhooksChanges8PropTierPropFromType(TypedDict):
-    """Sponsorship Tier
+class CommitSearchResultItemPropCommitTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommit"""
 
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
-    """
+    author: CommitSearchResultItemPropCommitPropAuthorTypeForResponse
+    committer: Union[None, GitUserTypeForResponse]
+    comment_count: int
+    message: str
+    tree: CommitSearchResultItemPropCommitPropTreeTypeForResponse
+    url: str
+    verification: NotRequired[VerificationTypeForResponse]
 
-    created_at: str
-    description: str
-    is_custom_ammount: NotRequired[bool]
-    is_custom_amount: NotRequired[bool]
-    is_one_time: bool
-    monthly_price_in_cents: int
-    monthly_price_in_dollars: int
+
+class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
+    """CommitSearchResultItemPropCommitPropAuthor"""
+
     name: str
-    node_id: str
+    email: str
+    date: _dt.datetime
+
+
+class CommitSearchResultItemPropCommitPropAuthorTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommitPropAuthor"""
+
+    name: str
+    email: str
+    date: str
+
+
+class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class CommitSearchResultItemPropCommitPropTreeTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "WebhooksChanges8PropTierPropFromType",
-    "WebhooksChanges8PropTierType",
-    "WebhooksChanges8Type",
+    "CommitSearchResultItemPropCommitPropAuthorType",
+    "CommitSearchResultItemPropCommitPropAuthorTypeForResponse",
+    "CommitSearchResultItemPropCommitPropTreeType",
+    "CommitSearchResultItemPropCommitPropTreeTypeForResponse",
+    "CommitSearchResultItemPropCommitType",
+    "CommitSearchResultItemPropCommitTypeForResponse",
 )

@@ -9,26 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodeScanningAutofix(GitHubModel):
-    """CodeScanningAutofix"""
+class NetworkSettings(GitHubModel):
+    """Hosted compute network settings resource
 
-    status: Literal["pending", "error", "success", "outdated"] = Field(
-        description="The status of an autofix."
+    A hosted compute network settings resource.
+    """
+
+    id: str = Field(
+        description="The unique identifier of the network settings resource."
     )
-    description: Union[str, None] = Field(description="The description of an autofix.")
-    started_at: datetime = Field(
-        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    network_configuration_id: Missing[str] = Field(
+        default=UNSET,
+        description="The identifier of the network configuration that is using this settings resource.",
+    )
+    name: str = Field(description="The name of the network settings resource.")
+    subnet_id: str = Field(
+        description="The subnet this network settings resource is configured for."
+    )
+    region: str = Field(
+        description="The location of the subnet this network settings resource is configured for."
     )
 
 
-model_rebuild(CodeScanningAutofix)
+model_rebuild(NetworkSettings)
 
-__all__ = ("CodeScanningAutofix",)
+__all__ = ("NetworkSettings",)

@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Literal, Optional
 from weakref import ref
 
 from githubkit.typing import Missing
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     from typing import Literal
@@ -25,7 +25,7 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import Package, PackageVersion
-    from ..types import PackageType, PackageVersionType
+    from ..types import PackageTypeForResponse, PackageVersionTypeForResponse
 
 
 class PackagesClient:
@@ -49,7 +49,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Package], list[PackageType]]:
+    ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-docker-migration-conflicting-packages-for-organization
 
         GET /orgs/{org}/docker/conflicts
@@ -85,7 +85,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Package], list[PackageType]]:
+    ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-docker-migration-conflicting-packages-for-organization
 
         GET /orgs/{org}/docker/conflicts
@@ -127,7 +127,7 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Package], list[PackageType]]:
+    ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-packages-for-organization
 
         GET /orgs/{org}/packages
@@ -155,7 +155,7 @@ class PackagesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Package],
@@ -177,7 +177,7 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Package], list[PackageType]]:
+    ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-packages-for-organization
 
         GET /orgs/{org}/packages
@@ -205,7 +205,7 @@ class PackagesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Package],
@@ -225,7 +225,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Package, PackageType]:
+    ) -> Response[Package, PackageTypeForResponse]:
         """packages/get-package-for-organization
 
         GET /orgs/{org}/packages/{package_type}/{package_name}
@@ -261,7 +261,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Package, PackageType]:
+    ) -> Response[Package, PackageTypeForResponse]:
         """packages/get-package-for-organization
 
         GET /orgs/{org}/packages/{package_type}/{package_name}
@@ -413,7 +413,7 @@ class PackagesClient:
         return self._github.request(
             "POST",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             error_models={
@@ -465,7 +465,7 @@ class PackagesClient:
         return await self._github.arequest(
             "POST",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             error_models={
@@ -488,7 +488,7 @@ class PackagesClient:
         state: Missing[Literal["active", "deleted"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PackageVersion], list[PackageVersionType]]:
+    ) -> Response[list[PackageVersion], list[PackageVersionTypeForResponse]]:
         """packages/get-all-package-versions-for-package-owned-by-org
 
         GET /orgs/{org}/packages/{package_type}/{package_name}/versions
@@ -515,7 +515,7 @@ class PackagesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PackageVersion],
@@ -539,7 +539,7 @@ class PackagesClient:
         state: Missing[Literal["active", "deleted"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PackageVersion], list[PackageVersionType]]:
+    ) -> Response[list[PackageVersion], list[PackageVersionTypeForResponse]]:
         """packages/get-all-package-versions-for-package-owned-by-org
 
         GET /orgs/{org}/packages/{package_type}/{package_name}/versions
@@ -566,7 +566,7 @@ class PackagesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PackageVersion],
@@ -588,7 +588,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PackageVersion, PackageVersionType]:
+    ) -> Response[PackageVersion, PackageVersionTypeForResponse]:
         """packages/get-package-version-for-organization
 
         GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
@@ -625,7 +625,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PackageVersion, PackageVersionType]:
+    ) -> Response[PackageVersion, PackageVersionTypeForResponse]:
         """packages/get-package-version-for-organization
 
         GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
@@ -836,7 +836,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Package], list[PackageType]]:
+    ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-docker-migration-conflicting-packages-for-authenticated-user
 
         GET /user/docker/conflicts
@@ -867,7 +867,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Package], list[PackageType]]:
+    ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-docker-migration-conflicting-packages-for-authenticated-user
 
         GET /user/docker/conflicts
@@ -904,7 +904,7 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Package], list[PackageType]]:
+    ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-packages-for-authenticated-user
 
         GET /user/packages
@@ -932,7 +932,7 @@ class PackagesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Package],
@@ -950,7 +950,7 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Package], list[PackageType]]:
+    ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-packages-for-authenticated-user
 
         GET /user/packages
@@ -978,7 +978,7 @@ class PackagesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Package],
@@ -994,7 +994,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Package, PackageType]:
+    ) -> Response[Package, PackageTypeForResponse]:
         """packages/get-package-for-authenticated-user
 
         GET /user/packages/{package_type}/{package_name}
@@ -1029,7 +1029,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Package, PackageType]:
+    ) -> Response[Package, PackageTypeForResponse]:
         """packages/get-package-for-authenticated-user
 
         GET /user/packages/{package_type}/{package_name}
@@ -1172,7 +1172,7 @@ class PackagesClient:
         return self._github.request(
             "POST",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             error_models={
@@ -1221,7 +1221,7 @@ class PackagesClient:
         return await self._github.arequest(
             "POST",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             error_models={
@@ -1243,7 +1243,7 @@ class PackagesClient:
         state: Missing[Literal["active", "deleted"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PackageVersion], list[PackageVersionType]]:
+    ) -> Response[list[PackageVersion], list[PackageVersionTypeForResponse]]:
         """packages/get-all-package-versions-for-package-owned-by-authenticated-user
 
         GET /user/packages/{package_type}/{package_name}/versions
@@ -1270,7 +1270,7 @@ class PackagesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PackageVersion],
@@ -1293,7 +1293,7 @@ class PackagesClient:
         state: Missing[Literal["active", "deleted"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PackageVersion], list[PackageVersionType]]:
+    ) -> Response[list[PackageVersion], list[PackageVersionTypeForResponse]]:
         """packages/get-all-package-versions-for-package-owned-by-authenticated-user
 
         GET /user/packages/{package_type}/{package_name}/versions
@@ -1320,7 +1320,7 @@ class PackagesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PackageVersion],
@@ -1341,7 +1341,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PackageVersion, PackageVersionType]:
+    ) -> Response[PackageVersion, PackageVersionTypeForResponse]:
         """packages/get-package-version-for-authenticated-user
 
         GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
@@ -1377,7 +1377,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PackageVersion, PackageVersionType]:
+    ) -> Response[PackageVersion, PackageVersionTypeForResponse]:
         """packages/get-package-version-for-authenticated-user
 
         GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
@@ -1581,7 +1581,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Package], list[PackageType]]:
+    ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-docker-migration-conflicting-packages-for-user
 
         GET /users/{username}/docker/conflicts
@@ -1617,7 +1617,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Package], list[PackageType]]:
+    ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-docker-migration-conflicting-packages-for-user
 
         GET /users/{username}/docker/conflicts
@@ -1659,7 +1659,7 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Package], list[PackageType]]:
+    ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-packages-for-user
 
         GET /users/{username}/packages
@@ -1687,7 +1687,7 @@ class PackagesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Package],
@@ -1709,7 +1709,7 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Package], list[PackageType]]:
+    ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-packages-for-user
 
         GET /users/{username}/packages
@@ -1737,7 +1737,7 @@ class PackagesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Package],
@@ -1757,7 +1757,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Package, PackageType]:
+    ) -> Response[Package, PackageTypeForResponse]:
         """packages/get-package-for-user
 
         GET /users/{username}/packages/{package_type}/{package_name}
@@ -1793,7 +1793,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Package, PackageType]:
+    ) -> Response[Package, PackageTypeForResponse]:
         """packages/get-package-for-user
 
         GET /users/{username}/packages/{package_type}/{package_name}
@@ -1945,7 +1945,7 @@ class PackagesClient:
         return self._github.request(
             "POST",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             error_models={
@@ -1997,7 +1997,7 @@ class PackagesClient:
         return await self._github.arequest(
             "POST",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             error_models={
@@ -2017,7 +2017,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PackageVersion], list[PackageVersionType]]:
+    ) -> Response[list[PackageVersion], list[PackageVersionTypeForResponse]]:
         """packages/get-all-package-versions-for-package-owned-by-user
 
         GET /users/{username}/packages/{package_type}/{package_name}/versions
@@ -2058,7 +2058,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PackageVersion], list[PackageVersionType]]:
+    ) -> Response[list[PackageVersion], list[PackageVersionTypeForResponse]]:
         """packages/get-all-package-versions-for-package-owned-by-user
 
         GET /users/{username}/packages/{package_type}/{package_name}/versions
@@ -2100,7 +2100,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PackageVersion, PackageVersionType]:
+    ) -> Response[PackageVersion, PackageVersionTypeForResponse]:
         """packages/get-package-version-for-user
 
         GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
@@ -2137,7 +2137,7 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PackageVersion, PackageVersionType]:
+    ) -> Response[PackageVersion, PackageVersionTypeForResponse]:
         """packages/get-package-version-for-user
 
         GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}

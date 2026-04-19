@@ -9,27 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0092 import Team
 
+class CodeScanningAutofixCommitsResponse(GitHubModel):
+    """CodeScanningAutofixCommitsResponse"""
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
-
-    type: Missing[Literal["User", "Team"]] = Field(
-        default=UNSET, description="The type of reviewer."
+    target_ref: Missing[str] = Field(
+        default=UNSET,
+        description='The Git reference of target branch for the commit. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
     )
-    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET, description="SHA of commit with autofix.")
 
 
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems)
+model_rebuild(CodeScanningAutofixCommitsResponse)
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems",)
+__all__ = ("CodeScanningAutofixCommitsResponse",)

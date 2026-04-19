@@ -9,45 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0315 import HookResponseType
+from .group_0682 import (
+    WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+)
 
 
-class WebhookPingPropHookType(TypedDict):
-    """Webhook
+class WebhookIssuesClosedPropIssueAllof0PropMilestoneType(TypedDict):
+    """Milestone
 
-    The webhook that is being pinged
+    A collection of related issues and pull requests.
     """
 
-    active: bool
-    app_id: NotRequired[int]
-    config: WebhookPingPropHookPropConfigType
-    created_at: datetime
-    deliveries_url: NotRequired[str]
-    events: list[str]
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
+    html_url: str
     id: int
-    last_response: NotRequired[HookResponseType]
-    name: Literal["web"]
-    ping_url: NotRequired[str]
-    test_url: NotRequired[str]
-    type: str
-    updated_at: datetime
-    url: NotRequired[str]
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhookPingPropHookPropConfigType(TypedDict):
-    """WebhookPingPropHookPropConfig"""
+class WebhookIssuesClosedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
+    """Milestone
 
-    content_type: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    secret: NotRequired[str]
-    url: NotRequired[str]
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[
+        WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse, None
+    ]
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "WebhookPingPropHookPropConfigType",
-    "WebhookPingPropHookType",
+    "WebhookIssuesClosedPropIssueAllof0PropMilestoneType",
+    "WebhookIssuesClosedPropIssueAllof0PropMilestoneTypeForResponse",
 )

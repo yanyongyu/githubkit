@@ -9,76 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0047 import IssueType
-from .group_0048 import IssueCommentType
-
-
-class EventPropPayloadType(TypedDict):
-    """EventPropPayload"""
-
-    action: NotRequired[str]
-    issue: NotRequired[IssueType]
-    comment: NotRequired[IssueCommentType]
-    pages: NotRequired[list[EventPropPayloadPropPagesItemsType]]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class EventPropPayloadPropPagesItemsType(TypedDict):
-    """EventPropPayloadPropPagesItems"""
+class MilestoneType(TypedDict):
+    """Milestone
 
-    page_name: NotRequired[str]
-    title: NotRequired[str]
-    summary: NotRequired[Union[str, None]]
-    action: NotRequired[str]
-    sha: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class EventType(TypedDict):
-    """Event
-
-    Event
+    A collection of related issues and pull requests.
     """
 
-    id: str
-    type: Union[str, None]
-    actor: ActorType
-    repo: EventPropRepoType
-    org: NotRequired[ActorType]
-    payload: EventPropPayloadType
-    public: bool
-    created_at: Union[datetime, None]
+    url: str
+    html_url: str
+    labels_url: str
+    id: int
+    node_id: str
+    number: int
+    state: Literal["open", "closed"]
+    title: str
+    description: Union[str, None]
+    creator: Union[None, SimpleUserType]
+    open_issues: int
+    closed_issues: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    closed_at: Union[_dt.datetime, None]
+    due_on: Union[_dt.datetime, None]
 
 
-class ActorType(TypedDict):
-    """Actor
+class MilestoneTypeForResponse(TypedDict):
+    """Milestone
 
-    Actor
+    A collection of related issues and pull requests.
     """
 
-    id: int
-    login: str
-    display_login: NotRequired[str]
-    gravatar_id: Union[str, None]
     url: str
-    avatar_url: str
-
-
-class EventPropRepoType(TypedDict):
-    """EventPropRepo"""
-
+    html_url: str
+    labels_url: str
     id: int
-    name: str
-    url: str
+    node_id: str
+    number: int
+    state: Literal["open", "closed"]
+    title: str
+    description: Union[str, None]
+    creator: Union[None, SimpleUserTypeForResponse]
+    open_issues: int
+    closed_issues: int
+    created_at: str
+    updated_at: str
+    closed_at: Union[str, None]
+    due_on: Union[str, None]
 
 
 __all__ = (
-    "ActorType",
-    "EventPropPayloadPropPagesItemsType",
-    "EventPropPayloadType",
-    "EventPropRepoType",
-    "EventType",
+    "MilestoneType",
+    "MilestoneTypeForResponse",
 )

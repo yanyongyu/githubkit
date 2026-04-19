@@ -9,27 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0023 import ScopedInstallation
 
 
-class SimpleClassroomRepository(GitHubModel):
-    """Simple Classroom Repository
+class Authorization(GitHubModel):
+    """Authorization
 
-    A GitHub repository view for Classroom
+    The authorization for an OAuth app, GitHub App, or a Personal Access Token.
     """
 
-    id: int = Field(description="A unique identifier of the repository.")
-    full_name: str = Field(
-        description="The full, globally unique name of the repository."
+    id: int = Field()
+    url: str = Field()
+    scopes: Union[list[str], None] = Field(
+        description="A list of scopes that this authorization is in."
     )
-    html_url: str = Field(description="The URL to view the repository on GitHub.com.")
-    node_id: str = Field(description="The GraphQL identifier of the repository.")
-    private: bool = Field(description="Whether the repository is private.")
-    default_branch: str = Field(description="The default branch for the repository.")
+    token: str = Field()
+    token_last_eight: Union[str, None] = Field()
+    hashed_token: Union[str, None] = Field()
+    app: AuthorizationPropApp = Field()
+    note: Union[str, None] = Field()
+    note_url: Union[str, None] = Field()
+    updated_at: _dt.datetime = Field()
+    created_at: _dt.datetime = Field()
+    fingerprint: Union[str, None] = Field()
+    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    installation: Missing[Union[None, ScopedInstallation]] = Field(default=UNSET)
+    expires_at: Union[_dt.datetime, None] = Field()
 
 
-model_rebuild(SimpleClassroomRepository)
+class AuthorizationPropApp(GitHubModel):
+    """AuthorizationPropApp"""
 
-__all__ = ("SimpleClassroomRepository",)
+    client_id: str = Field()
+    name: str = Field()
+    url: str = Field()
+
+
+model_rebuild(Authorization)
+model_rebuild(AuthorizationPropApp)
+
+__all__ = (
+    "Authorization",
+    "AuthorizationPropApp",
+)

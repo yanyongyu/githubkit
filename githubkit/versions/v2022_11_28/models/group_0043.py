@@ -9,42 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class DependabotAlertDismissalRequestSimple(GitHubModel):
+    """Dependabot alert dismissal request
 
-class Milestone(GitHubModel):
-    """Milestone
-
-    A collection of related issues and pull requests.
+    Information about an active dismissal request for this Dependabot alert.
     """
 
-    url: str = Field()
-    html_url: str = Field()
-    labels_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    state: Literal["open", "closed"] = Field(
-        default="open", description="The state of the milestone."
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the dismissal request."
     )
-    title: str = Field(description="The title of the milestone.")
-    description: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
-    open_issues: int = Field()
-    closed_issues: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    closed_at: Union[datetime, None] = Field()
-    due_on: Union[datetime, None] = Field()
+    status: Missing[Literal["pending", "approved", "rejected", "cancelled"]] = Field(
+        default=UNSET, description="The current status of the dismissal request."
+    )
+    requester: Missing[DependabotAlertDismissalRequestSimplePropRequester] = Field(
+        default=UNSET, description="The user who requested the dismissal."
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time when the dismissal request was created.",
+    )
+    url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to get more information about this dismissal request.",
+    )
 
 
-model_rebuild(Milestone)
+class DependabotAlertDismissalRequestSimplePropRequester(GitHubModel):
+    """DependabotAlertDismissalRequestSimplePropRequester
 
-__all__ = ("Milestone",)
+    The user who requested the dismissal.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
+    )
+    login: Missing[str] = Field(
+        default=UNSET, description="The login name of the user."
+    )
+
+
+model_rebuild(DependabotAlertDismissalRequestSimple)
+model_rebuild(DependabotAlertDismissalRequestSimplePropRequester)
+
+__all__ = (
+    "DependabotAlertDismissalRequestSimple",
+    "DependabotAlertDismissalRequestSimplePropRequester",
+)

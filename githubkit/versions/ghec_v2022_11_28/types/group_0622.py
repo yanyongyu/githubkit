@@ -9,39 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0569 import ExemptionResponseType, ExemptionResponseTypeForResponse
+from .group_0570 import ExemptionRequestType, ExemptionRequestTypeForResponse
 
 
-class WebhookGollumType(TypedDict):
-    """gollum event"""
+class WebhookExemptionRequestResponseDismissedType(TypedDict):
+    """Exemption response dismissed event"""
 
+    action: Literal["response_dismissed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pages: list[WebhookGollumPropPagesItemsType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    exemption_request: ExemptionRequestType
+    exemption_response: ExemptionResponseType
     sender: SimpleUserType
 
 
-class WebhookGollumPropPagesItemsType(TypedDict):
-    """WebhookGollumPropPagesItems"""
+class WebhookExemptionRequestResponseDismissedTypeForResponse(TypedDict):
+    """Exemption response dismissed event"""
 
-    action: Literal["created", "edited"]
-    html_url: str
-    page_name: str
-    sha: str
-    summary: Union[str, None]
-    title: str
+    action: Literal["response_dismissed"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    exemption_request: ExemptionRequestTypeForResponse
+    exemption_response: ExemptionResponseTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookGollumPropPagesItemsType",
-    "WebhookGollumType",
+    "WebhookExemptionRequestResponseDismissedType",
+    "WebhookExemptionRequestResponseDismissedTypeForResponse",
 )

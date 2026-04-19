@@ -17,27 +17,36 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0106 import RepositoryRuleUpdatePropParameters
+from .group_0415 import Metadata
 
 
-class RepositoryRuleDetailedOneof1(GitHubModel):
-    """RepositoryRuleDetailedOneof1"""
+class Dependency(GitHubModel):
+    """Dependency"""
 
-    type: Literal["update"] = Field()
-    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+    package_url: Missing[str] = Field(
+        pattern="^pkg",
         default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
+        description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
     )
-    ruleset_source: Missing[str] = Field(
+    metadata: Missing[Metadata] = Field(
         default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
+        title="metadata",
+        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
     )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
+    relationship: Missing[Literal["direct", "indirect"]] = Field(
+        default=UNSET,
+        description="A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency.",
+    )
+    scope: Missing[Literal["runtime", "development"]] = Field(
+        default=UNSET,
+        description="A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.",
+    )
+    dependencies: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of package-url (PURLs) of direct child dependencies.",
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof1)
+model_rebuild(Dependency)
 
-__all__ = ("RepositoryRuleDetailedOneof1",)
+__all__ = ("Dependency",)

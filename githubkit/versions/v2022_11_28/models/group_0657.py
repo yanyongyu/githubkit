@@ -9,82 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0433 import EnterpriseWebhooks
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
+from .group_0656 import WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreator
 
 
-class WebhookMetaDeleted(GitHubModel):
-    """meta deleted event"""
+class WebhookIssueCommentPinnedPropIssueAllof0PropMilestone(GitHubModel):
+    """Milestone
 
-    action: Literal["deleted"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
-    )
-    hook: WebhookMetaDeletedPropHook = Field(
-        description="The deleted webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace."
-    )
-    hook_id: int = Field(description="The id of the modified webhook.")
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-
-
-class WebhookMetaDeletedPropHook(GitHubModel):
-    """WebhookMetaDeletedPropHook
-
-    The deleted webhook. This will contain different keys based on the type of
-    webhook it is: repository, organization, business, app, or GitHub Marketplace.
+    A collection of related issues and pull requests.
     """
 
-    active: bool = Field()
-    config: WebhookMetaDeletedPropHookPropConfig = Field()
-    created_at: str = Field()
-    events: list[str] = Field(description="")
+    closed_at: Union[_dt.datetime, None] = Field()
+    closed_issues: int = Field()
+    created_at: _dt.datetime = Field()
+    creator: Union[
+        WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreator, None
+    ] = Field(title="User")
+    description: Union[str, None] = Field()
+    due_on: Union[_dt.datetime, None] = Field()
+    html_url: str = Field()
     id: int = Field()
-    name: str = Field()
-    type: str = Field()
-    updated_at: str = Field()
-
-
-class WebhookMetaDeletedPropHookPropConfig(GitHubModel):
-    """WebhookMetaDeletedPropHookPropConfig"""
-
-    content_type: Literal["json", "form"] = Field()
-    insecure_ssl: str = Field()
-    secret: Missing[str] = Field(default=UNSET)
+    labels_url: str = Field()
+    node_id: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    open_issues: int = Field()
+    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
+    title: str = Field(description="The title of the milestone.")
+    updated_at: _dt.datetime = Field()
     url: str = Field()
 
 
-model_rebuild(WebhookMetaDeleted)
-model_rebuild(WebhookMetaDeletedPropHook)
-model_rebuild(WebhookMetaDeletedPropHookPropConfig)
+model_rebuild(WebhookIssueCommentPinnedPropIssueAllof0PropMilestone)
 
-__all__ = (
-    "WebhookMetaDeleted",
-    "WebhookMetaDeletedPropHook",
-    "WebhookMetaDeletedPropHookPropConfig",
-)
+__all__ = ("WebhookIssueCommentPinnedPropIssueAllof0PropMilestone",)

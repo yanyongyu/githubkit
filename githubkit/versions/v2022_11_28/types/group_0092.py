@@ -9,45 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0091 import TeamSimpleType
 
+class ActionsCacheRetentionLimitForOrganizationType(TypedDict):
+    """Actions cache retention limit for an organization
 
-class TeamType(TypedDict):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
+    GitHub Actions cache retention policy for an organization.
     """
 
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsType]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleType]
+    max_cache_retention_days: NotRequired[int]
 
 
-class TeamPropPermissionsType(TypedDict):
-    """TeamPropPermissions"""
+class ActionsCacheRetentionLimitForOrganizationTypeForResponse(TypedDict):
+    """Actions cache retention limit for an organization
 
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    GitHub Actions cache retention policy for an organization.
+    """
+
+    max_cache_retention_days: NotRequired[int]
 
 
 __all__ = (
-    "TeamPropPermissionsType",
-    "TeamType",
+    "ActionsCacheRetentionLimitForOrganizationType",
+    "ActionsCacheRetentionLimitForOrganizationTypeForResponse",
 )

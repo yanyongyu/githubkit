@@ -9,13 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType(TypedDict):
-    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
+class DependabotPublicKeyType(TypedDict):
+    """DependabotPublicKey
 
-    repository_ids: NotRequired[list[int]]
+    The public key used for setting Dependabot Secrets.
+    """
+
+    key_id: str
+    key: str
 
 
-__all__ = ("RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType",)
+class DependabotPublicKeyTypeForResponse(TypedDict):
+    """DependabotPublicKey
+
+    The public key used for setting Dependabot Secrets.
+    """
+
+    key_id: str
+    key: str
+
+
+__all__ = (
+    "DependabotPublicKeyType",
+    "DependabotPublicKeyTypeForResponse",
+)

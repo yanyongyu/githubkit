@@ -9,30 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class TagType(TypedDict):
-    """Tag
+class PagesDeploymentStatusType(TypedDict):
+    """GitHub Pages deployment status"""
 
-    Tag
-    """
+    status: NotRequired[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+        ]
+    ]
 
-    name: str
-    commit: TagPropCommitType
-    zipball_url: str
-    tarball_url: str
-    node_id: str
 
+class PagesDeploymentStatusTypeForResponse(TypedDict):
+    """GitHub Pages deployment status"""
 
-class TagPropCommitType(TypedDict):
-    """TagPropCommit"""
-
-    sha: str
-    url: str
+    status: NotRequired[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+        ]
+    ]
 
 
 __all__ = (
-    "TagPropCommitType",
-    "TagType",
+    "PagesDeploymentStatusType",
+    "PagesDeploymentStatusTypeForResponse",
 )

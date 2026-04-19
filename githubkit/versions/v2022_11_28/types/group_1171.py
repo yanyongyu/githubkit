@@ -9,15 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody
 
-    name: NotRequired[str]
-    label: NotRequired[str]
-    state: NotRequired[str]
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: list[str]
 
 
-__all__ = ("ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType",)
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody
+
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: list[str]
+
+
+__all__ = (
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyTypeForResponse",
+)

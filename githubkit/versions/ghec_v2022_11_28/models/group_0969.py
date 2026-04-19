@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,47 +17,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
+from .group_0970 import WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-    id: Missing[str] = Field(
-        default=UNSET, description="Unique identifier for the cost center"
-    )
-    name: Missing[str] = Field(default=UNSET, description="Name of the cost center")
-    azure_subscription: Missing[Union[str, None]] = Field(
+class WebhookSecurityAdvisoryWithdrawn(GitHubModel):
+    """security_advisory withdrawn event"""
+
+    action: Literal["withdrawn"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
-    state: Missing[Literal["active", "deleted"]] = Field(
-        default=UNSET, description="State of the cost center."
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    resources: Missing[
-        list[
-            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
-        ]
-    ] = Field(
-        default=UNSET, description="List of resources assigned to this cost center"
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory = Field(
+        description="The details of the security advisory, including summary, description, and severity."
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+model_rebuild(WebhookSecurityAdvisoryWithdrawn)
 
-    type: Missing[str] = Field(
-        default=UNSET, description="Type of resource (User, Org, or Repo)"
-    )
-    name: Missing[str] = Field(default=UNSET, description="Name/login of the resource")
-
-
-model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200)
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
-)
-
-__all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems",
-)
+__all__ = ("WebhookSecurityAdvisoryWithdrawn",)

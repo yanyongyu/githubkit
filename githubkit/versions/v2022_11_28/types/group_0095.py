@@ -9,16 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAnalysisToolType(TypedDict):
-    """CodeScanningAnalysisTool"""
+class GetAllBudgetsType(TypedDict):
+    """GetAllBudgets"""
 
-    name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    guid: NotRequired[Union[str, None]]
+    budgets: list[BudgetType]
+    has_next_page: NotRequired[bool]
+    total_count: NotRequired[int]
 
 
-__all__ = ("CodeScanningAnalysisToolType",)
+class GetAllBudgetsTypeForResponse(TypedDict):
+    """GetAllBudgets"""
+
+    budgets: list[BudgetTypeForResponse]
+    has_next_page: NotRequired[bool]
+    total_count: NotRequired[int]
+
+
+class BudgetType(TypedDict):
+    """Budget"""
+
+    id: str
+    budget_type: Literal["SkuPricing", "ProductPricing"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_scope: str
+    budget_entity_name: NotRequired[str]
+    budget_product_sku: str
+    budget_alerting: BudgetPropBudgetAlertingType
+
+
+class BudgetTypeForResponse(TypedDict):
+    """Budget"""
+
+    id: str
+    budget_type: Literal["SkuPricing", "ProductPricing"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_scope: str
+    budget_entity_name: NotRequired[str]
+    budget_product_sku: str
+    budget_alerting: BudgetPropBudgetAlertingTypeForResponse
+
+
+class BudgetPropBudgetAlertingType(TypedDict):
+    """BudgetPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
+
+
+class BudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """BudgetPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
+
+
+__all__ = (
+    "BudgetPropBudgetAlertingType",
+    "BudgetPropBudgetAlertingTypeForResponse",
+    "BudgetType",
+    "BudgetTypeForResponse",
+    "GetAllBudgetsType",
+    "GetAllBudgetsTypeForResponse",
+)

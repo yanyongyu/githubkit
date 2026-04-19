@@ -9,21 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoReleasesReleaseIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
 
-    tag_name: NotRequired[str]
-    target_commitish: NotRequired[str]
-    name: NotRequired[str]
-    body: NotRequired[str]
-    draft: NotRequired[bool]
-    prerelease: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
-    discussion_category_name: NotRequired[str]
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: list[str]
 
 
-__all__ = ("ReposOwnerRepoReleasesReleaseIdPatchBodyType",)
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
+
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: list[str]
+
+
+__all__ = (
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyTypeForResponse",
+)

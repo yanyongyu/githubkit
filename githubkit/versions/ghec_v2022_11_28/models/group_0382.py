@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,47 +19,69 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0010 import Integration
+from .group_0076 import SimpleRepository
+from .group_0383 import CodeScanningVariantAnalysisPropScannedRepositoriesItems
+from .group_0384 import CodeScanningVariantAnalysisPropSkippedRepositories
 
 
-class ConvertedNoteToIssueIssueEvent(GitHubModel):
-    """Converted Note to Issue Issue Event
+class CodeScanningVariantAnalysis(GitHubModel):
+    """Variant Analysis
 
-    Converted Note to Issue Issue Event
+    A run of a CodeQL query against one or more repositories.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
+    id: int = Field(description="The ID of the variant analysis.")
+    controller_repo: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
+    )
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["converted_note_to_issue"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    query_language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ] = Field(description="The language targeted by the CodeQL query")
+    query_pack_url: str = Field(description="The download url for the query pack.")
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time at which the variant analysis was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
     )
-    project_card: Missing[ConvertedNoteToIssueIssueEventPropProjectCard] = Field(
-        default=UNSET
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time at which the variant analysis was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+    )
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The date and time at which the variant analysis was completed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the variant analysis has not yet completed or this information is not available.",
+    )
+    status: Literal["in_progress", "succeeded", "failed", "cancelled"] = Field()
+    actions_workflow_run_id: Missing[int] = Field(
+        default=UNSET,
+        description="The GitHub Actions workflow run used to execute this variant analysis. This is only available if the workflow run has started.",
+    )
+    failure_reason: Missing[
+        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    ] = Field(
+        default=UNSET,
+        description="The reason for a failure of the variant analysis. This is only available if the variant analysis has failed.",
+    )
+    scanned_repositories: Missing[
+        list[CodeScanningVariantAnalysisPropScannedRepositoriesItems]
+    ] = Field(default=UNSET)
+    skipped_repositories: Missing[
+        CodeScanningVariantAnalysisPropSkippedRepositories
+    ] = Field(
+        default=UNSET,
+        description="Information about repositories that were skipped from processing. This information is only available to the user that initiated the variant analysis.",
     )
 
 
-class ConvertedNoteToIssueIssueEventPropProjectCard(GitHubModel):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
+model_rebuild(CodeScanningVariantAnalysis)
 
-    id: int = Field()
-    url: str = Field()
-    project_id: int = Field()
-    project_url: str = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ConvertedNoteToIssueIssueEvent)
-model_rebuild(ConvertedNoteToIssueIssueEventPropProjectCard)
-
-__all__ = (
-    "ConvertedNoteToIssueIssueEvent",
-    "ConvertedNoteToIssueIssueEventPropProjectCard",
-)
+__all__ = ("CodeScanningVariantAnalysis",)

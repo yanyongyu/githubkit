@@ -9,37 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0243 import (
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
-    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions,
-)
 
 
-class ProtectedBranchPropRequiredPullRequestReviews(GitHubModel):
-    """ProtectedBranchPropRequiredPullRequestReviews"""
+class RulesetVersionWithStateAllof1PropState(GitHubModel):
+    """RulesetVersionWithStateAllof1PropState
 
-    url: str = Field()
-    dismiss_stale_reviews: Missing[bool] = Field(default=UNSET)
-    require_code_owner_reviews: Missing[bool] = Field(default=UNSET)
-    required_approving_review_count: Missing[int] = Field(default=UNSET)
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
-    )
-    dismissal_restrictions: Missing[
-        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions
-    ] = Field(default=UNSET)
-    bypass_pull_request_allowances: Missing[
-        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
-    ] = Field(default=UNSET)
+    The state of the ruleset version
+    """
 
 
-model_rebuild(ProtectedBranchPropRequiredPullRequestReviews)
+model_rebuild(RulesetVersionWithStateAllof1PropState)
 
-__all__ = ("ProtectedBranchPropRequiredPullRequestReviews",)
+__all__ = ("RulesetVersionWithStateAllof1PropState",)

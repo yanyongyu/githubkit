@@ -9,68 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput
-
-    Check runs can accept a variety of data in the `output` object, including a
-    `title` and `summary` and can optionally provide descriptive details about the
-    run.
-    """
-
-    title: NotRequired[str]
-    summary: str
-    text: NotRequired[str]
-    annotations: NotRequired[
-        list[
-            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType
-        ]
-    ]
-    images: NotRequired[
-        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType]
-    ]
+from .group_1051 import (
+    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
+    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse,
+)
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems"""
+class OrgsOrgCampaignsPostBodyOneof0Type(TypedDict):
+    """OrgsOrgCampaignsPostBodyOneof0"""
 
-    path: str
-    start_line: int
-    end_line: int
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
-    annotation_level: Literal["notice", "warning", "failure"]
-    message: str
-    title: NotRequired[str]
-    raw_details: NotRequired[str]
-
-
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems"""
-
-    alt: str
-    image_url: str
-    caption: NotRequired[str]
-
-
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems"""
-
-    label: str
+    name: str
     description: str
-    identifier: str
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: _dt.datetime
+    contact_link: NotRequired[Union[str, None]]
+    code_scanning_alerts: Union[
+        list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None
+    ]
+    generate_issues: NotRequired[bool]
+
+
+class OrgsOrgCampaignsPostBodyOneof0TypeForResponse(TypedDict):
+    """OrgsOrgCampaignsPostBodyOneof0"""
+
+    name: str
+    description: str
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: str
+    contact_link: NotRequired[Union[str, None]]
+    code_scanning_alerts: Union[
+        list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse], None
+    ]
+    generate_issues: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType",
+    "OrgsOrgCampaignsPostBodyOneof0Type",
+    "OrgsOrgCampaignsPostBodyOneof0TypeForResponse",
 )

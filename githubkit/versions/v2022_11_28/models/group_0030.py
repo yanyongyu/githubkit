@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,22 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningDefaultSetupOptions(GitHubModel):
-    """CodeScanningDefaultSetupOptions
+class ActionsCacheStorageLimitForEnterprise(GitHubModel):
+    """Actions cache storage limit for an enterprise
 
-    Feature options for code scanning default setup
+    GitHub Actions cache storage policy for an enterprise.
     """
 
-    runner_type: Missing[Literal["standard", "labeled", "not_set"]] = Field(
+    max_cache_size_gb: Missing[int] = Field(
         default=UNSET,
-        description="Whether to use labeled runners or standard GitHub runners.",
-    )
-    runner_label: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The label of the runner to use for code scanning default setup when runner_type is 'labeled'.",
+        description="For repositories & organizations in an enterprise, the maximum size limit for the sum of all caches in a repository, in gigabytes.",
     )
 
 
-model_rebuild(CodeScanningDefaultSetupOptions)
+model_rebuild(ActionsCacheStorageLimitForEnterprise)
 
-__all__ = ("CodeScanningDefaultSetupOptions",)
+__all__ = ("ActionsCacheStorageLimitForEnterprise",)

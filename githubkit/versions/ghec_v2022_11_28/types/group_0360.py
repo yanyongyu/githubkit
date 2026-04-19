@@ -9,45 +9,105 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0283 import VerificationType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0359 import DiffEntryType, DiffEntryTypeForResponse
+from .group_0361 import CommitPropCommitType, CommitPropCommitTypeForResponse
 
 
-class GitTagType(TypedDict):
-    """Git Tag
+class CommitType(TypedDict):
+    """Commit
 
-    Metadata for a Git tag
+    Commit
     """
 
+    url: str
+    sha: str
     node_id: str
-    tag: str
+    html_url: str
+    comments_url: str
+    commit: CommitPropCommitType
+    author: Union[SimpleUserType, EmptyObjectType, None]
+    committer: Union[SimpleUserType, EmptyObjectType, None]
+    parents: list[CommitPropParentsItemsType]
+    stats: NotRequired[CommitPropStatsType]
+    files: NotRequired[list[DiffEntryType]]
+
+
+class CommitTypeForResponse(TypedDict):
+    """Commit
+
+    Commit
+    """
+
+    url: str
+    sha: str
+    node_id: str
+    html_url: str
+    comments_url: str
+    commit: CommitPropCommitTypeForResponse
+    author: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
+    committer: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
+    parents: list[CommitPropParentsItemsTypeForResponse]
+    stats: NotRequired[CommitPropStatsTypeForResponse]
+    files: NotRequired[list[DiffEntryTypeForResponse]]
+
+
+class EmptyObjectType(TypedDict):
+    """Empty Object
+
+    An object without any properties.
+    """
+
+
+class EmptyObjectTypeForResponse(TypedDict):
+    """Empty Object
+
+    An object without any properties.
+    """
+
+
+class CommitPropParentsItemsType(TypedDict):
+    """CommitPropParentsItems"""
+
     sha: str
     url: str
-    message: str
-    tagger: GitTagPropTaggerType
-    object_: GitTagPropObjectType
-    verification: NotRequired[VerificationType]
+    html_url: NotRequired[str]
 
 
-class GitTagPropTaggerType(TypedDict):
-    """GitTagPropTagger"""
-
-    date: str
-    email: str
-    name: str
-
-
-class GitTagPropObjectType(TypedDict):
-    """GitTagPropObject"""
+class CommitPropParentsItemsTypeForResponse(TypedDict):
+    """CommitPropParentsItems"""
 
     sha: str
-    type: str
     url: str
+    html_url: NotRequired[str]
+
+
+class CommitPropStatsType(TypedDict):
+    """CommitPropStats"""
+
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+    total: NotRequired[int]
+
+
+class CommitPropStatsTypeForResponse(TypedDict):
+    """CommitPropStats"""
+
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+    total: NotRequired[int]
 
 
 __all__ = (
-    "GitTagPropObjectType",
-    "GitTagPropTaggerType",
-    "GitTagType",
+    "CommitPropParentsItemsType",
+    "CommitPropParentsItemsTypeForResponse",
+    "CommitPropStatsType",
+    "CommitPropStatsTypeForResponse",
+    "CommitType",
+    "CommitTypeForResponse",
+    "EmptyObjectType",
+    "EmptyObjectTypeForResponse",
 )

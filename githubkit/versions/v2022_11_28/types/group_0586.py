@@ -12,28 +12,42 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0451 import WebhooksIssueCommentType
-from .group_0452 import WebhooksChangesType
-from .group_0587 import WebhookIssueCommentEditedPropIssueType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0048 import DiscussionType, DiscussionTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssueCommentEditedType(TypedDict):
-    """issue_comment edited event"""
+class WebhookDiscussionClosedType(TypedDict):
+    """discussion closed event"""
 
-    action: Literal["edited"]
-    changes: WebhooksChangesType
-    comment: WebhooksIssueCommentType
+    action: Literal["closed"]
+    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentEditedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssueCommentEditedType",)
+class WebhookDiscussionClosedTypeForResponse(TypedDict):
+    """discussion closed event"""
+
+    action: Literal["closed"]
+    discussion: DiscussionTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookDiscussionClosedType",
+    "WebhookDiscussionClosedTypeForResponse",
+)

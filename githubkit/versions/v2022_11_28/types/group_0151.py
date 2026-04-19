@@ -9,21 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0152 import RepositoryRuleRequiredDeploymentsPropParametersType
+
+class OrganizationCreateIssueFieldType(TypedDict):
+    """OrganizationCreateIssueField"""
+
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[
+        Union[list[OrganizationCreateIssueFieldPropOptionsItemsType], None]
+    ]
 
 
-class RepositoryRuleRequiredDeploymentsType(TypedDict):
-    """required_deployments
+class OrganizationCreateIssueFieldTypeForResponse(TypedDict):
+    """OrganizationCreateIssueField"""
 
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
-    """
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[
+        Union[list[OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse], None]
+    ]
 
-    type: Literal["required_deployments"]
-    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
+
+class OrganizationCreateIssueFieldPropOptionsItemsType(TypedDict):
+    """OrganizationCreateIssueFieldPropOptionsItems"""
+
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
 
 
-__all__ = ("RepositoryRuleRequiredDeploymentsType",)
+class OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """OrganizationCreateIssueFieldPropOptionsItems"""
+
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
+
+
+__all__ = (
+    "OrganizationCreateIssueFieldPropOptionsItemsType",
+    "OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse",
+    "OrganizationCreateIssueFieldType",
+    "OrganizationCreateIssueFieldTypeForResponse",
+)

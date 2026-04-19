@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,96 +17,100 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0104 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
+from .group_0003 import SimpleUser
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
+
+
+class WebhookPageBuild(GitHubModel):
+    """page_build event"""
+
+    build: WebhookPageBuildPropBuild = Field(
+        description="The [List GitHub Pages builds](https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#list-github-pages-builds) itself."
+    )
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+    )
+    id: int = Field()
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+class WebhookPageBuildPropBuild(GitHubModel):
+    """WebhookPageBuildPropBuild
+
+    The [List GitHub Pages builds](https://docs.github.com/enterprise-
+    cloud@latest//rest/pages/pages#list-github-pages-builds) itself.
+    """
+
+    commit: Union[str, None] = Field()
+    created_at: str = Field()
+    duration: int = Field()
+    error: WebhookPageBuildPropBuildPropError = Field()
+    pusher: Union[WebhookPageBuildPropBuildPropPusher, None] = Field(title="User")
+    status: str = Field()
+    updated_at: str = Field()
+    url: str = Field()
+
+
+class WebhookPageBuildPropBuildPropError(GitHubModel):
+    """WebhookPageBuildPropBuildPropError"""
+
+    message: Union[str, None] = Field()
+
+
+class WebhookPageBuildPropBuildPropPusher(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookPageBuild)
+model_rebuild(WebhookPageBuildPropBuild)
+model_rebuild(WebhookPageBuildPropBuildPropError)
+model_rebuild(WebhookPageBuildPropBuildPropPusher)
+
+__all__ = (
+    "WebhookPageBuild",
+    "WebhookPageBuildPropBuild",
+    "WebhookPageBuildPropBuildPropError",
+    "WebhookPageBuildPropBuildPropPusher",
 )
-from .group_0105 import RepositoryRuleUpdate
-from .group_0107 import RepositoryRuleRequiredLinearHistory
-from .group_0108 import RepositoryRuleRequiredDeployments
-from .group_0111 import RepositoryRulePullRequest
-from .group_0113 import RepositoryRuleRequiredStatusChecks
-from .group_0115 import RepositoryRuleCommitMessagePattern
-from .group_0117 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0119 import RepositoryRuleCommitterEmailPattern
-from .group_0121 import RepositoryRuleBranchNamePattern
-from .group_0123 import RepositoryRuleTagNamePattern
-from .group_0125 import RepositoryRuleFilePathRestriction
-from .group_0127 import RepositoryRuleMaxFilePathLength
-from .group_0129 import RepositoryRuleFileExtensionRestriction
-from .group_0131 import RepositoryRuleMaxFileSize
-from .group_0134 import RepositoryRuleWorkflows
-from .group_0136 import RepositoryRuleCodeScanning
-from .group_0143 import RepositoryRuleMergeQueue
-from .group_0848 import (
-    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems,
-)
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropRules(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
-
-    added: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET)
-    deleted: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET)
-    updated: Missing[
-        list[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems]
-    ] = Field(default=UNSET)
-
-
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropRules)
-
-__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropRules",)

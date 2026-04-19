@@ -12,23 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PorterAuthor(GitHubModel):
-    """Porter Author
+class CodeScanningSarifsReceipt(GitHubModel):
+    """CodeScanningSarifsReceipt"""
 
-    Porter Author
-    """
-
-    id: int = Field()
-    remote_id: str = Field()
-    remote_name: str = Field()
-    email: str = Field()
-    name: str = Field()
-    url: str = Field()
-    import_url: str = Field()
+    id: Missing[str] = Field(default=UNSET, description="An identifier for the upload.")
+    url: Missing[str] = Field(
+        default=UNSET,
+        description="The REST API URL for checking the status of the upload.",
+    )
 
 
-model_rebuild(PorterAuthor)
+model_rebuild(CodeScanningSarifsReceipt)
 
-__all__ = ("PorterAuthor",)
+__all__ = ("CodeScanningSarifsReceipt",)

@@ -12,17 +12,30 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0106 import RepositoryRuleUpdatePropParametersType
+from .group_0415 import MetadataType, MetadataTypeForResponse
 
 
-class RepositoryRuleDetailedOneof1Type(TypedDict):
-    """RepositoryRuleDetailedOneof1"""
+class DependencyType(TypedDict):
+    """Dependency"""
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    package_url: NotRequired[str]
+    metadata: NotRequired[MetadataType]
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[list[str]]
 
 
-__all__ = ("RepositoryRuleDetailedOneof1Type",)
+class DependencyTypeForResponse(TypedDict):
+    """Dependency"""
+
+    package_url: NotRequired[str]
+    metadata: NotRequired[MetadataTypeForResponse]
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[list[str]]
+
+
+__all__ = (
+    "DependencyType",
+    "DependencyTypeForResponse",
+)

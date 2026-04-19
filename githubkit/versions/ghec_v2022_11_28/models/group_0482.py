@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,35 +18,81 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0204 import ReactionRollup
+from .group_0483 import ReviewCommentPropLinks
 
-class CodespaceExportDetails(GitHubModel):
-    """Fetches information about an export of a codespace.
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
+class ReviewComment(GitHubModel):
+    """Legacy Review Comment
+
+    Legacy Review Comment
     """
 
-    state: Missing[Union[str, None]] = Field(
-        default=UNSET, description="State of the latest export"
+    url: str = Field()
+    pull_request_review_id: Union[int, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    diff_hunk: str = Field()
+    path: str = Field()
+    position: Union[int, None] = Field()
+    original_position: int = Field()
+    commit_id: str = Field()
+    original_commit_id: str = Field()
+    in_reply_to_id: Missing[int] = Field(default=UNSET)
+    user: Union[None, SimpleUser] = Field()
+    body: str = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    html_url: str = Field()
+    pull_request_url: str = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
     )
-    completed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET, description="Completion time of the last export operation"
+    links: ReviewCommentPropLinks = Field(alias="_links")
+    body_text: Missing[str] = Field(default=UNSET)
+    body_html: Missing[str] = Field(default=UNSET)
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
+        default=UNSET,
+        description="The side of the first line of the range for a multi-line comment.",
     )
-    branch: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Name of the exported branch"
+    start_side: Missing[Union[None, Literal["LEFT", "RIGHT"]]] = Field(
+        default=UNSET,
+        description="The side of the first line of the range for a multi-line comment.",
     )
-    sha: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Git commit SHA of the exported branch"
+    line: Missing[int] = Field(
+        default=UNSET,
+        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
     )
-    id: Missing[str] = Field(default=UNSET, description="Id for the export details")
-    export_url: Missing[str] = Field(
-        default=UNSET, description="Url for fetching export details"
+    original_line: Missing[int] = Field(
+        default=UNSET,
+        description="The original line of the blob to which the comment applies. The last line of the range for a multi-line comment",
     )
-    html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Web url for the exported branch"
+    start_line: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The first line of the range for a multi-line comment.",
+    )
+    original_start_line: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The original first line of the range for a multi-line comment.",
+    )
+    subject_type: Missing[Literal["line", "file"]] = Field(
+        default=UNSET,
+        description="The level at which the comment is targeted, can be a diff line or a file.",
     )
 
 
-model_rebuild(CodespaceExportDetails)
+model_rebuild(ReviewComment)
 
-__all__ = ("CodespaceExportDetails",)
+__all__ = ("ReviewComment",)

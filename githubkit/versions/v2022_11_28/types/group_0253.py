@@ -9,14 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class CodeScanningAutofixCommitsResponseType(TypedDict):
-    """CodeScanningAutofixCommitsResponse"""
+class TeamMembershipType(TypedDict):
+    """Team Membership
 
-    target_ref: NotRequired[str]
-    sha: NotRequired[str]
+    Team Membership
+    """
+
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
-__all__ = ("CodeScanningAutofixCommitsResponseType",)
+class TeamMembershipTypeForResponse(TypedDict):
+    """Team Membership
+
+    Team Membership
+    """
+
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
+
+
+__all__ = (
+    "TeamMembershipType",
+    "TeamMembershipTypeForResponse",
+)

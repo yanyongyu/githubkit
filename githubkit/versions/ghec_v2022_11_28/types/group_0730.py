@@ -12,24 +12,51 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
-from .group_0524 import WebhooksMilestone3Type
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0583 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
+from .group_0584 import WebhooksChangesType, WebhooksChangesTypeForResponse
+from .group_0731 import (
+    WebhookIssueCommentEditedPropIssueType,
+    WebhookIssueCommentEditedPropIssueTypeForResponse,
+)
 
 
-class WebhookMilestoneOpenedType(TypedDict):
-    """milestone opened event"""
+class WebhookIssueCommentEditedType(TypedDict):
+    """issue_comment edited event"""
 
-    action: Literal["opened"]
+    action: Literal["edited"]
+    changes: WebhooksChangesType
+    comment: WebhooksIssueCommentType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    milestone: WebhooksMilestone3Type
+    issue: WebhookIssueCommentEditedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookMilestoneOpenedType",)
+class WebhookIssueCommentEditedTypeForResponse(TypedDict):
+    """issue_comment edited event"""
+
+    action: Literal["edited"]
+    changes: WebhooksChangesTypeForResponse
+    comment: WebhooksIssueCommentTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    issue: WebhookIssueCommentEditedPropIssueTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookIssueCommentEditedType",
+    "WebhookIssueCommentEditedTypeForResponse",
+)

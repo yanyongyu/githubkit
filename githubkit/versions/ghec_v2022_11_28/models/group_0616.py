@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,26 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0494 import EnterpriseWebhooks
-from .group_0495 import SimpleInstallation
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0497 import RepositoryWebhooks
-from .group_0617 import WebhookForkPropForkee
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
+from .group_0568 import WebhooksRule
 
 
-class WebhookFork(GitHubModel):
-    """fork event
+class WebhookBranchProtectionRuleCreated(GitHubModel):
+    """branch protection rule created event"""
 
-    A user forks a repository.
-    """
-
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
-    )
-    forkee: WebhookForkPropForkee = Field(
-        description="The created [`repository`](https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#get-a-repository) resource."
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -51,9 +48,13 @@ class WebhookFork(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    rule: WebhooksRule = Field(
+        title="branch protection rule",
+        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/enterprise-cloud@latest//github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
+    )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookFork)
+model_rebuild(WebhookBranchProtectionRuleCreated)
 
-__all__ = ("WebhookFork",)
+__all__ = ("WebhookBranchProtectionRuleCreated",)

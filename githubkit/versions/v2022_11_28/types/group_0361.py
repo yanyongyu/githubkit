@@ -9,65 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0287 import VerificationType, VerificationTypeForResponse
 
 
-class PullRequestReviewType(TypedDict):
-    """Pull Request Review
+class GitTagType(TypedDict):
+    """Git Tag
 
-    Pull Request Reviews are reviews on pull requests.
+    Metadata for a Git tag
     """
 
-    id: int
     node_id: str
-    user: Union[None, SimpleUserType]
-    body: str
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: PullRequestReviewPropLinksType
-    submitted_at: NotRequired[datetime]
-    commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    tag: str
+    sha: str
+    url: str
+    message: str
+    tagger: GitTagPropTaggerType
+    object_: GitTagPropObjectType
+    verification: NotRequired[VerificationType]
 
 
-class PullRequestReviewPropLinksType(TypedDict):
-    """PullRequestReviewPropLinks"""
+class GitTagTypeForResponse(TypedDict):
+    """Git Tag
 
-    html: PullRequestReviewPropLinksPropHtmlType
-    pull_request: PullRequestReviewPropLinksPropPullRequestType
+    Metadata for a Git tag
+    """
+
+    node_id: str
+    tag: str
+    sha: str
+    url: str
+    message: str
+    tagger: GitTagPropTaggerTypeForResponse
+    object_: GitTagPropObjectTypeForResponse
+    verification: NotRequired[VerificationTypeForResponse]
 
 
-class PullRequestReviewPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
+class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
 
-    href: str
+    date: str
+    email: str
+    name: str
 
 
-class PullRequestReviewPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
+class GitTagPropTaggerTypeForResponse(TypedDict):
+    """GitTagPropTagger"""
 
-    href: str
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropObjectType(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
+
+
+class GitTagPropObjectTypeForResponse(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
 
 
 __all__ = (
-    "PullRequestReviewPropLinksPropHtmlType",
-    "PullRequestReviewPropLinksPropPullRequestType",
-    "PullRequestReviewPropLinksType",
-    "PullRequestReviewType",
+    "GitTagPropObjectType",
+    "GitTagPropObjectTypeForResponse",
+    "GitTagPropTaggerType",
+    "GitTagPropTaggerTypeForResponse",
+    "GitTagType",
+    "GitTagTypeForResponse",
 )

@@ -11,18 +11,27 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCodespacesAccessSelectedUsersPostBody(GitHubModel):
-    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
+class AgentsReposOwnerRepoTasksPostBody(GitHubModel):
+    """AgentsReposOwnerRepoTasksPostBody"""
 
-    selected_usernames: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The usernames of the organization members whose codespaces be billed to the organization.",
+    prompt: str = Field(description="The user's prompt for the agent")
+    model: Missing[str] = Field(
+        default=UNSET,
+        description="The model to use for this task. The allowed models may change over time and depend on the user's GitHub Copilot plan and organization policies. Currently supported values: `claude-sonnet-4.6`, `claude-opus-4.6`, `gpt-5.2-codex`, `gpt-5.3-codex`, `gpt-5.4`, `claude-sonnet-4.5`, `claude-opus-4.5`",
+    )
+    create_pull_request: Missing[bool] = Field(
+        default=UNSET, description="Whether to create a PR."
+    )
+    base_ref: Missing[str] = Field(
+        default=UNSET, description="Base ref for new branch/PR"
     )
 
 
-model_rebuild(OrgsOrgCodespacesAccessSelectedUsersPostBody)
+model_rebuild(AgentsReposOwnerRepoTasksPostBody)
 
-__all__ = ("OrgsOrgCodespacesAccessSelectedUsersPostBody",)
+__all__ = ("AgentsReposOwnerRepoTasksPostBody",)

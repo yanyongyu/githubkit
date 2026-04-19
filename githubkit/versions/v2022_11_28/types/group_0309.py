@@ -9,17 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class ShortBlobType(TypedDict):
-    """Short Blob
+class CodeScanningVariantAnalysisRepositoryType(TypedDict):
+    """Repository Identifier
 
-    Short Blob
+    Repository Identifier
     """
 
-    url: str
-    sha: str
+    id: int
+    name: str
+    full_name: str
+    private: bool
+    stargazers_count: int
+    updated_at: Union[_dt.datetime, None]
 
 
-__all__ = ("ShortBlobType",)
+class CodeScanningVariantAnalysisRepositoryTypeForResponse(TypedDict):
+    """Repository Identifier
+
+    Repository Identifier
+    """
+
+    id: int
+    name: str
+    full_name: str
+    private: bool
+    stargazers_count: int
+    updated_at: Union[str, None]
+
+
+__all__ = (
+    "CodeScanningVariantAnalysisRepositoryType",
+    "CodeScanningVariantAnalysisRepositoryTypeForResponse",
+)

@@ -13,16 +13,75 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodespacesAccessPutBodyType(TypedDict):
-    """OrgsOrgCodespacesAccessPutBody"""
+class AgentsReposOwnerRepoTasksGetResponse422Type(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse422
 
-    visibility: Literal[
-        "disabled",
-        "selected_members",
-        "all_members",
-        "all_members_and_outside_collaborators",
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsType]
     ]
-    selected_usernames: NotRequired[list[str]]
+    documentation_url: str
 
 
-__all__ = ("OrgsOrgCodespacesAccessPutBodyType",)
+class AgentsReposOwnerRepoTasksGetResponse422TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse422
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsTypeForResponse]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+__all__ = (
+    "AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksGetResponse422Type",
+    "AgentsReposOwnerRepoTasksGetResponse422TypeForResponse",
+)

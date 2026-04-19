@@ -9,41 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0034 import DependabotAlertPackage
+from .group_0294 import (
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
+    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions,
+)
 
 
-class DependabotAlertPropDependency(GitHubModel):
-    """DependabotAlertPropDependency
+class ProtectedBranchPropRequiredPullRequestReviews(GitHubModel):
+    """ProtectedBranchPropRequiredPullRequestReviews"""
 
-    Details for the vulnerable dependency.
-    """
-
-    package: Missing[DependabotAlertPackage] = Field(
-        default=UNSET, description="Details for the vulnerable package."
-    )
-    manifest_path: Missing[str] = Field(
+    url: str = Field()
+    dismiss_stale_reviews: Missing[bool] = Field(default=UNSET)
+    require_code_owner_reviews: Missing[bool] = Field(default=UNSET)
+    required_approving_review_count: Missing[int] = Field(default=UNSET)
+    require_last_push_approval: Missing[bool] = Field(
         default=UNSET,
-        description="The full path to the dependency manifest file, relative to the root of the repository.",
+        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
     )
-    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
-        default=UNSET, description="The execution scope of the vulnerable dependency."
-    )
-    relationship: Missing[Union[None, Literal["unknown", "direct", "transitive"]]] = (
-        Field(
-            default=UNSET,
-            description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
-        )
-    )
+    dismissal_restrictions: Missing[
+        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions
+    ] = Field(default=UNSET)
+    bypass_pull_request_allowances: Missing[
+        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
+    ] = Field(default=UNSET)
 
 
-model_rebuild(DependabotAlertPropDependency)
+model_rebuild(ProtectedBranchPropRequiredPullRequestReviews)
 
-__all__ = ("DependabotAlertPropDependency",)
+__all__ = ("ProtectedBranchPropRequiredPullRequestReviews",)

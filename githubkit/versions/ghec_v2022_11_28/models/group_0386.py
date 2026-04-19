@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,88 +19,55 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TimelineCommittedEvent(GitHubModel):
-    """Timeline Committed Event
+class CodeScanningDefaultSetup(GitHubModel):
+    """CodeScanningDefaultSetup
 
-    Timeline Committed Event
+    Configuration for code scanning default setup.
     """
 
-    event: Missing[Literal["committed"]] = Field(default=UNSET)
-    sha: str = Field(description="SHA for the commit")
-    node_id: str = Field()
-    url: str = Field()
-    author: TimelineCommittedEventPropAuthor = Field(
-        description="Identifying information for the git-user"
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET,
+        description="Code scanning default setup has been configured or not.",
     )
-    committer: TimelineCommittedEventPropCommitter = Field(
-        description="Identifying information for the git-user"
+    languages: Missing[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "javascript",
+                "python",
+                "ruby",
+                "typescript",
+                "swift",
+            ]
+        ]
+    ] = Field(default=UNSET, description="Languages to be analyzed.")
+    runner_type: Missing[Union[None, Literal["standard", "labeled"]]] = Field(
+        default=UNSET, description="Runner type to be used."
     )
-    message: str = Field(description="Message describing the purpose of the commit")
-    tree: TimelineCommittedEventPropTree = Field()
-    parents: list[TimelineCommittedEventPropParentsItems] = Field()
-    verification: TimelineCommittedEventPropVerification = Field()
-    html_url: str = Field()
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Runner label to be used if the runner type is labeled.",
+    )
+    query_suite: Missing[Literal["default", "extended"]] = Field(
+        default=UNSET, description="CodeQL query suite to be used."
+    )
+    threat_model: Missing[Literal["remote", "remote_and_local"]] = Field(
+        default=UNSET,
+        description="Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
+    )
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET, description="Timestamp of latest configuration update."
+    )
+    schedule: Missing[Union[None, Literal["weekly"]]] = Field(
+        default=UNSET, description="The frequency of the periodic analysis."
+    )
 
 
-class TimelineCommittedEventPropAuthor(GitHubModel):
-    """TimelineCommittedEventPropAuthor
+model_rebuild(CodeScanningDefaultSetup)
 
-    Identifying information for the git-user
-    """
-
-    date: datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class TimelineCommittedEventPropCommitter(GitHubModel):
-    """TimelineCommittedEventPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class TimelineCommittedEventPropTree(GitHubModel):
-    """TimelineCommittedEventPropTree"""
-
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-
-
-class TimelineCommittedEventPropParentsItems(GitHubModel):
-    """TimelineCommittedEventPropParentsItems"""
-
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-    html_url: str = Field()
-
-
-class TimelineCommittedEventPropVerification(GitHubModel):
-    """TimelineCommittedEventPropVerification"""
-
-    verified: bool = Field()
-    reason: str = Field()
-    signature: Union[str, None] = Field()
-    payload: Union[str, None] = Field()
-    verified_at: Union[str, None] = Field()
-
-
-model_rebuild(TimelineCommittedEvent)
-model_rebuild(TimelineCommittedEventPropAuthor)
-model_rebuild(TimelineCommittedEventPropCommitter)
-model_rebuild(TimelineCommittedEventPropTree)
-model_rebuild(TimelineCommittedEventPropParentsItems)
-model_rebuild(TimelineCommittedEventPropVerification)
-
-__all__ = (
-    "TimelineCommittedEvent",
-    "TimelineCommittedEventPropAuthor",
-    "TimelineCommittedEventPropCommitter",
-    "TimelineCommittedEventPropParentsItems",
-    "TimelineCommittedEventPropTree",
-    "TimelineCommittedEventPropVerification",
-)
+__all__ = ("CodeScanningDefaultSetup",)

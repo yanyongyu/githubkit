@@ -9,41 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 
 
-class ContributorActivity(GitHubModel):
-    """Contributor Activity
+class PageBuild(GitHubModel):
+    """Page Build
 
-    Contributor Activity
+    Page Build
     """
 
-    author: Union[None, SimpleUser] = Field()
-    total: int = Field()
-    weeks: list[ContributorActivityPropWeeksItems] = Field()
+    url: str = Field()
+    status: str = Field()
+    error: PageBuildPropError = Field()
+    pusher: Union[None, SimpleUser] = Field()
+    commit: str = Field()
+    duration: int = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-class ContributorActivityPropWeeksItems(GitHubModel):
-    """ContributorActivityPropWeeksItems"""
+class PageBuildPropError(GitHubModel):
+    """PageBuildPropError"""
 
-    w: Missing[int] = Field(default=UNSET)
-    a: Missing[int] = Field(default=UNSET)
-    d: Missing[int] = Field(default=UNSET)
-    c: Missing[int] = Field(default=UNSET)
+    message: Union[str, None] = Field()
 
 
-model_rebuild(ContributorActivity)
-model_rebuild(ContributorActivityPropWeeksItems)
+model_rebuild(PageBuild)
+model_rebuild(PageBuildPropError)
 
 __all__ = (
-    "ContributorActivity",
-    "ContributorActivityPropWeeksItems",
+    "PageBuild",
+    "PageBuildPropError",
 )

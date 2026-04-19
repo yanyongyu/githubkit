@@ -11,14 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0214 import ActionsVariableType
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
+class OrgsOrgActionsPermissionsRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
 
-    total_count: int
-    variables: list[ActionsVariableType]
+    total_count: float
+    repositories: list[RepositoryType]
 
 
-__all__ = ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",)
+class OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
+
+    total_count: float
+    repositories: list[RepositoryTypeForResponse]
+
+
+__all__ = (
+    "OrgsOrgActionsPermissionsRepositoriesGetResponse200Type",
+    "OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse",
+)

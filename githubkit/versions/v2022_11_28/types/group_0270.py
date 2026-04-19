@@ -9,16 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
-    """Codespaces Permissions Check
+class EnvironmentApprovalsType(TypedDict):
+    """Environment Approval
 
-    Permission check result for a given devcontainer config.
+    An entry in the reviews log for environment deployments
     """
 
-    accepted: bool
+    environments: list[EnvironmentApprovalsPropEnvironmentsItemsType]
+    state: Literal["approved", "rejected", "pending"]
+    user: SimpleUserType
+    comment: str
 
 
-__all__ = ("CodespacesPermissionsCheckForDevcontainerType",)
+class EnvironmentApprovalsTypeForResponse(TypedDict):
+    """Environment Approval
+
+    An entry in the reviews log for environment deployments
+    """
+
+    environments: list[EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse]
+    state: Literal["approved", "rejected", "pending"]
+    user: SimpleUserTypeForResponse
+    comment: str
+
+
+class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+
+
+class EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse(TypedDict):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+
+
+__all__ = (
+    "EnvironmentApprovalsPropEnvironmentsItemsType",
+    "EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse",
+    "EnvironmentApprovalsType",
+    "EnvironmentApprovalsTypeForResponse",
+)

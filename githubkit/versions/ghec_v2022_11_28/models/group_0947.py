@@ -11,26 +11,26 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    RemovePatchBody
-    """
-
-    repositories: list[str] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
-        description="The repository names to remove from the installation.",
-    )
-
-
-model_rebuild(
-    EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody
+from .group_0118 import RepositoryRulesetConditions
+from .group_0948 import (
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems,
 )
 
-__all__ = (
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody",
-)
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditions(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
+
+    added: Missing[list[RepositoryRulesetConditions]] = Field(default=UNSET)
+    deleted: Missing[list[RepositoryRulesetConditions]] = Field(default=UNSET)
+    updated: Missing[
+        list[WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems]
+    ] = Field(default=UNSET)
+
+
+model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropConditions)
+
+__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropConditions",)

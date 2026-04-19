@@ -9,123 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhooksSponsorshipType(TypedDict):
-    """WebhooksSponsorship"""
-
-    created_at: str
-    maintainer: NotRequired[WebhooksSponsorshipPropMaintainerType]
-    node_id: str
-    privacy_level: str
-    sponsor: Union[WebhooksSponsorshipPropSponsorType, None]
-    sponsorable: Union[WebhooksSponsorshipPropSponsorableType, None]
-    tier: WebhooksSponsorshipPropTierType
-
-
-class WebhooksSponsorshipPropMaintainerType(TypedDict):
-    """WebhooksSponsorshipPropMaintainer"""
-
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0242 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0357 import GitUserType, GitUserTypeForResponse
+from .group_0542 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
+from .group_0545 import (
+    CommitSearchResultItemPropCommitType,
+    CommitSearchResultItemPropCommitTypeForResponse,
+)
 
 
-class WebhooksSponsorshipPropSponsorType(TypedDict):
-    """User"""
+class CommitSearchResultItemType(TypedDict):
+    """Commit Search Result Item
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksSponsorshipPropSponsorableType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksSponsorshipPropTierType(TypedDict):
-    """Sponsorship Tier
-
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
+    Commit Search Result Item
     """
 
-    created_at: str
-    description: str
-    is_custom_ammount: NotRequired[bool]
-    is_custom_amount: NotRequired[bool]
-    is_one_time: bool
-    monthly_price_in_cents: int
-    monthly_price_in_dollars: int
-    name: str
+    url: str
+    sha: str
+    html_url: str
+    comments_url: str
+    commit: CommitSearchResultItemPropCommitType
+    author: Union[None, SimpleUserType]
+    committer: Union[None, GitUserType]
+    parents: list[CommitSearchResultItemPropParentsItemsType]
+    repository: MinimalRepositoryType
+    score: float
     node_id: str
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+
+
+class CommitSearchResultItemTypeForResponse(TypedDict):
+    """Commit Search Result Item
+
+    Commit Search Result Item
+    """
+
+    url: str
+    sha: str
+    html_url: str
+    comments_url: str
+    commit: CommitSearchResultItemPropCommitTypeForResponse
+    author: Union[None, SimpleUserTypeForResponse]
+    committer: Union[None, GitUserTypeForResponse]
+    parents: list[CommitSearchResultItemPropParentsItemsTypeForResponse]
+    repository: MinimalRepositoryTypeForResponse
+    score: float
+    node_id: str
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+
+
+class CommitSearchResultItemPropParentsItemsType(TypedDict):
+    """CommitSearchResultItemPropParentsItems"""
+
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class CommitSearchResultItemPropParentsItemsTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropParentsItems"""
+
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class SearchCommitsGetResponse200Type(TypedDict):
+    """SearchCommitsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CommitSearchResultItemType]
+
+
+class SearchCommitsGetResponse200TypeForResponse(TypedDict):
+    """SearchCommitsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CommitSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "WebhooksSponsorshipPropMaintainerType",
-    "WebhooksSponsorshipPropSponsorType",
-    "WebhooksSponsorshipPropSponsorableType",
-    "WebhooksSponsorshipPropTierType",
-    "WebhooksSponsorshipType",
+    "CommitSearchResultItemPropParentsItemsType",
+    "CommitSearchResultItemPropParentsItemsTypeForResponse",
+    "CommitSearchResultItemType",
+    "CommitSearchResultItemTypeForResponse",
+    "SearchCommitsGetResponse200Type",
+    "SearchCommitsGetResponse200TypeForResponse",
 )

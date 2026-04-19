@@ -9,36 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0258 import CodeScanningVariantAnalysisSkippedRepoGroupType
 
+class ActionsCacheListType(TypedDict):
+    """Repository actions caches
 
-class CodeScanningVariantAnalysisPropSkippedRepositoriesType(TypedDict):
-    """CodeScanningVariantAnalysisPropSkippedRepositories
-
-    Information about repositories that were skipped from processing. This
-    information is only available to the user that initiated the variant analysis.
+    Repository actions caches
     """
 
-    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
-    not_found_repos: (
-        CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType
-    )
-    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
-    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    total_count: int
+    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
 
 
-class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType(
-    TypedDict
-):
-    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+class ActionsCacheListTypeForResponse(TypedDict):
+    """Repository actions caches
 
-    repository_count: int
-    repository_full_names: list[str]
+    Repository actions caches
+    """
+
+    total_count: int
+    actions_caches: list[ActionsCacheListPropActionsCachesItemsTypeForResponse]
+
+
+class ActionsCacheListPropActionsCachesItemsType(TypedDict):
+    """ActionsCacheListPropActionsCachesItems"""
+
+    id: NotRequired[int]
+    ref: NotRequired[str]
+    key: NotRequired[str]
+    version: NotRequired[str]
+    last_accessed_at: NotRequired[_dt.datetime]
+    created_at: NotRequired[_dt.datetime]
+    size_in_bytes: NotRequired[int]
+
+
+class ActionsCacheListPropActionsCachesItemsTypeForResponse(TypedDict):
+    """ActionsCacheListPropActionsCachesItems"""
+
+    id: NotRequired[int]
+    ref: NotRequired[str]
+    key: NotRequired[str]
+    version: NotRequired[str]
+    last_accessed_at: NotRequired[str]
+    created_at: NotRequired[str]
+    size_in_bytes: NotRequired[int]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesType",
+    "ActionsCacheListPropActionsCachesItemsType",
+    "ActionsCacheListPropActionsCachesItemsTypeForResponse",
+    "ActionsCacheListType",
+    "ActionsCacheListTypeForResponse",
 )

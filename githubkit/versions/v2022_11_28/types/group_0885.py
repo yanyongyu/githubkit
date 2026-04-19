@@ -12,18 +12,47 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgActionsRunnerGroupsPostBodyType(TypedDict):
-    """OrgsOrgActionsRunnerGroupsPostBody"""
-
-    name: str
-    visibility: NotRequired[Literal["selected", "all", "private"]]
-    selected_repository_ids: NotRequired[list[int]]
-    runners: NotRequired[list[int]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
-    network_configuration_id: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0527 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0528 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
 
 
-__all__ = ("OrgsOrgActionsRunnerGroupsPostBodyType",)
+class WebhookSponsorshipPendingTierChangeType(TypedDict):
+    """sponsorship pending_tier_change event"""
+
+    action: Literal["pending_tier_change"]
+    changes: WebhooksChanges8Type
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
+
+
+class WebhookSponsorshipPendingTierChangeTypeForResponse(TypedDict):
+    """sponsorship pending_tier_change event"""
+
+    action: Literal["pending_tier_change"]
+    changes: WebhooksChanges8TypeForResponse
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
+
+
+__all__ = (
+    "WebhookSponsorshipPendingTierChangeType",
+    "WebhookSponsorshipPendingTierChangeTypeForResponse",
+)

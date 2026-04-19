@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,22 +18,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0494 import EnterpriseWebhooks
-from .group_0495 import SimpleInstallation
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0497 import RepositoryWebhooks
-from .group_0539 import WebhooksRelease
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
 
 
-class WebhookReleaseCreated(GitHubModel):
-    """release created event"""
+class WebhookMetaDeleted(GitHubModel):
+    """meta deleted event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
+    hook: WebhookMetaDeletedPropHook = Field(
+        description="The deleted webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace."
+    )
+    hook_id: int = Field(description="The id of the modified webhook.")
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -44,17 +47,44 @@ class WebhookReleaseCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    release: WebhooksRelease = Field(
-        title="Release",
-        description="The [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases/#get-a-release) object.",
+    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookReleaseCreated)
+class WebhookMetaDeletedPropHook(GitHubModel):
+    """WebhookMetaDeletedPropHook
 
-__all__ = ("WebhookReleaseCreated",)
+    The deleted webhook. This will contain different keys based on the type of
+    webhook it is: repository, organization, business, app, or GitHub Marketplace.
+    """
+
+    active: bool = Field()
+    config: WebhookMetaDeletedPropHookPropConfig = Field()
+    created_at: str = Field()
+    events: list[str] = Field(description="")
+    id: int = Field()
+    name: str = Field()
+    type: str = Field()
+    updated_at: str = Field()
+
+
+class WebhookMetaDeletedPropHookPropConfig(GitHubModel):
+    """WebhookMetaDeletedPropHookPropConfig"""
+
+    content_type: Literal["json", "form"] = Field()
+    insecure_ssl: str = Field()
+    secret: Missing[str] = Field(default=UNSET)
+    url: str = Field()
+
+
+model_rebuild(WebhookMetaDeleted)
+model_rebuild(WebhookMetaDeletedPropHook)
+model_rebuild(WebhookMetaDeletedPropHookPropConfig)
+
+__all__ = (
+    "WebhookMetaDeleted",
+    "WebhookMetaDeletedPropHook",
+    "WebhookMetaDeletedPropHookPropConfig",
+)

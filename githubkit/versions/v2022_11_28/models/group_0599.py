@@ -18,36 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0020 import Repository
-from .group_0047 import Issue
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
+from .group_0048 import Discussion
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0485 import RepositoryWebhooks
+from .group_0494 import WebhooksAnswer
 
 
-class WebhookIssueDependenciesBlockingAdded(GitHubModel):
-    """blocking issue added event"""
+class WebhookDiscussionUnanswered(GitHubModel):
+    """discussion unanswered event"""
 
-    action: Literal["blocking_added"] = Field()
-    blocked_issue_id: float = Field(description="The ID of the blocked issue.")
-    blocked_issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    action: Literal["unanswered"] = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
     )
-    blocked_issue_repo: Repository = Field(
-        title="Repository", description="A repository on GitHub."
-    )
-    blocking_issue_id: float = Field(description="The ID of the blocking issue.")
-    blocking_issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    installation: Missing[SimpleInstallation] = Field(
+    old_answer: WebhooksAnswer = Field()
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
@@ -55,9 +41,11 @@ class WebhookIssueDependenciesBlockingAdded(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookIssueDependenciesBlockingAdded)
+model_rebuild(WebhookDiscussionUnanswered)
 
-__all__ = ("WebhookIssueDependenciesBlockingAdded",)
+__all__ = ("WebhookDiscussionUnanswered",)

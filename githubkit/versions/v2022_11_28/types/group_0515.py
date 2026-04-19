@@ -9,27 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0292 import DependabotAlertType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
+
+class WebhooksProjectChangesType(TypedDict):
+    """WebhooksProjectChanges"""
+
+    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtType]
 
 
-class WebhookDependabotAlertAutoReopenedType(TypedDict):
-    """Dependabot alert auto-reopened event"""
+class WebhooksProjectChangesTypeForResponse(TypedDict):
+    """WebhooksProjectChanges"""
 
-    action: Literal["auto_reopened"]
-    alert: DependabotAlertType
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtTypeForResponse]
 
 
-__all__ = ("WebhookDependabotAlertAutoReopenedType",)
+class WebhooksProjectChangesPropArchivedAtType(TypedDict):
+    """WebhooksProjectChangesPropArchivedAt"""
+
+    from_: NotRequired[Union[_dt.datetime, None]]
+    to: NotRequired[Union[_dt.datetime, None]]
+
+
+class WebhooksProjectChangesPropArchivedAtTypeForResponse(TypedDict):
+    """WebhooksProjectChangesPropArchivedAt"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "WebhooksProjectChangesPropArchivedAtType",
+    "WebhooksProjectChangesPropArchivedAtTypeForResponse",
+    "WebhooksProjectChangesType",
+    "WebhooksProjectChangesTypeForResponse",
+)

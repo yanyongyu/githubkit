@@ -14,10 +14,10 @@ from typing import TYPE_CHECKING, Optional
 from weakref import ref
 
 from githubkit.typing import Missing
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import date
+    import datetime as _dt
 
     from githubkit import GitHubCore
     from githubkit.response import Response
@@ -25,7 +25,7 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import ApiOverview, Root
-    from ..types import ApiOverviewType, RootType
+    from ..types import ApiOverviewTypeForResponse, RootTypeForResponse
 
 
 class MetaClient:
@@ -48,7 +48,7 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Root, RootType]:
+    ) -> Response[Root, RootTypeForResponse]:
         """meta/root
 
         GET /
@@ -77,7 +77,7 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Root, RootType]:
+    ) -> Response[Root, RootTypeForResponse]:
         """meta/root
 
         GET /
@@ -106,7 +106,7 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ApiOverview, ApiOverviewType]:
+    ) -> Response[ApiOverview, ApiOverviewTypeForResponse]:
         """meta/get
 
         GET /meta
@@ -142,7 +142,7 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ApiOverview, ApiOverviewType]:
+    ) -> Response[ApiOverview, ApiOverviewTypeForResponse]:
         """meta/get
 
         GET /meta
@@ -200,7 +200,7 @@ class MetaClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=str,
@@ -233,7 +233,7 @@ class MetaClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=str,
@@ -244,7 +244,7 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[date], list[date]]:
+    ) -> Response[list[_dt.date], list[str]]:
         """meta/get-all-versions
 
         GET /versions
@@ -254,7 +254,7 @@ class MetaClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-all-api-versions
         """
 
-        from datetime import date
+        import datetime as _dt
 
         from ..models import BasicError
 
@@ -267,7 +267,7 @@ class MetaClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[date],
+            response_model=list[_dt.date],
             error_models={
                 "404": BasicError,
             },
@@ -278,7 +278,7 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[date], list[date]]:
+    ) -> Response[list[_dt.date], list[str]]:
         """meta/get-all-versions
 
         GET /versions
@@ -288,7 +288,7 @@ class MetaClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-all-api-versions
         """
 
-        from datetime import date
+        import datetime as _dt
 
         from ..models import BasicError
 
@@ -301,7 +301,7 @@ class MetaClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[date],
+            response_model=list[_dt.date],
             error_models={
                 "404": BasicError,
             },

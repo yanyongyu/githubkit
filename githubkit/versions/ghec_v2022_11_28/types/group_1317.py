@@ -11,11 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType(TypedDict):
-    """TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody"""
-
-    body: str
+from .group_0333 import JobType, JobTypeForResponse
 
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType",)
+class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
+
+    total_count: int
+    jobs: list[JobType]
+
+
+class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
+
+    total_count: int
+    jobs: list[JobTypeForResponse]
+
+
+__all__ = (
+    "ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",
+    "ReposOwnerRepoActionsRunsRunIdJobsGetResponse200TypeForResponse",
+)

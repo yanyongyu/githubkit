@@ -9,38 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0410 import SearchResultTextMatchesItemsType
+
+class RepositoryRuleDetailedOneof0Type(TypedDict):
+    """RepositoryRuleDetailedOneof0"""
+
+    type: Literal["creation"]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class LabelSearchResultItemType(TypedDict):
-    """Label Search Result Item
+class RepositoryRuleDetailedOneof0TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof0"""
 
-    Label Search Result Item
-    """
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
-
-
-class SearchLabelsGetResponse200Type(TypedDict):
-    """SearchLabelsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemType]
+    type: Literal["creation"]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "LabelSearchResultItemType",
-    "SearchLabelsGetResponse200Type",
+    "RepositoryRuleDetailedOneof0Type",
+    "RepositoryRuleDetailedOneof0TypeForResponse",
 )

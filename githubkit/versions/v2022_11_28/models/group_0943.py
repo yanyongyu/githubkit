@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,23 +18,49 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgHooksHookIdConfigPatchBody(GitHubModel):
-    """OrgsOrgHooksHookIdConfigPatchBody"""
+class AgentsTasksGetResponse403(GitHubModel):
+    """AgentsTasksGetResponse403
 
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    content_type: Missing[str] = Field(
+    errors: Missing[list[AgentsTasksGetResponse403PropErrorsItems]] = Field(
         default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+        description="List of validation errors (present only for 422 responses)",
     )
-    secret: Missing[str] = Field(
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsTasksGetResponse403PropErrorsItems(GitHubModel):
+    """AgentsTasksGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
         default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
+        description='Human-readable message (populated when code is "custom")',
     )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgHooksHookIdConfigPatchBody)
+model_rebuild(AgentsTasksGetResponse403)
+model_rebuild(AgentsTasksGetResponse403PropErrorsItems)
 
-__all__ = ("OrgsOrgHooksHookIdConfigPatchBody",)
+__all__ = (
+    "AgentsTasksGetResponse403",
+    "AgentsTasksGetResponse403PropErrorsItems",
+)

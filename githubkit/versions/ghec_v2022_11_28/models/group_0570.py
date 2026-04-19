@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Annotated, Literal, Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,189 +18,373 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0494 import EnterpriseWebhooks
-from .group_0495 import SimpleInstallation
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0497 import RepositoryWebhooks
+from .group_0569 import ExemptionResponse
 
 
-class WebhookCodeScanningAlertCreated(GitHubModel):
-    """code_scanning_alert created event"""
+class ExemptionRequest(GitHubModel):
+    """Exemption Request
 
-    action: Literal["created"] = Field()
-    alert: WebhookCodeScanningAlertCreatedPropAlert = Field(
-        description="The code scanning alert involved in the event."
-    )
-    commit_oid: str = Field(
-        description="The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
-    )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    ref: str = Field(
-        description="The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-
-
-class WebhookCodeScanningAlertCreatedPropAlert(GitHubModel):
-    """WebhookCodeScanningAlertCreatedPropAlert
-
-    The code scanning alert involved in the event.
+    A request from a user to be exempted from a set of rules.
     """
 
-    created_at: Union[datetime, None] = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`"
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the exemption request."
     )
-    dismissed_at: None = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_by: None = Field()
-    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
-        Field(
-            default=UNSET,
-            description="The dismissal comment associated with the dismissal of the alert.",
-        )
-    )
-    dismissed_reason: None = Field(
-        description="The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`."
-    )
-    fixed_at: Missing[None] = Field(
+    number: Missing[Union[int, None]] = Field(
         default=UNSET,
-        description="The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="The number uniquely identifying the exemption request within it's repository.",
     )
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    instances_url: Missing[str] = Field(default=UNSET)
-    most_recent_instance: Missing[
-        Union[WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance, None]
-    ] = Field(default=UNSET, title="Alert Instance")
-    number: int = Field(description="The code scanning alert number.")
-    rule: WebhookCodeScanningAlertCreatedPropAlertPropRule = Field()
-    state: Union[None, Literal["open", "dismissed"]] = Field(
-        description="State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed."
-    )
-    tool: Union[WebhookCodeScanningAlertCreatedPropAlertPropTool, None] = Field()
-    updated_at: Missing[Union[str, None]] = Field(default=UNSET)
-    url: str = Field()
-    dismissal_approved_by: Missing[None] = Field(default=UNSET)
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance(GitHubModel):
-    """Alert Instance"""
-
-    analysis_key: str = Field(
-        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name."
-    )
-    category: Missing[str] = Field(
+    repository_id: Missing[int] = Field(
         default=UNSET,
-        description="Identifies the configuration under which the analysis was executed.",
+        description="The ID of the repository the exemption request is for.",
     )
-    classifications: Missing[list[str]] = Field(default=UNSET)
-    commit_sha: Missing[str] = Field(default=UNSET)
-    environment: str = Field(
-        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed."
+    requester_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the user who requested the exemption."
     )
-    location: Missing[
-        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation
+    requester_login: Missing[str] = Field(
+        default=UNSET, description="The login of the user who requested the exemption."
+    )
+    request_type: Missing[
+        Literal[
+            "push_ruleset_bypass",
+            "secret_scanning",
+            "secret_scanning_closure",
+            "code_scanning_alert_dismissal",
+            "dependabot_alert_dismissal",
+            "license_compliance_dismissal",
+        ]
+    ] = Field(default=UNSET, description="The type of request.")
+    exemption_request_data: Missing[
+        Union[
+            ExemptionRequestPushRulesetBypass,
+            ExemptionRequestSecretScanning,
+            DismissalRequestSecretScanning,
+            DismissalRequestCodeScanning,
+            DismissalRequestDependabot,
+            DismissalRequestLicenseCompliance,
+        ]
     ] = Field(default=UNSET)
-    message: Missing[
-        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage
-    ] = Field(default=UNSET)
-    ref: str = Field(
-        description="The full Git reference, formatted as `refs/heads/<branch name>`."
-    )
-    state: Literal["open", "dismissed", "fixed"] = Field(
-        description="State of a code scanning alert."
-    )
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation(
-    GitHubModel
-):
-    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation"""
-
-    end_column: Missing[int] = Field(default=UNSET)
-    end_line: Missing[int] = Field(default=UNSET)
-    path: Missing[str] = Field(default=UNSET)
-    start_column: Missing[int] = Field(default=UNSET)
-    start_line: Missing[int] = Field(default=UNSET)
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage(
-    GitHubModel
-):
-    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage"""
-
-    text: Missing[str] = Field(default=UNSET)
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropRule(GitHubModel):
-    """WebhookCodeScanningAlertCreatedPropAlertPropRule"""
-
-    description: str = Field(
-        description="A short description of the rule used to detect the alert."
-    )
-    full_description: Missing[str] = Field(default=UNSET)
-    help_: Missing[Union[str, None]] = Field(default=UNSET, alias="help")
-    help_uri: Missing[Union[str, None]] = Field(
+    resource_identifier: Missing[str] = Field(
         default=UNSET,
-        description="A link to the documentation for the rule used to detect the alert.",
+        description="The unique identifier for the request type of the exemption request. For example, a commit SHA.",
     )
-    id: str = Field(
-        description="A unique identifier for the rule used to detect the alert."
+    status: Missing[Literal["pending", "rejected", "cancelled", "completed"]] = Field(
+        default=UNSET, description="The status of the exemption request."
     )
-    name: Missing[str] = Field(default=UNSET)
-    severity: Union[None, Literal["none", "note", "warning", "error"]] = Field(
-        description="The severity of the alert."
+    requester_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The comment the requester provided when creating the exemption request.",
     )
-    tags: Missing[Union[list[str], None]] = Field(default=UNSET)
+    metadata: Missing[
+        Union[
+            ExemptionRequestSecretScanningMetadata,
+            DismissalRequestSecretScanningMetadata,
+            DismissalRequestCodeScanningMetadata,
+            DismissalRequestDependabotMetadata,
+            DismissalRequestLicenseComplianceMetadata,
+            None,
+        ]
+    ] = Field(default=UNSET, description="Metadata about the exemption request.")
+    expires_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the exemption request will expire.",
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the exemption request was created.",
+    )
+    responses: Missing[Union[list[ExemptionResponse], None]] = Field(
+        default=UNSET, description="The responses to the exemption request."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The URL to view the exemption request in a browser."
+    )
 
 
-class WebhookCodeScanningAlertCreatedPropAlertPropTool(GitHubModel):
-    """WebhookCodeScanningAlertCreatedPropAlertPropTool"""
+class ExemptionRequestSecretScanningMetadata(GitHubModel):
+    """Secret Scanning Push Protection Exemption Request Metadata
 
-    guid: Missing[Union[str, None]] = Field(default=UNSET)
-    name: str = Field(
-        description="The name of the tool used to generate the code scanning analysis alert."
+    Metadata for a secret scanning push protection exemption request.
+    """
+
+    label: Missing[str] = Field(
+        default=UNSET, description="The label for the secret type"
     )
-    version: Union[str, None] = Field(
-        description="The version of the tool used to detect the alert."
+    reason: Missing[Literal["fixed_later", "false_positive", "tests"]] = Field(
+        default=UNSET, description="The reason for the exemption request"
     )
 
 
-model_rebuild(WebhookCodeScanningAlertCreated)
-model_rebuild(WebhookCodeScanningAlertCreatedPropAlert)
-model_rebuild(WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance)
-model_rebuild(
-    WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation
-)
-model_rebuild(WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage)
-model_rebuild(WebhookCodeScanningAlertCreatedPropAlertPropRule)
-model_rebuild(WebhookCodeScanningAlertCreatedPropAlertPropTool)
+class DismissalRequestSecretScanningMetadata(GitHubModel):
+    """Secret scanning alert dismissal request metadata
+
+    Metadata for a secret scanning alert dismissal request.
+    """
+
+    alert_title: Missing[str] = Field(
+        default=UNSET, description="The title of the secret alert"
+    )
+    reason: Missing[Literal["fixed_later", "false_positive", "tests", "revoked"]] = (
+        Field(default=UNSET, description="The reason for the dismissal request")
+    )
+
+
+class DismissalRequestCodeScanningMetadata(GitHubModel):
+    """Code scanning alert dismissal request metadata
+
+    Metadata for a code scanning alert dismissal request.
+    """
+
+    alert_title: Missing[str] = Field(
+        default=UNSET, description="The title of the code scanning alert"
+    )
+    reason: Missing[Literal["false positive", "won't fix", "used in tests"]] = Field(
+        default=UNSET, description="The reason for the dismissal request"
+    )
+
+
+class DismissalRequestDependabotMetadata(GitHubModel):
+    """Dependabot alert dismissal request metadata
+
+    Metadata for a Dependabot alert dismissal request.
+    """
+
+    alert_title: Missing[str] = Field(
+        default=UNSET, description="The title of the Dependabot alert"
+    )
+    reason: Missing[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ] = Field(default=UNSET, description="The reason for the dismissal request")
+
+
+class DismissalRequestLicenseComplianceMetadata(GitHubModel):
+    """License compliance alert closure request metadata
+
+    Metadata for a License compliance alert closure request.
+    """
+
+    alert_title: Missing[str] = Field(
+        default=UNSET, description="The title of the License compliance alert"
+    )
+    reason: Missing[Literal["amendment", "private package", "inaccurate license"]] = (
+        Field(default=UNSET, description="The reason for the closure request")
+    )
+
+
+class ExemptionRequestPushRulesetBypass(GitHubModel):
+    """Push ruleset bypass exemption request data
+
+    Push rules that are being requested to be bypassed.
+    """
+
+    type: Missing[Literal["push_ruleset_bypass"]] = Field(
+        default=UNSET, description="The type of request"
+    )
+    data: Missing[list[ExemptionRequestPushRulesetBypassPropDataItems]] = Field(
+        default=UNSET,
+        description="The data pertaining to the push rules that are being requested to be bypassed.",
+    )
+
+
+class ExemptionRequestPushRulesetBypassPropDataItems(GitHubModel):
+    """ExemptionRequestPushRulesetBypassPropDataItems"""
+
+    ruleset_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the ruleset for the rules that were violated",
+    )
+    ruleset_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the ruleset for the rules that were violated",
+    )
+    total_violations: Missing[int] = Field(
+        default=UNSET, description="The number of violations"
+    )
+    rule_type: Missing[str] = Field(
+        default=UNSET, description="The type of rule that was violated"
+    )
+
+
+class DismissalRequestSecretScanning(GitHubModel):
+    """Secret scanning alert dismissal request data
+
+    Secret scanning alerts that have dismissal requests.
+    """
+
+    type: Missing[Literal["secret_scanning_closure"]] = Field(
+        default=UNSET, description="The type of request"
+    )
+    data: Missing[list[DismissalRequestSecretScanningPropDataItems]] = Field(
+        default=UNSET,
+        description="The data related to the secret scanning alerts that have dismissal requests.",
+    )
+
+
+class DismissalRequestSecretScanningPropDataItems(GitHubModel):
+    """DismissalRequestSecretScanningPropDataItems"""
+
+    reason: Missing[Literal["fixed_later", "false_positive", "tests", "revoked"]] = (
+        Field(default=UNSET, description="The reason for the dismissal request")
+    )
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that was detected"
+    )
+    alert_number: Missing[str] = Field(
+        default=UNSET, description="The number of the alert that was detected"
+    )
+
+
+class DismissalRequestCodeScanning(GitHubModel):
+    """Code scanning alert dismissal request data
+
+    Code scanning alerts that have dismissal requests.
+    """
+
+    type: Missing[Literal["code_scanning_alert_dismissal"]] = Field(
+        default=UNSET, description="The type of request"
+    )
+    data: Missing[list[DismissalRequestCodeScanningPropDataItems]] = Field(
+        default=UNSET,
+        description="The data related to the code scanning alerts that have dismissal requests.",
+    )
+
+
+class DismissalRequestCodeScanningPropDataItems(GitHubModel):
+    """DismissalRequestCodeScanningPropDataItems"""
+
+    alert_number: Missing[str] = Field(
+        default=UNSET, description="The number of the alert to be dismissed"
+    )
+
+
+class DismissalRequestDependabot(GitHubModel):
+    """Dependabot alert dismissal request data
+
+    Dependabot alerts that have dismissal requests.
+    """
+
+    type: Missing[Literal["dependabot_alert_dismissal"]] = Field(
+        default=UNSET, description="The type of request"
+    )
+    data: Missing[list[DismissalRequestDependabotPropDataItems]] = Field(
+        default=UNSET,
+        description="The data related to the Dependabot alerts that have dismissal requests.",
+    )
+
+
+class DismissalRequestDependabotPropDataItems(GitHubModel):
+    """DismissalRequestDependabotPropDataItems"""
+
+    alert_number: Missing[str] = Field(
+        default=UNSET, description="The number of the alert to be dismissed"
+    )
+
+
+class DismissalRequestLicenseCompliance(GitHubModel):
+    """License compliance alert closure request data
+
+    License compliance alerts that have closure requests.
+    """
+
+    type: Missing[Literal["license_compliance_dismissal"]] = Field(
+        default=UNSET, description="The type of request"
+    )
+    data: Missing[list[DismissalRequestLicenseCompliancePropDataItems]] = Field(
+        default=UNSET,
+        description="The data related to the License compliance alerts that have closure requests.",
+    )
+
+
+class DismissalRequestLicenseCompliancePropDataItems(GitHubModel):
+    """DismissalRequestLicenseCompliancePropDataItems"""
+
+    alert_number: Missing[str] = Field(
+        default=UNSET, description="The number of the alert to be closed"
+    )
+
+
+class ExemptionRequestSecretScanning(GitHubModel):
+    """Secret scanning push protection exemption request data
+
+    Secret scanning push protections that are being requested to be bypassed.
+    """
+
+    type: Missing[Literal["secret_scanning"]] = Field(
+        default=UNSET, description="The type of request"
+    )
+    data: Missing[list[ExemptionRequestSecretScanningPropDataItems]] = Field(
+        default=UNSET,
+        description="The data pertaining to the secret scanning push protections that are being requested to be bypassed.",
+    )
+
+
+class ExemptionRequestSecretScanningPropDataItems(GitHubModel):
+    """ExemptionRequestSecretScanningPropDataItems"""
+
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that was detected"
+    )
+    locations: Missing[
+        list[ExemptionRequestSecretScanningPropDataItemsPropLocationsItems]
+    ] = Field(
+        default=UNSET, description="The location data of the secret that was detected"
+    )
+
+
+class ExemptionRequestSecretScanningPropDataItemsPropLocationsItems(GitHubModel):
+    """ExemptionRequestSecretScanningPropDataItemsPropLocationsItems"""
+
+    commit: Missing[str] = Field(
+        default=UNSET, description="The commit SHA where the secret was detected"
+    )
+    branch: Missing[str] = Field(
+        default=UNSET, description="The branch where the secret was detected"
+    )
+    path: Missing[str] = Field(
+        default=UNSET, description="The path of the file where the secret was detected"
+    )
+
+
+model_rebuild(ExemptionRequest)
+model_rebuild(ExemptionRequestSecretScanningMetadata)
+model_rebuild(DismissalRequestSecretScanningMetadata)
+model_rebuild(DismissalRequestCodeScanningMetadata)
+model_rebuild(DismissalRequestDependabotMetadata)
+model_rebuild(DismissalRequestLicenseComplianceMetadata)
+model_rebuild(ExemptionRequestPushRulesetBypass)
+model_rebuild(ExemptionRequestPushRulesetBypassPropDataItems)
+model_rebuild(DismissalRequestSecretScanning)
+model_rebuild(DismissalRequestSecretScanningPropDataItems)
+model_rebuild(DismissalRequestCodeScanning)
+model_rebuild(DismissalRequestCodeScanningPropDataItems)
+model_rebuild(DismissalRequestDependabot)
+model_rebuild(DismissalRequestDependabotPropDataItems)
+model_rebuild(DismissalRequestLicenseCompliance)
+model_rebuild(DismissalRequestLicenseCompliancePropDataItems)
+model_rebuild(ExemptionRequestSecretScanning)
+model_rebuild(ExemptionRequestSecretScanningPropDataItems)
+model_rebuild(ExemptionRequestSecretScanningPropDataItemsPropLocationsItems)
 
 __all__ = (
-    "WebhookCodeScanningAlertCreated",
-    "WebhookCodeScanningAlertCreatedPropAlert",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage",
-    "WebhookCodeScanningAlertCreatedPropAlertPropRule",
-    "WebhookCodeScanningAlertCreatedPropAlertPropTool",
+    "DismissalRequestCodeScanning",
+    "DismissalRequestCodeScanningMetadata",
+    "DismissalRequestCodeScanningPropDataItems",
+    "DismissalRequestDependabot",
+    "DismissalRequestDependabotMetadata",
+    "DismissalRequestDependabotPropDataItems",
+    "DismissalRequestLicenseCompliance",
+    "DismissalRequestLicenseComplianceMetadata",
+    "DismissalRequestLicenseCompliancePropDataItems",
+    "DismissalRequestSecretScanning",
+    "DismissalRequestSecretScanningMetadata",
+    "DismissalRequestSecretScanningPropDataItems",
+    "ExemptionRequest",
+    "ExemptionRequestPushRulesetBypass",
+    "ExemptionRequestPushRulesetBypassPropDataItems",
+    "ExemptionRequestSecretScanning",
+    "ExemptionRequestSecretScanningMetadata",
+    "ExemptionRequestSecretScanningPropDataItems",
+    "ExemptionRequestSecretScanningPropDataItemsPropLocationsItems",
 )

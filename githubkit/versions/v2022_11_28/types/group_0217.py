@@ -9,55 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestMinimalType(TypedDict):
-    """Pull Request Minimal"""
+class RepositoryRuleTagNamePatternPropParametersType(TypedDict):
+    """RepositoryRuleTagNamePatternPropParameters"""
 
-    id: int
-    number: int
-    url: str
-    head: PullRequestMinimalPropHeadType
-    base: PullRequestMinimalPropBaseType
-
-
-class PullRequestMinimalPropHeadType(TypedDict):
-    """PullRequestMinimalPropHead"""
-
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropHeadPropRepoType
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
-class PullRequestMinimalPropHeadPropRepoType(TypedDict):
-    """PullRequestMinimalPropHeadPropRepo"""
+class RepositoryRuleTagNamePatternPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleTagNamePatternPropParameters"""
 
-    id: int
-    url: str
-    name: str
-
-
-class PullRequestMinimalPropBaseType(TypedDict):
-    """PullRequestMinimalPropBase"""
-
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropBasePropRepoType
-
-
-class PullRequestMinimalPropBasePropRepoType(TypedDict):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int
-    url: str
-    name: str
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
 __all__ = (
-    "PullRequestMinimalPropBasePropRepoType",
-    "PullRequestMinimalPropBaseType",
-    "PullRequestMinimalPropHeadPropRepoType",
-    "PullRequestMinimalPropHeadType",
-    "PullRequestMinimalType",
+    "RepositoryRuleTagNamePatternPropParametersType",
+    "RepositoryRuleTagNamePatternPropParametersTypeForResponse",
 )

@@ -18,16 +18,60 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Verification(GitHubModel):
-    """Verification"""
+class RuleSuiteRequiredStatusChecks(GitHubModel):
+    """Required status checks rule suite metadata
 
-    verified: bool = Field()
-    reason: str = Field()
-    payload: Union[str, None] = Field()
-    signature: Union[str, None] = Field()
-    verified_at: Missing[Union[str, None]] = Field(default=UNSET)
+    Metadata for a required status checks rule evaluation result.
+    """
+
+    checks: Missing[list[RuleSuiteRequiredStatusChecksPropChecksItems]] = Field(
+        default=UNSET,
+        description="The status checks associated with the rule evaluation.",
+    )
 
 
-model_rebuild(Verification)
+class RuleSuiteRequiredStatusChecksPropChecksItems(GitHubModel):
+    """RuleSuiteRequiredStatusChecksPropChecksItems"""
 
-__all__ = ("Verification",)
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the status check."
+    )
+    context: Missing[str] = Field(
+        default=UNSET, description="The context name of the status check."
+    )
+    state: Missing[str] = Field(
+        default=UNSET, description="The state of the status check."
+    )
+    type: Missing[str] = Field(
+        default=UNSET, description="The type of the status check."
+    )
+    app: Missing[Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropApp, None]] = (
+        Field(
+            default=UNSET,
+            description="The GitHub App associated with the status check.",
+        )
+    )
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsPropApp(GitHubModel):
+    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
+
+    The GitHub App associated with the status check.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the GitHub App."
+    )
+    slug: Missing[str] = Field(default=UNSET, description="The slug of the GitHub App.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the GitHub App.")
+
+
+model_rebuild(RuleSuiteRequiredStatusChecks)
+model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItems)
+model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItemsPropApp)
+
+__all__ = (
+    "RuleSuiteRequiredStatusChecks",
+    "RuleSuiteRequiredStatusChecksPropChecksItems",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsPropApp",
+)

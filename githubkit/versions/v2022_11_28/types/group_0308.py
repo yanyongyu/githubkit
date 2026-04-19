@@ -9,37 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0307 import CustomDeploymentRuleAppType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class DeploymentProtectionRuleType(TypedDict):
-    """Deployment protection rule
+class CodeScanningCodeqlDatabaseType(TypedDict):
+    """CodeQL Database
 
-    Deployment protection rule
+    A CodeQL database.
     """
 
     id: int
-    node_id: str
-    enabled: bool
-    app: CustomDeploymentRuleAppType
+    name: str
+    language: str
+    uploader: SimpleUserType
+    content_type: str
+    size: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+class CodeScanningCodeqlDatabaseTypeForResponse(TypedDict):
+    """CodeQL Database
 
-    Examples:
-        {'$ref': '#/components/examples/deployment-protection-rules'}
+    A CodeQL database.
     """
 
-    total_count: NotRequired[int]
-    custom_deployment_protection_rules: NotRequired[list[DeploymentProtectionRuleType]]
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserTypeForResponse
+    content_type: str
+    size: int
+    created_at: str
+    updated_at: str
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "DeploymentProtectionRuleType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
+    "CodeScanningCodeqlDatabaseType",
+    "CodeScanningCodeqlDatabaseTypeForResponse",
 )

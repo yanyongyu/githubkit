@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,46 +18,58 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0020 import Repository
-from .group_0168 import Issue
-from .group_0495 import SimpleInstallation
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0497 import RepositoryWebhooks
+from .group_0345 import Deployment
+from .group_0475 import PullRequest
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
 
 
-class WebhookIssueDependenciesBlockingRemoved(GitHubModel):
-    """blocking issue removed event"""
+class WebhookDeploymentProtectionRuleRequested(GitHubModel):
+    """deployment protection rule requested event"""
 
-    action: Literal["blocking_removed"] = Field()
-    blocked_issue_id: float = Field(description="The ID of the blocked issue.")
-    blocked_issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    action: Literal["requested"] = Field()
+    environment: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the environment that has the deployment protection rule.",
     )
-    blocked_issue_repo: Repository = Field(
-        title="Repository", description="A repository on GitHub."
+    event: Missing[str] = Field(
+        default=UNSET,
+        description="The event that triggered the deployment protection rule.",
     )
-    blocking_issue_id: float = Field(description="The ID of the blocking issue.")
-    blocking_issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    sha: Missing[str] = Field(
+        default=UNSET,
+        description="The commit SHA that triggered the workflow. Always populated from the check suite, regardless of whether a deployment is created.",
+    )
+    ref: Missing[str] = Field(
+        default=UNSET,
+        description="The ref (branch or tag) that triggered the workflow. Always populated from the check suite, regardless of whether a deployment is created.",
+    )
+    deployment_callback_url: Missing[str] = Field(
+        default=UNSET, description="The URL to review the deployment protection rule."
+    )
+    deployment: Missing[Union[None, Deployment]] = Field(default=UNSET)
+    pull_requests: Missing[list[PullRequest]] = Field(default=UNSET)
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: OrganizationSimpleWebhooks = Field(
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssueDependenciesBlockingRemoved)
+model_rebuild(WebhookDeploymentProtectionRuleRequested)
 
-__all__ = ("WebhookIssueDependenciesBlockingRemoved",)
+__all__ = ("WebhookDeploymentProtectionRuleRequested",)

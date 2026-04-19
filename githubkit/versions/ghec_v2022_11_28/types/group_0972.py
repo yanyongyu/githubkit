@@ -11,17 +11,25 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0973 import (
+    WebhookSecurityAndAnalysisPropChangesPropFromType,
+    WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse,
+)
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00
-    """
 
-    message: NotRequired[str]
+class WebhookSecurityAndAnalysisPropChangesType(TypedDict):
+    """WebhookSecurityAndAnalysisPropChanges"""
+
+    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromType]
+
+
+class WebhookSecurityAndAnalysisPropChangesTypeForResponse(TypedDict):
+    """WebhookSecurityAndAnalysisPropChanges"""
+
+    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type",
+    "WebhookSecurityAndAnalysisPropChangesType",
+    "WebhookSecurityAndAnalysisPropChangesTypeForResponse",
 )

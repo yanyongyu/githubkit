@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
@@ -17,27 +17,39 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0137 import RepositoryRuleCodeScanningPropParameters
+from .group_0011 import WebhookConfig
+from .group_0434 import HookResponse
 
 
-class RepositoryRuleDetailedOneof20(GitHubModel):
-    """RepositoryRuleDetailedOneof20"""
+class Hook(GitHubModel):
+    """Webhook
 
-    type: Literal["code_scanning"] = Field()
-    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
-        default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
+    Webhooks for repositories.
+    """
+
+    type: str = Field()
+    id: int = Field(description="Unique identifier of the webhook.")
+    name: str = Field(
+        description="The name of a valid service, use 'web' for a webhook."
     )
-    ruleset_source: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
+    active: bool = Field(
+        description="Determines whether the hook is actually triggered on pushes."
     )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
+    events: list[str] = Field(
+        description="Determines what events the hook is triggered for. Default: ['push']."
     )
+    config: WebhookConfig = Field(
+        title="Webhook Configuration", description="Configuration object of the webhook"
+    )
+    updated_at: _dt.datetime = Field()
+    created_at: _dt.datetime = Field()
+    url: str = Field()
+    test_url: str = Field()
+    ping_url: str = Field()
+    deliveries_url: Missing[str] = Field(default=UNSET)
+    last_response: HookResponse = Field(title="Hook Response")
 
 
-model_rebuild(RepositoryRuleDetailedOneof20)
+model_rebuild(Hook)
 
-__all__ = ("RepositoryRuleDetailedOneof20",)
+__all__ = ("Hook",)

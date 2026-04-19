@@ -9,14 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
+class AgentsTasksTaskIdGetResponse401Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse401
 
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[list[AgentsTasksTaskIdGetResponse401PropErrorsItemsType]]
+    documentation_url: str
+
+
+class AgentsTasksTaskIdGetResponse401TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse401
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse]
+    ]
+    documentation_url: str
+
+
+class AgentsTasksTaskIdGetResponse401PropErrorsItemsType(TypedDict):
+    """AgentsTasksTaskIdGetResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
     message: NotRequired[str]
-    documentation_url: NotRequired[str]
 
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",)
+class AgentsTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+__all__ = (
+    "AgentsTasksTaskIdGetResponse401PropErrorsItemsType",
+    "AgentsTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse",
+    "AgentsTasksTaskIdGetResponse401Type",
+    "AgentsTasksTaskIdGetResponse401TypeForResponse",
+)

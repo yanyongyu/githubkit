@@ -12,41 +12,42 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
-from .group_0544 import WebhooksSponsorshipType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0299 import ProjectsV2Type, ProjectsV2TypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
 
 
-class WebhookSponsorshipEditedType(TypedDict):
-    """sponsorship edited event"""
+class WebhookProjectsV2ProjectCreatedType(TypedDict):
+    """WebhookProjectsV2ProjectCreated
 
-    action: Literal["edited"]
-    changes: WebhookSponsorshipEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    A project was created
+    """
+
+    action: Literal["created"]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
+    organization: OrganizationSimpleWebhooksType
+    projects_v2: ProjectsV2Type
     sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
 
 
-class WebhookSponsorshipEditedPropChangesType(TypedDict):
-    """WebhookSponsorshipEditedPropChanges"""
+class WebhookProjectsV2ProjectCreatedTypeForResponse(TypedDict):
+    """WebhookProjectsV2ProjectCreated
 
-    privacy_level: NotRequired[WebhookSponsorshipEditedPropChangesPropPrivacyLevelType]
+    A project was created
+    """
 
-
-class WebhookSponsorshipEditedPropChangesPropPrivacyLevelType(TypedDict):
-    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
-
-    from_: str
+    action: Literal["created"]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2: ProjectsV2TypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelType",
-    "WebhookSponsorshipEditedPropChangesType",
-    "WebhookSponsorshipEditedType",
+    "WebhookProjectsV2ProjectCreatedType",
+    "WebhookProjectsV2ProjectCreatedTypeForResponse",
 )

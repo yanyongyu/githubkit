@@ -24,4 +24,19 @@ class BasicErrorType(TypedDict):
     status: NotRequired[str]
 
 
-__all__ = ("BasicErrorType",)
+class BasicErrorTypeForResponse(TypedDict):
+    """Basic Error
+
+    Basic Error
+    """
+
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    url: NotRequired[str]
+    status: NotRequired[str]
+
+
+__all__ = (
+    "BasicErrorType",
+    "BasicErrorTypeForResponse",
+)

@@ -9,13 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsJobsJobIdRerunPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
 
-    enable_debug_logging: NotRequired[bool]
+    name: NotRequired[str]
+    runner_group_id: NotRequired[int]
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    size: NotRequired[str]
+    image_id: NotRequired[str]
+    image_version: NotRequired[Union[str, None]]
 
 
-__all__ = ("ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",)
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+
+    name: NotRequired[str]
+    runner_group_id: NotRequired[int]
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    size: NotRequired[str]
+    image_id: NotRequired[str]
+    image_version: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType",
+    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse",
+)

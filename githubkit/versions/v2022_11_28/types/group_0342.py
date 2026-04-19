@@ -12,26 +12,60 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
+
+class DependencyGraphDiffItemsType(TypedDict):
+    """DependencyGraphDiffItems"""
+
+    change_type: Literal["added", "removed"]
+    manifest: str
+    ecosystem: str
+    name: str
+    version: str
+    package_url: Union[str, None]
+    license_: Union[str, None]
+    source_repository_url: Union[str, None]
+    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItemsType]
+    scope: Literal["unknown", "runtime", "development"]
 
 
-class TimelineAssignedIssueEventType(TypedDict):
-    """Timeline Assigned Issue Event
+class DependencyGraphDiffItemsTypeForResponse(TypedDict):
+    """DependencyGraphDiffItems"""
 
-    Timeline Assigned Issue Event
-    """
+    change_type: Literal["added", "removed"]
+    manifest: str
+    ecosystem: str
+    name: str
+    version: str
+    package_url: Union[str, None]
+    license_: Union[str, None]
+    source_repository_url: Union[str, None]
+    vulnerabilities: list[
+        DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse
+    ]
+    scope: Literal["unknown", "runtime", "development"]
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["assigned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
+
+class DependencyGraphDiffItemsPropVulnerabilitiesItemsType(TypedDict):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+
+    severity: str
+    advisory_ghsa_id: str
+    advisory_summary: str
+    advisory_url: str
 
 
-__all__ = ("TimelineAssignedIssueEventType",)
+class DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse(TypedDict):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+
+    severity: str
+    advisory_ghsa_id: str
+    advisory_summary: str
+    advisory_url: str
+
+
+__all__ = (
+    "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse",
+    "DependencyGraphDiffItemsType",
+    "DependencyGraphDiffItemsTypeForResponse",
+)

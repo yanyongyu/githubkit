@@ -9,69 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType
-from .group_0063 import MinimalRepositoryType
-from .group_0217 import PullRequestMinimalType
-from .group_0218 import SimpleCommitType
 
+class SecretScanningPatternConfigurationType(TypedDict):
+    """Secret scanning pattern configuration
 
-class CheckSuiteType(TypedDict):
-    """CheckSuite
-
-    A suite of checks performed on the code of a given code change
+    A collection of secret scanning patterns and their settings related to push
+    protection.
     """
 
-    id: int
-    node_id: str
-    head_branch: Union[str, None]
-    head_sha: str
-    status: Union[
-        None,
-        Literal[
-            "queued", "in_progress", "completed", "waiting", "requested", "pending"
-        ],
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
+    custom_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
+
+
+class SecretScanningPatternConfigurationTypeForResponse(TypedDict):
+    """Secret scanning pattern configuration
+
+    A collection of secret scanning patterns and their settings related to push
+    protection.
+    """
+
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_overrides: NotRequired[
+        list[SecretScanningPatternOverrideTypeForResponse]
     ]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-            "startup_failure",
-            "stale",
-        ],
+    custom_pattern_overrides: NotRequired[
+        list[SecretScanningPatternOverrideTypeForResponse]
     ]
-    url: Union[str, None]
-    before: Union[str, None]
-    after: Union[str, None]
-    pull_requests: Union[list[PullRequestMinimalType], None]
-    app: Union[None, IntegrationType, None]
-    repository: MinimalRepositoryType
-    created_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    head_commit: SimpleCommitType
-    latest_check_runs_count: int
-    check_runs_url: str
-    rerequestable: NotRequired[bool]
-    runs_rerequestable: NotRequired[bool]
 
 
-class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+class SecretScanningPatternOverrideType(TypedDict):
+    """SecretScanningPatternOverride"""
 
-    total_count: int
-    check_suites: list[CheckSuiteType]
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    slug: NotRequired[str]
+    display_name: NotRequired[str]
+    alert_total: NotRequired[int]
+    alert_total_percentage: NotRequired[int]
+    false_positives: NotRequired[int]
+    false_positive_rate: NotRequired[int]
+    bypass_rate: NotRequired[int]
+    default_setting: NotRequired[Literal["disabled", "enabled"]]
+    enterprise_setting: NotRequired[
+        Union[None, Literal["not-set", "disabled", "enabled"]]
+    ]
+    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+
+
+class SecretScanningPatternOverrideTypeForResponse(TypedDict):
+    """SecretScanningPatternOverride"""
+
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    slug: NotRequired[str]
+    display_name: NotRequired[str]
+    alert_total: NotRequired[int]
+    alert_total_percentage: NotRequired[int]
+    false_positives: NotRequired[int]
+    false_positive_rate: NotRequired[int]
+    bypass_rate: NotRequired[int]
+    default_setting: NotRequired[Literal["disabled", "enabled"]]
+    enterprise_setting: NotRequired[
+        Union[None, Literal["not-set", "disabled", "enabled"]]
+    ]
+    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
 
 
 __all__ = (
-    "CheckSuiteType",
-    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type",
+    "SecretScanningPatternConfigurationType",
+    "SecretScanningPatternConfigurationTypeForResponse",
+    "SecretScanningPatternOverrideType",
+    "SecretScanningPatternOverrideTypeForResponse",
 )

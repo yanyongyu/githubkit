@@ -9,62 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0017 import AppPermissions
 
-class OrgsOrgPrivateRegistriesSecretNamePatchBody(GitHubModel):
-    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
 
-    registry_type: Missing[
-        Literal[
-            "maven_repository",
-            "nuget_feed",
-            "goproxy_server",
-            "npm_registry",
-            "rubygems_server",
-            "cargo_registry",
-            "composer_repository",
-            "docker_registry",
-            "git_source",
-            "helm_registry",
-            "hex_organization",
-            "hex_repository",
-            "pub_repository",
-            "python_index",
-            "terraform_registry",
-        ]
-    ] = Field(default=UNSET, description="The registry type.")
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL of the private registry."
-    )
-    username: Missing[Union[str, None]] = Field(
+class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
+
+    repositories: Missing[list[str]] = Field(
         default=UNSET,
-        description="The username to use when authenticating with the private registry. This field should be omitted if the private registry does not require a username for authentication.",
+        description="List of repository names that the token should have access to",
     )
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+    repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get private registries public key for an organization](https://docs.github.com/rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization) endpoint.",
+        description="List of repository IDs that the token should have access to",
     )
-    key_id: Missing[str] = Field(
-        default=UNSET, description="The ID of the key you used to encrypt the secret."
-    )
-    visibility: Missing[Literal["all", "private", "selected"]] = Field(
+    permissions: Missing[AppPermissions] = Field(
         default=UNSET,
-        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry.",
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="An array of repository IDs that can access the organization private registry. You can only provide a list of repository IDs when `visibility` is set to `selected`. This field should be omitted if `visibility` is set to `all` or `private`.",
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
     )
 
 
-model_rebuild(OrgsOrgPrivateRegistriesSecretNamePatchBody)
+model_rebuild(AppInstallationsInstallationIdAccessTokensPostBody)
 
-__all__ = ("OrgsOrgPrivateRegistriesSecretNamePatchBody",)
+__all__ = ("AppInstallationsInstallationIdAccessTokensPostBody",)

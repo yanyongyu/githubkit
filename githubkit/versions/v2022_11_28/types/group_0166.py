@@ -9,20 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0167 import RepositoryRuleTagNamePatternPropParametersType
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleTagNamePatternType(TypedDict):
-    """tag_name_pattern
+class LinkType(TypedDict):
+    """Link
 
-    Parameters to be used for the tag_name_pattern rule
+    Hypermedia Link
     """
 
-    type: Literal["tag_name_pattern"]
-    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
+    href: str
 
 
-__all__ = ("RepositoryRuleTagNamePatternType",)
+class LinkTypeForResponse(TypedDict):
+    """Link
+
+    Hypermedia Link
+    """
+
+    href: str
+
+
+__all__ = (
+    "LinkType",
+    "LinkTypeForResponse",
+)

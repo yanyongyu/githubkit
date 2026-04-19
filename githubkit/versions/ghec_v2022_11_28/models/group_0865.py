@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0494 import EnterpriseWebhooks
-from .group_0495 import SimpleInstallation
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0497 import RepositoryWebhooks
-from .group_0866 import WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
+from .group_0598 import WebhooksProjectColumn
 
 
-class WebhookSecurityAdvisoryWithdrawn(GitHubModel):
-    """security_advisory withdrawn event"""
+class WebhookProjectColumnEdited(GitHubModel):
+    """project_column edited event"""
 
-    action: Literal["withdrawn"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookProjectColumnEditedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,19 +45,35 @@ class WebhookSecurityAdvisoryWithdrawn(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    project_column: WebhooksProjectColumn = Field(title="Project Column")
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory = Field(
-        description="The details of the security advisory, including summary, description, and severity."
     )
     sender: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-model_rebuild(WebhookSecurityAdvisoryWithdrawn)
+class WebhookProjectColumnEditedPropChanges(GitHubModel):
+    """WebhookProjectColumnEditedPropChanges"""
 
-__all__ = ("WebhookSecurityAdvisoryWithdrawn",)
+    name: Missing[WebhookProjectColumnEditedPropChangesPropName] = Field(default=UNSET)
+
+
+class WebhookProjectColumnEditedPropChangesPropName(GitHubModel):
+    """WebhookProjectColumnEditedPropChangesPropName"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookProjectColumnEdited)
+model_rebuild(WebhookProjectColumnEditedPropChanges)
+model_rebuild(WebhookProjectColumnEditedPropChangesPropName)
+
+__all__ = (
+    "WebhookProjectColumnEdited",
+    "WebhookProjectColumnEditedPropChanges",
+    "WebhookProjectColumnEditedPropChangesPropName",
+)

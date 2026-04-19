@@ -12,14 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
+class ReposOwnerRepoActionsVariablesNamePatchBody(GitHubModel):
+    """ReposOwnerRepoActionsVariablesNamePatchBody"""
 
-    body: str = Field(description="The text of the review comment.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
+    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody)
+model_rebuild(ReposOwnerRepoActionsVariablesNamePatchBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody",)
+__all__ = ("ReposOwnerRepoActionsVariablesNamePatchBody",)

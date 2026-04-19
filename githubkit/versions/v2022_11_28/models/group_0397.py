@@ -9,26 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class MergedUpstream(GitHubModel):
+    """Merged upstream
 
-class Stargazer(GitHubModel):
-    """Stargazer
-
-    Stargazer
+    Results of a successful merge upstream request
     """
 
-    starred_at: datetime = Field()
-    user: Union[None, SimpleUser] = Field()
+    message: Missing[str] = Field(default=UNSET)
+    merge_type: Missing[Literal["merge", "fast-forward", "none"]] = Field(default=UNSET)
+    base_branch: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(Stargazer)
+model_rebuild(MergedUpstream)
 
-__all__ = ("Stargazer",)
+__all__ = ("MergedUpstream",)

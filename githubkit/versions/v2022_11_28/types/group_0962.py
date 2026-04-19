@@ -11,13 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0127 import CustomPropertyType
+
+class ApplicationsClientIdTokenPostBodyType(TypedDict):
+    """ApplicationsClientIdTokenPostBody"""
+
+    access_token: str
 
 
-class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesSchemaPatchBody"""
+class ApplicationsClientIdTokenPostBodyTypeForResponse(TypedDict):
+    """ApplicationsClientIdTokenPostBody"""
 
-    properties: list[CustomPropertyType]
+    access_token: str
 
 
-__all__ = ("OrgsOrgPropertiesSchemaPatchBodyType",)
+__all__ = (
+    "ApplicationsClientIdTokenPostBodyType",
+    "ApplicationsClientIdTokenPostBodyTypeForResponse",
+)

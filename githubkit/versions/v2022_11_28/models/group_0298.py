@@ -9,52 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0296 import Metadata
+from .group_0010 import Integration
+from .group_0057 import PullRequestMinimal
+from .group_0089 import MinimalRepository
+from .group_0268 import SimpleCommit
 
 
-class Manifest(GitHubModel):
-    """Manifest"""
+class CheckSuite(GitHubModel):
+    """CheckSuite
 
-    name: str = Field(description="The name of the manifest.")
-    file: Missing[ManifestPropFile] = Field(default=UNSET)
-    metadata: Missing[Metadata] = Field(
-        default=UNSET,
-        title="metadata",
-        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
-    )
-    resolved: Missing[ManifestPropResolved] = Field(
-        default=UNSET, description="A collection of resolved package dependencies."
-    )
-
-
-class ManifestPropFile(GitHubModel):
-    """ManifestPropFile"""
-
-    source_location: Missing[str] = Field(
-        default=UNSET,
-        description="The path of the manifest file relative to the root of the Git repository.",
-    )
-
-
-class ManifestPropResolved(ExtraGitHubModel):
-    """ManifestPropResolved
-
-    A collection of resolved package dependencies.
+    A suite of checks performed on the code of a given code change
     """
 
+    id: int = Field()
+    node_id: str = Field()
+    head_branch: Union[str, None] = Field()
+    head_sha: str = Field(
+        description="The SHA of the head commit that is being checked."
+    )
+    status: Union[
+        None,
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
+    ] = Field(
+        description="The phase of the lifecycle that the check suite is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check suites."
+    )
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
+    ] = Field()
+    url: Union[str, None] = Field()
+    before: Union[str, None] = Field()
+    after: Union[str, None] = Field()
+    pull_requests: Union[list[PullRequestMinimal], None] = Field()
+    app: Union[None, Integration, None] = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    created_at: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
+    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
+    latest_check_runs_count: int = Field()
+    check_runs_url: str = Field()
+    rerequestable: Missing[bool] = Field(default=UNSET)
+    runs_rerequestable: Missing[bool] = Field(default=UNSET)
 
-model_rebuild(Manifest)
-model_rebuild(ManifestPropFile)
-model_rebuild(ManifestPropResolved)
+
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200(GitHubModel):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+
+    total_count: int = Field()
+    check_suites: list[CheckSuite] = Field()
+
+
+model_rebuild(CheckSuite)
+model_rebuild(ReposOwnerRepoCommitsRefCheckSuitesGetResponse200)
 
 __all__ = (
-    "Manifest",
-    "ManifestPropFile",
-    "ManifestPropResolved",
+    "CheckSuite",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200",
 )

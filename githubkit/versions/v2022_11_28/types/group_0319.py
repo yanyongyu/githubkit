@@ -9,19 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class PorterLargeFileType(TypedDict):
-    """Porter Large File
+class CodeScanningSarifsStatusType(TypedDict):
+    """CodeScanningSarifsStatus"""
 
-    Porter Large File
-    """
-
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
+    analyses_url: NotRequired[Union[str, None]]
+    errors: NotRequired[Union[list[str], None]]
 
 
-__all__ = ("PorterLargeFileType",)
+class CodeScanningSarifsStatusTypeForResponse(TypedDict):
+    """CodeScanningSarifsStatus"""
+
+    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
+    analyses_url: NotRequired[Union[str, None]]
+    errors: NotRequired[Union[list[str], None]]
+
+
+__all__ = (
+    "CodeScanningSarifsStatusType",
+    "CodeScanningSarifsStatusTypeForResponse",
+)

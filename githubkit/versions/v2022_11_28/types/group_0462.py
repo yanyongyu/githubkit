@@ -9,54 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0457 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
-class WebhooksMembershipType(TypedDict):
-    """Membership
 
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
+class LabelSearchResultItemType(TypedDict):
+    """Label Search Result Item
+
+    Label Search Result Item
     """
 
-    organization_url: str
-    role: str
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    state: str
-    url: str
-    user: Union[WebhooksMembershipPropUserType, None]
-
-
-class WebhooksMembershipPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
     id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    node_id: str
+    url: str
+    name: str
+    color: str
+    default: bool
+    description: Union[str, None]
+    score: float
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+
+
+class LabelSearchResultItemTypeForResponse(TypedDict):
+    """Label Search Result Item
+
+    Label Search Result Item
+    """
+
+    id: int
+    node_id: str
+    url: str
+    name: str
+    color: str
+    default: bool
+    description: Union[str, None]
+    score: float
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+
+
+class SearchLabelsGetResponse200Type(TypedDict):
+    """SearchLabelsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[LabelSearchResultItemType]
+
+
+class SearchLabelsGetResponse200TypeForResponse(TypedDict):
+    """SearchLabelsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[LabelSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "WebhooksMembershipPropUserType",
-    "WebhooksMembershipType",
+    "LabelSearchResultItemType",
+    "LabelSearchResultItemTypeForResponse",
+    "SearchLabelsGetResponse200Type",
+    "SearchLabelsGetResponse200TypeForResponse",
 )

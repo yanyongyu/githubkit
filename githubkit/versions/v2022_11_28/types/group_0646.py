@@ -9,78 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0457 import WebhooksMarketplacePurchaseType
+from .group_0645 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+)
 
 
-class WebhookMarketplacePurchaseChangedType(TypedDict):
-    """marketplace_purchase changed event"""
+class WebhookIssueCommentEditedPropIssueAllof0PropMilestoneType(TypedDict):
+    """Milestone
 
-    action: Literal["changed"]
-    effective_date: str
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhooksMarketplacePurchaseType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[
-        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType, None
     ]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-
-
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase"""
-
-    account: (
-        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType
-    )
-    billing_cycle: str
-    free_trial_ends_on: Union[str, None]
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: Union[bool, None]
-    plan: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType
-    unit_count: int
-
-
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount"""
-
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
+    html_url: str
     id: int
-    login: str
+    labels_url: str
     node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan"""
+class WebhookIssueCommentEditedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
+    """Milestone
 
-    bullets: list[str]
-    description: str
-    has_free_trial: bool
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+        None,
+    ]
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
     id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType",
-    "WebhookMarketplacePurchaseChangedType",
+    "WebhookIssueCommentEditedPropIssueAllof0PropMilestoneType",
+    "WebhookIssueCommentEditedPropIssueAllof0PropMilestoneTypeForResponse",
 )

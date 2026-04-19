@@ -9,52 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0089 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0286 import GitUserType, GitUserTypeForResponse
+from .group_0457 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
+from .group_0460 import (
+    CommitSearchResultItemPropCommitType,
+    CommitSearchResultItemPropCommitTypeForResponse,
+)
 
-class WebhooksTeamType(TypedDict):
-    """Team
 
-    Groups of organization members that gives permissions on specified repositories.
+class CommitSearchResultItemType(TypedDict):
+    """Commit Search Result Item
+
+    Commit Search Result Item
     """
 
-    deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
-    id: int
-    members_url: NotRequired[str]
-    name: str
-    node_id: NotRequired[str]
-    parent: NotRequired[Union[WebhooksTeamPropParentType, None]]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
-
-
-class WebhooksTeamPropParentType(TypedDict):
-    """WebhooksTeamPropParent"""
-
-    description: Union[str, None]
-    html_url: str
-    id: int
-    members_url: str
-    name: str
-    node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
-    repositories_url: str
-    slug: str
     url: str
+    sha: str
+    html_url: str
+    comments_url: str
+    commit: CommitSearchResultItemPropCommitType
+    author: Union[None, SimpleUserType]
+    committer: Union[None, GitUserType]
+    parents: list[CommitSearchResultItemPropParentsItemsType]
+    repository: MinimalRepositoryType
+    score: float
+    node_id: str
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+
+
+class CommitSearchResultItemTypeForResponse(TypedDict):
+    """Commit Search Result Item
+
+    Commit Search Result Item
+    """
+
+    url: str
+    sha: str
+    html_url: str
+    comments_url: str
+    commit: CommitSearchResultItemPropCommitTypeForResponse
+    author: Union[None, SimpleUserTypeForResponse]
+    committer: Union[None, GitUserTypeForResponse]
+    parents: list[CommitSearchResultItemPropParentsItemsTypeForResponse]
+    repository: MinimalRepositoryTypeForResponse
+    score: float
+    node_id: str
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+
+
+class CommitSearchResultItemPropParentsItemsType(TypedDict):
+    """CommitSearchResultItemPropParentsItems"""
+
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class CommitSearchResultItemPropParentsItemsTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropParentsItems"""
+
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class SearchCommitsGetResponse200Type(TypedDict):
+    """SearchCommitsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CommitSearchResultItemType]
+
+
+class SearchCommitsGetResponse200TypeForResponse(TypedDict):
+    """SearchCommitsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CommitSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "WebhooksTeamPropParentType",
-    "WebhooksTeamType",
+    "CommitSearchResultItemPropParentsItemsType",
+    "CommitSearchResultItemPropParentsItemsTypeForResponse",
+    "CommitSearchResultItemType",
+    "CommitSearchResultItemTypeForResponse",
+    "SearchCommitsGetResponse200Type",
+    "SearchCommitsGetResponse200TypeForResponse",
 )

@@ -9,15 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0329 import ArtifactType, ArtifactTypeForResponse
 
 
-class TeamsTeamIdDiscussionsPostBodyType(TypedDict):
-    """TeamsTeamIdDiscussionsPostBody"""
+class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
 
-    title: str
-    body: str
-    private: NotRequired[bool]
+    total_count: int
+    artifacts: list[ArtifactType]
 
 
-__all__ = ("TeamsTeamIdDiscussionsPostBodyType",)
+class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
+
+    total_count: int
+    artifacts: list[ArtifactTypeForResponse]
+
+
+__all__ = (
+    "ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type",
+    "ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200TypeForResponse",
+)

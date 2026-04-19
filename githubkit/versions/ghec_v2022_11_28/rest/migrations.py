@@ -11,13 +11,14 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing_extensions import deprecated
 from weakref import ref
 
 from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     from typing import Literal, Union
@@ -35,12 +36,12 @@ if TYPE_CHECKING:
         PorterLargeFile,
     )
     from ..types import (
-        ImportType,
-        MigrationType,
-        MinimalRepositoryType,
+        ImportTypeForResponse,
+        MigrationTypeForResponse,
+        MinimalRepositoryTypeForResponse,
         OrgsOrgMigrationsPostBodyType,
-        PorterAuthorType,
-        PorterLargeFileType,
+        PorterAuthorTypeForResponse,
+        PorterLargeFileTypeForResponse,
         ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType,
         ReposOwnerRepoImportLfsPatchBodyType,
         ReposOwnerRepoImportPatchBodyType,
@@ -73,7 +74,7 @@ class MigrationsClient:
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Migration], list[MigrationType]]:
+    ) -> Response[list[Migration], list[MigrationTypeForResponse]]:
         """migrations/list-for-org
 
         GET /orgs/{org}/migrations
@@ -100,7 +101,7 @@ class MigrationsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Migration],
@@ -115,7 +116,7 @@ class MigrationsClient:
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Migration], list[MigrationType]]:
+    ) -> Response[list[Migration], list[MigrationTypeForResponse]]:
         """migrations/list-for-org
 
         GET /orgs/{org}/migrations
@@ -142,7 +143,7 @@ class MigrationsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Migration],
@@ -156,7 +157,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgMigrationsPostBodyType,
-    ) -> Response[Migration, MigrationType]: ...
+    ) -> Response[Migration, MigrationTypeForResponse]: ...
 
     @overload
     def start_for_org(
@@ -175,7 +176,7 @@ class MigrationsClient:
         exclude_owner_projects: Missing[bool] = UNSET,
         org_metadata_only: Missing[bool] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
-    ) -> Response[Migration, MigrationType]: ...
+    ) -> Response[Migration, MigrationTypeForResponse]: ...
 
     def start_for_org(
         self,
@@ -185,7 +186,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Migration, MigrationType]:
+    ) -> Response[Migration, MigrationTypeForResponse]:
         """migrations/start-for-org
 
         POST /orgs/{org}/migrations
@@ -236,7 +237,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgMigrationsPostBodyType,
-    ) -> Response[Migration, MigrationType]: ...
+    ) -> Response[Migration, MigrationTypeForResponse]: ...
 
     @overload
     async def async_start_for_org(
@@ -255,7 +256,7 @@ class MigrationsClient:
         exclude_owner_projects: Missing[bool] = UNSET,
         org_metadata_only: Missing[bool] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
-    ) -> Response[Migration, MigrationType]: ...
+    ) -> Response[Migration, MigrationTypeForResponse]: ...
 
     async def async_start_for_org(
         self,
@@ -265,7 +266,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Migration, MigrationType]:
+    ) -> Response[Migration, MigrationTypeForResponse]:
         """migrations/start-for-org
 
         POST /orgs/{org}/migrations
@@ -316,7 +317,7 @@ class MigrationsClient:
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Migration, MigrationType]:
+    ) -> Response[Migration, MigrationTypeForResponse]:
         """migrations/get-status-for-org
 
         GET /orgs/{org}/migrations/{migration_id}
@@ -346,7 +347,7 @@ class MigrationsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=Migration,
@@ -363,7 +364,7 @@ class MigrationsClient:
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Migration, MigrationType]:
+    ) -> Response[Migration, MigrationTypeForResponse]:
         """migrations/get-status-for-org
 
         GET /orgs/{org}/migrations/{migration_id}
@@ -393,7 +394,7 @@ class MigrationsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=Migration,
@@ -611,7 +612,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """migrations/list-repos-for-org
 
         GET /orgs/{org}/migrations/{migration_id}/repositories
@@ -635,7 +636,7 @@ class MigrationsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MinimalRepository],
@@ -653,7 +654,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """migrations/list-repos-for-org
 
         GET /orgs/{org}/migrations/{migration_id}/repositories
@@ -677,7 +678,7 @@ class MigrationsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MinimalRepository],
@@ -686,6 +687,7 @@ class MigrationsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_import_status(
         self,
         owner: str,
@@ -693,7 +695,7 @@ class MigrationsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Import, ImportType]:
+    ) -> Response[Import, ImportTypeForResponse]:
         """DEPRECATED migrations/get-import-status
 
         GET /repos/{owner}/{repo}/import
@@ -757,6 +759,7 @@ class MigrationsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_import_status(
         self,
         owner: str,
@@ -764,7 +767,7 @@ class MigrationsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Import, ImportType]:
+    ) -> Response[Import, ImportTypeForResponse]:
         """DEPRECATED migrations/get-import-status
 
         GET /repos/{owner}/{repo}/import
@@ -829,6 +832,7 @@ class MigrationsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def start_import(
         self,
         owner: str,
@@ -837,9 +841,10 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoImportPutBodyType,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def start_import(
         self,
         owner: str,
@@ -853,8 +858,9 @@ class MigrationsClient:
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
         tfvc_project: Missing[str] = UNSET,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def start_import(
         self,
         owner: str,
@@ -864,7 +870,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Import, ImportType]:
+    ) -> Response[Import, ImportTypeForResponse]:
         """DEPRECATED migrations/start-import
 
         PUT /repos/{owner}/{repo}/import
@@ -914,6 +920,7 @@ class MigrationsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_start_import(
         self,
         owner: str,
@@ -922,9 +929,10 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoImportPutBodyType,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_start_import(
         self,
         owner: str,
@@ -938,8 +946,9 @@ class MigrationsClient:
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
         tfvc_project: Missing[str] = UNSET,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_start_import(
         self,
         owner: str,
@@ -949,7 +958,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Import, ImportType]:
+    ) -> Response[Import, ImportTypeForResponse]:
         """DEPRECATED migrations/start-import
 
         PUT /repos/{owner}/{repo}/import
@@ -998,6 +1007,7 @@ class MigrationsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def cancel_import(
         self,
         owner: str,
@@ -1034,6 +1044,7 @@ class MigrationsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_cancel_import(
         self,
         owner: str,
@@ -1071,6 +1082,7 @@ class MigrationsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_import(
         self,
         owner: str,
@@ -1079,9 +1091,10 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_import(
         self,
         owner: str,
@@ -1094,8 +1107,9 @@ class MigrationsClient:
         vcs_password: Missing[str] = UNSET,
         vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
         tfvc_project: Missing[str] = UNSET,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_import(
         self,
         owner: str,
@@ -1105,7 +1119,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[Import, ImportType]:
+    ) -> Response[Import, ImportTypeForResponse]:
         """DEPRECATED migrations/update-import
 
         PATCH /repos/{owner}/{repo}/import
@@ -1155,6 +1169,7 @@ class MigrationsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_import(
         self,
         owner: str,
@@ -1163,9 +1178,10 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_import(
         self,
         owner: str,
@@ -1178,8 +1194,9 @@ class MigrationsClient:
         vcs_password: Missing[str] = UNSET,
         vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
         tfvc_project: Missing[str] = UNSET,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_import(
         self,
         owner: str,
@@ -1189,7 +1206,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[Import, ImportType]:
+    ) -> Response[Import, ImportTypeForResponse]:
         """DEPRECATED migrations/update-import
 
         PATCH /repos/{owner}/{repo}/import
@@ -1238,6 +1255,7 @@ class MigrationsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_commit_authors(
         self,
         owner: str,
@@ -1246,7 +1264,7 @@ class MigrationsClient:
         since: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PorterAuthor], list[PorterAuthorType]]:
+    ) -> Response[list[PorterAuthor], list[PorterAuthorTypeForResponse]]:
         """DEPRECATED migrations/get-commit-authors
 
         GET /repos/{owner}/{repo}/import/authors
@@ -1274,7 +1292,7 @@ class MigrationsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PorterAuthor],
@@ -1284,6 +1302,7 @@ class MigrationsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_commit_authors(
         self,
         owner: str,
@@ -1292,7 +1311,7 @@ class MigrationsClient:
         since: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PorterAuthor], list[PorterAuthorType]]:
+    ) -> Response[list[PorterAuthor], list[PorterAuthorTypeForResponse]]:
         """DEPRECATED migrations/get-commit-authors
 
         GET /repos/{owner}/{repo}/import/authors
@@ -1320,7 +1339,7 @@ class MigrationsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PorterAuthor],
@@ -1331,6 +1350,7 @@ class MigrationsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def map_commit_author(
         self,
         owner: str,
@@ -1340,9 +1360,10 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
-    ) -> Response[PorterAuthor, PorterAuthorType]: ...
+    ) -> Response[PorterAuthor, PorterAuthorTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def map_commit_author(
         self,
         owner: str,
@@ -1354,8 +1375,9 @@ class MigrationsClient:
         stream: bool = False,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
-    ) -> Response[PorterAuthor, PorterAuthorType]: ...
+    ) -> Response[PorterAuthor, PorterAuthorTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def map_commit_author(
         self,
         owner: str,
@@ -1366,7 +1388,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PorterAuthor, PorterAuthorType]:
+    ) -> Response[PorterAuthor, PorterAuthorTypeForResponse]:
         """DEPRECATED migrations/map-commit-author
 
         PATCH /repos/{owner}/{repo}/import/authors/{author_id}
@@ -1417,6 +1439,7 @@ class MigrationsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_map_commit_author(
         self,
         owner: str,
@@ -1426,9 +1449,10 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
-    ) -> Response[PorterAuthor, PorterAuthorType]: ...
+    ) -> Response[PorterAuthor, PorterAuthorTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_map_commit_author(
         self,
         owner: str,
@@ -1440,8 +1464,9 @@ class MigrationsClient:
         stream: bool = False,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
-    ) -> Response[PorterAuthor, PorterAuthorType]: ...
+    ) -> Response[PorterAuthor, PorterAuthorTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_map_commit_author(
         self,
         owner: str,
@@ -1452,7 +1477,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PorterAuthor, PorterAuthorType]:
+    ) -> Response[PorterAuthor, PorterAuthorTypeForResponse]:
         """DEPRECATED migrations/map-commit-author
 
         PATCH /repos/{owner}/{repo}/import/authors/{author_id}
@@ -1502,6 +1527,7 @@ class MigrationsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_large_files(
         self,
         owner: str,
@@ -1509,7 +1535,7 @@ class MigrationsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PorterLargeFile], list[PorterLargeFileType]]:
+    ) -> Response[list[PorterLargeFile], list[PorterLargeFileTypeForResponse]]:
         """DEPRECATED migrations/get-large-files
 
         GET /repos/{owner}/{repo}/import/large_files
@@ -1539,6 +1565,7 @@ class MigrationsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_large_files(
         self,
         owner: str,
@@ -1546,7 +1573,7 @@ class MigrationsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PorterLargeFile], list[PorterLargeFileType]]:
+    ) -> Response[list[PorterLargeFile], list[PorterLargeFileTypeForResponse]]:
         """DEPRECATED migrations/get-large-files
 
         GET /repos/{owner}/{repo}/import/large_files
@@ -1577,6 +1604,7 @@ class MigrationsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_lfs_preference(
         self,
         owner: str,
@@ -1585,9 +1613,10 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoImportLfsPatchBodyType,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_lfs_preference(
         self,
         owner: str,
@@ -1597,8 +1626,9 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         use_lfs: Literal["opt_in", "opt_out"],
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_lfs_preference(
         self,
         owner: str,
@@ -1608,7 +1638,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Import, ImportType]:
+    ) -> Response[Import, ImportTypeForResponse]:
         """DEPRECATED migrations/set-lfs-preference
 
         PATCH /repos/{owner}/{repo}/import/lfs
@@ -1659,6 +1689,7 @@ class MigrationsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_lfs_preference(
         self,
         owner: str,
@@ -1667,9 +1698,10 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoImportLfsPatchBodyType,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_lfs_preference(
         self,
         owner: str,
@@ -1679,8 +1711,9 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         use_lfs: Literal["opt_in", "opt_out"],
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_lfs_preference(
         self,
         owner: str,
@@ -1690,7 +1723,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Import, ImportType]:
+    ) -> Response[Import, ImportTypeForResponse]:
         """DEPRECATED migrations/set-lfs-preference
 
         PATCH /repos/{owner}/{repo}/import/lfs
@@ -1747,7 +1780,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Migration], list[MigrationType]]:
+    ) -> Response[list[Migration], list[MigrationTypeForResponse]]:
         """migrations/list-for-authenticated-user
 
         GET /user/migrations
@@ -1771,7 +1804,7 @@ class MigrationsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Migration],
@@ -1788,7 +1821,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Migration], list[MigrationType]]:
+    ) -> Response[list[Migration], list[MigrationTypeForResponse]]:
         """migrations/list-for-authenticated-user
 
         GET /user/migrations
@@ -1812,7 +1845,7 @@ class MigrationsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Migration],
@@ -1829,7 +1862,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserMigrationsPostBodyType,
-    ) -> Response[Migration, MigrationType]: ...
+    ) -> Response[Migration, MigrationTypeForResponse]: ...
 
     @overload
     def start_for_authenticated_user(
@@ -1847,7 +1880,7 @@ class MigrationsClient:
         org_metadata_only: Missing[bool] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         repositories: list[str],
-    ) -> Response[Migration, MigrationType]: ...
+    ) -> Response[Migration, MigrationTypeForResponse]: ...
 
     def start_for_authenticated_user(
         self,
@@ -1856,7 +1889,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[UserMigrationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Migration, MigrationType]:
+    ) -> Response[Migration, MigrationTypeForResponse]:
         """migrations/start-for-authenticated-user
 
         POST /user/migrations
@@ -1907,7 +1940,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserMigrationsPostBodyType,
-    ) -> Response[Migration, MigrationType]: ...
+    ) -> Response[Migration, MigrationTypeForResponse]: ...
 
     @overload
     async def async_start_for_authenticated_user(
@@ -1925,7 +1958,7 @@ class MigrationsClient:
         org_metadata_only: Missing[bool] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         repositories: list[str],
-    ) -> Response[Migration, MigrationType]: ...
+    ) -> Response[Migration, MigrationTypeForResponse]: ...
 
     async def async_start_for_authenticated_user(
         self,
@@ -1934,7 +1967,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[UserMigrationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Migration, MigrationType]:
+    ) -> Response[Migration, MigrationTypeForResponse]:
         """migrations/start-for-authenticated-user
 
         POST /user/migrations
@@ -1985,7 +2018,7 @@ class MigrationsClient:
         exclude: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Migration, MigrationType]:
+    ) -> Response[Migration, MigrationTypeForResponse]:
         """migrations/get-status-for-authenticated-user
 
         GET /user/migrations/{migration_id}
@@ -2015,7 +2048,7 @@ class MigrationsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=Migration,
@@ -2033,7 +2066,7 @@ class MigrationsClient:
         exclude: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Migration, MigrationType]:
+    ) -> Response[Migration, MigrationTypeForResponse]:
         """migrations/get-status-for-authenticated-user
 
         GET /user/migrations/{migration_id}
@@ -2063,7 +2096,7 @@ class MigrationsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=Migration,
@@ -2326,7 +2359,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """migrations/list-repos-for-authenticated-user
 
         GET /user/migrations/{migration_id}/repositories
@@ -2350,7 +2383,7 @@ class MigrationsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MinimalRepository],
@@ -2367,7 +2400,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """migrations/list-repos-for-authenticated-user
 
         GET /user/migrations/{migration_id}/repositories
@@ -2391,7 +2424,7 @@ class MigrationsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MinimalRepository],

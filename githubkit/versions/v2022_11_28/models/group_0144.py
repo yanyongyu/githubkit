@@ -9,28 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0135 import RepositoryRulesetConditionsPropRefName
-from .group_0141 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
-)
+
+class ApiInsightsSubjectStatsItems(GitHubModel):
+    """ApiInsightsSubjectStatsItems"""
+
+    subject_type: Missing[str] = Field(default=UNSET)
+    subject_name: Missing[str] = Field(default=UNSET)
+    subject_id: Missing[int] = Field(default=UNSET)
+    total_request_count: Missing[int] = Field(default=UNSET)
+    rate_limited_request_count: Missing[int] = Field(default=UNSET)
+    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
+    last_request_timestamp: Missing[str] = Field(default=UNSET)
 
 
-class OrgRulesetConditionsOneof2(GitHubModel):
-    """repository_property_and_ref_name
+model_rebuild(ApiInsightsSubjectStatsItems)
 
-    Conditions to target repositories by property and refs by name
-    """
-
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
-
-
-model_rebuild(OrgRulesetConditionsOneof2)
-
-__all__ = ("OrgRulesetConditionsOneof2",)
+__all__ = ("ApiInsightsSubjectStatsItems",)

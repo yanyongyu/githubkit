@@ -9,19 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsColumnIdCardsPostBodyOneof0(GitHubModel):
-    """ProjectsColumnsColumnIdCardsPostBodyOneof0"""
+class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
+    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    note: Union[str, None] = Field(description="The project card's note")
+    default_level: Literal["public", "internal"] = Field(
+        description="The default repository access level for Dependabot updates."
+    )
 
 
-model_rebuild(ProjectsColumnsColumnIdCardsPostBodyOneof0)
+model_rebuild(OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody)
 
-__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof0",)
+__all__ = ("OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody",)

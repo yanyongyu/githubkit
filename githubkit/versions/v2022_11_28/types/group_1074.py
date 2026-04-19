@@ -11,14 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0245 import CheckRunType
+
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
+
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int
 
 
-class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
 
-    total_count: int
-    check_runs: list[CheckRunType]
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int
 
 
-__all__ = ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",)
+__all__ = (
+    "OrgsOrgCopilotBillingSelectedUsersPostResponse201Type",
+    "OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse",
+)

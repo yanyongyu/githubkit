@@ -13,65 +13,151 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksApproverType(TypedDict):
-    """WebhooksApprover"""
+class RepositoryAdvisoryCreateType(TypedDict):
+    """RepositoryAdvisoryCreate"""
 
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    summary: str
+    description: str
+    cve_id: NotRequired[Union[str, None]]
+    vulnerabilities: list[RepositoryAdvisoryCreatePropVulnerabilitiesItemsType]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    credits_: NotRequired[
+        Union[list[RepositoryAdvisoryCreatePropCreditsItemsType], None]
+    ]
+    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
 
 
-class WebhooksReviewersItemsType(TypedDict):
-    """WebhooksReviewersItems"""
+class RepositoryAdvisoryCreateTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCreate"""
 
-    reviewer: NotRequired[Union[WebhooksReviewersItemsPropReviewerType, None]]
-    type: NotRequired[Literal["User"]]
+    summary: str
+    description: str
+    cve_id: NotRequired[Union[str, None]]
+    vulnerabilities: list[
+        RepositoryAdvisoryCreatePropVulnerabilitiesItemsTypeForResponse
+    ]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    credits_: NotRequired[
+        Union[list[RepositoryAdvisoryCreatePropCreditsItemsTypeForResponse], None]
+    ]
+    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
 
 
-class WebhooksReviewersItemsPropReviewerType(TypedDict):
-    """User"""
+class RepositoryAdvisoryCreatePropCreditsItemsType(TypedDict):
+    """RepositoryAdvisoryCreatePropCreditsItems"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
     login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+
+
+class RepositoryAdvisoryCreatePropCreditsItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCreatePropCreditsItems"""
+
+    login: str
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsType(TypedDict):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageTypeForResponse
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType(TypedDict):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageTypeForResponse(
+    TypedDict
+):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhooksApproverType",
-    "WebhooksReviewersItemsPropReviewerType",
-    "WebhooksReviewersItemsType",
+    "RepositoryAdvisoryCreatePropCreditsItemsType",
+    "RepositoryAdvisoryCreatePropCreditsItemsTypeForResponse",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsType",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsTypeForResponse",
+    "RepositoryAdvisoryCreateType",
+    "RepositoryAdvisoryCreateTypeForResponse",
 )

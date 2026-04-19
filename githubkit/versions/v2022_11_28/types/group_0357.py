@@ -9,34 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
 
+class ShortBlobType(TypedDict):
+    """Short Blob
 
-class PullRequestPropHeadType(TypedDict):
-    """PullRequestPropHead"""
+    Short Blob
+    """
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryType]
+    url: str
     sha: str
-    user: Union[None, SimpleUserType]
 
 
-class PullRequestPropBaseType(TypedDict):
-    """PullRequestPropBase"""
+class ShortBlobTypeForResponse(TypedDict):
+    """Short Blob
 
-    label: str
-    ref: str
-    repo: RepositoryType
+    Short Blob
+    """
+
+    url: str
     sha: str
-    user: SimpleUserType
 
 
 __all__ = (
-    "PullRequestPropBaseType",
-    "PullRequestPropHeadType",
+    "ShortBlobType",
+    "ShortBlobTypeForResponse",
 )

@@ -9,189 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0627 import WebhookIssuesOpenedPropChangesPropOldIssueType
-
-
-class WebhookIssuesOpenedPropChangesType(TypedDict):
-    """WebhookIssuesOpenedPropChanges"""
-
-    old_issue: Union[WebhookIssuesOpenedPropChangesPropOldIssueType, None]
-    old_repository: WebhookIssuesOpenedPropChangesPropOldRepositoryType
+from .group_0625 import (
+    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
+)
 
 
-class WebhookIssuesOpenedPropChangesPropOldRepositoryType(TypedDict):
-    """Repository
+class WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
+    """App
 
-    A git repository
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
     """
 
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: Union[int, datetime]
-    custom_properties: NotRequired[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesType
-    ]
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
+    created_at: Union[_dt.datetime, None]
     description: Union[str, None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks: int
-    forks_count: int
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_discussions: NotRequired[bool]
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    homepage: Union[str, None]
-    hooks_url: str
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
     html_url: str
-    id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[str, None]
-    languages_url: str
-    license_: Union[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseType, None
-    ]
-    master_branch: NotRequired[str]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[str, None]
+    id: Union[int, None]
     name: str
     node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: Union[WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerType, None]
+    owner: Union[
+        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+        None,
+    ]
     permissions: NotRequired[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType
+        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
     ]
-    private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: Union[int, datetime, None]
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
-    updated_at: datetime
-    url: str
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
-    web_commit_signoff_required: NotRequired[bool]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
 
 
-WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesType: TypeAlias = (
-    dict[str, Any]
-)
-"""WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomProperties
+class WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse(
+    TypedDict
+):
+    """App
 
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values.
-"""
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
 
-
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseType(TypedDict):
-    """License"""
-
-    key: str
+    created_at: Union[str, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
     name: str
     node_id: str
-    spdx_id: str
-    url: Union[str, None]
-
-
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType(TypedDict):
-    """WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
+    owner: Union[
+        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesType",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseType",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerType",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryType",
-    "WebhookIssuesOpenedPropChangesType",
+    "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppType",
+    "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse",
 )

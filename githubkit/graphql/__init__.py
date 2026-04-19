@@ -57,7 +57,13 @@ class GraphQLNamespace:
             # https://docs.github.com/en/graphql/overview/rate-limits-and-node-limits-for-the-graphql-api#exceeding-the-rate-limit
             # x-ratelimit-remaining may not be 0, ignore it
             # https://github.com/octokit/plugin-throttling.js/pull/636
-            if any(error.type == "RATE_LIMITED" for error in response_data.errors):
+            # error.type may be RATE_LIMIT or RATE_LIMITED
+            # https://github.com/yanyongyu/githubkit/issues/271
+            # https://github.com/octokit/plugin-throttling.js/issues/824
+            if any(
+                error.type in ("RATE_LIMIT", "RATE_LIMITED")
+                for error in response_data.errors
+            ):
                 raise PrimaryRateLimitExceeded(
                     response, self._github._extract_retry_after(response)
                 )

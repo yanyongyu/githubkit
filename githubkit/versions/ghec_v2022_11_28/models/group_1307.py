@@ -13,15 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoTagsProtectionPostBody(GitHubModel):
-    """ReposOwnerRepoTagsProtectionPostBody"""
-
-    pattern: str = Field(
-        description="An optional glob pattern to match against when enforcing tag protection."
-    )
+from .group_0335 import ActionsSecret
 
 
-model_rebuild(ReposOwnerRepoTagsProtectionPostBody)
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
 
-__all__ = ("ReposOwnerRepoTagsProtectionPostBody",)
+    total_count: int = Field()
+    secrets: list[ActionsSecret] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsOrganizationSecretsGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200",)

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,17 +16,90 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GitUser(GitHubModel):
-    """Git User
+class RuleSuitePullRequest(GitHubModel):
+    """Pull request rule suite metadata
 
-    Metaproperties for Git author/committer information.
+    Metadata for a pull request rule evaluation result.
     """
 
-    name: Missing[str] = Field(default=UNSET)
-    email: Missing[str] = Field(default=UNSET)
-    date: Missing[datetime] = Field(default=UNSET)
+    pull_request: Missing[RuleSuitePullRequestPropPullRequest] = Field(
+        default=UNSET,
+        description="The pull request associated with the rule evaluation.",
+    )
 
 
-model_rebuild(GitUser)
+class RuleSuitePullRequestPropPullRequest(GitHubModel):
+    """RuleSuitePullRequestPropPullRequest
 
-__all__ = ("GitUser",)
+    The pull request associated with the rule evaluation.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the pull request."
+    )
+    number: Missing[int] = Field(
+        default=UNSET, description="The number of the pull request."
+    )
+    user: Missing[RuleSuitePullRequestPropPullRequestPropUser] = Field(
+        default=UNSET, description="The user who created the pull request."
+    )
+    reviews: Missing[list[RuleSuitePullRequestPropPullRequestPropReviewsItems]] = Field(
+        default=UNSET, description="The reviews associated with the pull request."
+    )
+
+
+class RuleSuitePullRequestPropPullRequestPropUser(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropUser
+
+    The user who created the pull request.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
+    )
+    login: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItems(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the review."
+    )
+    user: Missing[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser] = Field(
+        default=UNSET, description="The user who submitted the review."
+    )
+    state: Missing[str] = Field(default=UNSET, description="The state of the review.")
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+
+    The user who submitted the review.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
+    )
+    login: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
+
+
+model_rebuild(RuleSuitePullRequest)
+model_rebuild(RuleSuitePullRequestPropPullRequest)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropUser)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropReviewsItems)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser)
+
+__all__ = (
+    "RuleSuitePullRequest",
+    "RuleSuitePullRequestPropPullRequest",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItems",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser",
+    "RuleSuitePullRequestPropPullRequestPropUser",
+)

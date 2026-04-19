@@ -9,20 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0175 import RepositoryRuleMaxFileSizePropParametersType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0387 import (
+    TimelineCrossReferencedEventPropSourceType,
+    TimelineCrossReferencedEventPropSourceTypeForResponse,
+)
 
 
-class RepositoryRuleDetailedOneof18Type(TypedDict):
-    """RepositoryRuleDetailedOneof18"""
+class TimelineCrossReferencedEventType(TypedDict):
+    """Timeline Cross Referenced Event
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Timeline Cross Referenced Event
+    """
+
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    source: TimelineCrossReferencedEventPropSourceType
 
 
-__all__ = ("RepositoryRuleDetailedOneof18Type",)
+class TimelineCrossReferencedEventTypeForResponse(TypedDict):
+    """Timeline Cross Referenced Event
+
+    Timeline Cross Referenced Event
+    """
+
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    source: TimelineCrossReferencedEventPropSourceTypeForResponse
+
+
+__all__ = (
+    "TimelineCrossReferencedEventType",
+    "TimelineCrossReferencedEventTypeForResponse",
+)

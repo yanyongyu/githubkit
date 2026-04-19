@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,89 +17,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0089 import RepositoryRulesetBypassActor
-from .group_0100 import EnterpriseRulesetConditionsOneof0
-from .group_0101 import EnterpriseRulesetConditionsOneof1
-from .group_0102 import EnterpriseRulesetConditionsOneof2
-from .group_0103 import EnterpriseRulesetConditionsOneof3
-from .group_0104 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0105 import RepositoryRuleUpdate
-from .group_0107 import RepositoryRuleRequiredLinearHistory
-from .group_0108 import RepositoryRuleRequiredDeployments
-from .group_0111 import RepositoryRulePullRequest
-from .group_0113 import RepositoryRuleRequiredStatusChecks
-from .group_0115 import RepositoryRuleCommitMessagePattern
-from .group_0117 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0119 import RepositoryRuleCommitterEmailPattern
-from .group_0121 import RepositoryRuleBranchNamePattern
-from .group_0123 import RepositoryRuleTagNamePattern
-from .group_0125 import RepositoryRuleFilePathRestriction
-from .group_0127 import RepositoryRuleMaxFilePathLength
-from .group_0129 import RepositoryRuleFileExtensionRestriction
-from .group_0131 import RepositoryRuleMaxFileSize
-from .group_0134 import RepositoryRuleWorkflows
-from .group_0136 import RepositoryRuleCodeScanning
+from .group_0003 import SimpleUser
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
+from .group_0609 import SecretScanningAlertWebhook
 
 
-class EnterprisesEnterpriseRulesetsPostBody(GitHubModel):
-    """EnterprisesEnterpriseRulesetsPostBody"""
+class WebhookSecretScanningAlertUnassigned(GitHubModel):
+    """secret_scanning_alert unassigned event"""
 
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
+    action: Literal["unassigned"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
+    assignee: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
-    conditions: Missing[
-        Union[
-            EnterpriseRulesetConditionsOneof0,
-            EnterpriseRulesetConditionsOneof1,
-            EnterpriseRulesetConditionsOneof2,
-            EnterpriseRulesetConditionsOneof3,
-        ]
-    ] = Field(
+    installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
-        title="Enterprise ruleset conditions",
-        description="Conditions for an enterprise ruleset. The conditions object should contain either the `organization_id` or `organization_name` property and the `repository_name` or `repository_property` property. For branch and tag rulesets, the conditions object should also contain the `ref_name` property.",
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(EnterprisesEnterpriseRulesetsPostBody)
+model_rebuild(WebhookSecretScanningAlertUnassigned)
 
-__all__ = ("EnterprisesEnterpriseRulesetsPostBody",)
+__all__ = ("WebhookSecretScanningAlertUnassigned",)

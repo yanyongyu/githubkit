@@ -9,53 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoGitTagsPostBody(GitHubModel):
-    """ReposOwnerRepoGitTagsPostBody"""
+class OrgsOrgPersonalAccessTokenRequestsPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    tag: str = Field(
-        description='The tag\'s name. This is typically a version (e.g., "v0.0.1").'
-    )
-    message: str = Field(description="The tag message.")
-    object_: str = Field(
-        alias="object", description="The SHA of the git object this is tagging."
-    )
-    type: Literal["commit", "tree", "blob"] = Field(
-        description="The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`."
-    )
-    tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTagger] = Field(
+    pat_request_ids: Missing[list[int]] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="An object with information about the individual creating the tag.",
+        description="Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values.",
     )
-
-
-class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubModel):
-    """ReposOwnerRepoGitTagsPostBodyPropTagger
-
-    An object with information about the individual creating the tag.
-    """
-
-    name: str = Field(description="The name of the author of the tag")
-    email: str = Field(description="The email of the author of the tag")
-    date: Missing[datetime] = Field(
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the requests."
+    )
+    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
         default=UNSET,
-        description="When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="Reason for approving or denying the requests. Max 1024 characters.",
     )
 
 
-model_rebuild(ReposOwnerRepoGitTagsPostBody)
-model_rebuild(ReposOwnerRepoGitTagsPostBodyPropTagger)
+model_rebuild(OrgsOrgPersonalAccessTokenRequestsPostBody)
 
-__all__ = (
-    "ReposOwnerRepoGitTagsPostBody",
-    "ReposOwnerRepoGitTagsPostBodyPropTagger",
-)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPostBody",)

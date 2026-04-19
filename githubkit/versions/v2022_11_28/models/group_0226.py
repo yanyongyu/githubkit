@@ -16,57 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WorkflowUsage(GitHubModel):
-    """Workflow Usage
+class RepositoryRuleParamsRestrictedCommits(GitHubModel):
+    """RestrictedCommits
 
-    Workflow Usage
+    Restricted commit
     """
 
-    billable: WorkflowUsagePropBillable = Field()
+    oid: str = Field(description="Full or abbreviated commit hash to reject")
+    reason: Missing[str] = Field(default=UNSET, description="Reason for restriction")
 
 
-class WorkflowUsagePropBillable(GitHubModel):
-    """WorkflowUsagePropBillable"""
+model_rebuild(RepositoryRuleParamsRestrictedCommits)
 
-    ubuntu: Missing[WorkflowUsagePropBillablePropUbuntu] = Field(
-        default=UNSET, alias="UBUNTU"
-    )
-    macos: Missing[WorkflowUsagePropBillablePropMacos] = Field(
-        default=UNSET, alias="MACOS"
-    )
-    windows: Missing[WorkflowUsagePropBillablePropWindows] = Field(
-        default=UNSET, alias="WINDOWS"
-    )
-
-
-class WorkflowUsagePropBillablePropUbuntu(GitHubModel):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: Missing[int] = Field(default=UNSET)
-
-
-class WorkflowUsagePropBillablePropMacos(GitHubModel):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: Missing[int] = Field(default=UNSET)
-
-
-class WorkflowUsagePropBillablePropWindows(GitHubModel):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(WorkflowUsage)
-model_rebuild(WorkflowUsagePropBillable)
-model_rebuild(WorkflowUsagePropBillablePropUbuntu)
-model_rebuild(WorkflowUsagePropBillablePropMacos)
-model_rebuild(WorkflowUsagePropBillablePropWindows)
-
-__all__ = (
-    "WorkflowUsage",
-    "WorkflowUsagePropBillable",
-    "WorkflowUsagePropBillablePropMacos",
-    "WorkflowUsagePropBillablePropUbuntu",
-    "WorkflowUsagePropBillablePropWindows",
-)
+__all__ = ("RepositoryRuleParamsRestrictedCommits",)

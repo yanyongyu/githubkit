@@ -9,32 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0011 import WebhookConfigType
-from .group_0315 import HookResponseType
 
+class CodeScanningDefaultSetupUpdateType(TypedDict):
+    """CodeScanningDefaultSetupUpdate
 
-class HookType(TypedDict):
-    """Webhook
-
-    Webhooks for repositories.
+    Configuration for code scanning default setup.
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigType
-    updated_at: datetime
-    created_at: datetime
-    url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseType
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ]
 
 
-__all__ = ("HookType",)
+class CodeScanningDefaultSetupUpdateTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetupUpdate
+
+    Configuration for code scanning default setup.
+    """
+
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ]
+
+
+__all__ = (
+    "CodeScanningDefaultSetupUpdateType",
+    "CodeScanningDefaultSetupUpdateTypeForResponse",
+)

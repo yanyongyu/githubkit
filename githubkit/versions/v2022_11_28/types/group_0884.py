@@ -9,36 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0527 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
 
-class OrgsOrgActionsRunnerGroupsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsGetResponse200"""
 
-    total_count: float
-    runner_groups: list[RunnerGroupsOrgType]
+class WebhookSponsorshipPendingCancellationType(TypedDict):
+    """sponsorship pending_cancellation event"""
+
+    action: Literal["pending_cancellation"]
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
 
-class RunnerGroupsOrgType(TypedDict):
-    """RunnerGroupsOrg"""
+class WebhookSponsorshipPendingCancellationTypeForResponse(TypedDict):
+    """sponsorship pending_cancellation event"""
 
-    id: float
-    name: str
-    visibility: str
-    default: bool
-    selected_repositories_url: NotRequired[str]
-    runners_url: str
-    hosted_runners_url: NotRequired[str]
-    network_configuration_id: NotRequired[str]
-    inherited: bool
-    inherited_allows_public_repositories: NotRequired[bool]
-    allows_public_repositories: bool
-    workflow_restrictions_read_only: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
+    action: Literal["pending_cancellation"]
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsGetResponse200Type",
-    "RunnerGroupsOrgType",
+    "WebhookSponsorshipPendingCancellationType",
+    "WebhookSponsorshipPendingCancellationTypeForResponse",
 )

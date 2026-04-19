@@ -9,45 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0533 import ProjectsV2ItemType
+from .group_0773 import (
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
+)
 
 
-class WebhookProjectsV2ItemReorderedType(TypedDict):
-    """Projects v2 Item Reordered Event"""
+class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
 
-    action: Literal["reordered"]
-    changes: WebhookProjectsV2ItemReorderedPropChangesType
-    installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
-    sender: SimpleUserType
-
-
-class WebhookProjectsV2ItemReorderedPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemReorderedPropChanges"""
-
-    previous_projects_v2_item_node_id: NotRequired[
-        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType
+    created_at: Union[_dt.datetime, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType, None
     ]
+    permissions: NotRequired[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
 
 
-class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType(
-    TypedDict
-):
-    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
+class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
 
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    created_at: Union[str, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType",
-    "WebhookProjectsV2ItemReorderedPropChangesType",
-    "WebhookProjectsV2ItemReorderedType",
+    "WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType",
+    "WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppTypeForResponse",
 )

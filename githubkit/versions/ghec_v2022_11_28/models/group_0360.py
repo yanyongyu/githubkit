@@ -9,53 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0283 import Verification
+from .group_0003 import SimpleUser
+from .group_0359 import DiffEntry
+from .group_0361 import CommitPropCommit
 
 
-class GitTag(GitHubModel):
-    """Git Tag
+class Commit(GitHubModel):
+    """Commit
 
-    Metadata for a Git tag
+    Commit
     """
 
-    node_id: str = Field()
-    tag: str = Field(description="Name of the tag")
-    sha: str = Field()
-    url: str = Field(description="URL for the tag")
-    message: str = Field(description="Message describing the purpose of the tag")
-    tagger: GitTagPropTagger = Field()
-    object_: GitTagPropObject = Field(alias="object")
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
-
-
-class GitTagPropTagger(GitHubModel):
-    """GitTagPropTagger"""
-
-    date: str = Field()
-    email: str = Field()
-    name: str = Field()
-
-
-class GitTagPropObject(GitHubModel):
-    """GitTagPropObject"""
-
-    sha: str = Field()
-    type: str = Field()
     url: str = Field()
+    sha: str = Field()
+    node_id: str = Field()
+    html_url: str = Field()
+    comments_url: str = Field()
+    commit: CommitPropCommit = Field()
+    author: Union[SimpleUser, EmptyObject, None] = Field()
+    committer: Union[SimpleUser, EmptyObject, None] = Field()
+    parents: list[CommitPropParentsItems] = Field()
+    stats: Missing[CommitPropStats] = Field(default=UNSET)
+    files: Missing[list[DiffEntry]] = Field(default=UNSET)
 
 
-model_rebuild(GitTag)
-model_rebuild(GitTagPropTagger)
-model_rebuild(GitTagPropObject)
+class EmptyObject(GitHubModel):
+    """Empty Object
+
+    An object without any properties.
+    """
+
+
+class CommitPropParentsItems(GitHubModel):
+    """CommitPropParentsItems"""
+
+    sha: str = Field()
+    url: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
+
+
+class CommitPropStats(GitHubModel):
+    """CommitPropStats"""
+
+    additions: Missing[int] = Field(default=UNSET)
+    deletions: Missing[int] = Field(default=UNSET)
+    total: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(Commit)
+model_rebuild(EmptyObject)
+model_rebuild(CommitPropParentsItems)
+model_rebuild(CommitPropStats)
 
 __all__ = (
-    "GitTag",
-    "GitTagPropObject",
-    "GitTagPropTagger",
+    "Commit",
+    "CommitPropParentsItems",
+    "CommitPropStats",
+    "EmptyObject",
 )

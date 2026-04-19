@@ -12,14 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class OrgsOrgActionsOidcCustomizationSubPutBodyType(TypedDict):
+    """Actions OIDC Subject customization
 
-    Actions OIDC subject customization for a repository
+    Actions OIDC Subject customization
     """
 
-    use_default: bool
     include_claim_keys: NotRequired[list[str]]
 
 
-__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",)
+class OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
+
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: NotRequired[list[str]]
+
+
+__all__ = (
+    "OrgsOrgActionsOidcCustomizationSubPutBodyType",
+    "OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse",
+)

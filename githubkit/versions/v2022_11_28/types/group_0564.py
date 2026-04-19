@@ -9,87 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0178 import CustomPropertyType, CustomPropertyTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
 
 
-class WebhookIssueCommentCreatedPropCommentType(TypedDict):
-    """issue comment
+class WebhookCustomPropertyPromotedToEnterpriseType(TypedDict):
+    """custom property promoted to business event"""
 
-    The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment)
-    itself.
-    """
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    created_at: datetime
-    html_url: str
-    id: int
-    issue_url: str
-    node_id: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    reactions: WebhookIssueCommentCreatedPropCommentPropReactionsType
-    updated_at: datetime
-    url: str
-    user: Union[WebhookIssueCommentCreatedPropCommentPropUserType, None]
+    action: Literal["promote_to_enterprise"]
+    definition: CustomPropertyType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookIssueCommentCreatedPropCommentPropReactionsType(TypedDict):
-    """Reactions"""
+class WebhookCustomPropertyPromotedToEnterpriseTypeForResponse(TypedDict):
+    """custom property promoted to business event"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookIssueCommentCreatedPropCommentPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    action: Literal["promote_to_enterprise"]
+    definition: CustomPropertyTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookIssueCommentCreatedPropCommentPropReactionsType",
-    "WebhookIssueCommentCreatedPropCommentPropUserType",
-    "WebhookIssueCommentCreatedPropCommentType",
+    "WebhookCustomPropertyPromotedToEnterpriseType",
+    "WebhookCustomPropertyPromotedToEnterpriseTypeForResponse",
 )

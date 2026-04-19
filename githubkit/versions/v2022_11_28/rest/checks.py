@@ -17,10 +17,10 @@ from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
     from typing import Literal, Union
 
     from githubkit import GitHubCore
@@ -39,11 +39,11 @@ if TYPE_CHECKING:
         ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
     )
     from ..types import (
-        CheckAnnotationType,
-        CheckRunType,
-        CheckSuitePreferenceType,
-        CheckSuiteType,
-        EmptyObjectType,
+        CheckAnnotationTypeForResponse,
+        CheckRunTypeForResponse,
+        CheckSuitePreferenceTypeForResponse,
+        CheckSuiteTypeForResponse,
+        EmptyObjectTypeForResponse,
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
@@ -52,12 +52,12 @@ if TYPE_CHECKING:
         ReposOwnerRepoCheckRunsPostBodyOneof1Type,
         ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
         ReposOwnerRepoCheckRunsPostBodyPropOutputType,
-        ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type,
+        ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse,
         ReposOwnerRepoCheckSuitesPostBodyType,
         ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType,
         ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
-        ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type,
-        ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type,
+        ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse,
+        ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse,
     )
 
 
@@ -88,7 +88,7 @@ class ChecksClient:
             ReposOwnerRepoCheckRunsPostBodyOneof0Type,
             ReposOwnerRepoCheckRunsPostBodyOneof1Type,
         ],
-    ) -> Response[CheckRun, CheckRunType]: ...
+    ) -> Response[CheckRun, CheckRunTypeForResponse]: ...
 
     @overload
     def create(
@@ -104,7 +104,7 @@ class ChecksClient:
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
         status: Literal["completed"],
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         conclusion: Literal[
             "action_required",
             "cancelled",
@@ -115,12 +115,12 @@ class ChecksClient:
             "stale",
             "timed_out",
         ],
-        completed_at: Missing[datetime] = UNSET,
+        completed_at: Missing[_dt.datetime] = UNSET,
         output: Missing[ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
         actions: Missing[
             list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun, CheckRunType]: ...
+    ) -> Response[CheckRun, CheckRunTypeForResponse]: ...
 
     @overload
     def create(
@@ -138,7 +138,7 @@ class ChecksClient:
         status: Missing[
             Literal["queued", "in_progress", "waiting", "requested", "pending"]
         ] = UNSET,
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         conclusion: Missing[
             Literal[
                 "action_required",
@@ -151,12 +151,12 @@ class ChecksClient:
                 "timed_out",
             ]
         ] = UNSET,
-        completed_at: Missing[datetime] = UNSET,
+        completed_at: Missing[_dt.datetime] = UNSET,
         output: Missing[ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
         actions: Missing[
             list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun, CheckRunType]: ...
+    ) -> Response[CheckRun, CheckRunTypeForResponse]: ...
 
     def create(
         self,
@@ -172,7 +172,7 @@ class ChecksClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[CheckRun, CheckRunType]:
+    ) -> Response[CheckRun, CheckRunTypeForResponse]:
         """checks/create
 
         POST /repos/{owner}/{repo}/check-runs
@@ -237,7 +237,7 @@ class ChecksClient:
             ReposOwnerRepoCheckRunsPostBodyOneof0Type,
             ReposOwnerRepoCheckRunsPostBodyOneof1Type,
         ],
-    ) -> Response[CheckRun, CheckRunType]: ...
+    ) -> Response[CheckRun, CheckRunTypeForResponse]: ...
 
     @overload
     async def async_create(
@@ -253,7 +253,7 @@ class ChecksClient:
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
         status: Literal["completed"],
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         conclusion: Literal[
             "action_required",
             "cancelled",
@@ -264,12 +264,12 @@ class ChecksClient:
             "stale",
             "timed_out",
         ],
-        completed_at: Missing[datetime] = UNSET,
+        completed_at: Missing[_dt.datetime] = UNSET,
         output: Missing[ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
         actions: Missing[
             list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun, CheckRunType]: ...
+    ) -> Response[CheckRun, CheckRunTypeForResponse]: ...
 
     @overload
     async def async_create(
@@ -287,7 +287,7 @@ class ChecksClient:
         status: Missing[
             Literal["queued", "in_progress", "waiting", "requested", "pending"]
         ] = UNSET,
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         conclusion: Missing[
             Literal[
                 "action_required",
@@ -300,12 +300,12 @@ class ChecksClient:
                 "timed_out",
             ]
         ] = UNSET,
-        completed_at: Missing[datetime] = UNSET,
+        completed_at: Missing[_dt.datetime] = UNSET,
         output: Missing[ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
         actions: Missing[
             list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun, CheckRunType]: ...
+    ) -> Response[CheckRun, CheckRunTypeForResponse]: ...
 
     async def async_create(
         self,
@@ -321,7 +321,7 @@ class ChecksClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[CheckRun, CheckRunType]:
+    ) -> Response[CheckRun, CheckRunTypeForResponse]:
         """checks/create
 
         POST /repos/{owner}/{repo}/check-runs
@@ -382,7 +382,7 @@ class ChecksClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CheckRun, CheckRunType]:
+    ) -> Response[CheckRun, CheckRunTypeForResponse]:
         """checks/get
 
         GET /repos/{owner}/{repo}/check-runs/{check_run_id}
@@ -419,7 +419,7 @@ class ChecksClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CheckRun, CheckRunType]:
+    ) -> Response[CheckRun, CheckRunTypeForResponse]:
         """checks/get
 
         GET /repos/{owner}/{repo}/check-runs/{check_run_id}
@@ -461,7 +461,7 @@ class ChecksClient:
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
         ],
-    ) -> Response[CheckRun, CheckRunType]: ...
+    ) -> Response[CheckRun, CheckRunTypeForResponse]: ...
 
     @overload
     def update(
@@ -476,7 +476,7 @@ class ChecksClient:
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         status: Missing[Literal["completed"]] = UNSET,
         conclusion: Literal[
             "action_required",
@@ -488,14 +488,14 @@ class ChecksClient:
             "stale",
             "timed_out",
         ],
-        completed_at: Missing[datetime] = UNSET,
+        completed_at: Missing[_dt.datetime] = UNSET,
         output: Missing[
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
         ] = UNSET,
         actions: Missing[
             list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun, CheckRunType]: ...
+    ) -> Response[CheckRun, CheckRunTypeForResponse]: ...
 
     @overload
     def update(
@@ -510,7 +510,7 @@ class ChecksClient:
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         status: Missing[Literal["queued", "in_progress"]] = UNSET,
         conclusion: Missing[
             Literal[
@@ -524,14 +524,14 @@ class ChecksClient:
                 "timed_out",
             ]
         ] = UNSET,
-        completed_at: Missing[datetime] = UNSET,
+        completed_at: Missing[_dt.datetime] = UNSET,
         output: Missing[
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
         ] = UNSET,
         actions: Missing[
             list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun, CheckRunType]: ...
+    ) -> Response[CheckRun, CheckRunTypeForResponse]: ...
 
     def update(
         self,
@@ -548,7 +548,7 @@ class ChecksClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[CheckRun, CheckRunType]:
+    ) -> Response[CheckRun, CheckRunTypeForResponse]:
         """checks/update
 
         PATCH /repos/{owner}/{repo}/check-runs/{check_run_id}
@@ -612,7 +612,7 @@ class ChecksClient:
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
         ],
-    ) -> Response[CheckRun, CheckRunType]: ...
+    ) -> Response[CheckRun, CheckRunTypeForResponse]: ...
 
     @overload
     async def async_update(
@@ -627,7 +627,7 @@ class ChecksClient:
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         status: Missing[Literal["completed"]] = UNSET,
         conclusion: Literal[
             "action_required",
@@ -639,14 +639,14 @@ class ChecksClient:
             "stale",
             "timed_out",
         ],
-        completed_at: Missing[datetime] = UNSET,
+        completed_at: Missing[_dt.datetime] = UNSET,
         output: Missing[
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
         ] = UNSET,
         actions: Missing[
             list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun, CheckRunType]: ...
+    ) -> Response[CheckRun, CheckRunTypeForResponse]: ...
 
     @overload
     async def async_update(
@@ -661,7 +661,7 @@ class ChecksClient:
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         status: Missing[Literal["queued", "in_progress"]] = UNSET,
         conclusion: Missing[
             Literal[
@@ -675,14 +675,14 @@ class ChecksClient:
                 "timed_out",
             ]
         ] = UNSET,
-        completed_at: Missing[datetime] = UNSET,
+        completed_at: Missing[_dt.datetime] = UNSET,
         output: Missing[
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
         ] = UNSET,
         actions: Missing[
             list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun, CheckRunType]: ...
+    ) -> Response[CheckRun, CheckRunTypeForResponse]: ...
 
     async def async_update(
         self,
@@ -699,7 +699,7 @@ class ChecksClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[CheckRun, CheckRunType]:
+    ) -> Response[CheckRun, CheckRunTypeForResponse]:
         """checks/update
 
         PATCH /repos/{owner}/{repo}/check-runs/{check_run_id}
@@ -760,7 +760,7 @@ class ChecksClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CheckAnnotation], list[CheckAnnotationType]]:
+    ) -> Response[list[CheckAnnotation], list[CheckAnnotationTypeForResponse]]:
         """checks/list-annotations
 
         GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
@@ -786,7 +786,7 @@ class ChecksClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[CheckAnnotation],
@@ -802,7 +802,7 @@ class ChecksClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CheckAnnotation], list[CheckAnnotationType]]:
+    ) -> Response[list[CheckAnnotation], list[CheckAnnotationTypeForResponse]]:
         """checks/list-annotations
 
         GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
@@ -828,7 +828,7 @@ class ChecksClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[CheckAnnotation],
@@ -842,7 +842,7 @@ class ChecksClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """checks/rerequest-run
 
         POST /repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest
@@ -881,7 +881,7 @@ class ChecksClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """checks/rerequest-run
 
         POST /repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest
@@ -921,7 +921,7 @@ class ChecksClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCheckSuitesPostBodyType,
-    ) -> Response[CheckSuite, CheckSuiteType]: ...
+    ) -> Response[CheckSuite, CheckSuiteTypeForResponse]: ...
 
     @overload
     def create_suite(
@@ -933,7 +933,7 @@ class ChecksClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         head_sha: str,
-    ) -> Response[CheckSuite, CheckSuiteType]: ...
+    ) -> Response[CheckSuite, CheckSuiteTypeForResponse]: ...
 
     def create_suite(
         self,
@@ -944,7 +944,7 @@ class ChecksClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CheckSuite, CheckSuiteType]:
+    ) -> Response[CheckSuite, CheckSuiteTypeForResponse]:
         """checks/create-suite
 
         POST /repos/{owner}/{repo}/check-suites
@@ -992,7 +992,7 @@ class ChecksClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCheckSuitesPostBodyType,
-    ) -> Response[CheckSuite, CheckSuiteType]: ...
+    ) -> Response[CheckSuite, CheckSuiteTypeForResponse]: ...
 
     @overload
     async def async_create_suite(
@@ -1004,7 +1004,7 @@ class ChecksClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         head_sha: str,
-    ) -> Response[CheckSuite, CheckSuiteType]: ...
+    ) -> Response[CheckSuite, CheckSuiteTypeForResponse]: ...
 
     async def async_create_suite(
         self,
@@ -1015,7 +1015,7 @@ class ChecksClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CheckSuite, CheckSuiteType]:
+    ) -> Response[CheckSuite, CheckSuiteTypeForResponse]:
         """checks/create-suite
 
         POST /repos/{owner}/{repo}/check-suites
@@ -1063,7 +1063,7 @@ class ChecksClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
-    ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]: ...
+    ) -> Response[CheckSuitePreference, CheckSuitePreferenceTypeForResponse]: ...
 
     @overload
     def set_suites_preferences(
@@ -1079,7 +1079,7 @@ class ChecksClient:
                 ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
             ]
         ] = UNSET,
-    ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]: ...
+    ) -> Response[CheckSuitePreference, CheckSuitePreferenceTypeForResponse]: ...
 
     def set_suites_preferences(
         self,
@@ -1090,7 +1090,7 @@ class ChecksClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]:
+    ) -> Response[CheckSuitePreference, CheckSuitePreferenceTypeForResponse]:
         """checks/set-suites-preferences
 
         PATCH /repos/{owner}/{repo}/check-suites/preferences
@@ -1139,7 +1139,7 @@ class ChecksClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
-    ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]: ...
+    ) -> Response[CheckSuitePreference, CheckSuitePreferenceTypeForResponse]: ...
 
     @overload
     async def async_set_suites_preferences(
@@ -1155,7 +1155,7 @@ class ChecksClient:
                 ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
             ]
         ] = UNSET,
-    ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]: ...
+    ) -> Response[CheckSuitePreference, CheckSuitePreferenceTypeForResponse]: ...
 
     async def async_set_suites_preferences(
         self,
@@ -1166,7 +1166,7 @@ class ChecksClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]:
+    ) -> Response[CheckSuitePreference, CheckSuitePreferenceTypeForResponse]:
         """checks/set-suites-preferences
 
         PATCH /repos/{owner}/{repo}/check-suites/preferences
@@ -1214,7 +1214,7 @@ class ChecksClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CheckSuite, CheckSuiteType]:
+    ) -> Response[CheckSuite, CheckSuiteTypeForResponse]:
         """checks/get-suite
 
         GET /repos/{owner}/{repo}/check-suites/{check_suite_id}
@@ -1251,7 +1251,7 @@ class ChecksClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CheckSuite, CheckSuiteType]:
+    ) -> Response[CheckSuite, CheckSuiteTypeForResponse]:
         """checks/get-suite
 
         GET /repos/{owner}/{repo}/check-suites/{check_suite_id}
@@ -1295,7 +1295,7 @@ class ChecksClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
-        ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type,
+        ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse,
     ]:
         """checks/list-for-suite
 
@@ -1330,7 +1330,7 @@ class ChecksClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
@@ -1351,7 +1351,7 @@ class ChecksClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
-        ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type,
+        ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse,
     ]:
         """checks/list-for-suite
 
@@ -1386,7 +1386,7 @@ class ChecksClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
@@ -1400,7 +1400,7 @@ class ChecksClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """checks/rerequest-suite
 
         POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
@@ -1432,7 +1432,7 @@ class ChecksClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """checks/rerequest-suite
 
         POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
@@ -1472,7 +1472,7 @@ class ChecksClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
-        ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type,
+        ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse,
     ]:
         """checks/list-for-ref
 
@@ -1508,7 +1508,7 @@ class ChecksClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
@@ -1530,7 +1530,7 @@ class ChecksClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
-        ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type,
+        ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse,
     ]:
         """checks/list-for-ref
 
@@ -1566,7 +1566,7 @@ class ChecksClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
@@ -1586,7 +1586,7 @@ class ChecksClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
-        ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type,
+        ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse,
     ]:
         """checks/list-suites-for-ref
 
@@ -1618,7 +1618,7 @@ class ChecksClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
@@ -1638,7 +1638,7 @@ class ChecksClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
-        ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type,
+        ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse,
     ]:
         """checks/list-suites-for-ref
 
@@ -1670,7 +1670,7 @@ class ChecksClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,

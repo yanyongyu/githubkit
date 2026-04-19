@@ -9,28 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0003 import SimpleUser
 
-class ActionsForkPrWorkflowsPrivateRepos(GitHubModel):
-    """ActionsForkPrWorkflowsPrivateRepos"""
 
-    run_workflows_from_fork_pull_requests: bool = Field(
-        description="Whether workflows triggered by pull requests from forks are allowed to run on private repositories."
+class GistComment(GitHubModel):
+    """Gist Comment
+
+    A comment made to a gist.
+    """
+
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    body: str = Field(max_length=65535, description="The comment text.")
+    user: Union[None, SimpleUser] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
     )
-    send_write_tokens_to_workflows: bool = Field(
-        description="Whether GitHub Actions can create pull requests or submit approving pull request reviews from a workflow triggered by a fork pull request."
-    )
-    send_secrets_and_variables: bool = Field(
-        description="Whether to make secrets and variables available to workflows triggered by pull requests from forks."
-    )
-    require_approval_for_fork_pr_workflows: bool = Field(
-        description="Whether workflows triggered by pull requests from forks require approval from a repository administrator to run."
-    )
 
 
-model_rebuild(ActionsForkPrWorkflowsPrivateRepos)
+model_rebuild(GistComment)
 
-__all__ = ("ActionsForkPrWorkflowsPrivateRepos",)
+__all__ = ("GistComment",)

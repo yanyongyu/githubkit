@@ -12,27 +12,48 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
-from .group_0047 import IssueType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0048 import DiscussionType, DiscussionTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0598 import (
+    WebhookDiscussionTransferredPropChangesType,
+    WebhookDiscussionTransferredPropChangesTypeForResponse,
+)
 
 
-class WebhookIssueDependenciesBlockedByAddedType(TypedDict):
-    """blocked by issue added event"""
+class WebhookDiscussionTransferredType(TypedDict):
+    """discussion transferred event"""
 
-    action: Literal["blocked_by_added"]
-    blocked_issue_id: float
-    blocked_issue: IssueType
-    blocking_issue_id: float
-    blocking_issue: IssueType
-    blocking_issue_repo: RepositoryType
+    action: Literal["transferred"]
+    changes: WebhookDiscussionTransferredPropChangesType
+    discussion: DiscussionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssueDependenciesBlockedByAddedType",)
+class WebhookDiscussionTransferredTypeForResponse(TypedDict):
+    """discussion transferred event"""
+
+    action: Literal["transferred"]
+    changes: WebhookDiscussionTransferredPropChangesTypeForResponse
+    discussion: DiscussionTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookDiscussionTransferredType",
+    "WebhookDiscussionTransferredTypeForResponse",
+)

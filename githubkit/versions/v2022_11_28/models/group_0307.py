@@ -9,31 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CustomDeploymentRuleApp(GitHubModel):
-    """Custom deployment protection rule app
+class CodeScanningAnalysisDeletion(GitHubModel):
+    """Analysis deletion
 
-    A GitHub App that is providing a custom deployment protection rule.
+    Successful deletion of a code scanning analysis
     """
 
-    id: int = Field(
-        description="The unique identifier of the deployment protection rule integration."
+    next_analysis_url: Union[str, None] = Field(
+        description="Next deletable analysis in chain, without last analysis deletion confirmation"
     )
-    slug: str = Field(
-        description="The slugified name of the deployment protection rule integration."
-    )
-    integration_url: str = Field(
-        description="The URL for the endpoint to get details about the app."
-    )
-    node_id: str = Field(
-        description="The node ID for the deployment protection rule integration."
+    confirm_delete_url: Union[str, None] = Field(
+        description="Next deletable analysis in chain, with last analysis deletion confirmation"
     )
 
 
-model_rebuild(CustomDeploymentRuleApp)
+model_rebuild(CodeScanningAnalysisDeletion)
 
-__all__ = ("CustomDeploymentRuleApp",)
+__all__ = ("CodeScanningAnalysisDeletion",)

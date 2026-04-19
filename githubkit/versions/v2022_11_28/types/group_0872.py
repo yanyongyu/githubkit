@@ -12,30 +12,45 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0525 import (
+    SecretScanningAlertWebhookType,
+    SecretScanningAlertWebhookTypeForResponse,
+)
 
-class OrgsOrgActionsHostedRunnersPostBodyType(TypedDict):
-    """OrgsOrgActionsHostedRunnersPostBody"""
 
-    name: str
-    image: OrgsOrgActionsHostedRunnersPostBodyPropImageType
-    size: str
-    runner_group_id: int
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
+class WebhookSecretScanningAlertValidatedType(TypedDict):
+    """secret_scanning_alert validated event"""
+
+    action: Literal["validated"]
+    alert: SecretScanningAlertWebhookType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-class OrgsOrgActionsHostedRunnersPostBodyPropImageType(TypedDict):
-    """OrgsOrgActionsHostedRunnersPostBodyPropImage
+class WebhookSecretScanningAlertValidatedTypeForResponse(TypedDict):
+    """secret_scanning_alert validated event"""
 
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
-    """
-
-    id: NotRequired[str]
-    source: NotRequired[Literal["github", "partner", "custom"]]
+    action: Literal["validated"]
+    alert: SecretScanningAlertWebhookTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersPostBodyPropImageType",
-    "OrgsOrgActionsHostedRunnersPostBodyType",
+    "WebhookSecretScanningAlertValidatedType",
+    "WebhookSecretScanningAlertValidatedTypeForResponse",
 )

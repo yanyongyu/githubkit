@@ -9,46 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
-from .group_0045 import ReactionRollupType
+from typing_extensions import TypedDict
 
 
-class TimelineCommentEventType(TypedDict):
-    """Timeline Comment Event
+class ContentSubmoduleType(TypedDict):
+    """Submodule Content
 
-    Timeline Comment Event
+    An object describing a submodule
     """
 
-    event: Literal["commented"]
-    actor: SimpleUserType
-    id: int
-    node_id: str
+    type: Literal["submodule"]
+    submodule_git_url: str
+    size: int
+    name: str
+    path: str
+    sha: str
     url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: SimpleUserType
-    created_at: datetime
-    updated_at: datetime
-    issue_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    reactions: NotRequired[ReactionRollupType]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSubmodulePropLinksType
 
 
-__all__ = ("TimelineCommentEventType",)
+class ContentSubmoduleTypeForResponse(TypedDict):
+    """Submodule Content
+
+    An object describing a submodule
+    """
+
+    type: Literal["submodule"]
+    submodule_git_url: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSubmodulePropLinksTypeForResponse
+
+
+class ContentSubmodulePropLinksType(TypedDict):
+    """ContentSubmodulePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentSubmodulePropLinksTypeForResponse(TypedDict):
+    """ContentSubmodulePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+__all__ = (
+    "ContentSubmodulePropLinksType",
+    "ContentSubmodulePropLinksTypeForResponse",
+    "ContentSubmoduleType",
+    "ContentSubmoduleTypeForResponse",
+)

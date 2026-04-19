@@ -9,16 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0018 import InstallationType
-
-
-class OrgsOrgInstallationsGetResponse200Type(TypedDict):
-    """OrgsOrgInstallationsGetResponse200"""
-
-    total_count: int
-    installations: list[InstallationType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-__all__ = ("OrgsOrgInstallationsGetResponse200Type",)
+class AgentsTasksGetResponse422Type(TypedDict):
+    """AgentsTasksGetResponse422
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[list[AgentsTasksGetResponse422PropErrorsItemsType]]
+    documentation_url: str
+
+
+class AgentsTasksGetResponse422TypeForResponse(TypedDict):
+    """AgentsTasksGetResponse422
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[list[AgentsTasksGetResponse422PropErrorsItemsTypeForResponse]]
+    documentation_url: str
+
+
+class AgentsTasksGetResponse422PropErrorsItemsType(TypedDict):
+    """AgentsTasksGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsTasksGetResponse422PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsTasksGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+__all__ = (
+    "AgentsTasksGetResponse422PropErrorsItemsType",
+    "AgentsTasksGetResponse422PropErrorsItemsTypeForResponse",
+    "AgentsTasksGetResponse422Type",
+    "AgentsTasksGetResponse422TypeForResponse",
+)

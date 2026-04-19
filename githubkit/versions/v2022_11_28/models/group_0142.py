@@ -9,28 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0135 import RepositoryRulesetConditionsPropRefName
-from .group_0137 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
-)
 
+class OrgHook(GitHubModel):
+    """Org Hook
 
-class OrgRulesetConditionsOneof0(GitHubModel):
-    """repository_name_and_ref_name
-
-    Conditions to target repositories by name and refs by name
+    Org Hook
     """
 
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+    id: int = Field()
+    url: str = Field()
+    ping_url: str = Field()
+    deliveries_url: Missing[str] = Field(default=UNSET)
+    name: str = Field()
+    events: list[str] = Field()
+    active: bool = Field()
+    config: OrgHookPropConfig = Field()
+    updated_at: _dt.datetime = Field()
+    created_at: _dt.datetime = Field()
+    type: str = Field()
 
 
-model_rebuild(OrgRulesetConditionsOneof0)
+class OrgHookPropConfig(GitHubModel):
+    """OrgHookPropConfig"""
 
-__all__ = ("OrgRulesetConditionsOneof0",)
+    url: Missing[str] = Field(default=UNSET)
+    insecure_ssl: Missing[str] = Field(default=UNSET)
+    content_type: Missing[str] = Field(default=UNSET)
+    secret: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgHook)
+model_rebuild(OrgHookPropConfig)
+
+__all__ = (
+    "OrgHook",
+    "OrgHookPropConfig",
+)

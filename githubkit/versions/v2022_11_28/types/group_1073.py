@@ -9,16 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoCommitsCommitShaCommentsPostBodyType(TypedDict):
-    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
+class OrgsOrgCopilotBillingSelectedUsersPostBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
 
-    body: str
-    path: NotRequired[str]
-    position: NotRequired[int]
-    line: NotRequired[int]
+    selected_usernames: list[str]
 
 
-__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBodyType",)
+class OrgsOrgCopilotBillingSelectedUsersPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
+
+    selected_usernames: list[str]
+
+
+__all__ = (
+    "OrgsOrgCopilotBillingSelectedUsersPostBodyType",
+    "OrgsOrgCopilotBillingSelectedUsersPostBodyTypeForResponse",
+)

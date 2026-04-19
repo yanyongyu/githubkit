@@ -9,44 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0092 import TeamType
 
+class ActionsCacheStorageLimitForOrganizationType(TypedDict):
+    """Actions cache storage limit for an organization
 
-class CampaignSummaryType(TypedDict):
-    """Campaign summary
-
-    The campaign metadata and alert stats.
+    GitHub Actions cache storage policy for an organization.
     """
 
-    number: int
-    created_at: datetime
-    updated_at: datetime
-    name: NotRequired[str]
-    description: str
-    managers: list[SimpleUserType]
-    team_managers: NotRequired[list[TeamType]]
-    published_at: NotRequired[datetime]
-    ends_at: datetime
-    closed_at: NotRequired[Union[datetime, None]]
-    state: Literal["open", "closed"]
-    contact_link: Union[str, None]
-    alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]
+    max_cache_size_gb: NotRequired[int]
 
 
-class CampaignSummaryPropAlertStatsType(TypedDict):
-    """CampaignSummaryPropAlertStats"""
+class ActionsCacheStorageLimitForOrganizationTypeForResponse(TypedDict):
+    """Actions cache storage limit for an organization
 
-    open_count: int
-    closed_count: int
-    in_progress_count: int
+    GitHub Actions cache storage policy for an organization.
+    """
+
+    max_cache_size_gb: NotRequired[int]
 
 
 __all__ = (
-    "CampaignSummaryPropAlertStatsType",
-    "CampaignSummaryType",
+    "ActionsCacheStorageLimitForOrganizationType",
+    "ActionsCacheStorageLimitForOrganizationTypeForResponse",
 )

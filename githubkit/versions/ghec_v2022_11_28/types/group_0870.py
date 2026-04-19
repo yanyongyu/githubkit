@@ -12,24 +12,42 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
-from .group_0544 import WebhooksSponsorshipType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0597 import WebhooksProjectType, WebhooksProjectTypeForResponse
 
 
-class WebhookSponsorshipCancelledType(TypedDict):
-    """sponsorship cancelled event"""
+class WebhookProjectReopenedType(TypedDict):
+    """project reopened event"""
 
-    action: Literal["cancelled"]
+    action: Literal["reopened"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    project: WebhooksProjectType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("WebhookSponsorshipCancelledType",)
+class WebhookProjectReopenedTypeForResponse(TypedDict):
+    """project reopened event"""
+
+    action: Literal["reopened"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project: WebhooksProjectTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookProjectReopenedType",
+    "WebhookProjectReopenedTypeForResponse",
+)

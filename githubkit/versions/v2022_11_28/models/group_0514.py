@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -17,41 +18,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0292 import DependabotAlert
-from .group_0433 import EnterpriseWebhooks
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
+
+class WebhooksProjectColumn(GitHubModel):
+    """Project Column"""
+
+    after_id: Missing[Union[int, None]] = Field(default=UNSET)
+    cards_url: str = Field()
+    created_at: _dt.datetime = Field()
+    id: int = Field(description="The unique identifier of the project column")
+    name: str = Field(description="Name of the project column")
+    node_id: str = Field()
+    project_url: str = Field()
+    updated_at: _dt.datetime = Field()
+    url: str = Field()
 
 
-class WebhookDependabotAlertAutoDismissed(GitHubModel):
-    """Dependabot alert auto-dismissed event"""
+model_rebuild(WebhooksProjectColumn)
 
-    action: Literal["auto_dismissed"] = Field()
-    alert: DependabotAlert = Field(description="A Dependabot alert.")
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-
-
-model_rebuild(WebhookDependabotAlertAutoDismissed)
-
-__all__ = ("WebhookDependabotAlertAutoDismissed",)
+__all__ = ("WebhooksProjectColumn",)

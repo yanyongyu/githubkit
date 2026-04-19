@@ -11,38 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBody(GitHubModel):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
 
-    auto_trigger_checks: Missing[
-        list[ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems]
-    ] = Field(
+    selected_repository_ids: Missing[list[int]] = Field(
+        max_length=250 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default.",
+        description="An array of repository IDs to detach from configurations. Up to 250 IDs can be provided.",
     )
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems(
-    GitHubModel
-):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
+model_rebuild(OrgsOrgCodeSecurityConfigurationsDetachDeleteBody)
 
-    app_id: int = Field(description="The `id` of the GitHub App.")
-    setting: bool = Field(
-        default=True,
-        description="Set to `true` to enable automatic creation of CheckSuite events upon pushes to the repository, or `false` to disable them.",
-    )
-
-
-model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBody)
-model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems)
-
-__all__ = (
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBody",
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems",
-)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",)

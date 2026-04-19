@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,17 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0494 import EnterpriseWebhooks
-from .group_0495 import SimpleInstallation
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0497 import RepositoryWebhooks
-from .group_0699 import WebhookIssuesReopenedPropIssue
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
 
 
-class WebhookIssuesReopened(GitHubModel):
-    """issues reopened event"""
+class WebhookGollum(GitHubModel):
+    """gollum event"""
 
-    action: Literal["reopened"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,14 +37,13 @@ class WebhookIssuesReopened(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssuesReopenedPropIssue = Field(
-        title="Issue",
-        description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.",
-    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    pages: list[WebhookGollumPropPagesItems] = Field(
+        description="The pages that were updated."
     )
     repository: RepositoryWebhooks = Field(
         title="Repository",
@@ -55,6 +52,23 @@ class WebhookIssuesReopened(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesReopened)
+class WebhookGollumPropPagesItems(GitHubModel):
+    """WebhookGollumPropPagesItems"""
 
-__all__ = ("WebhookIssuesReopened",)
+    action: Literal["created", "edited"] = Field(
+        description="The action that was performed on the page. Can be `created` or `edited`."
+    )
+    html_url: str = Field(description="Points to the HTML wiki page.")
+    page_name: str = Field(description="The name of the page.")
+    sha: str = Field(description="The latest commit SHA of the page.")
+    summary: Union[str, None] = Field()
+    title: str = Field(description="The current page title.")
+
+
+model_rebuild(WebhookGollum)
+model_rebuild(WebhookGollumPropPagesItems)
+
+__all__ = (
+    "WebhookGollum",
+    "WebhookGollumPropPagesItems",
+)

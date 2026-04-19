@@ -12,24 +12,42 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
-from .group_0541 import WebhooksAlertType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0595 import (
+    PersonalAccessTokenRequestType,
+    PersonalAccessTokenRequestTypeForResponse,
+)
 
 
-class WebhookRepositoryVulnerabilityAlertCreateType(TypedDict):
-    """repository_vulnerability_alert create event"""
+class WebhookPersonalAccessTokenRequestDeniedType(TypedDict):
+    """personal_access_token_request denied event"""
 
-    action: Literal["create"]
-    alert: WebhooksAlertType
+    action: Literal["denied"]
+    personal_access_token_request: PersonalAccessTokenRequestType
+    organization: OrganizationSimpleWebhooksType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
     sender: SimpleUserType
+    installation: SimpleInstallationType
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertCreateType",)
+class WebhookPersonalAccessTokenRequestDeniedTypeForResponse(TypedDict):
+    """personal_access_token_request denied event"""
+
+    action: Literal["denied"]
+    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    installation: SimpleInstallationTypeForResponse
+
+
+__all__ = (
+    "WebhookPersonalAccessTokenRequestDeniedType",
+    "WebhookPersonalAccessTokenRequestDeniedTypeForResponse",
+)

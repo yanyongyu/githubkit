@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,39 +17,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0011 import WebhookConfig
-from .group_0315 import HookResponse
 
+class CodeScanningDefaultSetupUpdate(GitHubModel):
+    """CodeScanningDefaultSetupUpdate
 
-class Hook(GitHubModel):
-    """Webhook
-
-    Webhooks for repositories.
+    Configuration for code scanning default setup.
     """
 
-    type: str = Field()
-    id: int = Field(description="Unique identifier of the webhook.")
-    name: str = Field(
-        description="The name of a valid service, use 'web' for a webhook."
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET, description="The desired state of code scanning default setup."
     )
-    active: bool = Field(
-        description="Determines whether the hook is actually triggered on pushes."
+    runner_type: Missing[Literal["standard", "labeled"]] = Field(
+        default=UNSET, description="Runner type to be used."
     )
-    events: list[str] = Field(
-        description="Determines what events the hook is triggered for. Default: ['push']."
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Runner label to be used if the runner type is labeled.",
     )
-    config: WebhookConfig = Field(
-        title="Webhook Configuration", description="Configuration object of the webhook"
+    query_suite: Missing[Literal["default", "extended"]] = Field(
+        default=UNSET, description="CodeQL query suite to be used."
     )
-    updated_at: datetime = Field()
-    created_at: datetime = Field()
-    url: str = Field()
-    test_url: str = Field()
-    ping_url: str = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    last_response: HookResponse = Field(title="Hook Response")
+    threat_model: Missing[Literal["remote", "remote_and_local"]] = Field(
+        default=UNSET,
+        description="Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
+    )
+    languages: Missing[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ] = Field(default=UNSET, description="CodeQL languages to be analyzed.")
 
 
-model_rebuild(Hook)
+model_rebuild(CodeScanningDefaultSetupUpdate)
 
-__all__ = ("Hook",)
+__all__ = ("CodeScanningDefaultSetupUpdate",)

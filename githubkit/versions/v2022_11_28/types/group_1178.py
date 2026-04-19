@@ -9,15 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
-    placeholder_id: str
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str]
 
 
-__all__ = ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",)
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
+
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str]
+
+
+__all__ = (
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyTypeForResponse",
+)

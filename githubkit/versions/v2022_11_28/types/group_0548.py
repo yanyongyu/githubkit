@@ -9,28 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0549 import WebhookForkPropForkeeType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0549 import (
+    WebhookCodeScanningAlertClosedByUserPropAlertType,
+    WebhookCodeScanningAlertClosedByUserPropAlertTypeForResponse,
+)
 
 
-class WebhookForkType(TypedDict):
-    """fork event
+class WebhookCodeScanningAlertClosedByUserType(TypedDict):
+    """code_scanning_alert closed_by_user event"""
 
-    A user forks a repository.
-    """
-
+    action: Literal["closed_by_user"]
+    alert: WebhookCodeScanningAlertClosedByUserPropAlertType
+    commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
-    forkee: WebhookForkPropForkeeType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    ref: str
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookForkType",)
+class WebhookCodeScanningAlertClosedByUserTypeForResponse(TypedDict):
+    """code_scanning_alert closed_by_user event"""
+
+    action: Literal["closed_by_user"]
+    alert: WebhookCodeScanningAlertClosedByUserPropAlertTypeForResponse
+    commit_oid: str
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    ref: str
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookCodeScanningAlertClosedByUserType",
+    "WebhookCodeScanningAlertClosedByUserTypeForResponse",
+)

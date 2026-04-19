@@ -9,18 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class CodeScanningAnalysisDeletionType(TypedDict):
-    """Analysis deletion
+class RateLimitType(TypedDict):
+    """Rate Limit"""
 
-    Successful deletion of a code scanning analysis
-    """
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
-    next_analysis_url: Union[str, None]
-    confirm_delete_url: Union[str, None]
+
+class RateLimitTypeForResponse(TypedDict):
+    """Rate Limit"""
+
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
-__all__ = ("CodeScanningAnalysisDeletionType",)
+__all__ = (
+    "RateLimitType",
+    "RateLimitTypeForResponse",
+)

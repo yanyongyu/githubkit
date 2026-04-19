@@ -17,10 +17,10 @@ from pydantic import BaseModel, Field
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
     from typing import Literal, Union
 
     from githubkit import GitHubCore
@@ -36,6 +36,7 @@ if TYPE_CHECKING:
         Issue,
         IssueComment,
         IssueEvent,
+        IssueFieldValue,
         Label,
         LabeledIssueEvent,
         LockedIssueEvent,
@@ -61,35 +62,39 @@ if TYPE_CHECKING:
         UnlabeledIssueEvent,
     )
     from ..types import (
-        AddedToProjectIssueEventType,
-        AssignedIssueEventType,
-        ConvertedNoteToIssueIssueEventType,
-        DemilestonedIssueEventType,
-        IssueCommentType,
-        IssueEventType,
-        IssueType,
-        LabeledIssueEventType,
-        LabelType,
-        LockedIssueEventType,
-        MilestonedIssueEventType,
-        MilestoneType,
-        MovedColumnInProjectIssueEventType,
-        RemovedFromProjectIssueEventType,
-        RenamedIssueEventType,
+        AddedToProjectIssueEventTypeForResponse,
+        AssignedIssueEventTypeForResponse,
+        ConvertedNoteToIssueIssueEventTypeForResponse,
+        DemilestonedIssueEventTypeForResponse,
+        IssueCommentTypeForResponse,
+        IssueEventTypeForResponse,
+        IssueFieldValueTypeForResponse,
+        IssueTypeForResponse,
+        LabeledIssueEventTypeForResponse,
+        LabelTypeForResponse,
+        LockedIssueEventTypeForResponse,
+        MilestonedIssueEventTypeForResponse,
+        MilestoneTypeForResponse,
+        MovedColumnInProjectIssueEventTypeForResponse,
+        RemovedFromProjectIssueEventTypeForResponse,
+        RenamedIssueEventTypeForResponse,
+        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType,
+        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType,
+        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType,
+        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType,
         ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
         ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType,
         ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType,
         ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
         ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType,
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType,
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType,
+        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType,
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType,
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType,
         ReposOwnerRepoIssuesIssueNumberLockPutBodyType,
+        ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType,
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type,
         ReposOwnerRepoIssuesIssueNumberPatchBodyType,
         ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
@@ -101,21 +106,21 @@ if TYPE_CHECKING:
         ReposOwnerRepoLabelsPostBodyType,
         ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType,
         ReposOwnerRepoMilestonesPostBodyType,
-        ReviewDismissedIssueEventType,
-        ReviewRequestedIssueEventType,
-        ReviewRequestRemovedIssueEventType,
-        SimpleUserType,
-        StateChangeIssueEventType,
-        TimelineAssignedIssueEventType,
-        TimelineCommentEventType,
-        TimelineCommitCommentedEventType,
-        TimelineCommittedEventType,
-        TimelineCrossReferencedEventType,
-        TimelineLineCommentedEventType,
-        TimelineReviewedEventType,
-        TimelineUnassignedIssueEventType,
-        UnassignedIssueEventType,
-        UnlabeledIssueEventType,
+        ReviewDismissedIssueEventTypeForResponse,
+        ReviewRequestedIssueEventTypeForResponse,
+        ReviewRequestRemovedIssueEventTypeForResponse,
+        SimpleUserTypeForResponse,
+        StateChangeIssueEventTypeForResponse,
+        TimelineAssignedIssueEventTypeForResponse,
+        TimelineCommentEventTypeForResponse,
+        TimelineCommitCommentedEventTypeForResponse,
+        TimelineCommittedEventTypeForResponse,
+        TimelineCrossReferencedEventTypeForResponse,
+        TimelineLineCommentedEventTypeForResponse,
+        TimelineReviewedEventTypeForResponse,
+        TimelineUnassignedIssueEventTypeForResponse,
+        UnassignedIssueEventTypeForResponse,
+        UnlabeledIssueEventTypeForResponse,
     )
 
 
@@ -144,7 +149,7 @@ class IssuesClient:
         labels: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         collab: Missing[bool] = UNSET,
         orgs: Missing[bool] = UNSET,
         owned: Missing[bool] = UNSET,
@@ -153,7 +158,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list
 
         GET /issues
@@ -199,7 +204,7 @@ class IssuesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Issue],
@@ -219,7 +224,7 @@ class IssuesClient:
         labels: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         collab: Missing[bool] = UNSET,
         orgs: Missing[bool] = UNSET,
         owned: Missing[bool] = UNSET,
@@ -228,7 +233,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list
 
         GET /issues
@@ -274,7 +279,7 @@ class IssuesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Issue],
@@ -296,12 +301,12 @@ class IssuesClient:
         type: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-org
 
         GET /orgs/{org}/issues
@@ -342,7 +347,7 @@ class IssuesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Issue],
@@ -363,12 +368,12 @@ class IssuesClient:
         type: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-org
 
         GET /orgs/{org}/issues
@@ -409,7 +414,7 @@ class IssuesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Issue],
@@ -427,7 +432,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """issues/list-assignees
 
         GET /repos/{owner}/{repo}/assignees
@@ -451,7 +456,7 @@ class IssuesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -469,7 +474,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """issues/list-assignees
 
         GET /repos/{owner}/{repo}/assignees
@@ -493,7 +498,7 @@ class IssuesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -592,12 +597,12 @@ class IssuesClient:
         labels: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-repo
 
         GET /repos/{owner}/{repo}/issues
@@ -641,7 +646,7 @@ class IssuesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Issue],
@@ -665,12 +670,12 @@ class IssuesClient:
         labels: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-repo
 
         GET /repos/{owner}/{repo}/issues
@@ -714,7 +719,7 @@ class IssuesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Issue],
@@ -733,7 +738,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesPostBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     def create(
@@ -753,7 +758,7 @@ class IssuesClient:
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
         type: Missing[Union[str, None]] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def create(
         self,
@@ -764,7 +769,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/create
 
         POST /repos/{owner}/{repo}/issues
@@ -831,7 +836,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesPostBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     async def async_create(
@@ -851,7 +856,7 @@ class IssuesClient:
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
         type: Missing[Union[str, None]] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_create(
         self,
@@ -862,7 +867,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/create
 
         POST /repos/{owner}/{repo}/issues
@@ -927,12 +932,12 @@ class IssuesClient:
         *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[IssueComment], list[IssueCommentType]]:
+    ) -> Response[list[IssueComment], list[IssueCommentTypeForResponse]]:
         """issues/list-comments-for-repo
 
         GET /repos/{owner}/{repo}/issues/comments
@@ -968,7 +973,7 @@ class IssuesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[IssueComment],
@@ -985,12 +990,12 @@ class IssuesClient:
         *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[IssueComment], list[IssueCommentType]]:
+    ) -> Response[list[IssueComment], list[IssueCommentTypeForResponse]]:
         """issues/list-comments-for-repo
 
         GET /repos/{owner}/{repo}/issues/comments
@@ -1026,7 +1031,7 @@ class IssuesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[IssueComment],
@@ -1044,7 +1049,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[IssueComment, IssueCommentType]:
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]:
         """issues/get-comment
 
         GET /repos/{owner}/{repo}/issues/comments/{comment_id}
@@ -1086,7 +1091,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[IssueComment, IssueCommentType]:
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]:
         """issues/get-comment
 
         GET /repos/{owner}/{repo}/issues/comments/{comment_id}
@@ -1188,7 +1193,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
-    ) -> Response[IssueComment, IssueCommentType]: ...
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
 
     @overload
     def update_comment(
@@ -1201,7 +1206,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[IssueComment, IssueCommentType]: ...
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
 
     def update_comment(
         self,
@@ -1213,7 +1218,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[IssueComment, IssueCommentType]:
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]:
         """issues/update-comment
 
         PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
@@ -1273,7 +1278,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
-    ) -> Response[IssueComment, IssueCommentType]: ...
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
 
     @overload
     async def async_update_comment(
@@ -1286,7 +1291,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[IssueComment, IssueCommentType]: ...
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
 
     async def async_update_comment(
         self,
@@ -1298,7 +1303,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[IssueComment, IssueCommentType]:
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]:
         """issues/update-comment
 
         PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
@@ -1348,6 +1353,180 @@ class IssuesClient:
             },
         )
 
+    def pin_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]:
+        """issues/pin-comment
+
+        PUT /repos/{owner}/{repo}/issues/comments/{comment_id}/pin
+
+        You can use the REST API to pin comments on issues.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#pin-an-issue-comment
+        """
+
+        from ..models import BasicError, IssueComment, ValidationError
+
+        url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/pin"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=IssueComment,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_pin_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]:
+        """issues/pin-comment
+
+        PUT /repos/{owner}/{repo}/issues/comments/{comment_id}/pin
+
+        You can use the REST API to pin comments on issues.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#pin-an-issue-comment
+        """
+
+        from ..models import BasicError, IssueComment, ValidationError
+
+        url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/pin"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=IssueComment,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def unpin_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """issues/unpin-comment
+
+        DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/pin
+
+        You can use the REST API to unpin comments on issues.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#unpin-an-issue-comment
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/pin"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_unpin_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """issues/unpin-comment
+
+        DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/pin
+
+        You can use the REST API to unpin comments on issues.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#unpin-an-issue-comment
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/pin"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
     def list_events_for_repo(
         self,
         owner: str,
@@ -1357,7 +1536,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[IssueEvent], list[IssueEventType]]:
+    ) -> Response[list[IssueEvent], list[IssueEventTypeForResponse]]:
         """issues/list-events-for-repo
 
         GET /repos/{owner}/{repo}/issues/events
@@ -1381,7 +1560,7 @@ class IssuesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[IssueEvent],
@@ -1399,7 +1578,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[IssueEvent], list[IssueEventType]]:
+    ) -> Response[list[IssueEvent], list[IssueEventTypeForResponse]]:
         """issues/list-events-for-repo
 
         GET /repos/{owner}/{repo}/issues/events
@@ -1423,7 +1602,7 @@ class IssuesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[IssueEvent],
@@ -1440,7 +1619,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[IssueEvent, IssueEventType]:
+    ) -> Response[IssueEvent, IssueEventTypeForResponse]:
         """issues/get-event
 
         GET /repos/{owner}/{repo}/issues/events/{event_id}
@@ -1477,7 +1656,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[IssueEvent, IssueEventType]:
+    ) -> Response[IssueEvent, IssueEventTypeForResponse]:
         """issues/get-event
 
         GET /repos/{owner}/{repo}/issues/events/{event_id}
@@ -1514,7 +1693,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/get
 
         GET /repos/{owner}/{repo}/issues/{issue_number}
@@ -1565,7 +1744,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/get
 
         GET /repos/{owner}/{repo}/issues/{issue_number}
@@ -1618,7 +1797,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     def update(
@@ -1647,8 +1826,11 @@ class IssuesClient:
             ]
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
+        issue_field_values: Missing[
+            list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType]
+        ] = UNSET,
         type: Missing[Union[str, None]] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def update(
         self,
@@ -1660,7 +1842,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/update
 
         PATCH /repos/{owner}/{repo}/issues/{issue_number}
@@ -1724,7 +1906,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     async def async_update(
@@ -1753,8 +1935,11 @@ class IssuesClient:
             ]
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
+        issue_field_values: Missing[
+            list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType]
+        ] = UNSET,
         type: Missing[Union[str, None]] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_update(
         self,
@@ -1766,7 +1951,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/update
 
         PATCH /repos/{owner}/{repo}/issues/{issue_number}
@@ -1830,7 +2015,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     def add_assignees(
@@ -1843,7 +2028,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         assignees: Missing[list[str]] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def add_assignees(
         self,
@@ -1855,7 +2040,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/add-assignees
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
@@ -1901,7 +2086,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     async def async_add_assignees(
@@ -1914,7 +2099,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         assignees: Missing[list[str]] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_add_assignees(
         self,
@@ -1926,7 +2111,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/add-assignees
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
@@ -1972,7 +2157,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     def remove_assignees(
@@ -1985,7 +2170,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         assignees: Missing[list[str]] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def remove_assignees(
         self,
@@ -1997,7 +2182,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/remove-assignees
 
         DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
@@ -2043,7 +2228,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     async def async_remove_assignees(
@@ -2056,7 +2241,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         assignees: Missing[list[str]] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_remove_assignees(
         self,
@@ -2068,7 +2253,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/remove-assignees
 
         DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
@@ -2188,12 +2373,12 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[IssueComment], list[IssueCommentType]]:
+    ) -> Response[list[IssueComment], list[IssueCommentTypeForResponse]]:
         """issues/list-comments
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/comments
@@ -2227,7 +2412,7 @@ class IssuesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[IssueComment],
@@ -2243,12 +2428,12 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[IssueComment], list[IssueCommentType]]:
+    ) -> Response[list[IssueComment], list[IssueCommentTypeForResponse]]:
         """issues/list-comments
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/comments
@@ -2282,7 +2467,7 @@ class IssuesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[IssueComment],
@@ -2302,7 +2487,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
-    ) -> Response[IssueComment, IssueCommentType]: ...
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
 
     @overload
     def create_comment(
@@ -2315,7 +2500,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[IssueComment, IssueCommentType]: ...
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
 
     def create_comment(
         self,
@@ -2327,7 +2512,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[IssueComment, IssueCommentType]:
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]:
         """issues/create-comment
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/comments
@@ -2396,7 +2581,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
-    ) -> Response[IssueComment, IssueCommentType]: ...
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
 
     @overload
     async def async_create_comment(
@@ -2409,7 +2594,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[IssueComment, IssueCommentType]: ...
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
 
     async def async_create_comment(
         self,
@@ -2421,7 +2606,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[IssueComment, IssueCommentType]:
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]:
         """issues/create-comment
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/comments
@@ -2490,7 +2675,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-dependencies-blocked-by
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by
@@ -2521,7 +2706,7 @@ class IssuesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Issue],
@@ -2541,7 +2726,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-dependencies-blocked-by
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by
@@ -2572,7 +2757,7 @@ class IssuesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Issue],
@@ -2592,7 +2777,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     def add_blocked_by_dependency(
@@ -2605,7 +2790,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         issue_id: int,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def add_blocked_by_dependency(
         self,
@@ -2619,7 +2804,7 @@ class IssuesClient:
             ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/add-blocked-by-dependency
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by
@@ -2687,7 +2872,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     async def async_add_blocked_by_dependency(
@@ -2700,7 +2885,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         issue_id: int,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_add_blocked_by_dependency(
         self,
@@ -2714,7 +2899,7 @@ class IssuesClient:
             ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/add-blocked-by-dependency
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by
@@ -2781,7 +2966,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/remove-dependency-blocked-by
 
         DELETE /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by/{issue_id}
@@ -2831,7 +3016,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/remove-dependency-blocked-by
 
         DELETE /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by/{issue_id}
@@ -2882,7 +3067,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-dependencies-blocking
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocking
@@ -2913,7 +3098,7 @@ class IssuesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Issue],
@@ -2933,7 +3118,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-dependencies-blocking
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocking
@@ -2964,7 +3149,7 @@ class IssuesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Issue],
@@ -3006,21 +3191,21 @@ class IssuesClient:
         ],
         list[
             Union[
-                LabeledIssueEventType,
-                UnlabeledIssueEventType,
-                AssignedIssueEventType,
-                UnassignedIssueEventType,
-                MilestonedIssueEventType,
-                DemilestonedIssueEventType,
-                RenamedIssueEventType,
-                ReviewRequestedIssueEventType,
-                ReviewRequestRemovedIssueEventType,
-                ReviewDismissedIssueEventType,
-                LockedIssueEventType,
-                AddedToProjectIssueEventType,
-                MovedColumnInProjectIssueEventType,
-                RemovedFromProjectIssueEventType,
-                ConvertedNoteToIssueIssueEventType,
+                LabeledIssueEventTypeForResponse,
+                UnlabeledIssueEventTypeForResponse,
+                AssignedIssueEventTypeForResponse,
+                UnassignedIssueEventTypeForResponse,
+                MilestonedIssueEventTypeForResponse,
+                DemilestonedIssueEventTypeForResponse,
+                RenamedIssueEventTypeForResponse,
+                ReviewRequestedIssueEventTypeForResponse,
+                ReviewRequestRemovedIssueEventTypeForResponse,
+                ReviewDismissedIssueEventTypeForResponse,
+                LockedIssueEventTypeForResponse,
+                AddedToProjectIssueEventTypeForResponse,
+                MovedColumnInProjectIssueEventTypeForResponse,
+                RemovedFromProjectIssueEventTypeForResponse,
+                ConvertedNoteToIssueIssueEventTypeForResponse,
             ]
         ],
     ]:
@@ -3066,7 +3251,7 @@ class IssuesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[
@@ -3125,21 +3310,21 @@ class IssuesClient:
         ],
         list[
             Union[
-                LabeledIssueEventType,
-                UnlabeledIssueEventType,
-                AssignedIssueEventType,
-                UnassignedIssueEventType,
-                MilestonedIssueEventType,
-                DemilestonedIssueEventType,
-                RenamedIssueEventType,
-                ReviewRequestedIssueEventType,
-                ReviewRequestRemovedIssueEventType,
-                ReviewDismissedIssueEventType,
-                LockedIssueEventType,
-                AddedToProjectIssueEventType,
-                MovedColumnInProjectIssueEventType,
-                RemovedFromProjectIssueEventType,
-                ConvertedNoteToIssueIssueEventType,
+                LabeledIssueEventTypeForResponse,
+                UnlabeledIssueEventTypeForResponse,
+                AssignedIssueEventTypeForResponse,
+                UnassignedIssueEventTypeForResponse,
+                MilestonedIssueEventTypeForResponse,
+                DemilestonedIssueEventTypeForResponse,
+                RenamedIssueEventTypeForResponse,
+                ReviewRequestedIssueEventTypeForResponse,
+                ReviewRequestRemovedIssueEventTypeForResponse,
+                ReviewDismissedIssueEventTypeForResponse,
+                LockedIssueEventTypeForResponse,
+                AddedToProjectIssueEventTypeForResponse,
+                MovedColumnInProjectIssueEventTypeForResponse,
+                RemovedFromProjectIssueEventTypeForResponse,
+                ConvertedNoteToIssueIssueEventTypeForResponse,
             ]
         ],
     ]:
@@ -3185,7 +3370,7 @@ class IssuesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[
@@ -3212,6 +3397,94 @@ class IssuesClient:
             },
         )
 
+    def list_issue_field_values_for_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
+        """issues/list-issue-field-values-for-issue
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values
+
+        Lists all issue field values for an issue.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-field-values#list-issue-field-values-for-an-issue
+        """
+
+        from ..models import BasicError, IssueFieldValue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueFieldValue],
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
+    async def async_list_issue_field_values_for_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
+        """issues/list-issue-field-values-for-issue
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values
+
+        Lists all issue field values for an issue.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-field-values#list-issue-field-values-for-an-issue
+        """
+
+        from ..models import BasicError, IssueFieldValue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueFieldValue],
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
     def list_labels_on_issue(
         self,
         owner: str,
@@ -3222,7 +3495,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-on-issue
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/labels
@@ -3246,7 +3519,7 @@ class IssuesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Label],
@@ -3266,7 +3539,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-on-issue
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/labels
@@ -3290,7 +3563,7 @@ class IssuesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Label],
@@ -3318,7 +3591,7 @@ class IssuesClient:
                 str,
             ]
         ] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     @overload
     def set_labels(
@@ -3331,7 +3604,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         labels: Missing[list[str]] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     @overload
     def set_labels(
@@ -3346,7 +3619,7 @@ class IssuesClient:
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     def set_labels(
         self,
@@ -3366,7 +3639,7 @@ class IssuesClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/set-labels
 
         PUT /repos/{owner}/{repo}/issues/{issue_number}/labels
@@ -3446,7 +3719,7 @@ class IssuesClient:
                 str,
             ]
         ] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     @overload
     async def async_set_labels(
@@ -3459,7 +3732,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         labels: Missing[list[str]] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     @overload
     async def async_set_labels(
@@ -3474,7 +3747,7 @@ class IssuesClient:
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     async def async_set_labels(
         self,
@@ -3494,7 +3767,7 @@ class IssuesClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/set-labels
 
         PUT /repos/{owner}/{repo}/issues/{issue_number}/labels
@@ -3569,12 +3842,10 @@ class IssuesClient:
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
                 list[str],
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
-                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
-                str,
+                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType],
             ]
         ] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     @overload
     def add_labels(
@@ -3587,22 +3858,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         labels: Missing[list[str]] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
-
-    @overload
-    def add_labels(
-        self,
-        owner: str,
-        repo: str,
-        issue_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        labels: Missing[
-            list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
-        ] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     def add_labels(
         self,
@@ -3616,32 +3872,27 @@ class IssuesClient:
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
                 list[str],
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
-                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
-                str,
+                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType],
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/add-labels
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/labels
 
-        Adds labels to an issue. If you provide an empty array of labels, all labels are removed from the issue.
+        Adds labels to an issue.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#add-labels-to-an-issue
         """
 
         from typing import Union
 
-        from githubkit.compat import PYDANTIC_V2
-
         from ..models import (
             BasicError,
             Label,
             ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
-            ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
-            ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items,
+            ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items,
             ValidationError,
         )
 
@@ -3658,13 +3909,8 @@ class IssuesClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
-                    Annotated[list[str], Field(min_length=1 if PYDANTIC_V2 else None)],
-                    ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
-                    Annotated[
-                        list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items],
-                        Field(min_length=1 if PYDANTIC_V2 else None),
-                    ],
-                    str,
+                    list[str],
+                    list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items],
                 ],
                 json,
             )
@@ -3697,12 +3943,10 @@ class IssuesClient:
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
                 list[str],
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
-                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
-                str,
+                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType],
             ]
         ] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     @overload
     async def async_add_labels(
@@ -3715,22 +3959,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         labels: Missing[list[str]] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
-
-    @overload
-    async def async_add_labels(
-        self,
-        owner: str,
-        repo: str,
-        issue_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        labels: Missing[
-            list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
-        ] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     async def async_add_labels(
         self,
@@ -3744,32 +3973,27 @@ class IssuesClient:
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
                 list[str],
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
-                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
-                str,
+                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType],
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/add-labels
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/labels
 
-        Adds labels to an issue. If you provide an empty array of labels, all labels are removed from the issue.
+        Adds labels to an issue.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#add-labels-to-an-issue
         """
 
         from typing import Union
 
-        from githubkit.compat import PYDANTIC_V2
-
         from ..models import (
             BasicError,
             Label,
             ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
-            ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
-            ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items,
+            ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items,
             ValidationError,
         )
 
@@ -3786,13 +4010,8 @@ class IssuesClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
-                    Annotated[list[str], Field(min_length=1 if PYDANTIC_V2 else None)],
-                    ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
-                    Annotated[
-                        list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items],
-                        Field(min_length=1 if PYDANTIC_V2 else None),
-                    ],
-                    str,
+                    list[str],
+                    list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items],
                 ],
                 json,
             )
@@ -3891,7 +4110,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/remove-label
 
         DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
@@ -3928,7 +4147,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/remove-label
 
         DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
@@ -4206,6 +4425,92 @@ class IssuesClient:
             },
         )
 
+    def get_parent(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[Issue, IssueTypeForResponse]:
+        """issues/get-parent
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/parent
+
+        You can use the REST API to get the parent issue of a sub-issue.
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#get-parent-issue
+        """
+
+        from ..models import BasicError, Issue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/parent"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Issue,
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
+    async def async_get_parent(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[Issue, IssueTypeForResponse]:
+        """issues/get-parent
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/parent
+
+        You can use the REST API to get the parent issue of a sub-issue.
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#get-parent-issue
+        """
+
+        from ..models import BasicError, Issue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/parent"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Issue,
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
     @overload
     def remove_sub_issue(
         self,
@@ -4216,7 +4521,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     def remove_sub_issue(
@@ -4229,7 +4534,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         sub_issue_id: int,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def remove_sub_issue(
         self,
@@ -4241,7 +4546,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/remove-sub-issue
 
         DELETE /repos/{owner}/{repo}/issues/{issue_number}/sub_issue
@@ -4303,7 +4608,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     async def async_remove_sub_issue(
@@ -4316,7 +4621,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         sub_issue_id: int,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_remove_sub_issue(
         self,
@@ -4328,7 +4633,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/remove-sub-issue
 
         DELETE /repos/{owner}/{repo}/issues/{issue_number}/sub_issue
@@ -4390,7 +4695,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-sub-issues
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/sub_issues
@@ -4421,7 +4726,7 @@ class IssuesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Issue],
@@ -4441,7 +4746,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-sub-issues
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/sub_issues
@@ -4472,7 +4777,7 @@ class IssuesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Issue],
@@ -4492,7 +4797,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     def add_sub_issue(
@@ -4506,7 +4811,7 @@ class IssuesClient:
         stream: bool = False,
         sub_issue_id: int,
         replace_parent: Missing[bool] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def add_sub_issue(
         self,
@@ -4518,7 +4823,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/add-sub-issue
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/sub_issues
@@ -4586,7 +4891,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     async def async_add_sub_issue(
@@ -4600,7 +4905,7 @@ class IssuesClient:
         stream: bool = False,
         sub_issue_id: int,
         replace_parent: Missing[bool] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_add_sub_issue(
         self,
@@ -4612,7 +4917,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/add-sub-issue
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/sub_issues
@@ -4680,7 +4985,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     def reprioritize_sub_issue(
@@ -4695,7 +5000,7 @@ class IssuesClient:
         sub_issue_id: int,
         after_id: Missing[int] = UNSET,
         before_id: Missing[int] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def reprioritize_sub_issue(
         self,
@@ -4709,7 +5014,7 @@ class IssuesClient:
             ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/reprioritize-sub-issue
 
         PATCH /repos/{owner}/{repo}/issues/{issue_number}/sub_issues/priority
@@ -4767,7 +5072,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     async def async_reprioritize_sub_issue(
@@ -4782,7 +5087,7 @@ class IssuesClient:
         sub_issue_id: int,
         after_id: Missing[int] = UNSET,
         before_id: Missing[int] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_reprioritize_sub_issue(
         self,
@@ -4796,7 +5101,7 @@ class IssuesClient:
             ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/reprioritize-sub-issue
 
         PATCH /repos/{owner}/{repo}/issues/{issue_number}/sub_issues/priority
@@ -4883,28 +5188,28 @@ class IssuesClient:
         ],
         list[
             Union[
-                LabeledIssueEventType,
-                UnlabeledIssueEventType,
-                MilestonedIssueEventType,
-                DemilestonedIssueEventType,
-                RenamedIssueEventType,
-                ReviewRequestedIssueEventType,
-                ReviewRequestRemovedIssueEventType,
-                ReviewDismissedIssueEventType,
-                LockedIssueEventType,
-                AddedToProjectIssueEventType,
-                MovedColumnInProjectIssueEventType,
-                RemovedFromProjectIssueEventType,
-                ConvertedNoteToIssueIssueEventType,
-                TimelineCommentEventType,
-                TimelineCrossReferencedEventType,
-                TimelineCommittedEventType,
-                TimelineReviewedEventType,
-                TimelineLineCommentedEventType,
-                TimelineCommitCommentedEventType,
-                TimelineAssignedIssueEventType,
-                TimelineUnassignedIssueEventType,
-                StateChangeIssueEventType,
+                LabeledIssueEventTypeForResponse,
+                UnlabeledIssueEventTypeForResponse,
+                MilestonedIssueEventTypeForResponse,
+                DemilestonedIssueEventTypeForResponse,
+                RenamedIssueEventTypeForResponse,
+                ReviewRequestedIssueEventTypeForResponse,
+                ReviewRequestRemovedIssueEventTypeForResponse,
+                ReviewDismissedIssueEventTypeForResponse,
+                LockedIssueEventTypeForResponse,
+                AddedToProjectIssueEventTypeForResponse,
+                MovedColumnInProjectIssueEventTypeForResponse,
+                RemovedFromProjectIssueEventTypeForResponse,
+                ConvertedNoteToIssueIssueEventTypeForResponse,
+                TimelineCommentEventTypeForResponse,
+                TimelineCrossReferencedEventTypeForResponse,
+                TimelineCommittedEventTypeForResponse,
+                TimelineReviewedEventTypeForResponse,
+                TimelineLineCommentedEventTypeForResponse,
+                TimelineCommitCommentedEventTypeForResponse,
+                TimelineAssignedIssueEventTypeForResponse,
+                TimelineUnassignedIssueEventTypeForResponse,
+                StateChangeIssueEventTypeForResponse,
             ]
         ],
     ]:
@@ -4957,7 +5262,7 @@ class IssuesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[
@@ -5031,28 +5336,28 @@ class IssuesClient:
         ],
         list[
             Union[
-                LabeledIssueEventType,
-                UnlabeledIssueEventType,
-                MilestonedIssueEventType,
-                DemilestonedIssueEventType,
-                RenamedIssueEventType,
-                ReviewRequestedIssueEventType,
-                ReviewRequestRemovedIssueEventType,
-                ReviewDismissedIssueEventType,
-                LockedIssueEventType,
-                AddedToProjectIssueEventType,
-                MovedColumnInProjectIssueEventType,
-                RemovedFromProjectIssueEventType,
-                ConvertedNoteToIssueIssueEventType,
-                TimelineCommentEventType,
-                TimelineCrossReferencedEventType,
-                TimelineCommittedEventType,
-                TimelineReviewedEventType,
-                TimelineLineCommentedEventType,
-                TimelineCommitCommentedEventType,
-                TimelineAssignedIssueEventType,
-                TimelineUnassignedIssueEventType,
-                StateChangeIssueEventType,
+                LabeledIssueEventTypeForResponse,
+                UnlabeledIssueEventTypeForResponse,
+                MilestonedIssueEventTypeForResponse,
+                DemilestonedIssueEventTypeForResponse,
+                RenamedIssueEventTypeForResponse,
+                ReviewRequestedIssueEventTypeForResponse,
+                ReviewRequestRemovedIssueEventTypeForResponse,
+                ReviewDismissedIssueEventTypeForResponse,
+                LockedIssueEventTypeForResponse,
+                AddedToProjectIssueEventTypeForResponse,
+                MovedColumnInProjectIssueEventTypeForResponse,
+                RemovedFromProjectIssueEventTypeForResponse,
+                ConvertedNoteToIssueIssueEventTypeForResponse,
+                TimelineCommentEventTypeForResponse,
+                TimelineCrossReferencedEventTypeForResponse,
+                TimelineCommittedEventTypeForResponse,
+                TimelineReviewedEventTypeForResponse,
+                TimelineLineCommentedEventTypeForResponse,
+                TimelineCommitCommentedEventTypeForResponse,
+                TimelineAssignedIssueEventTypeForResponse,
+                TimelineUnassignedIssueEventTypeForResponse,
+                StateChangeIssueEventTypeForResponse,
             ]
         ],
     ]:
@@ -5105,7 +5410,7 @@ class IssuesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[
@@ -5149,7 +5454,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-for-repo
 
         GET /repos/{owner}/{repo}/labels
@@ -5173,7 +5478,7 @@ class IssuesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Label],
@@ -5191,7 +5496,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-for-repo
 
         GET /repos/{owner}/{repo}/labels
@@ -5215,7 +5520,7 @@ class IssuesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Label],
@@ -5233,7 +5538,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoLabelsPostBodyType,
-    ) -> Response[Label, LabelType]: ...
+    ) -> Response[Label, LabelTypeForResponse]: ...
 
     @overload
     def create_label(
@@ -5247,7 +5552,7 @@ class IssuesClient:
         name: str,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-    ) -> Response[Label, LabelType]: ...
+    ) -> Response[Label, LabelTypeForResponse]: ...
 
     def create_label(
         self,
@@ -5258,7 +5563,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Label, LabelType]:
+    ) -> Response[Label, LabelTypeForResponse]:
         """issues/create-label
 
         POST /repos/{owner}/{repo}/labels
@@ -5310,7 +5615,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoLabelsPostBodyType,
-    ) -> Response[Label, LabelType]: ...
+    ) -> Response[Label, LabelTypeForResponse]: ...
 
     @overload
     async def async_create_label(
@@ -5324,7 +5629,7 @@ class IssuesClient:
         name: str,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-    ) -> Response[Label, LabelType]: ...
+    ) -> Response[Label, LabelTypeForResponse]: ...
 
     async def async_create_label(
         self,
@@ -5335,7 +5640,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Label, LabelType]:
+    ) -> Response[Label, LabelTypeForResponse]:
         """issues/create-label
 
         POST /repos/{owner}/{repo}/labels
@@ -5386,7 +5691,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Label, LabelType]:
+    ) -> Response[Label, LabelTypeForResponse]:
         """issues/get-label
 
         GET /repos/{owner}/{repo}/labels/{name}
@@ -5421,7 +5726,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Label, LabelType]:
+    ) -> Response[Label, LabelTypeForResponse]:
         """issues/get-label
 
         GET /repos/{owner}/{repo}/labels/{name}
@@ -5516,7 +5821,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
-    ) -> Response[Label, LabelType]: ...
+    ) -> Response[Label, LabelTypeForResponse]: ...
 
     @overload
     def update_label(
@@ -5531,7 +5836,7 @@ class IssuesClient:
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-    ) -> Response[Label, LabelType]: ...
+    ) -> Response[Label, LabelTypeForResponse]: ...
 
     def update_label(
         self,
@@ -5543,7 +5848,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Label, LabelType]:
+    ) -> Response[Label, LabelTypeForResponse]:
         """issues/update-label
 
         PATCH /repos/{owner}/{repo}/labels/{name}
@@ -5587,7 +5892,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
-    ) -> Response[Label, LabelType]: ...
+    ) -> Response[Label, LabelTypeForResponse]: ...
 
     @overload
     async def async_update_label(
@@ -5602,7 +5907,7 @@ class IssuesClient:
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-    ) -> Response[Label, LabelType]: ...
+    ) -> Response[Label, LabelTypeForResponse]: ...
 
     async def async_update_label(
         self,
@@ -5614,7 +5919,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Label, LabelType]:
+    ) -> Response[Label, LabelTypeForResponse]:
         """issues/update-label
 
         PATCH /repos/{owner}/{repo}/labels/{name}
@@ -5660,7 +5965,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Milestone], list[MilestoneType]]:
+    ) -> Response[list[Milestone], list[MilestoneTypeForResponse]]:
         """issues/list-milestones
 
         GET /repos/{owner}/{repo}/milestones
@@ -5687,7 +5992,7 @@ class IssuesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Milestone],
@@ -5708,7 +6013,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Milestone], list[MilestoneType]]:
+    ) -> Response[list[Milestone], list[MilestoneTypeForResponse]]:
         """issues/list-milestones
 
         GET /repos/{owner}/{repo}/milestones
@@ -5735,7 +6040,7 @@ class IssuesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Milestone],
@@ -5753,7 +6058,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoMilestonesPostBodyType,
-    ) -> Response[Milestone, MilestoneType]: ...
+    ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     @overload
     def create_milestone(
@@ -5767,8 +6072,8 @@ class IssuesClient:
         title: str,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
-        due_on: Missing[datetime] = UNSET,
-    ) -> Response[Milestone, MilestoneType]: ...
+        due_on: Missing[_dt.datetime] = UNSET,
+    ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     def create_milestone(
         self,
@@ -5779,7 +6084,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Milestone, MilestoneType]:
+    ) -> Response[Milestone, MilestoneTypeForResponse]:
         """issues/create-milestone
 
         POST /repos/{owner}/{repo}/milestones
@@ -5831,7 +6136,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoMilestonesPostBodyType,
-    ) -> Response[Milestone, MilestoneType]: ...
+    ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     @overload
     async def async_create_milestone(
@@ -5845,8 +6150,8 @@ class IssuesClient:
         title: str,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
-        due_on: Missing[datetime] = UNSET,
-    ) -> Response[Milestone, MilestoneType]: ...
+        due_on: Missing[_dt.datetime] = UNSET,
+    ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     async def async_create_milestone(
         self,
@@ -5857,7 +6162,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Milestone, MilestoneType]:
+    ) -> Response[Milestone, MilestoneTypeForResponse]:
         """issues/create-milestone
 
         POST /repos/{owner}/{repo}/milestones
@@ -5908,7 +6213,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Milestone, MilestoneType]:
+    ) -> Response[Milestone, MilestoneTypeForResponse]:
         """issues/get-milestone
 
         GET /repos/{owner}/{repo}/milestones/{milestone_number}
@@ -5943,7 +6248,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Milestone, MilestoneType]:
+    ) -> Response[Milestone, MilestoneTypeForResponse]:
         """issues/get-milestone
 
         GET /repos/{owner}/{repo}/milestones/{milestone_number}
@@ -6048,7 +6353,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
-    ) -> Response[Milestone, MilestoneType]: ...
+    ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     @overload
     def update_milestone(
@@ -6063,8 +6368,8 @@ class IssuesClient:
         title: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
-        due_on: Missing[datetime] = UNSET,
-    ) -> Response[Milestone, MilestoneType]: ...
+        due_on: Missing[_dt.datetime] = UNSET,
+    ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     def update_milestone(
         self,
@@ -6076,7 +6381,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Milestone, MilestoneType]:
+    ) -> Response[Milestone, MilestoneTypeForResponse]:
         """issues/update-milestone
 
         PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
@@ -6120,7 +6425,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
-    ) -> Response[Milestone, MilestoneType]: ...
+    ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     @overload
     async def async_update_milestone(
@@ -6135,8 +6440,8 @@ class IssuesClient:
         title: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
-        due_on: Missing[datetime] = UNSET,
-    ) -> Response[Milestone, MilestoneType]: ...
+        due_on: Missing[_dt.datetime] = UNSET,
+    ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     async def async_update_milestone(
         self,
@@ -6148,7 +6453,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Milestone, MilestoneType]:
+    ) -> Response[Milestone, MilestoneTypeForResponse]:
         """issues/update-milestone
 
         PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
@@ -6192,7 +6497,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-for-milestone
 
         GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
@@ -6216,7 +6521,7 @@ class IssuesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Label],
@@ -6232,7 +6537,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-for-milestone
 
         GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
@@ -6256,10 +6561,504 @@ class IssuesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Label],
+        )
+
+    @overload
+    def set_issue_field_values(
+        self,
+        repository_id: int,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    @overload
+    def set_issue_field_values(
+        self,
+        repository_id: int,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        issue_field_values: Missing[
+            list[
+                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    def set_issue_field_values(
+        self,
+        repository_id: int,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
+        """issues/set-issue-field-values
+
+        PUT /repositories/{repository_id}/issues/{issue_number}/issue-field-values
+
+        Set custom field values for an issue, replacing any existing values. You can set values for organization-level issue fields that have been defined for the repository's organization.
+
+        This endpoint supports the following field data types:
+        - **`text`**: String values for text fields
+        - **`single_select`**: Option names for single-select fields (must match an existing option name)
+        - **`number`**: Numeric values for number fields
+        - **`date`**: ISO 8601 date strings for date fields
+
+        This operation will replace all existing field values with the provided ones. If you want to add field values without replacing existing ones, use the `POST` endpoint instead.
+
+        Only users with push access to the repository can set issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-field-values#set-issue-field-values-for-an-issue
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            IssueFieldValue,
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody,
+            ValidationError,
+        )
+
+        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueFieldValue],
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_set_issue_field_values(
+        self,
+        repository_id: int,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    @overload
+    async def async_set_issue_field_values(
+        self,
+        repository_id: int,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        issue_field_values: Missing[
+            list[
+                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    async def async_set_issue_field_values(
+        self,
+        repository_id: int,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
+        """issues/set-issue-field-values
+
+        PUT /repositories/{repository_id}/issues/{issue_number}/issue-field-values
+
+        Set custom field values for an issue, replacing any existing values. You can set values for organization-level issue fields that have been defined for the repository's organization.
+
+        This endpoint supports the following field data types:
+        - **`text`**: String values for text fields
+        - **`single_select`**: Option names for single-select fields (must match an existing option name)
+        - **`number`**: Numeric values for number fields
+        - **`date`**: ISO 8601 date strings for date fields
+
+        This operation will replace all existing field values with the provided ones. If you want to add field values without replacing existing ones, use the `POST` endpoint instead.
+
+        Only users with push access to the repository can set issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-field-values#set-issue-field-values-for-an-issue
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            IssueFieldValue,
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody,
+            ValidationError,
+        )
+
+        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueFieldValue],
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def add_issue_field_values(
+        self,
+        repository_id: int,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    @overload
+    def add_issue_field_values(
+        self,
+        repository_id: int,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        issue_field_values: Missing[
+            list[
+                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    def add_issue_field_values(
+        self,
+        repository_id: int,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
+        """issues/add-issue-field-values
+
+        POST /repositories/{repository_id}/issues/{issue_number}/issue-field-values
+
+        Add custom field values to an issue. You can set values for organization-level issue fields that have been defined for the repository's organization.
+        Adding an empty array will clear all existing field values for the issue.
+
+        This endpoint supports the following field data types:
+        - **`text`**: String values for text fields
+        - **`single_select`**: Option names for single-select fields (must match an existing option name)
+        - **`number`**: Numeric values for number fields
+        - **`date`**: ISO 8601 date strings for date fields
+
+        Only users with push access to the repository can add issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-field-values#add-issue-field-values-to-an-issue
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            IssueFieldValue,
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody,
+            ValidationError,
+        )
+
+        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueFieldValue],
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_add_issue_field_values(
+        self,
+        repository_id: int,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    @overload
+    async def async_add_issue_field_values(
+        self,
+        repository_id: int,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        issue_field_values: Missing[
+            list[
+                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    async def async_add_issue_field_values(
+        self,
+        repository_id: int,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
+        """issues/add-issue-field-values
+
+        POST /repositories/{repository_id}/issues/{issue_number}/issue-field-values
+
+        Add custom field values to an issue. You can set values for organization-level issue fields that have been defined for the repository's organization.
+        Adding an empty array will clear all existing field values for the issue.
+
+        This endpoint supports the following field data types:
+        - **`text`**: String values for text fields
+        - **`single_select`**: Option names for single-select fields (must match an existing option name)
+        - **`number`**: Numeric values for number fields
+        - **`date`**: ISO 8601 date strings for date fields
+
+        Only users with push access to the repository can add issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-field-values#add-issue-field-values-to-an-issue
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            IssueFieldValue,
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody,
+            ValidationError,
+        )
+
+        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueFieldValue],
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    def delete_issue_field_value(
+        self,
+        repository_id: int,
+        issue_number: int,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """issues/delete-issue-field-value
+
+        DELETE /repositories/{repository_id}/issues/{issue_number}/issue-field-values/{issue_field_id}
+
+        Remove a specific custom field value from an issue.
+
+        Only users with push access to the repository can delete issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        If the specified field does not have a value set on the issue, this operation will return a `404` error.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-field-values#delete-an-issue-field-value-from-an-issue
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            ValidationError,
+        )
+
+        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values/{issue_field_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_delete_issue_field_value(
+        self,
+        repository_id: int,
+        issue_number: int,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """issues/delete-issue-field-value
+
+        DELETE /repositories/{repository_id}/issues/{issue_number}/issue-field-values/{issue_field_id}
+
+        Remove a specific custom field value from an issue.
+
+        Only users with push access to the repository can delete issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        If the specified field does not have a value set on the issue, this operation will return a `404` error.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-field-values#delete-an-issue-field-value-from-an-issue
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            ValidationError,
+        )
+
+        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values/{issue_field_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
         )
 
     def list_for_authenticated_user(
@@ -6272,12 +7071,12 @@ class IssuesClient:
         labels: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-authenticated-user
 
         GET /user/issues
@@ -6317,7 +7116,7 @@ class IssuesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Issue],
@@ -6336,12 +7135,12 @@ class IssuesClient:
         labels: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-authenticated-user
 
         GET /user/issues
@@ -6381,7 +7180,7 @@ class IssuesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Issue],

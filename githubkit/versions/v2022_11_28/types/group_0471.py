@@ -9,89 +9,130 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+import datetime as _dt
+from typing import Any, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0043 import MilestoneType
-from .group_0091 import TeamSimpleType
-from .group_0276 import AutoMergeType
-from .group_0356 import PullRequestPropLabelsItemsType
-from .group_0357 import PullRequestPropBaseType, PullRequestPropHeadType
-from .group_0358 import PullRequestPropLinksType
 
+class GpgKeyType(TypedDict):
+    """GPG Key
 
-class PullRequestWebhookType(TypedDict):
-    """PullRequestWebhook"""
+    A unique encryption key
+    """
 
-    url: str
     id: int
-    node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: Literal["open", "closed"]
-    locked: bool
-    title: str
-    user: SimpleUserType
-    body: Union[str, None]
-    labels: list[PullRequestPropLabelsItemsType]
-    milestone: Union[None, MilestoneType]
-    active_lock_reason: NotRequired[Union[str, None]]
-    created_at: datetime
-    updated_at: datetime
-    closed_at: Union[datetime, None]
-    merged_at: Union[datetime, None]
-    merge_commit_sha: Union[str, None]
-    assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[Union[list[SimpleUserType], None]]
-    requested_reviewers: NotRequired[Union[list[SimpleUserType], None]]
-    requested_teams: NotRequired[Union[list[TeamSimpleType], None]]
-    head: PullRequestPropHeadType
-    base: PullRequestPropBaseType
-    links: PullRequestPropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[AutoMergeType, None]
-    draft: NotRequired[bool]
-    merged: bool
-    mergeable: Union[bool, None]
-    rebaseable: NotRequired[Union[bool, None]]
-    mergeable_state: str
-    merged_by: Union[None, SimpleUserType]
-    comments: int
-    review_comments: int
-    maintainer_can_modify: bool
-    commits: int
-    additions: int
-    deletions: int
-    changed_files: int
-    allow_auto_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    use_squash_pr_title_as_default: NotRequired[bool]
+    name: NotRequired[Union[str, None]]
+    primary_key_id: Union[int, None]
+    key_id: str
+    public_key: str
+    emails: list[GpgKeyPropEmailsItemsType]
+    subkeys: list[GpgKeyPropSubkeysItemsType]
+    can_sign: bool
+    can_encrypt_comms: bool
+    can_encrypt_storage: bool
+    can_certify: bool
+    created_at: _dt.datetime
+    expires_at: Union[_dt.datetime, None]
+    revoked: bool
+    raw_key: Union[str, None]
 
 
-__all__ = ("PullRequestWebhookType",)
+class GpgKeyTypeForResponse(TypedDict):
+    """GPG Key
+
+    A unique encryption key
+    """
+
+    id: int
+    name: NotRequired[Union[str, None]]
+    primary_key_id: Union[int, None]
+    key_id: str
+    public_key: str
+    emails: list[GpgKeyPropEmailsItemsTypeForResponse]
+    subkeys: list[GpgKeyPropSubkeysItemsTypeForResponse]
+    can_sign: bool
+    can_encrypt_comms: bool
+    can_encrypt_storage: bool
+    can_certify: bool
+    created_at: str
+    expires_at: Union[str, None]
+    revoked: bool
+    raw_key: Union[str, None]
+
+
+class GpgKeyPropEmailsItemsType(TypedDict):
+    """GpgKeyPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
+
+
+class GpgKeyPropEmailsItemsTypeForResponse(TypedDict):
+    """GpgKeyPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsType(TypedDict):
+    """GpgKeyPropSubkeysItems"""
+
+    id: NotRequired[int]
+    primary_key_id: NotRequired[int]
+    key_id: NotRequired[str]
+    public_key: NotRequired[str]
+    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsType]]
+    subkeys: NotRequired[list[Any]]
+    can_sign: NotRequired[bool]
+    can_encrypt_comms: NotRequired[bool]
+    can_encrypt_storage: NotRequired[bool]
+    can_certify: NotRequired[bool]
+    created_at: NotRequired[str]
+    expires_at: NotRequired[Union[str, None]]
+    raw_key: NotRequired[Union[str, None]]
+    revoked: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsTypeForResponse(TypedDict):
+    """GpgKeyPropSubkeysItems"""
+
+    id: NotRequired[int]
+    primary_key_id: NotRequired[int]
+    key_id: NotRequired[str]
+    public_key: NotRequired[str]
+    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse]]
+    subkeys: NotRequired[list[Any]]
+    can_sign: NotRequired[bool]
+    can_encrypt_comms: NotRequired[bool]
+    can_encrypt_storage: NotRequired[bool]
+    can_certify: NotRequired[bool]
+    created_at: NotRequired[str]
+    expires_at: NotRequired[Union[str, None]]
+    raw_key: NotRequired[Union[str, None]]
+    revoked: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsPropEmailsItemsType(TypedDict):
+    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse(TypedDict):
+    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
+
+
+__all__ = (
+    "GpgKeyPropEmailsItemsType",
+    "GpgKeyPropEmailsItemsTypeForResponse",
+    "GpgKeyPropSubkeysItemsPropEmailsItemsType",
+    "GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse",
+    "GpgKeyPropSubkeysItemsType",
+    "GpgKeyPropSubkeysItemsTypeForResponse",
+    "GpgKeyType",
+    "GpgKeyTypeForResponse",
+)

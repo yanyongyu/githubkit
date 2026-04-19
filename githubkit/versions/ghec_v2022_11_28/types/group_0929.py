@@ -9,13 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0607 import WebhooksRelease1Type, WebhooksRelease1TypeForResponse
 
 
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
+class WebhookReleasePublishedType(TypedDict):
+    """release published event"""
 
-    disable_self_hosted_runners_for_all_orgs: bool
+    action: Literal["published"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhooksRelease1Type
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType",)
+class WebhookReleasePublishedTypeForResponse(TypedDict):
+    """release published event"""
+
+    action: Literal["published"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    release: WebhooksRelease1TypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "WebhookReleasePublishedType",
+    "WebhookReleasePublishedTypeForResponse",
+)

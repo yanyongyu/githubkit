@@ -9,20 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0087 import Runner
-
-
-class OrgsOrgActionsRunnersGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnersGetResponse200"""
-
-    total_count: int = Field()
-    runners: list[Runner] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgActionsRunnersGetResponse200)
+class WebhookStatusPropCommitPropCommitPropCommitterAllof0(GitHubModel):
+    """Committer
 
-__all__ = ("OrgsOrgActionsRunnersGetResponse200",)
+    Metaproperties for Git author/committer information.
+    """
+
+    date: Missing[_dt.datetime] = Field(default=UNSET)
+    email: Union[str, None] = Field()
+    name: str = Field(description="The git author's name.")
+    username: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookStatusPropCommitPropCommitPropCommitterAllof0)
+
+__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof0",)

@@ -9,20 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleRulesetInfoType(TypedDict):
-    """repository ruleset data for rule
+class PorterAuthorType(TypedDict):
+    """Porter Author
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    Porter Author
     """
 
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    id: int
+    remote_id: str
+    remote_name: str
+    email: str
+    name: str
+    url: str
+    import_url: str
 
 
-__all__ = ("RepositoryRuleRulesetInfoType",)
+class PorterAuthorTypeForResponse(TypedDict):
+    """Porter Author
+
+    Porter Author
+    """
+
+    id: int
+    remote_id: str
+    remote_name: str
+    email: str
+    name: str
+    url: str
+    import_url: str
+
+
+__all__ = (
+    "PorterAuthorType",
+    "PorterAuthorTypeForResponse",
+)

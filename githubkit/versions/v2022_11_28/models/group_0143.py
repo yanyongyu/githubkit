@@ -9,28 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0135 import RepositoryRulesetConditionsPropRefName
-from .group_0139 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
+class ApiInsightsRouteStatsItems(GitHubModel):
+    """ApiInsightsRouteStatsItems"""
 
-class OrgRulesetConditionsOneof1(GitHubModel):
-    """repository_id_and_ref_name
-
-    Conditions to target repositories by id and refs by name
-    """
-
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
-        Field()
+    http_method: Missing[str] = Field(default=UNSET, description="The HTTP method")
+    api_route: Missing[str] = Field(
+        default=UNSET, description="The API path's route template"
     )
+    total_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests within the queried time period",
+    )
+    rate_limited_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests that were rate limited within the queried time period",
+    )
+    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
+    last_request_timestamp: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgRulesetConditionsOneof1)
+model_rebuild(ApiInsightsRouteStatsItems)
 
-__all__ = ("OrgRulesetConditionsOneof1",)
+__all__ = ("ApiInsightsRouteStatsItems",)

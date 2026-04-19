@@ -12,19 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId(GitHubModel):
-    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
+class DependabotPublicKey(GitHubModel):
+    """DependabotPublicKey
 
-    repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass.",
-    )
+    The public key used for setting Dependabot Secrets.
+    """
+
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId)
+model_rebuild(DependabotPublicKey)
 
-__all__ = ("RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId",)
+__all__ = ("DependabotPublicKey",)

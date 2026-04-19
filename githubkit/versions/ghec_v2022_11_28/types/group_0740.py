@@ -9,73 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0741 import WebhookPackagePublishedPropPackagePropPackageVersionType
+from .group_0736 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
+)
 
 
-class WebhookPackagePublishedPropPackageType(TypedDict):
-    """WebhookPackagePublishedPropPackage
+class WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppType(TypedDict):
+    """WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp"""
 
-    Information about the package.
-    """
+    created_at: Union[_dt.datetime, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
+
+
+class WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppTypeForResponse(
+    TypedDict
+):
+    """WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp"""
 
     created_at: Union[str, None]
     description: Union[str, None]
-    ecosystem: str
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
     html_url: str
-    id: int
+    id: Union[int, None]
     name: str
-    namespace: str
-    owner: Union[WebhookPackagePublishedPropPackagePropOwnerType, None]
-    package_type: str
-    package_version: Union[
-        WebhookPackagePublishedPropPackagePropPackageVersionType, None
+    node_id: str
+    owner: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        None,
     ]
-    registry: Union[WebhookPackagePublishedPropPackagePropRegistryType, None]
+    permissions: NotRequired[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
     updated_at: Union[str, None]
 
 
-class WebhookPackagePublishedPropPackagePropOwnerType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookPackagePublishedPropPackagePropRegistryType(TypedDict):
-    """WebhookPackagePublishedPropPackagePropRegistry"""
-
-    about_url: str
-    name: str
-    type: str
-    url: str
-    vendor: str
-
-
 __all__ = (
-    "WebhookPackagePublishedPropPackagePropOwnerType",
-    "WebhookPackagePublishedPropPackagePropRegistryType",
-    "WebhookPackagePublishedPropPackageType",
+    "WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppType",
+    "WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppTypeForResponse",
 )

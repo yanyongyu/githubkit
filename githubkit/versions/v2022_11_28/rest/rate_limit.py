@@ -20,7 +20,7 @@ if TYPE_CHECKING:
     from githubkit.response import Response
 
     from ..models import RateLimitOverview
-    from ..types import RateLimitOverviewType
+    from ..types import RateLimitOverviewTypeForResponse
 
 
 class RateLimitClient:
@@ -43,7 +43,7 @@ class RateLimitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RateLimitOverview, RateLimitOverviewType]:
+    ) -> Response[RateLimitOverview, RateLimitOverviewTypeForResponse]:
         """rate-limit/get
 
         GET /rate_limit
@@ -91,7 +91,7 @@ class RateLimitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RateLimitOverview, RateLimitOverviewType]:
+    ) -> Response[RateLimitOverview, RateLimitOverviewTypeForResponse]:
         """rate-limit/get
 
         GET /rate_limit

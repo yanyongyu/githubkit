@@ -11,13 +11,14 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing_extensions import deprecated
 from weakref import ref
 
 from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     from typing import Literal, Union
@@ -54,44 +55,44 @@ if TYPE_CHECKING:
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
     )
     from ..types import (
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
-        CodespaceExportDetailsType,
-        CodespacesOrgSecretType,
-        CodespacesPermissionsCheckForDevcontainerType,
-        CodespacesPublicKeyType,
-        CodespacesSecretType,
-        CodespacesUserPublicKeyType,
-        CodespaceType,
-        CodespaceWithFullRepositoryType,
-        EmptyObjectType,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
+        CodespaceExportDetailsTypeForResponse,
+        CodespacesOrgSecretTypeForResponse,
+        CodespacesPermissionsCheckForDevcontainerTypeForResponse,
+        CodespacesPublicKeyTypeForResponse,
+        CodespacesSecretTypeForResponse,
+        CodespacesUserPublicKeyTypeForResponse,
+        CodespaceTypeForResponse,
+        CodespaceWithFullRepositoryTypeForResponse,
+        EmptyObjectTypeForResponse,
         OrgsOrgCodespacesAccessPutBodyType,
         OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
         OrgsOrgCodespacesAccessSelectedUsersPostBodyType,
-        OrgsOrgCodespacesGetResponse200Type,
-        OrgsOrgCodespacesSecretsGetResponse200Type,
+        OrgsOrgCodespacesGetResponse200TypeForResponse,
+        OrgsOrgCodespacesSecretsGetResponse200TypeForResponse,
         OrgsOrgCodespacesSecretsSecretNamePutBodyType,
-        OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
+        OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse,
         OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
-        OrgsOrgMembersUsernameCodespacesGetResponse200Type,
-        RepoCodespacesSecretType,
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200Type,
-        ReposOwnerRepoCodespacesGetResponse200Type,
-        ReposOwnerRepoCodespacesMachinesGetResponse200Type,
-        ReposOwnerRepoCodespacesNewGetResponse200Type,
+        OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse,
+        RepoCodespacesSecretTypeForResponse,
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200TypeForResponse,
+        ReposOwnerRepoCodespacesGetResponse200TypeForResponse,
+        ReposOwnerRepoCodespacesMachinesGetResponse200TypeForResponse,
+        ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse,
         ReposOwnerRepoCodespacesPostBodyType,
-        ReposOwnerRepoCodespacesSecretsGetResponse200Type,
+        ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse,
         ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
         ReposOwnerRepoPullsPullNumberCodespacesPostBodyType,
-        UserCodespacesCodespaceNameMachinesGetResponse200Type,
+        UserCodespacesCodespaceNameMachinesGetResponse200TypeForResponse,
         UserCodespacesCodespaceNamePatchBodyType,
         UserCodespacesCodespaceNamePublishPostBodyType,
-        UserCodespacesGetResponse200Type,
+        UserCodespacesGetResponse200TypeForResponse,
         UserCodespacesPostBodyOneof0Type,
         UserCodespacesPostBodyOneof1PropPullRequestType,
         UserCodespacesPostBodyOneof1Type,
-        UserCodespacesSecretsGetResponse200Type,
+        UserCodespacesSecretsGetResponse200TypeForResponse,
         UserCodespacesSecretsSecretNamePutBodyType,
-        UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
+        UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse,
         UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
     )
 
@@ -119,7 +120,9 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrgsOrgCodespacesGetResponse200, OrgsOrgCodespacesGetResponse200Type]:
+    ) -> Response[
+        OrgsOrgCodespacesGetResponse200, OrgsOrgCodespacesGetResponse200TypeForResponse
+    ]:
         """codespaces/list-in-organization
 
         GET /orgs/{org}/codespaces
@@ -145,7 +148,7 @@ class CodespacesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgCodespacesGetResponse200,
@@ -165,7 +168,9 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrgsOrgCodespacesGetResponse200, OrgsOrgCodespacesGetResponse200Type]:
+    ) -> Response[
+        OrgsOrgCodespacesGetResponse200, OrgsOrgCodespacesGetResponse200TypeForResponse
+    ]:
         """codespaces/list-in-organization
 
         GET /orgs/{org}/codespaces
@@ -191,7 +196,7 @@ class CodespacesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgCodespacesGetResponse200,
@@ -204,6 +209,7 @@ class CodespacesClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_codespaces_access(
         self,
         org: str,
@@ -214,6 +220,7 @@ class CodespacesClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_codespaces_access(
         self,
         org: str,
@@ -230,6 +237,7 @@ class CodespacesClient:
         selected_usernames: Missing[list[str]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_codespaces_access(
         self,
         org: str,
@@ -278,6 +286,7 @@ class CodespacesClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_codespaces_access(
         self,
         org: str,
@@ -288,6 +297,7 @@ class CodespacesClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_codespaces_access(
         self,
         org: str,
@@ -304,6 +314,7 @@ class CodespacesClient:
         selected_usernames: Missing[list[str]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_codespaces_access(
         self,
         org: str,
@@ -352,6 +363,7 @@ class CodespacesClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_codespaces_access_users(
         self,
         org: str,
@@ -362,6 +374,7 @@ class CodespacesClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_codespaces_access_users(
         self,
         org: str,
@@ -372,6 +385,7 @@ class CodespacesClient:
         selected_usernames: list[str],
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_codespaces_access_users(
         self,
         org: str,
@@ -430,6 +444,7 @@ class CodespacesClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_codespaces_access_users(
         self,
         org: str,
@@ -440,6 +455,7 @@ class CodespacesClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_codespaces_access_users(
         self,
         org: str,
@@ -450,6 +466,7 @@ class CodespacesClient:
         selected_usernames: list[str],
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_codespaces_access_users(
         self,
         org: str,
@@ -508,6 +525,7 @@ class CodespacesClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def delete_codespaces_access_users(
         self,
         org: str,
@@ -518,6 +536,7 @@ class CodespacesClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def delete_codespaces_access_users(
         self,
         org: str,
@@ -528,6 +547,7 @@ class CodespacesClient:
         selected_usernames: list[str],
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def delete_codespaces_access_users(
         self,
         org: str,
@@ -586,6 +606,7 @@ class CodespacesClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_delete_codespaces_access_users(
         self,
         org: str,
@@ -596,6 +617,7 @@ class CodespacesClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_delete_codespaces_access_users(
         self,
         org: str,
@@ -606,6 +628,7 @@ class CodespacesClient:
         selected_usernames: list[str],
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_delete_codespaces_access_users(
         self,
         org: str,
@@ -673,7 +696,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgCodespacesSecretsGetResponse200,
-        OrgsOrgCodespacesSecretsGetResponse200Type,
+        OrgsOrgCodespacesSecretsGetResponse200TypeForResponse,
     ]:
         """codespaces/list-org-secrets
 
@@ -701,7 +724,7 @@ class CodespacesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgCodespacesSecretsGetResponse200,
@@ -717,7 +740,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgCodespacesSecretsGetResponse200,
-        OrgsOrgCodespacesSecretsGetResponse200Type,
+        OrgsOrgCodespacesSecretsGetResponse200TypeForResponse,
     ]:
         """codespaces/list-org-secrets
 
@@ -745,7 +768,7 @@ class CodespacesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgCodespacesSecretsGetResponse200,
@@ -757,7 +780,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
+    ) -> Response[CodespacesPublicKey, CodespacesPublicKeyTypeForResponse]:
         """codespaces/get-org-public-key
 
         GET /orgs/{org}/codespaces/secrets/public-key
@@ -788,7 +811,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
+    ) -> Response[CodespacesPublicKey, CodespacesPublicKeyTypeForResponse]:
         """codespaces/get-org-public-key
 
         GET /orgs/{org}/codespaces/secrets/public-key
@@ -820,7 +843,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodespacesOrgSecret, CodespacesOrgSecretType]:
+    ) -> Response[CodespacesOrgSecret, CodespacesOrgSecretTypeForResponse]:
         """codespaces/get-org-secret
 
         GET /orgs/{org}/codespaces/secrets/{secret_name}
@@ -853,7 +876,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodespacesOrgSecret, CodespacesOrgSecretType]:
+    ) -> Response[CodespacesOrgSecret, CodespacesOrgSecretTypeForResponse]:
         """codespaces/get-org-secret
 
         GET /orgs/{org}/codespaces/secrets/{secret_name}
@@ -888,7 +911,7 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def create_or_update_org_secret(
@@ -903,7 +926,7 @@ class CodespacesClient:
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def create_or_update_org_secret(
         self,
@@ -914,7 +937,7 @@ class CodespacesClient:
         stream: bool = False,
         data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """codespaces/create-or-update-org-secret
 
         PUT /orgs/{org}/codespaces/secrets/{secret_name}
@@ -969,7 +992,7 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_create_or_update_org_secret(
@@ -984,7 +1007,7 @@ class CodespacesClient:
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_create_or_update_org_secret(
         self,
@@ -995,7 +1018,7 @@ class CodespacesClient:
         stream: bool = False,
         data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """codespaces/create-or-update-org-secret
 
         PUT /orgs/{org}/codespaces/secrets/{secret_name}
@@ -1122,7 +1145,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
-        OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
+        OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse,
     ]:
         """codespaces/list-selected-repos-for-org-secret
 
@@ -1153,7 +1176,7 @@ class CodespacesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
@@ -1173,7 +1196,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
-        OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
+        OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse,
     ]:
         """codespaces/list-selected-repos-for-org-secret
 
@@ -1204,7 +1227,7 @@ class CodespacesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
@@ -1540,7 +1563,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgMembersUsernameCodespacesGetResponse200,
-        OrgsOrgMembersUsernameCodespacesGetResponse200Type,
+        OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse,
     ]:
         """codespaces/get-codespaces-for-user-in-org
 
@@ -1567,7 +1590,7 @@ class CodespacesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgMembersUsernameCodespacesGetResponse200,
@@ -1590,7 +1613,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgMembersUsernameCodespacesGetResponse200,
-        OrgsOrgMembersUsernameCodespacesGetResponse200Type,
+        OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse,
     ]:
         """codespaces/get-codespaces-for-user-in-org
 
@@ -1617,7 +1640,7 @@ class CodespacesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgMembersUsernameCodespacesGetResponse200,
@@ -1639,7 +1662,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """codespaces/delete-from-organization
 
@@ -1685,7 +1708,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """codespaces/delete-from-organization
 
@@ -1729,7 +1752,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Codespace, CodespaceType]:
+    ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/stop-in-organization
 
         POST /orgs/{org}/members/{username}/codespaces/{codespace_name}/stop
@@ -1769,7 +1792,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Codespace, CodespaceType]:
+    ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/stop-in-organization
 
         POST /orgs/{org}/members/{username}/codespaces/{codespace_name}/stop
@@ -1812,7 +1835,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesGetResponse200,
-        ReposOwnerRepoCodespacesGetResponse200Type,
+        ReposOwnerRepoCodespacesGetResponse200TypeForResponse,
     ]:
         """codespaces/list-in-repository-for-authenticated-user
 
@@ -1839,7 +1862,7 @@ class CodespacesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoCodespacesGetResponse200,
@@ -1862,7 +1885,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesGetResponse200,
-        ReposOwnerRepoCodespacesGetResponse200Type,
+        ReposOwnerRepoCodespacesGetResponse200TypeForResponse,
     ]:
         """codespaces/list-in-repository-for-authenticated-user
 
@@ -1889,7 +1912,7 @@ class CodespacesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoCodespacesGetResponse200,
@@ -1910,7 +1933,7 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Union[ReposOwnerRepoCodespacesPostBodyType, None],
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     @overload
     def create_with_repo_for_authenticated_user(
@@ -1934,7 +1957,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     def create_with_repo_for_authenticated_user(
         self,
@@ -1945,7 +1968,7 @@ class CodespacesClient:
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[Codespace, CodespaceType]:
+    ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/create-with-repo-for-authenticated-user
 
         POST /repos/{owner}/{repo}/codespaces
@@ -2006,7 +2029,7 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Union[ReposOwnerRepoCodespacesPostBodyType, None],
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     @overload
     async def async_create_with_repo_for_authenticated_user(
@@ -2030,7 +2053,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     async def async_create_with_repo_for_authenticated_user(
         self,
@@ -2041,7 +2064,7 @@ class CodespacesClient:
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[Codespace, CodespaceType]:
+    ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/create-with-repo-for-authenticated-user
 
         POST /repos/{owner}/{repo}/codespaces
@@ -2104,7 +2127,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesDevcontainersGetResponse200,
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200Type,
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200TypeForResponse,
     ]:
         """codespaces/list-devcontainers-in-repository-for-authenticated-user
 
@@ -2135,7 +2158,7 @@ class CodespacesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoCodespacesDevcontainersGetResponse200,
@@ -2159,7 +2182,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesDevcontainersGetResponse200,
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200Type,
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200TypeForResponse,
     ]:
         """codespaces/list-devcontainers-in-repository-for-authenticated-user
 
@@ -2190,7 +2213,7 @@ class CodespacesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoCodespacesDevcontainersGetResponse200,
@@ -2215,7 +2238,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesMachinesGetResponse200,
-        ReposOwnerRepoCodespacesMachinesGetResponse200Type,
+        ReposOwnerRepoCodespacesMachinesGetResponse200TypeForResponse,
     ]:
         """codespaces/repo-machines-for-authenticated-user
 
@@ -2243,7 +2266,7 @@ class CodespacesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoCodespacesMachinesGetResponse200,
@@ -2267,7 +2290,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesMachinesGetResponse200,
-        ReposOwnerRepoCodespacesMachinesGetResponse200Type,
+        ReposOwnerRepoCodespacesMachinesGetResponse200TypeForResponse,
     ]:
         """codespaces/repo-machines-for-authenticated-user
 
@@ -2295,7 +2318,7 @@ class CodespacesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoCodespacesMachinesGetResponse200,
@@ -2318,7 +2341,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesNewGetResponse200,
-        ReposOwnerRepoCodespacesNewGetResponse200Type,
+        ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse,
     ]:
         """codespaces/pre-flight-with-repo-for-authenticated-user
 
@@ -2345,7 +2368,7 @@ class CodespacesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoCodespacesNewGetResponse200,
@@ -2367,7 +2390,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesNewGetResponse200,
-        ReposOwnerRepoCodespacesNewGetResponse200Type,
+        ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse,
     ]:
         """codespaces/pre-flight-with-repo-for-authenticated-user
 
@@ -2394,7 +2417,7 @@ class CodespacesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoCodespacesNewGetResponse200,
@@ -2416,7 +2439,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         CodespacesPermissionsCheckForDevcontainer,
-        CodespacesPermissionsCheckForDevcontainerType,
+        CodespacesPermissionsCheckForDevcontainerTypeForResponse,
     ]:
         """codespaces/check-permissions-for-devcontainer
 
@@ -2448,7 +2471,7 @@ class CodespacesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=CodespacesPermissionsCheckForDevcontainer,
@@ -2472,7 +2495,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         CodespacesPermissionsCheckForDevcontainer,
-        CodespacesPermissionsCheckForDevcontainerType,
+        CodespacesPermissionsCheckForDevcontainerTypeForResponse,
     ]:
         """codespaces/check-permissions-for-devcontainer
 
@@ -2504,7 +2527,7 @@ class CodespacesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=CodespacesPermissionsCheckForDevcontainer,
@@ -2528,7 +2551,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesSecretsGetResponse200,
-        ReposOwnerRepoCodespacesSecretsGetResponse200Type,
+        ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse,
     ]:
         """codespaces/list-repo-secrets
 
@@ -2556,7 +2579,7 @@ class CodespacesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoCodespacesSecretsGetResponse200,
@@ -2573,7 +2596,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesSecretsGetResponse200,
-        ReposOwnerRepoCodespacesSecretsGetResponse200Type,
+        ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse,
     ]:
         """codespaces/list-repo-secrets
 
@@ -2601,7 +2624,7 @@ class CodespacesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoCodespacesSecretsGetResponse200,
@@ -2614,7 +2637,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
+    ) -> Response[CodespacesPublicKey, CodespacesPublicKeyTypeForResponse]:
         """codespaces/get-repo-public-key
 
         GET /repos/{owner}/{repo}/codespaces/secrets/public-key
@@ -2648,7 +2671,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
+    ) -> Response[CodespacesPublicKey, CodespacesPublicKeyTypeForResponse]:
         """codespaces/get-repo-public-key
 
         GET /repos/{owner}/{repo}/codespaces/secrets/public-key
@@ -2683,7 +2706,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RepoCodespacesSecret, RepoCodespacesSecretType]:
+    ) -> Response[RepoCodespacesSecret, RepoCodespacesSecretTypeForResponse]:
         """codespaces/get-repo-secret
 
         GET /repos/{owner}/{repo}/codespaces/secrets/{secret_name}
@@ -2717,7 +2740,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RepoCodespacesSecret, RepoCodespacesSecretType]:
+    ) -> Response[RepoCodespacesSecret, RepoCodespacesSecretTypeForResponse]:
         """codespaces/get-repo-secret
 
         GET /repos/{owner}/{repo}/codespaces/secrets/{secret_name}
@@ -2753,7 +2776,7 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def create_or_update_repo_secret(
@@ -2767,7 +2790,7 @@ class CodespacesClient:
         stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def create_or_update_repo_secret(
         self,
@@ -2779,7 +2802,7 @@ class CodespacesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """codespaces/create-or-update-repo-secret
 
         PUT /repos/{owner}/{repo}/codespaces/secrets/{secret_name}
@@ -2831,7 +2854,7 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_create_or_update_repo_secret(
@@ -2845,7 +2868,7 @@ class CodespacesClient:
         stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_create_or_update_repo_secret(
         self,
@@ -2857,7 +2880,7 @@ class CodespacesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """codespaces/create-or-update-repo-secret
 
         PUT /repos/{owner}/{repo}/codespaces/secrets/{secret_name}
@@ -2971,7 +2994,7 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     @overload
     def create_with_pr_for_authenticated_user(
@@ -2995,7 +3018,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     def create_with_pr_for_authenticated_user(
         self,
@@ -3009,7 +3032,7 @@ class CodespacesClient:
             Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[Codespace, CodespaceType]:
+    ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/create-with-pr-for-authenticated-user
 
         POST /repos/{owner}/{repo}/pulls/{pull_number}/codespaces
@@ -3070,7 +3093,7 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     @overload
     async def async_create_with_pr_for_authenticated_user(
@@ -3094,7 +3117,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     async def async_create_with_pr_for_authenticated_user(
         self,
@@ -3108,7 +3131,7 @@ class CodespacesClient:
             Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[Codespace, CodespaceType]:
+    ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/create-with-pr-for-authenticated-user
 
         POST /repos/{owner}/{repo}/pulls/{pull_number}/codespaces
@@ -3167,7 +3190,9 @@ class CodespacesClient:
         repository_id: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[UserCodespacesGetResponse200, UserCodespacesGetResponse200Type]:
+    ) -> Response[
+        UserCodespacesGetResponse200, UserCodespacesGetResponse200TypeForResponse
+    ]:
         """codespaces/list-for-authenticated-user
 
         GET /user/codespaces
@@ -3194,7 +3219,7 @@ class CodespacesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=UserCodespacesGetResponse200,
@@ -3214,7 +3239,9 @@ class CodespacesClient:
         repository_id: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[UserCodespacesGetResponse200, UserCodespacesGetResponse200Type]:
+    ) -> Response[
+        UserCodespacesGetResponse200, UserCodespacesGetResponse200TypeForResponse
+    ]:
         """codespaces/list-for-authenticated-user
 
         GET /user/codespaces
@@ -3241,7 +3268,7 @@ class CodespacesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=UserCodespacesGetResponse200,
@@ -3260,7 +3287,7 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     @overload
     def create_for_authenticated_user(
@@ -3283,7 +3310,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     @overload
     def create_for_authenticated_user(
@@ -3301,7 +3328,7 @@ class CodespacesClient:
         devcontainer_path: Missing[str] = UNSET,
         working_directory: Missing[str] = UNSET,
         idle_timeout_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     def create_for_authenticated_user(
         self,
@@ -3312,7 +3339,7 @@ class CodespacesClient:
             Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type]
         ] = UNSET,
         **kwargs,
-    ) -> Response[Codespace, CodespaceType]:
+    ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/create-for-authenticated-user
 
         POST /user/codespaces
@@ -3373,7 +3400,7 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     @overload
     async def async_create_for_authenticated_user(
@@ -3396,7 +3423,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     @overload
     async def async_create_for_authenticated_user(
@@ -3414,7 +3441,7 @@ class CodespacesClient:
         devcontainer_path: Missing[str] = UNSET,
         working_directory: Missing[str] = UNSET,
         idle_timeout_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     async def async_create_for_authenticated_user(
         self,
@@ -3425,7 +3452,7 @@ class CodespacesClient:
             Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type]
         ] = UNSET,
         **kwargs,
-    ) -> Response[Codespace, CodespaceType]:
+    ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/create-for-authenticated-user
 
         POST /user/codespaces
@@ -3487,7 +3514,8 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        UserCodespacesSecretsGetResponse200, UserCodespacesSecretsGetResponse200Type
+        UserCodespacesSecretsGetResponse200,
+        UserCodespacesSecretsGetResponse200TypeForResponse,
     ]:
         """codespaces/list-secrets-for-authenticated-user
 
@@ -3517,7 +3545,7 @@ class CodespacesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=UserCodespacesSecretsGetResponse200,
@@ -3531,7 +3559,8 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        UserCodespacesSecretsGetResponse200, UserCodespacesSecretsGetResponse200Type
+        UserCodespacesSecretsGetResponse200,
+        UserCodespacesSecretsGetResponse200TypeForResponse,
     ]:
         """codespaces/list-secrets-for-authenticated-user
 
@@ -3561,7 +3590,7 @@ class CodespacesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=UserCodespacesSecretsGetResponse200,
@@ -3572,7 +3601,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodespacesUserPublicKey, CodespacesUserPublicKeyType]:
+    ) -> Response[CodespacesUserPublicKey, CodespacesUserPublicKeyTypeForResponse]:
         """codespaces/get-public-key-for-authenticated-user
 
         GET /user/codespaces/secrets/public-key
@@ -3605,7 +3634,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodespacesUserPublicKey, CodespacesUserPublicKeyType]:
+    ) -> Response[CodespacesUserPublicKey, CodespacesUserPublicKeyTypeForResponse]:
         """codespaces/get-public-key-for-authenticated-user
 
         GET /user/codespaces/secrets/public-key
@@ -3639,7 +3668,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodespacesSecret, CodespacesSecretType]:
+    ) -> Response[CodespacesSecret, CodespacesSecretTypeForResponse]:
         """codespaces/get-secret-for-authenticated-user
 
         GET /user/codespaces/secrets/{secret_name}
@@ -3673,7 +3702,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodespacesSecret, CodespacesSecretType]:
+    ) -> Response[CodespacesSecret, CodespacesSecretTypeForResponse]:
         """codespaces/get-secret-for-authenticated-user
 
         GET /user/codespaces/secrets/{secret_name}
@@ -3709,7 +3738,7 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def create_or_update_secret_for_authenticated_user(
@@ -3722,7 +3751,7 @@ class CodespacesClient:
         encrypted_value: Missing[str] = UNSET,
         key_id: str,
         selected_repository_ids: Missing[list[Union[int, str]]] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def create_or_update_secret_for_authenticated_user(
         self,
@@ -3732,7 +3761,7 @@ class CodespacesClient:
         stream: bool = False,
         data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """codespaces/create-or-update-secret-for-authenticated-user
 
         PUT /user/codespaces/secrets/{secret_name}
@@ -3788,7 +3817,7 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_create_or_update_secret_for_authenticated_user(
@@ -3801,7 +3830,7 @@ class CodespacesClient:
         encrypted_value: Missing[str] = UNSET,
         key_id: str,
         selected_repository_ids: Missing[list[Union[int, str]]] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_create_or_update_secret_for_authenticated_user(
         self,
@@ -3811,7 +3840,7 @@ class CodespacesClient:
         stream: bool = False,
         data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """codespaces/create-or-update-secret-for-authenticated-user
 
         PUT /user/codespaces/secrets/{secret_name}
@@ -3929,7 +3958,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
-        UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
+        UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse,
     ]:
         """codespaces/list-repositories-for-secret-for-authenticated-user
 
@@ -3975,7 +4004,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
-        UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
+        UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse,
     ]:
         """codespaces/list-repositories-for-secret-for-authenticated-user
 
@@ -4333,7 +4362,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Codespace, CodespaceType]:
+    ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/get-for-authenticated-user
 
         GET /user/codespaces/{codespace_name}
@@ -4371,7 +4400,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Codespace, CodespaceType]:
+    ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/get-for-authenticated-user
 
         GET /user/codespaces/{codespace_name}
@@ -4411,7 +4440,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """codespaces/delete-for-authenticated-user
 
@@ -4455,7 +4484,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """codespaces/delete-for-authenticated-user
 
@@ -4499,7 +4528,7 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     @overload
     def update_for_authenticated_user(
@@ -4512,7 +4541,7 @@ class CodespacesClient:
         machine: Missing[str] = UNSET,
         display_name: Missing[str] = UNSET,
         recent_folders: Missing[list[str]] = UNSET,
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     def update_for_authenticated_user(
         self,
@@ -4522,7 +4551,7 @@ class CodespacesClient:
         stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Codespace, CodespaceType]:
+    ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/update-for-authenticated-user
 
         PATCH /user/codespaces/{codespace_name}
@@ -4573,7 +4602,7 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     @overload
     async def async_update_for_authenticated_user(
@@ -4586,7 +4615,7 @@ class CodespacesClient:
         machine: Missing[str] = UNSET,
         display_name: Missing[str] = UNSET,
         recent_folders: Missing[list[str]] = UNSET,
-    ) -> Response[Codespace, CodespaceType]: ...
+    ) -> Response[Codespace, CodespaceTypeForResponse]: ...
 
     async def async_update_for_authenticated_user(
         self,
@@ -4596,7 +4625,7 @@ class CodespacesClient:
         stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Codespace, CodespaceType]:
+    ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/update-for-authenticated-user
 
         PATCH /user/codespaces/{codespace_name}
@@ -4645,7 +4674,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
+    ) -> Response[CodespaceExportDetails, CodespaceExportDetailsTypeForResponse]:
         """codespaces/export-for-authenticated-user
 
         POST /user/codespaces/{codespace_name}/exports
@@ -4686,7 +4715,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
+    ) -> Response[CodespaceExportDetails, CodespaceExportDetailsTypeForResponse]:
         """codespaces/export-for-authenticated-user
 
         POST /user/codespaces/{codespace_name}/exports
@@ -4728,7 +4757,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
+    ) -> Response[CodespaceExportDetails, CodespaceExportDetailsTypeForResponse]:
         """codespaces/get-export-details-for-authenticated-user
 
         GET /user/codespaces/{codespace_name}/exports/{export_id}
@@ -4764,7 +4793,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
+    ) -> Response[CodespaceExportDetails, CodespaceExportDetailsTypeForResponse]:
         """codespaces/get-export-details-for-authenticated-user
 
         GET /user/codespaces/{codespace_name}/exports/{export_id}
@@ -4801,7 +4830,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         UserCodespacesCodespaceNameMachinesGetResponse200,
-        UserCodespacesCodespaceNameMachinesGetResponse200Type,
+        UserCodespacesCodespaceNameMachinesGetResponse200TypeForResponse,
     ]:
         """codespaces/codespace-machines-for-authenticated-user
 
@@ -4845,7 +4874,7 @@ class CodespacesClient:
         stream: bool = False,
     ) -> Response[
         UserCodespacesCodespaceNameMachinesGetResponse200,
-        UserCodespacesCodespaceNameMachinesGetResponse200Type,
+        UserCodespacesCodespaceNameMachinesGetResponse200TypeForResponse,
     ]:
         """codespaces/codespace-machines-for-authenticated-user
 
@@ -4889,7 +4918,9 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserCodespacesCodespaceNamePublishPostBodyType,
-    ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]: ...
+    ) -> Response[
+        CodespaceWithFullRepository, CodespaceWithFullRepositoryTypeForResponse
+    ]: ...
 
     @overload
     def publish_for_authenticated_user(
@@ -4901,7 +4932,9 @@ class CodespacesClient:
         stream: bool = False,
         name: Missing[str] = UNSET,
         private: Missing[bool] = UNSET,
-    ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]: ...
+    ) -> Response[
+        CodespaceWithFullRepository, CodespaceWithFullRepositoryTypeForResponse
+    ]: ...
 
     def publish_for_authenticated_user(
         self,
@@ -4911,7 +4944,9 @@ class CodespacesClient:
         stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]:
+    ) -> Response[
+        CodespaceWithFullRepository, CodespaceWithFullRepositoryTypeForResponse
+    ]:
         """codespaces/publish-for-authenticated-user
 
         POST /user/codespaces/{codespace_name}/publish
@@ -4972,7 +5007,9 @@ class CodespacesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserCodespacesCodespaceNamePublishPostBodyType,
-    ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]: ...
+    ) -> Response[
+        CodespaceWithFullRepository, CodespaceWithFullRepositoryTypeForResponse
+    ]: ...
 
     @overload
     async def async_publish_for_authenticated_user(
@@ -4984,7 +5021,9 @@ class CodespacesClient:
         stream: bool = False,
         name: Missing[str] = UNSET,
         private: Missing[bool] = UNSET,
-    ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]: ...
+    ) -> Response[
+        CodespaceWithFullRepository, CodespaceWithFullRepositoryTypeForResponse
+    ]: ...
 
     async def async_publish_for_authenticated_user(
         self,
@@ -4994,7 +5033,9 @@ class CodespacesClient:
         stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]:
+    ) -> Response[
+        CodespaceWithFullRepository, CodespaceWithFullRepositoryTypeForResponse
+    ]:
         """codespaces/publish-for-authenticated-user
 
         POST /user/codespaces/{codespace_name}/publish
@@ -5053,7 +5094,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Codespace, CodespaceType]:
+    ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/start-for-authenticated-user
 
         POST /user/codespaces/{codespace_name}/start
@@ -5094,7 +5135,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Codespace, CodespaceType]:
+    ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/start-for-authenticated-user
 
         POST /user/codespaces/{codespace_name}/start
@@ -5135,7 +5176,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Codespace, CodespaceType]:
+    ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/stop-for-authenticated-user
 
         POST /user/codespaces/{codespace_name}/stop
@@ -5173,7 +5214,7 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Codespace, CodespaceType]:
+    ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/stop-for-authenticated-user
 
         POST /user/codespaces/{codespace_name}/stop

@@ -11,20 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0322 import LinkType
+
+class RateLimitType(TypedDict):
+    """Rate Limit"""
+
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
-class PullRequestSimplePropLinksType(TypedDict):
-    """PullRequestSimplePropLinks"""
+class RateLimitTypeForResponse(TypedDict):
+    """Rate Limit"""
 
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
-__all__ = ("PullRequestSimplePropLinksType",)
+__all__ = (
+    "RateLimitType",
+    "RateLimitTypeForResponse",
+)

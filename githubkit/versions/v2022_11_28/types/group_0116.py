@@ -9,24 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrganizationUpdateIssueTypeType(TypedDict):
-    """OrganizationUpdateIssueType"""
+class ActionsGetDefaultWorkflowPermissionsType(TypedDict):
+    """ActionsGetDefaultWorkflowPermissions"""
 
-    name: str
-    is_enabled: bool
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
+    default_workflow_permissions: Literal["read", "write"]
+    can_approve_pull_request_reviews: bool
 
 
-__all__ = ("OrganizationUpdateIssueTypeType",)
+class ActionsGetDefaultWorkflowPermissionsTypeForResponse(TypedDict):
+    """ActionsGetDefaultWorkflowPermissions"""
+
+    default_workflow_permissions: Literal["read", "write"]
+    can_approve_pull_request_reviews: bool
+
+
+__all__ = (
+    "ActionsGetDefaultWorkflowPermissionsType",
+    "ActionsGetDefaultWorkflowPermissionsTypeForResponse",
+)

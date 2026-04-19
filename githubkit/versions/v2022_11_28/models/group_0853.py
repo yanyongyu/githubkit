@@ -9,32 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0854 import WebhookRepositoryRulesetEditedPropChangesPropConditions
+from .group_0856 import WebhookRepositoryRulesetEditedPropChangesPropRules
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-    default_for_new_repos: Missing[
-        Literal["all", "none", "private_and_internal", "public"]
-    ] = Field(
-        default=UNSET,
-        description="Specify which types of repository this security configuration should be applied to by default.",
+class WebhookRepositoryRulesetEditedPropChanges(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChanges"""
+
+    name: Missing[WebhookRepositoryRulesetEditedPropChangesPropName] = Field(
+        default=UNSET
+    )
+    enforcement: Missing[WebhookRepositoryRulesetEditedPropChangesPropEnforcement] = (
+        Field(default=UNSET)
+    )
+    conditions: Missing[WebhookRepositoryRulesetEditedPropChangesPropConditions] = (
+        Field(default=UNSET)
+    )
+    rules: Missing[WebhookRepositoryRulesetEditedPropChangesPropRules] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody
-)
+class WebhookRepositoryRulesetEditedPropChangesPropName(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropEnforcement(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+model_rebuild(WebhookRepositoryRulesetEditedPropChanges)
+model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropName)
+model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropEnforcement)
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",
+    "WebhookRepositoryRulesetEditedPropChanges",
+    "WebhookRepositoryRulesetEditedPropChangesPropEnforcement",
+    "WebhookRepositoryRulesetEditedPropChangesPropName",
 )

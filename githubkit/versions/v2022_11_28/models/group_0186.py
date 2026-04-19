@@ -9,29 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0185 import RulesetVersionPropActor
-from .group_0188 import RulesetVersionWithStateAllof1PropState
 
+class RepositoryRulesetConditionsPropRefName(GitHubModel):
+    """RepositoryRulesetConditionsPropRefName"""
 
-class RulesetVersionWithState(GitHubModel):
-    """RulesetVersionWithState"""
-
-    version_id: int = Field(description="The ID of the previous version of the ruleset")
-    actor: RulesetVersionPropActor = Field(
-        description="The actor who updated the ruleset"
+    include: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches.",
     )
-    updated_at: datetime = Field()
-    state: RulesetVersionWithStateAllof1PropState = Field(
-        description="The state of the ruleset version"
+    exclude: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match.",
     )
 
 
-model_rebuild(RulesetVersionWithState)
+model_rebuild(RepositoryRulesetConditionsPropRefName)
 
-__all__ = ("RulesetVersionWithState",)
+__all__ = ("RepositoryRulesetConditionsPropRefName",)

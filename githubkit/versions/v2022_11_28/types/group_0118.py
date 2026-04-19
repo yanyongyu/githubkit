@@ -9,38 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
 
+class RunnerLabelType(TypedDict):
+    """Self hosted runner label
 
-class MigrationType(TypedDict):
-    """Migration
-
-    A migration.
+    A label for a self hosted runner
     """
 
-    id: int
-    owner: Union[None, SimpleUserType]
-    guid: str
-    state: str
-    lock_repositories: bool
-    exclude_metadata: bool
-    exclude_git_data: bool
-    exclude_attachments: bool
-    exclude_releases: bool
-    exclude_owner_projects: bool
-    org_metadata_only: bool
-    repositories: list[RepositoryType]
-    url: str
-    created_at: datetime
-    updated_at: datetime
-    node_id: str
-    archive_url: NotRequired[str]
-    exclude: NotRequired[list[str]]
+    id: NotRequired[int]
+    name: str
+    type: NotRequired[Literal["read-only", "custom"]]
 
 
-__all__ = ("MigrationType",)
+class RunnerLabelTypeForResponse(TypedDict):
+    """Self hosted runner label
+
+    A label for a self hosted runner
+    """
+
+    id: NotRequired[int]
+    name: str
+    type: NotRequired[Literal["read-only", "custom"]]
+
+
+__all__ = (
+    "RunnerLabelType",
+    "RunnerLabelTypeForResponse",
+)

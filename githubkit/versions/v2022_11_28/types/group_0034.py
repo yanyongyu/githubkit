@@ -9,17 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class DependabotAlertPackageType(TypedDict):
-    """DependabotAlertPackage
+class CodeScanningOptionsType(TypedDict):
+    """CodeScanningOptions
 
-    Details for the vulnerable package.
+    Security Configuration feature options for code scanning
     """
 
-    ecosystem: str
-    name: str
+    allow_advanced: NotRequired[Union[bool, None]]
 
 
-__all__ = ("DependabotAlertPackageType",)
+class CodeScanningOptionsTypeForResponse(TypedDict):
+    """CodeScanningOptions
+
+    Security Configuration feature options for code scanning
+    """
+
+    allow_advanced: NotRequired[Union[bool, None]]
+
+
+class CodeScanningDefaultSetupOptionsType(TypedDict):
+    """CodeScanningDefaultSetupOptions
+
+    Feature options for code scanning default setup
+    """
+
+    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
+    runner_label: NotRequired[Union[str, None]]
+
+
+class CodeScanningDefaultSetupOptionsTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetupOptions
+
+    Feature options for code scanning default setup
+    """
+
+    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
+    runner_label: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "CodeScanningDefaultSetupOptionsType",
+    "CodeScanningDefaultSetupOptionsTypeForResponse",
+    "CodeScanningOptionsType",
+    "CodeScanningOptionsTypeForResponse",
+)

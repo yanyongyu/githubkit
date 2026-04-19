@@ -12,32 +12,52 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0274 import DeploymentType, DeploymentTypeForResponse
+from .group_0404 import PullRequestType, PullRequestTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-__all__ = ("WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType",)
+class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
+    """deployment protection rule requested event"""
+
+    action: Literal["requested"]
+    environment: NotRequired[str]
+    event: NotRequired[str]
+    sha: NotRequired[str]
+    ref: NotRequired[str]
+    deployment_callback_url: NotRequired[str]
+    deployment: NotRequired[Union[None, DeploymentType]]
+    pull_requests: NotRequired[list[PullRequestType]]
+    repository: NotRequired[RepositoryWebhooksType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    sender: NotRequired[SimpleUserType]
+
+
+class WebhookDeploymentProtectionRuleRequestedTypeForResponse(TypedDict):
+    """deployment protection rule requested event"""
+
+    action: Literal["requested"]
+    environment: NotRequired[str]
+    event: NotRequired[str]
+    sha: NotRequired[str]
+    ref: NotRequired[str]
+    deployment_callback_url: NotRequired[str]
+    deployment: NotRequired[Union[None, DeploymentTypeForResponse]]
+    pull_requests: NotRequired[list[PullRequestTypeForResponse]]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "WebhookDeploymentProtectionRuleRequestedType",
+    "WebhookDeploymentProtectionRuleRequestedTypeForResponse",
+)

@@ -12,26 +12,42 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
-from .group_0544 import WebhooksSponsorshipType
-from .group_0545 import WebhooksChanges8Type
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0599 import (
+    WebhooksProjectChangesType,
+    WebhooksProjectChangesTypeForResponse,
+)
+from .group_0600 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookSponsorshipTierChangedType(TypedDict):
-    """sponsorship tier_changed event"""
+class WebhookProjectsV2ItemArchivedType(TypedDict):
+    """Projects v2 Item Archived Event"""
 
-    action: Literal["tier_changed"]
-    changes: WebhooksChanges8Type
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["archived"]
+    changes: WebhooksProjectChangesType
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("WebhookSponsorshipTierChangedType",)
+class WebhookProjectsV2ItemArchivedTypeForResponse(TypedDict):
+    """Projects v2 Item Archived Event"""
+
+    action: Literal["archived"]
+    changes: WebhooksProjectChangesTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_item: ProjectsV2ItemTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookProjectsV2ItemArchivedType",
+    "WebhookProjectsV2ItemArchivedTypeForResponse",
+)

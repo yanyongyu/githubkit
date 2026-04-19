@@ -9,20 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0296 import MetadataType
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class DependencyType(TypedDict):
-    """Dependency"""
+class CheckAnnotationType(TypedDict):
+    """Check Annotation
 
-    package_url: NotRequired[str]
-    metadata: NotRequired[MetadataType]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[list[str]]
+    Check Annotation
+    """
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: Union[int, None]
+    end_column: Union[int, None]
+    annotation_level: Union[str, None]
+    title: Union[str, None]
+    message: Union[str, None]
+    raw_details: Union[str, None]
+    blob_href: str
 
 
-__all__ = ("DependencyType",)
+class CheckAnnotationTypeForResponse(TypedDict):
+    """Check Annotation
+
+    Check Annotation
+    """
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: Union[int, None]
+    end_column: Union[int, None]
+    annotation_level: Union[str, None]
+    title: Union[str, None]
+    message: Union[str, None]
+    raw_details: Union[str, None]
+    blob_href: str
+
+
+__all__ = (
+    "CheckAnnotationType",
+    "CheckAnnotationTypeForResponse",
+)

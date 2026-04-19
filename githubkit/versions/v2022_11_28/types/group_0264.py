@@ -9,36 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class CodeScanningDefaultSetupUpdateType(TypedDict):
-    """CodeScanningDefaultSetupUpdate
+class ActionsSecretType(TypedDict):
+    """Actions Secret
 
-    Configuration for code scanning default setup.
+    Set secrets for GitHub Actions.
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "swift",
-            ]
-        ]
-    ]
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-__all__ = ("CodeScanningDefaultSetupUpdateType",)
+class ActionsSecretTypeForResponse(TypedDict):
+    """Actions Secret
+
+    Set secrets for GitHub Actions.
+    """
+
+    name: str
+    created_at: str
+    updated_at: str
+
+
+__all__ = (
+    "ActionsSecretType",
+    "ActionsSecretTypeForResponse",
+)

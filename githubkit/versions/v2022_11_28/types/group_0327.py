@@ -9,39 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
 
+class BranchShortType(TypedDict):
+    """Branch Short
 
-class RenamedIssueEventType(TypedDict):
-    """Renamed Issue Event
-
-    Renamed Issue Event
+    Branch Short
     """
 
-    id: int
-    node_id: str
+    name: str
+    commit: BranchShortPropCommitType
+    protected: bool
+
+
+class BranchShortTypeForResponse(TypedDict):
+    """Branch Short
+
+    Branch Short
+    """
+
+    name: str
+    commit: BranchShortPropCommitTypeForResponse
+    protected: bool
+
+
+class BranchShortPropCommitType(TypedDict):
+    """BranchShortPropCommit"""
+
+    sha: str
     url: str
-    actor: SimpleUserType
-    event: Literal["renamed"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    rename: RenamedIssueEventPropRenameType
 
 
-class RenamedIssueEventPropRenameType(TypedDict):
-    """RenamedIssueEventPropRename"""
+class BranchShortPropCommitTypeForResponse(TypedDict):
+    """BranchShortPropCommit"""
 
-    from_: str
-    to: str
+    sha: str
+    url: str
 
 
 __all__ = (
-    "RenamedIssueEventPropRenameType",
-    "RenamedIssueEventType",
+    "BranchShortPropCommitType",
+    "BranchShortPropCommitTypeForResponse",
+    "BranchShortType",
+    "BranchShortTypeForResponse",
 )

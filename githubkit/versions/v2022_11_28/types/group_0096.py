@@ -9,52 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAlertInstanceType(TypedDict):
-    """CodeScanningAlertInstance"""
+class GetBudgetType(TypedDict):
+    """GetBudget"""
 
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Union[None, Literal["open", "dismissed", "fixed"]]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstancePropMessageType]
-    location: NotRequired[CodeScanningAlertLocationType]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
-        list[
-            Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
-            ]
-        ]
-    ]
+    id: str
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
+    budget_entity_name: str
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_product_sku: str
+    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_alerting: GetBudgetPropBudgetAlertingType
 
 
-class CodeScanningAlertLocationType(TypedDict):
-    """CodeScanningAlertLocation
+class GetBudgetTypeForResponse(TypedDict):
+    """GetBudget"""
 
-    Describe a region within a file for the alert.
-    """
+    id: str
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
+    budget_entity_name: str
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_product_sku: str
+    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_alerting: GetBudgetPropBudgetAlertingTypeForResponse
 
-    path: NotRequired[str]
-    start_line: NotRequired[int]
-    end_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
+
+class GetBudgetPropBudgetAlertingType(TypedDict):
+    """GetBudgetPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
-class CodeScanningAlertInstancePropMessageType(TypedDict):
-    """CodeScanningAlertInstancePropMessage"""
+class GetBudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """GetBudgetPropBudgetAlerting"""
 
-    text: NotRequired[str]
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "CodeScanningAlertInstancePropMessageType",
-    "CodeScanningAlertInstanceType",
-    "CodeScanningAlertLocationType",
+    "GetBudgetPropBudgetAlertingType",
+    "GetBudgetPropBudgetAlertingTypeForResponse",
+    "GetBudgetType",
+    "GetBudgetTypeForResponse",
 )

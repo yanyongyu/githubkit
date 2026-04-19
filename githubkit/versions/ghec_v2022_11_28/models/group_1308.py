@@ -13,15 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoTopicsPutBody(GitHubModel):
-    """ReposOwnerRepoTopicsPutBody"""
-
-    names: list[str] = Field(
-        description="An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` will be saved as lowercase."
-    )
+from .group_0336 import ActionsVariable
 
 
-model_rebuild(ReposOwnerRepoTopicsPutBody)
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
 
-__all__ = ("ReposOwnerRepoTopicsPutBody",)
+    total_count: int = Field()
+    variables: list[ActionsVariable] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsOrganizationVariablesGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200",)

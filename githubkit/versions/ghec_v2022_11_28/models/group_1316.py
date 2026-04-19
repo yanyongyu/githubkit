@@ -12,21 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0333 import Job
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberPatchBody(GitHubModel):
-    """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
+class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The discussion post's title."
-    )
-    body: Missing[str] = Field(
-        default=UNSET, description="The discussion post's body text."
-    )
+    total_count: int = Field()
+    jobs: list[Job] = Field()
 
 
-model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberPatchBody)
+model_rebuild(ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200)
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberPatchBody",)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200",)

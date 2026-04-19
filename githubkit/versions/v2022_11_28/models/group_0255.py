@@ -9,27 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeScanningAnalysisDeletion(GitHubModel):
-    """Analysis deletion
+class RateLimit(GitHubModel):
+    """Rate Limit"""
 
-    Successful deletion of a code scanning analysis
-    """
-
-    next_analysis_url: Union[str, None] = Field(
-        description="Next deletable analysis in chain, without last analysis deletion confirmation"
-    )
-    confirm_delete_url: Union[str, None] = Field(
-        description="Next deletable analysis in chain, with last analysis deletion confirmation"
-    )
+    limit: int = Field()
+    remaining: int = Field()
+    reset: int = Field()
+    used: int = Field()
 
 
-model_rebuild(CodeScanningAnalysisDeletion)
+model_rebuild(RateLimit)
 
-__all__ = ("CodeScanningAnalysisDeletion",)
+__all__ = ("RateLimit",)

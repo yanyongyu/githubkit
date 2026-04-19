@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,17 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0433 import EnterpriseWebhooks
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
-from .group_0444 import WebhooksUser
+from .group_0482 import EnterpriseWebhooks
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0485 import RepositoryWebhooks
+from .group_0499 import WebhooksIssueComment
+from .group_0653 import WebhookIssueCommentPinnedPropIssue
 
 
-class WebhookMemberRemoved(GitHubModel):
-    """member removed event"""
+class WebhookIssueCommentPinned(GitHubModel):
+    """issue_comment pinned event"""
 
-    action: Literal["removed"] = Field()
+    action: Literal["pinned"] = Field()
+    comment: WebhooksIssueComment = Field(
+        title="issue comment",
+        description="The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment) itself.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +44,9 @@ class WebhookMemberRemoved(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    member: Union[WebhooksUser, None] = Field(title="User")
+    issue: WebhookIssueCommentPinnedPropIssue = Field(
+        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) the comment belongs to."
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -52,6 +59,6 @@ class WebhookMemberRemoved(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookMemberRemoved)
+model_rebuild(WebhookIssueCommentPinned)
 
-__all__ = ("WebhookMemberRemoved",)
+__all__ = ("WebhookIssueCommentPinned",)

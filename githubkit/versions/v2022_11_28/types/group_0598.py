@@ -9,30 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
-from .group_0047 import IssueType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
+from .group_0048 import DiscussionType, DiscussionTypeForResponse
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssueDependenciesBlockedByRemovedType(TypedDict):
-    """blocked by issue removed event"""
+class WebhookDiscussionTransferredPropChangesType(TypedDict):
+    """WebhookDiscussionTransferredPropChanges"""
 
-    action: Literal["blocked_by_removed"]
-    blocked_issue_id: float
-    blocked_issue: IssueType
-    blocking_issue_id: float
-    blocking_issue: IssueType
-    blocking_issue_repo: RepositoryType
-    installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    new_discussion: DiscussionType
+    new_repository: RepositoryWebhooksType
 
 
-__all__ = ("WebhookIssueDependenciesBlockedByRemovedType",)
+class WebhookDiscussionTransferredPropChangesTypeForResponse(TypedDict):
+    """WebhookDiscussionTransferredPropChanges"""
+
+    new_discussion: DiscussionTypeForResponse
+    new_repository: RepositoryWebhooksTypeForResponse
+
+
+__all__ = (
+    "WebhookDiscussionTransferredPropChangesType",
+    "WebhookDiscussionTransferredPropChangesTypeForResponse",
+)

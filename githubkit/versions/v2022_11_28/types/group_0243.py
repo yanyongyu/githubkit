@@ -9,38 +9,202 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
-from .group_0092 import TeamType
+
+class SecretScanningLocationCommitType(TypedDict):
+    """SecretScanningLocationCommit
+
+    Represents a 'commit' secret scanning location type. This location type shows
+    that a secret was detected inside a commit to a repository.
+    """
+
+    path: str
+    start_line: float
+    end_line: float
+    start_column: float
+    end_column: float
+    blob_sha: str
+    blob_url: str
+    commit_sha: str
+    commit_url: str
+    html_url: NotRequired[str]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class SecretScanningLocationCommitTypeForResponse(TypedDict):
+    """SecretScanningLocationCommit
 
-    url: str
-    users_url: str
-    teams_url: str
-    users: list[SimpleUserType]
-    teams: list[TeamType]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
+    Represents a 'commit' secret scanning location type. This location type shows
+    that a secret was detected inside a commit to a repository.
+    """
+
+    path: str
+    start_line: float
+    end_line: float
+    start_column: float
+    end_column: float
+    blob_sha: str
+    blob_url: str
+    commit_sha: str
+    commit_url: str
+    html_url: NotRequired[str]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+class SecretScanningLocationWikiCommitType(TypedDict):
+    """SecretScanningLocationWikiCommit
 
-    users: list[SimpleUserType]
-    teams: list[TeamType]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
+    Represents a 'wiki_commit' secret scanning location type. This location type
+    shows that a secret was detected inside a commit to a repository wiki.
+    """
+
+    path: str
+    start_line: float
+    end_line: float
+    start_column: float
+    end_column: float
+    blob_sha: str
+    page_url: str
+    commit_sha: str
+    commit_url: str
+
+
+class SecretScanningLocationWikiCommitTypeForResponse(TypedDict):
+    """SecretScanningLocationWikiCommit
+
+    Represents a 'wiki_commit' secret scanning location type. This location type
+    shows that a secret was detected inside a commit to a repository wiki.
+    """
+
+    path: str
+    start_line: float
+    end_line: float
+    start_column: float
+    end_column: float
+    blob_sha: str
+    page_url: str
+    commit_sha: str
+    commit_url: str
+
+
+class SecretScanningLocationIssueBodyType(TypedDict):
+    """SecretScanningLocationIssueBody
+
+    Represents an 'issue_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of an issue.
+    """
+
+    issue_body_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationIssueBodyTypeForResponse(TypedDict):
+    """SecretScanningLocationIssueBody
+
+    Represents an 'issue_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of an issue.
+    """
+
+    issue_body_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationDiscussionTitleType(TypedDict):
+    """SecretScanningLocationDiscussionTitle
+
+    Represents a 'discussion_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a discussion.
+    """
+
+    discussion_title_url: str
+
+
+class SecretScanningLocationDiscussionTitleTypeForResponse(TypedDict):
+    """SecretScanningLocationDiscussionTitle
+
+    Represents a 'discussion_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a discussion.
+    """
+
+    discussion_title_url: str
+
+
+class SecretScanningLocationDiscussionCommentType(TypedDict):
+    """SecretScanningLocationDiscussionComment
+
+    Represents a 'discussion_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a discussion.
+    """
+
+    discussion_comment_url: str
+
+
+class SecretScanningLocationDiscussionCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationDiscussionComment
+
+    Represents a 'discussion_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a discussion.
+    """
+
+    discussion_comment_url: str
+
+
+class SecretScanningLocationPullRequestBodyType(TypedDict):
+    """SecretScanningLocationPullRequestBody
+
+    Represents a 'pull_request_body' secret scanning location type. This location
+    type shows that a secret was detected in the body of a pull request.
+    """
+
+    pull_request_body_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationPullRequestBodyTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestBody
+
+    Represents a 'pull_request_body' secret scanning location type. This location
+    type shows that a secret was detected in the body of a pull request.
+    """
+
+    pull_request_body_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationPullRequestReviewType(TypedDict):
+    """SecretScanningLocationPullRequestReview
+
+    Represents a 'pull_request_review' secret scanning location type. This location
+    type shows that a secret was detected in a review on a pull request.
+    """
+
+    pull_request_review_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationPullRequestReviewTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestReview
+
+    Represents a 'pull_request_review' secret scanning location type. This location
+    type shows that a secret was detected in a review on a pull request.
+    """
+
+    pull_request_review_url: str
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
+    "SecretScanningLocationCommitType",
+    "SecretScanningLocationCommitTypeForResponse",
+    "SecretScanningLocationDiscussionCommentType",
+    "SecretScanningLocationDiscussionCommentTypeForResponse",
+    "SecretScanningLocationDiscussionTitleType",
+    "SecretScanningLocationDiscussionTitleTypeForResponse",
+    "SecretScanningLocationIssueBodyType",
+    "SecretScanningLocationIssueBodyTypeForResponse",
+    "SecretScanningLocationPullRequestBodyType",
+    "SecretScanningLocationPullRequestBodyTypeForResponse",
+    "SecretScanningLocationPullRequestReviewType",
+    "SecretScanningLocationPullRequestReviewTypeForResponse",
+    "SecretScanningLocationWikiCommitType",
+    "SecretScanningLocationWikiCommitTypeForResponse",
 )

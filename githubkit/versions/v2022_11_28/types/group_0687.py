@@ -9,62 +9,192 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
+
+class WebhookIssuesClosedPropIssueAllof1Type(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1"""
+
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignee: NotRequired[
+        Union[WebhookIssuesClosedPropIssueAllof1PropAssigneeType, None]
+    ]
+    assignees: NotRequired[
+        list[Union[WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsType, None]]
+    ]
+    author_association: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+    closed_at: Union[str, None]
+    comments: NotRequired[int]
+    comments_url: NotRequired[str]
+    created_at: NotRequired[str]
+    events_url: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: NotRequired[
+        list[Union[WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType, None]]
+    ]
+    labels_url: NotRequired[str]
+    locked: NotRequired[bool]
+    milestone: NotRequired[
+        Union[WebhookIssuesClosedPropIssueAllof1PropMilestoneType, None]
+    ]
+    node_id: NotRequired[str]
+    number: NotRequired[int]
+    performed_via_github_app: NotRequired[
+        Union[WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppType, None]
+    ]
+    reactions: NotRequired[WebhookIssuesClosedPropIssueAllof1PropReactionsType]
+    repository_url: NotRequired[str]
+    state: Literal["closed", "open"]
+    timeline_url: NotRequired[str]
+    title: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    user: NotRequired[WebhookIssuesClosedPropIssueAllof1PropUserType]
 
 
-class WebhookProjectCardDeletedType(TypedDict):
-    """project_card deleted event"""
+class WebhookIssuesClosedPropIssueAllof1TypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1"""
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhookProjectCardDeletedPropProjectCardType
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
-    sender: SimpleUserType
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignee: NotRequired[
+        Union[WebhookIssuesClosedPropIssueAllof1PropAssigneeTypeForResponse, None]
+    ]
+    assignees: NotRequired[
+        list[
+            Union[
+                WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsTypeForResponse,
+                None,
+            ]
+        ]
+    ]
+    author_association: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+    closed_at: Union[str, None]
+    comments: NotRequired[int]
+    comments_url: NotRequired[str]
+    created_at: NotRequired[str]
+    events_url: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: NotRequired[
+        list[
+            Union[
+                WebhookIssuesClosedPropIssueAllof1PropLabelsItemsTypeForResponse, None
+            ]
+        ]
+    ]
+    labels_url: NotRequired[str]
+    locked: NotRequired[bool]
+    milestone: NotRequired[
+        Union[WebhookIssuesClosedPropIssueAllof1PropMilestoneTypeForResponse, None]
+    ]
+    node_id: NotRequired[str]
+    number: NotRequired[int]
+    performed_via_github_app: NotRequired[
+        Union[
+            WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse,
+            None,
+        ]
+    ]
+    reactions: NotRequired[
+        WebhookIssuesClosedPropIssueAllof1PropReactionsTypeForResponse
+    ]
+    repository_url: NotRequired[str]
+    state: Literal["closed", "open"]
+    timeline_url: NotRequired[str]
+    title: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    user: NotRequired[WebhookIssuesClosedPropIssueAllof1PropUserTypeForResponse]
 
 
-class WebhookProjectCardDeletedPropProjectCardType(TypedDict):
-    """Project Card"""
-
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: Union[int, None]
-    column_url: str
-    content_url: NotRequired[str]
-    created_at: datetime
-    creator: Union[WebhookProjectCardDeletedPropProjectCardPropCreatorType, None]
-    id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: datetime
-    url: str
+class WebhookIssuesClosedPropIssueAllof1PropAssigneeType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropAssignee"""
 
 
-class WebhookProjectCardDeletedPropProjectCardPropCreatorType(TypedDict):
-    """User"""
+class WebhookIssuesClosedPropIssueAllof1PropAssigneeTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropAssignee"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropAssigneesItems"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropAssigneesItems"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropLabelsItems"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropLabelsItemsTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropLabelsItems"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropMilestoneType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropMilestone"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropMilestoneTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropMilestone"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubApp"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse(
+    TypedDict
+):
+    """WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubApp"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropReactionsType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropReactions"""
+
+    plus_one: NotRequired[int]
+    minus_one: NotRequired[int]
+    confused: NotRequired[int]
+    eyes: NotRequired[int]
+    heart: NotRequired[int]
+    hooray: NotRequired[int]
+    laugh: NotRequired[int]
+    rocket: NotRequired[int]
+    total_count: NotRequired[int]
+    url: NotRequired[str]
+
+
+class WebhookIssuesClosedPropIssueAllof1PropReactionsTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropReactions"""
+
+    plus_one: NotRequired[int]
+    minus_one: NotRequired[int]
+    confused: NotRequired[int]
+    eyes: NotRequired[int]
+    heart: NotRequired[int]
+    hooray: NotRequired[int]
+    laugh: NotRequired[int]
+    rocket: NotRequired[int]
+    total_count: NotRequired[int]
+    url: NotRequired[str]
+
+
+class WebhookIssuesClosedPropIssueAllof1PropUserType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropUser"""
 
     avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
     events_url: NotRequired[str]
     followers_url: NotRequired[str]
     following_url: NotRequired[str]
     gists_url: NotRequired[str]
     gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
     node_id: NotRequired[str]
     organizations_url: NotRequired[str]
     received_events_url: NotRequired[str]
@@ -72,13 +202,50 @@ class WebhookProjectCardDeletedPropProjectCardPropCreatorType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookIssuesClosedPropIssueAllof1PropUserTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropUser"""
+
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectCardDeletedPropProjectCardPropCreatorType",
-    "WebhookProjectCardDeletedPropProjectCardType",
-    "WebhookProjectCardDeletedType",
+    "WebhookIssuesClosedPropIssueAllof1PropAssigneeType",
+    "WebhookIssuesClosedPropIssueAllof1PropAssigneeTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsType",
+    "WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType",
+    "WebhookIssuesClosedPropIssueAllof1PropLabelsItemsTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropMilestoneType",
+    "WebhookIssuesClosedPropIssueAllof1PropMilestoneTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppType",
+    "WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropReactionsType",
+    "WebhookIssuesClosedPropIssueAllof1PropReactionsTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropUserType",
+    "WebhookIssuesClosedPropIssueAllof1PropUserTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1Type",
+    "WebhookIssuesClosedPropIssueAllof1TypeForResponse",
 )

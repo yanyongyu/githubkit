@@ -17,104 +17,94 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0433 import EnterpriseWebhooks
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
-from .group_0457 import WebhooksMarketplacePurchase
 
-
-class WebhookMarketplacePurchasePendingChange(GitHubModel):
-    """marketplace_purchase pending_change event"""
-
-    action: Literal["pending_change"] = Field()
-    effective_date: str = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    marketplace_purchase: WebhooksMarketplacePurchase = Field(
-        title="Marketplace Purchase"
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    previous_marketplace_purchase: Missing[
-        WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase
-    ] = Field(default=UNSET, title="Marketplace Purchase")
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-
-
-class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase(
+class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner(
     GitHubModel
 ):
-    """Marketplace Purchase"""
+    """User"""
 
-    account: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount = Field()
-    billing_cycle: str = Field()
-    free_trial_ends_on: Union[str, None] = Field()
-    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
-    on_free_trial: bool = Field()
-    plan: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan = Field()
-    unit_count: int = Field()
-
-
-class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount(
-    GitHubModel
-):
-    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccoun
-    t
-    """
-
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
     id: int = Field()
     login: str = Field()
-    node_id: str = Field()
-    organization_billing_email: Union[str, None] = Field()
-    type: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan(
+class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions(
     GitHubModel
 ):
-    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan"""
+    """WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
 
-    bullets: list[str] = Field()
-    description: str = Field()
-    has_free_trial: bool = Field()
-    id: int = Field()
-    monthly_price_in_cents: int = Field()
-    name: str = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    unit_name: Union[str, None] = Field()
-    yearly_price_in_cents: int = Field()
+    The set of permissions for the GitHub app
+    """
+
+    actions: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    administration: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    checks: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    content_references: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    contents: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    deployments: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    emails: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    environments: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    issues: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    keys: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    members: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    metadata: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_administration: Missing[Literal["read", "write"]] = Field(
+        default=UNSET
+    )
+    organization_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_plan: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_projects: Missing[Literal["read", "write", "admin"]] = Field(
+        default=UNSET
+    )
+    organization_secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_self_hosted_runners: Missing[Literal["read", "write"]] = Field(
+        default=UNSET
+    )
+    organization_user_blocking: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    pages: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    pull_requests: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    repository_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    repository_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    secret_scanning_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    security_events: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    security_scanning_alert: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    single_file: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    statuses: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    vulnerability_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    workflows: Missing[Literal["read", "write"]] = Field(default=UNSET)
 
 
-model_rebuild(WebhookMarketplacePurchasePendingChange)
-model_rebuild(WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase)
 model_rebuild(
-    WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner
 )
 model_rebuild(
-    WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
 )
 
 __all__ = (
-    "WebhookMarketplacePurchasePendingChange",
-    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase",
-    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount",
-    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan",
+    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
+    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
 )

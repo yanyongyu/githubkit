@@ -9,114 +9,128 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
-from .group_0076 import TeamType
-from .group_0168 import IssueType
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0210 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0366 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
 
 
-class IssueEventType(TypedDict):
-    """Issue Event
+class CheckRunType(TypedDict):
+    """CheckRun
 
-    Issue Event
+    A check performed on the code of a given code change
     """
 
     id: int
+    head_sha: str
     node_id: str
+    external_id: Union[str, None]
     url: str
-    actor: Union[None, SimpleUserType]
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: datetime
-    issue: NotRequired[Union[None, IssueType]]
-    label: NotRequired[IssueEventLabelType]
-    assignee: NotRequired[Union[None, SimpleUserType]]
-    assigner: NotRequired[Union[None, SimpleUserType]]
-    review_requester: NotRequired[Union[None, SimpleUserType]]
-    requested_reviewer: NotRequired[Union[None, SimpleUserType]]
-    requested_team: NotRequired[TeamType]
-    dismissed_review: NotRequired[IssueEventDismissedReviewType]
-    milestone: NotRequired[IssueEventMilestoneType]
-    project_card: NotRequired[IssueEventProjectCardType]
-    rename: NotRequired[IssueEventRenameType]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
+    html_url: Union[str, None]
+    details_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
     ]
-    lock_reason: NotRequired[Union[str, None]]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    started_at: Union[_dt.datetime, None]
+    completed_at: Union[_dt.datetime, None]
+    output: CheckRunPropOutputType
+    name: str
+    check_suite: Union[CheckRunPropCheckSuiteType, None]
+    app: Union[None, IntegrationType, None]
+    pull_requests: list[PullRequestMinimalType]
+    deployment: NotRequired[DeploymentSimpleType]
 
 
-class IssueEventLabelType(TypedDict):
-    """Issue Event Label
+class CheckRunTypeForResponse(TypedDict):
+    """CheckRun
 
-    Issue Event Label
+    A check performed on the code of a given code change
     """
 
-    name: Union[str, None]
-    color: Union[str, None]
-
-
-class IssueEventDismissedReviewType(TypedDict):
-    """Issue Event Dismissed Review"""
-
-    state: str
-    review_id: int
-    dismissal_message: Union[str, None]
-    dismissal_commit_id: NotRequired[Union[str, None]]
-
-
-class IssueEventMilestoneType(TypedDict):
-    """Issue Event Milestone
-
-    Issue Event Milestone
-    """
-
-    title: str
-
-
-class IssueEventProjectCardType(TypedDict):
-    """Issue Event Project Card
-
-    Issue Event Project Card
-    """
-
-    url: str
     id: int
-    project_url: str
-    project_id: int
-    column_name: str
-    previous_column_name: NotRequired[str]
+    head_sha: str
+    node_id: str
+    external_id: Union[str, None]
+    url: str
+    html_url: Union[str, None]
+    details_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    started_at: Union[str, None]
+    completed_at: Union[str, None]
+    output: CheckRunPropOutputTypeForResponse
+    name: str
+    check_suite: Union[CheckRunPropCheckSuiteTypeForResponse, None]
+    app: Union[None, IntegrationTypeForResponse, None]
+    pull_requests: list[PullRequestMinimalTypeForResponse]
+    deployment: NotRequired[DeploymentSimpleTypeForResponse]
 
 
-class IssueEventRenameType(TypedDict):
-    """Issue Event Rename
+class CheckRunPropOutputType(TypedDict):
+    """CheckRunPropOutput"""
 
-    Issue Event Rename
-    """
+    title: Union[str, None]
+    summary: Union[str, None]
+    text: Union[str, None]
+    annotations_count: int
+    annotations_url: str
 
-    from_: str
-    to: str
+
+class CheckRunPropOutputTypeForResponse(TypedDict):
+    """CheckRunPropOutput"""
+
+    title: Union[str, None]
+    summary: Union[str, None]
+    text: Union[str, None]
+    annotations_count: int
+    annotations_url: str
+
+
+class CheckRunPropCheckSuiteType(TypedDict):
+    """CheckRunPropCheckSuite"""
+
+    id: int
+
+
+class CheckRunPropCheckSuiteTypeForResponse(TypedDict):
+    """CheckRunPropCheckSuite"""
+
+    id: int
 
 
 __all__ = (
-    "IssueEventDismissedReviewType",
-    "IssueEventLabelType",
-    "IssueEventMilestoneType",
-    "IssueEventProjectCardType",
-    "IssueEventRenameType",
-    "IssueEventType",
+    "CheckRunPropCheckSuiteType",
+    "CheckRunPropCheckSuiteTypeForResponse",
+    "CheckRunPropOutputType",
+    "CheckRunPropOutputTypeForResponse",
+    "CheckRunType",
+    "CheckRunTypeForResponse",
 )

@@ -9,35 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Tag(GitHubModel):
-    """Tag
+class PagesDeploymentStatus(GitHubModel):
+    """GitHub Pages deployment status"""
 
-    Tag
-    """
+    status: Missing[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+        ]
+    ] = Field(default=UNSET, description="The current status of the deployment.")
 
-    name: str = Field()
-    commit: TagPropCommit = Field()
-    zipball_url: str = Field()
-    tarball_url: str = Field()
-    node_id: str = Field()
 
+model_rebuild(PagesDeploymentStatus)
 
-class TagPropCommit(GitHubModel):
-    """TagPropCommit"""
-
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(Tag)
-model_rebuild(TagPropCommit)
-
-__all__ = (
-    "Tag",
-    "TagPropCommit",
-)
+__all__ = ("PagesDeploymentStatus",)

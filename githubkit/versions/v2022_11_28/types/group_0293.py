@@ -9,22 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0034 import DependabotAlertPackageType
+from .group_0294 import (
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType,
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse,
+    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType,
+    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse,
+)
 
 
-class DependabotAlertPropDependencyType(TypedDict):
-    """DependabotAlertPropDependency
+class ProtectedBranchPropRequiredPullRequestReviewsType(TypedDict):
+    """ProtectedBranchPropRequiredPullRequestReviews"""
 
-    Details for the vulnerable dependency.
-    """
+    url: str
+    dismiss_stale_reviews: NotRequired[bool]
+    require_code_owner_reviews: NotRequired[bool]
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
+    dismissal_restrictions: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType
+    ]
+    bypass_pull_request_allowances: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType
+    ]
 
-    package: NotRequired[DependabotAlertPackageType]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
-    relationship: NotRequired[Union[None, Literal["unknown", "direct", "transitive"]]]
+
+class ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse(TypedDict):
+    """ProtectedBranchPropRequiredPullRequestReviews"""
+
+    url: str
+    dismiss_stale_reviews: NotRequired[bool]
+    require_code_owner_reviews: NotRequired[bool]
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
+    dismissal_restrictions: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse
+    ]
+    bypass_pull_request_allowances: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse
+    ]
 
 
-__all__ = ("DependabotAlertPropDependencyType",)
+__all__ = (
+    "ProtectedBranchPropRequiredPullRequestReviewsType",
+    "ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse",
+)

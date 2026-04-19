@@ -5,15 +5,29 @@
 version = "2022-11-28"
 identifier = "2022-11-28"
 module = "v2022_11_28"
-is_latest = true
-source = "https://raw.githubusercontent.com/github/rest-api-description/30ab35c5db4a05519ceed2e41292cdb7af182f1c/descriptions-next/api.github.com/api.github.com.2022-11-28.json"
+is_latest = false
+source = "https://raw.githubusercontent.com/github/rest-api-description/3ba1e7273bb94c613cf608640e4a7a860310669b/descriptions-next/api.github.com/api.github.com.2022-11-28.json"
 
 [[descriptions]]
 version = "2022-11-28"
 identifier = "ghec-2022-11-28"
 module = "ghec_v2022_11_28"
 is_latest = false
-source = "https://raw.githubusercontent.com/github/rest-api-description/30ab35c5db4a05519ceed2e41292cdb7af182f1c/descriptions-next/ghec/ghec.2022-11-28.json"
+source = "https://raw.githubusercontent.com/github/rest-api-description/3ba1e7273bb94c613cf608640e4a7a860310669b/descriptions-next/ghec/ghec.2022-11-28.json"
+
+[[descriptions]]
+version = "2026-03-10"
+identifier = "2026-03-10"
+module = "v2026_03_10"
+is_latest = true
+source = "https://raw.githubusercontent.com/github/rest-api-description/3ba1e7273bb94c613cf608640e4a7a860310669b/descriptions-next/api.github.com/api.github.com.2026-03-10.json"
+
+[[descriptions]]
+version = "2026-03-10"
+identifier = "ghec-2026-03-10"
+module = "ghec_v2026_03_10"
+is_latest = false
+source = "https://raw.githubusercontent.com/github/rest-api-description/3ba1e7273bb94c613cf608640e4a7a860310669b/descriptions-next/ghec/ghec.2026-03-10.json"
 
 [[overrides]]
 [overrides.field_overrides]
@@ -63,6 +77,7 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/30ab35c5
 "/components/schemas/repository-webhooks/properties/temp_clone_token" = {type = ["string", "null"]}
 "/components/schemas/repository-webhooks/properties/template_repository/properties/temp_clone_token" = {type = ["string", "null"]}
 "/components/schemas/repository/properties/owner" = {anyOf = [{type = "null"}, {"$ref" = "#/components/schemas/simple-user"}], "$ref" = "<unset>"}
+"/components/schemas/repo-search-result-item/required" = {"<remove>" = ["has_downloads"]}
 "/components/schemas/auto-merge/properties/commit_title" = {type = ["string", "null"]}
 "/components/schemas/auto-merge/properties/commit_message" = {type = ["string", "null"]}
 "/paths/~1repos~1{owner}~1{repo}~1releases/post/requestBody/content/application~1json/schema/properties/make_latest" = {default = "true"}
@@ -89,6 +104,7 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/30ab35c5
 "/components/schemas/simple-classroom-assignment/required" = {"<remove>" = ["submitted"]}
 "/paths/~1repos~1{owner}~1{repo}~1check-runs/post/requestBody/content/application~1json/schema" = {discriminator = "<unset>"}
 "/paths/~1repos~1{owner}~1{repo}~1check-runs/post/requestBody/content/application~1json/schema/oneOf/1/properties/status/enum" = {"<add>" = ["waiting", "requested", "pending"]}
+"/paths/~1repos~1{owner}~1{repo}~1contents~1{path}/get" = {requestBody = "<unset>"}
 "/paths/~1repos~1{owner}~1{repo}~1contents~1{path}/get/responses/200/content/application~1json/schema" = {discriminator = "<unset>"}
 "/paths/~1user/get/responses/200/content/application~1json/schema" = {discriminator = "<unset>"}
 "/paths/~1user~1{account_id}/get/responses/200/content/application~1json/schema" = {discriminator = "<unset>"}
@@ -140,12 +156,22 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/30ab35c5
 "/components/schemas/webhook-workflow-run-in-progress/properties/workflow_run/properties/pull_requests/items/properties/number" = {type = "integer"}
 "/components/schemas/webhook-workflow-run-requested/properties/workflow_run/properties/pull_requests/items/properties/id" = {type = "integer"}
 "/components/schemas/webhook-workflow-run-requested/properties/workflow_run/properties/pull_requests/items/properties/number" = {type = "integer"}
+"/components/schemas/webhook-code-scanning-alert-fixed/properties/alert/properties/fixed_at" = {type = ["string", "null"], format = "date-time"}
+"/components/schemas/webhook-code-scanning-alert-fixed/properties/alert/properties/state/enum" = {"<add>" = ["dismissed"]}
+"/components/schemas/webhook-code-scanning-alert-closed-by-user/properties/alert/properties/fixed_at" = {type = ["string", "null"], format = "date-time"}
+"/components/schemas/webhook-code-scanning-alert-appeared-in-branch/properties/alert/properties/fixed_at" = {type = ["string", "null"], format = "date-time"}
+"/components/schemas/webhook-code-scanning-alert-reopened/properties/alert/properties/fixed_at" = {type = ["string", "null"], format = "date-time"}
+"/components/schemas/webhook-code-scanning-alert-reopened-by-user/properties/alert/properties/fixed_at" = {type = ["string", "null"], format = "date-time"}
+"/components/schemas/webhook-code-scanning-alert-updated-assignment/properties/alert/properties/fixed_at" = {type = ["string", "null"], format = "date-time"}
+"/components/schemas/webhook-code-scanning-alert-reopened/properties/alert/properties/dismissed_by" = {"<copy>" = "#/components/schemas/webhook-code-scanning-alert-appeared-in-branch/properties/alert/properties/dismissed_by"}
 "/webhooks/repository-dispatch-sample.collected/post" = {operationId = "repository-dispatch"}
+"/components/schemas/webhooks_answer/properties/parent_id" = {type = ["integer", "null"]}
 "/components/schemas/dependabot-alert-with-repository/properties/dependency/properties/relationship/enum" = {"<add>" = ["inconclusive"]}
+"/components/schemas/dependabot-alert/properties/dependency/properties/relationship/enum" = {"<add>" = ["inconclusive"]}
 "/components/schemas/code-scanning-alert-classification/enum" = {"<add>" = ["documentation"]}
 
 [[overrides]]
-target_descriptions = ["ghec-2022-11-28"]
+target_descriptions = ["ghec-2022-11-28", "ghec-2026-03-10"]
 
 [overrides.schema_overrides]
 "/paths/~1enterprises~1{enterprise}~1apps~1organizations~1{org}~1installations~1{installation_id}/delete" = {operationId = "enterprise-apps/enterprise-delete-installation"}

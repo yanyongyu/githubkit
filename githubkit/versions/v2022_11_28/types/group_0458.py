@@ -9,48 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhooksPreviousMarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase"""
-
-    account: WebhooksPreviousMarketplacePurchasePropAccountType
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: WebhooksPreviousMarketplacePurchasePropPlanType
-    unit_count: int
+from .group_0089 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0457 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
-class WebhooksPreviousMarketplacePurchasePropAccountType(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropAccount"""
+class CodeSearchResultItemType(TypedDict):
+    """Code Search Result Item
 
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
+    Code Search Result Item
+    """
 
-
-class WebhooksPreviousMarketplacePurchasePropPlanType(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropPlan"""
-
-    bullets: list[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
     name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    path: str
+    sha: str
+    url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryType
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[_dt.datetime]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+
+
+class CodeSearchResultItemTypeForResponse(TypedDict):
+    """Code Search Result Item
+
+    Code Search Result Item
+    """
+
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryTypeForResponse
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[str]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+
+
+class SearchCodeGetResponse200Type(TypedDict):
+    """SearchCodeGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemType]
+
+
+class SearchCodeGetResponse200TypeForResponse(TypedDict):
+    """SearchCodeGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "WebhooksPreviousMarketplacePurchasePropAccountType",
-    "WebhooksPreviousMarketplacePurchasePropPlanType",
-    "WebhooksPreviousMarketplacePurchaseType",
+    "CodeSearchResultItemType",
+    "CodeSearchResultItemTypeForResponse",
+    "SearchCodeGetResponse200Type",
+    "SearchCodeGetResponse200TypeForResponse",
 )

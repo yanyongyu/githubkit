@@ -9,14 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningSarifsReceiptType(TypedDict):
-    """CodeScanningSarifsReceipt"""
+class ActionsRepositoryPermissionsType(TypedDict):
+    """ActionsRepositoryPermissions"""
 
-    id: NotRequired[str]
-    url: NotRequired[str]
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
 
-__all__ = ("CodeScanningSarifsReceiptType",)
+class ActionsRepositoryPermissionsTypeForResponse(TypedDict):
+    """ActionsRepositoryPermissions"""
+
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
+
+
+__all__ = (
+    "ActionsRepositoryPermissionsType",
+    "ActionsRepositoryPermissionsTypeForResponse",
+)

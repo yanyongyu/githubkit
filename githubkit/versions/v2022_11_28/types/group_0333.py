@@ -12,40 +12,58 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
 
+class ContentDirectoryItemsType(TypedDict):
+    """ContentDirectoryItems"""
 
-class MovedColumnInProjectIssueEventType(TypedDict):
-    """Moved Column in Project Issue Event
-
-    Moved Column in Project Issue Event
-    """
-
-    id: int
-    node_id: str
+    type: Literal["dir", "file", "submodule", "symlink"]
+    size: int
+    name: str
+    path: str
+    content: NotRequired[str]
+    sha: str
     url: str
-    actor: SimpleUserType
-    event: Literal["moved_columns_in_project"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[MovedColumnInProjectIssueEventPropProjectCardType]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentDirectoryItemsPropLinksType
 
 
-class MovedColumnInProjectIssueEventPropProjectCardType(TypedDict):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
+class ContentDirectoryItemsTypeForResponse(TypedDict):
+    """ContentDirectoryItems"""
 
-    id: int
+    type: Literal["dir", "file", "submodule", "symlink"]
+    size: int
+    name: str
+    path: str
+    content: NotRequired[str]
+    sha: str
     url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentDirectoryItemsPropLinksTypeForResponse
+
+
+class ContentDirectoryItemsPropLinksType(TypedDict):
+    """ContentDirectoryItemsPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentDirectoryItemsPropLinksTypeForResponse(TypedDict):
+    """ContentDirectoryItemsPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "MovedColumnInProjectIssueEventPropProjectCardType",
-    "MovedColumnInProjectIssueEventType",
+    "ContentDirectoryItemsPropLinksType",
+    "ContentDirectoryItemsPropLinksTypeForResponse",
+    "ContentDirectoryItemsType",
+    "ContentDirectoryItemsTypeForResponse",
 )

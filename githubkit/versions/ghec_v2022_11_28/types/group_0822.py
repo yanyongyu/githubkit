@@ -9,172 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0738 import WebhookRubygemsMetadataType
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType(TypedDict):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion"""
-
-    author: (
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorType
-    )
-    body: str
-    body_html: str
-    created_at: str
-    description: str
-    docker_metadata: NotRequired[
-        list[
-            Union[
-                WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsType,
-                None,
-            ]
-        ]
-    ]
-    draft: NotRequired[bool]
-    html_url: str
-    id: int
-    installation_command: str
-    manifest: NotRequired[str]
-    metadata: list[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType
-    ]
-    name: str
-    package_files: list[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsType
-    ]
-    package_url: str
-    prerelease: NotRequired[bool]
-    release: NotRequired[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseType
-    ]
-    rubygems_metadata: NotRequired[list[WebhookRubygemsMetadataType]]
-    summary: str
-    tag_name: NotRequired[str]
-    target_commitish: str
-    target_oid: str
-    updated_at: str
-    version: str
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0592 import MergeGroupType, MergeGroupTypeForResponse
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorType(
-    TypedDict
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor"""
+class WebhookMergeGroupDestroyedType(TypedDict):
+    """WebhookMergeGroupDestroyed"""
 
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: str
-    html_url: str
-    id: int
-    login: str
-    node_id: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
-    user_view_type: NotRequired[str]
+    action: Literal["destroyed"]
+    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
+    installation: NotRequired[SimpleInstallationType]
+    merge_group: MergeGroupType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsType(
-    TypedDict
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMeta
-    dataItems
-    """
+class WebhookMergeGroupDestroyedTypeForResponse(TypedDict):
+    """WebhookMergeGroupDestroyed"""
 
-    tags: NotRequired[list[str]]
-
-
-WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType: TypeAlias = dict[
-    str, Any
-]
-"""WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataIt
-ems
-"""
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsType(
-    TypedDict
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFil
-    esItems
-    """
-
-    content_type: NotRequired[str]
-    created_at: NotRequired[str]
-    download_url: NotRequired[str]
-    id: NotRequired[int]
-    md5: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    sha1: NotRequired[Union[str, None]]
-    sha256: NotRequired[str]
-    size: NotRequired[int]
-    state: NotRequired[str]
-    updated_at: NotRequired[str]
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseType(
-    TypedDict
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease"""
-
-    author: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorType
-    created_at: str
-    draft: bool
-    html_url: str
-    id: int
-    name: str
-    prerelease: bool
-    published_at: str
-    tag_name: str
-    target_commitish: str
-    url: str
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorType(
-    TypedDict
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePro
-    pAuthor
-    """
-
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: str
-    html_url: str
-    id: int
-    login: str
-    node_id: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
-    user_view_type: NotRequired[str]
+    action: Literal["destroyed"]
+    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    merge_group: MergeGroupTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType",
+    "WebhookMergeGroupDestroyedType",
+    "WebhookMergeGroupDestroyedTypeForResponse",
 )

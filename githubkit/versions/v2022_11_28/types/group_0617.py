@@ -12,54 +12,47 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0448 import WebhooksLabelType
-from .group_0618 import WebhookIssuesEditedPropIssueType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0018 import InstallationType, InstallationTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0497 import (
+    WebhooksRepositoriesItemsType,
+    WebhooksRepositoriesItemsTypeForResponse,
+)
 
 
-class WebhookIssuesEditedType(TypedDict):
-    """issues edited event"""
+class WebhookInstallationUnsuspendType(TypedDict):
+    """installation unsuspend event"""
 
-    action: Literal["edited"]
-    changes: WebhookIssuesEditedPropChangesType
+    action: Literal["unsuspend"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesEditedPropIssueType
-    label: NotRequired[WebhooksLabelType]
+    installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
+    repository: NotRequired[RepositoryWebhooksType]
+    requester: NotRequired[None]
     sender: SimpleUserType
 
 
-class WebhookIssuesEditedPropChangesType(TypedDict):
-    """WebhookIssuesEditedPropChanges
+class WebhookInstallationUnsuspendTypeForResponse(TypedDict):
+    """installation unsuspend event"""
 
-    The changes to the issue.
-    """
-
-    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyType]
-    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleType]
-
-
-class WebhookIssuesEditedPropChangesPropBodyType(TypedDict):
-    """WebhookIssuesEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookIssuesEditedPropChangesPropTitleType(TypedDict):
-    """WebhookIssuesEditedPropChangesPropTitle"""
-
-    from_: str
+    action: Literal["unsuspend"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: InstallationTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    requester: NotRequired[None]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesEditedPropChangesPropBodyType",
-    "WebhookIssuesEditedPropChangesPropTitleType",
-    "WebhookIssuesEditedPropChangesType",
-    "WebhookIssuesEditedType",
+    "WebhookInstallationUnsuspendType",
+    "WebhookInstallationUnsuspendTypeForResponse",
 )

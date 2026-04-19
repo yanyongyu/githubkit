@@ -9,30 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoPagesPostBodyPropSource(GitHubModel):
-    """ReposOwnerRepoPagesPostBodyPropSource
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
 
-    The source branch and directory used to publish your Pages site.
-    """
-
-    branch: str = Field(
-        description="The repository branch used to publish your site's source files."
-    )
-    path: Missing[Literal["/", "/docs"]] = Field(
-        default=UNSET,
-        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. Default: `/`",
+    labels: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPostBodyPropSource)
+model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody)
 
-__all__ = ("ReposOwnerRepoPagesPostBodyPropSource",)
+__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",)

@@ -9,14 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0335 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class TeamsTeamIdMembershipsUsernamePutBodyType(TypedDict):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class ReposOwnerRepoActionsSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsSecretsGetResponse200"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    total_count: int
+    secrets: list[ActionsSecretType]
 
 
-__all__ = ("TeamsTeamIdMembershipsUsernamePutBodyType",)
+class ReposOwnerRepoActionsSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
+
+
+__all__ = (
+    "ReposOwnerRepoActionsSecretsGetResponse200Type",
+    "ReposOwnerRepoActionsSecretsGetResponse200TypeForResponse",
+)

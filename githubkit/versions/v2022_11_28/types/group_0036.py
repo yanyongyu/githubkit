@@ -9,81 +9,121 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
-from .group_0001 import CvssSeveritiesType
-from .group_0002 import SecurityAdvisoryEpssType
-from .group_0035 import DependabotAlertSecurityVulnerabilityType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class DependabotAlertSecurityAdvisoryType(TypedDict):
-    """DependabotAlertSecurityAdvisory
+class SimpleRepositoryType(TypedDict):
+    """Simple Repository
 
-    Details for the GitHub Security Advisory.
+    A GitHub repository.
     """
 
-    ghsa_id: str
-    cve_id: Union[str, None]
-    summary: str
-    description: str
-    vulnerabilities: list[DependabotAlertSecurityVulnerabilityType]
-    severity: Literal["low", "medium", "high", "critical"]
-    cvss: DependabotAlertSecurityAdvisoryPropCvssType
-    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    epss: NotRequired[Union[SecurityAdvisoryEpssType, None]]
-    cwes: list[DependabotAlertSecurityAdvisoryPropCwesItemsType]
-    identifiers: list[DependabotAlertSecurityAdvisoryPropIdentifiersItemsType]
-    references: list[DependabotAlertSecurityAdvisoryPropReferencesItemsType]
-    published_at: datetime
-    updated_at: datetime
-    withdrawn_at: Union[datetime, None]
-
-
-class DependabotAlertSecurityAdvisoryPropCvssType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCvss
-
-    Details for the advisory pertaining to the Common Vulnerability Scoring System.
-    """
-
-    score: float
-    vector_string: Union[str, None]
-
-
-class DependabotAlertSecurityAdvisoryPropCwesItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCwesItems
-
-    A CWE weakness assigned to the advisory.
-    """
-
-    cwe_id: str
+    id: int
+    node_id: str
     name: str
-
-
-class DependabotAlertSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
-
-    An advisory identifier.
-    """
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class DependabotAlertSecurityAdvisoryPropReferencesItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropReferencesItems
-
-    A link to additional advisory information.
-    """
-
+    full_name: str
+    owner: SimpleUserType
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
     url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    hooks_url: str
+
+
+class SimpleRepositoryTypeForResponse(TypedDict):
+    """Simple Repository
+
+    A GitHub repository.
+    """
+
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    owner: SimpleUserTypeForResponse
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    hooks_url: str
 
 
 __all__ = (
-    "DependabotAlertSecurityAdvisoryPropCvssType",
-    "DependabotAlertSecurityAdvisoryPropCwesItemsType",
-    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsType",
-    "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
-    "DependabotAlertSecurityAdvisoryType",
+    "SimpleRepositoryType",
+    "SimpleRepositoryTypeForResponse",
 )

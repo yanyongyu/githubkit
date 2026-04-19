@@ -17,45 +17,35 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class ContentDirectoryItems(GitHubModel):
+    """ContentDirectoryItems"""
 
-class MovedColumnInProjectIssueEvent(GitHubModel):
-    """Moved Column in Project Issue Event
-
-    Moved Column in Project Issue Event
-    """
-
-    id: int = Field()
-    node_id: str = Field()
+    type: Literal["dir", "file", "submodule", "symlink"] = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    content: Missing[str] = Field(default=UNSET)
+    sha: str = Field()
     url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["moved_columns_in_project"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    project_card: Missing[MovedColumnInProjectIssueEventPropProjectCard] = Field(
-        default=UNSET
-    )
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentDirectoryItemsPropLinks = Field(alias="_links")
 
 
-class MovedColumnInProjectIssueEventPropProjectCard(GitHubModel):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
+class ContentDirectoryItemsPropLinks(GitHubModel):
+    """ContentDirectoryItemsPropLinks"""
 
-    id: int = Field()
-    url: str = Field()
-    project_id: int = Field()
-    project_url: str = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
 
 
-model_rebuild(MovedColumnInProjectIssueEvent)
-model_rebuild(MovedColumnInProjectIssueEventPropProjectCard)
+model_rebuild(ContentDirectoryItems)
+model_rebuild(ContentDirectoryItemsPropLinks)
 
 __all__ = (
-    "MovedColumnInProjectIssueEvent",
-    "MovedColumnInProjectIssueEventPropProjectCard",
+    "ContentDirectoryItems",
+    "ContentDirectoryItemsPropLinks",
 )

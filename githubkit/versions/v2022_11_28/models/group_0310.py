@@ -9,30 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0309 import CodeScanningVariantAnalysisRepository
 
 
-class Blob(GitHubModel):
-    """Blob
+class CodeScanningVariantAnalysisSkippedRepoGroup(GitHubModel):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
 
-    Blob
-    """
-
-    content: str = Field()
-    encoding: str = Field()
-    url: str = Field()
-    sha: str = Field()
-    size: Union[int, None] = Field()
-    node_id: str = Field()
-    highlighted_content: Missing[str] = Field(default=UNSET)
+    repository_count: int = Field(
+        description="The total number of repositories that were skipped for this reason."
+    )
+    repositories: list[CodeScanningVariantAnalysisRepository] = Field(
+        description="A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it."
+    )
 
 
-model_rebuild(Blob)
+model_rebuild(CodeScanningVariantAnalysisSkippedRepoGroup)
 
-__all__ = ("Blob",)
+__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroup",)

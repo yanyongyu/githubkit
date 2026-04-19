@@ -9,28 +9,118 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class SearchResultTextMatchesItemsType(TypedDict):
-    """SearchResultTextMatchesItems"""
-
-    object_url: NotRequired[str]
-    object_type: NotRequired[Union[str, None]]
-    property_: NotRequired[str]
-    fragment: NotRequired[str]
-    matches: NotRequired[list[SearchResultTextMatchesItemsPropMatchesItemsType]]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
+class PullRequestReviewType(TypedDict):
+    """Pull Request Review
 
-    text: NotRequired[str]
-    indices: NotRequired[list[int]]
+    Pull Request Reviews are reviews on pull requests.
+    """
+
+    id: int
+    node_id: str
+    user: Union[None, SimpleUserType]
+    body: str
+    state: str
+    html_url: str
+    pull_request_url: str
+    links: PullRequestReviewPropLinksType
+    submitted_at: NotRequired[_dt.datetime]
+    commit_id: Union[str, None]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+
+
+class PullRequestReviewTypeForResponse(TypedDict):
+    """Pull Request Review
+
+    Pull Request Reviews are reviews on pull requests.
+    """
+
+    id: int
+    node_id: str
+    user: Union[None, SimpleUserTypeForResponse]
+    body: str
+    state: str
+    html_url: str
+    pull_request_url: str
+    links: PullRequestReviewPropLinksTypeForResponse
+    submitted_at: NotRequired[str]
+    commit_id: Union[str, None]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+
+
+class PullRequestReviewPropLinksType(TypedDict):
+    """PullRequestReviewPropLinks"""
+
+    html: PullRequestReviewPropLinksPropHtmlType
+    pull_request: PullRequestReviewPropLinksPropPullRequestType
+
+
+class PullRequestReviewPropLinksTypeForResponse(TypedDict):
+    """PullRequestReviewPropLinks"""
+
+    html: PullRequestReviewPropLinksPropHtmlTypeForResponse
+    pull_request: PullRequestReviewPropLinksPropPullRequestTypeForResponse
+
+
+class PullRequestReviewPropLinksPropHtmlType(TypedDict):
+    """PullRequestReviewPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewPropLinksPropHtmlTypeForResponse(TypedDict):
+    """PullRequestReviewPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewPropLinksPropPullRequestType(TypedDict):
+    """PullRequestReviewPropLinksPropPullRequest"""
+
+    href: str
+
+
+class PullRequestReviewPropLinksPropPullRequestTypeForResponse(TypedDict):
+    """PullRequestReviewPropLinksPropPullRequest"""
+
+    href: str
 
 
 __all__ = (
-    "SearchResultTextMatchesItemsPropMatchesItemsType",
-    "SearchResultTextMatchesItemsType",
+    "PullRequestReviewPropLinksPropHtmlType",
+    "PullRequestReviewPropLinksPropHtmlTypeForResponse",
+    "PullRequestReviewPropLinksPropPullRequestType",
+    "PullRequestReviewPropLinksPropPullRequestTypeForResponse",
+    "PullRequestReviewPropLinksType",
+    "PullRequestReviewPropLinksTypeForResponse",
+    "PullRequestReviewType",
+    "PullRequestReviewTypeForResponse",
 )

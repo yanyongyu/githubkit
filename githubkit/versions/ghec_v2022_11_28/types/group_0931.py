@@ -12,18 +12,42 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterprisesEnterpriseActionsRunnerGroupsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
-
-    name: str
-    visibility: NotRequired[Literal["selected", "all"]]
-    selected_organization_ids: NotRequired[list[int]]
-    runners: NotRequired[list[int]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
-    network_configuration_id: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0607 import WebhooksRelease1Type, WebhooksRelease1TypeForResponse
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsPostBodyType",)
+class WebhookReleaseUnpublishedType(TypedDict):
+    """release unpublished event"""
+
+    action: Literal["unpublished"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhooksRelease1Type
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
+
+
+class WebhookReleaseUnpublishedTypeForResponse(TypedDict):
+    """release unpublished event"""
+
+    action: Literal["unpublished"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    release: WebhooksRelease1TypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "WebhookReleaseUnpublishedType",
+    "WebhookReleaseUnpublishedTypeForResponse",
+)

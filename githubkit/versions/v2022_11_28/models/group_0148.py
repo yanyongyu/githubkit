@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -16,15 +17,19 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleRequiredLinearHistory(GitHubModel):
-    """required_linear_history
+class InteractionLimitResponse(GitHubModel):
+    """Interaction Limits
 
-    Prevent merge commits from being pushed to matching refs.
+    Interaction limit settings.
     """
 
-    type: Literal["required_linear_history"] = Field()
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
+        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
+    )
+    origin: str = Field()
+    expires_at: _dt.datetime = Field()
 
 
-model_rebuild(RepositoryRuleRequiredLinearHistory)
+model_rebuild(InteractionLimitResponse)
 
-__all__ = ("RepositoryRuleRequiredLinearHistory",)
+__all__ = ("InteractionLimitResponse",)

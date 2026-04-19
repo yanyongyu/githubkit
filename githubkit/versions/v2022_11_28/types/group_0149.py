@@ -12,17 +12,32 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0150 import RepositoryRuleMergeQueuePropParametersType
 
+class InteractionLimitType(TypedDict):
+    """Interaction Restrictions
 
-class RepositoryRuleMergeQueueType(TypedDict):
-    """merge_queue
-
-    Merges must be performed via a merge queue.
+    Limit interactions to a specific type of user for a specified duration
     """
 
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ]
 
 
-__all__ = ("RepositoryRuleMergeQueueType",)
+class InteractionLimitTypeForResponse(TypedDict):
+    """Interaction Restrictions
+
+    Limit interactions to a specific type of user for a specified duration
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ]
+
+
+__all__ = (
+    "InteractionLimitType",
+    "InteractionLimitTypeForResponse",
+)

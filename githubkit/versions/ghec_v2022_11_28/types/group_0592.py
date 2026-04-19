@@ -9,30 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0271 import DeploymentType
-from .group_0402 import PullRequestType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
+from .group_0339 import SimpleCommitType, SimpleCommitTypeForResponse
 
 
-class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
-    """deployment protection rule requested event"""
+class MergeGroupType(TypedDict):
+    """Merge Group
 
-    action: Literal["requested"]
-    environment: NotRequired[str]
-    event: NotRequired[str]
-    deployment_callback_url: NotRequired[str]
-    deployment: NotRequired[DeploymentType]
-    pull_requests: NotRequired[list[PullRequestType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    sender: NotRequired[SimpleUserType]
+    A group of pull requests that the merge queue has grouped together to be merged.
+    """
+
+    head_sha: str
+    head_ref: str
+    base_sha: str
+    base_ref: str
+    head_commit: SimpleCommitType
 
 
-__all__ = ("WebhookDeploymentProtectionRuleRequestedType",)
+class MergeGroupTypeForResponse(TypedDict):
+    """Merge Group
+
+    A group of pull requests that the merge queue has grouped together to be merged.
+    """
+
+    head_sha: str
+    head_ref: str
+    base_sha: str
+    base_ref: str
+    head_commit: SimpleCommitTypeForResponse
+
+
+__all__ = (
+    "MergeGroupType",
+    "MergeGroupTypeForResponse",
+)

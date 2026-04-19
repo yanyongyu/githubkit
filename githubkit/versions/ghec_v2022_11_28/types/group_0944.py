@@ -12,13 +12,42 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0174 import RepositoryRulesetType, RepositoryRulesetTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
 
-    client_id: str
-    repository_selection: Literal["all", "selected", "none"]
-    repositories: NotRequired[list[str]]
+class WebhookRepositoryRulesetDeletedType(TypedDict):
+    """repository ruleset deleted event"""
+
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_ruleset: RepositoryRulesetType
+    sender: SimpleUserType
 
 
-__all__ = ("EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType",)
+class WebhookRepositoryRulesetDeletedTypeForResponse(TypedDict):
+    """repository ruleset deleted event"""
+
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository_ruleset: RepositoryRulesetTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookRepositoryRulesetDeletedType",
+    "WebhookRepositoryRulesetDeletedTypeForResponse",
+)

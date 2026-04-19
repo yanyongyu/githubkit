@@ -9,19 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsSecretType(TypedDict):
-    """Actions Secret
+class RepositoryRuleCommitterEmailPatternPropParametersType(TypedDict):
+    """RepositoryRuleCommitterEmailPatternPropParameters"""
 
-    Set secrets for GitHub Actions.
-    """
-
-    name: str
-    created_at: datetime
-    updated_at: datetime
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
-__all__ = ("ActionsSecretType",)
+class RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCommitterEmailPatternPropParameters"""
+
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
+
+
+__all__ = (
+    "RepositoryRuleCommitterEmailPatternPropParametersType",
+    "RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse",
+)

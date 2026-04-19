@@ -9,15 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class SelfHostedRunnersSettingsType(TypedDict):
-    """SelfHostedRunnersSettings"""
+class LicenseType(TypedDict):
+    """License
 
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+    License
+    """
+
+    key: str
+    name: str
+    spdx_id: Union[str, None]
+    url: Union[str, None]
+    node_id: str
+    html_url: str
+    description: str
+    implementation: str
+    permissions: list[str]
+    conditions: list[str]
+    limitations: list[str]
+    body: str
+    featured: bool
 
 
-__all__ = ("SelfHostedRunnersSettingsType",)
+class LicenseTypeForResponse(TypedDict):
+    """License
+
+    License
+    """
+
+    key: str
+    name: str
+    spdx_id: Union[str, None]
+    url: Union[str, None]
+    node_id: str
+    html_url: str
+    description: str
+    implementation: str
+    permissions: list[str]
+    conditions: list[str]
+    limitations: list[str]
+    body: str
+    featured: bool
+
+
+__all__ = (
+    "LicenseType",
+    "LicenseTypeForResponse",
+)

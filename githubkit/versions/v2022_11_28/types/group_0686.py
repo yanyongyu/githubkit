@@ -9,27 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0464 import WebhooksProjectCardType
+
+class WebhookIssuesClosedPropIssueAllof0PropPullRequestType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
+
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
 
 
-class WebhookProjectCardCreatedType(TypedDict):
-    """project_card created event"""
+class WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhooksProjectCardType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[str, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
 
 
-__all__ = ("WebhookProjectCardCreatedType",)
+__all__ = (
+    "WebhookIssuesClosedPropIssueAllof0PropPullRequestType",
+    "WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse",
+)

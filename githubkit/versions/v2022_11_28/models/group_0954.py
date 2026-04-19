@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,18 +18,49 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+class AgentsTasksTaskIdGetResponse404(GitHubModel):
+    """AgentsTasksTaskIdGetResponse404
 
-    action: Literal["approve", "deny"] = Field(
-        description="Action to apply to the request."
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
+    errors: Missing[list[AgentsTasksTaskIdGetResponse404PropErrorsItems]] = Field(
         default=UNSET,
-        description="Reason for approving or denying the request. Max 1024 characters.",
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsTasksTaskIdGetResponse404PropErrorsItems(GitHubModel):
+    """AgentsTasksTaskIdGetResponse404PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody)
+model_rebuild(AgentsTasksTaskIdGetResponse404)
+model_rebuild(AgentsTasksTaskIdGetResponse404PropErrorsItems)
 
-__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",)
+__all__ = (
+    "AgentsTasksTaskIdGetResponse404",
+    "AgentsTasksTaskIdGetResponse404PropErrorsItems",
+)

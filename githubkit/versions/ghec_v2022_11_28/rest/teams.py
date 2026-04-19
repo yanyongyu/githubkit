@@ -11,13 +11,14 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing_extensions import deprecated
 from weakref import ref
 
 from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     from typing import Literal, Union
@@ -35,49 +36,33 @@ if TYPE_CHECKING:
         OrganizationInvitation,
         SimpleUser,
         Team,
-        TeamDiscussion,
-        TeamDiscussionComment,
         TeamFull,
         TeamMembership,
-        TeamProject,
         TeamRepository,
     )
     from ..types import (
-        ExternalGroupsType,
-        ExternalGroupType,
-        GroupMappingType,
-        MinimalRepositoryType,
-        OrganizationInvitationType,
+        ExternalGroupsTypeForResponse,
+        ExternalGroupTypeForResponse,
+        GroupMappingTypeForResponse,
+        MinimalRepositoryTypeForResponse,
+        OrganizationInvitationTypeForResponse,
         OrgsOrgTeamsPostBodyType,
-        OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
-        OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
-        OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType,
-        OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
         OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType,
         OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType,
         OrgsOrgTeamsTeamSlugPatchBodyType,
-        OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType,
         OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType,
         OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType,
         OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType,
-        SimpleUserType,
-        TeamDiscussionCommentType,
-        TeamDiscussionType,
-        TeamFullType,
-        TeamMembershipType,
-        TeamProjectType,
-        TeamRepositoryType,
-        TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
-        TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
-        TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType,
-        TeamsTeamIdDiscussionsPostBodyType,
+        SimpleUserTypeForResponse,
+        TeamFullTypeForResponse,
+        TeamMembershipTypeForResponse,
+        TeamRepositoryTypeForResponse,
         TeamsTeamIdMembershipsUsernamePutBodyType,
         TeamsTeamIdPatchBodyType,
-        TeamsTeamIdProjectsProjectIdPutBodyType,
         TeamsTeamIdReposOwnerRepoPutBodyType,
         TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType,
         TeamsTeamIdTeamSyncGroupMappingsPatchBodyType,
-        TeamType,
+        TeamTypeForResponse,
     )
 
 
@@ -105,7 +90,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ExternalGroup, ExternalGroupType]:
+    ) -> Response[ExternalGroup, ExternalGroupTypeForResponse]:
         """teams/external-idp-group-info-for-org
 
         GET /orgs/{org}/external-group/{group_id}
@@ -131,7 +116,7 @@ class TeamsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ExternalGroup,
@@ -146,7 +131,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ExternalGroup, ExternalGroupType]:
+    ) -> Response[ExternalGroup, ExternalGroupTypeForResponse]:
         """teams/external-idp-group-info-for-org
 
         GET /orgs/{org}/external-group/{group_id}
@@ -172,7 +157,7 @@ class TeamsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ExternalGroup,
@@ -187,16 +172,16 @@ class TeamsClient:
         display_name: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ExternalGroups, ExternalGroupsType]:
+    ) -> Response[ExternalGroups, ExternalGroupsTypeForResponse]:
         """teams/list-external-idp-groups-for-org
 
         GET /orgs/{org}/external-groups
 
-        Lists external groups available in an organization. You can query the groups using the `display_name` parameter, only groups with a `group_name` containing the text provided in the `display_name` parameter will be returned.  You can also limit your page results using the `per_page` parameter. GitHub Enterprise Cloud generates a url-encoded `page` token using a cursor value for where the next page begins. For more information on cursor pagination, see "[Offset and Cursor Pagination explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89)."
+        Lists external groups provisioned on the enterprise that are available to an organization. You can query the groups using the `display_name` parameter, only groups with a `group_name` containing the text provided in the `display_name` parameter will be returned.  You can also limit your page results using the `per_page` parameter. GitHub Enterprise Cloud generates a url-encoded `page` token using a cursor value for where the next page begins. For more information on cursor pagination, see "[Offset and Cursor Pagination explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89)."
 
         You can manage team membership with your identity provider using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products)" in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-external-groups-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-external-groups-available-to-an-organization
         """
 
         from ..models import ExternalGroups
@@ -214,7 +199,7 @@ class TeamsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ExternalGroups,
@@ -229,16 +214,16 @@ class TeamsClient:
         display_name: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ExternalGroups, ExternalGroupsType]:
+    ) -> Response[ExternalGroups, ExternalGroupsTypeForResponse]:
         """teams/list-external-idp-groups-for-org
 
         GET /orgs/{org}/external-groups
 
-        Lists external groups available in an organization. You can query the groups using the `display_name` parameter, only groups with a `group_name` containing the text provided in the `display_name` parameter will be returned.  You can also limit your page results using the `per_page` parameter. GitHub Enterprise Cloud generates a url-encoded `page` token using a cursor value for where the next page begins. For more information on cursor pagination, see "[Offset and Cursor Pagination explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89)."
+        Lists external groups provisioned on the enterprise that are available to an organization. You can query the groups using the `display_name` parameter, only groups with a `group_name` containing the text provided in the `display_name` parameter will be returned.  You can also limit your page results using the `per_page` parameter. GitHub Enterprise Cloud generates a url-encoded `page` token using a cursor value for where the next page begins. For more information on cursor pagination, see "[Offset and Cursor Pagination explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89)."
 
         You can manage team membership with your identity provider using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products)" in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-external-groups-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-external-groups-available-to-an-organization
         """
 
         from ..models import ExternalGroups
@@ -256,7 +241,7 @@ class TeamsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ExternalGroups,
@@ -271,7 +256,7 @@ class TeamsClient:
         q: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GroupMapping, GroupMappingType]:
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]:
         """teams/list-idp-groups-for-org
 
         GET /orgs/{org}/team-sync/groups
@@ -296,7 +281,7 @@ class TeamsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GroupMapping,
@@ -311,7 +296,7 @@ class TeamsClient:
         q: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GroupMapping, GroupMappingType]:
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]:
         """teams/list-idp-groups-for-org
 
         GET /orgs/{org}/team-sync/groups
@@ -336,7 +321,7 @@ class TeamsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GroupMapping,
@@ -348,9 +333,10 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
+        team_type: Missing[Literal["all", "enterprise", "organization"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """teams/list
 
         GET /orgs/{org}/teams
@@ -367,6 +353,7 @@ class TeamsClient:
         params = {
             "per_page": per_page,
             "page": page,
+            "team_type": team_type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -374,7 +361,7 @@ class TeamsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Team],
@@ -389,9 +376,10 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
+        team_type: Missing[Literal["all", "enterprise", "organization"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """teams/list
 
         GET /orgs/{org}/teams
@@ -408,6 +396,7 @@ class TeamsClient:
         params = {
             "per_page": per_page,
             "page": page,
+            "team_type": team_type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -415,7 +404,7 @@ class TeamsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Team],
@@ -432,7 +421,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsPostBodyType,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     @overload
     def create(
@@ -452,7 +441,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push"]] = UNSET,
         parent_team_id: Missing[int] = UNSET,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     def create(
         self,
@@ -462,7 +451,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """teams/create
 
         POST /orgs/{org}/teams
@@ -510,7 +499,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsPostBodyType,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     @overload
     async def async_create(
@@ -530,7 +519,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push"]] = UNSET,
         parent_team_id: Missing[int] = UNSET,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     async def async_create(
         self,
@@ -540,7 +529,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """teams/create
 
         POST /orgs/{org}/teams
@@ -587,7 +576,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """teams/get-by-name
 
         GET /orgs/{org}/teams/{team_slug}
@@ -624,7 +613,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """teams/get-by-name
 
         GET /orgs/{org}/teams/{team_slug}
@@ -685,6 +674,7 @@ class TeamsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
+            error_models={},
         )
 
     async def async_delete_in_org(
@@ -718,6 +708,7 @@ class TeamsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
+            error_models={},
         )
 
     @overload
@@ -729,7 +720,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     @overload
     def update_in_org(
@@ -748,7 +739,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
         parent_team_id: Missing[Union[int, None]] = UNSET,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     def update_in_org(
         self,
@@ -759,7 +750,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """teams/update-in-org
 
         PATCH /orgs/{org}/teams/{team_slug}
@@ -815,7 +806,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     @overload
     async def async_update_in_org(
@@ -834,7 +825,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
         parent_team_id: Missing[Union[int, None]] = UNSET,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     async def async_update_in_org(
         self,
@@ -845,7 +836,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """teams/update-in-org
 
         PATCH /orgs/{org}/teams/{team_slug}
@@ -890,1138 +881,6 @@ class TeamsClient:
                 "422": ValidationError,
                 "403": BasicError,
             },
-        )
-
-    def list_discussions_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        direction: Missing[Literal["asc", "desc"]] = UNSET,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        pinned: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[TeamDiscussion], list[TeamDiscussionType]]:
-        """teams/list-discussions-in-org
-
-        GET /orgs/{org}/teams/{team_slug}/discussions
-
-        List all discussions on a team's page.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions`.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions
-        """
-
-        from ..models import TeamDiscussion
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions"
-
-        params = {
-            "direction": direction,
-            "per_page": per_page,
-            "page": page,
-            "pinned": pinned,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[TeamDiscussion],
-        )
-
-    async def async_list_discussions_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        direction: Missing[Literal["asc", "desc"]] = UNSET,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        pinned: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[TeamDiscussion], list[TeamDiscussionType]]:
-        """teams/list-discussions-in-org
-
-        GET /orgs/{org}/teams/{team_slug}/discussions
-
-        List all discussions on a team's page.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions`.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions
-        """
-
-        from ..models import TeamDiscussion
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions"
-
-        params = {
-            "direction": direction,
-            "per_page": per_page,
-            "page": page,
-            "pinned": pinned,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[TeamDiscussion],
-        )
-
-    @overload
-    def create_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
-
-    @overload
-    def create_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        title: str,
-        body: str,
-        private: Missing[bool] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
-
-    def create_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
-        **kwargs,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """teams/create-discussion-in-org
-
-        POST /orgs/{org}/teams/{team_slug}/discussions
-
-        Creates a new discussion post on a team's page.
-
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/{org_id}/team/{team_id}/discussions`.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion
-        """
-
-        from ..models import OrgsOrgTeamsTeamSlugDiscussionsPostBody, TeamDiscussion
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(OrgsOrgTeamsTeamSlugDiscussionsPostBody, json)
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussion,
-        )
-
-    @overload
-    async def async_create_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
-
-    @overload
-    async def async_create_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        title: str,
-        body: str,
-        private: Missing[bool] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
-
-    async def async_create_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
-        **kwargs,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """teams/create-discussion-in-org
-
-        POST /orgs/{org}/teams/{team_slug}/discussions
-
-        Creates a new discussion post on a team's page.
-
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/{org_id}/team/{team_id}/discussions`.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion
-        """
-
-        from ..models import OrgsOrgTeamsTeamSlugDiscussionsPostBody, TeamDiscussion
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(OrgsOrgTeamsTeamSlugDiscussionsPostBody, json)
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussion,
-        )
-
-    def get_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """teams/get-discussion-in-org
-
-        GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-
-        Get a specific discussion on a team's page.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion
-        """
-
-        from ..models import TeamDiscussion
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussion,
-        )
-
-    async def async_get_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """teams/get-discussion-in-org
-
-        GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-
-        Get a specific discussion on a team's page.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion
-        """
-
-        from ..models import TeamDiscussion
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussion,
-        )
-
-    def delete_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """teams/delete-discussion-in-org
-
-        DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-
-        Delete a discussion from a team's page.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#delete-a-discussion
-        """
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-        )
-
-    async def async_delete_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """teams/delete-discussion-in-org
-
-        DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-
-        Delete a discussion from a team's page.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#delete-a-discussion
-        """
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-        )
-
-    @overload
-    def update_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
-        ] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
-
-    @overload
-    def update_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        title: Missing[str] = UNSET,
-        body: Missing[str] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
-
-    def update_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """teams/update-discussion-in-org
-
-        PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-
-        Edits the title and body text of a discussion post. Only the parameters you provide are updated.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion
-        """
-
-        from ..models import (
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody,
-            TeamDiscussion,
-        )
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussion,
-        )
-
-    @overload
-    async def async_update_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
-        ] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
-
-    @overload
-    async def async_update_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        title: Missing[str] = UNSET,
-        body: Missing[str] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
-
-    async def async_update_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """teams/update-discussion-in-org
-
-        PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-
-        Edits the title and body text of a discussion post. Only the parameters you provide are updated.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion
-        """
-
-        from ..models import (
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody,
-            TeamDiscussion,
-        )
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussion,
-        )
-
-    def list_discussion_comments_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        direction: Missing[Literal["asc", "desc"]] = UNSET,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[TeamDiscussionComment], list[TeamDiscussionCommentType]]:
-        """teams/list-discussion-comments-in-org
-
-        GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
-
-        List all comments on a team discussion.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments
-        """
-
-        from ..models import TeamDiscussionComment
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
-
-        params = {
-            "direction": direction,
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[TeamDiscussionComment],
-        )
-
-    async def async_list_discussion_comments_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        direction: Missing[Literal["asc", "desc"]] = UNSET,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[TeamDiscussionComment], list[TeamDiscussionCommentType]]:
-        """teams/list-discussion-comments-in-org
-
-        GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
-
-        List all comments on a team discussion.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments
-        """
-
-        from ..models import TeamDiscussionComment
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
-
-        params = {
-            "direction": direction,
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[TeamDiscussionComment],
-        )
-
-    @overload
-    def create_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
-
-    @overload
-    def create_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        body: str,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
-
-    def create_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """teams/create-discussion-comment-in-org
-
-        POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
-
-        Creates a new comment on a team discussion.
-
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment
-        """
-
-        from ..models import (
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody,
-            TeamDiscussionComment,
-        )
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussionComment,
-        )
-
-    @overload
-    async def async_create_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
-
-    @overload
-    async def async_create_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        body: str,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
-
-    async def async_create_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """teams/create-discussion-comment-in-org
-
-        POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
-
-        Creates a new comment on a team discussion.
-
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment
-        """
-
-        from ..models import (
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody,
-            TeamDiscussionComment,
-        )
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussionComment,
-        )
-
-    def get_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """teams/get-discussion-comment-in-org
-
-        GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-
-        Get a specific comment on a team discussion.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment
-        """
-
-        from ..models import TeamDiscussionComment
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussionComment,
-        )
-
-    async def async_get_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """teams/get-discussion-comment-in-org
-
-        GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-
-        Get a specific comment on a team discussion.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment
-        """
-
-        from ..models import TeamDiscussionComment
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussionComment,
-        )
-
-    def delete_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """teams/delete-discussion-comment-in-org
-
-        DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-
-        Deletes a comment on a team discussion.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#delete-a-discussion-comment
-        """
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-        )
-
-    async def async_delete_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """teams/delete-discussion-comment-in-org
-
-        DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-
-        Deletes a comment on a team discussion.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#delete-a-discussion-comment
-        """
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-        )
-
-    @overload
-    def update_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
-
-    @overload
-    def update_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        body: str,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
-
-    def update_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """teams/update-discussion-comment-in-org
-
-        PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-
-        Edits the body text of a discussion comment.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment
-        """
-
-        from ..models import (
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
-            TeamDiscussionComment,
-        )
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
-                json,
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussionComment,
-        )
-
-    @overload
-    async def async_update_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
-
-    @overload
-    async def async_update_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        body: str,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
-
-    async def async_update_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """teams/update-discussion-comment-in-org
-
-        PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-
-        Edits the body text of a discussion comment.
-
-        > [!NOTE]
-        > You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment
-        """
-
-        from ..models import (
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
-            TeamDiscussionComment,
-        )
-
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
-                json,
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussionComment,
         )
 
     def list_linked_external_idp_groups_to_team_for_org(
@@ -2031,7 +890,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ExternalGroups, ExternalGroupsType]:
+    ) -> Response[ExternalGroups, ExternalGroupsTypeForResponse]:
         """teams/list-linked-external-idp-groups-to-team-for-org
 
         GET /orgs/{org}/teams/{team_slug}/external-groups
@@ -2055,6 +914,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ExternalGroups,
+            error_models={},
         )
 
     async def async_list_linked_external_idp_groups_to_team_for_org(
@@ -2064,7 +924,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ExternalGroups, ExternalGroupsType]:
+    ) -> Response[ExternalGroups, ExternalGroupsTypeForResponse]:
         """teams/list-linked-external-idp-groups-to-team-for-org
 
         GET /orgs/{org}/teams/{team_slug}/external-groups
@@ -2088,6 +948,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ExternalGroups,
+            error_models={},
         )
 
     def unlink_external_idp_group_from_team_for_org(
@@ -2118,6 +979,7 @@ class TeamsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
+            error_models={},
         )
 
     async def async_unlink_external_idp_group_from_team_for_org(
@@ -2148,6 +1010,7 @@ class TeamsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
+            error_models={},
         )
 
     @overload
@@ -2159,7 +1022,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType,
-    ) -> Response[ExternalGroup, ExternalGroupType]: ...
+    ) -> Response[ExternalGroup, ExternalGroupTypeForResponse]: ...
 
     @overload
     def link_external_idp_group_to_team_for_org(
@@ -2171,7 +1034,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         group_id: int,
-    ) -> Response[ExternalGroup, ExternalGroupType]: ...
+    ) -> Response[ExternalGroup, ExternalGroupTypeForResponse]: ...
 
     def link_external_idp_group_to_team_for_org(
         self,
@@ -2182,7 +1045,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ExternalGroup, ExternalGroupType]:
+    ) -> Response[ExternalGroup, ExternalGroupTypeForResponse]:
         """teams/link-external-idp-group-to-team-for-org
 
         PATCH /orgs/{org}/teams/{team_slug}/external-groups
@@ -2218,6 +1081,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ExternalGroup,
+            error_models={},
         )
 
     @overload
@@ -2229,7 +1093,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType,
-    ) -> Response[ExternalGroup, ExternalGroupType]: ...
+    ) -> Response[ExternalGroup, ExternalGroupTypeForResponse]: ...
 
     @overload
     async def async_link_external_idp_group_to_team_for_org(
@@ -2241,7 +1105,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         group_id: int,
-    ) -> Response[ExternalGroup, ExternalGroupType]: ...
+    ) -> Response[ExternalGroup, ExternalGroupTypeForResponse]: ...
 
     async def async_link_external_idp_group_to_team_for_org(
         self,
@@ -2252,7 +1116,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ExternalGroup, ExternalGroupType]:
+    ) -> Response[ExternalGroup, ExternalGroupTypeForResponse]:
         """teams/link-external-idp-group-to-team-for-org
 
         PATCH /orgs/{org}/teams/{team_slug}/external-groups
@@ -2288,6 +1152,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ExternalGroup,
+            error_models={},
         )
 
     def list_pending_invitations_in_org(
@@ -2299,7 +1164,9 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
+    ) -> Response[
+        list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
+    ]:
         """teams/list-pending-invitations-in-org
 
         GET /orgs/{org}/teams/{team_slug}/invitations
@@ -2326,10 +1193,11 @@ class TeamsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationInvitation],
+            error_models={},
         )
 
     async def async_list_pending_invitations_in_org(
@@ -2341,7 +1209,9 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
+    ) -> Response[
+        list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
+    ]:
         """teams/list-pending-invitations-in-org
 
         GET /orgs/{org}/teams/{team_slug}/invitations
@@ -2368,10 +1238,11 @@ class TeamsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationInvitation],
+            error_models={},
         )
 
     def list_members_in_org(
@@ -2384,7 +1255,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """teams/list-members-in-org
 
         GET /orgs/{org}/teams/{team_slug}/members
@@ -2411,7 +1282,7 @@ class TeamsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -2427,7 +1298,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """teams/list-members-in-org
 
         GET /orgs/{org}/teams/{team_slug}/members
@@ -2454,7 +1325,7 @@ class TeamsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -2468,7 +1339,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamMembership, TeamMembershipType]:
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """teams/get-membership-for-user-in-org
 
         GET /orgs/{org}/teams/{team_slug}/memberships/{username}
@@ -2511,7 +1382,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamMembership, TeamMembershipType]:
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """teams/get-membership-for-user-in-org
 
         GET /orgs/{org}/teams/{team_slug}/memberships/{username}
@@ -2556,7 +1427,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[TeamMembership, TeamMembershipType]: ...
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
     @overload
     def add_or_update_membership_for_user_in_org(
@@ -2569,7 +1440,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
-    ) -> Response[TeamMembership, TeamMembershipType]: ...
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
     def add_or_update_membership_for_user_in_org(
         self,
@@ -2581,7 +1452,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamMembership, TeamMembershipType]:
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """teams/add-or-update-membership-for-user-in-org
 
         PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
@@ -2643,7 +1514,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[TeamMembership, TeamMembershipType]: ...
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
     @overload
     async def async_add_or_update_membership_for_user_in_org(
@@ -2656,7 +1527,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
-    ) -> Response[TeamMembership, TeamMembershipType]: ...
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
     async def async_add_or_update_membership_for_user_in_org(
         self,
@@ -2668,7 +1539,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamMembership, TeamMembershipType]:
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """teams/add-or-update-membership-for-user-in-org
 
         PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
@@ -2796,388 +1667,6 @@ class TeamsClient:
             error_models={},
         )
 
-    def list_projects_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[TeamProject], list[TeamProjectType]]:
-        """DEPRECATED teams/list-projects-in-org
-
-        GET /orgs/{org}/teams/{team_slug}/projects
-
-        > [!WARNING]
-        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
-        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-projects
-        """
-
-        from ..models import TeamProject
-
-        url = f"/orgs/{org}/teams/{team_slug}/projects"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[TeamProject],
-        )
-
-    async def async_list_projects_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[TeamProject], list[TeamProjectType]]:
-        """DEPRECATED teams/list-projects-in-org
-
-        GET /orgs/{org}/teams/{team_slug}/projects
-
-        > [!WARNING]
-        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
-        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-projects
-        """
-
-        from ..models import TeamProject
-
-        url = f"/orgs/{org}/teams/{team_slug}/projects"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[TeamProject],
-        )
-
-    def check_permissions_for_project_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        project_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[TeamProject, TeamProjectType]:
-        """DEPRECATED teams/check-permissions-for-project-in-org
-
-        GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
-
-        > [!WARNING]
-        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
-        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-project
-        """
-
-        from ..models import TeamProject
-
-        url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamProject,
-            error_models={},
-        )
-
-    async def async_check_permissions_for_project_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        project_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[TeamProject, TeamProjectType]:
-        """DEPRECATED teams/check-permissions-for-project-in-org
-
-        GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
-
-        > [!WARNING]
-        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
-        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-project
-        """
-
-        from ..models import TeamProject
-
-        url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamProject,
-            error_models={},
-        )
-
-    @overload
-    def add_or_update_project_permissions_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        project_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
-        ] = UNSET,
-    ) -> Response: ...
-
-    @overload
-    def add_or_update_project_permissions_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        project_id: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        permission: Missing[Literal["read", "write", "admin"]] = UNSET,
-    ) -> Response: ...
-
-    def add_or_update_project_permissions_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        project_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
-        ] = UNSET,
-        **kwargs,
-    ) -> Response:
-        """DEPRECATED teams/add-or-update-project-permissions-in-org
-
-        PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
-
-        > [!WARNING]
-        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
-        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-project-permissions
-        """
-
-        from typing import Union
-
-        from ..models import (
-            OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody,
-            OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403,
-        )
-
-        url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody, None], json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            error_models={
-                "403": OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403,
-            },
-        )
-
-    @overload
-    async def async_add_or_update_project_permissions_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        project_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
-        ] = UNSET,
-    ) -> Response: ...
-
-    @overload
-    async def async_add_or_update_project_permissions_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        project_id: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        permission: Missing[Literal["read", "write", "admin"]] = UNSET,
-    ) -> Response: ...
-
-    async def async_add_or_update_project_permissions_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        project_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
-        ] = UNSET,
-        **kwargs,
-    ) -> Response:
-        """DEPRECATED teams/add-or-update-project-permissions-in-org
-
-        PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
-
-        > [!WARNING]
-        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
-        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-project-permissions
-        """
-
-        from typing import Union
-
-        from ..models import (
-            OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody,
-            OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403,
-        )
-
-        url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody, None], json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            error_models={
-                "403": OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403,
-            },
-        )
-
-    def remove_project_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        project_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """DEPRECATED teams/remove-project-in-org
-
-        DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
-
-        > [!WARNING]
-        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
-        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-project-from-a-team
-        """
-
-        url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-        )
-
-    async def async_remove_project_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        project_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """DEPRECATED teams/remove-project-in-org
-
-        DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
-
-        > [!WARNING]
-        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
-        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-project-from-a-team
-        """
-
-        url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-        )
-
     def list_repos_in_org(
         self,
         org: str,
@@ -3187,7 +1676,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """teams/list-repos-in-org
 
         GET /orgs/{org}/teams/{team_slug}/repos
@@ -3214,7 +1703,7 @@ class TeamsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MinimalRepository],
@@ -3229,7 +1718,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """teams/list-repos-in-org
 
         GET /orgs/{org}/teams/{team_slug}/repos
@@ -3256,7 +1745,7 @@ class TeamsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MinimalRepository],
@@ -3271,7 +1760,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamRepository, TeamRepositoryType]:
+    ) -> Response[TeamRepository, TeamRepositoryTypeForResponse]:
         """teams/check-permissions-for-repo-in-org
 
         GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
@@ -3314,7 +1803,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamRepository, TeamRepositoryType]:
+    ) -> Response[TeamRepository, TeamRepositoryTypeForResponse]:
         """teams/check-permissions-for-repo-in-org
 
         GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
@@ -3573,7 +2062,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GroupMapping, GroupMappingType]:
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]:
         """teams/list-idp-groups-in-org
 
         GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
@@ -3600,6 +2089,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GroupMapping,
+            error_models={},
         )
 
     async def async_list_idp_groups_in_org(
@@ -3609,7 +2099,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GroupMapping, GroupMappingType]:
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]:
         """teams/list-idp-groups-in-org
 
         GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
@@ -3636,6 +2126,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GroupMapping,
+            error_models={},
         )
 
     @overload
@@ -3647,7 +2138,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType,
-    ) -> Response[GroupMapping, GroupMappingType]: ...
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]: ...
 
     @overload
     def create_or_update_idp_group_connections_in_org(
@@ -3661,7 +2152,7 @@ class TeamsClient:
         groups: Missing[
             list[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
         ] = UNSET,
-    ) -> Response[GroupMapping, GroupMappingType]: ...
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]: ...
 
     def create_or_update_idp_group_connections_in_org(
         self,
@@ -3672,7 +2163,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GroupMapping, GroupMappingType]:
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]:
         """teams/create-or-update-idp-group-connections-in-org
 
         PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
@@ -3714,6 +2205,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GroupMapping,
+            error_models={},
         )
 
     @overload
@@ -3725,7 +2217,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType,
-    ) -> Response[GroupMapping, GroupMappingType]: ...
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]: ...
 
     @overload
     async def async_create_or_update_idp_group_connections_in_org(
@@ -3739,7 +2231,7 @@ class TeamsClient:
         groups: Missing[
             list[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
         ] = UNSET,
-    ) -> Response[GroupMapping, GroupMappingType]: ...
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]: ...
 
     async def async_create_or_update_idp_group_connections_in_org(
         self,
@@ -3750,7 +2242,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GroupMapping, GroupMappingType]:
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]:
         """teams/create-or-update-idp-group-connections-in-org
 
         PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
@@ -3792,6 +2284,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GroupMapping,
+            error_models={},
         )
 
     def list_child_in_org(
@@ -3803,7 +2296,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """teams/list-child-in-org
 
         GET /orgs/{org}/teams/{team_slug}/teams
@@ -3830,7 +2323,7 @@ class TeamsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Team],
@@ -3845,7 +2338,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """teams/list-child-in-org
 
         GET /orgs/{org}/teams/{team_slug}/teams
@@ -3872,19 +2365,20 @@ class TeamsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Team],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_legacy(
         self,
         team_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """DEPRECATED teams/get-legacy
 
         GET /teams/{team_id}
@@ -3912,13 +2406,14 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_legacy(
         self,
         team_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """DEPRECATED teams/get-legacy
 
         GET /teams/{team_id}
@@ -3946,6 +2441,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def delete_legacy(
         self,
         team_id: int,
@@ -3984,6 +2480,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_delete_legacy(
         self,
         team_id: int,
@@ -4023,6 +2520,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_legacy(
         self,
         team_id: int,
@@ -4030,9 +2528,10 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: TeamsTeamIdPatchBodyType,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_legacy(
         self,
         team_id: int,
@@ -4048,8 +2547,9 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
         parent_team_id: Missing[Union[int, None]] = UNSET,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_legacy(
         self,
         team_id: int,
@@ -4058,7 +2558,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[TeamsTeamIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """DEPRECATED teams/update-legacy
 
         PATCH /teams/{team_id}
@@ -4104,6 +2604,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_legacy(
         self,
         team_id: int,
@@ -4111,9 +2612,10 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: TeamsTeamIdPatchBodyType,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_legacy(
         self,
         team_id: int,
@@ -4129,8 +2631,9 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
         parent_team_id: Missing[Union[int, None]] = UNSET,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_legacy(
         self,
         team_id: int,
@@ -4139,7 +2642,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[TeamsTeamIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """DEPRECATED teams/update-legacy
 
         PATCH /teams/{team_id}
@@ -4184,1090 +2687,7 @@ class TeamsClient:
             },
         )
 
-    def list_discussions_legacy(
-        self,
-        team_id: int,
-        *,
-        direction: Missing[Literal["asc", "desc"]] = UNSET,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[TeamDiscussion], list[TeamDiscussionType]]:
-        """DEPRECATED teams/list-discussions-legacy
-
-        GET /teams/{team_id}/discussions
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List discussions`](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions) endpoint.
-
-        List all discussions on a team's page.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions-legacy
-        """
-
-        from ..models import TeamDiscussion
-
-        url = f"/teams/{team_id}/discussions"
-
-        params = {
-            "direction": direction,
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[TeamDiscussion],
-        )
-
-    async def async_list_discussions_legacy(
-        self,
-        team_id: int,
-        *,
-        direction: Missing[Literal["asc", "desc"]] = UNSET,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[TeamDiscussion], list[TeamDiscussionType]]:
-        """DEPRECATED teams/list-discussions-legacy
-
-        GET /teams/{team_id}/discussions
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List discussions`](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions) endpoint.
-
-        List all discussions on a team's page.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions-legacy
-        """
-
-        from ..models import TeamDiscussion
-
-        url = f"/teams/{team_id}/discussions"
-
-        params = {
-            "direction": direction,
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[TeamDiscussion],
-        )
-
-    @overload
-    def create_discussion_legacy(
-        self,
-        team_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: TeamsTeamIdDiscussionsPostBodyType,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
-
-    @overload
-    def create_discussion_legacy(
-        self,
-        team_id: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        title: str,
-        body: str,
-        private: Missing[bool] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
-
-    def create_discussion_legacy(
-        self,
-        team_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[TeamsTeamIdDiscussionsPostBodyType] = UNSET,
-        **kwargs,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """DEPRECATED teams/create-discussion-legacy
-
-        POST /teams/{team_id}/discussions
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create a discussion`](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion) endpoint.
-
-        Creates a new discussion post on a team's page.
-
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion-legacy
-        """
-
-        from ..models import TeamDiscussion, TeamsTeamIdDiscussionsPostBody
-
-        url = f"/teams/{team_id}/discussions"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(TeamsTeamIdDiscussionsPostBody, json)
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussion,
-        )
-
-    @overload
-    async def async_create_discussion_legacy(
-        self,
-        team_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: TeamsTeamIdDiscussionsPostBodyType,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
-
-    @overload
-    async def async_create_discussion_legacy(
-        self,
-        team_id: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        title: str,
-        body: str,
-        private: Missing[bool] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
-
-    async def async_create_discussion_legacy(
-        self,
-        team_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[TeamsTeamIdDiscussionsPostBodyType] = UNSET,
-        **kwargs,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """DEPRECATED teams/create-discussion-legacy
-
-        POST /teams/{team_id}/discussions
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create a discussion`](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion) endpoint.
-
-        Creates a new discussion post on a team's page.
-
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion-legacy
-        """
-
-        from ..models import TeamDiscussion, TeamsTeamIdDiscussionsPostBody
-
-        url = f"/teams/{team_id}/discussions"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(TeamsTeamIdDiscussionsPostBody, json)
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussion,
-        )
-
-    def get_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """DEPRECATED teams/get-discussion-legacy
-
-        GET /teams/{team_id}/discussions/{discussion_number}
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Get a discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion) endpoint.
-
-        Get a specific discussion on a team's page.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion-legacy
-        """
-
-        from ..models import TeamDiscussion
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussion,
-        )
-
-    async def async_get_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """DEPRECATED teams/get-discussion-legacy
-
-        GET /teams/{team_id}/discussions/{discussion_number}
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Get a discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion) endpoint.
-
-        Get a specific discussion on a team's page.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion-legacy
-        """
-
-        from ..models import TeamDiscussion
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussion,
-        )
-
-    def delete_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """DEPRECATED teams/delete-discussion-legacy
-
-        DELETE /teams/{team_id}/discussions/{discussion_number}
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Delete a discussion`](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#delete-a-discussion) endpoint.
-
-        Delete a discussion from a team's page.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#delete-a-discussion-legacy
-        """
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-        )
-
-    async def async_delete_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """DEPRECATED teams/delete-discussion-legacy
-
-        DELETE /teams/{team_id}/discussions/{discussion_number}
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Delete a discussion`](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#delete-a-discussion) endpoint.
-
-        Delete a discussion from a team's page.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#delete-a-discussion-legacy
-        """
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-        )
-
-    @overload
-    def update_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
-
-    @overload
-    def update_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        title: Missing[str] = UNSET,
-        body: Missing[str] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
-
-    def update_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
-        **kwargs,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """DEPRECATED teams/update-discussion-legacy
-
-        PATCH /teams/{team_id}/discussions/{discussion_number}
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion) endpoint.
-
-        Edits the title and body text of a discussion post. Only the parameters you provide are updated.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion-legacy
-        """
-
-        from ..models import (
-            TeamDiscussion,
-            TeamsTeamIdDiscussionsDiscussionNumberPatchBody,
-        )
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                TeamsTeamIdDiscussionsDiscussionNumberPatchBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussion,
-        )
-
-    @overload
-    async def async_update_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
-
-    @overload
-    async def async_update_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        title: Missing[str] = UNSET,
-        body: Missing[str] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
-
-    async def async_update_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
-        **kwargs,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """DEPRECATED teams/update-discussion-legacy
-
-        PATCH /teams/{team_id}/discussions/{discussion_number}
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion) endpoint.
-
-        Edits the title and body text of a discussion post. Only the parameters you provide are updated.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion-legacy
-        """
-
-        from ..models import (
-            TeamDiscussion,
-            TeamsTeamIdDiscussionsDiscussionNumberPatchBody,
-        )
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                TeamsTeamIdDiscussionsDiscussionNumberPatchBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussion,
-        )
-
-    def list_discussion_comments_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        direction: Missing[Literal["asc", "desc"]] = UNSET,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[TeamDiscussionComment], list[TeamDiscussionCommentType]]:
-        """DEPRECATED teams/list-discussion-comments-legacy
-
-        GET /teams/{team_id}/discussions/{discussion_number}/comments
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [List discussion comments](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments) endpoint.
-
-        List all comments on a team discussion.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments-legacy
-        """
-
-        from ..models import TeamDiscussionComment
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments"
-
-        params = {
-            "direction": direction,
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[TeamDiscussionComment],
-        )
-
-    async def async_list_discussion_comments_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        direction: Missing[Literal["asc", "desc"]] = UNSET,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[TeamDiscussionComment], list[TeamDiscussionCommentType]]:
-        """DEPRECATED teams/list-discussion-comments-legacy
-
-        GET /teams/{team_id}/discussions/{discussion_number}/comments
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [List discussion comments](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments) endpoint.
-
-        List all comments on a team discussion.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments-legacy
-        """
-
-        from ..models import TeamDiscussionComment
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments"
-
-        params = {
-            "direction": direction,
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[TeamDiscussionComment],
-        )
-
-    @overload
-    def create_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
-
-    @overload
-    def create_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        body: str,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
-
-    def create_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """DEPRECATED teams/create-discussion-comment-legacy
-
-        POST /teams/{team_id}/discussions/{discussion_number}/comments
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Create a discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment) endpoint.
-
-        Creates a new comment on a team discussion.
-
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment-legacy
-        """
-
-        from ..models import (
-            TeamDiscussionComment,
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody,
-        )
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussionComment,
-        )
-
-    @overload
-    async def async_create_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
-
-    @overload
-    async def async_create_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        body: str,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
-
-    async def async_create_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """DEPRECATED teams/create-discussion-comment-legacy
-
-        POST /teams/{team_id}/discussions/{discussion_number}/comments
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Create a discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment) endpoint.
-
-        Creates a new comment on a team discussion.
-
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment-legacy
-        """
-
-        from ..models import (
-            TeamDiscussionComment,
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody,
-        )
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussionComment,
-        )
-
-    def get_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """DEPRECATED teams/get-discussion-comment-legacy
-
-        GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Get a discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment) endpoint.
-
-        Get a specific comment on a team discussion.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment-legacy
-        """
-
-        from ..models import TeamDiscussionComment
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussionComment,
-        )
-
-    async def async_get_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """DEPRECATED teams/get-discussion-comment-legacy
-
-        GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Get a discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment) endpoint.
-
-        Get a specific comment on a team discussion.
-
-        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment-legacy
-        """
-
-        from ..models import TeamDiscussionComment
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussionComment,
-        )
-
-    def delete_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """DEPRECATED teams/delete-discussion-comment-legacy
-
-        DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Delete a discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#delete-a-discussion-comment) endpoint.
-
-        Deletes a comment on a team discussion.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#delete-a-discussion-comment-legacy
-        """
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-        )
-
-    async def async_delete_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """DEPRECATED teams/delete-discussion-comment-legacy
-
-        DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Delete a discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#delete-a-discussion-comment) endpoint.
-
-        Deletes a comment on a team discussion.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#delete-a-discussion-comment-legacy
-        """
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-        )
-
-    @overload
-    def update_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
-
-    @overload
-    def update_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        body: str,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
-
-    def update_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """DEPRECATED teams/update-discussion-comment-legacy
-
-        PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment) endpoint.
-
-        Edits the body text of a discussion comment.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment-legacy
-        """
-
-        from ..models import (
-            TeamDiscussionComment,
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
-        )
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
-                json,
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussionComment,
-        )
-
-    @overload
-    async def async_update_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
-
-    @overload
-    async def async_update_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        body: str,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
-
-    async def async_update_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """DEPRECATED teams/update-discussion-comment-legacy
-
-        PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-
-        > [!WARNING]
-        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment) endpoint.
-
-        Edits the body text of a discussion comment.
-
-        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment-legacy
-        """
-
-        from ..models import (
-            TeamDiscussionComment,
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
-        )
-
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
-                json,
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamDiscussionComment,
-        )
-
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_pending_invitations_legacy(
         self,
         team_id: int,
@@ -5276,7 +2696,9 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
+    ) -> Response[
+        list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
+    ]:
         """DEPRECATED teams/list-pending-invitations-legacy
 
         GET /teams/{team_id}/invitations
@@ -5303,12 +2725,13 @@ class TeamsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationInvitation],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_pending_invitations_legacy(
         self,
         team_id: int,
@@ -5317,7 +2740,9 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
+    ) -> Response[
+        list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
+    ]:
         """DEPRECATED teams/list-pending-invitations-legacy
 
         GET /teams/{team_id}/invitations
@@ -5344,12 +2769,13 @@ class TeamsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationInvitation],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_members_legacy(
         self,
         team_id: int,
@@ -5359,7 +2785,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """DEPRECATED teams/list-members-legacy
 
         GET /teams/{team_id}/members
@@ -5387,7 +2813,7 @@ class TeamsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -5396,6 +2822,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_members_legacy(
         self,
         team_id: int,
@@ -5405,7 +2832,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """DEPRECATED teams/list-members-legacy
 
         GET /teams/{team_id}/members
@@ -5433,7 +2860,7 @@ class TeamsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -5442,6 +2869,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_member_legacy(
         self,
         team_id: int,
@@ -5475,6 +2903,7 @@ class TeamsClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_member_legacy(
         self,
         team_id: int,
@@ -5508,6 +2937,7 @@ class TeamsClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_member_legacy(
         self,
         team_id: int,
@@ -5552,6 +2982,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_member_legacy(
         self,
         team_id: int,
@@ -5596,6 +3027,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def remove_member_legacy(
         self,
         team_id: int,
@@ -5634,6 +3066,7 @@ class TeamsClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_remove_member_legacy(
         self,
         team_id: int,
@@ -5672,6 +3105,7 @@ class TeamsClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5679,7 +3113,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamMembership, TeamMembershipType]:
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """DEPRECATED teams/get-membership-for-user-legacy
 
         GET /teams/{team_id}/memberships/{username}
@@ -5716,6 +3150,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5723,7 +3158,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamMembership, TeamMembershipType]:
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """DEPRECATED teams/get-membership-for-user-legacy
 
         GET /teams/{team_id}/memberships/{username}
@@ -5761,6 +3196,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5769,9 +3205,10 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[TeamMembership, TeamMembershipType]: ...
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5781,8 +3218,9 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
-    ) -> Response[TeamMembership, TeamMembershipType]: ...
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5792,7 +3230,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamMembership, TeamMembershipType]:
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """DEPRECATED teams/add-or-update-membership-for-user-legacy
 
         PUT /teams/{team_id}/memberships/{username}
@@ -5846,6 +3284,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5854,9 +3293,10 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[TeamMembership, TeamMembershipType]: ...
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5866,8 +3306,9 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
-    ) -> Response[TeamMembership, TeamMembershipType]: ...
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5877,7 +3318,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamMembership, TeamMembershipType]:
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """DEPRECATED teams/add-or-update-membership-for-user-legacy
 
         PUT /teams/{team_id}/memberships/{username}
@@ -5930,6 +3371,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def remove_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5967,6 +3409,7 @@ class TeamsClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_remove_membership_for_user_legacy(
         self,
         team_id: int,
@@ -6004,386 +3447,7 @@ class TeamsClient:
             error_models={},
         )
 
-    def list_projects_legacy(
-        self,
-        team_id: int,
-        *,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[TeamProject], list[TeamProjectType]]:
-        """DEPRECATED teams/list-projects-legacy
-
-        GET /teams/{team_id}/projects
-
-        > [!WARNING]
-        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
-        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-projects-legacy
-        """
-
-        from ..models import BasicError, TeamProject
-
-        url = f"/teams/{team_id}/projects"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[TeamProject],
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_list_projects_legacy(
-        self,
-        team_id: int,
-        *,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[TeamProject], list[TeamProjectType]]:
-        """DEPRECATED teams/list-projects-legacy
-
-        GET /teams/{team_id}/projects
-
-        > [!WARNING]
-        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
-        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-projects-legacy
-        """
-
-        from ..models import BasicError, TeamProject
-
-        url = f"/teams/{team_id}/projects"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[TeamProject],
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    def check_permissions_for_project_legacy(
-        self,
-        team_id: int,
-        project_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[TeamProject, TeamProjectType]:
-        """DEPRECATED teams/check-permissions-for-project-legacy
-
-        GET /teams/{team_id}/projects/{project_id}
-
-        > [!WARNING]
-        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
-        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-project-legacy
-        """
-
-        from ..models import TeamProject
-
-        url = f"/teams/{team_id}/projects/{project_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamProject,
-            error_models={},
-        )
-
-    async def async_check_permissions_for_project_legacy(
-        self,
-        team_id: int,
-        project_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[TeamProject, TeamProjectType]:
-        """DEPRECATED teams/check-permissions-for-project-legacy
-
-        GET /teams/{team_id}/projects/{project_id}
-
-        > [!WARNING]
-        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
-        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-project-legacy
-        """
-
-        from ..models import TeamProject
-
-        url = f"/teams/{team_id}/projects/{project_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TeamProject,
-            error_models={},
-        )
-
-    @overload
-    def add_or_update_project_permissions_legacy(
-        self,
-        team_id: int,
-        project_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
-    ) -> Response: ...
-
-    @overload
-    def add_or_update_project_permissions_legacy(
-        self,
-        team_id: int,
-        project_id: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        permission: Missing[Literal["read", "write", "admin"]] = UNSET,
-    ) -> Response: ...
-
-    def add_or_update_project_permissions_legacy(
-        self,
-        team_id: int,
-        project_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
-        **kwargs,
-    ) -> Response:
-        """DEPRECATED teams/add-or-update-project-permissions-legacy
-
-        PUT /teams/{team_id}/projects/{project_id}
-
-        > [!WARNING]
-        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
-        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-project-permissions-legacy
-        """
-
-        from ..models import (
-            BasicError,
-            TeamsTeamIdProjectsProjectIdPutBody,
-            TeamsTeamIdProjectsProjectIdPutResponse403,
-            ValidationError,
-        )
-
-        url = f"/teams/{team_id}/projects/{project_id}"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(TeamsTeamIdProjectsProjectIdPutBody, json)
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            error_models={
-                "403": TeamsTeamIdProjectsProjectIdPutResponse403,
-                "404": BasicError,
-                "422": ValidationError,
-            },
-        )
-
-    @overload
-    async def async_add_or_update_project_permissions_legacy(
-        self,
-        team_id: int,
-        project_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
-    ) -> Response: ...
-
-    @overload
-    async def async_add_or_update_project_permissions_legacy(
-        self,
-        team_id: int,
-        project_id: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        permission: Missing[Literal["read", "write", "admin"]] = UNSET,
-    ) -> Response: ...
-
-    async def async_add_or_update_project_permissions_legacy(
-        self,
-        team_id: int,
-        project_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
-        **kwargs,
-    ) -> Response:
-        """DEPRECATED teams/add-or-update-project-permissions-legacy
-
-        PUT /teams/{team_id}/projects/{project_id}
-
-        > [!WARNING]
-        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
-        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-project-permissions-legacy
-        """
-
-        from ..models import (
-            BasicError,
-            TeamsTeamIdProjectsProjectIdPutBody,
-            TeamsTeamIdProjectsProjectIdPutResponse403,
-            ValidationError,
-        )
-
-        url = f"/teams/{team_id}/projects/{project_id}"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(TeamsTeamIdProjectsProjectIdPutBody, json)
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            error_models={
-                "403": TeamsTeamIdProjectsProjectIdPutResponse403,
-                "404": BasicError,
-                "422": ValidationError,
-            },
-        )
-
-    def remove_project_legacy(
-        self,
-        team_id: int,
-        project_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """DEPRECATED teams/remove-project-legacy
-
-        DELETE /teams/{team_id}/projects/{project_id}
-
-        > [!WARNING]
-        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
-        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-project-from-a-team-legacy
-        """
-
-        from ..models import BasicError, ValidationError
-
-        url = f"/teams/{team_id}/projects/{project_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            error_models={
-                "404": BasicError,
-                "422": ValidationError,
-            },
-        )
-
-    async def async_remove_project_legacy(
-        self,
-        team_id: int,
-        project_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """DEPRECATED teams/remove-project-legacy
-
-        DELETE /teams/{team_id}/projects/{project_id}
-
-        > [!WARNING]
-        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
-        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-project-from-a-team-legacy
-        """
-
-        from ..models import BasicError, ValidationError
-
-        url = f"/teams/{team_id}/projects/{project_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            error_models={
-                "404": BasicError,
-                "422": ValidationError,
-            },
-        )
-
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_repos_legacy(
         self,
         team_id: int,
@@ -6392,7 +3456,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """DEPRECATED teams/list-repos-legacy
 
         GET /teams/{team_id}/repos
@@ -6417,7 +3481,7 @@ class TeamsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MinimalRepository],
@@ -6426,6 +3490,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_repos_legacy(
         self,
         team_id: int,
@@ -6434,7 +3499,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """DEPRECATED teams/list-repos-legacy
 
         GET /teams/{team_id}/repos
@@ -6459,7 +3524,7 @@ class TeamsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MinimalRepository],
@@ -6468,6 +3533,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def check_permissions_for_repo_legacy(
         self,
         team_id: int,
@@ -6476,7 +3542,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamRepository, TeamRepositoryType]:
+    ) -> Response[TeamRepository, TeamRepositoryTypeForResponse]:
         """DEPRECATED teams/check-permissions-for-repo-legacy
 
         GET /teams/{team_id}/repos/{owner}/{repo}
@@ -6507,6 +3573,7 @@ class TeamsClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_check_permissions_for_repo_legacy(
         self,
         team_id: int,
@@ -6515,7 +3582,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamRepository, TeamRepositoryType]:
+    ) -> Response[TeamRepository, TeamRepositoryTypeForResponse]:
         """DEPRECATED teams/check-permissions-for-repo-legacy
 
         GET /teams/{team_id}/repos/{owner}/{repo}
@@ -6547,6 +3614,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_repo_permissions_legacy(
         self,
         team_id: int,
@@ -6559,6 +3627,7 @@ class TeamsClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_repo_permissions_legacy(
         self,
         team_id: int,
@@ -6571,6 +3640,7 @@ class TeamsClient:
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_repo_permissions_legacy(
         self,
         team_id: int,
@@ -6628,6 +3698,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_repo_permissions_legacy(
         self,
         team_id: int,
@@ -6640,6 +3711,7 @@ class TeamsClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_repo_permissions_legacy(
         self,
         team_id: int,
@@ -6652,6 +3724,7 @@ class TeamsClient:
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_repo_permissions_legacy(
         self,
         team_id: int,
@@ -6708,6 +3781,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def remove_repo_legacy(
         self,
         team_id: int,
@@ -6740,6 +3814,7 @@ class TeamsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_remove_repo_legacy(
         self,
         team_id: int,
@@ -6772,13 +3847,14 @@ class TeamsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_idp_groups_for_legacy(
         self,
         team_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GroupMapping, GroupMappingType]:
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]:
         """DEPRECATED teams/list-idp-groups-for-legacy
 
         GET /teams/{team_id}/team-sync/group-mappings
@@ -6811,13 +3887,14 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_idp_groups_for_legacy(
         self,
         team_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GroupMapping, GroupMappingType]:
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]:
         """DEPRECATED teams/list-idp-groups-for-legacy
 
         GET /teams/{team_id}/team-sync/group-mappings
@@ -6851,6 +3928,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_or_update_idp_group_connections_legacy(
         self,
         team_id: int,
@@ -6858,9 +3936,10 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: TeamsTeamIdTeamSyncGroupMappingsPatchBodyType,
-    ) -> Response[GroupMapping, GroupMappingType]: ...
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_or_update_idp_group_connections_legacy(
         self,
         team_id: int,
@@ -6870,8 +3949,9 @@ class TeamsClient:
         stream: bool = False,
         groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
         synced_at: Missing[str] = UNSET,
-    ) -> Response[GroupMapping, GroupMappingType]: ...
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_or_update_idp_group_connections_legacy(
         self,
         team_id: int,
@@ -6880,7 +3960,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[TeamsTeamIdTeamSyncGroupMappingsPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GroupMapping, GroupMappingType]:
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]:
         """DEPRECATED teams/create-or-update-idp-group-connections-legacy
 
         PATCH /teams/{team_id}/team-sync/group-mappings
@@ -6929,6 +4009,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_or_update_idp_group_connections_legacy(
         self,
         team_id: int,
@@ -6936,9 +4017,10 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: TeamsTeamIdTeamSyncGroupMappingsPatchBodyType,
-    ) -> Response[GroupMapping, GroupMappingType]: ...
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_or_update_idp_group_connections_legacy(
         self,
         team_id: int,
@@ -6948,8 +4030,9 @@ class TeamsClient:
         stream: bool = False,
         groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
         synced_at: Missing[str] = UNSET,
-    ) -> Response[GroupMapping, GroupMappingType]: ...
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_or_update_idp_group_connections_legacy(
         self,
         team_id: int,
@@ -6958,7 +4041,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[TeamsTeamIdTeamSyncGroupMappingsPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GroupMapping, GroupMappingType]:
+    ) -> Response[GroupMapping, GroupMappingTypeForResponse]:
         """DEPRECATED teams/create-or-update-idp-group-connections-legacy
 
         PATCH /teams/{team_id}/team-sync/group-mappings
@@ -7006,6 +4089,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_child_legacy(
         self,
         team_id: int,
@@ -7014,7 +4098,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """DEPRECATED teams/list-child-legacy
 
         GET /teams/{team_id}/teams
@@ -7039,7 +4123,7 @@ class TeamsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Team],
@@ -7050,6 +4134,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_child_legacy(
         self,
         team_id: int,
@@ -7058,7 +4143,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """DEPRECATED teams/list-child-legacy
 
         GET /teams/{team_id}/teams
@@ -7083,7 +4168,7 @@ class TeamsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Team],
@@ -7101,7 +4186,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamFull], list[TeamFullType]]:
+    ) -> Response[list[TeamFull], list[TeamFullTypeForResponse]]:
         """teams/list-for-authenticated-user
 
         GET /user/teams
@@ -7130,7 +4215,7 @@ class TeamsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[TeamFull],
@@ -7147,7 +4232,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamFull], list[TeamFullType]]:
+    ) -> Response[list[TeamFull], list[TeamFullTypeForResponse]]:
         """teams/list-for-authenticated-user
 
         GET /user/teams
@@ -7176,7 +4261,7 @@ class TeamsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[TeamFull],

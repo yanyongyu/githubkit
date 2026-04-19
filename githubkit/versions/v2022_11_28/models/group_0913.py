@@ -9,66 +9,104 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0274 import Deployment
+from .group_0482 import EnterpriseWebhooks
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0485 import RepositoryWebhooks
 
-class OrgsOrgCampaignsPostBody(GitHubModel):
-    """OrgsOrgCampaignsPostBody"""
 
-    name: str = Field(
-        min_length=1, max_length=50, description="The name of the campaign"
-    )
-    description: str = Field(
-        min_length=1, max_length=255, description="A description for the campaign"
-    )
-    managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
+class WebhookWorkflowJobWaiting(GitHubModel):
+    """workflow_job waiting event"""
+
+    action: Literal["waiting"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
-    team_managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
+    installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
-        description="The slugs of the teams to set as the campaign managers.",
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    ends_at: datetime = Field(
-        description="The end date and time of the campaign. The date must be in the future."
-    )
-    contact_link: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The contact link of the campaign. Must be a URI."
-    )
-    code_scanning_alerts: list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems] = (
-        Field(
-            min_length=1 if PYDANTIC_V2 else None,
-            description="The code scanning alerts to include in this campaign",
-        )
-    )
-    generate_issues: Missing[bool] = Field(
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
-        description="If true, will automatically generate issues for the campaign. The default is false.",
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJob = Field()
+    deployment: Missing[Deployment] = Field(
+        default=UNSET,
+        title="Deployment",
+        description="A request for a specific ref(branch,sha,tag) to be deployed",
     )
 
 
-class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems(GitHubModel):
-    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
+class WebhookWorkflowJobWaitingPropWorkflowJob(GitHubModel):
+    """WebhookWorkflowJobWaitingPropWorkflowJob"""
 
-    repository_id: int = Field(description="The repository id")
-    alert_numbers: list[int] = Field(
-        min_length=1 if PYDANTIC_V2 else None, description="The alert numbers"
+    check_run_url: str = Field()
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[str, None] = Field()
+    created_at: str = Field(description="The time that the job created.")
+    head_sha: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    labels: list[str] = Field()
+    name: str = Field()
+    node_id: str = Field()
+    run_attempt: int = Field()
+    run_id: int = Field()
+    run_url: str = Field()
+    runner_group_id: Union[int, None] = Field()
+    runner_group_name: Union[str, None] = Field()
+    runner_id: Union[int, None] = Field()
+    runner_name: Union[str, None] = Field()
+    started_at: _dt.datetime = Field()
+    head_branch: Union[str, None] = Field(description="The name of the current branch.")
+    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field()
+    steps: list[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems] = Field()
+    url: str = Field()
+
+
+class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems(GitHubModel):
+    """Workflow Step"""
+
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
+        Field()
+    )
+    name: str = Field()
+    number: int = Field()
+    started_at: Union[str, None] = Field()
+    status: Literal["completed", "in_progress", "queued", "pending", "waiting"] = (
+        Field()
     )
 
 
-model_rebuild(OrgsOrgCampaignsPostBody)
-model_rebuild(OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems)
+model_rebuild(WebhookWorkflowJobWaiting)
+model_rebuild(WebhookWorkflowJobWaitingPropWorkflowJob)
+model_rebuild(WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems)
 
 __all__ = (
-    "OrgsOrgCampaignsPostBody",
-    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems",
+    "WebhookWorkflowJobWaiting",
+    "WebhookWorkflowJobWaitingPropWorkflowJob",
+    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems",
 )

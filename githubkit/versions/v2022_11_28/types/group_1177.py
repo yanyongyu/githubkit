@@ -9,18 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody
 
-    state: Literal["open", "resolved"]
-    resolution: NotRequired[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
-    ]
-    resolution_comment: NotRequired[Union[str, None]]
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str]
 
 
-__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType",)
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody
+
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str]
+
+
+__all__ = (
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyTypeForResponse",
+)

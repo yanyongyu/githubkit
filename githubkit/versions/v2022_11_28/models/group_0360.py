@@ -13,20 +13,31 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
-from .group_0092 import Team
 
+class GitRef(GitHubModel):
+    """Git Reference
 
-class PullRequestReviewRequest(GitHubModel):
-    """Pull Request Review Request
-
-    Pull Request Review Request
+    Git references within a repository
     """
 
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
+    ref: str = Field()
+    node_id: str = Field()
+    url: str = Field()
+    object_: GitRefPropObject = Field(alias="object")
 
 
-model_rebuild(PullRequestReviewRequest)
+class GitRefPropObject(GitHubModel):
+    """GitRefPropObject"""
 
-__all__ = ("PullRequestReviewRequest",)
+    type: str = Field()
+    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
+    url: str = Field()
+
+
+model_rebuild(GitRef)
+model_rebuild(GitRefPropObject)
+
+__all__ = (
+    "GitRef",
+    "GitRefPropObject",
+)

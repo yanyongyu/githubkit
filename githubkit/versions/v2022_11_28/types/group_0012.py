@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -22,7 +22,7 @@ class HookDeliveryItemType(TypedDict):
 
     id: int
     guid: str
-    delivered_at: datetime
+    delivered_at: _dt.datetime
     redelivery: bool
     duration: float
     status: str
@@ -31,7 +31,30 @@ class HookDeliveryItemType(TypedDict):
     action: Union[str, None]
     installation_id: Union[int, None]
     repository_id: Union[int, None]
-    throttled_at: NotRequired[Union[datetime, None]]
+    throttled_at: NotRequired[Union[_dt.datetime, None]]
 
 
-__all__ = ("HookDeliveryItemType",)
+class HookDeliveryItemTypeForResponse(TypedDict):
+    """Simple webhook delivery
+
+    Delivery made by a webhook, without request and response information.
+    """
+
+    id: int
+    guid: str
+    delivered_at: str
+    redelivery: bool
+    duration: float
+    status: str
+    status_code: int
+    event: str
+    action: Union[str, None]
+    installation_id: Union[int, None]
+    repository_id: Union[int, None]
+    throttled_at: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "HookDeliveryItemType",
+    "HookDeliveryItemTypeForResponse",
+)

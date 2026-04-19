@@ -9,37 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0066 import OrganizationSimpleType
+
+class ActionsSetDefaultWorkflowPermissionsType(TypedDict):
+    """ActionsSetDefaultWorkflowPermissions"""
+
+    default_workflow_permissions: NotRequired[Literal["read", "write"]]
+    can_approve_pull_request_reviews: NotRequired[bool]
 
 
-class OrgMembershipType(TypedDict):
-    """Org Membership
+class ActionsSetDefaultWorkflowPermissionsTypeForResponse(TypedDict):
+    """ActionsSetDefaultWorkflowPermissions"""
 
-    Org Membership
-    """
-
-    url: str
-    state: Literal["active", "pending"]
-    role: Literal["admin", "member", "billing_manager"]
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    organization_url: str
-    organization: OrganizationSimpleType
-    user: Union[None, SimpleUserType]
-    permissions: NotRequired[OrgMembershipPropPermissionsType]
-
-
-class OrgMembershipPropPermissionsType(TypedDict):
-    """OrgMembershipPropPermissions"""
-
-    can_create_repository: bool
+    default_workflow_permissions: NotRequired[Literal["read", "write"]]
+    can_approve_pull_request_reviews: NotRequired[bool]
 
 
 __all__ = (
-    "OrgMembershipPropPermissionsType",
-    "OrgMembershipType",
+    "ActionsSetDefaultWorkflowPermissionsType",
+    "ActionsSetDefaultWorkflowPermissionsTypeForResponse",
 )

@@ -9,24 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0405 import Traffic
+from .group_0003 import SimpleUser
+from .group_0020 import Repository
 
 
-class CloneTraffic(GitHubModel):
-    """Clone Traffic
+class PullRequestPropHead(GitHubModel):
+    """PullRequestPropHead"""
 
-    Clone Traffic
-    """
+    label: Union[str, None] = Field()
+    ref: str = Field()
+    repo: Union[None, Repository] = Field()
+    sha: str = Field()
+    user: Union[None, SimpleUser] = Field()
 
-    count: int = Field()
-    uniques: int = Field()
-    clones: list[Traffic] = Field()
+
+class PullRequestPropBase(GitHubModel):
+    """PullRequestPropBase"""
+
+    label: str = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    sha: str = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(CloneTraffic)
+model_rebuild(PullRequestPropHead)
+model_rebuild(PullRequestPropBase)
 
-__all__ = ("CloneTraffic",)
+__all__ = (
+    "PullRequestPropBase",
+    "PullRequestPropHead",
+)

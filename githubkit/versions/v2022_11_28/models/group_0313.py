@@ -12,50 +12,38 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0236 import Verification
+from .group_0310 import CodeScanningVariantAnalysisSkippedRepoGroup
 
 
-class GitTag(GitHubModel):
-    """Git Tag
+class CodeScanningVariantAnalysisPropSkippedRepositories(GitHubModel):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
 
-    Metadata for a Git tag
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
     """
 
-    node_id: str = Field()
-    tag: str = Field(description="Name of the tag")
-    sha: str = Field()
-    url: str = Field(description="URL for the tag")
-    message: str = Field(description="Message describing the purpose of the tag")
-    tagger: GitTagPropTagger = Field()
-    object_: GitTagPropObject = Field(alias="object")
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos = Field()
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
 
 
-class GitTagPropTagger(GitHubModel):
-    """GitTagPropTagger"""
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos(GitHubModel):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
 
-    date: str = Field()
-    email: str = Field()
-    name: str = Field()
-
-
-class GitTagPropObject(GitHubModel):
-    """GitTagPropObject"""
-
-    sha: str = Field()
-    type: str = Field()
-    url: str = Field()
+    repository_count: int = Field(
+        description="The total number of repositories that were skipped for this reason."
+    )
+    repository_full_names: list[str] = Field(
+        description="A list of full repository names that were skipped. This list may not include all repositories that were skipped."
+    )
 
 
-model_rebuild(GitTag)
-model_rebuild(GitTagPropTagger)
-model_rebuild(GitTagPropObject)
+model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositories)
+model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos)
 
 __all__ = (
-    "GitTag",
-    "GitTagPropObject",
-    "GitTagPropTagger",
+    "CodeScanningVariantAnalysisPropSkippedRepositories",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos",
 )

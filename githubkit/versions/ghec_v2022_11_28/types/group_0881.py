@@ -9,21 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0599 import (
+    WebhooksProjectChangesType,
+    WebhooksProjectChangesTypeForResponse,
+)
+from .group_0600 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof0Type(TypedDict):
-    """Committer
 
-    Metaproperties for Git author/committer information.
-    """
+class WebhookProjectsV2ItemRestoredType(TypedDict):
+    """Projects v2 Item Restored Event"""
 
-    date: NotRequired[datetime]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+    action: Literal["restored"]
+    changes: WebhooksProjectChangesType
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_item: ProjectsV2ItemType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof0Type",)
+class WebhookProjectsV2ItemRestoredTypeForResponse(TypedDict):
+    """Projects v2 Item Restored Event"""
+
+    action: Literal["restored"]
+    changes: WebhooksProjectChangesTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_item: ProjectsV2ItemTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookProjectsV2ItemRestoredType",
+    "WebhookProjectsV2ItemRestoredTypeForResponse",
+)

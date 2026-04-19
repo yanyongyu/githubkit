@@ -9,23 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class WebhookForkPropForkeeAllof0PropPermissions(GitHubModel):
-    """WebhookForkPropForkeeAllof0PropPermissions"""
-
-    admin: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
-    pull: bool = Field()
-    push: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
+from .group_0003 import SimpleUser
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
+from .group_0570 import ExemptionRequest
 
 
-model_rebuild(WebhookForkPropForkeeAllof0PropPermissions)
+class WebhookExemptionRequestCancelled(GitHubModel):
+    """Exemption request cancellation event"""
 
-__all__ = ("WebhookForkPropForkeeAllof0PropPermissions",)
+    action: Literal["cancelled"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    exemption_request: ExemptionRequest = Field(
+        title="Exemption Request",
+        description="A request from a user to be exempted from a set of rules.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+model_rebuild(WebhookExemptionRequestCancelled)
+
+__all__ = ("WebhookExemptionRequestCancelled",)

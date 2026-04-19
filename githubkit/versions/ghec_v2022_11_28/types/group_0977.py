@@ -9,35 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0611 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
 
 
-class GistsGistIdPatchBodyType(TypedDict):
-    """GistsGistIdPatchBody"""
+class WebhookSponsorshipPendingCancellationType(TypedDict):
+    """sponsorship pending_cancellation event"""
 
-    description: NotRequired[str]
-    files: NotRequired[GistsGistIdPatchBodyPropFilesType]
+    action: Literal["pending_cancellation"]
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
 
-GistsGistIdPatchBodyPropFilesType: TypeAlias = dict[str, Any]
-"""GistsGistIdPatchBodyPropFiles
+class WebhookSponsorshipPendingCancellationTypeForResponse(TypedDict):
+    """sponsorship pending_cancellation event"""
 
-The gist files to be updated, renamed, or deleted. Each `key` must match the
-current filename
-(including extension) of the targeted gist file. For example: `hello.py`.
-
-To delete a file, set the whole file to null. For example: `hello.py : null`.
-The file will also be
-deleted if the specified object does not contain at least one of `content` or
-`filename`.
-
-Examples:
-    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
-"""
+    action: Literal["pending_cancellation"]
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "GistsGistIdPatchBodyPropFilesType",
-    "GistsGistIdPatchBodyType",
+    "WebhookSponsorshipPendingCancellationType",
+    "WebhookSponsorshipPendingCancellationTypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,16 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0433 import EnterpriseWebhooks
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
+from .group_0482 import EnterpriseWebhooks
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0485 import RepositoryWebhooks
+from .group_0512 import WebhooksProjectCard
 
 
-class WebhookRepositoryCreated(GitHubModel):
-    """repository created event"""
+class WebhookProjectCardEdited(GitHubModel):
+    """project_card edited event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookProjectCardEditedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,13 +45,33 @@ class WebhookRepositoryCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    project_card: WebhooksProjectCard = Field(title="Project Card")
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryCreated)
+class WebhookProjectCardEditedPropChanges(GitHubModel):
+    """WebhookProjectCardEditedPropChanges"""
 
-__all__ = ("WebhookRepositoryCreated",)
+    note: WebhookProjectCardEditedPropChangesPropNote = Field()
+
+
+class WebhookProjectCardEditedPropChangesPropNote(GitHubModel):
+    """WebhookProjectCardEditedPropChangesPropNote"""
+
+    from_: Union[str, None] = Field(alias="from")
+
+
+model_rebuild(WebhookProjectCardEdited)
+model_rebuild(WebhookProjectCardEditedPropChanges)
+model_rebuild(WebhookProjectCardEditedPropChangesPropNote)
+
+__all__ = (
+    "WebhookProjectCardEdited",
+    "WebhookProjectCardEditedPropChanges",
+    "WebhookProjectCardEditedPropChangesPropNote",
+)

@@ -9,28 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0218 import SimpleCommit
-
-
-class MergeGroup(GitHubModel):
-    """Merge Group
-
-    A group of pull requests that the merge queue has grouped together to be merged.
-    """
-
-    head_sha: str = Field(description="The SHA of the merge group.")
-    head_ref: str = Field(description="The full ref of the merge group.")
-    base_sha: str = Field(description="The SHA of the merge group's parent commit.")
-    base_ref: str = Field(
-        description="The full ref of the branch the merge group will be merged into."
-    )
-    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
+from .group_0286 import GitUser
+from .group_0287 import Verification
 
 
-model_rebuild(MergeGroup)
+class CommitSearchResultItemPropCommit(GitHubModel):
+    """CommitSearchResultItemPropCommit"""
 
-__all__ = ("MergeGroup",)
+    author: CommitSearchResultItemPropCommitPropAuthor = Field()
+    committer: Union[None, GitUser] = Field()
+    comment_count: int = Field()
+    message: str = Field()
+    tree: CommitSearchResultItemPropCommitPropTree = Field()
+    url: str = Field()
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+
+
+class CommitSearchResultItemPropCommitPropAuthor(GitHubModel):
+    """CommitSearchResultItemPropCommitPropAuthor"""
+
+    name: str = Field()
+    email: str = Field()
+    date: _dt.datetime = Field()
+
+
+class CommitSearchResultItemPropCommitPropTree(GitHubModel):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(CommitSearchResultItemPropCommit)
+model_rebuild(CommitSearchResultItemPropCommitPropAuthor)
+model_rebuild(CommitSearchResultItemPropCommitPropTree)
+
+__all__ = (
+    "CommitSearchResultItemPropCommit",
+    "CommitSearchResultItemPropCommitPropAuthor",
+    "CommitSearchResultItemPropCommitPropTree",
+)

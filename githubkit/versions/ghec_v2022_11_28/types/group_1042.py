@@ -9,32 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgCodespacesSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[CodespacesOrgSecretType]
+from .group_1043 import (
+    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
+    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
+)
 
 
-class CodespacesOrgSecretType(TypedDict):
-    """Codespaces Secret
+class AgentsTasksTaskIdGetResponse200Allof1Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1"""
 
-    Secrets for a GitHub Codespace.
-    """
+    sessions: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
+    ]
 
-    name: str
-    created_at: datetime
-    updated_at: datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+
+class AgentsTasksTaskIdGetResponse200Allof1TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1"""
+
+    sessions: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "CodespacesOrgSecretType",
-    "OrgsOrgCodespacesSecretsGetResponse200Type",
+    "AgentsTasksTaskIdGetResponse200Allof1Type",
+    "AgentsTasksTaskIdGetResponse200Allof1TypeForResponse",
 )

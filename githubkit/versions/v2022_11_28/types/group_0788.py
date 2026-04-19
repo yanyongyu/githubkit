@@ -12,24 +12,42 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0390 import SecretScanningLocationType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0479 import SecretScanningAlertWebhookType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0515 import (
+    WebhooksProjectChangesType,
+    WebhooksProjectChangesTypeForResponse,
+)
+from .group_0516 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookSecretScanningAlertLocationCreatedType(TypedDict):
-    """Secret Scanning Alert Location Created Event"""
+class WebhookProjectsV2ItemRestoredType(TypedDict):
+    """Projects v2 Item Restored Event"""
 
-    action: Literal["created"]
-    alert: SecretScanningAlertWebhookType
+    action: Literal["restored"]
+    changes: WebhooksProjectChangesType
     installation: NotRequired[SimpleInstallationType]
-    location: SecretScanningLocationType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookSecretScanningAlertLocationCreatedType",)
+class WebhookProjectsV2ItemRestoredTypeForResponse(TypedDict):
+    """Projects v2 Item Restored Event"""
+
+    action: Literal["restored"]
+    changes: WebhooksProjectChangesTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_item: ProjectsV2ItemTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookProjectsV2ItemRestoredType",
+    "WebhookProjectsV2ItemRestoredTypeForResponse",
+)

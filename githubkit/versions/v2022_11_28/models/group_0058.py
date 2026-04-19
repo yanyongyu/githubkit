@@ -9,34 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0003 import SimpleUser
 
-class MarketplaceListingPlan(GitHubModel):
-    """Marketplace Listing Plan
 
-    Marketplace Listing Plan
+class ReleaseAsset(GitHubModel):
+    """Release Asset
+
+    Data related to a release.
     """
 
     url: str = Field()
-    accounts_url: str = Field()
+    browser_download_url: str = Field()
     id: int = Field()
-    number: int = Field()
-    name: str = Field()
-    description: str = Field()
-    monthly_price_in_cents: int = Field()
-    yearly_price_in_cents: int = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    has_free_trial: bool = Field()
-    unit_name: Union[str, None] = Field()
-    state: str = Field()
-    bullets: list[str] = Field()
+    node_id: str = Field()
+    name: str = Field(description="The file name of the asset.")
+    label: Union[str, None] = Field()
+    state: Literal["uploaded", "open"] = Field(
+        description="State of the release asset."
+    )
+    content_type: str = Field()
+    size: int = Field()
+    digest: Union[str, None] = Field()
+    download_count: int = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    uploader: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(MarketplaceListingPlan)
+model_rebuild(ReleaseAsset)
 
-__all__ = ("MarketplaceListingPlan",)
+__all__ = ("ReleaseAsset",)

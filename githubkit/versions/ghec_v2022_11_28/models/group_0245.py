@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,34 +19,31 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0166 import ReactionRollup
 
 
-class TeamDiscussionComment(GitHubModel):
-    """Team Discussion Comment
+class OrganizationCustomRepositoryRole(GitHubModel):
+    """Organization Custom Repository Role
 
-    A reply to a discussion within a team.
+    Custom repository roles created by organization owners
     """
 
-    author: Union[None, SimpleUser] = Field()
-    body: str = Field(description="The main text of the comment.")
-    body_html: str = Field()
-    body_version: str = Field(
-        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
+    id: int = Field(description="The unique identifier of the custom role.")
+    name: str = Field(description="The name of the custom role.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    created_at: datetime = Field()
-    last_edited_at: Union[datetime, None] = Field()
-    discussion_url: str = Field()
-    html_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(
-        description="The unique sequence number of a team discussion comment."
+    base_role: Literal["read", "triage", "write", "maintain"] = Field(
+        description="The system role from which this role inherits permissions."
     )
-    updated_at: datetime = Field()
-    url: str = Field()
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    permissions: list[str] = Field(
+        description="A list of additional permissions included in this role."
+    )
+    organization: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(TeamDiscussionComment)
+model_rebuild(OrganizationCustomRepositoryRole)
 
-__all__ = ("TeamDiscussionComment",)
+__all__ = ("OrganizationCustomRepositoryRole",)

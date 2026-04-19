@@ -9,69 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0433 import EnterpriseWebhooks
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
-from .group_0464 import WebhooksProjectCard
+from .group_0682 import WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreator
 
 
-class WebhookProjectCardEdited(GitHubModel):
-    """project_card edited event"""
+class WebhookIssuesClosedPropIssueMergedMilestone(GitHubModel):
+    """WebhookIssuesClosedPropIssueMergedMilestone"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookProjectCardEditedPropChanges = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
+    closed_at: Union[_dt.datetime, None] = Field()
+    closed_issues: int = Field()
+    created_at: _dt.datetime = Field()
+    creator: Union[WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreator, None] = (
+        Field(title="User")
     )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    project_card: WebhooksProjectCard = Field(title="Project Card")
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    description: Union[str, None] = Field()
+    due_on: Union[_dt.datetime, None] = Field()
+    html_url: str = Field()
+    id: int = Field()
+    labels_url: str = Field()
+    node_id: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    open_issues: int = Field()
+    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
+    title: str = Field(description="The title of the milestone.")
+    updated_at: _dt.datetime = Field()
+    url: str = Field()
 
 
-class WebhookProjectCardEditedPropChanges(GitHubModel):
-    """WebhookProjectCardEditedPropChanges"""
+model_rebuild(WebhookIssuesClosedPropIssueMergedMilestone)
 
-    note: WebhookProjectCardEditedPropChangesPropNote = Field()
-
-
-class WebhookProjectCardEditedPropChangesPropNote(GitHubModel):
-    """WebhookProjectCardEditedPropChangesPropNote"""
-
-    from_: Union[str, None] = Field(alias="from")
-
-
-model_rebuild(WebhookProjectCardEdited)
-model_rebuild(WebhookProjectCardEditedPropChanges)
-model_rebuild(WebhookProjectCardEditedPropChangesPropNote)
-
-__all__ = (
-    "WebhookProjectCardEdited",
-    "WebhookProjectCardEditedPropChanges",
-    "WebhookProjectCardEditedPropChangesPropNote",
-)
+__all__ = ("WebhookIssuesClosedPropIssueMergedMilestone",)

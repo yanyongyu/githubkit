@@ -9,41 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
 
 
-class ProjectCard(GitHubModel):
-    """Project Card
+class RepositoryRuleRequiredDeploymentsPropParameters(GitHubModel):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    Project cards represent a scope of work.
-    """
-
-    url: str = Field()
-    id: int = Field(description="The project card's ID")
-    node_id: str = Field()
-    note: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    archived: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the card is archived"
+    required_deployment_environments: list[str] = Field(
+        description="The environments that must be successfully deployed to before branches can be merged."
     )
-    column_name: Missing[str] = Field(default=UNSET)
-    project_id: Missing[str] = Field(default=UNSET)
-    column_url: str = Field()
-    content_url: Missing[str] = Field(default=UNSET)
-    project_url: str = Field()
 
 
-model_rebuild(ProjectCard)
+model_rebuild(RepositoryRuleRequiredDeploymentsPropParameters)
 
-__all__ = ("ProjectCard",)
+__all__ = ("RepositoryRuleRequiredDeploymentsPropParameters",)

@@ -9,45 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleMergeQueuePropParameters(GitHubModel):
-    """RepositoryRuleMergeQueuePropParameters"""
+class IssueField(GitHubModel):
+    """Issue Field
 
-    check_response_timeout_minutes: int = Field(
-        le=360.0,
-        ge=1.0,
-        description="Maximum time for a required status check to report a conclusion. After this much time has elapsed, checks that have not reported a conclusion will be assumed to have failed",
+    A custom attribute defined at the organization level for attaching structured
+    data to issues.
+    """
+
+    id: int = Field(description="The unique identifier of the issue field.")
+    node_id: str = Field(description="The node identifier of the issue field.")
+    name: str = Field(description="The name of the issue field.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The description of the issue field."
     )
-    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"] = Field(
-        description="When set to ALLGREEN, the merge commit created by merge queue for each PR in the group must pass all required checks to merge. When set to HEADGREEN, only the commit at the head of the merge group, i.e. the commit containing changes from all of the PRs in the group, must pass its required checks to merge."
+    data_type: Literal["text", "date", "single_select", "number"] = Field(
+        description="The data type of the issue field."
     )
-    max_entries_to_build: int = Field(
-        le=100.0,
-        description="Limit the number of queued pull requests requesting checks and workflow runs at the same time.",
+    visibility: Missing[Literal["organization_members_only", "all"]] = Field(
+        default=UNSET,
+        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues).",
     )
-    max_entries_to_merge: int = Field(
-        le=100.0,
-        description="The maximum number of PRs that will be merged together in a group.",
+    options: Missing[Union[list[IssueFieldPropOptionsItems], None]] = Field(
+        default=UNSET, description="Available options for single select fields."
     )
-    merge_method: Literal["MERGE", "SQUASH", "REBASE"] = Field(
-        description="Method to use when merging changes from queued pull requests."
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue field was created."
     )
-    min_entries_to_merge: int = Field(
-        le=100.0,
-        description="The minimum number of PRs that will be merged together in a group.",
-    )
-    min_entries_to_merge_wait_minutes: int = Field(
-        le=360.0,
-        description="The time merge queue should wait after the first PR is added to the queue for the minimum group size to be met. After this time has elapsed, the minimum group size will be ignored and a smaller group will be merged.",
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue field was last updated."
     )
 
 
-model_rebuild(RepositoryRuleMergeQueuePropParameters)
+class IssueFieldPropOptionsItems(GitHubModel):
+    """IssueFieldPropOptionsItems"""
 
-__all__ = ("RepositoryRuleMergeQueuePropParameters",)
+    id: int = Field(description="The unique identifier of the option.")
+    name: str = Field(description="The name of the option.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The description of the option."
+    )
+    color: Missing[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ] = Field(default=UNSET, description="The color of the option.")
+    priority: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The priority of the option for ordering."
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the option was created."
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the option was last updated."
+    )
+
+
+model_rebuild(IssueField)
+model_rebuild(IssueFieldPropOptionsItems)
+
+__all__ = (
+    "IssueField",
+    "IssueFieldPropOptionsItems",
+)

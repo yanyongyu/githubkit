@@ -10,13 +10,60 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Any
-from typing_extensions import TypeAlias
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-LanguageType: TypeAlias = dict[str, Any]
-"""Language
+from .group_0344 import MetadataType, MetadataTypeForResponse
 
-Language
+
+class ManifestType(TypedDict):
+    """Manifest"""
+
+    name: str
+    file: NotRequired[ManifestPropFileType]
+    metadata: NotRequired[MetadataType]
+    resolved: NotRequired[ManifestPropResolvedType]
+
+
+class ManifestTypeForResponse(TypedDict):
+    """Manifest"""
+
+    name: str
+    file: NotRequired[ManifestPropFileTypeForResponse]
+    metadata: NotRequired[MetadataTypeForResponse]
+    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
+
+
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+class ManifestPropFileTypeForResponse(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+ManifestPropResolvedType: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
 """
 
 
-__all__ = ("LanguageType",)
+ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
+"""
+
+
+__all__ = (
+    "ManifestPropFileType",
+    "ManifestPropFileTypeForResponse",
+    "ManifestPropResolvedType",
+    "ManifestPropResolvedTypeForResponse",
+    "ManifestType",
+    "ManifestTypeForResponse",
+)

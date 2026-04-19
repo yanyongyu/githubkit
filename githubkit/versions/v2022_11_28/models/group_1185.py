@@ -9,41 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_1184 import (
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput,
+)
 
-class TeamsTeamIdPatchBody(GitHubModel):
-    """TeamsTeamIdPatchBody"""
 
-    name: str = Field(description="The name of the team.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the team."
-    )
-    privacy: Missing[Literal["secret", "closed"]] = Field(
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0(ExtraGitHubModel):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
+
+    name: Missing[str] = Field(
         default=UNSET,
-        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
+        description='The name of the check. For example, "code-coverage".',
     )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
+    details_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL of the integrator's site that has the full details of the check.",
+    )
+    external_id: Missing[str] = Field(
+        default=UNSET, description="A reference for the run on the integrator's system."
+    )
+    started_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    status: Missing[Literal["completed"]] = Field(default=UNSET)
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
     ] = Field(
+        description="**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. \n**Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this."
+    )
+    completed_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
+        description="The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    permission: Missing[Literal["pull", "push", "admin"]] = Field(
+    output: Missing[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput] = Field(
         default=UNSET,
-        description="**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
+        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run.",
     )
-    parent_team_id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of a team to set as the parent team."
+    actions: Missing[
+        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems]
+    ] = Field(
+        max_length=3 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description='Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)."',
     )
 
 
-model_rebuild(TeamsTeamIdPatchBody)
+model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0)
 
-__all__ = ("TeamsTeamIdPatchBody",)
+__all__ = ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0",)

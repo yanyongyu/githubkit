@@ -9,14 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
+class OrgsOrgCopilotBillingSelectedTeamsPostBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+    selected_teams: list[str]
 
 
-__all__ = ("ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType",)
+class OrgsOrgCopilotBillingSelectedTeamsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
+
+    selected_teams: list[str]
+
+
+__all__ = (
+    "OrgsOrgCopilotBillingSelectedTeamsPostBodyType",
+    "OrgsOrgCopilotBillingSelectedTeamsPostBodyTypeForResponse",
+)

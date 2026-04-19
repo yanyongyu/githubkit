@@ -9,36 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0568 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0340 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssueCommentCreatedPropIssueMergedMilestoneType(TypedDict):
-    """WebhookIssueCommentCreatedPropIssueMergedMilestone"""
+class WebhookDependabotAlertFixedType(TypedDict):
+    """Dependabot alert fixed event"""
 
-    closed_at: Union[datetime, None]
-    closed_issues: int
-    created_at: datetime
-    creator: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType, None
-    ]
-    description: Union[str, None]
-    due_on: Union[datetime, None]
-    html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: datetime
-    url: str
+    action: Literal["fixed"]
+    alert: DependabotAlertType
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookIssueCommentCreatedPropIssueMergedMilestoneType",)
+class WebhookDependabotAlertFixedTypeForResponse(TypedDict):
+    """Dependabot alert fixed event"""
+
+    action: Literal["fixed"]
+    alert: DependabotAlertTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookDependabotAlertFixedType",
+    "WebhookDependabotAlertFixedTypeForResponse",
+)

@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -17,21 +18,62 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0161 import RepositoryRuleCommitAuthorEmailPatternPropParameters
 
+class PackageVersion(GitHubModel):
+    """Package Version
 
-class RepositoryRuleCommitAuthorEmailPattern(GitHubModel):
-    """commit_author_email_pattern
-
-    Parameters to be used for the commit_author_email_pattern rule
+    A version of a software package
     """
 
-    type: Literal["commit_author_email_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitAuthorEmailPatternPropParameters] = Field(
-        default=UNSET
+    id: int = Field(description="Unique identifier of the package version.")
+    name: str = Field(description="The name of the package version.")
+    url: str = Field()
+    package_html_url: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
+    license_: Missing[str] = Field(default=UNSET, alias="license")
+    description: Missing[str] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    deleted_at: Missing[_dt.datetime] = Field(default=UNSET)
+    metadata: Missing[PackageVersionPropMetadata] = Field(
+        default=UNSET, title="Package Version Metadata"
     )
 
 
-model_rebuild(RepositoryRuleCommitAuthorEmailPattern)
+class PackageVersionPropMetadata(GitHubModel):
+    """Package Version Metadata"""
 
-__all__ = ("RepositoryRuleCommitAuthorEmailPattern",)
+    package_type: Literal[
+        "npm", "maven", "rubygems", "docker", "nuget", "container"
+    ] = Field()
+    container: Missing[PackageVersionPropMetadataPropContainer] = Field(
+        default=UNSET, title="Container Metadata"
+    )
+    docker: Missing[PackageVersionPropMetadataPropDocker] = Field(
+        default=UNSET, title="Docker Metadata"
+    )
+
+
+class PackageVersionPropMetadataPropContainer(GitHubModel):
+    """Container Metadata"""
+
+    tags: list[str] = Field()
+
+
+class PackageVersionPropMetadataPropDocker(GitHubModel):
+    """Docker Metadata"""
+
+    tag: Missing[list[str]] = Field(default=UNSET)
+
+
+model_rebuild(PackageVersion)
+model_rebuild(PackageVersionPropMetadata)
+model_rebuild(PackageVersionPropMetadataPropContainer)
+model_rebuild(PackageVersionPropMetadataPropDocker)
+
+__all__ = (
+    "PackageVersion",
+    "PackageVersionPropMetadata",
+    "PackageVersionPropMetadataPropContainer",
+    "PackageVersionPropMetadataPropDocker",
+)

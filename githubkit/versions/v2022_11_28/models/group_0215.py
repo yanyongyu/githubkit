@@ -18,22 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsRepositoryPermissions(GitHubModel):
-    """ActionsRepositoryPermissions"""
+class RepositoryRuleBranchNamePatternPropParameters(GitHubModel):
+    """RepositoryRuleBranchNamePatternPropParameters"""
 
-    enabled: bool = Field(
-        description="Whether GitHub Actions is enabled on the repository."
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule appears when configuring it."
     )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
     )
-    selected_actions_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
     )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(ActionsRepositoryPermissions)
+model_rebuild(RepositoryRuleBranchNamePatternPropParameters)
 
-__all__ = ("ActionsRepositoryPermissions",)
+__all__ = ("RepositoryRuleBranchNamePatternPropParameters",)

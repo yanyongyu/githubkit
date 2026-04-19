@@ -9,52 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0607 import (
-    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
-)
+from .group_0003 import SimpleUser
 
 
-class WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubApp(GitHubModel):
-    """App
+class WebhookGithubAppAuthorizationRevoked(GitHubModel):
+    """github_app_authorization revoked event"""
 
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
-    """
-
-    created_at: Union[datetime, None] = Field()
-    description: Union[str, None] = Field()
-    events: Missing[list[str]] = Field(
-        default=UNSET, description="The list of events for the GitHub app"
-    )
-    external_url: Union[str, None] = Field()
-    html_url: str = Field()
-    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
-    name: str = Field(description="The name of the GitHub app")
-    node_id: str = Field()
-    owner: Union[
-        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
-    ] = Field(title="User")
-    permissions: Missing[
-        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
-    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
-    slug: Missing[str] = Field(
-        default=UNSET, description="The slug name of the GitHub app"
-    )
-    updated_at: Union[datetime, None] = Field()
+    action: Literal["revoked"] = Field()
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubApp)
+model_rebuild(WebhookGithubAppAuthorizationRevoked)
 
-__all__ = ("WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubApp",)
+__all__ = ("WebhookGithubAppAuthorizationRevoked",)

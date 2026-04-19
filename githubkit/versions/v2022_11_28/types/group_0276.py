@@ -9,22 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
 
+class WorkflowDispatchResponseType(TypedDict):
+    """Workflow Dispatch Response
 
-class AutoMergeType(TypedDict):
-    """Auto merge
-
-    The status of auto merging a pull request.
+    Response containing the workflow run ID and URLs.
     """
 
-    enabled_by: SimpleUserType
-    merge_method: Literal["merge", "squash", "rebase"]
-    commit_title: Union[str, None]
-    commit_message: Union[str, None]
+    workflow_run_id: int
+    run_url: str
+    html_url: str
 
 
-__all__ = ("AutoMergeType",)
+class WorkflowDispatchResponseTypeForResponse(TypedDict):
+    """Workflow Dispatch Response
+
+    Response containing the workflow run ID and URLs.
+    """
+
+    workflow_run_id: int
+    run_url: str
+    html_url: str
+
+
+__all__ = (
+    "WorkflowDispatchResponseType",
+    "WorkflowDispatchResponseTypeForResponse",
+)

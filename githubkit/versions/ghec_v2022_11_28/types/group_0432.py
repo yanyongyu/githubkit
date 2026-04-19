@@ -9,20 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0130 import RepositoryRuleFileExtensionRestrictionPropParametersType
+from .group_0358 import VerificationType, VerificationTypeForResponse
 
 
-class RepositoryRuleDetailedOneof17Type(TypedDict):
-    """RepositoryRuleDetailedOneof17"""
+class GitTagType(TypedDict):
+    """Git Tag
 
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Metadata for a Git tag
+    """
+
+    node_id: str
+    tag: str
+    sha: str
+    url: str
+    message: str
+    tagger: GitTagPropTaggerType
+    object_: GitTagPropObjectType
+    verification: NotRequired[VerificationType]
 
 
-__all__ = ("RepositoryRuleDetailedOneof17Type",)
+class GitTagTypeForResponse(TypedDict):
+    """Git Tag
+
+    Metadata for a Git tag
+    """
+
+    node_id: str
+    tag: str
+    sha: str
+    url: str
+    message: str
+    tagger: GitTagPropTaggerTypeForResponse
+    object_: GitTagPropObjectTypeForResponse
+    verification: NotRequired[VerificationTypeForResponse]
+
+
+class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
+
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropTaggerTypeForResponse(TypedDict):
+    """GitTagPropTagger"""
+
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropObjectType(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
+
+
+class GitTagPropObjectTypeForResponse(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
+
+
+__all__ = (
+    "GitTagPropObjectType",
+    "GitTagPropObjectTypeForResponse",
+    "GitTagPropTaggerType",
+    "GitTagPropTaggerTypeForResponse",
+    "GitTagType",
+    "GitTagTypeForResponse",
+)

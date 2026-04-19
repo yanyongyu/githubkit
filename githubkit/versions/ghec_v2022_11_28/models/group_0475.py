@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,56 +19,60 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0020 import Repository
-from .group_0164 import Milestone
-from .group_0165 import IssueType
-from .group_0166 import ReactionRollup
-from .group_0167 import IssueDependenciesSummary, SubIssuesSummary
-from .group_0471 import SearchResultTextMatchesItems
+from .group_0084 import TeamSimple
+from .group_0202 import Milestone
+from .group_0301 import AutoMerge
+from .group_0476 import PullRequestPropLabelsItems
+from .group_0477 import PullRequestPropBase, PullRequestPropHead
+from .group_0478 import PullRequestPropLinks
 
 
-class IssueSearchResultItem(GitHubModel):
-    """Issue Search Result Item
+class PullRequest(GitHubModel):
+    """Pull Request
 
-    Issue Search Result Item
+    Pull requests let you tell others about changes you've pushed to a repository on
+    GitHub. Once a pull request is sent, interested parties can review the set of
+    changes, discuss potential modifications, and even push follow-up commits if
+    necessary.
     """
 
     url: str = Field()
-    repository_url: str = Field()
-    labels_url: str = Field()
-    comments_url: str = Field()
-    events_url: str = Field()
-    html_url: str = Field()
     id: int = Field()
     node_id: str = Field()
-    number: int = Field()
-    title: str = Field()
+    html_url: str = Field()
+    diff_url: str = Field()
+    patch_url: str = Field()
+    issue_url: str = Field()
+    commits_url: str = Field()
+    review_comments_url: str = Field()
+    review_comment_url: str = Field()
+    comments_url: str = Field()
+    statuses_url: str = Field()
+    number: int = Field(
+        description="Number uniquely identifying the pull request within its repository."
+    )
+    state: Literal["open", "closed"] = Field(
+        description="State of this Pull Request. Either `open` or `closed`."
+    )
     locked: bool = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
-    user: Union[None, SimpleUser] = Field()
-    labels: list[IssueSearchResultItemPropLabelsItems] = Field()
-    sub_issues_summary: Missing[SubIssuesSummary] = Field(
-        default=UNSET, title="Sub-issues Summary"
-    )
-    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
-        default=UNSET, title="Issue Dependencies Summary"
-    )
-    state: str = Field()
-    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    assignee: Union[None, SimpleUser] = Field()
+    title: str = Field(description="The title of the pull request.")
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    body: Union[str, None] = Field()
+    labels: list[PullRequestPropLabelsItems] = Field()
     milestone: Union[None, Milestone] = Field()
-    comments: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    closed_at: Union[datetime, None] = Field()
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
-    )
-    pull_request: Missing[IssueSearchResultItemPropPullRequest] = Field(default=UNSET)
-    body: Missing[str] = Field(default=UNSET)
-    score: float = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    merge_commit_sha: Union[str, None] = Field()
+    assignee: Union[None, SimpleUser] = Field()
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    requested_reviewers: Missing[list[SimpleUser]] = Field(default=UNSET)
+    requested_teams: Missing[list[TeamSimple]] = Field(default=UNSET)
+    head: PullRequestPropHead = Field()
+    base: PullRequestPropBase = Field()
+    links: PullRequestPropLinks = Field(alias="_links")
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -82,60 +86,29 @@ class IssueSearchResultItem(GitHubModel):
         title="author_association",
         description="How the author is associated with the repository.",
     )
-    draft: Missing[bool] = Field(default=UNSET)
-    repository: Missing[Repository] = Field(
-        default=UNSET, title="Repository", description="A repository on GitHub."
+    auto_merge: Union[AutoMerge, None] = Field(
+        title="Auto merge", description="The status of auto merging a pull request."
     )
-    body_html: Missing[str] = Field(default=UNSET)
-    body_text: Missing[str] = Field(default=UNSET)
-    timeline_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Union[IssueType, None]] = Field(
-        default=UNSET, title="Issue Type", description="The type of issue."
+    draft: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether or not the pull request is a draft.",
     )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    merged: bool = Field()
+    mergeable: Union[bool, None] = Field()
+    rebaseable: Missing[Union[bool, None]] = Field(default=UNSET)
+    mergeable_state: str = Field()
+    merged_by: Union[None, SimpleUser] = Field()
+    comments: int = Field()
+    review_comments: int = Field()
+    maintainer_can_modify: bool = Field(
+        description="Indicates whether maintainers can modify the pull request."
     )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    commits: int = Field()
+    additions: int = Field()
+    deletions: int = Field()
+    changed_files: int = Field()
 
 
-class IssueSearchResultItemPropLabelsItems(GitHubModel):
-    """IssueSearchResultItemPropLabelsItems"""
+model_rebuild(PullRequest)
 
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    color: Missing[str] = Field(default=UNSET)
-    default: Missing[bool] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class IssueSearchResultItemPropPullRequest(GitHubModel):
-    """IssueSearchResultItemPropPullRequest"""
-
-    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
-    diff_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    patch_url: Union[str, None] = Field()
-    url: Union[str, None] = Field()
-
-
-class SearchIssuesGetResponse200(GitHubModel):
-    """SearchIssuesGetResponse200"""
-
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[IssueSearchResultItem] = Field()
-
-
-model_rebuild(IssueSearchResultItem)
-model_rebuild(IssueSearchResultItemPropLabelsItems)
-model_rebuild(IssueSearchResultItemPropPullRequest)
-model_rebuild(SearchIssuesGetResponse200)
-
-__all__ = (
-    "IssueSearchResultItem",
-    "IssueSearchResultItemPropLabelsItems",
-    "IssueSearchResultItemPropPullRequest",
-    "SearchIssuesGetResponse200",
-)
+__all__ = ("PullRequest",)

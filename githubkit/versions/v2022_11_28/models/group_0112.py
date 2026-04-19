@@ -9,29 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ApiInsightsUserStatsItems(GitHubModel):
-    """ApiInsightsUserStatsItems"""
+class ActionsForkPrWorkflowsPrivateRepos(GitHubModel):
+    """ActionsForkPrWorkflowsPrivateRepos"""
 
-    actor_type: Missing[str] = Field(default=UNSET)
-    actor_name: Missing[str] = Field(default=UNSET)
-    actor_id: Missing[int] = Field(default=UNSET)
-    integration_id: Missing[Union[int, None]] = Field(default=UNSET)
-    oauth_application_id: Missing[Union[int, None]] = Field(default=UNSET)
-    total_request_count: Missing[int] = Field(default=UNSET)
-    rate_limited_request_count: Missing[int] = Field(default=UNSET)
-    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
-    last_request_timestamp: Missing[str] = Field(default=UNSET)
+    run_workflows_from_fork_pull_requests: bool = Field(
+        description="Whether workflows triggered by pull requests from forks are allowed to run on private repositories."
+    )
+    send_write_tokens_to_workflows: bool = Field(
+        description="Whether GitHub Actions can create pull requests or submit approving pull request reviews from a workflow triggered by a fork pull request."
+    )
+    send_secrets_and_variables: bool = Field(
+        description="Whether to make secrets and variables available to workflows triggered by pull requests from forks."
+    )
+    require_approval_for_fork_pr_workflows: bool = Field(
+        description="Whether workflows triggered by pull requests from forks require approval from a repository administrator to run."
+    )
 
 
-model_rebuild(ApiInsightsUserStatsItems)
+model_rebuild(ActionsForkPrWorkflowsPrivateRepos)
 
-__all__ = ("ApiInsightsUserStatsItems",)
+__all__ = ("ActionsForkPrWorkflowsPrivateRepos",)

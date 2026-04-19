@@ -9,14 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class RulesetVersionWithStateAllof1PropStateType(TypedDict):
-    """RulesetVersionWithStateAllof1PropState
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType(TypedDict):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
 
-    The state of the ruleset version
-    """
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
+    protected: NotRequired[bool]
 
 
-__all__ = ("RulesetVersionWithStateAllof1PropStateType",)
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
+
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
+    protected: NotRequired[bool]
+
+
+__all__ = (
+    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",
+    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse",
+)

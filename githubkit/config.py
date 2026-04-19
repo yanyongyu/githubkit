@@ -8,7 +8,7 @@ import httpx
 from .cache import DEFAULT_CACHE_STRATEGY, BaseCacheStrategy
 from .retry import RETRY_DEFAULT
 from .throttling import BaseThrottler, LocalThrottler
-from .typing import ProxyTypes, RetryDecisionFunc
+from .typing import EventHookTypes, ProxyTypes, RetryDecisionFunc
 
 if TYPE_CHECKING:
     import ssl
@@ -24,6 +24,10 @@ class Config:
     ssl_verify: Union[bool, "ssl.SSLContext"]
     trust_env: bool  # effects the `httpx` proxy and ssl cert
     proxy: Optional[ProxyTypes]
+    transport: Optional[httpx.BaseTransport]
+    async_transport: Optional[httpx.AsyncBaseTransport]
+    event_hooks: Optional[EventHookTypes]
+    async_event_hooks: Optional[EventHookTypes]
     cache_strategy: BaseCacheStrategy
     http_cache: bool
     throttler: BaseThrottler
@@ -113,6 +117,10 @@ def get_config(
     ssl_verify: Union[bool, "ssl.SSLContext"] = True,
     trust_env: bool = True,
     proxy: Optional[ProxyTypes] = None,
+    transport: Optional[httpx.BaseTransport] = None,
+    async_transport: Optional[httpx.AsyncBaseTransport] = None,
+    event_hooks: Optional[EventHookTypes] = None,
+    async_event_hooks: Optional[EventHookTypes] = None,
     cache_strategy: Optional[BaseCacheStrategy] = None,
     http_cache: bool = True,
     throttler: Optional[BaseThrottler] = None,
@@ -129,6 +137,10 @@ def get_config(
         ssl_verify,
         trust_env,
         proxy,
+        transport,
+        async_transport,
+        event_hooks,
+        async_event_hooks,
         build_cache_strategy(cache_strategy),
         http_cache,
         build_throttler(throttler),

@@ -18,71 +18,119 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksApprover(GitHubModel):
-    """WebhooksApprover"""
+class RepositoryAdvisoryCreate(GitHubModel):
+    """RepositoryAdvisoryCreate"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhooksReviewersItems(GitHubModel):
-    """WebhooksReviewersItems"""
-
-    reviewer: Missing[Union[WebhooksReviewersItemsPropReviewer, None]] = Field(
-        default=UNSET, title="User"
+    summary: str = Field(
+        max_length=1024, description="A short summary of the advisory."
     )
-    type: Missing[Literal["User"]] = Field(default=UNSET)
+    description: str = Field(
+        max_length=65535,
+        description="A detailed description of what the advisory impacts.",
+    )
+    cve_id: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The Common Vulnerabilities and Exposures (CVE) ID."
+    )
+    vulnerabilities: list[RepositoryAdvisoryCreatePropVulnerabilitiesItems] = Field(
+        description="A product affected by the vulnerability detailed in a repository security advisory."
+    )
+    cwe_ids: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
+    )
+    credits_: Missing[Union[list[RepositoryAdvisoryCreatePropCreditsItems], None]] = (
+        Field(
+            default=UNSET,
+            alias="credits",
+            description="A list of users receiving credit for their participation in the security advisory.",
+        )
+    )
+    severity: Missing[Union[None, Literal["critical", "high", "medium", "low"]]] = (
+        Field(
+            default=UNSET,
+            description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
+        )
+    )
+    cvss_vector_string: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
+    )
+    start_private_fork: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to create a temporary private fork of the repository to collaborate on a fix.",
+    )
 
 
-class WebhooksReviewersItemsPropReviewer(GitHubModel):
-    """User"""
+class RepositoryAdvisoryCreatePropCreditsItems(GitHubModel):
+    """RepositoryAdvisoryCreatePropCreditsItems"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    login: str = Field(description="The username of the user credited.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.")
 
 
-model_rebuild(WebhooksApprover)
-model_rebuild(WebhooksReviewersItems)
-model_rebuild(WebhooksReviewersItemsPropReviewer)
+class RepositoryAdvisoryCreatePropVulnerabilitiesItems(GitHubModel):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage = Field(
+        description="The name of the package affected by the vulnerability."
+    )
+    vulnerable_version_range: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The range of the package versions affected by the vulnerability.",
+    )
+    patched_versions: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The package version(s) that resolve the vulnerability.",
+    )
+    vulnerable_functions: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="The functions in the package that are affected."
+    )
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage(GitHubModel):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ] = Field(description="The package's language or package management ecosystem.")
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The unique package name within its ecosystem."
+    )
+
+
+model_rebuild(RepositoryAdvisoryCreate)
+model_rebuild(RepositoryAdvisoryCreatePropCreditsItems)
+model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItems)
+model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage)
 
 __all__ = (
-    "WebhooksApprover",
-    "WebhooksReviewersItems",
-    "WebhooksReviewersItemsPropReviewer",
+    "RepositoryAdvisoryCreate",
+    "RepositoryAdvisoryCreatePropCreditsItems",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItems",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage",
 )

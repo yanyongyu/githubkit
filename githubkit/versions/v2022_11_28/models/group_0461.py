@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,62 +18,147 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0020 import Repository
+from .group_0049 import Milestone
+from .group_0050 import IssueType
+from .group_0051 import ReactionRollup
+from .group_0052 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0054 import IssueComment
+from .group_0055 import IssueFieldValue
+from .group_0457 import SearchResultTextMatchesItems
 
-class WebhooksMilestone3(GitHubModel):
-    """Milestone
 
-    A collection of related issues and pull requests.
+class IssueSearchResultItem(GitHubModel):
+    """Issue Search Result Item
+
+    Issue Search Result Item
     """
 
-    closed_at: Union[datetime, None] = Field()
-    closed_issues: int = Field()
-    created_at: datetime = Field()
-    creator: Union[WebhooksMilestone3PropCreator, None] = Field(title="User")
-    description: Union[str, None] = Field()
-    due_on: Union[datetime, None] = Field()
+    url: str = Field()
+    repository_url: str = Field()
+    labels_url: str = Field()
+    comments_url: str = Field()
+    events_url: str = Field()
     html_url: str = Field()
     id: int = Field()
-    labels_url: str = Field()
     node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    open_issues: int = Field()
-    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
-    title: str = Field(description="The title of the milestone.")
-    updated_at: datetime = Field()
-    url: str = Field()
+    number: int = Field()
+    title: str = Field()
+    locked: bool = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    user: Union[None, SimpleUser] = Field()
+    labels: list[IssueSearchResultItemPropLabelsItems] = Field()
+    sub_issues_summary: Missing[SubIssuesSummary] = Field(
+        default=UNSET, title="Sub-issues Summary"
+    )
+    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
+        default=UNSET, title="Issue Dependencies Summary"
+    )
+    issue_field_values: Missing[list[IssueFieldValue]] = Field(default=UNSET)
+    state: str = Field()
+    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    assignee: Union[None, SimpleUser] = Field()
+    milestone: Union[None, Milestone] = Field()
+    comments: int = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
+    pull_request: Missing[IssueSearchResultItemPropPullRequest] = Field(default=UNSET)
+    body: Missing[str] = Field(default=UNSET)
+    score: float = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    draft: Missing[bool] = Field(default=UNSET)
+    repository: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
+    )
+    body_html: Missing[str] = Field(default=UNSET)
+    body_text: Missing[str] = Field(default=UNSET)
+    timeline_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Union[IssueType, None]] = Field(
+        default=UNSET, title="Issue Type", description="The type of issue."
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    pinned_comment: Missing[Union[None, IssueComment]] = Field(default=UNSET)
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-class WebhooksMilestone3PropCreator(GitHubModel):
-    """User"""
+class IssueSearchResultItemPropLabelsItems(GitHubModel):
+    """IssueSearchResultItemPropLabelsItems"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    color: Missing[str] = Field(default=UNSET)
+    default: Missing[bool] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksMilestone3)
-model_rebuild(WebhooksMilestone3PropCreator)
+class IssueSearchResultItemPropPullRequest(GitHubModel):
+    """IssueSearchResultItemPropPullRequest"""
+
+    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    diff_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    patch_url: Union[str, None] = Field()
+    url: Union[str, None] = Field()
+
+
+class SearchIssuesGetResponse200(GitHubModel):
+    """SearchIssuesGetResponse200"""
+
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[IssueSearchResultItem] = Field()
+    search_type: Literal["lexical", "semantic", "hybrid"] = Field(
+        description="The type of search that was performed. Possible values are `lexical`, `semantic`, or `hybrid`."
+    )
+    lexical_fallback_reason: Missing[
+        list[
+            Literal[
+                "no_text_terms",
+                "quoted_text",
+                "non_issue_target",
+                "or_boolean_not_supported",
+                "no_accessible_repos",
+                "server_error",
+                "only_non_semantic_fields_requested",
+            ]
+        ]
+    ] = Field(
+        default=UNSET,
+        description="When a semantic or hybrid search falls back to lexical search, this field contains the reasons for the fallback. Only present when a fallback occurred.",
+    )
+
+
+model_rebuild(IssueSearchResultItem)
+model_rebuild(IssueSearchResultItemPropLabelsItems)
+model_rebuild(IssueSearchResultItemPropPullRequest)
+model_rebuild(SearchIssuesGetResponse200)
 
 __all__ = (
-    "WebhooksMilestone3",
-    "WebhooksMilestone3PropCreator",
+    "IssueSearchResultItem",
+    "IssueSearchResultItemPropLabelsItems",
+    "IssueSearchResultItemPropPullRequest",
+    "SearchIssuesGetResponse200",
 )

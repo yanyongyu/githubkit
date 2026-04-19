@@ -30,7 +30,9 @@ if TYPE_CHECKING:
     from githubkit import GitHubCore, Response
 
     from .ghec_v2022_11_28.rest import RestNamespace as GhecV20221128RestNamespace
+    from .ghec_v2026_03_10.rest import RestNamespace as GhecV20260310RestNamespace
     from .v2022_11_28.rest import RestNamespace as V20221128RestNamespace
+    from .v2026_03_10.rest import RestNamespace as V20260310RestNamespace
 
 
 CP = ParamSpec("CP")
@@ -44,7 +46,7 @@ R = Union[
 
 if TYPE_CHECKING:
 
-    class _VersionProxy(V20221128RestNamespace): ...
+    class _VersionProxy(V20260310RestNamespace): ...
 
 else:
     _VersionProxy = object
@@ -110,9 +112,15 @@ class RestVersionSwitcher(_VersionProxy):
     def __call__(
         self, version: Literal["ghec-2022-11-28"]
     ) -> "GhecV20221128RestNamespace": ...
+    @overload
+    def __call__(self, version: Literal["2026-03-10"]) -> "V20260310RestNamespace": ...
+    @overload
+    def __call__(
+        self, version: Literal["ghec-2026-03-10"]
+    ) -> "GhecV20260310RestNamespace": ...
 
     @overload
-    def __call__(self) -> "V20221128RestNamespace": ...
+    def __call__(self) -> "V20260310RestNamespace": ...
 
     def __call__(self, version: VERSION_TYPE = LATEST_VERSION) -> Any:
         g = self._github

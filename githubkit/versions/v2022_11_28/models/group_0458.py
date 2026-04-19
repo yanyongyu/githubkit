@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -17,49 +18,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class WebhooksPreviousMarketplacePurchase(GitHubModel):
-    """Marketplace Purchase"""
-
-    account: WebhooksPreviousMarketplacePurchasePropAccount = Field()
-    billing_cycle: str = Field()
-    free_trial_ends_on: None = Field()
-    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
-    on_free_trial: bool = Field()
-    plan: WebhooksPreviousMarketplacePurchasePropPlan = Field()
-    unit_count: int = Field()
+from .group_0089 import MinimalRepository
+from .group_0457 import SearchResultTextMatchesItems
 
 
-class WebhooksPreviousMarketplacePurchasePropAccount(GitHubModel):
-    """WebhooksPreviousMarketplacePurchasePropAccount"""
+class CodeSearchResultItem(GitHubModel):
+    """Code Search Result Item
 
-    id: int = Field()
-    login: str = Field()
-    node_id: str = Field()
-    organization_billing_email: Union[str, None] = Field()
-    type: str = Field()
+    Code Search Result Item
+    """
 
-
-class WebhooksPreviousMarketplacePurchasePropPlan(GitHubModel):
-    """WebhooksPreviousMarketplacePurchasePropPlan"""
-
-    bullets: list[str] = Field()
-    description: str = Field()
-    has_free_trial: bool = Field()
-    id: int = Field()
-    monthly_price_in_cents: int = Field()
     name: str = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    unit_name: Union[str, None] = Field()
-    yearly_price_in_cents: int = Field()
+    path: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: str = Field()
+    html_url: str = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    score: float = Field()
+    file_size: Missing[int] = Field(default=UNSET)
+    language: Missing[Union[str, None]] = Field(default=UNSET)
+    last_modified_at: Missing[_dt.datetime] = Field(default=UNSET)
+    line_numbers: Missing[list[str]] = Field(default=UNSET)
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
 
 
-model_rebuild(WebhooksPreviousMarketplacePurchase)
-model_rebuild(WebhooksPreviousMarketplacePurchasePropAccount)
-model_rebuild(WebhooksPreviousMarketplacePurchasePropPlan)
+class SearchCodeGetResponse200(GitHubModel):
+    """SearchCodeGetResponse200"""
+
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[CodeSearchResultItem] = Field()
+
+
+model_rebuild(CodeSearchResultItem)
+model_rebuild(SearchCodeGetResponse200)
 
 __all__ = (
-    "WebhooksPreviousMarketplacePurchase",
-    "WebhooksPreviousMarketplacePurchasePropAccount",
-    "WebhooksPreviousMarketplacePurchasePropPlan",
+    "CodeSearchResultItem",
+    "SearchCodeGetResponse200",
 )

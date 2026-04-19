@@ -9,38 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ContentSymlinkType(TypedDict):
-    """Symlink Content
+class VerificationType(TypedDict):
+    """Verification"""
 
-    An object describing a symlink
-    """
-
-    type: Literal["symlink"]
-    target: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSymlinkPropLinksType
+    verified: bool
+    reason: str
+    payload: Union[str, None]
+    signature: Union[str, None]
+    verified_at: NotRequired[Union[str, None]]
 
 
-class ContentSymlinkPropLinksType(TypedDict):
-    """ContentSymlinkPropLinks"""
+class VerificationTypeForResponse(TypedDict):
+    """Verification"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    verified: bool
+    reason: str
+    payload: Union[str, None]
+    signature: Union[str, None]
+    verified_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ContentSymlinkPropLinksType",
-    "ContentSymlinkType",
+    "VerificationType",
+    "VerificationTypeForResponse",
 )

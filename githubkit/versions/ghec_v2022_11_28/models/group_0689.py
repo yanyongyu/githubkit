@@ -18,17 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0494 import EnterpriseWebhooks
-from .group_0495 import SimpleInstallation
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0497 import RepositoryWebhooks
-from .group_0690 import WebhookIssuesLockedPropIssue
+from .group_0201 import Discussion
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
+from .group_0580 import WebhooksLabel
 
 
-class WebhookIssuesLocked(GitHubModel):
-    """issues locked event"""
+class WebhookDiscussionUnlabeled(GitHubModel):
+    """discussion unlabeled event"""
 
-    action: Literal["locked"] = Field()
+    action: Literal["unlabeled"] = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,10 +43,7 @@ class WebhookIssuesLocked(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssuesLockedPropIssue = Field(
-        title="Issue",
-        description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.",
-    )
+    label: WebhooksLabel = Field(title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -55,6 +56,6 @@ class WebhookIssuesLocked(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesLocked)
+model_rebuild(WebhookDiscussionUnlabeled)
 
-__all__ = ("WebhookIssuesLocked",)
+__all__ = ("WebhookDiscussionUnlabeled",)

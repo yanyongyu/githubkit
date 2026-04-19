@@ -9,108 +9,300 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0030 import CodeScanningDefaultSetupOptionsType
+
+class AgentsReposOwnerRepoTasksGetResponse200Type(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse200"""
+
+    tasks: list[AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsType]
+    total_active_count: NotRequired[int]
+    total_archived_count: NotRequired[int]
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody"""
+class AgentsReposOwnerRepoTasksGetResponse200TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse200"""
 
+    tasks: list[AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsTypeForResponse]
+    total_active_count: NotRequired[int]
+    total_archived_count: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItems"""
+
+    id: str
+    url: NotRequired[str]
+    html_url: NotRequired[str]
     name: NotRequired[str]
-    description: NotRequired[str]
-    advanced_security: NotRequired[
-        Literal["enabled", "disabled", "code_security", "secret_protection"]
+    creator: NotRequired[
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0Type
     ]
-    code_security: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph_autosubmit_action: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    dependency_graph_autosubmit_action_options: NotRequired[
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType
-    ]
-    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup_options: NotRequired[
-        Union[CodeScanningDefaultSetupOptionsType, None]
-    ]
-    code_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_protection: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning_push_protection: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_bypass: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_bypass_options: NotRequired[
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsType
-    ]
-    secret_scanning_validity_checks: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_generic_secrets: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    private_vulnerability_reporting: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    enforcement: NotRequired[Literal["enforced", "unenforced"]]
-
-
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType(
-    TypedDict
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAuto
-    submitActionOptions
-
-    Feature options for Automatic dependency submission
-    """
-
-    labeled_runners: NotRequired[bool]
-
-
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsType(
-    TypedDict
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDeleg
-    atedBypassOptions
-
-    Feature options for secret scanning delegated bypass
-    """
-
-    reviewers: NotRequired[
+    creator_type: NotRequired[Literal["user", "organization"]]
+    user_collaborators: NotRequired[
         list[
-            OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType
+            AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType
         ]
     ]
+    owner: NotRequired[
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwnerType
+    ]
+    repository: NotRequired[
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepositoryType
+    ]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    session_count: NotRequired[int]
+    artifacts: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsType
+        ]
+    ]
+    archived_at: NotRequired[Union[_dt.datetime, None]]
+    updated_at: NotRequired[_dt.datetime]
+    created_at: _dt.datetime
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType(
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsTypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItems"""
+
+    id: str
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    name: NotRequired[str]
+    creator: NotRequired[
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0TypeForResponse
+    ]
+    creator_type: NotRequired[Literal["user", "organization"]]
+    user_collaborators: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsTypeForResponse
+        ]
+    ]
+    owner: NotRequired[
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwnerTypeForResponse
+    ]
+    repository: NotRequired[
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepositoryTypeForResponse
+    ]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    session_count: NotRequired[int]
+    artifacts: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsTypeForResponse
+        ]
+    ]
+    archived_at: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    created_at: str
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0Type(
     TypedDict
 ):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDeleg
-    atedBypassOptionsPropReviewersItems
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0
+
+    A GitHub user
     """
 
-    reviewer_id: int
-    reviewer_type: Literal["TEAM", "ROLE"]
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0TypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0
+
+    A GitHub user
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
+
+    A GitHub user
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
+
+    A GitHub user
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwnerType(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner
+
+    The owner of the repository
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwnerTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner
+
+    The owner of the repository
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepositoryType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository
+
+    The repository this task belongs to
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepositoryTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository
+
+    The repository this task belongs to
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems
+
+    A resource generated by the task
+    """
+
+    provider: Literal["github"]
+    type: Literal["pull", "branch"]
+    data: Union[
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type,
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type,
+    ]
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems
+
+    A resource generated by the task
+    """
+
+    provider: Literal["github"]
+    type: Literal["pull", "branch"]
+    data: Union[
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0TypeForResponse,
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1TypeForResponse,
+    ]
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataO
+    neof0
+
+    A GitHub resource (pull request, issue, etc.)
+    """
+
+    id: int
+    global_id: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0TypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataO
+    neof0
+
+    A GitHub resource (pull request, issue, etc.)
+    """
+
+    id: int
+    global_id: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataO
+    neof1
+
+    A Git branch reference
+    """
+
+    head_ref: str
+    base_ref: str
+
+
+class AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1TypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataO
+    neof1
+
+    A Git branch reference
+    """
+
+    head_ref: str
+    base_ref: str
 
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsType",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0TypeForResponse",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1TypeForResponse",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsType",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0Type",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0TypeForResponse",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwnerType",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwnerTypeForResponse",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepositoryType",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepositoryTypeForResponse",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsType",
+    "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksGetResponse200Type",
+    "AgentsReposOwnerRepoTasksGetResponse200TypeForResponse",
 )

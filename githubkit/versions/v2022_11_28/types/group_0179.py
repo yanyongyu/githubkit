@@ -9,22 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0180 import RepositoryRuleCodeScanningPropParametersType
 
+class CustomPropertySetPayloadType(TypedDict):
+    """Custom Property Set Payload
 
-class RepositoryRuleCodeScanningType(TypedDict):
-    """code_scanning
-
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
+    Custom property set payload
     """
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ]
+    require_explicit_values: NotRequired[bool]
 
 
-__all__ = ("RepositoryRuleCodeScanningType",)
+class CustomPropertySetPayloadTypeForResponse(TypedDict):
+    """Custom Property Set Payload
+
+    Custom property set payload
+    """
+
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ]
+    require_explicit_values: NotRequired[bool]
+
+
+__all__ = (
+    "CustomPropertySetPayloadType",
+    "CustomPropertySetPayloadTypeForResponse",
+)

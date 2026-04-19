@@ -13,13 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody(GitHubModel):
-    """TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody"""
-
-    body: str = Field(description="The discussion comment's body text.")
+from .group_0333 import Job
 
 
-model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody)
+class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody",)
+    total_count: int = Field()
+    jobs: list[Job] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsRunsRunIdJobsGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200",)

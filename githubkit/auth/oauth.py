@@ -36,7 +36,7 @@ def create_device_code(
     url = base_url.copy_with(raw_path=base_url.raw_path + b"login/device/code")
     body = {"client_id": client_id}
     if scopes:
-        body["scopes"] = " ".join(scopes)
+        body["scope"] = " ".join(scopes)
     response = yield httpx.Request(
         "POST",
         url,

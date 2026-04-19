@@ -9,41 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningDefaultSetupType(TypedDict):
-    """CodeScanningDefaultSetup
+class OidcCustomSubRepoType(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    Configuration for code scanning default setup.
+    Actions OIDC subject customization for a repository
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "javascript",
-                "python",
-                "ruby",
-                "typescript",
-                "swift",
-            ]
-        ]
-    ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    updated_at: NotRequired[Union[datetime, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
 
 
-__all__ = ("CodeScanningDefaultSetupType",)
+class OidcCustomSubRepoTypeForResponse(TypedDict):
+    """Actions OIDC subject customization for a repository
+
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
+
+
+__all__ = (
+    "OidcCustomSubRepoType",
+    "OidcCustomSubRepoTypeForResponse",
+)

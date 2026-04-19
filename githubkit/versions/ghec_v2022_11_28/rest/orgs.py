@@ -11,21 +11,22 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing_extensions import deprecated
 from weakref import ref
 
 from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
     from typing import Literal, Union
 
     from githubkit import GitHubCore
     from githubkit.response import Response
-    from githubkit.typing import Missing
+    from githubkit.typing import Missing, UniqueList
     from githubkit.utils import UNSET
 
     from ..models import (
@@ -39,8 +40,11 @@ if TYPE_CHECKING:
         AuditLogEvent,
         CredentialAuthorization,
         CustomProperty,
+        CustomPropertyValue,
         HookDelivery,
         HookDeliveryItem,
+        ImmutableReleasesOrganizationSettings,
+        IssueField,
         IssueType,
         MinimalRepository,
         OrganizationCustomRepositoryRole,
@@ -55,12 +59,19 @@ if TYPE_CHECKING:
         OrgHook,
         OrgMembership,
         OrgRepoCustomPropertyValues,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
         OrgsOrgAttestationsBulkListPostResponse200,
+        OrgsOrgAttestationsRepositoriesGetResponse200Items,
         OrgsOrgAttestationsSubjectDigestGetResponse200,
         OrgsOrgCustomRepositoryRolesGetResponse200,
         OrgsOrgInstallationsGetResponse200,
         OrgsOrgOrganizationRolesGetResponse200,
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
+        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200,
         PushRuleBypassRequest,
         RepositoryFineGrainedPermission,
         RulesetVersion,
@@ -73,58 +84,78 @@ if TYPE_CHECKING:
         WebhookConfig,
     )
     from ..types import (
-        AnnouncementBannerType,
+        AnnouncementBannerTypeForResponse,
         AnnouncementType,
-        ApiInsightsRouteStatsItemsType,
-        ApiInsightsSubjectStatsItemsType,
-        ApiInsightsSummaryStatsType,
-        ApiInsightsTimeStatsItemsType,
-        ApiInsightsUserStatsItemsType,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
-        AuditLogEventType,
-        CredentialAuthorizationType,
+        ApiInsightsRouteStatsItemsTypeForResponse,
+        ApiInsightsSubjectStatsItemsTypeForResponse,
+        ApiInsightsSummaryStatsTypeForResponse,
+        ApiInsightsTimeStatsItemsTypeForResponse,
+        ApiInsightsUserStatsItemsTypeForResponse,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
+        AuditLogEventTypeForResponse,
+        CredentialAuthorizationTypeForResponse,
         CustomPropertySetPayloadType,
         CustomPropertyType,
+        CustomPropertyTypeForResponse,
         CustomPropertyValueType,
-        HookDeliveryItemType,
-        HookDeliveryType,
-        IssueTypeType,
-        MinimalRepositoryType,
+        CustomPropertyValueTypeForResponse,
+        HookDeliveryItemTypeForResponse,
+        HookDeliveryTypeForResponse,
+        ImmutableReleasesOrganizationSettingsTypeForResponse,
+        IssueFieldTypeForResponse,
+        IssueTypeTypeForResponse,
+        MinimalRepositoryTypeForResponse,
+        OrganizationCreateIssueFieldPropOptionsItemsType,
+        OrganizationCreateIssueFieldType,
         OrganizationCreateIssueTypeType,
         OrganizationCustomOrganizationRoleCreateSchemaType,
         OrganizationCustomOrganizationRoleUpdateSchemaType,
         OrganizationCustomRepositoryRoleCreateSchemaType,
-        OrganizationCustomRepositoryRoleType,
+        OrganizationCustomRepositoryRoleTypeForResponse,
         OrganizationCustomRepositoryRoleUpdateSchemaType,
-        OrganizationFineGrainedPermissionType,
-        OrganizationFullType,
-        OrganizationInvitationType,
-        OrganizationProgrammaticAccessGrantRequestType,
-        OrganizationProgrammaticAccessGrantType,
-        OrganizationRoleType,
-        OrganizationSimpleType,
-        OrganizationsOrganizationIdCustomRolesGetResponse200Type,
+        OrganizationFineGrainedPermissionTypeForResponse,
+        OrganizationFullTypeForResponse,
+        OrganizationInvitationTypeForResponse,
+        OrganizationProgrammaticAccessGrantRequestTypeForResponse,
+        OrganizationProgrammaticAccessGrantTypeForResponse,
+        OrganizationRoleTypeForResponse,
+        OrganizationSimpleTypeForResponse,
+        OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse,
+        OrganizationsOrgOrgPropertiesValuesPatchBodyType,
+        OrganizationUpdateIssueFieldPropOptionsItemsType,
+        OrganizationUpdateIssueFieldType,
         OrganizationUpdateIssueTypeType,
-        OrgHookType,
-        OrgMembershipType,
-        OrgRepoCustomPropertyValuesType,
+        OrgHookTypeForResponse,
+        OrgMembershipTypeForResponse,
+        OrgRepoCustomPropertyValuesTypeForResponse,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse,
+        OrgsOrgArtifactsMetadataStorageRecordPostBodyType,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse,
+        OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse,
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse,
         OrgsOrgAttestationsBulkListPostBodyType,
-        OrgsOrgAttestationsBulkListPostResponse200Type,
+        OrgsOrgAttestationsBulkListPostResponse200TypeForResponse,
         OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type,
         OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type,
-        OrgsOrgAttestationsSubjectDigestGetResponse200Type,
-        OrgsOrgCustomRepositoryRolesGetResponse200Type,
+        OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse,
+        OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse,
+        OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse,
         OrgsOrgHooksHookIdConfigPatchBodyType,
         OrgsOrgHooksHookIdPatchBodyPropConfigType,
         OrgsOrgHooksHookIdPatchBodyType,
         OrgsOrgHooksPostBodyPropConfigType,
         OrgsOrgHooksPostBodyType,
-        OrgsOrgInstallationsGetResponse200Type,
+        OrgsOrgInstallationsGetResponse200TypeForResponse,
         OrgsOrgInvitationsPostBodyType,
         OrgsOrgMembershipsUsernamePutBodyType,
-        OrgsOrgOrganizationRolesGetResponse200Type,
+        OrgsOrgOrganizationRolesGetResponse200TypeForResponse,
         OrgsOrgOutsideCollaboratorsUsernamePutBodyType,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse,
         OrgsOrgPatchBodyType,
         OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
         OrgsOrgPersonalAccessTokenRequestsPostBodyType,
@@ -133,17 +164,20 @@ if TYPE_CHECKING:
         OrgsOrgPropertiesSchemaPatchBodyType,
         OrgsOrgPropertiesValuesPatchBodyType,
         OrgsOrgSecurityProductEnablementPostBodyType,
-        PushRuleBypassRequestType,
-        RepositoryFineGrainedPermissionType,
-        RulesetVersionType,
-        RulesetVersionWithStateType,
-        SimpleUserType,
-        TeamRoleAssignmentType,
-        TeamSimpleType,
-        TeamType,
+        OrgsOrgSettingsImmutableReleasesPutBodyType,
+        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse,
+        OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType,
+        PushRuleBypassRequestTypeForResponse,
+        RepositoryFineGrainedPermissionTypeForResponse,
+        RulesetVersionTypeForResponse,
+        RulesetVersionWithStateTypeForResponse,
+        SimpleUserTypeForResponse,
+        TeamRoleAssignmentTypeForResponse,
+        TeamSimpleTypeForResponse,
+        TeamTypeForResponse,
         UserMembershipsOrgsOrgPatchBodyType,
-        UserRoleAssignmentType,
-        WebhookConfigType,
+        UserRoleAssignmentTypeForResponse,
+        WebhookConfigTypeForResponse,
     )
 
 
@@ -169,7 +203,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list
 
         GET /organizations
@@ -196,7 +230,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationSimple],
@@ -209,7 +243,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list
 
         GET /organizations
@@ -236,12 +270,13 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationSimple],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_custom_roles(
         self,
         organization_id: str,
@@ -250,7 +285,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         OrganizationsOrganizationIdCustomRolesGetResponse200,
-        OrganizationsOrganizationIdCustomRolesGetResponse200Type,
+        OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse,
     ]:
         """DEPRECATED orgs/list-custom-roles
 
@@ -282,6 +317,7 @@ class OrgsClient:
             response_model=OrganizationsOrganizationIdCustomRolesGetResponse200,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_custom_roles(
         self,
         organization_id: str,
@@ -290,7 +326,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         OrganizationsOrganizationIdCustomRolesGetResponse200,
-        OrganizationsOrganizationIdCustomRolesGetResponse200Type,
+        OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse,
     ]:
         """DEPRECATED orgs/list-custom-roles
 
@@ -322,13 +358,257 @@ class OrgsClient:
             response_model=OrganizationsOrganizationIdCustomRolesGetResponse200,
         )
 
+    def custom_properties_for_orgs_get_organization_values(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueTypeForResponse]]:
+        """orgs/custom-properties-for-orgs-get-organization-values
+
+        GET /organizations/{org}/org-properties/values
+
+        Gets all custom property values that are set for an organization.
+
+        The organization must belong to an enterprise.
+
+        Access requirements:
+        - Organization admins
+        - OAuth tokens and personal access tokens (classic) with the `read:org` scope
+        - Actors with the organization-level "read custom properties for an organization" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties-for-orgs#get-all-custom-property-values-for-an-organization
+        """
+
+        from ..models import BasicError, CustomPropertyValue
+
+        url = f"/organizations/{org}/org-properties/values"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CustomPropertyValue],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_custom_properties_for_orgs_get_organization_values(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueTypeForResponse]]:
+        """orgs/custom-properties-for-orgs-get-organization-values
+
+        GET /organizations/{org}/org-properties/values
+
+        Gets all custom property values that are set for an organization.
+
+        The organization must belong to an enterprise.
+
+        Access requirements:
+        - Organization admins
+        - OAuth tokens and personal access tokens (classic) with the `read:org` scope
+        - Actors with the organization-level "read custom properties for an organization" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties-for-orgs#get-all-custom-property-values-for-an-organization
+        """
+
+        from ..models import BasicError, CustomPropertyValue
+
+        url = f"/organizations/{org}/org-properties/values"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CustomPropertyValue],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def custom_properties_for_orgs_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrganizationsOrgOrgPropertiesValuesPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    def custom_properties_for_orgs_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        properties: list[CustomPropertyValueType],
+    ) -> Response: ...
+
+    def custom_properties_for_orgs_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrganizationsOrgOrgPropertiesValuesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """orgs/custom-properties-for-orgs-create-or-update-organization-values
+
+        PATCH /organizations/{org}/org-properties/values
+
+        Create new or update existing custom property values for an organization.
+        To remove a custom property value from an organization, set the property value to `null`.
+
+        The organization must belong to an enterprise.
+
+        Access requirements:
+        - Organization admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:org` scope
+        - Actors with the organization-level "edit custom properties for an organization" fine-grained permission
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties-for-orgs#create-or-update-custom-property-values-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrganizationsOrgOrgPropertiesValuesPatchBody,
+            ValidationError,
+        )
+
+        url = f"/organizations/{org}/org-properties/values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrganizationsOrgOrgPropertiesValuesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_custom_properties_for_orgs_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrganizationsOrgOrgPropertiesValuesPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_custom_properties_for_orgs_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        properties: list[CustomPropertyValueType],
+    ) -> Response: ...
+
+    async def async_custom_properties_for_orgs_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrganizationsOrgOrgPropertiesValuesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """orgs/custom-properties-for-orgs-create-or-update-organization-values
+
+        PATCH /organizations/{org}/org-properties/values
+
+        Create new or update existing custom property values for an organization.
+        To remove a custom property value from an organization, set the property value to `null`.
+
+        The organization must belong to an enterprise.
+
+        Access requirements:
+        - Organization admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:org` scope
+        - Actors with the organization-level "edit custom properties for an organization" fine-grained permission
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties-for-orgs#create-or-update-custom-property-values-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrganizationsOrgOrgPropertiesValuesPatchBody,
+            ValidationError,
+        )
+
+        url = f"/organizations/{org}/org-properties/values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrganizationsOrgOrgPropertiesValuesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
     def get(
         self,
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationFull, OrganizationFullType]:
+    ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]:
         """orgs/get
 
         GET /orgs/{org}
@@ -369,7 +649,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationFull, OrganizationFullType]:
+    ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]:
         """orgs/get
 
         GET /orgs/{org}
@@ -412,7 +692,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """orgs/delete
 
@@ -458,7 +738,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """orgs/delete
 
@@ -504,7 +784,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
-    ) -> Response[OrganizationFull, OrganizationFullType]: ...
+    ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]: ...
 
     @overload
     def update(
@@ -551,7 +831,7 @@ class OrgsClient:
         secret_scanning_push_protection_custom_link: Missing[str] = UNSET,
         secret_scanning_validity_checks_enabled: Missing[bool] = UNSET,
         deploy_keys_enabled_for_repositories: Missing[bool] = UNSET,
-    ) -> Response[OrganizationFull, OrganizationFullType]: ...
+    ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]: ...
 
     def update(
         self,
@@ -561,7 +841,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationFull, OrganizationFullType]:
+    ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]:
         """orgs/update
 
         PATCH /orgs/{org}
@@ -625,7 +905,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
-    ) -> Response[OrganizationFull, OrganizationFullType]: ...
+    ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]: ...
 
     @overload
     async def async_update(
@@ -672,7 +952,7 @@ class OrgsClient:
         secret_scanning_push_protection_custom_link: Missing[str] = UNSET,
         secret_scanning_validity_checks_enabled: Missing[bool] = UNSET,
         deploy_keys_enabled_for_repositories: Missing[bool] = UNSET,
-    ) -> Response[OrganizationFull, OrganizationFullType]: ...
+    ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]: ...
 
     async def async_update(
         self,
@@ -682,7 +962,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationFull, OrganizationFullType]:
+    ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]:
         """orgs/update
 
         PATCH /orgs/{org}
@@ -744,7 +1024,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]:
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]:
         """announcement-banners/get-announcement-banner-for-org
 
         GET /orgs/{org}/announcement
@@ -776,7 +1056,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]:
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]:
         """announcement-banners/get-announcement-banner-for-org
 
         GET /orgs/{org}/announcement
@@ -864,7 +1144,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: AnnouncementType,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]: ...
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]: ...
 
     @overload
     def set_announcement_banner_for_org(
@@ -875,9 +1155,9 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         announcement: Union[str, None],
-        expires_at: Missing[Union[datetime, None]] = UNSET,
+        expires_at: Missing[Union[_dt.datetime, None]] = UNSET,
         user_dismissible: Missing[Union[bool, None]] = UNSET,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]: ...
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]: ...
 
     def set_announcement_banner_for_org(
         self,
@@ -887,7 +1167,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[AnnouncementType] = UNSET,
         **kwargs,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]:
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]:
         """announcement-banners/set-announcement-banner-for-org
 
         PATCH /orgs/{org}/announcement
@@ -929,7 +1209,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: AnnouncementType,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]: ...
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]: ...
 
     @overload
     async def async_set_announcement_banner_for_org(
@@ -940,9 +1220,9 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         announcement: Union[str, None],
-        expires_at: Missing[Union[datetime, None]] = UNSET,
+        expires_at: Missing[Union[_dt.datetime, None]] = UNSET,
         user_dismissible: Missing[Union[bool, None]] = UNSET,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]: ...
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]: ...
 
     async def async_set_announcement_banner_for_org(
         self,
@@ -952,7 +1232,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[AnnouncementType] = UNSET,
         **kwargs,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]:
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]:
         """announcement-banners/set-announcement-banner-for-org
 
         PATCH /orgs/{org}/announcement
@@ -987,6 +1267,762 @@ class OrgsClient:
         )
 
     @overload
+    def create_artifact_deployment_record(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def create_artifact_deployment_record(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        digest: str,
+        version: Missing[str] = UNSET,
+        status: Literal["deployed", "decommissioned"],
+        logical_environment: str,
+        physical_environment: Missing[str] = UNSET,
+        cluster: Missing[str] = UNSET,
+        deployment_name: str,
+        tags: Missing[
+            OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType
+        ] = UNSET,
+        runtime_risks: Missing[
+            UniqueList[
+                Literal[
+                    "critical-resource",
+                    "internet-exposed",
+                    "lateral-movement",
+                    "sensitive-data",
+                ]
+            ]
+        ] = UNSET,
+        github_repository: Missing[str] = UNSET,
+        return_records: Missing[bool] = UNSET,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse,
+    ]: ...
+
+    def create_artifact_deployment_record(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse,
+    ]:
+        """orgs/create-artifact-deployment-record
+
+        POST /orgs/{org}/artifacts/metadata/deployment-record
+
+        Create or update deployment records for an artifact associated
+        with an organization.
+        This endpoint allows you to record information about a specific
+        artifact, such as its name, digest, environments, cluster, and
+        deployment.
+        The deployment name has to be uniqe within a cluster (i.e a
+        combination of logical, physical environment and cluster) as it
+        identifies unique deployment.
+        Multiple requests for the same combination of logical, physical
+        environment, cluster and deployment name will only create one
+        record, successive request will update the existing record.
+        This allows for a stable tracking of a deployment where the actual
+        deployed artifact can change over time.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#create-an-artifact-deployment-record
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgArtifactsMetadataDeploymentRecordPostBody,
+            OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/metadata/deployment-record"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgArtifactsMetadataDeploymentRecordPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_artifact_deployment_record(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_create_artifact_deployment_record(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        digest: str,
+        version: Missing[str] = UNSET,
+        status: Literal["deployed", "decommissioned"],
+        logical_environment: str,
+        physical_environment: Missing[str] = UNSET,
+        cluster: Missing[str] = UNSET,
+        deployment_name: str,
+        tags: Missing[
+            OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType
+        ] = UNSET,
+        runtime_risks: Missing[
+            UniqueList[
+                Literal[
+                    "critical-resource",
+                    "internet-exposed",
+                    "lateral-movement",
+                    "sensitive-data",
+                ]
+            ]
+        ] = UNSET,
+        github_repository: Missing[str] = UNSET,
+        return_records: Missing[bool] = UNSET,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse,
+    ]: ...
+
+    async def async_create_artifact_deployment_record(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse,
+    ]:
+        """orgs/create-artifact-deployment-record
+
+        POST /orgs/{org}/artifacts/metadata/deployment-record
+
+        Create or update deployment records for an artifact associated
+        with an organization.
+        This endpoint allows you to record information about a specific
+        artifact, such as its name, digest, environments, cluster, and
+        deployment.
+        The deployment name has to be uniqe within a cluster (i.e a
+        combination of logical, physical environment and cluster) as it
+        identifies unique deployment.
+        Multiple requests for the same combination of logical, physical
+        environment, cluster and deployment name will only create one
+        record, successive request will update the existing record.
+        This allows for a stable tracking of a deployment where the actual
+        deployed artifact can change over time.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#create-an-artifact-deployment-record
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgArtifactsMetadataDeploymentRecordPostBody,
+            OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/metadata/deployment-record"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgArtifactsMetadataDeploymentRecordPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_cluster_deployment_records(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def set_cluster_deployment_records(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        logical_environment: str,
+        physical_environment: Missing[str] = UNSET,
+        deployments: list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
+        ],
+        return_records: Missing[bool] = UNSET,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
+    ]: ...
+
+    def set_cluster_deployment_records(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
+    ]:
+        """orgs/set-cluster-deployment-records
+
+        POST /orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}
+
+        Set deployment records for a given cluster.
+        If proposed records in the 'deployments' field have identical 'cluster', 'logical_environment',
+        'physical_environment', and 'deployment_name' values as existing records, the existing records will be updated.
+        If no existing records match, new records will be created.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#set-cluster-deployment-records
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody,
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_set_cluster_deployment_records(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_set_cluster_deployment_records(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        logical_environment: str,
+        physical_environment: Missing[str] = UNSET,
+        deployments: list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
+        ],
+        return_records: Missing[bool] = UNSET,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
+    ]: ...
+
+    async def async_set_cluster_deployment_records(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
+    ]:
+        """orgs/set-cluster-deployment-records
+
+        POST /orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}
+
+        Set deployment records for a given cluster.
+        If proposed records in the 'deployments' field have identical 'cluster', 'logical_environment',
+        'physical_environment', and 'deployment_name' values as existing records, the existing records will be updated.
+        If no existing records match, new records will be created.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#set-cluster-deployment-records
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody,
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def create_artifact_storage_record(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgArtifactsMetadataStorageRecordPostBodyType,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def create_artifact_storage_record(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        digest: str,
+        version: Missing[str] = UNSET,
+        artifact_url: Missing[str] = UNSET,
+        path: Missing[str] = UNSET,
+        registry_url: str,
+        repository: Missing[str] = UNSET,
+        status: Missing[Literal["active", "eol", "deleted"]] = UNSET,
+        github_repository: Missing[str] = UNSET,
+        return_records: Missing[bool] = UNSET,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse,
+    ]: ...
+
+    def create_artifact_storage_record(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgArtifactsMetadataStorageRecordPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse,
+    ]:
+        """orgs/create-artifact-storage-record
+
+        POST /orgs/{org}/artifacts/metadata/storage-record
+
+        Create metadata storage records for artifacts associated with an organization.
+        This endpoint will create a new artifact storage record on behalf of any artifact matching the provided digest and
+        associated with a repository owned by the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#create-artifact-metadata-storage-record
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgArtifactsMetadataStorageRecordPostBody,
+            OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/metadata/storage-record"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgArtifactsMetadataStorageRecordPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_artifact_storage_record(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgArtifactsMetadataStorageRecordPostBodyType,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_create_artifact_storage_record(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        digest: str,
+        version: Missing[str] = UNSET,
+        artifact_url: Missing[str] = UNSET,
+        path: Missing[str] = UNSET,
+        registry_url: str,
+        repository: Missing[str] = UNSET,
+        status: Missing[Literal["active", "eol", "deleted"]] = UNSET,
+        github_repository: Missing[str] = UNSET,
+        return_records: Missing[bool] = UNSET,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse,
+    ]: ...
+
+    async def async_create_artifact_storage_record(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgArtifactsMetadataStorageRecordPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse,
+    ]:
+        """orgs/create-artifact-storage-record
+
+        POST /orgs/{org}/artifacts/metadata/storage-record
+
+        Create metadata storage records for artifacts associated with an organization.
+        This endpoint will create a new artifact storage record on behalf of any artifact matching the provided digest and
+        associated with a repository owned by the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#create-artifact-metadata-storage-record
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgArtifactsMetadataStorageRecordPostBody,
+            OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/metadata/storage-record"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgArtifactsMetadataStorageRecordPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def list_artifact_deployment_records(
+        self,
+        org: str,
+        subject_digest: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
+        OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse,
+    ]:
+        """orgs/list-artifact-deployment-records
+
+        GET /orgs/{org}/artifacts/{subject_digest}/metadata/deployment-records
+
+        List deployment records for an artifact metadata associated with an organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#list-artifact-deployment-records
+        """
+
+        from ..models import (
+            OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/{subject_digest}/metadata/deployment-records"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
+        )
+
+    async def async_list_artifact_deployment_records(
+        self,
+        org: str,
+        subject_digest: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
+        OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse,
+    ]:
+        """orgs/list-artifact-deployment-records
+
+        GET /orgs/{org}/artifacts/{subject_digest}/metadata/deployment-records
+
+        List deployment records for an artifact metadata associated with an organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#list-artifact-deployment-records
+        """
+
+        from ..models import (
+            OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/{subject_digest}/metadata/deployment-records"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
+        )
+
+    def list_artifact_storage_records(
+        self,
+        org: str,
+        subject_digest: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse,
+    ]:
+        """orgs/list-artifact-storage-records
+
+        GET /orgs/{org}/artifacts/{subject_digest}/metadata/storage-records
+
+        List a collection of artifact storage records with a given subject digest that are associated with repositories owned by an organization.
+
+        The collection of storage records returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `content:read` permission is required.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#list-artifact-storage-records
+        """
+
+        from ..models import (
+            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/{subject_digest}/metadata/storage-records"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
+        )
+
+    async def async_list_artifact_storage_records(
+        self,
+        org: str,
+        subject_digest: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse,
+    ]:
+        """orgs/list-artifact-storage-records
+
+        GET /orgs/{org}/artifacts/{subject_digest}/metadata/storage-records
+
+        List a collection of artifact storage records with a given subject digest that are associated with repositories owned by an organization.
+
+        The collection of storage records returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `content:read` permission is required.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#list-artifact-storage-records
+        """
+
+        from ..models import (
+            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/{subject_digest}/metadata/storage-records"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
+        )
+
+    @overload
     def list_attestations_bulk(
         self,
         org: str,
@@ -999,7 +2035,7 @@ class OrgsClient:
         data: OrgsOrgAttestationsBulkListPostBodyType,
     ) -> Response[
         OrgsOrgAttestationsBulkListPostResponse200,
-        OrgsOrgAttestationsBulkListPostResponse200Type,
+        OrgsOrgAttestationsBulkListPostResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1017,7 +2053,7 @@ class OrgsClient:
         predicate_type: Missing[str] = UNSET,
     ) -> Response[
         OrgsOrgAttestationsBulkListPostResponse200,
-        OrgsOrgAttestationsBulkListPostResponse200Type,
+        OrgsOrgAttestationsBulkListPostResponse200TypeForResponse,
     ]: ...
 
     def list_attestations_bulk(
@@ -1033,7 +2069,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         OrgsOrgAttestationsBulkListPostResponse200,
-        OrgsOrgAttestationsBulkListPostResponse200Type,
+        OrgsOrgAttestationsBulkListPostResponse200TypeForResponse,
     ]:
         """orgs/list-attestations-bulk
 
@@ -1045,7 +2081,7 @@ class OrgsClient:
 
         **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-attestations-by-bulk-subject-digests
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#list-attestations-by-bulk-subject-digests
         """
 
         from ..models import (
@@ -1075,7 +2111,7 @@ class OrgsClient:
         return self._github.request(
             "POST",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
@@ -1095,7 +2131,7 @@ class OrgsClient:
         data: OrgsOrgAttestationsBulkListPostBodyType,
     ) -> Response[
         OrgsOrgAttestationsBulkListPostResponse200,
-        OrgsOrgAttestationsBulkListPostResponse200Type,
+        OrgsOrgAttestationsBulkListPostResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1113,7 +2149,7 @@ class OrgsClient:
         predicate_type: Missing[str] = UNSET,
     ) -> Response[
         OrgsOrgAttestationsBulkListPostResponse200,
-        OrgsOrgAttestationsBulkListPostResponse200Type,
+        OrgsOrgAttestationsBulkListPostResponse200TypeForResponse,
     ]: ...
 
     async def async_list_attestations_bulk(
@@ -1129,7 +2165,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         OrgsOrgAttestationsBulkListPostResponse200,
-        OrgsOrgAttestationsBulkListPostResponse200Type,
+        OrgsOrgAttestationsBulkListPostResponse200TypeForResponse,
     ]:
         """orgs/list-attestations-bulk
 
@@ -1141,7 +2177,7 @@ class OrgsClient:
 
         **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-attestations-by-bulk-subject-digests
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#list-attestations-by-bulk-subject-digests
         """
 
         from ..models import (
@@ -1171,7 +2207,7 @@ class OrgsClient:
         return await self._github.arequest(
             "POST",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
@@ -1436,6 +2472,98 @@ class OrgsClient:
             },
         )
 
+    def list_attestation_repositories(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        predicate_type: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[OrgsOrgAttestationsRepositoriesGetResponse200Items],
+        list[OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse],
+    ]:
+        """orgs/list-attestation-repositories
+
+        GET /orgs/{org}/attestations/repositories
+
+        List repositories owned by the provided organization that have created at least one attested artifact
+        Results will be sorted in ascending order by repository ID
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#list-attestation-repositories
+        """
+
+        from ..models import OrgsOrgAttestationsRepositoriesGetResponse200Items
+
+        url = f"/orgs/{org}/attestations/repositories"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+            "predicate_type": predicate_type,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[OrgsOrgAttestationsRepositoriesGetResponse200Items],
+        )
+
+    async def async_list_attestation_repositories(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        predicate_type: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[OrgsOrgAttestationsRepositoriesGetResponse200Items],
+        list[OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse],
+    ]:
+        """orgs/list-attestation-repositories
+
+        GET /orgs/{org}/attestations/repositories
+
+        List repositories owned by the provided organization that have created at least one attested artifact
+        Results will be sorted in ascending order by repository ID
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#list-attestation-repositories
+        """
+
+        from ..models import OrgsOrgAttestationsRepositoriesGetResponse200Items
+
+        url = f"/orgs/{org}/attestations/repositories"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+            "predicate_type": predicate_type,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[OrgsOrgAttestationsRepositoriesGetResponse200Items],
+        )
+
     def delete_attestations_by_id(
         self,
         org: str,
@@ -1517,7 +2645,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgAttestationsSubjectDigestGetResponse200,
-        OrgsOrgAttestationsSubjectDigestGetResponse200Type,
+        OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse,
     ]:
         """orgs/list-attestations
 
@@ -1529,7 +2657,7 @@ class OrgsClient:
 
         **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-attestations
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#list-attestations
         """
 
         from ..models import OrgsOrgAttestationsSubjectDigestGetResponse200
@@ -1548,7 +2676,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgAttestationsSubjectDigestGetResponse200,
@@ -1567,7 +2695,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgAttestationsSubjectDigestGetResponse200,
-        OrgsOrgAttestationsSubjectDigestGetResponse200Type,
+        OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse,
     ]:
         """orgs/list-attestations
 
@@ -1579,7 +2707,7 @@ class OrgsClient:
 
         **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-attestations
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#list-attestations
         """
 
         from ..models import OrgsOrgAttestationsSubjectDigestGetResponse200
@@ -1598,7 +2726,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgAttestationsSubjectDigestGetResponse200,
@@ -1616,7 +2744,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[AuditLogEvent], list[AuditLogEventType]]:
+    ) -> Response[list[AuditLogEvent], list[AuditLogEventTypeForResponse]]:
         """orgs/get-audit-log
 
         GET /orgs/{org}/audit-log
@@ -1654,7 +2782,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[AuditLogEvent],
@@ -1672,7 +2800,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[AuditLogEvent], list[AuditLogEventType]]:
+    ) -> Response[list[AuditLogEvent], list[AuditLogEventTypeForResponse]]:
         """orgs/get-audit-log
 
         GET /orgs/{org}/audit-log
@@ -1710,7 +2838,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[AuditLogEvent],
@@ -1724,7 +2852,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-blocked-users
 
         GET /orgs/{org}/blocks
@@ -1748,7 +2876,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -1762,7 +2890,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-blocked-users
 
         GET /orgs/{org}/blocks
@@ -1786,7 +2914,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -2004,7 +3132,9 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
+    ) -> Response[
+        list[PushRuleBypassRequest], list[PushRuleBypassRequestTypeForResponse]
+    ]:
         """orgs/list-push-bypass-requests
 
         GET /orgs/{org}/bypass-requests/push-rules
@@ -2033,7 +3163,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PushRuleBypassRequest],
@@ -2067,7 +3197,9 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
+    ) -> Response[
+        list[PushRuleBypassRequest], list[PushRuleBypassRequestTypeForResponse]
+    ]:
         """orgs/list-push-bypass-requests
 
         GET /orgs/{org}/bypass-requests/push-rules
@@ -2096,7 +3228,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PushRuleBypassRequest],
@@ -2115,7 +3247,9 @@ class OrgsClient:
         login: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CredentialAuthorization], list[CredentialAuthorizationType]]:
+    ) -> Response[
+        list[CredentialAuthorization], list[CredentialAuthorizationTypeForResponse]
+    ]:
         """orgs/list-saml-sso-authorizations
 
         GET /orgs/{org}/credential-authorizations
@@ -2144,7 +3278,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[CredentialAuthorization],
@@ -2159,7 +3293,9 @@ class OrgsClient:
         login: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CredentialAuthorization], list[CredentialAuthorizationType]]:
+    ) -> Response[
+        list[CredentialAuthorization], list[CredentialAuthorizationTypeForResponse]
+    ]:
         """orgs/list-saml-sso-authorizations
 
         GET /orgs/{org}/credential-authorizations
@@ -2188,7 +3324,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[CredentialAuthorization],
@@ -2276,7 +3412,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgCustomRepositoryRolesGetResponse200,
-        OrgsOrgCustomRepositoryRolesGetResponse200Type,
+        OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse,
     ]:
         """orgs/list-custom-repo-roles
 
@@ -2313,7 +3449,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgCustomRepositoryRolesGetResponse200,
-        OrgsOrgCustomRepositoryRolesGetResponse200Type,
+        OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse,
     ]:
         """orgs/list-custom-repo-roles
 
@@ -2351,7 +3487,8 @@ class OrgsClient:
         stream: bool = False,
         data: OrganizationCustomRepositoryRoleCreateSchemaType,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
     @overload
@@ -2367,7 +3504,8 @@ class OrgsClient:
         base_role: Literal["read", "triage", "write", "maintain"],
         permissions: list[str],
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
     def create_custom_repo_role(
@@ -2379,7 +3517,8 @@ class OrgsClient:
         data: Missing[OrganizationCustomRepositoryRoleCreateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]:
         """orgs/create-custom-repo-role
 
@@ -2438,7 +3577,8 @@ class OrgsClient:
         stream: bool = False,
         data: OrganizationCustomRepositoryRoleCreateSchemaType,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
     @overload
@@ -2454,7 +3594,8 @@ class OrgsClient:
         base_role: Literal["read", "triage", "write", "maintain"],
         permissions: list[str],
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
     async def async_create_custom_repo_role(
@@ -2466,7 +3607,8 @@ class OrgsClient:
         data: Missing[OrganizationCustomRepositoryRoleCreateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]:
         """orgs/create-custom-repo-role
 
@@ -2524,7 +3666,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]:
         """orgs/get-custom-repo-role
 
@@ -2564,7 +3707,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]:
         """orgs/get-custom-repo-role
 
@@ -2672,7 +3816,8 @@ class OrgsClient:
         stream: bool = False,
         data: OrganizationCustomRepositoryRoleUpdateSchemaType,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
     @overload
@@ -2689,7 +3834,8 @@ class OrgsClient:
         base_role: Missing[Literal["read", "triage", "write", "maintain"]] = UNSET,
         permissions: Missing[list[str]] = UNSET,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
     def update_custom_repo_role(
@@ -2702,7 +3848,8 @@ class OrgsClient:
         data: Missing[OrganizationCustomRepositoryRoleUpdateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]:
         """orgs/update-custom-repo-role
 
@@ -2762,7 +3909,8 @@ class OrgsClient:
         stream: bool = False,
         data: OrganizationCustomRepositoryRoleUpdateSchemaType,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
     @overload
@@ -2779,7 +3927,8 @@ class OrgsClient:
         base_role: Missing[Literal["read", "triage", "write", "maintain"]] = UNSET,
         permissions: Missing[list[str]] = UNSET,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
     async def async_update_custom_repo_role(
@@ -2792,7 +3941,8 @@ class OrgsClient:
         data: Missing[OrganizationCustomRepositoryRoleUpdateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]:
         """orgs/update-custom-repo-role
 
@@ -2843,6 +3993,7 @@ class OrgsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_custom_role(
         self,
         org: str,
@@ -2851,10 +4002,12 @@ class OrgsClient:
         stream: bool = False,
         data: OrganizationCustomRepositoryRoleCreateSchemaType,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_custom_role(
         self,
         org: str,
@@ -2867,9 +4020,11 @@ class OrgsClient:
         base_role: Literal["read", "triage", "write", "maintain"],
         permissions: list[str],
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_custom_role(
         self,
         org: str,
@@ -2879,7 +4034,8 @@ class OrgsClient:
         data: Missing[OrganizationCustomRepositoryRoleCreateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]:
         """DEPRECATED orgs/create-custom-role
 
@@ -2933,6 +4089,7 @@ class OrgsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_custom_role(
         self,
         org: str,
@@ -2941,10 +4098,12 @@ class OrgsClient:
         stream: bool = False,
         data: OrganizationCustomRepositoryRoleCreateSchemaType,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_custom_role(
         self,
         org: str,
@@ -2957,9 +4116,11 @@ class OrgsClient:
         base_role: Literal["read", "triage", "write", "maintain"],
         permissions: list[str],
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_custom_role(
         self,
         org: str,
@@ -2969,7 +4130,8 @@ class OrgsClient:
         data: Missing[OrganizationCustomRepositoryRoleCreateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]:
         """DEPRECATED orgs/create-custom-role
 
@@ -3022,6 +4184,7 @@ class OrgsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_custom_role(
         self,
         org: str,
@@ -3030,7 +4193,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]:
         """DEPRECATED orgs/get-custom-role
 
@@ -3065,6 +4229,7 @@ class OrgsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_custom_role(
         self,
         org: str,
@@ -3073,7 +4238,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]:
         """DEPRECATED orgs/get-custom-role
 
@@ -3108,6 +4274,7 @@ class OrgsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def delete_custom_role(
         self,
         org: str,
@@ -3144,6 +4311,7 @@ class OrgsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_delete_custom_role(
         self,
         org: str,
@@ -3181,6 +4349,7 @@ class OrgsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_custom_role(
         self,
         org: str,
@@ -3190,10 +4359,12 @@ class OrgsClient:
         stream: bool = False,
         data: OrganizationCustomRepositoryRoleUpdateSchemaType,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_custom_role(
         self,
         org: str,
@@ -3207,9 +4378,11 @@ class OrgsClient:
         base_role: Missing[Literal["read", "triage", "write", "maintain"]] = UNSET,
         permissions: Missing[list[str]] = UNSET,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_custom_role(
         self,
         org: str,
@@ -3220,7 +4393,8 @@ class OrgsClient:
         data: Missing[OrganizationCustomRepositoryRoleUpdateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]:
         """DEPRECATED orgs/update-custom-role
 
@@ -3274,6 +4448,7 @@ class OrgsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_custom_role(
         self,
         org: str,
@@ -3283,10 +4458,12 @@ class OrgsClient:
         stream: bool = False,
         data: OrganizationCustomRepositoryRoleUpdateSchemaType,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_custom_role(
         self,
         org: str,
@@ -3300,9 +4477,11 @@ class OrgsClient:
         base_role: Missing[Literal["read", "triage", "write", "maintain"]] = UNSET,
         permissions: Missing[list[str]] = UNSET,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_custom_role(
         self,
         org: str,
@@ -3313,7 +4492,8 @@ class OrgsClient:
         data: Missing[OrganizationCustomRepositoryRoleUpdateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[
-        OrganizationCustomRepositoryRole, OrganizationCustomRepositoryRoleType
+        OrganizationCustomRepositoryRole,
+        OrganizationCustomRepositoryRoleTypeForResponse,
     ]:
         """DEPRECATED orgs/update-custom-role
 
@@ -3374,7 +4554,9 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
+    ) -> Response[
+        list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
+    ]:
         """orgs/list-failed-invitations
 
         GET /orgs/{org}/failed_invitations
@@ -3401,7 +4583,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationInvitation],
@@ -3418,7 +4600,9 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
+    ) -> Response[
+        list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
+    ]:
         """orgs/list-failed-invitations
 
         GET /orgs/{org}/failed_invitations
@@ -3445,7 +4629,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationInvitation],
@@ -3454,6 +4638,7 @@ class OrgsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_fine_grained_permissions(
         self,
         org: str,
@@ -3461,7 +4646,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[RepositoryFineGrainedPermission], list[RepositoryFineGrainedPermissionType]
+        list[RepositoryFineGrainedPermission],
+        list[RepositoryFineGrainedPermissionTypeForResponse],
     ]:
         """DEPRECATED orgs/list-fine-grained-permissions
 
@@ -3493,6 +4679,7 @@ class OrgsClient:
             response_model=list[RepositoryFineGrainedPermission],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_fine_grained_permissions(
         self,
         org: str,
@@ -3500,7 +4687,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[RepositoryFineGrainedPermission], list[RepositoryFineGrainedPermissionType]
+        list[RepositoryFineGrainedPermission],
+        list[RepositoryFineGrainedPermissionTypeForResponse],
     ]:
         """DEPRECATED orgs/list-fine-grained-permissions
 
@@ -3540,7 +4728,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrgHook], list[OrgHookType]]:
+    ) -> Response[list[OrgHook], list[OrgHookTypeForResponse]]:
         """orgs/list-webhooks
 
         GET /orgs/{org}/hooks
@@ -3567,7 +4755,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrgHook],
@@ -3584,7 +4772,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrgHook], list[OrgHookType]]:
+    ) -> Response[list[OrgHook], list[OrgHookTypeForResponse]]:
         """orgs/list-webhooks
 
         GET /orgs/{org}/hooks
@@ -3611,7 +4799,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrgHook],
@@ -3628,7 +4816,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgHooksPostBodyType,
-    ) -> Response[OrgHook, OrgHookType]: ...
+    ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
 
     @overload
     def create_webhook(
@@ -3642,7 +4830,7 @@ class OrgsClient:
         config: OrgsOrgHooksPostBodyPropConfigType,
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[OrgHook, OrgHookType]: ...
+    ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
 
     def create_webhook(
         self,
@@ -3652,7 +4840,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgHook, OrgHookType]:
+    ) -> Response[OrgHook, OrgHookTypeForResponse]:
         """orgs/create-webhook
 
         POST /orgs/{org}/hooks
@@ -3701,7 +4889,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgHooksPostBodyType,
-    ) -> Response[OrgHook, OrgHookType]: ...
+    ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
 
     @overload
     async def async_create_webhook(
@@ -3715,7 +4903,7 @@ class OrgsClient:
         config: OrgsOrgHooksPostBodyPropConfigType,
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[OrgHook, OrgHookType]: ...
+    ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
 
     async def async_create_webhook(
         self,
@@ -3725,7 +4913,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgHook, OrgHookType]:
+    ) -> Response[OrgHook, OrgHookTypeForResponse]:
         """orgs/create-webhook
 
         POST /orgs/{org}/hooks
@@ -3773,7 +4961,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrgHook, OrgHookType]:
+    ) -> Response[OrgHook, OrgHookTypeForResponse]:
         """orgs/get-webhook
 
         GET /orgs/{org}/hooks/{hook_id}
@@ -3810,7 +4998,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrgHook, OrgHookType]:
+    ) -> Response[OrgHook, OrgHookTypeForResponse]:
         """orgs/get-webhook
 
         GET /orgs/{org}/hooks/{hook_id}
@@ -3921,7 +5109,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
-    ) -> Response[OrgHook, OrgHookType]: ...
+    ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
 
     @overload
     def update_webhook(
@@ -3936,7 +5124,7 @@ class OrgsClient:
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
         name: Missing[str] = UNSET,
-    ) -> Response[OrgHook, OrgHookType]: ...
+    ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
 
     def update_webhook(
         self,
@@ -3947,7 +5135,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgHook, OrgHookType]:
+    ) -> Response[OrgHook, OrgHookTypeForResponse]:
         """orgs/update-webhook
 
         PATCH /orgs/{org}/hooks/{hook_id}
@@ -4002,7 +5190,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
-    ) -> Response[OrgHook, OrgHookType]: ...
+    ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
 
     @overload
     async def async_update_webhook(
@@ -4017,7 +5205,7 @@ class OrgsClient:
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
         name: Missing[str] = UNSET,
-    ) -> Response[OrgHook, OrgHookType]: ...
+    ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
 
     async def async_update_webhook(
         self,
@@ -4028,7 +5216,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgHook, OrgHookType]:
+    ) -> Response[OrgHook, OrgHookTypeForResponse]:
         """orgs/update-webhook
 
         PATCH /orgs/{org}/hooks/{hook_id}
@@ -4081,7 +5269,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """orgs/get-webhook-config-for-org
 
         GET /orgs/{org}/hooks/{hook_id}/config
@@ -4115,7 +5303,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """orgs/get-webhook-config-for-org
 
         GET /orgs/{org}/hooks/{hook_id}/config
@@ -4151,7 +5339,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     @overload
     def update_webhook_config_for_org(
@@ -4166,7 +5354,7 @@ class OrgsClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     def update_webhook_config_for_org(
         self,
@@ -4177,7 +5365,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """orgs/update-webhook-config-for-org
 
         PATCH /orgs/{org}/hooks/{hook_id}/config
@@ -4223,7 +5411,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     @overload
     async def async_update_webhook_config_for_org(
@@ -4238,7 +5426,7 @@ class OrgsClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     async def async_update_webhook_config_for_org(
         self,
@@ -4249,7 +5437,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """orgs/update-webhook-config-for-org
 
         PATCH /orgs/{org}/hooks/{hook_id}/config
@@ -4293,9 +5481,10 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
+        status: Missing[Literal["success", "failure"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
+    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
         """orgs/list-webhook-deliveries
 
         GET /orgs/{org}/hooks/{hook_id}/deliveries
@@ -4315,6 +5504,7 @@ class OrgsClient:
         params = {
             "per_page": per_page,
             "cursor": cursor,
+            "status": status,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -4322,7 +5512,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[HookDeliveryItem],
@@ -4339,9 +5529,10 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
+        status: Missing[Literal["success", "failure"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
+    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
         """orgs/list-webhook-deliveries
 
         GET /orgs/{org}/hooks/{hook_id}/deliveries
@@ -4361,6 +5552,7 @@ class OrgsClient:
         params = {
             "per_page": per_page,
             "cursor": cursor,
+            "status": status,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -4368,7 +5560,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[HookDeliveryItem],
@@ -4386,7 +5578,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[HookDelivery, HookDeliveryType]:
+    ) -> Response[HookDelivery, HookDeliveryTypeForResponse]:
         """orgs/get-webhook-delivery
 
         GET /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}
@@ -4425,7 +5617,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[HookDelivery, HookDeliveryType]:
+    ) -> Response[HookDelivery, HookDeliveryTypeForResponse]:
         """orgs/get-webhook-delivery
 
         GET /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}
@@ -4466,7 +5658,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """orgs/redeliver-webhook-delivery
 
@@ -4512,7 +5704,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """orgs/redeliver-webhook-delivery
 
@@ -4653,7 +5845,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[ApiInsightsRouteStatsItems], list[ApiInsightsRouteStatsItemsType]
+        list[ApiInsightsRouteStatsItems],
+        list[ApiInsightsRouteStatsItemsTypeForResponse],
     ]:
         """api-insights/get-route-stats-by-actor
 
@@ -4683,7 +5876,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ApiInsightsRouteStatsItems],
@@ -4722,7 +5915,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[ApiInsightsRouteStatsItems], list[ApiInsightsRouteStatsItemsType]
+        list[ApiInsightsRouteStatsItems],
+        list[ApiInsightsRouteStatsItemsTypeForResponse],
     ]:
         """api-insights/get-route-stats-by-actor
 
@@ -4752,7 +5946,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ApiInsightsRouteStatsItems],
@@ -4782,7 +5976,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[ApiInsightsSubjectStatsItems], list[ApiInsightsSubjectStatsItemsType]
+        list[ApiInsightsSubjectStatsItems],
+        list[ApiInsightsSubjectStatsItemsTypeForResponse],
     ]:
         """api-insights/get-subject-stats
 
@@ -4812,7 +6007,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ApiInsightsSubjectStatsItems],
@@ -4842,7 +6037,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[ApiInsightsSubjectStatsItems], list[ApiInsightsSubjectStatsItemsType]
+        list[ApiInsightsSubjectStatsItems],
+        list[ApiInsightsSubjectStatsItemsTypeForResponse],
     ]:
         """api-insights/get-subject-stats
 
@@ -4872,7 +6068,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ApiInsightsSubjectStatsItems],
@@ -4886,7 +6082,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats
 
         GET /orgs/{org}/insights/api/summary-stats
@@ -4910,7 +6106,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ApiInsightsSummaryStats,
@@ -4924,7 +6120,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats
 
         GET /orgs/{org}/insights/api/summary-stats
@@ -4948,7 +6144,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ApiInsightsSummaryStats,
@@ -4963,7 +6159,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats-by-user
 
         GET /orgs/{org}/insights/api/summary-stats/users/{user_id}
@@ -4987,7 +6183,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ApiInsightsSummaryStats,
@@ -5002,7 +6198,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats-by-user
 
         GET /orgs/{org}/insights/api/summary-stats/users/{user_id}
@@ -5026,7 +6222,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ApiInsightsSummaryStats,
@@ -5048,7 +6244,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats-by-actor
 
         GET /orgs/{org}/insights/api/summary-stats/{actor_type}/{actor_id}
@@ -5072,7 +6268,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ApiInsightsSummaryStats,
@@ -5094,7 +6290,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats-by-actor
 
         GET /orgs/{org}/insights/api/summary-stats/{actor_type}/{actor_id}
@@ -5118,7 +6314,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ApiInsightsSummaryStats,
@@ -5133,7 +6329,9 @@ class OrgsClient:
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
+    ) -> Response[
+        list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
+    ]:
         """api-insights/get-time-stats
 
         GET /orgs/{org}/insights/api/time-stats
@@ -5158,7 +6356,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ApiInsightsTimeStatsItems],
@@ -5173,7 +6371,9 @@ class OrgsClient:
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
+    ) -> Response[
+        list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
+    ]:
         """api-insights/get-time-stats
 
         GET /orgs/{org}/insights/api/time-stats
@@ -5198,7 +6398,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ApiInsightsTimeStatsItems],
@@ -5214,7 +6414,9 @@ class OrgsClient:
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
+    ) -> Response[
+        list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
+    ]:
         """api-insights/get-time-stats-by-user
 
         GET /orgs/{org}/insights/api/time-stats/users/{user_id}
@@ -5239,7 +6441,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ApiInsightsTimeStatsItems],
@@ -5255,7 +6457,9 @@ class OrgsClient:
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
+    ) -> Response[
+        list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
+    ]:
         """api-insights/get-time-stats-by-user
 
         GET /orgs/{org}/insights/api/time-stats/users/{user_id}
@@ -5280,7 +6484,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ApiInsightsTimeStatsItems],
@@ -5303,7 +6507,9 @@ class OrgsClient:
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
+    ) -> Response[
+        list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
+    ]:
         """api-insights/get-time-stats-by-actor
 
         GET /orgs/{org}/insights/api/time-stats/{actor_type}/{actor_id}
@@ -5328,7 +6534,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ApiInsightsTimeStatsItems],
@@ -5351,7 +6557,9 @@ class OrgsClient:
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
+    ) -> Response[
+        list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
+    ]:
         """api-insights/get-time-stats-by-actor
 
         GET /orgs/{org}/insights/api/time-stats/{actor_type}/{actor_id}
@@ -5376,7 +6584,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ApiInsightsTimeStatsItems],
@@ -5406,7 +6614,9 @@ class OrgsClient:
         actor_name_substring: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsType]]:
+    ) -> Response[
+        list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsTypeForResponse]
+    ]:
         """api-insights/get-user-stats
 
         GET /orgs/{org}/insights/api/user-stats/{user_id}
@@ -5435,7 +6645,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ApiInsightsUserStatsItems],
@@ -5465,7 +6675,9 @@ class OrgsClient:
         actor_name_substring: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsType]]:
+    ) -> Response[
+        list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsTypeForResponse]
+    ]:
         """api-insights/get-user-stats
 
         GET /orgs/{org}/insights/api/user-stats/{user_id}
@@ -5494,7 +6706,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[ApiInsightsUserStatsItems],
@@ -5509,7 +6721,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        OrgsOrgInstallationsGetResponse200, OrgsOrgInstallationsGetResponse200Type
+        OrgsOrgInstallationsGetResponse200,
+        OrgsOrgInstallationsGetResponse200TypeForResponse,
     ]:
         """orgs/list-app-installations
 
@@ -5539,7 +6752,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgInstallationsGetResponse200,
@@ -5554,7 +6767,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        OrgsOrgInstallationsGetResponse200, OrgsOrgInstallationsGetResponse200Type
+        OrgsOrgInstallationsGetResponse200,
+        OrgsOrgInstallationsGetResponse200TypeForResponse,
     ]:
         """orgs/list-app-installations
 
@@ -5584,7 +6798,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgInstallationsGetResponse200,
@@ -5604,7 +6818,9 @@ class OrgsClient:
         invitation_source: Missing[Literal["all", "member", "scim"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
+    ) -> Response[
+        list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
+    ]:
         """orgs/list-pending-invitations
 
         GET /orgs/{org}/invitations
@@ -5635,7 +6851,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationInvitation],
@@ -5658,7 +6874,9 @@ class OrgsClient:
         invitation_source: Missing[Literal["all", "member", "scim"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
+    ) -> Response[
+        list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
+    ]:
         """orgs/list-pending-invitations
 
         GET /orgs/{org}/invitations
@@ -5689,7 +6907,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationInvitation],
@@ -5706,7 +6924,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
-    ) -> Response[OrganizationInvitation, OrganizationInvitationType]: ...
+    ) -> Response[OrganizationInvitation, OrganizationInvitationTypeForResponse]: ...
 
     @overload
     def create_invitation(
@@ -5722,7 +6940,7 @@ class OrgsClient:
             Literal["admin", "direct_member", "billing_manager", "reinstate"]
         ] = UNSET,
         team_ids: Missing[list[int]] = UNSET,
-    ) -> Response[OrganizationInvitation, OrganizationInvitationType]: ...
+    ) -> Response[OrganizationInvitation, OrganizationInvitationTypeForResponse]: ...
 
     def create_invitation(
         self,
@@ -5732,7 +6950,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationInvitation, OrganizationInvitationType]:
+    ) -> Response[OrganizationInvitation, OrganizationInvitationTypeForResponse]:
         """orgs/create-invitation
 
         POST /orgs/{org}/invitations
@@ -5787,7 +7005,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
-    ) -> Response[OrganizationInvitation, OrganizationInvitationType]: ...
+    ) -> Response[OrganizationInvitation, OrganizationInvitationTypeForResponse]: ...
 
     @overload
     async def async_create_invitation(
@@ -5803,7 +7021,7 @@ class OrgsClient:
             Literal["admin", "direct_member", "billing_manager", "reinstate"]
         ] = UNSET,
         team_ids: Missing[list[int]] = UNSET,
-    ) -> Response[OrganizationInvitation, OrganizationInvitationType]: ...
+    ) -> Response[OrganizationInvitation, OrganizationInvitationTypeForResponse]: ...
 
     async def async_create_invitation(
         self,
@@ -5813,7 +7031,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationInvitation, OrganizationInvitationType]:
+    ) -> Response[OrganizationInvitation, OrganizationInvitationTypeForResponse]:
         """orgs/create-invitation
 
         POST /orgs/{org}/invitations
@@ -5945,7 +7163,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """orgs/list-invitation-teams
 
         GET /orgs/{org}/invitations/{invitation_id}/teams
@@ -5972,7 +7190,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Team],
@@ -5990,7 +7208,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """orgs/list-invitation-teams
 
         GET /orgs/{org}/invitations/{invitation_id}/teams
@@ -6017,12 +7235,508 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Team],
             error_models={
                 "404": BasicError,
+            },
+        )
+
+    def list_issue_fields(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[Union[IssueField, None]], list[Union[IssueFieldTypeForResponse, None]]
+    ]:
+        """orgs/list-issue-fields
+
+        GET /orgs/{org}/issue-fields
+
+        Lists all issue fields for an organization. OAuth app tokens and personal access tokens (classic) need the read:org scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#list-issue-fields-for-an-organization
+        """
+
+        from typing import Union
+
+        from ..models import BasicError, IssueField
+
+        url = f"/orgs/{org}/issue-fields"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[Union[IssueField, None]],
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_issue_fields(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[Union[IssueField, None]], list[Union[IssueFieldTypeForResponse, None]]
+    ]:
+        """orgs/list-issue-fields
+
+        GET /orgs/{org}/issue-fields
+
+        Lists all issue fields for an organization. OAuth app tokens and personal access tokens (classic) need the read:org scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#list-issue-fields-for-an-organization
+        """
+
+        from typing import Union
+
+        from ..models import BasicError, IssueField
+
+        url = f"/orgs/{org}/issue-fields"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[Union[IssueField, None]],
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def create_issue_field(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrganizationCreateIssueFieldType,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
+
+    @overload
+    def create_issue_field(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        description: Missing[Union[str, None]] = UNSET,
+        data_type: Literal["text", "date", "single_select", "number"],
+        visibility: Missing[Literal["organization_members_only", "all"]] = UNSET,
+        options: Missing[
+            Union[list[OrganizationCreateIssueFieldPropOptionsItemsType], None]
+        ] = UNSET,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
+
+    def create_issue_field(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrganizationCreateIssueFieldType] = UNSET,
+        **kwargs,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]:
+        """orgs/create-issue-field
+
+        POST /orgs/{org}/issue-fields
+
+        Creates a new issue field for an organization.
+
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+
+        To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
+        personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#create-issue-field-for-an-organization
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            IssueField,
+            OrganizationCreateIssueField,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/issue-fields"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrganizationCreateIssueField, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[IssueField, None],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_create_issue_field(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrganizationCreateIssueFieldType,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
+
+    @overload
+    async def async_create_issue_field(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        description: Missing[Union[str, None]] = UNSET,
+        data_type: Literal["text", "date", "single_select", "number"],
+        visibility: Missing[Literal["organization_members_only", "all"]] = UNSET,
+        options: Missing[
+            Union[list[OrganizationCreateIssueFieldPropOptionsItemsType], None]
+        ] = UNSET,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
+
+    async def async_create_issue_field(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrganizationCreateIssueFieldType] = UNSET,
+        **kwargs,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]:
+        """orgs/create-issue-field
+
+        POST /orgs/{org}/issue-fields
+
+        Creates a new issue field for an organization.
+
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+
+        To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
+        personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#create-issue-field-for-an-organization
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            IssueField,
+            OrganizationCreateIssueField,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/issue-fields"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrganizationCreateIssueField, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[IssueField, None],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def delete_issue_field(
+        self,
+        org: str,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """orgs/delete-issue-field
+
+        DELETE /orgs/{org}/issue-fields/{issue_field_id}
+
+        Deletes an issue field for an organization.
+
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+
+        To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
+        personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#delete-issue-field-for-an-organization
+        """
+
+        from ..models import BasicError, ValidationErrorSimple
+
+        url = f"/orgs/{org}/issue-fields/{issue_field_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    async def async_delete_issue_field(
+        self,
+        org: str,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """orgs/delete-issue-field
+
+        DELETE /orgs/{org}/issue-fields/{issue_field_id}
+
+        Deletes an issue field for an organization.
+
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+
+        To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
+        personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#delete-issue-field-for-an-organization
+        """
+
+        from ..models import BasicError, ValidationErrorSimple
+
+        url = f"/orgs/{org}/issue-fields/{issue_field_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    def update_issue_field(
+        self,
+        org: str,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrganizationUpdateIssueFieldType,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
+
+    @overload
+    def update_issue_field(
+        self,
+        org: str,
+        issue_field_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: Missing[str] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        visibility: Missing[Literal["organization_members_only", "all"]] = UNSET,
+        options: Missing[
+            list[OrganizationUpdateIssueFieldPropOptionsItemsType]
+        ] = UNSET,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
+
+    def update_issue_field(
+        self,
+        org: str,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrganizationUpdateIssueFieldType] = UNSET,
+        **kwargs,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]:
+        """orgs/update-issue-field
+
+        PATCH /orgs/{org}/issue-fields/{issue_field_id}
+
+        Updates an issue field for an organization.
+
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+
+        To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
+        personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#update-issue-field-for-an-organization
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            IssueField,
+            OrganizationUpdateIssueField,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/issue-fields/{issue_field_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrganizationUpdateIssueField, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[IssueField, None],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_update_issue_field(
+        self,
+        org: str,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrganizationUpdateIssueFieldType,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
+
+    @overload
+    async def async_update_issue_field(
+        self,
+        org: str,
+        issue_field_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: Missing[str] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        visibility: Missing[Literal["organization_members_only", "all"]] = UNSET,
+        options: Missing[
+            list[OrganizationUpdateIssueFieldPropOptionsItemsType]
+        ] = UNSET,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
+
+    async def async_update_issue_field(
+        self,
+        org: str,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrganizationUpdateIssueFieldType] = UNSET,
+        **kwargs,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]:
+        """orgs/update-issue-field
+
+        PATCH /orgs/{org}/issue-fields/{issue_field_id}
+
+        Updates an issue field for an organization.
+
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+
+        To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
+        personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#update-issue-field-for-an-organization
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            IssueField,
+            OrganizationUpdateIssueField,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/issue-fields/{issue_field_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrganizationUpdateIssueField, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[IssueField, None],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
@@ -6032,7 +7746,9 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Union[IssueType, None]], list[Union[IssueTypeType, None]]]:
+    ) -> Response[
+        list[Union[IssueType, None]], list[Union[IssueTypeTypeForResponse, None]]
+    ]:
         """orgs/list-issue-types
 
         GET /orgs/{org}/issue-types
@@ -6067,7 +7783,9 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Union[IssueType, None]], list[Union[IssueTypeType, None]]]:
+    ) -> Response[
+        list[Union[IssueType, None]], list[Union[IssueTypeTypeForResponse, None]]
+    ]:
         """orgs/list-issue-types
 
         GET /orgs/{org}/issue-types
@@ -6104,7 +7822,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrganizationCreateIssueTypeType,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     @overload
     def create_issue_type(
@@ -6125,7 +7843,7 @@ class OrgsClient:
                 ],
             ]
         ] = UNSET,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     def create_issue_type(
         self,
@@ -6135,7 +7853,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrganizationCreateIssueTypeType] = UNSET,
         **kwargs,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]:
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]:
         """orgs/create-issue-type
 
         POST /orgs/{org}/issue-types
@@ -6193,7 +7911,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrganizationCreateIssueTypeType,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     @overload
     async def async_create_issue_type(
@@ -6214,7 +7932,7 @@ class OrgsClient:
                 ],
             ]
         ] = UNSET,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     async def async_create_issue_type(
         self,
@@ -6224,7 +7942,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrganizationCreateIssueTypeType] = UNSET,
         **kwargs,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]:
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]:
         """orgs/create-issue-type
 
         POST /orgs/{org}/issue-types
@@ -6283,7 +8001,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrganizationUpdateIssueTypeType,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     @overload
     def update_issue_type(
@@ -6305,7 +8023,7 @@ class OrgsClient:
                 ],
             ]
         ] = UNSET,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     def update_issue_type(
         self,
@@ -6316,7 +8034,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrganizationUpdateIssueTypeType] = UNSET,
         **kwargs,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]:
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]:
         """orgs/update-issue-type
 
         PUT /orgs/{org}/issue-types/{issue_type_id}
@@ -6375,7 +8093,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrganizationUpdateIssueTypeType,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     @overload
     async def async_update_issue_type(
@@ -6397,7 +8115,7 @@ class OrgsClient:
                 ],
             ]
         ] = UNSET,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     async def async_update_issue_type(
         self,
@@ -6408,7 +8126,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrganizationUpdateIssueTypeType] = UNSET,
         **kwargs,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]:
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]:
         """orgs/update-issue-type
 
         PUT /orgs/{org}/issue-types/{issue_type_id}
@@ -6546,7 +8264,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-members
 
         GET /orgs/{org}/members
@@ -6572,7 +8290,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -6591,7 +8309,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-members
 
         GET /orgs/{org}/members
@@ -6617,7 +8335,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -6763,7 +8481,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrgMembership, OrgMembershipType]:
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/get-membership-for-user
 
         GET /orgs/{org}/memberships/{username}
@@ -6798,7 +8516,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrgMembership, OrgMembershipType]:
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/get-membership-for-user
 
         GET /orgs/{org}/memberships/{username}
@@ -6835,7 +8553,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[OrgMembership, OrgMembershipType]: ...
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
 
     @overload
     def set_membership_for_user(
@@ -6847,7 +8565,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         role: Missing[Literal["admin", "member"]] = UNSET,
-    ) -> Response[OrgMembership, OrgMembershipType]: ...
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
 
     def set_membership_for_user(
         self,
@@ -6858,7 +8576,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgMembership, OrgMembershipType]:
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/set-membership-for-user
 
         PUT /orgs/{org}/memberships/{username}
@@ -6918,7 +8636,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[OrgMembership, OrgMembershipType]: ...
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
 
     @overload
     async def async_set_membership_for_user(
@@ -6930,7 +8648,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         role: Missing[Literal["admin", "member"]] = UNSET,
-    ) -> Response[OrgMembership, OrgMembershipType]: ...
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
 
     async def async_set_membership_for_user(
         self,
@@ -6941,7 +8659,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgMembership, OrgMembershipType]:
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/set-membership-for-user
 
         PUT /orgs/{org}/memberships/{username}
@@ -7078,7 +8796,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         list[OrganizationFineGrainedPermission],
-        list[OrganizationFineGrainedPermissionType],
+        list[OrganizationFineGrainedPermissionTypeForResponse],
     ]:
         """orgs/list-organization-fine-grained-permissions
 
@@ -7091,7 +8809,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `read_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -7128,7 +8846,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         list[OrganizationFineGrainedPermission],
-        list[OrganizationFineGrainedPermissionType],
+        list[OrganizationFineGrainedPermissionTypeForResponse],
     ]:
         """orgs/list-organization-fine-grained-permissions
 
@@ -7141,7 +8859,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `read_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -7178,7 +8896,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgOrganizationRolesGetResponse200,
-        OrgsOrgOrganizationRolesGetResponse200Type,
+        OrgsOrgOrganizationRolesGetResponse200TypeForResponse,
     ]:
         """orgs/list-org-roles
 
@@ -7189,7 +8907,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `read_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -7226,7 +8944,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgOrganizationRolesGetResponse200,
-        OrgsOrgOrganizationRolesGetResponse200Type,
+        OrgsOrgOrganizationRolesGetResponse200TypeForResponse,
     ]:
         """orgs/list-org-roles
 
@@ -7237,7 +8955,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `read_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -7274,7 +8992,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrganizationCustomOrganizationRoleCreateSchemaType,
-    ) -> Response[OrganizationRole, OrganizationRoleType]: ...
+    ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]: ...
 
     @overload
     def create_custom_organization_role(
@@ -7290,7 +9008,7 @@ class OrgsClient:
         base_role: Missing[
             Literal["read", "triage", "write", "maintain", "admin"]
         ] = UNSET,
-    ) -> Response[OrganizationRole, OrganizationRoleType]: ...
+    ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]: ...
 
     def create_custom_organization_role(
         self,
@@ -7300,7 +9018,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrganizationCustomOrganizationRoleCreateSchemaType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationRole, OrganizationRoleType]:
+    ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]:
         """orgs/create-custom-organization-role
 
         POST /orgs/{org}/organization-roles
@@ -7321,7 +9039,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `write_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -7372,7 +9090,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrganizationCustomOrganizationRoleCreateSchemaType,
-    ) -> Response[OrganizationRole, OrganizationRoleType]: ...
+    ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]: ...
 
     @overload
     async def async_create_custom_organization_role(
@@ -7388,7 +9106,7 @@ class OrgsClient:
         base_role: Missing[
             Literal["read", "triage", "write", "maintain", "admin"]
         ] = UNSET,
-    ) -> Response[OrganizationRole, OrganizationRoleType]: ...
+    ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]: ...
 
     async def async_create_custom_organization_role(
         self,
@@ -7398,7 +9116,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrganizationCustomOrganizationRoleCreateSchemaType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationRole, OrganizationRoleType]:
+    ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]:
         """orgs/create-custom-organization-role
 
         POST /orgs/{org}/organization-roles
@@ -7419,7 +9137,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `write_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -7865,7 +9583,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationRole, OrganizationRoleType]:
+    ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]:
         """orgs/get-org-role
 
         GET /orgs/{org}/organization-roles/{role_id}
@@ -7875,7 +9593,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `read_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -7907,7 +9625,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationRole, OrganizationRoleType]:
+    ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]:
         """orgs/get-org-role
 
         GET /orgs/{org}/organization-roles/{role_id}
@@ -7917,7 +9635,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `read_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -7959,7 +9677,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `write_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -7994,7 +9712,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `write_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -8021,7 +9739,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrganizationCustomOrganizationRoleUpdateSchemaType,
-    ) -> Response[OrganizationRole, OrganizationRoleType]: ...
+    ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]: ...
 
     @overload
     def patch_custom_organization_role(
@@ -8038,7 +9756,7 @@ class OrgsClient:
         base_role: Missing[
             Literal["none", "read", "triage", "write", "maintain", "admin"]
         ] = UNSET,
-    ) -> Response[OrganizationRole, OrganizationRoleType]: ...
+    ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]: ...
 
     def patch_custom_organization_role(
         self,
@@ -8049,7 +9767,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrganizationCustomOrganizationRoleUpdateSchemaType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationRole, OrganizationRoleType]:
+    ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]:
         """orgs/patch-custom-organization-role
 
         PATCH /orgs/{org}/organization-roles/{role_id}
@@ -8064,7 +9782,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `write_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -8116,7 +9834,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrganizationCustomOrganizationRoleUpdateSchemaType,
-    ) -> Response[OrganizationRole, OrganizationRoleType]: ...
+    ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]: ...
 
     @overload
     async def async_patch_custom_organization_role(
@@ -8133,7 +9851,7 @@ class OrgsClient:
         base_role: Missing[
             Literal["none", "read", "triage", "write", "maintain", "admin"]
         ] = UNSET,
-    ) -> Response[OrganizationRole, OrganizationRoleType]: ...
+    ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]: ...
 
     async def async_patch_custom_organization_role(
         self,
@@ -8144,7 +9862,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrganizationCustomOrganizationRoleUpdateSchemaType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationRole, OrganizationRoleType]:
+    ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]:
         """orgs/patch-custom-organization-role
 
         PATCH /orgs/{org}/organization-roles/{role_id}
@@ -8159,7 +9877,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `write_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -8211,7 +9929,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamRoleAssignment], list[TeamRoleAssignmentType]]:
+    ) -> Response[list[TeamRoleAssignment], list[TeamRoleAssignmentTypeForResponse]]:
         """orgs/list-org-role-teams
 
         GET /orgs/{org}/organization-roles/{role_id}/teams
@@ -8239,7 +9957,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[TeamRoleAssignment],
@@ -8255,7 +9973,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamRoleAssignment], list[TeamRoleAssignmentType]]:
+    ) -> Response[list[TeamRoleAssignment], list[TeamRoleAssignmentTypeForResponse]]:
         """orgs/list-org-role-teams
 
         GET /orgs/{org}/organization-roles/{role_id}/teams
@@ -8283,7 +10001,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[TeamRoleAssignment],
@@ -8299,7 +10017,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[UserRoleAssignment], list[UserRoleAssignmentType]]:
+    ) -> Response[list[UserRoleAssignment], list[UserRoleAssignmentTypeForResponse]]:
         """orgs/list-org-role-users
 
         GET /orgs/{org}/organization-roles/{role_id}/users
@@ -8327,7 +10045,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[UserRoleAssignment],
@@ -8343,7 +10061,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[UserRoleAssignment], list[UserRoleAssignmentType]]:
+    ) -> Response[list[UserRoleAssignment], list[UserRoleAssignmentTypeForResponse]]:
         """orgs/list-org-role-users
 
         GET /orgs/{org}/organization-roles/{role_id}/users
@@ -8371,7 +10089,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[UserRoleAssignment],
@@ -8387,7 +10105,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-outside-collaborators
 
         GET /orgs/{org}/outside_collaborators
@@ -8412,7 +10130,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -8427,7 +10145,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-outside-collaborators
 
         GET /orgs/{org}/outside_collaborators
@@ -8452,7 +10170,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -8469,7 +10187,7 @@ class OrgsClient:
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -8484,7 +10202,7 @@ class OrgsClient:
         async_: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse,
     ]: ...
 
     def convert_member_to_outside_collaborator(
@@ -8498,7 +10216,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse,
     ]:
         """orgs/convert-member-to-outside-collaborator
 
@@ -8553,7 +10271,7 @@ class OrgsClient:
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -8568,7 +10286,7 @@ class OrgsClient:
         async_: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse,
     ]: ...
 
     async def async_convert_member_to_outside_collaborator(
@@ -8582,7 +10300,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse,
     ]:
         """orgs/convert-member-to-outside-collaborator
 
@@ -8703,14 +10421,14 @@ class OrgsClient:
         owner: Missing[list[str]] = UNSET,
         repository: Missing[str] = UNSET,
         permission: Missing[str] = UNSET,
-        last_used_before: Missing[datetime] = UNSET,
-        last_used_after: Missing[datetime] = UNSET,
+        last_used_before: Missing[_dt.datetime] = UNSET,
+        last_used_after: Missing[_dt.datetime] = UNSET,
         token_id: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrantRequest],
-        list[OrganizationProgrammaticAccessGrantRequestType],
+        list[OrganizationProgrammaticAccessGrantRequestTypeForResponse],
     ]:
         """orgs/list-pat-grant-requests
 
@@ -8749,7 +10467,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationProgrammaticAccessGrantRequest],
@@ -8772,14 +10490,14 @@ class OrgsClient:
         owner: Missing[list[str]] = UNSET,
         repository: Missing[str] = UNSET,
         permission: Missing[str] = UNSET,
-        last_used_before: Missing[datetime] = UNSET,
-        last_used_after: Missing[datetime] = UNSET,
+        last_used_before: Missing[_dt.datetime] = UNSET,
+        last_used_after: Missing[_dt.datetime] = UNSET,
         token_id: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrantRequest],
-        list[OrganizationProgrammaticAccessGrantRequestType],
+        list[OrganizationProgrammaticAccessGrantRequestTypeForResponse],
     ]:
         """orgs/list-pat-grant-requests
 
@@ -8818,7 +10536,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationProgrammaticAccessGrantRequest],
@@ -8840,7 +10558,7 @@ class OrgsClient:
         data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -8856,7 +10574,7 @@ class OrgsClient:
         reason: Missing[Union[str, None]] = UNSET,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     def review_pat_grant_requests_in_bulk(
@@ -8869,7 +10587,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """orgs/review-pat-grant-requests-in-bulk
 
@@ -8929,7 +10647,7 @@ class OrgsClient:
         data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -8945,7 +10663,7 @@ class OrgsClient:
         reason: Missing[Union[str, None]] = UNSET,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     async def async_review_pat_grant_requests_in_bulk(
@@ -8958,7 +10676,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """orgs/review-pat-grant-requests-in-bulk
 
@@ -9181,7 +10899,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """orgs/list-pat-grant-request-repositories
 
         GET /orgs/{org}/personal-access-token-requests/{pat_request_id}/repositories
@@ -9209,7 +10927,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MinimalRepository],
@@ -9229,7 +10947,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """orgs/list-pat-grant-request-repositories
 
         GET /orgs/{org}/personal-access-token-requests/{pat_request_id}/repositories
@@ -9257,7 +10975,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MinimalRepository],
@@ -9279,14 +10997,14 @@ class OrgsClient:
         owner: Missing[list[str]] = UNSET,
         repository: Missing[str] = UNSET,
         permission: Missing[str] = UNSET,
-        last_used_before: Missing[datetime] = UNSET,
-        last_used_after: Missing[datetime] = UNSET,
+        last_used_before: Missing[_dt.datetime] = UNSET,
+        last_used_after: Missing[_dt.datetime] = UNSET,
         token_id: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrant],
-        list[OrganizationProgrammaticAccessGrantType],
+        list[OrganizationProgrammaticAccessGrantTypeForResponse],
     ]:
         """orgs/list-pat-grants
 
@@ -9325,7 +11043,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationProgrammaticAccessGrant],
@@ -9348,14 +11066,14 @@ class OrgsClient:
         owner: Missing[list[str]] = UNSET,
         repository: Missing[str] = UNSET,
         permission: Missing[str] = UNSET,
-        last_used_before: Missing[datetime] = UNSET,
-        last_used_after: Missing[datetime] = UNSET,
+        last_used_before: Missing[_dt.datetime] = UNSET,
+        last_used_after: Missing[_dt.datetime] = UNSET,
         token_id: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrant],
-        list[OrganizationProgrammaticAccessGrantType],
+        list[OrganizationProgrammaticAccessGrantTypeForResponse],
     ]:
         """orgs/list-pat-grants
 
@@ -9394,7 +11112,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationProgrammaticAccessGrant],
@@ -9416,7 +11134,7 @@ class OrgsClient:
         data: OrgsOrgPersonalAccessTokensPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -9431,7 +11149,7 @@ class OrgsClient:
         pat_ids: list[int],
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     def update_pat_accesses(
@@ -9444,7 +11162,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """orgs/update-pat-accesses
 
@@ -9502,7 +11220,7 @@ class OrgsClient:
         data: OrgsOrgPersonalAccessTokensPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -9517,7 +11235,7 @@ class OrgsClient:
         pat_ids: list[int],
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     async def async_update_pat_accesses(
@@ -9530,7 +11248,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """orgs/update-pat-accesses
 
@@ -9741,7 +11459,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """orgs/list-pat-grant-repositories
 
         GET /orgs/{org}/personal-access-tokens/{pat_id}/repositories
@@ -9767,7 +11485,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MinimalRepository],
@@ -9787,7 +11505,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """orgs/list-pat-grant-repositories
 
         GET /orgs/{org}/personal-access-tokens/{pat_id}/repositories
@@ -9813,7 +11531,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MinimalRepository],
@@ -9824,14 +11542,14 @@ class OrgsClient:
             },
         )
 
-    def get_all_custom_properties(
+    def custom_properties_for_repos_get_organization_definitions(
         self,
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """orgs/get-all-custom-properties
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
+        """orgs/custom-properties-for-repos-get-organization-definitions
 
         GET /orgs/{org}/properties/schema
 
@@ -9859,14 +11577,14 @@ class OrgsClient:
             },
         )
 
-    async def async_get_all_custom_properties(
+    async def async_custom_properties_for_repos_get_organization_definitions(
         self,
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """orgs/get-all-custom-properties
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
+        """orgs/custom-properties-for-repos-get-organization-definitions
 
         GET /orgs/{org}/properties/schema
 
@@ -9895,17 +11613,17 @@ class OrgsClient:
         )
 
     @overload
-    def create_or_update_custom_properties(
+    def custom_properties_for_repos_create_or_update_organization_definitions(
         self,
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
 
     @overload
-    def create_or_update_custom_properties(
+    def custom_properties_for_repos_create_or_update_organization_definitions(
         self,
         org: str,
         *,
@@ -9913,9 +11631,9 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         properties: list[CustomPropertyType],
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
 
-    def create_or_update_custom_properties(
+    def custom_properties_for_repos_create_or_update_organization_definitions(
         self,
         org: str,
         *,
@@ -9923,8 +11641,8 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """orgs/create-or-update-custom-properties
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
+        """orgs/custom-properties-for-repos-create-or-update-organization-definitions
 
         PATCH /orgs/{org}/properties/schema
 
@@ -9974,17 +11692,17 @@ class OrgsClient:
         )
 
     @overload
-    async def async_create_or_update_custom_properties(
+    async def async_custom_properties_for_repos_create_or_update_organization_definitions(
         self,
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
 
     @overload
-    async def async_create_or_update_custom_properties(
+    async def async_custom_properties_for_repos_create_or_update_organization_definitions(
         self,
         org: str,
         *,
@@ -9992,9 +11710,9 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         properties: list[CustomPropertyType],
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
 
-    async def async_create_or_update_custom_properties(
+    async def async_custom_properties_for_repos_create_or_update_organization_definitions(
         self,
         org: str,
         *,
@@ -10002,8 +11720,8 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """orgs/create-or-update-custom-properties
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
+        """orgs/custom-properties-for-repos-create-or-update-organization-definitions
 
         PATCH /orgs/{org}/properties/schema
 
@@ -10052,15 +11770,15 @@ class OrgsClient:
             },
         )
 
-    def get_custom_property(
+    def custom_properties_for_repos_get_organization_definition(
         self,
         org: str,
         custom_property_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CustomProperty, CustomPropertyType]:
-        """orgs/get-custom-property
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
+        """orgs/custom-properties-for-repos-get-organization-definition
 
         GET /orgs/{org}/properties/schema/{custom_property_name}
 
@@ -10088,15 +11806,15 @@ class OrgsClient:
             },
         )
 
-    async def async_get_custom_property(
+    async def async_custom_properties_for_repos_get_organization_definition(
         self,
         org: str,
         custom_property_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CustomProperty, CustomPropertyType]:
-        """orgs/get-custom-property
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
+        """orgs/custom-properties-for-repos-get-organization-definition
 
         GET /orgs/{org}/properties/schema/{custom_property_name}
 
@@ -10125,7 +11843,7 @@ class OrgsClient:
         )
 
     @overload
-    def create_or_update_custom_property(
+    def custom_properties_for_repos_create_or_update_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10133,10 +11851,10 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: CustomPropertySetPayloadType,
-    ) -> Response[CustomProperty, CustomPropertyType]: ...
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
     @overload
-    def create_or_update_custom_property(
+    def custom_properties_for_repos_create_or_update_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10144,7 +11862,9 @@ class OrgsClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        value_type: Literal["string", "single_select", "multi_select", "true_false"],
+        value_type: Literal[
+            "string", "single_select", "multi_select", "true_false", "url"
+        ],
         required: Missing[bool] = UNSET,
         default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -10152,9 +11872,10 @@ class OrgsClient:
         values_editable_by: Missing[
             Union[None, Literal["org_actors", "org_and_repo_actors"]]
         ] = UNSET,
-    ) -> Response[CustomProperty, CustomPropertyType]: ...
+        require_explicit_values: Missing[bool] = UNSET,
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
-    def create_or_update_custom_property(
+    def custom_properties_for_repos_create_or_update_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10163,8 +11884,8 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
-    ) -> Response[CustomProperty, CustomPropertyType]:
-        """orgs/create-or-update-custom-property
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
+        """orgs/custom-properties-for-repos-create-or-update-organization-definition
 
         PUT /orgs/{org}/properties/schema/{custom_property_name}
 
@@ -10206,7 +11927,7 @@ class OrgsClient:
         )
 
     @overload
-    async def async_create_or_update_custom_property(
+    async def async_custom_properties_for_repos_create_or_update_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10214,10 +11935,10 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: CustomPropertySetPayloadType,
-    ) -> Response[CustomProperty, CustomPropertyType]: ...
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
     @overload
-    async def async_create_or_update_custom_property(
+    async def async_custom_properties_for_repos_create_or_update_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10225,7 +11946,9 @@ class OrgsClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        value_type: Literal["string", "single_select", "multi_select", "true_false"],
+        value_type: Literal[
+            "string", "single_select", "multi_select", "true_false", "url"
+        ],
         required: Missing[bool] = UNSET,
         default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -10233,9 +11956,10 @@ class OrgsClient:
         values_editable_by: Missing[
             Union[None, Literal["org_actors", "org_and_repo_actors"]]
         ] = UNSET,
-    ) -> Response[CustomProperty, CustomPropertyType]: ...
+        require_explicit_values: Missing[bool] = UNSET,
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
-    async def async_create_or_update_custom_property(
+    async def async_custom_properties_for_repos_create_or_update_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10244,8 +11968,8 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
-    ) -> Response[CustomProperty, CustomPropertyType]:
-        """orgs/create-or-update-custom-property
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
+        """orgs/custom-properties-for-repos-create-or-update-organization-definition
 
         PUT /orgs/{org}/properties/schema/{custom_property_name}
 
@@ -10286,7 +12010,7 @@ class OrgsClient:
             },
         )
 
-    def remove_custom_property(
+    def custom_properties_for_repos_delete_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10294,7 +12018,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response:
-        """orgs/remove-custom-property
+        """orgs/custom-properties-for-repos-delete-organization-definition
 
         DELETE /orgs/{org}/properties/schema/{custom_property_name}
 
@@ -10324,7 +12048,7 @@ class OrgsClient:
             },
         )
 
-    async def async_remove_custom_property(
+    async def async_custom_properties_for_repos_delete_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10332,7 +12056,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response:
-        """orgs/remove-custom-property
+        """orgs/custom-properties-for-repos-delete-organization-definition
 
         DELETE /orgs/{org}/properties/schema/{custom_property_name}
 
@@ -10362,7 +12086,7 @@ class OrgsClient:
             },
         )
 
-    def list_custom_properties_values_for_repos(
+    def custom_properties_for_repos_get_organization_values(
         self,
         org: str,
         *,
@@ -10372,9 +12096,10 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[OrgRepoCustomPropertyValues], list[OrgRepoCustomPropertyValuesType]
+        list[OrgRepoCustomPropertyValues],
+        list[OrgRepoCustomPropertyValuesTypeForResponse],
     ]:
-        """orgs/list-custom-properties-values-for-repos
+        """orgs/custom-properties-for-repos-get-organization-values
 
         GET /orgs/{org}/properties/values
 
@@ -10399,7 +12124,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrgRepoCustomPropertyValues],
@@ -10409,7 +12134,7 @@ class OrgsClient:
             },
         )
 
-    async def async_list_custom_properties_values_for_repos(
+    async def async_custom_properties_for_repos_get_organization_values(
         self,
         org: str,
         *,
@@ -10419,9 +12144,10 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[OrgRepoCustomPropertyValues], list[OrgRepoCustomPropertyValuesType]
+        list[OrgRepoCustomPropertyValues],
+        list[OrgRepoCustomPropertyValuesTypeForResponse],
     ]:
-        """orgs/list-custom-properties-values-for-repos
+        """orgs/custom-properties-for-repos-get-organization-values
 
         GET /orgs/{org}/properties/values
 
@@ -10446,7 +12172,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrgRepoCustomPropertyValues],
@@ -10457,7 +12183,7 @@ class OrgsClient:
         )
 
     @overload
-    def create_or_update_custom_properties_values_for_repos(
+    def custom_properties_for_repos_create_or_update_organization_values(
         self,
         org: str,
         *,
@@ -10467,7 +12193,7 @@ class OrgsClient:
     ) -> Response: ...
 
     @overload
-    def create_or_update_custom_properties_values_for_repos(
+    def custom_properties_for_repos_create_or_update_organization_values(
         self,
         org: str,
         *,
@@ -10478,7 +12204,7 @@ class OrgsClient:
         properties: list[CustomPropertyValueType],
     ) -> Response: ...
 
-    def create_or_update_custom_properties_values_for_repos(
+    def custom_properties_for_repos_create_or_update_organization_values(
         self,
         org: str,
         *,
@@ -10487,7 +12213,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """orgs/create-or-update-custom-properties-values-for-repos
+        """orgs/custom-properties-for-repos-create-or-update-organization-values
 
         PATCH /orgs/{org}/properties/values
 
@@ -10538,7 +12264,7 @@ class OrgsClient:
         )
 
     @overload
-    async def async_create_or_update_custom_properties_values_for_repos(
+    async def async_custom_properties_for_repos_create_or_update_organization_values(
         self,
         org: str,
         *,
@@ -10548,7 +12274,7 @@ class OrgsClient:
     ) -> Response: ...
 
     @overload
-    async def async_create_or_update_custom_properties_values_for_repos(
+    async def async_custom_properties_for_repos_create_or_update_organization_values(
         self,
         org: str,
         *,
@@ -10559,7 +12285,7 @@ class OrgsClient:
         properties: list[CustomPropertyValueType],
     ) -> Response: ...
 
-    async def async_create_or_update_custom_properties_values_for_repos(
+    async def async_custom_properties_for_repos_create_or_update_organization_values(
         self,
         org: str,
         *,
@@ -10568,7 +12294,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """orgs/create-or-update-custom-properties-values-for-repos
+        """orgs/custom-properties-for-repos-create-or-update-organization-values
 
         PATCH /orgs/{org}/properties/values
 
@@ -10626,7 +12352,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-public-members
 
         GET /orgs/{org}/public_members
@@ -10650,7 +12376,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -10664,7 +12390,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-public-members
 
         GET /orgs/{org}/public_members
@@ -10688,7 +12414,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -10885,7 +12611,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[RepositoryFineGrainedPermission], list[RepositoryFineGrainedPermissionType]
+        list[RepositoryFineGrainedPermission],
+        list[RepositoryFineGrainedPermissionTypeForResponse],
     ]:
         """orgs/list-repo-fine-grained-permissions
 
@@ -10921,7 +12648,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[RepositoryFineGrainedPermission], list[RepositoryFineGrainedPermissionType]
+        list[RepositoryFineGrainedPermission],
+        list[RepositoryFineGrainedPermissionTypeForResponse],
     ]:
         """orgs/list-repo-fine-grained-permissions
 
@@ -10959,7 +12687,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
+    ) -> Response[list[RulesetVersion], list[RulesetVersionTypeForResponse]]:
         """orgs/get-org-ruleset-history
 
         GET /orgs/{org}/rulesets/{ruleset_id}/history
@@ -10983,7 +12711,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[RulesetVersion],
@@ -11002,7 +12730,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
+    ) -> Response[list[RulesetVersion], list[RulesetVersionTypeForResponse]]:
         """orgs/get-org-ruleset-history
 
         GET /orgs/{org}/rulesets/{ruleset_id}/history
@@ -11026,7 +12754,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[RulesetVersion],
@@ -11044,7 +12772,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
+    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateTypeForResponse]:
         """orgs/get-org-ruleset-version
 
         GET /orgs/{org}/rulesets/{ruleset_id}/history/{version_id}
@@ -11080,7 +12808,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
+    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateTypeForResponse]:
         """orgs/get-org-ruleset-version
 
         GET /orgs/{org}/rulesets/{ruleset_id}/history/{version_id}
@@ -11108,13 +12836,14 @@ class OrgsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_security_manager_teams(
         self,
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamSimple], list[TeamSimpleType]]:
+    ) -> Response[list[TeamSimple], list[TeamSimpleTypeForResponse]]:
         """DEPRECATED orgs/list-security-manager-teams
 
         GET /orgs/{org}/security-managers
@@ -11139,13 +12868,14 @@ class OrgsClient:
             response_model=list[TeamSimple],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_security_manager_teams(
         self,
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamSimple], list[TeamSimpleType]]:
+    ) -> Response[list[TeamSimple], list[TeamSimpleTypeForResponse]]:
         """DEPRECATED orgs/list-security-manager-teams
 
         GET /orgs/{org}/security-managers
@@ -11170,6 +12900,7 @@ class OrgsClient:
             response_model=list[TeamSimple],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_security_manager_team(
         self,
         org: str,
@@ -11199,6 +12930,7 @@ class OrgsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_security_manager_team(
         self,
         org: str,
@@ -11228,6 +12960,7 @@ class OrgsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def remove_security_manager_team(
         self,
         org: str,
@@ -11257,6 +12990,7 @@ class OrgsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_remove_security_manager_team(
         self,
         org: str,
@@ -11286,7 +13020,546 @@ class OrgsClient:
             stream=stream,
         )
 
+    def get_immutable_releases_settings(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ImmutableReleasesOrganizationSettings,
+        ImmutableReleasesOrganizationSettingsTypeForResponse,
+    ]:
+        """orgs/get-immutable-releases-settings
+
+        GET /orgs/{org}/settings/immutable-releases
+
+        Gets the immutable releases policy for repositories in an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#get-immutable-releases-settings-for-an-organization
+        """
+
+        from ..models import ImmutableReleasesOrganizationSettings
+
+        url = f"/orgs/{org}/settings/immutable-releases"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ImmutableReleasesOrganizationSettings,
+        )
+
+    async def async_get_immutable_releases_settings(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ImmutableReleasesOrganizationSettings,
+        ImmutableReleasesOrganizationSettingsTypeForResponse,
+    ]:
+        """orgs/get-immutable-releases-settings
+
+        GET /orgs/{org}/settings/immutable-releases
+
+        Gets the immutable releases policy for repositories in an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#get-immutable-releases-settings-for-an-organization
+        """
+
+        from ..models import ImmutableReleasesOrganizationSettings
+
+        url = f"/orgs/{org}/settings/immutable-releases"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ImmutableReleasesOrganizationSettings,
+        )
+
     @overload
+    def set_immutable_releases_settings(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgSettingsImmutableReleasesPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_immutable_releases_settings(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        enforced_repositories: Literal["all", "none", "selected"],
+        selected_repository_ids: Missing[list[int]] = UNSET,
+    ) -> Response: ...
+
+    def set_immutable_releases_settings(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgSettingsImmutableReleasesPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """orgs/set-immutable-releases-settings
+
+        PUT /orgs/{org}/settings/immutable-releases
+
+        Sets the immutable releases policy for repositories in an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#set-immutable-releases-settings-for-an-organization
+        """
+
+        from ..models import OrgsOrgSettingsImmutableReleasesPutBody
+
+        url = f"/orgs/{org}/settings/immutable-releases"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgSettingsImmutableReleasesPutBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    @overload
+    async def async_set_immutable_releases_settings(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgSettingsImmutableReleasesPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_immutable_releases_settings(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        enforced_repositories: Literal["all", "none", "selected"],
+        selected_repository_ids: Missing[list[int]] = UNSET,
+    ) -> Response: ...
+
+    async def async_set_immutable_releases_settings(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgSettingsImmutableReleasesPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """orgs/set-immutable-releases-settings
+
+        PUT /orgs/{org}/settings/immutable-releases
+
+        Sets the immutable releases policy for repositories in an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#set-immutable-releases-settings-for-an-organization
+        """
+
+        from ..models import OrgsOrgSettingsImmutableReleasesPutBody
+
+        url = f"/orgs/{org}/settings/immutable-releases"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgSettingsImmutableReleasesPutBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    def get_immutable_releases_settings_repositories(
+        self,
+        org: str,
+        *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200,
+        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse,
+    ]:
+        """orgs/get-immutable-releases-settings-repositories
+
+        GET /orgs/{org}/settings/immutable-releases/repositories
+
+        List all of the repositories that have been selected for immutable releases enforcement in an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-selected-repositories-for-immutable-releases-enforcement
+        """
+
+        from ..models import OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200
+
+        url = f"/orgs/{org}/settings/immutable-releases/repositories"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200,
+        )
+
+    async def async_get_immutable_releases_settings_repositories(
+        self,
+        org: str,
+        *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200,
+        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse,
+    ]:
+        """orgs/get-immutable-releases-settings-repositories
+
+        GET /orgs/{org}/settings/immutable-releases/repositories
+
+        List all of the repositories that have been selected for immutable releases enforcement in an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-selected-repositories-for-immutable-releases-enforcement
+        """
+
+        from ..models import OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200
+
+        url = f"/orgs/{org}/settings/immutable-releases/repositories"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200,
+        )
+
+    @overload
+    def set_immutable_releases_settings_repositories(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_immutable_releases_settings_repositories(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_repository_ids: list[int],
+    ) -> Response: ...
+
+    def set_immutable_releases_settings_repositories(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """orgs/set-immutable-releases-settings-repositories
+
+        PUT /orgs/{org}/settings/immutable-releases/repositories
+
+        Replaces all repositories that have been selected for immutable releases enforcement in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#set-selected-repositories-for-immutable-releases-enforcement
+        """
+
+        from ..models import OrgsOrgSettingsImmutableReleasesRepositoriesPutBody
+
+        url = f"/orgs/{org}/settings/immutable-releases/repositories"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgSettingsImmutableReleasesRepositoriesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    @overload
+    async def async_set_immutable_releases_settings_repositories(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_immutable_releases_settings_repositories(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_repository_ids: list[int],
+    ) -> Response: ...
+
+    async def async_set_immutable_releases_settings_repositories(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """orgs/set-immutable-releases-settings-repositories
+
+        PUT /orgs/{org}/settings/immutable-releases/repositories
+
+        Replaces all repositories that have been selected for immutable releases enforcement in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#set-selected-repositories-for-immutable-releases-enforcement
+        """
+
+        from ..models import OrgsOrgSettingsImmutableReleasesRepositoriesPutBody
+
+        url = f"/orgs/{org}/settings/immutable-releases/repositories"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgSettingsImmutableReleasesRepositoriesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    def enable_selected_repository_immutable_releases_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """orgs/enable-selected-repository-immutable-releases-organization
+
+        PUT /orgs/{org}/settings/immutable-releases/repositories/{repository_id}
+
+        Adds a repository to the list of selected repositories that are enforced for immutable releases in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization
+        """
+
+        url = f"/orgs/{org}/settings/immutable-releases/repositories/{repository_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    async def async_enable_selected_repository_immutable_releases_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """orgs/enable-selected-repository-immutable-releases-organization
+
+        PUT /orgs/{org}/settings/immutable-releases/repositories/{repository_id}
+
+        Adds a repository to the list of selected repositories that are enforced for immutable releases in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization
+        """
+
+        url = f"/orgs/{org}/settings/immutable-releases/repositories/{repository_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    def disable_selected_repository_immutable_releases_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """orgs/disable-selected-repository-immutable-releases-organization
+
+        DELETE /orgs/{org}/settings/immutable-releases/repositories/{repository_id}
+
+        Removes a repository from the list of selected repositories that are enforced for immutable releases in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization
+        """
+
+        url = f"/orgs/{org}/settings/immutable-releases/repositories/{repository_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    async def async_disable_selected_repository_immutable_releases_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """orgs/disable-selected-repository-immutable-releases-organization
+
+        DELETE /orgs/{org}/settings/immutable-releases/repositories/{repository_id}
+
+        Removes a repository from the list of selected repositories that are enforced for immutable releases in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization
+        """
+
+        url = f"/orgs/{org}/settings/immutable-releases/repositories/{repository_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,
@@ -11307,6 +13580,7 @@ class OrgsClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,
@@ -11327,6 +13601,7 @@ class OrgsClient:
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,
@@ -11387,6 +13662,7 @@ class OrgsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,
@@ -11407,6 +13683,7 @@ class OrgsClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,
@@ -11427,6 +13704,7 @@ class OrgsClient:
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,
@@ -11494,7 +13772,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrgMembership], list[OrgMembershipType]]:
+    ) -> Response[list[OrgMembership], list[OrgMembershipTypeForResponse]]:
         """orgs/list-memberships-for-authenticated-user
 
         GET /user/memberships/orgs
@@ -11519,7 +13797,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrgMembership],
@@ -11538,7 +13816,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrgMembership], list[OrgMembershipType]]:
+    ) -> Response[list[OrgMembership], list[OrgMembershipTypeForResponse]]:
         """orgs/list-memberships-for-authenticated-user
 
         GET /user/memberships/orgs
@@ -11563,7 +13841,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrgMembership],
@@ -11580,7 +13858,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrgMembership, OrgMembershipType]:
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/get-membership-for-authenticated-user
 
         GET /user/memberships/orgs/{org}
@@ -11614,7 +13892,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrgMembership, OrgMembershipType]:
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/get-membership-for-authenticated-user
 
         GET /user/memberships/orgs/{org}
@@ -11650,7 +13928,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserMembershipsOrgsOrgPatchBodyType,
-    ) -> Response[OrgMembership, OrgMembershipType]: ...
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
 
     @overload
     def update_membership_for_authenticated_user(
@@ -11661,7 +13939,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         state: Literal["active"],
-    ) -> Response[OrgMembership, OrgMembershipType]: ...
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
 
     def update_membership_for_authenticated_user(
         self,
@@ -11671,7 +13949,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgMembership, OrgMembershipType]:
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/update-membership-for-authenticated-user
 
         PATCH /user/memberships/orgs/{org}
@@ -11723,7 +14001,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserMembershipsOrgsOrgPatchBodyType,
-    ) -> Response[OrgMembership, OrgMembershipType]: ...
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
 
     @overload
     async def async_update_membership_for_authenticated_user(
@@ -11734,7 +14012,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         state: Literal["active"],
-    ) -> Response[OrgMembership, OrgMembershipType]: ...
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
 
     async def async_update_membership_for_authenticated_user(
         self,
@@ -11744,7 +14022,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgMembership, OrgMembershipType]:
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/update-membership-for-authenticated-user
 
         PATCH /user/memberships/orgs/{org}
@@ -11795,7 +14073,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list-for-authenticated-user
 
         GET /user/orgs
@@ -11824,7 +14102,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationSimple],
@@ -11841,7 +14119,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list-for-authenticated-user
 
         GET /user/orgs
@@ -11870,7 +14148,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationSimple],
@@ -11888,7 +14166,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list-for-user
 
         GET /users/{username}/orgs
@@ -11914,7 +14192,7 @@ class OrgsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationSimple],
@@ -11928,7 +14206,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list-for-user
 
         GET /users/{username}/orgs
@@ -11954,7 +14232,7 @@ class OrgsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationSimple],

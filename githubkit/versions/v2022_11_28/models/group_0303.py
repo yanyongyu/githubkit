@@ -15,27 +15,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0304 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems
 
+class CodeScanningAutofixCommits(GitHubModel):
+    """CodeScanningAutofixCommits
 
-class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+    Commit an autofix for a code scanning alert
+    """
 
-    id: int = Field()
-    node_id: str = Field()
-    prevent_self_review: Missing[bool] = Field(
+    target_ref: Missing[str] = Field(
         default=UNSET,
-        description="Whether deployments to this environment can be approved by the user who created the deployment.",
+        description='The Git reference of target branch for the commit. Branch needs to already exist.  For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
     )
-    type: str = Field()
-    reviewers: Missing[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
-    ] = Field(
-        default=UNSET,
-        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
+    message: Missing[str] = Field(
+        default=UNSET, description="Commit message to be used."
     )
 
 
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1)
+model_rebuild(CodeScanningAutofixCommits)
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1",)
+__all__ = ("CodeScanningAutofixCommits",)

@@ -9,17 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0355 import BranchProtectionType, BranchProtectionTypeForResponse
 
 
-class ShortBlobType(TypedDict):
-    """Short Blob
+class ShortBranchType(TypedDict):
+    """Short Branch
 
-    Short Blob
+    Short Branch
     """
 
-    url: str
+    name: str
+    commit: ShortBranchPropCommitType
+    protected: bool
+    protection: NotRequired[BranchProtectionType]
+    protection_url: NotRequired[str]
+
+
+class ShortBranchTypeForResponse(TypedDict):
+    """Short Branch
+
+    Short Branch
+    """
+
+    name: str
+    commit: ShortBranchPropCommitTypeForResponse
+    protected: bool
+    protection: NotRequired[BranchProtectionTypeForResponse]
+    protection_url: NotRequired[str]
+
+
+class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
+
     sha: str
+    url: str
 
 
-__all__ = ("ShortBlobType",)
+class ShortBranchPropCommitTypeForResponse(TypedDict):
+    """ShortBranchPropCommit"""
+
+    sha: str
+    url: str
+
+
+__all__ = (
+    "ShortBranchPropCommitType",
+    "ShortBranchPropCommitTypeForResponse",
+    "ShortBranchType",
+    "ShortBranchTypeForResponse",
+)

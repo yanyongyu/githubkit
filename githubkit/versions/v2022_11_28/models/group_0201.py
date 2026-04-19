@@ -9,59 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
 
 
-class TeamProject(GitHubModel):
-    """Team Project
+class RepositoryRuleMergeQueuePropParameters(GitHubModel):
+    """RepositoryRuleMergeQueuePropParameters"""
 
-    A team's access to a project.
-    """
-
-    owner_url: str = Field()
-    url: str = Field()
-    html_url: str = Field()
-    columns_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    body: Union[str, None] = Field()
-    number: int = Field()
-    state: str = Field()
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    created_at: str = Field()
-    updated_at: str = Field()
-    organization_permission: Missing[str] = Field(
-        default=UNSET,
-        description="The organization permission for this project. Only present when owner is an organization.",
+    check_response_timeout_minutes: int = Field(
+        le=360.0,
+        ge=1.0,
+        description="Maximum time for a required status check to report a conclusion. After this much time has elapsed, checks that have not reported a conclusion will be assumed to have failed",
     )
-    private: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the project is private or not. Only present when owner is an organization.",
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"] = Field(
+        description="When set to ALLGREEN, the merge commit created by merge queue for each PR in the group must pass all required checks to merge. When set to HEADGREEN, only the commit at the head of the merge group, i.e. the commit containing changes from all of the PRs in the group, must pass its required checks to merge."
     )
-    permissions: TeamProjectPropPermissions = Field()
+    max_entries_to_build: int = Field(
+        le=100.0,
+        description="Limit the number of queued pull requests requesting checks and workflow runs at the same time.",
+    )
+    max_entries_to_merge: int = Field(
+        le=100.0,
+        description="The maximum number of PRs that will be merged together in a group.",
+    )
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"] = Field(
+        description="Method to use when merging changes from queued pull requests."
+    )
+    min_entries_to_merge: int = Field(
+        le=100.0,
+        description="The minimum number of PRs that will be merged together in a group.",
+    )
+    min_entries_to_merge_wait_minutes: int = Field(
+        le=360.0,
+        description="The time merge queue should wait after the first PR is added to the queue for the minimum group size to be met. After this time has elapsed, the minimum group size will be ignored and a smaller group will be merged.",
+    )
 
 
-class TeamProjectPropPermissions(GitHubModel):
-    """TeamProjectPropPermissions"""
+model_rebuild(RepositoryRuleMergeQueuePropParameters)
 
-    read: bool = Field()
-    write: bool = Field()
-    admin: bool = Field()
-
-
-model_rebuild(TeamProject)
-model_rebuild(TeamProjectPropPermissions)
-
-__all__ = (
-    "TeamProject",
-    "TeamProjectPropPermissions",
-)
+__all__ = ("RepositoryRuleMergeQueuePropParameters",)

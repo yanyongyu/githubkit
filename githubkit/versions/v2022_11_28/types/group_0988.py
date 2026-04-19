@@ -9,11 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse201Type(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse201"""
+class NotificationsPutBodyType(TypedDict):
+    """NotificationsPutBody"""
+
+    last_read_at: NotRequired[_dt.datetime]
+    read: NotRequired[bool]
 
 
-__all__ = ("ProjectsColumnsCardsCardIdMovesPostResponse201Type",)
+class NotificationsPutBodyTypeForResponse(TypedDict):
+    """NotificationsPutBody"""
+
+    last_read_at: NotRequired[str]
+    read: NotRequired[bool]
+
+
+__all__ = (
+    "NotificationsPutBodyType",
+    "NotificationsPutBodyTypeForResponse",
+)

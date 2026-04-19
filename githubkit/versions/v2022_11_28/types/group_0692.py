@@ -12,24 +12,48 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0465 import WebhooksProjectType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0502 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
+from .group_0693 import (
+    WebhookIssuesDemilestonedPropIssueType,
+    WebhookIssuesDemilestonedPropIssueTypeForResponse,
+)
 
 
-class WebhookProjectClosedType(TypedDict):
-    """project closed event"""
+class WebhookIssuesDemilestonedType(TypedDict):
+    """issues demilestoned event"""
 
-    action: Literal["closed"]
+    action: Literal["demilestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    issue: WebhookIssuesDemilestonedPropIssueType
+    milestone: NotRequired[WebhooksMilestoneType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhooksProjectType
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookProjectClosedType",)
+class WebhookIssuesDemilestonedTypeForResponse(TypedDict):
+    """issues demilestoned event"""
+
+    action: Literal["demilestoned"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    issue: WebhookIssuesDemilestonedPropIssueTypeForResponse
+    milestone: NotRequired[WebhooksMilestoneTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookIssuesDemilestonedType",
+    "WebhookIssuesDemilestonedTypeForResponse",
+)

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -17,44 +18,66 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0494 import EnterpriseWebhooks
-from .group_0495 import SimpleInstallation
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0497 import RepositoryWebhooks
-from .group_0498 import WebhooksRule
+from .group_0542 import SearchResultTextMatchesItems
 
 
-class WebhookBranchProtectionRuleDeleted(GitHubModel):
-    """branch protection rule deleted event"""
+class UserSearchResultItem(GitHubModel):
+    """User Search Result Item
 
-    action: Literal["deleted"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+    User Search Result Item
+    """
+
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    score: float = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    events_url: str = Field()
+    public_repos: Missing[int] = Field(default=UNSET)
+    public_gists: Missing[int] = Field(default=UNSET)
+    followers: Missing[int] = Field(default=UNSET)
+    following: Missing[int] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    bio: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    location: Missing[Union[str, None]] = Field(default=UNSET)
+    site_admin: bool = Field()
+    hireable: Missing[Union[bool, None]] = Field(default=UNSET)
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
     )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    rule: WebhooksRule = Field(
-        title="branch protection rule",
-        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/enterprise-cloud@latest//github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    blog: Missing[Union[str, None]] = Field(default=UNSET)
+    company: Missing[Union[str, None]] = Field(default=UNSET)
+    suspended_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookBranchProtectionRuleDeleted)
+class SearchUsersGetResponse200(GitHubModel):
+    """SearchUsersGetResponse200"""
 
-__all__ = ("WebhookBranchProtectionRuleDeleted",)
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[UserSearchResultItem] = Field()
+
+
+model_rebuild(UserSearchResultItem)
+model_rebuild(SearchUsersGetResponse200)
+
+__all__ = (
+    "SearchUsersGetResponse200",
+    "UserSearchResultItem",
+)

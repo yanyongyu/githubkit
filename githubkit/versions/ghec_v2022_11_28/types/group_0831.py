@@ -12,24 +12,33 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0241 import RepositoryAdvisoryType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0106 import (
+    OrganizationCustomPropertyType,
+    OrganizationCustomPropertyTypeForResponse,
+)
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
 
 
-class WebhookRepositoryAdvisoryReportedType(TypedDict):
-    """Repository advisory reported event"""
+class WebhookOrganizationCustomPropertyCreatedType(TypedDict):
+    """organization custom property created event"""
 
-    action: Literal["reported"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    repository_advisory: RepositoryAdvisoryType
+    action: Literal["created"]
+    definition: OrganizationCustomPropertyType
+    enterprise: EnterpriseWebhooksType
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookRepositoryAdvisoryReportedType",)
+class WebhookOrganizationCustomPropertyCreatedTypeForResponse(TypedDict):
+    """organization custom property created event"""
+
+    action: Literal["created"]
+    definition: OrganizationCustomPropertyTypeForResponse
+    enterprise: EnterpriseWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "WebhookOrganizationCustomPropertyCreatedType",
+    "WebhookOrganizationCustomPropertyCreatedTypeForResponse",
+)

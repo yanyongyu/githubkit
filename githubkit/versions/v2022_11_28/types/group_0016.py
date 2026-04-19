@@ -9,12 +9,12 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0008 import EnterpriseType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0008 import EnterpriseType, EnterpriseTypeForResponse
 
 
 class IntegrationInstallationRequestType(TypedDict):
@@ -27,7 +27,23 @@ class IntegrationInstallationRequestType(TypedDict):
     node_id: NotRequired[str]
     account: Union[SimpleUserType, EnterpriseType]
     requester: SimpleUserType
-    created_at: datetime
+    created_at: _dt.datetime
 
 
-__all__ = ("IntegrationInstallationRequestType",)
+class IntegrationInstallationRequestTypeForResponse(TypedDict):
+    """Integration Installation Request
+
+    Request to install an integration on a target
+    """
+
+    id: int
+    node_id: NotRequired[str]
+    account: Union[SimpleUserTypeForResponse, EnterpriseTypeForResponse]
+    requester: SimpleUserTypeForResponse
+    created_at: str
+
+
+__all__ = (
+    "IntegrationInstallationRequestType",
+    "IntegrationInstallationRequestTypeForResponse",
+)

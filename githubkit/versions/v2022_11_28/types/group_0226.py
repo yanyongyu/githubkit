@@ -12,45 +12,27 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class WorkflowUsageType(TypedDict):
-    """Workflow Usage
+class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
+    """RestrictedCommits
 
-    Workflow Usage
+    Restricted commit
     """
 
-    billable: WorkflowUsagePropBillableType
+    oid: str
+    reason: NotRequired[str]
 
 
-class WorkflowUsagePropBillableType(TypedDict):
-    """WorkflowUsagePropBillable"""
+class RepositoryRuleParamsRestrictedCommitsTypeForResponse(TypedDict):
+    """RestrictedCommits
 
-    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
-    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
-    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
+    Restricted commit
+    """
 
-
-class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropMacosType(TypedDict):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropWindowsType(TypedDict):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: NotRequired[int]
+    oid: str
+    reason: NotRequired[str]
 
 
 __all__ = (
-    "WorkflowUsagePropBillablePropMacosType",
-    "WorkflowUsagePropBillablePropUbuntuType",
-    "WorkflowUsagePropBillablePropWindowsType",
-    "WorkflowUsagePropBillableType",
-    "WorkflowUsageType",
+    "RepositoryRuleParamsRestrictedCommitsType",
+    "RepositoryRuleParamsRestrictedCommitsTypeForResponse",
 )

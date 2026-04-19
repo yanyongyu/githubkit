@@ -17,7 +17,7 @@ from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     from typing import Literal, Union
@@ -34,15 +34,15 @@ if TYPE_CHECKING:
         RepositoryAdvisory,
     )
     from ..types import (
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
-        FullRepositoryType,
-        GlobalAdvisoryType,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
+        FullRepositoryTypeForResponse,
+        GlobalAdvisoryTypeForResponse,
         PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType,
         PrivateVulnerabilityReportCreateType,
         RepositoryAdvisoryCreatePropCreditsItemsType,
         RepositoryAdvisoryCreatePropVulnerabilitiesItemsType,
         RepositoryAdvisoryCreateType,
-        RepositoryAdvisoryType,
+        RepositoryAdvisoryTypeForResponse,
         RepositoryAdvisoryUpdatePropCreditsItemsType,
         RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType,
         RepositoryAdvisoryUpdateType,
@@ -107,7 +107,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[GlobalAdvisory], list[GlobalAdvisoryType]]:
+    ) -> Response[list[GlobalAdvisory], list[GlobalAdvisoryTypeForResponse]]:
         """security-advisories/list-global-advisories
 
         GET /advisories
@@ -149,7 +149,7 @@ class SecurityAdvisoriesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[GlobalAdvisory],
@@ -202,7 +202,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[GlobalAdvisory], list[GlobalAdvisoryType]]:
+    ) -> Response[list[GlobalAdvisory], list[GlobalAdvisoryTypeForResponse]]:
         """security-advisories/list-global-advisories
 
         GET /advisories
@@ -244,7 +244,7 @@ class SecurityAdvisoriesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[GlobalAdvisory],
@@ -260,7 +260,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GlobalAdvisory, GlobalAdvisoryType]:
+    ) -> Response[GlobalAdvisory, GlobalAdvisoryTypeForResponse]:
         """security-advisories/get-global-advisory
 
         GET /advisories/{ghsa_id}
@@ -293,7 +293,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GlobalAdvisory, GlobalAdvisoryType]:
+    ) -> Response[GlobalAdvisory, GlobalAdvisoryTypeForResponse]:
         """security-advisories/get-global-advisory
 
         GET /advisories/{ghsa_id}
@@ -332,7 +332,7 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
+    ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryTypeForResponse]]:
         """security-advisories/list-org-repository-advisories
 
         GET /orgs/{org}/security-advisories
@@ -364,7 +364,7 @@ class SecurityAdvisoriesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[RepositoryAdvisory],
@@ -386,7 +386,7 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
+    ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryTypeForResponse]]:
         """security-advisories/list-org-repository-advisories
 
         GET /orgs/{org}/security-advisories
@@ -418,7 +418,7 @@ class SecurityAdvisoriesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[RepositoryAdvisory],
@@ -441,7 +441,7 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
+    ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryTypeForResponse]]:
         """security-advisories/list-repository-advisories
 
         GET /repos/{owner}/{repo}/security-advisories
@@ -473,7 +473,7 @@ class SecurityAdvisoriesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[RepositoryAdvisory],
@@ -496,7 +496,7 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
+    ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryTypeForResponse]]:
         """security-advisories/list-repository-advisories
 
         GET /repos/{owner}/{repo}/security-advisories
@@ -528,7 +528,7 @@ class SecurityAdvisoriesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[RepositoryAdvisory],
@@ -547,7 +547,7 @@ class SecurityAdvisoriesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: RepositoryAdvisoryCreateType,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
 
     @overload
     def create_repository_advisory(
@@ -571,7 +571,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         start_private_fork: Missing[bool] = UNSET,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
 
     def create_repository_advisory(
         self,
@@ -582,7 +582,7 @@ class SecurityAdvisoriesClient:
         stream: bool = False,
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]:
         """security-advisories/create-repository-advisory
 
         POST /repos/{owner}/{repo}/security-advisories
@@ -639,7 +639,7 @@ class SecurityAdvisoriesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: RepositoryAdvisoryCreateType,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
 
     @overload
     async def async_create_repository_advisory(
@@ -663,7 +663,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         start_private_fork: Missing[bool] = UNSET,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
 
     async def async_create_repository_advisory(
         self,
@@ -674,7 +674,7 @@ class SecurityAdvisoriesClient:
         stream: bool = False,
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]:
         """security-advisories/create-repository-advisory
 
         POST /repos/{owner}/{repo}/security-advisories
@@ -731,7 +731,7 @@ class SecurityAdvisoriesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: PrivateVulnerabilityReportCreateType,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
 
     @overload
     def create_private_vulnerability_report(
@@ -755,7 +755,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         start_private_fork: Missing[bool] = UNSET,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
 
     def create_private_vulnerability_report(
         self,
@@ -766,7 +766,7 @@ class SecurityAdvisoriesClient:
         stream: bool = False,
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]:
         """security-advisories/create-private-vulnerability-report
 
         POST /repos/{owner}/{repo}/security-advisories/reports
@@ -820,7 +820,7 @@ class SecurityAdvisoriesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: PrivateVulnerabilityReportCreateType,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
 
     @overload
     async def async_create_private_vulnerability_report(
@@ -844,7 +844,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         start_private_fork: Missing[bool] = UNSET,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
 
     async def async_create_private_vulnerability_report(
         self,
@@ -855,7 +855,7 @@ class SecurityAdvisoriesClient:
         stream: bool = False,
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]:
         """security-advisories/create-private-vulnerability-report
 
         POST /repos/{owner}/{repo}/security-advisories/reports
@@ -908,7 +908,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]:
         """security-advisories/get-repository-advisory
 
         GET /repos/{owner}/{repo}/security-advisories/{ghsa_id}
@@ -951,7 +951,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]:
         """security-advisories/get-repository-advisory
 
         GET /repos/{owner}/{repo}/security-advisories/{ghsa_id}
@@ -996,7 +996,7 @@ class SecurityAdvisoriesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: RepositoryAdvisoryUpdateType,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
 
     @overload
     def update_repository_advisory(
@@ -1025,7 +1025,7 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["published", "closed", "draft"]] = UNSET,
         collaborating_users: Missing[Union[list[str], None]] = UNSET,
         collaborating_teams: Missing[Union[list[str], None]] = UNSET,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
 
     def update_repository_advisory(
         self,
@@ -1037,7 +1037,7 @@ class SecurityAdvisoriesClient:
         stream: bool = False,
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]:
         """security-advisories/update-repository-advisory
 
         PATCH /repos/{owner}/{repo}/security-advisories/{ghsa_id}
@@ -1096,7 +1096,7 @@ class SecurityAdvisoriesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: RepositoryAdvisoryUpdateType,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
 
     @overload
     async def async_update_repository_advisory(
@@ -1125,7 +1125,7 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["published", "closed", "draft"]] = UNSET,
         collaborating_users: Missing[Union[list[str], None]] = UNSET,
         collaborating_teams: Missing[Union[list[str], None]] = UNSET,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
 
     async def async_update_repository_advisory(
         self,
@@ -1137,7 +1137,7 @@ class SecurityAdvisoriesClient:
         stream: bool = False,
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]:
         """security-advisories/update-repository-advisory
 
         PATCH /repos/{owner}/{repo}/security-advisories/{ghsa_id}
@@ -1196,7 +1196,7 @@ class SecurityAdvisoriesClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """security-advisories/create-repository-advisory-cve-request
 
@@ -1247,7 +1247,7 @@ class SecurityAdvisoriesClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """security-advisories/create-repository-advisory-cve-request
 
@@ -1296,7 +1296,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[FullRepository, FullRepositoryType]:
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """security-advisories/create-fork
 
         POST /repos/{owner}/{repo}/security-advisories/{ghsa_id}/forks
@@ -1337,7 +1337,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[FullRepository, FullRepositoryType]:
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """security-advisories/create-fork
 
         POST /repos/{owner}/{repo}/security-advisories/{ghsa_id}/forks

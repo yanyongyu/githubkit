@@ -9,117 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0145 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0165 import ProjectsV2Type, ProjectsV2TypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0146 import RepositoryRuleUpdateType
-from .group_0148 import RepositoryRuleRequiredLinearHistoryType
-from .group_0149 import RepositoryRuleMergeQueueType
-from .group_0151 import RepositoryRuleRequiredDeploymentsType
-from .group_0154 import RepositoryRulePullRequestType
-from .group_0156 import RepositoryRuleRequiredStatusChecksType
-from .group_0158 import RepositoryRuleCommitMessagePatternType
-from .group_0160 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0162 import RepositoryRuleCommitterEmailPatternType
-from .group_0164 import RepositoryRuleBranchNamePatternType
-from .group_0166 import RepositoryRuleTagNamePatternType
-from .group_0168 import RepositoryRuleFilePathRestrictionType
-from .group_0170 import RepositoryRuleMaxFilePathLengthType
-from .group_0172 import RepositoryRuleFileExtensionRestrictionType
-from .group_0174 import RepositoryRuleMaxFileSizeType
-from .group_0177 import RepositoryRuleWorkflowsType
-from .group_0179 import RepositoryRuleCodeScanningType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems"""
+class WebhookProjectsV2ProjectDeletedType(TypedDict):
+    """Projects v2 Project Deleted Event"""
 
-    rule: NotRequired[
-        Union[
-            RepositoryRuleCreationType,
-            RepositoryRuleUpdateType,
-            RepositoryRuleDeletionType,
-            RepositoryRuleRequiredLinearHistoryType,
-            RepositoryRuleMergeQueueType,
-            RepositoryRuleRequiredDeploymentsType,
-            RepositoryRuleRequiredSignaturesType,
-            RepositoryRulePullRequestType,
-            RepositoryRuleRequiredStatusChecksType,
-            RepositoryRuleNonFastForwardType,
-            RepositoryRuleCommitMessagePatternType,
-            RepositoryRuleCommitAuthorEmailPatternType,
-            RepositoryRuleCommitterEmailPatternType,
-            RepositoryRuleBranchNamePatternType,
-            RepositoryRuleTagNamePatternType,
-            RepositoryRuleFilePathRestrictionType,
-            RepositoryRuleMaxFilePathLengthType,
-            RepositoryRuleFileExtensionRestrictionType,
-            RepositoryRuleMaxFileSizeType,
-            RepositoryRuleWorkflowsType,
-            RepositoryRuleCodeScanningType,
-        ]
-    ]
-    changes: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType
-    ]
+    action: Literal["deleted"]
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    projects_v2: ProjectsV2Type
+    sender: SimpleUserType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges"""
+class WebhookProjectsV2ProjectDeletedTypeForResponse(TypedDict):
+    """Projects v2 Project Deleted Event"""
 
-    configuration: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType
-    ]
-    rule_type: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType
-    ]
-    pattern: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType
-    ]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pConfiguration
-    """
-
-    from_: NotRequired[str]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pRuleType
-    """
-
-    from_: NotRequired[str]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pPattern
-    """
-
-    from_: NotRequired[str]
+    action: Literal["deleted"]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2: ProjectsV2TypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType",
+    "WebhookProjectsV2ProjectDeletedType",
+    "WebhookProjectsV2ProjectDeletedTypeForResponse",
 )

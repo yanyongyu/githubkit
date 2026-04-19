@@ -9,63 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PullRequestMinimal(GitHubModel):
-    """Pull Request Minimal"""
+class RepositoryRuleTagNamePatternPropParameters(GitHubModel):
+    """RepositoryRuleTagNamePatternPropParameters"""
 
-    id: int = Field()
-    number: int = Field()
-    url: str = Field()
-    head: PullRequestMinimalPropHead = Field()
-    base: PullRequestMinimalPropBase = Field()
-
-
-class PullRequestMinimalPropHead(GitHubModel):
-    """PullRequestMinimalPropHead"""
-
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropHeadPropRepo = Field()
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule appears when configuring it."
+    )
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-class PullRequestMinimalPropHeadPropRepo(GitHubModel):
-    """PullRequestMinimalPropHeadPropRepo"""
+model_rebuild(RepositoryRuleTagNamePatternPropParameters)
 
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
-
-
-class PullRequestMinimalPropBase(GitHubModel):
-    """PullRequestMinimalPropBase"""
-
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropBasePropRepo = Field()
-
-
-class PullRequestMinimalPropBasePropRepo(GitHubModel):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
-
-
-model_rebuild(PullRequestMinimal)
-model_rebuild(PullRequestMinimalPropHead)
-model_rebuild(PullRequestMinimalPropHeadPropRepo)
-model_rebuild(PullRequestMinimalPropBase)
-model_rebuild(PullRequestMinimalPropBasePropRepo)
-
-__all__ = (
-    "PullRequestMinimal",
-    "PullRequestMinimalPropBase",
-    "PullRequestMinimalPropBasePropRepo",
-    "PullRequestMinimalPropHead",
-    "PullRequestMinimalPropHeadPropRepo",
-)
+__all__ = ("RepositoryRuleTagNamePatternPropParameters",)

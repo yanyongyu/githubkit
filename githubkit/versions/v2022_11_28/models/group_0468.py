@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -18,39 +18,35 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0467 import ProjectsV2StatusUpdate
 
+class CodespaceExportDetails(GitHubModel):
+    """Fetches information about an export of a codespace.
 
-class ProjectsV2(GitHubModel):
-    """Projects v2 Project
-
-    A projects v2 project
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
     """
 
-    id: float = Field()
-    node_id: str = Field()
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    title: str = Field()
-    description: Union[str, None] = Field()
-    public: bool = Field()
-    closed_at: Union[datetime, None] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    number: int = Field()
-    short_description: Union[str, None] = Field()
-    deleted_at: Union[datetime, None] = Field()
-    deleted_by: Union[None, SimpleUser] = Field()
-    state: Missing[Literal["open", "closed"]] = Field(default=UNSET)
-    latest_status_update: Missing[Union[None, ProjectsV2StatusUpdate]] = Field(
-        default=UNSET
+    state: Missing[Union[str, None]] = Field(
+        default=UNSET, description="State of the latest export"
     )
-    is_template: Missing[bool] = Field(
-        default=UNSET, description="Whether this project is a template"
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET, description="Completion time of the last export operation"
+    )
+    branch: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Name of the exported branch"
+    )
+    sha: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Git commit SHA of the exported branch"
+    )
+    id: Missing[str] = Field(default=UNSET, description="Id for the export details")
+    export_url: Missing[str] = Field(
+        default=UNSET, description="Url for fetching export details"
+    )
+    html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Web url for the exported branch"
     )
 
 
-model_rebuild(ProjectsV2)
+model_rebuild(CodespaceExportDetails)
 
-__all__ = ("ProjectsV2",)
+__all__ = ("CodespaceExportDetails",)

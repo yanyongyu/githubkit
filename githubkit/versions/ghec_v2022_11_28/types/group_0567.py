@@ -9,264 +9,555 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
 
 
-class WebhookCheckSuiteRerequestedType(TypedDict):
-    """check_suite rerequested event"""
+class RepositoryWebhooksType(TypedDict):
+    """Repository
 
-    action: Literal["rerequested"]
-    check_suite: WebhookCheckSuiteRerequestedPropCheckSuiteType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookCheckSuiteRerequestedPropCheckSuiteType(TypedDict):
-    """WebhookCheckSuiteRerequestedPropCheckSuite
-
-    The [check_suite](https://docs.github.com/enterprise-
-    cloud@latest//rest/checks/suites#get-a-check-suite).
+    The repository on GitHub where the event occurred. Webhook payloads contain the
+    `repository` property
+    when the event occurs from activity in a repository.
     """
 
-    after: Union[str, None]
-    app: WebhookCheckSuiteRerequestedPropCheckSuitePropAppType
-    before: Union[str, None]
-    check_runs_url: str
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "timed_out",
-            "action_required",
-            "stale",
-        ],
-    ]
-    created_at: datetime
-    head_branch: Union[str, None]
-    head_commit: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitType
-    head_sha: str
     id: int
-    latest_check_runs_count: int
     node_id: str
-    pull_requests: list[
-        WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsType
-    ]
-    rerequestable: NotRequired[bool]
-    runs_rerequestable: NotRequired[bool]
-    status: Union[None, Literal["requested", "in_progress", "completed", "queued"]]
-    updated_at: datetime
+    name: str
+    full_name: str
+    license_: Union[None, LicenseSimpleType]
+    organization: NotRequired[Union[None, SimpleUserType]]
+    forks: int
+    permissions: NotRequired[RepositoryWebhooksPropPermissionsType]
+    owner: SimpleUserType
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
     url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: str
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    ssh_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    clone_url: str
+    mirror_url: Union[str, None]
+    hooks_url: str
+    svn_url: str
+    homepage: Union[str, None]
+    language: Union[str, None]
+    forks_count: int
+    stargazers_count: int
+    watchers_count: int
+    size: int
+    default_branch: str
+    open_issues_count: int
+    is_template: NotRequired[bool]
+    topics: NotRequired[list[str]]
+    custom_properties: NotRequired[RepositoryWebhooksPropCustomPropertiesType]
+    has_issues: bool
+    has_projects: bool
+    has_wiki: bool
+    has_pages: bool
+    has_downloads: bool
+    has_discussions: NotRequired[bool]
+    has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
+    archived: bool
+    disabled: bool
+    visibility: NotRequired[str]
+    pushed_at: Union[_dt.datetime, None]
+    created_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    allow_rebase_merge: NotRequired[bool]
+    template_repository: NotRequired[
+        Union[RepositoryWebhooksPropTemplateRepositoryType, None]
+    ]
+    temp_clone_token: NotRequired[Union[str, None]]
+    allow_squash_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    allow_merge_commit: NotRequired[bool]
+    allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    subscribers_count: NotRequired[int]
+    network_count: NotRequired[int]
+    open_issues: int
+    watchers: int
+    master_branch: NotRequired[str]
+    starred_at: NotRequired[str]
+    anonymous_access_enabled: NotRequired[bool]
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropAppType(TypedDict):
-    """App
+class RepositoryWebhooksTypeForResponse(TypedDict):
+    """Repository
 
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
+    The repository on GitHub where the event occurred. Webhook payloads contain the
+    `repository` property
+    when the event occurs from activity in a repository.
     """
 
-    created_at: Union[datetime, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    client_id: NotRequired[Union[str, None]]
-    name: str
+    id: int
     node_id: str
-    owner: Union[WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerType, None]
-    permissions: NotRequired[
-        WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsType
+    name: str
+    full_name: str
+    license_: Union[None, LicenseSimpleTypeForResponse]
+    organization: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    forks: int
+    permissions: NotRequired[RepositoryWebhooksPropPermissionsTypeForResponse]
+    owner: SimpleUserTypeForResponse
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: str
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    ssh_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    clone_url: str
+    mirror_url: Union[str, None]
+    hooks_url: str
+    svn_url: str
+    homepage: Union[str, None]
+    language: Union[str, None]
+    forks_count: int
+    stargazers_count: int
+    watchers_count: int
+    size: int
+    default_branch: str
+    open_issues_count: int
+    is_template: NotRequired[bool]
+    topics: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        RepositoryWebhooksPropCustomPropertiesTypeForResponse
     ]
-    slug: NotRequired[str]
-    updated_at: Union[datetime, None]
+    has_issues: bool
+    has_projects: bool
+    has_wiki: bool
+    has_pages: bool
+    has_downloads: bool
+    has_discussions: NotRequired[bool]
+    has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
+    archived: bool
+    disabled: bool
+    visibility: NotRequired[str]
+    pushed_at: Union[str, None]
+    created_at: Union[str, None]
+    updated_at: Union[str, None]
+    allow_rebase_merge: NotRequired[bool]
+    template_repository: NotRequired[
+        Union[RepositoryWebhooksPropTemplateRepositoryTypeForResponse, None]
+    ]
+    temp_clone_token: NotRequired[Union[str, None]]
+    allow_squash_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    allow_merge_commit: NotRequired[bool]
+    allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    subscribers_count: NotRequired[int]
+    network_count: NotRequired[int]
+    open_issues: int
+    watchers: int
+    master_branch: NotRequired[str]
+    starred_at: NotRequired[str]
+    anonymous_access_enabled: NotRequired[bool]
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerType(TypedDict):
-    """User"""
+class RepositoryWebhooksPropPermissionsType(TypedDict):
+    """RepositoryWebhooksPropPermissions"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
+    admin: bool
+    pull: bool
+    triage: NotRequired[bool]
+    push: bool
+    maintain: NotRequired[bool]
+
+
+class RepositoryWebhooksPropPermissionsTypeForResponse(TypedDict):
+    """RepositoryWebhooksPropPermissions"""
+
+    admin: bool
+    pull: bool
+    triage: NotRequired[bool]
+    push: bool
+    maintain: NotRequired[bool]
+
+
+RepositoryWebhooksPropCustomPropertiesType: TypeAlias = dict[str, Any]
+"""RepositoryWebhooksPropCustomProperties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values.
+"""
+
+
+RepositoryWebhooksPropCustomPropertiesTypeForResponse: TypeAlias = dict[str, Any]
+"""RepositoryWebhooksPropCustomProperties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values.
+"""
+
+
+class RepositoryWebhooksPropTemplateRepositoryType(TypedDict):
+    """RepositoryWebhooksPropTemplateRepository"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+    owner: NotRequired[RepositoryWebhooksPropTemplateRepositoryPropOwnerType]
+    private: NotRequired[bool]
+    html_url: NotRequired[str]
+    description: NotRequired[str]
+    fork: NotRequired[bool]
+    url: NotRequired[str]
+    archive_url: NotRequired[str]
+    assignees_url: NotRequired[str]
+    blobs_url: NotRequired[str]
+    branches_url: NotRequired[str]
+    collaborators_url: NotRequired[str]
+    comments_url: NotRequired[str]
+    commits_url: NotRequired[str]
+    compare_url: NotRequired[str]
+    contents_url: NotRequired[str]
+    contributors_url: NotRequired[str]
+    deployments_url: NotRequired[str]
+    downloads_url: NotRequired[str]
     events_url: NotRequired[str]
+    forks_url: NotRequired[str]
+    git_commits_url: NotRequired[str]
+    git_refs_url: NotRequired[str]
+    git_tags_url: NotRequired[str]
+    git_url: NotRequired[str]
+    issue_comment_url: NotRequired[str]
+    issue_events_url: NotRequired[str]
+    issues_url: NotRequired[str]
+    keys_url: NotRequired[str]
+    labels_url: NotRequired[str]
+    languages_url: NotRequired[str]
+    merges_url: NotRequired[str]
+    milestones_url: NotRequired[str]
+    notifications_url: NotRequired[str]
+    pulls_url: NotRequired[str]
+    releases_url: NotRequired[str]
+    ssh_url: NotRequired[str]
+    stargazers_url: NotRequired[str]
+    statuses_url: NotRequired[str]
+    subscribers_url: NotRequired[str]
+    subscription_url: NotRequired[str]
+    tags_url: NotRequired[str]
+    teams_url: NotRequired[str]
+    trees_url: NotRequired[str]
+    clone_url: NotRequired[str]
+    mirror_url: NotRequired[str]
+    hooks_url: NotRequired[str]
+    svn_url: NotRequired[str]
+    homepage: NotRequired[str]
+    language: NotRequired[str]
+    forks_count: NotRequired[int]
+    stargazers_count: NotRequired[int]
+    watchers_count: NotRequired[int]
+    size: NotRequired[int]
+    default_branch: NotRequired[str]
+    open_issues_count: NotRequired[int]
+    is_template: NotRequired[bool]
+    topics: NotRequired[list[str]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_pages: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    archived: NotRequired[bool]
+    disabled: NotRequired[bool]
+    visibility: NotRequired[str]
+    pushed_at: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    permissions: NotRequired[
+        RepositoryWebhooksPropTemplateRepositoryPropPermissionsType
+    ]
+    allow_rebase_merge: NotRequired[bool]
+    temp_clone_token: NotRequired[Union[str, None]]
+    allow_squash_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    allow_merge_commit: NotRequired[bool]
+    subscribers_count: NotRequired[int]
+    network_count: NotRequired[int]
+
+
+class RepositoryWebhooksPropTemplateRepositoryTypeForResponse(TypedDict):
+    """RepositoryWebhooksPropTemplateRepository"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+    owner: NotRequired[RepositoryWebhooksPropTemplateRepositoryPropOwnerTypeForResponse]
+    private: NotRequired[bool]
+    html_url: NotRequired[str]
+    description: NotRequired[str]
+    fork: NotRequired[bool]
+    url: NotRequired[str]
+    archive_url: NotRequired[str]
+    assignees_url: NotRequired[str]
+    blobs_url: NotRequired[str]
+    branches_url: NotRequired[str]
+    collaborators_url: NotRequired[str]
+    comments_url: NotRequired[str]
+    commits_url: NotRequired[str]
+    compare_url: NotRequired[str]
+    contents_url: NotRequired[str]
+    contributors_url: NotRequired[str]
+    deployments_url: NotRequired[str]
+    downloads_url: NotRequired[str]
+    events_url: NotRequired[str]
+    forks_url: NotRequired[str]
+    git_commits_url: NotRequired[str]
+    git_refs_url: NotRequired[str]
+    git_tags_url: NotRequired[str]
+    git_url: NotRequired[str]
+    issue_comment_url: NotRequired[str]
+    issue_events_url: NotRequired[str]
+    issues_url: NotRequired[str]
+    keys_url: NotRequired[str]
+    labels_url: NotRequired[str]
+    languages_url: NotRequired[str]
+    merges_url: NotRequired[str]
+    milestones_url: NotRequired[str]
+    notifications_url: NotRequired[str]
+    pulls_url: NotRequired[str]
+    releases_url: NotRequired[str]
+    ssh_url: NotRequired[str]
+    stargazers_url: NotRequired[str]
+    statuses_url: NotRequired[str]
+    subscribers_url: NotRequired[str]
+    subscription_url: NotRequired[str]
+    tags_url: NotRequired[str]
+    teams_url: NotRequired[str]
+    trees_url: NotRequired[str]
+    clone_url: NotRequired[str]
+    mirror_url: NotRequired[str]
+    hooks_url: NotRequired[str]
+    svn_url: NotRequired[str]
+    homepage: NotRequired[str]
+    language: NotRequired[str]
+    forks_count: NotRequired[int]
+    stargazers_count: NotRequired[int]
+    watchers_count: NotRequired[int]
+    size: NotRequired[int]
+    default_branch: NotRequired[str]
+    open_issues_count: NotRequired[int]
+    is_template: NotRequired[bool]
+    topics: NotRequired[list[str]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_pages: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    archived: NotRequired[bool]
+    disabled: NotRequired[bool]
+    visibility: NotRequired[str]
+    pushed_at: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    permissions: NotRequired[
+        RepositoryWebhooksPropTemplateRepositoryPropPermissionsTypeForResponse
+    ]
+    allow_rebase_merge: NotRequired[bool]
+    temp_clone_token: NotRequired[Union[str, None]]
+    allow_squash_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    allow_merge_commit: NotRequired[bool]
+    subscribers_count: NotRequired[int]
+    network_count: NotRequired[int]
+
+
+class RepositoryWebhooksPropTemplateRepositoryPropOwnerType(TypedDict):
+    """RepositoryWebhooksPropTemplateRepositoryPropOwner"""
+
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
     followers_url: NotRequired[str]
     following_url: NotRequired[str]
     gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: NotRequired[str]
+    site_admin: NotRequired[bool]
+
+
+class RepositoryWebhooksPropTemplateRepositoryPropOwnerTypeForResponse(TypedDict):
+    """RepositoryWebhooksPropTemplateRepositoryPropOwner"""
+
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: NotRequired[str]
+    site_admin: NotRequired[bool]
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsType(TypedDict):
-    """WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions
+class RepositoryWebhooksPropTemplateRepositoryPropPermissionsType(TypedDict):
+    """RepositoryWebhooksPropTemplateRepositoryPropPermissions"""
 
-    The set of permissions for the GitHub app
-    """
-
-    actions: NotRequired[Literal["read", "write"]]
-    administration: NotRequired[Literal["read", "write"]]
-    checks: NotRequired[Literal["read", "write"]]
-    content_references: NotRequired[Literal["read", "write"]]
-    contents: NotRequired[Literal["read", "write"]]
-    deployments: NotRequired[Literal["read", "write"]]
-    discussions: NotRequired[Literal["read", "write"]]
-    emails: NotRequired[Literal["read", "write"]]
-    environments: NotRequired[Literal["read", "write"]]
-    issues: NotRequired[Literal["read", "write"]]
-    keys: NotRequired[Literal["read", "write"]]
-    members: NotRequired[Literal["read", "write"]]
-    metadata: NotRequired[Literal["read", "write"]]
-    organization_administration: NotRequired[Literal["read", "write"]]
-    organization_hooks: NotRequired[Literal["read", "write"]]
-    organization_packages: NotRequired[Literal["read", "write"]]
-    organization_plan: NotRequired[Literal["read", "write"]]
-    organization_projects: NotRequired[Literal["read", "write", "admin"]]
-    organization_secrets: NotRequired[Literal["read", "write"]]
-    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
-    organization_user_blocking: NotRequired[Literal["read", "write"]]
-    packages: NotRequired[Literal["read", "write"]]
-    pages: NotRequired[Literal["read", "write"]]
-    pull_requests: NotRequired[Literal["read", "write"]]
-    repository_hooks: NotRequired[Literal["read", "write"]]
-    repository_projects: NotRequired[Literal["read", "write", "admin"]]
-    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
-    secrets: NotRequired[Literal["read", "write"]]
-    security_events: NotRequired[Literal["read", "write"]]
-    security_scanning_alert: NotRequired[Literal["read", "write"]]
-    single_file: NotRequired[Literal["read", "write"]]
-    statuses: NotRequired[Literal["read", "write"]]
-    team_discussions: NotRequired[Literal["read", "write"]]
-    vulnerability_alerts: NotRequired[Literal["read", "write"]]
-    workflows: NotRequired[Literal["read", "write"]]
+    admin: NotRequired[bool]
+    maintain: NotRequired[bool]
+    push: NotRequired[bool]
+    triage: NotRequired[bool]
+    pull: NotRequired[bool]
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitType(TypedDict):
-    """SimpleCommit"""
+class RepositoryWebhooksPropTemplateRepositoryPropPermissionsTypeForResponse(TypedDict):
+    """RepositoryWebhooksPropTemplateRepositoryPropPermissions"""
 
-    author: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorType
-    committer: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterType
-    id: str
-    message: str
-    timestamp: str
-    tree_id: str
-
-
-class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorType(TypedDict):
-    """Committer
-
-    Metaproperties for Git author/committer information.
-    """
-
-    date: NotRequired[datetime]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
-
-
-class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterType(
-    TypedDict
-):
-    """Committer
-
-    Metaproperties for Git author/committer information.
-    """
-
-    date: NotRequired[datetime]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
-
-
-class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsType(TypedDict):
-    """Check Run Pull Request"""
-
-    base: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseType
-    head: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadType
-    id: int
-    number: int
-    url: str
-
-
-class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseType(
-    TypedDict
-):
-    """WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase"""
-
-    ref: str
-    repo: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType
-    sha: str
-
-
-class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType(
-    TypedDict
-):
-    """Repo Ref"""
-
-    id: int
-    name: str
-    url: str
-
-
-class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadType(
-    TypedDict
-):
-    """WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead"""
-
-    ref: str
-    repo: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType
-    sha: str
-
-
-class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType(
-    TypedDict
-):
-    """Repo Ref"""
-
-    id: int
-    name: str
-    url: str
+    admin: NotRequired[bool]
+    maintain: NotRequired[bool]
+    push: NotRequired[bool]
+    triage: NotRequired[bool]
+    pull: NotRequired[bool]
 
 
 __all__ = (
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsType",
-    "WebhookCheckSuiteRerequestedPropCheckSuiteType",
-    "WebhookCheckSuiteRerequestedType",
+    "RepositoryWebhooksPropCustomPropertiesType",
+    "RepositoryWebhooksPropCustomPropertiesTypeForResponse",
+    "RepositoryWebhooksPropPermissionsType",
+    "RepositoryWebhooksPropPermissionsTypeForResponse",
+    "RepositoryWebhooksPropTemplateRepositoryPropOwnerType",
+    "RepositoryWebhooksPropTemplateRepositoryPropOwnerTypeForResponse",
+    "RepositoryWebhooksPropTemplateRepositoryPropPermissionsType",
+    "RepositoryWebhooksPropTemplateRepositoryPropPermissionsTypeForResponse",
+    "RepositoryWebhooksPropTemplateRepositoryType",
+    "RepositoryWebhooksPropTemplateRepositoryTypeForResponse",
+    "RepositoryWebhooksType",
+    "RepositoryWebhooksTypeForResponse",
 )

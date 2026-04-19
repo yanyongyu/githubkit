@@ -12,102 +12,138 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0165 import ProjectsV2Type, ProjectsV2TypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
 
 
-class WebhookRepositoryTransferredType(TypedDict):
-    """repository transferred event"""
+class WebhookProjectsV2ProjectEditedType(TypedDict):
+    """Projects v2 Project Edited Event"""
 
-    action: Literal["transferred"]
-    changes: WebhookRepositoryTransferredPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["edited"]
+    changes: WebhookProjectsV2ProjectEditedPropChangesType
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2: ProjectsV2Type
     sender: SimpleUserType
 
 
-class WebhookRepositoryTransferredPropChangesType(TypedDict):
-    """WebhookRepositoryTransferredPropChanges"""
+class WebhookProjectsV2ProjectEditedTypeForResponse(TypedDict):
+    """Projects v2 Project Edited Event"""
 
-    owner: WebhookRepositoryTransferredPropChangesPropOwnerType
+    action: Literal["edited"]
+    changes: WebhookProjectsV2ProjectEditedPropChangesTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2: ProjectsV2TypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
-class WebhookRepositoryTransferredPropChangesPropOwnerType(TypedDict):
-    """WebhookRepositoryTransferredPropChangesPropOwner"""
+class WebhookProjectsV2ProjectEditedPropChangesType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChanges"""
 
-    from_: WebhookRepositoryTransferredPropChangesPropOwnerPropFromType
-
-
-class WebhookRepositoryTransferredPropChangesPropOwnerPropFromType(TypedDict):
-    """WebhookRepositoryTransferredPropChangesPropOwnerPropFrom"""
-
-    organization: NotRequired[
-        WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationType
+    description: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType
     ]
-    user: NotRequired[
-        Union[
-            WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserType, None
-        ]
+    public: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropPublicType]
+    short_description: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType
+    ]
+    title: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropTitleType]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChanges"""
+
+    description: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropDescriptionTypeForResponse
+    ]
+    public: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropPublicTypeForResponse
+    ]
+    short_description: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionTypeForResponse
+    ]
+    title: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropTitleTypeForResponse
     ]
 
 
-class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationType(
+class WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropDescriptionTypeForResponse(
     TypedDict
 ):
-    """Organization"""
+    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
 
-    avatar_url: str
-    description: Union[str, None]
-    events_url: str
-    hooks_url: str
-    html_url: NotRequired[str]
-    id: int
-    issues_url: str
-    login: str
-    members_url: str
-    node_id: str
-    public_members_url: str
-    repos_url: str
-    url: str
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
 
 
-class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserType(TypedDict):
-    """User"""
+class WebhookProjectsV2ProjectEditedPropChangesPropPublicType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    from_: NotRequired[bool]
+    to: NotRequired[bool]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropPublicTypeForResponse(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
+
+    from_: NotRequired[bool]
+    to: NotRequired[bool]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionTypeForResponse(
+    TypedDict
+):
+    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropTitleType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
+
+    from_: NotRequired[str]
+    to: NotRequired[str]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropTitleTypeForResponse(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
+
+    from_: NotRequired[str]
+    to: NotRequired[str]
 
 
 __all__ = (
-    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationType",
-    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserType",
-    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromType",
-    "WebhookRepositoryTransferredPropChangesPropOwnerType",
-    "WebhookRepositoryTransferredPropChangesType",
-    "WebhookRepositoryTransferredType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropDescriptionTypeForResponse",
+    "WebhookProjectsV2ProjectEditedPropChangesPropPublicType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropPublicTypeForResponse",
+    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionTypeForResponse",
+    "WebhookProjectsV2ProjectEditedPropChangesPropTitleType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropTitleTypeForResponse",
+    "WebhookProjectsV2ProjectEditedPropChangesType",
+    "WebhookProjectsV2ProjectEditedPropChangesTypeForResponse",
+    "WebhookProjectsV2ProjectEditedType",
+    "WebhookProjectsV2ProjectEditedTypeForResponse",
 )

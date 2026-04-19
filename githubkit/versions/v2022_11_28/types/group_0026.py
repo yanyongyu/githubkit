@@ -9,43 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0024 import SimpleClassroomRepositoryType
-
-
-class ClassroomAcceptedAssignmentType(TypedDict):
-    """Classroom Accepted Assignment
-
-    A GitHub Classroom accepted assignment
-    """
-
-    id: int
-    submitted: bool
-    passing: bool
-    commit_count: int
-    grade: str
-    students: list[SimpleClassroomUserType]
-    repository: SimpleClassroomRepositoryType
-    assignment: SimpleClassroomAssignmentType
+from .group_0025 import (
+    SimpleClassroomRepositoryType,
+    SimpleClassroomRepositoryTypeForResponse,
+)
 
 
-class SimpleClassroomUserType(TypedDict):
-    """Simple Classroom User
-
-    A GitHub user simplified for Classroom.
-    """
-
-    id: int
-    login: str
-    avatar_url: str
-    html_url: str
-
-
-class SimpleClassroomAssignmentType(TypedDict):
-    """Simple Classroom Assignment
+class ClassroomAssignmentType(TypedDict):
+    """Classroom Assignment
 
     A GitHub Classroom assignment
     """
@@ -59,19 +34,47 @@ class SimpleClassroomAssignmentType(TypedDict):
     slug: str
     students_are_repo_admins: bool
     feedback_pull_requests_enabled: bool
-    max_teams: NotRequired[Union[int, None]]
-    max_members: NotRequired[Union[int, None]]
-    editor: Union[str, None]
+    max_teams: Union[int, None]
+    max_members: Union[int, None]
+    editor: str
     accepted: int
-    submitted: NotRequired[int]
+    submitted: int
     passing: int
-    language: Union[str, None]
-    deadline: Union[datetime, None]
-    classroom: SimpleClassroomType
+    language: str
+    deadline: Union[_dt.datetime, None]
+    starter_code_repository: SimpleClassroomRepositoryType
+    classroom: ClassroomType
 
 
-class SimpleClassroomType(TypedDict):
-    """Simple Classroom
+class ClassroomAssignmentTypeForResponse(TypedDict):
+    """Classroom Assignment
+
+    A GitHub Classroom assignment
+    """
+
+    id: int
+    public_repo: bool
+    title: str
+    type: Literal["individual", "group"]
+    invite_link: str
+    invitations_enabled: bool
+    slug: str
+    students_are_repo_admins: bool
+    feedback_pull_requests_enabled: bool
+    max_teams: Union[int, None]
+    max_members: Union[int, None]
+    editor: str
+    accepted: int
+    submitted: int
+    passing: int
+    language: str
+    deadline: Union[str, None]
+    starter_code_repository: SimpleClassroomRepositoryTypeForResponse
+    classroom: ClassroomTypeForResponse
+
+
+class ClassroomType(TypedDict):
+    """Classroom
 
     A GitHub Classroom classroom
     """
@@ -79,12 +82,56 @@ class SimpleClassroomType(TypedDict):
     id: int
     name: str
     archived: bool
+    organization: SimpleClassroomOrganizationType
     url: str
 
 
+class ClassroomTypeForResponse(TypedDict):
+    """Classroom
+
+    A GitHub Classroom classroom
+    """
+
+    id: int
+    name: str
+    archived: bool
+    organization: SimpleClassroomOrganizationTypeForResponse
+    url: str
+
+
+class SimpleClassroomOrganizationType(TypedDict):
+    """Organization Simple for Classroom
+
+    A GitHub organization.
+    """
+
+    id: int
+    login: str
+    node_id: str
+    html_url: str
+    name: Union[str, None]
+    avatar_url: str
+
+
+class SimpleClassroomOrganizationTypeForResponse(TypedDict):
+    """Organization Simple for Classroom
+
+    A GitHub organization.
+    """
+
+    id: int
+    login: str
+    node_id: str
+    html_url: str
+    name: Union[str, None]
+    avatar_url: str
+
+
 __all__ = (
-    "ClassroomAcceptedAssignmentType",
-    "SimpleClassroomAssignmentType",
-    "SimpleClassroomType",
-    "SimpleClassroomUserType",
+    "ClassroomAssignmentType",
+    "ClassroomAssignmentTypeForResponse",
+    "ClassroomType",
+    "ClassroomTypeForResponse",
+    "SimpleClassroomOrganizationType",
+    "SimpleClassroomOrganizationTypeForResponse",
 )

@@ -9,41 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0235 import GitUser
-from .group_0236 import Verification
+
+class RulesetVersionPropActor(GitHubModel):
+    """RulesetVersionPropActor
+
+    The actor who updated the ruleset
+    """
+
+    id: Missing[int] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
 
 
-class CommitPropCommit(GitHubModel):
-    """CommitPropCommit"""
+model_rebuild(RulesetVersionPropActor)
 
-    url: str = Field()
-    author: Union[None, GitUser] = Field()
-    committer: Union[None, GitUser] = Field()
-    message: str = Field()
-    comment_count: int = Field()
-    tree: CommitPropCommitPropTree = Field()
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
-
-
-class CommitPropCommitPropTree(GitHubModel):
-    """CommitPropCommitPropTree"""
-
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(CommitPropCommit)
-model_rebuild(CommitPropCommitPropTree)
-
-__all__ = (
-    "CommitPropCommit",
-    "CommitPropCommitPropTree",
-)
+__all__ = ("RulesetVersionPropActor",)

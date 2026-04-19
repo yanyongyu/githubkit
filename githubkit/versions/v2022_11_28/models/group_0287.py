@@ -9,44 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ContentSymlink(GitHubModel):
-    """Symlink Content
+class Verification(GitHubModel):
+    """Verification"""
 
-    An object describing a symlink
-    """
-
-    type: Literal["symlink"] = Field()
-    target: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentSymlinkPropLinks = Field(alias="_links")
+    verified: bool = Field()
+    reason: str = Field()
+    payload: Union[str, None] = Field()
+    signature: Union[str, None] = Field()
+    verified_at: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class ContentSymlinkPropLinks(GitHubModel):
-    """ContentSymlinkPropLinks"""
+model_rebuild(Verification)
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(ContentSymlink)
-model_rebuild(ContentSymlinkPropLinks)
-
-__all__ = (
-    "ContentSymlink",
-    "ContentSymlinkPropLinks",
-)
+__all__ = ("Verification",)

@@ -9,33 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0235 import GitUserType
-from .group_0236 import VerificationType
+
+class RulesetVersionPropActorType(TypedDict):
+    """RulesetVersionPropActor
+
+    The actor who updated the ruleset
+    """
+
+    id: NotRequired[int]
+    type: NotRequired[str]
 
 
-class CommitPropCommitType(TypedDict):
-    """CommitPropCommit"""
+class RulesetVersionPropActorTypeForResponse(TypedDict):
+    """RulesetVersionPropActor
 
-    url: str
-    author: Union[None, GitUserType]
-    committer: Union[None, GitUserType]
-    message: str
-    comment_count: int
-    tree: CommitPropCommitPropTreeType
-    verification: NotRequired[VerificationType]
+    The actor who updated the ruleset
+    """
 
-
-class CommitPropCommitPropTreeType(TypedDict):
-    """CommitPropCommitPropTree"""
-
-    sha: str
-    url: str
+    id: NotRequired[int]
+    type: NotRequired[str]
 
 
 __all__ = (
-    "CommitPropCommitPropTreeType",
-    "CommitPropCommitType",
+    "RulesetVersionPropActorType",
+    "RulesetVersionPropActorTypeForResponse",
 )

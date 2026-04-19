@@ -9,22 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0135 import RepositoryRulesetConditionsPropRefNameType
-from .group_0139 import (
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
+
+class ApiInsightsRouteStatsItemsType(TypedDict):
+    """ApiInsightsRouteStatsItems"""
+
+    http_method: NotRequired[str]
+    api_route: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
+
+
+class ApiInsightsRouteStatsItemsTypeForResponse(TypedDict):
+    """ApiInsightsRouteStatsItems"""
+
+    http_method: NotRequired[str]
+    api_route: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
+
+
+__all__ = (
+    "ApiInsightsRouteStatsItemsType",
+    "ApiInsightsRouteStatsItemsTypeForResponse",
 )
-
-
-class OrgRulesetConditionsOneof1Type(TypedDict):
-    """repository_id_and_ref_name
-
-    Conditions to target repositories by id and refs by name
-    """
-
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
-
-
-__all__ = ("OrgRulesetConditionsOneof1Type",)

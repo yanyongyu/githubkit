@@ -9,29 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0282 import (
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse,
+)
 
 
-class StatusType(TypedDict):
-    """Status
+class ProtectedBranchPullRequestReviewType(TypedDict):
+    """Protected Branch Pull Request Review
 
-    The status of a commit.
+    Protected Branch Pull Request Review
     """
 
-    url: str
-    avatar_url: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
-    created_at: str
-    updated_at: str
-    creator: Union[None, SimpleUserType]
+    url: NotRequired[str]
+    dismissal_restrictions: NotRequired[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictionsType
+    ]
+    bypass_pull_request_allowances: NotRequired[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType
+    ]
+    dismiss_stale_reviews: bool
+    require_code_owner_reviews: bool
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
 
 
-__all__ = ("StatusType",)
+class ProtectedBranchPullRequestReviewTypeForResponse(TypedDict):
+    """Protected Branch Pull Request Review
+
+    Protected Branch Pull Request Review
+    """
+
+    url: NotRequired[str]
+    dismissal_restrictions: NotRequired[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse
+    ]
+    bypass_pull_request_allowances: NotRequired[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse
+    ]
+    dismiss_stale_reviews: bool
+    require_code_owner_reviews: bool
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
+
+
+__all__ = (
+    "ProtectedBranchPullRequestReviewType",
+    "ProtectedBranchPullRequestReviewTypeForResponse",
+)

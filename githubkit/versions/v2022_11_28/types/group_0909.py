@@ -9,42 +9,129 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0274 import DeploymentType, DeploymentTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class OrgsOrgAttestationsBulkListPostResponse200Type(TypedDict):
-    """OrgsOrgAttestationsBulkListPostResponse200"""
+class WebhookWorkflowJobInProgressType(TypedDict):
+    """workflow_job in_progress event"""
 
-    attestations_subject_digests: NotRequired[
-        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
-    ]
-    page_info: NotRequired[OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType]
-
-
-OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
-
-Mapping of subject digest to bundles.
-"""
+    action: Literal["in_progress"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    workflow_job: WebhookWorkflowJobInProgressPropWorkflowJobType
+    deployment: NotRequired[DeploymentType]
 
 
-class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
-    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
+class WebhookWorkflowJobInProgressTypeForResponse(TypedDict):
+    """workflow_job in_progress event"""
 
-    Information about the current page.
-    """
+    action: Literal["in_progress"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    workflow_job: WebhookWorkflowJobInProgressPropWorkflowJobTypeForResponse
+    deployment: NotRequired[DeploymentTypeForResponse]
 
-    has_next: NotRequired[bool]
-    has_previous: NotRequired[bool]
-    next_: NotRequired[str]
-    previous: NotRequired[str]
+
+class WebhookWorkflowJobInProgressPropWorkflowJobType(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJob"""
+
+    check_run_url: str
+    completed_at: Union[Union[str, None], None]
+    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None]
+    created_at: str
+    head_sha: str
+    html_url: str
+    id: int
+    labels: list[str]
+    name: str
+    node_id: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[Union[int, None], None]
+    runner_group_name: Union[Union[str, None], None]
+    runner_id: Union[Union[int, None], None]
+    runner_name: Union[Union[str, None], None]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed"]
+    head_branch: Union[Union[str, None], None]
+    workflow_name: Union[Union[str, None], None]
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType]
+    url: str
+
+
+class WebhookWorkflowJobInProgressPropWorkflowJobTypeForResponse(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJob"""
+
+    check_run_url: str
+    completed_at: Union[Union[str, None], None]
+    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None]
+    created_at: str
+    head_sha: str
+    html_url: str
+    id: int
+    labels: list[str]
+    name: str
+    node_id: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[Union[int, None], None]
+    runner_group_name: Union[Union[str, None], None]
+    runner_id: Union[Union[int, None], None]
+    runner_name: Union[Union[str, None], None]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed"]
+    head_branch: Union[Union[str, None], None]
+    workflow_name: Union[Union[str, None], None]
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsTypeForResponse]
+    url: str
+
+
+class WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps"""
+
+    completed_at: Union[Union[str, None], None]
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
+    name: str
+    number: int
+    started_at: Union[Union[str, None], None]
+    status: Literal["in_progress", "completed", "queued", "pending"]
+
+
+class WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsTypeForResponse(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps"""
+
+    completed_at: Union[Union[str, None], None]
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
+    name: str
+    number: int
+    started_at: Union[Union[str, None], None]
+    status: Literal["in_progress", "completed", "queued", "pending"]
 
 
 __all__ = (
-    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
-    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType",
-    "OrgsOrgAttestationsBulkListPostResponse200Type",
+    "WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType",
+    "WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsTypeForResponse",
+    "WebhookWorkflowJobInProgressPropWorkflowJobType",
+    "WebhookWorkflowJobInProgressPropWorkflowJobTypeForResponse",
+    "WebhookWorkflowJobInProgressType",
+    "WebhookWorkflowJobInProgressTypeForResponse",
 )

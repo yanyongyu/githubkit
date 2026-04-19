@@ -17,10 +17,10 @@ from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
 
     from githubkit import GitHubCore
     from githubkit.response import Response
@@ -33,10 +33,10 @@ if TYPE_CHECKING:
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
     )
     from ..types import (
-        DependencyGraphDiffItemsType,
-        DependencyGraphSpdxSbomType,
+        DependencyGraphDiffItemsTypeForResponse,
+        DependencyGraphSpdxSbomTypeForResponse,
         MetadataType,
-        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,
         SnapshotPropDetectorType,
         SnapshotPropJobType,
         SnapshotPropManifestsType,
@@ -68,7 +68,9 @@ class DependencyGraphClient:
         name: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsType]]:
+    ) -> Response[
+        list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsTypeForResponse]
+    ]:
         """dependency-graph/diff-range
 
         GET /repos/{owner}/{repo}/dependency-graph/compare/{basehead}
@@ -91,7 +93,7 @@ class DependencyGraphClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[DependencyGraphDiffItems],
@@ -110,7 +112,9 @@ class DependencyGraphClient:
         name: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsType]]:
+    ) -> Response[
+        list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsTypeForResponse]
+    ]:
         """dependency-graph/diff-range
 
         GET /repos/{owner}/{repo}/dependency-graph/compare/{basehead}
@@ -133,7 +137,7 @@ class DependencyGraphClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[DependencyGraphDiffItems],
@@ -150,7 +154,7 @@ class DependencyGraphClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomType]:
+    ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomTypeForResponse]:
         """dependency-graph/export-sbom
 
         GET /repos/{owner}/{repo}/dependency-graph/sbom
@@ -185,7 +189,7 @@ class DependencyGraphClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomType]:
+    ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomTypeForResponse]:
         """dependency-graph/export-sbom
 
         GET /repos/{owner}/{repo}/dependency-graph/sbom
@@ -224,7 +228,7 @@ class DependencyGraphClient:
         data: SnapshotType,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
-        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -243,10 +247,10 @@ class DependencyGraphClient:
         detector: SnapshotPropDetectorType,
         metadata: Missing[MetadataType] = UNSET,
         manifests: Missing[SnapshotPropManifestsType] = UNSET,
-        scanned: datetime,
+        scanned: _dt.datetime,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
-        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,
     ]: ...
 
     def create_repository_snapshot(
@@ -260,7 +264,7 @@ class DependencyGraphClient:
         **kwargs,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
-        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,
     ]:
         """dependency-graph/create-repository-snapshot
 
@@ -313,7 +317,7 @@ class DependencyGraphClient:
         data: SnapshotType,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
-        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -332,10 +336,10 @@ class DependencyGraphClient:
         detector: SnapshotPropDetectorType,
         metadata: Missing[MetadataType] = UNSET,
         manifests: Missing[SnapshotPropManifestsType] = UNSET,
-        scanned: datetime,
+        scanned: _dt.datetime,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
-        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,
     ]: ...
 
     async def async_create_repository_snapshot(
@@ -349,7 +353,7 @@ class DependencyGraphClient:
         **kwargs,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
-        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,
     ]:
         """dependency-graph/create-repository-snapshot
 

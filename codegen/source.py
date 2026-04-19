@@ -6,6 +6,7 @@ from typing import Any
 import httpx
 from jsonpointer import JsonPointer
 
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 REPO_COMMIT = os.getenv(
     "REPO_COMMIT",
     "https://api.github.com/repos/github/rest-api-description/commits/main",
@@ -29,6 +30,14 @@ class Source:
     def data(self) -> Any:
         return self.pointer.resolve(self.root)
 
+    @property
+    def parent(self) -> "Source":
+        parts = self.pointer.get_parts()
+        if not parts:
+            raise ValueError("Root source has no parent")
+        fragment = JsonPointer.from_parts(parts[:-1]).path
+        return self.resolve_ref(str(httpx.URL(fragment=fragment)))
+
     def get_root(self: "Source") -> "Source":
         return Source(uri=self.uri.copy_with(fragment=""), root=self.root)
 
@@ -45,6 +54,13 @@ class Source:
 
 
 @cache
+def _get_auth_header() -> dict[str, str]:
+    if GITHUB_TOKEN:
+        return {"Authorization": f"Bearer {GITHUB_TOKEN}"}
+    return {}
+
+
+@cache
 def get_content(source: str | httpx.URL) -> tuple[httpx.URL, dict]:
     if isinstance(source, str):
         sha_response = httpx.get(
@@ -52,6 +68,7 @@ def get_content(source: str | httpx.URL) -> tuple[httpx.URL, dict]:
             headers={
                 "User-Agent": "GitHubKit Codegen",
                 "Accept": "application/vnd.github.sha",
+                **_get_auth_header(),
             },
             timeout=httpx.Timeout(10.0),
         )
@@ -62,7 +79,9 @@ def get_content(source: str | httpx.URL) -> tuple[httpx.URL, dict]:
         source_link = source
 
     response = httpx.get(
-        source_link, headers={"User-Agent": "GitHubKit Codegen"}, follow_redirects=True
+        source_link,
+        headers={"User-Agent": "GitHubKit Codegen", **_get_auth_header()},
+        follow_redirects=True,
     )
     response.raise_for_status()
     uri = response.url

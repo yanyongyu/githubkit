@@ -9,30 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0309 import (
+    CodeScanningVariantAnalysisRepositoryType,
+    CodeScanningVariantAnalysisRepositoryTypeForResponse,
+)
 
 
-class GitRefType(TypedDict):
-    """Git Reference
+class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    Git references within a repository
-    """
+    repository: CodeScanningVariantAnalysisRepositoryType
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ]
+    result_count: NotRequired[int]
+    artifact_size_in_bytes: NotRequired[int]
+    failure_message: NotRequired[str]
 
-    ref: str
-    node_id: str
-    url: str
-    object_: GitRefPropObjectType
 
+class CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-class GitRefPropObjectType(TypedDict):
-    """GitRefPropObject"""
-
-    type: str
-    sha: str
-    url: str
+    repository: CodeScanningVariantAnalysisRepositoryTypeForResponse
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ]
+    result_count: NotRequired[int]
+    artifact_size_in_bytes: NotRequired[int]
+    failure_message: NotRequired[str]
 
 
 __all__ = (
-    "GitRefPropObjectType",
-    "GitRefType",
+    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",
+    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse",
 )

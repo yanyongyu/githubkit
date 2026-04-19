@@ -9,21 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ApiInsightsTimeStatsItems(GitHubModel):
-    """ApiInsightsTimeStatsItems"""
+class ActionsForkPrContributorApproval(GitHubModel):
+    """ActionsForkPrContributorApproval"""
 
-    timestamp: Missing[str] = Field(default=UNSET)
-    total_request_count: Missing[int] = Field(default=UNSET)
-    rate_limited_request_count: Missing[int] = Field(default=UNSET)
+    approval_policy: Literal[
+        "first_time_contributors_new_to_github",
+        "first_time_contributors",
+        "all_external_contributors",
+    ] = Field(
+        description="The policy that controls when fork PR workflows require approval from a maintainer."
+    )
 
 
-model_rebuild(ApiInsightsTimeStatsItems)
+model_rebuild(ActionsForkPrContributorApproval)
 
-__all__ = ("ApiInsightsTimeStatsItems",)
+__all__ = ("ActionsForkPrContributorApproval",)

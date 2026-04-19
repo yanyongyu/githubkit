@@ -13,12 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsRepositoryPermissionsType(TypedDict):
-    """ActionsRepositoryPermissions"""
+class RepositoryRuleBranchNamePatternPropParametersType(TypedDict):
+    """RepositoryRuleBranchNamePatternPropParameters"""
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
-__all__ = ("ActionsRepositoryPermissionsType",)
+class RepositoryRuleBranchNamePatternPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleBranchNamePatternPropParameters"""
+
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
+
+
+__all__ = (
+    "RepositoryRuleBranchNamePatternPropParametersType",
+    "RepositoryRuleBranchNamePatternPropParametersTypeForResponse",
+)

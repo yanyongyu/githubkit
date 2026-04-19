@@ -9,35 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class MilestoneType(TypedDict):
-    """Milestone
+class DependabotAlertDismissalRequestSimpleType(TypedDict):
+    """Dependabot alert dismissal request
 
-    A collection of related issues and pull requests.
+    Information about an active dismissal request for this Dependabot alert.
     """
 
-    url: str
-    html_url: str
-    labels_url: str
-    id: int
-    node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
-    description: Union[str, None]
-    creator: Union[None, SimpleUserType]
-    open_issues: int
-    closed_issues: int
-    created_at: datetime
-    updated_at: datetime
-    closed_at: Union[datetime, None]
-    due_on: Union[datetime, None]
+    id: NotRequired[int]
+    status: NotRequired[Literal["pending", "approved", "rejected", "cancelled"]]
+    requester: NotRequired[DependabotAlertDismissalRequestSimplePropRequesterType]
+    created_at: NotRequired[_dt.datetime]
+    url: NotRequired[str]
 
 
-__all__ = ("MilestoneType",)
+class DependabotAlertDismissalRequestSimpleTypeForResponse(TypedDict):
+    """Dependabot alert dismissal request
+
+    Information about an active dismissal request for this Dependabot alert.
+    """
+
+    id: NotRequired[int]
+    status: NotRequired[Literal["pending", "approved", "rejected", "cancelled"]]
+    requester: NotRequired[
+        DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse
+    ]
+    created_at: NotRequired[str]
+    url: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestSimplePropRequesterType(TypedDict):
+    """DependabotAlertDismissalRequestSimplePropRequester
+
+    The user who requested the dismissal.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse(TypedDict):
+    """DependabotAlertDismissalRequestSimplePropRequester
+
+    The user who requested the dismissal.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+
+
+__all__ = (
+    "DependabotAlertDismissalRequestSimplePropRequesterType",
+    "DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse",
+    "DependabotAlertDismissalRequestSimpleType",
+    "DependabotAlertDismissalRequestSimpleTypeForResponse",
+)

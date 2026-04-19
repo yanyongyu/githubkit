@@ -9,35 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrganizationUpdateIssueType(GitHubModel):
-    """OrganizationUpdateIssueType"""
+class ActionsGetDefaultWorkflowPermissions(GitHubModel):
+    """ActionsGetDefaultWorkflowPermissions"""
 
-    name: str = Field(description="Name of the issue type.")
-    is_enabled: bool = Field(
-        description="Whether or not the issue type is enabled at the organization level."
+    default_workflow_permissions: Literal["read", "write"] = Field(
+        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows."
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the issue type."
+    can_approve_pull_request_reviews: bool = Field(
+        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk."
     )
-    color: Missing[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ] = Field(default=UNSET, description="Color for the issue type.")
 
 
-model_rebuild(OrganizationUpdateIssueType)
+model_rebuild(ActionsGetDefaultWorkflowPermissions)
 
-__all__ = ("OrganizationUpdateIssueType",)
+__all__ = ("ActionsGetDefaultWorkflowPermissions",)

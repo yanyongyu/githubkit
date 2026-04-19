@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,50 +18,89 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0433 import EnterpriseWebhooks
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
-from .group_0444 import WebhooksUser
-from .group_0459 import WebhooksTeam
+from .group_0050 import IssueType
+from .group_0052 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0655 import (
+    WebhookIssueCommentPinnedPropIssueAllof0PropAssignee,
+    WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems,
+    WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest,
+)
+from .group_0661 import WebhookIssueCommentPinnedPropIssueMergedMilestone
+from .group_0662 import WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp
 
 
-class WebhookMembershipAdded(GitHubModel):
-    """membership added event"""
+class WebhookIssueCommentPinnedPropIssue(GitHubModel):
+    """WebhookIssueCommentPinnedPropIssue
 
-    action: Literal["added"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
+    The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) the comment
+    belongs to.
+    """
+
+    active_lock_reason: Union[
+        Literal["resolved", "off-topic", "too heated", "spam"], None
+    ] = Field()
+    assignee: Union[
+        Union[WebhookIssueCommentPinnedPropIssueAllof0PropAssignee, None], None
+    ] = Field(title="User")
+    assignees: list[WebhookIssueCommentPinnedPropIssueMergedAssignees] = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
     )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    body: Union[Union[str, None], None] = Field(description="Contents of the issue")
+    closed_at: Union[_dt.datetime, None] = Field()
+    comments: int = Field()
+    comments_url: str = Field()
+    created_at: _dt.datetime = Field()
+    draft: Missing[bool] = Field(default=UNSET)
+    events_url: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    labels: list[WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems] = Field()
+    labels_url: str = Field()
+    locked: bool = Field()
+    milestone: Union[WebhookIssueCommentPinnedPropIssueMergedMilestone, None] = Field()
+    node_id: str = Field()
+    number: int = Field()
+    performed_via_github_app: Missing[
+        Union[WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp, None]
+    ] = Field(default=UNSET)
+    pull_request: Missing[WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest] = (
+        Field(default=UNSET)
     )
-    member: Union[WebhooksUser, None] = Field(title="User")
-    organization: OrganizationSimpleWebhooks = Field(
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    reactions: WebhookIssueCommentPinnedPropIssueMergedReactions = Field()
+    repository_url: str = Field()
+    sub_issues_summary: Missing[SubIssuesSummary] = Field(
+        default=UNSET, title="Sub-issues Summary"
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
+        default=UNSET, title="Issue Dependencies Summary"
     )
-    scope: Literal["team"] = Field(
-        description="The scope of the membership. Currently, can only be `team`."
+    state: Literal["open", "closed"] = Field(
+        description="State of the issue; either 'open' or 'closed'"
     )
-    sender: Union[WebhookMembershipAddedPropSender, None] = Field(title="User")
-    team: WebhooksTeam = Field(
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
+    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    timeline_url: Missing[str] = Field(default=UNSET)
+    title: str = Field(description="Title of the issue")
+    type: Missing[Union[IssueType, None]] = Field(
+        default=UNSET, title="Issue Type", description="The type of issue."
     )
+    updated_at: _dt.datetime = Field()
+    url: str = Field(description="URL for the issue")
+    user: WebhookIssueCommentPinnedPropIssueMergedUser = Field()
 
 
-class WebhookMembershipAddedPropSender(GitHubModel):
-    """User"""
+class WebhookIssueCommentPinnedPropIssueMergedAssignees(GitHubModel):
+    """WebhookIssueCommentPinnedPropIssueMergedAssignees"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -81,15 +121,65 @@ class WebhookMembershipAddedPropSender(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
     url: Missing[str] = Field(default=UNSET)
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookMembershipAdded)
-model_rebuild(WebhookMembershipAddedPropSender)
+class WebhookIssueCommentPinnedPropIssueMergedReactions(GitHubModel):
+    """WebhookIssueCommentPinnedPropIssueMergedReactions"""
+
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
+    url: str = Field()
+
+
+class WebhookIssueCommentPinnedPropIssueMergedUser(GitHubModel):
+    """WebhookIssueCommentPinnedPropIssueMergedUser"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookIssueCommentPinnedPropIssue)
+model_rebuild(WebhookIssueCommentPinnedPropIssueMergedAssignees)
+model_rebuild(WebhookIssueCommentPinnedPropIssueMergedReactions)
+model_rebuild(WebhookIssueCommentPinnedPropIssueMergedUser)
 
 __all__ = (
-    "WebhookMembershipAdded",
-    "WebhookMembershipAddedPropSender",
+    "WebhookIssueCommentPinnedPropIssue",
+    "WebhookIssueCommentPinnedPropIssueMergedAssignees",
+    "WebhookIssueCommentPinnedPropIssueMergedReactions",
+    "WebhookIssueCommentPinnedPropIssueMergedUser",
 )

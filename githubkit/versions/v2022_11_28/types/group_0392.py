@@ -9,47 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class SecretScanningScanHistoryType(TypedDict):
-    """SecretScanningScanHistory"""
+class TimelineUnassignedIssueEventType(TypedDict):
+    """Timeline Unassigned Issue Event
 
-    incremental_scans: NotRequired[list[SecretScanningScanType]]
-    pattern_update_scans: NotRequired[list[SecretScanningScanType]]
-    backfill_scans: NotRequired[list[SecretScanningScanType]]
-    custom_pattern_backfill_scans: NotRequired[
-        list[SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType]
-    ]
-
-
-class SecretScanningScanType(TypedDict):
-    """SecretScanningScan
-
-    Information on a single scan performed by secret scanning on the repository
+    Timeline Unassigned Issue Event
     """
 
-    type: NotRequired[str]
-    status: NotRequired[str]
-    completed_at: NotRequired[Union[datetime, None]]
-    started_at: NotRequired[Union[datetime, None]]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: Literal["unassigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    assignee: SimpleUserType
 
 
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType(TypedDict):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
+class TimelineUnassignedIssueEventTypeForResponse(TypedDict):
+    """Timeline Unassigned Issue Event
 
-    type: NotRequired[str]
-    status: NotRequired[str]
-    completed_at: NotRequired[Union[datetime, None]]
-    started_at: NotRequired[Union[datetime, None]]
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
+    Timeline Unassigned Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["unassigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    assignee: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType",
-    "SecretScanningScanHistoryType",
-    "SecretScanningScanType",
+    "TimelineUnassignedIssueEventType",
+    "TimelineUnassignedIssueEventTypeForResponse",
 )

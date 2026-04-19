@@ -9,43 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0284 import BranchProtection
 
-class ContentDirectoryItems(GitHubModel):
-    """ContentDirectoryItems"""
 
-    type: Literal["dir", "file", "submodule", "symlink"] = Field()
-    size: int = Field()
+class ShortBranch(GitHubModel):
+    """Short Branch
+
+    Short Branch
+    """
+
     name: str = Field()
-    path: str = Field()
-    content: Missing[str] = Field(default=UNSET)
+    commit: ShortBranchPropCommit = Field()
+    protected: bool = Field()
+    protection: Missing[BranchProtection] = Field(
+        default=UNSET, title="Branch Protection", description="Branch Protection"
+    )
+    protection_url: Missing[str] = Field(default=UNSET)
+
+
+class ShortBranchPropCommit(GitHubModel):
+    """ShortBranchPropCommit"""
+
     sha: str = Field()
     url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentDirectoryItemsPropLinks = Field(alias="_links")
 
 
-class ContentDirectoryItemsPropLinks(GitHubModel):
-    """ContentDirectoryItemsPropLinks"""
-
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(ContentDirectoryItems)
-model_rebuild(ContentDirectoryItemsPropLinks)
+model_rebuild(ShortBranch)
+model_rebuild(ShortBranchPropCommit)
 
 __all__ = (
-    "ContentDirectoryItems",
-    "ContentDirectoryItemsPropLinks",
+    "ShortBranch",
+    "ShortBranchPropCommit",
 )

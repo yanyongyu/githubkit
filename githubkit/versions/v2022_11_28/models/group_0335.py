@@ -14,51 +14,39 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
 
-class ConvertedNoteToIssueIssueEvent(GitHubModel):
-    """Converted Note to Issue Issue Event
+class ContentSymlink(GitHubModel):
+    """Symlink Content
 
-    Converted Note to Issue Issue Event
+    An object describing a symlink
     """
 
-    id: int = Field()
-    node_id: str = Field()
+    type: Literal["symlink"] = Field()
+    target: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
     url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["converted_note_to_issue"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
-    )
-    project_card: Missing[ConvertedNoteToIssueIssueEventPropProjectCard] = Field(
-        default=UNSET
-    )
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentSymlinkPropLinks = Field(alias="_links")
 
 
-class ConvertedNoteToIssueIssueEventPropProjectCard(GitHubModel):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
+class ContentSymlinkPropLinks(GitHubModel):
+    """ContentSymlinkPropLinks"""
 
-    id: int = Field()
-    url: str = Field()
-    project_id: int = Field()
-    project_url: str = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
 
 
-model_rebuild(ConvertedNoteToIssueIssueEvent)
-model_rebuild(ConvertedNoteToIssueIssueEventPropProjectCard)
+model_rebuild(ContentSymlink)
+model_rebuild(ContentSymlinkPropLinks)
 
 __all__ = (
-    "ConvertedNoteToIssueIssueEvent",
-    "ConvertedNoteToIssueIssueEventPropProjectCard",
+    "ContentSymlink",
+    "ContentSymlinkPropLinks",
 )

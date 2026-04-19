@@ -9,23 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
-from .group_0751 import WebhookPingPropHookType
-
-
-class WebhookPingType(TypedDict):
-    """WebhookPing"""
-
-    hook: NotRequired[WebhookPingPropHookType]
-    hook_id: NotRequired[int]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
-    zen: NotRequired[str]
+from .group_0745 import (
+    WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+)
 
 
-__all__ = ("WebhookPingType",)
+class WebhookIssueCommentPinnedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssueCommentPinnedPropIssueMergedMilestone"""
+
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[
+        WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorType, None
+    ]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
+    url: str
+
+
+class WebhookIssueCommentPinnedPropIssueMergedMilestoneTypeForResponse(TypedDict):
+    """WebhookIssueCommentPinnedPropIssueMergedMilestone"""
+
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[
+        WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+        None,
+    ]
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
+
+
+__all__ = (
+    "WebhookIssueCommentPinnedPropIssueMergedMilestoneType",
+    "WebhookIssueCommentPinnedPropIssueMergedMilestoneTypeForResponse",
+)

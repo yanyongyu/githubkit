@@ -9,35 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0008 import EnterpriseType
-from .group_0009 import IntegrationPropPermissionsType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0523 import WebhooksRelease1Type, WebhooksRelease1TypeForResponse
 
 
-class AppManifestsCodeConversionsPostResponse201Type(TypedDict):
-    """AppManifestsCodeConversionsPostResponse201"""
+class WebhookReleaseUnpublishedType(TypedDict):
+    """release unpublished event"""
 
-    id: int
-    slug: NotRequired[str]
-    node_id: str
-    client_id: str
-    owner: Union[SimpleUserType, EnterpriseType]
-    name: str
-    description: Union[str, None]
-    external_url: str
-    html_url: str
-    created_at: datetime
-    updated_at: datetime
-    permissions: IntegrationPropPermissionsType
-    events: list[str]
-    installations_count: NotRequired[int]
-    client_secret: str
-    webhook_secret: Union[str, None]
-    pem: str
+    action: Literal["unpublished"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhooksRelease1Type
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("AppManifestsCodeConversionsPostResponse201Type",)
+class WebhookReleaseUnpublishedTypeForResponse(TypedDict):
+    """release unpublished event"""
+
+    action: Literal["unpublished"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    release: WebhooksRelease1TypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "WebhookReleaseUnpublishedType",
+    "WebhookReleaseUnpublishedTypeForResponse",
+)

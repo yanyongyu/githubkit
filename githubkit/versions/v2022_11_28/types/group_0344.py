@@ -9,29 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
+MetadataType: TypeAlias = dict[str, Any]
+"""metadata
 
-
-class StateChangeIssueEventType(TypedDict):
-    """State Change Issue Event
-
-    State Change Issue Event
-    """
-
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    state_reason: NotRequired[Union[str, None]]
+User-defined metadata to store domain-specific information limited to 8 keys
+with scalar values.
+"""
 
 
-__all__ = ("StateChangeIssueEventType",)
+MetadataTypeForResponse: TypeAlias = dict[str, Any]
+"""metadata
+
+User-defined metadata to store domain-specific information limited to 8 keys
+with scalar values.
+"""
+
+
+__all__ = (
+    "MetadataType",
+    "MetadataTypeForResponse",
+)

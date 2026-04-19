@@ -9,53 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class PackageVersionType(TypedDict):
-    """Package Version
+class ActionsPublicKeyType(TypedDict):
+    """ActionsPublicKey
 
-    A version of a software package
+    The public key used for setting Actions Secrets.
     """
 
-    id: int
-    name: str
-    url: str
-    package_html_url: str
-    html_url: NotRequired[str]
-    license_: NotRequired[str]
-    description: NotRequired[str]
-    created_at: datetime
-    updated_at: datetime
-    deleted_at: NotRequired[datetime]
-    metadata: NotRequired[PackageVersionPropMetadataType]
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-class PackageVersionPropMetadataType(TypedDict):
-    """Package Version Metadata"""
+class ActionsPublicKeyTypeForResponse(TypedDict):
+    """ActionsPublicKey
 
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    container: NotRequired[PackageVersionPropMetadataPropContainerType]
-    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
+    The public key used for setting Actions Secrets.
+    """
 
-
-class PackageVersionPropMetadataPropContainerType(TypedDict):
-    """Container Metadata"""
-
-    tags: list[str]
-
-
-class PackageVersionPropMetadataPropDockerType(TypedDict):
-    """Docker Metadata"""
-
-    tag: NotRequired[list[str]]
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
 __all__ = (
-    "PackageVersionPropMetadataPropContainerType",
-    "PackageVersionPropMetadataPropDockerType",
-    "PackageVersionPropMetadataType",
-    "PackageVersionType",
+    "ActionsPublicKeyType",
+    "ActionsPublicKeyTypeForResponse",
 )

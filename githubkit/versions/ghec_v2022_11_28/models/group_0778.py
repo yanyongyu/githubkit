@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -17,55 +18,37 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0495 import SimpleInstallation
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0533 import ProjectsV2Item
-
-
-class WebhookProjectsV2ItemReordered(GitHubModel):
-    """Projects v2 Item Reordered Event"""
-
-    action: Literal["reordered"] = Field()
-    changes: WebhookProjectsV2ItemReorderedPropChanges = Field()
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: OrganizationSimpleWebhooks = Field(
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    projects_v2_item: ProjectsV2Item = Field(
-        title="Projects v2 Item", description="An item belonging to a project"
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-
-
-class WebhookProjectsV2ItemReorderedPropChanges(GitHubModel):
-    """WebhookProjectsV2ItemReorderedPropChanges"""
-
-    previous_projects_v2_item_node_id: Missing[
-        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId
-    ] = Field(default=UNSET)
-
-
-class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId(
-    GitHubModel
-):
-    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(WebhookProjectsV2ItemReordered)
-model_rebuild(WebhookProjectsV2ItemReorderedPropChanges)
-model_rebuild(WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId)
-
-__all__ = (
-    "WebhookProjectsV2ItemReordered",
-    "WebhookProjectsV2ItemReorderedPropChanges",
-    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId",
+from .group_0773 import (
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
 )
+
+
+class WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp(GitHubModel):
+    """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
+
+    created_at: Union[_dt.datetime, None] = Field()
+    description: Union[str, None] = Field()
+    events: Missing[list[str]] = Field(
+        default=UNSET, description="The list of events for the GitHub app"
+    )
+    external_url: Union[str, None] = Field()
+    html_url: str = Field()
+    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
+    name: str = Field(description="The name of the GitHub app")
+    node_id: str = Field()
+    owner: Union[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
+    ] = Field(title="User")
+    permissions: Missing[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
+    slug: Missing[str] = Field(
+        default=UNSET, description="The slug name of the GitHub app"
+    )
+    updated_at: Union[_dt.datetime, None] = Field()
+
+
+model_rebuild(WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp)
+
+__all__ = ("WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp",)

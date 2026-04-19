@@ -9,48 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksMarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase"""
+class SearchResultTextMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItems"""
 
-    account: WebhooksMarketplacePurchasePropAccountType
-    billing_cycle: str
-    free_trial_ends_on: Union[str, None]
-    next_billing_date: Union[str, None]
-    on_free_trial: bool
-    plan: WebhooksMarketplacePurchasePropPlanType
-    unit_count: int
+    object_url: NotRequired[str]
+    object_type: NotRequired[Union[str, None]]
+    property_: NotRequired[str]
+    fragment: NotRequired[str]
+    matches: NotRequired[list[SearchResultTextMatchesItemsPropMatchesItemsType]]
 
 
-class WebhooksMarketplacePurchasePropAccountType(TypedDict):
-    """WebhooksMarketplacePurchasePropAccount"""
+class SearchResultTextMatchesItemsTypeForResponse(TypedDict):
+    """SearchResultTextMatchesItems"""
 
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
+    object_url: NotRequired[str]
+    object_type: NotRequired[Union[str, None]]
+    property_: NotRequired[str]
+    fragment: NotRequired[str]
+    matches: NotRequired[
+        list[SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse]
+    ]
 
 
-class WebhooksMarketplacePurchasePropPlanType(TypedDict):
-    """WebhooksMarketplacePurchasePropPlan"""
+class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
 
-    bullets: list[Union[str, None]]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    text: NotRequired[str]
+    indices: NotRequired[list[int]]
+
+
+class SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse(TypedDict):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
+
+    text: NotRequired[str]
+    indices: NotRequired[list[int]]
 
 
 __all__ = (
-    "WebhooksMarketplacePurchasePropAccountType",
-    "WebhooksMarketplacePurchasePropPlanType",
-    "WebhooksMarketplacePurchaseType",
+    "SearchResultTextMatchesItemsPropMatchesItemsType",
+    "SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse",
+    "SearchResultTextMatchesItemsType",
+    "SearchResultTextMatchesItemsTypeForResponse",
 )

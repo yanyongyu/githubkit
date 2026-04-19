@@ -17,10 +17,10 @@ from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
     from typing import Literal, Union
 
     from githubkit import GitHubCore
@@ -43,22 +43,22 @@ if TYPE_CHECKING:
         ThreadSubscription,
     )
     from ..types import (
-        EventType,
-        FeedType,
-        MinimalRepositoryType,
+        EventTypeForResponse,
+        FeedTypeForResponse,
+        MinimalRepositoryTypeForResponse,
         NotificationsPutBodyType,
-        NotificationsPutResponse202Type,
+        NotificationsPutResponse202TypeForResponse,
         NotificationsThreadsThreadIdSubscriptionPutBodyType,
-        RepositorySubscriptionType,
-        RepositoryType,
+        RepositorySubscriptionTypeForResponse,
+        RepositoryTypeForResponse,
         ReposOwnerRepoNotificationsPutBodyType,
-        ReposOwnerRepoNotificationsPutResponse202Type,
+        ReposOwnerRepoNotificationsPutResponse202TypeForResponse,
         ReposOwnerRepoSubscriptionPutBodyType,
-        SimpleUserType,
-        StargazerType,
-        StarredRepositoryType,
-        ThreadSubscriptionType,
-        ThreadType,
+        SimpleUserTypeForResponse,
+        StargazerTypeForResponse,
+        StarredRepositoryTypeForResponse,
+        ThreadSubscriptionTypeForResponse,
+        ThreadTypeForResponse,
     )
 
 
@@ -84,7 +84,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-public-events
 
         GET /events
@@ -113,7 +113,7 @@ class ActivityClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -130,7 +130,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-public-events
 
         GET /events
@@ -159,7 +159,7 @@ class ActivityClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -174,7 +174,7 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Feed, FeedType]:
+    ) -> Response[Feed, FeedTypeForResponse]:
         """activity/get-feeds
 
         GET /feeds
@@ -216,7 +216,7 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Feed, FeedType]:
+    ) -> Response[Feed, FeedTypeForResponse]:
         """activity/get-feeds
 
         GET /feeds
@@ -262,7 +262,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-public-events-for-repo-network
 
         GET /networks/{owner}/{repo}/events
@@ -287,7 +287,7 @@ class ActivityClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -306,7 +306,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-public-events-for-repo-network
 
         GET /networks/{owner}/{repo}/events
@@ -331,7 +331,7 @@ class ActivityClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -346,13 +346,13 @@ class ActivityClient:
         *,
         all_: Missing[bool] = UNSET,
         participating: Missing[bool] = UNSET,
-        since: Missing[datetime] = UNSET,
-        before: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
+        before: Missing[_dt.datetime] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Thread], list[ThreadType]]:
+    ) -> Response[list[Thread], list[ThreadTypeForResponse]]:
         """activity/list-notifications-for-authenticated-user
 
         GET /notifications
@@ -380,7 +380,7 @@ class ActivityClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Thread],
@@ -396,13 +396,13 @@ class ActivityClient:
         *,
         all_: Missing[bool] = UNSET,
         participating: Missing[bool] = UNSET,
-        since: Missing[datetime] = UNSET,
-        before: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
+        before: Missing[_dt.datetime] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Thread], list[ThreadType]]:
+    ) -> Response[list[Thread], list[ThreadTypeForResponse]]:
         """activity/list-notifications-for-authenticated-user
 
         GET /notifications
@@ -430,7 +430,7 @@ class ActivityClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Thread],
@@ -448,7 +448,9 @@ class ActivityClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[NotificationsPutBodyType] = UNSET,
-    ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]: ...
+    ) -> Response[
+        NotificationsPutResponse202, NotificationsPutResponse202TypeForResponse
+    ]: ...
 
     @overload
     def mark_notifications_as_read(
@@ -457,9 +459,11 @@ class ActivityClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        last_read_at: Missing[datetime] = UNSET,
+        last_read_at: Missing[_dt.datetime] = UNSET,
         read: Missing[bool] = UNSET,
-    ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]: ...
+    ) -> Response[
+        NotificationsPutResponse202, NotificationsPutResponse202TypeForResponse
+    ]: ...
 
     def mark_notifications_as_read(
         self,
@@ -468,7 +472,9 @@ class ActivityClient:
         stream: bool = False,
         data: Missing[NotificationsPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]:
+    ) -> Response[
+        NotificationsPutResponse202, NotificationsPutResponse202TypeForResponse
+    ]:
         """activity/mark-notifications-as-read
 
         PUT /notifications
@@ -517,7 +523,9 @@ class ActivityClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[NotificationsPutBodyType] = UNSET,
-    ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]: ...
+    ) -> Response[
+        NotificationsPutResponse202, NotificationsPutResponse202TypeForResponse
+    ]: ...
 
     @overload
     async def async_mark_notifications_as_read(
@@ -526,9 +534,11 @@ class ActivityClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        last_read_at: Missing[datetime] = UNSET,
+        last_read_at: Missing[_dt.datetime] = UNSET,
         read: Missing[bool] = UNSET,
-    ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]: ...
+    ) -> Response[
+        NotificationsPutResponse202, NotificationsPutResponse202TypeForResponse
+    ]: ...
 
     async def async_mark_notifications_as_read(
         self,
@@ -537,7 +547,9 @@ class ActivityClient:
         stream: bool = False,
         data: Missing[NotificationsPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]:
+    ) -> Response[
+        NotificationsPutResponse202, NotificationsPutResponse202TypeForResponse
+    ]:
         """activity/mark-notifications-as-read
 
         PUT /notifications
@@ -585,7 +597,7 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Thread, ThreadType]:
+    ) -> Response[Thread, ThreadTypeForResponse]:
         """activity/get-thread
 
         GET /notifications/threads/{thread_id}
@@ -619,7 +631,7 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Thread, ThreadType]:
+    ) -> Response[Thread, ThreadTypeForResponse]:
         """activity/get-thread
 
         GET /notifications/threads/{thread_id}
@@ -771,7 +783,7 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
+    ) -> Response[ThreadSubscription, ThreadSubscriptionTypeForResponse]:
         """activity/get-thread-subscription-for-authenticated-user
 
         GET /notifications/threads/{thread_id}/subscription
@@ -807,7 +819,7 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
+    ) -> Response[ThreadSubscription, ThreadSubscriptionTypeForResponse]:
         """activity/get-thread-subscription-for-authenticated-user
 
         GET /notifications/threads/{thread_id}/subscription
@@ -845,7 +857,7 @@ class ActivityClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
-    ) -> Response[ThreadSubscription, ThreadSubscriptionType]: ...
+    ) -> Response[ThreadSubscription, ThreadSubscriptionTypeForResponse]: ...
 
     @overload
     def set_thread_subscription(
@@ -856,7 +868,7 @@ class ActivityClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         ignored: Missing[bool] = UNSET,
-    ) -> Response[ThreadSubscription, ThreadSubscriptionType]: ...
+    ) -> Response[ThreadSubscription, ThreadSubscriptionTypeForResponse]: ...
 
     def set_thread_subscription(
         self,
@@ -866,7 +878,7 @@ class ActivityClient:
         stream: bool = False,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
+    ) -> Response[ThreadSubscription, ThreadSubscriptionTypeForResponse]:
         """activity/set-thread-subscription
 
         PUT /notifications/threads/{thread_id}/subscription
@@ -922,7 +934,7 @@ class ActivityClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
-    ) -> Response[ThreadSubscription, ThreadSubscriptionType]: ...
+    ) -> Response[ThreadSubscription, ThreadSubscriptionTypeForResponse]: ...
 
     @overload
     async def async_set_thread_subscription(
@@ -933,7 +945,7 @@ class ActivityClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         ignored: Missing[bool] = UNSET,
-    ) -> Response[ThreadSubscription, ThreadSubscriptionType]: ...
+    ) -> Response[ThreadSubscription, ThreadSubscriptionTypeForResponse]: ...
 
     async def async_set_thread_subscription(
         self,
@@ -943,7 +955,7 @@ class ActivityClient:
         stream: bool = False,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
+    ) -> Response[ThreadSubscription, ThreadSubscriptionTypeForResponse]:
         """activity/set-thread-subscription
 
         PUT /notifications/threads/{thread_id}/subscription
@@ -1065,7 +1077,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-public-org-events
 
         GET /orgs/{org}/events
@@ -1090,7 +1102,7 @@ class ActivityClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -1104,7 +1116,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-public-org-events
 
         GET /orgs/{org}/events
@@ -1129,7 +1141,7 @@ class ActivityClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -1144,7 +1156,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-repo-events
 
         GET /repos/{owner}/{repo}/events
@@ -1169,7 +1181,7 @@ class ActivityClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -1184,7 +1196,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-repo-events
 
         GET /repos/{owner}/{repo}/events
@@ -1209,7 +1221,7 @@ class ActivityClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -1222,13 +1234,13 @@ class ActivityClient:
         *,
         all_: Missing[bool] = UNSET,
         participating: Missing[bool] = UNSET,
-        since: Missing[datetime] = UNSET,
-        before: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
+        before: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Thread], list[ThreadType]]:
+    ) -> Response[list[Thread], list[ThreadTypeForResponse]]:
         """activity/list-repo-notifications-for-authenticated-user
 
         GET /repos/{owner}/{repo}/notifications
@@ -1256,7 +1268,7 @@ class ActivityClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Thread],
@@ -1269,13 +1281,13 @@ class ActivityClient:
         *,
         all_: Missing[bool] = UNSET,
         participating: Missing[bool] = UNSET,
-        since: Missing[datetime] = UNSET,
-        before: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
+        before: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Thread], list[ThreadType]]:
+    ) -> Response[list[Thread], list[ThreadTypeForResponse]]:
         """activity/list-repo-notifications-for-authenticated-user
 
         GET /repos/{owner}/{repo}/notifications
@@ -1303,7 +1315,7 @@ class ActivityClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Thread],
@@ -1320,7 +1332,7 @@ class ActivityClient:
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
     ) -> Response[
         ReposOwnerRepoNotificationsPutResponse202,
-        ReposOwnerRepoNotificationsPutResponse202Type,
+        ReposOwnerRepoNotificationsPutResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -1332,10 +1344,10 @@ class ActivityClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        last_read_at: Missing[datetime] = UNSET,
+        last_read_at: Missing[_dt.datetime] = UNSET,
     ) -> Response[
         ReposOwnerRepoNotificationsPutResponse202,
-        ReposOwnerRepoNotificationsPutResponse202Type,
+        ReposOwnerRepoNotificationsPutResponse202TypeForResponse,
     ]: ...
 
     def mark_repo_notifications_as_read(
@@ -1349,7 +1361,7 @@ class ActivityClient:
         **kwargs,
     ) -> Response[
         ReposOwnerRepoNotificationsPutResponse202,
-        ReposOwnerRepoNotificationsPutResponse202Type,
+        ReposOwnerRepoNotificationsPutResponse202TypeForResponse,
     ]:
         """activity/mark-repo-notifications-as-read
 
@@ -1398,7 +1410,7 @@ class ActivityClient:
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
     ) -> Response[
         ReposOwnerRepoNotificationsPutResponse202,
-        ReposOwnerRepoNotificationsPutResponse202Type,
+        ReposOwnerRepoNotificationsPutResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -1410,10 +1422,10 @@ class ActivityClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        last_read_at: Missing[datetime] = UNSET,
+        last_read_at: Missing[_dt.datetime] = UNSET,
     ) -> Response[
         ReposOwnerRepoNotificationsPutResponse202,
-        ReposOwnerRepoNotificationsPutResponse202Type,
+        ReposOwnerRepoNotificationsPutResponse202TypeForResponse,
     ]: ...
 
     async def async_mark_repo_notifications_as_read(
@@ -1427,7 +1439,7 @@ class ActivityClient:
         **kwargs,
     ) -> Response[
         ReposOwnerRepoNotificationsPutResponse202,
-        ReposOwnerRepoNotificationsPutResponse202Type,
+        ReposOwnerRepoNotificationsPutResponse202TypeForResponse,
     ]:
         """activity/mark-repo-notifications-as-read
 
@@ -1476,7 +1488,7 @@ class ActivityClient:
         stream: bool = False,
     ) -> Response[
         Union[list[SimpleUser], list[Stargazer]],
-        Union[list[SimpleUserType], list[StargazerType]],
+        Union[list[SimpleUserTypeForResponse], list[StargazerTypeForResponse]],
     ]:
         """activity/list-stargazers-for-repo
 
@@ -1507,7 +1519,7 @@ class ActivityClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=Union[list[SimpleUser], list[Stargazer]],
@@ -1527,7 +1539,7 @@ class ActivityClient:
         stream: bool = False,
     ) -> Response[
         Union[list[SimpleUser], list[Stargazer]],
-        Union[list[SimpleUserType], list[StargazerType]],
+        Union[list[SimpleUserTypeForResponse], list[StargazerTypeForResponse]],
     ]:
         """activity/list-stargazers-for-repo
 
@@ -1558,7 +1570,7 @@ class ActivityClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=Union[list[SimpleUser], list[Stargazer]],
@@ -1576,7 +1588,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """activity/list-watchers-for-repo
 
         GET /repos/{owner}/{repo}/subscribers
@@ -1600,7 +1612,7 @@ class ActivityClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -1615,7 +1627,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """activity/list-watchers-for-repo
 
         GET /repos/{owner}/{repo}/subscribers
@@ -1639,7 +1651,7 @@ class ActivityClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -1652,7 +1664,7 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
+    ) -> Response[RepositorySubscription, RepositorySubscriptionTypeForResponse]:
         """activity/get-repo-subscription
 
         GET /repos/{owner}/{repo}/subscription
@@ -1686,7 +1698,7 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
+    ) -> Response[RepositorySubscription, RepositorySubscriptionTypeForResponse]:
         """activity/get-repo-subscription
 
         GET /repos/{owner}/{repo}/subscription
@@ -1722,7 +1734,7 @@ class ActivityClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
-    ) -> Response[RepositorySubscription, RepositorySubscriptionType]: ...
+    ) -> Response[RepositorySubscription, RepositorySubscriptionTypeForResponse]: ...
 
     @overload
     def set_repo_subscription(
@@ -1735,7 +1747,7 @@ class ActivityClient:
         stream: bool = False,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
-    ) -> Response[RepositorySubscription, RepositorySubscriptionType]: ...
+    ) -> Response[RepositorySubscription, RepositorySubscriptionTypeForResponse]: ...
 
     def set_repo_subscription(
         self,
@@ -1746,7 +1758,7 @@ class ActivityClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
+    ) -> Response[RepositorySubscription, RepositorySubscriptionTypeForResponse]:
         """activity/set-repo-subscription
 
         PUT /repos/{owner}/{repo}/subscription
@@ -1789,7 +1801,7 @@ class ActivityClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
-    ) -> Response[RepositorySubscription, RepositorySubscriptionType]: ...
+    ) -> Response[RepositorySubscription, RepositorySubscriptionTypeForResponse]: ...
 
     @overload
     async def async_set_repo_subscription(
@@ -1802,7 +1814,7 @@ class ActivityClient:
         stream: bool = False,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
-    ) -> Response[RepositorySubscription, RepositorySubscriptionType]: ...
+    ) -> Response[RepositorySubscription, RepositorySubscriptionTypeForResponse]: ...
 
     async def async_set_repo_subscription(
         self,
@@ -1813,7 +1825,7 @@ class ActivityClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
+    ) -> Response[RepositorySubscription, RepositorySubscriptionTypeForResponse]:
         """activity/set-repo-subscription
 
         PUT /repos/{owner}/{repo}/subscription
@@ -1912,7 +1924,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Repository], list[RepositoryType]]:
+    ) -> Response[list[Repository], list[RepositoryTypeForResponse]]:
         """activity/list-repos-starred-by-authenticated-user
 
         GET /user/starred
@@ -1942,7 +1954,7 @@ class ActivityClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Repository],
@@ -1961,7 +1973,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Repository], list[RepositoryType]]:
+    ) -> Response[list[Repository], list[RepositoryTypeForResponse]]:
         """activity/list-repos-starred-by-authenticated-user
 
         GET /user/starred
@@ -1991,7 +2003,7 @@ class ActivityClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Repository],
@@ -2218,7 +2230,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """activity/list-watched-repos-for-authenticated-user
 
         GET /user/subscriptions
@@ -2242,7 +2254,7 @@ class ActivityClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MinimalRepository],
@@ -2259,7 +2271,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """activity/list-watched-repos-for-authenticated-user
 
         GET /user/subscriptions
@@ -2283,7 +2295,7 @@ class ActivityClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MinimalRepository],
@@ -2301,7 +2313,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-events-for-authenticated-user
 
         GET /users/{username}/events
@@ -2328,7 +2340,7 @@ class ActivityClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -2342,7 +2354,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-events-for-authenticated-user
 
         GET /users/{username}/events
@@ -2369,7 +2381,7 @@ class ActivityClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -2384,7 +2396,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-org-events-for-authenticated-user
 
         GET /users/{username}/events/orgs/{org}
@@ -2411,7 +2423,7 @@ class ActivityClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -2426,7 +2438,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-org-events-for-authenticated-user
 
         GET /users/{username}/events/orgs/{org}
@@ -2453,7 +2465,7 @@ class ActivityClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -2467,7 +2479,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-public-events-for-user
 
         GET /users/{username}/events/public
@@ -2492,7 +2504,7 @@ class ActivityClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -2506,7 +2518,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-public-events-for-user
 
         GET /users/{username}/events/public
@@ -2531,7 +2543,7 @@ class ActivityClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -2545,7 +2557,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-received-events-for-user
 
         GET /users/{username}/received_events
@@ -2573,7 +2585,7 @@ class ActivityClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -2587,7 +2599,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-received-events-for-user
 
         GET /users/{username}/received_events
@@ -2615,7 +2627,7 @@ class ActivityClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -2629,7 +2641,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-received-public-events-for-user
 
         GET /users/{username}/received_events/public
@@ -2654,7 +2666,7 @@ class ActivityClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -2668,7 +2680,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Event], list[EventType]]:
+    ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-received-public-events-for-user
 
         GET /users/{username}/received_events/public
@@ -2693,7 +2705,7 @@ class ActivityClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Event],
@@ -2711,7 +2723,7 @@ class ActivityClient:
         stream: bool = False,
     ) -> Response[
         Union[list[StarredRepository], list[Repository]],
-        Union[list[StarredRepositoryType], list[RepositoryType]],
+        Union[list[StarredRepositoryTypeForResponse], list[RepositoryTypeForResponse]],
     ]:
         """activity/list-repos-starred-by-user
 
@@ -2744,7 +2756,7 @@ class ActivityClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=Union[list[StarredRepository], list[Repository]],
@@ -2762,7 +2774,7 @@ class ActivityClient:
         stream: bool = False,
     ) -> Response[
         Union[list[StarredRepository], list[Repository]],
-        Union[list[StarredRepositoryType], list[RepositoryType]],
+        Union[list[StarredRepositoryTypeForResponse], list[RepositoryTypeForResponse]],
     ]:
         """activity/list-repos-starred-by-user
 
@@ -2795,7 +2807,7 @@ class ActivityClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=Union[list[StarredRepository], list[Repository]],
@@ -2809,7 +2821,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """activity/list-repos-watched-by-user
 
         GET /users/{username}/subscriptions
@@ -2833,7 +2845,7 @@ class ActivityClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MinimalRepository],
@@ -2847,7 +2859,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """activity/list-repos-watched-by-user
 
         GET /users/{username}/subscriptions
@@ -2871,7 +2883,7 @@ class ActivityClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MinimalRepository],

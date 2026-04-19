@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -20,6 +20,7 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0019 import LicenseSimple
+from .group_0021 import RepositoryPropCodeSearchIndexStatus, RepositoryPropPermissions
 
 
 class Repository(GitHubModel):
@@ -111,6 +112,13 @@ class Repository(GitHubModel):
     has_discussions: Missing[bool] = Field(
         default=UNSET, description="Whether discussions are enabled."
     )
+    has_pull_requests: Missing[bool] = Field(
+        default=UNSET, description="Whether pull requests are enabled."
+    )
+    pull_request_creation_policy: Missing[Literal["all", "collaborators_only"]] = Field(
+        default=UNSET,
+        description="The policy controlling who can create pull requests: all or collaborators_only.",
+    )
     archived: bool = Field(
         default=False, description="Whether the repository is archived."
     )
@@ -121,9 +129,9 @@ class Repository(GitHubModel):
         default=UNSET,
         description="The repository visibility: public, private, or internal.",
     )
-    pushed_at: Union[datetime, None] = Field()
-    created_at: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
+    pushed_at: Union[_dt.datetime, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
     allow_rebase_merge: Missing[bool] = Field(
         default=UNSET, description="Whether to allow rebase merges for pull requests."
     )
@@ -191,32 +199,6 @@ class Repository(GitHubModel):
     )
 
 
-class RepositoryPropPermissions(GitHubModel):
-    """RepositoryPropPermissions"""
-
-    admin: bool = Field()
-    pull: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-    push: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
-
-
-class RepositoryPropCodeSearchIndexStatus(GitHubModel):
-    """RepositoryPropCodeSearchIndexStatus
-
-    The status of the code search index for this repository
-    """
-
-    lexical_search_ok: Missing[bool] = Field(default=UNSET)
-    lexical_commit_sha: Missing[str] = Field(default=UNSET)
-
-
 model_rebuild(Repository)
-model_rebuild(RepositoryPropPermissions)
-model_rebuild(RepositoryPropCodeSearchIndexStatus)
 
-__all__ = (
-    "Repository",
-    "RepositoryPropCodeSearchIndexStatus",
-    "RepositoryPropPermissions",
-)
+__all__ = ("Repository",)

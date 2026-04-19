@@ -9,32 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
-from .group_0092 import TeamType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ReviewRequestRemovedIssueEventType(TypedDict):
-    """Review Request Removed Issue Event
+class StatusType(TypedDict):
+    """Status
 
-    Review Request Removed Issue Event
+    The status of a commit.
     """
 
+    url: str
+    avatar_url: Union[str, None]
     id: int
     node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["review_request_removed"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
+    state: str
+    description: Union[str, None]
+    target_url: Union[str, None]
+    context: str
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    review_requester: SimpleUserType
-    requested_team: NotRequired[TeamType]
-    requested_reviewer: NotRequired[SimpleUserType]
+    updated_at: str
+    creator: Union[None, SimpleUserType]
 
 
-__all__ = ("ReviewRequestRemovedIssueEventType",)
+class StatusTypeForResponse(TypedDict):
+    """Status
+
+    The status of a commit.
+    """
+
+    url: str
+    avatar_url: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    description: Union[str, None]
+    target_url: Union[str, None]
+    context: str
+    created_at: str
+    updated_at: str
+    creator: Union[None, SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "StatusType",
+    "StatusTypeForResponse",
+)

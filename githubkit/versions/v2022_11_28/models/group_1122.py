@@ -11,29 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200(GitHubModel):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    labels: Missing[
-        list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems]
-    ] = Field(min_length=1 if PYDANTIC_V2 else None, default=UNSET)
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems"""
-
-    name: str = Field()
+    pattern_config_version: Missing[str] = Field(
+        default=UNSET, description="The updated pattern configuration version."
+    )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems)
+model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchResponse200)
 
-__all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems",
-)
+__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",)

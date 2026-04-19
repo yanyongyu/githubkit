@@ -9,19 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class CustomDeploymentRuleAppType(TypedDict):
-    """Custom deployment protection rule app
+class CodeScanningAnalysisDeletionType(TypedDict):
+    """Analysis deletion
 
-    A GitHub App that is providing a custom deployment protection rule.
+    Successful deletion of a code scanning analysis
     """
 
-    id: int
-    slug: str
-    integration_url: str
-    node_id: str
+    next_analysis_url: Union[str, None]
+    confirm_delete_url: Union[str, None]
 
 
-__all__ = ("CustomDeploymentRuleAppType",)
+class CodeScanningAnalysisDeletionTypeForResponse(TypedDict):
+    """Analysis deletion
+
+    Successful deletion of a code scanning analysis
+    """
+
+    next_analysis_url: Union[str, None]
+    confirm_delete_url: Union[str, None]
+
+
+__all__ = (
+    "CodeScanningAnalysisDeletionType",
+    "CodeScanningAnalysisDeletionTypeForResponse",
+)

@@ -9,35 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0112 import RepositoryRulePullRequestPropParameters
+from .group_0423 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems
 
 
-class RepositoryRuleDetailedOneof7(GitHubModel):
-    """RepositoryRuleDetailedOneof7"""
+class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
-    type: Literal["pull_request"] = Field()
-    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+    id: int = Field()
+    node_id: str = Field()
+    prevent_self_review: Missing[bool] = Field(
         default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
+        description="Whether deployments to this environment can be approved by the user who created the deployment.",
     )
-    ruleset_source: Missing[str] = Field(
+    type: str = Field()
+    reviewers: Missing[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
+    ] = Field(
         default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
-    )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
+        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof7)
+model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1)
 
-__all__ = ("RepositoryRuleDetailedOneof7",)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1",)

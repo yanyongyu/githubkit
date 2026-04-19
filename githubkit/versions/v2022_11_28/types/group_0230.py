@@ -9,31 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0231 import (
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
-)
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ProtectedBranchPullRequestReviewType(TypedDict):
-    """Protected Branch Pull Request Review
+class RepositoryRuleCodeScanningPropParametersType(TypedDict):
+    """RepositoryRuleCodeScanningPropParameters"""
 
-    Protected Branch Pull Request Review
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolType]
+
+
+class RepositoryRuleCodeScanningPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCodeScanningPropParameters"""
+
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolTypeForResponse]
+
+
+class RepositoryRuleParamsCodeScanningToolType(TypedDict):
+    """CodeScanningTool
+
+    A tool that must provide code scanning results for this rule to pass.
     """
 
-    url: NotRequired[str]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictionsType
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
     ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType
-    ]
-    dismiss_stale_reviews: bool
-    require_code_owner_reviews: bool
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
+    tool: str
 
 
-__all__ = ("ProtectedBranchPullRequestReviewType",)
+class RepositoryRuleParamsCodeScanningToolTypeForResponse(TypedDict):
+    """CodeScanningTool
+
+    A tool that must provide code scanning results for this rule to pass.
+    """
+
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    ]
+    tool: str
+
+
+__all__ = (
+    "RepositoryRuleCodeScanningPropParametersType",
+    "RepositoryRuleCodeScanningPropParametersTypeForResponse",
+    "RepositoryRuleParamsCodeScanningToolType",
+    "RepositoryRuleParamsCodeScanningToolTypeForResponse",
+)

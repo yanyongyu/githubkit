@@ -9,72 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1052 import (
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput,
-)
 
-
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1(ExtraGitHubModel):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1"""
+class OrgsOrgCampaignsCampaignNumberPatchBody(GitHubModel):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
 
     name: Missing[str] = Field(
+        min_length=1,
+        max_length=50,
         default=UNSET,
-        description='The name of the check. For example, "code-coverage".',
+        description="The name of the campaign",
     )
-    details_url: Missing[str] = Field(
+    description: Missing[str] = Field(
+        min_length=1,
+        max_length=255,
         default=UNSET,
-        description="The URL of the integrator's site that has the full details of the check.",
+        description="A description for the campaign",
     )
-    external_id: Missing[str] = Field(
-        default=UNSET, description="A reference for the run on the integrator's system."
-    )
-    started_at: Missing[datetime] = Field(
+    managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
     )
-    status: Missing[Literal["queued", "in_progress"]] = Field(default=UNSET)
-    conclusion: Missing[
-        Literal[
-            "action_required",
-            "cancelled",
-            "failure",
-            "neutral",
-            "success",
-            "skipped",
-            "stale",
-            "timed_out",
-        ]
-    ] = Field(
+    team_managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. \n**Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this.",
+        description="The slugs of the teams to set as the campaign managers.",
     )
-    completed_at: Missing[datetime] = Field(
+    ends_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="The end date and time of the campaign, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
     )
-    output: Missing[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput] = Field(
-        default=UNSET,
-        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run.",
+    contact_link: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contact link of the campaign. Must be a URI."
     )
-    actions: Missing[
-        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems]
-    ] = Field(
-        max_length=3 if PYDANTIC_V2 else None,
+    state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET,
-        description='Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)."',
+        title="Campaign state",
+        description="Indicates whether a campaign is open or closed",
     )
 
 
-model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1)
+model_rebuild(OrgsOrgCampaignsCampaignNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1",)
+__all__ = ("OrgsOrgCampaignsCampaignNumberPatchBody",)

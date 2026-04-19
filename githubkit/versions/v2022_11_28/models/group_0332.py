@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -17,45 +17,67 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class ContentTree(GitHubModel):
+    """Content Tree
 
-class AddedToProjectIssueEvent(GitHubModel):
-    """Added to Project Issue Event
-
-    Added to Project Issue Event
+    Content Tree
     """
 
-    id: int = Field()
-    node_id: str = Field()
+    type: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    content: Missing[str] = Field(default=UNSET)
     url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["added_to_project"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    project_card: Missing[AddedToProjectIssueEventPropProjectCard] = Field(
-        default=UNSET
-    )
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    entries: Missing[list[ContentTreePropEntriesItems]] = Field(default=UNSET)
+    encoding: Missing[str] = Field(default=UNSET)
+    links: ContentTreePropLinks = Field(alias="_links")
 
 
-class AddedToProjectIssueEventPropProjectCard(GitHubModel):
-    """AddedToProjectIssueEventPropProjectCard"""
+class ContentTreePropLinks(GitHubModel):
+    """ContentTreePropLinks"""
 
-    id: int = Field()
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+class ContentTreePropEntriesItems(GitHubModel):
+    """ContentTreePropEntriesItems"""
+
+    type: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
     url: str = Field()
-    project_id: int = Field()
-    project_url: str = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentTreePropEntriesItemsPropLinks = Field(alias="_links")
 
 
-model_rebuild(AddedToProjectIssueEvent)
-model_rebuild(AddedToProjectIssueEventPropProjectCard)
+class ContentTreePropEntriesItemsPropLinks(GitHubModel):
+    """ContentTreePropEntriesItemsPropLinks"""
+
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(ContentTree)
+model_rebuild(ContentTreePropLinks)
+model_rebuild(ContentTreePropEntriesItems)
+model_rebuild(ContentTreePropEntriesItemsPropLinks)
 
 __all__ = (
-    "AddedToProjectIssueEvent",
-    "AddedToProjectIssueEventPropProjectCard",
+    "ContentTree",
+    "ContentTreePropEntriesItems",
+    "ContentTreePropEntriesItemsPropLinks",
+    "ContentTreePropLinks",
 )

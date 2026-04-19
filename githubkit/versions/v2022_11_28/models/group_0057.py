@@ -9,34 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class License(GitHubModel):
-    """License
+class PullRequestMinimal(GitHubModel):
+    """Pull Request Minimal"""
 
-    License
-    """
+    id: int = Field()
+    number: int = Field()
+    url: str = Field()
+    head: PullRequestMinimalPropHead = Field()
+    base: PullRequestMinimalPropBase = Field()
 
-    key: str = Field()
+
+class PullRequestMinimalPropHead(GitHubModel):
+    """PullRequestMinimalPropHead"""
+
+    ref: str = Field()
+    sha: str = Field()
+    repo: PullRequestMinimalPropHeadPropRepo = Field()
+
+
+class PullRequestMinimalPropHeadPropRepo(GitHubModel):
+    """PullRequestMinimalPropHeadPropRepo"""
+
+    id: int = Field()
+    url: str = Field()
     name: str = Field()
-    spdx_id: Union[str, None] = Field()
-    url: Union[str, None] = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    description: str = Field()
-    implementation: str = Field()
-    permissions: list[str] = Field()
-    conditions: list[str] = Field()
-    limitations: list[str] = Field()
-    body: str = Field()
-    featured: bool = Field()
 
 
-model_rebuild(License)
+class PullRequestMinimalPropBase(GitHubModel):
+    """PullRequestMinimalPropBase"""
 
-__all__ = ("License",)
+    ref: str = Field()
+    sha: str = Field()
+    repo: PullRequestMinimalPropBasePropRepo = Field()
+
+
+class PullRequestMinimalPropBasePropRepo(GitHubModel):
+    """PullRequestMinimalPropBasePropRepo"""
+
+    id: int = Field()
+    url: str = Field()
+    name: str = Field()
+
+
+model_rebuild(PullRequestMinimal)
+model_rebuild(PullRequestMinimalPropHead)
+model_rebuild(PullRequestMinimalPropHeadPropRepo)
+model_rebuild(PullRequestMinimalPropBase)
+model_rebuild(PullRequestMinimalPropBasePropRepo)
+
+__all__ = (
+    "PullRequestMinimal",
+    "PullRequestMinimalPropBase",
+    "PullRequestMinimalPropBasePropRepo",
+    "PullRequestMinimalPropHead",
+    "PullRequestMinimalPropHeadPropRepo",
+)

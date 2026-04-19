@@ -9,21 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0157 import RepositoryRuleRequiredStatusChecksPropParametersType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class RepositoryRuleRequiredStatusChecksType(TypedDict):
-    """required_status_checks
+class MigrationType(TypedDict):
+    """Migration
 
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
+    A migration.
     """
 
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
+    id: int
+    owner: Union[None, SimpleUserType]
+    guid: str
+    state: str
+    lock_repositories: bool
+    exclude_metadata: bool
+    exclude_git_data: bool
+    exclude_attachments: bool
+    exclude_releases: bool
+    exclude_owner_projects: bool
+    org_metadata_only: bool
+    repositories: list[RepositoryType]
+    url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    node_id: str
+    archive_url: NotRequired[str]
+    exclude: NotRequired[list[str]]
 
 
-__all__ = ("RepositoryRuleRequiredStatusChecksType",)
+class MigrationTypeForResponse(TypedDict):
+    """Migration
+
+    A migration.
+    """
+
+    id: int
+    owner: Union[None, SimpleUserTypeForResponse]
+    guid: str
+    state: str
+    lock_repositories: bool
+    exclude_metadata: bool
+    exclude_git_data: bool
+    exclude_attachments: bool
+    exclude_releases: bool
+    exclude_owner_projects: bool
+    org_metadata_only: bool
+    repositories: list[RepositoryTypeForResponse]
+    url: str
+    created_at: str
+    updated_at: str
+    node_id: str
+    archive_url: NotRequired[str]
+    exclude: NotRequired[list[str]]
+
+
+__all__ = (
+    "MigrationType",
+    "MigrationTypeForResponse",
+)

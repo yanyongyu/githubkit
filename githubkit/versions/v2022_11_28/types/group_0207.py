@@ -9,20 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0206 import RateLimitType
-from .group_0208 import RateLimitOverviewPropResourcesType
+from typing_extensions import NotRequired, TypedDict
 
 
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
+class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
 
-    Rate Limit Overview
+    do_not_enforce_on_create: NotRequired[bool]
+    required_status_checks: list[RepositoryRuleParamsStatusCheckConfigurationType]
+    strict_required_status_checks_policy: bool
+
+
+class RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
+
+    do_not_enforce_on_create: NotRequired[bool]
+    required_status_checks: list[
+        RepositoryRuleParamsStatusCheckConfigurationTypeForResponse
+    ]
+    strict_required_status_checks_policy: bool
+
+
+class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
+    """StatusCheckConfiguration
+
+    Required status check
     """
 
-    resources: RateLimitOverviewPropResourcesType
-    rate: RateLimitType
+    context: str
+    integration_id: NotRequired[int]
 
 
-__all__ = ("RateLimitOverviewType",)
+class RepositoryRuleParamsStatusCheckConfigurationTypeForResponse(TypedDict):
+    """StatusCheckConfiguration
+
+    Required status check
+    """
+
+    context: str
+    integration_id: NotRequired[int]
+
+
+__all__ = (
+    "RepositoryRuleParamsStatusCheckConfigurationType",
+    "RepositoryRuleParamsStatusCheckConfigurationTypeForResponse",
+    "RepositoryRuleRequiredStatusChecksPropParametersType",
+    "RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse",
+)

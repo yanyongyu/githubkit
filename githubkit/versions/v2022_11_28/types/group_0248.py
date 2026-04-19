@@ -9,38 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
-from .group_0063 import MinimalRepositoryType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CheckSuitePreferenceType(TypedDict):
-    """Check Suite Preference
+class RepositoryAdvisoryCreditType(TypedDict):
+    """RepositoryAdvisoryCredit
 
-    Check suite configuration preferences for a repository.
+    A credit given to a user for a repository security advisory.
     """
 
-    preferences: CheckSuitePreferencePropPreferencesType
-    repository: MinimalRepositoryType
-
-
-class CheckSuitePreferencePropPreferencesType(TypedDict):
-    """CheckSuitePreferencePropPreferences"""
-
-    auto_trigger_checks: NotRequired[
-        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
+    user: SimpleUserType
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
     ]
+    state: Literal["accepted", "declined", "pending"]
 
 
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+class RepositoryAdvisoryCreditTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCredit
 
-    app_id: int
-    setting: bool
+    A credit given to a user for a repository security advisory.
+    """
+
+    user: SimpleUserTypeForResponse
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+    state: Literal["accepted", "declined", "pending"]
 
 
 __all__ = (
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
-    "CheckSuitePreferencePropPreferencesType",
-    "CheckSuitePreferenceType",
+    "RepositoryAdvisoryCreditType",
+    "RepositoryAdvisoryCreditTypeForResponse",
 )

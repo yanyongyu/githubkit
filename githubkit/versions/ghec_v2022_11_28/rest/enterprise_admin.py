@@ -11,16 +11,17 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing_extensions import deprecated
 from weakref import ref
 
 from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
     from typing import Literal, Union
 
     from githubkit import GitHubCore
@@ -37,7 +38,10 @@ if TYPE_CHECKING:
         AuditLogEvent,
         AuditLogStreamKey,
         AuthenticationToken,
+        CustomPropertiesForOrgsGetEnterprisePropertyValues,
         CustomProperty,
+        EnterpriseAccessRestrictions,
+        EnterpriseRole,
         EnterpriseSecurityAnalysisSettings,
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
         EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200,
@@ -47,13 +51,17 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseActionsRunnersGetResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseEnterpriseRolesGetResponse200,
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
+        EnterpriseTeam,
+        EnterpriseUserRoleAssignment,
         GetAuditLogStreamConfig,
         GetAuditLogStreamConfigsItems,
         GetConsumedLicenses,
         GetLicenseSyncStatus,
         NetworkConfiguration,
         NetworkSettings,
+        OrganizationCustomProperty,
         PushRuleBypassRequest,
         RulesetVersion,
         RulesetVersionWithState,
@@ -67,72 +75,87 @@ if TYPE_CHECKING:
         SelectedActions,
     )
     from ..types import (
-        ActionsArtifactAndLogRetentionResponseType,
+        ActionsArtifactAndLogRetentionResponseTypeForResponse,
         ActionsArtifactAndLogRetentionType,
-        ActionsEnterprisePermissionsType,
+        ActionsEnterprisePermissionsTypeForResponse,
         ActionsForkPrContributorApprovalType,
+        ActionsForkPrContributorApprovalTypeForResponse,
         ActionsForkPrWorkflowsPrivateReposRequestType,
-        ActionsForkPrWorkflowsPrivateReposType,
+        ActionsForkPrWorkflowsPrivateReposTypeForResponse,
         AmazonS3AccessKeysConfigType,
         AmazonS3OidcConfigType,
-        AnnouncementBannerType,
+        AnnouncementBannerTypeForResponse,
         AnnouncementType,
-        AuditLogEventType,
-        AuditLogStreamKeyType,
-        AuthenticationTokenType,
+        AuditLogEventTypeForResponse,
+        AuditLogStreamKeyTypeForResponse,
+        AuthenticationTokenTypeForResponse,
         AzureBlobConfigType,
         AzureHubConfigType,
+        CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse,
         CustomPropertySetPayloadType,
         CustomPropertyType,
+        CustomPropertyTypeForResponse,
+        CustomPropertyValueType,
         DatadogConfigType,
-        EnterpriseSecurityAnalysisSettingsType,
-        EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type,
+        EnterpriseAccessRestrictionsTypeForResponse,
+        EnterpriseRoleTypeForResponse,
+        EnterpriseSecurityAnalysisSettingsTypeForResponse,
+        EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType,
         EnterprisesEnterpriseActionsPermissionsPutBodyType,
-        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType,
-        EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType,
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
-        EnterprisesEnterpriseActionsRunnersGetResponse200Type,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
         EnterprisesEnterpriseAuditLogStreamsPostBodyType,
         EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
         EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType,
-        EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type,
+        EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse,
+        EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse,
         EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
         EnterprisesEnterpriseNetworkConfigurationsPostBodyType,
+        EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType,
+        EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType,
         EnterprisesEnterprisePropertiesSchemaPatchBodyType,
-        GetAuditLogStreamConfigsItemsType,
-        GetAuditLogStreamConfigType,
-        GetConsumedLicensesType,
-        GetLicenseSyncStatusType,
+        EnterpriseTeamTypeForResponse,
+        EnterpriseUserRoleAssignmentTypeForResponse,
+        GetAuditLogStreamConfigsItemsTypeForResponse,
+        GetAuditLogStreamConfigTypeForResponse,
+        GetConsumedLicensesTypeForResponse,
+        GetLicenseSyncStatusTypeForResponse,
         GoogleCloudConfigType,
         GroupPropMembersItemsType,
         GroupType,
         HecConfigType,
-        NetworkConfigurationType,
-        NetworkSettingsType,
+        NetworkConfigurationTypeForResponse,
+        NetworkSettingsTypeForResponse,
+        OrganizationCustomPropertyPayloadType,
+        OrganizationCustomPropertyType,
+        OrganizationCustomPropertyTypeForResponse,
         PatchSchemaPropOperationsItemsType,
         PatchSchemaType,
-        PushRuleBypassRequestType,
-        RulesetVersionType,
-        RulesetVersionWithStateType,
-        RunnerApplicationType,
-        RunnerGroupsEnterpriseType,
-        RunnerType,
-        ScimEnterpriseGroupListType,
-        ScimEnterpriseGroupResponseType,
-        ScimEnterpriseUserListType,
-        ScimEnterpriseUserResponseType,
+        PushRuleBypassRequestTypeForResponse,
+        RulesetVersionTypeForResponse,
+        RulesetVersionWithStateTypeForResponse,
+        RunnerApplicationTypeForResponse,
+        RunnerGroupsEnterpriseTypeForResponse,
+        RunnerTypeForResponse,
+        ScimEnterpriseGroupListTypeForResponse,
+        ScimEnterpriseGroupResponseTypeForResponse,
+        ScimEnterpriseUserListTypeForResponse,
+        ScimEnterpriseUserResponseTypeForResponse,
         SelectedActionsType,
+        SelectedActionsTypeForResponse,
         SplunkConfigType,
         UserEmailsItemsType,
         UserNameType,
@@ -156,13 +179,163 @@ class EnterpriseAdminClient:
             "Do not use this client after the client has been collected."
         )
 
+    def disable_access_restrictions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsTypeForResponse
+    ]:
+        """enterprise-admin/disable-access-restrictions
+
+        POST /enterprises/{enterprise}/access-restrictions/disable
+
+        Disable access restriction by proxy header using the network proxy owned by the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprises#disable-access-restrictions-for-an-enterprise
+        """
+
+        from ..models import BasicError, EnterpriseAccessRestrictions
+
+        url = f"/enterprises/{enterprise}/access-restrictions/disable"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseAccessRestrictions,
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_disable_access_restrictions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsTypeForResponse
+    ]:
+        """enterprise-admin/disable-access-restrictions
+
+        POST /enterprises/{enterprise}/access-restrictions/disable
+
+        Disable access restriction by proxy header using the network proxy owned by the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprises#disable-access-restrictions-for-an-enterprise
+        """
+
+        from ..models import BasicError, EnterpriseAccessRestrictions
+
+        url = f"/enterprises/{enterprise}/access-restrictions/disable"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseAccessRestrictions,
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def enable_access_restrictions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsTypeForResponse
+    ]:
+        """enterprise-admin/enable-access-restrictions
+
+        POST /enterprises/{enterprise}/access-restrictions/enable
+
+        Enable access restriction by proxy header using the network proxy owned by the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprises#enable-access-restrictions-for-an-enterprise
+        """
+
+        from ..models import BasicError, EnterpriseAccessRestrictions
+
+        url = f"/enterprises/{enterprise}/access-restrictions/enable"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseAccessRestrictions,
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_enable_access_restrictions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsTypeForResponse
+    ]:
+        """enterprise-admin/enable-access-restrictions
+
+        POST /enterprises/{enterprise}/access-restrictions/enable
+
+        Enable access restriction by proxy header using the network proxy owned by the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprises#enable-access-restrictions-for-an-enterprise
+        """
+
+        from ..models import BasicError, EnterpriseAccessRestrictions
+
+        url = f"/enterprises/{enterprise}/access-restrictions/enable"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseAccessRestrictions,
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
     def get_github_actions_permissions_enterprise(
         self,
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsEnterprisePermissions, ActionsEnterprisePermissionsType]:
+    ) -> Response[
+        ActionsEnterprisePermissions, ActionsEnterprisePermissionsTypeForResponse
+    ]:
         """enterprise-admin/get-github-actions-permissions-enterprise
 
         GET /enterprises/{enterprise}/actions/permissions
@@ -194,7 +367,9 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsEnterprisePermissions, ActionsEnterprisePermissionsType]:
+    ) -> Response[
+        ActionsEnterprisePermissions, ActionsEnterprisePermissionsTypeForResponse
+    ]:
         """enterprise-admin/get-github-actions-permissions-enterprise
 
         GET /enterprises/{enterprise}/actions/permissions
@@ -240,6 +415,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         enabled_organizations: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
+        sha_pinning_required: Missing[bool] = UNSET,
     ) -> Response: ...
 
     def set_github_actions_permissions_enterprise(
@@ -307,6 +483,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         enabled_organizations: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
+        sha_pinning_required: Missing[bool] = UNSET,
     ) -> Response: ...
 
     async def async_set_github_actions_permissions_enterprise(
@@ -362,7 +539,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         ActionsArtifactAndLogRetentionResponse,
-        ActionsArtifactAndLogRetentionResponseType,
+        ActionsArtifactAndLogRetentionResponseTypeForResponse,
     ]:
         """enterprise-admin/get-artifact-and-log-retention-settings
 
@@ -400,7 +577,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         ActionsArtifactAndLogRetentionResponse,
-        ActionsArtifactAndLogRetentionResponseType,
+        ActionsArtifactAndLogRetentionResponseTypeForResponse,
     ]:
         """enterprise-admin/get-artifact-and-log-retention-settings
 
@@ -573,7 +750,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsForkPrContributorApproval, ActionsForkPrContributorApprovalType
+        ActionsForkPrContributorApproval,
+        ActionsForkPrContributorApprovalTypeForResponse,
     ]:
         """enterprise-admin/get-fork-pr-contributor-approval-permissions
 
@@ -608,7 +786,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsForkPrContributorApproval, ActionsForkPrContributorApprovalType
+        ActionsForkPrContributorApproval,
+        ActionsForkPrContributorApprovalTypeForResponse,
     ]:
         """enterprise-admin/get-fork-pr-contributor-approval-permissions
 
@@ -791,7 +970,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsForkPrWorkflowsPrivateRepos, ActionsForkPrWorkflowsPrivateReposType
+        ActionsForkPrWorkflowsPrivateRepos,
+        ActionsForkPrWorkflowsPrivateReposTypeForResponse,
     ]:
         """enterprise-admin/get-private-repo-fork-pr-workflows-settings
 
@@ -826,7 +1006,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsForkPrWorkflowsPrivateRepos, ActionsForkPrWorkflowsPrivateReposType
+        ActionsForkPrWorkflowsPrivateRepos,
+        ActionsForkPrWorkflowsPrivateReposTypeForResponse,
     ]:
         """enterprise-admin/get-private-repo-fork-pr-workflows-settings
 
@@ -1010,7 +1191,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
-        EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type,
+        EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise
 
@@ -1039,7 +1220,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
@@ -1055,7 +1236,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
-        EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type,
+        EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise
 
@@ -1084,7 +1265,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
@@ -1352,7 +1533,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SelectedActions, SelectedActionsType]:
+    ) -> Response[SelectedActions, SelectedActionsTypeForResponse]:
         """enterprise-admin/get-allowed-actions-enterprise
 
         GET /enterprises/{enterprise}/actions/permissions/selected-actions
@@ -1384,7 +1565,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SelectedActions, SelectedActionsType]:
+    ) -> Response[SelectedActions, SelectedActionsTypeForResponse]:
         """enterprise-admin/get-allowed-actions-enterprise
 
         GET /enterprises/{enterprise}/actions/permissions/selected-actions
@@ -1550,7 +1731,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200,
-        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/get-self-hosted-runners-permissions
 
@@ -1589,7 +1770,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200,
-        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/get-self-hosted-runners-permissions
 
@@ -1779,7 +1960,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
-        EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-self-hosted-runner-groups-for-enterprise
 
@@ -1807,7 +1988,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
@@ -1824,7 +2005,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
-        EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-self-hosted-runner-groups-for-enterprise
 
@@ -1852,7 +2033,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
@@ -1866,7 +2047,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
 
     @overload
     def create_self_hosted_runner_group_for_enterprise(
@@ -1884,7 +2065,7 @@ class EnterpriseAdminClient:
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
         network_configuration_id: Missing[str] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
 
     def create_self_hosted_runner_group_for_enterprise(
         self,
@@ -1894,7 +2075,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]:
         """enterprise-admin/create-self-hosted-runner-group-for-enterprise
 
         POST /enterprises/{enterprise}/actions/runner-groups
@@ -1943,7 +2124,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
 
     @overload
     async def async_create_self_hosted_runner_group_for_enterprise(
@@ -1961,7 +2142,7 @@ class EnterpriseAdminClient:
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
         network_configuration_id: Missing[str] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
 
     async def async_create_self_hosted_runner_group_for_enterprise(
         self,
@@ -1971,7 +2152,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]:
         """enterprise-admin/create-self-hosted-runner-group-for-enterprise
 
         POST /enterprises/{enterprise}/actions/runner-groups
@@ -2019,7 +2200,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]:
         """enterprise-admin/get-self-hosted-runner-group-for-enterprise
 
         GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
@@ -2052,7 +2233,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]:
         """enterprise-admin/get-self-hosted-runner-group-for-enterprise
 
         GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
@@ -2149,7 +2330,7 @@ class EnterpriseAdminClient:
         data: Missing[
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
         ] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
 
     @overload
     def update_self_hosted_runner_group_for_enterprise(
@@ -2166,7 +2347,7 @@ class EnterpriseAdminClient:
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
         network_configuration_id: Missing[Union[str, None]] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
 
     def update_self_hosted_runner_group_for_enterprise(
         self,
@@ -2179,7 +2360,7 @@ class EnterpriseAdminClient:
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]:
         """enterprise-admin/update-self-hosted-runner-group-for-enterprise
 
         PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
@@ -2231,7 +2412,7 @@ class EnterpriseAdminClient:
         data: Missing[
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
         ] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
 
     @overload
     async def async_update_self_hosted_runner_group_for_enterprise(
@@ -2248,7 +2429,7 @@ class EnterpriseAdminClient:
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
         network_configuration_id: Missing[Union[str, None]] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
 
     async def async_update_self_hosted_runner_group_for_enterprise(
         self,
@@ -2261,7 +2442,7 @@ class EnterpriseAdminClient:
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]:
         """enterprise-admin/update-self-hosted-runner-group-for-enterprise
 
         PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
@@ -2313,7 +2494,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise
 
@@ -2342,7 +2523,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
@@ -2359,7 +2540,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise
 
@@ -2388,7 +2569,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
@@ -2677,7 +2858,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-self-hosted-runners-in-group-for-enterprise
 
@@ -2708,7 +2889,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
@@ -2725,7 +2906,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-self-hosted-runners-in-group-for-enterprise
 
@@ -2756,7 +2937,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
@@ -3049,7 +3230,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGetResponse200,
-        EnterprisesEnterpriseActionsRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-self-hosted-runners-for-enterprise
 
@@ -3077,7 +3258,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsRunnersGetResponse200,
@@ -3094,7 +3275,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGetResponse200,
-        EnterprisesEnterpriseActionsRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-self-hosted-runners-for-enterprise
 
@@ -3122,7 +3303,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsRunnersGetResponse200,
@@ -3134,7 +3315,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
+    ) -> Response[list[RunnerApplication], list[RunnerApplicationTypeForResponse]]:
         """enterprise-admin/list-runner-applications-for-enterprise
 
         GET /enterprises/{enterprise}/actions/runners/downloads
@@ -3166,7 +3347,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
+    ) -> Response[list[RunnerApplication], list[RunnerApplicationTypeForResponse]]:
         """enterprise-admin/list-runner-applications-for-enterprise
 
         GET /enterprises/{enterprise}/actions/runners/downloads
@@ -3198,7 +3379,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """enterprise-admin/create-registration-token-for-enterprise
 
         POST /enterprises/{enterprise}/actions/runners/registration-token
@@ -3238,7 +3419,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """enterprise-admin/create-registration-token-for-enterprise
 
         POST /enterprises/{enterprise}/actions/runners/registration-token
@@ -3278,7 +3459,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """enterprise-admin/create-remove-token-for-enterprise
 
         POST /enterprises/{enterprise}/actions/runners/remove-token
@@ -3319,7 +3500,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """enterprise-admin/create-remove-token-for-enterprise
 
         POST /enterprises/{enterprise}/actions/runners/remove-token
@@ -3361,7 +3542,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Runner, RunnerType]:
+    ) -> Response[Runner, RunnerTypeForResponse]:
         """enterprise-admin/get-self-hosted-runner-for-enterprise
 
         GET /enterprises/{enterprise}/actions/runners/{runner_id}
@@ -3394,7 +3575,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Runner, RunnerType]:
+    ) -> Response[Runner, RunnerTypeForResponse]:
         """enterprise-admin/get-self-hosted-runner-for-enterprise
 
         GET /enterprises/{enterprise}/actions/runners/{runner_id}
@@ -3499,7 +3680,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-labels-for-self-hosted-runner-for-enterprise
 
@@ -3541,7 +3722,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-labels-for-self-hosted-runner-for-enterprise
 
@@ -3585,7 +3766,7 @@ class EnterpriseAdminClient:
         data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -3600,7 +3781,7 @@ class EnterpriseAdminClient:
         labels: list[str],
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     def set_custom_labels_for_self_hosted_runner_for_enterprise(
@@ -3616,7 +3797,7 @@ class EnterpriseAdminClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/set-custom-labels-for-self-hosted-runner-for-enterprise
 
@@ -3676,7 +3857,7 @@ class EnterpriseAdminClient:
         data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -3691,7 +3872,7 @@ class EnterpriseAdminClient:
         labels: list[str],
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     async def async_set_custom_labels_for_self_hosted_runner_for_enterprise(
@@ -3707,7 +3888,7 @@ class EnterpriseAdminClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/set-custom-labels-for-self-hosted-runner-for-enterprise
 
@@ -3767,7 +3948,7 @@ class EnterpriseAdminClient:
         data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -3782,7 +3963,7 @@ class EnterpriseAdminClient:
         labels: list[str],
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     def add_custom_labels_to_self_hosted_runner_for_enterprise(
@@ -3798,7 +3979,7 @@ class EnterpriseAdminClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/add-custom-labels-to-self-hosted-runner-for-enterprise
 
@@ -3857,7 +4038,7 @@ class EnterpriseAdminClient:
         data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -3872,7 +4053,7 @@ class EnterpriseAdminClient:
         labels: list[str],
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     async def async_add_custom_labels_to_self_hosted_runner_for_enterprise(
@@ -3888,7 +4069,7 @@ class EnterpriseAdminClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/add-custom-labels-to-self-hosted-runner-for-enterprise
 
@@ -3945,7 +4126,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse,
     ]:
         """enterprise-admin/remove-all-custom-labels-from-self-hosted-runner-for-enterprise
 
@@ -3990,7 +4171,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse,
     ]:
         """enterprise-admin/remove-all-custom-labels-from-self-hosted-runner-for-enterprise
 
@@ -4036,7 +4217,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/remove-custom-label-from-self-hosted-runner-for-enterprise
 
@@ -4085,7 +4266,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/remove-custom-label-from-self-hosted-runner-for-enterprise
 
@@ -4130,7 +4311,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]:
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]:
         """announcement-banners/get-announcement-banner-for-enterprise
 
         GET /enterprises/{enterprise}/announcement
@@ -4160,7 +4341,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]:
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]:
         """announcement-banners/get-announcement-banner-for-enterprise
 
         GET /enterprises/{enterprise}/announcement
@@ -4246,7 +4427,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: AnnouncementType,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]: ...
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]: ...
 
     @overload
     def set_announcement_banner_for_enterprise(
@@ -4257,9 +4438,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         announcement: Union[str, None],
-        expires_at: Missing[Union[datetime, None]] = UNSET,
+        expires_at: Missing[Union[_dt.datetime, None]] = UNSET,
         user_dismissible: Missing[Union[bool, None]] = UNSET,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]: ...
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]: ...
 
     def set_announcement_banner_for_enterprise(
         self,
@@ -4269,7 +4450,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[AnnouncementType] = UNSET,
         **kwargs,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]:
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]:
         """announcement-banners/set-announcement-banner-for-enterprise
 
         PATCH /enterprises/{enterprise}/announcement
@@ -4311,7 +4492,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: AnnouncementType,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]: ...
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]: ...
 
     @overload
     async def async_set_announcement_banner_for_enterprise(
@@ -4322,9 +4503,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         announcement: Union[str, None],
-        expires_at: Missing[Union[datetime, None]] = UNSET,
+        expires_at: Missing[Union[_dt.datetime, None]] = UNSET,
         user_dismissible: Missing[Union[bool, None]] = UNSET,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]: ...
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]: ...
 
     async def async_set_announcement_banner_for_enterprise(
         self,
@@ -4334,7 +4515,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[AnnouncementType] = UNSET,
         **kwargs,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]:
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]:
         """announcement-banners/set-announcement-banner-for-enterprise
 
         PATCH /enterprises/{enterprise}/announcement
@@ -4381,7 +4562,7 @@ class EnterpriseAdminClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[AuditLogEvent], list[AuditLogEventType]]:
+    ) -> Response[list[AuditLogEvent], list[AuditLogEventTypeForResponse]]:
         """enterprise-admin/get-audit-log
 
         GET /enterprises/{enterprise}/audit-log
@@ -4416,7 +4597,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[AuditLogEvent],
@@ -4435,7 +4616,7 @@ class EnterpriseAdminClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[AuditLogEvent], list[AuditLogEventType]]:
+    ) -> Response[list[AuditLogEvent], list[AuditLogEventTypeForResponse]]:
         """enterprise-admin/get-audit-log
 
         GET /enterprises/{enterprise}/audit-log
@@ -4470,7 +4651,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[AuditLogEvent],
@@ -4482,7 +4663,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuditLogStreamKey, AuditLogStreamKeyType]:
+    ) -> Response[AuditLogStreamKey, AuditLogStreamKeyTypeForResponse]:
         """enterprise-admin/get-audit-log-stream-key
 
         GET /enterprises/{enterprise}/audit-log/stream-key
@@ -4514,7 +4695,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuditLogStreamKey, AuditLogStreamKeyType]:
+    ) -> Response[AuditLogStreamKey, AuditLogStreamKeyTypeForResponse]:
         """enterprise-admin/get-audit-log-stream-key
 
         GET /enterprises/{enterprise}/audit-log/stream-key
@@ -4547,7 +4728,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[GetAuditLogStreamConfigsItems], list[GetAuditLogStreamConfigsItemsType]
+        list[GetAuditLogStreamConfigsItems],
+        list[GetAuditLogStreamConfigsItemsTypeForResponse],
     ]:
         """enterprise-admin/get-audit-log-streams
 
@@ -4582,7 +4764,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[GetAuditLogStreamConfigsItems], list[GetAuditLogStreamConfigsItemsType]
+        list[GetAuditLogStreamConfigsItems],
+        list[GetAuditLogStreamConfigsItemsTypeForResponse],
     ]:
         """enterprise-admin/get-audit-log-streams
 
@@ -4618,7 +4801,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAuditLogStreamsPostBodyType,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
     @overload
     def create_audit_log_stream(
@@ -4648,7 +4831,7 @@ class EnterpriseAdminClient:
             GoogleCloudConfigType,
             DatadogConfigType,
         ],
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
     def create_audit_log_stream(
         self,
@@ -4658,7 +4841,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseAuditLogStreamsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]:
         """enterprise-admin/create-audit-log-stream
 
         POST /enterprises/{enterprise}/audit-log/streams
@@ -4707,7 +4890,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAuditLogStreamsPostBodyType,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
     @overload
     async def async_create_audit_log_stream(
@@ -4737,7 +4920,7 @@ class EnterpriseAdminClient:
             GoogleCloudConfigType,
             DatadogConfigType,
         ],
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
     async def async_create_audit_log_stream(
         self,
@@ -4747,7 +4930,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseAuditLogStreamsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]:
         """enterprise-admin/create-audit-log-stream
 
         POST /enterprises/{enterprise}/audit-log/streams
@@ -4795,7 +4978,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]:
         """enterprise-admin/get-one-audit-log-stream
 
         GET /enterprises/{enterprise}/audit-log/streams/{stream_id}
@@ -4828,7 +5011,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]:
         """enterprise-admin/get-one-audit-log-stream
 
         GET /enterprises/{enterprise}/audit-log/streams/{stream_id}
@@ -4863,7 +5046,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
     @overload
     def update_audit_log_stream(
@@ -4894,7 +5077,7 @@ class EnterpriseAdminClient:
             GoogleCloudConfigType,
             DatadogConfigType,
         ],
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
     def update_audit_log_stream(
         self,
@@ -4905,7 +5088,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]:
         """enterprise-admin/update-audit-log-stream
 
         PUT /enterprises/{enterprise}/audit-log/streams/{stream_id}
@@ -4959,7 +5142,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
     @overload
     async def async_update_audit_log_stream(
@@ -4990,7 +5173,7 @@ class EnterpriseAdminClient:
             GoogleCloudConfigType,
             DatadogConfigType,
         ],
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
     async def async_update_audit_log_stream(
         self,
@@ -5001,7 +5184,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]:
         """enterprise-admin/update-audit-log-stream
 
         PUT /enterprises/{enterprise}/audit-log/streams/{stream_id}
@@ -5130,7 +5313,9 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
+    ) -> Response[
+        list[PushRuleBypassRequest], list[PushRuleBypassRequestTypeForResponse]
+    ]:
         """enterprise-admin/list-push-bypass-requests
 
         GET /enterprises/{enterprise}/bypass-requests/push-rules
@@ -5159,7 +5344,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PushRuleBypassRequest],
@@ -5193,7 +5378,9 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
+    ) -> Response[
+        list[PushRuleBypassRequest], list[PushRuleBypassRequestTypeForResponse]
+    ]:
         """enterprise-admin/list-push-bypass-requests
 
         GET /enterprises/{enterprise}/bypass-requests/push-rules
@@ -5222,7 +5409,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PushRuleBypassRequest],
@@ -5232,6 +5419,7 @@ class EnterpriseAdminClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_security_analysis_settings_for_enterprise(
         self,
         enterprise: str,
@@ -5239,7 +5427,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        EnterpriseSecurityAnalysisSettings, EnterpriseSecurityAnalysisSettingsType
+        EnterpriseSecurityAnalysisSettings,
+        EnterpriseSecurityAnalysisSettingsTypeForResponse,
     ]:
         """DEPRECATED secret-scanning/get-security-analysis-settings-for-enterprise
 
@@ -5274,6 +5463,7 @@ class EnterpriseAdminClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_security_analysis_settings_for_enterprise(
         self,
         enterprise: str,
@@ -5281,7 +5471,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        EnterpriseSecurityAnalysisSettings, EnterpriseSecurityAnalysisSettingsType
+        EnterpriseSecurityAnalysisSettings,
+        EnterpriseSecurityAnalysisSettingsTypeForResponse,
     ]:
         """DEPRECATED secret-scanning/get-security-analysis-settings-for-enterprise
 
@@ -5317,6 +5508,7 @@ class EnterpriseAdminClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def patch_security_analysis_settings_for_enterprise(
         self,
         enterprise: str,
@@ -5329,6 +5521,7 @@ class EnterpriseAdminClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def patch_security_analysis_settings_for_enterprise(
         self,
         enterprise: str,
@@ -5349,6 +5542,7 @@ class EnterpriseAdminClient:
         ] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def patch_security_analysis_settings_for_enterprise(
         self,
         enterprise: str,
@@ -5408,6 +5602,7 @@ class EnterpriseAdminClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_patch_security_analysis_settings_for_enterprise(
         self,
         enterprise: str,
@@ -5420,6 +5615,7 @@ class EnterpriseAdminClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_patch_security_analysis_settings_for_enterprise(
         self,
         enterprise: str,
@@ -5440,6 +5636,7 @@ class EnterpriseAdminClient:
         ] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_patch_security_analysis_settings_for_enterprise(
         self,
         enterprise: str,
@@ -5506,7 +5703,7 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetConsumedLicenses, GetConsumedLicensesType]:
+    ) -> Response[GetConsumedLicenses, GetConsumedLicensesTypeForResponse]:
         """enterprise-admin/get-consumed-licenses
 
         GET /enterprises/{enterprise}/consumed-licenses
@@ -5517,7 +5714,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#list-enterprise-consumed-licenses
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/licensing#list-enterprise-consumed-licenses
         """
 
         from ..models import GetConsumedLicenses
@@ -5534,7 +5731,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GetConsumedLicenses,
@@ -5548,7 +5745,7 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetConsumedLicenses, GetConsumedLicensesType]:
+    ) -> Response[GetConsumedLicenses, GetConsumedLicensesTypeForResponse]:
         """enterprise-admin/get-consumed-licenses
 
         GET /enterprises/{enterprise}/consumed-licenses
@@ -5559,7 +5756,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#list-enterprise-consumed-licenses
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/licensing#list-enterprise-consumed-licenses
         """
 
         from ..models import GetConsumedLicenses
@@ -5576,10 +5773,918 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GetConsumedLicenses,
+        )
+
+    def list_enterprise_roles(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseEnterpriseRolesGetResponse200,
+        EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/list-enterprise-roles
+
+        GET /enterprises/{enterprise}/enterprise-roles
+
+        Lists the enterprise roles available in this enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `read_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#get-all-enterprise-roles-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseEnterpriseRolesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/enterprise-roles"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseEnterpriseRolesGetResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_enterprise_roles(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseEnterpriseRolesGetResponse200,
+        EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/list-enterprise-roles
+
+        GET /enterprises/{enterprise}/enterprise-roles
+
+        Lists the enterprise roles available in this enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `read_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#get-all-enterprise-roles-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseEnterpriseRolesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/enterprise-roles"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseEnterpriseRolesGetResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def revoke_all_enterprise_roles_team(
+        self,
+        enterprise: str,
+        team_slug: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/revoke-all-enterprise-roles-team
+
+        DELETE /enterprises/{enterprise}/enterprise-roles/teams/{team_slug}
+
+        Removes all assigned enterprise roles from a team in an enterprise.
+
+        > [!WARNING]
+        > This API is not available for Copilot Business for non-GHE.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-all-enterprise-roles-from-a-team
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/teams/{team_slug}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_revoke_all_enterprise_roles_team(
+        self,
+        enterprise: str,
+        team_slug: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/revoke-all-enterprise-roles-team
+
+        DELETE /enterprises/{enterprise}/enterprise-roles/teams/{team_slug}
+
+        Removes all assigned enterprise roles from a team in an enterprise.
+
+        > [!WARNING]
+        > This API is not available for Copilot Business for non-GHE.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-all-enterprise-roles-from-a-team
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/teams/{team_slug}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def assign_team_to_enterprise_role(
+        self,
+        enterprise: str,
+        team_slug: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/assign-team-to-enterprise-role
+
+        PUT /enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}
+
+        Assigns an enterprise role to a team in an enterprise.
+
+        > [!WARNING]
+        > This API is not available for Copilot Business for non-GHE.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#assign-an-enterprise-role-to-a-team
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_assign_team_to_enterprise_role(
+        self,
+        enterprise: str,
+        team_slug: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/assign-team-to-enterprise-role
+
+        PUT /enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}
+
+        Assigns an enterprise role to a team in an enterprise.
+
+        > [!WARNING]
+        > This API is not available for Copilot Business for non-GHE.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#assign-an-enterprise-role-to-a-team
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def revoke_enterprise_role_team(
+        self,
+        enterprise: str,
+        team_slug: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/revoke-enterprise-role-team
+
+        DELETE /enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}
+
+        Removes an enterprise role from a team in an enterprise.
+
+        > [!WARNING]
+        > This API is not available for Copilot Business for non-GHE.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-an-enterprise-role-from-a-team
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_revoke_enterprise_role_team(
+        self,
+        enterprise: str,
+        team_slug: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/revoke-enterprise-role-team
+
+        DELETE /enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}
+
+        Removes an enterprise role from a team in an enterprise.
+
+        > [!WARNING]
+        > This API is not available for Copilot Business for non-GHE.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-an-enterprise-role-from-a-team
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def remove_all_enterprise_roles_from_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/remove-all-enterprise-roles-from-user
+
+        DELETE /enterprises/{enterprise}/enterprise-roles/users/{username}
+
+        Removes all enterprise roles from an enterprise user in an enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-all-enterprise-roles-from-a-user
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/users/{username}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_remove_all_enterprise_roles_from_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/remove-all-enterprise-roles-from-user
+
+        DELETE /enterprises/{enterprise}/enterprise-roles/users/{username}
+
+        Removes all enterprise roles from an enterprise user in an enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-all-enterprise-roles-from-a-user
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/users/{username}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def assign_enterprise_role_to_user(
+        self,
+        enterprise: str,
+        username: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/assign-enterprise-role-to-user
+
+        PUT /enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}
+
+        Assigns an enterprise role to a user in an enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#assign-an-enterprise-role-to-an-enterprise-user
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_assign_enterprise_role_to_user(
+        self,
+        enterprise: str,
+        username: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/assign-enterprise-role-to-user
+
+        PUT /enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}
+
+        Assigns an enterprise role to a user in an enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#assign-an-enterprise-role-to-an-enterprise-user
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def remove_enterprise_user_role_assignment(
+        self,
+        enterprise: str,
+        username: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/remove-enterprise-user-role-assignment
+
+        DELETE /enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}
+
+        Removes an enterprise role from an enterprise user.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-enterprise-user-role-assignment
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_remove_enterprise_user_role_assignment(
+        self,
+        enterprise: str,
+        username: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/remove-enterprise-user-role-assignment
+
+        DELETE /enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}
+
+        Removes an enterprise role from an enterprise user.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-enterprise-user-role-assignment
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def get_enterprise_role(
+        self,
+        enterprise: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[EnterpriseRole, EnterpriseRoleTypeForResponse]:
+        """enterprise-admin/get-enterprise-role
+
+        GET /enterprises/{enterprise}/enterprise-roles/{role_id}
+
+        Gets a custom enterprise role that is available within the enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `read_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#get-an-enterprise-role
+        """
+
+        from ..models import BasicError, EnterpriseRole
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseRole,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_enterprise_role(
+        self,
+        enterprise: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[EnterpriseRole, EnterpriseRoleTypeForResponse]:
+        """enterprise-admin/get-enterprise-role
+
+        GET /enterprises/{enterprise}/enterprise-roles/{role_id}
+
+        Gets a custom enterprise role that is available within the enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `read_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#get-an-enterprise-role
+        """
+
+        from ..models import BasicError, EnterpriseRole
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseRole,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def list_enterprise_role_teams(
+        self,
+        enterprise: str,
+        role_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamTypeForResponse]]:
+        """enterprise-admin/list-enterprise-role-teams
+
+        GET /enterprises/{enterprise}/enterprise-roles/{role_id}/teams
+
+        Lists the teams that are assigned to an enterprise role.
+
+        > [!WARNING]
+        > This API is not available for Copilot Business for non-GHE.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `read_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#list-teams-that-are-assigned-to-an-enterprise-role
+        """
+
+        from ..models import BasicError, EnterpriseTeam
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/{role_id}/teams"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[EnterpriseTeam],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_enterprise_role_teams(
+        self,
+        enterprise: str,
+        role_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamTypeForResponse]]:
+        """enterprise-admin/list-enterprise-role-teams
+
+        GET /enterprises/{enterprise}/enterprise-roles/{role_id}/teams
+
+        Lists the teams that are assigned to an enterprise role.
+
+        > [!WARNING]
+        > This API is not available for Copilot Business for non-GHE.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `read_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#list-teams-that-are-assigned-to-an-enterprise-role
+        """
+
+        from ..models import BasicError, EnterpriseTeam
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/{role_id}/teams"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[EnterpriseTeam],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def list_enterprise_role_users(
+        self,
+        enterprise: str,
+        role_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[EnterpriseUserRoleAssignment],
+        list[EnterpriseUserRoleAssignmentTypeForResponse],
+    ]:
+        """enterprise-admin/list-enterprise-role-users
+
+        GET /enterprises/{enterprise}/enterprise-roles/{role_id}/users
+
+        Lists enterprise members that are assigned to an enterprise role.
+
+        To use this endpoint, a user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `read_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) require the `enterprise:admin` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#list-users-that-are-assigned-to-an-enterprise-role
+        """
+
+        from ..models import BasicError, EnterpriseUserRoleAssignment
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/{role_id}/users"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[EnterpriseUserRoleAssignment],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_enterprise_role_users(
+        self,
+        enterprise: str,
+        role_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[EnterpriseUserRoleAssignment],
+        list[EnterpriseUserRoleAssignmentTypeForResponse],
+    ]:
+        """enterprise-admin/list-enterprise-role-users
+
+        GET /enterprises/{enterprise}/enterprise-roles/{role_id}/users
+
+        Lists enterprise members that are assigned to an enterprise role.
+
+        To use this endpoint, a user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `read_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) require the `enterprise:admin` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#list-users-that-are-assigned-to-an-enterprise-role
+        """
+
+        from ..models import BasicError, EnterpriseUserRoleAssignment
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/{role_id}/users"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[EnterpriseUserRoleAssignment],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
         )
 
     def get_license_sync_status(
@@ -5588,7 +6693,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetLicenseSyncStatus, GetLicenseSyncStatusType]:
+    ) -> Response[GetLicenseSyncStatus, GetLicenseSyncStatusTypeForResponse]:
         """enterprise-admin/get-license-sync-status
 
         GET /enterprises/{enterprise}/license-sync-status
@@ -5599,7 +6704,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#get-a-license-sync-status
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/licensing#get-a-license-sync-status
         """
 
         from ..models import GetLicenseSyncStatus
@@ -5622,7 +6727,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetLicenseSyncStatus, GetLicenseSyncStatusType]:
+    ) -> Response[GetLicenseSyncStatus, GetLicenseSyncStatusTypeForResponse]:
         """enterprise-admin/get-license-sync-status
 
         GET /enterprises/{enterprise}/license-sync-status
@@ -5633,7 +6738,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#get-a-license-sync-status
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/licensing#get-a-license-sync-status
         """
 
         from ..models import GetLicenseSyncStatus
@@ -5660,7 +6765,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
-        EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type,
+        EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse,
     ]:
         """hosted-compute/list-network-configurations-for-enterprise
 
@@ -5685,7 +6790,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
@@ -5701,7 +6806,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
-        EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type,
+        EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse,
     ]:
         """hosted-compute/list-network-configurations-for-enterprise
 
@@ -5726,7 +6831,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
@@ -5740,7 +6845,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseNetworkConfigurationsPostBodyType,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     @overload
     def create_network_configuration_for_enterprise(
@@ -5753,7 +6858,9 @@ class EnterpriseAdminClient:
         name: str,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: list[str],
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+        failover_network_settings_ids: Missing[list[str]] = UNSET,
+        failover_network_enabled: Missing[bool] = UNSET,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     def create_network_configuration_for_enterprise(
         self,
@@ -5763,7 +6870,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseNetworkConfigurationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/create-network-configuration-for-enterprise
 
         POST /enterprises/{enterprise}/network-configurations
@@ -5810,7 +6917,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseNetworkConfigurationsPostBodyType,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     @overload
     async def async_create_network_configuration_for_enterprise(
@@ -5823,7 +6930,9 @@ class EnterpriseAdminClient:
         name: str,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: list[str],
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+        failover_network_settings_ids: Missing[list[str]] = UNSET,
+        failover_network_enabled: Missing[bool] = UNSET,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     async def async_create_network_configuration_for_enterprise(
         self,
@@ -5833,7 +6942,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseNetworkConfigurationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/create-network-configuration-for-enterprise
 
         POST /enterprises/{enterprise}/network-configurations
@@ -5879,7 +6988,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/get-network-configuration-for-enterprise
 
         GET /enterprises/{enterprise}/network-configurations/{network_configuration_id}
@@ -5910,7 +7019,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/get-network-configuration-for-enterprise
 
         GET /enterprises/{enterprise}/network-configurations/{network_configuration_id}
@@ -5999,7 +7108,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     @overload
     def update_network_configuration_for_enterprise(
@@ -6013,7 +7122,9 @@ class EnterpriseAdminClient:
         name: Missing[str] = UNSET,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: Missing[list[str]] = UNSET,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+        failover_network_settings_ids: Missing[list[str]] = UNSET,
+        failover_network_enabled: Missing[bool] = UNSET,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     def update_network_configuration_for_enterprise(
         self,
@@ -6026,7 +7137,7 @@ class EnterpriseAdminClient:
             EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/update-network-configuration-for-enterprise
 
         PATCH /enterprises/{enterprise}/network-configurations/{network_configuration_id}
@@ -6075,7 +7186,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     @overload
     async def async_update_network_configuration_for_enterprise(
@@ -6089,7 +7200,9 @@ class EnterpriseAdminClient:
         name: Missing[str] = UNSET,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: Missing[list[str]] = UNSET,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+        failover_network_settings_ids: Missing[list[str]] = UNSET,
+        failover_network_enabled: Missing[bool] = UNSET,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     async def async_update_network_configuration_for_enterprise(
         self,
@@ -6102,7 +7215,7 @@ class EnterpriseAdminClient:
             EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/update-network-configuration-for-enterprise
 
         PATCH /enterprises/{enterprise}/network-configurations/{network_configuration_id}
@@ -6149,7 +7262,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[NetworkSettings, NetworkSettingsType]:
+    ) -> Response[NetworkSettings, NetworkSettingsTypeForResponse]:
         """hosted-compute/get-network-settings-for-enterprise
 
         GET /enterprises/{enterprise}/network-settings/{network_settings_id}
@@ -6180,7 +7293,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[NetworkSettings, NetworkSettingsType]:
+    ) -> Response[NetworkSettings, NetworkSettingsTypeForResponse]:
         """hosted-compute/get-network-settings-for-enterprise
 
         GET /enterprises/{enterprise}/network-settings/{network_settings_id}
@@ -6204,26 +7317,33 @@ class EnterpriseAdminClient:
             response_model=NetworkSettings,
         )
 
-    def get_enterprise_custom_properties(
+    def custom_properties_for_orgs_get_enterprise_definitions(
         self,
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """enterprise-admin/get-enterprise-custom-properties
+    ) -> Response[
+        list[OrganizationCustomProperty],
+        list[OrganizationCustomPropertyTypeForResponse],
+    ]:
+        """enterprise-admin/custom-properties-for-orgs-get-enterprise-definitions
 
-        GET /enterprises/{enterprise}/properties/schema
+        GET /enterprises/{enterprise}/org-properties/schema
 
-        Gets all custom properties defined for an enterprise.
-        Enterprise members can read these properties.
+        Gets all organization custom property definitions that are defined on an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-custom-properties-for-an-enterprise
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
+        - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#get-organization-custom-properties-schema-for-an-enterprise
         """
 
-        from ..models import BasicError, CustomProperty
+        from ..models import BasicError, OrganizationCustomProperty
 
-        url = f"/enterprises/{enterprise}/properties/schema"
+        url = f"/enterprises/{enterprise}/org-properties/schema"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -6232,33 +7352,40 @@ class EnterpriseAdminClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[CustomProperty],
+            response_model=list[OrganizationCustomProperty],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
             },
         )
 
-    async def async_get_enterprise_custom_properties(
+    async def async_custom_properties_for_orgs_get_enterprise_definitions(
         self,
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """enterprise-admin/get-enterprise-custom-properties
+    ) -> Response[
+        list[OrganizationCustomProperty],
+        list[OrganizationCustomPropertyTypeForResponse],
+    ]:
+        """enterprise-admin/custom-properties-for-orgs-get-enterprise-definitions
 
-        GET /enterprises/{enterprise}/properties/schema
+        GET /enterprises/{enterprise}/org-properties/schema
 
-        Gets all custom properties defined for an enterprise.
-        Enterprise members can read these properties.
+        Gets all organization custom property definitions that are defined on an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-custom-properties-for-an-enterprise
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
+        - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#get-organization-custom-properties-schema-for-an-enterprise
         """
 
-        from ..models import BasicError, CustomProperty
+        from ..models import BasicError, OrganizationCustomProperty
 
-        url = f"/enterprises/{enterprise}/properties/schema"
+        url = f"/enterprises/{enterprise}/org-properties/schema"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -6267,7 +7394,7 @@ class EnterpriseAdminClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[CustomProperty],
+            response_model=list[OrganizationCustomProperty],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -6275,57 +7402,69 @@ class EnterpriseAdminClient:
         )
 
     @overload
-    def create_or_update_enterprise_custom_properties(
+    def custom_properties_for_orgs_create_or_update_enterprise_definitions(
         self,
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: EnterprisesEnterprisePropertiesSchemaPatchBodyType,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+        data: EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType,
+    ) -> Response[
+        list[OrganizationCustomProperty],
+        list[OrganizationCustomPropertyTypeForResponse],
+    ]: ...
 
     @overload
-    def create_or_update_enterprise_custom_properties(
+    def custom_properties_for_orgs_create_or_update_enterprise_definitions(
         self,
         enterprise: str,
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        properties: list[CustomPropertyType],
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+        properties: list[OrganizationCustomPropertyType],
+    ) -> Response[
+        list[OrganizationCustomProperty],
+        list[OrganizationCustomPropertyTypeForResponse],
+    ]: ...
 
-    def create_or_update_enterprise_custom_properties(
+    def custom_properties_for_orgs_create_or_update_enterprise_definitions(
         self,
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[EnterprisesEnterprisePropertiesSchemaPatchBodyType] = UNSET,
+        data: Missing[EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """enterprise-admin/create-or-update-enterprise-custom-properties
+    ) -> Response[
+        list[OrganizationCustomProperty],
+        list[OrganizationCustomPropertyTypeForResponse],
+    ]:
+        """enterprise-admin/custom-properties-for-orgs-create-or-update-enterprise-definitions
 
-        PATCH /enterprises/{enterprise}/properties/schema
+        PATCH /enterprises/{enterprise}/org-properties/schema
 
-        Creates new or updates existing custom properties defined for an enterprise in a batch.
+        Creates new or updates existing organization custom properties defined on an enterprise in a batch.
 
         If the property already exists, the existing property will be replaced with the new values.
         Missing optional values will fall back to default values, previous values will be overwritten.
-        E.g. if a property exists with `values_editable_by: org_and_repo_actors` and it's updated without specifying `values_editable_by`, it will be updated to default value `org_actors`.
 
-        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
+        - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-custom-properties-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-organization-custom-property-definitions-on-an-enterprise
         """
 
         from ..models import (
             BasicError,
-            CustomProperty,
-            EnterprisesEnterprisePropertiesSchemaPatchBody,
+            EnterprisesEnterpriseOrgPropertiesSchemaPatchBody,
+            OrganizationCustomProperty,
+            ValidationErrorSimple,
         )
 
-        url = f"/enterprises/{enterprise}/properties/schema"
+        url = f"/enterprises/{enterprise}/org-properties/schema"
 
         headers = {
             "Content-Type": "application/json",
@@ -6336,7 +7475,7 @@ class EnterpriseAdminClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                EnterprisesEnterprisePropertiesSchemaPatchBody, json
+                EnterprisesEnterpriseOrgPropertiesSchemaPatchBody, json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -6346,65 +7485,78 @@ class EnterpriseAdminClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[CustomProperty],
+            response_model=list[OrganizationCustomProperty],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
     @overload
-    async def async_create_or_update_enterprise_custom_properties(
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_definitions(
         self,
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: EnterprisesEnterprisePropertiesSchemaPatchBodyType,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+        data: EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType,
+    ) -> Response[
+        list[OrganizationCustomProperty],
+        list[OrganizationCustomPropertyTypeForResponse],
+    ]: ...
 
     @overload
-    async def async_create_or_update_enterprise_custom_properties(
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_definitions(
         self,
         enterprise: str,
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        properties: list[CustomPropertyType],
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+        properties: list[OrganizationCustomPropertyType],
+    ) -> Response[
+        list[OrganizationCustomProperty],
+        list[OrganizationCustomPropertyTypeForResponse],
+    ]: ...
 
-    async def async_create_or_update_enterprise_custom_properties(
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_definitions(
         self,
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[EnterprisesEnterprisePropertiesSchemaPatchBodyType] = UNSET,
+        data: Missing[EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """enterprise-admin/create-or-update-enterprise-custom-properties
+    ) -> Response[
+        list[OrganizationCustomProperty],
+        list[OrganizationCustomPropertyTypeForResponse],
+    ]:
+        """enterprise-admin/custom-properties-for-orgs-create-or-update-enterprise-definitions
 
-        PATCH /enterprises/{enterprise}/properties/schema
+        PATCH /enterprises/{enterprise}/org-properties/schema
 
-        Creates new or updates existing custom properties defined for an enterprise in a batch.
+        Creates new or updates existing organization custom properties defined on an enterprise in a batch.
 
         If the property already exists, the existing property will be replaced with the new values.
         Missing optional values will fall back to default values, previous values will be overwritten.
-        E.g. if a property exists with `values_editable_by: org_and_repo_actors` and it's updated without specifying `values_editable_by`, it will be updated to default value `org_actors`.
 
-        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
+        - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-custom-properties-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-organization-custom-property-definitions-on-an-enterprise
         """
 
         from ..models import (
             BasicError,
-            CustomProperty,
-            EnterprisesEnterprisePropertiesSchemaPatchBody,
+            EnterprisesEnterpriseOrgPropertiesSchemaPatchBody,
+            OrganizationCustomProperty,
+            ValidationErrorSimple,
         )
 
-        url = f"/enterprises/{enterprise}/properties/schema"
+        url = f"/enterprises/{enterprise}/org-properties/schema"
 
         headers = {
             "Content-Type": "application/json",
@@ -6415,7 +7567,7 @@ class EnterpriseAdminClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                EnterprisesEnterprisePropertiesSchemaPatchBody, json
+                EnterprisesEnterpriseOrgPropertiesSchemaPatchBody, json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -6425,110 +7577,41 @@ class EnterpriseAdminClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[CustomProperty],
+            response_model=list[OrganizationCustomProperty],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
-    def promote_custom_property_to_enterprise(
-        self,
-        enterprise: str,
-        org: str,
-        custom_property_name: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[CustomProperty, CustomPropertyType]:
-        """enterprise-admin/promote-custom-property-to-enterprise
-
-        PUT /enterprises/{enterprise}/properties/schema/organizations/{org}/{custom_property_name}/promote
-
-        Promotes an existing organization custom property to an enterprise.
-
-        To use this endpoint, the authenticated user must be an administrator for the enterprise.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#promote-a-custom-property-to-an-enterprise
-        """
-
-        from ..models import BasicError, CustomProperty
-
-        url = f"/enterprises/{enterprise}/properties/schema/organizations/{org}/{custom_property_name}/promote"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "PUT",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=CustomProperty,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    async def async_promote_custom_property_to_enterprise(
-        self,
-        enterprise: str,
-        org: str,
-        custom_property_name: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[CustomProperty, CustomPropertyType]:
-        """enterprise-admin/promote-custom-property-to-enterprise
-
-        PUT /enterprises/{enterprise}/properties/schema/organizations/{org}/{custom_property_name}/promote
-
-        Promotes an existing organization custom property to an enterprise.
-
-        To use this endpoint, the authenticated user must be an administrator for the enterprise.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#promote-a-custom-property-to-an-enterprise
-        """
-
-        from ..models import BasicError, CustomProperty
-
-        url = f"/enterprises/{enterprise}/properties/schema/organizations/{org}/{custom_property_name}/promote"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "PUT",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=CustomProperty,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    def get_enterprise_custom_property(
+    def custom_properties_for_orgs_get_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CustomProperty, CustomPropertyType]:
-        """enterprise-admin/get-enterprise-custom-property
+    ) -> Response[
+        OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
+    ]:
+        """enterprise-admin/custom-properties-for-orgs-get-enterprise-definition
 
-        GET /enterprises/{enterprise}/properties/schema/{custom_property_name}
+        GET /enterprises/{enterprise}/org-properties/schema/{custom_property_name}
 
-        Gets a custom property that is defined for an enterprise.
-        Enterprise members can read these properties.
+        Gets an organization custom property definition that is defined on an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-a-custom-property-for-an-enterprise
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
+        - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#get-an-organization-custom-property-definition-from-an-enterprise
         """
 
-        from ..models import BasicError, CustomProperty
+        from ..models import BasicError, OrganizationCustomProperty
 
-        url = f"/enterprises/{enterprise}/properties/schema/{custom_property_name}"
+        url = f"/enterprises/{enterprise}/org-properties/schema/{custom_property_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -6537,34 +7620,40 @@ class EnterpriseAdminClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=CustomProperty,
+            response_model=OrganizationCustomProperty,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
             },
         )
 
-    async def async_get_enterprise_custom_property(
+    async def async_custom_properties_for_orgs_get_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CustomProperty, CustomPropertyType]:
-        """enterprise-admin/get-enterprise-custom-property
+    ) -> Response[
+        OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
+    ]:
+        """enterprise-admin/custom-properties-for-orgs-get-enterprise-definition
 
-        GET /enterprises/{enterprise}/properties/schema/{custom_property_name}
+        GET /enterprises/{enterprise}/org-properties/schema/{custom_property_name}
 
-        Gets a custom property that is defined for an enterprise.
-        Enterprise members can read these properties.
+        Gets an organization custom property definition that is defined on an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-a-custom-property-for-an-enterprise
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
+        - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#get-an-organization-custom-property-definition-from-an-enterprise
         """
 
-        from ..models import BasicError, CustomProperty
+        from ..models import BasicError, OrganizationCustomProperty
 
-        url = f"/enterprises/{enterprise}/properties/schema/{custom_property_name}"
+        url = f"/enterprises/{enterprise}/org-properties/schema/{custom_property_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -6573,7 +7662,7 @@ class EnterpriseAdminClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=CustomProperty,
+            response_model=OrganizationCustomProperty,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -6581,18 +7670,20 @@ class EnterpriseAdminClient:
         )
 
     @overload
-    def create_or_update_enterprise_custom_property(
+    def custom_properties_for_orgs_create_or_update_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: CustomPropertySetPayloadType,
-    ) -> Response[CustomProperty, CustomPropertyType]: ...
+        data: OrganizationCustomPropertyPayloadType,
+    ) -> Response[
+        OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
+    ]: ...
 
     @overload
-    def create_or_update_enterprise_custom_property(
+    def custom_properties_for_orgs_create_or_update_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
@@ -6600,40 +7691,54 @@ class EnterpriseAdminClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        value_type: Literal["string", "single_select", "multi_select", "true_false"],
+        value_type: Literal[
+            "string", "single_select", "multi_select", "true_false", "url"
+        ],
         required: Missing[bool] = UNSET,
         default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[list[str], None]] = UNSET,
         values_editable_by: Missing[
-            Union[None, Literal["org_actors", "org_and_repo_actors"]]
+            Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
         ] = UNSET,
-    ) -> Response[CustomProperty, CustomPropertyType]: ...
+    ) -> Response[
+        OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
+    ]: ...
 
-    def create_or_update_enterprise_custom_property(
+    def custom_properties_for_orgs_create_or_update_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[CustomPropertySetPayloadType] = UNSET,
+        data: Missing[OrganizationCustomPropertyPayloadType] = UNSET,
         **kwargs,
-    ) -> Response[CustomProperty, CustomPropertyType]:
-        """enterprise-admin/create-or-update-enterprise-custom-property
+    ) -> Response[
+        OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
+    ]:
+        """enterprise-admin/custom-properties-for-orgs-create-or-update-enterprise-definition
 
-        PUT /enterprises/{enterprise}/properties/schema/{custom_property_name}
+        PUT /enterprises/{enterprise}/org-properties/schema/{custom_property_name}
 
-        Creates a new or updates an existing custom property that is defined for an enterprise.
+        Creates a new or updates an existing organization custom property definition that is defined on an enterprise.
 
-        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
+        - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-a-custom-property-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-an-organization-custom-property-definition-on-an-enterprise
         """
 
-        from ..models import BasicError, CustomProperty, CustomPropertySetPayload
+        from ..models import (
+            BasicError,
+            OrganizationCustomProperty,
+            OrganizationCustomPropertyPayload,
+            ValidationErrorSimple,
+        )
 
-        url = f"/enterprises/{enterprise}/properties/schema/{custom_property_name}"
+        url = f"/enterprises/{enterprise}/org-properties/schema/{custom_property_name}"
 
         headers = {
             "Content-Type": "application/json",
@@ -6643,7 +7748,7 @@ class EnterpriseAdminClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(CustomPropertySetPayload, json)
+            json = type_validate_python(OrganizationCustomPropertyPayload, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -6652,26 +7757,29 @@ class EnterpriseAdminClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=CustomProperty,
+            response_model=OrganizationCustomProperty,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
     @overload
-    async def async_create_or_update_enterprise_custom_property(
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: CustomPropertySetPayloadType,
-    ) -> Response[CustomProperty, CustomPropertyType]: ...
+        data: OrganizationCustomPropertyPayloadType,
+    ) -> Response[
+        OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
+    ]: ...
 
     @overload
-    async def async_create_or_update_enterprise_custom_property(
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
@@ -6679,40 +7787,54 @@ class EnterpriseAdminClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        value_type: Literal["string", "single_select", "multi_select", "true_false"],
+        value_type: Literal[
+            "string", "single_select", "multi_select", "true_false", "url"
+        ],
         required: Missing[bool] = UNSET,
         default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[list[str], None]] = UNSET,
         values_editable_by: Missing[
-            Union[None, Literal["org_actors", "org_and_repo_actors"]]
+            Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
         ] = UNSET,
-    ) -> Response[CustomProperty, CustomPropertyType]: ...
+    ) -> Response[
+        OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
+    ]: ...
 
-    async def async_create_or_update_enterprise_custom_property(
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[CustomPropertySetPayloadType] = UNSET,
+        data: Missing[OrganizationCustomPropertyPayloadType] = UNSET,
         **kwargs,
-    ) -> Response[CustomProperty, CustomPropertyType]:
-        """enterprise-admin/create-or-update-enterprise-custom-property
+    ) -> Response[
+        OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
+    ]:
+        """enterprise-admin/custom-properties-for-orgs-create-or-update-enterprise-definition
 
-        PUT /enterprises/{enterprise}/properties/schema/{custom_property_name}
+        PUT /enterprises/{enterprise}/org-properties/schema/{custom_property_name}
 
-        Creates a new or updates an existing custom property that is defined for an enterprise.
+        Creates a new or updates an existing organization custom property definition that is defined on an enterprise.
 
-        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
+        - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-a-custom-property-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-an-organization-custom-property-definition-on-an-enterprise
         """
 
-        from ..models import BasicError, CustomProperty, CustomPropertySetPayload
+        from ..models import (
+            BasicError,
+            OrganizationCustomProperty,
+            OrganizationCustomPropertyPayload,
+            ValidationErrorSimple,
+        )
 
-        url = f"/enterprises/{enterprise}/properties/schema/{custom_property_name}"
+        url = f"/enterprises/{enterprise}/org-properties/schema/{custom_property_name}"
 
         headers = {
             "Content-Type": "application/json",
@@ -6722,7 +7844,7 @@ class EnterpriseAdminClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(CustomPropertySetPayload, json)
+            json = type_validate_python(OrganizationCustomPropertyPayload, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -6731,14 +7853,15 @@ class EnterpriseAdminClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=CustomProperty,
+            response_model=OrganizationCustomProperty,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
-    def remove_enterprise_custom_property(
+    def custom_properties_for_orgs_delete_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
@@ -6746,7 +7869,895 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response:
-        """enterprise-admin/remove-enterprise-custom-property
+        """enterprise-admin/custom-properties-for-orgs-delete-enterprise-definition
+
+        DELETE /enterprises/{enterprise}/org-properties/schema/{custom_property_name}
+
+        Removes an organization custom property definition that is defined on an enterprise.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
+        - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#remove-an-organization-custom-property-definition-from-an-enterprise
+        """
+
+        from ..models import BasicError, ValidationErrorSimple
+
+        url = f"/enterprises/{enterprise}/org-properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    async def async_custom_properties_for_orgs_delete_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/custom-properties-for-orgs-delete-enterprise-definition
+
+        DELETE /enterprises/{enterprise}/org-properties/schema/{custom_property_name}
+
+        Removes an organization custom property definition that is defined on an enterprise.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
+        - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#remove-an-organization-custom-property-definition-from-an-enterprise
+        """
+
+        from ..models import BasicError, ValidationErrorSimple
+
+        url = f"/enterprises/{enterprise}/org-properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def custom_properties_for_orgs_get_enterprise_values(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[CustomPropertiesForOrgsGetEnterprisePropertyValues],
+        list[CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse],
+    ]:
+        """enterprise-admin/custom-properties-for-orgs-get-enterprise-values
+
+        GET /enterprises/{enterprise}/org-properties/values
+
+        Lists enterprise organizations with all of their custom property values.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
+        - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#list-custom-property-values-for-organizations-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            CustomPropertiesForOrgsGetEnterprisePropertyValues,
+        )
+
+        url = f"/enterprises/{enterprise}/org-properties/values"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CustomPropertiesForOrgsGetEnterprisePropertyValues],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_custom_properties_for_orgs_get_enterprise_values(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[CustomPropertiesForOrgsGetEnterprisePropertyValues],
+        list[CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse],
+    ]:
+        """enterprise-admin/custom-properties-for-orgs-get-enterprise-values
+
+        GET /enterprises/{enterprise}/org-properties/values
+
+        Lists enterprise organizations with all of their custom property values.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
+        - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#list-custom-property-values-for-organizations-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            CustomPropertiesForOrgsGetEnterprisePropertyValues,
+        )
+
+        url = f"/enterprises/{enterprise}/org-properties/values"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CustomPropertiesForOrgsGetEnterprisePropertyValues],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def custom_properties_for_orgs_create_or_update_enterprise_values(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    def custom_properties_for_orgs_create_or_update_enterprise_values(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        organization_logins: list[str],
+        properties: list[CustomPropertyValueType],
+    ) -> Response: ...
+
+    def custom_properties_for_orgs_create_or_update_enterprise_values(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """enterprise-admin/custom-properties-for-orgs-create-or-update-enterprise-values
+
+        PATCH /enterprises/{enterprise}/org-properties/values
+
+        Create or update custom property values for organizations in an enterprise.
+
+        To remove a custom property value from an organization, set the property value to `null`.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
+        - Actors with the enterprise-level "edit enterprise custom properties for organizations" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-custom-property-values-for-organizations-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseOrgPropertiesValuesPatchBody,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/org-properties/values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseOrgPropertiesValuesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_values(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_values(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        organization_logins: list[str],
+        properties: list[CustomPropertyValueType],
+    ) -> Response: ...
+
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_values(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """enterprise-admin/custom-properties-for-orgs-create-or-update-enterprise-values
+
+        PATCH /enterprises/{enterprise}/org-properties/values
+
+        Create or update custom property values for organizations in an enterprise.
+
+        To remove a custom property value from an organization, set the property value to `null`.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
+        - Actors with the enterprise-level "edit enterprise custom properties for organizations" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-custom-property-values-for-organizations-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseOrgPropertiesValuesPatchBody,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/org-properties/values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseOrgPropertiesValuesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def custom_properties_for_repos_get_enterprise_definitions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
+        """enterprise-admin/custom-properties-for-repos-get-enterprise-definitions
+
+        GET /enterprises/{enterprise}/properties/schema
+
+        Gets all custom properties defined for an enterprise.
+        Enterprise members can read these properties.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-custom-properties-for-an-enterprise
+        """
+
+        from ..models import BasicError, CustomProperty
+
+        url = f"/enterprises/{enterprise}/properties/schema"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CustomProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_custom_properties_for_repos_get_enterprise_definitions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
+        """enterprise-admin/custom-properties-for-repos-get-enterprise-definitions
+
+        GET /enterprises/{enterprise}/properties/schema
+
+        Gets all custom properties defined for an enterprise.
+        Enterprise members can read these properties.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-custom-properties-for-an-enterprise
+        """
+
+        from ..models import BasicError, CustomProperty
+
+        url = f"/enterprises/{enterprise}/properties/schema"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CustomProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def custom_properties_for_repos_create_or_update_enterprise_definitions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterprisePropertiesSchemaPatchBodyType,
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
+
+    @overload
+    def custom_properties_for_repos_create_or_update_enterprise_definitions(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        properties: list[CustomPropertyType],
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
+
+    def custom_properties_for_repos_create_or_update_enterprise_definitions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterprisePropertiesSchemaPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
+        """enterprise-admin/custom-properties-for-repos-create-or-update-enterprise-definitions
+
+        PATCH /enterprises/{enterprise}/properties/schema
+
+        Creates new or updates existing custom properties defined for an enterprise in a batch.
+
+        If the property already exists, the existing property will be replaced with the new values.
+        Missing optional values will fall back to default values, previous values will be overwritten.
+        E.g. if a property exists with `values_editable_by: org_and_repo_actors` and it's updated without specifying `values_editable_by`, it will be updated to default value `org_actors`.
+
+        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-custom-properties-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            CustomProperty,
+            EnterprisesEnterprisePropertiesSchemaPatchBody,
+        )
+
+        url = f"/enterprises/{enterprise}/properties/schema"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterprisePropertiesSchemaPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CustomProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_custom_properties_for_repos_create_or_update_enterprise_definitions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterprisePropertiesSchemaPatchBodyType,
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
+
+    @overload
+    async def async_custom_properties_for_repos_create_or_update_enterprise_definitions(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        properties: list[CustomPropertyType],
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
+
+    async def async_custom_properties_for_repos_create_or_update_enterprise_definitions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterprisePropertiesSchemaPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
+        """enterprise-admin/custom-properties-for-repos-create-or-update-enterprise-definitions
+
+        PATCH /enterprises/{enterprise}/properties/schema
+
+        Creates new or updates existing custom properties defined for an enterprise in a batch.
+
+        If the property already exists, the existing property will be replaced with the new values.
+        Missing optional values will fall back to default values, previous values will be overwritten.
+        E.g. if a property exists with `values_editable_by: org_and_repo_actors` and it's updated without specifying `values_editable_by`, it will be updated to default value `org_actors`.
+
+        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-custom-properties-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            CustomProperty,
+            EnterprisesEnterprisePropertiesSchemaPatchBody,
+        )
+
+        url = f"/enterprises/{enterprise}/properties/schema"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterprisePropertiesSchemaPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CustomProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def custom_properties_for_repos_promote_definition_to_enterprise(
+        self,
+        enterprise: str,
+        org: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
+        """enterprise-admin/custom-properties-for-repos-promote-definition-to-enterprise
+
+        PUT /enterprises/{enterprise}/properties/schema/organizations/{org}/{custom_property_name}/promote
+
+        Promotes an existing organization custom property to an enterprise.
+
+        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#promote-a-custom-property-to-an-enterprise
+        """
+
+        from ..models import BasicError, CustomProperty
+
+        url = f"/enterprises/{enterprise}/properties/schema/organizations/{org}/{custom_property_name}/promote"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_custom_properties_for_repos_promote_definition_to_enterprise(
+        self,
+        enterprise: str,
+        org: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
+        """enterprise-admin/custom-properties-for-repos-promote-definition-to-enterprise
+
+        PUT /enterprises/{enterprise}/properties/schema/organizations/{org}/{custom_property_name}/promote
+
+        Promotes an existing organization custom property to an enterprise.
+
+        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#promote-a-custom-property-to-an-enterprise
+        """
+
+        from ..models import BasicError, CustomProperty
+
+        url = f"/enterprises/{enterprise}/properties/schema/organizations/{org}/{custom_property_name}/promote"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def custom_properties_for_repos_get_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
+        """enterprise-admin/custom-properties-for-repos-get-enterprise-definition
+
+        GET /enterprises/{enterprise}/properties/schema/{custom_property_name}
+
+        Gets a custom property that is defined for an enterprise.
+        Enterprise members can read these properties.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-a-custom-property-for-an-enterprise
+        """
+
+        from ..models import BasicError, CustomProperty
+
+        url = f"/enterprises/{enterprise}/properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_custom_properties_for_repos_get_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
+        """enterprise-admin/custom-properties-for-repos-get-enterprise-definition
+
+        GET /enterprises/{enterprise}/properties/schema/{custom_property_name}
+
+        Gets a custom property that is defined for an enterprise.
+        Enterprise members can read these properties.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-a-custom-property-for-an-enterprise
+        """
+
+        from ..models import BasicError, CustomProperty
+
+        url = f"/enterprises/{enterprise}/properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def custom_properties_for_repos_create_or_update_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: CustomPropertySetPayloadType,
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
+
+    @overload
+    def custom_properties_for_repos_create_or_update_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        value_type: Literal[
+            "string", "single_select", "multi_select", "true_false", "url"
+        ],
+        required: Missing[bool] = UNSET,
+        default_value: Missing[Union[str, list[str], None]] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        allowed_values: Missing[Union[list[str], None]] = UNSET,
+        values_editable_by: Missing[
+            Union[None, Literal["org_actors", "org_and_repo_actors"]]
+        ] = UNSET,
+        require_explicit_values: Missing[bool] = UNSET,
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
+
+    def custom_properties_for_repos_create_or_update_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[CustomPropertySetPayloadType] = UNSET,
+        **kwargs,
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
+        """enterprise-admin/custom-properties-for-repos-create-or-update-enterprise-definition
+
+        PUT /enterprises/{enterprise}/properties/schema/{custom_property_name}
+
+        Creates a new or updates an existing custom property that is defined for an enterprise.
+
+        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-a-custom-property-for-an-enterprise
+        """
+
+        from ..models import BasicError, CustomProperty, CustomPropertySetPayload
+
+        url = f"/enterprises/{enterprise}/properties/schema/{custom_property_name}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(CustomPropertySetPayload, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_custom_properties_for_repos_create_or_update_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: CustomPropertySetPayloadType,
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
+
+    @overload
+    async def async_custom_properties_for_repos_create_or_update_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        value_type: Literal[
+            "string", "single_select", "multi_select", "true_false", "url"
+        ],
+        required: Missing[bool] = UNSET,
+        default_value: Missing[Union[str, list[str], None]] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        allowed_values: Missing[Union[list[str], None]] = UNSET,
+        values_editable_by: Missing[
+            Union[None, Literal["org_actors", "org_and_repo_actors"]]
+        ] = UNSET,
+        require_explicit_values: Missing[bool] = UNSET,
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
+
+    async def async_custom_properties_for_repos_create_or_update_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[CustomPropertySetPayloadType] = UNSET,
+        **kwargs,
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
+        """enterprise-admin/custom-properties-for-repos-create-or-update-enterprise-definition
+
+        PUT /enterprises/{enterprise}/properties/schema/{custom_property_name}
+
+        Creates a new or updates an existing custom property that is defined for an enterprise.
+
+        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-a-custom-property-for-an-enterprise
+        """
+
+        from ..models import BasicError, CustomProperty, CustomPropertySetPayload
+
+        url = f"/enterprises/{enterprise}/properties/schema/{custom_property_name}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(CustomPropertySetPayload, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def custom_properties_for_repos_delete_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/custom-properties-for-repos-delete-enterprise-definition
 
         DELETE /enterprises/{enterprise}/properties/schema/{custom_property_name}
 
@@ -6774,7 +8785,7 @@ class EnterpriseAdminClient:
             },
         )
 
-    async def async_remove_enterprise_custom_property(
+    async def async_custom_properties_for_repos_delete_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
@@ -6782,7 +8793,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response:
-        """enterprise-admin/remove-enterprise-custom-property
+        """enterprise-admin/custom-properties-for-repos-delete-enterprise-definition
 
         DELETE /enterprises/{enterprise}/properties/schema/{custom_property_name}
 
@@ -6819,7 +8830,7 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
+    ) -> Response[list[RulesetVersion], list[RulesetVersionTypeForResponse]]:
         """enterprise-admin/get-enterprise-ruleset-history
 
         GET /enterprises/{enterprise}/rulesets/{ruleset_id}/history
@@ -6843,7 +8854,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[RulesetVersion],
@@ -6862,7 +8873,7 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
+    ) -> Response[list[RulesetVersion], list[RulesetVersionTypeForResponse]]:
         """enterprise-admin/get-enterprise-ruleset-history
 
         GET /enterprises/{enterprise}/rulesets/{ruleset_id}/history
@@ -6886,7 +8897,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[RulesetVersion],
@@ -6904,7 +8915,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
+    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateTypeForResponse]:
         """enterprise-admin/get-enterprise-ruleset-version
 
         GET /enterprises/{enterprise}/rulesets/{ruleset_id}/history/{version_id}
@@ -6940,7 +8951,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
+    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateTypeForResponse]:
         """enterprise-admin/get-enterprise-ruleset-version
 
         GET /enterprises/{enterprise}/rulesets/{ruleset_id}/history/{version_id}
@@ -6968,6 +8979,7 @@ class EnterpriseAdminClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def post_security_product_enablement_for_enterprise(
         self,
         enterprise: str,
@@ -7016,6 +9028,7 @@ class EnterpriseAdminClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_post_security_product_enablement_for_enterprise(
         self,
         enterprise: str,
@@ -7074,7 +9087,7 @@ class EnterpriseAdminClient:
         count: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimEnterpriseGroupList, ScimEnterpriseGroupListType]:
+    ) -> Response[ScimEnterpriseGroupList, ScimEnterpriseGroupListTypeForResponse]:
         """enterprise-admin/list-provisioned-groups-enterprise
 
         GET /scim/v2/enterprises/{enterprise}/Groups
@@ -7102,7 +9115,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ScimEnterpriseGroupList,
@@ -7123,7 +9136,7 @@ class EnterpriseAdminClient:
         count: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimEnterpriseGroupList, ScimEnterpriseGroupListType]:
+    ) -> Response[ScimEnterpriseGroupList, ScimEnterpriseGroupListTypeForResponse]:
         """enterprise-admin/list-provisioned-groups-enterprise
 
         GET /scim/v2/enterprises/{enterprise}/Groups
@@ -7151,7 +9164,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ScimEnterpriseGroupList,
@@ -7170,7 +9183,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: GroupType,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]: ...
 
     @overload
     def provision_enterprise_group(
@@ -7183,8 +9198,10 @@ class EnterpriseAdminClient:
         schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]],
         external_id: str,
         display_name: str,
-        members: list[GroupPropMembersItemsType],
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
+        members: Missing[list[GroupPropMembersItemsType]] = UNSET,
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]: ...
 
     def provision_enterprise_group(
         self,
@@ -7194,7 +9211,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[GroupType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]:
         """enterprise-admin/provision-enterprise-group
 
         POST /scim/v2/enterprises/{enterprise}/Groups
@@ -7243,7 +9262,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: GroupType,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]: ...
 
     @overload
     async def async_provision_enterprise_group(
@@ -7256,8 +9277,10 @@ class EnterpriseAdminClient:
         schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]],
         external_id: str,
         display_name: str,
-        members: list[GroupPropMembersItemsType],
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
+        members: Missing[list[GroupPropMembersItemsType]] = UNSET,
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]: ...
 
     async def async_provision_enterprise_group(
         self,
@@ -7267,7 +9290,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[GroupType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]:
         """enterprise-admin/provision-enterprise-group
 
         POST /scim/v2/enterprises/{enterprise}/Groups
@@ -7316,7 +9341,9 @@ class EnterpriseAdminClient:
         excluded_attributes: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]:
         """enterprise-admin/get-provisioning-information-for-enterprise-group
 
         GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
@@ -7339,7 +9366,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ScimEnterpriseGroupResponse,
@@ -7359,7 +9386,9 @@ class EnterpriseAdminClient:
         excluded_attributes: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]:
         """enterprise-admin/get-provisioning-information-for-enterprise-group
 
         GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
@@ -7382,7 +9411,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ScimEnterpriseGroupResponse,
@@ -7403,7 +9432,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: GroupType,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]: ...
 
     @overload
     def set_information_for_provisioned_enterprise_group(
@@ -7417,8 +9448,10 @@ class EnterpriseAdminClient:
         schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]],
         external_id: str,
         display_name: str,
-        members: list[GroupPropMembersItemsType],
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
+        members: Missing[list[GroupPropMembersItemsType]] = UNSET,
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]: ...
 
     def set_information_for_provisioned_enterprise_group(
         self,
@@ -7429,7 +9462,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[GroupType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]:
         """enterprise-admin/set-information-for-provisioned-enterprise-group
 
         PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
@@ -7480,7 +9515,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: GroupType,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]: ...
 
     @overload
     async def async_set_information_for_provisioned_enterprise_group(
@@ -7494,8 +9531,10 @@ class EnterpriseAdminClient:
         schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]],
         external_id: str,
         display_name: str,
-        members: list[GroupPropMembersItemsType],
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
+        members: Missing[list[GroupPropMembersItemsType]] = UNSET,
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]: ...
 
     async def async_set_information_for_provisioned_enterprise_group(
         self,
@@ -7506,7 +9545,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[GroupType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]:
         """enterprise-admin/set-information-for-provisioned-enterprise-group
 
         PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
@@ -7787,7 +9828,7 @@ class EnterpriseAdminClient:
         count: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimEnterpriseUserList, ScimEnterpriseUserListType]:
+    ) -> Response[ScimEnterpriseUserList, ScimEnterpriseUserListTypeForResponse]:
         """enterprise-admin/list-provisioned-identities-enterprise
 
         GET /scim/v2/enterprises/{enterprise}/Users
@@ -7814,7 +9855,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ScimEnterpriseUserList,
@@ -7834,7 +9875,7 @@ class EnterpriseAdminClient:
         count: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimEnterpriseUserList, ScimEnterpriseUserListType]:
+    ) -> Response[ScimEnterpriseUserList, ScimEnterpriseUserListTypeForResponse]:
         """enterprise-admin/list-provisioned-identities-enterprise
 
         GET /scim/v2/enterprises/{enterprise}/Users
@@ -7861,7 +9902,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ScimEnterpriseUserList,
@@ -7880,7 +9921,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserType,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     @overload
     def provision_enterprise_user(
@@ -7898,7 +9941,9 @@ class EnterpriseAdminClient:
         display_name: str,
         emails: list[UserEmailsItemsType],
         roles: Missing[list[UserRoleItemsType]] = UNSET,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     def provision_enterprise_user(
         self,
@@ -7908,7 +9953,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[UserType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]:
         """enterprise-admin/provision-enterprise-user
 
         POST /scim/v2/enterprises/{enterprise}/Users
@@ -7957,7 +10004,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserType,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     @overload
     async def async_provision_enterprise_user(
@@ -7975,7 +10024,9 @@ class EnterpriseAdminClient:
         display_name: str,
         emails: list[UserEmailsItemsType],
         roles: Missing[list[UserRoleItemsType]] = UNSET,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     async def async_provision_enterprise_user(
         self,
@@ -7985,7 +10036,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[UserType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]:
         """enterprise-admin/provision-enterprise-user
 
         POST /scim/v2/enterprises/{enterprise}/Users
@@ -8033,7 +10086,9 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]:
         """enterprise-admin/get-provisioning-information-for-enterprise-user
 
         GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
@@ -8070,7 +10125,9 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]:
         """enterprise-admin/get-provisioning-information-for-enterprise-user
 
         GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
@@ -8109,7 +10166,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserType,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     @overload
     def set_information_for_provisioned_enterprise_user(
@@ -8128,7 +10187,9 @@ class EnterpriseAdminClient:
         display_name: str,
         emails: list[UserEmailsItemsType],
         roles: Missing[list[UserRoleItemsType]] = UNSET,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     def set_information_for_provisioned_enterprise_user(
         self,
@@ -8139,7 +10200,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[UserType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]:
         """enterprise-admin/set-information-for-provisioned-enterprise-user
 
         PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
@@ -8149,7 +10212,36 @@ class EnterpriseAdminClient:
         You must supply complete user information, just as you would when provisioning them initially. Any previously existing data not provided will be deleted. To update only a specific attribute, refer to the [Update an attribute for a SCIM user](#update-an-attribute-for-a-scim-enterprise-user) endpoint.
 
         > [!WARNING]
-        > Setting `active: false` will suspend a user, and their handle and email will be obfuscated.
+        > Setting `active: false` will suspend a user. As a result, their handle and primary email address will be obfuscated.
+        >
+        > ```
+        >{
+        >  "schemas": [
+        >    "urn:ietf:params:scim:schemas:core:2.0:User"
+        >  ],
+        >  "externalId": "E012345",
+        >  "active": false,
+        >  "userName": "E012345",
+        >  "name": {
+        >    "familyName": "Octocat",
+        >    "givenName": "Mona",
+        >    "middleName": "Lisa"
+        >  },
+        >  "displayName": "Mona Lisa",
+        >  "emails": [
+        >    {
+        >      "value": "mlisa@example.com",
+        >      "type": "work",
+        >      "primary": true
+        >    }
+        >  ],
+        >  "roles": [
+        >    {
+        >      "value": "User"
+        >    }
+        >  ]
+        >}
+        > ```
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-user
         """
@@ -8193,7 +10285,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserType,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     @overload
     async def async_set_information_for_provisioned_enterprise_user(
@@ -8212,7 +10306,9 @@ class EnterpriseAdminClient:
         display_name: str,
         emails: list[UserEmailsItemsType],
         roles: Missing[list[UserRoleItemsType]] = UNSET,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     async def async_set_information_for_provisioned_enterprise_user(
         self,
@@ -8223,7 +10319,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[UserType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]:
         """enterprise-admin/set-information-for-provisioned-enterprise-user
 
         PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
@@ -8233,7 +10331,36 @@ class EnterpriseAdminClient:
         You must supply complete user information, just as you would when provisioning them initially. Any previously existing data not provided will be deleted. To update only a specific attribute, refer to the [Update an attribute for a SCIM user](#update-an-attribute-for-a-scim-enterprise-user) endpoint.
 
         > [!WARNING]
-        > Setting `active: false` will suspend a user, and their handle and email will be obfuscated.
+        > Setting `active: false` will suspend a user. As a result, their handle and primary email address will be obfuscated.
+        >
+        > ```
+        >{
+        >  "schemas": [
+        >    "urn:ietf:params:scim:schemas:core:2.0:User"
+        >  ],
+        >  "externalId": "E012345",
+        >  "active": false,
+        >  "userName": "E012345",
+        >  "name": {
+        >    "familyName": "Octocat",
+        >    "givenName": "Mona",
+        >    "middleName": "Lisa"
+        >  },
+        >  "displayName": "Mona Lisa",
+        >  "emails": [
+        >    {
+        >      "value": "mlisa@example.com",
+        >      "type": "work",
+        >      "primary": true
+        >    }
+        >  ],
+        >  "roles": [
+        >    {
+        >      "value": "User"
+        >    }
+        >  ]
+        >}
+        > ```
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-user
         """
@@ -8349,7 +10476,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: PatchSchemaType,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     @overload
     def update_attribute_for_enterprise_user(
@@ -8362,7 +10491,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         operations: list[PatchSchemaPropOperationsItemsType],
         schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]],
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     def update_attribute_for_enterprise_user(
         self,
@@ -8373,7 +10504,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[PatchSchemaType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]:
         """enterprise-admin/update-attribute-for-enterprise-user
 
         PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
@@ -8386,15 +10519,21 @@ class EnterpriseAdminClient:
         > Complex SCIM `path` selectors that include filters are not supported. For example, a `path` selector defined as `"path": "emails[type eq \"work\"]"` will be ineffective.
 
         > [!WARNING]
-        > Setting `active: false` will suspend a user, and their handle and email will be obfuscated.
+        > Setting `active: false` will suspend a user. As a result, their handle and primary email address will be obfuscated.
+        >
         > ```
         > {
-        >   "Operations":[{
-        >     "op":"replace",
-        >     "value":{
-        >       "active":false
+        >   "schemas": [
+        >     "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+        >   ],
+        >   "Operations": [
+        >     {
+        >       "op": "replace",
+        >       "value": {
+        >         "active": false
+        >       }
         >     }
-        >   }]
+        >   ]
         > }
         > ```
 
@@ -8445,7 +10584,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: PatchSchemaType,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     @overload
     async def async_update_attribute_for_enterprise_user(
@@ -8458,7 +10599,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         operations: list[PatchSchemaPropOperationsItemsType],
         schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]],
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     async def async_update_attribute_for_enterprise_user(
         self,
@@ -8469,7 +10612,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[PatchSchemaType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]:
         """enterprise-admin/update-attribute-for-enterprise-user
 
         PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
@@ -8482,15 +10627,21 @@ class EnterpriseAdminClient:
         > Complex SCIM `path` selectors that include filters are not supported. For example, a `path` selector defined as `"path": "emails[type eq \"work\"]"` will be ineffective.
 
         > [!WARNING]
-        > Setting `active: false` will suspend a user, and their handle and email will be obfuscated.
+        > Setting `active: false` will suspend a user. As a result, their handle and primary email address will be obfuscated.
+        >
         > ```
         > {
-        >   "Operations":[{
-        >     "op":"replace",
-        >     "value":{
-        >       "active":false
+        >   "schemas": [
+        >     "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+        >   ],
+        >   "Operations": [
+        >     {
+        >       "op": "replace",
+        >       "value": {
+        >         "active": false
+        >       }
         >     }
-        >   }]
+        >   ]
         > }
         > ```
 

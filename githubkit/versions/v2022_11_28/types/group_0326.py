@@ -9,38 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class DemilestonedIssueEventType(TypedDict):
-    """Demilestoned Issue Event
+class ReactionType(TypedDict):
+    """Reaction
 
-    Demilestoned Issue Event
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
     id: int
     node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["demilestoned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
+    user: Union[None, SimpleUserType]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+    created_at: _dt.datetime
+
+
+class ReactionTypeForResponse(TypedDict):
+    """Reaction
+
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
+    """
+
+    id: int
+    node_id: str
+    user: Union[None, SimpleUserTypeForResponse]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    milestone: DemilestonedIssueEventPropMilestoneType
-
-
-class DemilestonedIssueEventPropMilestoneType(TypedDict):
-    """DemilestonedIssueEventPropMilestone"""
-
-    title: str
 
 
 __all__ = (
-    "DemilestonedIssueEventPropMilestoneType",
-    "DemilestonedIssueEventType",
+    "ReactionType",
+    "ReactionTypeForResponse",
 )

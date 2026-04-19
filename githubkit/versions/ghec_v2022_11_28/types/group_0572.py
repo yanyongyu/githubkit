@@ -9,126 +9,119 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0210 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0366 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
+from .group_0571 import SimpleCheckSuiteType, SimpleCheckSuiteTypeForResponse
 
 
-class WebhookCodeScanningAlertReopenedType(TypedDict):
-    """code_scanning_alert reopened event"""
+class CheckRunWithSimpleCheckSuiteType(TypedDict):
+    """CheckRun
 
-    action: Literal["reopened"]
-    alert: Union[WebhookCodeScanningAlertReopenedPropAlertType, None]
-    commit_oid: Union[str, None]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: Union[str, None]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookCodeScanningAlertReopenedPropAlertType(TypedDict):
-    """WebhookCodeScanningAlertReopenedPropAlert
-
-    The code scanning alert involved in the event.
+    A check performed on the code of a given code change
     """
 
-    created_at: datetime
-    dismissed_at: Union[str, None]
-    dismissed_by: Union[
-        WebhookCodeScanningAlertReopenedPropAlertPropDismissedByType, None
+    app: Union[IntegrationType, None]
+    check_suite: SimpleCheckSuiteType
+    completed_at: Union[_dt.datetime, None]
+    conclusion: Union[
+        None,
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    dismissed_reason: Union[str, None]
-    fixed_at: NotRequired[None]
+    deployment: NotRequired[DeploymentSimpleType]
+    details_url: str
+    external_id: str
+    head_sha: str
     html_url: str
-    most_recent_instance: NotRequired[
-        Union[WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstanceType, None]
-    ]
-    number: int
-    rule: WebhookCodeScanningAlertReopenedPropAlertPropRuleType
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    tool: WebhookCodeScanningAlertReopenedPropAlertPropToolType
+    id: int
+    name: str
+    node_id: str
+    output: CheckRunWithSimpleCheckSuitePropOutputType
+    pull_requests: list[PullRequestMinimalType]
+    started_at: _dt.datetime
+    status: Literal["queued", "in_progress", "completed", "pending"]
     url: str
 
 
-class WebhookCodeScanningAlertReopenedPropAlertPropDismissedByType(TypedDict):
-    """WebhookCodeScanningAlertReopenedPropAlertPropDismissedBy"""
+class CheckRunWithSimpleCheckSuiteTypeForResponse(TypedDict):
+    """CheckRun
 
+    A check performed on the code of a given code change
+    """
 
-class WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstanceType(TypedDict):
-    """Alert Instance"""
-
-    analysis_key: str
-    category: NotRequired[str]
-    classifications: NotRequired[list[str]]
-    commit_sha: NotRequired[str]
-    environment: str
-    location: NotRequired[
-        WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropLocationType
+    app: Union[IntegrationTypeForResponse, None]
+    check_suite: SimpleCheckSuiteTypeForResponse
+    completed_at: Union[str, None]
+    conclusion: Union[
+        None,
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
     ]
-    message: NotRequired[
-        WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropMessageType
-    ]
-    ref: str
-    state: Literal["open", "dismissed", "fixed"]
-
-
-class WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropLocationType(
-    TypedDict
-):
-    """WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropLocation"""
-
-    end_column: NotRequired[int]
-    end_line: NotRequired[int]
-    path: NotRequired[str]
-    start_column: NotRequired[int]
-    start_line: NotRequired[int]
-
-
-class WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropMessageType(
-    TypedDict
-):
-    """WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropMessage"""
-
-    text: NotRequired[str]
-
-
-class WebhookCodeScanningAlertReopenedPropAlertPropRuleType(TypedDict):
-    """WebhookCodeScanningAlertReopenedPropAlertPropRule"""
-
-    description: str
-    full_description: NotRequired[str]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
-    id: str
-    name: NotRequired[str]
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
-    tags: NotRequired[Union[list[str], None]]
-
-
-class WebhookCodeScanningAlertReopenedPropAlertPropToolType(TypedDict):
-    """WebhookCodeScanningAlertReopenedPropAlertPropTool"""
-
-    guid: NotRequired[Union[str, None]]
+    deployment: NotRequired[DeploymentSimpleTypeForResponse]
+    details_url: str
+    external_id: str
+    head_sha: str
+    html_url: str
+    id: int
     name: str
-    version: Union[str, None]
+    node_id: str
+    output: CheckRunWithSimpleCheckSuitePropOutputTypeForResponse
+    pull_requests: list[PullRequestMinimalTypeForResponse]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed", "pending"]
+    url: str
+
+
+class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
+
+    annotations_count: int
+    annotations_url: str
+    summary: Union[str, None]
+    text: Union[str, None]
+    title: Union[str, None]
+
+
+class CheckRunWithSimpleCheckSuitePropOutputTypeForResponse(TypedDict):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
+
+    annotations_count: int
+    annotations_url: str
+    summary: Union[str, None]
+    text: Union[str, None]
+    title: Union[str, None]
 
 
 __all__ = (
-    "WebhookCodeScanningAlertReopenedPropAlertPropDismissedByType",
-    "WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropLocationType",
-    "WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropMessageType",
-    "WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstanceType",
-    "WebhookCodeScanningAlertReopenedPropAlertPropRuleType",
-    "WebhookCodeScanningAlertReopenedPropAlertPropToolType",
-    "WebhookCodeScanningAlertReopenedPropAlertType",
-    "WebhookCodeScanningAlertReopenedType",
+    "CheckRunWithSimpleCheckSuitePropOutputType",
+    "CheckRunWithSimpleCheckSuitePropOutputTypeForResponse",
+    "CheckRunWithSimpleCheckSuiteType",
+    "CheckRunWithSimpleCheckSuiteTypeForResponse",
 )

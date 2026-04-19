@@ -9,24 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsSecret(GitHubModel):
-    """Actions Secret
+class RepositoryRuleCommitterEmailPatternPropParameters(GitHubModel):
+    """RepositoryRuleCommitterEmailPatternPropParameters"""
 
-    Set secrets for GitHub Actions.
-    """
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule appears when configuring it."
+    )
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
-    name: str = Field(description="The name of the secret.")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
 
+model_rebuild(RepositoryRuleCommitterEmailPatternPropParameters)
 
-model_rebuild(ActionsSecret)
-
-__all__ = ("ActionsSecret",)
+__all__ = ("RepositoryRuleCommitterEmailPatternPropParameters",)

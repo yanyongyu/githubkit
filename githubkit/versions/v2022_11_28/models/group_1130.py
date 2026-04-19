@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,22 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoLabelsPostBody(GitHubModel):
-    """ReposOwnerRepoLabelsPostBody"""
+class OrgsOrgTeamsTeamSlugPatchBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugPatchBody"""
 
-    name: str = Field(
-        description='The name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."'
-    )
-    color: Missing[str] = Field(
-        default=UNSET,
-        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
-    )
+    name: Missing[str] = Field(default=UNSET, description="The name of the team.")
     description: Missing[str] = Field(
+        default=UNSET, description="The description of the team."
+    )
+    privacy: Missing[Literal["secret", "closed"]] = Field(
         default=UNSET,
-        description="A short description of the label. Must be 100 characters or fewer.",
+        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
+    )
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
+        default=UNSET,
+        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
+    )
+    permission: Missing[Literal["pull", "push", "admin"]] = Field(
+        default=UNSET,
+        description="**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
+    )
+    parent_team_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of a team to set as the parent team."
     )
 
 
-model_rebuild(ReposOwnerRepoLabelsPostBody)
+model_rebuild(OrgsOrgTeamsTeamSlugPatchBody)
 
-__all__ = ("ReposOwnerRepoLabelsPostBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugPatchBody",)

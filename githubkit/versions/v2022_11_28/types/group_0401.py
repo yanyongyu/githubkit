@@ -9,23 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositorySubscriptionType(TypedDict):
-    """Repository Invitation
+class PageDeploymentType(TypedDict):
+    """GitHub Pages
 
-    Repository invitations let you manage who you collaborate with.
+    The GitHub Pages deployment status.
     """
 
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: datetime
-    url: str
-    repository_url: str
+    id: Union[int, str]
+    status_url: str
+    page_url: str
+    preview_url: NotRequired[str]
 
 
-__all__ = ("RepositorySubscriptionType",)
+class PageDeploymentTypeForResponse(TypedDict):
+    """GitHub Pages
+
+    The GitHub Pages deployment status.
+    """
+
+    id: Union[int, str]
+    status_url: str
+    page_url: str
+    preview_url: NotRequired[str]
+
+
+__all__ = (
+    "PageDeploymentType",
+    "PageDeploymentTypeForResponse",
+)

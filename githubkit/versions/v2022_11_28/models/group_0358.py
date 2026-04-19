@@ -9,26 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0275 import Link
-
-
-class PullRequestPropLinks(GitHubModel):
-    """PullRequestPropLinks"""
-
-    comments: Link = Field(title="Link", description="Hypermedia Link")
-    commits: Link = Field(title="Link", description="Hypermedia Link")
-    statuses: Link = Field(title="Link", description="Hypermedia Link")
-    html: Link = Field(title="Link", description="Hypermedia Link")
-    issue: Link = Field(title="Link", description="Hypermedia Link")
-    review_comments: Link = Field(title="Link", description="Hypermedia Link")
-    review_comment: Link = Field(title="Link", description="Hypermedia Link")
-    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(PullRequestPropLinks)
+class Blob(GitHubModel):
+    """Blob
 
-__all__ = ("PullRequestPropLinks",)
+    Blob
+    """
+
+    content: str = Field()
+    encoding: str = Field()
+    url: str = Field()
+    sha: str = Field()
+    size: Union[int, None] = Field()
+    node_id: str = Field()
+    highlighted_content: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(Blob)
+
+__all__ = ("Blob",)

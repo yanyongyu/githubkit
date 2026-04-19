@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,25 +18,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ApiInsightsRouteStatsItems(GitHubModel):
-    """ApiInsightsRouteStatsItems"""
+class ActionsOrganizationPermissions(GitHubModel):
+    """ActionsOrganizationPermissions"""
 
-    http_method: Missing[str] = Field(default=UNSET, description="The HTTP method")
-    api_route: Missing[str] = Field(
-        default=UNSET, description="The API path's route template"
+    enabled_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
     )
-    total_request_count: Missing[int] = Field(
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="The total number of requests within the queried time period",
+        description="The API URL to use to get or set the selected repositories that are allowed to run GitHub Actions, when `enabled_repositories` is set to `selected`.",
     )
-    rate_limited_request_count: Missing[int] = Field(
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
         default=UNSET,
-        description="The total number of requests that were rate limited within the queried time period",
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
     )
-    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
-    last_request_timestamp: Missing[str] = Field(default=UNSET)
+    selected_actions_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
+    )
+    sha_pinning_required: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether actions must be pinned to a full-length commit SHA.",
+    )
 
 
-model_rebuild(ApiInsightsRouteStatsItems)
+model_rebuild(ActionsOrganizationPermissions)
 
-__all__ = ("ApiInsightsRouteStatsItems",)
+__all__ = ("ActionsOrganizationPermissions",)

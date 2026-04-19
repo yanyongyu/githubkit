@@ -9,20 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class InteractionLimitResponseType(TypedDict):
-    """Interaction Limits
+class ActionsForkPrWorkflowsPrivateReposRequestType(TypedDict):
+    """ActionsForkPrWorkflowsPrivateReposRequest"""
 
-    Interaction limit settings.
-    """
-
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    origin: str
-    expires_at: datetime
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: NotRequired[bool]
+    send_secrets_and_variables: NotRequired[bool]
+    require_approval_for_fork_pr_workflows: NotRequired[bool]
 
 
-__all__ = ("InteractionLimitResponseType",)
+class ActionsForkPrWorkflowsPrivateReposRequestTypeForResponse(TypedDict):
+    """ActionsForkPrWorkflowsPrivateReposRequest"""
+
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: NotRequired[bool]
+    send_secrets_and_variables: NotRequired[bool]
+    require_approval_for_fork_pr_workflows: NotRequired[bool]
+
+
+__all__ = (
+    "ActionsForkPrWorkflowsPrivateReposRequestType",
+    "ActionsForkPrWorkflowsPrivateReposRequestTypeForResponse",
+)

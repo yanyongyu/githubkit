@@ -9,28 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
-
-    do_not_enforce_on_create: NotRequired[bool]
-    required_status_checks: list[RepositoryRuleParamsStatusCheckConfigurationType]
-    strict_required_status_checks_policy: bool
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
-    """StatusCheckConfiguration
+class OrganizationRoleType(TypedDict):
+    """Organization Role
 
-    Required status check
+    Organization roles
     """
 
-    context: str
-    integration_id: NotRequired[int]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[
+        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+    ]
+    source: NotRequired[
+        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
+    ]
+    permissions: list[str]
+    organization: Union[None, SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+
+
+class OrganizationRoleTypeForResponse(TypedDict):
+    """Organization Role
+
+    Organization roles
+    """
+
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[
+        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+    ]
+    source: NotRequired[
+        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
+    ]
+    permissions: list[str]
+    organization: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+
+
+class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[OrganizationRoleType]]
+
+
+class OrgsOrgOrganizationRolesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[OrganizationRoleTypeForResponse]]
 
 
 __all__ = (
-    "RepositoryRuleParamsStatusCheckConfigurationType",
-    "RepositoryRuleRequiredStatusChecksPropParametersType",
+    "OrganizationRoleType",
+    "OrganizationRoleTypeForResponse",
+    "OrgsOrgOrganizationRolesGetResponse200Type",
+    "OrgsOrgOrganizationRolesGetResponse200TypeForResponse",
 )

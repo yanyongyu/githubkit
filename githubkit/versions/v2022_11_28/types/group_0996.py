@@ -12,8 +12,45 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ProjectsColumnsColumnIdMovesPostResponse201Type(TypedDict):
-    """ProjectsColumnsColumnIdMovesPostResponse201"""
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+
+    total_count: int
+    repository_cache_usages: list[ActionsCacheUsageByRepositoryType]
 
 
-__all__ = ("ProjectsColumnsColumnIdMovesPostResponse201Type",)
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+
+    total_count: int
+    repository_cache_usages: list[ActionsCacheUsageByRepositoryTypeForResponse]
+
+
+class ActionsCacheUsageByRepositoryType(TypedDict):
+    """Actions Cache Usage by repository
+
+    GitHub Actions Cache Usage by repository.
+    """
+
+    full_name: str
+    active_caches_size_in_bytes: int
+    active_caches_count: int
+
+
+class ActionsCacheUsageByRepositoryTypeForResponse(TypedDict):
+    """Actions Cache Usage by repository
+
+    GitHub Actions Cache Usage by repository.
+    """
+
+    full_name: str
+    active_caches_size_in_bytes: int
+    active_caches_count: int
+
+
+__all__ = (
+    "ActionsCacheUsageByRepositoryType",
+    "ActionsCacheUsageByRepositoryTypeForResponse",
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse",
+)

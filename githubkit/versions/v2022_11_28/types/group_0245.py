@@ -9,71 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType
-from .group_0217 import PullRequestMinimalType
-from .group_0244 import DeploymentSimpleType
 
+class SecretScanningLocationDiscussionBodyType(TypedDict):
+    """SecretScanningLocationDiscussionBody
 
-class CheckRunType(TypedDict):
-    """CheckRun
-
-    A check performed on the code of a given code change
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
     """
 
-    id: int
-    head_sha: str
-    node_id: str
-    external_id: Union[str, None]
-    url: str
-    html_url: Union[str, None]
-    details_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    started_at: Union[datetime, None]
-    completed_at: Union[datetime, None]
-    output: CheckRunPropOutputType
-    name: str
-    check_suite: Union[CheckRunPropCheckSuiteType, None]
-    app: Union[None, IntegrationType, None]
-    pull_requests: list[PullRequestMinimalType]
-    deployment: NotRequired[DeploymentSimpleType]
+    discussion_body_url: str
 
 
-class CheckRunPropOutputType(TypedDict):
-    """CheckRunPropOutput"""
+class SecretScanningLocationDiscussionBodyTypeForResponse(TypedDict):
+    """SecretScanningLocationDiscussionBody
 
-    title: Union[str, None]
-    summary: Union[str, None]
-    text: Union[str, None]
-    annotations_count: int
-    annotations_url: str
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
+    """
+
+    discussion_body_url: str
 
 
-class CheckRunPropCheckSuiteType(TypedDict):
-    """CheckRunPropCheckSuite"""
+class SecretScanningLocationPullRequestCommentType(TypedDict):
+    """SecretScanningLocationPullRequestComment
 
-    id: int
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationPullRequestCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestComment
+
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "CheckRunPropCheckSuiteType",
-    "CheckRunPropOutputType",
-    "CheckRunType",
+    "SecretScanningLocationDiscussionBodyType",
+    "SecretScanningLocationDiscussionBodyTypeForResponse",
+    "SecretScanningLocationPullRequestCommentType",
+    "SecretScanningLocationPullRequestCommentTypeForResponse",
 )

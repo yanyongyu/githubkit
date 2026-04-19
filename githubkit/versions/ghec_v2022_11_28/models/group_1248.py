@@ -11,29 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2"""
-
-    labels: Missing[
-        list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems]
-    ] = Field(min_length=1 if PYDANTIC_V2 else None, default=UNSET)
+from .group_0245 import OrganizationCustomRepositoryRole
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems"""
+class OrgsOrgCustomRepositoryRolesGetResponse200(GitHubModel):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
 
-    name: str = Field()
+    total_count: Missing[int] = Field(
+        default=UNSET, description="The number of custom roles in this organization"
+    )
+    custom_roles: Missing[list[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems)
+model_rebuild(OrgsOrgCustomRepositoryRolesGetResponse200)
 
-__all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems",
-)
+__all__ = ("OrgsOrgCustomRepositoryRolesGetResponse200",)

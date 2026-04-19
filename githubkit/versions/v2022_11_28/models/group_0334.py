@@ -17,45 +17,41 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class ContentFile(GitHubModel):
+    """Content File
 
-class RemovedFromProjectIssueEvent(GitHubModel):
-    """Removed from Project Issue Event
-
-    Removed from Project Issue Event
+    Content File
     """
 
-    id: int = Field()
-    node_id: str = Field()
+    type: Literal["file"] = Field()
+    encoding: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    content: str = Field()
+    sha: str = Field()
     url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["removed_from_project"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    project_card: Missing[RemovedFromProjectIssueEventPropProjectCard] = Field(
-        default=UNSET
-    )
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentFilePropLinks = Field(alias="_links")
+    target: Missing[str] = Field(default=UNSET)
+    submodule_git_url: Missing[str] = Field(default=UNSET)
 
 
-class RemovedFromProjectIssueEventPropProjectCard(GitHubModel):
-    """RemovedFromProjectIssueEventPropProjectCard"""
+class ContentFilePropLinks(GitHubModel):
+    """ContentFilePropLinks"""
 
-    id: int = Field()
-    url: str = Field()
-    project_id: int = Field()
-    project_url: str = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
 
 
-model_rebuild(RemovedFromProjectIssueEvent)
-model_rebuild(RemovedFromProjectIssueEventPropProjectCard)
+model_rebuild(ContentFile)
+model_rebuild(ContentFilePropLinks)
 
 __all__ = (
-    "RemovedFromProjectIssueEvent",
-    "RemovedFromProjectIssueEventPropProjectCard",
+    "ContentFile",
+    "ContentFilePropLinks",
 )

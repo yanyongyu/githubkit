@@ -9,13 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleMaxFileSizePropParametersType(TypedDict):
-    """RepositoryRuleMaxFileSizePropParameters"""
+class ProjectsV2FieldIterationConfigurationType(TypedDict):
+    """ProjectsV2FieldIterationConfiguration
 
-    max_file_size: int
+    The configuration for iteration fields.
+    """
+
+    start_date: NotRequired[_dt.date]
+    duration: NotRequired[int]
+    iterations: NotRequired[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsType]
+    ]
 
 
-__all__ = ("RepositoryRuleMaxFileSizePropParametersType",)
+class ProjectsV2FieldIterationConfigurationTypeForResponse(TypedDict):
+    """ProjectsV2FieldIterationConfiguration
+
+    The configuration for iteration fields.
+    """
+
+    start_date: NotRequired[str]
+    duration: NotRequired[int]
+    iterations: NotRequired[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse]
+    ]
+
+
+class ProjectsV2FieldIterationConfigurationPropIterationsItemsType(TypedDict):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+
+    title: NotRequired[str]
+    start_date: NotRequired[_dt.date]
+    duration: NotRequired[int]
+
+
+class ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse(
+    TypedDict
+):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+
+    title: NotRequired[str]
+    start_date: NotRequired[str]
+    duration: NotRequired[int]
+
+
+__all__ = (
+    "ProjectsV2FieldIterationConfigurationPropIterationsItemsType",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse",
+    "ProjectsV2FieldIterationConfigurationType",
+    "ProjectsV2FieldIterationConfigurationTypeForResponse",
+)

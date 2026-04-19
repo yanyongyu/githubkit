@@ -9,34 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class PullRequestSimplePropHeadType(TypedDict):
-    """PullRequestSimplePropHead"""
+class ActivityType(TypedDict):
+    """Activity
 
-    label: Union[str, None]
+    Activity
+    """
+
+    id: int
+    node_id: str
+    before: str
+    after: str
     ref: str
-    repo: Union[None, RepositoryType]
-    sha: str
-    user: Union[None, SimpleUserType]
+    timestamp: _dt.datetime
+    activity_type: Literal[
+        "push",
+        "force_push",
+        "branch_deletion",
+        "branch_creation",
+        "pr_merge",
+        "merge_queue_merge",
+    ]
+    actor: Union[None, SimpleUserType]
 
 
-class PullRequestSimplePropBaseType(TypedDict):
-    """PullRequestSimplePropBase"""
+class ActivityTypeForResponse(TypedDict):
+    """Activity
 
-    label: str
+    Activity
+    """
+
+    id: int
+    node_id: str
+    before: str
+    after: str
     ref: str
-    repo: RepositoryType
-    sha: str
-    user: Union[None, SimpleUserType]
+    timestamp: str
+    activity_type: Literal[
+        "push",
+        "force_push",
+        "branch_deletion",
+        "branch_creation",
+        "pr_merge",
+        "merge_queue_merge",
+    ]
+    actor: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "PullRequestSimplePropBaseType",
-    "PullRequestSimplePropHeadType",
+    "ActivityType",
+    "ActivityTypeForResponse",
 )

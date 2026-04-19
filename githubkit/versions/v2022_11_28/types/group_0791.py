@@ -12,24 +12,39 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0479 import SecretScanningAlertWebhookType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0164 import (
+    ProjectsV2StatusUpdateType,
+    ProjectsV2StatusUpdateTypeForResponse,
+)
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
 
 
-class WebhookSecretScanningAlertReopenedType(TypedDict):
-    """secret_scanning_alert reopened event"""
+class WebhookProjectsV2StatusUpdateDeletedType(TypedDict):
+    """Projects v2 Status Update Deleted Event"""
 
-    action: Literal["reopened"]
-    alert: SecretScanningAlertWebhookType
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_status_update: ProjectsV2StatusUpdateType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookSecretScanningAlertReopenedType",)
+class WebhookProjectsV2StatusUpdateDeletedTypeForResponse(TypedDict):
+    """Projects v2 Status Update Deleted Event"""
+
+    action: Literal["deleted"]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_status_update: ProjectsV2StatusUpdateTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookProjectsV2StatusUpdateDeletedType",
+    "WebhookProjectsV2StatusUpdateDeletedTypeForResponse",
+)

@@ -9,17 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class WebhooksRepositoriesItemsType(TypedDict):
-    """WebhooksRepositoriesItems"""
+class RepositorySubscriptionType(TypedDict):
+    """Repository Invitation
 
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
+    Repository invitations let you manage who you collaborate with.
+    """
+
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: _dt.datetime
+    url: str
+    repository_url: str
 
 
-__all__ = ("WebhooksRepositoriesItemsType",)
+class RepositorySubscriptionTypeForResponse(TypedDict):
+    """Repository Invitation
+
+    Repository invitations let you manage who you collaborate with.
+    """
+
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: str
+    url: str
+    repository_url: str
+
+
+__all__ = (
+    "RepositorySubscriptionType",
+    "RepositorySubscriptionTypeForResponse",
+)

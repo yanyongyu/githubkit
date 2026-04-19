@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -17,100 +18,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0001 import CvssSeverities
+from .group_0242 import MinimalRepository
+from .group_0542 import SearchResultTextMatchesItems
 
 
-class WebhooksSecurityAdvisory(GitHubModel):
-    """WebhooksSecurityAdvisory
+class CodeSearchResultItem(GitHubModel):
+    """Code Search Result Item
 
-    The details of the security advisory, including summary, description, and
-    severity.
+    Code Search Result Item
     """
 
-    cvss: WebhooksSecurityAdvisoryPropCvss = Field()
-    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
-    cwes: list[WebhooksSecurityAdvisoryPropCwesItems] = Field()
-    description: str = Field()
-    ghsa_id: str = Field()
-    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItems] = Field()
-    published_at: str = Field()
-    references: list[WebhooksSecurityAdvisoryPropReferencesItems] = Field()
-    severity: str = Field()
-    summary: str = Field()
-    updated_at: str = Field()
-    vulnerabilities: list[WebhooksSecurityAdvisoryPropVulnerabilitiesItems] = Field()
-    withdrawn_at: Union[str, None] = Field()
-
-
-class WebhooksSecurityAdvisoryPropCvss(GitHubModel):
-    """WebhooksSecurityAdvisoryPropCvss"""
-
-    score: float = Field()
-    vector_string: Union[str, None] = Field()
-
-
-class WebhooksSecurityAdvisoryPropCwesItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str = Field()
     name: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropIdentifiersItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str = Field()
-    value: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropReferencesItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropReferencesItems"""
-
+    path: str = Field()
+    sha: str = Field()
     url: str = Field()
+    git_url: str = Field()
+    html_url: str = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    score: float = Field()
+    file_size: Missing[int] = Field(default=UNSET)
+    language: Missing[Union[str, None]] = Field(default=UNSET)
+    last_modified_at: Missing[_dt.datetime] = Field(default=UNSET)
+    line_numbers: Missing[list[str]] = Field(default=UNSET)
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
 
 
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
+class SearchCodeGetResponse200(GitHubModel):
+    """SearchCodeGetResponse200"""
 
-    first_patched_version: Union[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion, None
-    ] = Field()
-    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = Field()
-    severity: str = Field()
-    vulnerable_version_range: str = Field()
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[CodeSearchResultItem] = Field()
 
 
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
-    GitHubModel
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
-
-    identifier: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(GitHubModel):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
-
-    ecosystem: str = Field()
-    name: str = Field()
-
-
-model_rebuild(WebhooksSecurityAdvisory)
-model_rebuild(WebhooksSecurityAdvisoryPropCvss)
-model_rebuild(WebhooksSecurityAdvisoryPropCwesItems)
-model_rebuild(WebhooksSecurityAdvisoryPropIdentifiersItems)
-model_rebuild(WebhooksSecurityAdvisoryPropReferencesItems)
-model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItems)
-model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion)
-model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage)
+model_rebuild(CodeSearchResultItem)
+model_rebuild(SearchCodeGetResponse200)
 
 __all__ = (
-    "WebhooksSecurityAdvisory",
-    "WebhooksSecurityAdvisoryPropCvss",
-    "WebhooksSecurityAdvisoryPropCwesItems",
-    "WebhooksSecurityAdvisoryPropIdentifiersItems",
-    "WebhooksSecurityAdvisoryPropReferencesItems",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItems",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
+    "CodeSearchResultItem",
+    "SearchCodeGetResponse200",
 )

@@ -4,7 +4,9 @@
 
 from typing import TYPE_CHECKING
 
-if TYPE_CHECKING:
+from githubkit.lazy_module import is_lazy_disabled
+
+if TYPE_CHECKING or is_lazy_disabled():
     {% for group in groups %}
     {% for model in group.models %}
     from .{{ group_name(group, groups) }} import {{ model.class_name }} as {{ model.class_name }}

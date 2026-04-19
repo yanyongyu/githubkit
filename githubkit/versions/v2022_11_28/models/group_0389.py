@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,137 +19,70 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0039 import (
-    SecretScanningLocationCommit,
-    SecretScanningLocationDiscussionComment,
-    SecretScanningLocationDiscussionTitle,
-    SecretScanningLocationIssueBody,
-    SecretScanningLocationPullRequestBody,
-    SecretScanningLocationPullRequestReview,
-    SecretScanningLocationWikiCommit,
-)
-from .group_0040 import (
-    SecretScanningLocationIssueComment,
-    SecretScanningLocationIssueTitle,
-    SecretScanningLocationPullRequestReviewComment,
-    SecretScanningLocationPullRequestTitle,
-)
-from .group_0041 import (
-    SecretScanningLocationDiscussionBody,
-    SecretScanningLocationPullRequestComment,
-)
 
 
-class SecretScanningAlert(GitHubModel):
-    """SecretScanningAlert"""
+class TimelineReviewedEvent(GitHubModel):
+    """Timeline Reviewed Event
 
-    number: Missing[int] = Field(
-        default=UNSET, description="The security alert number."
-    )
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    updated_at: Missing[Union[None, datetime]] = Field(default=UNSET)
-    url: Missing[str] = Field(
-        default=UNSET, description="The REST API URL of the alert resource."
-    )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The GitHub URL of the alert resource."
-    )
-    locations_url: Missing[str] = Field(
-        default=UNSET,
-        description="The REST API URL of the code locations for this alert.",
-    )
-    state: Missing[Literal["open", "resolved"]] = Field(
-        default=UNSET,
-        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
-    )
-    resolution: Missing[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    Timeline Reviewed Event
+    """
+
+    event: Literal["reviewed"] = Field()
+    id: int = Field(description="Unique identifier of the review")
+    node_id: str = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    body: Union[str, None] = Field(description="The text of the review.")
+    state: str = Field()
+    html_url: str = Field()
+    pull_request_url: str = Field()
+    links: TimelineReviewedEventPropLinks = Field(alias="_links")
+    submitted_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    commit_id: str = Field(description="A commit SHA for the review.")
+    body_html: Missing[Union[str, None]] = Field(default=UNSET)
+    body_text: Missing[Union[str, None]] = Field(default=UNSET)
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ] = Field(
-        default=UNSET,
-        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
-    )
-    resolved_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET, description="An optional comment to resolve an alert."
-    )
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
-    )
-    secret_type_display_name: Missing[str] = Field(
-        default=UNSET,
-        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
-    )
-    secret: Missing[str] = Field(
-        default=UNSET, description="The secret that was detected."
-    )
-    push_protection_bypassed: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether push protection was bypassed for the detected secret.",
-    )
-    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    push_protection_bypass_request_reviewer: Missing[Union[None, SimpleUser]] = Field(
-        default=UNSET
-    )
-    push_protection_bypass_request_reviewer_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when reviewing a push protection bypass.",
-    )
-    push_protection_bypass_request_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when requesting a push protection bypass.",
-    )
-    push_protection_bypass_request_html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The URL to a push protection bypass request."
-    )
-    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
-        default=UNSET, description="The token status as of the latest validity check."
-    )
-    publicly_leaked: Missing[Union[bool, None]] = Field(
-        default=UNSET, description="Whether the detected secret was publicly leaked."
-    )
-    multi_repo: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether the detected secret was found in multiple repositories under the same organization or enterprise.",
-    )
-    is_base64_encoded: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="A boolean value representing whether or not alert is base64 encoded",
-    )
-    first_location_detected: Missing[
-        Union[
-            None,
-            SecretScanningLocationCommit,
-            SecretScanningLocationWikiCommit,
-            SecretScanningLocationIssueTitle,
-            SecretScanningLocationIssueBody,
-            SecretScanningLocationIssueComment,
-            SecretScanningLocationDiscussionTitle,
-            SecretScanningLocationDiscussionBody,
-            SecretScanningLocationDiscussionComment,
-            SecretScanningLocationPullRequestTitle,
-            SecretScanningLocationPullRequestBody,
-            SecretScanningLocationPullRequestComment,
-            SecretScanningLocationPullRequestReview,
-            SecretScanningLocationPullRequestReviewComment,
-        ]
-    ] = Field(default=UNSET)
-    has_more_locations: Missing[bool] = Field(
-        default=UNSET,
-        description="A boolean value representing whether or not the token in the alert was detected in more than one location.",
+        title="author_association",
+        description="How the author is associated with the repository.",
     )
 
 
-model_rebuild(SecretScanningAlert)
+class TimelineReviewedEventPropLinks(GitHubModel):
+    """TimelineReviewedEventPropLinks"""
 
-__all__ = ("SecretScanningAlert",)
+    html: TimelineReviewedEventPropLinksPropHtml = Field()
+    pull_request: TimelineReviewedEventPropLinksPropPullRequest = Field()
+
+
+class TimelineReviewedEventPropLinksPropHtml(GitHubModel):
+    """TimelineReviewedEventPropLinksPropHtml"""
+
+    href: str = Field()
+
+
+class TimelineReviewedEventPropLinksPropPullRequest(GitHubModel):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
+
+    href: str = Field()
+
+
+model_rebuild(TimelineReviewedEvent)
+model_rebuild(TimelineReviewedEventPropLinks)
+model_rebuild(TimelineReviewedEventPropLinksPropHtml)
+model_rebuild(TimelineReviewedEventPropLinksPropPullRequest)
+
+__all__ = (
+    "TimelineReviewedEvent",
+    "TimelineReviewedEventPropLinks",
+    "TimelineReviewedEventPropLinksPropHtml",
+    "TimelineReviewedEventPropLinksPropPullRequest",
+)

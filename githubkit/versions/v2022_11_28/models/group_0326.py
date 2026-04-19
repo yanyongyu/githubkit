@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -16,37 +17,24 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
 
-class DemilestonedIssueEvent(GitHubModel):
-    """Demilestoned Issue Event
+class Reaction(GitHubModel):
+    """Reaction
 
-    Demilestoned Issue Event
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
     id: int = Field()
     node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["demilestoned"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    milestone: DemilestonedIssueEventPropMilestone = Field()
+    user: Union[None, SimpleUser] = Field()
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(description="The reaction to use")
+    created_at: _dt.datetime = Field()
 
 
-class DemilestonedIssueEventPropMilestone(GitHubModel):
-    """DemilestonedIssueEventPropMilestone"""
+model_rebuild(Reaction)
 
-    title: str = Field()
-
-
-model_rebuild(DemilestonedIssueEvent)
-model_rebuild(DemilestonedIssueEventPropMilestone)
-
-__all__ = (
-    "DemilestonedIssueEvent",
-    "DemilestonedIssueEventPropMilestone",
-)
+__all__ = ("Reaction",)

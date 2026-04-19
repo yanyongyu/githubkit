@@ -9,15 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoLabelsNamePatchBodyType(TypedDict):
-    """ReposOwnerRepoLabelsNamePatchBody"""
+class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
 
-    new_name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[str]
+    role: NotRequired[Literal["member", "maintainer"]]
 
 
-__all__ = ("ReposOwnerRepoLabelsNamePatchBodyType",)
+class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
+
+    role: NotRequired[Literal["member", "maintainer"]]
+
+
+__all__ = (
+    "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType",
+    "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyTypeForResponse",
+)

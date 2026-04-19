@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,17 +16,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
 
-    body: Missing[str] = Field(
-        default=UNSET, description="The body text of the pull request review"
+    strict: Missing[bool] = Field(
+        default=UNSET, description="Require branches to be up to date before merging."
     )
-    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"] = Field(
-        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. When you leave this blank, the API returns _HTTP 422 (Unrecognizable entity)_ and sets the review action state to `PENDING`, which means you will need to re-submit the pull request review using a review action."
+    contexts: Missing[list[str]] = Field(
+        default=UNSET,
+        description="**Closing down notice**: The list of status checks to require in order to merge into this branch. If any of these checks have recently been set by a particular GitHub App, they will be required to come from that app in future for the branch to merge. Use `checks` instead of `contexts` for more fine-grained control.",
+    )
+    checks: Missing[
+        list[
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The list of status checks to require in order to merge into this branch.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody)
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
+    ms
+    """
 
-__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody",)
+    context: str = Field(description="The name of the required check")
+    app_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the GitHub App that must provide this check. Omit this field to automatically select the GitHub App that has recently provided this check, or any app if it was not set by a GitHub App. Pass -1 to explicitly allow any app to set the status.",
+    )
+
+
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems
+)
+
+__all__ = (
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems",
+)

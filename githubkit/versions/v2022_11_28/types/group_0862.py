@@ -9,17 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0524 import WebhooksAlertType, WebhooksAlertTypeForResponse
 
 
-class InstallationRepositoriesGetResponse200Type(TypedDict):
-    """InstallationRepositoriesGetResponse200"""
+class WebhookRepositoryVulnerabilityAlertReopenType(TypedDict):
+    """repository_vulnerability_alert reopen event"""
 
-    total_count: int
-    repositories: list[RepositoryType]
-    repository_selection: NotRequired[str]
+    action: Literal["reopen"]
+    alert: WebhooksAlertType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-__all__ = ("InstallationRepositoriesGetResponse200Type",)
+class WebhookRepositoryVulnerabilityAlertReopenTypeForResponse(TypedDict):
+    """repository_vulnerability_alert reopen event"""
+
+    action: Literal["reopen"]
+    alert: WebhooksAlertTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookRepositoryVulnerabilityAlertReopenType",
+    "WebhookRepositoryVulnerabilityAlertReopenTypeForResponse",
+)

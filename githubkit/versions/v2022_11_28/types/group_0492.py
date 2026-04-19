@@ -12,13 +12,33 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class WebhookCheckRunCreatedFormEncodedType(TypedDict):
-    """Check Run Created Event
+class WebhooksWorkflowJobRunType(TypedDict):
+    """WebhooksWorkflowJobRun"""
 
-    The check_run.created webhook encoded with URL encoding
-    """
+    conclusion: None
+    created_at: str
+    environment: str
+    html_url: str
+    id: int
+    name: None
+    status: str
+    updated_at: str
 
-    payload: str
+
+class WebhooksWorkflowJobRunTypeForResponse(TypedDict):
+    """WebhooksWorkflowJobRun"""
+
+    conclusion: None
+    created_at: str
+    environment: str
+    html_url: str
+    id: int
+    name: None
+    status: str
+    updated_at: str
 
 
-__all__ = ("WebhookCheckRunCreatedFormEncodedType",)
+__all__ = (
+    "WebhooksWorkflowJobRunType",
+    "WebhooksWorkflowJobRunTypeForResponse",
+)

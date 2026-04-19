@@ -9,46 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0092 import TeamType
+from typing_extensions import TypedDict
 
 
-class PendingDeploymentPropReviewersItemsType(TypedDict):
-    """PendingDeploymentPropReviewersItems"""
+class RepositoryRuleFileExtensionRestrictionPropParametersType(TypedDict):
+    """RepositoryRuleFileExtensionRestrictionPropParameters"""
 
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
-
-
-class PendingDeploymentType(TypedDict):
-    """Pending Deployment
-
-    Details of a deployment that is waiting for protection rules to pass
-    """
-
-    environment: PendingDeploymentPropEnvironmentType
-    wait_timer: int
-    wait_timer_started_at: Union[datetime, None]
-    current_user_can_approve: bool
-    reviewers: list[PendingDeploymentPropReviewersItemsType]
+    restricted_file_extensions: list[str]
 
 
-class PendingDeploymentPropEnvironmentType(TypedDict):
-    """PendingDeploymentPropEnvironment"""
+class RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleFileExtensionRestrictionPropParameters"""
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
+    restricted_file_extensions: list[str]
 
 
 __all__ = (
-    "PendingDeploymentPropEnvironmentType",
-    "PendingDeploymentPropReviewersItemsType",
-    "PendingDeploymentType",
+    "RepositoryRuleFileExtensionRestrictionPropParametersType",
+    "RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse",
 )

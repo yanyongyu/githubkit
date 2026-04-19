@@ -12,54 +12,42 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
-from .group_0511 import WebhooksLabelType
-from .group_0686 import WebhookIssuesEditedPropIssueType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0201 import DiscussionType, DiscussionTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssuesEditedType(TypedDict):
-    """issues edited event"""
+class WebhookDiscussionReopenedType(TypedDict):
+    """discussion reopened event"""
 
-    action: Literal["edited"]
-    changes: WebhookIssuesEditedPropChangesType
+    action: Literal["reopened"]
+    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesEditedPropIssueType
-    label: NotRequired[WebhooksLabelType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesEditedPropChangesType(TypedDict):
-    """WebhookIssuesEditedPropChanges
+class WebhookDiscussionReopenedTypeForResponse(TypedDict):
+    """discussion reopened event"""
 
-    The changes to the issue.
-    """
-
-    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyType]
-    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleType]
-
-
-class WebhookIssuesEditedPropChangesPropBodyType(TypedDict):
-    """WebhookIssuesEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookIssuesEditedPropChangesPropTitleType(TypedDict):
-    """WebhookIssuesEditedPropChangesPropTitle"""
-
-    from_: str
+    action: Literal["reopened"]
+    discussion: DiscussionTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesEditedPropChangesPropBodyType",
-    "WebhookIssuesEditedPropChangesPropTitleType",
-    "WebhookIssuesEditedPropChangesType",
-    "WebhookIssuesEditedType",
+    "WebhookDiscussionReopenedType",
+    "WebhookDiscussionReopenedTypeForResponse",
 )

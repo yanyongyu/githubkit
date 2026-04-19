@@ -9,20 +9,96 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0161 import RepositoryRuleCommitAuthorEmailPatternPropParametersType
 
+class PackageVersionType(TypedDict):
+    """Package Version
 
-class RepositoryRuleCommitAuthorEmailPatternType(TypedDict):
-    """commit_author_email_pattern
-
-    Parameters to be used for the commit_author_email_pattern rule
+    A version of a software package
     """
 
-    type: Literal["commit_author_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
+    id: int
+    name: str
+    url: str
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    deleted_at: NotRequired[_dt.datetime]
+    metadata: NotRequired[PackageVersionPropMetadataType]
 
 
-__all__ = ("RepositoryRuleCommitAuthorEmailPatternType",)
+class PackageVersionTypeForResponse(TypedDict):
+    """Package Version
+
+    A version of a software package
+    """
+
+    id: int
+    name: str
+    url: str
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
+    created_at: str
+    updated_at: str
+    deleted_at: NotRequired[str]
+    metadata: NotRequired[PackageVersionPropMetadataTypeForResponse]
+
+
+class PackageVersionPropMetadataType(TypedDict):
+    """Package Version Metadata"""
+
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerType]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
+
+
+class PackageVersionPropMetadataTypeForResponse(TypedDict):
+    """Package Version Metadata"""
+
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerTypeForResponse]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerTypeForResponse]
+
+
+class PackageVersionPropMetadataPropContainerType(TypedDict):
+    """Container Metadata"""
+
+    tags: list[str]
+
+
+class PackageVersionPropMetadataPropContainerTypeForResponse(TypedDict):
+    """Container Metadata"""
+
+    tags: list[str]
+
+
+class PackageVersionPropMetadataPropDockerType(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[list[str]]
+
+
+class PackageVersionPropMetadataPropDockerTypeForResponse(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[list[str]]
+
+
+__all__ = (
+    "PackageVersionPropMetadataPropContainerType",
+    "PackageVersionPropMetadataPropContainerTypeForResponse",
+    "PackageVersionPropMetadataPropDockerType",
+    "PackageVersionPropMetadataPropDockerTypeForResponse",
+    "PackageVersionPropMetadataType",
+    "PackageVersionPropMetadataTypeForResponse",
+    "PackageVersionType",
+    "PackageVersionTypeForResponse",
+)

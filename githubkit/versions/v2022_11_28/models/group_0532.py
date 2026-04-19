@@ -18,22 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0433 import EnterpriseWebhooks
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
-from .group_0446 import Discussion
-from .group_0447 import WebhooksComment
+from .group_0482 import EnterpriseWebhooks
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0485 import RepositoryWebhooks
+from .group_0486 import WebhooksRule
 
 
-class WebhookDiscussionCommentCreated(GitHubModel):
-    """discussion_comment created event"""
+class WebhookBranchProtectionRuleCreated(GitHubModel):
+    """branch protection rule created event"""
 
     action: Literal["created"] = Field()
-    comment: WebhooksComment = Field()
-    discussion: Discussion = Field(
-        title="Discussion", description="A Discussion in a repository."
-    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,9 +48,13 @@ class WebhookDiscussionCommentCreated(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    rule: WebhooksRule = Field(
+        title="branch protection rule",
+        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
+    )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionCommentCreated)
+model_rebuild(WebhookBranchProtectionRuleCreated)
 
-__all__ = ("WebhookDiscussionCommentCreated",)
+__all__ = ("WebhookBranchProtectionRuleCreated",)

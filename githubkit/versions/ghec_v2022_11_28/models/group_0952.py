@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,141 +17,39 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0069 import CodeScanningOptions
-from .group_0070 import CodeScanningDefaultSetupOptions
+from .group_0003 import SimpleUser
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsPostBody(GitHubModel):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBody"""
+class WebhookRepositoryUnarchived(GitHubModel):
+    """repository unarchived event"""
 
-    name: str = Field(
-        description="The name of the code security configuration. Must be unique within the enterprise."
-    )
-    description: str = Field(
-        max_length=255, description="A description of the code security configuration"
-    )
-    advanced_security: Missing[
-        Literal["enabled", "disabled", "code_security", "secret_protection"]
-    ] = Field(
+    action: Literal["unarchived"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="The enablement status of GitHub Advanced Security features. `enabled` will enable both Code Security and Secret Protection features.\n\n> [!WARNING]\n> `code_security` and `secret_protection` are deprecated values for this field. Prefer the individual `code_security` and `secret_protection` fields to set the status of these features.\n",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
-    code_security: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+    installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
-        description="The enablement status of GitHub Code Security features.",
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependency Graph"
-    )
-    dependency_graph_autosubmit_action: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
-        description="The enablement status of Automatic dependency submission",
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    dependency_graph_autosubmit_action_options: Missing[
-        EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
-    ] = Field(
-        default=UNSET, description="Feature options for Automatic dependency submission"
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependabot alerts"
-    )
-    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of Dependabot security updates",
-        )
-    )
-    code_scanning_options: Missing[Union[CodeScanningOptions, None]] = Field(
-        default=UNSET,
-        description="Security Configuration feature options for code scanning",
-    )
-    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of code scanning default setup",
-        )
-    )
-    code_scanning_default_setup_options: Missing[
-        Union[CodeScanningDefaultSetupOptions, None]
-    ] = Field(
-        default=UNSET, description="Feature options for code scanning default setup"
-    )
-    code_scanning_delegated_alert_dismissal: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of code scanning delegated alert dismissal",
-    )
-    secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET,
-        description="The enablement status of GitHub Secret Protection features.",
-    )
-    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of secret scanning"
-    )
-    secret_scanning_push_protection: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning push protection",
-    )
-    secret_scanning_validity_checks: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning validity checks",
-    )
-    secret_scanning_non_provider_patterns: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning non provider patterns",
-    )
-    secret_scanning_generic_secrets: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET, description="The enablement status of Copilot secret scanning"
-    )
-    secret_scanning_delegated_alert_dismissal: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning delegated alert dismissal",
-    )
-    private_vulnerability_reporting: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of private vulnerability reporting",
-    )
-    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
-        default=UNSET, description="The enforcement status for a security configuration"
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosu
-    bmitActionOptions
+model_rebuild(WebhookRepositoryUnarchived)
 
-    Feature options for Automatic dependency submission
-    """
-
-    labeled_runners: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
-    )
-
-
-model_rebuild(EnterprisesEnterpriseCodeSecurityConfigurationsPostBody)
-model_rebuild(
-    EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
-)
-
-__all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBody",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions",
-)
+__all__ = ("WebhookRepositoryUnarchived",)

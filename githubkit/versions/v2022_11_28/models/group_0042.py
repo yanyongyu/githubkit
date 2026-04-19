@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,143 +18,117 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0032 import SimpleRepository
-from .group_0039 import (
-    SecretScanningLocationCommit,
-    SecretScanningLocationDiscussionComment,
-    SecretScanningLocationDiscussionTitle,
-    SecretScanningLocationIssueBody,
-    SecretScanningLocationPullRequestBody,
-    SecretScanningLocationPullRequestReview,
-    SecretScanningLocationWikiCommit,
+from .group_0001 import CvssSeverities
+from .group_0002 import SecurityAdvisoryEpss
+from .group_0041 import DependabotAlertSecurityVulnerability
+
+
+class DependabotAlertSecurityAdvisory(GitHubModel):
+    """DependabotAlertSecurityAdvisory
+
+    Details for the GitHub Security Advisory.
+    """
+
+    ghsa_id: str = Field(
+        description="The unique GitHub Security Advisory ID assigned to the advisory."
+    )
+    cve_id: Union[str, None] = Field(
+        description="The unique CVE ID assigned to the advisory."
+    )
+    summary: str = Field(
+        max_length=1024, description="A short, plain text summary of the advisory."
+    )
+    description: str = Field(
+        description="A long-form Markdown-supported description of the advisory."
+    )
+    vulnerabilities: list[DependabotAlertSecurityVulnerability] = Field(
+        description="Vulnerable version range information for the advisory."
+    )
+    severity: Literal["low", "medium", "high", "critical"] = Field(
+        description="The severity of the advisory."
+    )
+    classification: Missing[Literal["general", "malware"]] = Field(
+        default=UNSET, description="The classification of the advisory."
+    )
+    cvss: DependabotAlertSecurityAdvisoryPropCvss = Field(
+        description="Details for the advisory pertaining to the Common Vulnerability Scoring System."
+    )
+    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
+    epss: Missing[Union[SecurityAdvisoryEpss, None]] = Field(
+        default=UNSET,
+        description="The EPSS scores as calculated by the [Exploit Prediction Scoring System](https://www.first.org/epss).",
+    )
+    cwes: list[DependabotAlertSecurityAdvisoryPropCwesItems] = Field(
+        description="Details for the advisory pertaining to Common Weakness Enumeration."
+    )
+    identifiers: list[DependabotAlertSecurityAdvisoryPropIdentifiersItems] = Field(
+        description="Values that identify this advisory among security information sources."
+    )
+    references: list[DependabotAlertSecurityAdvisoryPropReferencesItems] = Field(
+        description="Links to additional advisory information."
+    )
+    published_at: _dt.datetime = Field(
+        description="The time that the advisory was published in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The time that the advisory was last modified in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    withdrawn_at: Union[_dt.datetime, None] = Field(
+        description="The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+
+
+class DependabotAlertSecurityAdvisoryPropCvss(GitHubModel):
+    """DependabotAlertSecurityAdvisoryPropCvss
+
+    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    """
+
+    score: float = Field(le=10.0, description="The overall CVSS score of the advisory.")
+    vector_string: Union[str, None] = Field(
+        description="The full CVSS vector string for the advisory."
+    )
+
+
+class DependabotAlertSecurityAdvisoryPropCwesItems(GitHubModel):
+    """DependabotAlertSecurityAdvisoryPropCwesItems
+
+    A CWE weakness assigned to the advisory.
+    """
+
+    cwe_id: str = Field(description="The unique CWE ID.")
+    name: str = Field(description="The short, plain text name of the CWE.")
+
+
+class DependabotAlertSecurityAdvisoryPropIdentifiersItems(GitHubModel):
+    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
+
+    An advisory identifier.
+    """
+
+    type: Literal["CVE", "GHSA"] = Field(description="The type of advisory identifier.")
+    value: str = Field(description="The value of the advisory identifer.")
+
+
+class DependabotAlertSecurityAdvisoryPropReferencesItems(GitHubModel):
+    """DependabotAlertSecurityAdvisoryPropReferencesItems
+
+    A link to additional advisory information.
+    """
+
+    url: str = Field(description="The URL of the reference.")
+
+
+model_rebuild(DependabotAlertSecurityAdvisory)
+model_rebuild(DependabotAlertSecurityAdvisoryPropCvss)
+model_rebuild(DependabotAlertSecurityAdvisoryPropCwesItems)
+model_rebuild(DependabotAlertSecurityAdvisoryPropIdentifiersItems)
+model_rebuild(DependabotAlertSecurityAdvisoryPropReferencesItems)
+
+__all__ = (
+    "DependabotAlertSecurityAdvisory",
+    "DependabotAlertSecurityAdvisoryPropCvss",
+    "DependabotAlertSecurityAdvisoryPropCwesItems",
+    "DependabotAlertSecurityAdvisoryPropIdentifiersItems",
+    "DependabotAlertSecurityAdvisoryPropReferencesItems",
 )
-from .group_0040 import (
-    SecretScanningLocationIssueComment,
-    SecretScanningLocationIssueTitle,
-    SecretScanningLocationPullRequestReviewComment,
-    SecretScanningLocationPullRequestTitle,
-)
-from .group_0041 import (
-    SecretScanningLocationDiscussionBody,
-    SecretScanningLocationPullRequestComment,
-)
-
-
-class OrganizationSecretScanningAlert(GitHubModel):
-    """OrganizationSecretScanningAlert"""
-
-    number: Missing[int] = Field(
-        default=UNSET, description="The security alert number."
-    )
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    updated_at: Missing[Union[None, datetime]] = Field(default=UNSET)
-    url: Missing[str] = Field(
-        default=UNSET, description="The REST API URL of the alert resource."
-    )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The GitHub URL of the alert resource."
-    )
-    locations_url: Missing[str] = Field(
-        default=UNSET,
-        description="The REST API URL of the code locations for this alert.",
-    )
-    state: Missing[Literal["open", "resolved"]] = Field(
-        default=UNSET,
-        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
-    )
-    resolution: Missing[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
-    ] = Field(
-        default=UNSET,
-        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
-    )
-    resolved_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
-    )
-    secret_type_display_name: Missing[str] = Field(
-        default=UNSET,
-        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
-    )
-    secret: Missing[str] = Field(
-        default=UNSET, description="The secret that was detected."
-    )
-    repository: Missing[SimpleRepository] = Field(
-        default=UNSET, title="Simple Repository", description="A GitHub repository."
-    )
-    push_protection_bypassed: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether push protection was bypassed for the detected secret.",
-    )
-    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    push_protection_bypass_request_reviewer: Missing[Union[None, SimpleUser]] = Field(
-        default=UNSET
-    )
-    push_protection_bypass_request_reviewer_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when reviewing a push protection bypass.",
-    )
-    push_protection_bypass_request_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when requesting a push protection bypass.",
-    )
-    push_protection_bypass_request_html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The URL to a push protection bypass request."
-    )
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The comment that was optionally added when this alert was closed",
-    )
-    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
-        default=UNSET, description="The token status as of the latest validity check."
-    )
-    publicly_leaked: Missing[Union[bool, None]] = Field(
-        default=UNSET, description="Whether the secret was publicly leaked."
-    )
-    multi_repo: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether the detected secret was found in multiple repositories in the same organization or enterprise.",
-    )
-    is_base64_encoded: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="A boolean value representing whether or not alert is base64 encoded",
-    )
-    first_location_detected: Missing[
-        Union[
-            None,
-            SecretScanningLocationCommit,
-            SecretScanningLocationWikiCommit,
-            SecretScanningLocationIssueTitle,
-            SecretScanningLocationIssueBody,
-            SecretScanningLocationIssueComment,
-            SecretScanningLocationDiscussionTitle,
-            SecretScanningLocationDiscussionBody,
-            SecretScanningLocationDiscussionComment,
-            SecretScanningLocationPullRequestTitle,
-            SecretScanningLocationPullRequestBody,
-            SecretScanningLocationPullRequestComment,
-            SecretScanningLocationPullRequestReview,
-            SecretScanningLocationPullRequestReviewComment,
-        ]
-    ] = Field(default=UNSET)
-    has_more_locations: Missing[bool] = Field(
-        default=UNSET,
-        description="A boolean value representing whether or not the token in the alert was detected in more than one location.",
-    )
-
-
-model_rebuild(OrganizationSecretScanningAlert)
-
-__all__ = ("OrganizationSecretScanningAlert",)

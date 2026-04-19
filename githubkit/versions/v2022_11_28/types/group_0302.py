@@ -9,68 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0301 import DeploymentBranchPolicySettingsType
-from .group_0303 import EnvironmentPropProtectionRulesItemsAnyof1Type
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class EnvironmentType(TypedDict):
-    """Environment
+class CodeScanningAutofixType(TypedDict):
+    """CodeScanningAutofix"""
 
-    Details of a deployment environment
-    """
-
-    id: int
-    node_id: str
-    name: str
-    url: str
-    html_url: str
-    created_at: datetime
-    updated_at: datetime
-    protection_rules: NotRequired[
-        list[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0Type,
-                EnvironmentPropProtectionRulesItemsAnyof1Type,
-                EnvironmentPropProtectionRulesItemsAnyof2Type,
-            ]
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
-    ]
+    status: Literal["pending", "error", "success", "outdated"]
+    description: Union[str, None]
+    started_at: _dt.datetime
 
 
-class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
+class CodeScanningAutofixTypeForResponse(TypedDict):
+    """CodeScanningAutofix"""
 
-    id: int
-    node_id: str
-    type: str
-    wait_timer: NotRequired[int]
-
-
-class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
-
-    id: int
-    node_id: str
-    type: str
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: NotRequired[int]
-    environments: NotRequired[list[EnvironmentType]]
+    status: Literal["pending", "error", "success", "outdated"]
+    description: Union[str, None]
+    started_at: str
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof0Type",
-    "EnvironmentPropProtectionRulesItemsAnyof2Type",
-    "EnvironmentType",
-    "ReposOwnerRepoEnvironmentsGetResponse200Type",
+    "CodeScanningAutofixType",
+    "CodeScanningAutofixTypeForResponse",
 )

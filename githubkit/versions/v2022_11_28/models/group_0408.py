@@ -14,17 +14,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReferrerTraffic(GitHubModel):
-    """Referrer Traffic
+class PullRequestMergeResult(GitHubModel):
+    """Pull Request Merge Result
 
-    Referrer Traffic
+    Pull Request Merge Result
     """
 
-    referrer: str = Field()
-    count: int = Field()
-    uniques: int = Field()
+    sha: str = Field()
+    merged: bool = Field()
+    message: str = Field()
 
 
-model_rebuild(ReferrerTraffic)
+model_rebuild(PullRequestMergeResult)
 
-__all__ = ("ReferrerTraffic",)
+__all__ = ("PullRequestMergeResult",)

@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -18,21 +19,77 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleCommitterEmailPatternPropParameters(GitHubModel):
-    """RepositoryRuleCommitterEmailPatternPropParameters"""
+class OrgPrivateRegistryConfigurationWithSelectedRepositories(GitHubModel):
+    """Organization private registry
 
-    name: Missing[str] = Field(
-        default=UNSET, description="How this rule will appear to users."
+    Private registry configuration for an organization
+    """
+
+    name: str = Field(description="The name of the private registry configuration.")
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ] = Field(description="The registry type.")
+    auth_type: Missing[
+        Literal["token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"]
+    ] = Field(
+        default=UNSET, description="The authentication type for the private registry."
     )
-    negate: Missing[bool] = Field(
-        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL of the private registry."
     )
-    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
-        description="The operator to use for matching."
+    username: Missing[str] = Field(
+        default=UNSET,
+        description="The username to use when authenticating with the private registry.",
     )
-    pattern: str = Field(description="The pattern to match with.")
+    replaces_base: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry."
+    )
+    selected_repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`.",
+    )
+    tenant_id: Missing[str] = Field(
+        default=UNSET, description="The tenant ID of the Azure AD application."
+    )
+    client_id: Missing[str] = Field(
+        default=UNSET, description="The client ID of the Azure AD application."
+    )
+    aws_region: Missing[str] = Field(default=UNSET, description="The AWS region.")
+    account_id: Missing[str] = Field(default=UNSET, description="The AWS account ID.")
+    role_name: Missing[str] = Field(default=UNSET, description="The AWS IAM role name.")
+    domain: Missing[str] = Field(default=UNSET, description="The CodeArtifact domain.")
+    domain_owner: Missing[str] = Field(
+        default=UNSET, description="The CodeArtifact domain owner."
+    )
+    jfrog_oidc_provider_name: Missing[str] = Field(
+        default=UNSET, description="The JFrog OIDC provider name."
+    )
+    audience: Missing[str] = Field(default=UNSET, description="The OIDC audience.")
+    identity_mapping_name: Missing[str] = Field(
+        default=UNSET, description="The JFrog identity mapping name."
+    )
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(RepositoryRuleCommitterEmailPatternPropParameters)
+model_rebuild(OrgPrivateRegistryConfigurationWithSelectedRepositories)
 
-__all__ = ("RepositoryRuleCommitterEmailPatternPropParameters",)
+__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositories",)

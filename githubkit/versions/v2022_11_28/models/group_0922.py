@@ -13,29 +13,56 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCodespacesAccessPutBody(GitHubModel):
-    """OrgsOrgCodespacesAccessPutBody"""
+class AgentsReposOwnerRepoTasksGetResponse422(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse422
 
-    visibility: Literal[
-        "disabled",
-        "selected_members",
-        "all_members",
-        "all_members_and_outside_collaborators",
-    ] = Field(
-        description="Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization."
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    selected_usernames: Missing[list[str]] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
+    errors: Missing[list[AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems]] = (
+        Field(
+            default=UNSET,
+            description="List of validation errors (present only for 422 responses)",
+        )
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
         default=UNSET,
-        description="The usernames of the organization members who should have access to codespaces in the organization. Required when `visibility` is `selected_members`. The provided list of usernames will replace any existing value.",
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(OrgsOrgCodespacesAccessPutBody)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse422)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems)
 
-__all__ = ("OrgsOrgCodespacesAccessPutBody",)
+__all__ = (
+    "AgentsReposOwnerRepoTasksGetResponse422",
+    "AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems",
+)

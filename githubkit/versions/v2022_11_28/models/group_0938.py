@@ -18,26 +18,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgDependabotSecretsSecretNamePutBody(GitHubModel):
-    """OrgsOrgDependabotSecretsSecretNamePutBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse404(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse404
 
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems]
+    ] = Field(
         default=UNSET,
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key) endpoint.",
+        description="List of validation errors (present only for 422 responses)",
     )
-    key_id: Missing[str] = Field(
-        default=UNSET, description="ID of the key you used to encrypt the secret."
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret."
-    )
-    selected_repository_ids: Missing[list[str]] = Field(
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
         default=UNSET,
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(OrgsOrgDependabotSecretsSecretNamePutBody)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse404)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems)
 
-__all__ = ("OrgsOrgDependabotSecretsSecretNamePutBody",)
+__all__ = (
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse404",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems",
+)

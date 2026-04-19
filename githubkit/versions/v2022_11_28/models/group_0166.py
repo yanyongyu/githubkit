@@ -9,29 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0167 import RepositoryRuleTagNamePatternPropParameters
 
 
-class RepositoryRuleTagNamePattern(GitHubModel):
-    """tag_name_pattern
+class Link(GitHubModel):
+    """Link
 
-    Parameters to be used for the tag_name_pattern rule
+    Hypermedia Link
     """
 
-    type: Literal["tag_name_pattern"] = Field()
-    parameters: Missing[RepositoryRuleTagNamePatternPropParameters] = Field(
-        default=UNSET
-    )
+    href: str = Field()
 
 
-model_rebuild(RepositoryRuleTagNamePattern)
+model_rebuild(Link)
 
-__all__ = ("RepositoryRuleTagNamePattern",)
+__all__ = ("Link",)

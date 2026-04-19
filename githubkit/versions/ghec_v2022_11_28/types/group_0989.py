@@ -12,45 +12,48 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgPatchBodyType(TypedDict):
-    """OrgsOrgPatchBody"""
-
-    billing_email: NotRequired[str]
-    company: NotRequired[str]
-    email: NotRequired[str]
-    twitter_username: NotRequired[str]
-    location: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[str]
-    has_organization_projects: NotRequired[bool]
-    has_repository_projects: NotRequired[bool]
-    default_repository_permission: NotRequired[
-        Literal["read", "write", "admin", "none"]
-    ]
-    members_can_create_repositories: NotRequired[bool]
-    members_can_create_internal_repositories: NotRequired[bool]
-    members_can_create_private_repositories: NotRequired[bool]
-    members_can_create_public_repositories: NotRequired[bool]
-    members_allowed_repository_creation_type: NotRequired[
-        Literal["all", "private", "none"]
-    ]
-    members_can_create_pages: NotRequired[bool]
-    members_can_create_public_pages: NotRequired[bool]
-    members_can_create_private_pages: NotRequired[bool]
-    members_can_fork_private_repositories: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    blog: NotRequired[str]
-    advanced_security_enabled_for_new_repositories: NotRequired[bool]
-    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
-    dependabot_security_updates_enabled_for_new_repositories: NotRequired[bool]
-    dependency_graph_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_custom_link_enabled: NotRequired[bool]
-    secret_scanning_push_protection_custom_link: NotRequired[str]
-    secret_scanning_validity_checks_enabled: NotRequired[bool]
-    deploy_keys_enabled_for_repositories: NotRequired[bool]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0209 import IssueType, IssueTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-__all__ = ("OrgsOrgPatchBodyType",)
+class WebhookSubIssuesSubIssueAddedType(TypedDict):
+    """sub-issue added event"""
+
+    action: Literal["sub_issue_added"]
+    sub_issue_id: float
+    sub_issue: IssueType
+    sub_issue_repo: RepositoryType
+    parent_issue_id: float
+    parent_issue: IssueType
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
+
+
+class WebhookSubIssuesSubIssueAddedTypeForResponse(TypedDict):
+    """sub-issue added event"""
+
+    action: Literal["sub_issue_added"]
+    sub_issue_id: float
+    sub_issue: IssueTypeForResponse
+    sub_issue_repo: RepositoryTypeForResponse
+    parent_issue_id: float
+    parent_issue: IssueTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "WebhookSubIssuesSubIssueAddedType",
+    "WebhookSubIssuesSubIssueAddedTypeForResponse",
+)

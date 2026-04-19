@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,27 +18,89 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0180 import RepositoryRuleCodeScanningPropParameters
 
+class TimelineCommittedEvent(GitHubModel):
+    """Timeline Committed Event
 
-class RepositoryRuleDetailedOneof20(GitHubModel):
-    """RepositoryRuleDetailedOneof20"""
+    Timeline Committed Event
+    """
 
-    type: Literal["code_scanning"] = Field()
-    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
-        default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
+    event: Missing[Literal["committed"]] = Field(default=UNSET)
+    sha: str = Field(description="SHA for the commit")
+    node_id: str = Field()
+    url: str = Field()
+    author: TimelineCommittedEventPropAuthor = Field(
+        description="Identifying information for the git-user"
     )
-    ruleset_source: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
+    committer: TimelineCommittedEventPropCommitter = Field(
+        description="Identifying information for the git-user"
     )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
-    )
+    message: str = Field(description="Message describing the purpose of the commit")
+    tree: TimelineCommittedEventPropTree = Field()
+    parents: list[TimelineCommittedEventPropParentsItems] = Field()
+    verification: TimelineCommittedEventPropVerification = Field()
+    html_url: str = Field()
 
 
-model_rebuild(RepositoryRuleDetailedOneof20)
+class TimelineCommittedEventPropAuthor(GitHubModel):
+    """TimelineCommittedEventPropAuthor
 
-__all__ = ("RepositoryRuleDetailedOneof20",)
+    Identifying information for the git-user
+    """
+
+    date: _dt.datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
+
+
+class TimelineCommittedEventPropCommitter(GitHubModel):
+    """TimelineCommittedEventPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: _dt.datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
+
+
+class TimelineCommittedEventPropTree(GitHubModel):
+    """TimelineCommittedEventPropTree"""
+
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+
+
+class TimelineCommittedEventPropParentsItems(GitHubModel):
+    """TimelineCommittedEventPropParentsItems"""
+
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+    html_url: str = Field()
+
+
+class TimelineCommittedEventPropVerification(GitHubModel):
+    """TimelineCommittedEventPropVerification"""
+
+    verified: bool = Field()
+    reason: str = Field()
+    signature: Union[str, None] = Field()
+    payload: Union[str, None] = Field()
+    verified_at: Union[str, None] = Field()
+
+
+model_rebuild(TimelineCommittedEvent)
+model_rebuild(TimelineCommittedEventPropAuthor)
+model_rebuild(TimelineCommittedEventPropCommitter)
+model_rebuild(TimelineCommittedEventPropTree)
+model_rebuild(TimelineCommittedEventPropParentsItems)
+model_rebuild(TimelineCommittedEventPropVerification)
+
+__all__ = (
+    "TimelineCommittedEvent",
+    "TimelineCommittedEventPropAuthor",
+    "TimelineCommittedEventPropCommitter",
+    "TimelineCommittedEventPropParentsItems",
+    "TimelineCommittedEventPropTree",
+    "TimelineCommittedEventPropVerification",
+)

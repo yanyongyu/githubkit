@@ -8,7 +8,7 @@ from .core import GitHubCore
 from .graphql import GraphQLNamespace
 from .paginator import Paginator
 from .response import Response
-from .typing import ProxyTypes, RetryDecisionFunc
+from .typing import EventHookTypes, ProxyTypes, RetryDecisionFunc
 from .versions import RestVersionSwitcher, WebhooksVersionSwitcher
 
 if TYPE_CHECKING:
@@ -79,6 +79,10 @@ class GitHub(GitHubCore[A]):
             ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
             trust_env: bool = True,
             proxy: Optional[ProxyTypes] = None,
+            transport: Optional[httpx.BaseTransport] = None,
+            async_transport: Optional[httpx.AsyncBaseTransport] = None,
+            event_hooks: Optional[EventHookTypes] = None,
+            async_event_hooks: Optional[EventHookTypes] = None,
             cache_strategy: Optional["BaseCacheStrategy"] = None,
             http_cache: bool = True,
             throttler: Optional["BaseThrottler"] = None,
@@ -101,6 +105,10 @@ class GitHub(GitHubCore[A]):
             ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
             trust_env: bool = True,
             proxy: Optional[ProxyTypes] = None,
+            transport: Optional[httpx.BaseTransport] = None,
+            async_transport: Optional[httpx.AsyncBaseTransport] = None,
+            event_hooks: Optional[EventHookTypes] = None,
+            async_event_hooks: Optional[EventHookTypes] = None,
             cache_strategy: Optional["BaseCacheStrategy"] = None,
             http_cache: bool = True,
             throttler: Optional["BaseThrottler"] = None,
@@ -123,6 +131,10 @@ class GitHub(GitHubCore[A]):
             ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
             trust_env: bool = True,
             proxy: Optional[ProxyTypes] = None,
+            transport: Optional[httpx.BaseTransport] = None,
+            async_transport: Optional[httpx.AsyncBaseTransport] = None,
+            event_hooks: Optional[EventHookTypes] = None,
+            async_event_hooks: Optional[EventHookTypes] = None,
             cache_strategy: Optional["BaseCacheStrategy"] = None,
             http_cache: bool = True,
             throttler: Optional["BaseThrottler"] = None,

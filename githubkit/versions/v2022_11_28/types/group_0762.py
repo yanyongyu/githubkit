@@ -12,24 +12,72 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0191 import RepositoryAdvisoryType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0512 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
 
 
-class WebhookRepositoryAdvisoryPublishedType(TypedDict):
-    """Repository advisory published event"""
+class WebhookProjectCardConvertedType(TypedDict):
+    """project_card converted event"""
 
-    action: Literal["published"]
+    action: Literal["converted"]
+    changes: WebhookProjectCardConvertedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    repository_advisory: RepositoryAdvisoryType
-    sender: NotRequired[SimpleUserType]
+    project_card: WebhooksProjectCardType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookRepositoryAdvisoryPublishedType",)
+class WebhookProjectCardConvertedTypeForResponse(TypedDict):
+    """project_card converted event"""
+
+    action: Literal["converted"]
+    changes: WebhookProjectCardConvertedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project_card: WebhooksProjectCardTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookProjectCardConvertedPropChangesType(TypedDict):
+    """WebhookProjectCardConvertedPropChanges"""
+
+    note: WebhookProjectCardConvertedPropChangesPropNoteType
+
+
+class WebhookProjectCardConvertedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectCardConvertedPropChanges"""
+
+    note: WebhookProjectCardConvertedPropChangesPropNoteTypeForResponse
+
+
+class WebhookProjectCardConvertedPropChangesPropNoteType(TypedDict):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
+
+    from_: str
+
+
+class WebhookProjectCardConvertedPropChangesPropNoteTypeForResponse(TypedDict):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookProjectCardConvertedPropChangesPropNoteType",
+    "WebhookProjectCardConvertedPropChangesPropNoteTypeForResponse",
+    "WebhookProjectCardConvertedPropChangesType",
+    "WebhookProjectCardConvertedPropChangesTypeForResponse",
+    "WebhookProjectCardConvertedType",
+    "WebhookProjectCardConvertedTypeForResponse",
+)

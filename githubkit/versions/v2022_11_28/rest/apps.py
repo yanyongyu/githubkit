@@ -17,10 +17,10 @@ from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
     from typing import Literal, Union
 
     from githubkit import GitHubCore
@@ -48,29 +48,29 @@ if TYPE_CHECKING:
     )
     from ..types import (
         AppHookConfigPatchBodyType,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
         AppInstallationsInstallationIdAccessTokensPostBodyType,
         ApplicationsClientIdGrantDeleteBodyType,
         ApplicationsClientIdTokenDeleteBodyType,
         ApplicationsClientIdTokenPatchBodyType,
         ApplicationsClientIdTokenPostBodyType,
         ApplicationsClientIdTokenScopedPostBodyType,
-        AppManifestsCodeConversionsPostResponse201Type,
+        AppManifestsCodeConversionsPostResponse201TypeForResponse,
         AppPermissionsType,
-        AuthorizationType,
-        HookDeliveryItemType,
-        HookDeliveryType,
-        InstallationRepositoriesGetResponse200Type,
-        InstallationTokenType,
-        InstallationType,
-        IntegrationInstallationRequestType,
-        IntegrationType,
-        MarketplaceListingPlanType,
-        MarketplacePurchaseType,
-        UserInstallationsGetResponse200Type,
-        UserInstallationsInstallationIdRepositoriesGetResponse200Type,
-        UserMarketplacePurchaseType,
-        WebhookConfigType,
+        AuthorizationTypeForResponse,
+        HookDeliveryItemTypeForResponse,
+        HookDeliveryTypeForResponse,
+        InstallationRepositoriesGetResponse200TypeForResponse,
+        InstallationTokenTypeForResponse,
+        InstallationTypeForResponse,
+        IntegrationInstallationRequestTypeForResponse,
+        IntegrationTypeForResponse,
+        MarketplaceListingPlanTypeForResponse,
+        MarketplacePurchaseTypeForResponse,
+        UserInstallationsGetResponse200TypeForResponse,
+        UserInstallationsInstallationIdRepositoriesGetResponse200TypeForResponse,
+        UserMarketplacePurchaseTypeForResponse,
+        WebhookConfigTypeForResponse,
     )
 
 
@@ -94,7 +94,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
+    ) -> Response[Union[Integration, None], Union[IntegrationTypeForResponse, None]]:
         """apps/get-authenticated
 
         GET /app
@@ -127,7 +127,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
+    ) -> Response[Union[Integration, None], Union[IntegrationTypeForResponse, None]]:
         """apps/get-authenticated
 
         GET /app
@@ -163,7 +163,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         AppManifestsCodeConversionsPostResponse201,
-        AppManifestsCodeConversionsPostResponse201Type,
+        AppManifestsCodeConversionsPostResponse201TypeForResponse,
     ]:
         """apps/create-from-manifest
 
@@ -204,7 +204,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         AppManifestsCodeConversionsPostResponse201,
-        AppManifestsCodeConversionsPostResponse201Type,
+        AppManifestsCodeConversionsPostResponse201TypeForResponse,
     ]:
         """apps/create-from-manifest
 
@@ -242,7 +242,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """apps/get-webhook-config-for-app
 
         GET /app/hook/config
@@ -273,7 +273,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """apps/get-webhook-config-for-app
 
         GET /app/hook/config
@@ -306,7 +306,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: AppHookConfigPatchBodyType,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     @overload
     def update_webhook_config_for_app(
@@ -319,7 +319,7 @@ class AppsClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     def update_webhook_config_for_app(
         self,
@@ -328,7 +328,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """apps/update-webhook-config-for-app
 
         PATCH /app/hook/config
@@ -371,7 +371,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: AppHookConfigPatchBodyType,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     @overload
     async def async_update_webhook_config_for_app(
@@ -384,7 +384,7 @@ class AppsClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     async def async_update_webhook_config_for_app(
         self,
@@ -393,7 +393,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """apps/update-webhook-config-for-app
 
         PATCH /app/hook/config
@@ -434,9 +434,10 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
+        status: Missing[Literal["success", "failure"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
+    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
         """apps/list-webhook-deliveries
 
         GET /app/hook/deliveries
@@ -455,6 +456,7 @@ class AppsClient:
         params = {
             "per_page": per_page,
             "cursor": cursor,
+            "status": status,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -462,7 +464,7 @@ class AppsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[HookDeliveryItem],
@@ -477,9 +479,10 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
+        status: Missing[Literal["success", "failure"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
+    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
         """apps/list-webhook-deliveries
 
         GET /app/hook/deliveries
@@ -498,6 +501,7 @@ class AppsClient:
         params = {
             "per_page": per_page,
             "cursor": cursor,
+            "status": status,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -505,7 +509,7 @@ class AppsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[HookDeliveryItem],
@@ -521,7 +525,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[HookDelivery, HookDeliveryType]:
+    ) -> Response[HookDelivery, HookDeliveryTypeForResponse]:
         """apps/get-webhook-delivery
 
         GET /app/hook/deliveries/{delivery_id}
@@ -557,7 +561,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[HookDelivery, HookDeliveryType]:
+    ) -> Response[HookDelivery, HookDeliveryTypeForResponse]:
         """apps/get-webhook-delivery
 
         GET /app/hook/deliveries/{delivery_id}
@@ -595,7 +599,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """apps/redeliver-webhook-delivery
 
@@ -638,7 +642,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """apps/redeliver-webhook-delivery
 
@@ -681,7 +685,8 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[IntegrationInstallationRequest], list[IntegrationInstallationRequestType]
+        list[IntegrationInstallationRequest],
+        list[IntegrationInstallationRequestTypeForResponse],
     ]:
         """apps/list-installation-requests-for-authenticated-app
 
@@ -706,7 +711,7 @@ class AppsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[IntegrationInstallationRequest],
@@ -723,7 +728,8 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[IntegrationInstallationRequest], list[IntegrationInstallationRequestType]
+        list[IntegrationInstallationRequest],
+        list[IntegrationInstallationRequestTypeForResponse],
     ]:
         """apps/list-installation-requests-for-authenticated-app
 
@@ -748,7 +754,7 @@ class AppsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[IntegrationInstallationRequest],
@@ -762,11 +768,11 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         outdated: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Installation], list[InstallationType]]:
+    ) -> Response[list[Installation], list[InstallationTypeForResponse]]:
         """apps/list-installations
 
         GET /app/installations
@@ -794,7 +800,7 @@ class AppsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Installation],
@@ -805,11 +811,11 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         outdated: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Installation], list[InstallationType]]:
+    ) -> Response[list[Installation], list[InstallationTypeForResponse]]:
         """apps/list-installations
 
         GET /app/installations
@@ -837,7 +843,7 @@ class AppsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Installation],
@@ -849,7 +855,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-installation
 
         GET /app/installations/{installation_id}
@@ -884,7 +890,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-installation
 
         GET /app/installations/{installation_id}
@@ -989,7 +995,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
-    ) -> Response[InstallationToken, InstallationTokenType]: ...
+    ) -> Response[InstallationToken, InstallationTokenTypeForResponse]: ...
 
     @overload
     def create_installation_access_token(
@@ -1002,7 +1008,7 @@ class AppsClient:
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
-    ) -> Response[InstallationToken, InstallationTokenType]: ...
+    ) -> Response[InstallationToken, InstallationTokenTypeForResponse]: ...
 
     def create_installation_access_token(
         self,
@@ -1012,7 +1018,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[InstallationToken, InstallationTokenType]:
+    ) -> Response[InstallationToken, InstallationTokenTypeForResponse]:
         """apps/create-installation-access-token
 
         POST /app/installations/{installation_id}/access_tokens
@@ -1073,7 +1079,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
-    ) -> Response[InstallationToken, InstallationTokenType]: ...
+    ) -> Response[InstallationToken, InstallationTokenTypeForResponse]: ...
 
     @overload
     async def async_create_installation_access_token(
@@ -1086,7 +1092,7 @@ class AppsClient:
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
-    ) -> Response[InstallationToken, InstallationTokenType]: ...
+    ) -> Response[InstallationToken, InstallationTokenTypeForResponse]: ...
 
     async def async_create_installation_access_token(
         self,
@@ -1096,7 +1102,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[InstallationToken, InstallationTokenType]:
+    ) -> Response[InstallationToken, InstallationTokenTypeForResponse]:
         """apps/create-installation-access-token
 
         POST /app/installations/{installation_id}/access_tokens
@@ -1425,7 +1431,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenPostBodyType,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     @overload
     def check_token(
@@ -1436,7 +1442,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         access_token: str,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     def check_token(
         self,
@@ -1446,7 +1452,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization, AuthorizationType]:
+    ) -> Response[Authorization, AuthorizationTypeForResponse]:
         """apps/check-token
 
         POST /applications/{client_id}/token
@@ -1497,7 +1503,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenPostBodyType,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     @overload
     async def async_check_token(
@@ -1508,7 +1514,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         access_token: str,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     async def async_check_token(
         self,
@@ -1518,7 +1524,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization, AuthorizationType]:
+    ) -> Response[Authorization, AuthorizationTypeForResponse]:
         """apps/check-token
 
         POST /applications/{client_id}/token
@@ -1699,7 +1705,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenPatchBodyType,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     @overload
     def reset_token(
@@ -1710,7 +1716,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         access_token: str,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     def reset_token(
         self,
@@ -1720,7 +1726,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization, AuthorizationType]:
+    ) -> Response[Authorization, AuthorizationTypeForResponse]:
         """apps/reset-token
 
         PATCH /applications/{client_id}/token
@@ -1769,7 +1775,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenPatchBodyType,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     @overload
     async def async_reset_token(
@@ -1780,7 +1786,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         access_token: str,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     async def async_reset_token(
         self,
@@ -1790,7 +1796,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization, AuthorizationType]:
+    ) -> Response[Authorization, AuthorizationTypeForResponse]:
         """apps/reset-token
 
         PATCH /applications/{client_id}/token
@@ -1839,7 +1845,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenScopedPostBodyType,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     @overload
     def scope_token(
@@ -1855,7 +1861,7 @@ class AppsClient:
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     def scope_token(
         self,
@@ -1865,7 +1871,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization, AuthorizationType]:
+    ) -> Response[Authorization, AuthorizationTypeForResponse]:
         """apps/scope-token
 
         POST /applications/{client_id}/token/scoped
@@ -1922,7 +1928,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenScopedPostBodyType,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     @overload
     async def async_scope_token(
@@ -1938,7 +1944,7 @@ class AppsClient:
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     async def async_scope_token(
         self,
@@ -1948,7 +1954,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization, AuthorizationType]:
+    ) -> Response[Authorization, AuthorizationTypeForResponse]:
         """apps/scope-token
 
         POST /applications/{client_id}/token/scoped
@@ -2003,7 +2009,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
+    ) -> Response[Union[Integration, None], Union[IntegrationTypeForResponse, None]]:
         """apps/get-by-slug
 
         GET /apps/{app_slug}
@@ -2040,7 +2046,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
+    ) -> Response[Union[Integration, None], Union[IntegrationTypeForResponse, None]]:
         """apps/get-by-slug
 
         GET /apps/{app_slug}
@@ -2080,7 +2086,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         InstallationRepositoriesGetResponse200,
-        InstallationRepositoriesGetResponse200Type,
+        InstallationRepositoriesGetResponse200TypeForResponse,
     ]:
         """apps/list-repos-accessible-to-installation
 
@@ -2105,7 +2111,7 @@ class AppsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=InstallationRepositoriesGetResponse200,
@@ -2124,7 +2130,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         InstallationRepositoriesGetResponse200,
-        InstallationRepositoriesGetResponse200Type,
+        InstallationRepositoriesGetResponse200TypeForResponse,
     ]:
         """apps/list-repos-accessible-to-installation
 
@@ -2149,7 +2155,7 @@ class AppsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=InstallationRepositoriesGetResponse200,
@@ -2221,7 +2227,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
+    ) -> Response[MarketplacePurchase, MarketplacePurchaseTypeForResponse]:
         """apps/get-subscription-plan-for-account
 
         GET /marketplace_listing/accounts/{account_id}
@@ -2257,7 +2263,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
+    ) -> Response[MarketplacePurchase, MarketplacePurchaseTypeForResponse]:
         """apps/get-subscription-plan-for-account
 
         GET /marketplace_listing/accounts/{account_id}
@@ -2294,7 +2300,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
+    ) -> Response[
+        list[MarketplaceListingPlan], list[MarketplaceListingPlanTypeForResponse]
+    ]:
         """apps/list-plans
 
         GET /marketplace_listing/plans
@@ -2320,7 +2328,7 @@ class AppsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MarketplaceListingPlan],
@@ -2337,7 +2345,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
+    ) -> Response[
+        list[MarketplaceListingPlan], list[MarketplaceListingPlanTypeForResponse]
+    ]:
         """apps/list-plans
 
         GET /marketplace_listing/plans
@@ -2363,7 +2373,7 @@ class AppsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MarketplaceListingPlan],
@@ -2383,7 +2393,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
+    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseTypeForResponse]]:
         """apps/list-accounts-for-plan
 
         GET /marketplace_listing/plans/{plan_id}/accounts
@@ -2411,7 +2421,7 @@ class AppsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MarketplacePurchase],
@@ -2432,7 +2442,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
+    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseTypeForResponse]]:
         """apps/list-accounts-for-plan
 
         GET /marketplace_listing/plans/{plan_id}/accounts
@@ -2460,7 +2470,7 @@ class AppsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MarketplacePurchase],
@@ -2477,7 +2487,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
+    ) -> Response[MarketplacePurchase, MarketplacePurchaseTypeForResponse]:
         """apps/get-subscription-plan-for-account-stubbed
 
         GET /marketplace_listing/stubbed/accounts/{account_id}
@@ -2512,7 +2522,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
+    ) -> Response[MarketplacePurchase, MarketplacePurchaseTypeForResponse]:
         """apps/get-subscription-plan-for-account-stubbed
 
         GET /marketplace_listing/stubbed/accounts/{account_id}
@@ -2548,7 +2558,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
+    ) -> Response[
+        list[MarketplaceListingPlan], list[MarketplaceListingPlanTypeForResponse]
+    ]:
         """apps/list-plans-stubbed
 
         GET /marketplace_listing/stubbed/plans
@@ -2574,7 +2586,7 @@ class AppsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MarketplaceListingPlan],
@@ -2590,7 +2602,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
+    ) -> Response[
+        list[MarketplaceListingPlan], list[MarketplaceListingPlanTypeForResponse]
+    ]:
         """apps/list-plans-stubbed
 
         GET /marketplace_listing/stubbed/plans
@@ -2616,7 +2630,7 @@ class AppsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MarketplaceListingPlan],
@@ -2635,7 +2649,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
+    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseTypeForResponse]]:
         """apps/list-accounts-for-plan-stubbed
 
         GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
@@ -2663,7 +2677,7 @@ class AppsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MarketplacePurchase],
@@ -2682,7 +2696,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
+    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseTypeForResponse]]:
         """apps/list-accounts-for-plan-stubbed
 
         GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
@@ -2710,7 +2724,7 @@ class AppsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[MarketplacePurchase],
@@ -2725,7 +2739,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-org-installation
 
         GET /orgs/{org}/installation
@@ -2757,7 +2771,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-org-installation
 
         GET /orgs/{org}/installation
@@ -2790,7 +2804,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-repo-installation
 
         GET /repos/{owner}/{repo}/installation
@@ -2826,7 +2840,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-repo-installation
 
         GET /repos/{owner}/{repo}/installation
@@ -2862,7 +2876,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[UserInstallationsGetResponse200, UserInstallationsGetResponse200Type]:
+    ) -> Response[
+        UserInstallationsGetResponse200, UserInstallationsGetResponse200TypeForResponse
+    ]:
         """apps/list-installations-for-authenticated-user
 
         GET /user/installations
@@ -2890,7 +2906,7 @@ class AppsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=UserInstallationsGetResponse200,
@@ -2907,7 +2923,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[UserInstallationsGetResponse200, UserInstallationsGetResponse200Type]:
+    ) -> Response[
+        UserInstallationsGetResponse200, UserInstallationsGetResponse200TypeForResponse
+    ]:
         """apps/list-installations-for-authenticated-user
 
         GET /user/installations
@@ -2935,7 +2953,7 @@ class AppsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=UserInstallationsGetResponse200,
@@ -2955,7 +2973,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         UserInstallationsInstallationIdRepositoriesGetResponse200,
-        UserInstallationsInstallationIdRepositoriesGetResponse200Type,
+        UserInstallationsInstallationIdRepositoriesGetResponse200TypeForResponse,
     ]:
         """apps/list-installation-repos-for-authenticated-user
 
@@ -2987,7 +3005,7 @@ class AppsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=UserInstallationsInstallationIdRepositoriesGetResponse200,
@@ -3007,7 +3025,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         UserInstallationsInstallationIdRepositoriesGetResponse200,
-        UserInstallationsInstallationIdRepositoriesGetResponse200Type,
+        UserInstallationsInstallationIdRepositoriesGetResponse200TypeForResponse,
     ]:
         """apps/list-installation-repos-for-authenticated-user
 
@@ -3039,7 +3057,7 @@ class AppsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=UserInstallationsInstallationIdRepositoriesGetResponse200,
@@ -3200,7 +3218,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
+    ) -> Response[
+        list[UserMarketplacePurchase], list[UserMarketplacePurchaseTypeForResponse]
+    ]:
         """apps/list-subscriptions-for-authenticated-user
 
         GET /user/marketplace_purchases
@@ -3224,7 +3244,7 @@ class AppsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[UserMarketplacePurchase],
@@ -3241,7 +3261,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
+    ) -> Response[
+        list[UserMarketplacePurchase], list[UserMarketplacePurchaseTypeForResponse]
+    ]:
         """apps/list-subscriptions-for-authenticated-user
 
         GET /user/marketplace_purchases
@@ -3265,7 +3287,7 @@ class AppsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[UserMarketplacePurchase],
@@ -3282,7 +3304,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
+    ) -> Response[
+        list[UserMarketplacePurchase], list[UserMarketplacePurchaseTypeForResponse]
+    ]:
         """apps/list-subscriptions-for-authenticated-user-stubbed
 
         GET /user/marketplace_purchases/stubbed
@@ -3306,7 +3330,7 @@ class AppsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[UserMarketplacePurchase],
@@ -3322,7 +3346,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
+    ) -> Response[
+        list[UserMarketplacePurchase], list[UserMarketplacePurchaseTypeForResponse]
+    ]:
         """apps/list-subscriptions-for-authenticated-user-stubbed
 
         GET /user/marketplace_purchases/stubbed
@@ -3346,7 +3372,7 @@ class AppsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[UserMarketplacePurchase],
@@ -3361,7 +3387,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-user-installation
 
         GET /users/{username}/installation
@@ -3393,7 +3419,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-user-installation
 
         GET /users/{username}/installation

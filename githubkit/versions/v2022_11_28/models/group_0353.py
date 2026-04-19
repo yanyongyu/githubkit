@@ -18,26 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class PagesDeploymentStatus(GitHubModel):
-    """GitHub Pages deployment status"""
+class DeploymentBranchPolicyNamePatternWithType(GitHubModel):
+    """Deployment branch and tag policy name pattern"""
 
-    status: Missing[
-        Literal[
-            "deployment_in_progress",
-            "syncing_files",
-            "finished_file_sync",
-            "updating_pages",
-            "purging_cdn",
-            "deployment_cancelled",
-            "deployment_failed",
-            "deployment_content_failed",
-            "deployment_attempt_error",
-            "deployment_lost",
-            "succeed",
-        ]
-    ] = Field(default=UNSET, description="The current status of the deployment.")
+    name: str = Field(
+        description="The name pattern that branches or tags must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch)."
+    )
+    type: Missing[Literal["branch", "tag"]] = Field(
+        default=UNSET, description="Whether this rule targets a branch or tag"
+    )
 
 
-model_rebuild(PagesDeploymentStatus)
+model_rebuild(DeploymentBranchPolicyNamePatternWithType)
 
-__all__ = ("PagesDeploymentStatus",)
+__all__ = ("DeploymentBranchPolicyNamePatternWithType",)

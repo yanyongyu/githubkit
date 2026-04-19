@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,26 +18,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0433 import EnterpriseWebhooks
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
-from .group_0549 import WebhookForkPropForkee
+from .group_0482 import EnterpriseWebhooks
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0485 import RepositoryWebhooks
+from .group_0549 import WebhookCodeScanningAlertClosedByUserPropAlert
 
 
-class WebhookFork(GitHubModel):
-    """fork event
+class WebhookCodeScanningAlertClosedByUser(GitHubModel):
+    """code_scanning_alert closed_by_user event"""
 
-    A user forks a repository.
-    """
-
+    action: Literal["closed_by_user"] = Field()
+    alert: WebhookCodeScanningAlertClosedByUserPropAlert = Field(
+        description="The code scanning alert involved in the event."
+    )
+    commit_oid: str = Field(
+        description="The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
-    )
-    forkee: WebhookForkPropForkee = Field(
-        description="The created [`repository`](https://docs.github.com/rest/repos/repos#get-a-repository) resource."
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -47,6 +50,9 @@ class WebhookFork(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    ref: str = Field(
+        description="The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -54,6 +60,6 @@ class WebhookFork(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookFork)
+model_rebuild(WebhookCodeScanningAlertClosedByUser)
 
-__all__ = ("WebhookFork",)
+__all__ = ("WebhookCodeScanningAlertClosedByUser",)

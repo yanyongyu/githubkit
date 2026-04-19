@@ -9,19 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class AutolinkType(TypedDict):
-    """Autolink reference
+class RepositoryRuleWorkflowsPropParametersType(TypedDict):
+    """RepositoryRuleWorkflowsPropParameters"""
 
-    An autolink reference.
+    do_not_enforce_on_create: NotRequired[bool]
+    workflows: list[RepositoryRuleParamsWorkflowFileReferenceType]
+
+
+class RepositoryRuleWorkflowsPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleWorkflowsPropParameters"""
+
+    do_not_enforce_on_create: NotRequired[bool]
+    workflows: list[RepositoryRuleParamsWorkflowFileReferenceTypeForResponse]
+
+
+class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
+    """WorkflowFileReference
+
+    A workflow that must run for this rule to pass
     """
 
-    id: int
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: bool
+    path: str
+    ref: NotRequired[str]
+    repository_id: int
+    sha: NotRequired[str]
 
 
-__all__ = ("AutolinkType",)
+class RepositoryRuleParamsWorkflowFileReferenceTypeForResponse(TypedDict):
+    """WorkflowFileReference
+
+    A workflow that must run for this rule to pass
+    """
+
+    path: str
+    ref: NotRequired[str]
+    repository_id: int
+    sha: NotRequired[str]
+
+
+__all__ = (
+    "RepositoryRuleParamsWorkflowFileReferenceType",
+    "RepositoryRuleParamsWorkflowFileReferenceTypeForResponse",
+    "RepositoryRuleWorkflowsPropParametersType",
+    "RepositoryRuleWorkflowsPropParametersTypeForResponse",
+)

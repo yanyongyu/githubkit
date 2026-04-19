@@ -17,7 +17,7 @@ from pydantic import BaseModel, Field
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     from typing import Literal, Union
@@ -42,16 +42,16 @@ if TYPE_CHECKING:
         UsersUsernameAttestationsSubjectDigestGetResponse200,
     )
     from ..types import (
-        EmailType,
-        GpgKeyType,
-        HovercardType,
-        KeySimpleType,
-        KeyType,
-        PrivateUserType,
-        PublicUserType,
-        SimpleUserType,
-        SocialAccountType,
-        SshSigningKeyType,
+        EmailTypeForResponse,
+        GpgKeyTypeForResponse,
+        HovercardTypeForResponse,
+        KeySimpleTypeForResponse,
+        KeyTypeForResponse,
+        PrivateUserTypeForResponse,
+        PublicUserTypeForResponse,
+        SimpleUserTypeForResponse,
+        SocialAccountTypeForResponse,
+        SshSigningKeyTypeForResponse,
         UserEmailsDeleteBodyOneof0Type,
         UserEmailsPostBodyOneof0Type,
         UserEmailVisibilityPatchBodyType,
@@ -62,10 +62,10 @@ if TYPE_CHECKING:
         UserSocialAccountsPostBodyType,
         UserSshSigningKeysPostBodyType,
         UsersUsernameAttestationsBulkListPostBodyType,
-        UsersUsernameAttestationsBulkListPostResponse200Type,
+        UsersUsernameAttestationsBulkListPostResponse200TypeForResponse,
         UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type,
         UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type,
-        UsersUsernameAttestationsSubjectDigestGetResponse200Type,
+        UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse,
     )
 
 
@@ -90,7 +90,8 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
+        Union[PrivateUser, PublicUser],
+        Union[PrivateUserTypeForResponse, PublicUserTypeForResponse],
     ]:
         """users/get-authenticated
 
@@ -127,7 +128,8 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
+        Union[PrivateUser, PublicUser],
+        Union[PrivateUserTypeForResponse, PublicUserTypeForResponse],
     ]:
         """users/get-authenticated
 
@@ -165,7 +167,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[UserPatchBodyType] = UNSET,
-    ) -> Response[PrivateUser, PrivateUserType]: ...
+    ) -> Response[PrivateUser, PrivateUserTypeForResponse]: ...
 
     @overload
     def update_authenticated(
@@ -182,7 +184,7 @@ class UsersClient:
         location: Missing[str] = UNSET,
         hireable: Missing[bool] = UNSET,
         bio: Missing[str] = UNSET,
-    ) -> Response[PrivateUser, PrivateUserType]: ...
+    ) -> Response[PrivateUser, PrivateUserTypeForResponse]: ...
 
     def update_authenticated(
         self,
@@ -191,7 +193,7 @@ class UsersClient:
         stream: bool = False,
         data: Missing[UserPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PrivateUser, PrivateUserType]:
+    ) -> Response[PrivateUser, PrivateUserTypeForResponse]:
         """users/update-authenticated
 
         PATCH /user
@@ -238,7 +240,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[UserPatchBodyType] = UNSET,
-    ) -> Response[PrivateUser, PrivateUserType]: ...
+    ) -> Response[PrivateUser, PrivateUserTypeForResponse]: ...
 
     @overload
     async def async_update_authenticated(
@@ -255,7 +257,7 @@ class UsersClient:
         location: Missing[str] = UNSET,
         hireable: Missing[bool] = UNSET,
         bio: Missing[str] = UNSET,
-    ) -> Response[PrivateUser, PrivateUserType]: ...
+    ) -> Response[PrivateUser, PrivateUserTypeForResponse]: ...
 
     async def async_update_authenticated(
         self,
@@ -264,7 +266,7 @@ class UsersClient:
         stream: bool = False,
         data: Missing[UserPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PrivateUser, PrivateUserType]:
+    ) -> Response[PrivateUser, PrivateUserTypeForResponse]:
         """users/update-authenticated
 
         PATCH /user
@@ -311,7 +313,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-blocked-by-authenticated-user
 
         GET /user/blocks
@@ -335,7 +337,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -353,7 +355,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-blocked-by-authenticated-user
 
         GET /user/blocks
@@ -377,7 +379,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -601,7 +603,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserEmailVisibilityPatchBodyType,
-    ) -> Response[list[Email], list[EmailType]]: ...
+    ) -> Response[list[Email], list[EmailTypeForResponse]]: ...
 
     @overload
     def set_primary_email_visibility_for_authenticated_user(
@@ -611,7 +613,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         visibility: Literal["public", "private"],
-    ) -> Response[list[Email], list[EmailType]]: ...
+    ) -> Response[list[Email], list[EmailTypeForResponse]]: ...
 
     def set_primary_email_visibility_for_authenticated_user(
         self,
@@ -620,7 +622,7 @@ class UsersClient:
         stream: bool = False,
         data: Missing[UserEmailVisibilityPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[Email], list[EmailType]]:
+    ) -> Response[list[Email], list[EmailTypeForResponse]]:
         """users/set-primary-email-visibility-for-authenticated-user
 
         PATCH /user/email/visibility
@@ -672,7 +674,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserEmailVisibilityPatchBodyType,
-    ) -> Response[list[Email], list[EmailType]]: ...
+    ) -> Response[list[Email], list[EmailTypeForResponse]]: ...
 
     @overload
     async def async_set_primary_email_visibility_for_authenticated_user(
@@ -682,7 +684,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         visibility: Literal["public", "private"],
-    ) -> Response[list[Email], list[EmailType]]: ...
+    ) -> Response[list[Email], list[EmailTypeForResponse]]: ...
 
     async def async_set_primary_email_visibility_for_authenticated_user(
         self,
@@ -691,7 +693,7 @@ class UsersClient:
         stream: bool = False,
         data: Missing[UserEmailVisibilityPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[Email], list[EmailType]]:
+    ) -> Response[list[Email], list[EmailTypeForResponse]]:
         """users/set-primary-email-visibility-for-authenticated-user
 
         PATCH /user/email/visibility
@@ -743,7 +745,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Email], list[EmailType]]:
+    ) -> Response[list[Email], list[EmailTypeForResponse]]:
         """users/list-emails-for-authenticated-user
 
         GET /user/emails
@@ -770,7 +772,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Email],
@@ -788,7 +790,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Email], list[EmailType]]:
+    ) -> Response[list[Email], list[EmailTypeForResponse]]:
         """users/list-emails-for-authenticated-user
 
         GET /user/emails
@@ -815,7 +817,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Email],
@@ -833,7 +835,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, list[str], str]] = UNSET,
-    ) -> Response[list[Email], list[EmailType]]: ...
+    ) -> Response[list[Email], list[EmailTypeForResponse]]: ...
 
     @overload
     def add_email_for_authenticated_user(
@@ -843,7 +845,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         emails: list[str],
-    ) -> Response[list[Email], list[EmailType]]: ...
+    ) -> Response[list[Email], list[EmailTypeForResponse]]: ...
 
     def add_email_for_authenticated_user(
         self,
@@ -852,7 +854,7 @@ class UsersClient:
         stream: bool = False,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, list[str], str]] = UNSET,
         **kwargs,
-    ) -> Response[list[Email], list[EmailType]]:
+    ) -> Response[list[Email], list[EmailTypeForResponse]]:
         """users/add-email-for-authenticated-user
 
         POST /user/emails
@@ -915,7 +917,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, list[str], str]] = UNSET,
-    ) -> Response[list[Email], list[EmailType]]: ...
+    ) -> Response[list[Email], list[EmailTypeForResponse]]: ...
 
     @overload
     async def async_add_email_for_authenticated_user(
@@ -925,7 +927,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         emails: list[str],
-    ) -> Response[list[Email], list[EmailType]]: ...
+    ) -> Response[list[Email], list[EmailTypeForResponse]]: ...
 
     async def async_add_email_for_authenticated_user(
         self,
@@ -934,7 +936,7 @@ class UsersClient:
         stream: bool = False,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, list[str], str]] = UNSET,
         **kwargs,
-    ) -> Response[list[Email], list[EmailType]]:
+    ) -> Response[list[Email], list[EmailTypeForResponse]]:
         """users/add-email-for-authenticated-user
 
         POST /user/emails
@@ -1149,7 +1151,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-followers-for-authenticated-user
 
         GET /user/followers
@@ -1173,7 +1175,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -1190,7 +1192,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-followers-for-authenticated-user
 
         GET /user/followers
@@ -1214,7 +1216,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -1231,7 +1233,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-followed-by-authenticated-user
 
         GET /user/following
@@ -1255,7 +1257,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -1272,7 +1274,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-followed-by-authenticated-user
 
         GET /user/following
@@ -1296,7 +1298,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -1519,7 +1521,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[GpgKey], list[GpgKeyType]]:
+    ) -> Response[list[GpgKey], list[GpgKeyTypeForResponse]]:
         """users/list-gpg-keys-for-authenticated-user
 
         GET /user/gpg_keys
@@ -1545,7 +1547,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[GpgKey],
@@ -1563,7 +1565,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[GpgKey], list[GpgKeyType]]:
+    ) -> Response[list[GpgKey], list[GpgKeyTypeForResponse]]:
         """users/list-gpg-keys-for-authenticated-user
 
         GET /user/gpg_keys
@@ -1589,7 +1591,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[GpgKey],
@@ -1607,7 +1609,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserGpgKeysPostBodyType,
-    ) -> Response[GpgKey, GpgKeyType]: ...
+    ) -> Response[GpgKey, GpgKeyTypeForResponse]: ...
 
     @overload
     def create_gpg_key_for_authenticated_user(
@@ -1618,7 +1620,7 @@ class UsersClient:
         stream: bool = False,
         name: Missing[str] = UNSET,
         armored_public_key: str,
-    ) -> Response[GpgKey, GpgKeyType]: ...
+    ) -> Response[GpgKey, GpgKeyTypeForResponse]: ...
 
     def create_gpg_key_for_authenticated_user(
         self,
@@ -1627,7 +1629,7 @@ class UsersClient:
         stream: bool = False,
         data: Missing[UserGpgKeysPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GpgKey, GpgKeyType]:
+    ) -> Response[GpgKey, GpgKeyTypeForResponse]:
         """users/create-gpg-key-for-authenticated-user
 
         POST /user/gpg_keys
@@ -1676,7 +1678,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserGpgKeysPostBodyType,
-    ) -> Response[GpgKey, GpgKeyType]: ...
+    ) -> Response[GpgKey, GpgKeyTypeForResponse]: ...
 
     @overload
     async def async_create_gpg_key_for_authenticated_user(
@@ -1687,7 +1689,7 @@ class UsersClient:
         stream: bool = False,
         name: Missing[str] = UNSET,
         armored_public_key: str,
-    ) -> Response[GpgKey, GpgKeyType]: ...
+    ) -> Response[GpgKey, GpgKeyTypeForResponse]: ...
 
     async def async_create_gpg_key_for_authenticated_user(
         self,
@@ -1696,7 +1698,7 @@ class UsersClient:
         stream: bool = False,
         data: Missing[UserGpgKeysPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GpgKey, GpgKeyType]:
+    ) -> Response[GpgKey, GpgKeyTypeForResponse]:
         """users/create-gpg-key-for-authenticated-user
 
         POST /user/gpg_keys
@@ -1744,7 +1746,7 @@ class UsersClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GpgKey, GpgKeyType]:
+    ) -> Response[GpgKey, GpgKeyTypeForResponse]:
         """users/get-gpg-key-for-authenticated-user
 
         GET /user/gpg_keys/{gpg_key_id}
@@ -1781,7 +1783,7 @@ class UsersClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GpgKey, GpgKeyType]:
+    ) -> Response[GpgKey, GpgKeyTypeForResponse]:
         """users/get-gpg-key-for-authenticated-user
 
         GET /user/gpg_keys/{gpg_key_id}
@@ -1893,7 +1895,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Key], list[KeyType]]:
+    ) -> Response[list[Key], list[KeyTypeForResponse]]:
         """users/list-public-ssh-keys-for-authenticated-user
 
         GET /user/keys
@@ -1919,7 +1921,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Key],
@@ -1937,7 +1939,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Key], list[KeyType]]:
+    ) -> Response[list[Key], list[KeyTypeForResponse]]:
         """users/list-public-ssh-keys-for-authenticated-user
 
         GET /user/keys
@@ -1963,7 +1965,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Key],
@@ -1981,7 +1983,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserKeysPostBodyType,
-    ) -> Response[Key, KeyType]: ...
+    ) -> Response[Key, KeyTypeForResponse]: ...
 
     @overload
     def create_public_ssh_key_for_authenticated_user(
@@ -1992,7 +1994,7 @@ class UsersClient:
         stream: bool = False,
         title: Missing[str] = UNSET,
         key: str,
-    ) -> Response[Key, KeyType]: ...
+    ) -> Response[Key, KeyTypeForResponse]: ...
 
     def create_public_ssh_key_for_authenticated_user(
         self,
@@ -2001,14 +2003,14 @@ class UsersClient:
         stream: bool = False,
         data: Missing[UserKeysPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Key, KeyType]:
+    ) -> Response[Key, KeyTypeForResponse]:
         """users/create-public-ssh-key-for-authenticated-user
 
         POST /user/keys
 
         Adds a public SSH key to the authenticated user's GitHub account.
 
-        OAuth app tokens and personal access tokens (classic) need the `write:gpg_key` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `write:public_key` scope to use this endpoint.
 
         See also: https://docs.github.com/rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user
         """
@@ -2050,7 +2052,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserKeysPostBodyType,
-    ) -> Response[Key, KeyType]: ...
+    ) -> Response[Key, KeyTypeForResponse]: ...
 
     @overload
     async def async_create_public_ssh_key_for_authenticated_user(
@@ -2061,7 +2063,7 @@ class UsersClient:
         stream: bool = False,
         title: Missing[str] = UNSET,
         key: str,
-    ) -> Response[Key, KeyType]: ...
+    ) -> Response[Key, KeyTypeForResponse]: ...
 
     async def async_create_public_ssh_key_for_authenticated_user(
         self,
@@ -2070,14 +2072,14 @@ class UsersClient:
         stream: bool = False,
         data: Missing[UserKeysPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Key, KeyType]:
+    ) -> Response[Key, KeyTypeForResponse]:
         """users/create-public-ssh-key-for-authenticated-user
 
         POST /user/keys
 
         Adds a public SSH key to the authenticated user's GitHub account.
 
-        OAuth app tokens and personal access tokens (classic) need the `write:gpg_key` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `write:public_key` scope to use this endpoint.
 
         See also: https://docs.github.com/rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user
         """
@@ -2118,7 +2120,7 @@ class UsersClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Key, KeyType]:
+    ) -> Response[Key, KeyTypeForResponse]:
         """users/get-public-ssh-key-for-authenticated-user
 
         GET /user/keys/{key_id}
@@ -2155,7 +2157,7 @@ class UsersClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Key, KeyType]:
+    ) -> Response[Key, KeyTypeForResponse]:
         """users/get-public-ssh-key-for-authenticated-user
 
         GET /user/keys/{key_id}
@@ -2265,7 +2267,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Email], list[EmailType]]:
+    ) -> Response[list[Email], list[EmailTypeForResponse]]:
         """users/list-public-emails-for-authenticated-user
 
         GET /user/public_emails
@@ -2293,7 +2295,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Email],
@@ -2311,7 +2313,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Email], list[EmailType]]:
+    ) -> Response[list[Email], list[EmailTypeForResponse]]:
         """users/list-public-emails-for-authenticated-user
 
         GET /user/public_emails
@@ -2339,7 +2341,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Email],
@@ -2357,7 +2359,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SocialAccount], list[SocialAccountType]]:
+    ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]:
         """users/list-social-accounts-for-authenticated-user
 
         GET /user/social_accounts
@@ -2381,7 +2383,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SocialAccount],
@@ -2399,7 +2401,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SocialAccount], list[SocialAccountType]]:
+    ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]:
         """users/list-social-accounts-for-authenticated-user
 
         GET /user/social_accounts
@@ -2423,7 +2425,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SocialAccount],
@@ -2441,7 +2443,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserSocialAccountsPostBodyType,
-    ) -> Response[list[SocialAccount], list[SocialAccountType]]: ...
+    ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]: ...
 
     @overload
     def add_social_account_for_authenticated_user(
@@ -2451,7 +2453,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         account_urls: list[str],
-    ) -> Response[list[SocialAccount], list[SocialAccountType]]: ...
+    ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]: ...
 
     def add_social_account_for_authenticated_user(
         self,
@@ -2460,7 +2462,7 @@ class UsersClient:
         stream: bool = False,
         data: Missing[UserSocialAccountsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[SocialAccount], list[SocialAccountType]]:
+    ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]:
         """users/add-social-account-for-authenticated-user
 
         POST /user/social_accounts
@@ -2514,7 +2516,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserSocialAccountsPostBodyType,
-    ) -> Response[list[SocialAccount], list[SocialAccountType]]: ...
+    ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]: ...
 
     @overload
     async def async_add_social_account_for_authenticated_user(
@@ -2524,7 +2526,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         account_urls: list[str],
-    ) -> Response[list[SocialAccount], list[SocialAccountType]]: ...
+    ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]: ...
 
     async def async_add_social_account_for_authenticated_user(
         self,
@@ -2533,7 +2535,7 @@ class UsersClient:
         stream: bool = False,
         data: Missing[UserSocialAccountsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[SocialAccount], list[SocialAccountType]]:
+    ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]:
         """users/add-social-account-for-authenticated-user
 
         POST /user/social_accounts
@@ -2721,7 +2723,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SshSigningKey], list[SshSigningKeyType]]:
+    ) -> Response[list[SshSigningKey], list[SshSigningKeyTypeForResponse]]:
         """users/list-ssh-signing-keys-for-authenticated-user
 
         GET /user/ssh_signing_keys
@@ -2747,7 +2749,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SshSigningKey],
@@ -2765,7 +2767,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SshSigningKey], list[SshSigningKeyType]]:
+    ) -> Response[list[SshSigningKey], list[SshSigningKeyTypeForResponse]]:
         """users/list-ssh-signing-keys-for-authenticated-user
 
         GET /user/ssh_signing_keys
@@ -2791,7 +2793,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SshSigningKey],
@@ -2809,7 +2811,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserSshSigningKeysPostBodyType,
-    ) -> Response[SshSigningKey, SshSigningKeyType]: ...
+    ) -> Response[SshSigningKey, SshSigningKeyTypeForResponse]: ...
 
     @overload
     def create_ssh_signing_key_for_authenticated_user(
@@ -2820,7 +2822,7 @@ class UsersClient:
         stream: bool = False,
         title: Missing[str] = UNSET,
         key: str,
-    ) -> Response[SshSigningKey, SshSigningKeyType]: ...
+    ) -> Response[SshSigningKey, SshSigningKeyTypeForResponse]: ...
 
     def create_ssh_signing_key_for_authenticated_user(
         self,
@@ -2829,7 +2831,7 @@ class UsersClient:
         stream: bool = False,
         data: Missing[UserSshSigningKeysPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[SshSigningKey, SshSigningKeyType]:
+    ) -> Response[SshSigningKey, SshSigningKeyTypeForResponse]:
         """users/create-ssh-signing-key-for-authenticated-user
 
         POST /user/ssh_signing_keys
@@ -2883,7 +2885,7 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserSshSigningKeysPostBodyType,
-    ) -> Response[SshSigningKey, SshSigningKeyType]: ...
+    ) -> Response[SshSigningKey, SshSigningKeyTypeForResponse]: ...
 
     @overload
     async def async_create_ssh_signing_key_for_authenticated_user(
@@ -2894,7 +2896,7 @@ class UsersClient:
         stream: bool = False,
         title: Missing[str] = UNSET,
         key: str,
-    ) -> Response[SshSigningKey, SshSigningKeyType]: ...
+    ) -> Response[SshSigningKey, SshSigningKeyTypeForResponse]: ...
 
     async def async_create_ssh_signing_key_for_authenticated_user(
         self,
@@ -2903,7 +2905,7 @@ class UsersClient:
         stream: bool = False,
         data: Missing[UserSshSigningKeysPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[SshSigningKey, SshSigningKeyType]:
+    ) -> Response[SshSigningKey, SshSigningKeyTypeForResponse]:
         """users/create-ssh-signing-key-for-authenticated-user
 
         POST /user/ssh_signing_keys
@@ -2956,7 +2958,7 @@ class UsersClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SshSigningKey, SshSigningKeyType]:
+    ) -> Response[SshSigningKey, SshSigningKeyTypeForResponse]:
         """users/get-ssh-signing-key-for-authenticated-user
 
         GET /user/ssh_signing_keys/{ssh_signing_key_id}
@@ -2993,7 +2995,7 @@ class UsersClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SshSigningKey, SshSigningKeyType]:
+    ) -> Response[SshSigningKey, SshSigningKeyTypeForResponse]:
         """users/get-ssh-signing-key-for-authenticated-user
 
         GET /user/ssh_signing_keys/{ssh_signing_key_id}
@@ -3103,7 +3105,8 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
+        Union[PrivateUser, PublicUser],
+        Union[PrivateUserTypeForResponse, PublicUserTypeForResponse],
     ]:
         """users/get-by-id
 
@@ -3146,7 +3149,8 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
+        Union[PrivateUser, PublicUser],
+        Union[PrivateUserTypeForResponse, PublicUserTypeForResponse],
     ]:
         """users/get-by-id
 
@@ -3189,7 +3193,7 @@ class UsersClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list
 
         GET /users
@@ -3215,7 +3219,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -3228,7 +3232,7 @@ class UsersClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list
 
         GET /users
@@ -3254,7 +3258,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -3267,7 +3271,8 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
+        Union[PrivateUser, PublicUser],
+        Union[PrivateUserTypeForResponse, PublicUserTypeForResponse],
     ]:
         """users/get-by-username
 
@@ -3310,7 +3315,8 @@ class UsersClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
+        Union[PrivateUser, PublicUser],
+        Union[PrivateUserTypeForResponse, PublicUserTypeForResponse],
     ]:
         """users/get-by-username
 
@@ -3359,7 +3365,7 @@ class UsersClient:
         data: UsersUsernameAttestationsBulkListPostBodyType,
     ) -> Response[
         UsersUsernameAttestationsBulkListPostResponse200,
-        UsersUsernameAttestationsBulkListPostResponse200Type,
+        UsersUsernameAttestationsBulkListPostResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -3377,7 +3383,7 @@ class UsersClient:
         predicate_type: Missing[str] = UNSET,
     ) -> Response[
         UsersUsernameAttestationsBulkListPostResponse200,
-        UsersUsernameAttestationsBulkListPostResponse200Type,
+        UsersUsernameAttestationsBulkListPostResponse200TypeForResponse,
     ]: ...
 
     def list_attestations_bulk(
@@ -3393,7 +3399,7 @@ class UsersClient:
         **kwargs,
     ) -> Response[
         UsersUsernameAttestationsBulkListPostResponse200,
-        UsersUsernameAttestationsBulkListPostResponse200Type,
+        UsersUsernameAttestationsBulkListPostResponse200TypeForResponse,
     ]:
         """users/list-attestations-bulk
 
@@ -3435,7 +3441,7 @@ class UsersClient:
         return self._github.request(
             "POST",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
@@ -3455,7 +3461,7 @@ class UsersClient:
         data: UsersUsernameAttestationsBulkListPostBodyType,
     ) -> Response[
         UsersUsernameAttestationsBulkListPostResponse200,
-        UsersUsernameAttestationsBulkListPostResponse200Type,
+        UsersUsernameAttestationsBulkListPostResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -3473,7 +3479,7 @@ class UsersClient:
         predicate_type: Missing[str] = UNSET,
     ) -> Response[
         UsersUsernameAttestationsBulkListPostResponse200,
-        UsersUsernameAttestationsBulkListPostResponse200Type,
+        UsersUsernameAttestationsBulkListPostResponse200TypeForResponse,
     ]: ...
 
     async def async_list_attestations_bulk(
@@ -3489,7 +3495,7 @@ class UsersClient:
         **kwargs,
     ) -> Response[
         UsersUsernameAttestationsBulkListPostResponse200,
-        UsersUsernameAttestationsBulkListPostResponse200Type,
+        UsersUsernameAttestationsBulkListPostResponse200TypeForResponse,
     ]:
         """users/list-attestations-bulk
 
@@ -3531,7 +3537,7 @@ class UsersClient:
         return await self._github.arequest(
             "POST",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
@@ -3877,7 +3883,7 @@ class UsersClient:
         stream: bool = False,
     ) -> Response[
         UsersUsernameAttestationsSubjectDigestGetResponse200,
-        UsersUsernameAttestationsSubjectDigestGetResponse200Type,
+        UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse,
     ]:
         """users/list-attestations
 
@@ -3911,7 +3917,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=UsersUsernameAttestationsSubjectDigestGetResponse200,
@@ -3933,7 +3939,7 @@ class UsersClient:
         stream: bool = False,
     ) -> Response[
         UsersUsernameAttestationsSubjectDigestGetResponse200,
-        UsersUsernameAttestationsSubjectDigestGetResponse200Type,
+        UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse,
     ]:
         """users/list-attestations
 
@@ -3967,7 +3973,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=UsersUsernameAttestationsSubjectDigestGetResponse200,
@@ -3984,7 +3990,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-followers-for-user
 
         GET /users/{username}/followers
@@ -4008,7 +4014,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -4022,7 +4028,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-followers-for-user
 
         GET /users/{username}/followers
@@ -4046,7 +4052,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -4060,7 +4066,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-following-for-user
 
         GET /users/{username}/following
@@ -4084,7 +4090,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -4098,7 +4104,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-following-for-user
 
         GET /users/{username}/following
@@ -4122,7 +4128,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SimpleUser],
@@ -4190,7 +4196,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[GpgKey], list[GpgKeyType]]:
+    ) -> Response[list[GpgKey], list[GpgKeyTypeForResponse]]:
         """users/list-gpg-keys-for-user
 
         GET /users/{username}/gpg_keys
@@ -4214,7 +4220,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[GpgKey],
@@ -4228,7 +4234,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[GpgKey], list[GpgKeyType]]:
+    ) -> Response[list[GpgKey], list[GpgKeyTypeForResponse]]:
         """users/list-gpg-keys-for-user
 
         GET /users/{username}/gpg_keys
@@ -4252,7 +4258,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[GpgKey],
@@ -4268,7 +4274,7 @@ class UsersClient:
         subject_id: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Hovercard, HovercardType]:
+    ) -> Response[Hovercard, HovercardTypeForResponse]:
         """users/get-context-for-user
 
         GET /users/{username}/hovercard
@@ -4296,7 +4302,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=Hovercard,
@@ -4316,7 +4322,7 @@ class UsersClient:
         subject_id: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Hovercard, HovercardType]:
+    ) -> Response[Hovercard, HovercardTypeForResponse]:
         """users/get-context-for-user
 
         GET /users/{username}/hovercard
@@ -4344,7 +4350,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=Hovercard,
@@ -4362,7 +4368,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[KeySimple], list[KeySimpleType]]:
+    ) -> Response[list[KeySimple], list[KeySimpleTypeForResponse]]:
         """users/list-public-keys-for-user
 
         GET /users/{username}/keys
@@ -4386,7 +4392,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[KeySimple],
@@ -4400,7 +4406,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[KeySimple], list[KeySimpleType]]:
+    ) -> Response[list[KeySimple], list[KeySimpleTypeForResponse]]:
         """users/list-public-keys-for-user
 
         GET /users/{username}/keys
@@ -4424,7 +4430,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[KeySimple],
@@ -4438,7 +4444,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SocialAccount], list[SocialAccountType]]:
+    ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]:
         """users/list-social-accounts-for-user
 
         GET /users/{username}/social_accounts
@@ -4462,7 +4468,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SocialAccount],
@@ -4476,7 +4482,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SocialAccount], list[SocialAccountType]]:
+    ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]:
         """users/list-social-accounts-for-user
 
         GET /users/{username}/social_accounts
@@ -4500,7 +4506,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SocialAccount],
@@ -4514,7 +4520,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SshSigningKey], list[SshSigningKeyType]]:
+    ) -> Response[list[SshSigningKey], list[SshSigningKeyTypeForResponse]]:
         """users/list-ssh-signing-keys-for-user
 
         GET /users/{username}/ssh_signing_keys
@@ -4538,7 +4544,7 @@ class UsersClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SshSigningKey],
@@ -4552,7 +4558,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SshSigningKey], list[SshSigningKeyType]]:
+    ) -> Response[list[SshSigningKey], list[SshSigningKeyTypeForResponse]]:
         """users/list-ssh-signing-keys-for-user
 
         GET /users/{username}/ssh_signing_keys
@@ -4576,7 +4582,7 @@ class UsersClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[SshSigningKey],

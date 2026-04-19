@@ -9,20 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0165 import RepositoryRuleBranchNamePatternPropParametersType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class RepositoryRuleBranchNamePatternType(TypedDict):
-    """branch_name_pattern
+class ProjectsV2StatusUpdateType(TypedDict):
+    """Projects v2 Status Update
 
-    Parameters to be used for the branch_name_pattern rule
+    An status update belonging to a project
     """
 
-    type: Literal["branch_name_pattern"]
-    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
+    id: float
+    node_id: str
+    project_node_id: NotRequired[str]
+    creator: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    status: NotRequired[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ]
+    start_date: NotRequired[_dt.date]
+    target_date: NotRequired[_dt.date]
+    body: NotRequired[Union[str, None]]
 
 
-__all__ = ("RepositoryRuleBranchNamePatternType",)
+class ProjectsV2StatusUpdateTypeForResponse(TypedDict):
+    """Projects v2 Status Update
+
+    An status update belonging to a project
+    """
+
+    id: float
+    node_id: str
+    project_node_id: NotRequired[str]
+    creator: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    status: NotRequired[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ]
+    start_date: NotRequired[str]
+    target_date: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "ProjectsV2StatusUpdateType",
+    "ProjectsV2StatusUpdateTypeForResponse",
+)

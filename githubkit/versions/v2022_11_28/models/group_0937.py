@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal
 
 from pydantic import Field
@@ -19,32 +18,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgDependabotSecretsGetResponse200(GitHubModel):
-    """OrgsOrgDependabotSecretsGetResponse200"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403
 
-    total_count: int = Field()
-    secrets: list[OrganizationDependabotSecret] = Field()
-
-
-class OrganizationDependabotSecret(GitHubModel):
-    """Dependabot Secret for an Organization
-
-    Secrets for GitHub Dependabot for an organization.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    name: str = Field(description="The name of the secret.")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a secret"
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems]
+    ] = Field(
+        default=UNSET,
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-model_rebuild(OrgsOrgDependabotSecretsGetResponse200)
-model_rebuild(OrganizationDependabotSecret)
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
+    )
+
+
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse403)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems)
 
 __all__ = (
-    "OrganizationDependabotSecret",
-    "OrgsOrgDependabotSecretsGetResponse200",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems",
 )

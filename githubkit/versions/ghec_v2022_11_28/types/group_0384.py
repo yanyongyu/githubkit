@@ -9,25 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0385 import TimelineCrossReferencedEventPropSourceType
+from .group_0381 import (
+    CodeScanningVariantAnalysisSkippedRepoGroupType,
+    CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse,
+)
 
 
-class TimelineCrossReferencedEventType(TypedDict):
-    """Timeline Cross Referenced Event
+class CodeScanningVariantAnalysisPropSkippedRepositoriesType(TypedDict):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
 
-    Timeline Cross Referenced Event
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
     """
 
-    event: Literal["cross-referenced"]
-    actor: NotRequired[SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    source: TimelineCrossReferencedEventPropSourceType
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    not_found_repos: (
+        CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType
+    )
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
 
 
-__all__ = ("TimelineCrossReferencedEventType",)
+class CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
+
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
+    """
+
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+
+
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType(
+    TypedDict
+):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+
+    repository_count: int
+    repository_full_names: list[str]
+
+
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse(
+    TypedDict
+):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+
+    repository_count: int
+    repository_full_names: list[str]
+
+
+__all__ = (
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesType",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse",
+)

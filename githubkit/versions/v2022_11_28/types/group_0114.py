@@ -9,20 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class InteractionLimitType(TypedDict):
-    """Interaction Restrictions
+class SelectedActionsType(TypedDict):
+    """SelectedActions"""
 
-    Limit interactions to a specific type of user for a specified duration
-    """
-
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    expiry: NotRequired[
-        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
-    ]
+    github_owned_allowed: NotRequired[bool]
+    verified_allowed: NotRequired[bool]
+    patterns_allowed: NotRequired[list[str]]
 
 
-__all__ = ("InteractionLimitType",)
+class SelectedActionsTypeForResponse(TypedDict):
+    """SelectedActions"""
+
+    github_owned_allowed: NotRequired[bool]
+    verified_allowed: NotRequired[bool]
+    patterns_allowed: NotRequired[list[str]]
+
+
+__all__ = (
+    "SelectedActionsType",
+    "SelectedActionsTypeForResponse",
+)

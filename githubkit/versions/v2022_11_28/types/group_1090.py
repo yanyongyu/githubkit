@@ -11,12 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
-
-    encrypted_value: str
-    key_id: str
+from .group_0018 import InstallationType, InstallationTypeForResponse
 
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType",)
+class OrgsOrgInstallationsGetResponse200Type(TypedDict):
+    """OrgsOrgInstallationsGetResponse200"""
+
+    total_count: int
+    installations: list[InstallationType]
+
+
+class OrgsOrgInstallationsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgInstallationsGetResponse200"""
+
+    total_count: int
+    installations: list[InstallationTypeForResponse]
+
+
+__all__ = (
+    "OrgsOrgInstallationsGetResponse200Type",
+    "OrgsOrgInstallationsGetResponse200TypeForResponse",
+)

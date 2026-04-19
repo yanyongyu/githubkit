@@ -9,29 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_1144 import ReposOwnerRepoPagesPostBodyPropSource
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoPagesPostBodyAnyof0(GitHubModel):
-    """ReposOwnerRepoPagesPostBodyAnyof0"""
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
 
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
-        default=UNSET,
-        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.',
-    )
-    source: ReposOwnerRepoPagesPostBodyPropSource = Field(
-        description="The source branch and directory used to publish your Pages site."
+    labels: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of the custom labels to add to the runner.",
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPostBodyAnyof0)
+model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody)
 
-__all__ = ("ReposOwnerRepoPagesPostBodyAnyof0",)
+__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",)

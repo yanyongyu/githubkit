@@ -14,39 +14,31 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ContentSubmodule(GitHubModel):
-    """Submodule Content
+class DiffEntry(GitHubModel):
+    """Diff Entry
 
-    An object describing a submodule
+    Diff Entry
     """
 
-    type: Literal["submodule"] = Field()
-    submodule_git_url: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentSubmodulePropLinks = Field(alias="_links")
+    sha: Union[str, None] = Field()
+    filename: str = Field()
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ] = Field()
+    additions: int = Field()
+    deletions: int = Field()
+    changes: int = Field()
+    blob_url: Union[str, None] = Field()
+    raw_url: Union[str, None] = Field()
+    contents_url: str = Field()
+    patch: Missing[str] = Field(default=UNSET)
+    previous_filename: Missing[str] = Field(default=UNSET)
 
 
-class ContentSubmodulePropLinks(GitHubModel):
-    """ContentSubmodulePropLinks"""
+model_rebuild(DiffEntry)
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(ContentSubmodule)
-model_rebuild(ContentSubmodulePropLinks)
-
-__all__ = (
-    "ContentSubmodule",
-    "ContentSubmodulePropLinks",
-)
+__all__ = ("DiffEntry",)

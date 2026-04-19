@@ -9,27 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPagesPutBodyPropSourceAnyof1(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+class ReposOwnerRepoActionsOidcCustomizationSubPutBody(GitHubModel):
+    """Actions OIDC subject customization for a repository
 
-    Update the source for the repository. Must include the branch name and path.
+    Actions OIDC subject customization for a repository
     """
 
-    branch: str = Field(
-        description="The repository branch used to publish your site's source files."
+    use_default: bool = Field(
+        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
     )
-    path: Literal["/", "/docs"] = Field(
-        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`."
+    include_claim_keys: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyPropSourceAnyof1)
+model_rebuild(ReposOwnerRepoActionsOidcCustomizationSubPutBody)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1",)
+__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",)

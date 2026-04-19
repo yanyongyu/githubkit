@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Optional
 from weakref import ref
 
 from githubkit.typing import Missing
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
@@ -23,7 +23,11 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import License, LicenseContent, LicenseSimple
-    from ..types import LicenseContentType, LicenseSimpleType, LicenseType
+    from ..types import (
+        LicenseContentTypeForResponse,
+        LicenseSimpleTypeForResponse,
+        LicenseTypeForResponse,
+    )
 
 
 class LicensesClient:
@@ -49,7 +53,7 @@ class LicensesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[LicenseSimple], list[LicenseSimpleType]]:
+    ) -> Response[list[LicenseSimple], list[LicenseSimpleTypeForResponse]]:
         """licenses/get-all-commonly-used
 
         GET /licenses
@@ -74,7 +78,7 @@ class LicensesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[LicenseSimple],
@@ -88,7 +92,7 @@ class LicensesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[LicenseSimple], list[LicenseSimpleType]]:
+    ) -> Response[list[LicenseSimple], list[LicenseSimpleTypeForResponse]]:
         """licenses/get-all-commonly-used
 
         GET /licenses
@@ -113,7 +117,7 @@ class LicensesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[LicenseSimple],
@@ -125,7 +129,7 @@ class LicensesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[License, LicenseType]:
+    ) -> Response[License, LicenseTypeForResponse]:
         """licenses/get
 
         GET /licenses/{license}
@@ -137,7 +141,7 @@ class LicensesClient:
 
         from ..models import BasicError, License
 
-        url = f"/licenses/{license}"
+        url = f"/licenses/{license_}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -159,7 +163,7 @@ class LicensesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[License, LicenseType]:
+    ) -> Response[License, LicenseTypeForResponse]:
         """licenses/get
 
         GET /licenses/{license}
@@ -171,7 +175,7 @@ class LicensesClient:
 
         from ..models import BasicError, License
 
-        url = f"/licenses/{license}"
+        url = f"/licenses/{license_}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -195,7 +199,7 @@ class LicensesClient:
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[LicenseContent, LicenseContentType]:
+    ) -> Response[LicenseContent, LicenseContentTypeForResponse]:
         """licenses/get-for-repo
 
         GET /repos/{owner}/{repo}/license
@@ -223,7 +227,7 @@ class LicensesClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=LicenseContent,
@@ -240,7 +244,7 @@ class LicensesClient:
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[LicenseContent, LicenseContentType]:
+    ) -> Response[LicenseContent, LicenseContentTypeForResponse]:
         """licenses/get-for-repo
 
         GET /repos/{owner}/{repo}/license
@@ -268,7 +272,7 @@ class LicensesClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=LicenseContent,

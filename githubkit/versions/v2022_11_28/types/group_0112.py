@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ApiInsightsUserStatsItemsType(TypedDict):
-    """ApiInsightsUserStatsItems"""
+class ActionsForkPrWorkflowsPrivateReposType(TypedDict):
+    """ActionsForkPrWorkflowsPrivateRepos"""
 
-    actor_type: NotRequired[str]
-    actor_name: NotRequired[str]
-    actor_id: NotRequired[int]
-    integration_id: NotRequired[Union[int, None]]
-    oauth_application_id: NotRequired[Union[int, None]]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: bool
+    send_secrets_and_variables: bool
+    require_approval_for_fork_pr_workflows: bool
 
 
-__all__ = ("ApiInsightsUserStatsItemsType",)
+class ActionsForkPrWorkflowsPrivateReposTypeForResponse(TypedDict):
+    """ActionsForkPrWorkflowsPrivateRepos"""
+
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: bool
+    send_secrets_and_variables: bool
+    require_approval_for_fork_pr_workflows: bool
+
+
+__all__ = (
+    "ActionsForkPrWorkflowsPrivateReposType",
+    "ActionsForkPrWorkflowsPrivateReposTypeForResponse",
+)

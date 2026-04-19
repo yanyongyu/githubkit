@@ -9,17 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleRequiredLinearHistoryType(TypedDict):
-    """required_linear_history
+class InteractionLimitResponseType(TypedDict):
+    """Interaction Limits
 
-    Prevent merge commits from being pushed to matching refs.
+    Interaction limit settings.
     """
 
-    type: Literal["required_linear_history"]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: _dt.datetime
 
 
-__all__ = ("RepositoryRuleRequiredLinearHistoryType",)
+class InteractionLimitResponseTypeForResponse(TypedDict):
+    """Interaction Limits
+
+    Interaction limit settings.
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: str
+
+
+__all__ = (
+    "InteractionLimitResponseType",
+    "InteractionLimitResponseTypeForResponse",
+)

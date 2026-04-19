@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,71 +18,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningAlertInstance(GitHubModel):
-    """CodeScanningAlertInstance"""
+class GetBudget(GitHubModel):
+    """GetBudget"""
 
-    ref: Missing[str] = Field(
-        default=UNSET,
-        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`.",
+    id: str = Field(description="ID of the budget.")
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"] = (
+        Field(description="The type of scope for the budget")
     )
-    analysis_key: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
+    budget_entity_name: str = Field(
+        description="The name of the entity to apply the budget to"
     )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
+    budget_amount: int = Field(
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
     )
-    category: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
+    prevent_further_usage: bool = Field(
+        description="Whether to prevent additional spending once the budget is exceeded"
     )
-    state: Missing[Union[None, Literal["open", "dismissed", "fixed"]]] = Field(
-        default=UNSET, description="State of a code scanning alert."
+    budget_product_sku: str = Field(
+        description="A single product or sku to apply the budget to."
     )
-    commit_sha: Missing[str] = Field(default=UNSET)
-    message: Missing[CodeScanningAlertInstancePropMessage] = Field(default=UNSET)
-    location: Missing[CodeScanningAlertLocation] = Field(
-        default=UNSET, description="Describe a region within a file for the alert."
+    budget_type: Literal["ProductPricing", "SkuPricing"] = Field(
+        description="The type of pricing for the budget"
     )
-    html_url: Missing[str] = Field(default=UNSET)
-    classifications: Missing[
-        list[
-            Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
-            ]
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
+    budget_alerting: GetBudgetPropBudgetAlerting = Field()
+
+
+class GetBudgetPropBudgetAlerting(GitHubModel):
+    """GetBudgetPropBudgetAlerting"""
+
+    will_alert: Missing[bool] = Field(
+        default=UNSET, description="Whether alerts are enabled for this budget"
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET, description="Array of user login names who will receive alerts"
     )
 
 
-class CodeScanningAlertLocation(GitHubModel):
-    """CodeScanningAlertLocation
-
-    Describe a region within a file for the alert.
-    """
-
-    path: Missing[str] = Field(default=UNSET)
-    start_line: Missing[int] = Field(default=UNSET)
-    end_line: Missing[int] = Field(default=UNSET)
-    start_column: Missing[int] = Field(default=UNSET)
-    end_column: Missing[int] = Field(default=UNSET)
-
-
-class CodeScanningAlertInstancePropMessage(GitHubModel):
-    """CodeScanningAlertInstancePropMessage"""
-
-    text: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(CodeScanningAlertInstance)
-model_rebuild(CodeScanningAlertLocation)
-model_rebuild(CodeScanningAlertInstancePropMessage)
+model_rebuild(GetBudget)
+model_rebuild(GetBudgetPropBudgetAlerting)
 
 __all__ = (
-    "CodeScanningAlertInstance",
-    "CodeScanningAlertInstancePropMessage",
-    "CodeScanningAlertLocation",
+    "GetBudget",
+    "GetBudgetPropBudgetAlerting",
 )

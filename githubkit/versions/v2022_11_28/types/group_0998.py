@@ -13,14 +13,57 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsProjectIdPatchBodyType(TypedDict):
-    """ProjectsProjectIdPatchBody"""
+class OrgsOrgActionsHostedRunnersPostBodyType(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBody"""
 
-    name: NotRequired[str]
-    body: NotRequired[Union[str, None]]
-    state: NotRequired[str]
-    organization_permission: NotRequired[Literal["read", "write", "admin", "none"]]
-    private: NotRequired[bool]
+    name: str
+    image: OrgsOrgActionsHostedRunnersPostBodyPropImageType
+    size: str
+    runner_group_id: int
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    image_gen: NotRequired[bool]
 
 
-__all__ = ("ProjectsProjectIdPatchBodyType",)
+class OrgsOrgActionsHostedRunnersPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBody"""
+
+    name: str
+    image: OrgsOrgActionsHostedRunnersPostBodyPropImageTypeForResponse
+    size: str
+    runner_group_id: int
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    image_gen: NotRequired[bool]
+
+
+class OrgsOrgActionsHostedRunnersPostBodyPropImageType(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBodyPropImage
+
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
+
+    id: NotRequired[str]
+    source: NotRequired[Literal["github", "partner", "custom"]]
+    version: NotRequired[Union[str, None]]
+
+
+class OrgsOrgActionsHostedRunnersPostBodyPropImageTypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBodyPropImage
+
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
+
+    id: NotRequired[str]
+    source: NotRequired[Literal["github", "partner", "custom"]]
+    version: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "OrgsOrgActionsHostedRunnersPostBodyPropImageType",
+    "OrgsOrgActionsHostedRunnersPostBodyPropImageTypeForResponse",
+    "OrgsOrgActionsHostedRunnersPostBodyType",
+    "OrgsOrgActionsHostedRunnersPostBodyTypeForResponse",
+)

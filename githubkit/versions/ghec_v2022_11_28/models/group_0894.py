@@ -9,57 +9,117 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0494 import EnterpriseWebhooks
-from .group_0495 import SimpleInstallation
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0497 import RepositoryWebhooks
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
+from .group_0601 import PullRequestWebhook
 
 
-class WebhookWorkflowDispatch(GitHubModel):
-    """workflow_dispatch event"""
+class WebhookPullRequestEdited(GitHubModel):
+    """pull_request edited event"""
 
+    action: Literal["edited"] = Field()
+    changes: WebhookPullRequestEditedPropChanges = Field(
+        description="The changes to the comment if the action was `edited`."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
-    inputs: Union[WebhookWorkflowDispatchPropInputs, None] = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    number: int = Field(description="The pull request number.")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    ref: str = Field()
+    pull_request: PullRequestWebhook = Field()
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    workflow: str = Field()
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-class WebhookWorkflowDispatchPropInputs(ExtraGitHubModel):
-    """WebhookWorkflowDispatchPropInputs"""
+class WebhookPullRequestEditedPropChanges(GitHubModel):
+    """WebhookPullRequestEditedPropChanges
+
+    The changes to the comment if the action was `edited`.
+    """
+
+    base: Missing[WebhookPullRequestEditedPropChangesPropBase] = Field(default=UNSET)
+    body: Missing[WebhookPullRequestEditedPropChangesPropBody] = Field(default=UNSET)
+    title: Missing[WebhookPullRequestEditedPropChangesPropTitle] = Field(default=UNSET)
 
 
-model_rebuild(WebhookWorkflowDispatch)
-model_rebuild(WebhookWorkflowDispatchPropInputs)
+class WebhookPullRequestEditedPropChangesPropBody(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropBody"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the body if the action was `edited`.",
+    )
+
+
+class WebhookPullRequestEditedPropChangesPropTitle(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropTitle"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the title if the action was `edited`.",
+    )
+
+
+class WebhookPullRequestEditedPropChangesPropBase(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropBase"""
+
+    ref: WebhookPullRequestEditedPropChangesPropBasePropRef = Field()
+    sha: WebhookPullRequestEditedPropChangesPropBasePropSha = Field()
+
+
+class WebhookPullRequestEditedPropChangesPropBasePropRef(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropBasePropRef"""
+
+    from_: str = Field(alias="from")
+
+
+class WebhookPullRequestEditedPropChangesPropBasePropSha(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropBasePropSha"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookPullRequestEdited)
+model_rebuild(WebhookPullRequestEditedPropChanges)
+model_rebuild(WebhookPullRequestEditedPropChangesPropBody)
+model_rebuild(WebhookPullRequestEditedPropChangesPropTitle)
+model_rebuild(WebhookPullRequestEditedPropChangesPropBase)
+model_rebuild(WebhookPullRequestEditedPropChangesPropBasePropRef)
+model_rebuild(WebhookPullRequestEditedPropChangesPropBasePropSha)
 
 __all__ = (
-    "WebhookWorkflowDispatch",
-    "WebhookWorkflowDispatchPropInputs",
+    "WebhookPullRequestEdited",
+    "WebhookPullRequestEditedPropChanges",
+    "WebhookPullRequestEditedPropChangesPropBase",
+    "WebhookPullRequestEditedPropChangesPropBasePropRef",
+    "WebhookPullRequestEditedPropChangesPropBasePropSha",
+    "WebhookPullRequestEditedPropChangesPropBody",
+    "WebhookPullRequestEditedPropChangesPropTitle",
 )

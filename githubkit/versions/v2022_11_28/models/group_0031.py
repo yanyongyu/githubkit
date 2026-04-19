@@ -14,26 +14,22 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0028 import CodeSecurityConfiguration
 
 
-class CodeSecurityDefaultConfigurationsItems(GitHubModel):
-    """CodeSecurityDefaultConfigurationsItems"""
+class OidcCustomPropertyInclusion(GitHubModel):
+    """Actions OIDC Custom Property Inclusion
 
-    default_for_new_repos: Missing[Literal["public", "private_and_internal", "all"]] = (
-        Field(
-            default=UNSET,
-            description="The visibility of newly created repositories for which the code security configuration will be applied to by default",
-        )
+    An OIDC custom property inclusion for repository properties
+    """
+
+    custom_property_name: str = Field(
+        description="The name of the custom property that is included in the OIDC token"
     )
-    configuration: Missing[CodeSecurityConfiguration] = Field(
-        default=UNSET, description="A code security configuration"
+    inclusion_source: Literal["organization", "enterprise"] = Field(
+        description="Whether the inclusion was defined at the organization or enterprise level"
     )
 
 
-model_rebuild(CodeSecurityDefaultConfigurationsItems)
+model_rebuild(OidcCustomPropertyInclusion)
 
-__all__ = ("CodeSecurityDefaultConfigurationsItems",)
+__all__ = ("OidcCustomPropertyInclusion",)

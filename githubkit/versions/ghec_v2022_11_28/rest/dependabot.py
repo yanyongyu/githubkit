@@ -17,7 +17,7 @@ from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     from typing import Literal, Union
@@ -29,6 +29,7 @@ if TYPE_CHECKING:
 
     from ..models import (
         DependabotAlert,
+        DependabotAlertDismissalRequest,
         DependabotAlertWithRepository,
         DependabotPublicKey,
         DependabotRepositoryAccessDetails,
@@ -38,24 +39,30 @@ if TYPE_CHECKING:
         OrgsOrgDependabotSecretsGetResponse200,
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         ReposOwnerRepoDependabotSecretsGetResponse200,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
     )
     from ..types import (
-        DependabotAlertType,
-        DependabotAlertWithRepositoryType,
-        DependabotPublicKeyType,
-        DependabotRepositoryAccessDetailsType,
-        DependabotSecretType,
-        EmptyObjectType,
-        OrganizationDependabotSecretType,
+        DependabotAlertDismissalRequestTypeForResponse,
+        DependabotAlertTypeForResponse,
+        DependabotAlertWithRepositoryTypeForResponse,
+        DependabotPublicKeyTypeForResponse,
+        DependabotRepositoryAccessDetailsTypeForResponse,
+        DependabotSecretTypeForResponse,
+        EmptyObjectTypeForResponse,
+        OrganizationDependabotSecretTypeForResponse,
         OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
         OrganizationsOrgDependabotRepositoryAccessPatchBodyType,
-        OrgsOrgDependabotSecretsGetResponse200Type,
+        OrgsOrgDependabotSecretsGetResponse200TypeForResponse,
         OrgsOrgDependabotSecretsSecretNamePutBodyType,
-        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
+        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse,
         OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
-        ReposOwnerRepoDependabotSecretsGetResponse200Type,
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type,
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type,
+        ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse,
         ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType,
     )
 
 
@@ -78,24 +85,25 @@ class DependabotClient:
         self,
         enterprise: str,
         *,
+        classification: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
         package: Missing[str] = UNSET,
         epss_percentage: Missing[str] = UNSET,
         has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
+        assignee: Missing[str] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        first: Missing[int] = UNSET,
-        last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
+        list[DependabotAlertWithRepository],
+        list[DependabotAlertWithRepositoryTypeForResponse],
     ]:
         """dependabot/list-alerts-for-enterprise
 
@@ -121,19 +129,19 @@ class DependabotClient:
         url = f"/enterprises/{enterprise}/dependabot/alerts"
 
         params = {
+            "classification": classification,
             "state": state,
             "severity": severity,
             "ecosystem": ecosystem,
             "package": package,
             "epss_percentage": epss_percentage,
             "has": has,
+            "assignee": assignee,
             "scope": scope,
             "sort": sort,
             "direction": direction,
             "before": before,
             "after": after,
-            "first": first,
-            "last": last,
             "per_page": per_page,
         }
 
@@ -142,7 +150,7 @@ class DependabotClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[DependabotAlertWithRepository],
@@ -157,24 +165,25 @@ class DependabotClient:
         self,
         enterprise: str,
         *,
+        classification: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
         package: Missing[str] = UNSET,
         epss_percentage: Missing[str] = UNSET,
         has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
+        assignee: Missing[str] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        first: Missing[int] = UNSET,
-        last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
+        list[DependabotAlertWithRepository],
+        list[DependabotAlertWithRepositoryTypeForResponse],
     ]:
         """dependabot/list-alerts-for-enterprise
 
@@ -200,19 +209,19 @@ class DependabotClient:
         url = f"/enterprises/{enterprise}/dependabot/alerts"
 
         params = {
+            "classification": classification,
             "state": state,
             "severity": severity,
             "ecosystem": ecosystem,
             "package": package,
             "epss_percentage": epss_percentage,
             "has": has,
+            "assignee": assignee,
             "scope": scope,
             "sort": sort,
             "direction": direction,
             "before": before,
             "after": after,
-            "first": first,
-            "last": last,
             "per_page": per_page,
         }
 
@@ -221,7 +230,7 @@ class DependabotClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[DependabotAlertWithRepository],
@@ -241,7 +250,8 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        DependabotRepositoryAccessDetails, DependabotRepositoryAccessDetailsType
+        DependabotRepositoryAccessDetails,
+        DependabotRepositoryAccessDetailsTypeForResponse,
     ]:
         """dependabot/repository-access-for-org
 
@@ -269,7 +279,7 @@ class DependabotClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=DependabotRepositoryAccessDetails,
@@ -288,7 +298,8 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        DependabotRepositoryAccessDetails, DependabotRepositoryAccessDetailsType
+        DependabotRepositoryAccessDetails,
+        DependabotRepositoryAccessDetailsTypeForResponse,
     ]:
         """dependabot/repository-access-for-org
 
@@ -316,7 +327,7 @@ class DependabotClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=DependabotRepositoryAccessDetails,
@@ -656,26 +667,28 @@ class DependabotClient:
         self,
         org: str,
         *,
+        classification: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
         package: Missing[str] = UNSET,
         epss_percentage: Missing[str] = UNSET,
         artifact_registry_url: Missing[str] = UNSET,
-        package_registry: Missing[str] = UNSET,
-        has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
+        artifact_registry: Missing[str] = UNSET,
+        has: Missing[Union[str, list[Literal["patch", "deployment"]]]] = UNSET,
+        assignee: Missing[str] = UNSET,
+        runtime_risk: Missing[str] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        first: Missing[int] = UNSET,
-        last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
+        list[DependabotAlertWithRepository],
+        list[DependabotAlertWithRepositoryTypeForResponse],
     ]:
         """dependabot/list-alerts-for-org
 
@@ -699,21 +712,22 @@ class DependabotClient:
         url = f"/orgs/{org}/dependabot/alerts"
 
         params = {
+            "classification": classification,
             "state": state,
             "severity": severity,
             "ecosystem": ecosystem,
             "package": package,
             "epss_percentage": epss_percentage,
             "artifact_registry_url": artifact_registry_url,
-            "package_registry": package_registry,
+            "artifact_registry": artifact_registry,
             "has": has,
+            "assignee": assignee,
+            "runtime_risk": runtime_risk,
             "scope": scope,
             "sort": sort,
             "direction": direction,
             "before": before,
             "after": after,
-            "first": first,
-            "last": last,
             "per_page": per_page,
         }
 
@@ -722,7 +736,7 @@ class DependabotClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[DependabotAlertWithRepository],
@@ -738,26 +752,28 @@ class DependabotClient:
         self,
         org: str,
         *,
+        classification: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
         package: Missing[str] = UNSET,
         epss_percentage: Missing[str] = UNSET,
         artifact_registry_url: Missing[str] = UNSET,
-        package_registry: Missing[str] = UNSET,
-        has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
+        artifact_registry: Missing[str] = UNSET,
+        has: Missing[Union[str, list[Literal["patch", "deployment"]]]] = UNSET,
+        assignee: Missing[str] = UNSET,
+        runtime_risk: Missing[str] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        first: Missing[int] = UNSET,
-        last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
+        list[DependabotAlertWithRepository],
+        list[DependabotAlertWithRepositoryTypeForResponse],
     ]:
         """dependabot/list-alerts-for-org
 
@@ -781,21 +797,22 @@ class DependabotClient:
         url = f"/orgs/{org}/dependabot/alerts"
 
         params = {
+            "classification": classification,
             "state": state,
             "severity": severity,
             "ecosystem": ecosystem,
             "package": package,
             "epss_percentage": epss_percentage,
             "artifact_registry_url": artifact_registry_url,
-            "package_registry": package_registry,
+            "artifact_registry": artifact_registry,
             "has": has,
+            "assignee": assignee,
+            "runtime_risk": runtime_risk,
             "scope": scope,
             "sort": sort,
             "direction": direction,
             "before": before,
             "after": after,
-            "first": first,
-            "last": last,
             "per_page": per_page,
         }
 
@@ -804,7 +821,7 @@ class DependabotClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[DependabotAlertWithRepository],
@@ -826,7 +843,7 @@ class DependabotClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgDependabotSecretsGetResponse200,
-        OrgsOrgDependabotSecretsGetResponse200Type,
+        OrgsOrgDependabotSecretsGetResponse200TypeForResponse,
     ]:
         """dependabot/list-org-secrets
 
@@ -854,7 +871,7 @@ class DependabotClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgDependabotSecretsGetResponse200,
@@ -870,7 +887,7 @@ class DependabotClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgDependabotSecretsGetResponse200,
-        OrgsOrgDependabotSecretsGetResponse200Type,
+        OrgsOrgDependabotSecretsGetResponse200TypeForResponse,
     ]:
         """dependabot/list-org-secrets
 
@@ -898,7 +915,7 @@ class DependabotClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgDependabotSecretsGetResponse200,
@@ -910,7 +927,7 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
+    ) -> Response[DependabotPublicKey, DependabotPublicKeyTypeForResponse]:
         """dependabot/get-org-public-key
 
         GET /orgs/{org}/dependabot/secrets/public-key
@@ -943,7 +960,7 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
+    ) -> Response[DependabotPublicKey, DependabotPublicKeyTypeForResponse]:
         """dependabot/get-org-public-key
 
         GET /orgs/{org}/dependabot/secrets/public-key
@@ -977,7 +994,9 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationDependabotSecret, OrganizationDependabotSecretType]:
+    ) -> Response[
+        OrganizationDependabotSecret, OrganizationDependabotSecretTypeForResponse
+    ]:
         """dependabot/get-org-secret
 
         GET /orgs/{org}/dependabot/secrets/{secret_name}
@@ -1010,7 +1029,9 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationDependabotSecret, OrganizationDependabotSecretType]:
+    ) -> Response[
+        OrganizationDependabotSecret, OrganizationDependabotSecretTypeForResponse
+    ]:
         """dependabot/get-org-secret
 
         GET /orgs/{org}/dependabot/secrets/{secret_name}
@@ -1045,7 +1066,7 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def create_or_update_org_secret(
@@ -1059,8 +1080,8 @@ class DependabotClient:
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
-        selected_repository_ids: Missing[list[str]] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+        selected_repository_ids: Missing[list[Union[int, str]]] = UNSET,
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def create_or_update_org_secret(
         self,
@@ -1071,7 +1092,7 @@ class DependabotClient:
         stream: bool = False,
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """dependabot/create-or-update-org-secret
 
         PUT /orgs/{org}/dependabot/secrets/{secret_name}
@@ -1117,7 +1138,7 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_create_or_update_org_secret(
@@ -1131,8 +1152,8 @@ class DependabotClient:
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
-        selected_repository_ids: Missing[list[str]] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+        selected_repository_ids: Missing[list[Union[int, str]]] = UNSET,
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_create_or_update_org_secret(
         self,
@@ -1143,7 +1164,7 @@ class DependabotClient:
         stream: bool = False,
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """dependabot/create-or-update-org-secret
 
         PUT /orgs/{org}/dependabot/secrets/{secret_name}
@@ -1251,7 +1272,7 @@ class DependabotClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
-        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
+        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse,
     ]:
         """dependabot/list-selected-repos-for-org-secret
 
@@ -1281,7 +1302,7 @@ class DependabotClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
@@ -1298,7 +1319,7 @@ class DependabotClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
-        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
+        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse,
     ]:
         """dependabot/list-selected-repos-for-org-secret
 
@@ -1328,7 +1349,7 @@ class DependabotClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
@@ -1624,11 +1645,140 @@ class DependabotClient:
             error_models={},
         )
 
+    def list_dismissal_requests_for_org(
+        self,
+        org: str,
+        *,
+        repository_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal[
+                "completed", "cancelled", "approved", "expired", "denied", "open", "all"
+            ]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[DependabotAlertDismissalRequest],
+        list[DependabotAlertDismissalRequestTypeForResponse],
+    ]:
+        """dependabot/list-dismissal-requests-for-org
+
+        GET /orgs/{org}/dismissal-requests/dependabot
+
+        Lists dismissal requests for Dependabot alerts in an organization.
+
+        Delegated alert dismissal must be enabled on repositories in the org and the user must be an org admin, security manager,
+        or have the appropriate permission to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#list-dismissal-requests-for-dependabot-alerts-for-an-organization
+        """
+
+        from ..models import BasicError, DependabotAlertDismissalRequest
+
+        url = f"/orgs/{org}/dismissal-requests/dependabot"
+
+        params = {
+            "repository_name": repository_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[DependabotAlertDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_list_dismissal_requests_for_org(
+        self,
+        org: str,
+        *,
+        repository_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal[
+                "completed", "cancelled", "approved", "expired", "denied", "open", "all"
+            ]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[DependabotAlertDismissalRequest],
+        list[DependabotAlertDismissalRequestTypeForResponse],
+    ]:
+        """dependabot/list-dismissal-requests-for-org
+
+        GET /orgs/{org}/dismissal-requests/dependabot
+
+        Lists dismissal requests for Dependabot alerts in an organization.
+
+        Delegated alert dismissal must be enabled on repositories in the org and the user must be an org admin, security manager,
+        or have the appropriate permission to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#list-dismissal-requests-for-dependabot-alerts-for-an-organization
+        """
+
+        from ..models import BasicError, DependabotAlertDismissalRequest
+
+        url = f"/orgs/{org}/dismissal-requests/dependabot"
+
+        params = {
+            "repository_name": repository_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[DependabotAlertDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
     def list_alerts_for_repo(
         self,
         owner: str,
         repo: str,
         *,
+        classification: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
@@ -1636,18 +1786,16 @@ class DependabotClient:
         manifest: Missing[str] = UNSET,
         epss_percentage: Missing[str] = UNSET,
         has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
+        assignee: Missing[str] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        page: Missing[int] = UNSET,
-        per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        first: Missing[int] = UNSET,
-        last: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[DependabotAlert], list[DependabotAlertType]]:
+    ) -> Response[list[DependabotAlert], list[DependabotAlertTypeForResponse]]:
         """dependabot/list-alerts-for-repo
 
         GET /repos/{owner}/{repo}/dependabot/alerts
@@ -1662,6 +1810,7 @@ class DependabotClient:
         url = f"/repos/{owner}/{repo}/dependabot/alerts"
 
         params = {
+            "classification": classification,
             "state": state,
             "severity": severity,
             "ecosystem": ecosystem,
@@ -1669,15 +1818,13 @@ class DependabotClient:
             "manifest": manifest,
             "epss_percentage": epss_percentage,
             "has": has,
+            "assignee": assignee,
             "scope": scope,
             "sort": sort,
             "direction": direction,
-            "page": page,
-            "per_page": per_page,
             "before": before,
             "after": after,
-            "first": first,
-            "last": last,
+            "per_page": per_page,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1685,7 +1832,7 @@ class DependabotClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[DependabotAlert],
@@ -1702,6 +1849,7 @@ class DependabotClient:
         owner: str,
         repo: str,
         *,
+        classification: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
@@ -1709,18 +1857,16 @@ class DependabotClient:
         manifest: Missing[str] = UNSET,
         epss_percentage: Missing[str] = UNSET,
         has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
+        assignee: Missing[str] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        page: Missing[int] = UNSET,
-        per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        first: Missing[int] = UNSET,
-        last: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[DependabotAlert], list[DependabotAlertType]]:
+    ) -> Response[list[DependabotAlert], list[DependabotAlertTypeForResponse]]:
         """dependabot/list-alerts-for-repo
 
         GET /repos/{owner}/{repo}/dependabot/alerts
@@ -1735,6 +1881,7 @@ class DependabotClient:
         url = f"/repos/{owner}/{repo}/dependabot/alerts"
 
         params = {
+            "classification": classification,
             "state": state,
             "severity": severity,
             "ecosystem": ecosystem,
@@ -1742,15 +1889,13 @@ class DependabotClient:
             "manifest": manifest,
             "epss_percentage": epss_percentage,
             "has": has,
+            "assignee": assignee,
             "scope": scope,
             "sort": sort,
             "direction": direction,
-            "page": page,
-            "per_page": per_page,
             "before": before,
             "after": after,
-            "first": first,
-            "last": last,
+            "per_page": per_page,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1758,7 +1903,7 @@ class DependabotClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[DependabotAlert],
@@ -1778,7 +1923,7 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependabotAlert, DependabotAlertType]:
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]:
         """dependabot/get-alert
 
         GET /repos/{owner}/{repo}/dependabot/alerts/{alert_number}
@@ -1814,7 +1959,7 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependabotAlert, DependabotAlertType]:
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]:
         """dependabot/get-alert
 
         GET /repos/{owner}/{repo}/dependabot/alerts/{alert_number}
@@ -1851,8 +1996,11 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
-    ) -> Response[DependabotAlert, DependabotAlertType]: ...
+        data: Union[
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type,
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type,
+        ],
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
 
     @overload
     def update_alert(
@@ -1875,7 +2023,32 @@ class DependabotClient:
             ]
         ] = UNSET,
         dismissed_comment: Missing[str] = UNSET,
-    ) -> Response[DependabotAlert, DependabotAlertType]: ...
+        assignees: Missing[list[str]] = UNSET,
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
+
+    @overload
+    def update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        state: Missing[Literal["dismissed", "open"]] = UNSET,
+        dismissed_reason: Missing[
+            Literal[
+                "fix_started",
+                "inaccurate",
+                "no_bandwidth",
+                "not_used",
+                "tolerable_risk",
+            ]
+        ] = UNSET,
+        dismissed_comment: Missing[str] = UNSET,
+        assignees: list[str],
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
 
     def update_alert(
         self,
@@ -1885,9 +2058,14 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
+        data: Missing[
+            Union[
+                ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type,
+                ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type,
+            ]
+        ] = UNSET,
         **kwargs,
-    ) -> Response[DependabotAlert, DependabotAlertType]:
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]:
         """dependabot/update-alert
 
         PATCH /repos/{owner}/{repo}/dependabot/alerts/{alert_number}
@@ -1899,10 +2077,13 @@ class DependabotClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#update-a-dependabot-alert
         """
 
+        from typing import Union
+
         from ..models import (
             BasicError,
             DependabotAlert,
-            ReposOwnerRepoDependabotAlertsAlertNumberPatchBody,
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0,
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1,
             ValidationErrorSimple,
         )
 
@@ -1917,7 +2098,11 @@ class DependabotClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                ReposOwnerRepoDependabotAlertsAlertNumberPatchBody, json
+                Union[
+                    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0,
+                    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1,
+                ],
+                json,
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1946,8 +2131,11 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
-    ) -> Response[DependabotAlert, DependabotAlertType]: ...
+        data: Union[
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type,
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type,
+        ],
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
 
     @overload
     async def async_update_alert(
@@ -1970,7 +2158,32 @@ class DependabotClient:
             ]
         ] = UNSET,
         dismissed_comment: Missing[str] = UNSET,
-    ) -> Response[DependabotAlert, DependabotAlertType]: ...
+        assignees: Missing[list[str]] = UNSET,
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
+
+    @overload
+    async def async_update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        state: Missing[Literal["dismissed", "open"]] = UNSET,
+        dismissed_reason: Missing[
+            Literal[
+                "fix_started",
+                "inaccurate",
+                "no_bandwidth",
+                "not_used",
+                "tolerable_risk",
+            ]
+        ] = UNSET,
+        dismissed_comment: Missing[str] = UNSET,
+        assignees: list[str],
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
 
     async def async_update_alert(
         self,
@@ -1980,9 +2193,14 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
+        data: Missing[
+            Union[
+                ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type,
+                ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type,
+            ]
+        ] = UNSET,
         **kwargs,
-    ) -> Response[DependabotAlert, DependabotAlertType]:
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]:
         """dependabot/update-alert
 
         PATCH /repos/{owner}/{repo}/dependabot/alerts/{alert_number}
@@ -1994,10 +2212,13 @@ class DependabotClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#update-a-dependabot-alert
         """
 
+        from typing import Union
+
         from ..models import (
             BasicError,
             DependabotAlert,
-            ReposOwnerRepoDependabotAlertsAlertNumberPatchBody,
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0,
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1,
             ValidationErrorSimple,
         )
 
@@ -2012,7 +2233,11 @@ class DependabotClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                ReposOwnerRepoDependabotAlertsAlertNumberPatchBody, json
+                Union[
+                    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0,
+                    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1,
+                ],
+                json,
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2043,7 +2268,7 @@ class DependabotClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoDependabotSecretsGetResponse200,
-        ReposOwnerRepoDependabotSecretsGetResponse200Type,
+        ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse,
     ]:
         """dependabot/list-repo-secrets
 
@@ -2071,7 +2296,7 @@ class DependabotClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoDependabotSecretsGetResponse200,
@@ -2088,7 +2313,7 @@ class DependabotClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoDependabotSecretsGetResponse200,
-        ReposOwnerRepoDependabotSecretsGetResponse200Type,
+        ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse,
     ]:
         """dependabot/list-repo-secrets
 
@@ -2116,7 +2341,7 @@ class DependabotClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoDependabotSecretsGetResponse200,
@@ -2129,7 +2354,7 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
+    ) -> Response[DependabotPublicKey, DependabotPublicKeyTypeForResponse]:
         """dependabot/get-repo-public-key
 
         GET /repos/{owner}/{repo}/dependabot/secrets/public-key
@@ -2164,7 +2389,7 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
+    ) -> Response[DependabotPublicKey, DependabotPublicKeyTypeForResponse]:
         """dependabot/get-repo-public-key
 
         GET /repos/{owner}/{repo}/dependabot/secrets/public-key
@@ -2200,7 +2425,7 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependabotSecret, DependabotSecretType]:
+    ) -> Response[DependabotSecret, DependabotSecretTypeForResponse]:
         """dependabot/get-repo-secret
 
         GET /repos/{owner}/{repo}/dependabot/secrets/{secret_name}
@@ -2234,7 +2459,7 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependabotSecret, DependabotSecretType]:
+    ) -> Response[DependabotSecret, DependabotSecretTypeForResponse]:
         """dependabot/get-repo-secret
 
         GET /repos/{owner}/{repo}/dependabot/secrets/{secret_name}
@@ -2270,7 +2495,7 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def create_or_update_repo_secret(
@@ -2284,7 +2509,7 @@ class DependabotClient:
         stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def create_or_update_repo_secret(
         self,
@@ -2296,7 +2521,7 @@ class DependabotClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """dependabot/create-or-update-repo-secret
 
         PUT /repos/{owner}/{repo}/dependabot/secrets/{secret_name}
@@ -2348,7 +2573,7 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_create_or_update_repo_secret(
@@ -2362,7 +2587,7 @@ class DependabotClient:
         stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_create_or_update_repo_secret(
         self,
@@ -2374,7 +2599,7 @@ class DependabotClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """dependabot/create-or-update-repo-secret
 
         PUT /repos/{owner}/{repo}/dependabot/secrets/{secret_name}
@@ -2476,4 +2701,674 @@ class DependabotClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
+        )
+
+    def list_dismissal_requests_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["open", "approved", "expired", "denied", "all"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[DependabotAlertDismissalRequest],
+        list[DependabotAlertDismissalRequestTypeForResponse],
+    ]:
+        """dependabot/list-dismissal-requests-for-repo
+
+        GET /repos/{owner}/{repo}/dismissal-requests/dependabot
+
+        Lists dismissal requests for Dependabot alerts for a repository.
+
+        Delegated alert dismissal must be enabled on the repository.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#list-dismissal-requests-for-dependabot-alerts-for-a-repository
+        """
+
+        from ..models import BasicError, DependabotAlertDismissalRequest
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot"
+
+        params = {
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[DependabotAlertDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_list_dismissal_requests_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["open", "approved", "expired", "denied", "all"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[DependabotAlertDismissalRequest],
+        list[DependabotAlertDismissalRequestTypeForResponse],
+    ]:
+        """dependabot/list-dismissal-requests-for-repo
+
+        GET /repos/{owner}/{repo}/dismissal-requests/dependabot
+
+        Lists dismissal requests for Dependabot alerts for a repository.
+
+        Delegated alert dismissal must be enabled on the repository.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#list-dismissal-requests-for-dependabot-alerts-for-a-repository
+        """
+
+        from ..models import BasicError, DependabotAlertDismissalRequest
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot"
+
+        params = {
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[DependabotAlertDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def get_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
+    ]:
+        """dependabot/get-dismissal-request-for-repo
+
+        GET /repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}
+
+        Gets a dismissal request to dismiss a Dependabot alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#get-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        """
+
+        from ..models import BasicError, DependabotAlertDismissalRequest
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotAlertDismissalRequest,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
+    ]:
+        """dependabot/get-dismissal-request-for-repo
+
+        GET /repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}
+
+        Gets a dismissal request to dismiss a Dependabot alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#get-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        """
+
+        from ..models import BasicError, DependabotAlertDismissalRequest
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotAlertDismissalRequest,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def create_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType,
+    ) -> Response[
+        DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
+    ]: ...
+
+    @overload
+    def create_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        dismissed_reason: Literal[
+            "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
+        ],
+        dismissed_comment: Missing[str] = UNSET,
+    ) -> Response[
+        DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
+    ]: ...
+
+    def create_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
+    ]:
+        """dependabot/create-dismissal-request-for-repo
+
+        POST /repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}
+
+        Creates a new dismissal request to dismiss a Dependabot alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository and the user must have permission to view Dependabot alerts to access this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#create-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            DependabotAlertDismissalRequest,
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotAlertDismissalRequest,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType,
+    ) -> Response[
+        DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
+    ]: ...
+
+    @overload
+    async def async_create_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        dismissed_reason: Literal[
+            "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
+        ],
+        dismissed_comment: Missing[str] = UNSET,
+    ) -> Response[
+        DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
+    ]: ...
+
+    async def async_create_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
+    ]:
+        """dependabot/create-dismissal-request-for-repo
+
+        POST /repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}
+
+        Creates a new dismissal request to dismiss a Dependabot alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository and the user must have permission to view Dependabot alerts to access this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#create-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            DependabotAlertDismissalRequest,
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotAlertDismissalRequest,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    def cancel_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """dependabot/cancel-dismissal-request-for-repo
+
+        DELETE /repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}
+
+        Cancels a pending dismissal request for a Dependabot alert in a repository.
+
+        The authenticated user must be the requester of the dismissal request or have reviewer permissions (security manager or organization owner).
+        Delegated alert dismissal must be enabled on the repository.
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#cancel-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        """
+
+        from ..models import BasicError
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_cancel_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """dependabot/cancel-dismissal-request-for-repo
+
+        DELETE /repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}
+
+        Cancels a pending dismissal request for a Dependabot alert in a repository.
+
+        The authenticated user must be the requester of the dismissal request or have reviewer permissions (security manager or organization owner).
+        Delegated alert dismissal must be enabled on the repository.
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#cancel-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        """
+
+        from ..models import BasicError
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        status: Literal["approve", "deny"],
+        message: str,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse,
+    ]: ...
+
+    def review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse,
+    ]:
+        """dependabot/review-dismissal-request-for-repo
+
+        PATCH /repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}
+
+        Approve or deny a dismissal request to dismiss a Dependabot alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository and the user must be a dismissal reviewer to access this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#review-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody,
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        status: Literal["approve", "deny"],
+        message: str,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse,
+    ]: ...
+
+    async def async_review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse,
+    ]:
+        """dependabot/review-dismissal-request-for-repo
+
+        PATCH /repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}
+
+        Approve or deny a dismissal request to dismiss a Dependabot alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository and the user must be a dismissal reviewer to access this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#review-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody,
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
         )

@@ -9,23 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0255 import RateLimitType, RateLimitTypeForResponse
 
 
-class CodeScanningVariantAnalysisRepositoryType(TypedDict):
-    """Repository Identifier
+class RateLimitOverviewPropResourcesType(TypedDict):
+    """RateLimitOverviewPropResources"""
 
-    Repository Identifier
-    """
+    core: RateLimitType
+    graphql: NotRequired[RateLimitType]
+    search: RateLimitType
+    code_search: NotRequired[RateLimitType]
+    source_import: NotRequired[RateLimitType]
+    integration_manifest: NotRequired[RateLimitType]
+    code_scanning_upload: NotRequired[RateLimitType]
+    actions_runner_registration: NotRequired[RateLimitType]
+    scim: NotRequired[RateLimitType]
+    dependency_snapshots: NotRequired[RateLimitType]
+    dependency_sbom: NotRequired[RateLimitType]
+    code_scanning_autofix: NotRequired[RateLimitType]
 
-    id: int
-    name: str
-    full_name: str
-    private: bool
-    stargazers_count: int
-    updated_at: Union[datetime, None]
+
+class RateLimitOverviewPropResourcesTypeForResponse(TypedDict):
+    """RateLimitOverviewPropResources"""
+
+    core: RateLimitTypeForResponse
+    graphql: NotRequired[RateLimitTypeForResponse]
+    search: RateLimitTypeForResponse
+    code_search: NotRequired[RateLimitTypeForResponse]
+    source_import: NotRequired[RateLimitTypeForResponse]
+    integration_manifest: NotRequired[RateLimitTypeForResponse]
+    code_scanning_upload: NotRequired[RateLimitTypeForResponse]
+    actions_runner_registration: NotRequired[RateLimitTypeForResponse]
+    scim: NotRequired[RateLimitTypeForResponse]
+    dependency_snapshots: NotRequired[RateLimitTypeForResponse]
+    dependency_sbom: NotRequired[RateLimitTypeForResponse]
+    code_scanning_autofix: NotRequired[RateLimitTypeForResponse]
 
 
-__all__ = ("CodeScanningVariantAnalysisRepositoryType",)
+__all__ = (
+    "RateLimitOverviewPropResourcesType",
+    "RateLimitOverviewPropResourcesTypeForResponse",
+)

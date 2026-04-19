@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookCheckRunCompletedFormEncoded(GitHubModel):
-    """Check Run Completed Event
+class WebhooksWorkflow(GitHubModel):
+    """Workflow"""
 
-    The check_run.completed webhook encoded with URL encoding
-    """
+    badge_url: str = Field()
+    created_at: _dt.datetime = Field()
+    html_url: str = Field()
+    id: int = Field()
+    name: str = Field()
+    node_id: str = Field()
+    path: str = Field()
+    state: str = Field()
+    updated_at: _dt.datetime = Field()
+    url: str = Field()
 
-    payload: str = Field(
-        description="A URL-encoded string of the check_run.completed JSON payload. The decoded payload is a JSON object."
-    )
 
+model_rebuild(WebhooksWorkflow)
 
-model_rebuild(WebhookCheckRunCompletedFormEncoded)
-
-__all__ = ("WebhookCheckRunCompletedFormEncoded",)
+__all__ = ("WebhooksWorkflow",)

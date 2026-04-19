@@ -9,29 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0044 import IssueTypeType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
-from .group_0453 import WebhooksIssueType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0499 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
+from .group_0500 import WebhooksChangesType, WebhooksChangesTypeForResponse
+from .group_0642 import (
+    WebhookIssueCommentEditedPropIssueType,
+    WebhookIssueCommentEditedPropIssueTypeForResponse,
+)
 
 
-class WebhookIssuesUntypedType(TypedDict):
-    """issues untyped event"""
+class WebhookIssueCommentEditedType(TypedDict):
+    """issue_comment edited event"""
 
-    action: Literal["untyped"]
+    action: Literal["edited"]
+    changes: WebhooksChangesType
+    comment: WebhooksIssueCommentType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
-    type: Union[IssueTypeType, None]
+    issue: WebhookIssueCommentEditedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesUntypedType",)
+class WebhookIssueCommentEditedTypeForResponse(TypedDict):
+    """issue_comment edited event"""
+
+    action: Literal["edited"]
+    changes: WebhooksChangesTypeForResponse
+    comment: WebhooksIssueCommentTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    issue: WebhookIssueCommentEditedPropIssueTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookIssueCommentEditedType",
+    "WebhookIssueCommentEditedTypeForResponse",
+)

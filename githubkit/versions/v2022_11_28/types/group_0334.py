@@ -12,40 +12,70 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
 
+class ContentFileType(TypedDict):
+    """Content File
 
-class RemovedFromProjectIssueEventType(TypedDict):
-    """Removed from Project Issue Event
-
-    Removed from Project Issue Event
+    Content File
     """
 
-    id: int
-    node_id: str
+    type: Literal["file"]
+    encoding: str
+    size: int
+    name: str
+    path: str
+    content: str
+    sha: str
     url: str
-    actor: SimpleUserType
-    event: Literal["removed_from_project"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[RemovedFromProjectIssueEventPropProjectCardType]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentFilePropLinksType
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
 
 
-class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
-    """RemovedFromProjectIssueEventPropProjectCard"""
+class ContentFileTypeForResponse(TypedDict):
+    """Content File
 
-    id: int
+    Content File
+    """
+
+    type: Literal["file"]
+    encoding: str
+    size: int
+    name: str
+    path: str
+    content: str
+    sha: str
     url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentFilePropLinksTypeForResponse
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
+
+
+class ContentFilePropLinksType(TypedDict):
+    """ContentFilePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentFilePropLinksTypeForResponse(TypedDict):
+    """ContentFilePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "RemovedFromProjectIssueEventPropProjectCardType",
-    "RemovedFromProjectIssueEventType",
+    "ContentFilePropLinksType",
+    "ContentFilePropLinksTypeForResponse",
+    "ContentFileType",
+    "ContentFileTypeForResponse",
 )

@@ -9,37 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
 
 
-class OrganizationInvitation(GitHubModel):
-    """Organization Invitation
+class ActionsHostedRunnerLimits(GitHubModel):
+    """ActionsHostedRunnerLimits"""
 
-    Organization Invitation
+    public_ips: ActionsHostedRunnerLimitsPropPublicIps = Field(
+        title="Static public IP Limits for GitHub-hosted Hosted Runners.",
+        description="Provides details of static public IP limits for GitHub-hosted Hosted Runners",
+    )
+
+
+class ActionsHostedRunnerLimitsPropPublicIps(GitHubModel):
+    """Static public IP Limits for GitHub-hosted Hosted Runners.
+
+    Provides details of static public IP limits for GitHub-hosted Hosted Runners
     """
 
-    id: int = Field()
-    login: Union[str, None] = Field()
-    email: Union[str, None] = Field()
-    role: str = Field()
-    created_at: str = Field()
-    failed_at: Missing[Union[str, None]] = Field(default=UNSET)
-    failed_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    inviter: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    team_count: int = Field()
-    node_id: str = Field()
-    invitation_teams_url: str = Field()
-    invitation_source: Missing[str] = Field(default=UNSET)
+    maximum: int = Field(
+        description="The maximum number of static public IP addresses that can be used for Hosted Runners."
+    )
+    current_usage: int = Field(
+        description="The current number of static public IP addresses in use by Hosted Runners."
+    )
 
 
-model_rebuild(OrganizationInvitation)
+model_rebuild(ActionsHostedRunnerLimits)
+model_rebuild(ActionsHostedRunnerLimitsPropPublicIps)
 
-__all__ = ("OrganizationInvitation",)
+__all__ = (
+    "ActionsHostedRunnerLimits",
+    "ActionsHostedRunnerLimitsPropPublicIps",
+)

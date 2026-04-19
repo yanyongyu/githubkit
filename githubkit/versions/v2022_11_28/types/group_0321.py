@@ -9,39 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class LabeledIssueEventType(TypedDict):
-    """Labeled Issue Event
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-    Labeled Issue Event
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["labeled"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    label: LabeledIssueEventPropLabelType
+    errors: list[CodeownersErrorsPropErrorsItemsType]
 
 
-class LabeledIssueEventPropLabelType(TypedDict):
-    """LabeledIssueEventPropLabel"""
+class CodeownersErrorsTypeForResponse(TypedDict):
+    """CODEOWNERS errors
 
-    name: str
-    color: str
+    A list of errors found in a repo's CODEOWNERS file
+    """
+
+    errors: list[CodeownersErrorsPropErrorsItemsTypeForResponse]
+
+
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
+
+
+class CodeownersErrorsPropErrorsItemsTypeForResponse(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
 
 __all__ = (
-    "LabeledIssueEventPropLabelType",
-    "LabeledIssueEventType",
+    "CodeownersErrorsPropErrorsItemsType",
+    "CodeownersErrorsPropErrorsItemsTypeForResponse",
+    "CodeownersErrorsType",
+    "CodeownersErrorsTypeForResponse",
 )

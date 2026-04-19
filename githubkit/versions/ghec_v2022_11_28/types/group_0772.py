@@ -9,72 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0531 import ProjectsV2Type
-
-
-class WebhookProjectsV2ProjectEditedType(TypedDict):
-    """Projects v2 Project Edited Event"""
-
-    action: Literal["edited"]
-    changes: WebhookProjectsV2ProjectEditedPropChangesType
-    installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
-    sender: SimpleUserType
+from .group_0771 import (
+    WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+)
 
 
-class WebhookProjectsV2ProjectEditedPropChangesType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChanges"""
+class WebhookIssuesClosedPropIssueAllof0PropMilestoneType(TypedDict):
+    """Milestone
 
-    description: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
+    url: str
+
+
+class WebhookIssuesClosedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[
+        WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse, None
     ]
-    public: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropPublicType]
-    short_description: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType
-    ]
-    title: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropTitleType]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropPublicType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
-
-    from_: NotRequired[bool]
-    to: NotRequired[bool]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropTitleType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
-
-    from_: NotRequired[str]
-    to: NotRequired[str]
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropPublicType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropTitleType",
-    "WebhookProjectsV2ProjectEditedPropChangesType",
-    "WebhookProjectsV2ProjectEditedType",
+    "WebhookIssuesClosedPropIssueAllof0PropMilestoneType",
+    "WebhookIssuesClosedPropIssueAllof0PropMilestoneTypeForResponse",
 )

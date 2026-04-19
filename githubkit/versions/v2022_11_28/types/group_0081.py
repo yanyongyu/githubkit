@@ -9,16 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ActionsForkPrWorkflowsPrivateReposRequestType(TypedDict):
-    """ActionsForkPrWorkflowsPrivateReposRequest"""
-
-    run_workflows_from_fork_pull_requests: bool
-    send_write_tokens_to_workflows: NotRequired[bool]
-    send_secrets_and_variables: NotRequired[bool]
-    require_approval_for_fork_pr_workflows: NotRequired[bool]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-__all__ = ("ActionsForkPrWorkflowsPrivateReposRequestType",)
+class GistCommitType(TypedDict):
+    """Gist Commit
+
+    Gist Commit
+    """
+
+    url: str
+    version: str
+    user: Union[None, SimpleUserType]
+    change_status: GistCommitPropChangeStatusType
+    committed_at: _dt.datetime
+
+
+class GistCommitTypeForResponse(TypedDict):
+    """Gist Commit
+
+    Gist Commit
+    """
+
+    url: str
+    version: str
+    user: Union[None, SimpleUserTypeForResponse]
+    change_status: GistCommitPropChangeStatusTypeForResponse
+    committed_at: str
+
+
+class GistCommitPropChangeStatusType(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistCommitPropChangeStatusTypeForResponse(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+__all__ = (
+    "GistCommitPropChangeStatusType",
+    "GistCommitPropChangeStatusTypeForResponse",
+    "GistCommitType",
+    "GistCommitTypeForResponse",
+)

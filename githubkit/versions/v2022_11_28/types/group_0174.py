@@ -12,18 +12,28 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0175 import RepositoryRuleMaxFileSizePropParametersType
+
+class ProjectsV2FieldSingleSelectOptionType(TypedDict):
+    """ProjectsV2FieldSingleSelectOption"""
+
+    name: NotRequired[str]
+    color: NotRequired[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ]
+    description: NotRequired[str]
 
 
-class RepositoryRuleMaxFileSizeType(TypedDict):
-    """max_file_size
+class ProjectsV2FieldSingleSelectOptionTypeForResponse(TypedDict):
+    """ProjectsV2FieldSingleSelectOption"""
 
-    Prevent commits with individual files that exceed the specified limit from being
-    pushed to the commit graph.
-    """
+    name: NotRequired[str]
+    color: NotRequired[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ]
+    description: NotRequired[str]
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
 
-
-__all__ = ("RepositoryRuleMaxFileSizeType",)
+__all__ = (
+    "ProjectsV2FieldSingleSelectOptionType",
+    "ProjectsV2FieldSingleSelectOptionTypeForResponse",
+)

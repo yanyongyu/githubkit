@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Annotated, Literal, Union
 
 from pydantic import Field
@@ -55,19 +55,19 @@ class GlobalAdvisory(GitHubModel):
     )
     identifiers: Union[list[GlobalAdvisoryPropIdentifiersItems], None] = Field()
     references: Union[list[str], None] = Field()
-    published_at: datetime = Field(
+    published_at: _dt.datetime = Field(
         description="The date and time of when the advisory was published, in ISO 8601 format."
     )
-    updated_at: datetime = Field(
+    updated_at: _dt.datetime = Field(
         description="The date and time of when the advisory was last updated, in ISO 8601 format."
     )
-    github_reviewed_at: Union[datetime, None] = Field(
+    github_reviewed_at: Union[_dt.datetime, None] = Field(
         description="The date and time of when the advisory was reviewed by GitHub, in ISO 8601 format."
     )
-    nvd_published_at: Union[datetime, None] = Field(
+    nvd_published_at: Union[_dt.datetime, None] = Field(
         description="The date and time when the advisory was published in the National Vulnerability Database, in ISO 8601 format.\nThis field is only populated when the advisory is imported from the National Vulnerability Database."
     )
-    withdrawn_at: Union[datetime, None] = Field(
+    withdrawn_at: Union[_dt.datetime, None] = Field(
         description="The date and time of when the advisory was withdrawn, in ISO 8601 format."
     )
     vulnerabilities: Union[list[Vulnerability], None] = Field(

@@ -9,72 +9,130 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, Union
+import datetime as _dt
+from typing import Any, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class OrganizationProgrammaticAccessGrantType(TypedDict):
-    """Organization Programmatic Access Grant
+class GistHistoryType(TypedDict):
+    """Gist History
 
-    Minimal representation of an organization programmatic access grant for
-    enumerations
+    Gist History
     """
 
-    id: int
-    owner: SimpleUserType
-    repository_selection: Literal["none", "all", "subset"]
-    repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantPropPermissionsType
-    access_granted_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
+    user: NotRequired[Union[None, SimpleUserType]]
+    version: NotRequired[str]
+    committed_at: NotRequired[_dt.datetime]
+    change_status: NotRequired[GistHistoryPropChangeStatusType]
+    url: NotRequired[str]
 
 
-class OrganizationProgrammaticAccessGrantPropPermissionsType(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissions
+class GistHistoryTypeForResponse(TypedDict):
+    """Gist History
 
-    Permissions requested, categorized by type of permission.
+    Gist History
     """
 
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType
-    ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType
-    ]
-    other: NotRequired[OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType]
+    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    version: NotRequired[str]
+    committed_at: NotRequired[str]
+    change_status: NotRequired[GistHistoryPropChangeStatusTypeForResponse]
+    url: NotRequired[str]
 
 
-OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType: TypeAlias = (
-    dict[str, Any]
-)
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
+class GistHistoryPropChangeStatusType(TypedDict):
+    """GistHistoryPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistHistoryPropChangeStatusTypeForResponse(TypedDict):
+    """GistHistoryPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistSimplePropForkOfType(TypedDict):
+    """Gist
+
+    Gist
+    """
+
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesType
+    public: bool
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserType]
+    comments_url: str
+    owner: NotRequired[Union[None, SimpleUserType]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
+
+
+class GistSimplePropForkOfTypeForResponse(TypedDict):
+    """Gist
+
+    Gist
+    """
+
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesTypeForResponse
+    public: bool
+    created_at: str
+    updated_at: str
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserTypeForResponse]
+    comments_url: str
+    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
+
+
+GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
 """
 
 
-OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
-"""
-
-
-OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOther
+GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
 """
 
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsType",
-    "OrganizationProgrammaticAccessGrantType",
+    "GistHistoryPropChangeStatusType",
+    "GistHistoryPropChangeStatusTypeForResponse",
+    "GistHistoryType",
+    "GistHistoryTypeForResponse",
+    "GistSimplePropForkOfPropFilesType",
+    "GistSimplePropForkOfPropFilesTypeForResponse",
+    "GistSimplePropForkOfType",
+    "GistSimplePropForkOfTypeForResponse",
 )

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Any, Union
 
 from pydantic import Field
 
@@ -20,89 +21,68 @@ from githubkit.utils import UNSET
 from .group_0003 import SimpleUser
 
 
-class OrganizationProgrammaticAccessGrant(GitHubModel):
-    """Organization Programmatic Access Grant
+class GistHistory(GitHubModel):
+    """Gist History
 
-    Minimal representation of an organization programmatic access grant for
-    enumerations
+    Gist History
     """
 
-    id: int = Field(
-        description="Unique identifier of the fine-grained personal access token grant. The `pat_id` used to get details about an approved fine-grained personal access token."
-    )
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    repository_selection: Literal["none", "all", "subset"] = Field(
-        description="Type of repository selection requested."
-    )
-    repositories_url: str = Field(
-        description="URL to the list of repositories the fine-grained personal access token can access. Only follow when `repository_selection` is `subset`."
-    )
-    permissions: OrganizationProgrammaticAccessGrantPropPermissions = Field(
-        description="Permissions requested, categorized by type of permission."
-    )
-    access_granted_at: str = Field(
-        description="Date and time when the fine-grained personal access token was approved to access the organization."
-    )
-    token_id: int = Field(
-        description="Unique identifier of the user's token. This field can also be found in audit log events and the organization's settings for their PAT grants."
-    )
-    token_name: str = Field(
-        description="The name given to the user's token. This field can also be found in an organization's settings page for Active Tokens."
-    )
-    token_expired: bool = Field(
-        description="Whether the associated fine-grained personal access token has expired."
-    )
-    token_expires_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token expires."
-    )
-    token_last_used_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token was last used for authentication."
-    )
+    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    version: Missing[str] = Field(default=UNSET)
+    committed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    change_status: Missing[GistHistoryPropChangeStatus] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-class OrganizationProgrammaticAccessGrantPropPermissions(GitHubModel):
-    """OrganizationProgrammaticAccessGrantPropPermissions
+class GistHistoryPropChangeStatus(GitHubModel):
+    """GistHistoryPropChangeStatus"""
 
-    Permissions requested, categorized by type of permission.
+    total: Missing[int] = Field(default=UNSET)
+    additions: Missing[int] = Field(default=UNSET)
+    deletions: Missing[int] = Field(default=UNSET)
+
+
+class GistSimplePropForkOf(GitHubModel):
+    """Gist
+
+    Gist
     """
 
-    organization: Missing[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
-    ] = Field(default=UNSET)
-    repository: Missing[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
-    ] = Field(default=UNSET)
-    other: Missing[OrganizationProgrammaticAccessGrantPropPermissionsPropOther] = Field(
-        default=UNSET
-    )
+    url: str = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
+    node_id: str = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
+    html_url: str = Field()
+    files: GistSimplePropForkOfPropFiles = Field()
+    public: bool = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    description: Union[str, None] = Field()
+    comments: int = Field()
+    comments_enabled: Missing[bool] = Field(default=UNSET)
+    user: Union[None, SimpleUser] = Field()
+    comments_url: str = Field()
+    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
 
 
-class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
+class GistSimplePropForkOfPropFiles(ExtraGitHubModel):
+    """GistSimplePropForkOfPropFiles"""
 
 
-class OrganizationProgrammaticAccessGrantPropPermissionsPropRepository(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsPropOther(ExtraGitHubModel):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
-
-
-model_rebuild(OrganizationProgrammaticAccessGrant)
-model_rebuild(OrganizationProgrammaticAccessGrantPropPermissions)
-model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization)
-model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropRepository)
-model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOther)
+model_rebuild(GistHistory)
+model_rebuild(GistHistoryPropChangeStatus)
+model_rebuild(GistSimplePropForkOf)
+model_rebuild(GistSimplePropForkOfPropFiles)
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrant",
-    "OrganizationProgrammaticAccessGrantPropPermissions",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepository",
+    "GistHistory",
+    "GistHistoryPropChangeStatus",
+    "GistSimplePropForkOf",
+    "GistSimplePropForkOfPropFiles",
 )

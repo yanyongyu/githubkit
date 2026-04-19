@@ -9,42 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0357 import GitUser
+from .group_0358 import Verification
 
-class GitTree(GitHubModel):
-    """Git Tree
 
-    The hierarchy between files in a Git repository.
-    """
+class CommitPropCommit(GitHubModel):
+    """CommitPropCommit"""
+
+    url: str = Field()
+    author: Union[None, GitUser] = Field()
+    committer: Union[None, GitUser] = Field()
+    message: str = Field()
+    comment_count: int = Field()
+    tree: CommitPropCommitPropTree = Field()
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+
+
+class CommitPropCommitPropTree(GitHubModel):
+    """CommitPropCommitPropTree"""
 
     sha: str = Field()
-    url: Missing[str] = Field(default=UNSET)
-    truncated: bool = Field()
-    tree: list[GitTreePropTreeItems] = Field(
-        description="Objects specifying a tree structure"
-    )
+    url: str = Field()
 
 
-class GitTreePropTreeItems(GitHubModel):
-    """GitTreePropTreeItems"""
-
-    path: str = Field()
-    mode: str = Field()
-    type: str = Field()
-    sha: str = Field()
-    size: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(GitTree)
-model_rebuild(GitTreePropTreeItems)
+model_rebuild(CommitPropCommit)
+model_rebuild(CommitPropCommitPropTree)
 
 __all__ = (
-    "GitTree",
-    "GitTreePropTreeItems",
+    "CommitPropCommit",
+    "CommitPropCommitPropTree",
 )

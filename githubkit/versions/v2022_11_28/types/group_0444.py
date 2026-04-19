@@ -13,31 +13,157 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksUserType(TypedDict):
-    """User"""
+class RepositoryAdvisoryUpdateType(TypedDict):
+    """RepositoryAdvisoryUpdate"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
+    summary: NotRequired[str]
+    description: NotRequired[str]
+    cve_id: NotRequired[Union[str, None]]
+    vulnerabilities: NotRequired[
+        list[RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType]
+    ]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    credits_: NotRequired[
+        Union[list[RepositoryAdvisoryUpdatePropCreditsItemsType], None]
+    ]
+    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["published", "closed", "draft"]]
+    collaborating_users: NotRequired[Union[list[str], None]]
+    collaborating_teams: NotRequired[Union[list[str], None]]
+
+
+class RepositoryAdvisoryUpdateTypeForResponse(TypedDict):
+    """RepositoryAdvisoryUpdate"""
+
+    summary: NotRequired[str]
+    description: NotRequired[str]
+    cve_id: NotRequired[Union[str, None]]
+    vulnerabilities: NotRequired[
+        list[RepositoryAdvisoryUpdatePropVulnerabilitiesItemsTypeForResponse]
+    ]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    credits_: NotRequired[
+        Union[list[RepositoryAdvisoryUpdatePropCreditsItemsTypeForResponse], None]
+    ]
+    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["published", "closed", "draft"]]
+    collaborating_users: NotRequired[Union[list[str], None]]
+    collaborating_teams: NotRequired[Union[list[str], None]]
+
+
+class RepositoryAdvisoryUpdatePropCreditsItemsType(TypedDict):
+    """RepositoryAdvisoryUpdatePropCreditsItems"""
+
     login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
 
 
-__all__ = ("WebhooksUserType",)
+class RepositoryAdvisoryUpdatePropCreditsItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryUpdatePropCreditsItems"""
+
+    login: str
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+
+
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType(TypedDict):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageTypeForResponse
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType(TypedDict):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
+
+
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageTypeForResponse(
+    TypedDict
+):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "RepositoryAdvisoryUpdatePropCreditsItemsType",
+    "RepositoryAdvisoryUpdatePropCreditsItemsTypeForResponse",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsTypeForResponse",
+    "RepositoryAdvisoryUpdateType",
+    "RepositoryAdvisoryUpdateTypeForResponse",
+)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,40 +17,24 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0410 import SearchResultTextMatchesItems
 
+class RepositoryRuleDetailedOneof0(GitHubModel):
+    """RepositoryRuleDetailedOneof0"""
 
-class LabelSearchResultItem(GitHubModel):
-    """Label Search Result Item
-
-    Label Search Result Item
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    name: str = Field()
-    color: str = Field()
-    default: bool = Field()
-    description: Union[str, None] = Field()
-    score: float = Field()
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    type: Literal["creation"] = Field()
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        default=UNSET,
+        description="The type of source for the ruleset that includes this rule.",
+    )
+    ruleset_source: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the source of the ruleset that includes this rule.",
+    )
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
     )
 
 
-class SearchLabelsGetResponse200(GitHubModel):
-    """SearchLabelsGetResponse200"""
+model_rebuild(RepositoryRuleDetailedOneof0)
 
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[LabelSearchResultItem] = Field()
-
-
-model_rebuild(LabelSearchResultItem)
-model_rebuild(SearchLabelsGetResponse200)
-
-__all__ = (
-    "LabelSearchResultItem",
-    "SearchLabelsGetResponse200",
-)
+__all__ = ("RepositoryRuleDetailedOneof0",)

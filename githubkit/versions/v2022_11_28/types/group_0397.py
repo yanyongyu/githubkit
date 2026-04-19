@@ -9,21 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class StargazerType(TypedDict):
-    """Stargazer
+class MergedUpstreamType(TypedDict):
+    """Merged upstream
 
-    Stargazer
+    Results of a successful merge upstream request
     """
 
-    starred_at: datetime
-    user: Union[None, SimpleUserType]
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
-__all__ = ("StargazerType",)
+class MergedUpstreamTypeForResponse(TypedDict):
+    """Merged upstream
+
+    Results of a successful merge upstream request
+    """
+
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
+
+
+__all__ = (
+    "MergedUpstreamType",
+    "MergedUpstreamTypeForResponse",
+)

@@ -9,42 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_1027 import (
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
+)
 
 
-class OrgsOrgAttestationsBulkListPostResponse200Type(TypedDict):
-    """OrgsOrgAttestationsBulkListPostResponse200"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
 
-    attestations_subject_digests: NotRequired[
-        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
+    sessions: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
     ]
-    page_info: NotRequired[OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType]
 
 
-OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
 
-Mapping of subject digest to bundles.
-"""
-
-
-class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
-    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
-
-    Information about the current page.
-    """
-
-    has_next: NotRequired[bool]
-    has_previous: NotRequired[bool]
-    next_: NotRequired[str]
-    previous: NotRequired[str]
+    sessions: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse
+        ]
+    ]
 
 
 __all__ = (
-    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
-    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType",
-    "OrgsOrgAttestationsBulkListPostResponse200Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse",
 )

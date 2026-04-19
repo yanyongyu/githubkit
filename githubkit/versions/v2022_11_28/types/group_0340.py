@@ -9,66 +9,94 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0041 import (
+    DependabotAlertSecurityVulnerabilityType,
+    DependabotAlertSecurityVulnerabilityTypeForResponse,
+)
+from .group_0042 import (
+    DependabotAlertSecurityAdvisoryType,
+    DependabotAlertSecurityAdvisoryTypeForResponse,
+)
+from .group_0043 import (
+    DependabotAlertDismissalRequestSimpleType,
+    DependabotAlertDismissalRequestSimpleTypeForResponse,
+)
+from .group_0341 import (
+    DependabotAlertPropDependencyType,
+    DependabotAlertPropDependencyTypeForResponse,
+)
 
 
-class TimelineReviewedEventType(TypedDict):
-    """Timeline Reviewed Event
+class DependabotAlertType(TypedDict):
+    """DependabotAlert
 
-    Timeline Reviewed Event
+    A Dependabot alert.
     """
 
-    event: Literal["reviewed"]
-    id: int
-    node_id: str
-    user: SimpleUserType
-    body: Union[str, None]
-    state: str
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
     html_url: str
-    pull_request_url: str
-    links: TimelineReviewedEventPropLinksType
-    submitted_at: NotRequired[datetime]
-    commit_id: str
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    dismissed_at: Union[_dt.datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
     ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[_dt.datetime, None]
+    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
+    dismissal_request: NotRequired[
+        Union[DependabotAlertDismissalRequestSimpleType, None]
+    ]
+    assignees: NotRequired[list[SimpleUserType]]
 
 
-class TimelineReviewedEventPropLinksType(TypedDict):
-    """TimelineReviewedEventPropLinks"""
+class DependabotAlertTypeForResponse(TypedDict):
+    """DependabotAlert
 
-    html: TimelineReviewedEventPropLinksPropHtmlType
-    pull_request: TimelineReviewedEventPropLinksPropPullRequestType
+    A Dependabot alert.
+    """
 
-
-class TimelineReviewedEventPropLinksPropHtmlType(TypedDict):
-    """TimelineReviewedEventPropLinksPropHtml"""
-
-    href: str
-
-
-class TimelineReviewedEventPropLinksPropPullRequestType(TypedDict):
-    """TimelineReviewedEventPropLinksPropPullRequest"""
-
-    href: str
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertPropDependencyTypeForResponse
+    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
+    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
+    url: str
+    html_url: str
+    created_at: str
+    updated_at: str
+    dismissed_at: Union[str, None]
+    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[str, None]
+    auto_dismissed_at: NotRequired[Union[str, None]]
+    dismissal_request: NotRequired[
+        Union[DependabotAlertDismissalRequestSimpleTypeForResponse, None]
+    ]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
 
 
 __all__ = (
-    "TimelineReviewedEventPropLinksPropHtmlType",
-    "TimelineReviewedEventPropLinksPropPullRequestType",
-    "TimelineReviewedEventPropLinksType",
-    "TimelineReviewedEventType",
+    "DependabotAlertType",
+    "DependabotAlertTypeForResponse",
 )

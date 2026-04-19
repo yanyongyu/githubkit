@@ -9,19 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class CodeScanningDefaultSetupUpdateResponseType(TypedDict):
-    """CodeScanningDefaultSetupUpdateResponse
+class ActionsVariableType(TypedDict):
+    """Actions Variable"""
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
-    """
-
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
+    name: str
+    value: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-__all__ = ("CodeScanningDefaultSetupUpdateResponseType",)
+class ActionsVariableTypeForResponse(TypedDict):
+    """Actions Variable"""
+
+    name: str
+    value: str
+    created_at: str
+    updated_at: str
+
+
+__all__ = (
+    "ActionsVariableType",
+    "ActionsVariableTypeForResponse",
+)

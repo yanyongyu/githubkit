@@ -12,24 +12,72 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
-from .group_0542 import SecretScanningAlertWebhookType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0596 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
 
 
-class WebhookSecretScanningAlertCreatedType(TypedDict):
-    """secret_scanning_alert created event"""
+class WebhookProjectCardConvertedType(TypedDict):
+    """project_card converted event"""
 
-    action: Literal["created"]
-    alert: SecretScanningAlertWebhookType
+    action: Literal["converted"]
+    changes: WebhookProjectCardConvertedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    project_card: WebhooksProjectCardType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookSecretScanningAlertCreatedType",)
+class WebhookProjectCardConvertedTypeForResponse(TypedDict):
+    """project_card converted event"""
+
+    action: Literal["converted"]
+    changes: WebhookProjectCardConvertedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project_card: WebhooksProjectCardTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookProjectCardConvertedPropChangesType(TypedDict):
+    """WebhookProjectCardConvertedPropChanges"""
+
+    note: WebhookProjectCardConvertedPropChangesPropNoteType
+
+
+class WebhookProjectCardConvertedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectCardConvertedPropChanges"""
+
+    note: WebhookProjectCardConvertedPropChangesPropNoteTypeForResponse
+
+
+class WebhookProjectCardConvertedPropChangesPropNoteType(TypedDict):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
+
+    from_: str
+
+
+class WebhookProjectCardConvertedPropChangesPropNoteTypeForResponse(TypedDict):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookProjectCardConvertedPropChangesPropNoteType",
+    "WebhookProjectCardConvertedPropChangesPropNoteTypeForResponse",
+    "WebhookProjectCardConvertedPropChangesType",
+    "WebhookProjectCardConvertedPropChangesTypeForResponse",
+    "WebhookProjectCardConvertedType",
+    "WebhookProjectCardConvertedTypeForResponse",
+)

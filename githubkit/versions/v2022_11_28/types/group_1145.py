@@ -9,17 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_1144 import ReposOwnerRepoPagesPostBodyPropSourceType
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPagesPostBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof0"""
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
 
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: ReposOwnerRepoPagesPostBodyPropSourceType
+    labels: list[str]
 
 
-__all__ = ("ReposOwnerRepoPagesPostBodyAnyof0Type",)
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
+
+    labels: list[str]
+
+
+__all__ = (
+    "ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType",
+    "ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyTypeForResponse",
+)

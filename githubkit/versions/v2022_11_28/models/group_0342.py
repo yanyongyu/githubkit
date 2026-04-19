@@ -15,28 +15,37 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
+
+class DependencyGraphDiffItems(GitHubModel):
+    """DependencyGraphDiffItems"""
+
+    change_type: Literal["added", "removed"] = Field()
+    manifest: str = Field()
+    ecosystem: str = Field()
+    name: str = Field()
+    version: str = Field()
+    package_url: Union[str, None] = Field()
+    license_: Union[str, None] = Field(alias="license")
+    source_repository_url: Union[str, None] = Field()
+    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItems] = Field()
+    scope: Literal["unknown", "runtime", "development"] = Field(
+        description="Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment."
+    )
 
 
-class TimelineAssignedIssueEvent(GitHubModel):
-    """Timeline Assigned Issue Event
+class DependencyGraphDiffItemsPropVulnerabilitiesItems(GitHubModel):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
 
-    Timeline Assigned Issue Event
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["assigned"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    severity: str = Field()
+    advisory_ghsa_id: str = Field()
+    advisory_summary: str = Field()
+    advisory_url: str = Field()
 
 
-model_rebuild(TimelineAssignedIssueEvent)
+model_rebuild(DependencyGraphDiffItems)
+model_rebuild(DependencyGraphDiffItemsPropVulnerabilitiesItems)
 
-__all__ = ("TimelineAssignedIssueEvent",)
+__all__ = (
+    "DependencyGraphDiffItems",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItems",
+)

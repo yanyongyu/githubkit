@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -18,25 +19,69 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksDeployKey(GitHubModel):
-    """WebhooksDeployKey
+class SecretScanningScanHistory(GitHubModel):
+    """SecretScanningScanHistory"""
 
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
+    incremental_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    pattern_update_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    backfill_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    custom_pattern_backfill_scans: Missing[
+        list[SecretScanningScanHistoryPropCustomPatternBackfillScansItems]
+    ] = Field(default=UNSET)
+
+
+class SecretScanningScan(GitHubModel):
+    """SecretScanningScan
+
+    Information on a single scan performed by secret scanning on the repository
     """
 
-    added_by: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: str = Field()
-    id: int = Field()
-    key: str = Field()
-    last_used: Missing[Union[str, None]] = Field(default=UNSET)
-    read_only: bool = Field()
-    title: str = Field()
-    url: str = Field()
-    verified: bool = Field()
-    enabled: Missing[bool] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET, description="The type of scan")
+    status: Missing[str] = Field(
+        default=UNSET,
+        description='The state of the scan. Either "completed", "running", or "pending"',
+    )
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was completed. Empty if the scan is running",
+    )
+    started_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was started. Empty if the scan is pending",
+    )
 
 
-model_rebuild(WebhooksDeployKey)
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItems(GitHubModel):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
 
-__all__ = ("WebhooksDeployKey",)
+    type: Missing[str] = Field(default=UNSET, description="The type of scan")
+    status: Missing[str] = Field(
+        default=UNSET,
+        description='The state of the scan. Either "completed", "running", or "pending"',
+    )
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was completed. Empty if the scan is running",
+    )
+    started_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was started. Empty if the scan is pending",
+    )
+    pattern_name: Missing[str] = Field(
+        default=UNSET, description="Name of the custom pattern for custom pattern scans"
+    )
+    pattern_scope: Missing[str] = Field(
+        default=UNSET,
+        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
+    )
+
+
+model_rebuild(SecretScanningScanHistory)
+model_rebuild(SecretScanningScan)
+model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItems)
+
+__all__ = (
+    "SecretScanningScan",
+    "SecretScanningScanHistory",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItems",
+)

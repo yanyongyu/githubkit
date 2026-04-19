@@ -12,17 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0020 import Repository
-
-
-class OrgsOrgActionsPermissionsRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
-
-    total_count: float = Field()
-    repositories: list[Repository] = Field()
+from .group_0880 import WebhookSecurityAndAnalysisPropChangesPropFrom
 
 
-model_rebuild(OrgsOrgActionsPermissionsRepositoriesGetResponse200)
+class WebhookSecurityAndAnalysisPropChanges(GitHubModel):
+    """WebhookSecurityAndAnalysisPropChanges"""
 
-__all__ = ("OrgsOrgActionsPermissionsRepositoriesGetResponse200",)
+    from_: Missing[WebhookSecurityAndAnalysisPropChangesPropFrom] = Field(
+        default=UNSET, alias="from"
+    )
+
+
+model_rebuild(WebhookSecurityAndAnalysisPropChanges)
+
+__all__ = ("WebhookSecurityAndAnalysisPropChanges",)

@@ -9,43 +9,121 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
 
+class ContentTreeType(TypedDict):
+    """Content Tree
 
-class AddedToProjectIssueEventType(TypedDict):
-    """Added to Project Issue Event
-
-    Added to Project Issue Event
+    Content Tree
     """
 
-    id: int
-    node_id: str
+    type: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    content: NotRequired[str]
     url: str
-    actor: SimpleUserType
-    event: Literal["added_to_project"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[AddedToProjectIssueEventPropProjectCardType]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    entries: NotRequired[list[ContentTreePropEntriesItemsType]]
+    encoding: NotRequired[str]
+    links: ContentTreePropLinksType
 
 
-class AddedToProjectIssueEventPropProjectCardType(TypedDict):
-    """AddedToProjectIssueEventPropProjectCard"""
+class ContentTreeTypeForResponse(TypedDict):
+    """Content Tree
 
-    id: int
+    Content Tree
+    """
+
+    type: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    content: NotRequired[str]
     url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    entries: NotRequired[list[ContentTreePropEntriesItemsTypeForResponse]]
+    encoding: NotRequired[str]
+    links: ContentTreePropLinksTypeForResponse
+
+
+class ContentTreePropLinksType(TypedDict):
+    """ContentTreePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentTreePropLinksTypeForResponse(TypedDict):
+    """ContentTreePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentTreePropEntriesItemsType(TypedDict):
+    """ContentTreePropEntriesItems"""
+
+    type: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentTreePropEntriesItemsPropLinksType
+
+
+class ContentTreePropEntriesItemsTypeForResponse(TypedDict):
+    """ContentTreePropEntriesItems"""
+
+    type: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentTreePropEntriesItemsPropLinksTypeForResponse
+
+
+class ContentTreePropEntriesItemsPropLinksType(TypedDict):
+    """ContentTreePropEntriesItemsPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentTreePropEntriesItemsPropLinksTypeForResponse(TypedDict):
+    """ContentTreePropEntriesItemsPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "AddedToProjectIssueEventPropProjectCardType",
-    "AddedToProjectIssueEventType",
+    "ContentTreePropEntriesItemsPropLinksType",
+    "ContentTreePropEntriesItemsPropLinksTypeForResponse",
+    "ContentTreePropEntriesItemsType",
+    "ContentTreePropEntriesItemsTypeForResponse",
+    "ContentTreePropLinksType",
+    "ContentTreePropLinksTypeForResponse",
+    "ContentTreeType",
+    "ContentTreeTypeForResponse",
 )

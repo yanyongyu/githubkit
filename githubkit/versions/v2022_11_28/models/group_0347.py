@@ -9,48 +9,90 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0019 import LicenseSimple
+from .group_0344 import Metadata
 
 
-class LicenseContent(GitHubModel):
-    """License Content
+class Snapshot(GitHubModel):
+    """snapshot
 
-    License Content
+    Create a new snapshot of a repository's dependencies.
     """
 
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    size: int = Field()
-    url: str = Field()
-    html_url: Union[str, None] = Field()
-    git_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    type: str = Field()
-    content: str = Field()
-    encoding: str = Field()
-    links: LicenseContentPropLinks = Field(alias="_links")
-    license_: Union[None, LicenseSimple] = Field(alias="license")
+    version: int = Field(
+        description="The version of the repository snapshot submission."
+    )
+    job: SnapshotPropJob = Field()
+    sha: str = Field(
+        min_length=40,
+        max_length=40,
+        description="The commit SHA associated with this dependency snapshot. Maximum length: 40 characters.",
+    )
+    ref: str = Field(
+        pattern="^refs/",
+        description="The repository branch that triggered this snapshot.",
+    )
+    detector: SnapshotPropDetector = Field(
+        description="A description of the detector used."
+    )
+    metadata: Missing[Metadata] = Field(
+        default=UNSET,
+        title="metadata",
+        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
+    )
+    manifests: Missing[SnapshotPropManifests] = Field(
+        default=UNSET,
+        description="A collection of package manifests, which are a collection of related dependencies declared in a file or representing a logical group of dependencies.",
+    )
+    scanned: _dt.datetime = Field(
+        description="The time at which the snapshot was scanned."
+    )
 
 
-class LicenseContentPropLinks(GitHubModel):
-    """LicenseContentPropLinks"""
+class SnapshotPropJob(GitHubModel):
+    """SnapshotPropJob"""
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
+    id: str = Field(description="The external ID of the job.")
+    correlator: str = Field(
+        description="Correlator provides a key that is used to group snapshots submitted over time. Only the \"latest\" submitted snapshot for a given combination of `job.correlator` and `detector.name` will be considered when calculating a repository's current dependencies. Correlator should be as unique as it takes to distinguish all detection runs for a given \"wave\" of CI workflow you run. If you're using GitHub Actions, a good default value for this could be the environment variables GITHUB_WORKFLOW and GITHUB_JOB concatenated together. If you're using a build matrix, then you'll also need to add additional key(s) to distinguish between each submission inside a matrix variation."
+    )
+    html_url: Missing[str] = Field(default=UNSET, description="The url for the job.")
 
 
-model_rebuild(LicenseContent)
-model_rebuild(LicenseContentPropLinks)
+class SnapshotPropDetector(GitHubModel):
+    """SnapshotPropDetector
+
+    A description of the detector used.
+    """
+
+    name: str = Field(description="The name of the detector used.")
+    version: str = Field(description="The version of the detector used.")
+    url: str = Field(description="The url of the detector used.")
+
+
+class SnapshotPropManifests(ExtraGitHubModel):
+    """SnapshotPropManifests
+
+    A collection of package manifests, which are a collection of related
+    dependencies declared in a file or representing a logical group of dependencies.
+    """
+
+
+model_rebuild(Snapshot)
+model_rebuild(SnapshotPropJob)
+model_rebuild(SnapshotPropDetector)
+model_rebuild(SnapshotPropManifests)
 
 __all__ = (
-    "LicenseContent",
-    "LicenseContentPropLinks",
+    "Snapshot",
+    "SnapshotPropDetector",
+    "SnapshotPropJob",
+    "SnapshotPropManifests",
 )

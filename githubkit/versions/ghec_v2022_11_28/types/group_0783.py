@@ -9,77 +9,103 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0530 import ProjectsV2StatusUpdateType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0580 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_0784 import (
+    WebhookIssuesEditedPropIssueType,
+    WebhookIssuesEditedPropIssueTypeForResponse,
+)
 
 
-class WebhookProjectsV2StatusUpdateEditedType(TypedDict):
-    """Projects v2 Status Update Edited Event"""
+class WebhookIssuesEditedType(TypedDict):
+    """issues edited event"""
 
     action: Literal["edited"]
-    changes: NotRequired[WebhookProjectsV2StatusUpdateEditedPropChangesType]
+    changes: WebhookIssuesEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_status_update: ProjectsV2StatusUpdateType
+    issue: WebhookIssuesEditedPropIssueType
+    label: NotRequired[WebhooksLabelType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookProjectsV2StatusUpdateEditedPropChangesType(TypedDict):
-    """WebhookProjectsV2StatusUpdateEditedPropChanges"""
+class WebhookIssuesEditedTypeForResponse(TypedDict):
+    """issues edited event"""
 
-    body: NotRequired[WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyType]
-    status: NotRequired[WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType]
-    start_date: NotRequired[
-        WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateType
-    ]
-    target_date: NotRequired[
-        WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType
-    ]
-
-
-class WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyType(TypedDict):
-    """WebhookProjectsV2StatusUpdateEditedPropChangesPropBody"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    action: Literal["edited"]
+    changes: WebhookIssuesEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    issue: WebhookIssuesEditedPropIssueTypeForResponse
+    label: NotRequired[WebhooksLabelTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
-class WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType(TypedDict):
-    """WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus"""
+class WebhookIssuesEditedPropChangesType(TypedDict):
+    """WebhookIssuesEditedPropChanges
 
-    from_: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ]
-    to: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ]
+    The changes to the issue.
+    """
 
-
-class WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateType(TypedDict):
-    """WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate"""
-
-    from_: NotRequired[Union[date, None]]
-    to: NotRequired[Union[date, None]]
+    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyType]
+    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleType]
 
 
-class WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType(TypedDict):
-    """WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate"""
+class WebhookIssuesEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookIssuesEditedPropChanges
 
-    from_: NotRequired[Union[date, None]]
-    to: NotRequired[Union[date, None]]
+    The changes to the issue.
+    """
+
+    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyTypeForResponse]
+    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleTypeForResponse]
+
+
+class WebhookIssuesEditedPropChangesPropBodyType(TypedDict):
+    """WebhookIssuesEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookIssuesEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookIssuesEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookIssuesEditedPropChangesPropTitleType(TypedDict):
+    """WebhookIssuesEditedPropChangesPropTitle"""
+
+    from_: str
+
+
+class WebhookIssuesEditedPropChangesPropTitleTypeForResponse(TypedDict):
+    """WebhookIssuesEditedPropChangesPropTitle"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyType",
-    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateType",
-    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType",
-    "WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType",
-    "WebhookProjectsV2StatusUpdateEditedPropChangesType",
-    "WebhookProjectsV2StatusUpdateEditedType",
+    "WebhookIssuesEditedPropChangesPropBodyType",
+    "WebhookIssuesEditedPropChangesPropBodyTypeForResponse",
+    "WebhookIssuesEditedPropChangesPropTitleType",
+    "WebhookIssuesEditedPropChangesPropTitleTypeForResponse",
+    "WebhookIssuesEditedPropChangesType",
+    "WebhookIssuesEditedPropChangesTypeForResponse",
+    "WebhookIssuesEditedType",
+    "WebhookIssuesEditedTypeForResponse",
 )

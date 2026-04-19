@@ -11,13 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0296 import CheckRunType, CheckRunTypeForResponse
 
-class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType(
+
+class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
+
+    total_count: int
+    check_runs: list[CheckRunType]
+
+
+class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody"""
+    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
 
-    body: str
+    total_count: int
+    check_runs: list[CheckRunTypeForResponse]
 
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType",)
+__all__ = (
+    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type",
+    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse",
+)

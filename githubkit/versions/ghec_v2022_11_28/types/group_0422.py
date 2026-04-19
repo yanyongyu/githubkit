@@ -9,20 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0112 import RepositoryRulePullRequestPropParametersType
+from .group_0423 import (
+    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType,
+    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse,
+)
 
 
-class RepositoryRuleDetailedOneof7Type(TypedDict):
-    """RepositoryRuleDetailedOneof7"""
+class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    id: int
+    node_id: str
+    prevent_self_review: NotRequired[bool]
+    type: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
+    ]
 
 
-__all__ = ("RepositoryRuleDetailedOneof7Type",)
+class EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
+
+    id: int
+    node_id: str
+    prevent_self_review: NotRequired[bool]
+    type: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse]
+    ]
+
+
+__all__ = (
+    "EnvironmentPropProtectionRulesItemsAnyof1Type",
+    "EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse",
+)

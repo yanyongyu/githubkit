@@ -22,9 +22,17 @@ from githubkit.utils import UNSET, exclude_unset
 if TYPE_CHECKING:
     from githubkit import GitHubCore
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..models import EmptyObject, OidcCustomSub
-    from ..types import EmptyObjectType, OidcCustomSubType
+    from ..models import EmptyObject, OidcCustomPropertyInclusion, OidcCustomSub
+    from ..types import (
+        EmptyObjectTypeForResponse,
+        OidcCustomPropertyInclusionInputType,
+        OidcCustomPropertyInclusionTypeForResponse,
+        OidcCustomSubTypeForResponse,
+        OrgsOrgActionsOidcCustomizationSubPutBodyType,
+    )
 
 
 class OidcClient:
@@ -42,13 +50,621 @@ class OidcClient:
             "Do not use this client after the client has been collected."
         )
 
+    def list_oidc_custom_property_inclusions_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[OidcCustomPropertyInclusion],
+        list[OidcCustomPropertyInclusionTypeForResponse],
+    ]:
+        """oidc/list-oidc-custom-property-inclusions-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/oidc/customization/properties/repo
+
+        Lists the repository custom properties that are included in the OIDC token for repository actions in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#list-oidc-custom-property-inclusions-for-an-enterprise
+        """
+
+        from ..models import BasicError, OidcCustomPropertyInclusion
+
+        url = f"/enterprises/{enterprise}/actions/oidc/customization/properties/repo"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[OidcCustomPropertyInclusion],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    async def async_list_oidc_custom_property_inclusions_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[OidcCustomPropertyInclusion],
+        list[OidcCustomPropertyInclusionTypeForResponse],
+    ]:
+        """oidc/list-oidc-custom-property-inclusions-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/oidc/customization/properties/repo
+
+        Lists the repository custom properties that are included in the OIDC token for repository actions in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#list-oidc-custom-property-inclusions-for-an-enterprise
+        """
+
+        from ..models import BasicError, OidcCustomPropertyInclusion
+
+        url = f"/enterprises/{enterprise}/actions/oidc/customization/properties/repo"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[OidcCustomPropertyInclusion],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    @overload
+    def create_oidc_custom_property_inclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OidcCustomPropertyInclusionInputType,
+    ) -> Response[
+        OidcCustomPropertyInclusion, OidcCustomPropertyInclusionTypeForResponse
+    ]: ...
+
+    @overload
+    def create_oidc_custom_property_inclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        custom_property_name: str,
+    ) -> Response[
+        OidcCustomPropertyInclusion, OidcCustomPropertyInclusionTypeForResponse
+    ]: ...
+
+    def create_oidc_custom_property_inclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OidcCustomPropertyInclusionInputType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OidcCustomPropertyInclusion, OidcCustomPropertyInclusionTypeForResponse
+    ]:
+        """oidc/create-oidc-custom-property-inclusion-for-enterprise
+
+        POST /enterprises/{enterprise}/actions/oidc/customization/properties/repo
+
+        Adds a repository custom property to be included in the OIDC token for repository actions in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#create-an-oidc-custom-property-inclusion-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            OidcCustomPropertyInclusion,
+            OidcCustomPropertyInclusionInput,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/oidc/customization/properties/repo"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OidcCustomPropertyInclusionInput, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OidcCustomPropertyInclusion,
+            error_models={
+                "403": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_oidc_custom_property_inclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OidcCustomPropertyInclusionInputType,
+    ) -> Response[
+        OidcCustomPropertyInclusion, OidcCustomPropertyInclusionTypeForResponse
+    ]: ...
+
+    @overload
+    async def async_create_oidc_custom_property_inclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        custom_property_name: str,
+    ) -> Response[
+        OidcCustomPropertyInclusion, OidcCustomPropertyInclusionTypeForResponse
+    ]: ...
+
+    async def async_create_oidc_custom_property_inclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OidcCustomPropertyInclusionInputType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OidcCustomPropertyInclusion, OidcCustomPropertyInclusionTypeForResponse
+    ]:
+        """oidc/create-oidc-custom-property-inclusion-for-enterprise
+
+        POST /enterprises/{enterprise}/actions/oidc/customization/properties/repo
+
+        Adds a repository custom property to be included in the OIDC token for repository actions in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#create-an-oidc-custom-property-inclusion-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            OidcCustomPropertyInclusion,
+            OidcCustomPropertyInclusionInput,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/oidc/customization/properties/repo"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OidcCustomPropertyInclusionInput, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OidcCustomPropertyInclusion,
+            error_models={
+                "403": BasicError,
+            },
+        )
+
+    def delete_oidc_custom_property_inclusion_for_enterprise(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """oidc/delete-oidc-custom-property-inclusion-for-enterprise
+
+        DELETE /enterprises/{enterprise}/actions/oidc/customization/properties/repo/{custom_property_name}
+
+        Removes a repository custom property from being included in the OIDC token for repository actions in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#delete-an-oidc-custom-property-inclusion-for-an-enterprise
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/actions/oidc/customization/properties/repo/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+            },
+        )
+
+    async def async_delete_oidc_custom_property_inclusion_for_enterprise(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """oidc/delete-oidc-custom-property-inclusion-for-enterprise
+
+        DELETE /enterprises/{enterprise}/actions/oidc/customization/properties/repo/{custom_property_name}
+
+        Removes a repository custom property from being included in the OIDC token for repository actions in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#delete-an-oidc-custom-property-inclusion-for-an-enterprise
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/actions/oidc/customization/properties/repo/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+            },
+        )
+
+    def list_oidc_custom_property_inclusions_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[OidcCustomPropertyInclusion],
+        list[OidcCustomPropertyInclusionTypeForResponse],
+    ]:
+        """oidc/list-oidc-custom-property-inclusions-for-org
+
+        GET /orgs/{org}/actions/oidc/customization/properties/repo
+
+        Lists the repository custom properties that are included in the OIDC token for repository actions in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#list-oidc-custom-property-inclusions-for-an-organization
+        """
+
+        from ..models import BasicError, OidcCustomPropertyInclusion
+
+        url = f"/orgs/{org}/actions/oidc/customization/properties/repo"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[OidcCustomPropertyInclusion],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    async def async_list_oidc_custom_property_inclusions_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[OidcCustomPropertyInclusion],
+        list[OidcCustomPropertyInclusionTypeForResponse],
+    ]:
+        """oidc/list-oidc-custom-property-inclusions-for-org
+
+        GET /orgs/{org}/actions/oidc/customization/properties/repo
+
+        Lists the repository custom properties that are included in the OIDC token for repository actions in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#list-oidc-custom-property-inclusions-for-an-organization
+        """
+
+        from ..models import BasicError, OidcCustomPropertyInclusion
+
+        url = f"/orgs/{org}/actions/oidc/customization/properties/repo"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[OidcCustomPropertyInclusion],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    @overload
+    def create_oidc_custom_property_inclusion_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OidcCustomPropertyInclusionInputType,
+    ) -> Response[
+        OidcCustomPropertyInclusion, OidcCustomPropertyInclusionTypeForResponse
+    ]: ...
+
+    @overload
+    def create_oidc_custom_property_inclusion_for_org(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        custom_property_name: str,
+    ) -> Response[
+        OidcCustomPropertyInclusion, OidcCustomPropertyInclusionTypeForResponse
+    ]: ...
+
+    def create_oidc_custom_property_inclusion_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OidcCustomPropertyInclusionInputType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OidcCustomPropertyInclusion, OidcCustomPropertyInclusionTypeForResponse
+    ]:
+        """oidc/create-oidc-custom-property-inclusion-for-org
+
+        POST /orgs/{org}/actions/oidc/customization/properties/repo
+
+        Adds a repository custom property to be included in the OIDC token for repository actions in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#create-an-oidc-custom-property-inclusion-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OidcCustomPropertyInclusion,
+            OidcCustomPropertyInclusionInput,
+        )
+
+        url = f"/orgs/{org}/actions/oidc/customization/properties/repo"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OidcCustomPropertyInclusionInput, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OidcCustomPropertyInclusion,
+            error_models={
+                "403": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_oidc_custom_property_inclusion_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OidcCustomPropertyInclusionInputType,
+    ) -> Response[
+        OidcCustomPropertyInclusion, OidcCustomPropertyInclusionTypeForResponse
+    ]: ...
+
+    @overload
+    async def async_create_oidc_custom_property_inclusion_for_org(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        custom_property_name: str,
+    ) -> Response[
+        OidcCustomPropertyInclusion, OidcCustomPropertyInclusionTypeForResponse
+    ]: ...
+
+    async def async_create_oidc_custom_property_inclusion_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OidcCustomPropertyInclusionInputType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OidcCustomPropertyInclusion, OidcCustomPropertyInclusionTypeForResponse
+    ]:
+        """oidc/create-oidc-custom-property-inclusion-for-org
+
+        POST /orgs/{org}/actions/oidc/customization/properties/repo
+
+        Adds a repository custom property to be included in the OIDC token for repository actions in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#create-an-oidc-custom-property-inclusion-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OidcCustomPropertyInclusion,
+            OidcCustomPropertyInclusionInput,
+        )
+
+        url = f"/orgs/{org}/actions/oidc/customization/properties/repo"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OidcCustomPropertyInclusionInput, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OidcCustomPropertyInclusion,
+            error_models={
+                "403": BasicError,
+            },
+        )
+
+    def delete_oidc_custom_property_inclusion_for_org(
+        self,
+        org: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """oidc/delete-oidc-custom-property-inclusion-for-org
+
+        DELETE /orgs/{org}/actions/oidc/customization/properties/repo/{custom_property_name}
+
+        Removes a repository custom property from being included in the OIDC token for repository actions in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#delete-an-oidc-custom-property-inclusion-for-an-organization
+        """
+
+        from ..models import BasicError
+
+        url = f"/orgs/{org}/actions/oidc/customization/properties/repo/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+            },
+        )
+
+    async def async_delete_oidc_custom_property_inclusion_for_org(
+        self,
+        org: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """oidc/delete-oidc-custom-property-inclusion-for-org
+
+        DELETE /orgs/{org}/actions/oidc/customization/properties/repo/{custom_property_name}
+
+        Removes a repository custom property from being included in the OIDC token for repository actions in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#delete-an-oidc-custom-property-inclusion-for-an-organization
+        """
+
+        from ..models import BasicError
+
+        url = f"/orgs/{org}/actions/oidc/customization/properties/repo/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+            },
+        )
+
     def get_oidc_custom_sub_template_for_org(
         self,
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OidcCustomSub, OidcCustomSubType]:
+    ) -> Response[OidcCustomSub, OidcCustomSubTypeForResponse]:
         """oidc/get-oidc-custom-sub-template-for-org
 
         GET /orgs/{org}/actions/oidc/customization/sub
@@ -80,7 +696,7 @@ class OidcClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OidcCustomSub, OidcCustomSubType]:
+    ) -> Response[OidcCustomSub, OidcCustomSubTypeForResponse]:
         """oidc/get-oidc-custom-sub-template-for-org
 
         GET /orgs/{org}/actions/oidc/customization/sub
@@ -113,8 +729,8 @@ class OidcClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: OidcCustomSubType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+        data: OrgsOrgActionsOidcCustomizationSubPutBodyType,
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def update_oidc_custom_sub_template_for_org(
@@ -124,8 +740,8 @@ class OidcClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        include_claim_keys: list[str],
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+        include_claim_keys: Missing[list[str]] = UNSET,
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def update_oidc_custom_sub_template_for_org(
         self,
@@ -133,9 +749,9 @@ class OidcClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[OidcCustomSubType] = UNSET,
+        data: Missing[OrgsOrgActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """oidc/update-oidc-custom-sub-template-for-org
 
         PUT /orgs/{org}/actions/oidc/customization/sub
@@ -147,7 +763,11 @@ class OidcClient:
         See also: https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization
         """
 
-        from ..models import BasicError, EmptyObject, OidcCustomSub
+        from ..models import (
+            BasicError,
+            EmptyObject,
+            OrgsOrgActionsOidcCustomizationSubPutBody,
+        )
 
         url = f"/orgs/{org}/actions/oidc/customization/sub"
 
@@ -159,7 +779,7 @@ class OidcClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(OidcCustomSub, json)
+            json = type_validate_python(OrgsOrgActionsOidcCustomizationSubPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -182,8 +802,8 @@ class OidcClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: OidcCustomSubType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+        data: OrgsOrgActionsOidcCustomizationSubPutBodyType,
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_update_oidc_custom_sub_template_for_org(
@@ -193,8 +813,8 @@ class OidcClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        include_claim_keys: list[str],
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+        include_claim_keys: Missing[list[str]] = UNSET,
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_update_oidc_custom_sub_template_for_org(
         self,
@@ -202,9 +822,9 @@ class OidcClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[OidcCustomSubType] = UNSET,
+        data: Missing[OrgsOrgActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """oidc/update-oidc-custom-sub-template-for-org
 
         PUT /orgs/{org}/actions/oidc/customization/sub
@@ -216,7 +836,11 @@ class OidcClient:
         See also: https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization
         """
 
-        from ..models import BasicError, EmptyObject, OidcCustomSub
+        from ..models import (
+            BasicError,
+            EmptyObject,
+            OrgsOrgActionsOidcCustomizationSubPutBody,
+        )
 
         url = f"/orgs/{org}/actions/oidc/customization/sub"
 
@@ -228,7 +852,7 @@ class OidcClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(OidcCustomSub, json)
+            json = type_validate_python(OrgsOrgActionsOidcCustomizationSubPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(

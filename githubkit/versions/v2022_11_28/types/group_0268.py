@@ -9,31 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
 
-from .group_0028 import CodeSecurityConfigurationType
 
+class SimpleCommitType(TypedDict):
+    """Simple Commit
 
-class CodeSecurityConfigurationForRepositoryType(TypedDict):
-    """CodeSecurityConfigurationForRepository
-
-    Code security configuration associated with a repository and attachment status
+    A commit.
     """
 
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    id: str
+    tree_id: str
+    message: str
+    timestamp: _dt.datetime
+    author: Union[SimpleCommitPropAuthorType, None]
+    committer: Union[SimpleCommitPropCommitterType, None]
 
 
-__all__ = ("CodeSecurityConfigurationForRepositoryType",)
+class SimpleCommitTypeForResponse(TypedDict):
+    """Simple Commit
+
+    A commit.
+    """
+
+    id: str
+    tree_id: str
+    message: str
+    timestamp: str
+    author: Union[SimpleCommitPropAuthorTypeForResponse, None]
+    committer: Union[SimpleCommitPropCommitterTypeForResponse, None]
+
+
+class SimpleCommitPropAuthorType(TypedDict):
+    """SimpleCommitPropAuthor
+
+    Information about the Git author
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropAuthorTypeForResponse(TypedDict):
+    """SimpleCommitPropAuthor
+
+    Information about the Git author
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropCommitterType(TypedDict):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropCommitterTypeForResponse(TypedDict):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
+
+
+__all__ = (
+    "SimpleCommitPropAuthorType",
+    "SimpleCommitPropAuthorTypeForResponse",
+    "SimpleCommitPropCommitterType",
+    "SimpleCommitPropCommitterTypeForResponse",
+    "SimpleCommitType",
+    "SimpleCommitTypeForResponse",
+)

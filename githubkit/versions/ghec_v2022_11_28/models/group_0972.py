@@ -15,21 +15,17 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00
-    """
-
-    message: Missing[str] = Field(default=UNSET)
+from .group_0973 import WebhookSecurityAndAnalysisPropChangesPropFrom
 
 
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200
-)
+class WebhookSecurityAndAnalysisPropChanges(GitHubModel):
+    """WebhookSecurityAndAnalysisPropChanges"""
 
-__all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200",
-)
+    from_: Missing[WebhookSecurityAndAnalysisPropChangesPropFrom] = Field(
+        default=UNSET, alias="from"
+    )
+
+
+model_rebuild(WebhookSecurityAndAnalysisPropChanges)
+
+__all__ = ("WebhookSecurityAndAnalysisPropChanges",)

@@ -12,19 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsPostBody(GitHubModel):
-    """OrgsOrgProjectsPostBody"""
+class ApplicationsClientIdGrantDeleteBody(GitHubModel):
+    """ApplicationsClientIdGrantDeleteBody"""
 
-    name: str = Field(description="The name of the project.")
-    body: Missing[str] = Field(
-        default=UNSET, description="The description of the project."
+    access_token: str = Field(
+        description="The OAuth access token used to authenticate to the GitHub API."
     )
 
 
-model_rebuild(OrgsOrgProjectsPostBody)
+model_rebuild(ApplicationsClientIdGrantDeleteBody)
 
-__all__ = ("OrgsOrgProjectsPostBody",)
+__all__ = ("ApplicationsClientIdGrantDeleteBody",)

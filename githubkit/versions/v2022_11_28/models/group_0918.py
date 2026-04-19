@@ -18,20 +18,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+class AgentsReposOwnerRepoTasksGetResponse400(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse400
 
-    scope: Literal[
-        "all", "all_without_configurations", "public", "private_or_internal", "selected"
-    ] = Field(
-        description="The type of repositories to attach the configuration to. `selected` means the configuration will be attached to only the repositories specified by `selected_repository_ids`"
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    errors: Missing[list[AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems]] = (
+        Field(
+            default=UNSET,
+            description="List of validation errors (present only for 422 responses)",
+        )
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
         default=UNSET,
-        description="An array of repository IDs to attach the configuration to. You can only provide a list of repository ids when the `scope` is set to `selected`.",
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse400)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody",)
+__all__ = (
+    "AgentsReposOwnerRepoTasksGetResponse400",
+    "AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems",
+)

@@ -9,29 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0255 import RateLimitType, RateLimitTypeForResponse
+from .group_0257 import (
+    RateLimitOverviewPropResourcesType,
+    RateLimitOverviewPropResourcesTypeForResponse,
+)
 
 
-class CodeScanningCodeqlDatabaseType(TypedDict):
-    """CodeQL Database
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
 
-    A CodeQL database.
+    Rate Limit Overview
     """
 
-    id: int
-    name: str
-    language: str
-    uploader: SimpleUserType
-    content_type: str
-    size: int
-    created_at: datetime
-    updated_at: datetime
-    url: str
-    commit_oid: NotRequired[Union[str, None]]
+    resources: RateLimitOverviewPropResourcesType
+    rate: RateLimitType
 
 
-__all__ = ("CodeScanningCodeqlDatabaseType",)
+class RateLimitOverviewTypeForResponse(TypedDict):
+    """Rate Limit Overview
+
+    Rate Limit Overview
+    """
+
+    resources: RateLimitOverviewPropResourcesTypeForResponse
+    rate: RateLimitTypeForResponse
+
+
+__all__ = (
+    "RateLimitOverviewType",
+    "RateLimitOverviewTypeForResponse",
+)

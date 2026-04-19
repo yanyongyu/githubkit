@@ -9,53 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleViolationErrorType(TypedDict):
-    """RepositoryRuleViolationError
-
-    Repository rule violation was detected
-    """
-
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    status: NotRequired[str]
-    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataType]
+from .group_0286 import GitUserType, GitUserTypeForResponse
+from .group_0287 import VerificationType, VerificationTypeForResponse
 
 
-class RepositoryRuleViolationErrorPropMetadataType(TypedDict):
-    """RepositoryRuleViolationErrorPropMetadata"""
+class CommitPropCommitType(TypedDict):
+    """CommitPropCommit"""
 
-    secret_scanning: NotRequired[
-        RepositoryRuleViolationErrorPropMetadataPropSecretScanningType
-    ]
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningType(TypedDict):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
-
-    bypass_placeholders: NotRequired[
-        list[
-            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType
-        ]
-    ]
+    url: str
+    author: Union[None, GitUserType]
+    committer: Union[None, GitUserType]
+    message: str
+    comment_count: int
+    tree: CommitPropCommitPropTreeType
+    verification: NotRequired[VerificationType]
 
 
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType(
-    TypedDict
-):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
-    Items
-    """
+class CommitPropCommitTypeForResponse(TypedDict):
+    """CommitPropCommit"""
 
-    placeholder_id: NotRequired[str]
-    token_type: NotRequired[str]
+    url: str
+    author: Union[None, GitUserTypeForResponse]
+    committer: Union[None, GitUserTypeForResponse]
+    message: str
+    comment_count: int
+    tree: CommitPropCommitPropTreeTypeForResponse
+    verification: NotRequired[VerificationTypeForResponse]
+
+
+class CommitPropCommitPropTreeType(TypedDict):
+    """CommitPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class CommitPropCommitPropTreeTypeForResponse(TypedDict):
+    """CommitPropCommitPropTree"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningType",
-    "RepositoryRuleViolationErrorPropMetadataType",
-    "RepositoryRuleViolationErrorType",
+    "CommitPropCommitPropTreeType",
+    "CommitPropCommitPropTreeTypeForResponse",
+    "CommitPropCommitType",
+    "CommitPropCommitTypeForResponse",
 )

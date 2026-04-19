@@ -9,15 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0353 import (
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse,
+)
 
-class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
-    """Deployment branch and tag policy name pattern"""
 
-    name: str
-    type: NotRequired[Literal["branch", "tag"]]
+class ProtectedBranchPullRequestReviewType(TypedDict):
+    """Protected Branch Pull Request Review
+
+    Protected Branch Pull Request Review
+    """
+
+    url: NotRequired[str]
+    dismissal_restrictions: NotRequired[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictionsType
+    ]
+    bypass_pull_request_allowances: NotRequired[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType
+    ]
+    dismiss_stale_reviews: bool
+    require_code_owner_reviews: bool
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
 
 
-__all__ = ("DeploymentBranchPolicyNamePatternWithTypeType",)
+class ProtectedBranchPullRequestReviewTypeForResponse(TypedDict):
+    """Protected Branch Pull Request Review
+
+    Protected Branch Pull Request Review
+    """
+
+    url: NotRequired[str]
+    dismissal_restrictions: NotRequired[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse
+    ]
+    bypass_pull_request_allowances: NotRequired[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse
+    ]
+    dismiss_stale_reviews: bool
+    require_code_owner_reviews: bool
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
+
+
+__all__ = (
+    "ProtectedBranchPullRequestReviewType",
+    "ProtectedBranchPullRequestReviewTypeForResponse",
+)

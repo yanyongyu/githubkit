@@ -9,55 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
-from .group_0020 import RepositoryType
-from .group_0164 import MilestoneType
-from .group_0165 import IssueTypeType
-from .group_0166 import ReactionRollupType
-from .group_0167 import IssueDependenciesSummaryType, SubIssuesSummaryType
-from .group_0471 import SearchResultTextMatchesItemsType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0084 import TeamSimpleType, TeamSimpleTypeForResponse
+from .group_0202 import MilestoneType, MilestoneTypeForResponse
+from .group_0301 import AutoMergeType, AutoMergeTypeForResponse
+from .group_0476 import (
+    PullRequestPropLabelsItemsType,
+    PullRequestPropLabelsItemsTypeForResponse,
+)
+from .group_0477 import (
+    PullRequestPropBaseType,
+    PullRequestPropBaseTypeForResponse,
+    PullRequestPropHeadType,
+    PullRequestPropHeadTypeForResponse,
+)
+from .group_0478 import PullRequestPropLinksType, PullRequestPropLinksTypeForResponse
 
 
-class IssueSearchResultItemType(TypedDict):
-    """Issue Search Result Item
+class PullRequestType(TypedDict):
+    """Pull Request
 
-    Issue Search Result Item
+    Pull requests let you tell others about changes you've pushed to a repository on
+    GitHub. Once a pull request is sent, interested parties can review the set of
+    changes, discuss potential modifications, and even push follow-up commits if
+    necessary.
     """
 
     url: str
-    repository_url: str
-    labels_url: str
-    comments_url: str
-    events_url: str
-    html_url: str
     id: int
     node_id: str
+    html_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
     number: int
-    title: str
+    state: Literal["open", "closed"]
     locked: bool
-    active_lock_reason: NotRequired[Union[str, None]]
-    assignees: NotRequired[Union[list[SimpleUserType], None]]
-    user: Union[None, SimpleUserType]
-    labels: list[IssueSearchResultItemPropLabelsItemsType]
-    sub_issues_summary: NotRequired[SubIssuesSummaryType]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    assignee: Union[None, SimpleUserType]
+    title: str
+    user: SimpleUserType
+    body: Union[str, None]
+    labels: list[PullRequestPropLabelsItemsType]
     milestone: Union[None, MilestoneType]
-    comments: int
-    created_at: datetime
-    updated_at: datetime
-    closed_at: Union[datetime, None]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
-    pull_request: NotRequired[IssueSearchResultItemPropPullRequestType]
-    body: NotRequired[str]
-    score: float
+    active_lock_reason: NotRequired[Union[str, None]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    closed_at: Union[_dt.datetime, None]
+    merged_at: Union[_dt.datetime, None]
+    merge_commit_sha: Union[str, None]
+    assignee: Union[None, SimpleUserType]
+    assignees: NotRequired[list[SimpleUserType]]
+    requested_reviewers: NotRequired[list[SimpleUserType]]
+    requested_teams: NotRequired[list[TeamSimpleType]]
+    head: PullRequestPropHeadType
+    base: PullRequestPropBaseType
+    links: PullRequestPropLinksType
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -68,49 +82,91 @@ class IssueSearchResultItemType(TypedDict):
         "NONE",
         "OWNER",
     ]
+    auto_merge: Union[AutoMergeType, None]
     draft: NotRequired[bool]
-    repository: NotRequired[RepositoryType]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    timeline_url: NotRequired[str]
-    type: NotRequired[Union[IssueTypeType, None]]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    reactions: NotRequired[ReactionRollupType]
+    merged: bool
+    mergeable: Union[bool, None]
+    rebaseable: NotRequired[Union[bool, None]]
+    mergeable_state: str
+    merged_by: Union[None, SimpleUserType]
+    comments: int
+    review_comments: int
+    maintainer_can_modify: bool
+    commits: int
+    additions: int
+    deletions: int
+    changed_files: int
 
 
-class IssueSearchResultItemPropLabelsItemsType(TypedDict):
-    """IssueSearchResultItemPropLabelsItems"""
+class PullRequestTypeForResponse(TypedDict):
+    """Pull Request
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    default: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
+    Pull requests let you tell others about changes you've pushed to a repository on
+    GitHub. Once a pull request is sent, interested parties can review the set of
+    changes, discuss potential modifications, and even push follow-up commits if
+    necessary.
+    """
 
-
-class IssueSearchResultItemPropPullRequestType(TypedDict):
-    """IssueSearchResultItemPropPullRequest"""
-
-    merged_at: NotRequired[Union[datetime, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
-
-
-class SearchIssuesGetResponse200Type(TypedDict):
-    """SearchIssuesGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[IssueSearchResultItemType]
+    url: str
+    id: int
+    node_id: str
+    html_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: Literal["open", "closed"]
+    locked: bool
+    title: str
+    user: SimpleUserTypeForResponse
+    body: Union[str, None]
+    labels: list[PullRequestPropLabelsItemsTypeForResponse]
+    milestone: Union[None, MilestoneTypeForResponse]
+    active_lock_reason: NotRequired[Union[str, None]]
+    created_at: str
+    updated_at: str
+    closed_at: Union[str, None]
+    merged_at: Union[str, None]
+    merge_commit_sha: Union[str, None]
+    assignee: Union[None, SimpleUserTypeForResponse]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    requested_reviewers: NotRequired[list[SimpleUserTypeForResponse]]
+    requested_teams: NotRequired[list[TeamSimpleTypeForResponse]]
+    head: PullRequestPropHeadTypeForResponse
+    base: PullRequestPropBaseTypeForResponse
+    links: PullRequestPropLinksTypeForResponse
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    auto_merge: Union[AutoMergeTypeForResponse, None]
+    draft: NotRequired[bool]
+    merged: bool
+    mergeable: Union[bool, None]
+    rebaseable: NotRequired[Union[bool, None]]
+    mergeable_state: str
+    merged_by: Union[None, SimpleUserTypeForResponse]
+    comments: int
+    review_comments: int
+    maintainer_can_modify: bool
+    commits: int
+    additions: int
+    deletions: int
+    changed_files: int
 
 
 __all__ = (
-    "IssueSearchResultItemPropLabelsItemsType",
-    "IssueSearchResultItemPropPullRequestType",
-    "IssueSearchResultItemType",
-    "SearchIssuesGetResponse200Type",
+    "PullRequestType",
+    "PullRequestTypeForResponse",
 )

@@ -9,22 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class ActionsCacheUsageOrgEnterprise(GitHubModel):
-    """ActionsCacheUsageOrgEnterprise"""
+class PullRequestReviewEventPropReview(GitHubModel):
+    """PullRequestReviewEventPropReview"""
 
-    total_active_caches_count: int = Field(
-        description="The count of active caches across all repositories of an enterprise or an organization."
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    body: Missing[str] = Field(default=UNSET)
+    commit_id: Missing[str] = Field(default=UNSET)
+    submitted_at: Missing[Union[str, None]] = Field(default=UNSET)
+    state: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    pull_request_url: Missing[str] = Field(default=UNSET)
+    links: Missing[PullRequestReviewEventPropReviewPropLinks] = Field(
+        default=UNSET, alias="_links"
     )
-    total_active_caches_size_in_bytes: int = Field(
-        description="The total size in bytes of all active cache items across all repositories of an enterprise or an organization."
-    )
+    updated_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ActionsCacheUsageOrgEnterprise)
+class PullRequestReviewEventPropReviewPropLinks(GitHubModel):
+    """PullRequestReviewEventPropReviewPropLinks"""
 
-__all__ = ("ActionsCacheUsageOrgEnterprise",)
+    html: PullRequestReviewEventPropReviewPropLinksPropHtml = Field()
+    pull_request: PullRequestReviewEventPropReviewPropLinksPropPullRequest = Field()
+
+
+class PullRequestReviewEventPropReviewPropLinksPropHtml(GitHubModel):
+    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
+
+    href: str = Field()
+
+
+class PullRequestReviewEventPropReviewPropLinksPropPullRequest(GitHubModel):
+    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
+
+    href: str = Field()
+
+
+model_rebuild(PullRequestReviewEventPropReview)
+model_rebuild(PullRequestReviewEventPropReviewPropLinks)
+model_rebuild(PullRequestReviewEventPropReviewPropLinksPropHtml)
+model_rebuild(PullRequestReviewEventPropReviewPropLinksPropPullRequest)
+
+__all__ = (
+    "PullRequestReviewEventPropReview",
+    "PullRequestReviewEventPropReviewPropLinks",
+    "PullRequestReviewEventPropReviewPropLinksPropHtml",
+    "PullRequestReviewEventPropReviewPropLinksPropPullRequest",
+)

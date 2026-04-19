@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,66 +18,147 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0020 import Repository
+from .group_0202 import Milestone
+from .group_0203 import IssueType
+from .group_0204 import ReactionRollup
+from .group_0205 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0207 import IssueComment
+from .group_0208 import IssueFieldValue
+from .group_0542 import SearchResultTextMatchesItems
 
-class WebhooksTeam1(GitHubModel):
-    """Team
 
-    Groups of organization members that gives permissions on specified repositories.
+class IssueSearchResultItem(GitHubModel):
+    """Issue Search Result Item
+
+    Issue Search Result Item
     """
 
-    deleted: Missing[bool] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the team"
+    url: str = Field()
+    repository_url: str = Field()
+    labels_url: str = Field()
+    comments_url: str = Field()
+    events_url: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    number: int = Field()
+    title: str = Field()
+    locked: bool = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    user: Union[None, SimpleUser] = Field()
+    labels: list[IssueSearchResultItemPropLabelsItems] = Field()
+    sub_issues_summary: Missing[SubIssuesSummary] = Field(
+        default=UNSET, title="Sub-issues Summary"
     )
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field(description="Unique identifier of the team")
-    members_url: Missing[str] = Field(default=UNSET)
-    name: str = Field(description="Name of the team")
+    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
+        default=UNSET, title="Issue Dependencies Summary"
+    )
+    issue_field_values: Missing[list[IssueFieldValue]] = Field(default=UNSET)
+    state: str = Field()
+    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    assignee: Union[None, SimpleUser] = Field()
+    milestone: Union[None, Milestone] = Field()
+    comments: int = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
+    pull_request: Missing[IssueSearchResultItemPropPullRequest] = Field(default=UNSET)
+    body: Missing[str] = Field(default=UNSET)
+    score: float = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    draft: Missing[bool] = Field(default=UNSET)
+    repository: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
+    )
+    body_html: Missing[str] = Field(default=UNSET)
+    body_text: Missing[str] = Field(default=UNSET)
+    timeline_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Union[IssueType, None]] = Field(
+        default=UNSET, title="Issue Type", description="The type of issue."
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    pinned_comment: Missing[Union[None, IssueComment]] = Field(default=UNSET)
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+
+
+class IssueSearchResultItemPropLabelsItems(GitHubModel):
+    """IssueSearchResultItemPropLabelsItems"""
+
+    id: Missing[int] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
-    parent: Missing[Union[WebhooksTeam1PropParent, None]] = Field(default=UNSET)
-    permission: Missing[str] = Field(
-        default=UNSET,
-        description="Permission that the team will have for its repositories",
+    url: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    color: Missing[str] = Field(default=UNSET)
+    default: Missing[bool] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class IssueSearchResultItemPropPullRequest(GitHubModel):
+    """IssueSearchResultItemPropPullRequest"""
+
+    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    diff_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    patch_url: Union[str, None] = Field()
+    url: Union[str, None] = Field()
+
+
+class SearchIssuesGetResponse200(GitHubModel):
+    """SearchIssuesGetResponse200"""
+
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[IssueSearchResultItem] = Field()
+    search_type: Literal["lexical", "semantic", "hybrid"] = Field(
+        description="The type of search that was performed. Possible values are `lexical`, `semantic`, or `hybrid`."
     )
-    privacy: Missing[Literal["open", "closed", "secret"]] = Field(default=UNSET)
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
+    lexical_fallback_reason: Missing[
+        list[
+            Literal[
+                "no_text_terms",
+                "quoted_text",
+                "non_issue_target",
+                "or_boolean_not_supported",
+                "no_accessible_repos",
+                "server_error",
+                "only_non_semantic_fields_requested",
+            ]
+        ]
     ] = Field(
         default=UNSET,
-        description="Whether team members will receive notifications when their team is @mentioned",
+        description="When a semantic or hybrid search falls back to lexical search, this field contains the reasons for the fallback. Only present when a fallback occurred.",
     )
-    repositories_url: Missing[str] = Field(default=UNSET)
-    slug: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET, description="URL for the team")
 
 
-class WebhooksTeam1PropParent(GitHubModel):
-    """WebhooksTeam1PropParent"""
-
-    description: Union[str, None] = Field(description="Description of the team")
-    html_url: str = Field()
-    id: int = Field(description="Unique identifier of the team")
-    members_url: str = Field()
-    name: str = Field(description="Name of the team")
-    node_id: str = Field()
-    permission: str = Field(
-        description="Permission that the team will have for its repositories"
-    )
-    privacy: Literal["open", "closed", "secret"] = Field()
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"] = (
-        Field(
-            description="Whether team members will receive notifications when their team is @mentioned"
-        )
-    )
-    repositories_url: str = Field()
-    slug: str = Field()
-    url: str = Field(description="URL for the team")
-
-
-model_rebuild(WebhooksTeam1)
-model_rebuild(WebhooksTeam1PropParent)
+model_rebuild(IssueSearchResultItem)
+model_rebuild(IssueSearchResultItemPropLabelsItems)
+model_rebuild(IssueSearchResultItemPropPullRequest)
+model_rebuild(SearchIssuesGetResponse200)
 
 __all__ = (
-    "WebhooksTeam1",
-    "WebhooksTeam1PropParent",
+    "IssueSearchResultItem",
+    "IssueSearchResultItemPropLabelsItems",
+    "IssueSearchResultItemPropPullRequest",
+    "SearchIssuesGetResponse200",
 )

@@ -9,47 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
-    """RequiredReviewerConfiguration
+class OrganizationCreateIssueType(GitHubModel):
+    """OrganizationCreateIssueType"""
 
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
-    """
-
-    file_patterns: list[str] = Field(
-        description="Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use the same syntax as `.gitignore` files."
+    name: str = Field(description="Name of the issue type.")
+    is_enabled: bool = Field(
+        description="Whether or not the issue type is enabled at the organization level."
     )
-    minimum_approvals: int = Field(
-        description="Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional."
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the issue type."
     )
-    reviewer: RepositoryRuleParamsReviewer = Field(
-        title="Reviewer", description="A required reviewing team"
-    )
+    color: Missing[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ] = Field(default=UNSET, description="Color for the issue type.")
 
 
-class RepositoryRuleParamsReviewer(GitHubModel):
-    """Reviewer
+model_rebuild(OrganizationCreateIssueType)
 
-    A required reviewing team
-    """
-
-    id: int = Field(
-        description="ID of the reviewer which must review changes to matching files."
-    )
-    type: Literal["Team"] = Field(description="The type of the reviewer")
-
-
-model_rebuild(RepositoryRuleParamsRequiredReviewerConfiguration)
-model_rebuild(RepositoryRuleParamsReviewer)
-
-__all__ = (
-    "RepositoryRuleParamsRequiredReviewerConfiguration",
-    "RepositoryRuleParamsReviewer",
-)
+__all__ = ("OrganizationCreateIssueType",)

@@ -27,4 +27,21 @@ class LicenseSimpleType(TypedDict):
     html_url: NotRequired[str]
 
 
-__all__ = ("LicenseSimpleType",)
+class LicenseSimpleTypeForResponse(TypedDict):
+    """License Simple
+
+    License Simple
+    """
+
+    key: str
+    name: str
+    url: Union[str, None]
+    spdx_id: Union[str, None]
+    node_id: str
+    html_url: NotRequired[str]
+
+
+__all__ = (
+    "LicenseSimpleType",
+    "LicenseSimpleTypeForResponse",
+)

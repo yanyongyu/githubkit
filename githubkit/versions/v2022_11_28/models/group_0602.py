@@ -18,17 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0433 import EnterpriseWebhooks
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
-from .group_0603 import WebhookIssuesClosedPropIssue
+from .group_0048 import Discussion
+from .group_0482 import EnterpriseWebhooks
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0485 import RepositoryWebhooks
 
 
-class WebhookIssuesClosed(GitHubModel):
-    """issues closed event"""
+class WebhookDiscussionUnpinned(GitHubModel):
+    """discussion unpinned event"""
 
-    action: Literal["closed"] = Field(description="The action that was performed.")
+    action: Literal["unpinned"] = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -38,9 +41,6 @@ class WebhookIssuesClosed(GitHubModel):
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    issue: WebhookIssuesClosedPropIssue = Field(
-        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -54,6 +54,6 @@ class WebhookIssuesClosed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesClosed)
+model_rebuild(WebhookDiscussionUnpinned)
 
-__all__ = ("WebhookIssuesClosed",)
+__all__ = ("WebhookDiscussionUnpinned",)

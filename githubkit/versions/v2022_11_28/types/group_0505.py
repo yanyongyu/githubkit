@@ -9,120 +9,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
+from typing_extensions import TypedDict
 
 
-class WebhookCodeScanningAlertReopenedByUserType(TypedDict):
-    """code_scanning_alert reopened_by_user event"""
+class WebhooksMarketplacePurchaseType(TypedDict):
+    """Marketplace Purchase"""
 
-    action: Literal["reopened_by_user"]
-    alert: WebhookCodeScanningAlertReopenedByUserPropAlertType
-    commit_oid: str
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: str
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    account: WebhooksMarketplacePurchasePropAccountType
+    billing_cycle: str
+    free_trial_ends_on: Union[str, None]
+    next_billing_date: Union[str, None]
+    on_free_trial: bool
+    plan: WebhooksMarketplacePurchasePropPlanType
+    unit_count: int
 
 
-class WebhookCodeScanningAlertReopenedByUserPropAlertType(TypedDict):
-    """WebhookCodeScanningAlertReopenedByUserPropAlert
+class WebhooksMarketplacePurchaseTypeForResponse(TypedDict):
+    """Marketplace Purchase"""
 
-    The code scanning alert involved in the event.
-    """
-
-    created_at: datetime
-    dismissed_at: None
-    dismissed_by: None
-    dismissed_comment: NotRequired[Union[str, None]]
-    dismissed_reason: None
-    fixed_at: NotRequired[None]
-    html_url: str
-    most_recent_instance: NotRequired[
-        Union[
-            WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstanceType,
-            None,
-        ]
-    ]
-    number: int
-    rule: WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleType
-    state: Union[None, Literal["open", "fixed"]]
-    tool: WebhookCodeScanningAlertReopenedByUserPropAlertPropToolType
-    url: str
+    account: WebhooksMarketplacePurchasePropAccountTypeForResponse
+    billing_cycle: str
+    free_trial_ends_on: Union[str, None]
+    next_billing_date: Union[str, None]
+    on_free_trial: bool
+    plan: WebhooksMarketplacePurchasePropPlanTypeForResponse
+    unit_count: int
 
 
-class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstanceType(
-    TypedDict
-):
-    """Alert Instance"""
+class WebhooksMarketplacePurchasePropAccountType(TypedDict):
+    """WebhooksMarketplacePurchasePropAccount"""
 
-    analysis_key: str
-    category: NotRequired[str]
-    classifications: NotRequired[list[str]]
-    commit_sha: NotRequired[str]
-    environment: str
-    location: NotRequired[
-        WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocationType
-    ]
-    message: NotRequired[
-        WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessageType
-    ]
-    ref: str
-    state: Literal["open", "dismissed", "fixed"]
+    id: int
+    login: str
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
 
 
-class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocationType(
-    TypedDict
-):
-    """WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocatio
-    n
-    """
+class WebhooksMarketplacePurchasePropAccountTypeForResponse(TypedDict):
+    """WebhooksMarketplacePurchasePropAccount"""
 
-    end_column: NotRequired[int]
-    end_line: NotRequired[int]
-    path: NotRequired[str]
-    start_column: NotRequired[int]
-    start_line: NotRequired[int]
+    id: int
+    login: str
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
 
 
-class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessageType(
-    TypedDict
-):
-    """WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessage"""
+class WebhooksMarketplacePurchasePropPlanType(TypedDict):
+    """WebhooksMarketplacePurchasePropPlan"""
 
-    text: NotRequired[str]
-
-
-class WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleType(TypedDict):
-    """WebhookCodeScanningAlertReopenedByUserPropAlertPropRule"""
-
+    bullets: list[Union[str, None]]
     description: str
-    id: str
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
-
-
-class WebhookCodeScanningAlertReopenedByUserPropAlertPropToolType(TypedDict):
-    """WebhookCodeScanningAlertReopenedByUserPropAlertPropTool"""
-
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
     name: str
-    version: Union[str, None]
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
+
+
+class WebhooksMarketplacePurchasePropPlanTypeForResponse(TypedDict):
+    """WebhooksMarketplacePurchasePropPlan"""
+
+    bullets: list[Union[str, None]]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
 __all__ = (
-    "WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocationType",
-    "WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessageType",
-    "WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstanceType",
-    "WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleType",
-    "WebhookCodeScanningAlertReopenedByUserPropAlertPropToolType",
-    "WebhookCodeScanningAlertReopenedByUserPropAlertType",
-    "WebhookCodeScanningAlertReopenedByUserType",
+    "WebhooksMarketplacePurchasePropAccountType",
+    "WebhooksMarketplacePurchasePropAccountTypeForResponse",
+    "WebhooksMarketplacePurchasePropPlanType",
+    "WebhooksMarketplacePurchasePropPlanTypeForResponse",
+    "WebhooksMarketplacePurchaseType",
+    "WebhooksMarketplacePurchaseTypeForResponse",
 )

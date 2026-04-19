@@ -9,82 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class TimelineCommittedEventType(TypedDict):
-    """Timeline Committed Event
+class ContributorType(TypedDict):
+    """Contributor
 
-    Timeline Committed Event
+    Contributor
     """
 
-    event: NotRequired[Literal["committed"]]
-    sha: str
-    node_id: str
-    url: str
-    author: TimelineCommittedEventPropAuthorType
-    committer: TimelineCommittedEventPropCommitterType
-    message: str
-    tree: TimelineCommittedEventPropTreeType
-    parents: list[TimelineCommittedEventPropParentsItemsType]
-    verification: TimelineCommittedEventPropVerificationType
-    html_url: str
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[Union[str, None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: str
+    site_admin: NotRequired[bool]
+    contributions: int
+    email: NotRequired[str]
+    name: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class TimelineCommittedEventPropAuthorType(TypedDict):
-    """TimelineCommittedEventPropAuthor
+class ContributorTypeForResponse(TypedDict):
+    """Contributor
 
-    Identifying information for the git-user
+    Contributor
     """
 
-    date: datetime
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropCommitterType(TypedDict):
-    """TimelineCommittedEventPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: datetime
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropTreeType(TypedDict):
-    """TimelineCommittedEventPropTree"""
-
-    sha: str
-    url: str
-
-
-class TimelineCommittedEventPropParentsItemsType(TypedDict):
-    """TimelineCommittedEventPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class TimelineCommittedEventPropVerificationType(TypedDict):
-    """TimelineCommittedEventPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[Union[str, None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: str
+    site_admin: NotRequired[bool]
+    contributions: int
+    email: NotRequired[str]
+    name: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "TimelineCommittedEventPropAuthorType",
-    "TimelineCommittedEventPropCommitterType",
-    "TimelineCommittedEventPropParentsItemsType",
-    "TimelineCommittedEventPropTreeType",
-    "TimelineCommittedEventPropVerificationType",
-    "TimelineCommittedEventType",
+    "ContributorType",
+    "ContributorTypeForResponse",
 )

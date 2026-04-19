@@ -9,25 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0132 import FullRepositoryType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0800 import WebhookSecurityAndAnalysisPropChangesType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0049 import MilestoneType, MilestoneTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0484 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0519 import WebhooksPullRequest5Type, WebhooksPullRequest5TypeForResponse
 
 
-class WebhookSecurityAndAnalysisType(TypedDict):
-    """security_and_analysis event"""
+class WebhookPullRequestDemilestonedType(TypedDict):
+    """pull_request demilestoned event"""
 
-    changes: WebhookSecurityAndAnalysisPropChangesType
+    action: Literal["demilestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    milestone: NotRequired[MilestoneType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: FullRepositoryType
+    pull_request: WebhooksPullRequest5Type
+    repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookSecurityAndAnalysisType",)
+class WebhookPullRequestDemilestonedTypeForResponse(TypedDict):
+    """pull_request demilestoned event"""
+
+    action: Literal["demilestoned"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    milestone: NotRequired[MilestoneTypeForResponse]
+    number: int
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    pull_request: WebhooksPullRequest5TypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "WebhookPullRequestDemilestonedType",
+    "WebhookPullRequestDemilestonedTypeForResponse",
+)

@@ -9,48 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0530 import ProjectsV2StatusUpdate
+from .group_0529 import Meta
 
 
-class ProjectsV2(GitHubModel):
-    """Projects v2 Project
+class ScimEnterpriseGroupResponseAllof1(GitHubModel):
+    """ScimEnterpriseGroupResponseAllof1"""
 
-    A projects v2 project
-    """
-
-    id: float = Field()
-    node_id: str = Field()
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    title: str = Field()
-    description: Union[str, None] = Field()
-    public: bool = Field()
-    closed_at: Union[datetime, None] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    number: int = Field()
-    short_description: Union[str, None] = Field()
-    deleted_at: Union[datetime, None] = Field()
-    deleted_by: Union[None, SimpleUser] = Field()
-    state: Missing[Literal["open", "closed"]] = Field(default=UNSET)
-    latest_status_update: Missing[Union[None, ProjectsV2StatusUpdate]] = Field(
-        default=UNSET
+    id: Missing[str] = Field(
+        default=UNSET, description="The internally generated id for the group object."
     )
-    is_template: Missing[bool] = Field(
-        default=UNSET, description="Whether this project is a template"
+    members: Missing[list[ScimEnterpriseGroupResponseAllof1PropMembersItems]] = Field(
+        default=UNSET, description="The security group members."
+    )
+    meta: Missing[Meta] = Field(
+        default=UNSET,
+        description="The metadata associated with the creation/updates to the user.",
     )
 
 
-model_rebuild(ProjectsV2)
+class ScimEnterpriseGroupResponseAllof1PropMembersItems(GitHubModel):
+    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
 
-__all__ = ("ProjectsV2",)
+    value: Missing[str] = Field(default=UNSET)
+    ref: Missing[str] = Field(default=UNSET, alias="$ref")
+    display: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ScimEnterpriseGroupResponseAllof1)
+model_rebuild(ScimEnterpriseGroupResponseAllof1PropMembersItems)
+
+__all__ = (
+    "ScimEnterpriseGroupResponseAllof1",
+    "ScimEnterpriseGroupResponseAllof1PropMembersItems",
+)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,17 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0433 import EnterpriseWebhooks
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
-from .group_0466 import WebhooksProjectColumn
+from .group_0482 import EnterpriseWebhooks
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0485 import RepositoryWebhooks
+from .group_0496 import WebhooksLabel
+from .group_0695 import WebhookIssuesEditedPropIssue
 
 
-class WebhookProjectColumnDeleted(GitHubModel):
-    """project_column deleted event"""
+class WebhookIssuesEdited(GitHubModel):
+    """issues edited event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookIssuesEditedPropChanges = Field(
+        description="The changes to the issue."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,18 +43,53 @@ class WebhookProjectColumnDeleted(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    issue: WebhookIssuesEditedPropIssue = Field(
+        title="Issue",
+        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.",
+    )
+    label: Missing[WebhooksLabel] = Field(default=UNSET, title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_column: WebhooksProjectColumn = Field(title="Project Column")
-    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectColumnDeleted)
+class WebhookIssuesEditedPropChanges(GitHubModel):
+    """WebhookIssuesEditedPropChanges
 
-__all__ = ("WebhookProjectColumnDeleted",)
+    The changes to the issue.
+    """
+
+    body: Missing[WebhookIssuesEditedPropChangesPropBody] = Field(default=UNSET)
+    title: Missing[WebhookIssuesEditedPropChangesPropTitle] = Field(default=UNSET)
+
+
+class WebhookIssuesEditedPropChangesPropBody(GitHubModel):
+    """WebhookIssuesEditedPropChangesPropBody"""
+
+    from_: str = Field(alias="from", description="The previous version of the body.")
+
+
+class WebhookIssuesEditedPropChangesPropTitle(GitHubModel):
+    """WebhookIssuesEditedPropChangesPropTitle"""
+
+    from_: str = Field(alias="from", description="The previous version of the title.")
+
+
+model_rebuild(WebhookIssuesEdited)
+model_rebuild(WebhookIssuesEditedPropChanges)
+model_rebuild(WebhookIssuesEditedPropChangesPropBody)
+model_rebuild(WebhookIssuesEditedPropChangesPropTitle)
+
+__all__ = (
+    "WebhookIssuesEdited",
+    "WebhookIssuesEditedPropChanges",
+    "WebhookIssuesEditedPropChangesPropBody",
+    "WebhookIssuesEditedPropChangesPropTitle",
+)

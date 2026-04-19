@@ -9,19 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    state: Literal["open", "dismissed"]
-    dismissed_reason: NotRequired[
-        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+    scope: Literal[
+        "all", "all_without_configurations", "public", "private_or_internal", "selected"
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    create_request: NotRequired[bool]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType",)
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+
+    scope: Literal[
+        "all", "all_without_configurations", "public", "private_or_internal", "selected"
+    ]
+    selected_repository_ids: NotRequired[list[int]]
+
+
+__all__ = (
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse",
+)

@@ -10,42 +10,66 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
+from typing_extensions import TypedDict
 
 
-class ConvertedNoteToIssueIssueEventType(TypedDict):
-    """Converted Note to Issue Issue Event
+class ContentSymlinkType(TypedDict):
+    """Symlink Content
 
-    Converted Note to Issue Issue Event
+    An object describing a symlink
     """
 
-    id: int
-    node_id: str
+    type: Literal["symlink"]
+    target: str
+    size: int
+    name: str
+    path: str
+    sha: str
     url: str
-    actor: SimpleUserType
-    event: Literal["converted_note_to_issue"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
-    project_card: NotRequired[ConvertedNoteToIssueIssueEventPropProjectCardType]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSymlinkPropLinksType
 
 
-class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
+class ContentSymlinkTypeForResponse(TypedDict):
+    """Symlink Content
 
-    id: int
+    An object describing a symlink
+    """
+
+    type: Literal["symlink"]
+    target: str
+    size: int
+    name: str
+    path: str
+    sha: str
     url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSymlinkPropLinksTypeForResponse
+
+
+class ContentSymlinkPropLinksType(TypedDict):
+    """ContentSymlinkPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentSymlinkPropLinksTypeForResponse(TypedDict):
+    """ContentSymlinkPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "ConvertedNoteToIssueIssueEventPropProjectCardType",
-    "ConvertedNoteToIssueIssueEventType",
+    "ContentSymlinkPropLinksType",
+    "ContentSymlinkPropLinksTypeForResponse",
+    "ContentSymlinkType",
+    "ContentSymlinkTypeForResponse",
 )

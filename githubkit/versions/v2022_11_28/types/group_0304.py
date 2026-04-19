@@ -9,18 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0092 import TeamType
+
+class CodeScanningAutofixCommitsResponseType(TypedDict):
+    """CodeScanningAutofixCommitsResponse"""
+
+    target_ref: NotRequired[str]
+    sha: NotRequired[str]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+class CodeScanningAutofixCommitsResponseTypeForResponse(TypedDict):
+    """CodeScanningAutofixCommitsResponse"""
 
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
+    target_ref: NotRequired[str]
+    sha: NotRequired[str]
 
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType",)
+__all__ = (
+    "CodeScanningAutofixCommitsResponseType",
+    "CodeScanningAutofixCommitsResponseTypeForResponse",
+)

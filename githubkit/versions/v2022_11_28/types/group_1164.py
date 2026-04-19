@@ -9,34 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
+class ReposOwnerRepoAutolinksPostBodyType(TypedDict):
+    """ReposOwnerRepoAutolinksPostBody"""
 
-    commit_id: NotRequired[str]
-    body: NotRequired[str]
-    event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
-    comments: NotRequired[
-        list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
-    ]
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: NotRequired[bool]
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
+class ReposOwnerRepoAutolinksPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoAutolinksPostBody"""
 
-    path: str
-    position: NotRequired[int]
-    body: str
-    line: NotRequired[int]
-    side: NotRequired[str]
-    start_line: NotRequired[int]
-    start_side: NotRequired[str]
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyType",
+    "ReposOwnerRepoAutolinksPostBodyType",
+    "ReposOwnerRepoAutolinksPostBodyTypeForResponse",
 )

@@ -9,17 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleDetailedOneof0Type(TypedDict):
-    """RepositoryRuleDetailedOneof0"""
+class PorterLargeFileType(TypedDict):
+    """Porter Large File
 
-    type: Literal["creation"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Porter Large File
+    """
+
+    ref_name: str
+    path: str
+    oid: str
+    size: int
 
 
-__all__ = ("RepositoryRuleDetailedOneof0Type",)
+class PorterLargeFileTypeForResponse(TypedDict):
+    """Porter Large File
+
+    Porter Large File
+    """
+
+    ref_name: str
+    path: str
+    oid: str
+    size: int
+
+
+__all__ = (
+    "PorterLargeFileType",
+    "PorterLargeFileTypeForResponse",
+)

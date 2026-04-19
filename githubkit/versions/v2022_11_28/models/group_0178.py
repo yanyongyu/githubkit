@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,40 +18,44 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleWorkflowsPropParameters(GitHubModel):
-    """RepositoryRuleWorkflowsPropParameters"""
+class CustomProperty(GitHubModel):
+    """Organization Custom Property
 
-    do_not_enforce_on_create: Missing[bool] = Field(
-        default=UNSET,
-        description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
-    )
-    workflows: list[RepositoryRuleParamsWorkflowFileReference] = Field(
-        description="Workflows that must pass for this rule to pass."
-    )
-
-
-class RepositoryRuleParamsWorkflowFileReference(GitHubModel):
-    """WorkflowFileReference
-
-    A workflow that must run for this rule to pass
+    Custom property defined on an organization
     """
 
-    path: str = Field(description="The path to the workflow file")
-    ref: Missing[str] = Field(
-        default=UNSET, description="The ref (branch or tag) of the workflow file to use"
+    property_name: str = Field(description="The name of the property")
+    url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
     )
-    repository_id: int = Field(
-        description="The ID of the repository where the workflow is defined"
+    source_type: Missing[Literal["organization", "enterprise"]] = Field(
+        default=UNSET, description="The source type of the property"
     )
-    sha: Missing[str] = Field(
-        default=UNSET, description="The commit SHA of the workflow file to use"
+    value_type: Literal[
+        "string", "single_select", "multi_select", "true_false", "url"
+    ] = Field(description="The type of the value for the property")
+    required: Missing[bool] = Field(
+        default=UNSET, description="Whether the property is required."
+    )
+    default_value: Missing[Union[str, list[str], None]] = Field(
+        default=UNSET, description="Default value of the property"
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the property"
+    )
+    allowed_values: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+    )
+    values_editable_by: Missing[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ] = Field(default=UNSET, description="Who can edit the values of the property")
+    require_explicit_values: Missing[bool] = Field(
+        default=UNSET, description="Whether setting properties values is mandatory"
     )
 
 
-model_rebuild(RepositoryRuleWorkflowsPropParameters)
-model_rebuild(RepositoryRuleParamsWorkflowFileReference)
+model_rebuild(CustomProperty)
 
-__all__ = (
-    "RepositoryRuleParamsWorkflowFileReference",
-    "RepositoryRuleWorkflowsPropParameters",
-)
+__all__ = ("CustomProperty",)

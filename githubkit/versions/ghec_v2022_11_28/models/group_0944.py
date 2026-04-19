@@ -13,25 +13,49 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0174 import RepositoryRuleset
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody(GitHubModel):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
 
-    client_id: str = Field(description="The Client ID of the GitHub App to install.")
-    repository_selection: Literal["all", "selected", "none"] = Field(
-        description="The repository selection for the GitHub App. Must be one of:\n* `all` - the installation can access all repositories in the organization.\n* `selected` - the installation can access only the listed repositories.\n* `none` - no repository permissions are requested. Only use when the app does not request repository permissions."
-    )
-    repositories: Missing[list[str]] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
+class WebhookRepositoryRulesetDeleted(GitHubModel):
+    """repository ruleset deleted event"""
+
+    action: Literal["deleted"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="The names of the repositories to which the installation will be granted access. This is the simple name of the repository, not the full name (e.g., `hello-world` not `octocat/hello-world`). This is only required when `repository_selection` is `selected`.",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    repository_ruleset: RepositoryRuleset = Field(
+        title="Repository ruleset",
+        description="A set of rules to apply when specified conditions are met.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody)
+model_rebuild(WebhookRepositoryRulesetDeleted)
 
-__all__ = ("EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody",)
+__all__ = ("WebhookRepositoryRulesetDeleted",)

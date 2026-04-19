@@ -9,79 +9,136 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0224 import DeploymentType
-from .group_0433 import EnterpriseWebhooksType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0436 import RepositoryWebhooksType
+from .group_0828 import (
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType,
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionTypeForResponse,
+)
 
 
-class WebhookWorkflowJobCompletedType(TypedDict):
-    """workflow_job completed event"""
+class WebhookRegistryPackagePublishedPropRegistryPackageType(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackage"""
 
-    action: Literal["completed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-    workflow_job: WebhookWorkflowJobCompletedPropWorkflowJobType
-    deployment: NotRequired[DeploymentType]
-
-
-class WebhookWorkflowJobCompletedPropWorkflowJobType(TypedDict):
-    """WebhookWorkflowJobCompletedPropWorkflowJob"""
-
-    check_run_url: str
-    completed_at: str
-    conclusion: Literal[
-        "success",
-        "failure",
-        "skipped",
-        "cancelled",
-        "action_required",
-        "neutral",
-        "timed_out",
-    ]
-    created_at: str
-    head_sha: str
+    created_at: Union[str, None]
+    description: Union[str, None]
+    ecosystem: str
     html_url: str
     id: int
-    labels: list[str]
     name: str
+    namespace: str
+    owner: WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType
+    package_type: str
+    package_version: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType, None
+    ]
+    registry: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType, None
+    ]
+    updated_at: Union[str, None]
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackageTypeForResponse(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackage"""
+
+    created_at: Union[str, None]
+    description: Union[str, None]
+    ecosystem: str
+    html_url: str
+    id: int
+    name: str
+    namespace: str
+    owner: WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerTypeForResponse
+    package_type: str
+    package_version: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionTypeForResponse,
+        None,
+    ]
+    registry: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryTypeForResponse,
+        None,
+    ]
+    updated_at: Union[str, None]
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropOwner"""
+
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: str
+    html_url: str
+    id: int
+    login: str
     node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[Union[int, None], None]
-    runner_group_name: Union[Union[str, None], None]
-    runner_id: Union[Union[int, None], None]
-    runner_name: Union[Union[str, None], None]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed", "waiting"]
-    head_branch: Union[Union[str, None], None]
-    workflow_name: Union[Union[str, None], None]
-    steps: list[WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType]
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
     url: str
+    user_view_type: NotRequired[str]
 
 
-class WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType(TypedDict):
-    """WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps"""
+class WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerTypeForResponse(
+    TypedDict
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropOwner"""
 
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
-    name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["in_progress", "completed", "queued"]
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: str
+    html_url: str
+    id: int
+    login: str
+    node_id: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
+    user_view_type: NotRequired[str]
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry"""
+
+    about_url: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    vendor: NotRequired[str]
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryTypeForResponse(
+    TypedDict
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry"""
+
+    about_url: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    vendor: NotRequired[str]
 
 
 __all__ = (
-    "WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType",
-    "WebhookWorkflowJobCompletedPropWorkflowJobType",
-    "WebhookWorkflowJobCompletedType",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerTypeForResponse",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryTypeForResponse",
+    "WebhookRegistryPackagePublishedPropRegistryPackageType",
+    "WebhookRegistryPackagePublishedPropRegistryPackageTypeForResponse",
 )

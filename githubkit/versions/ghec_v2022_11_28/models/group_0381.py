@@ -9,53 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
+from .group_0380 import CodeScanningVariantAnalysisRepository
 
 
-class RemovedFromProjectIssueEvent(GitHubModel):
-    """Removed from Project Issue Event
+class CodeScanningVariantAnalysisSkippedRepoGroup(GitHubModel):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
 
-    Removed from Project Issue Event
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["removed_from_project"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    project_card: Missing[RemovedFromProjectIssueEventPropProjectCard] = Field(
-        default=UNSET
+    repository_count: int = Field(
+        description="The total number of repositories that were skipped for this reason."
+    )
+    repositories: list[CodeScanningVariantAnalysisRepository] = Field(
+        description="A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it."
     )
 
 
-class RemovedFromProjectIssueEventPropProjectCard(GitHubModel):
-    """RemovedFromProjectIssueEventPropProjectCard"""
+model_rebuild(CodeScanningVariantAnalysisSkippedRepoGroup)
 
-    id: int = Field()
-    url: str = Field()
-    project_id: int = Field()
-    project_url: str = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(RemovedFromProjectIssueEvent)
-model_rebuild(RemovedFromProjectIssueEventPropProjectCard)
-
-__all__ = (
-    "RemovedFromProjectIssueEvent",
-    "RemovedFromProjectIssueEventPropProjectCard",
-)
+__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroup",)

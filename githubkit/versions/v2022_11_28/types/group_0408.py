@@ -12,15 +12,29 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReferrerTrafficType(TypedDict):
-    """Referrer Traffic
+class PullRequestMergeResultType(TypedDict):
+    """Pull Request Merge Result
 
-    Referrer Traffic
+    Pull Request Merge Result
     """
 
-    referrer: str
-    count: int
-    uniques: int
+    sha: str
+    merged: bool
+    message: str
 
 
-__all__ = ("ReferrerTrafficType",)
+class PullRequestMergeResultTypeForResponse(TypedDict):
+    """Pull Request Merge Result
+
+    Pull Request Merge Result
+    """
+
+    sha: str
+    merged: bool
+    message: str
+
+
+__all__ = (
+    "PullRequestMergeResultType",
+    "PullRequestMergeResultTypeForResponse",
+)

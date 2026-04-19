@@ -9,31 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0695 import WebhookIssuesOpenedPropChangesPropOldIssue
+from .group_0695 import WebhookForkPropForkeeAllof0PropPermissions
 
 
-class WebhookIssuesOpenedPropChanges(GitHubModel):
-    """WebhookIssuesOpenedPropChanges"""
-
-    old_issue: Union[WebhookIssuesOpenedPropChangesPropOldIssue, None] = Field(
-        title="Issue",
-        description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.",
-    )
-    old_repository: WebhookIssuesOpenedPropChangesPropOldRepository = Field(
-        title="Repository", description="A git repository"
-    )
-
-
-class WebhookIssuesOpenedPropChangesPropOldRepository(GitHubModel):
+class WebhookForkPropForkeeAllof0(GitHubModel):
     """Repository
 
     A git repository
@@ -69,13 +57,7 @@ class WebhookIssuesOpenedPropChangesPropOldRepository(GitHubModel):
     compare_url: str = Field()
     contents_url: str = Field()
     contributors_url: str = Field()
-    created_at: Union[int, datetime] = Field()
-    custom_properties: Missing[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomProperties
-    ] = Field(
-        default=UNSET,
-        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
-    )
+    created_at: Union[int, _dt.datetime] = Field()
     default_branch: str = Field(description="The default branch of the repository.")
     delete_branch_on_merge: Missing[bool] = Field(
         default=UNSET,
@@ -97,9 +79,6 @@ class WebhookIssuesOpenedPropChangesPropOldRepository(GitHubModel):
     git_refs_url: str = Field()
     git_tags_url: str = Field()
     git_url: str = Field()
-    has_discussions: Missing[bool] = Field(
-        default=UNSET, description="Whether the repository has discussions enabled."
-    )
     has_downloads: bool = Field(
         default=True, description="Whether downloads are enabled."
     )
@@ -121,9 +100,9 @@ class WebhookIssuesOpenedPropChangesPropOldRepository(GitHubModel):
     labels_url: str = Field()
     language: Union[str, None] = Field()
     languages_url: str = Field()
-    license_: Union[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicense, None
-    ] = Field(alias="license", title="License")
+    license_: Union[WebhookForkPropForkeeAllof0PropLicense, None] = Field(
+        alias="license", title="License"
+    )
     master_branch: Missing[str] = Field(default=UNSET)
     merges_url: str = Field()
     milestones_url: str = Field()
@@ -134,16 +113,14 @@ class WebhookIssuesOpenedPropChangesPropOldRepository(GitHubModel):
     open_issues: int = Field()
     open_issues_count: int = Field()
     organization: Missing[str] = Field(default=UNSET)
-    owner: Union[WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwner, None] = (
-        Field(title="User")
+    owner: Union[WebhookForkPropForkeeAllof0PropOwner, None] = Field(title="User")
+    permissions: Missing[WebhookForkPropForkeeAllof0PropPermissions] = Field(
+        default=UNSET
     )
-    permissions: Missing[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions
-    ] = Field(default=UNSET)
     private: bool = Field(description="Whether the repository is private or public.")
     public: Missing[bool] = Field(default=UNSET)
     pulls_url: str = Field()
-    pushed_at: Union[int, datetime, None] = Field()
+    pushed_at: Union[int, _dt.datetime, None] = Field()
     releases_url: str = Field()
     role_name: Missing[Union[str, None]] = Field(default=UNSET)
     size: int = Field()
@@ -159,28 +136,18 @@ class WebhookIssuesOpenedPropChangesPropOldRepository(GitHubModel):
     teams_url: str = Field()
     topics: list[str] = Field()
     trees_url: str = Field()
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
     visibility: Literal["public", "private", "internal"] = Field()
     watchers: int = Field()
     watchers_count: int = Field()
     web_commit_signoff_required: Missing[bool] = Field(
-        default=UNSET, description="Whether to require commit signoff."
+        default=UNSET,
+        description="Whether to require contributors to sign off on web-based commits",
     )
 
 
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomProperties(
-    ExtraGitHubModel
-):
-    """WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomProperties
-
-    The custom properties that were defined for the repository. The keys are the
-    custom property names, and the values are the corresponding custom property
-    values.
-    """
-
-
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicense(GitHubModel):
+class WebhookForkPropForkeeAllof0PropLicense(GitHubModel):
     """License"""
 
     key: str = Field()
@@ -190,7 +157,7 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicense(GitHubModel):
     url: Union[str, None] = Field()
 
 
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwner(GitHubModel):
+class WebhookForkPropForkeeAllof0PropOwner(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -217,28 +184,12 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwner(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions(GitHubModel):
-    """WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions"""
-
-    admin: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
-    pull: bool = Field()
-    push: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-
-
-model_rebuild(WebhookIssuesOpenedPropChanges)
-model_rebuild(WebhookIssuesOpenedPropChangesPropOldRepository)
-model_rebuild(WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomProperties)
-model_rebuild(WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicense)
-model_rebuild(WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwner)
-model_rebuild(WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions)
+model_rebuild(WebhookForkPropForkeeAllof0)
+model_rebuild(WebhookForkPropForkeeAllof0PropLicense)
+model_rebuild(WebhookForkPropForkeeAllof0PropOwner)
 
 __all__ = (
-    "WebhookIssuesOpenedPropChanges",
-    "WebhookIssuesOpenedPropChangesPropOldRepository",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomProperties",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicense",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwner",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions",
+    "WebhookForkPropForkeeAllof0",
+    "WebhookForkPropForkeeAllof0PropLicense",
+    "WebhookForkPropForkeeAllof0PropOwner",
 )

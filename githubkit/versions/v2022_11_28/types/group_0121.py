@@ -9,42 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0091 import TeamSimpleType
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class UserRoleAssignmentType(TypedDict):
-    """A Role Assignment for a User
+class AuthenticationTokenType(TypedDict):
+    """Authentication Token
 
-    The Relationship a User has with a role.
+    Authentication Token
     """
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    inherited_from: NotRequired[list[TeamSimpleType]]
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    token: str
+    expires_at: _dt.datetime
+    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
+    repositories: NotRequired[list[RepositoryType]]
+    single_file: NotRequired[Union[str, None]]
+    repository_selection: NotRequired[Literal["all", "selected"]]
 
 
-__all__ = ("UserRoleAssignmentType",)
+class AuthenticationTokenTypeForResponse(TypedDict):
+    """Authentication Token
+
+    Authentication Token
+    """
+
+    token: str
+    expires_at: str
+    permissions: NotRequired[AuthenticationTokenPropPermissionsTypeForResponse]
+    repositories: NotRequired[list[RepositoryTypeForResponse]]
+    single_file: NotRequired[Union[str, None]]
+    repository_selection: NotRequired[Literal["all", "selected"]]
+
+
+class AuthenticationTokenPropPermissionsType(TypedDict):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+class AuthenticationTokenPropPermissionsTypeForResponse(TypedDict):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+__all__ = (
+    "AuthenticationTokenPropPermissionsType",
+    "AuthenticationTokenPropPermissionsTypeForResponse",
+    "AuthenticationTokenType",
+    "AuthenticationTokenTypeForResponse",
+)

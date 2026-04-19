@@ -9,20 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0137 import RepositoryRuleCodeScanningPropParametersType
+from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
+from .group_0434 import HookResponseType, HookResponseTypeForResponse
 
 
-class RepositoryRuleDetailedOneof20Type(TypedDict):
-    """RepositoryRuleDetailedOneof20"""
+class HookType(TypedDict):
+    """Webhook
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Webhooks for repositories.
+    """
+
+    type: str
+    id: int
+    name: str
+    active: bool
+    events: list[str]
+    config: WebhookConfigType
+    updated_at: _dt.datetime
+    created_at: _dt.datetime
+    url: str
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseType
 
 
-__all__ = ("RepositoryRuleDetailedOneof20Type",)
+class HookTypeForResponse(TypedDict):
+    """Webhook
+
+    Webhooks for repositories.
+    """
+
+    type: str
+    id: int
+    name: str
+    active: bool
+    events: list[str]
+    config: WebhookConfigTypeForResponse
+    updated_at: str
+    created_at: str
+    url: str
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseTypeForResponse
+
+
+__all__ = (
+    "HookType",
+    "HookTypeForResponse",
+)

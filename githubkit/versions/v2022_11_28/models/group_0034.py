@@ -9,23 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class DependabotAlertPackage(GitHubModel):
-    """DependabotAlertPackage
+class CodeScanningOptions(GitHubModel):
+    """CodeScanningOptions
 
-    Details for the vulnerable package.
+    Security Configuration feature options for code scanning
     """
 
-    ecosystem: str = Field(
-        description="The package's language or package management ecosystem."
+    allow_advanced: Missing[Union[bool, None]] = Field(
+        default=UNSET, description="Whether to allow repos which use advanced setup"
     )
-    name: str = Field(description="The unique package name within its ecosystem.")
 
 
-model_rebuild(DependabotAlertPackage)
+class CodeScanningDefaultSetupOptions(GitHubModel):
+    """CodeScanningDefaultSetupOptions
 
-__all__ = ("DependabotAlertPackage",)
+    Feature options for code scanning default setup
+    """
+
+    runner_type: Missing[Literal["standard", "labeled", "not_set"]] = Field(
+        default=UNSET,
+        description="Whether to use labeled runners or standard GitHub runners.",
+    )
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The label of the runner to use for code scanning default setup when runner_type is 'labeled'.",
+    )
+
+
+model_rebuild(CodeScanningOptions)
+model_rebuild(CodeScanningDefaultSetupOptions)
+
+__all__ = (
+    "CodeScanningDefaultSetupOptions",
+    "CodeScanningOptions",
+)

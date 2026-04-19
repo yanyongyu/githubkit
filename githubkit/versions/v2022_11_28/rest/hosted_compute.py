@@ -17,7 +17,7 @@ from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     from typing import Literal
@@ -33,9 +33,9 @@ if TYPE_CHECKING:
         OrgsOrgSettingsNetworkConfigurationsGetResponse200,
     )
     from ..types import (
-        NetworkConfigurationType,
-        NetworkSettingsType,
-        OrgsOrgSettingsNetworkConfigurationsGetResponse200Type,
+        NetworkConfigurationTypeForResponse,
+        NetworkSettingsTypeForResponse,
+        OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse,
         OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
         OrgsOrgSettingsNetworkConfigurationsPostBodyType,
     )
@@ -66,7 +66,7 @@ class HostedComputeClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgSettingsNetworkConfigurationsGetResponse200,
-        OrgsOrgSettingsNetworkConfigurationsGetResponse200Type,
+        OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse,
     ]:
         """hosted-compute/list-network-configurations-for-org
 
@@ -93,7 +93,7 @@ class HostedComputeClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgSettingsNetworkConfigurationsGetResponse200,
@@ -109,7 +109,7 @@ class HostedComputeClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgSettingsNetworkConfigurationsGetResponse200,
-        OrgsOrgSettingsNetworkConfigurationsGetResponse200Type,
+        OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse,
     ]:
         """hosted-compute/list-network-configurations-for-org
 
@@ -136,7 +136,7 @@ class HostedComputeClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgSettingsNetworkConfigurationsGetResponse200,
@@ -150,7 +150,7 @@ class HostedComputeClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgSettingsNetworkConfigurationsPostBodyType,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     @overload
     def create_network_configuration_for_org(
@@ -163,7 +163,9 @@ class HostedComputeClient:
         name: str,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: list[str],
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+        failover_network_settings_ids: Missing[list[str]] = UNSET,
+        failover_network_enabled: Missing[bool] = UNSET,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     def create_network_configuration_for_org(
         self,
@@ -173,7 +175,7 @@ class HostedComputeClient:
         stream: bool = False,
         data: Missing[OrgsOrgSettingsNetworkConfigurationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/create-network-configuration-for-org
 
         POST /orgs/{org}/settings/network-configurations
@@ -222,7 +224,7 @@ class HostedComputeClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgSettingsNetworkConfigurationsPostBodyType,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     @overload
     async def async_create_network_configuration_for_org(
@@ -235,7 +237,9 @@ class HostedComputeClient:
         name: str,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: list[str],
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+        failover_network_settings_ids: Missing[list[str]] = UNSET,
+        failover_network_enabled: Missing[bool] = UNSET,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     async def async_create_network_configuration_for_org(
         self,
@@ -245,7 +249,7 @@ class HostedComputeClient:
         stream: bool = False,
         data: Missing[OrgsOrgSettingsNetworkConfigurationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/create-network-configuration-for-org
 
         POST /orgs/{org}/settings/network-configurations
@@ -293,7 +297,7 @@ class HostedComputeClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/get-network-configuration-for-org
 
         GET /orgs/{org}/settings/network-configurations/{network_configuration_id}
@@ -326,7 +330,7 @@ class HostedComputeClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/get-network-configuration-for-org
 
         GET /orgs/{org}/settings/network-configurations/{network_configuration_id}
@@ -421,7 +425,7 @@ class HostedComputeClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     @overload
     def update_network_configuration_for_org(
@@ -435,7 +439,9 @@ class HostedComputeClient:
         name: Missing[str] = UNSET,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: Missing[list[str]] = UNSET,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+        failover_network_settings_ids: Missing[list[str]] = UNSET,
+        failover_network_enabled: Missing[bool] = UNSET,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     def update_network_configuration_for_org(
         self,
@@ -448,7 +454,7 @@ class HostedComputeClient:
             OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/update-network-configuration-for-org
 
         PATCH /orgs/{org}/settings/network-configurations/{network_configuration_id}
@@ -499,7 +505,7 @@ class HostedComputeClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     @overload
     async def async_update_network_configuration_for_org(
@@ -513,7 +519,9 @@ class HostedComputeClient:
         name: Missing[str] = UNSET,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: Missing[list[str]] = UNSET,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+        failover_network_settings_ids: Missing[list[str]] = UNSET,
+        failover_network_enabled: Missing[bool] = UNSET,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     async def async_update_network_configuration_for_org(
         self,
@@ -526,7 +534,7 @@ class HostedComputeClient:
             OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/update-network-configuration-for-org
 
         PATCH /orgs/{org}/settings/network-configurations/{network_configuration_id}
@@ -575,7 +583,7 @@ class HostedComputeClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[NetworkSettings, NetworkSettingsType]:
+    ) -> Response[NetworkSettings, NetworkSettingsTypeForResponse]:
         """hosted-compute/get-network-settings-for-org
 
         GET /orgs/{org}/settings/network-settings/{network_settings_id}
@@ -608,7 +616,7 @@ class HostedComputeClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[NetworkSettings, NetworkSettingsType]:
+    ) -> Response[NetworkSettings, NetworkSettingsTypeForResponse]:
         """hosted-compute/get-network-settings-for-org
 
         GET /orgs/{org}/settings/network-settings/{network_settings_id}

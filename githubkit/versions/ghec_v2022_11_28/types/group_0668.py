@@ -9,30 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
-from .group_0168 import IssueType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0345 import DeploymentType, DeploymentTypeForResponse
+from .group_0475 import PullRequestType, PullRequestTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssueDependenciesBlockingRemovedType(TypedDict):
-    """blocking issue removed event"""
+class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
+    """deployment protection rule requested event"""
 
-    action: Literal["blocking_removed"]
-    blocked_issue_id: float
-    blocked_issue: IssueType
-    blocked_issue_repo: RepositoryType
-    blocking_issue_id: float
-    blocking_issue: IssueType
+    action: Literal["requested"]
+    environment: NotRequired[str]
+    event: NotRequired[str]
+    sha: NotRequired[str]
+    ref: NotRequired[str]
+    deployment_callback_url: NotRequired[str]
+    deployment: NotRequired[Union[None, DeploymentType]]
+    pull_requests: NotRequired[list[PullRequestType]]
+    repository: NotRequired[RepositoryWebhooksType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookIssueDependenciesBlockingRemovedType",)
+class WebhookDeploymentProtectionRuleRequestedTypeForResponse(TypedDict):
+    """deployment protection rule requested event"""
+
+    action: Literal["requested"]
+    environment: NotRequired[str]
+    event: NotRequired[str]
+    sha: NotRequired[str]
+    ref: NotRequired[str]
+    deployment_callback_url: NotRequired[str]
+    deployment: NotRequired[Union[None, DeploymentTypeForResponse]]
+    pull_requests: NotRequired[list[PullRequestTypeForResponse]]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "WebhookDeploymentProtectionRuleRequestedType",
+    "WebhookDeploymentProtectionRuleRequestedTypeForResponse",
+)
