@@ -149,6 +149,8 @@ def merge_list(source: "Source", new: list | dict):
 def merge_inplace(source: "Source", new: Any):
     if isinstance(new, dict):
         _handle_copy(source, new)
+        if not new:
+            return
 
     if isinstance(source.data, dict) and isinstance(new, dict):
         merge_dict(source, new)
