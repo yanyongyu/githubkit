@@ -34,6 +34,7 @@ class PagesDeploymentStatus(GitHubModel):
             "deployment_attempt_error",
             "deployment_lost",
             "succeed",
+            "deployment_queued",
         ]
     ] = Field(default=UNSET, description="The current status of the deployment.")
 

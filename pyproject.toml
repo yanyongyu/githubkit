@@ -329,7 +329,9 @@ source = "descriptions-next/ghec/ghec.2026-03-10.json"
 ], "$ref" = "<unset>" }
 
 # https://github.com/yanyongyu/githubkit/issues/293
-"/components/schemas/repo-search-result-item/required" = { "<remove>" = ["has_downloads"] }
+"/components/schemas/repo-search-result-item/required" = { "<remove>" = [
+  "has_downloads",
+] }
 
 # https://github.com/github/rest-api-description/issues/2491
 "/components/schemas/auto-merge/properties/commit_title" = { type = [
@@ -385,6 +387,11 @@ source = "descriptions-next/ghec/ghec.2026-03-10.json"
 "/components/schemas/team-organization/properties/blog" = { type = [
   "string",
   "null",
+] }
+
+# https://github.com/yanyongyu/githubkit/issues/299
+"/components/schemas/pages-deployment-status/properties/status/enum" = { "<add>" = [
+  "deployment_queued",
 ] }
 
 # https://github.com/yanyongyu/githubkit/issues/199

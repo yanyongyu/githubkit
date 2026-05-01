@@ -29,6 +29,7 @@ class PagesDeploymentStatusType(TypedDict):
             "deployment_attempt_error",
             "deployment_lost",
             "succeed",
+            "deployment_queued",
         ]
     ]
 
@@ -49,6 +50,7 @@ class PagesDeploymentStatusTypeForResponse(TypedDict):
             "deployment_attempt_error",
             "deployment_lost",
             "succeed",
+            "deployment_queued",
         ]
     ]
 
