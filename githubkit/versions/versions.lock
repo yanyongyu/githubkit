@@ -92,6 +92,7 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/d3a3c2a5
 "/components/schemas/team-organization/properties/location" = {type = ["string", "null"]}
 "/components/schemas/team-organization/properties/name" = {type = ["string", "null"]}
 "/components/schemas/team-organization/properties/blog" = {type = ["string", "null"]}
+"/components/schemas/pages-deployment-status/properties/status/enum" = {"<add>" = ["deployment_queued"]}
 "/components/schemas/git-user/properties/date" = {format = "date-time"}
 "/components/schemas/verification/required" = {"<remove>" = ["verified_at"]}
 "/components/schemas/diff-entry/properties/blob_url" = {type = ["string", "null"]}
