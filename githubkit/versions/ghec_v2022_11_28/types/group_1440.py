@@ -18,7 +18,7 @@ class ReposOwnerRepoPagesDeploymentsPostBodyType(TypedDict):
     The object used to create GitHub Pages deployment
     """
 
-    artifact_id: NotRequired[float]
+    artifact_id: NotRequired[int]
     artifact_url: NotRequired[str]
     environment: NotRequired[str]
     pages_build_version: str
@@ -31,7 +31,7 @@ class ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse(TypedDict):
     The object used to create GitHub Pages deployment
     """
 
-    artifact_id: NotRequired[float]
+    artifact_id: NotRequired[int]
     artifact_url: NotRequired[str]
     environment: NotRequired[str]
     pages_build_version: str

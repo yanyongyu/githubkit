@@ -22,7 +22,7 @@ class ReposOwnerRepoPagesDeploymentsPostBody(GitHubModel):
     The object used to create GitHub Pages deployment
     """
 
-    artifact_id: Missing[float] = Field(
+    artifact_id: Missing[int] = Field(
         default=UNSET,
         description="The ID of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
     )

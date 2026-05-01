@@ -93,6 +93,7 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/d3a3c2a5
 "/components/schemas/team-organization/properties/name" = {type = ["string", "null"]}
 "/components/schemas/team-organization/properties/blog" = {type = ["string", "null"]}
 "/components/schemas/pages-deployment-status/properties/status/enum" = {"<add>" = ["deployment_queued"]}
+"/paths/~1repos~1{owner}~1{repo}~1pages~1deployments/post/requestBody/content/application~1json/schema/properties/artifact_id/type" = {"<copy>" = "#/components/parameters/artifact-id/schema/type"}
 "/components/schemas/git-user/properties/date" = {format = "date-time"}
 "/components/schemas/verification/required" = {"<remove>" = ["verified_at"]}
 "/components/schemas/diff-entry/properties/blob_url" = {type = ["string", "null"]}

@@ -394,6 +394,9 @@ source = "descriptions-next/ghec/ghec.2026-03-10.json"
   "deployment_queued",
 ] }
 
+# https://github.com/yanyongyu/githubkit/issues/300
+"/paths/~1repos~1{owner}~1{repo}~1pages~1deployments/post/requestBody/content/application~1json/schema/properties/artifact_id/type" = { "<copy>" = "#/components/parameters/artifact-id/schema/type" }
+
 # https://github.com/yanyongyu/githubkit/issues/199
 # https://github.com/github/rest-api-description/issues/4697
 # git user date format should be date-time
