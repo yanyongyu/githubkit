@@ -211,9 +211,9 @@ class OrgsClient:
         Lists all organizations, in the order that they were created.
 
         > [!NOTE]
-        > Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/enterprise-cloud@latest//rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of organizations.
+        > Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/enterprise-cloud@latest/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of organizations.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-organizations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#list-organizations
         """
 
         from ..models import OrganizationSimple
@@ -251,9 +251,9 @@ class OrgsClient:
         Lists all organizations, in the order that they were created.
 
         > [!NOTE]
-        > Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/enterprise-cloud@latest//rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of organizations.
+        > Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/enterprise-cloud@latest/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of organizations.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-organizations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#list-organizations
         """
 
         from ..models import OrganizationSimple
@@ -292,15 +292,15 @@ class OrgsClient:
         GET /organizations/{organization_id}/custom_roles
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed in the future. Use the "[List custom repository roles](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#list-custom-repository-roles-in-an-organization)" endpoint instead.
+        > **Closing down notice:** This operation is closing down and will be removed in the future. Use the "[List custom repository roles](https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#list-custom-repository-roles-in-an-organization)" endpoint instead.
 
-        List the custom repository roles available in this organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        List the custom repository roles available in this organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be administrator of the organization or of a repository of the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---list-custom-repository-roles-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#closing-down---list-custom-repository-roles-in-an-organization
         """
 
         from ..models import OrganizationsOrganizationIdCustomRolesGetResponse200
@@ -333,15 +333,15 @@ class OrgsClient:
         GET /organizations/{organization_id}/custom_roles
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed in the future. Use the "[List custom repository roles](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#list-custom-repository-roles-in-an-organization)" endpoint instead.
+        > **Closing down notice:** This operation is closing down and will be removed in the future. Use the "[List custom repository roles](https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#list-custom-repository-roles-in-an-organization)" endpoint instead.
 
-        List the custom repository roles available in this organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        List the custom repository roles available in this organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be administrator of the organization or of a repository of the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---list-custom-repository-roles-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#closing-down---list-custom-repository-roles-in-an-organization
         """
 
         from ..models import OrganizationsOrganizationIdCustomRolesGetResponse200
@@ -378,7 +378,7 @@ class OrgsClient:
         - OAuth tokens and personal access tokens (classic) with the `read:org` scope
         - Actors with the organization-level "read custom properties for an organization" fine-grained permission or above
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties-for-orgs#get-all-custom-property-values-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties-for-orgs#get-all-custom-property-values-for-an-organization
         """
 
         from ..models import BasicError, CustomPropertyValue
@@ -419,7 +419,7 @@ class OrgsClient:
         - OAuth tokens and personal access tokens (classic) with the `read:org` scope
         - Actors with the organization-level "read custom properties for an organization" fine-grained permission or above
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties-for-orgs#get-all-custom-property-values-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties-for-orgs#get-all-custom-property-values-for-an-organization
         """
 
         from ..models import BasicError, CustomPropertyValue
@@ -484,7 +484,7 @@ class OrgsClient:
         - OAuth tokens and personal access tokens (classic) with the `admin:org` scope
         - Actors with the organization-level "edit custom properties for an organization" fine-grained permission
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties-for-orgs#create-or-update-custom-property-values-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties-for-orgs#create-or-update-custom-property-values-for-an-organization
         """
 
         from ..models import (
@@ -565,7 +565,7 @@ class OrgsClient:
         - OAuth tokens and personal access tokens (classic) with the `admin:org` scope
         - Actors with the organization-level "edit custom properties for an organization" fine-grained permission
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties-for-orgs#create-or-update-custom-property-values-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties-for-orgs#create-or-update-custom-property-values-for-an-organization
         """
 
         from ..models import (
@@ -615,7 +615,7 @@ class OrgsClient:
 
         Gets information about an organization.
 
-        When the value of `two_factor_requirement_enabled` is `true`, the organization requires all members, billing managers, outside collaborators, guest collaborators, repository collaborators, or everyone with access to any repository within the organization to enable [two-factor authentication](https://docs.github.com/enterprise-cloud@latest//articles/securing-your-account-with-two-factor-authentication-2fa/).
+        When the value of `two_factor_requirement_enabled` is `true`, the organization requires all members, billing managers, outside collaborators, guest collaborators, repository collaborators, or everyone with access to any repository within the organization to enable [two-factor authentication](https://docs.github.com/enterprise-cloud@latest/articles/securing-your-account-with-two-factor-authentication-2fa/).
 
         To see the full details about an organization, the authenticated user must be an organization owner.
 
@@ -623,7 +623,7 @@ class OrgsClient:
 
         To see information about an organization's GitHub Enterprise Cloud plan, GitHub Apps need the `Organization plan` permission.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#get-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#get-an-organization
         """
 
         from ..models import BasicError, OrganizationFull
@@ -656,7 +656,7 @@ class OrgsClient:
 
         Gets information about an organization.
 
-        When the value of `two_factor_requirement_enabled` is `true`, the organization requires all members, billing managers, outside collaborators, guest collaborators, repository collaborators, or everyone with access to any repository within the organization to enable [two-factor authentication](https://docs.github.com/enterprise-cloud@latest//articles/securing-your-account-with-two-factor-authentication-2fa/).
+        When the value of `two_factor_requirement_enabled` is `true`, the organization requires all members, billing managers, outside collaborators, guest collaborators, repository collaborators, or everyone with access to any repository within the organization to enable [two-factor authentication](https://docs.github.com/enterprise-cloud@latest/articles/securing-your-account-with-two-factor-authentication-2fa/).
 
         To see the full details about an organization, the authenticated user must be an organization owner.
 
@@ -664,7 +664,7 @@ class OrgsClient:
 
         To see information about an organization's GitHub Enterprise Cloud plan, GitHub Apps need the `Organization plan` permission.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#get-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#get-an-organization
         """
 
         from ..models import BasicError, OrganizationFull
@@ -704,9 +704,9 @@ class OrgsClient:
 
         Please review the Terms of Service regarding account deletion before using this endpoint:
 
-        https://docs.github.com/enterprise-cloud@latest//site-policy/github-terms/github-terms-of-service
+        https://docs.github.com/enterprise-cloud@latest/site-policy/github-terms/github-terms-of-service
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#delete-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#delete-an-organization
         """
 
         from ..models import (
@@ -750,9 +750,9 @@ class OrgsClient:
 
         Please review the Terms of Service regarding account deletion before using this endpoint:
 
-        https://docs.github.com/enterprise-cloud@latest//site-policy/github-terms/github-terms-of-service
+        https://docs.github.com/enterprise-cloud@latest/site-policy/github-terms/github-terms-of-service
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#delete-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#delete-an-organization
         """
 
         from ..models import (
@@ -850,7 +850,7 @@ class OrgsClient:
         > **Closing down notice:** GitHub Enterprise Cloud will replace and discontinue `members_allowed_repository_creation_type` in favor of more granular permissions. The new input parameters are `members_can_create_public_repositories`, `members_can_create_private_repositories` for all organizations and `members_can_create_internal_repositories` for organizations associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+. For more information, see the [blog post](https://developer.github.com/changes/2019-12-03-internal-visibility-changes).
 
         > [!WARNING]
-        > **Closing down notice:** Code security product enablement for new repositories through the organization API is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-organization) to set defaults instead. For more information on setting a default security configuration, see the [changelog](https://github.blog/changelog/2024-07-09-sunsetting-security-settings-defaults-parameters-in-the-organizations-rest-api/).
+        > **Closing down notice:** Code security product enablement for new repositories through the organization API is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-organization) to set defaults instead. For more information on setting a default security configuration, see the [changelog](https://github.blog/changelog/2024-07-09-sunsetting-security-settings-defaults-parameters-in-the-organizations-rest-api/).
 
         Updates the organization's profile and member privileges.
 
@@ -858,7 +858,7 @@ class OrgsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#update-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#update-an-organization
         """
 
         from typing import Union
@@ -971,7 +971,7 @@ class OrgsClient:
         > **Closing down notice:** GitHub Enterprise Cloud will replace and discontinue `members_allowed_repository_creation_type` in favor of more granular permissions. The new input parameters are `members_can_create_public_repositories`, `members_can_create_private_repositories` for all organizations and `members_can_create_internal_repositories` for organizations associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+. For more information, see the [blog post](https://developer.github.com/changes/2019-12-03-internal-visibility-changes).
 
         > [!WARNING]
-        > **Closing down notice:** Code security product enablement for new repositories through the organization API is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-organization) to set defaults instead. For more information on setting a default security configuration, see the [changelog](https://github.blog/changelog/2024-07-09-sunsetting-security-settings-defaults-parameters-in-the-organizations-rest-api/).
+        > **Closing down notice:** Code security product enablement for new repositories through the organization API is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-organization) to set defaults instead. For more information on setting a default security configuration, see the [changelog](https://github.blog/changelog/2024-07-09-sunsetting-security-settings-defaults-parameters-in-the-organizations-rest-api/).
 
         Updates the organization's profile and member privileges.
 
@@ -979,7 +979,7 @@ class OrgsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#update-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#update-an-organization
         """
 
         from typing import Union
@@ -1033,7 +1033,7 @@ class OrgsClient:
         organization level. Organization members may also see an enterprise-level announcement banner. To get an
         announcement banner displayed at the enterprise level, use the enterprise-level endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/organizations#get-announcement-banner-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/announcement-banners/organizations#get-announcement-banner-for-organization
         """
 
         from ..models import AnnouncementBanner
@@ -1065,7 +1065,7 @@ class OrgsClient:
         organization level. Organization members may also see an enterprise-level announcement banner. To get an
         announcement banner displayed at the enterprise level, use the enterprise-level endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/organizations#get-announcement-banner-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/announcement-banners/organizations#get-announcement-banner-for-organization
         """
 
         from ..models import AnnouncementBanner
@@ -1095,7 +1095,7 @@ class OrgsClient:
 
         Removes the announcement banner currently set for the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/organizations#remove-announcement-banner-from-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/announcement-banners/organizations#remove-announcement-banner-from-organization
         """
 
         url = f"/orgs/{org}/announcement"
@@ -1122,7 +1122,7 @@ class OrgsClient:
 
         Removes the announcement banner currently set for the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/organizations#remove-announcement-banner-from-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/announcement-banners/organizations#remove-announcement-banner-from-organization
         """
 
         url = f"/orgs/{org}/announcement"
@@ -1174,7 +1174,7 @@ class OrgsClient:
 
         Sets the announcement banner to display for the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/organizations#set-announcement-banner-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/announcement-banners/organizations#set-announcement-banner-for-organization
         """
 
         from ..models import Announcement, AnnouncementBanner
@@ -1239,7 +1239,7 @@ class OrgsClient:
 
         Sets the announcement banner to display for the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/organizations#set-announcement-banner-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/announcement-banners/organizations#set-announcement-banner-for-organization
         """
 
         from ..models import Announcement, AnnouncementBanner
@@ -1345,7 +1345,7 @@ class OrgsClient:
         This allows for a stable tracking of a deployment where the actual
         deployed artifact can change over time.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#create-an-artifact-deployment-record
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/artifact-metadata#create-an-artifact-deployment-record
         """
 
         from ..models import (
@@ -1461,7 +1461,7 @@ class OrgsClient:
         This allows for a stable tracking of a deployment where the actual
         deployed artifact can change over time.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#create-an-artifact-deployment-record
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/artifact-metadata#create-an-artifact-deployment-record
         """
 
         from ..models import (
@@ -1556,7 +1556,7 @@ class OrgsClient:
         'physical_environment', and 'deployment_name' values as existing records, the existing records will be updated.
         If no existing records match, new records will be created.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#set-cluster-deployment-records
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/artifact-metadata#set-cluster-deployment-records
         """
 
         from ..models import (
@@ -1651,7 +1651,7 @@ class OrgsClient:
         'physical_environment', and 'deployment_name' values as existing records, the existing records will be updated.
         If no existing records match, new records will be created.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#set-cluster-deployment-records
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/artifact-metadata#set-cluster-deployment-records
         """
 
         from ..models import (
@@ -1744,7 +1744,7 @@ class OrgsClient:
         This endpoint will create a new artifact storage record on behalf of any artifact matching the provided digest and
         associated with a repository owned by the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#create-artifact-metadata-storage-record
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/artifact-metadata#create-artifact-metadata-storage-record
         """
 
         from ..models import (
@@ -1837,7 +1837,7 @@ class OrgsClient:
         This endpoint will create a new artifact storage record on behalf of any artifact matching the provided digest and
         associated with a repository owned by the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#create-artifact-metadata-storage-record
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/artifact-metadata#create-artifact-metadata-storage-record
         """
 
         from ..models import (
@@ -1891,7 +1891,7 @@ class OrgsClient:
 
         List deployment records for an artifact metadata associated with an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#list-artifact-deployment-records
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/artifact-metadata#list-artifact-deployment-records
         """
 
         from ..models import (
@@ -1927,7 +1927,7 @@ class OrgsClient:
 
         List deployment records for an artifact metadata associated with an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#list-artifact-deployment-records
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/artifact-metadata#list-artifact-deployment-records
         """
 
         from ..models import (
@@ -1965,7 +1965,7 @@ class OrgsClient:
 
         The collection of storage records returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `content:read` permission is required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#list-artifact-storage-records
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/artifact-metadata#list-artifact-storage-records
         """
 
         from ..models import (
@@ -2003,7 +2003,7 @@ class OrgsClient:
 
         The collection of storage records returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `content:read` permission is required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#list-artifact-storage-records
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/artifact-metadata#list-artifact-storage-records
         """
 
         from ..models import (
@@ -2079,9 +2079,9 @@ class OrgsClient:
 
         The collection of attestations returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `attestations:read` permission is required.
 
-        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
+        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#list-attestations-by-bulk-subject-digests
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/attestations#list-attestations-by-bulk-subject-digests
         """
 
         from ..models import (
@@ -2175,9 +2175,9 @@ class OrgsClient:
 
         The collection of attestations returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `attestations:read` permission is required.
 
-        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
+        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#list-attestations-by-bulk-subject-digests
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/attestations#list-attestations-by-bulk-subject-digests
         """
 
         from ..models import (
@@ -2269,7 +2269,7 @@ class OrgsClient:
 
         Delete artifact attestations in bulk by either subject digests or unique ID.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#delete-attestations-in-bulk
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/attestations#delete-attestations-in-bulk
         """
 
         from typing import Union
@@ -2365,7 +2365,7 @@ class OrgsClient:
 
         Delete artifact attestations in bulk by either subject digests or unique ID.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#delete-attestations-in-bulk
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/attestations#delete-attestations-in-bulk
         """
 
         from typing import Union
@@ -2420,7 +2420,7 @@ class OrgsClient:
 
         Delete an artifact attestation by subject digest.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#delete-attestations-by-subject-digest
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/attestations#delete-attestations-by-subject-digest
         """
 
         from ..models import BasicError
@@ -2453,7 +2453,7 @@ class OrgsClient:
 
         Delete an artifact attestation by subject digest.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#delete-attestations-by-subject-digest
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/attestations#delete-attestations-by-subject-digest
         """
 
         from ..models import BasicError
@@ -2493,7 +2493,7 @@ class OrgsClient:
         List repositories owned by the provided organization that have created at least one attested artifact
         Results will be sorted in ascending order by repository ID
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#list-attestation-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/attestations#list-attestation-repositories
         """
 
         from ..models import OrgsOrgAttestationsRepositoriesGetResponse200Items
@@ -2539,7 +2539,7 @@ class OrgsClient:
         List repositories owned by the provided organization that have created at least one attested artifact
         Results will be sorted in ascending order by repository ID
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#list-attestation-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/attestations#list-attestation-repositories
         """
 
         from ..models import OrgsOrgAttestationsRepositoriesGetResponse200Items
@@ -2578,7 +2578,7 @@ class OrgsClient:
 
         Delete an artifact attestation by unique ID that is associated with a repository owned by an org.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#delete-attestations-by-id
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/attestations#delete-attestations-by-id
         """
 
         from ..models import BasicError
@@ -2612,7 +2612,7 @@ class OrgsClient:
 
         Delete an artifact attestation by unique ID that is associated with a repository owned by an org.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#delete-attestations-by-id
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/attestations#delete-attestations-by-id
         """
 
         from ..models import BasicError
@@ -2655,9 +2655,9 @@ class OrgsClient:
 
         The collection of attestations returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `attestations:read` permission is required.
 
-        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
+        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#list-attestations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/attestations#list-attestations
         """
 
         from ..models import OrgsOrgAttestationsSubjectDigestGetResponse200
@@ -2705,9 +2705,9 @@ class OrgsClient:
 
         The collection of attestations returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `attestations:read` permission is required.
 
-        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
+        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#list-attestations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/attestations#list-attestations
         """
 
         from ..models import OrgsOrgAttestationsSubjectDigestGetResponse200
@@ -2749,19 +2749,19 @@ class OrgsClient:
 
         GET /orgs/{org}/audit-log
 
-        Gets the audit log for an organization. For more information, see "[Reviewing the audit log for your organization](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization)."
+        Gets the audit log for an organization. For more information, see "[Reviewing the audit log for your organization](https://docs.github.com/enterprise-cloud@latest/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization)."
 
-        By default, the response includes up to 30 events from the past three months. Use the `phrase` parameter to filter results and retrieve older events. For example, use the `phrase` parameter with the `created` qualifier to filter events based on when the events occurred. For more information, see "[Reviewing the audit log for your organization](https://docs.github.com/enterprise-cloud@latest//organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/reviewing-the-audit-log-for-your-organization#searching-the-audit-log)."
+        By default, the response includes up to 30 events from the past three months. Use the `phrase` parameter to filter results and retrieve older events. For example, use the `phrase` parameter with the `created` qualifier to filter events based on when the events occurred. For more information, see "[Reviewing the audit log for your organization](https://docs.github.com/enterprise-cloud@latest/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/reviewing-the-audit-log-for-your-organization#searching-the-audit-log)."
 
-        Use pagination to retrieve fewer or more than 30 events. For more information, see "[Using pagination in the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/using-pagination-in-the-rest-api)."
+        Use pagination to retrieve fewer or more than 30 events. For more information, see "[Using pagination in the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/using-pagination-in-the-rest-api)."
 
-        This endpoint has a rate limit of 1,750 queries per hour per user and IP address.  If your integration receives a rate limit error (typically a 403 or 429 response), it should wait before making another request to the GitHub API. For more information, see "[Rate limits for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api)" and "[Best practices for integrators](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-integrators)."
+        This endpoint has a rate limit of 1,750 queries per hour per user and IP address.  If your integration receives a rate limit error (typically a 403 or 429 response), it should wait before making another request to the GitHub API. For more information, see "[Rate limits for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api)" and "[Best practices for integrators](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-integrators)."
 
         The authenticated user must be an organization owner to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `read:audit_log` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#get-the-audit-log-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#get-the-audit-log-for-an-organization
         """
 
         from ..models import AuditLogEvent
@@ -2805,19 +2805,19 @@ class OrgsClient:
 
         GET /orgs/{org}/audit-log
 
-        Gets the audit log for an organization. For more information, see "[Reviewing the audit log for your organization](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization)."
+        Gets the audit log for an organization. For more information, see "[Reviewing the audit log for your organization](https://docs.github.com/enterprise-cloud@latest/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization)."
 
-        By default, the response includes up to 30 events from the past three months. Use the `phrase` parameter to filter results and retrieve older events. For example, use the `phrase` parameter with the `created` qualifier to filter events based on when the events occurred. For more information, see "[Reviewing the audit log for your organization](https://docs.github.com/enterprise-cloud@latest//organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/reviewing-the-audit-log-for-your-organization#searching-the-audit-log)."
+        By default, the response includes up to 30 events from the past three months. Use the `phrase` parameter to filter results and retrieve older events. For example, use the `phrase` parameter with the `created` qualifier to filter events based on when the events occurred. For more information, see "[Reviewing the audit log for your organization](https://docs.github.com/enterprise-cloud@latest/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/reviewing-the-audit-log-for-your-organization#searching-the-audit-log)."
 
-        Use pagination to retrieve fewer or more than 30 events. For more information, see "[Using pagination in the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/using-pagination-in-the-rest-api)."
+        Use pagination to retrieve fewer or more than 30 events. For more information, see "[Using pagination in the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/using-pagination-in-the-rest-api)."
 
-        This endpoint has a rate limit of 1,750 queries per hour per user and IP address.  If your integration receives a rate limit error (typically a 403 or 429 response), it should wait before making another request to the GitHub API. For more information, see "[Rate limits for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api)" and "[Best practices for integrators](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-integrators)."
+        This endpoint has a rate limit of 1,750 queries per hour per user and IP address.  If your integration receives a rate limit error (typically a 403 or 429 response), it should wait before making another request to the GitHub API. For more information, see "[Rate limits for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api)" and "[Best practices for integrators](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-integrators)."
 
         The authenticated user must be an organization owner to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `read:audit_log` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#get-the-audit-log-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#get-the-audit-log-for-an-organization
         """
 
         from ..models import AuditLogEvent
@@ -2859,7 +2859,7 @@ class OrgsClient:
 
         List the users blocked by an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/blocking#list-users-blocked-by-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/blocking#list-users-blocked-by-an-organization
         """
 
         from ..models import SimpleUser
@@ -2897,7 +2897,7 @@ class OrgsClient:
 
         List the users blocked by an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/blocking#list-users-blocked-by-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/blocking#list-users-blocked-by-an-organization
         """
 
         from ..models import SimpleUser
@@ -2934,7 +2934,7 @@ class OrgsClient:
 
         Returns a 204 if the given user is blocked by the given organization. Returns a 404 if the organization is not blocking the user, or if the user account has been identified as spam by GitHub.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/blocking#check-if-a-user-is-blocked-by-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/blocking#check-if-a-user-is-blocked-by-an-organization
         """
 
         from ..models import BasicError
@@ -2967,7 +2967,7 @@ class OrgsClient:
 
         Returns a 204 if the given user is blocked by the given organization. Returns a 404 if the organization is not blocking the user, or if the user account has been identified as spam by GitHub.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/blocking#check-if-a-user-is-blocked-by-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/blocking#check-if-a-user-is-blocked-by-an-organization
         """
 
         from ..models import BasicError
@@ -3000,7 +3000,7 @@ class OrgsClient:
 
         Blocks the given user on behalf of the specified organization and returns a 204. If the organization cannot block the given user a 422 is returned.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/blocking#block-a-user-from-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/blocking#block-a-user-from-an-organization
         """
 
         from ..models import ValidationError
@@ -3033,7 +3033,7 @@ class OrgsClient:
 
         Blocks the given user on behalf of the specified organization and returns a 204. If the organization cannot block the given user a 422 is returned.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/blocking#block-a-user-from-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/blocking#block-a-user-from-an-organization
         """
 
         from ..models import ValidationError
@@ -3066,7 +3066,7 @@ class OrgsClient:
 
         Unblocks the given user on behalf of the specified organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/blocking#unblock-a-user-from-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/blocking#unblock-a-user-from-an-organization
         """
 
         url = f"/orgs/{org}/blocks/{username}"
@@ -3094,7 +3094,7 @@ class OrgsClient:
 
         Unblocks the given user on behalf of the specified organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/blocking#unblock-a-user-from-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/blocking#unblock-a-user-from-an-organization
         """
 
         url = f"/orgs/{org}/blocks/{username}"
@@ -3141,7 +3141,7 @@ class OrgsClient:
 
         Lists the requests made by users of a repository to bypass push protection rules within an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/bypass-requests#list-push-rule-bypass-requests-within-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/bypass-requests#list-push-rule-bypass-requests-within-an-organization
         """
 
         from ..models import BasicError, PushRuleBypassRequest
@@ -3206,7 +3206,7 @@ class OrgsClient:
 
         Lists the requests made by users of a repository to bypass push protection rules within an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/bypass-requests#list-push-rule-bypass-requests-within-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/bypass-requests#list-push-rule-bypass-requests-within-an-organization
         """
 
         from ..models import BasicError, PushRuleBypassRequest
@@ -3254,13 +3254,13 @@ class OrgsClient:
 
         GET /orgs/{org}/credential-authorizations
 
-        Lists all credential authorizations for an organization that uses SAML single sign-on (SSO). The credentials are either personal access tokens or SSH keys that organization members have authorized for the organization. For more information, see [About authentication with SAML single sign-on](https://docs.github.com/enterprise-cloud@latest//articles/about-authentication-with-saml-single-sign-on).
+        Lists all credential authorizations for an organization that uses SAML single sign-on (SSO). The credentials are either personal access tokens or SSH keys that organization members have authorized for the organization. For more information, see [About authentication with SAML single sign-on](https://docs.github.com/enterprise-cloud@latest/articles/about-authentication-with-saml-single-sign-on).
 
         The authenticated user must be an organization owner to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-saml-sso-authorizations-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#list-saml-sso-authorizations-for-an-organization
         """
 
         from ..models import CredentialAuthorization
@@ -3300,13 +3300,13 @@ class OrgsClient:
 
         GET /orgs/{org}/credential-authorizations
 
-        Lists all credential authorizations for an organization that uses SAML single sign-on (SSO). The credentials are either personal access tokens or SSH keys that organization members have authorized for the organization. For more information, see [About authentication with SAML single sign-on](https://docs.github.com/enterprise-cloud@latest//articles/about-authentication-with-saml-single-sign-on).
+        Lists all credential authorizations for an organization that uses SAML single sign-on (SSO). The credentials are either personal access tokens or SSH keys that organization members have authorized for the organization. For more information, see [About authentication with SAML single sign-on](https://docs.github.com/enterprise-cloud@latest/articles/about-authentication-with-saml-single-sign-on).
 
         The authenticated user must be an organization owner to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-saml-sso-authorizations-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#list-saml-sso-authorizations-for-an-organization
         """
 
         from ..models import CredentialAuthorization
@@ -3348,7 +3348,7 @@ class OrgsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#remove-a-saml-sso-authorization-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#remove-a-saml-sso-authorization-for-an-organization
         """
 
         from ..models import BasicError
@@ -3385,7 +3385,7 @@ class OrgsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#remove-a-saml-sso-authorization-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#remove-a-saml-sso-authorization-for-an-organization
         """
 
         from ..models import BasicError
@@ -3418,13 +3418,13 @@ class OrgsClient:
 
         GET /orgs/{org}/custom-repository-roles
 
-        List the custom repository roles available in this organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        List the custom repository roles available in this organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator of the organization or of a repository of the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#list-custom-repository-roles-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#list-custom-repository-roles-in-an-organization
         """
 
         from ..models import OrgsOrgCustomRepositoryRolesGetResponse200
@@ -3455,13 +3455,13 @@ class OrgsClient:
 
         GET /orgs/{org}/custom-repository-roles
 
-        List the custom repository roles available in this organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        List the custom repository roles available in this organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator of the organization or of a repository of the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#list-custom-repository-roles-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#list-custom-repository-roles-in-an-organization
         """
 
         from ..models import OrgsOrgCustomRepositoryRolesGetResponse200
@@ -3524,13 +3524,13 @@ class OrgsClient:
 
         POST /orgs/{org}/custom-repository-roles
 
-        Creates a custom repository role that can be used by all repositories owned by the organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        Creates a custom repository role that can be used by all repositories owned by the organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#create-a-custom-repository-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#create-a-custom-repository-role
         """
 
         from ..models import (
@@ -3614,13 +3614,13 @@ class OrgsClient:
 
         POST /orgs/{org}/custom-repository-roles
 
-        Creates a custom repository role that can be used by all repositories owned by the organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        Creates a custom repository role that can be used by all repositories owned by the organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#create-a-custom-repository-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#create-a-custom-repository-role
         """
 
         from ..models import (
@@ -3673,13 +3673,13 @@ class OrgsClient:
 
         GET /orgs/{org}/custom-repository-roles/{role_id}
 
-        Gets a custom repository role that is available to all repositories owned by the organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        Gets a custom repository role that is available to all repositories owned by the organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator of the organization or of a repository of the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#get-a-custom-repository-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#get-a-custom-repository-role
         """
 
         from ..models import BasicError, OrganizationCustomRepositoryRole
@@ -3714,13 +3714,13 @@ class OrgsClient:
 
         GET /orgs/{org}/custom-repository-roles/{role_id}
 
-        Gets a custom repository role that is available to all repositories owned by the organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        Gets a custom repository role that is available to all repositories owned by the organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator of the organization or of a repository of the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#get-a-custom-repository-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#get-a-custom-repository-role
         """
 
         from ..models import BasicError, OrganizationCustomRepositoryRole
@@ -3753,13 +3753,13 @@ class OrgsClient:
         DELETE /orgs/{org}/custom-repository-roles/{role_id}
 
         Deletes a custom role from an organization. Once the custom role has been deleted, any
-        user, team, or invitation with the deleted custom role will be reassigned the inherited role. For more information about custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        user, team, or invitation with the deleted custom role will be reassigned the inherited role. For more information about custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#delete-a-custom-repository-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#delete-a-custom-repository-role
         """
 
         url = f"/orgs/{org}/custom-repository-roles/{role_id}"
@@ -3786,13 +3786,13 @@ class OrgsClient:
         DELETE /orgs/{org}/custom-repository-roles/{role_id}
 
         Deletes a custom role from an organization. Once the custom role has been deleted, any
-        user, team, or invitation with the deleted custom role will be reassigned the inherited role. For more information about custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        user, team, or invitation with the deleted custom role will be reassigned the inherited role. For more information about custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#delete-a-custom-repository-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#delete-a-custom-repository-role
         """
 
         url = f"/orgs/{org}/custom-repository-roles/{role_id}"
@@ -3855,13 +3855,13 @@ class OrgsClient:
 
         PATCH /orgs/{org}/custom-repository-roles/{role_id}
 
-        Updates a custom repository role that can be used by all repositories owned by the organization. For more information about custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        Updates a custom repository role that can be used by all repositories owned by the organization. For more information about custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#update-a-custom-repository-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#update-a-custom-repository-role
         """
 
         from ..models import (
@@ -3948,13 +3948,13 @@ class OrgsClient:
 
         PATCH /orgs/{org}/custom-repository-roles/{role_id}
 
-        Updates a custom repository role that can be used by all repositories owned by the organization. For more information about custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        Updates a custom repository role that can be used by all repositories owned by the organization. For more information about custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#update-a-custom-repository-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#update-a-custom-repository-role
         """
 
         from ..models import (
@@ -4042,15 +4042,15 @@ class OrgsClient:
         POST /orgs/{org}/custom_roles
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[Create a custom repository role](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#create-a-custom-repository-role)" endpoint instead.
+        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[Create a custom repository role](https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#create-a-custom-repository-role)" endpoint instead.
 
-        Creates a custom repository role that can be used by all repositories owned by the organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        Creates a custom repository role that can be used by all repositories owned by the organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---create-a-custom-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#closing-down---create-a-custom-role
         """
 
         from ..models import (
@@ -4138,15 +4138,15 @@ class OrgsClient:
         POST /orgs/{org}/custom_roles
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[Create a custom repository role](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#create-a-custom-repository-role)" endpoint instead.
+        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[Create a custom repository role](https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#create-a-custom-repository-role)" endpoint instead.
 
-        Creates a custom repository role that can be used by all repositories owned by the organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        Creates a custom repository role that can be used by all repositories owned by the organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---create-a-custom-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#closing-down---create-a-custom-role
         """
 
         from ..models import (
@@ -4201,15 +4201,15 @@ class OrgsClient:
         GET /orgs/{org}/custom_roles/{role_id}
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[Get a custom repository role](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#get-a-custom-repository-role)" endpoint instead.
+        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[Get a custom repository role](https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#get-a-custom-repository-role)" endpoint instead.
 
-        Gets a custom repository role that is available to all repositories owned by the organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        Gets a custom repository role that is available to all repositories owned by the organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator of the organization or of a repository of the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---get-a-custom-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#closing-down---get-a-custom-role
         """
 
         from ..models import BasicError, OrganizationCustomRepositoryRole
@@ -4246,15 +4246,15 @@ class OrgsClient:
         GET /orgs/{org}/custom_roles/{role_id}
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[Get a custom repository role](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#get-a-custom-repository-role)" endpoint instead.
+        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[Get a custom repository role](https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#get-a-custom-repository-role)" endpoint instead.
 
-        Gets a custom repository role that is available to all repositories owned by the organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        Gets a custom repository role that is available to all repositories owned by the organization. For more information on custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator of the organization or of a repository of the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---get-a-custom-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#closing-down---get-a-custom-role
         """
 
         from ..models import BasicError, OrganizationCustomRepositoryRole
@@ -4288,16 +4288,16 @@ class OrgsClient:
         DELETE /orgs/{org}/custom_roles/{role_id}
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[Delete a custom repository role](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#delete-a-custom-repository-role)" endpoint instead.
+        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[Delete a custom repository role](https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#delete-a-custom-repository-role)" endpoint instead.
 
         Deletes a custom role from an organization. Once the custom role has been deleted, any
-        user, team, or invitation with the deleted custom role will be reassigned the inherited role. For more information about custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        user, team, or invitation with the deleted custom role will be reassigned the inherited role. For more information about custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---delete-a-custom-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#closing-down---delete-a-custom-role
         """
 
         url = f"/orgs/{org}/custom_roles/{role_id}"
@@ -4325,16 +4325,16 @@ class OrgsClient:
         DELETE /orgs/{org}/custom_roles/{role_id}
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[Delete a custom repository role](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#delete-a-custom-repository-role)" endpoint instead.
+        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[Delete a custom repository role](https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#delete-a-custom-repository-role)" endpoint instead.
 
         Deletes a custom role from an organization. Once the custom role has been deleted, any
-        user, team, or invitation with the deleted custom role will be reassigned the inherited role. For more information about custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        user, team, or invitation with the deleted custom role will be reassigned the inherited role. For more information about custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---delete-a-custom-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#closing-down---delete-a-custom-role
         """
 
         url = f"/orgs/{org}/custom_roles/{role_id}"
@@ -4401,15 +4401,15 @@ class OrgsClient:
         PATCH /orgs/{org}/custom_roles/{role_id}
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[Update a custom repository role](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#update-a-custom-repository-role)" endpoint instead.
+        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[Update a custom repository role](https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#update-a-custom-repository-role)" endpoint instead.
 
-        Updates a custom repository role that can be used by all repositories owned by the organization. For more information about custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        Updates a custom repository role that can be used by all repositories owned by the organization. For more information about custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---update-a-custom-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#closing-down---update-a-custom-role
         """
 
         from ..models import (
@@ -4500,15 +4500,15 @@ class OrgsClient:
         PATCH /orgs/{org}/custom_roles/{role_id}
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[Update a custom repository role](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#update-a-custom-repository-role)" endpoint instead.
+        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[Update a custom repository role](https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#update-a-custom-repository-role)" endpoint instead.
 
-        Updates a custom repository role that can be used by all repositories owned by the organization. For more information about custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        Updates a custom repository role that can be used by all repositories owned by the organization. For more information about custom repository roles, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---update-a-custom-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#closing-down---update-a-custom-role
         """
 
         from ..models import (
@@ -4564,9 +4564,9 @@ class OrgsClient:
         The return hash contains `failed_at` and `failed_reason` fields which
         represent the time at which the invitation failed and the reason for the failure.
 
-        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest//admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
+        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-failed-organization-invitations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#list-failed-organization-invitations
         """
 
         from ..models import BasicError, OrganizationInvitation
@@ -4610,9 +4610,9 @@ class OrgsClient:
         The return hash contains `failed_at` and `failed_reason` fields which
         represent the time at which the invitation failed and the reason for the failure.
 
-        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest//admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
+        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-failed-organization-invitations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#list-failed-organization-invitations
         """
 
         from ..models import BasicError, OrganizationInvitation
@@ -4654,15 +4654,15 @@ class OrgsClient:
         GET /orgs/{org}/fine_grained_permissions
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[List fine-grained repository permissions](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#list-repository-fine-grained-permissions-for-an-organization)" endpoint instead.
+        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[List fine-grained repository permissions](https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#list-repository-fine-grained-permissions-for-an-organization)" endpoint instead.
 
-        Lists the fine-grained permissions that can be used in custom repository roles for an organization. For more information, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        Lists the fine-grained permissions that can be used in custom repository roles for an organization. For more information, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         To use this endpoint the authenticated user must be an administrator of the organization or of a repository of the organization.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---list-fine-grained-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#closing-down---list-fine-grained-permissions-for-an-organization
         """
 
         from ..models import RepositoryFineGrainedPermission
@@ -4695,15 +4695,15 @@ class OrgsClient:
         GET /orgs/{org}/fine_grained_permissions
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[List fine-grained repository permissions](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#list-repository-fine-grained-permissions-for-an-organization)" endpoint instead.
+        > **Closing down notice:** This operation is closing down and will be removed after September 6, 2023. Use the "[List fine-grained repository permissions](https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#list-repository-fine-grained-permissions-for-an-organization)" endpoint instead.
 
-        Lists the fine-grained permissions that can be used in custom repository roles for an organization. For more information, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        Lists the fine-grained permissions that can be used in custom repository roles for an organization. For more information, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         To use this endpoint the authenticated user must be an administrator of the organization or of a repository of the organization.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---list-fine-grained-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#closing-down---list-fine-grained-permissions-for-an-organization
         """
 
         from ..models import RepositoryFineGrainedPermission
@@ -4738,7 +4738,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#list-organization-webhooks
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#list-organization-webhooks
         """
 
         from ..models import BasicError, OrgHook
@@ -4782,7 +4782,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#list-organization-webhooks
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#list-organization-webhooks
         """
 
         from ..models import BasicError, OrgHook
@@ -4850,7 +4850,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#create-an-organization-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#create-an-organization-webhook
         """
 
         from ..models import BasicError, OrgHook, OrgsOrgHooksPostBody, ValidationError
@@ -4923,7 +4923,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#create-an-organization-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#create-an-organization-webhook
         """
 
         from ..models import BasicError, OrgHook, OrgsOrgHooksPostBody, ValidationError
@@ -4971,7 +4971,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#get-an-organization-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#get-an-organization-webhook
         """
 
         from ..models import BasicError, OrgHook
@@ -5008,7 +5008,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#get-an-organization-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#get-an-organization-webhook
         """
 
         from ..models import BasicError, OrgHook
@@ -5045,7 +5045,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#delete-an-organization-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#delete-an-organization-webhook
         """
 
         from ..models import BasicError
@@ -5081,7 +5081,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#delete-an-organization-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#delete-an-organization-webhook
         """
 
         from ..models import BasicError
@@ -5145,7 +5145,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#update-an-organization-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#update-an-organization-webhook
         """
 
         from ..models import (
@@ -5226,7 +5226,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#update-an-organization-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#update-an-organization-webhook
         """
 
         from ..models import (
@@ -5279,7 +5279,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization
         """
 
         from ..models import WebhookConfig
@@ -5313,7 +5313,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization
         """
 
         from ..models import WebhookConfig
@@ -5375,7 +5375,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#update-a-webhook-configuration-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#update-a-webhook-configuration-for-an-organization
         """
 
         from ..models import OrgsOrgHooksHookIdConfigPatchBody, WebhookConfig
@@ -5447,7 +5447,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#update-a-webhook-configuration-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#update-a-webhook-configuration-for-an-organization
         """
 
         from ..models import OrgsOrgHooksHookIdConfigPatchBody, WebhookConfig
@@ -5494,7 +5494,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#list-deliveries-for-an-organization-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#list-deliveries-for-an-organization-webhook
         """
 
         from ..models import BasicError, HookDeliveryItem, ValidationError
@@ -5542,7 +5542,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#list-deliveries-for-an-organization-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#list-deliveries-for-an-organization-webhook
         """
 
         from ..models import BasicError, HookDeliveryItem, ValidationError
@@ -5588,7 +5588,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#get-a-webhook-delivery-for-an-organization-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#get-a-webhook-delivery-for-an-organization-webhook
         """
 
         from ..models import BasicError, HookDelivery, ValidationError
@@ -5627,7 +5627,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#get-a-webhook-delivery-for-an-organization-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#get-a-webhook-delivery-for-an-organization-webhook
         """
 
         from ..models import BasicError, HookDelivery, ValidationError
@@ -5669,7 +5669,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#redeliver-a-delivery-for-an-organization-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#redeliver-a-delivery-for-an-organization-webhook
         """
 
         from ..models import (
@@ -5715,7 +5715,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#redeliver-a-delivery-for-an-organization-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#redeliver-a-delivery-for-an-organization-webhook
         """
 
         from ..models import (
@@ -5757,7 +5757,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#ping-an-organization-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#ping-an-organization-webhook
         """
 
         from ..models import BasicError
@@ -5793,7 +5793,7 @@ class OrgsClient:
         OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks
         that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#ping-an-organization-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/webhooks#ping-an-organization-webhook
         """
 
         from ..models import BasicError
@@ -5854,7 +5854,7 @@ class OrgsClient:
 
         Get API request count statistics for an actor broken down by route within a specified time frame.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-route-stats-by-actor
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-route-stats-by-actor
         """
 
         from ..models import ApiInsightsRouteStatsItems
@@ -5924,7 +5924,7 @@ class OrgsClient:
 
         Get API request count statistics for an actor broken down by route within a specified time frame.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-route-stats-by-actor
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-route-stats-by-actor
         """
 
         from ..models import ApiInsightsRouteStatsItems
@@ -5985,7 +5985,7 @@ class OrgsClient:
 
         Get API request statistics for all subjects within an organization within a specified time frame. Subjects can be users or GitHub Apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-subject-stats
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-subject-stats
         """
 
         from ..models import ApiInsightsSubjectStatsItems
@@ -6046,7 +6046,7 @@ class OrgsClient:
 
         Get API request statistics for all subjects within an organization within a specified time frame. Subjects can be users or GitHub Apps.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-subject-stats
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-subject-stats
         """
 
         from ..models import ApiInsightsSubjectStatsItems
@@ -6089,7 +6089,7 @@ class OrgsClient:
 
         Get overall statistics of API requests made within an organization by all users and apps within a specified time frame.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-summary-stats
         """
 
         from ..models import ApiInsightsSummaryStats
@@ -6127,7 +6127,7 @@ class OrgsClient:
 
         Get overall statistics of API requests made within an organization by all users and apps within a specified time frame.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-summary-stats
         """
 
         from ..models import ApiInsightsSummaryStats
@@ -6166,7 +6166,7 @@ class OrgsClient:
 
         Get overall statistics of API requests within the organization for a user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats-by-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-summary-stats-by-user
         """
 
         from ..models import ApiInsightsSummaryStats
@@ -6205,7 +6205,7 @@ class OrgsClient:
 
         Get overall statistics of API requests within the organization for a user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats-by-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-summary-stats-by-user
         """
 
         from ..models import ApiInsightsSummaryStats
@@ -6251,7 +6251,7 @@ class OrgsClient:
 
         Get overall statistics of API requests within the organization made by a specific actor. Actors can be GitHub App installations, OAuth apps or other tokens on behalf of a user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats-by-actor
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-summary-stats-by-actor
         """
 
         from ..models import ApiInsightsSummaryStats
@@ -6297,7 +6297,7 @@ class OrgsClient:
 
         Get overall statistics of API requests within the organization made by a specific actor. Actors can be GitHub App installations, OAuth apps or other tokens on behalf of a user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats-by-actor
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-summary-stats-by-actor
         """
 
         from ..models import ApiInsightsSummaryStats
@@ -6338,7 +6338,7 @@ class OrgsClient:
 
         Get the number of API requests and rate-limited requests made within an organization over a specified time period.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-time-stats
         """
 
         from ..models import ApiInsightsTimeStatsItems
@@ -6380,7 +6380,7 @@ class OrgsClient:
 
         Get the number of API requests and rate-limited requests made within an organization over a specified time period.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-time-stats
         """
 
         from ..models import ApiInsightsTimeStatsItems
@@ -6423,7 +6423,7 @@ class OrgsClient:
 
         Get the number of API requests and rate-limited requests made within an organization by a specific user over a specified time period.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats-by-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-time-stats-by-user
         """
 
         from ..models import ApiInsightsTimeStatsItems
@@ -6466,7 +6466,7 @@ class OrgsClient:
 
         Get the number of API requests and rate-limited requests made within an organization by a specific user over a specified time period.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats-by-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-time-stats-by-user
         """
 
         from ..models import ApiInsightsTimeStatsItems
@@ -6516,7 +6516,7 @@ class OrgsClient:
 
         Get the number of API requests and rate-limited requests made within an organization by a specific actor within a specified time period.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats-by-actor
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-time-stats-by-actor
         """
 
         from ..models import ApiInsightsTimeStatsItems
@@ -6566,7 +6566,7 @@ class OrgsClient:
 
         Get the number of API requests and rate-limited requests made within an organization by a specific actor within a specified time period.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats-by-actor
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-time-stats-by-actor
         """
 
         from ..models import ApiInsightsTimeStatsItems
@@ -6623,7 +6623,7 @@ class OrgsClient:
 
         Get API usage statistics within an organization for a user broken down by the type of access.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-user-stats
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-user-stats
         """
 
         from ..models import ApiInsightsUserStatsItems
@@ -6684,7 +6684,7 @@ class OrgsClient:
 
         Get API usage statistics within an organization for a user broken down by the type of access.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-user-stats
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/api-insights#get-user-stats
         """
 
         from ..models import ApiInsightsUserStatsItems
@@ -6735,7 +6735,7 @@ class OrgsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:read` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-app-installations-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#list-app-installations-for-an-organization
         """
 
         from ..models import OrgsOrgInstallationsGetResponse200
@@ -6781,7 +6781,7 @@ class OrgsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:read` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-app-installations-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#list-app-installations-for-an-organization
         """
 
         from ..models import OrgsOrgInstallationsGetResponse200
@@ -6830,9 +6830,9 @@ class OrgsClient:
         `billing_manager`, or `hiring_manager`. If the invitee is not a GitHub Enterprise Cloud
         member, the `login` field in the return hash will be `null`.
 
-        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest//admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
+        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-pending-organization-invitations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#list-pending-organization-invitations
         """
 
         from ..models import BasicError, OrganizationInvitation
@@ -6886,9 +6886,9 @@ class OrgsClient:
         `billing_manager`, or `hiring_manager`. If the invitee is not a GitHub Enterprise Cloud
         member, the `login` field in the return hash will be `null`.
 
-        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest//admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
+        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-pending-organization-invitations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#list-pending-organization-invitations
         """
 
         from ..models import BasicError, OrganizationInvitation
@@ -6957,11 +6957,11 @@ class OrgsClient:
 
         Invite people to an organization by using their GitHub user ID or their email address. In order to create invitations in an organization, the authenticated user must be an organization owner.
 
-        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest//admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
+        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/enterprise-cloud@latest//rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/enterprise-cloud@latest/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#create-an-organization-invitation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#create-an-organization-invitation
         """
 
         from ..models import (
@@ -7038,11 +7038,11 @@ class OrgsClient:
 
         Invite people to an organization by using their GitHub user ID or their email address. In order to create invitations in an organization, the authenticated user must be an organization owner.
 
-        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest//admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
+        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/enterprise-cloud@latest//rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/enterprise-cloud@latest/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#create-an-organization-invitation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#create-an-organization-invitation
         """
 
         from ..models import (
@@ -7092,11 +7092,11 @@ class OrgsClient:
 
         Cancel an organization invitation. In order to cancel an organization invitation, the authenticated user must be an organization owner.
 
-        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest//admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
+        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications).
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#cancel-an-organization-invitation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#cancel-an-organization-invitation
         """
 
         from ..models import BasicError, ValidationError
@@ -7130,11 +7130,11 @@ class OrgsClient:
 
         Cancel an organization invitation. In order to cancel an organization invitation, the authenticated user must be an organization owner.
 
-        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest//admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
+        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications).
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#cancel-an-organization-invitation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#cancel-an-organization-invitation
         """
 
         from ..models import BasicError, ValidationError
@@ -7171,9 +7171,9 @@ class OrgsClient:
         List all teams associated with an invitation. In order to see invitations
         in an organization, the authenticated user must be an organization owner.
 
-        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest//admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
+        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-organization-invitation-teams
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#list-organization-invitation-teams
         """
 
         from ..models import BasicError, Team
@@ -7216,9 +7216,9 @@ class OrgsClient:
         List all teams associated with an invitation. In order to see invitations
         in an organization, the authenticated user must be an organization owner.
 
-        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest//admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
+        This endpoint is not available for [Enterprise Managed User (EMU) organizations](https://docs.github.com/enterprise-cloud@latest/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-organization-invitation-teams
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#list-organization-invitation-teams
         """
 
         from ..models import BasicError, Team
@@ -7259,7 +7259,7 @@ class OrgsClient:
 
         Lists all issue fields for an organization. OAuth app tokens and personal access tokens (classic) need the read:org scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#list-issue-fields-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/issue-fields#list-issue-fields-for-an-organization
         """
 
         from typing import Union
@@ -7296,7 +7296,7 @@ class OrgsClient:
 
         Lists all issue fields for an organization. OAuth app tokens and personal access tokens (classic) need the read:org scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#list-issue-fields-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/issue-fields#list-issue-fields-for-an-organization
         """
 
         from typing import Union
@@ -7360,12 +7360,12 @@ class OrgsClient:
 
         Creates a new issue field for an organization.
 
-        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest/issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
 
         To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
         personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#create-issue-field-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/issue-fields#create-issue-field-for-an-organization
         """
 
         from typing import Union
@@ -7445,12 +7445,12 @@ class OrgsClient:
 
         Creates a new issue field for an organization.
 
-        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest/issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
 
         To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
         personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#create-issue-field-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/issue-fields#create-issue-field-for-an-organization
         """
 
         from typing import Union
@@ -7502,12 +7502,12 @@ class OrgsClient:
 
         Deletes an issue field for an organization.
 
-        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest/issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
 
         To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
         personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#delete-issue-field-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/issue-fields#delete-issue-field-for-an-organization
         """
 
         from ..models import BasicError, ValidationErrorSimple
@@ -7541,12 +7541,12 @@ class OrgsClient:
 
         Deletes an issue field for an organization.
 
-        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest/issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
 
         To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
         personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#delete-issue-field-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/issue-fields#delete-issue-field-for-an-organization
         """
 
         from ..models import BasicError, ValidationErrorSimple
@@ -7610,12 +7610,12 @@ class OrgsClient:
 
         Updates an issue field for an organization.
 
-        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest/issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
 
         To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
         personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#update-issue-field-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/issue-fields#update-issue-field-for-an-organization
         """
 
         from typing import Union
@@ -7697,12 +7697,12 @@ class OrgsClient:
 
         Updates an issue field for an organization.
 
-        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest/issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
 
         To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
         personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#update-issue-field-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/issue-fields#update-issue-field-for-an-organization
         """
 
         from typing import Union
@@ -7755,7 +7755,7 @@ class OrgsClient:
 
         Lists all issue types for an organization. OAuth app tokens and personal access tokens (classic) need the read:org scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-types#list-issue-types-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/issue-types#list-issue-types-for-an-organization
         """
 
         from typing import Union
@@ -7792,7 +7792,7 @@ class OrgsClient:
 
         Lists all issue types for an organization. OAuth app tokens and personal access tokens (classic) need the read:org scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-types#list-issue-types-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/issue-types#list-issue-types-for-an-organization
         """
 
         from typing import Union
@@ -7860,12 +7860,12 @@ class OrgsClient:
 
         Create a new issue type for an organization.
 
-        You can find out more about issue types in [Managing issue types in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization).
+        You can find out more about issue types in [Managing issue types in an organization](https://docs.github.com/enterprise-cloud@latest/issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization).
 
         To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
         personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-types#create-issue-type-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/issue-types#create-issue-type-for-an-organization
         """
 
         from typing import Union
@@ -7949,12 +7949,12 @@ class OrgsClient:
 
         Create a new issue type for an organization.
 
-        You can find out more about issue types in [Managing issue types in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization).
+        You can find out more about issue types in [Managing issue types in an organization](https://docs.github.com/enterprise-cloud@latest/issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization).
 
         To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
         personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-types#create-issue-type-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/issue-types#create-issue-type-for-an-organization
         """
 
         from typing import Union
@@ -8041,12 +8041,12 @@ class OrgsClient:
 
         Updates an issue type for an organization.
 
-        You can find out more about issue types in [Managing issue types in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization).
+        You can find out more about issue types in [Managing issue types in an organization](https://docs.github.com/enterprise-cloud@latest/issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization).
 
         To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
         personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-types#update-issue-type-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/issue-types#update-issue-type-for-an-organization
         """
 
         from typing import Union
@@ -8133,12 +8133,12 @@ class OrgsClient:
 
         Updates an issue type for an organization.
 
-        You can find out more about issue types in [Managing issue types in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization).
+        You can find out more about issue types in [Managing issue types in an organization](https://docs.github.com/enterprise-cloud@latest/issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization).
 
         To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
         personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-types#update-issue-type-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/issue-types#update-issue-type-for-an-organization
         """
 
         from typing import Union
@@ -8190,12 +8190,12 @@ class OrgsClient:
 
         Deletes an issue type for an organization.
 
-        You can find out more about issue types in [Managing issue types in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization).
+        You can find out more about issue types in [Managing issue types in an organization](https://docs.github.com/enterprise-cloud@latest/issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization).
 
         To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
         personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-types#delete-issue-type-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/issue-types#delete-issue-type-for-an-organization
         """
 
         from ..models import BasicError, ValidationErrorSimple
@@ -8229,12 +8229,12 @@ class OrgsClient:
 
         Deletes an issue type for an organization.
 
-        You can find out more about issue types in [Managing issue types in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization).
+        You can find out more about issue types in [Managing issue types in an organization](https://docs.github.com/enterprise-cloud@latest/issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization).
 
         To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
         personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-types#delete-issue-type-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/issue-types#delete-issue-type-for-an-organization
         """
 
         from ..models import BasicError, ValidationErrorSimple
@@ -8271,7 +8271,7 @@ class OrgsClient:
 
         List all users who are members of an organization. If the authenticated user is also a member of this organization then both concealed and public members will be returned.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-organization-members
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#list-organization-members
         """
 
         from ..models import SimpleUser, ValidationError
@@ -8316,7 +8316,7 @@ class OrgsClient:
 
         List all users who are members of an organization. If the authenticated user is also a member of this organization then both concealed and public members will be returned.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-organization-members
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#list-organization-members
         """
 
         from ..models import SimpleUser, ValidationError
@@ -8358,7 +8358,7 @@ class OrgsClient:
 
         Check if a user is, publicly or privately, a member of the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#check-organization-membership-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#check-organization-membership-for-a-user
         """
 
         url = f"/orgs/{org}/members/{username}"
@@ -8387,7 +8387,7 @@ class OrgsClient:
 
         Check if a user is, publicly or privately, a member of the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#check-organization-membership-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#check-organization-membership-for-a-user
         """
 
         url = f"/orgs/{org}/members/{username}"
@@ -8419,7 +8419,7 @@ class OrgsClient:
         > [!NOTE]
         > If a user has both direct membership in the organization as well as indirect membership via an enterprise team, only their direct membership will be removed. Their indirect membership via an enterprise team remains until the user is removed from the enterprise team.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#remove-an-organization-member
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#remove-an-organization-member
         """
 
         from ..models import BasicError
@@ -8455,7 +8455,7 @@ class OrgsClient:
         > [!NOTE]
         > If a user has both direct membership in the organization as well as indirect membership via an enterprise team, only their direct membership will be removed. Their indirect membership via an enterprise team remains until the user is removed from the enterprise team.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#remove-an-organization-member
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#remove-an-organization-member
         """
 
         from ..models import BasicError
@@ -8488,7 +8488,7 @@ class OrgsClient:
 
         In order to get a user's membership with an organization, the authenticated user must be an organization member. The `state` parameter in the response can be used to identify the user's membership status.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#get-organization-membership-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#get-organization-membership-for-a-user
         """
 
         from ..models import BasicError, OrgMembership
@@ -8523,7 +8523,7 @@ class OrgsClient:
 
         In order to get a user's membership with an organization, the authenticated user must be an organization member. The `state` parameter in the response can be used to identify the user's membership status.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#get-organization-membership-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#get-organization-membership-for-a-user
         """
 
         from ..models import BasicError, OrgMembership
@@ -8583,7 +8583,7 @@ class OrgsClient:
 
         Only authenticated organization owners can add a member to the organization or update the member's role.
 
-        *   If the authenticated user is _adding_ a member to the organization, the invited user will receive an email inviting them to the organization. The user's [membership status](https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#get-organization-membership-for-a-user) will be `pending` until they accept the invitation.
+        *   If the authenticated user is _adding_ a member to the organization, the invited user will receive an email inviting them to the organization. The user's [membership status](https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#get-organization-membership-for-a-user) will be `pending` until they accept the invitation.
 
         *   Authenticated users can _update_ a user's membership by passing the `role` parameter. If the authenticated user changes a member's role to `admin`, the affected user will receive an email notifying them that they've been made an organization owner. If the authenticated user changes an owner's role to `member`, no email will be sent.
 
@@ -8591,7 +8591,7 @@ class OrgsClient:
 
         To prevent abuse, organization owners are limited to creating 50 organization invitations for an organization within a 24 hour period. If the organization is more than one month old or on a paid plan, the limit is 500 invitations per 24 hour period.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#set-organization-membership-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#set-organization-membership-for-a-user
         """
 
         from ..models import (
@@ -8666,7 +8666,7 @@ class OrgsClient:
 
         Only authenticated organization owners can add a member to the organization or update the member's role.
 
-        *   If the authenticated user is _adding_ a member to the organization, the invited user will receive an email inviting them to the organization. The user's [membership status](https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#get-organization-membership-for-a-user) will be `pending` until they accept the invitation.
+        *   If the authenticated user is _adding_ a member to the organization, the invited user will receive an email inviting them to the organization. The user's [membership status](https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#get-organization-membership-for-a-user) will be `pending` until they accept the invitation.
 
         *   Authenticated users can _update_ a user's membership by passing the `role` parameter. If the authenticated user changes a member's role to `admin`, the affected user will receive an email notifying them that they've been made an organization owner. If the authenticated user changes an owner's role to `member`, no email will be sent.
 
@@ -8674,7 +8674,7 @@ class OrgsClient:
 
         To prevent abuse, organization owners are limited to creating 50 organization invitations for an organization within a 24 hour period. If the organization is more than one month old or on a paid plan, the limit is 500 invitations per 24 hour period.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#set-organization-membership-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#set-organization-membership-for-a-user
         """
 
         from ..models import (
@@ -8729,7 +8729,7 @@ class OrgsClient:
         > [!NOTE]
         > If a user has both direct membership in the organization as well as indirect membership via an enterprise team, only their direct membership will be removed. Their indirect membership via an enterprise team remains until the user is removed from the enterprise team.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#remove-organization-membership-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#remove-organization-membership-for-a-user
         """
 
         from ..models import BasicError
@@ -8768,7 +8768,7 @@ class OrgsClient:
         > [!NOTE]
         > If a user has both direct membership in the organization as well as indirect membership via an enterprise team, only their direct membership will be removed. Their indirect membership via an enterprise team remains until the user is removed from the enterprise team.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#remove-organization-membership-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#remove-organization-membership-for-a-user
         """
 
         from ..models import BasicError
@@ -8802,18 +8802,18 @@ class OrgsClient:
 
         GET /orgs/{org}/organization-fine-grained-permissions
 
-        Lists the fine-grained permissions that can be used in custom organization roles for an organization. For more information, see "[Managing people's access to your organization with roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
+        Lists the fine-grained permissions that can be used in custom organization roles for an organization. For more information, see "[Managing people's access to your organization with roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
 
-        To list the fine-grained permissions that can be used in custom repository roles for an organization, see "[List repository fine-grained permissions for an organization](https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#list-repository-fine-grained-permissions-for-an-organization)."
+        To list the fine-grained permissions that can be used in custom repository roles for an organization, see "[List repository fine-grained permissions for an organization](https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#list-repository-fine-grained-permissions-for-an-organization)."
 
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#list-organization-fine-grained-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#list-organization-fine-grained-permissions-for-an-organization
         """
 
         from ..models import (
@@ -8852,18 +8852,18 @@ class OrgsClient:
 
         GET /orgs/{org}/organization-fine-grained-permissions
 
-        Lists the fine-grained permissions that can be used in custom organization roles for an organization. For more information, see "[Managing people's access to your organization with roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
+        Lists the fine-grained permissions that can be used in custom organization roles for an organization. For more information, see "[Managing people's access to your organization with roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
 
-        To list the fine-grained permissions that can be used in custom repository roles for an organization, see "[List repository fine-grained permissions for an organization](https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#list-repository-fine-grained-permissions-for-an-organization)."
+        To list the fine-grained permissions that can be used in custom repository roles for an organization, see "[List repository fine-grained permissions for an organization](https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#list-repository-fine-grained-permissions-for-an-organization)."
 
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#list-organization-fine-grained-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#list-organization-fine-grained-permissions-for-an-organization
         """
 
         from ..models import (
@@ -8902,16 +8902,16 @@ class OrgsClient:
 
         GET /orgs/{org}/organization-roles
 
-        Lists the organization roles available in this organization. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Lists the organization roles available in this organization. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#get-all-organization-roles-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#get-all-organization-roles-for-an-organization
         """
 
         from ..models import (
@@ -8950,16 +8950,16 @@ class OrgsClient:
 
         GET /orgs/{org}/organization-roles
 
-        Lists the organization roles available in this organization. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Lists the organization roles available in this organization. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#get-all-organization-roles-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#get-all-organization-roles-for-an-organization
         """
 
         from ..models import (
@@ -9025,7 +9025,7 @@ class OrgsClient:
 
         Creates a custom organization role that can be assigned to users and teams, granting them specific
         permissions over the organization and optionally across all repositories in the organization. For
-        more information on custom organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
+        more information on custom organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
 
         To include repository permissions in an organization role, you must also include the `base_role`
         field, which is one of `read`, `write`, `triage`, `maintain`, or `admin` (or `none` if no base role is set). This base role provides a set of
@@ -9034,16 +9034,16 @@ class OrgsClient:
         permissions apply across all of the repositories in the organization. You do not have to include organization permissions
         in order to add repository permissions.
 
-        See "[List repository permissions](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#list-repository-fine-grained-permissions-for-an-organization)" for valid repository permissions.
+        See "[List repository permissions](https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#list-repository-fine-grained-permissions-for-an-organization)" for valid repository permissions.
 
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#create-a-custom-organization-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#create-a-custom-organization-role
         """
 
         from ..models import (
@@ -9123,7 +9123,7 @@ class OrgsClient:
 
         Creates a custom organization role that can be assigned to users and teams, granting them specific
         permissions over the organization and optionally across all repositories in the organization. For
-        more information on custom organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
+        more information on custom organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
 
         To include repository permissions in an organization role, you must also include the `base_role`
         field, which is one of `read`, `write`, `triage`, `maintain`, or `admin` (or `none` if no base role is set). This base role provides a set of
@@ -9132,16 +9132,16 @@ class OrgsClient:
         permissions apply across all of the repositories in the organization. You do not have to include organization permissions
         in order to add repository permissions.
 
-        See "[List repository permissions](https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#list-repository-fine-grained-permissions-for-an-organization)" for valid repository permissions.
+        See "[List repository permissions](https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#list-repository-fine-grained-permissions-for-an-organization)" for valid repository permissions.
 
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#create-a-custom-organization-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#create-a-custom-organization-role
         """
 
         from ..models import (
@@ -9192,13 +9192,13 @@ class OrgsClient:
 
         DELETE /orgs/{org}/organization-roles/teams/{team_slug}
 
-        Removes all assigned organization roles from a team. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Removes all assigned organization roles from a team. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#remove-all-organization-roles-for-a-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#remove-all-organization-roles-for-a-team
         """
 
         url = f"/orgs/{org}/organization-roles/teams/{team_slug}"
@@ -9224,13 +9224,13 @@ class OrgsClient:
 
         DELETE /orgs/{org}/organization-roles/teams/{team_slug}
 
-        Removes all assigned organization roles from a team. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Removes all assigned organization roles from a team. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#remove-all-organization-roles-for-a-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#remove-all-organization-roles-for-a-team
         """
 
         url = f"/orgs/{org}/organization-roles/teams/{team_slug}"
@@ -9257,13 +9257,13 @@ class OrgsClient:
 
         PUT /orgs/{org}/organization-roles/teams/{team_slug}/{role_id}
 
-        Assigns an organization role to a team in an organization. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Assigns an organization role to a team in an organization. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#assign-an-organization-role-to-a-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#assign-an-organization-role-to-a-team
         """
 
         url = f"/orgs/{org}/organization-roles/teams/{team_slug}/{role_id}"
@@ -9291,13 +9291,13 @@ class OrgsClient:
 
         PUT /orgs/{org}/organization-roles/teams/{team_slug}/{role_id}
 
-        Assigns an organization role to a team in an organization. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Assigns an organization role to a team in an organization. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#assign-an-organization-role-to-a-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#assign-an-organization-role-to-a-team
         """
 
         url = f"/orgs/{org}/organization-roles/teams/{team_slug}/{role_id}"
@@ -9325,13 +9325,13 @@ class OrgsClient:
 
         DELETE /orgs/{org}/organization-roles/teams/{team_slug}/{role_id}
 
-        Removes an organization role from a team. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Removes an organization role from a team. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#remove-an-organization-role-from-a-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#remove-an-organization-role-from-a-team
         """
 
         url = f"/orgs/{org}/organization-roles/teams/{team_slug}/{role_id}"
@@ -9358,13 +9358,13 @@ class OrgsClient:
 
         DELETE /orgs/{org}/organization-roles/teams/{team_slug}/{role_id}
 
-        Removes an organization role from a team. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Removes an organization role from a team. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#remove-an-organization-role-from-a-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#remove-an-organization-role-from-a-team
         """
 
         url = f"/orgs/{org}/organization-roles/teams/{team_slug}/{role_id}"
@@ -9390,13 +9390,13 @@ class OrgsClient:
 
         DELETE /orgs/{org}/organization-roles/users/{username}
 
-        Revokes all assigned organization roles from a user. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Revokes all assigned organization roles from a user. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#remove-all-organization-roles-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#remove-all-organization-roles-for-a-user
         """
 
         url = f"/orgs/{org}/organization-roles/users/{username}"
@@ -9422,13 +9422,13 @@ class OrgsClient:
 
         DELETE /orgs/{org}/organization-roles/users/{username}
 
-        Revokes all assigned organization roles from a user. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Revokes all assigned organization roles from a user. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#remove-all-organization-roles-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#remove-all-organization-roles-for-a-user
         """
 
         url = f"/orgs/{org}/organization-roles/users/{username}"
@@ -9455,13 +9455,13 @@ class OrgsClient:
 
         PUT /orgs/{org}/organization-roles/users/{username}/{role_id}
 
-        Assigns an organization role to a member of an organization. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Assigns an organization role to a member of an organization. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#assign-an-organization-role-to-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#assign-an-organization-role-to-a-user
         """
 
         url = f"/orgs/{org}/organization-roles/users/{username}/{role_id}"
@@ -9489,13 +9489,13 @@ class OrgsClient:
 
         PUT /orgs/{org}/organization-roles/users/{username}/{role_id}
 
-        Assigns an organization role to a member of an organization. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Assigns an organization role to a member of an organization. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#assign-an-organization-role-to-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#assign-an-organization-role-to-a-user
         """
 
         url = f"/orgs/{org}/organization-roles/users/{username}/{role_id}"
@@ -9523,13 +9523,13 @@ class OrgsClient:
 
         DELETE /orgs/{org}/organization-roles/users/{username}/{role_id}
 
-        Remove an organization role from a user. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Remove an organization role from a user. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#remove-an-organization-role-from-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#remove-an-organization-role-from-a-user
         """
 
         url = f"/orgs/{org}/organization-roles/users/{username}/{role_id}"
@@ -9556,13 +9556,13 @@ class OrgsClient:
 
         DELETE /orgs/{org}/organization-roles/users/{username}/{role_id}
 
-        Remove an organization role from a user. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Remove an organization role from a user. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         The authenticated user must be an administrator for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#remove-an-organization-role-from-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#remove-an-organization-role-from-a-user
         """
 
         url = f"/orgs/{org}/organization-roles/users/{username}/{role_id}"
@@ -9588,16 +9588,16 @@ class OrgsClient:
 
         GET /orgs/{org}/organization-roles/{role_id}
 
-        Gets an organization role that is available to this organization. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Gets an organization role that is available to this organization. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#get-an-organization-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#get-an-organization-role
         """
 
         from ..models import BasicError, OrganizationRole, ValidationError
@@ -9630,16 +9630,16 @@ class OrgsClient:
 
         GET /orgs/{org}/organization-roles/{role_id}
 
-        Gets an organization role that is available to this organization. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Gets an organization role that is available to this organization. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#get-an-organization-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#get-an-organization-role
         """
 
         from ..models import BasicError, OrganizationRole, ValidationError
@@ -9672,16 +9672,16 @@ class OrgsClient:
 
         DELETE /orgs/{org}/organization-roles/{role_id}
 
-        Deletes a custom organization role. For more information on custom organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
+        Deletes a custom organization role. For more information on custom organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
 
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#delete-a-custom-organization-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#delete-a-custom-organization-role
         """
 
         url = f"/orgs/{org}/organization-roles/{role_id}"
@@ -9707,16 +9707,16 @@ class OrgsClient:
 
         DELETE /orgs/{org}/organization-roles/{role_id}
 
-        Deletes a custom organization role. For more information on custom organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
+        Deletes a custom organization role. For more information on custom organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
 
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#delete-a-custom-organization-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#delete-a-custom-organization-role
         """
 
         url = f"/orgs/{org}/organization-roles/{role_id}"
@@ -9772,7 +9772,7 @@ class OrgsClient:
 
         PATCH /orgs/{org}/organization-roles/{role_id}
 
-        Updates an existing custom organization role. Permission changes will apply to all assignees. For more information on custom organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
+        Updates an existing custom organization role. Permission changes will apply to all assignees. For more information on custom organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
 
         If the update would add repository permissions, the `base_role` must also be set to a value besides `none`, either
         previously or as part of the update.
@@ -9782,11 +9782,11 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#update-a-custom-organization-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#update-a-custom-organization-role
         """
 
         from ..models import (
@@ -9867,7 +9867,7 @@ class OrgsClient:
 
         PATCH /orgs/{org}/organization-roles/{role_id}
 
-        Updates an existing custom organization role. Permission changes will apply to all assignees. For more information on custom organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
+        Updates an existing custom organization role. Permission changes will apply to all assignees. For more information on custom organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
 
         If the update would add repository permissions, the `base_role` must also be set to a value besides `none`, either
         previously or as part of the update.
@@ -9877,11 +9877,11 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#update-a-custom-organization-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#update-a-custom-organization-role
         """
 
         from ..models import (
@@ -9934,13 +9934,13 @@ class OrgsClient:
 
         GET /orgs/{org}/organization-roles/{role_id}/teams
 
-        Lists the teams that are assigned to an organization role. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Lists the teams that are assigned to an organization role. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         To use this endpoint, you must be an administrator for the organization.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role
         """
 
         from ..models import TeamRoleAssignment
@@ -9978,13 +9978,13 @@ class OrgsClient:
 
         GET /orgs/{org}/organization-roles/{role_id}/teams
 
-        Lists the teams that are assigned to an organization role. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Lists the teams that are assigned to an organization role. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         To use this endpoint, you must be an administrator for the organization.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role
         """
 
         from ..models import TeamRoleAssignment
@@ -10022,13 +10022,13 @@ class OrgsClient:
 
         GET /orgs/{org}/organization-roles/{role_id}/users
 
-        Lists organization members that are assigned to an organization role. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Lists organization members that are assigned to an organization role. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         To use this endpoint, you must be an administrator for the organization.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role
         """
 
         from ..models import UserRoleAssignment
@@ -10066,13 +10066,13 @@ class OrgsClient:
 
         GET /orgs/{org}/organization-roles/{role_id}/users
 
-        Lists organization members that are assigned to an organization role. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
+        Lists organization members that are assigned to an organization role. For more information on organization roles, see "[Using organization roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)."
 
         To use this endpoint, you must be an administrator for the organization.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role
         """
 
         from ..models import UserRoleAssignment
@@ -10112,7 +10112,7 @@ class OrgsClient:
 
         List all users who are outside collaborators of an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/outside-collaborators#list-outside-collaborators-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/outside-collaborators#list-outside-collaborators-for-an-organization
         """
 
         from ..models import SimpleUser
@@ -10152,7 +10152,7 @@ class OrgsClient:
 
         List all users who are outside collaborators of an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/outside-collaborators#list-outside-collaborators-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/outside-collaborators#list-outside-collaborators-for-an-organization
         """
 
         from ..models import SimpleUser
@@ -10222,9 +10222,9 @@ class OrgsClient:
 
         PUT /orgs/{org}/outside_collaborators/{username}
 
-        When an organization member is converted to an outside collaborator, they'll only have access to the repositories that their current team membership allows. The user will no longer be a member of the organization. For more information, see "[Converting an organization member to an outside collaborator](https://docs.github.com/enterprise-cloud@latest//articles/converting-an-organization-member-to-an-outside-collaborator/)". Converting an organization member to an outside collaborator may be restricted by enterprise administrators. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-cloud@latest//admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#enforcing-a-policy-for-inviting-outside-collaborators-to-repositories)."
+        When an organization member is converted to an outside collaborator, they'll only have access to the repositories that their current team membership allows. The user will no longer be a member of the organization. For more information, see "[Converting an organization member to an outside collaborator](https://docs.github.com/enterprise-cloud@latest/articles/converting-an-organization-member-to-an-outside-collaborator/)". Converting an organization member to an outside collaborator may be restricted by enterprise administrators. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-cloud@latest/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#enforcing-a-policy-for-inviting-outside-collaborators-to-repositories)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/outside-collaborators#convert-an-organization-member-to-outside-collaborator
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/outside-collaborators#convert-an-organization-member-to-outside-collaborator
         """
 
         from ..models import (
@@ -10306,9 +10306,9 @@ class OrgsClient:
 
         PUT /orgs/{org}/outside_collaborators/{username}
 
-        When an organization member is converted to an outside collaborator, they'll only have access to the repositories that their current team membership allows. The user will no longer be a member of the organization. For more information, see "[Converting an organization member to an outside collaborator](https://docs.github.com/enterprise-cloud@latest//articles/converting-an-organization-member-to-an-outside-collaborator/)". Converting an organization member to an outside collaborator may be restricted by enterprise administrators. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-cloud@latest//admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#enforcing-a-policy-for-inviting-outside-collaborators-to-repositories)."
+        When an organization member is converted to an outside collaborator, they'll only have access to the repositories that their current team membership allows. The user will no longer be a member of the organization. For more information, see "[Converting an organization member to an outside collaborator](https://docs.github.com/enterprise-cloud@latest/articles/converting-an-organization-member-to-an-outside-collaborator/)". Converting an organization member to an outside collaborator may be restricted by enterprise administrators. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-cloud@latest/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#enforcing-a-policy-for-inviting-outside-collaborators-to-repositories)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/outside-collaborators#convert-an-organization-member-to-outside-collaborator
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/outside-collaborators#convert-an-organization-member-to-outside-collaborator
         """
 
         from ..models import (
@@ -10358,7 +10358,7 @@ class OrgsClient:
 
         Removing a user from this list will remove them from all the organization's repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/outside-collaborators#remove-outside-collaborator-from-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/outside-collaborators#remove-outside-collaborator-from-an-organization
         """
 
         from ..models import OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422
@@ -10391,7 +10391,7 @@ class OrgsClient:
 
         Removing a user from this list will remove them from all the organization's repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/outside-collaborators#remove-outside-collaborator-from-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/outside-collaborators#remove-outside-collaborator-from-an-organization
         """
 
         from ..models import OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422
@@ -10438,7 +10438,7 @@ class OrgsClient:
 
         Only GitHub Apps can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#list-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/personal-access-tokens#list-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens
         """
 
         from ..models import (
@@ -10507,7 +10507,7 @@ class OrgsClient:
 
         Only GitHub Apps can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#list-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/personal-access-tokens#list-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens
         """
 
         from ..models import (
@@ -10597,7 +10597,7 @@ class OrgsClient:
 
         Only GitHub Apps can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#review-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/personal-access-tokens#review-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens
         """
 
         from ..models import (
@@ -10686,7 +10686,7 @@ class OrgsClient:
 
         Only GitHub Apps can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#review-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/personal-access-tokens#review-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens
         """
 
         from ..models import (
@@ -10770,7 +10770,7 @@ class OrgsClient:
 
         Only GitHub Apps can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#review-a-request-to-access-organization-resources-with-a-fine-grained-personal-access-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/personal-access-tokens#review-a-request-to-access-organization-resources-with-a-fine-grained-personal-access-token
         """
 
         from ..models import (
@@ -10852,7 +10852,7 @@ class OrgsClient:
 
         Only GitHub Apps can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#review-a-request-to-access-organization-resources-with-a-fine-grained-personal-access-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/personal-access-tokens#review-a-request-to-access-organization-resources-with-a-fine-grained-personal-access-token
         """
 
         from ..models import (
@@ -10908,7 +10908,7 @@ class OrgsClient:
 
         Only GitHub Apps can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#list-repositories-requested-to-be-accessed-by-a-fine-grained-personal-access-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/personal-access-tokens#list-repositories-requested-to-be-accessed-by-a-fine-grained-personal-access-token
         """
 
         from ..models import BasicError, MinimalRepository
@@ -10956,7 +10956,7 @@ class OrgsClient:
 
         Only GitHub Apps can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#list-repositories-requested-to-be-accessed-by-a-fine-grained-personal-access-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/personal-access-tokens#list-repositories-requested-to-be-accessed-by-a-fine-grained-personal-access-token
         """
 
         from ..models import BasicError, MinimalRepository
@@ -11014,7 +11014,7 @@ class OrgsClient:
 
         Only GitHub Apps can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#list-fine-grained-personal-access-tokens-with-access-to-organization-resources
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/personal-access-tokens#list-fine-grained-personal-access-tokens-with-access-to-organization-resources
         """
 
         from ..models import (
@@ -11083,7 +11083,7 @@ class OrgsClient:
 
         Only GitHub Apps can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#list-fine-grained-personal-access-tokens-with-access-to-organization-resources
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/personal-access-tokens#list-fine-grained-personal-access-tokens-with-access-to-organization-resources
         """
 
         from ..models import (
@@ -11172,7 +11172,7 @@ class OrgsClient:
 
         Only GitHub Apps can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#update-the-access-to-organization-resources-via-fine-grained-personal-access-tokens
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/personal-access-tokens#update-the-access-to-organization-resources-via-fine-grained-personal-access-tokens
         """
 
         from ..models import (
@@ -11258,7 +11258,7 @@ class OrgsClient:
 
         Only GitHub Apps can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#update-the-access-to-organization-resources-via-fine-grained-personal-access-tokens
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/personal-access-tokens#update-the-access-to-organization-resources-via-fine-grained-personal-access-tokens
         """
 
         from ..models import (
@@ -11337,7 +11337,7 @@ class OrgsClient:
 
         Only GitHub Apps can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#update-the-access-a-fine-grained-personal-access-token-has-to-organization-resources
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/personal-access-tokens#update-the-access-a-fine-grained-personal-access-token-has-to-organization-resources
         """
 
         from ..models import (
@@ -11414,7 +11414,7 @@ class OrgsClient:
 
         Only GitHub Apps can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#update-the-access-a-fine-grained-personal-access-token-has-to-organization-resources
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/personal-access-tokens#update-the-access-a-fine-grained-personal-access-token-has-to-organization-resources
         """
 
         from ..models import (
@@ -11468,7 +11468,7 @@ class OrgsClient:
 
         Only GitHub Apps can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#list-repositories-a-fine-grained-personal-access-token-has-access-to
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/personal-access-tokens#list-repositories-a-fine-grained-personal-access-token-has-access-to
         """
 
         from ..models import BasicError, MinimalRepository
@@ -11514,7 +11514,7 @@ class OrgsClient:
 
         Only GitHub Apps can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#list-repositories-a-fine-grained-personal-access-token-has-access-to
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/personal-access-tokens#list-repositories-a-fine-grained-personal-access-token-has-access-to
         """
 
         from ..models import BasicError, MinimalRepository
@@ -11556,7 +11556,7 @@ class OrgsClient:
         Gets all custom properties defined for an organization.
         Organization members can read these properties.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#get-all-custom-properties-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties#get-all-custom-properties-for-an-organization
         """
 
         from ..models import BasicError, CustomProperty
@@ -11591,7 +11591,7 @@ class OrgsClient:
         Gets all custom properties defined for an organization.
         Organization members can read these properties.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#get-all-custom-properties-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties#get-all-custom-properties-for-an-organization
         """
 
         from ..models import BasicError, CustomProperty
@@ -11656,7 +11656,7 @@ class OrgsClient:
           - An administrator for the organization.
           - A user, or a user on a team, with the fine-grained permission of `custom_properties_org_definitions_manager` in the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#create-or-update-custom-properties-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties#create-or-update-custom-properties-for-an-organization
         """
 
         from ..models import (
@@ -11735,7 +11735,7 @@ class OrgsClient:
           - An administrator for the organization.
           - A user, or a user on a team, with the fine-grained permission of `custom_properties_org_definitions_manager` in the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#create-or-update-custom-properties-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties#create-or-update-custom-properties-for-an-organization
         """
 
         from ..models import (
@@ -11785,7 +11785,7 @@ class OrgsClient:
         Gets a custom property that is defined for an organization.
         Organization members can read these properties.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#get-a-custom-property-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties#get-a-custom-property-for-an-organization
         """
 
         from ..models import BasicError, CustomProperty
@@ -11821,7 +11821,7 @@ class OrgsClient:
         Gets a custom property that is defined for an organization.
         Organization members can read these properties.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#get-a-custom-property-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties#get-a-custom-property-for-an-organization
         """
 
         from ..models import BasicError, CustomProperty
@@ -11895,7 +11895,7 @@ class OrgsClient:
         - An administrator for the organization.
         - A user, or a user on a team, with the fine-grained permission of `custom_properties_org_definitions_manager` in the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#create-or-update-a-custom-property-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties#create-or-update-a-custom-property-for-an-organization
         """
 
         from ..models import BasicError, CustomProperty, CustomPropertySetPayload
@@ -11979,7 +11979,7 @@ class OrgsClient:
         - An administrator for the organization.
         - A user, or a user on a team, with the fine-grained permission of `custom_properties_org_definitions_manager` in the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#create-or-update-a-custom-property-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties#create-or-update-a-custom-property-for-an-organization
         """
 
         from ..models import BasicError, CustomProperty, CustomPropertySetPayload
@@ -12028,7 +12028,7 @@ class OrgsClient:
           - An administrator for the organization.
           - A user, or a user on a team, with the fine-grained permission of `custom_properties_org_definitions_manager` in the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#remove-a-custom-property-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties#remove-a-custom-property-for-an-organization
         """
 
         from ..models import BasicError
@@ -12066,7 +12066,7 @@ class OrgsClient:
           - An administrator for the organization.
           - A user, or a user on a team, with the fine-grained permission of `custom_properties_org_definitions_manager` in the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#remove-a-custom-property-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties#remove-a-custom-property-for-an-organization
         """
 
         from ..models import BasicError
@@ -12106,7 +12106,7 @@ class OrgsClient:
         Lists organization repositories with all of their custom property values.
         Organization members can read these properties.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#list-custom-property-values-for-organization-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties#list-custom-property-values-for-organization-repositories
         """
 
         from ..models import BasicError, OrgRepoCustomPropertyValues
@@ -12154,7 +12154,7 @@ class OrgsClient:
         Lists organization repositories with all of their custom property values.
         Organization members can read these properties.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#list-custom-property-values-for-organization-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties#list-custom-property-values-for-organization-repositories
         """
 
         from ..models import BasicError, OrgRepoCustomPropertyValues
@@ -12228,7 +12228,7 @@ class OrgsClient:
           - An administrator for the organization.
           - A user, or a user on a team, with the fine-grained permission of `custom_properties_org_values_editor` in the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#create-or-update-custom-property-values-for-organization-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties#create-or-update-custom-property-values-for-organization-repositories
         """
 
         from ..models import (
@@ -12309,7 +12309,7 @@ class OrgsClient:
           - An administrator for the organization.
           - A user, or a user on a team, with the fine-grained permission of `custom_properties_org_values_editor` in the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#create-or-update-custom-property-values-for-organization-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-properties#create-or-update-custom-property-values-for-organization-repositories
         """
 
         from ..models import (
@@ -12359,7 +12359,7 @@ class OrgsClient:
 
         Members of an organization can choose to have their membership publicized or not.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-public-organization-members
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#list-public-organization-members
         """
 
         from ..models import SimpleUser
@@ -12397,7 +12397,7 @@ class OrgsClient:
 
         Members of an organization can choose to have their membership publicized or not.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-public-organization-members
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#list-public-organization-members
         """
 
         from ..models import SimpleUser
@@ -12434,7 +12434,7 @@ class OrgsClient:
 
         Check if the provided user is a public member of the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#check-public-organization-membership-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#check-public-organization-membership-for-a-user
         """
 
         url = f"/orgs/{org}/public_members/{username}"
@@ -12463,7 +12463,7 @@ class OrgsClient:
 
         Check if the provided user is a public member of the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#check-public-organization-membership-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#check-public-organization-membership-for-a-user
         """
 
         url = f"/orgs/{org}/public_members/{username}"
@@ -12492,9 +12492,9 @@ class OrgsClient:
 
         The user can publicize their own membership. (A user cannot publicize the membership for another user.)
 
-        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#http-method)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#set-public-organization-membership-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#set-public-organization-membership-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -12527,9 +12527,9 @@ class OrgsClient:
 
         The user can publicize their own membership. (A user cannot publicize the membership for another user.)
 
-        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#http-method)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#set-public-organization-membership-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#set-public-organization-membership-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -12562,7 +12562,7 @@ class OrgsClient:
 
         Removes the public membership for the authenticated user from the specified organization, unless public visibility is enforced by default.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#remove-public-organization-membership-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#remove-public-organization-membership-for-the-authenticated-user
         """
 
         url = f"/orgs/{org}/public_members/{username}"
@@ -12590,7 +12590,7 @@ class OrgsClient:
 
         Removes the public membership for the authenticated user from the specified organization, unless public visibility is enforced by default.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#remove-public-organization-membership-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#remove-public-organization-membership-for-the-authenticated-user
         """
 
         url = f"/orgs/{org}/public_members/{username}"
@@ -12618,13 +12618,13 @@ class OrgsClient:
 
         GET /orgs/{org}/repository-fine-grained-permissions
 
-        Lists the fine-grained permissions that can be used in custom repository roles for an organization. For more information, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        Lists the fine-grained permissions that can be used in custom repository roles for an organization. For more information, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator of the organization or of a repository of the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#list-repository-fine-grained-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#list-repository-fine-grained-permissions-for-an-organization
         """
 
         from ..models import RepositoryFineGrainedPermission
@@ -12655,13 +12655,13 @@ class OrgsClient:
 
         GET /orgs/{org}/repository-fine-grained-permissions
 
-        Lists the fine-grained permissions that can be used in custom repository roles for an organization. For more information, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
+        Lists the fine-grained permissions that can be used in custom repository roles for an organization. For more information, see "[About custom repository roles](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles)."
 
         The authenticated user must be an administrator of the organization or of a repository of the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#list-repository-fine-grained-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/custom-roles#list-repository-fine-grained-permissions-for-an-organization
         """
 
         from ..models import RepositoryFineGrainedPermission
@@ -12694,7 +12694,7 @@ class OrgsClient:
 
         Get the history of an organization ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-organization-ruleset-history
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rules#get-organization-ruleset-history
         """
 
         from ..models import BasicError, RulesetVersion
@@ -12737,7 +12737,7 @@ class OrgsClient:
 
         Get the history of an organization ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-organization-ruleset-history
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rules#get-organization-ruleset-history
         """
 
         from ..models import BasicError, RulesetVersion
@@ -12779,7 +12779,7 @@ class OrgsClient:
 
         Get a version of an organization ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-organization-ruleset-version
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rules#get-organization-ruleset-version
         """
 
         from ..models import BasicError, RulesetVersionWithState
@@ -12815,7 +12815,7 @@ class OrgsClient:
 
         Get a version of an organization ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-organization-ruleset-version
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rules#get-organization-ruleset-version
         """
 
         from ..models import BasicError, RulesetVersionWithState
@@ -12849,9 +12849,9 @@ class OrgsClient:
         GET /orgs/{org}/security-managers
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed starting January 1, 2026. Please use the "[Organization Roles](https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles)" endpoints instead.
+        > **Closing down notice:** This operation is closing down and will be removed starting January 1, 2026. Please use the "[Organization Roles](https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles)" endpoints instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/security-managers#list-security-manager-teams
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/security-managers#list-security-manager-teams
         """
 
         from ..models import TeamSimple
@@ -12881,9 +12881,9 @@ class OrgsClient:
         GET /orgs/{org}/security-managers
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed starting January 1, 2026. Please use the "[Organization Roles](https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles)" endpoints instead.
+        > **Closing down notice:** This operation is closing down and will be removed starting January 1, 2026. Please use the "[Organization Roles](https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles)" endpoints instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/security-managers#list-security-manager-teams
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/security-managers#list-security-manager-teams
         """
 
         from ..models import TeamSimple
@@ -12914,9 +12914,9 @@ class OrgsClient:
         PUT /orgs/{org}/security-managers/teams/{team_slug}
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed starting January 1, 2026. Please use the "[Organization Roles](https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles)" endpoints instead.
+        > **Closing down notice:** This operation is closing down and will be removed starting January 1, 2026. Please use the "[Organization Roles](https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles)" endpoints instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/security-managers#add-a-security-manager-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/security-managers#add-a-security-manager-team
         """
 
         url = f"/orgs/{org}/security-managers/teams/{team_slug}"
@@ -12944,9 +12944,9 @@ class OrgsClient:
         PUT /orgs/{org}/security-managers/teams/{team_slug}
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed starting January 1, 2026. Please use the "[Organization Roles](https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles)" endpoints instead.
+        > **Closing down notice:** This operation is closing down and will be removed starting January 1, 2026. Please use the "[Organization Roles](https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles)" endpoints instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/security-managers#add-a-security-manager-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/security-managers#add-a-security-manager-team
         """
 
         url = f"/orgs/{org}/security-managers/teams/{team_slug}"
@@ -12974,9 +12974,9 @@ class OrgsClient:
         DELETE /orgs/{org}/security-managers/teams/{team_slug}
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed starting January 1, 2026. Please use the "[Organization Roles](https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles)" endpoints instead.
+        > **Closing down notice:** This operation is closing down and will be removed starting January 1, 2026. Please use the "[Organization Roles](https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles)" endpoints instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/security-managers#remove-a-security-manager-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/security-managers#remove-a-security-manager-team
         """
 
         url = f"/orgs/{org}/security-managers/teams/{team_slug}"
@@ -13004,9 +13004,9 @@ class OrgsClient:
         DELETE /orgs/{org}/security-managers/teams/{team_slug}
 
         > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed starting January 1, 2026. Please use the "[Organization Roles](https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles)" endpoints instead.
+        > **Closing down notice:** This operation is closing down and will be removed starting January 1, 2026. Please use the "[Organization Roles](https://docs.github.com/enterprise-cloud@latest/rest/orgs/organization-roles)" endpoints instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/security-managers#remove-a-security-manager-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/security-managers#remove-a-security-manager-team
         """
 
         url = f"/orgs/{org}/security-managers/teams/{team_slug}"
@@ -13038,7 +13038,7 @@ class OrgsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#get-immutable-releases-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#get-immutable-releases-settings-for-an-organization
         """
 
         from ..models import ImmutableReleasesOrganizationSettings
@@ -13073,7 +13073,7 @@ class OrgsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#get-immutable-releases-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#get-immutable-releases-settings-for-an-organization
         """
 
         from ..models import ImmutableReleasesOrganizationSettings
@@ -13129,7 +13129,7 @@ class OrgsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#set-immutable-releases-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#set-immutable-releases-settings-for-an-organization
         """
 
         from ..models import OrgsOrgSettingsImmutableReleasesPutBody
@@ -13194,7 +13194,7 @@ class OrgsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#set-immutable-releases-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#set-immutable-releases-settings-for-an-organization
         """
 
         from ..models import OrgsOrgSettingsImmutableReleasesPutBody
@@ -13240,7 +13240,7 @@ class OrgsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-selected-repositories-for-immutable-releases-enforcement
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#list-selected-repositories-for-immutable-releases-enforcement
         """
 
         from ..models import OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200
@@ -13283,7 +13283,7 @@ class OrgsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-selected-repositories-for-immutable-releases-enforcement
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#list-selected-repositories-for-immutable-releases-enforcement
         """
 
         from ..models import OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200
@@ -13344,7 +13344,7 @@ class OrgsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#set-selected-repositories-for-immutable-releases-enforcement
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#set-selected-repositories-for-immutable-releases-enforcement
         """
 
         from ..models import OrgsOrgSettingsImmutableReleasesRepositoriesPutBody
@@ -13410,7 +13410,7 @@ class OrgsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#set-selected-repositories-for-immutable-releases-enforcement
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#set-selected-repositories-for-immutable-releases-enforcement
         """
 
         from ..models import OrgsOrgSettingsImmutableReleasesRepositoriesPutBody
@@ -13454,7 +13454,7 @@ class OrgsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization
         """
 
         url = f"/orgs/{org}/settings/immutable-releases/repositories/{repository_id}"
@@ -13484,7 +13484,7 @@ class OrgsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization
         """
 
         url = f"/orgs/{org}/settings/immutable-releases/repositories/{repository_id}"
@@ -13514,7 +13514,7 @@ class OrgsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization
         """
 
         url = f"/orgs/{org}/settings/immutable-releases/repositories/{repository_id}"
@@ -13544,7 +13544,7 @@ class OrgsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization
         """
 
         url = f"/orgs/{org}/settings/immutable-releases/repositories/{repository_id}"
@@ -13626,15 +13626,15 @@ class OrgsClient:
         POST /orgs/{org}/{security_product}/{enablement}
 
         > [!WARNING]
-        > **Closing down notice:** The ability to enable or disable a security feature for all eligible repositories in an organization is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-07-22-deprecation-of-api-endpoint-to-enable-or-disable-a-security-feature-for-an-organization/).
+        > **Closing down notice:** The ability to enable or disable a security feature for all eligible repositories in an organization is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-07-22-deprecation-of-api-endpoint-to-enable-or-disable-a-security-feature-for-an-organization/).
 
-        Enables or disables the specified security feature for all eligible repositories in an organization. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+        Enables or disables the specified security feature for all eligible repositories in an organization. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
 
         The authenticated user must be an organization owner or be member of a team with the security manager role to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org`, `write:org`, or `repo` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#enable-or-disable-a-security-feature-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#enable-or-disable-a-security-feature-for-an-organization
         """
 
         from ..models import OrgsOrgSecurityProductEnablementPostBody
@@ -13729,15 +13729,15 @@ class OrgsClient:
         POST /orgs/{org}/{security_product}/{enablement}
 
         > [!WARNING]
-        > **Closing down notice:** The ability to enable or disable a security feature for all eligible repositories in an organization is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-07-22-deprecation-of-api-endpoint-to-enable-or-disable-a-security-feature-for-an-organization/).
+        > **Closing down notice:** The ability to enable or disable a security feature for all eligible repositories in an organization is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-07-22-deprecation-of-api-endpoint-to-enable-or-disable-a-security-feature-for-an-organization/).
 
-        Enables or disables the specified security feature for all eligible repositories in an organization. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+        Enables or disables the specified security feature for all eligible repositories in an organization. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
 
         The authenticated user must be an organization owner or be member of a team with the security manager role to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org`, `write:org`, or `repo` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#enable-or-disable-a-security-feature-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#enable-or-disable-a-security-feature-for-an-organization
         """
 
         from ..models import OrgsOrgSecurityProductEnablementPostBody
@@ -13779,7 +13779,7 @@ class OrgsClient:
 
         Lists all of the authenticated user's organization memberships.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-organization-memberships-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#list-organization-memberships-for-the-authenticated-user
         """
 
         from ..models import BasicError, OrgMembership, ValidationError
@@ -13823,7 +13823,7 @@ class OrgsClient:
 
         Lists all of the authenticated user's organization memberships.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-organization-memberships-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#list-organization-memberships-for-the-authenticated-user
         """
 
         from ..models import BasicError, OrgMembership, ValidationError
@@ -13865,7 +13865,7 @@ class OrgsClient:
 
         If the authenticated user is an active or pending member of the organization, this endpoint will return the user's membership. If the authenticated user is not affiliated with the organization, a `404` is returned. This endpoint will return a `403` if the request is made by a GitHub App that is blocked by the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#get-an-organization-membership-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#get-an-organization-membership-for-the-authenticated-user
         """
 
         from ..models import BasicError, OrgMembership
@@ -13899,7 +13899,7 @@ class OrgsClient:
 
         If the authenticated user is an active or pending member of the organization, this endpoint will return the user's membership. If the authenticated user is not affiliated with the organization, a `404` is returned. This endpoint will return a `403` if the request is made by a GitHub App that is blocked by the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#get-an-organization-membership-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#get-an-organization-membership-for-the-authenticated-user
         """
 
         from ..models import BasicError, OrgMembership
@@ -13956,7 +13956,7 @@ class OrgsClient:
 
         Converts the authenticated user to an active member of the organization, if that user has a pending invitation from the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#update-an-organization-membership-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#update-an-organization-membership-for-the-authenticated-user
         """
 
         from ..models import (
@@ -14029,7 +14029,7 @@ class OrgsClient:
 
         Converts the authenticated user to an active member of the organization, if that user has a pending invitation from the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#update-an-organization-membership-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/members#update-an-organization-membership-for-the-authenticated-user
         """
 
         from ..models import (
@@ -14085,7 +14085,7 @@ class OrgsClient:
         > [!NOTE]
         > Requests using a fine-grained access token will receive a `200 Success` response with an empty list.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-organizations-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#list-organizations-for-the-authenticated-user
         """
 
         from ..models import BasicError, OrganizationSimple
@@ -14131,7 +14131,7 @@ class OrgsClient:
         > [!NOTE]
         > Requests using a fine-grained access token will receive a `200 Success` response with an empty list.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-organizations-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#list-organizations-for-the-authenticated-user
         """
 
         from ..models import BasicError, OrganizationSimple
@@ -14171,11 +14171,11 @@ class OrgsClient:
 
         GET /users/{username}/orgs
 
-        List [public organization memberships](https://docs.github.com/enterprise-cloud@latest//articles/publicizing-or-concealing-organization-membership) for the specified user.
+        List [public organization memberships](https://docs.github.com/enterprise-cloud@latest/articles/publicizing-or-concealing-organization-membership) for the specified user.
 
-        This method only lists _public_ memberships, regardless of authentication. If you need to fetch all of the organization memberships (public and private) for the authenticated user, use the [List organizations for the authenticated user](https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-organizations-for-the-authenticated-user) API instead.
+        This method only lists _public_ memberships, regardless of authentication. If you need to fetch all of the organization memberships (public and private) for the authenticated user, use the [List organizations for the authenticated user](https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#list-organizations-for-the-authenticated-user) API instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-organizations-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#list-organizations-for-a-user
         """
 
         from ..models import OrganizationSimple
@@ -14211,11 +14211,11 @@ class OrgsClient:
 
         GET /users/{username}/orgs
 
-        List [public organization memberships](https://docs.github.com/enterprise-cloud@latest//articles/publicizing-or-concealing-organization-membership) for the specified user.
+        List [public organization memberships](https://docs.github.com/enterprise-cloud@latest/articles/publicizing-or-concealing-organization-membership) for the specified user.
 
-        This method only lists _public_ memberships, regardless of authentication. If you need to fetch all of the organization memberships (public and private) for the authenticated user, use the [List organizations for the authenticated user](https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-organizations-for-the-authenticated-user) API instead.
+        This method only lists _public_ memberships, regardless of authentication. If you need to fetch all of the organization memberships (public and private) for the authenticated user, use the [List organizations for the authenticated user](https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#list-organizations-for-the-authenticated-user) API instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-organizations-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#list-organizations-for-a-user
         """
 
         from ..models import OrganizationSimple

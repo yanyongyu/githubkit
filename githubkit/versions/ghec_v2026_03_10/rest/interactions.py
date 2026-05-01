@@ -76,7 +76,7 @@ class InteractionsClient:
 
         Shows which type of GitHub user can interact with this organization and when the restriction expires. If there is no restrictions, you will see an empty response.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/orgs#get-interaction-restrictions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/orgs#get-interaction-restrictions-for-an-organization
         """
 
         from typing import Union
@@ -119,7 +119,7 @@ class InteractionsClient:
 
         Shows which type of GitHub user can interact with this organization and when the restriction expires. If there is no restrictions, you will see an empty response.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/orgs#get-interaction-restrictions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/orgs#get-interaction-restrictions-for-an-organization
         """
 
         from typing import Union
@@ -186,7 +186,7 @@ class InteractionsClient:
 
         Temporarily restricts interactions to a certain type of GitHub user in any public repository in the given organization. You must be an organization owner to set these restrictions. Setting the interaction limit at the organization level will overwrite any interaction limits that are set for individual repositories owned by the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/orgs#set-interaction-restrictions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/orgs#set-interaction-restrictions-for-an-organization
         """
 
         from ..models import InteractionLimit, InteractionLimitResponse, ValidationError
@@ -259,7 +259,7 @@ class InteractionsClient:
 
         Temporarily restricts interactions to a certain type of GitHub user in any public repository in the given organization. You must be an organization owner to set these restrictions. Setting the interaction limit at the organization level will overwrite any interaction limits that are set for individual repositories owned by the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/orgs#set-interaction-restrictions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/orgs#set-interaction-restrictions-for-an-organization
         """
 
         from ..models import InteractionLimit, InteractionLimitResponse, ValidationError
@@ -302,7 +302,7 @@ class InteractionsClient:
 
         Removes all interaction restrictions from public repositories in the given organization. You must be an organization owner to remove restrictions.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/orgs#remove-interaction-restrictions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/orgs#remove-interaction-restrictions-for-an-organization
         """
 
         url = f"/orgs/{org}/interaction-limits"
@@ -329,7 +329,7 @@ class InteractionsClient:
 
         Removes all interaction restrictions from public repositories in the given organization. You must be an organization owner to remove restrictions.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/orgs#remove-interaction-restrictions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/orgs#remove-interaction-restrictions-for-an-organization
         """
 
         url = f"/orgs/{org}/interaction-limits"
@@ -366,7 +366,7 @@ class InteractionsClient:
 
         Shows which type of GitHub user can interact with this repository and when the restriction expires. If there are no restrictions, you will see an empty response.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/repos#get-interaction-restrictions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#get-interaction-restrictions-for-a-repository
         """
 
         from typing import Union
@@ -414,7 +414,7 @@ class InteractionsClient:
 
         Shows which type of GitHub user can interact with this repository and when the restriction expires. If there are no restrictions, you will see an empty response.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/repos#get-interaction-restrictions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#get-interaction-restrictions-for-a-repository
         """
 
         from typing import Union
@@ -485,7 +485,7 @@ class InteractionsClient:
 
         Temporarily restricts interactions to a certain type of GitHub user within the given repository. You must have owner or admin access to set these restrictions. If an interaction limit is set for the user or organization that owns this repository, you will receive a `409 Conflict` response and will not be able to use this endpoint to change the interaction limit for a single repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/repos#set-interaction-restrictions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#set-interaction-restrictions-for-a-repository
         """
 
         from ..models import InteractionLimit, InteractionLimitResponse
@@ -559,7 +559,7 @@ class InteractionsClient:
 
         Temporarily restricts interactions to a certain type of GitHub user within the given repository. You must have owner or admin access to set these restrictions. If an interaction limit is set for the user or organization that owns this repository, you will receive a `409 Conflict` response and will not be able to use this endpoint to change the interaction limit for a single repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/repos#set-interaction-restrictions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#set-interaction-restrictions-for-a-repository
         """
 
         from ..models import InteractionLimit, InteractionLimitResponse
@@ -601,7 +601,7 @@ class InteractionsClient:
 
         Removes all interaction restrictions from the given repository. You must have owner or admin access to remove restrictions. If the interaction limit is set for the user or organization that owns this repository, you will receive a `409 Conflict` response and will not be able to use this endpoint to change the interaction limit for a single repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/repos#remove-interaction-restrictions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#remove-interaction-restrictions-for-a-repository
         """
 
         url = f"/repos/{owner}/{repo}/interaction-limits"
@@ -630,7 +630,7 @@ class InteractionsClient:
 
         Removes all interaction restrictions from the given repository. You must have owner or admin access to remove restrictions. If the interaction limit is set for the user or organization that owns this repository, you will receive a `409 Conflict` response and will not be able to use this endpoint to change the interaction limit for a single repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/repos#remove-interaction-restrictions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/repos#remove-interaction-restrictions-for-a-repository
         """
 
         url = f"/repos/{owner}/{repo}/interaction-limits"
@@ -663,7 +663,7 @@ class InteractionsClient:
 
         Shows which type of GitHub user can interact with your public repositories and when the restriction expires.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/user#get-interaction-restrictions-for-your-public-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/user#get-interaction-restrictions-for-your-public-repositories
         """
 
         from typing import Union
@@ -705,7 +705,7 @@ class InteractionsClient:
 
         Shows which type of GitHub user can interact with your public repositories and when the restriction expires.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/user#get-interaction-restrictions-for-your-public-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/user#get-interaction-restrictions-for-your-public-repositories
         """
 
         from typing import Union
@@ -769,7 +769,7 @@ class InteractionsClient:
 
         Temporarily restricts which type of GitHub user can interact with your public repositories. Setting the interaction limit at the user level will overwrite any interaction limits that are set for individual repositories owned by the user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/user#set-interaction-restrictions-for-your-public-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/user#set-interaction-restrictions-for-your-public-repositories
         """
 
         from ..models import InteractionLimit, InteractionLimitResponse, ValidationError
@@ -839,7 +839,7 @@ class InteractionsClient:
 
         Temporarily restricts which type of GitHub user can interact with your public repositories. Setting the interaction limit at the user level will overwrite any interaction limits that are set for individual repositories owned by the user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/user#set-interaction-restrictions-for-your-public-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/user#set-interaction-restrictions-for-your-public-repositories
         """
 
         from ..models import InteractionLimit, InteractionLimitResponse, ValidationError
@@ -881,7 +881,7 @@ class InteractionsClient:
 
         Removes any interaction restrictions from your public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/user#remove-interaction-restrictions-from-your-public-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/user#remove-interaction-restrictions-from-your-public-repositories
         """
 
         url = "/user/interaction-limits"
@@ -907,7 +907,7 @@ class InteractionsClient:
 
         Removes any interaction restrictions from your public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/user#remove-interaction-restrictions-from-your-public-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/interactions/user#remove-interaction-restrictions-from-your-public-repositories
         """
 
         url = "/user/interaction-limits"

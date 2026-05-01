@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,44 +18,54 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0205 import ReactionRollup
+from .group_0207 import PinnedIssueComment
 
-class IssueFieldValue(GitHubModel):
-    """Issue Field Value
 
-    A value assigned to an issue field
+class IssueComment(GitHubModel):
+    """Issue Comment
+
+    Comments provide a way for people to collaborate on an issue.
     """
 
-    issue_field_id: int = Field(description="Unique identifier for the issue field.")
+    id: int = Field(description="Unique identifier of the issue comment")
     node_id: str = Field()
-    data_type: Literal["text", "single_select", "number", "date"] = Field(
-        description="The data type of the issue field"
+    url: str = Field(description="URL for the issue comment")
+    body: Missing[str] = Field(
+        default=UNSET, description="Contents of the issue comment"
     )
-    value: Union[str, float, int, None] = Field(
-        description="The value of the issue field"
-    )
-    single_select_option: Missing[
-        Union[IssueFieldValuePropSingleSelectOption, None]
+    body_text: Missing[str] = Field(default=UNSET)
+    body_html: Missing[str] = Field(default=UNSET)
+    html_url: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    issue_url: str = Field()
+    author_association: Missing[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
     ] = Field(
         default=UNSET,
-        description="Details about the selected option (only present for single_select fields)",
+        title="author_association",
+        description="How the author is associated with the repository.",
     )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    pin: Missing[Union[None, PinnedIssueComment]] = Field(default=UNSET)
 
 
-class IssueFieldValuePropSingleSelectOption(GitHubModel):
-    """IssueFieldValuePropSingleSelectOption
+model_rebuild(IssueComment)
 
-    Details about the selected option (only present for single_select fields)
-    """
-
-    id: int = Field(description="Unique identifier for the option.")
-    name: str = Field(description="The name of the option")
-    color: str = Field(description="The color of the option")
-
-
-model_rebuild(IssueFieldValue)
-model_rebuild(IssueFieldValuePropSingleSelectOption)
-
-__all__ = (
-    "IssueFieldValue",
-    "IssueFieldValuePropSingleSelectOption",
-)
+__all__ = ("IssueComment",)

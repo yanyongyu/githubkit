@@ -16,57 +16,59 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class DemilestonedIssueEventType(TypedDict):
-    """Demilestoned Issue Event
+class UnlabeledIssueEventType(TypedDict):
+    """Unlabeled Issue Event
 
-    Demilestoned Issue Event
+    Unlabeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["demilestoned"]
+    event: Literal["unlabeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    milestone: DemilestonedIssueEventPropMilestoneType
+    label: UnlabeledIssueEventPropLabelType
 
 
-class DemilestonedIssueEventTypeForResponse(TypedDict):
-    """Demilestoned Issue Event
+class UnlabeledIssueEventTypeForResponse(TypedDict):
+    """Unlabeled Issue Event
 
-    Demilestoned Issue Event
+    Unlabeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["demilestoned"]
+    event: Literal["unlabeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    milestone: DemilestonedIssueEventPropMilestoneTypeForResponse
+    label: UnlabeledIssueEventPropLabelTypeForResponse
 
 
-class DemilestonedIssueEventPropMilestoneType(TypedDict):
-    """DemilestonedIssueEventPropMilestone"""
+class UnlabeledIssueEventPropLabelType(TypedDict):
+    """UnlabeledIssueEventPropLabel"""
 
-    title: str
+    name: str
+    color: str
 
 
-class DemilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
-    """DemilestonedIssueEventPropMilestone"""
+class UnlabeledIssueEventPropLabelTypeForResponse(TypedDict):
+    """UnlabeledIssueEventPropLabel"""
 
-    title: str
+    name: str
+    color: str
 
 
 __all__ = (
-    "DemilestonedIssueEventPropMilestoneType",
-    "DemilestonedIssueEventPropMilestoneTypeForResponse",
-    "DemilestonedIssueEventType",
-    "DemilestonedIssueEventTypeForResponse",
+    "UnlabeledIssueEventPropLabelType",
+    "UnlabeledIssueEventPropLabelTypeForResponse",
+    "UnlabeledIssueEventType",
+    "UnlabeledIssueEventTypeForResponse",
 )

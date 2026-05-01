@@ -9,44 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ProjectsV2DraftIssueType(TypedDict):
-    """Draft Issue
+class AutoMergeType(TypedDict):
+    """Auto merge
 
-    A draft issue in a project
+    The status of auto merging a pull request.
     """
 
-    id: float
-    node_id: str
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    enabled_by: SimpleUserType
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
-class ProjectsV2DraftIssueTypeForResponse(TypedDict):
-    """Draft Issue
+class AutoMergeTypeForResponse(TypedDict):
+    """Auto merge
 
-    A draft issue in a project
+    The status of auto merging a pull request.
     """
 
-    id: float
-    node_id: str
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
+    enabled_by: SimpleUserTypeForResponse
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
 __all__ = (
-    "ProjectsV2DraftIssueType",
-    "ProjectsV2DraftIssueTypeForResponse",
+    "AutoMergeType",
+    "AutoMergeTypeForResponse",
 )

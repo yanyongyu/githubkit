@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,25 +16,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ApiInsightsRouteStatsItems(GitHubModel):
-    """ApiInsightsRouteStatsItems"""
+class ExternalGroups(GitHubModel):
+    """ExternalGroups
 
-    http_method: Missing[str] = Field(default=UNSET, description="The HTTP method")
-    api_route: Missing[str] = Field(
-        default=UNSET, description="The API path's route template"
-    )
-    total_request_count: Missing[int] = Field(
+    A list of external groups available to be connected to a team
+    """
+
+    groups: Missing[list[ExternalGroupsPropGroupsItems]] = Field(
         default=UNSET,
-        description="The total number of requests within the queried time period",
+        description="An array of external groups available to be mapped to a team",
     )
-    rate_limited_request_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of requests that were rate limited within the queried time period",
-    )
-    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
-    last_request_timestamp: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ApiInsightsRouteStatsItems)
+class ExternalGroupsPropGroupsItems(GitHubModel):
+    """ExternalGroupsPropGroupsItems"""
 
-__all__ = ("ApiInsightsRouteStatsItems",)
+    group_id: int = Field(description="The internal ID of the group")
+    group_name: str = Field(description="The display name of the group")
+    updated_at: str = Field(description="The time of the last update for this group")
+
+
+model_rebuild(ExternalGroups)
+model_rebuild(ExternalGroupsPropGroupsItems)
+
+__all__ = (
+    "ExternalGroups",
+    "ExternalGroupsPropGroupsItems",
+)

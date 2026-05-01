@@ -9,30 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0202 import DiscussionType, DiscussionTypeForResponse
+from .group_0568 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0569 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0570 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0571 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
-class WebhookForkPropForkeeAllof0PropPermissionsType(TypedDict):
-    """WebhookForkPropForkeeAllof0PropPermissions"""
 
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
+class WebhookDiscussionUnpinnedType(TypedDict):
+    """discussion unpinned event"""
+
+    action: Literal["unpinned"]
+    discussion: DiscussionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookForkPropForkeeAllof0PropPermissionsTypeForResponse(TypedDict):
-    """WebhookForkPropForkeeAllof0PropPermissions"""
+class WebhookDiscussionUnpinnedTypeForResponse(TypedDict):
+    """discussion unpinned event"""
 
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
+    action: Literal["unpinned"]
+    discussion: DiscussionTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookForkPropForkeeAllof0PropPermissionsType",
-    "WebhookForkPropForkeeAllof0PropPermissionsTypeForResponse",
+    "WebhookDiscussionUnpinnedType",
+    "WebhookDiscussionUnpinnedTypeForResponse",
 )

@@ -9,25 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
-    """Deployment branch and tag policy name pattern"""
+class DeploymentBranchPolicySettingsType(TypedDict):
+    """DeploymentBranchPolicySettings
 
-    name: str
-    type: NotRequired[Literal["branch", "tag"]]
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
+    """
+
+    protected_branches: bool
+    custom_branch_policies: bool
 
 
-class DeploymentBranchPolicyNamePatternWithTypeTypeForResponse(TypedDict):
-    """Deployment branch and tag policy name pattern"""
+class DeploymentBranchPolicySettingsTypeForResponse(TypedDict):
+    """DeploymentBranchPolicySettings
 
-    name: str
-    type: NotRequired[Literal["branch", "tag"]]
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
+    """
+
+    protected_branches: bool
+    custom_branch_policies: bool
 
 
 __all__ = (
-    "DeploymentBranchPolicyNamePatternWithTypeType",
-    "DeploymentBranchPolicyNamePatternWithTypeTypeForResponse",
+    "DeploymentBranchPolicySettingsType",
+    "DeploymentBranchPolicySettingsTypeForResponse",
 )

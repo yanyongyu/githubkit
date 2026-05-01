@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class WebhookCheckRunRequestedActionFormEncodedType(TypedDict):
-    """Check Run Requested Action Event
+class WebhookCheckRunCompletedFormEncodedType(TypedDict):
+    """Check Run Completed Event
 
-    The check_run.requested_action webhook encoded with URL encoding
+    The check_run.completed webhook encoded with URL encoding
     """
 
     payload: str
 
 
-class WebhookCheckRunRequestedActionFormEncodedTypeForResponse(TypedDict):
-    """Check Run Requested Action Event
+class WebhookCheckRunCompletedFormEncodedTypeForResponse(TypedDict):
+    """Check Run Completed Event
 
-    The check_run.requested_action webhook encoded with URL encoding
+    The check_run.completed webhook encoded with URL encoding
     """
 
     payload: str
 
 
 __all__ = (
-    "WebhookCheckRunRequestedActionFormEncodedType",
-    "WebhookCheckRunRequestedActionFormEncodedTypeForResponse",
+    "WebhookCheckRunCompletedFormEncodedType",
+    "WebhookCheckRunCompletedFormEncodedTypeForResponse",
 )

@@ -26,6 +26,7 @@ if TYPE_CHECKING:
     from .codes_of_conduct import CodesOfConductClient
     from .codespaces import CodespacesClient
     from .copilot import CopilotClient
+    from .copilot_spaces import CopilotSpacesClient
     from .credentials import CredentialsClient
     from .dependabot import DependabotClient
     from .dependency_graph import DependencyGraphClient
@@ -254,6 +255,12 @@ class RestNamespace:
         from .codespaces import CodespacesClient
 
         return CodespacesClient(self._github)
+
+    @cached_property
+    def copilot_spaces(self) -> "CopilotSpacesClient":
+        from .copilot_spaces import CopilotSpacesClient
+
+        return CopilotSpacesClient(self._github)
 
     @cached_property
     def packages(self) -> "PackagesClient":

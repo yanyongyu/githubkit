@@ -80,7 +80,7 @@ class MarkdownClient:
 
         Depending on what is rendered in the Markdown, you may need to provide additional token scopes for labels, such as `issues:read` or `pull_requests:read`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/markdown/markdown#render-a-markdown-document
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/markdown/markdown#render-a-markdown-document
         """
 
         from ..models import MarkdownPostBody
@@ -142,7 +142,7 @@ class MarkdownClient:
 
         Depending on what is rendered in the Markdown, you may need to provide additional token scopes for labels, such as `issues:read` or `pull_requests:read`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/markdown/markdown#render-a-markdown-document
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/markdown/markdown#render-a-markdown-document
         """
 
         from ..models import MarkdownPostBody
@@ -182,7 +182,7 @@ class MarkdownClient:
 
         You must send Markdown as plain text (using a `Content-Type` header of `text/plain` or `text/x-markdown`) to this endpoint, rather than using JSON format. In raw mode, [GitHub Flavored Markdown](https://github.github.com/gfm/) is not supported and Markdown will be rendered in plain format like a README.md file. Markdown content must be 400 KB or less.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/markdown/markdown#render-a-markdown-document-in-raw-mode
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/markdown/markdown#render-a-markdown-document-in-raw-mode
         """
 
         url = "/markdown/raw"
@@ -217,7 +217,7 @@ class MarkdownClient:
 
         You must send Markdown as plain text (using a `Content-Type` header of `text/plain` or `text/x-markdown`) to this endpoint, rather than using JSON format. In raw mode, [GitHub Flavored Markdown](https://github.github.com/gfm/) is not supported and Markdown will be rendered in plain format like a README.md file. Markdown content must be 400 KB or less.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/markdown/markdown#render-a-markdown-document-in-raw-mode
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/markdown/markdown#render-a-markdown-document-in-raw-mode
         """
 
         url = "/markdown/raw"

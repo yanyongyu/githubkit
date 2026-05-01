@@ -13,25 +13,31 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleDetailedOneof3Type(TypedDict):
-    """RepositoryRuleDetailedOneof3"""
+class RepositoryRuleRulesetInfoType(TypedDict):
+    """repository ruleset data for rule
 
-    type: Literal["required_linear_history"]
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
+
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof3TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof3"""
+class RepositoryRuleRulesetInfoTypeForResponse(TypedDict):
+    """repository ruleset data for rule
 
-    type: Literal["required_linear_history"]
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
+
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof3Type",
-    "RepositoryRuleDetailedOneof3TypeForResponse",
+    "RepositoryRuleRulesetInfoType",
+    "RepositoryRuleRulesetInfoTypeForResponse",
 )

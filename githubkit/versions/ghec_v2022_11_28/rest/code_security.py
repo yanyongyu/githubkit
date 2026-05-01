@@ -101,7 +101,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-code-security-configurations-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-code-security-configurations-for-an-enterprise
         """
 
         from ..models import BasicError, CodeSecurityConfiguration
@@ -151,7 +151,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-code-security-configurations-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-code-security-configurations-for-an-enterprise
         """
 
         from ..models import BasicError, CodeSecurityConfiguration
@@ -275,7 +275,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#create-a-code-security-configuration-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#create-a-code-security-configuration-for-an-enterprise
         """
 
         from ..models import (
@@ -409,7 +409,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#create-a-code-security-configuration-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#create-a-code-security-configuration-for-an-enterprise
         """
 
         from ..models import (
@@ -467,7 +467,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-default-code-security-configurations-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-default-code-security-configurations-for-an-enterprise
         """
 
         from ..models import CodeSecurityDefaultConfigurationsItems
@@ -504,7 +504,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-default-code-security-configurations-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-default-code-security-configurations-for-an-enterprise
         """
 
         from ..models import CodeSecurityDefaultConfigurationsItems
@@ -539,7 +539,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#retrieve-a-code-security-configuration-of-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#retrieve-a-code-security-configuration-of-an-enterprise
         """
 
         from ..models import BasicError, CodeSecurityConfiguration
@@ -580,7 +580,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#retrieve-a-code-security-configuration-of-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#retrieve-a-code-security-configuration-of-an-enterprise
         """
 
         from ..models import BasicError, CodeSecurityConfiguration
@@ -623,7 +623,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#delete-a-code-security-configuration-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#delete-a-code-security-configuration-for-an-enterprise
         """
 
         from ..models import BasicError
@@ -667,7 +667,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#delete-a-code-security-configuration-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#delete-a-code-security-configuration-for-an-enterprise
         """
 
         from ..models import BasicError
@@ -790,7 +790,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#update-a-custom-code-security-configuration-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#update-a-custom-code-security-configuration-for-an-enterprise
         """
 
         from ..models import (
@@ -930,7 +930,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#update-a-custom-code-security-configuration-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#update-a-custom-code-security-configuration-for-an-enterprise
         """
 
         from ..models import (
@@ -1027,7 +1027,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#attach-an-enterprise-configuration-to-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#attach-an-enterprise-configuration-to-repositories
         """
 
         from ..models import (
@@ -1122,7 +1122,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#attach-an-enterprise-configuration-to-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#attach-an-enterprise-configuration-to-repositories
         """
 
         from ..models import (
@@ -1219,7 +1219,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-enterprise
         """
 
         from ..models import (
@@ -1315,7 +1315,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-enterprise
         """
 
         from ..models import (
@@ -1378,7 +1378,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-repositories-associated-with-an-enterprise-code-security-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-repositories-associated-with-an-enterprise-code-security-configuration
         """
 
         from ..models import BasicError, CodeSecurityConfigurationRepositories
@@ -1432,7 +1432,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-repositories-associated-with-an-enterprise-code-security-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-repositories-associated-with-an-enterprise-code-security-configuration
         """
 
         from ..models import BasicError, CodeSecurityConfigurationRepositories
@@ -1484,7 +1484,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-code-security-configurations-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-code-security-configurations-for-an-organization
         """
 
         from ..models import BasicError, CodeSecurityConfiguration
@@ -1536,7 +1536,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-code-security-configurations-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-code-security-configurations-for-an-organization
         """
 
         from ..models import BasicError, CodeSecurityConfiguration
@@ -1668,7 +1668,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#create-a-code-security-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#create-a-code-security-configuration
         """
 
         from ..models import (
@@ -1801,7 +1801,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#create-a-code-security-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#create-a-code-security-configuration
         """
 
         from ..models import (
@@ -1851,7 +1851,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-default-code-security-configurations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-default-code-security-configurations
         """
 
         from ..models import BasicError, CodeSecurityDefaultConfigurationsItems
@@ -1892,7 +1892,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-default-code-security-configurations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-default-code-security-configurations
         """
 
         from ..models import BasicError, CodeSecurityDefaultConfigurationsItems
@@ -1931,7 +1931,7 @@ class CodeSecurityClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        selected_repository_ids: Missing[list[int]] = UNSET,
+        selected_repository_ids: list[int],
     ) -> Response: ...
 
     def detach_configuration(
@@ -1954,7 +1954,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#detach-configurations-from-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#detach-configurations-from-repositories
         """
 
         from ..models import (
@@ -2009,7 +2009,7 @@ class CodeSecurityClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        selected_repository_ids: Missing[list[int]] = UNSET,
+        selected_repository_ids: list[int],
     ) -> Response: ...
 
     async def async_detach_configuration(
@@ -2032,7 +2032,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#detach-configurations-from-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#detach-configurations-from-repositories
         """
 
         from ..models import (
@@ -2087,7 +2087,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-a-code-security-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-a-code-security-configuration
         """
 
         from ..models import BasicError, CodeSecurityConfiguration
@@ -2126,7 +2126,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-a-code-security-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-a-code-security-configuration
         """
 
         from ..models import BasicError, CodeSecurityConfiguration
@@ -2167,7 +2167,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#delete-a-code-security-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#delete-a-code-security-configuration
         """
 
         from ..models import BasicError
@@ -2209,7 +2209,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#delete-a-code-security-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#delete-a-code-security-configuration
         """
 
         from ..models import BasicError
@@ -2339,7 +2339,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#update-a-code-security-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#update-a-code-security-configuration
         """
 
         from ..models import (
@@ -2479,7 +2479,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#update-a-code-security-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#update-a-code-security-configuration
         """
 
         from ..models import (
@@ -2574,7 +2574,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#attach-a-configuration-to-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#attach-a-configuration-to-repositories
         """
 
         from ..models import (
@@ -2669,7 +2669,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#attach-a-configuration-to-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#attach-a-configuration-to-repositories
         """
 
         from ..models import (
@@ -2759,7 +2759,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-organization
         """
 
         from ..models import (
@@ -2854,7 +2854,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-organization
         """
 
         from ..models import (
@@ -2916,7 +2916,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-repositories-associated-with-a-code-security-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-repositories-associated-with-a-code-security-configuration
         """
 
         from ..models import BasicError, CodeSecurityConfigurationRepositories
@@ -2972,7 +2972,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-repositories-associated-with-a-code-security-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-repositories-associated-with-a-code-security-configuration
         """
 
         from ..models import BasicError, CodeSecurityConfigurationRepositories
@@ -3024,7 +3024,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-the-code-security-configuration-associated-with-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-the-code-security-configuration-associated-with-a-repository
         """
 
         from ..models import BasicError, CodeSecurityConfigurationForRepository
@@ -3066,7 +3066,7 @@ class CodeSecurityClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-the-code-security-configuration-associated-with-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-the-code-security-configuration-associated-with-a-repository
         """
 
         from ..models import BasicError, CodeSecurityConfigurationForRepository

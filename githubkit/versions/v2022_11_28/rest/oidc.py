@@ -741,6 +741,7 @@ class OidcClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         include_claim_keys: Missing[list[str]] = UNSET,
+        use_immutable_subject: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def update_oidc_custom_sub_template_for_org(
@@ -814,6 +815,7 @@ class OidcClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         include_claim_keys: Missing[list[str]] = UNSET,
+        use_immutable_subject: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_update_oidc_custom_sub_template_for_org(

@@ -9,20 +9,97 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0258 import Artifact
+from .group_0188 import RepositoryRulesetBypassActor
+from .group_0197 import OrgRulesetConditionsOneof0
+from .group_0198 import OrgRulesetConditionsOneof1
+from .group_0199 import OrgRulesetConditionsOneof2
+from .group_0200 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0201 import RepositoryRuleUpdate
+from .group_0203 import RepositoryRuleRequiredLinearHistory
+from .group_0206 import RepositoryRuleRequiredDeployments
+from .group_0208 import RepositoryRulePullRequest
+from .group_0210 import RepositoryRuleRequiredStatusChecks
+from .group_0212 import RepositoryRuleCommitMessagePattern
+from .group_0214 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0216 import RepositoryRuleCommitterEmailPattern
+from .group_0218 import RepositoryRuleBranchNamePattern
+from .group_0220 import RepositoryRuleTagNamePattern
+from .group_0222 import RepositoryRuleFilePathRestriction
+from .group_0224 import RepositoryRuleMaxFilePathLength
+from .group_0226 import RepositoryRuleFileExtensionRestriction
+from .group_0228 import RepositoryRuleMaxFileSize
+from .group_0231 import RepositoryRuleWorkflows
+from .group_0233 import RepositoryRuleCodeScanning
+from .group_0235 import RepositoryRuleCopilotCodeReview
 
 
-class ReposOwnerRepoActionsArtifactsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
+class OrgsOrgRulesetsPostBody(GitHubModel):
+    """OrgsOrgRulesetsPostBody"""
 
-    total_count: int = Field()
-    artifacts: list[Artifact] = Field()
+    name: str = Field(description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
+        default=UNSET, description="The target of the ruleset"
+    )
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[
+        Union[
+            OrgRulesetConditionsOneof0,
+            OrgRulesetConditionsOneof1,
+            OrgRulesetConditionsOneof2,
+        ]
+    ] = Field(
+        default=UNSET,
+        title="Organization ruleset conditions",
+        description="Conditions for an organization ruleset.\nThe branch and tag rulesets conditions object should contain both `repository_name` and `ref_name` properties, or both `repository_id` and `ref_name` properties, or both `repository_property` and `ref_name` properties.\nThe push rulesets conditions object does not require the `ref_name` property.\nFor repository policy rulesets, the conditions object should only contain the `repository_name`, the `repository_id`, or the `repository_property`.",
+    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoActionsArtifactsGetResponse200)
+model_rebuild(OrgsOrgRulesetsPostBody)
 
-__all__ = ("ReposOwnerRepoActionsArtifactsGetResponse200",)
+__all__ = ("OrgsOrgRulesetsPostBody",)

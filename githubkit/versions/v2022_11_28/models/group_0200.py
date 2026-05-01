@@ -14,22 +14,52 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0201 import RepositoryRuleMergeQueuePropParameters
 
 
-class RepositoryRuleMergeQueue(GitHubModel):
-    """merge_queue
+class RepositoryRuleCreation(GitHubModel):
+    """creation
 
-    Merges must be performed via a merge queue.
+    Only allow users with bypass permission to create matching refs.
     """
 
-    type: Literal["merge_queue"] = Field()
-    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
+    type: Literal["creation"] = Field()
 
 
-model_rebuild(RepositoryRuleMergeQueue)
+class RepositoryRuleDeletion(GitHubModel):
+    """deletion
 
-__all__ = ("RepositoryRuleMergeQueue",)
+    Only allow users with bypass permissions to delete matching refs.
+    """
+
+    type: Literal["deletion"] = Field()
+
+
+class RepositoryRuleRequiredSignatures(GitHubModel):
+    """required_signatures
+
+    Commits pushed to matching refs must have verified signatures.
+    """
+
+    type: Literal["required_signatures"] = Field()
+
+
+class RepositoryRuleNonFastForward(GitHubModel):
+    """non_fast_forward
+
+    Prevent users with push access from force pushing to refs.
+    """
+
+    type: Literal["non_fast_forward"] = Field()
+
+
+model_rebuild(RepositoryRuleCreation)
+model_rebuild(RepositoryRuleDeletion)
+model_rebuild(RepositoryRuleRequiredSignatures)
+model_rebuild(RepositoryRuleNonFastForward)
+
+__all__ = (
+    "RepositoryRuleCreation",
+    "RepositoryRuleDeletion",
+    "RepositoryRuleNonFastForward",
+    "RepositoryRuleRequiredSignatures",
+)

@@ -9,33 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0036 import SimpleRepository
 
+class CopilotSpaceResource(GitHubModel):
+    """Copilot Space Resource
 
-class DependabotRepositoryAccessDetails(GitHubModel):
-    """Dependabot Repository Access Details
-
-    Information about repositories that Dependabot is able to access in an
-    organization
+    A resource attached to a Copilot Space.
     """
 
-    default_level: Missing[Union[None, Literal["public", "internal"]]] = Field(
-        default=UNSET,
-        description="The default repository access level for Dependabot updates.",
+    id: int = Field(description="The unique identifier of the resource.")
+    resource_type: Literal[
+        "repository",
+        "github_file",
+        "free_text",
+        "github_issue",
+        "github_pull_request",
+        "media_content",
+        "uploaded_text_file",
+    ] = Field(description="The type of the resource.")
+    copilot_chat_attachment_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of the associated chat attachment, if any."
     )
-    accessible_repositories: Missing[list[Union[None, SimpleRepository]]] = Field(
-        default=UNSET
+    metadata: CopilotSpaceResourcePropMetadata = Field(
+        description="Resource-specific metadata. The keys and values depend on the resource type."
+    )
+    created_at: _dt.datetime = Field(
+        description="The date and time the resource was created."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The date and time the resource was last updated."
     )
 
 
-model_rebuild(DependabotRepositoryAccessDetails)
+class CopilotSpaceResourcePropMetadata(ExtraGitHubModel):
+    """CopilotSpaceResourcePropMetadata
 
-__all__ = ("DependabotRepositoryAccessDetails",)
+    Resource-specific metadata. The keys and values depend on the resource type.
+    """
+
+
+model_rebuild(CopilotSpaceResource)
+model_rebuild(CopilotSpaceResourcePropMetadata)
+
+__all__ = (
+    "CopilotSpaceResource",
+    "CopilotSpaceResourcePropMetadata",
+)

@@ -9,19 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPatchBody(GitHubModel):
-    """ReposOwnerRepoPatchBody"""
+class OrgsOrgReposPostBody(GitHubModel):
+    """OrgsOrgReposPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the repository.")
+    name: str = Field(description="The name of the repository.")
     description: Missing[str] = Field(
         default=UNSET, description="A short description of the repository."
     )
@@ -29,17 +29,10 @@ class ReposOwnerRepoPatchBody(GitHubModel):
         default=UNSET, description="A URL with more information about the repository."
     )
     private: Missing[bool] = Field(
-        default=UNSET,
-        description="Either `true` to make the repository private or `false` to make it public. Default: `false`.  \n**Note**: You will get a `422` error if the organization restricts [changing repository visibility](https://docs.github.com/articles/repository-permission-levels-for-an-organization#changing-the-visibility-of-repositories) to organization owners and a non-owner tries to change the value of private.",
+        default=UNSET, description="Whether the repository is private."
     )
     visibility: Missing[Literal["public", "private"]] = Field(
         default=UNSET, description="The visibility of the repository."
-    )
-    security_and_analysis: Missing[
-        Union[ReposOwnerRepoPatchBodyPropSecurityAndAnalysis, None]
-    ] = Field(
-        default=UNSET,
-        description='Specify which security and analysis features to enable or disable for the repository.\n\nTo use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."\n\nFor example, to enable GitHub Advanced Security, use this data in the body of the `PATCH` request:\n`{ "security_and_analysis": {"advanced_security": { "status": "enabled" } } }`.\n\nYou can check which security and analysis features are currently enabled by using a `GET /repos/{owner}/{repo}` request.',
     )
     has_issues: Missing[bool] = Field(
         default=UNSET,
@@ -53,12 +46,28 @@ class ReposOwnerRepoPatchBody(GitHubModel):
         default=UNSET,
         description="Either `true` to enable the wiki for this repository or `false` to disable it.",
     )
+    has_downloads: Missing[bool] = Field(
+        default=UNSET, description="Whether downloads are enabled."
+    )
     is_template: Missing[bool] = Field(
         default=UNSET,
         description="Either `true` to make this repo available as a template repository or `false` to prevent it.",
     )
-    default_branch: Missing[str] = Field(
-        default=UNSET, description="Updates the default branch for this repository."
+    team_id: Missing[int] = Field(
+        default=UNSET,
+        description="The id of the team that will be granted access to this repository. This is only valid when creating a repository in an organization.",
+    )
+    auto_init: Missing[bool] = Field(
+        default=UNSET,
+        description="Pass `true` to create an initial commit with empty README.",
+    )
+    gitignore_template: Missing[str] = Field(
+        default=UNSET,
+        description='Desired language or platform [.gitignore template](https://github.com/github/gitignore) to apply. Use the name of the template without the extension. For example, "Haskell".',
+    )
+    license_template: Missing[str] = Field(
+        default=UNSET,
+        description='Choose an [open source license template](https://choosealicense.com/) that best suits your needs, and then use the [license keyword](https://docs.github.com/articles/licensing-a-repository/#searching-github-by-license-type) as the `license_template` string. For example, "mit" or "mpl-2.0".',
     )
     allow_squash_merge: Missing[bool] = Field(
         default=UNSET,
@@ -78,11 +87,7 @@ class ReposOwnerRepoPatchBody(GitHubModel):
     )
     delete_branch_on_merge: Missing[bool] = Field(
         default=UNSET,
-        description="Either `true` to allow automatically deleting head branches when pull requests are merged, or `false` to prevent automatic deletion.",
-    )
-    allow_update_branch: Missing[bool] = Field(
-        default=UNSET,
-        description="Either `true` to always allow a pull request head branch that is behind its base branch to be updated even if it is not required to be up to date before merging, or false otherwise.",
+        description="Either `true` to allow automatically deleting head branches when pull requests are merged, or `false` to prevent automatic deletion. **The authenticated user must be an organization owner to set this property to `true`.**",
     )
     use_squash_pr_title_as_default: Missing[bool] = Field(
         default=UNSET,
@@ -108,299 +113,24 @@ class ReposOwnerRepoPatchBody(GitHubModel):
         default=UNSET,
         description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
     )
-    archived: Missing[bool] = Field(
+    custom_properties: Missing[OrgsOrgReposPostBodyPropCustomProperties] = Field(
         default=UNSET,
-        description="Whether to archive this repository. `false` will unarchive a previously archived repository.",
-    )
-    allow_forking: Missing[bool] = Field(
-        default=UNSET,
-        description="Either `true` to allow private forks, or `false` to prevent private forks.",
-    )
-    web_commit_signoff_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Either `true` to require contributors to sign off on web-based commits, or `false` to not require contributors to sign off on web-based commits.",
+        description="The custom properties for the new repository. The keys are the custom property names, and the values are the corresponding custom property values.",
     )
 
 
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysis(GitHubModel):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysis
+class OrgsOrgReposPostBodyPropCustomProperties(ExtraGitHubModel):
+    """OrgsOrgReposPostBodyPropCustomProperties
 
-    Specify which security and analysis features to enable or disable for the
-    repository.
-
-    To use this parameter, you must have admin permissions for the repository or be
-    an owner or security manager for the organization that owns the repository. For
-    more information, see "[Managing security managers in your
-    organization](https://docs.github.com/organizations/managing-peoples-access-to-
-    your-organization-with-roles/managing-security-managers-in-your-organization)."
-
-    For example, to enable GitHub Advanced Security, use this data in the body of
-    the `PATCH` request:
-    `{ "security_and_analysis": {"advanced_security": { "status": "enabled" } } }`.
-
-    You can check which security and analysis features are currently enabled by
-    using a `GET /repos/{owner}/{repo}` request.
+    The custom properties for the new repository. The keys are the custom property
+    names, and the values are the corresponding custom property values.
     """
 
-    advanced_security: Missing[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity
-    ] = Field(
-        default=UNSET,
-        description='Use the `status` property to enable or disable GitHub Advanced Security for this repository.\nFor more information, see "[About GitHub Advanced\nSecurity](/github/getting-started-with-github/learning-about-github/about-github-advanced-security)."\n\nFor standalone Code Scanning or Secret Protection products, this parameter cannot be used.',
-    )
-    code_security: Missing[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity
-    ] = Field(
-        default=UNSET,
-        description="Use the `status` property to enable or disable GitHub Code Security for this repository.",
-    )
-    secret_scanning: Missing[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning
-    ] = Field(
-        default=UNSET,
-        description='Use the `status` property to enable or disable secret scanning for this repository. For more information, see "[About secret scanning](/code-security/secret-security/about-secret-scanning)."',
-    )
-    secret_scanning_push_protection: Missing[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection
-    ] = Field(
-        default=UNSET,
-        description='Use the `status` property to enable or disable secret scanning push protection for this repository. For more information, see "[Protecting pushes with secret scanning](/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."',
-    )
-    secret_scanning_ai_detection: Missing[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection
-    ] = Field(
-        default=UNSET,
-        description='Use the `status` property to enable or disable secret scanning AI detection for this repository. For more information, see "[Responsible detection of generic secrets with AI](https://docs.github.com/code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/generic-secret-detection/responsible-ai-generic-secrets)."',
-    )
-    secret_scanning_non_provider_patterns: Missing[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns
-    ] = Field(
-        default=UNSET,
-        description='Use the `status` property to enable or disable secret scanning non-provider patterns for this repository. For more information, see "[Supported secret scanning patterns](/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
-    )
-    secret_scanning_delegated_alert_dismissal: Missing[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal
-    ] = Field(
-        default=UNSET,
-        description="Use the `status` property to enable or disable secret scanning delegated alert dismissal for this repository.",
-    )
-    secret_scanning_delegated_bypass: Missing[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypass
-    ] = Field(
-        default=UNSET,
-        description="Use the `status` property to enable or disable secret scanning delegated bypass for this repository.",
-    )
-    secret_scanning_delegated_bypass_options: Missing[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptions
-    ] = Field(
-        default=UNSET,
-        description="Feature options for secret scanning delegated bypass.\nThis object is only honored when `security_and_analysis.secret_scanning_delegated_bypass.status` is set to `enabled`.\nYou can send this object in the same request as `secret_scanning_delegated_bypass`, or update just the options in a separate request.",
-    )
 
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity(GitHubModel):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity
-
-    Use the `status` property to enable or disable GitHub Advanced Security for this
-    repository.
-    For more information, see "[About GitHub Advanced
-    Security](/github/getting-started-with-github/learning-about-github/about-
-    github-advanced-security)."
-
-    For standalone Code Scanning or Secret Protection products, this parameter
-    cannot be used.
-    """
-
-    status: Missing[str] = Field(
-        default=UNSET, description="Can be `enabled` or `disabled`."
-    )
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity(GitHubModel):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity
-
-    Use the `status` property to enable or disable GitHub Code Security for this
-    repository.
-    """
-
-    status: Missing[str] = Field(
-        default=UNSET, description="Can be `enabled` or `disabled`."
-    )
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning(GitHubModel):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning
-
-    Use the `status` property to enable or disable secret scanning for this
-    repository. For more information, see "[About secret scanning](/code-
-    security/secret-security/about-secret-scanning)."
-    """
-
-    status: Missing[str] = Field(
-        default=UNSET, description="Can be `enabled` or `disabled`."
-    )
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection(
-    GitHubModel
-):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection
-
-    Use the `status` property to enable or disable secret scanning push protection
-    for this repository. For more information, see "[Protecting pushes with secret
-    scanning](/code-security/secret-scanning/protecting-pushes-with-secret-
-    scanning)."
-    """
-
-    status: Missing[str] = Field(
-        default=UNSET, description="Can be `enabled` or `disabled`."
-    )
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection(
-    GitHubModel
-):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection
-
-    Use the `status` property to enable or disable secret scanning AI detection for
-    this repository. For more information, see "[Responsible detection of generic
-    secrets with AI](https://docs.github.com/code-security/secret-scanning/using-
-    advanced-secret-scanning-and-push-protection-features/generic-secret-
-    detection/responsible-ai-generic-secrets)."
-    """
-
-    status: Missing[str] = Field(
-        default=UNSET, description="Can be `enabled` or `disabled`."
-    )
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns(
-    GitHubModel
-):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatte
-    rns
-
-    Use the `status` property to enable or disable secret scanning non-provider
-    patterns for this repository. For more information, see "[Supported secret
-    scanning patterns](/code-security/secret-scanning/introduction/supported-secret-
-    scanning-patterns#supported-secrets)."
-    """
-
-    status: Missing[str] = Field(
-        default=UNSET, description="Can be `enabled` or `disabled`."
-    )
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal(
-    GitHubModel
-):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedAlertDi
-    smissal
-
-    Use the `status` property to enable or disable secret scanning delegated alert
-    dismissal for this repository.
-    """
-
-    status: Missing[str] = Field(
-        default=UNSET, description="Can be `enabled` or `disabled`."
-    )
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypass(
-    GitHubModel
-):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypass
-
-    Use the `status` property to enable or disable secret scanning delegated bypass
-    for this repository.
-    """
-
-    status: Missing[str] = Field(
-        default=UNSET, description="Can be `enabled` or `disabled`."
-    )
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptions(
-    GitHubModel
-):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassO
-    ptions
-
-    Feature options for secret scanning delegated bypass.
-    This object is only honored when
-    `security_and_analysis.secret_scanning_delegated_bypass.status` is set to
-    `enabled`.
-    You can send this object in the same request as
-    `secret_scanning_delegated_bypass`, or update just the options in a separate
-    request.
-    """
-
-    reviewers: Missing[
-        list[
-            ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The bypass reviewers for secret scanning delegated bypass.\nIf you omit this field, the existing set of reviewers is unchanged.",
-    )
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems(
-    GitHubModel
-):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassO
-    ptionsPropReviewersItems
-    """
-
-    reviewer_id: int = Field(
-        description="The ID of the team or role selected as a bypass reviewer"
-    )
-    reviewer_type: Literal["TEAM", "ROLE"] = Field(
-        description="The type of the bypass reviewer"
-    )
-    mode: Missing[Literal["ALWAYS", "EXEMPT"]] = Field(
-        default=UNSET, description="The bypass mode for the reviewer"
-    )
-
-
-model_rebuild(ReposOwnerRepoPatchBody)
-model_rebuild(ReposOwnerRepoPatchBodyPropSecurityAndAnalysis)
-model_rebuild(ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity)
-model_rebuild(ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity)
-model_rebuild(ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning)
-model_rebuild(
-    ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection
-)
-model_rebuild(
-    ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection
-)
-model_rebuild(
-    ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns
-)
-model_rebuild(
-    ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal
-)
-model_rebuild(
-    ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypass
-)
-model_rebuild(
-    ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptions
-)
-model_rebuild(
-    ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems
-)
+model_rebuild(OrgsOrgReposPostBody)
+model_rebuild(OrgsOrgReposPostBodyPropCustomProperties)
 
 __all__ = (
-    "ReposOwnerRepoPatchBody",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysis",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypass",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptions",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection",
+    "OrgsOrgReposPostBody",
+    "OrgsOrgReposPostBodyPropCustomProperties",
 )

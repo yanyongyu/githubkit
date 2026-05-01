@@ -9,32 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
 
+class CodespacesPermissionsCheckForDevcontainer(GitHubModel):
+    """Codespaces Permissions Check
 
-class Reaction(GitHubModel):
-    """Reaction
-
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    Permission check result for a given devcontainer config.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(description="The reaction to use")
-    created_at: _dt.datetime = Field()
+    accepted: bool = Field(
+        description="Whether the user has accepted the permissions defined by the devcontainer config"
+    )
 
 
-model_rebuild(Reaction)
+model_rebuild(CodespacesPermissionsCheckForDevcontainer)
 
-__all__ = ("Reaction",)
+__all__ = ("CodespacesPermissionsCheckForDevcontainer",)

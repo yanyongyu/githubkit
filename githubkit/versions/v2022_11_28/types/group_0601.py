@@ -13,20 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0048 import DiscussionType, DiscussionTypeForResponse
-from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0484 import (
+from .group_0049 import DiscussionType, DiscussionTypeForResponse
+from .group_0486 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0487 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0488 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0489 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0602 import (
+    WebhookDiscussionTransferredPropChangesType,
+    WebhookDiscussionTransferredPropChangesTypeForResponse,
+)
 
 
-class WebhookDiscussionUnlockedType(TypedDict):
-    """discussion unlocked event"""
+class WebhookDiscussionTransferredType(TypedDict):
+    """discussion transferred event"""
 
-    action: Literal["unlocked"]
+    action: Literal["transferred"]
+    changes: WebhookDiscussionTransferredPropChangesType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -35,10 +40,11 @@ class WebhookDiscussionUnlockedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionUnlockedTypeForResponse(TypedDict):
-    """discussion unlocked event"""
+class WebhookDiscussionTransferredTypeForResponse(TypedDict):
+    """discussion transferred event"""
 
-    action: Literal["unlocked"]
+    action: Literal["transferred"]
+    changes: WebhookDiscussionTransferredPropChangesTypeForResponse
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -48,6 +54,6 @@ class WebhookDiscussionUnlockedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionUnlockedType",
-    "WebhookDiscussionUnlockedTypeForResponse",
+    "WebhookDiscussionTransferredType",
+    "WebhookDiscussionTransferredTypeForResponse",
 )

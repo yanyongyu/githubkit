@@ -76,7 +76,7 @@ class HostedComputeClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:network_configurations` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/network-configurations#list-hosted-compute-network-configurations-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/network-configurations#list-hosted-compute-network-configurations-for-an-organization
         """
 
         from ..models import OrgsOrgSettingsNetworkConfigurationsGetResponse200
@@ -119,7 +119,7 @@ class HostedComputeClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:network_configurations` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/network-configurations#list-hosted-compute-network-configurations-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/network-configurations#list-hosted-compute-network-configurations-for-an-organization
         """
 
         from ..models import OrgsOrgSettingsNetworkConfigurationsGetResponse200
@@ -184,7 +184,7 @@ class HostedComputeClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:network_configurations` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/network-configurations#create-a-hosted-compute-network-configuration-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/network-configurations#create-a-hosted-compute-network-configuration-for-an-organization
         """
 
         from ..models import (
@@ -258,7 +258,7 @@ class HostedComputeClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:network_configurations` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/network-configurations#create-a-hosted-compute-network-configuration-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/network-configurations#create-a-hosted-compute-network-configuration-for-an-organization
         """
 
         from ..models import (
@@ -306,7 +306,7 @@ class HostedComputeClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:network_configurations` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/network-configurations#get-a-hosted-compute-network-configuration-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/network-configurations#get-a-hosted-compute-network-configuration-for-an-organization
         """
 
         from ..models import NetworkConfiguration
@@ -339,7 +339,7 @@ class HostedComputeClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:network_configurations` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/network-configurations#get-a-hosted-compute-network-configuration-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/network-configurations#get-a-hosted-compute-network-configuration-for-an-organization
         """
 
         from ..models import NetworkConfiguration
@@ -372,7 +372,7 @@ class HostedComputeClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:network_configurations` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/network-configurations#delete-a-hosted-compute-network-configuration-from-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/network-configurations#delete-a-hosted-compute-network-configuration-from-an-organization
         """
 
         url = f"/orgs/{org}/settings/network-configurations/{network_configuration_id}"
@@ -402,7 +402,7 @@ class HostedComputeClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:network_configurations` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/network-configurations#delete-a-hosted-compute-network-configuration-from-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/network-configurations#delete-a-hosted-compute-network-configuration-from-an-organization
         """
 
         url = f"/orgs/{org}/settings/network-configurations/{network_configuration_id}"
@@ -463,7 +463,7 @@ class HostedComputeClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:network_configurations` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/network-configurations#update-a-hosted-compute-network-configuration-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/network-configurations#update-a-hosted-compute-network-configuration-for-an-organization
         """
 
         from ..models import (
@@ -543,7 +543,7 @@ class HostedComputeClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:network_configurations` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/network-configurations#update-a-hosted-compute-network-configuration-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/network-configurations#update-a-hosted-compute-network-configuration-for-an-organization
         """
 
         from ..models import (
@@ -592,7 +592,7 @@ class HostedComputeClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:network_configurations` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-organization
         """
 
         from ..models import NetworkSettings
@@ -625,7 +625,7 @@ class HostedComputeClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:network_configurations` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-organization
         """
 
         from ..models import NetworkSettings

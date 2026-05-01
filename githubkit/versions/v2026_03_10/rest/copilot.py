@@ -498,9 +498,9 @@ class CopilotClient:
 
         PUT /enterprises/{enterprise}/copilot/policies/coding_agent
 
-        Sets the policy for Copilot coding agent usage across an enterprise.
+        Sets the policy for Copilot cloud agent usage across an enterprise.
 
-        Enterprise owners can configure whether Copilot coding agent is enabled for all
+        Enterprise owners can configure whether Copilot cloud agent is enabled for all
         organizations, disabled for all organizations, configured by individual organization
         admins, or enabled for selected organizations only.
 
@@ -583,9 +583,9 @@ class CopilotClient:
 
         PUT /enterprises/{enterprise}/copilot/policies/coding_agent
 
-        Sets the policy for Copilot coding agent usage across an enterprise.
+        Sets the policy for Copilot cloud agent usage across an enterprise.
 
-        Enterprise owners can configure whether Copilot coding agent is enabled for all
+        Enterprise owners can configure whether Copilot cloud agent is enabled for all
         organizations, disabled for all organizations, configured by individual organization
         admins, or enabled for selected organizations only.
 
@@ -668,7 +668,7 @@ class CopilotClient:
 
         POST /enterprises/{enterprise}/copilot/policies/coding_agent/organizations
 
-        Enables Copilot coding agent for the specified organizations within the enterprise.
+        Enables Copilot cloud agent for the specified organizations within the enterprise.
 
         The enterprise's coding agent policy must be set to `enabled_for_selected_orgs` before
         using this endpoint. Organizations can be specified by login or matched via custom properties.
@@ -755,7 +755,7 @@ class CopilotClient:
 
         POST /enterprises/{enterprise}/copilot/policies/coding_agent/organizations
 
-        Enables Copilot coding agent for the specified organizations within the enterprise.
+        Enables Copilot cloud agent for the specified organizations within the enterprise.
 
         The enterprise's coding agent policy must be set to `enabled_for_selected_orgs` before
         using this endpoint. Organizations can be specified by login or matched via custom properties.
@@ -842,7 +842,7 @@ class CopilotClient:
 
         DELETE /enterprises/{enterprise}/copilot/policies/coding_agent/organizations
 
-        Disables Copilot coding agent for the specified organizations within the enterprise.
+        Disables Copilot cloud agent for the specified organizations within the enterprise.
 
         The enterprise's coding agent policy must be set to `enabled_for_selected_orgs` before
         using this endpoint. Organizations can be specified by login or matched via custom properties.
@@ -929,7 +929,7 @@ class CopilotClient:
 
         DELETE /enterprises/{enterprise}/copilot/policies/coding_agent/organizations
 
-        Disables Copilot coding agent for the specified organizations within the enterprise.
+        Disables Copilot cloud agent for the specified organizations within the enterprise.
 
         The enterprise's coding agent policy must be set to `enabled_for_selected_orgs` before
         using this endpoint. Organizations can be specified by login or matched via custom properties.
@@ -1963,14 +1963,14 @@ class CopilotClient:
         > This endpoint is in public preview and is subject to change.
 
         Gets information about which repositories in an organization have been enabled
-        or disabled for the Copilot coding agent.
+        or disabled for the Copilot cloud agent.
 
-        Organization owners can configure whether Copilot coding agent is enabled for
+        Organization owners can configure whether Copilot cloud agent is enabled for
         all repositories, selected repositories, or no repositories owned by organization.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#get-copilot-coding-agent-permissions-for-an-organization
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#get-copilot-cloud-agent-permissions-for-an-organization
         """
 
         from ..models import (
@@ -2014,14 +2014,14 @@ class CopilotClient:
         > This endpoint is in public preview and is subject to change.
 
         Gets information about which repositories in an organization have been enabled
-        or disabled for the Copilot coding agent.
+        or disabled for the Copilot cloud agent.
 
-        Organization owners can configure whether Copilot coding agent is enabled for
+        Organization owners can configure whether Copilot cloud agent is enabled for
         all repositories, selected repositories, or no repositories owned by organization.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#get-copilot-coding-agent-permissions-for-an-organization
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#get-copilot-cloud-agent-permissions-for-an-organization
         """
 
         from ..models import (
@@ -2084,14 +2084,14 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint is in public preview and is subject to change.
 
-        Sets the policy for which repositories in an organization can use Copilot coding agent.
+        Sets the policy for which repositories in an organization can use Copilot cloud agent.
 
-        Organization owners can configure whether Copilot coding agent is enabled for
+        Organization owners can configure whether Copilot cloud agent is enabled for
         all repositories, selected repositories, or no repositories owned by the organization.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#set-copilot-coding-agent-permissions-for-an-organization
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#set-copilot-cloud-agent-permissions-for-an-organization
         """
 
         from ..models import (
@@ -2167,14 +2167,14 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint is in public preview and is subject to change.
 
-        Sets the policy for which repositories in an organization can use Copilot coding agent.
+        Sets the policy for which repositories in an organization can use Copilot cloud agent.
 
-        Organization owners can configure whether Copilot coding agent is enabled for
+        Organization owners can configure whether Copilot cloud agent is enabled for
         all repositories, selected repositories, or no repositories owned by the organization.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#set-copilot-coding-agent-permissions-for-an-organization
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#set-copilot-cloud-agent-permissions-for-an-organization
         """
 
         from ..models import (
@@ -2232,14 +2232,14 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint is in public preview and is subject to change.
 
-        Lists the selected repositories that are enabled for Copilot coding agent in an organization.
+        Lists the selected repositories that are enabled for Copilot cloud agent in an organization.
 
         Organization owners can use this endpoint when the coding agent repository policy
         is set to `selected` to see which repositories have been enabled.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#list-repositories-enabled-for-copilot-coding-agent-in-an-organization
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#list-repositories-enabled-for-copilot-cloud-agent-in-an-organization
         """
 
         from ..models import (
@@ -2291,14 +2291,14 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint is in public preview and is subject to change.
 
-        Lists the selected repositories that are enabled for Copilot coding agent in an organization.
+        Lists the selected repositories that are enabled for Copilot cloud agent in an organization.
 
         Organization owners can use this endpoint when the coding agent repository policy
         is set to `selected` to see which repositories have been enabled.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#list-repositories-enabled-for-copilot-coding-agent-in-an-organization
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#list-repositories-enabled-for-copilot-cloud-agent-in-an-organization
         """
 
         from ..models import (
@@ -2370,13 +2370,13 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint is in public preview and is subject to change.
 
-        Replaces the list of selected repositories that are enabled for Copilot coding
-        agent in an organization. This method can only be called when the coding agent
+        Replaces the list of selected repositories that are enabled for Copilot cloud
+        agent in an organization. This method can only be called when the cloud agent
         repository policy is set to `selected`.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#set-selected-repositories-for-copilot-coding-agent-in-an-organization
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#set-selected-repositories-for-copilot-cloud-agent-in-an-organization
         """
 
         from ..models import (
@@ -2455,13 +2455,13 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint is in public preview and is subject to change.
 
-        Replaces the list of selected repositories that are enabled for Copilot coding
-        agent in an organization. This method can only be called when the coding agent
+        Replaces the list of selected repositories that are enabled for Copilot cloud
+        agent in an organization. This method can only be called when the cloud agent
         repository policy is set to `selected`.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#set-selected-repositories-for-copilot-coding-agent-in-an-organization
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#set-selected-repositories-for-copilot-cloud-agent-in-an-organization
         """
 
         from ..models import (
@@ -2517,12 +2517,12 @@ class CopilotClient:
         > This endpoint is in public preview and is subject to change.
 
         Adds a repository to the list of selected repositories enabled for Copilot
-        coding agent in an organization. This method can only be called when the
-        coding agent repository policy is set to `selected`.
+        cloud agent in an organization. This method can only be called when the
+        cloud agent repository policy is set to `selected`.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#enable-a-repository-for-copilot-coding-agent-in-an-organization
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#enable-a-repository-for-copilot-cloud-agent-in-an-organization
         """
 
         from ..models import BasicError, ValidationError
@@ -2564,12 +2564,12 @@ class CopilotClient:
         > This endpoint is in public preview and is subject to change.
 
         Adds a repository to the list of selected repositories enabled for Copilot
-        coding agent in an organization. This method can only be called when the
-        coding agent repository policy is set to `selected`.
+        cloud agent in an organization. This method can only be called when the
+        cloud agent repository policy is set to `selected`.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#enable-a-repository-for-copilot-coding-agent-in-an-organization
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#enable-a-repository-for-copilot-cloud-agent-in-an-organization
         """
 
         from ..models import BasicError, ValidationError
@@ -2611,12 +2611,12 @@ class CopilotClient:
         > This endpoint is in public preview and is subject to change.
 
         Removes a repository from the list of selected repositories enabled for Copilot
-        coding agent in an organization. This method can only be called when the
-        coding agent repository policy is set to `selected`.
+        cloud agent in an organization. This method can only be called when the
+        cloud agent repository policy is set to `selected`.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#disable-a-repository-for-copilot-coding-agent-in-an-organization
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#disable-a-repository-for-copilot-cloud-agent-in-an-organization
         """
 
         from ..models import BasicError
@@ -2657,12 +2657,12 @@ class CopilotClient:
         > This endpoint is in public preview and is subject to change.
 
         Removes a repository from the list of selected repositories enabled for Copilot
-        coding agent in an organization. This method can only be called when the
-        coding agent repository policy is set to `selected`.
+        cloud agent in an organization. This method can only be called when the
+        cloud agent repository policy is set to `selected`.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#disable-a-repository-for-copilot-coding-agent-in-an-organization
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#disable-a-repository-for-copilot-cloud-agent-in-an-organization
         """
 
         from ..models import BasicError

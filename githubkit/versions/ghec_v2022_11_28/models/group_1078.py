@@ -9,54 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
 
-    organization: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization,
-        None,
-    ] = Field()
-    repository: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository, None
-    ] = Field()
+    selected_usernames: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The usernames of the enterprise members for which to revoke access to GitHub Copilot.",
+    )
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody)
 
-    id: int = Field(description="Unique identifier of the organization")
-    login: str = Field(description="Login of the organization")
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
-
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="Name of the repository")
-    full_name: str = Field(description="Full name of the repository including owner")
-
-
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200)
-model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization
-)
-model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository
-)
-
-__all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository",
-)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody",)

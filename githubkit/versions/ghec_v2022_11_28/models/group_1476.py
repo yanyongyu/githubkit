@@ -16,21 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesCodespaceNamePatchBody(GitHubModel):
-    """UserCodespacesCodespaceNamePatchBody"""
+class ReposOwnerRepoTransferPostBody(GitHubModel):
+    """ReposOwnerRepoTransferPostBody"""
 
-    machine: Missing[str] = Field(
-        default=UNSET, description="A valid machine to transition this codespace to."
+    new_owner: str = Field(
+        description="The username or organization name the repository will be transferred to."
     )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
+    new_name: Missing[str] = Field(
+        default=UNSET, description="The new name to be given to the repository."
     )
-    recent_folders: Missing[list[str]] = Field(
+    team_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in.",
+        description="ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.",
     )
 
 
-model_rebuild(UserCodespacesCodespaceNamePatchBody)
+model_rebuild(ReposOwnerRepoTransferPostBody)
 
-__all__ = ("UserCodespacesCodespaceNamePatchBody",)
+__all__ = ("ReposOwnerRepoTransferPostBody",)

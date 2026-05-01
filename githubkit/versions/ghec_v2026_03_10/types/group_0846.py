@@ -9,150 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0565 import (
+from .group_0567 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0568 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0569 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0570 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0847 import (
+    WebhookPackagePublishedPropPackageType,
+    WebhookPackagePublishedPropPackageTypeForResponse,
+)
 
 
-class WebhookPageBuildType(TypedDict):
-    """page_build event"""
+class WebhookPackagePublishedType(TypedDict):
+    """package published event"""
 
-    build: WebhookPageBuildPropBuildType
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    id: int
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    package: WebhookPackagePublishedPropPackageType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookPageBuildTypeForResponse(TypedDict):
-    """page_build event"""
+class WebhookPackagePublishedTypeForResponse(TypedDict):
+    """package published event"""
 
-    build: WebhookPageBuildPropBuildTypeForResponse
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    id: int
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    package: WebhookPackagePublishedPropPackageTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
-class WebhookPageBuildPropBuildType(TypedDict):
-    """WebhookPageBuildPropBuild
-
-    The [List GitHub Pages builds](https://docs.github.com/enterprise-
-    cloud@latest//rest/pages/pages#list-github-pages-builds) itself.
-    """
-
-    commit: Union[str, None]
-    created_at: str
-    duration: int
-    error: WebhookPageBuildPropBuildPropErrorType
-    pusher: Union[WebhookPageBuildPropBuildPropPusherType, None]
-    status: str
-    updated_at: str
-    url: str
-
-
-class WebhookPageBuildPropBuildTypeForResponse(TypedDict):
-    """WebhookPageBuildPropBuild
-
-    The [List GitHub Pages builds](https://docs.github.com/enterprise-
-    cloud@latest//rest/pages/pages#list-github-pages-builds) itself.
-    """
-
-    commit: Union[str, None]
-    created_at: str
-    duration: int
-    error: WebhookPageBuildPropBuildPropErrorTypeForResponse
-    pusher: Union[WebhookPageBuildPropBuildPropPusherTypeForResponse, None]
-    status: str
-    updated_at: str
-    url: str
-
-
-class WebhookPageBuildPropBuildPropErrorType(TypedDict):
-    """WebhookPageBuildPropBuildPropError"""
-
-    message: Union[str, None]
-
-
-class WebhookPageBuildPropBuildPropErrorTypeForResponse(TypedDict):
-    """WebhookPageBuildPropBuildPropError"""
-
-    message: Union[str, None]
-
-
-class WebhookPageBuildPropBuildPropPusherType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookPageBuildPropBuildPropPusherTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
 __all__ = (
-    "WebhookPageBuildPropBuildPropErrorType",
-    "WebhookPageBuildPropBuildPropErrorTypeForResponse",
-    "WebhookPageBuildPropBuildPropPusherType",
-    "WebhookPageBuildPropBuildPropPusherTypeForResponse",
-    "WebhookPageBuildPropBuildType",
-    "WebhookPageBuildPropBuildTypeForResponse",
-    "WebhookPageBuildType",
-    "WebhookPageBuildTypeForResponse",
+    "WebhookPackagePublishedType",
+    "WebhookPackagePublishedTypeForResponse",
 )

@@ -16,17 +16,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesCodespaceNamePublishPostBody(GitHubModel):
-    """UserCodespacesCodespaceNamePublishPostBody"""
+class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
+    """ReposOwnerRepoSubscriptionPutBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="A name for the new repository."
+    subscribed: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications should be received from this repository.",
     )
-    private: Missing[bool] = Field(
-        default=UNSET, description="Whether the new repository should be private."
+    ignored: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if all notifications should be blocked from this repository.",
     )
 
 
-model_rebuild(UserCodespacesCodespaceNamePublishPostBody)
+model_rebuild(ReposOwnerRepoSubscriptionPutBody)
 
-__all__ = ("UserCodespacesCodespaceNamePublishPostBody",)
+__all__ = ("ReposOwnerRepoSubscriptionPutBody",)

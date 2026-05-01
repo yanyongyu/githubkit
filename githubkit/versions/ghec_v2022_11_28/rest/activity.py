@@ -92,7 +92,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-public-events
         """
 
         from ..models import (
@@ -138,7 +138,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-public-events
         """
 
         from ..models import (
@@ -182,19 +182,19 @@ class ActivityClient:
         Lists the feeds available to the authenticated user. The response provides a URL for each feed. You can then get a specific feed by sending a request to one of the feed URLs.
 
         *   **Timeline**: The GitHub Enterprise Cloud global public timeline
-        *   **User**: The public timeline for any user, using `uri_template`. For more information, see "[Hypermedia](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia)."
+        *   **User**: The public timeline for any user, using `uri_template`. For more information, see "[Hypermedia](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia)."
         *   **Current user public**: The public timeline for the authenticated user
         *   **Current user**: The private timeline for the authenticated user
         *   **Current user actor**: The private timeline for activity created by the authenticated user
         *   **Current user organizations**: The private timeline for the organizations the authenticated user is a member of.
         *   **Security advisories**: A collection of public announcements that provide information about security-related vulnerabilities in software on GitHub Enterprise Cloud.
 
-        By default, timeline resources are returned in JSON. You can specify the `application/atom+xml` type in the `Accept` header to return timeline resources in Atom format. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        By default, timeline resources are returned in JSON. You can specify the `application/atom+xml` type in the `Accept` header to return timeline resources in Atom format. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         > [!NOTE]
-        > Private feeds are only returned when [authenticating via Basic Auth](https://docs.github.com/enterprise-cloud@latest//rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) since current feed URIs use the older, non revocable auth tokens.
+        > Private feeds are only returned when [authenticating via Basic Auth](https://docs.github.com/enterprise-cloud@latest/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) since current feed URIs use the older, non revocable auth tokens.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/feeds#get-feeds
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/feeds#get-feeds
         """
 
         from ..models import Feed
@@ -224,19 +224,19 @@ class ActivityClient:
         Lists the feeds available to the authenticated user. The response provides a URL for each feed. You can then get a specific feed by sending a request to one of the feed URLs.
 
         *   **Timeline**: The GitHub Enterprise Cloud global public timeline
-        *   **User**: The public timeline for any user, using `uri_template`. For more information, see "[Hypermedia](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia)."
+        *   **User**: The public timeline for any user, using `uri_template`. For more information, see "[Hypermedia](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia)."
         *   **Current user public**: The public timeline for the authenticated user
         *   **Current user**: The private timeline for the authenticated user
         *   **Current user actor**: The private timeline for activity created by the authenticated user
         *   **Current user organizations**: The private timeline for the organizations the authenticated user is a member of.
         *   **Security advisories**: A collection of public announcements that provide information about security-related vulnerabilities in software on GitHub Enterprise Cloud.
 
-        By default, timeline resources are returned in JSON. You can specify the `application/atom+xml` type in the `Accept` header to return timeline resources in Atom format. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        By default, timeline resources are returned in JSON. You can specify the `application/atom+xml` type in the `Accept` header to return timeline resources in Atom format. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         > [!NOTE]
-        > Private feeds are only returned when [authenticating via Basic Auth](https://docs.github.com/enterprise-cloud@latest//rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) since current feed URIs use the older, non revocable auth tokens.
+        > Private feeds are only returned when [authenticating via Basic Auth](https://docs.github.com/enterprise-cloud@latest/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) since current feed URIs use the older, non revocable auth tokens.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/feeds#get-feeds
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/feeds#get-feeds
         """
 
         from ..models import Feed
@@ -270,7 +270,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-for-a-network-of-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-public-events-for-a-network-of-repositories
         """
 
         from ..models import BasicError, Event
@@ -314,7 +314,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-for-a-network-of-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-public-events-for-a-network-of-repositories
         """
 
         from ..models import BasicError, Event
@@ -359,7 +359,7 @@ class ActivityClient:
 
         List all notifications for the current user, sorted by most recently updated.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-notifications-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#list-notifications-for-the-authenticated-user
         """
 
         from ..models import BasicError, Thread, ValidationError
@@ -409,7 +409,7 @@ class ActivityClient:
 
         List all notifications for the current user, sorted by most recently updated.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-notifications-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#list-notifications-for-the-authenticated-user
         """
 
         from ..models import BasicError, Thread, ValidationError
@@ -479,9 +479,9 @@ class ActivityClient:
 
         PUT /notifications
 
-        Marks all notifications as "read" for the current user. If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub Enterprise Cloud will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List notifications for the authenticated user](https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`.
+        Marks all notifications as "read" for the current user. If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub Enterprise Cloud will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List notifications for the authenticated user](https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#list-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#mark-notifications-as-read
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#mark-notifications-as-read
         """
 
         from ..models import (
@@ -554,9 +554,9 @@ class ActivityClient:
 
         PUT /notifications
 
-        Marks all notifications as "read" for the current user. If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub Enterprise Cloud will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List notifications for the authenticated user](https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`.
+        Marks all notifications as "read" for the current user. If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub Enterprise Cloud will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List notifications for the authenticated user](https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#list-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#mark-notifications-as-read
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#mark-notifications-as-read
         """
 
         from ..models import (
@@ -604,7 +604,7 @@ class ActivityClient:
 
         Gets information about a notification thread.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#get-a-thread
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#get-a-thread
         """
 
         from ..models import BasicError, Thread
@@ -638,7 +638,7 @@ class ActivityClient:
 
         Gets information about a notification thread.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#get-a-thread
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#get-a-thread
         """
 
         from ..models import BasicError, Thread
@@ -672,7 +672,7 @@ class ActivityClient:
 
         Marks a thread as "done." Marking a thread as "done" is equivalent to marking a notification in your notification inbox on GitHub Enterprise Cloud as done: https://github.com/notifications.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#mark-a-thread-as-done
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#mark-a-thread-as-done
         """
 
         url = f"/notifications/threads/{thread_id}"
@@ -699,7 +699,7 @@ class ActivityClient:
 
         Marks a thread as "done." Marking a thread as "done" is equivalent to marking a notification in your notification inbox on GitHub Enterprise Cloud as done: https://github.com/notifications.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#mark-a-thread-as-done
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#mark-a-thread-as-done
         """
 
         url = f"/notifications/threads/{thread_id}"
@@ -726,7 +726,7 @@ class ActivityClient:
 
         Marks a thread as "read." Marking a thread as "read" is equivalent to clicking a notification in your notification inbox on GitHub Enterprise Cloud: https://github.com/notifications.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#mark-a-thread-as-read
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#mark-a-thread-as-read
         """
 
         from ..models import BasicError
@@ -758,7 +758,7 @@ class ActivityClient:
 
         Marks a thread as "read." Marking a thread as "read" is equivalent to clicking a notification in your notification inbox on GitHub Enterprise Cloud: https://github.com/notifications.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#mark-a-thread-as-read
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#mark-a-thread-as-read
         """
 
         from ..models import BasicError
@@ -788,11 +788,11 @@ class ActivityClient:
 
         GET /notifications/threads/{thread_id}/subscription
 
-        This checks to see if the current user is subscribed to a thread. You can also [get a repository subscription](https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#get-a-repository-subscription).
+        This checks to see if the current user is subscribed to a thread. You can also [get a repository subscription](https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#get-a-repository-subscription).
 
         Note that subscriptions are only generated if a user is participating in a conversation--for example, they've replied to the thread, were **@mentioned**, or manually subscribe to a thread.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user
         """
 
         from ..models import BasicError, ThreadSubscription
@@ -824,11 +824,11 @@ class ActivityClient:
 
         GET /notifications/threads/{thread_id}/subscription
 
-        This checks to see if the current user is subscribed to a thread. You can also [get a repository subscription](https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#get-a-repository-subscription).
+        This checks to see if the current user is subscribed to a thread. You can also [get a repository subscription](https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#get-a-repository-subscription).
 
         Note that subscriptions are only generated if a user is participating in a conversation--for example, they've replied to the thread, were **@mentioned**, or manually subscribe to a thread.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user
         """
 
         from ..models import BasicError, ThreadSubscription
@@ -887,9 +887,9 @@ class ActivityClient:
 
         You can also use this endpoint to subscribe to threads that you are currently not receiving notifications for or to subscribed to threads that you have previously ignored.
 
-        Unsubscribing from a conversation in a repository that you are not watching is functionally equivalent to the [Delete a thread subscription](https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#delete-a-thread-subscription) endpoint.
+        Unsubscribing from a conversation in a repository that you are not watching is functionally equivalent to the [Delete a thread subscription](https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#delete-a-thread-subscription) endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#set-a-thread-subscription
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#set-a-thread-subscription
         """
 
         from ..models import (
@@ -964,9 +964,9 @@ class ActivityClient:
 
         You can also use this endpoint to subscribe to threads that you are currently not receiving notifications for or to subscribed to threads that you have previously ignored.
 
-        Unsubscribing from a conversation in a repository that you are not watching is functionally equivalent to the [Delete a thread subscription](https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#delete-a-thread-subscription) endpoint.
+        Unsubscribing from a conversation in a repository that you are not watching is functionally equivalent to the [Delete a thread subscription](https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#delete-a-thread-subscription) endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#set-a-thread-subscription
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#set-a-thread-subscription
         """
 
         from ..models import (
@@ -1014,9 +1014,9 @@ class ActivityClient:
 
         DELETE /notifications/threads/{thread_id}/subscription
 
-        Mutes all future notifications for a conversation until you comment on the thread or get an **@mention**. If you are watching the repository of the thread, you will still receive notifications. To ignore future notifications for a repository you are watching, use the [Set a thread subscription](https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#set-a-thread-subscription) endpoint and set `ignore` to `true`.
+        Mutes all future notifications for a conversation until you comment on the thread or get an **@mention**. If you are watching the repository of the thread, you will still receive notifications. To ignore future notifications for a repository you are watching, use the [Set a thread subscription](https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#set-a-thread-subscription) endpoint and set `ignore` to `true`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#delete-a-thread-subscription
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#delete-a-thread-subscription
         """
 
         from ..models import BasicError
@@ -1047,9 +1047,9 @@ class ActivityClient:
 
         DELETE /notifications/threads/{thread_id}/subscription
 
-        Mutes all future notifications for a conversation until you comment on the thread or get an **@mention**. If you are watching the repository of the thread, you will still receive notifications. To ignore future notifications for a repository you are watching, use the [Set a thread subscription](https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#set-a-thread-subscription) endpoint and set `ignore` to `true`.
+        Mutes all future notifications for a conversation until you comment on the thread or get an **@mention**. If you are watching the repository of the thread, you will still receive notifications. To ignore future notifications for a repository you are watching, use the [Set a thread subscription](https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#set-a-thread-subscription) endpoint and set `ignore` to `true`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#delete-a-thread-subscription
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#delete-a-thread-subscription
         """
 
         from ..models import BasicError
@@ -1085,7 +1085,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-organization-events
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-public-organization-events
         """
 
         from ..models import Event
@@ -1124,7 +1124,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-organization-events
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-public-organization-events
         """
 
         from ..models import Event
@@ -1164,7 +1164,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-repository-events
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-repository-events
         """
 
         from ..models import Event
@@ -1204,7 +1204,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-repository-events
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-repository-events
         """
 
         from ..models import Event
@@ -1247,7 +1247,7 @@ class ActivityClient:
 
         Lists all notifications for the current user in the specified repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-repository-notifications-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#list-repository-notifications-for-the-authenticated-user
         """
 
         from ..models import Thread
@@ -1294,7 +1294,7 @@ class ActivityClient:
 
         Lists all notifications for the current user in the specified repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-repository-notifications-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#list-repository-notifications-for-the-authenticated-user
         """
 
         from ..models import Thread
@@ -1367,9 +1367,9 @@ class ActivityClient:
 
         PUT /repos/{owner}/{repo}/notifications
 
-        Marks all notifications in a repository as "read" for the current user. If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub Enterprise Cloud will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List repository notifications for the authenticated user](https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-repository-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`.
+        Marks all notifications in a repository as "read" for the current user. If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub Enterprise Cloud will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List repository notifications for the authenticated user](https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#list-repository-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#mark-repository-notifications-as-read
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#mark-repository-notifications-as-read
         """
 
         from ..models import (
@@ -1445,9 +1445,9 @@ class ActivityClient:
 
         PUT /repos/{owner}/{repo}/notifications
 
-        Marks all notifications in a repository as "read" for the current user. If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub Enterprise Cloud will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List repository notifications for the authenticated user](https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-repository-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`.
+        Marks all notifications in a repository as "read" for the current user. If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub Enterprise Cloud will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List repository notifications for the authenticated user](https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#list-repository-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#mark-repository-notifications-as-read
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/notifications#mark-repository-notifications-as-read
         """
 
         from ..models import (
@@ -1496,11 +1496,11 @@ class ActivityClient:
 
         Lists the people that have starred the repository.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.star+json`**: Includes a timestamp of when the star was created.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#list-stargazers
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/starring#list-stargazers
         """
 
         from typing import Union
@@ -1547,11 +1547,11 @@ class ActivityClient:
 
         Lists the people that have starred the repository.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.star+json`**: Includes a timestamp of when the star was created.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#list-stargazers
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/starring#list-stargazers
         """
 
         from typing import Union
@@ -1595,7 +1595,7 @@ class ActivityClient:
 
         Lists the people watching the specified repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-watchers
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#list-watchers
         """
 
         from ..models import SimpleUser
@@ -1634,7 +1634,7 @@ class ActivityClient:
 
         Lists the people watching the specified repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-watchers
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#list-watchers
         """
 
         from ..models import SimpleUser
@@ -1671,7 +1671,7 @@ class ActivityClient:
 
         Gets information about whether the authenticated user is subscribed to the repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#get-a-repository-subscription
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#get-a-repository-subscription
         """
 
         from ..models import BasicError, RepositorySubscription
@@ -1705,7 +1705,7 @@ class ActivityClient:
 
         Gets information about whether the authenticated user is subscribed to the repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#get-a-repository-subscription
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#get-a-repository-subscription
         """
 
         from ..models import BasicError, RepositorySubscription
@@ -1763,9 +1763,9 @@ class ActivityClient:
 
         PUT /repos/{owner}/{repo}/subscription
 
-        If you would like to watch a repository, set `subscribed` to `true`. If you would like to ignore notifications made within a repository, set `ignored` to `true`. If you would like to stop watching a repository, [delete the repository's subscription](https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#delete-a-repository-subscription) completely.
+        If you would like to watch a repository, set `subscribed` to `true`. If you would like to ignore notifications made within a repository, set `ignored` to `true`. If you would like to stop watching a repository, [delete the repository's subscription](https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#delete-a-repository-subscription) completely.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#set-a-repository-subscription
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#set-a-repository-subscription
         """
 
         from ..models import RepositorySubscription, ReposOwnerRepoSubscriptionPutBody
@@ -1830,9 +1830,9 @@ class ActivityClient:
 
         PUT /repos/{owner}/{repo}/subscription
 
-        If you would like to watch a repository, set `subscribed` to `true`. If you would like to ignore notifications made within a repository, set `ignored` to `true`. If you would like to stop watching a repository, [delete the repository's subscription](https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#delete-a-repository-subscription) completely.
+        If you would like to watch a repository, set `subscribed` to `true`. If you would like to ignore notifications made within a repository, set `ignored` to `true`. If you would like to stop watching a repository, [delete the repository's subscription](https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#delete-a-repository-subscription) completely.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#set-a-repository-subscription
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#set-a-repository-subscription
         """
 
         from ..models import RepositorySubscription, ReposOwnerRepoSubscriptionPutBody
@@ -1871,9 +1871,9 @@ class ActivityClient:
 
         DELETE /repos/{owner}/{repo}/subscription
 
-        This endpoint should only be used to stop watching a repository. To control whether or not you wish to receive notifications from a repository, [set the repository's subscription manually](https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#set-a-repository-subscription).
+        This endpoint should only be used to stop watching a repository. To control whether or not you wish to receive notifications from a repository, [set the repository's subscription manually](https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#set-a-repository-subscription).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#delete-a-repository-subscription
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#delete-a-repository-subscription
         """
 
         url = f"/repos/{owner}/{repo}/subscription"
@@ -1899,9 +1899,9 @@ class ActivityClient:
 
         DELETE /repos/{owner}/{repo}/subscription
 
-        This endpoint should only be used to stop watching a repository. To control whether or not you wish to receive notifications from a repository, [set the repository's subscription manually](https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#set-a-repository-subscription).
+        This endpoint should only be used to stop watching a repository. To control whether or not you wish to receive notifications from a repository, [set the repository's subscription manually](https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#set-a-repository-subscription).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#delete-a-repository-subscription
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#delete-a-repository-subscription
         """
 
         url = f"/repos/{owner}/{repo}/subscription"
@@ -1931,11 +1931,11 @@ class ActivityClient:
 
         Lists repositories the authenticated user has starred.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.star+json`**: Includes a timestamp of when the star was created.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#list-repositories-starred-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/starring#list-repositories-starred-by-the-authenticated-user
         """
 
         from ..models import BasicError, Repository
@@ -1980,11 +1980,11 @@ class ActivityClient:
 
         Lists repositories the authenticated user has starred.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.star+json`**: Includes a timestamp of when the star was created.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#list-repositories-starred-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/starring#list-repositories-starred-by-the-authenticated-user
         """
 
         from ..models import BasicError, Repository
@@ -2027,7 +2027,7 @@ class ActivityClient:
 
         Whether the authenticated user has starred the repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#check-if-a-repository-is-starred-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/starring#check-if-a-repository-is-starred-by-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -2062,7 +2062,7 @@ class ActivityClient:
 
         Whether the authenticated user has starred the repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#check-if-a-repository-is-starred-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/starring#check-if-a-repository-is-starred-by-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -2095,9 +2095,9 @@ class ActivityClient:
 
         PUT /user/starred/{owner}/{repo}
 
-        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#http-method)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#star-a-repository-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/starring#star-a-repository-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -2130,9 +2130,9 @@ class ActivityClient:
 
         PUT /user/starred/{owner}/{repo}
 
-        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#http-method)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#star-a-repository-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/starring#star-a-repository-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -2167,7 +2167,7 @@ class ActivityClient:
 
         Unstar a repository that the authenticated user has previously starred.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#unstar-a-repository-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/starring#unstar-a-repository-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -2202,7 +2202,7 @@ class ActivityClient:
 
         Unstar a repository that the authenticated user has previously starred.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#unstar-a-repository-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/starring#unstar-a-repository-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -2237,7 +2237,7 @@ class ActivityClient:
 
         Lists repositories the authenticated user is watching.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-repositories-watched-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#list-repositories-watched-by-the-authenticated-user
         """
 
         from ..models import BasicError, MinimalRepository
@@ -2278,7 +2278,7 @@ class ActivityClient:
 
         Lists repositories the authenticated user is watching.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-repositories-watched-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#list-repositories-watched-by-the-authenticated-user
         """
 
         from ..models import BasicError, MinimalRepository
@@ -2323,7 +2323,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-events-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-events-for-the-authenticated-user
         """
 
         from ..models import Event
@@ -2364,7 +2364,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-events-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-events-for-the-authenticated-user
         """
 
         from ..models import Event
@@ -2406,7 +2406,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-organization-events-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-organization-events-for-the-authenticated-user
         """
 
         from ..models import Event
@@ -2448,7 +2448,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-organization-events-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-organization-events-for-the-authenticated-user
         """
 
         from ..models import Event
@@ -2487,7 +2487,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-public-events-for-a-user
         """
 
         from ..models import Event
@@ -2526,7 +2526,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-public-events-for-a-user
         """
 
         from ..models import Event
@@ -2568,7 +2568,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-events-received-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-events-received-by-the-authenticated-user
         """
 
         from ..models import Event
@@ -2610,7 +2610,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-events-received-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-events-received-by-the-authenticated-user
         """
 
         from ..models import Event
@@ -2649,7 +2649,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-received-by-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-public-events-received-by-a-user
         """
 
         from ..models import Event
@@ -2688,7 +2688,7 @@ class ActivityClient:
         > [!NOTE]
         > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-received-by-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/events#list-public-events-received-by-a-user
         """
 
         from ..models import Event
@@ -2731,11 +2731,11 @@ class ActivityClient:
 
         Lists repositories a user has starred.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.star+json`**: Includes a timestamp of when the star was created.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#list-repositories-starred-by-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/starring#list-repositories-starred-by-a-user
         """
 
         from typing import Union
@@ -2782,11 +2782,11 @@ class ActivityClient:
 
         Lists repositories a user has starred.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.star+json`**: Includes a timestamp of when the star was created.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#list-repositories-starred-by-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/starring#list-repositories-starred-by-a-user
         """
 
         from typing import Union
@@ -2828,7 +2828,7 @@ class ActivityClient:
 
         Lists repositories a user is watching.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-repositories-watched-by-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#list-repositories-watched-by-a-user
         """
 
         from ..models import MinimalRepository
@@ -2866,7 +2866,7 @@ class ActivityClient:
 
         Lists repositories a user is watching.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-repositories-watched-by-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/activity/watching#list-repositories-watched-by-a-user
         """
 
         from ..models import MinimalRepository

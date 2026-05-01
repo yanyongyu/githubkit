@@ -110,17 +110,17 @@ class PullsClient:
         Draft pull requests are available in public repositories with GitHub
         Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing
         plans, and in public and private repositories with GitHub Team and GitHub Enterprise
-        Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products)
+        Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products)
         in the GitHub Help documentation.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#list-pull-requests
         """
 
         from ..models import PullRequestSimple, ValidationError
@@ -177,17 +177,17 @@ class PullsClient:
         Draft pull requests are available in public repositories with GitHub
         Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing
         plans, and in public and private repositories with GitHub Team and GitHub Enterprise
-        Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products)
+        Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products)
         in the GitHub Help documentation.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#list-pull-requests
         """
 
         from ..models import PullRequestSimple, ValidationError
@@ -262,20 +262,20 @@ class PullsClient:
 
         POST /repos/{owner}/{repo}/pulls
 
-        Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         To open or update a pull request in a public repository, you must have write access to the head or the source branch. For organization-owned repositories, you must be a member of the organization that owns the repository to open or update a pull request.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#create-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#create-a-pull-request
         """
 
         from ..models import (
@@ -355,20 +355,20 @@ class PullsClient:
 
         POST /repos/{owner}/{repo}/pulls
 
-        Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         To open or update a pull request in a public repository, you must have write access to the head or the source branch. For organization-owned repositories, you must be a member of the organization that owns the repository to open or update a pull request.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#create-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#create-a-pull-request
         """
 
         from ..models import (
@@ -426,14 +426,14 @@ class PullsClient:
         Lists review comments for all pull requests in a repository. By default,
         review comments are in ascending order by ID.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#list-review-comments-in-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#list-review-comments-in-a-repository
         """
 
         from ..models import PullRequestReviewComment
@@ -481,14 +481,14 @@ class PullsClient:
         Lists review comments for all pull requests in a repository. By default,
         review comments are in ascending order by ID.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#list-review-comments-in-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#list-review-comments-in-a-repository
         """
 
         from ..models import PullRequestReviewComment
@@ -529,14 +529,14 @@ class PullsClient:
 
         Provides details for a specified review comment.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request
         """
 
         from ..models import BasicError, PullRequestReviewComment
@@ -571,14 +571,14 @@ class PullsClient:
 
         Provides details for a specified review comment.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request
         """
 
         from ..models import BasicError, PullRequestReviewComment
@@ -613,7 +613,7 @@ class PullsClient:
 
         Deletes a review comment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#delete-a-review-comment-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#delete-a-review-comment-for-a-pull-request
         """
 
         from ..models import BasicError
@@ -647,7 +647,7 @@ class PullsClient:
 
         Deletes a review comment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#delete-a-review-comment-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#delete-a-review-comment-for-a-pull-request
         """
 
         from ..models import BasicError
@@ -712,14 +712,14 @@ class PullsClient:
 
         Edits the content of a specified review comment.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#update-a-review-comment-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#update-a-review-comment-for-a-pull-request
         """
 
         from ..models import (
@@ -797,14 +797,14 @@ class PullsClient:
 
         Edits the content of a specified review comment.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#update-a-review-comment-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#update-a-review-comment-for-a-pull-request
         """
 
         from ..models import (
@@ -849,23 +849,23 @@ class PullsClient:
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}
 
-        Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Lists details of a pull request by providing its number.
 
-        When you get, [create](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls/#create-a-pull-request), or [edit](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#update-a-pull-request) a pull request, GitHub Enterprise Cloud creates a merge commit to test whether the pull request can be automatically merged into the base branch. This test commit is not added to the base branch or the head branch. You can review the status of the test commit using the `mergeable` key. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+        When you get, [create](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls/#create-a-pull-request), or [edit](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#update-a-pull-request) a pull request, GitHub Enterprise Cloud creates a merge commit to test whether the pull request can be automatically merged into the base branch. This test commit is not added to the base branch or the head branch. You can review the status of the test commit using the `mergeable` key. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
 
         The value of the `mergeable` attribute can be `true`, `false`, or `null`. If the value is `null`, then GitHub Enterprise Cloud has started a background job to compute the mergeability. After giving the job time to complete, resubmit the request. When the job finishes, you will see a non-`null` value for the `mergeable` attribute in the response. If `mergeable` is `true`, then `merge_commit_sha` will be the SHA of the _test_ merge commit.
 
         The value of the `merge_commit_sha` attribute changes depending on the state of the pull request. Before merging a pull request, the `merge_commit_sha` attribute holds the SHA of the _test_ merge commit. After merging a pull request, the `merge_commit_sha` attribute changes depending on how you merged the pull request:
 
-        *   If merged as a [merge commit](https://docs.github.com/enterprise-cloud@latest//articles/about-merge-methods-on-github/), `merge_commit_sha` represents the SHA of the merge commit.
-        *   If merged via a [squash](https://docs.github.com/enterprise-cloud@latest//articles/about-merge-methods-on-github/#squashing-your-merge-commits), `merge_commit_sha` represents the SHA of the squashed commit on the base branch.
-        *   If [rebased](https://docs.github.com/enterprise-cloud@latest//articles/about-merge-methods-on-github/#rebasing-and-merging-your-commits), `merge_commit_sha` represents the commit that the base branch was updated to.
+        *   If merged as a [merge commit](https://docs.github.com/enterprise-cloud@latest/articles/about-merge-methods-on-github/), `merge_commit_sha` represents the SHA of the merge commit.
+        *   If merged via a [squash](https://docs.github.com/enterprise-cloud@latest/articles/about-merge-methods-on-github/#squashing-your-merge-commits), `merge_commit_sha` represents the SHA of the squashed commit on the base branch.
+        *   If [rebased](https://docs.github.com/enterprise-cloud@latest/articles/about-merge-methods-on-github/#rebasing-and-merging-your-commits), `merge_commit_sha` represents the commit that the base branch was updated to.
 
-        Pass the appropriate [media type](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types) to fetch diff and patch formats.
+        Pass the appropriate [media type](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types) to fetch diff and patch formats.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
@@ -873,7 +873,7 @@ class PullsClient:
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
         - **`application/vnd.github.diff`**: For more information, see "[git-diff](https://git-scm.com/docs/git-diff)" in the Git documentation. If a diff is corrupt, contact us through the [GitHub Support portal](https://support.github.com/). Include the repository name and pull request ID in your message.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#get-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#get-a-pull-request
         """
 
         from ..models import (
@@ -913,23 +913,23 @@ class PullsClient:
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}
 
-        Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Lists details of a pull request by providing its number.
 
-        When you get, [create](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls/#create-a-pull-request), or [edit](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#update-a-pull-request) a pull request, GitHub Enterprise Cloud creates a merge commit to test whether the pull request can be automatically merged into the base branch. This test commit is not added to the base branch or the head branch. You can review the status of the test commit using the `mergeable` key. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+        When you get, [create](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls/#create-a-pull-request), or [edit](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#update-a-pull-request) a pull request, GitHub Enterprise Cloud creates a merge commit to test whether the pull request can be automatically merged into the base branch. This test commit is not added to the base branch or the head branch. You can review the status of the test commit using the `mergeable` key. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
 
         The value of the `mergeable` attribute can be `true`, `false`, or `null`. If the value is `null`, then GitHub Enterprise Cloud has started a background job to compute the mergeability. After giving the job time to complete, resubmit the request. When the job finishes, you will see a non-`null` value for the `mergeable` attribute in the response. If `mergeable` is `true`, then `merge_commit_sha` will be the SHA of the _test_ merge commit.
 
         The value of the `merge_commit_sha` attribute changes depending on the state of the pull request. Before merging a pull request, the `merge_commit_sha` attribute holds the SHA of the _test_ merge commit. After merging a pull request, the `merge_commit_sha` attribute changes depending on how you merged the pull request:
 
-        *   If merged as a [merge commit](https://docs.github.com/enterprise-cloud@latest//articles/about-merge-methods-on-github/), `merge_commit_sha` represents the SHA of the merge commit.
-        *   If merged via a [squash](https://docs.github.com/enterprise-cloud@latest//articles/about-merge-methods-on-github/#squashing-your-merge-commits), `merge_commit_sha` represents the SHA of the squashed commit on the base branch.
-        *   If [rebased](https://docs.github.com/enterprise-cloud@latest//articles/about-merge-methods-on-github/#rebasing-and-merging-your-commits), `merge_commit_sha` represents the commit that the base branch was updated to.
+        *   If merged as a [merge commit](https://docs.github.com/enterprise-cloud@latest/articles/about-merge-methods-on-github/), `merge_commit_sha` represents the SHA of the merge commit.
+        *   If merged via a [squash](https://docs.github.com/enterprise-cloud@latest/articles/about-merge-methods-on-github/#squashing-your-merge-commits), `merge_commit_sha` represents the SHA of the squashed commit on the base branch.
+        *   If [rebased](https://docs.github.com/enterprise-cloud@latest/articles/about-merge-methods-on-github/#rebasing-and-merging-your-commits), `merge_commit_sha` represents the commit that the base branch was updated to.
 
-        Pass the appropriate [media type](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types) to fetch diff and patch formats.
+        Pass the appropriate [media type](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types) to fetch diff and patch formats.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
@@ -937,7 +937,7 @@ class PullsClient:
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
         - **`application/vnd.github.diff`**: For more information, see "[git-diff](https://git-scm.com/docs/git-diff)" in the Git documentation. If a diff is corrupt, contact us through the [GitHub Support portal](https://support.github.com/). Include the repository name and pull request ID in your message.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#get-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#get-a-pull-request
         """
 
         from ..models import (
@@ -1008,18 +1008,18 @@ class PullsClient:
 
         PATCH /repos/{owner}/{repo}/pulls/{pull_number}
 
-        Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         To open or update a pull request in a public repository, you must have write access to the head or the source branch. For organization-owned repositories, you must be a member of the organization that owns the repository to open or update a pull request.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#update-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#update-a-pull-request
         """
 
         from ..models import (
@@ -1099,18 +1099,18 @@ class PullsClient:
 
         PATCH /repos/{owner}/{repo}/pulls/{pull_number}
 
-        Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         To open or update a pull request in a public repository, you must have write access to the head or the source branch. For organization-owned repositories, you must be a member of the organization that owns the repository to open or update a pull request.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#update-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#update-a-pull-request
         """
 
         from ..models import (
@@ -1146,6 +1146,158 @@ class PullsClient:
             },
         )
 
+    def archive(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """pulls/archive
+
+        PUT /repos/{owner}/{repo}/pulls/{pull_number}/archive
+
+        Archives a pull request. Closes, locks, and marks the pull request as archived.
+        Only repository admins can archive pull requests.
+        Archived pull requests are hidden from non-admin users.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#archive-a-pull-request
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/archive"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_archive(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """pulls/archive
+
+        PUT /repos/{owner}/{repo}/pulls/{pull_number}/archive
+
+        Archives a pull request. Closes, locks, and marks the pull request as archived.
+        Only repository admins can archive pull requests.
+        Archived pull requests are hidden from non-admin users.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#archive-a-pull-request
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/archive"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def unarchive(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """pulls/unarchive
+
+        DELETE /repos/{owner}/{repo}/pulls/{pull_number}/archive
+
+        Unarchives a pull request. Removes the archived flag from the pull request.
+        Does not automatically reopen or unlock the pull request.
+        Only repository admins can unarchive pull requests.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#unarchive-a-pull-request
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/archive"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_unarchive(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """pulls/unarchive
+
+        DELETE /repos/{owner}/{repo}/pulls/{pull_number}/archive
+
+        Unarchives a pull request. Removes the archived flag from the pull request.
+        Does not automatically reopen or unlock the pull request.
+        Only repository admins can unarchive pull requests.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#unarchive-a-pull-request
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/archive"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
     def list_review_comments(
         self,
         owner: str,
@@ -1169,14 +1321,14 @@ class PullsClient:
         Lists all review comments for a specified pull request. By default, review comments
         are in ascending order by ID.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#list-review-comments-on-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#list-review-comments-on-a-pull-request
         """
 
         from ..models import PullRequestReviewComment
@@ -1225,14 +1377,14 @@ class PullsClient:
         Lists all review comments for a specified pull request. By default, review comments
         are in ascending order by ID.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#list-review-comments-on-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#list-review-comments-on-a-pull-request
         """
 
         from ..models import PullRequestReviewComment
@@ -1311,23 +1463,23 @@ class PullsClient:
 
         POST /repos/{owner}/{repo}/pulls/{pull_number}/comments
 
-        Creates a review comment on the diff of a specified pull request. To add a regular comment to a pull request timeline, see "[Create an issue comment](https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#create-an-issue-comment)."
+        Creates a review comment on the diff of a specified pull request. To add a regular comment to a pull request timeline, see "[Create an issue comment](https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#create-an-issue-comment)."
 
         If your comment applies to more than one line in the pull request diff, you should use the parameters `line`, `side`, and optionally `start_line` and `start_side` in your request.
 
         The `position` parameter is closing down. If you use `position`, the `line`, `side`, `start_line`, and `start_side` parameters are not required.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#create-a-review-comment-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#create-a-review-comment-for-a-pull-request
         """
 
         from ..models import (
@@ -1418,23 +1570,23 @@ class PullsClient:
 
         POST /repos/{owner}/{repo}/pulls/{pull_number}/comments
 
-        Creates a review comment on the diff of a specified pull request. To add a regular comment to a pull request timeline, see "[Create an issue comment](https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#create-an-issue-comment)."
+        Creates a review comment on the diff of a specified pull request. To add a regular comment to a pull request timeline, see "[Create an issue comment](https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#create-an-issue-comment)."
 
         If your comment applies to more than one line in the pull request diff, you should use the parameters `line`, `side`, and optionally `start_line` and `start_side` in your request.
 
         The `position` parameter is closing down. If you use `position`, the `line`, `side`, `start_line`, and `start_side` parameters are not required.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#create-a-review-comment-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#create-a-review-comment-for-a-pull-request
         """
 
         from ..models import (
@@ -1523,17 +1675,17 @@ class PullsClient:
 
         Creates a reply to a review comment for a pull request. For the `comment_id`, provide the ID of the review comment you are replying to. This must be the ID of a _top-level review comment_, not a reply to that comment. Replies to replies are not supported.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#create-a-reply-for-a-review-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#create-a-reply-for-a-review-comment
         """
 
         from ..models import (
@@ -1620,17 +1772,17 @@ class PullsClient:
 
         Creates a reply to a review comment for a pull request. For the `comment_id`, provide the ID of the review comment you are replying to. This must be the ID of a _top-level review comment_, not a reply to that comment. Replies to replies are not supported.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#create-a-reply-for-a-review-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#create-a-reply-for-a-review-comment
         """
 
         from ..models import (
@@ -1682,17 +1834,17 @@ class PullsClient:
         GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
 
         Lists a maximum of 250 commits for a pull request. To receive a complete
-        commit list for pull requests with more than 250 commits, use the [List commits](https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-commits)
+        commit list for pull requests with more than 250 commits, use the [List commits](https://docs.github.com/enterprise-cloud@latest/rest/commits/commits#list-commits)
         endpoint.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-commits-on-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#list-commits-on-a-pull-request
         """
 
         from ..models import Commit
@@ -1731,17 +1883,17 @@ class PullsClient:
         GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
 
         Lists a maximum of 250 commits for a pull request. To receive a complete
-        commit list for pull requests with more than 250 commits, use the [List commits](https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-commits)
+        commit list for pull requests with more than 250 commits, use the [List commits](https://docs.github.com/enterprise-cloud@latest/rest/commits/commits#list-commits)
         endpoint.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-commits-on-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#list-commits-on-a-pull-request
         """
 
         from ..models import Commit
@@ -1784,14 +1936,14 @@ class PullsClient:
         > [!NOTE]
         > Responses include a maximum of 3000 files. The paginated response returns 30 files per page by default.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests-files
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#list-pull-requests-files
         """
 
         from ..models import (
@@ -1844,14 +1996,14 @@ class PullsClient:
         > [!NOTE]
         > Responses include a maximum of 3000 files. The paginated response returns 30 files per page by default.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests-files
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#list-pull-requests-files
         """
 
         from ..models import (
@@ -1899,7 +2051,7 @@ class PullsClient:
 
         Checks if a pull request has been merged into the base branch. The HTTP status of the response indicates whether or not the pull request has been merged; the response body is empty.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#check-if-a-pull-request-has-been-merged
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#check-if-a-pull-request-has-been-merged
         """
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
@@ -1929,7 +2081,7 @@ class PullsClient:
 
         Checks if a pull request has been merged into the base branch. The HTTP status of the response indicates whether or not the pull request has been merged; the response body is empty.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#check-if-a-pull-request-has-been-merged
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#check-if-a-pull-request-has-been-merged
         """
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
@@ -1992,9 +2144,9 @@ class PullsClient:
         PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
 
         Merges a pull request into the base branch.
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#merge-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#merge-a-pull-request
         """
 
         from typing import Union
@@ -2087,9 +2239,9 @@ class PullsClient:
         PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
 
         Merges a pull request into the base branch.
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#merge-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#merge-a-pull-request
         """
 
         from typing import Union
@@ -2147,9 +2299,9 @@ class PullsClient:
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 
-        Gets the users or teams whose review is requested for a pull request. Once a requested reviewer submits a review, they are no longer considered a requested reviewer. Their review will instead be returned by the [List reviews for a pull request](https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#list-reviews-for-a-pull-request) operation.
+        Gets the users or teams whose review is requested for a pull request. Once a requested reviewer submits a review, they are no longer considered a requested reviewer. Their review will instead be returned by the [List reviews for a pull request](https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#list-reviews-for-a-pull-request) operation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/review-requests#get-all-requested-reviewers-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/review-requests#get-all-requested-reviewers-for-a-pull-request
         """
 
         from ..models import PullRequestReviewRequest
@@ -2179,9 +2331,9 @@ class PullsClient:
 
         GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 
-        Gets the users or teams whose review is requested for a pull request. Once a requested reviewer submits a review, they are no longer considered a requested reviewer. Their review will instead be returned by the [List reviews for a pull request](https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#list-reviews-for-a-pull-request) operation.
+        Gets the users or teams whose review is requested for a pull request. Once a requested reviewer submits a review, they are no longer considered a requested reviewer. Their review will instead be returned by the [List reviews for a pull request](https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#list-reviews-for-a-pull-request) operation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/review-requests#get-all-requested-reviewers-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/review-requests#get-all-requested-reviewers-for-a-pull-request
         """
 
         from ..models import PullRequestReviewRequest
@@ -2264,9 +2416,9 @@ class PullsClient:
         POST /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 
         Requests reviews for a pull request from a given set of users and/or teams.
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/review-requests#request-reviewers-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/review-requests#request-reviewers-for-a-pull-request
         """
 
         from typing import Union
@@ -2375,9 +2527,9 @@ class PullsClient:
         POST /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 
         Requests reviews for a pull request from a given set of users and/or teams.
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/review-requests#request-reviewers-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/review-requests#request-reviewers-for-a-pull-request
         """
 
         from typing import Union
@@ -2465,7 +2617,7 @@ class PullsClient:
 
         Removes review requests from a pull request for a given set of users and/or teams.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/review-requests#remove-requested-reviewers-from-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/review-requests#remove-requested-reviewers-from-a-pull-request
         """
 
         from ..models import (
@@ -2546,7 +2698,7 @@ class PullsClient:
 
         Removes review requests from a pull request for a given set of users and/or teams.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/review-requests#remove-requested-reviewers-from-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/review-requests#remove-requested-reviewers-from-a-pull-request
         """
 
         from ..models import (
@@ -2599,14 +2751,14 @@ class PullsClient:
 
         Lists all reviews for a specified pull request. The list of reviews returns in chronological order.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#list-reviews-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#list-reviews-for-a-pull-request
         """
 
         from ..models import PullRequestReview
@@ -2646,14 +2798,14 @@ class PullsClient:
 
         Lists all reviews for a specified pull request. The list of reviews returns in chronological order.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#list-reviews-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#list-reviews-for-a-pull-request
         """
 
         from ..models import PullRequestReview
@@ -2723,23 +2875,23 @@ class PullsClient:
 
         Creates a review on a specified pull request.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        Pull request reviews created in the `PENDING` state are not submitted and therefore do not include the `submitted_at` property in the response. To create a pending review for a pull request, leave the `event` parameter blank. For more information about submitting a `PENDING` review, see "[Submit a review for a pull request](https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#submit-a-review-for-a-pull-request)."
+        Pull request reviews created in the `PENDING` state are not submitted and therefore do not include the `submitted_at` property in the response. To create a pending review for a pull request, leave the `event` parameter blank. For more information about submitting a `PENDING` review, see "[Submit a review for a pull request](https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#submit-a-review-for-a-pull-request)."
 
         > [!NOTE]
-        > To comment on a specific line in a file, you need to first determine the position of that line in the diff. To see a pull request diff, add the `application/vnd.github.v3.diff` media type to the `Accept` header of a call to the [Get a pull request](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#get-a-pull-request) endpoint.
+        > To comment on a specific line in a file, you need to first determine the position of that line in the diff. To see a pull request diff, add the `application/vnd.github.v3.diff` media type to the `Accept` header of a call to the [Get a pull request](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#get-a-pull-request) endpoint.
 
         The `position` value equals the number of lines down from the first "@@" hunk header in the file you want to add a comment. The line just below the "@@" line is position 1, the next line is position 2, and so on. The position in the diff continues to increase through lines of whitespace and additional hunks until the beginning of a new file.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#create-a-review-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#create-a-review-for-a-pull-request
         """
 
         from ..models import (
@@ -2824,23 +2976,23 @@ class PullsClient:
 
         Creates a review on a specified pull request.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        Pull request reviews created in the `PENDING` state are not submitted and therefore do not include the `submitted_at` property in the response. To create a pending review for a pull request, leave the `event` parameter blank. For more information about submitting a `PENDING` review, see "[Submit a review for a pull request](https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#submit-a-review-for-a-pull-request)."
+        Pull request reviews created in the `PENDING` state are not submitted and therefore do not include the `submitted_at` property in the response. To create a pending review for a pull request, leave the `event` parameter blank. For more information about submitting a `PENDING` review, see "[Submit a review for a pull request](https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#submit-a-review-for-a-pull-request)."
 
         > [!NOTE]
-        > To comment on a specific line in a file, you need to first determine the position of that line in the diff. To see a pull request diff, add the `application/vnd.github.v3.diff` media type to the `Accept` header of a call to the [Get a pull request](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#get-a-pull-request) endpoint.
+        > To comment on a specific line in a file, you need to first determine the position of that line in the diff. To see a pull request diff, add the `application/vnd.github.v3.diff` media type to the `Accept` header of a call to the [Get a pull request](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#get-a-pull-request) endpoint.
 
         The `position` value equals the number of lines down from the first "@@" hunk header in the file you want to add a comment. The line just below the "@@" line is position 1, the next line is position 2, and so on. The position in the diff continues to increase through lines of whitespace and additional hunks until the beginning of a new file.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#create-a-review-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#create-a-review-for-a-pull-request
         """
 
         from ..models import (
@@ -2894,14 +3046,14 @@ class PullsClient:
 
         Retrieves a pull request review by its ID.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#get-a-review-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#get-a-review-for-a-pull-request
         """
 
         from ..models import BasicError, PullRequestReview
@@ -2937,14 +3089,14 @@ class PullsClient:
 
         Retrieves a pull request review by its ID.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#get-a-review-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#get-a-review-for-a-pull-request
         """
 
         from ..models import BasicError, PullRequestReview
@@ -3009,14 +3161,14 @@ class PullsClient:
 
         Updates the contents of a specified review summary comment.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#update-a-review-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#update-a-review-for-a-pull-request
         """
 
         from ..models import (
@@ -3097,14 +3249,14 @@ class PullsClient:
 
         Updates the contents of a specified review summary comment.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#update-a-review-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#update-a-review-for-a-pull-request
         """
 
         from ..models import (
@@ -3156,14 +3308,14 @@ class PullsClient:
 
         Deletes a pull request review that has not been submitted. Submitted reviews cannot be deleted.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#delete-a-pending-review-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#delete-a-pending-review-for-a-pull-request
         """
 
         from ..models import BasicError, PullRequestReview, ValidationErrorSimple
@@ -3200,14 +3352,14 @@ class PullsClient:
 
         Deletes a pull request review that has not been submitted. Submitted reviews cannot be deleted.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#delete-a-pending-review-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#delete-a-pending-review-for-a-pull-request
         """
 
         from ..models import BasicError, PullRequestReview, ValidationErrorSimple
@@ -3246,14 +3398,14 @@ class PullsClient:
 
         Lists comments for a specific pull request review.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#list-comments-for-a-pull-request-review
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#list-comments-for-a-pull-request-review
         """
 
         from ..models import BasicError, ReviewComment
@@ -3297,14 +3449,14 @@ class PullsClient:
 
         Lists comments for a specific pull request review.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#list-comments-for-a-pull-request-review
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#list-comments-for-a-pull-request-review
         """
 
         from ..models import BasicError, ReviewComment
@@ -3379,16 +3531,16 @@ class PullsClient:
         Dismisses a specified review on a pull request.
 
         > [!NOTE]
-        > To dismiss a pull request review on a [protected branch](https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection), you must be a repository administrator or be included in the list of people or teams who can dismiss pull request reviews.
+        > To dismiss a pull request review on a [protected branch](https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection), you must be a repository administrator or be included in the list of people or teams who can dismiss pull request reviews.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#dismiss-a-review-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#dismiss-a-review-for-a-pull-request
         """
 
         from ..models import (
@@ -3477,16 +3629,16 @@ class PullsClient:
         Dismisses a specified review on a pull request.
 
         > [!NOTE]
-        > To dismiss a pull request review on a [protected branch](https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection), you must be a repository administrator or be included in the list of people or teams who can dismiss pull request reviews.
+        > To dismiss a pull request review on a [protected branch](https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection), you must be a repository administrator or be included in the list of people or teams who can dismiss pull request reviews.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#dismiss-a-review-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#dismiss-a-review-for-a-pull-request
         """
 
         from ..models import (
@@ -3572,16 +3724,16 @@ class PullsClient:
 
         POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
 
-        Submits a pending review for a pull request. For more information about creating a pending review for a pull request, see "[Create a review for a pull request](https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#create-a-review-for-a-pull-request)."
+        Submits a pending review for a pull request. For more information about creating a pending review for a pull request, see "[Create a review for a pull request](https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#create-a-review-for-a-pull-request)."
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#submit-a-review-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#submit-a-review-for-a-pull-request
         """
 
         from ..models import (
@@ -3666,16 +3818,16 @@ class PullsClient:
 
         POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
 
-        Submits a pending review for a pull request. For more information about creating a pending review for a pull request, see "[Create a review for a pull request](https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#create-a-review-for-a-pull-request)."
+        Submits a pending review for a pull request. For more information about creating a pending review for a pull request, see "[Create a review for a pull request](https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#create-a-review-for-a-pull-request)."
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#submit-a-review-for-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#submit-a-review-for-a-pull-request
         """
 
         from ..models import (
@@ -3770,7 +3922,7 @@ class PullsClient:
         Updates the pull request branch with the latest upstream changes by merging HEAD from the base branch into the pull request branch.
         Note: If making a request on behalf of a GitHub App you must also have permissions to write the contents of the head repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#update-a-pull-request-branch
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#update-a-pull-request-branch
         """
 
         from typing import Union
@@ -3866,7 +4018,7 @@ class PullsClient:
         Updates the pull request branch with the latest upstream changes by merging HEAD from the base branch into the pull request branch.
         Note: If making a request on behalf of a GitHub App you must also have permissions to write the contents of the head repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#update-a-pull-request-branch
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#update-a-pull-request-branch
         """
 
         from typing import Union

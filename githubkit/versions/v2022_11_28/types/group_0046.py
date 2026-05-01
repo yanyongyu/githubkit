@@ -9,51 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0036 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class OrganizationSimpleType(TypedDict):
-    """Organization Simple
+class DependabotRepositoryAccessDetailsType(TypedDict):
+    """Dependabot Repository Access Details
 
-    A GitHub organization.
+    Information about repositories that Dependabot is able to access in an
+    organization
     """
 
-    login: str
-    id: int
-    node_id: str
-    url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
+    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
+    accessible_repositories: NotRequired[list[Union[None, SimpleRepositoryType]]]
 
 
-class OrganizationSimpleTypeForResponse(TypedDict):
-    """Organization Simple
+class DependabotRepositoryAccessDetailsTypeForResponse(TypedDict):
+    """Dependabot Repository Access Details
 
-    A GitHub organization.
+    Information about repositories that Dependabot is able to access in an
+    organization
     """
 
-    login: str
-    id: int
-    node_id: str
-    url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
+    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
+    accessible_repositories: NotRequired[
+        list[Union[None, SimpleRepositoryTypeForResponse]]
+    ]
 
 
 __all__ = (
-    "OrganizationSimpleType",
-    "OrganizationSimpleTypeForResponse",
+    "DependabotRepositoryAccessDetailsType",
+    "DependabotRepositoryAccessDetailsTypeForResponse",
 )

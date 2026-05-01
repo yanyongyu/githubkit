@@ -33,7 +33,7 @@ class WebhookConfig(GitHubModel):
     )
     secret: Missing[str] = Field(
         default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#delivery-headers).",
     )
     insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 

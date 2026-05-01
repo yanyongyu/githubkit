@@ -194,7 +194,7 @@ class EnterpriseAdminClient:
 
         Disable access restriction by proxy header using the network proxy owned by the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprises#disable-access-restrictions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprises#disable-access-restrictions-for-an-enterprise
         """
 
         from ..models import BasicError, EnterpriseAccessRestrictions
@@ -231,7 +231,7 @@ class EnterpriseAdminClient:
 
         Disable access restriction by proxy header using the network proxy owned by the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprises#disable-access-restrictions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprises#disable-access-restrictions-for-an-enterprise
         """
 
         from ..models import BasicError, EnterpriseAccessRestrictions
@@ -268,7 +268,7 @@ class EnterpriseAdminClient:
 
         Enable access restriction by proxy header using the network proxy owned by the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprises#enable-access-restrictions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprises#enable-access-restrictions-for-an-enterprise
         """
 
         from ..models import BasicError, EnterpriseAccessRestrictions
@@ -305,7 +305,7 @@ class EnterpriseAdminClient:
 
         Enable access restriction by proxy header using the network proxy owned by the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprises#enable-access-restrictions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprises#enable-access-restrictions-for-an-enterprise
         """
 
         from ..models import BasicError, EnterpriseAccessRestrictions
@@ -344,7 +344,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-github-actions-permissions-for-an-enterprise
         """
 
         from ..models import ActionsEnterprisePermissions
@@ -378,7 +378,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-github-actions-permissions-for-an-enterprise
         """
 
         from ..models import ActionsEnterprisePermissions
@@ -435,7 +435,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-github-actions-permissions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-github-actions-permissions-for-an-enterprise
         """
 
         from ..models import EnterprisesEnterpriseActionsPermissionsPutBody
@@ -503,7 +503,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-github-actions-permissions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-github-actions-permissions-for-an-enterprise
         """
 
         from ..models import EnterprisesEnterpriseActionsPermissionsPutBody
@@ -547,7 +547,7 @@ class EnterpriseAdminClient:
 
         Gets artifact and log retention settings for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-artifact-and-log-retention-settings-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-artifact-and-log-retention-settings-for-an-enterprise
         """
 
         from ..models import ActionsArtifactAndLogRetentionResponse, BasicError
@@ -585,7 +585,7 @@ class EnterpriseAdminClient:
 
         Gets artifact and log retention settings for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-artifact-and-log-retention-settings-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-artifact-and-log-retention-settings-for-an-enterprise
         """
 
         from ..models import ActionsArtifactAndLogRetentionResponse, BasicError
@@ -643,7 +643,7 @@ class EnterpriseAdminClient:
 
         Sets artifact and log retention settings for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-artifact-and-log-retention-settings-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-artifact-and-log-retention-settings-for-an-enterprise
         """
 
         from ..models import ActionsArtifactAndLogRetention, BasicError, ValidationError
@@ -711,7 +711,7 @@ class EnterpriseAdminClient:
 
         Sets artifact and log retention settings for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-artifact-and-log-retention-settings-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-artifact-and-log-retention-settings-for-an-enterprise
         """
 
         from ..models import ActionsArtifactAndLogRetention, BasicError, ValidationError
@@ -759,7 +759,7 @@ class EnterpriseAdminClient:
 
         Gets the fork PR contributor approval policy for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-an-enterprise
         """
 
         from ..models import ActionsForkPrContributorApproval, BasicError
@@ -795,7 +795,7 @@ class EnterpriseAdminClient:
 
         Gets the fork PR contributor approval policy for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-an-enterprise
         """
 
         from ..models import ActionsForkPrContributorApproval, BasicError
@@ -855,7 +855,7 @@ class EnterpriseAdminClient:
 
         Sets the fork PR contributor approval policy for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-an-enterprise
         """
 
         from ..models import (
@@ -929,7 +929,7 @@ class EnterpriseAdminClient:
 
         Sets the fork PR contributor approval policy for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-an-enterprise
         """
 
         from ..models import (
@@ -979,7 +979,7 @@ class EnterpriseAdminClient:
 
         Gets the settings for whether workflows from fork pull requests can run on private repositories in an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-an-enterprise
         """
 
         from ..models import ActionsForkPrWorkflowsPrivateRepos, BasicError
@@ -1015,7 +1015,7 @@ class EnterpriseAdminClient:
 
         Gets the settings for whether workflows from fork pull requests can run on private repositories in an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-an-enterprise
         """
 
         from ..models import ActionsForkPrWorkflowsPrivateRepos, BasicError
@@ -1074,7 +1074,7 @@ class EnterpriseAdminClient:
 
         Sets the settings for whether workflows from fork pull requests can run on private repositories in an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-an-enterprise
         """
 
         from ..models import (
@@ -1147,7 +1147,7 @@ class EnterpriseAdminClient:
 
         Sets the settings for whether workflows from fork pull requests can run on private repositories in an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-an-enterprise
         """
 
         from ..models import (
@@ -1201,7 +1201,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#list-selected-organizations-enabled-for-github-actions-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#list-selected-organizations-enabled-for-github-actions-in-an-enterprise
         """
 
         from ..models import (
@@ -1246,7 +1246,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#list-selected-organizations-enabled-for-github-actions-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#list-selected-organizations-enabled-for-github-actions-in-an-enterprise
         """
 
         from ..models import (
@@ -1311,7 +1311,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-selected-organizations-enabled-for-github-actions-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-selected-organizations-enabled-for-github-actions-in-an-enterprise
         """
 
         from ..models import EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody
@@ -1379,7 +1379,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-selected-organizations-enabled-for-github-actions-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-selected-organizations-enabled-for-github-actions-in-an-enterprise
         """
 
         from ..models import EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody
@@ -1423,7 +1423,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#enable-a-selected-organization-for-github-actions-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#enable-a-selected-organization-for-github-actions-in-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"
@@ -1453,7 +1453,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#enable-a-selected-organization-for-github-actions-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#enable-a-selected-organization-for-github-actions-in-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"
@@ -1483,7 +1483,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#disable-a-selected-organization-for-github-actions-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#disable-a-selected-organization-for-github-actions-in-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"
@@ -1513,7 +1513,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#disable-a-selected-organization-for-github-actions-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#disable-a-selected-organization-for-github-actions-in-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"
@@ -1542,7 +1542,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-enterprise
         """
 
         from ..models import SelectedActions
@@ -1574,7 +1574,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-enterprise
         """
 
         from ..models import SelectedActions
@@ -1631,7 +1631,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-enterprise
         """
 
         from ..models import SelectedActions
@@ -1697,7 +1697,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-enterprise
         """
 
         from ..models import SelectedActions
@@ -1739,7 +1739,7 @@ class EnterpriseAdminClient:
 
         Gets the settings for whether organizations in the enterprise are allowed to manage self-hosted runners at the repository level.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-self-hosted-runners-permissions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-self-hosted-runners-permissions-for-an-enterprise
         """
 
         from ..models import (
@@ -1778,7 +1778,7 @@ class EnterpriseAdminClient:
 
         Gets the settings for whether organizations in the enterprise are allowed to manage self-hosted runners at the repository level.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-self-hosted-runners-permissions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-self-hosted-runners-permissions-for-an-enterprise
         """
 
         from ..models import (
@@ -1839,7 +1839,7 @@ class EnterpriseAdminClient:
 
         Sets the settings for whether organizations in the enterprise are allowed to manage self-hosted runners at the repository level.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-self-hosted-runners-permissions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-self-hosted-runners-permissions-for-an-enterprise
         """
 
         from ..models import (
@@ -1913,7 +1913,7 @@ class EnterpriseAdminClient:
 
         Sets the settings for whether organizations in the enterprise are allowed to manage self-hosted runners at the repository level.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-self-hosted-runners-permissions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-self-hosted-runners-permissions-for-an-enterprise
         """
 
         from ..models import (
@@ -1970,7 +1970,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-enterprise
         """
 
         from ..models import EnterprisesEnterpriseActionsRunnerGroupsGetResponse200
@@ -2015,7 +2015,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-enterprise
         """
 
         from ..models import EnterprisesEnterpriseActionsRunnerGroupsGetResponse200
@@ -2084,7 +2084,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-enterprise
         """
 
         from ..models import (
@@ -2161,7 +2161,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-enterprise
         """
 
         from ..models import (
@@ -2209,7 +2209,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-enterprise
         """
 
         from ..models import RunnerGroupsEnterprise
@@ -2242,7 +2242,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-enterprise
         """
 
         from ..models import RunnerGroupsEnterprise
@@ -2275,7 +2275,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
@@ -2305,7 +2305,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
@@ -2369,7 +2369,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-enterprise
         """
 
         from ..models import (
@@ -2451,7 +2451,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-enterprise
         """
 
         from ..models import (
@@ -2504,7 +2504,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#list-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
         """
 
         from ..models import (
@@ -2550,7 +2550,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#list-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
         """
 
         from ..models import (
@@ -2618,7 +2618,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#set-organization-access-for-a-self-hosted-runner-group-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#set-organization-access-for-a-self-hosted-runner-group-in-an-enterprise
         """
 
         from ..models import (
@@ -2692,7 +2692,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#set-organization-access-for-a-self-hosted-runner-group-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#set-organization-access-for-a-self-hosted-runner-group-in-an-enterprise
         """
 
         from ..models import (
@@ -2740,7 +2740,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#add-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"
@@ -2771,7 +2771,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#add-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"
@@ -2802,7 +2802,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#remove-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"
@@ -2833,7 +2833,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#remove-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"
@@ -2868,7 +2868,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-enterprise
         """
 
         from ..models import (
@@ -2916,7 +2916,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-enterprise
         """
 
         from ..models import (
@@ -2986,7 +2986,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-enterprise
         """
 
         from ..models import (
@@ -3062,7 +3062,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-enterprise
         """
 
         from ..models import (
@@ -3112,7 +3112,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
@@ -3143,7 +3143,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
@@ -3174,7 +3174,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
@@ -3205,7 +3205,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
@@ -3240,7 +3240,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-enterprise
         """
 
         from ..models import EnterprisesEnterpriseActionsRunnersGetResponse200
@@ -3285,7 +3285,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-enterprise
         """
 
         from ..models import EnterprisesEnterpriseActionsRunnersGetResponse200
@@ -3324,7 +3324,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-runner-applications-for-an-enterprise
         """
 
         from ..models import RunnerApplication
@@ -3356,7 +3356,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-runner-applications-for-an-enterprise
         """
 
         from ..models import RunnerApplication
@@ -3396,7 +3396,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-a-registration-token-for-an-enterprise
         """
 
         from ..models import AuthenticationToken
@@ -3436,7 +3436,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-a-registration-token-for-an-enterprise
         """
 
         from ..models import AuthenticationToken
@@ -3477,7 +3477,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-a-remove-token-for-an-enterprise
         """
 
         from ..models import AuthenticationToken
@@ -3518,7 +3518,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-a-remove-token-for-an-enterprise
         """
 
         from ..models import AuthenticationToken
@@ -3551,7 +3551,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-enterprise
         """
 
         from ..models import Runner
@@ -3584,7 +3584,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-enterprise
         """
 
         from ..models import Runner
@@ -3617,7 +3617,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-enterprise
         """
 
         from ..models import ValidationErrorSimple
@@ -3652,7 +3652,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-enterprise
         """
 
         from ..models import ValidationErrorSimple
@@ -3690,7 +3690,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-enterprise
         """
 
         from ..models import (
@@ -3732,7 +3732,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-enterprise
         """
 
         from ..models import (
@@ -3808,7 +3808,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-enterprise
         """
 
         from ..models import (
@@ -3899,7 +3899,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-enterprise
         """
 
         from ..models import (
@@ -3989,7 +3989,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-enterprise
         """
 
         from ..models import (
@@ -4079,7 +4079,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-enterprise
         """
 
         from ..models import (
@@ -4137,7 +4137,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-enterprise
         """
 
         from ..models import (
@@ -4182,7 +4182,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-enterprise
         """
 
         from ..models import (
@@ -4231,7 +4231,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-enterprise
         """
 
         from ..models import (
@@ -4280,7 +4280,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-enterprise
         """
 
         from ..models import (
@@ -4318,7 +4318,7 @@ class EnterpriseAdminClient:
 
         Gets the announcement banner currently set for the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#get-announcement-banner-for-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/announcement-banners/enterprises#get-announcement-banner-for-enterprise
         """
 
         from ..models import AnnouncementBanner
@@ -4348,7 +4348,7 @@ class EnterpriseAdminClient:
 
         Gets the announcement banner currently set for the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#get-announcement-banner-for-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/announcement-banners/enterprises#get-announcement-banner-for-enterprise
         """
 
         from ..models import AnnouncementBanner
@@ -4378,7 +4378,7 @@ class EnterpriseAdminClient:
 
         Removes the announcement banner currently set for the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#remove-announcement-banner-from-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/announcement-banners/enterprises#remove-announcement-banner-from-enterprise
         """
 
         url = f"/enterprises/{enterprise}/announcement"
@@ -4405,7 +4405,7 @@ class EnterpriseAdminClient:
 
         Removes the announcement banner currently set for the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#remove-announcement-banner-from-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/announcement-banners/enterprises#remove-announcement-banner-from-enterprise
         """
 
         url = f"/enterprises/{enterprise}/announcement"
@@ -4457,7 +4457,7 @@ class EnterpriseAdminClient:
 
         Sets the announcement banner to display for the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#set-announcement-banner-for-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/announcement-banners/enterprises#set-announcement-banner-for-enterprise
         """
 
         from ..models import Announcement, AnnouncementBanner
@@ -4522,7 +4522,7 @@ class EnterpriseAdminClient:
 
         Sets the announcement banner to display for the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#set-announcement-banner-for-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/announcement-banners/enterprises#set-announcement-banner-for-enterprise
         """
 
         from ..models import Announcement, AnnouncementBanner
@@ -4569,13 +4569,13 @@ class EnterpriseAdminClient:
 
         Gets the audit log for an enterprise.
 
-        This endpoint has a rate limit of 1,750 queries per hour per user and IP address. If your integration receives a rate limit error (typically a 403 or 429 response), it should wait before making another request to the GitHub API. For more information, see "[Rate limits for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api)" and "[Best practices for integrators](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-integrators)."
+        This endpoint has a rate limit of 1,750 queries per hour per user and IP address. If your integration receives a rate limit error (typically a 403 or 429 response), it should wait before making another request to the GitHub API. For more information, see "[Rate limits for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api)" and "[Best practices for integrators](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-integrators)."
 
         The authenticated user must be an enterprise admin to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `read:audit_log` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#get-the-audit-log-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#get-the-audit-log-for-an-enterprise
         """
 
         from ..models import AuditLogEvent
@@ -4623,13 +4623,13 @@ class EnterpriseAdminClient:
 
         Gets the audit log for an enterprise.
 
-        This endpoint has a rate limit of 1,750 queries per hour per user and IP address. If your integration receives a rate limit error (typically a 403 or 429 response), it should wait before making another request to the GitHub API. For more information, see "[Rate limits for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api)" and "[Best practices for integrators](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-integrators)."
+        This endpoint has a rate limit of 1,750 queries per hour per user and IP address. If your integration receives a rate limit error (typically a 403 or 429 response), it should wait before making another request to the GitHub API. For more information, see "[Rate limits for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api)" and "[Best practices for integrators](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-integrators)."
 
         The authenticated user must be an enterprise admin to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `read:audit_log` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#get-the-audit-log-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#get-the-audit-log-for-an-enterprise
         """
 
         from ..models import AuditLogEvent
@@ -4672,7 +4672,7 @@ class EnterpriseAdminClient:
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#get-the-audit-log-stream-key-for-encrypting-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#get-the-audit-log-stream-key-for-encrypting-secrets
         """
 
         from ..models import AuditLogStreamKey
@@ -4704,7 +4704,7 @@ class EnterpriseAdminClient:
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#get-the-audit-log-stream-key-for-encrypting-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#get-the-audit-log-stream-key-for-encrypting-secrets
         """
 
         from ..models import AuditLogStreamKey
@@ -4740,7 +4740,7 @@ class EnterpriseAdminClient:
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#list-audit-log-stream-configurations-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#list-audit-log-stream-configurations-for-an-enterprise
         """
 
         from ..models import GetAuditLogStreamConfigsItems
@@ -4776,7 +4776,7 @@ class EnterpriseAdminClient:
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#list-audit-log-stream-configurations-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#list-audit-log-stream-configurations-for-an-enterprise
         """
 
         from ..models import GetAuditLogStreamConfigsItems
@@ -4850,7 +4850,7 @@ class EnterpriseAdminClient:
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#create-an-audit-log-streaming-configuration-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#create-an-audit-log-streaming-configuration-for-an-enterprise
         """
 
         from ..models import (
@@ -4939,7 +4939,7 @@ class EnterpriseAdminClient:
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#create-an-audit-log-streaming-configuration-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#create-an-audit-log-streaming-configuration-for-an-enterprise
         """
 
         from ..models import (
@@ -4987,7 +4987,7 @@ class EnterpriseAdminClient:
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#list-one-audit-log-streaming-configuration-via-a-stream-id
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#list-one-audit-log-streaming-configuration-via-a-stream-id
         """
 
         from ..models import GetAuditLogStreamConfig
@@ -5020,7 +5020,7 @@ class EnterpriseAdminClient:
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#list-one-audit-log-streaming-configuration-via-a-stream-id
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#list-one-audit-log-streaming-configuration-via-a-stream-id
         """
 
         from ..models import GetAuditLogStreamConfig
@@ -5097,7 +5097,7 @@ class EnterpriseAdminClient:
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#update-an-existing-audit-log-stream-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#update-an-existing-audit-log-stream-configuration
         """
 
         from ..models import (
@@ -5193,7 +5193,7 @@ class EnterpriseAdminClient:
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#update-an-existing-audit-log-stream-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#update-an-existing-audit-log-stream-configuration
         """
 
         from ..models import (
@@ -5245,7 +5245,7 @@ class EnterpriseAdminClient:
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#delete-an-audit-log-streaming-configuration-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#delete-an-audit-log-streaming-configuration-for-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/audit-log/streams/{stream_id}"
@@ -5275,7 +5275,7 @@ class EnterpriseAdminClient:
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#delete-an-audit-log-streaming-configuration-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#delete-an-audit-log-streaming-configuration-for-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/audit-log/streams/{stream_id}"
@@ -5322,7 +5322,7 @@ class EnterpriseAdminClient:
 
         Lists the requests made by users of a repository to bypass push protection rules within an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/bypass-requests#list-push-rule-bypass-requests-within-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/bypass-requests#list-push-rule-bypass-requests-within-an-enterprise
         """
 
         from ..models import BasicError, PushRuleBypassRequest
@@ -5387,7 +5387,7 @@ class EnterpriseAdminClient:
 
         Lists the requests made by users of a repository to bypass push protection rules within an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/bypass-requests#list-push-rule-bypass-requests-within-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/bypass-requests#list-push-rule-bypass-requests-within-an-enterprise
         """
 
         from ..models import BasicError, PushRuleBypassRequest
@@ -5435,7 +5435,7 @@ class EnterpriseAdminClient:
         GET /enterprises/{enterprise}/code_security_and_analysis
 
         > [!WARNING]
-        > **Closing down notice:** The ability to fetch code security and analysis settings for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
+        > **Closing down notice:** The ability to fetch code security and analysis settings for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
 
         Gets code security and analysis settings for the specified enterprise.
 
@@ -5443,7 +5443,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#get-code-security-and-analysis-features-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/code-security-and-analysis#get-code-security-and-analysis-features-for-an-enterprise
         """
 
         from ..models import BasicError, EnterpriseSecurityAnalysisSettings
@@ -5479,7 +5479,7 @@ class EnterpriseAdminClient:
         GET /enterprises/{enterprise}/code_security_and_analysis
 
         > [!WARNING]
-        > **Closing down notice:** The ability to fetch code security and analysis settings for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
+        > **Closing down notice:** The ability to fetch code security and analysis settings for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
 
         Gets code security and analysis settings for the specified enterprise.
 
@@ -5487,7 +5487,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#get-code-security-and-analysis-features-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/code-security-and-analysis#get-code-security-and-analysis-features-for-an-enterprise
         """
 
         from ..models import BasicError, EnterpriseSecurityAnalysisSettings
@@ -5559,7 +5559,7 @@ class EnterpriseAdminClient:
         PATCH /enterprises/{enterprise}/code_security_and_analysis
 
         > [!WARNING]
-        > **Closing down notice:** The ability to update code security and analysis settings for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
+        > **Closing down notice:** The ability to update code security and analysis settings for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
 
         Updates the settings for advanced security, Dependabot alerts, secret scanning, and push protection for new repositories in an enterprise.
 
@@ -5567,7 +5567,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#update-code-security-and-analysis-features-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/code-security-and-analysis#update-code-security-and-analysis-features-for-an-enterprise
         """
 
         from ..models import (
@@ -5653,7 +5653,7 @@ class EnterpriseAdminClient:
         PATCH /enterprises/{enterprise}/code_security_and_analysis
 
         > [!WARNING]
-        > **Closing down notice:** The ability to update code security and analysis settings for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
+        > **Closing down notice:** The ability to update code security and analysis settings for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
 
         Updates the settings for advanced security, Dependabot alerts, secret scanning, and push protection for new repositories in an enterprise.
 
@@ -5661,7 +5661,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#update-code-security-and-analysis-features-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/code-security-and-analysis#update-code-security-and-analysis-features-for-an-enterprise
         """
 
         from ..models import (
@@ -5714,7 +5714,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/licensing#list-enterprise-consumed-licenses
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#list-enterprise-consumed-licenses
         """
 
         from ..models import GetConsumedLicenses
@@ -5756,7 +5756,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/licensing#list-enterprise-consumed-licenses
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#list-enterprise-consumed-licenses
         """
 
         from ..models import GetConsumedLicenses
@@ -5802,7 +5802,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#get-all-enterprise-roles-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#get-all-enterprise-roles-for-an-enterprise
         """
 
         from ..models import (
@@ -5849,7 +5849,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#get-all-enterprise-roles-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#get-all-enterprise-roles-for-an-enterprise
         """
 
         from ..models import (
@@ -5897,7 +5897,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-all-enterprise-roles-from-a-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#remove-all-enterprise-roles-from-a-team
         """
 
         from ..models import BasicError
@@ -5941,7 +5941,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-all-enterprise-roles-from-a-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#remove-all-enterprise-roles-from-a-team
         """
 
         from ..models import BasicError
@@ -5986,7 +5986,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#assign-an-enterprise-role-to-a-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#assign-an-enterprise-role-to-a-team
         """
 
         from ..models import BasicError
@@ -6031,7 +6031,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#assign-an-enterprise-role-to-a-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#assign-an-enterprise-role-to-a-team
         """
 
         from ..models import BasicError
@@ -6076,7 +6076,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-an-enterprise-role-from-a-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#remove-an-enterprise-role-from-a-team
         """
 
         from ..models import BasicError
@@ -6121,7 +6121,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-an-enterprise-role-from-a-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#remove-an-enterprise-role-from-a-team
         """
 
         from ..models import BasicError
@@ -6162,7 +6162,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-all-enterprise-roles-from-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#remove-all-enterprise-roles-from-a-user
         """
 
         from ..models import BasicError
@@ -6203,7 +6203,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-all-enterprise-roles-from-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#remove-all-enterprise-roles-from-a-user
         """
 
         from ..models import BasicError
@@ -6245,7 +6245,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#assign-an-enterprise-role-to-an-enterprise-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#assign-an-enterprise-role-to-an-enterprise-user
         """
 
         from ..models import BasicError
@@ -6287,7 +6287,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#assign-an-enterprise-role-to-an-enterprise-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#assign-an-enterprise-role-to-an-enterprise-user
         """
 
         from ..models import BasicError
@@ -6329,7 +6329,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-enterprise-user-role-assignment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#remove-enterprise-user-role-assignment
         """
 
         from ..models import BasicError
@@ -6371,7 +6371,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-enterprise-user-role-assignment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#remove-enterprise-user-role-assignment
         """
 
         from ..models import BasicError
@@ -6412,7 +6412,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#get-an-enterprise-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#get-an-enterprise-role
         """
 
         from ..models import BasicError, EnterpriseRole
@@ -6454,7 +6454,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#get-an-enterprise-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#get-an-enterprise-role
         """
 
         from ..models import BasicError, EnterpriseRole
@@ -6501,7 +6501,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#list-teams-that-are-assigned-to-an-enterprise-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#list-teams-that-are-assigned-to-an-enterprise-role
         """
 
         from ..models import BasicError, EnterpriseTeam
@@ -6554,7 +6554,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#list-teams-that-are-assigned-to-an-enterprise-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#list-teams-that-are-assigned-to-an-enterprise-role
         """
 
         from ..models import BasicError, EnterpriseTeam
@@ -6607,7 +6607,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) require the `enterprise:admin` scope to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#list-users-that-are-assigned-to-an-enterprise-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#list-users-that-are-assigned-to-an-enterprise-role
         """
 
         from ..models import BasicError, EnterpriseUserRoleAssignment
@@ -6660,7 +6660,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) require the `enterprise:admin` scope to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#list-users-that-are-assigned-to-an-enterprise-role
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/enterprise-roles#list-users-that-are-assigned-to-an-enterprise-role
         """
 
         from ..models import BasicError, EnterpriseUserRoleAssignment
@@ -6704,7 +6704,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/licensing#get-a-license-sync-status
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#get-a-license-sync-status
         """
 
         from ..models import GetLicenseSyncStatus
@@ -6738,7 +6738,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/licensing#get-a-license-sync-status
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#get-a-license-sync-status
         """
 
         from ..models import GetLicenseSyncStatus
@@ -6773,7 +6773,7 @@ class EnterpriseAdminClient:
 
         Lists all hosted compute network configurations configured in an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#list-hosted-compute-network-configurations-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/network-configurations#list-hosted-compute-network-configurations-for-an-enterprise
         """
 
         from ..models import EnterprisesEnterpriseNetworkConfigurationsGetResponse200
@@ -6814,7 +6814,7 @@ class EnterpriseAdminClient:
 
         Lists all hosted compute network configurations configured in an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#list-hosted-compute-network-configurations-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/network-configurations#list-hosted-compute-network-configurations-for-an-enterprise
         """
 
         from ..models import EnterprisesEnterpriseNetworkConfigurationsGetResponse200
@@ -6877,7 +6877,7 @@ class EnterpriseAdminClient:
 
         Creates a hosted compute network configuration for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#create-a-hosted-compute-network-configuration-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/network-configurations#create-a-hosted-compute-network-configuration-for-an-enterprise
         """
 
         from ..models import (
@@ -6949,7 +6949,7 @@ class EnterpriseAdminClient:
 
         Creates a hosted compute network configuration for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#create-a-hosted-compute-network-configuration-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/network-configurations#create-a-hosted-compute-network-configuration-for-an-enterprise
         """
 
         from ..models import (
@@ -6995,7 +6995,7 @@ class EnterpriseAdminClient:
 
         Gets a hosted compute network configuration configured in an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-configuration-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-configuration-for-an-enterprise
         """
 
         from ..models import NetworkConfiguration
@@ -7026,7 +7026,7 @@ class EnterpriseAdminClient:
 
         Gets a hosted compute network configuration configured in an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-configuration-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-configuration-for-an-enterprise
         """
 
         from ..models import NetworkConfiguration
@@ -7057,7 +7057,7 @@ class EnterpriseAdminClient:
 
         Deletes a hosted compute network configuration from an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#delete-a-hosted-compute-network-configuration-from-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/network-configurations#delete-a-hosted-compute-network-configuration-from-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/network-configurations/{network_configuration_id}"
@@ -7085,7 +7085,7 @@ class EnterpriseAdminClient:
 
         Deletes a hosted compute network configuration from an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#delete-a-hosted-compute-network-configuration-from-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/network-configurations#delete-a-hosted-compute-network-configuration-from-an-enterprise
         """
 
         url = f"/enterprises/{enterprise}/network-configurations/{network_configuration_id}"
@@ -7144,7 +7144,7 @@ class EnterpriseAdminClient:
 
         Updates a hosted compute network configuration for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#update-a-hosted-compute-network-configuration-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/network-configurations#update-a-hosted-compute-network-configuration-for-an-enterprise
         """
 
         from ..models import (
@@ -7222,7 +7222,7 @@ class EnterpriseAdminClient:
 
         Updates a hosted compute network configuration for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#update-a-hosted-compute-network-configuration-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/network-configurations#update-a-hosted-compute-network-configuration-for-an-enterprise
         """
 
         from ..models import (
@@ -7269,7 +7269,7 @@ class EnterpriseAdminClient:
 
         Gets a hosted compute network settings resource configured for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-enterprise
         """
 
         from ..models import NetworkSettings
@@ -7300,7 +7300,7 @@ class EnterpriseAdminClient:
 
         Gets a hosted compute network settings resource configured for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-enterprise
         """
 
         from ..models import NetworkSettings
@@ -7338,7 +7338,7 @@ class EnterpriseAdminClient:
         - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
         - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#get-organization-custom-properties-schema-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties-for-orgs#get-organization-custom-properties-schema-for-an-enterprise
         """
 
         from ..models import BasicError, OrganizationCustomProperty
@@ -7380,7 +7380,7 @@ class EnterpriseAdminClient:
         - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
         - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#get-organization-custom-properties-schema-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties-for-orgs#get-organization-custom-properties-schema-for-an-enterprise
         """
 
         from ..models import BasicError, OrganizationCustomProperty
@@ -7454,7 +7454,7 @@ class EnterpriseAdminClient:
         - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
         - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-organization-custom-property-definitions-on-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties-for-orgs#create-or-update-organization-custom-property-definitions-on-an-enterprise
         """
 
         from ..models import (
@@ -7546,7 +7546,7 @@ class EnterpriseAdminClient:
         - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
         - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-organization-custom-property-definitions-on-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties-for-orgs#create-or-update-organization-custom-property-definitions-on-an-enterprise
         """
 
         from ..models import (
@@ -7606,7 +7606,7 @@ class EnterpriseAdminClient:
         - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
         - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#get-an-organization-custom-property-definition-from-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties-for-orgs#get-an-organization-custom-property-definition-from-an-enterprise
         """
 
         from ..models import BasicError, OrganizationCustomProperty
@@ -7648,7 +7648,7 @@ class EnterpriseAdminClient:
         - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
         - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#get-an-organization-custom-property-definition-from-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties-for-orgs#get-an-organization-custom-property-definition-from-an-enterprise
         """
 
         from ..models import BasicError, OrganizationCustomProperty
@@ -7728,7 +7728,7 @@ class EnterpriseAdminClient:
         - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
         - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-an-organization-custom-property-definition-on-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties-for-orgs#create-or-update-an-organization-custom-property-definition-on-an-enterprise
         """
 
         from ..models import (
@@ -7824,7 +7824,7 @@ class EnterpriseAdminClient:
         - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
         - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-an-organization-custom-property-definition-on-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties-for-orgs#create-or-update-an-organization-custom-property-definition-on-an-enterprise
         """
 
         from ..models import (
@@ -7880,7 +7880,7 @@ class EnterpriseAdminClient:
         - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
         - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#remove-an-organization-custom-property-definition-from-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties-for-orgs#remove-an-organization-custom-property-definition-from-an-enterprise
         """
 
         from ..models import BasicError, ValidationErrorSimple
@@ -7920,7 +7920,7 @@ class EnterpriseAdminClient:
         - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
         - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#remove-an-organization-custom-property-definition-from-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties-for-orgs#remove-an-organization-custom-property-definition-from-an-enterprise
         """
 
         from ..models import BasicError, ValidationErrorSimple
@@ -7964,7 +7964,7 @@ class EnterpriseAdminClient:
         - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
         - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#list-custom-property-values-for-organizations-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties-for-orgs#list-custom-property-values-for-organizations-in-an-enterprise
         """
 
         from ..models import (
@@ -8017,7 +8017,7 @@ class EnterpriseAdminClient:
         - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
         - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#list-custom-property-values-for-organizations-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties-for-orgs#list-custom-property-values-for-organizations-in-an-enterprise
         """
 
         from ..models import (
@@ -8091,7 +8091,7 @@ class EnterpriseAdminClient:
         - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
         - Actors with the enterprise-level "edit enterprise custom properties for organizations" fine-grained permission or above
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-custom-property-values-for-organizations-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties-for-orgs#create-or-update-custom-property-values-for-organizations-in-an-enterprise
         """
 
         from ..models import (
@@ -8172,7 +8172,7 @@ class EnterpriseAdminClient:
         - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
         - Actors with the enterprise-level "edit enterprise custom properties for organizations" fine-grained permission or above
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-custom-property-values-for-organizations-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties-for-orgs#create-or-update-custom-property-values-for-organizations-in-an-enterprise
         """
 
         from ..models import (
@@ -8223,7 +8223,7 @@ class EnterpriseAdminClient:
         Gets all custom properties defined for an enterprise.
         Enterprise members can read these properties.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-custom-properties-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties#get-custom-properties-for-an-enterprise
         """
 
         from ..models import BasicError, CustomProperty
@@ -8258,7 +8258,7 @@ class EnterpriseAdminClient:
         Gets all custom properties defined for an enterprise.
         Enterprise members can read these properties.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-custom-properties-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties#get-custom-properties-for-an-enterprise
         """
 
         from ..models import BasicError, CustomProperty
@@ -8321,7 +8321,7 @@ class EnterpriseAdminClient:
 
         To use this endpoint, the authenticated user must be an administrator for the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-custom-properties-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties#create-or-update-custom-properties-for-an-enterprise
         """
 
         from ..models import (
@@ -8400,7 +8400,7 @@ class EnterpriseAdminClient:
 
         To use this endpoint, the authenticated user must be an administrator for the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-custom-properties-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties#create-or-update-custom-properties-for-an-enterprise
         """
 
         from ..models import (
@@ -8454,7 +8454,7 @@ class EnterpriseAdminClient:
 
         To use this endpoint, the authenticated user must be an administrator for the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#promote-a-custom-property-to-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties#promote-a-custom-property-to-an-enterprise
         """
 
         from ..models import BasicError, CustomProperty
@@ -8492,7 +8492,7 @@ class EnterpriseAdminClient:
 
         To use this endpoint, the authenticated user must be an administrator for the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#promote-a-custom-property-to-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties#promote-a-custom-property-to-an-enterprise
         """
 
         from ..models import BasicError, CustomProperty
@@ -8528,7 +8528,7 @@ class EnterpriseAdminClient:
         Gets a custom property that is defined for an enterprise.
         Enterprise members can read these properties.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-a-custom-property-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties#get-a-custom-property-for-an-enterprise
         """
 
         from ..models import BasicError, CustomProperty
@@ -8564,7 +8564,7 @@ class EnterpriseAdminClient:
         Gets a custom property that is defined for an enterprise.
         Enterprise members can read these properties.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-a-custom-property-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties#get-a-custom-property-for-an-enterprise
         """
 
         from ..models import BasicError, CustomProperty
@@ -8636,7 +8636,7 @@ class EnterpriseAdminClient:
 
         To use this endpoint, the authenticated user must be an administrator for the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-a-custom-property-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties#create-or-update-a-custom-property-for-an-enterprise
         """
 
         from ..models import BasicError, CustomProperty, CustomPropertySetPayload
@@ -8718,7 +8718,7 @@ class EnterpriseAdminClient:
 
         To use this endpoint, the authenticated user must be an administrator for the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-a-custom-property-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties#create-or-update-a-custom-property-for-an-enterprise
         """
 
         from ..models import BasicError, CustomProperty, CustomPropertySetPayload
@@ -8765,7 +8765,7 @@ class EnterpriseAdminClient:
 
         To use this endpoint, the authenticated user must be an administrator for the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#remove-a-custom-property-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties#remove-a-custom-property-for-an-enterprise
         """
 
         from ..models import BasicError
@@ -8801,7 +8801,7 @@ class EnterpriseAdminClient:
 
         To use this endpoint, the authenticated user must be an administrator for the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#remove-a-custom-property-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/custom-properties#remove-a-custom-property-for-an-enterprise
         """
 
         from ..models import BasicError
@@ -8837,7 +8837,7 @@ class EnterpriseAdminClient:
 
         Get the history of an enterprise ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#get-enterprise-ruleset-history
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#get-enterprise-ruleset-history
         """
 
         from ..models import BasicError, RulesetVersion
@@ -8880,7 +8880,7 @@ class EnterpriseAdminClient:
 
         Get the history of an enterprise ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#get-enterprise-ruleset-history
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#get-enterprise-ruleset-history
         """
 
         from ..models import BasicError, RulesetVersion
@@ -8922,7 +8922,7 @@ class EnterpriseAdminClient:
 
         Get a version of an enterprise ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#get-enterprise-ruleset-version
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#get-enterprise-ruleset-version
         """
 
         from ..models import BasicError, RulesetVersionWithState
@@ -8958,7 +8958,7 @@ class EnterpriseAdminClient:
 
         Get a version of an enterprise ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#get-enterprise-ruleset-version
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#get-enterprise-ruleset-version
         """
 
         from ..models import BasicError, RulesetVersionWithState
@@ -9001,7 +9001,7 @@ class EnterpriseAdminClient:
         POST /enterprises/{enterprise}/{security_product}/{enablement}
 
         > [!WARNING]
-        > **Closing down notice:** The ability to enable or disable a security feature for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
+        > **Closing down notice:** The ability to enable or disable a security feature for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
 
         Enables or disables the specified security feature for all repositories in an enterprise.
 
@@ -9009,7 +9009,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#enable-or-disable-a-security-feature
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/code-security-and-analysis#enable-or-disable-a-security-feature
         """
 
         from ..models import BasicError
@@ -9050,7 +9050,7 @@ class EnterpriseAdminClient:
         POST /enterprises/{enterprise}/{security_product}/{enablement}
 
         > [!WARNING]
-        > **Closing down notice:** The ability to enable or disable a security feature for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
+        > **Closing down notice:** The ability to enable or disable a security feature for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
 
         Enables or disables the specified security feature for all repositories in an enterprise.
 
@@ -9058,7 +9058,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#enable-or-disable-a-security-feature
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/code-security-and-analysis#enable-or-disable-a-security-feature
         """
 
         from ..models import BasicError
@@ -9096,7 +9096,7 @@ class EnterpriseAdminClient:
 
         You can improve query search time by using the `excludedAttributes` query parameter with a value of `members` to exclude members from the response.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-provisioned-scim-groups-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#list-provisioned-scim-groups-for-an-enterprise
         """
 
         from ..models import ScimEnterpriseGroupList, ScimError
@@ -9145,7 +9145,7 @@ class EnterpriseAdminClient:
 
         You can improve query search time by using the `excludedAttributes` query parameter with a value of `members` to exclude members from the response.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-provisioned-scim-groups-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#list-provisioned-scim-groups-for-an-enterprise
         """
 
         from ..models import ScimEnterpriseGroupList, ScimError
@@ -9222,7 +9222,7 @@ class EnterpriseAdminClient:
 
         When members are part of the group provisioning payload, they're designated as external group members. Providers are responsible for maintaining a mapping between the `externalId` and `id` for each user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#provision-a-scim-enterprise-group
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#provision-a-scim-enterprise-group
         """
 
         from ..models import Group, ScimEnterpriseGroupResponse, ScimError
@@ -9301,7 +9301,7 @@ class EnterpriseAdminClient:
 
         When members are part of the group provisioning payload, they're designated as external group members. Providers are responsible for maintaining a mapping between the `externalId` and `id` for each user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#provision-a-scim-enterprise-group
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#provision-a-scim-enterprise-group
         """
 
         from ..models import Group, ScimEnterpriseGroupResponse, ScimError
@@ -9350,7 +9350,7 @@ class EnterpriseAdminClient:
 
         Gets information about a SCIM group.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-group
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-group
         """
 
         from ..models import BasicError, ScimEnterpriseGroupResponse, ScimError
@@ -9395,7 +9395,7 @@ class EnterpriseAdminClient:
 
         Gets information about a SCIM group.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-group
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-group
         """
 
         from ..models import BasicError, ScimEnterpriseGroupResponse, ScimError
@@ -9473,7 +9473,7 @@ class EnterpriseAdminClient:
 
         You must provide all the information required for the group as if you were provisioning it for the first time. Any existing group information that you don't provide will be removed, including group membership. If you want to only update a specific attribute, use the [Update an attribute for a SCIM enterprise group](#update-an-attribute-for-a-scim-enterprise-group) endpoint instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-group
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-group
         """
 
         from ..models import BasicError, Group, ScimEnterpriseGroupResponse, ScimError
@@ -9556,7 +9556,7 @@ class EnterpriseAdminClient:
 
         You must provide all the information required for the group as if you were provisioning it for the first time. Any existing group information that you don't provide will be removed, including group membership. If you want to only update a specific attribute, use the [Update an attribute for a SCIM enterprise group](#update-an-attribute-for-a-scim-enterprise-group) endpoint instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-group
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-group
         """
 
         from ..models import BasicError, Group, ScimEnterpriseGroupResponse, ScimError
@@ -9603,7 +9603,7 @@ class EnterpriseAdminClient:
 
         Deletes a SCIM group from an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#delete-a-scim-group-from-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#delete-a-scim-group-from-an-enterprise
         """
 
         from ..models import BasicError, ScimError
@@ -9639,7 +9639,7 @@ class EnterpriseAdminClient:
 
         Deletes a SCIM group from an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#delete-a-scim-group-from-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#delete-a-scim-group-from-an-enterprise
         """
 
         from ..models import BasicError, ScimError
@@ -9708,7 +9708,7 @@ class EnterpriseAdminClient:
         > [!NOTE]
         > Memberships are referenced via a local user id. Ensure users are created before referencing them here.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-group
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-group
         """
 
         from ..models import BasicError, PatchSchema, ScimError
@@ -9787,7 +9787,7 @@ class EnterpriseAdminClient:
         > [!NOTE]
         > Memberships are referenced via a local user id. Ensure users are created before referencing them here.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-group
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-group
         """
 
         from ..models import BasicError, PatchSchema, ScimError
@@ -9837,7 +9837,7 @@ class EnterpriseAdminClient:
 
         When you remove a user with a SCIM-provisioned external identity from an enterprise using a `patch` with `active` flag to `false`, the user's metadata remains intact. This means they can potentially re-join the enterprise later. Although, while suspended, the user can't sign in. If you want to ensure the user can't re-join in the future, use the delete request. Only users who weren't permanently deleted will appear in the result list.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-scim-provisioned-identities-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#list-scim-provisioned-identities-for-an-enterprise
         """
 
         from ..models import ScimEnterpriseUserList, ScimError
@@ -9884,7 +9884,7 @@ class EnterpriseAdminClient:
 
         When you remove a user with a SCIM-provisioned external identity from an enterprise using a `patch` with `active` flag to `false`, the user's metadata remains intact. This means they can potentially re-join the enterprise later. Although, while suspended, the user can't sign in. If you want to ensure the user can't re-join in the future, use the delete request. Only users who weren't permanently deleted will appear in the result list.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-scim-provisioned-identities-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#list-scim-provisioned-identities-for-an-enterprise
         """
 
         from ..models import ScimEnterpriseUserList, ScimError
@@ -9964,7 +9964,7 @@ class EnterpriseAdminClient:
 
         SCIM is responsible for user provisioning, not authentication. The actual user authentication is handled by SAML. However, with SCIM enabled, users must first be provisioned via SCIM before they can sign in through SAML.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#provision-a-scim-enterprise-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#provision-a-scim-enterprise-user
         """
 
         from ..models import ScimEnterpriseUserResponse, ScimError, User
@@ -10047,7 +10047,7 @@ class EnterpriseAdminClient:
 
         SCIM is responsible for user provisioning, not authentication. The actual user authentication is handled by SAML. However, with SCIM enabled, users must first be provisioned via SCIM before they can sign in through SAML.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#provision-a-scim-enterprise-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#provision-a-scim-enterprise-user
         """
 
         from ..models import ScimEnterpriseUserResponse, ScimError, User
@@ -10095,7 +10095,7 @@ class EnterpriseAdminClient:
 
         Gets information about a SCIM user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-user
         """
 
         from ..models import BasicError, ScimEnterpriseUserResponse, ScimError
@@ -10134,7 +10134,7 @@ class EnterpriseAdminClient:
 
         Gets information about a SCIM user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-user
         """
 
         from ..models import BasicError, ScimEnterpriseUserResponse, ScimError
@@ -10243,7 +10243,7 @@ class EnterpriseAdminClient:
         >}
         > ```
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-user
         """
 
         from ..models import BasicError, ScimEnterpriseUserResponse, ScimError, User
@@ -10362,7 +10362,7 @@ class EnterpriseAdminClient:
         >}
         > ```
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-user
         """
 
         from ..models import BasicError, ScimEnterpriseUserResponse, ScimError, User
@@ -10409,7 +10409,7 @@ class EnterpriseAdminClient:
 
         Suspends a SCIM user permanently from an enterprise. This action will: remove all the user's data,  anonymize their login, email, and display name, erase all external identity SCIM attributes, delete the user's emails, avatar, PATs, SSH keys, OAuth authorizations, GPG keys, and SAML mappings. This action is irreversible.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#delete-a-scim-user-from-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#delete-a-scim-user-from-an-enterprise
         """
 
         from ..models import BasicError, ScimError
@@ -10445,7 +10445,7 @@ class EnterpriseAdminClient:
 
         Suspends a SCIM user permanently from an enterprise. This action will: remove all the user's data,  anonymize their login, email, and display name, erase all external identity SCIM attributes, delete the user's emails, avatar, PATs, SSH keys, OAuth authorizations, GPG keys, and SAML mappings. This action is irreversible.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#delete-a-scim-user-from-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#delete-a-scim-user-from-an-enterprise
         """
 
         from ..models import BasicError, ScimError
@@ -10537,7 +10537,7 @@ class EnterpriseAdminClient:
         > }
         > ```
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-user
         """
 
         from ..models import (
@@ -10645,7 +10645,7 @@ class EnterpriseAdminClient:
         > }
         > ```
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-user
         """
 
         from ..models import (

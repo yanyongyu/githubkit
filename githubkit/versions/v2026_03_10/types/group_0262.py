@@ -9,33 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsSecretType(TypedDict):
-    """Actions Secret
+class ActionsCacheStorageLimitForRepositoryType(TypedDict):
+    """Actions cache storage limit for a repository
 
-    Set secrets for GitHub Actions.
+    GitHub Actions cache storage policy for a repository.
     """
 
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    max_cache_size_gb: NotRequired[int]
 
 
-class ActionsSecretTypeForResponse(TypedDict):
-    """Actions Secret
+class ActionsCacheStorageLimitForRepositoryTypeForResponse(TypedDict):
+    """Actions cache storage limit for a repository
 
-    Set secrets for GitHub Actions.
+    GitHub Actions cache storage policy for a repository.
     """
 
-    name: str
-    created_at: str
-    updated_at: str
+    max_cache_size_gb: NotRequired[int]
 
 
 __all__ = (
-    "ActionsSecretType",
-    "ActionsSecretTypeForResponse",
+    "ActionsCacheStorageLimitForRepositoryType",
+    "ActionsCacheStorageLimitForRepositoryTypeForResponse",
 )

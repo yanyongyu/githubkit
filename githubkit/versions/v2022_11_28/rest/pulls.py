@@ -1138,6 +1138,158 @@ class PullsClient:
             },
         )
 
+    def archive(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """pulls/archive
+
+        PUT /repos/{owner}/{repo}/pulls/{pull_number}/archive
+
+        Archives a pull request. Closes, locks, and marks the pull request as archived.
+        Only repository admins can archive pull requests.
+        Archived pull requests are hidden from non-admin users.
+
+        See also: https://docs.github.com/rest/pulls/pulls#archive-a-pull-request
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/archive"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_archive(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """pulls/archive
+
+        PUT /repos/{owner}/{repo}/pulls/{pull_number}/archive
+
+        Archives a pull request. Closes, locks, and marks the pull request as archived.
+        Only repository admins can archive pull requests.
+        Archived pull requests are hidden from non-admin users.
+
+        See also: https://docs.github.com/rest/pulls/pulls#archive-a-pull-request
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/archive"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def unarchive(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """pulls/unarchive
+
+        DELETE /repos/{owner}/{repo}/pulls/{pull_number}/archive
+
+        Unarchives a pull request. Removes the archived flag from the pull request.
+        Does not automatically reopen or unlock the pull request.
+        Only repository admins can unarchive pull requests.
+
+        See also: https://docs.github.com/rest/pulls/pulls#unarchive-a-pull-request
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/archive"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_unarchive(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """pulls/unarchive
+
+        DELETE /repos/{owner}/{repo}/pulls/{pull_number}/archive
+
+        Unarchives a pull request. Removes the archived flag from the pull request.
+        Does not automatically reopen or unlock the pull request.
+        Only repository admins can unarchive pull requests.
+
+        See also: https://docs.github.com/rest/pulls/pulls#unarchive-a-pull-request
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/archive"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
     def list_review_comments(
         self,
         owner: str,

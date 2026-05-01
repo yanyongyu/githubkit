@@ -9,64 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+
+class ActionsRepositoryPermissionsType(TypedDict):
+    """ActionsRepositoryPermissions"""
+
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
 
-class EnvironmentApprovalsType(TypedDict):
-    """Environment Approval
+class ActionsRepositoryPermissionsTypeForResponse(TypedDict):
+    """ActionsRepositoryPermissions"""
 
-    An entry in the reviews log for environment deployments
-    """
-
-    environments: list[EnvironmentApprovalsPropEnvironmentsItemsType]
-    state: Literal["approved", "rejected", "pending"]
-    user: SimpleUserType
-    comment: str
-
-
-class EnvironmentApprovalsTypeForResponse(TypedDict):
-    """Environment Approval
-
-    An entry in the reviews log for environment deployments
-    """
-
-    environments: list[EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse]
-    state: Literal["approved", "rejected", "pending"]
-    user: SimpleUserTypeForResponse
-    comment: str
-
-
-class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
-    """EnvironmentApprovalsPropEnvironmentsItems"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-
-
-class EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse(TypedDict):
-    """EnvironmentApprovalsPropEnvironmentsItems"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "EnvironmentApprovalsPropEnvironmentsItemsType",
-    "EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse",
-    "EnvironmentApprovalsType",
-    "EnvironmentApprovalsTypeForResponse",
+    "ActionsRepositoryPermissionsType",
+    "ActionsRepositoryPermissionsTypeForResponse",
 )

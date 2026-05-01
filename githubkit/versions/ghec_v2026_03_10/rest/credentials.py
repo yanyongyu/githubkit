@@ -103,7 +103,7 @@ class CredentialsClient:
         > [!NOTE]
         > Any authenticated requests will return a 403.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/credentials/revoke#revoke-a-list-of-credentials
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/credentials/revoke#revoke-a-list-of-credentials
         """
 
         from ..models import (
@@ -197,7 +197,7 @@ class CredentialsClient:
         > [!NOTE]
         > Any authenticated requests will return a 403.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/credentials/revoke#revoke-a-list-of-credentials
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/credentials/revoke#revoke-a-list-of-credentials
         """
 
         from ..models import (

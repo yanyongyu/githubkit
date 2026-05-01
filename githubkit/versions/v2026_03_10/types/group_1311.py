@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class UserSshSigningKeysPostBodyType(TypedDict):
-    """UserSshSigningKeysPostBody"""
+class UserCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    title: NotRequired[str]
-    key: str
+    selected_repository_ids: list[int]
 
 
-class UserSshSigningKeysPostBodyTypeForResponse(TypedDict):
-    """UserSshSigningKeysPostBody"""
+class UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
+    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    title: NotRequired[str]
-    key: str
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "UserSshSigningKeysPostBodyType",
-    "UserSshSigningKeysPostBodyTypeForResponse",
+    "UserCodespacesSecretsSecretNameRepositoriesPutBodyType",
+    "UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse",
 )

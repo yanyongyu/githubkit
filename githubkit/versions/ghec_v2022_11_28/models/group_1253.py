@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,18 +18,122 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSettingsImmutableReleasesPutBody(GitHubModel):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgPrivateRegistriesSecretNamePatchBody(GitHubModel):
+    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
 
-    enforced_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls how immutable releases are enforced in the organization."
+    registry_type: Missing[
+        Literal[
+            "maven_repository",
+            "nuget_feed",
+            "goproxy_server",
+            "npm_registry",
+            "rubygems_server",
+            "cargo_registry",
+            "composer_repository",
+            "docker_registry",
+            "git_source",
+            "helm_registry",
+            "hex_organization",
+            "hex_repository",
+            "pub_repository",
+            "python_index",
+            "terraform_registry",
+        ]
+    ] = Field(default=UNSET, description="The registry type.")
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL of the private registry."
+    )
+    username: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The username to use when authenticating with the private registry. This field should be omitted if the private registry does not require a username for authentication.",
+    )
+    replaces_base: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this private registry should replace the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When set to `true`, Dependabot will only use this registry and will not fall back to the public registry. When set to `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
+    )
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        default=UNSET,
+        description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get private registries public key for an organization](https://docs.github.com/enterprise-cloud@latest/rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization) endpoint.",
+    )
+    key_id: Missing[str] = Field(
+        default=UNSET, description="The ID of the key you used to encrypt the secret."
+    )
+    visibility: Missing[Literal["all", "private", "selected"]] = Field(
+        default=UNSET,
+        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry.",
     )
     selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints.",
+        description="An array of repository IDs that can access the organization private registry. You can only provide a list of repository IDs when `visibility` is set to `selected`. This field should be omitted if `visibility` is set to `all` or `private`.",
+    )
+    auth_type: Missing[
+        Literal[
+            "token",
+            "username_password",
+            "oidc_azure",
+            "oidc_aws",
+            "oidc_jfrog",
+            "oidc_cloudsmith",
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The authentication type for the private registry. This field cannot be changed after creation. If provided, it must match the existing `auth_type` of the configuration. To change the authentication type, delete and recreate the configuration.",
+    )
+    tenant_id: Missing[str] = Field(
+        default=UNSET,
+        description="The tenant ID of the Azure AD application. Required when `auth_type` is `oidc_azure`.",
+    )
+    client_id: Missing[str] = Field(
+        default=UNSET,
+        description="The client ID of the Azure AD application. Required when `auth_type` is `oidc_azure`.",
+    )
+    aws_region: Missing[str] = Field(
+        default=UNSET,
+        description="The AWS region. Required when `auth_type` is `oidc_aws`.",
+    )
+    account_id: Missing[str] = Field(
+        default=UNSET,
+        description="The AWS account ID. Required when `auth_type` is `oidc_aws`.",
+    )
+    role_name: Missing[str] = Field(
+        default=UNSET,
+        description="The AWS IAM role name. Required when `auth_type` is `oidc_aws`.",
+    )
+    domain: Missing[str] = Field(
+        default=UNSET,
+        description="The CodeArtifact domain. Required when `auth_type` is `oidc_aws`.",
+    )
+    domain_owner: Missing[str] = Field(
+        default=UNSET,
+        description="The CodeArtifact domain owner (AWS account ID). Required when `auth_type` is `oidc_aws`.",
+    )
+    jfrog_oidc_provider_name: Missing[str] = Field(
+        default=UNSET,
+        description="The JFrog OIDC provider name. Required when `auth_type` is `oidc_jfrog`.",
+    )
+    audience: Missing[str] = Field(
+        default=UNSET,
+        description="The OIDC audience. Optional for `oidc_aws`, `oidc_jfrog`, and required for `oidc_cloudsmith` auth types.",
+    )
+    identity_mapping_name: Missing[str] = Field(
+        default=UNSET,
+        description="The JFrog identity mapping name. Optional for `oidc_jfrog` auth type.",
+    )
+    namespace: Missing[str] = Field(
+        default=UNSET,
+        description="The Cloudsmith organization namespace. Required when `auth_type` is `oidc_cloudsmith`.",
+    )
+    service_slug: Missing[str] = Field(
+        default=UNSET,
+        description="The Cloudsmith service account slug. Required when `auth_type` is `oidc_cloudsmith`.",
+    )
+    api_host: Missing[str] = Field(
+        default=UNSET,
+        description="The Cloudsmith API host. Optional for `oidc_cloudsmith` auth type. If omitted, `api.cloudsmith.io` is used by default.",
     )
 
 
-model_rebuild(OrgsOrgSettingsImmutableReleasesPutBody)
+model_rebuild(OrgsOrgPrivateRegistriesSecretNamePatchBody)
 
-__all__ = ("OrgsOrgSettingsImmutableReleasesPutBody",)
+__all__ = ("OrgsOrgPrivateRegistriesSecretNamePatchBody",)

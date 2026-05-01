@@ -186,7 +186,7 @@ class ChecksClient:
         > [!NOTE]
         > The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#create-a-check-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/runs#create-a-check-run
         """
 
         from typing import Union
@@ -335,7 +335,7 @@ class ChecksClient:
         > [!NOTE]
         > The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#create-a-check-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/runs#create-a-check-run
         """
 
         from typing import Union
@@ -394,7 +394,7 @@ class ChecksClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#get-a-check-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/runs#get-a-check-run
         """
 
         from ..models import CheckRun
@@ -431,7 +431,7 @@ class ChecksClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#get-a-check-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/runs#get-a-check-run
         """
 
         from ..models import CheckRun
@@ -560,7 +560,7 @@ class ChecksClient:
 
         OAuth apps and personal access tokens (classic) cannot use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#update-a-check-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/runs#update-a-check-run
         """
 
         from typing import Union
@@ -711,7 +711,7 @@ class ChecksClient:
 
         OAuth apps and personal access tokens (classic) cannot use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#update-a-check-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/runs#update-a-check-run
         """
 
         from typing import Union
@@ -769,7 +769,7 @@ class ChecksClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#list-check-run-annotations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/runs#list-check-run-annotations
         """
 
         from ..models import CheckAnnotation
@@ -811,7 +811,7 @@ class ChecksClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#list-check-run-annotations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/runs#list-check-run-annotations
         """
 
         from ..models import CheckAnnotation
@@ -847,11 +847,11 @@ class ChecksClient:
 
         POST /repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest
 
-        Triggers GitHub to rerequest an existing check run, without pushing new code to a repository. This endpoint will trigger the [`check_run` webhook](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#check_run) event with the action `rerequested`. When a check run is `rerequested`, the `status` of the check suite it belongs to is reset to `queued` and the `conclusion` is cleared. The check run itself is not updated. GitHub apps recieving the [`check_run` webhook](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#check_run) with the `rerequested` action should then decide if the check run should be reset or updated and call the [update `check_run` endpoint](https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#update-a-check-run) to update the check_run if desired.
+        Triggers GitHub to rerequest an existing check run, without pushing new code to a repository. This endpoint will trigger the [`check_run` webhook](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#check_run) event with the action `rerequested`. When a check run is `rerequested`, the `status` of the check suite it belongs to is reset to `queued` and the `conclusion` is cleared. The check run itself is not updated. GitHub apps recieving the [`check_run` webhook](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#check_run) with the `rerequested` action should then decide if the check run should be reset or updated and call the [update `check_run` endpoint](https://docs.github.com/enterprise-cloud@latest/rest/checks/runs#update-a-check-run) to update the check_run if desired.
 
-        For more information about how to re-run GitHub Actions jobs, see "[Re-run a job from a workflow run](https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run)".
+        For more information about how to re-run GitHub Actions jobs, see "[Re-run a job from a workflow run](https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#rerequest-a-check-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/runs#rerequest-a-check-run
         """
 
         from ..models import BasicError, EmptyObject
@@ -886,11 +886,11 @@ class ChecksClient:
 
         POST /repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest
 
-        Triggers GitHub to rerequest an existing check run, without pushing new code to a repository. This endpoint will trigger the [`check_run` webhook](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#check_run) event with the action `rerequested`. When a check run is `rerequested`, the `status` of the check suite it belongs to is reset to `queued` and the `conclusion` is cleared. The check run itself is not updated. GitHub apps recieving the [`check_run` webhook](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#check_run) with the `rerequested` action should then decide if the check run should be reset or updated and call the [update `check_run` endpoint](https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#update-a-check-run) to update the check_run if desired.
+        Triggers GitHub to rerequest an existing check run, without pushing new code to a repository. This endpoint will trigger the [`check_run` webhook](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#check_run) event with the action `rerequested`. When a check run is `rerequested`, the `status` of the check suite it belongs to is reset to `queued` and the `conclusion` is cleared. The check run itself is not updated. GitHub apps recieving the [`check_run` webhook](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#check_run) with the `rerequested` action should then decide if the check run should be reset or updated and call the [update `check_run` endpoint](https://docs.github.com/enterprise-cloud@latest/rest/checks/runs#update-a-check-run) to update the check_run if desired.
 
-        For more information about how to re-run GitHub Actions jobs, see "[Re-run a job from a workflow run](https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run)".
+        For more information about how to re-run GitHub Actions jobs, see "[Re-run a job from a workflow run](https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#rerequest-a-check-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/runs#rerequest-a-check-run
         """
 
         from ..models import BasicError, EmptyObject
@@ -949,14 +949,14 @@ class ChecksClient:
 
         POST /repos/{owner}/{repo}/check-suites
 
-        Creates a check suite manually. By default, check suites are automatically created when you create a [check run](https://docs.github.com/enterprise-cloud@latest//rest/checks/runs). You only need to use this endpoint for manually creating check suites when you've disabled automatic creation using "[Update repository preferences for check suites](https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#update-repository-preferences-for-check-suites)".
+        Creates a check suite manually. By default, check suites are automatically created when you create a [check run](https://docs.github.com/enterprise-cloud@latest/rest/checks/runs). You only need to use this endpoint for manually creating check suites when you've disabled automatic creation using "[Update repository preferences for check suites](https://docs.github.com/enterprise-cloud@latest/rest/checks/suites#update-repository-preferences-for-check-suites)".
 
         > [!NOTE]
         > The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
 
         OAuth apps and personal access tokens (classic) cannot use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#create-a-check-suite
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/suites#create-a-check-suite
         """
 
         from ..models import CheckSuite, ReposOwnerRepoCheckSuitesPostBody
@@ -1020,14 +1020,14 @@ class ChecksClient:
 
         POST /repos/{owner}/{repo}/check-suites
 
-        Creates a check suite manually. By default, check suites are automatically created when you create a [check run](https://docs.github.com/enterprise-cloud@latest//rest/checks/runs). You only need to use this endpoint for manually creating check suites when you've disabled automatic creation using "[Update repository preferences for check suites](https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#update-repository-preferences-for-check-suites)".
+        Creates a check suite manually. By default, check suites are automatically created when you create a [check run](https://docs.github.com/enterprise-cloud@latest/rest/checks/runs). You only need to use this endpoint for manually creating check suites when you've disabled automatic creation using "[Update repository preferences for check suites](https://docs.github.com/enterprise-cloud@latest/rest/checks/suites#update-repository-preferences-for-check-suites)".
 
         > [!NOTE]
         > The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
 
         OAuth apps and personal access tokens (classic) cannot use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#create-a-check-suite
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/suites#create-a-check-suite
         """
 
         from ..models import CheckSuite, ReposOwnerRepoCheckSuitesPostBody
@@ -1095,10 +1095,10 @@ class ChecksClient:
 
         PATCH /repos/{owner}/{repo}/check-suites/preferences
 
-        Changes the default automatic flow when creating check suites. By default, a check suite is automatically created each time code is pushed to a repository. When you disable the automatic creation of check suites, you can manually [Create a check suite](https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#create-a-check-suite).
+        Changes the default automatic flow when creating check suites. By default, a check suite is automatically created each time code is pushed to a repository. When you disable the automatic creation of check suites, you can manually [Create a check suite](https://docs.github.com/enterprise-cloud@latest/rest/checks/suites#create-a-check-suite).
         You must have admin permissions in the repository to set preferences for check suites.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#update-repository-preferences-for-check-suites
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/suites#update-repository-preferences-for-check-suites
         """
 
         from ..models import (
@@ -1171,10 +1171,10 @@ class ChecksClient:
 
         PATCH /repos/{owner}/{repo}/check-suites/preferences
 
-        Changes the default automatic flow when creating check suites. By default, a check suite is automatically created each time code is pushed to a repository. When you disable the automatic creation of check suites, you can manually [Create a check suite](https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#create-a-check-suite).
+        Changes the default automatic flow when creating check suites. By default, a check suite is automatically created each time code is pushed to a repository. When you disable the automatic creation of check suites, you can manually [Create a check suite](https://docs.github.com/enterprise-cloud@latest/rest/checks/suites#create-a-check-suite).
         You must have admin permissions in the repository to set preferences for check suites.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#update-repository-preferences-for-check-suites
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/suites#update-repository-preferences-for-check-suites
         """
 
         from ..models import (
@@ -1226,7 +1226,7 @@ class ChecksClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#get-a-check-suite
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/suites#get-a-check-suite
         """
 
         from ..models import CheckSuite
@@ -1263,7 +1263,7 @@ class ChecksClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#get-a-check-suite
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/suites#get-a-check-suite
         """
 
         from ..models import CheckSuite
@@ -1308,7 +1308,7 @@ class ChecksClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#list-check-runs-in-a-check-suite
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/runs#list-check-runs-in-a-check-suite
         """
 
         from ..models import (
@@ -1364,7 +1364,7 @@ class ChecksClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#list-check-runs-in-a-check-suite
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/runs#list-check-runs-in-a-check-suite
         """
 
         from ..models import (
@@ -1405,9 +1405,9 @@ class ChecksClient:
 
         POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
 
-        Triggers GitHub to rerequest an existing check suite, without pushing new code to a repository. This endpoint will trigger the [`check_suite` webhook](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#check_suite) event with the action `rerequested`. When a check suite is `rerequested`, its `status` is reset to `queued` and the `conclusion` is cleared.
+        Triggers GitHub to rerequest an existing check suite, without pushing new code to a repository. This endpoint will trigger the [`check_suite` webhook](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#check_suite) event with the action `rerequested`. When a check suite is `rerequested`, its `status` is reset to `queued` and the `conclusion` is cleared.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#rerequest-a-check-suite
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/suites#rerequest-a-check-suite
         """
 
         from ..models import EmptyObject
@@ -1437,9 +1437,9 @@ class ChecksClient:
 
         POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
 
-        Triggers GitHub to rerequest an existing check suite, without pushing new code to a repository. This endpoint will trigger the [`check_suite` webhook](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#check_suite) event with the action `rerequested`. When a check suite is `rerequested`, its `status` is reset to `queued` and the `conclusion` is cleared.
+        Triggers GitHub to rerequest an existing check suite, without pushing new code to a repository. This endpoint will trigger the [`check_suite` webhook](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#check_suite) event with the action `rerequested`. When a check suite is `rerequested`, its `status` is reset to `queued` and the `conclusion` is cleared.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#rerequest-a-check-suite
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/suites#rerequest-a-check-suite
         """
 
         from ..models import EmptyObject
@@ -1483,11 +1483,11 @@ class ChecksClient:
         > [!NOTE]
         > The endpoints to manage checks only look for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
 
-        If there are more than 1000 check suites on a single git reference, this endpoint will limit check runs to the 1000 most recent check suites. To iterate over all possible check runs, use the [List check suites for a Git reference](https://docs.github.com/enterprise-cloud@latest//rest/reference/checks#list-check-suites-for-a-git-reference) endpoint and provide the `check_suite_id` parameter to the [List check runs in a check suite](https://docs.github.com/enterprise-cloud@latest//rest/reference/checks#list-check-runs-in-a-check-suite) endpoint.
+        If there are more than 1000 check suites on a single git reference, this endpoint will limit check runs to the 1000 most recent check suites. To iterate over all possible check runs, use the [List check suites for a Git reference](https://docs.github.com/enterprise-cloud@latest/rest/reference/checks#list-check-suites-for-a-git-reference) endpoint and provide the `check_suite_id` parameter to the [List check runs in a check suite](https://docs.github.com/enterprise-cloud@latest/rest/reference/checks#list-check-runs-in-a-check-suite) endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#list-check-runs-for-a-git-reference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/runs#list-check-runs-for-a-git-reference
         """
 
         from ..models import ReposOwnerRepoCommitsRefCheckRunsGetResponse200
@@ -1541,11 +1541,11 @@ class ChecksClient:
         > [!NOTE]
         > The endpoints to manage checks only look for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
 
-        If there are more than 1000 check suites on a single git reference, this endpoint will limit check runs to the 1000 most recent check suites. To iterate over all possible check runs, use the [List check suites for a Git reference](https://docs.github.com/enterprise-cloud@latest//rest/reference/checks#list-check-suites-for-a-git-reference) endpoint and provide the `check_suite_id` parameter to the [List check runs in a check suite](https://docs.github.com/enterprise-cloud@latest//rest/reference/checks#list-check-runs-in-a-check-suite) endpoint.
+        If there are more than 1000 check suites on a single git reference, this endpoint will limit check runs to the 1000 most recent check suites. To iterate over all possible check runs, use the [List check suites for a Git reference](https://docs.github.com/enterprise-cloud@latest/rest/reference/checks#list-check-suites-for-a-git-reference) endpoint and provide the `check_suite_id` parameter to the [List check runs in a check suite](https://docs.github.com/enterprise-cloud@latest/rest/reference/checks#list-check-runs-in-a-check-suite) endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#list-check-runs-for-a-git-reference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/runs#list-check-runs-for-a-git-reference
         """
 
         from ..models import ReposOwnerRepoCommitsRefCheckRunsGetResponse200
@@ -1599,7 +1599,7 @@ class ChecksClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#list-check-suites-for-a-git-reference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/suites#list-check-suites-for-a-git-reference
         """
 
         from ..models import ReposOwnerRepoCommitsRefCheckSuitesGetResponse200
@@ -1651,7 +1651,7 @@ class ChecksClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#list-check-suites-for-a-git-reference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/checks/suites#list-check-suites-for-a-git-reference
         """
 
         from ..models import ReposOwnerRepoCommitsRefCheckSuitesGetResponse200

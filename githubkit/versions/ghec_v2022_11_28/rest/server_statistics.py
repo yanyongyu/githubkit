@@ -64,7 +64,7 @@ class ServerStatisticsClient:
           - the `read:enterprise` scope if you connected your GitHub Enterprise Server to an enterprise account and enabled Server Statistics
           - the `read:org` scope if you connected your GitHub Enterprise Server to an organization account and enabled Server Statistics
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics
         """
 
         from ..models import ServerStatisticsItems
@@ -110,7 +110,7 @@ class ServerStatisticsClient:
           - the `read:enterprise` scope if you connected your GitHub Enterprise Server to an enterprise account and enabled Server Statistics
           - the `read:org` scope if you connected your GitHub Enterprise Server to an organization account and enabled Server Statistics
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics
         """
 
         from ..models import ServerStatisticsItems

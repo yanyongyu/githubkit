@@ -9,30 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class SocialAccountType(TypedDict):
-    """Social account
+class EmailType(TypedDict):
+    """Email
 
-    Social media account
+    Email
     """
 
-    provider: str
-    url: str
+    email: str
+    primary: bool
+    verified: bool
+    visibility: Union[str, None]
 
 
-class SocialAccountTypeForResponse(TypedDict):
-    """Social account
+class EmailTypeForResponse(TypedDict):
+    """Email
 
-    Social media account
+    Email
     """
 
-    provider: str
-    url: str
+    email: str
+    primary: bool
+    verified: bool
+    visibility: Union[str, None]
 
 
 __all__ = (
-    "SocialAccountType",
-    "SocialAccountTypeForResponse",
+    "EmailType",
+    "EmailTypeForResponse",
 )

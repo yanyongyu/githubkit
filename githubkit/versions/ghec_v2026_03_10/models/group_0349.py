@@ -14,20 +14,19 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CheckAutomatedSecurityFixes(GitHubModel):
-    """Check Dependabot security updates
+class WorkflowDispatchResponse(GitHubModel):
+    """Workflow Dispatch Response
 
-    Check Dependabot security updates
+    Response containing the workflow run ID and URLs.
     """
 
-    enabled: bool = Field(
-        description="Whether Dependabot security updates are enabled for the repository."
+    workflow_run_id: int = Field(
+        title="Workflow Run ID", description="The ID of the workflow run."
     )
-    paused: bool = Field(
-        description="Whether Dependabot security updates are paused for the repository."
-    )
+    run_url: str = Field(description="The URL to the workflow run.")
+    html_url: str = Field()
 
 
-model_rebuild(CheckAutomatedSecurityFixes)
+model_rebuild(WorkflowDispatchResponse)
 
-__all__ = ("CheckAutomatedSecurityFixes",)
+__all__ = ("WorkflowDispatchResponse",)

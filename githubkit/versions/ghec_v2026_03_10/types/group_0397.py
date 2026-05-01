@@ -9,78 +9,119 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0242 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
+class RepositoryCollaboratorPermissionType(TypedDict):
+    """Repository Collaborator Permission
 
-class CombinedCommitStatusType(TypedDict):
-    """Combined Commit Status
-
-    Combined Commit Status
+    Repository Collaborator Permission
     """
 
-    state: str
-    statuses: list[SimpleCommitStatusType]
-    sha: str
-    total_count: int
-    repository: MinimalRepositoryType
-    commit_url: str
-    url: str
+    permission: str
+    role_name: str
+    user: Union[None, CollaboratorType]
 
 
-class CombinedCommitStatusTypeForResponse(TypedDict):
-    """Combined Commit Status
+class RepositoryCollaboratorPermissionTypeForResponse(TypedDict):
+    """Repository Collaborator Permission
 
-    Combined Commit Status
+    Repository Collaborator Permission
     """
 
-    state: str
-    statuses: list[SimpleCommitStatusTypeForResponse]
-    sha: str
-    total_count: int
-    repository: MinimalRepositoryTypeForResponse
-    commit_url: str
-    url: str
+    permission: str
+    role_name: str
+    user: Union[None, CollaboratorTypeForResponse]
 
 
-class SimpleCommitStatusType(TypedDict):
-    """Simple Commit Status"""
+class CollaboratorType(TypedDict):
+    """Collaborator
 
-    description: Union[str, None]
+    Collaborator
+    """
+
+    login: str
     id: int
+    email: NotRequired[Union[str, None]]
+    name: NotRequired[Union[str, None]]
     node_id: str
-    state: str
-    context: str
-    target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    permissions: NotRequired[CollaboratorPropPermissionsType]
+    role_name: str
+    user_view_type: NotRequired[str]
 
 
-class SimpleCommitStatusTypeForResponse(TypedDict):
-    """Simple Commit Status"""
+class CollaboratorTypeForResponse(TypedDict):
+    """Collaborator
 
-    description: Union[str, None]
+    Collaborator
+    """
+
+    login: str
     id: int
+    email: NotRequired[Union[str, None]]
+    name: NotRequired[Union[str, None]]
     node_id: str
-    state: str
-    context: str
-    target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
-    created_at: str
-    updated_at: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    permissions: NotRequired[CollaboratorPropPermissionsTypeForResponse]
+    role_name: str
+    user_view_type: NotRequired[str]
+
+
+class CollaboratorPropPermissionsType(TypedDict):
+    """CollaboratorPropPermissions"""
+
+    pull: bool
+    triage: NotRequired[bool]
+    push: bool
+    maintain: NotRequired[bool]
+    admin: bool
+
+
+class CollaboratorPropPermissionsTypeForResponse(TypedDict):
+    """CollaboratorPropPermissions"""
+
+    pull: bool
+    triage: NotRequired[bool]
+    push: bool
+    maintain: NotRequired[bool]
+    admin: bool
 
 
 __all__ = (
-    "CombinedCommitStatusType",
-    "CombinedCommitStatusTypeForResponse",
-    "SimpleCommitStatusType",
-    "SimpleCommitStatusTypeForResponse",
+    "CollaboratorPropPermissionsType",
+    "CollaboratorPropPermissionsTypeForResponse",
+    "CollaboratorType",
+    "CollaboratorTypeForResponse",
+    "RepositoryCollaboratorPermissionType",
+    "RepositoryCollaboratorPermissionTypeForResponse",
 )

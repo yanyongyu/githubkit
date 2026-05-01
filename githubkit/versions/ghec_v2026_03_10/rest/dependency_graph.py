@@ -79,7 +79,7 @@ class DependencyGraphClient:
 
         Gets the diff of the dependency changes between two commits of a repository, based on the changes to the dependency manifests made in those commits.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits
         """
 
         from ..models import BasicError, DependencyGraphDiffItems
@@ -123,7 +123,7 @@ class DependencyGraphClient:
 
         Gets the diff of the dependency changes between two commits of a repository, based on the changes to the dependency manifests made in those commits.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits
         """
 
         from ..models import BasicError, DependencyGraphDiffItems
@@ -163,7 +163,7 @@ class DependencyGraphClient:
 
         Exports the software bill of materials (SBOM) for a repository in SPDX JSON format.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository
         """
 
         from ..models import BasicError, DependencyGraphSpdxSbom
@@ -198,7 +198,7 @@ class DependencyGraphClient:
 
         Exports the software bill of materials (SBOM) for a repository in SPDX JSON format.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository
         """
 
         from ..models import BasicError, DependencyGraphSpdxSbom
@@ -237,7 +237,7 @@ class DependencyGraphClient:
         The generated SBOM report may be retained for up to one week from the original request.
         The temporary download URL returned by this endpoint expires separately, and its expiry is set when the fetch request is made.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/sboms#fetch-a-software-bill-of-materials-sbom-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependency-graph/sboms#fetch-a-software-bill-of-materials-sbom-for-a-repository
         """
 
         from ..models import BasicError
@@ -275,7 +275,7 @@ class DependencyGraphClient:
         The generated SBOM report may be retained for up to one week from the original request.
         The temporary download URL returned by this endpoint expires separately, and its expiry is set when the fetch request is made.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/sboms#fetch-a-software-bill-of-materials-sbom-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependency-graph/sboms#fetch-a-software-bill-of-materials-sbom-for-a-repository
         """
 
         from ..models import BasicError
@@ -312,7 +312,7 @@ class DependencyGraphClient:
 
         Triggers a job to generate a software bill of materials (SBOM) for a repository in SPDX JSON format.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/sboms#request-generation-of-a-software-bill-of-materials-sbom-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependency-graph/sboms#request-generation-of-a-software-bill-of-materials-sbom-for-a-repository
         """
 
         from ..models import (
@@ -353,7 +353,7 @@ class DependencyGraphClient:
 
         Triggers a job to generate a software bill of materials (SBOM) for a repository in SPDX JSON format.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/sboms#request-generation-of-a-software-bill-of-materials-sbom-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependency-graph/sboms#request-generation-of-a-software-bill-of-materials-sbom-for-a-repository
         """
 
         from ..models import (
@@ -436,7 +436,7 @@ class DependencyGraphClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/dependency-submission#create-a-snapshot-of-dependencies-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependency-graph/dependency-submission#create-a-snapshot-of-dependencies-for-a-repository
         """
 
         from ..models import (
@@ -525,7 +525,7 @@ class DependencyGraphClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/dependency-submission#create-a-snapshot-of-dependencies-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependency-graph/dependency-submission#create-a-snapshot-of-dependencies-for-a-repository
         """
 
         from ..models import (

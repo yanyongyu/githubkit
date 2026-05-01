@@ -9,72 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ExternalGroupType(TypedDict):
-    """ExternalGroup
+class DismissalRequestResponseType(TypedDict):
+    """Dismissal request response
 
-    Information about an external group's usage and its members
+    A response made by a requester to dismiss the request.
     """
 
-    group_id: int
-    group_name: str
-    updated_at: NotRequired[str]
-    teams: list[ExternalGroupPropTeamsItemsType]
-    members: list[ExternalGroupPropMembersItemsType]
+    id: NotRequired[int]
+    reviewer: NotRequired[DismissalRequestResponsePropReviewerType]
+    message: NotRequired[Union[str, None]]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[_dt.datetime]
 
 
-class ExternalGroupTypeForResponse(TypedDict):
-    """ExternalGroup
+class DismissalRequestResponseTypeForResponse(TypedDict):
+    """Dismissal request response
 
-    Information about an external group's usage and its members
+    A response made by a requester to dismiss the request.
     """
 
-    group_id: int
-    group_name: str
-    updated_at: NotRequired[str]
-    teams: list[ExternalGroupPropTeamsItemsTypeForResponse]
-    members: list[ExternalGroupPropMembersItemsTypeForResponse]
+    id: NotRequired[int]
+    reviewer: NotRequired[DismissalRequestResponsePropReviewerTypeForResponse]
+    message: NotRequired[Union[str, None]]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[str]
 
 
-class ExternalGroupPropTeamsItemsType(TypedDict):
-    """ExternalGroupPropTeamsItems"""
+class DismissalRequestResponsePropReviewerType(TypedDict):
+    """DismissalRequestResponsePropReviewer
 
-    team_id: int
-    team_name: str
+    The user who reviewed the dismissal request.
+    """
 
-
-class ExternalGroupPropTeamsItemsTypeForResponse(TypedDict):
-    """ExternalGroupPropTeamsItems"""
-
-    team_id: int
-    team_name: str
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
 
 
-class ExternalGroupPropMembersItemsType(TypedDict):
-    """ExternalGroupPropMembersItems"""
+class DismissalRequestResponsePropReviewerTypeForResponse(TypedDict):
+    """DismissalRequestResponsePropReviewer
 
-    member_id: int
-    member_login: str
-    member_name: str
-    member_email: str
+    The user who reviewed the dismissal request.
+    """
 
-
-class ExternalGroupPropMembersItemsTypeForResponse(TypedDict):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int
-    member_login: str
-    member_name: str
-    member_email: str
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
 
 
 __all__ = (
-    "ExternalGroupPropMembersItemsType",
-    "ExternalGroupPropMembersItemsTypeForResponse",
-    "ExternalGroupPropTeamsItemsType",
-    "ExternalGroupPropTeamsItemsTypeForResponse",
-    "ExternalGroupType",
-    "ExternalGroupTypeForResponse",
+    "DismissalRequestResponsePropReviewerType",
+    "DismissalRequestResponsePropReviewerTypeForResponse",
+    "DismissalRequestResponseType",
+    "DismissalRequestResponseTypeForResponse",
 )

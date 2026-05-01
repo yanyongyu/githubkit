@@ -96,7 +96,7 @@ class ProjectsClient:
 
         List all projects owned by a specific organization accessible by the authenticated user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-projects-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/projects#list-projects-for-organization
         """
 
         from ..models import BasicError, ProjectsV2
@@ -142,7 +142,7 @@ class ProjectsClient:
 
         List all projects owned by a specific organization accessible by the authenticated user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-projects-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/projects#list-projects-for-organization
         """
 
         from ..models import BasicError, ProjectsV2
@@ -185,7 +185,7 @@ class ProjectsClient:
 
         Get a specific organization-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#get-project-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/projects#get-project-for-organization
         """
 
         from ..models import BasicError, ProjectsV2
@@ -220,7 +220,7 @@ class ProjectsClient:
 
         Get a specific organization-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#get-project-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/projects#get-project-for-organization
         """
 
         from ..models import BasicError, ProjectsV2
@@ -281,7 +281,7 @@ class ProjectsClient:
 
         Create draft issue item for the specified organization owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/drafts#create-draft-item-for-organization-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/drafts#create-draft-item-for-organization-owned-project
         """
 
         from ..models import (
@@ -358,7 +358,7 @@ class ProjectsClient:
 
         Create draft issue item for the specified organization owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/drafts#create-draft-item-for-organization-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/drafts#create-draft-item-for-organization-owned-project
         """
 
         from ..models import (
@@ -412,7 +412,7 @@ class ProjectsClient:
 
         List all fields for a specific organization-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/fields#list-project-fields-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/fields#list-project-fields-for-organization
         """
 
         from ..models import BasicError, ProjectsV2Field
@@ -457,7 +457,7 @@ class ProjectsClient:
 
         List all fields for a specific organization-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/fields#list-project-fields-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/fields#list-project-fields-for-organization
         """
 
         from ..models import BasicError, ProjectsV2Field
@@ -577,7 +577,7 @@ class ProjectsClient:
 
         Add a field to an organization-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/fields#add-a-field-to-an-organization-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/fields#add-a-field-to-an-organization-owned-project
         """
 
         from typing import Union
@@ -719,7 +719,7 @@ class ProjectsClient:
 
         Add a field to an organization-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/fields#add-a-field-to-an-organization-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/fields#add-a-field-to-an-organization-owned-project
         """
 
         from typing import Union
@@ -784,7 +784,7 @@ class ProjectsClient:
 
         Get a specific field for an organization-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/fields#get-project-field-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/fields#get-project-field-for-organization
         """
 
         from ..models import BasicError, ProjectsV2Field
@@ -820,7 +820,7 @@ class ProjectsClient:
 
         Get a specific field for an organization-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/fields#get-project-field-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/fields#get-project-field-for-organization
         """
 
         from ..models import BasicError, ProjectsV2Field
@@ -862,7 +862,7 @@ class ProjectsClient:
 
         List all items for a specific organization-owned project accessible by the authenticated user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#list-items-for-an-organization-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#list-items-for-an-organization-owned-project
         """
 
         from ..models import BasicError, ProjectsV2ItemWithContent
@@ -913,7 +913,7 @@ class ProjectsClient:
 
         List all items for a specific organization-owned project accessible by the authenticated user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#list-items-for-an-organization-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#list-items-for-an-organization-owned-project
         """
 
         from ..models import BasicError, ProjectsV2ItemWithContent
@@ -1010,7 +1010,7 @@ class ProjectsClient:
 
         Add an issue or pull request item to the specified organization owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#add-item-to-organization-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#add-item-to-organization-owned-project
         """
 
         from typing import Union
@@ -1121,7 +1121,7 @@ class ProjectsClient:
 
         Add an issue or pull request item to the specified organization owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#add-item-to-organization-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#add-item-to-organization-owned-project
         """
 
         from typing import Union
@@ -1181,7 +1181,7 @@ class ProjectsClient:
 
         Get a specific item from an organization-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#get-an-item-for-an-organization-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#get-an-item-for-an-organization-owned-project
         """
 
         from ..models import BasicError, ProjectsV2ItemWithContent
@@ -1223,7 +1223,7 @@ class ProjectsClient:
 
         Get a specific item from an organization-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#get-an-item-for-an-organization-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#get-an-item-for-an-organization-owned-project
         """
 
         from ..models import BasicError, ProjectsV2ItemWithContent
@@ -1264,7 +1264,7 @@ class ProjectsClient:
 
         Delete a specific item from an organization-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#delete-project-item-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#delete-project-item-for-organization
         """
 
         from ..models import BasicError
@@ -1299,7 +1299,7 @@ class ProjectsClient:
 
         Delete a specific item from an organization-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#delete-project-item-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#delete-project-item-for-organization
         """
 
         from ..models import BasicError
@@ -1367,7 +1367,7 @@ class ProjectsClient:
 
         Update a specific item in an organization-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#update-project-item-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#update-project-item-for-organization
         """
 
         from ..models import (
@@ -1455,7 +1455,7 @@ class ProjectsClient:
 
         Update a specific item in an organization-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#update-project-item-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#update-project-item-for-organization
         """
 
         from ..models import (
@@ -1537,7 +1537,7 @@ class ProjectsClient:
 
         Create a new view in an organization-owned project. Views allow you to customize how items in a project are displayed and filtered.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/views#create-a-view-for-an-organization-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/views#create-a-view-for-an-organization-owned-project
         """
 
         from ..models import (
@@ -1620,7 +1620,7 @@ class ProjectsClient:
 
         Create a new view in an organization-owned project. Views allow you to customize how items in a project are displayed and filtered.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/views#create-a-view-for-an-organization-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/views#create-a-view-for-an-organization-owned-project
         """
 
         from ..models import (
@@ -1682,7 +1682,7 @@ class ProjectsClient:
 
         List items in an organization project with the saved view's filter applied.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#list-items-for-an-organization-project-view
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#list-items-for-an-organization-project-view
         """
 
         from ..models import BasicError, ProjectsV2ItemWithContent
@@ -1733,7 +1733,7 @@ class ProjectsClient:
 
         List items in an organization project with the saved view's filter applied.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#list-items-for-an-organization-project-view
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#list-items-for-an-organization-project-view
         """
 
         from ..models import BasicError, ProjectsV2ItemWithContent
@@ -1803,7 +1803,7 @@ class ProjectsClient:
 
         Create draft issue item for the specified user owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/drafts#create-draft-item-for-user-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/drafts#create-draft-item-for-user-owned-project
         """
 
         from ..models import (
@@ -1880,7 +1880,7 @@ class ProjectsClient:
 
         Create draft issue item for the specified user owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/drafts#create-draft-item-for-user-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/drafts#create-draft-item-for-user-owned-project
         """
 
         from ..models import (
@@ -1959,7 +1959,7 @@ class ProjectsClient:
 
         Create a new view in a user-owned project. Views allow you to customize how items in a project are displayed and filtered.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/views#create-a-view-for-a-user-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/views#create-a-view-for-a-user-owned-project
         """
 
         from ..models import (
@@ -2042,7 +2042,7 @@ class ProjectsClient:
 
         Create a new view in a user-owned project. Views allow you to customize how items in a project are displayed and filtered.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/views#create-a-view-for-a-user-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/views#create-a-view-for-a-user-owned-project
         """
 
         from ..models import (
@@ -2100,7 +2100,7 @@ class ProjectsClient:
 
         List all projects owned by a specific user accessible by the authenticated user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-projects-for-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/projects#list-projects-for-user
         """
 
         from ..models import BasicError, ProjectsV2
@@ -2146,7 +2146,7 @@ class ProjectsClient:
 
         List all projects owned by a specific user accessible by the authenticated user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-projects-for-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/projects#list-projects-for-user
         """
 
         from ..models import BasicError, ProjectsV2
@@ -2189,7 +2189,7 @@ class ProjectsClient:
 
         Get a specific user-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#get-project-for-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/projects#get-project-for-user
         """
 
         from ..models import BasicError, ProjectsV2
@@ -2224,7 +2224,7 @@ class ProjectsClient:
 
         Get a specific user-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#get-project-for-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/projects#get-project-for-user
         """
 
         from ..models import BasicError, ProjectsV2
@@ -2262,7 +2262,7 @@ class ProjectsClient:
 
         List all fields for a specific user-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/fields#list-project-fields-for-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/fields#list-project-fields-for-user
         """
 
         from ..models import BasicError, ProjectsV2Field
@@ -2307,7 +2307,7 @@ class ProjectsClient:
 
         List all fields for a specific user-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/fields#list-project-fields-for-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/fields#list-project-fields-for-user
         """
 
         from ..models import BasicError, ProjectsV2Field
@@ -2413,7 +2413,7 @@ class ProjectsClient:
 
         Add a field to a specified user owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/fields#add-field-to-user-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/fields#add-field-to-user-owned-project
         """
 
         from typing import Union
@@ -2539,7 +2539,7 @@ class ProjectsClient:
 
         Add a field to a specified user owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/fields#add-field-to-user-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/fields#add-field-to-user-owned-project
         """
 
         from typing import Union
@@ -2602,7 +2602,7 @@ class ProjectsClient:
 
         Get a specific field for a user-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/fields#get-project-field-for-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/fields#get-project-field-for-user
         """
 
         from ..models import BasicError, ProjectsV2Field
@@ -2638,7 +2638,7 @@ class ProjectsClient:
 
         Get a specific field for a user-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/fields#get-project-field-for-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/fields#get-project-field-for-user
         """
 
         from ..models import BasicError, ProjectsV2Field
@@ -2680,7 +2680,7 @@ class ProjectsClient:
 
         List all items for a specific user-owned project accessible by the authenticated user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#list-items-for-a-user-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#list-items-for-a-user-owned-project
         """
 
         from ..models import BasicError, ProjectsV2ItemWithContent
@@ -2731,7 +2731,7 @@ class ProjectsClient:
 
         List all items for a specific user-owned project accessible by the authenticated user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#list-items-for-a-user-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#list-items-for-a-user-owned-project
         """
 
         from ..models import BasicError, ProjectsV2ItemWithContent
@@ -2828,7 +2828,7 @@ class ProjectsClient:
 
         Add an issue or pull request item to the specified user owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#add-item-to-user-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#add-item-to-user-owned-project
         """
 
         from typing import Union
@@ -2939,7 +2939,7 @@ class ProjectsClient:
 
         Add an issue or pull request item to the specified user owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#add-item-to-user-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#add-item-to-user-owned-project
         """
 
         from typing import Union
@@ -2999,7 +2999,7 @@ class ProjectsClient:
 
         Get a specific item from a user-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#get-an-item-for-a-user-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#get-an-item-for-a-user-owned-project
         """
 
         from ..models import BasicError, ProjectsV2ItemWithContent
@@ -3041,7 +3041,7 @@ class ProjectsClient:
 
         Get a specific item from a user-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#get-an-item-for-a-user-owned-project
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#get-an-item-for-a-user-owned-project
         """
 
         from ..models import BasicError, ProjectsV2ItemWithContent
@@ -3082,7 +3082,7 @@ class ProjectsClient:
 
         Delete a specific item from a user-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#delete-project-item-for-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#delete-project-item-for-user
         """
 
         from ..models import BasicError
@@ -3117,7 +3117,7 @@ class ProjectsClient:
 
         Delete a specific item from a user-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#delete-project-item-for-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#delete-project-item-for-user
         """
 
         from ..models import BasicError
@@ -3187,7 +3187,7 @@ class ProjectsClient:
 
         Update a specific item in a user-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#update-project-item-for-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#update-project-item-for-user
         """
 
         from ..models import (
@@ -3277,7 +3277,7 @@ class ProjectsClient:
 
         Update a specific item in a user-owned project.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#update-project-item-for-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#update-project-item-for-user
         """
 
         from ..models import (
@@ -3338,7 +3338,7 @@ class ProjectsClient:
 
         List items in a user project with the saved view's filter applied.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#list-items-for-a-user-project-view
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#list-items-for-a-user-project-view
         """
 
         from ..models import BasicError, ProjectsV2ItemWithContent
@@ -3389,7 +3389,7 @@ class ProjectsClient:
 
         List items in a user project with the saved view's filter applied.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#list-items-for-a-user-project-view
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/projects/items#list-items-for-a-user-project-view
         """
 
         from ..models import BasicError, ProjectsV2ItemWithContent

@@ -78,15 +78,15 @@ if TYPE_CHECKING:
         MovedColumnInProjectIssueEventTypeForResponse,
         RemovedFromProjectIssueEventTypeForResponse,
         RenamedIssueEventTypeForResponse,
-        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType,
-        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType,
-        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType,
-        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType,
         ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
         ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType,
         ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType,
         ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
         ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType,
+        ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType,
+        ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType,
+        ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType,
+        ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType,
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType,
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
@@ -168,16 +168,16 @@ class IssuesClient:
         necessarily assigned to you.
 
         > [!NOTE]
-        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#list-pull-requests)" endpoint.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-issues-assigned-to-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#list-issues-assigned-to-the-authenticated-user
         """
 
         from ..models import BasicError, Issue, ValidationError
@@ -243,16 +243,16 @@ class IssuesClient:
         necessarily assigned to you.
 
         > [!NOTE]
-        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#list-pull-requests)" endpoint.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-issues-assigned-to-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#list-issues-assigned-to-the-authenticated-user
         """
 
         from ..models import BasicError, Issue, ValidationError
@@ -314,16 +314,16 @@ class IssuesClient:
         List issues in an organization assigned to the authenticated user.
 
         > [!NOTE]
-        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#list-pull-requests)" endpoint.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user
         """
 
         from ..models import BasicError, Issue
@@ -381,16 +381,16 @@ class IssuesClient:
         List issues in an organization assigned to the authenticated user.
 
         > [!NOTE]
-        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#list-pull-requests)" endpoint.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user
         """
 
         from ..models import BasicError, Issue
@@ -437,9 +437,9 @@ class IssuesClient:
 
         GET /repos/{owner}/{repo}/assignees
 
-        Lists the [available assignees](https://docs.github.com/enterprise-cloud@latest//articles/assigning-issues-and-pull-requests-to-other-github-users/) for issues in a repository.
+        Lists the [available assignees](https://docs.github.com/enterprise-cloud@latest/articles/assigning-issues-and-pull-requests-to-other-github-users/) for issues in a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#list-assignees
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/assignees#list-assignees
         """
 
         from ..models import BasicError, SimpleUser
@@ -479,9 +479,9 @@ class IssuesClient:
 
         GET /repos/{owner}/{repo}/assignees
 
-        Lists the [available assignees](https://docs.github.com/enterprise-cloud@latest//articles/assigning-issues-and-pull-requests-to-other-github-users/) for issues in a repository.
+        Lists the [available assignees](https://docs.github.com/enterprise-cloud@latest/articles/assigning-issues-and-pull-requests-to-other-github-users/) for issues in a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#list-assignees
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/assignees#list-assignees
         """
 
         from ..models import BasicError, SimpleUser
@@ -526,7 +526,7 @@ class IssuesClient:
 
         Otherwise a `404` status code is returned.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#check-if-a-user-can-be-assigned
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/assignees#check-if-a-user-can-be-assigned
         """
 
         from ..models import BasicError
@@ -564,7 +564,7 @@ class IssuesClient:
 
         Otherwise a `404` status code is returned.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#check-if-a-user-can-be-assigned
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/assignees#check-if-a-user-can-be-assigned
         """
 
         from ..models import BasicError
@@ -610,16 +610,16 @@ class IssuesClient:
         List issues in a repository. Only open issues will be listed.
 
         > [!NOTE]
-        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#list-pull-requests)" endpoint.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-repository-issues
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#list-repository-issues
         """
 
         from ..models import BasicError, Issue, ValidationError
@@ -683,16 +683,16 @@ class IssuesClient:
         List issues in a repository. Only open issues will be listed.
 
         > [!NOTE]
-        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#list-pull-requests)" endpoint.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-repository-issues
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#list-repository-issues
         """
 
         from ..models import BasicError, Issue, ValidationError
@@ -774,19 +774,19 @@ class IssuesClient:
 
         POST /repos/{owner}/{repo}/issues
 
-        Any user with pull access to a repository can create an issue. If [issues are disabled in the repository](https://docs.github.com/enterprise-cloud@latest//articles/disabling-issues/), the API returns a `410 Gone` status.
+        Any user with pull access to a repository can create an issue. If [issues are disabled in the repository](https://docs.github.com/enterprise-cloud@latest/articles/disabling-issues/), the API returns a `410 Gone` status.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#create-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#create-an-issue
         """
 
         from ..models import (
@@ -872,19 +872,19 @@ class IssuesClient:
 
         POST /repos/{owner}/{repo}/issues
 
-        Any user with pull access to a repository can create an issue. If [issues are disabled in the repository](https://docs.github.com/enterprise-cloud@latest//articles/disabling-issues/), the API returns a `410 Gone` status.
+        Any user with pull access to a repository can create an issue. If [issues are disabled in the repository](https://docs.github.com/enterprise-cloud@latest/articles/disabling-issues/), the API returns a `410 Gone` status.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#create-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#create-an-issue
         """
 
         from ..models import (
@@ -946,14 +946,14 @@ class IssuesClient:
 
         By default, issue comments are ordered by ascending ID.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#list-issue-comments-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#list-issue-comments-for-a-repository
         """
 
         from ..models import BasicError, IssueComment, ValidationError
@@ -1004,14 +1004,14 @@ class IssuesClient:
 
         By default, issue comments are ordered by ascending ID.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#list-issue-comments-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#list-issue-comments-for-a-repository
         """
 
         from ..models import BasicError, IssueComment, ValidationError
@@ -1056,14 +1056,14 @@ class IssuesClient:
 
         You can use the REST API to get comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#get-an-issue-comment
         """
 
         from ..models import BasicError, IssueComment
@@ -1098,14 +1098,14 @@ class IssuesClient:
 
         You can use the REST API to get comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#get-an-issue-comment
         """
 
         from ..models import BasicError, IssueComment
@@ -1140,7 +1140,7 @@ class IssuesClient:
 
         You can use the REST API to delete comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#delete-an-issue-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#delete-an-issue-comment
         """
 
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
@@ -1169,7 +1169,7 @@ class IssuesClient:
 
         You can use the REST API to delete comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#delete-an-issue-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#delete-an-issue-comment
         """
 
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
@@ -1225,14 +1225,14 @@ class IssuesClient:
 
         You can use the REST API to update comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#update-an-issue-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#update-an-issue-comment
         """
 
         from ..models import (
@@ -1310,14 +1310,14 @@ class IssuesClient:
 
         You can use the REST API to update comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#update-an-issue-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#update-an-issue-comment
         """
 
         from ..models import (
@@ -1368,14 +1368,14 @@ class IssuesClient:
 
         You can use the REST API to pin comments on issues.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#pin-an-issue-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#pin-an-issue-comment
         """
 
         from ..models import BasicError, IssueComment, ValidationError
@@ -1414,14 +1414,14 @@ class IssuesClient:
 
         You can use the REST API to pin comments on issues.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#pin-an-issue-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#pin-an-issue-comment
         """
 
         from ..models import BasicError, IssueComment, ValidationError
@@ -1460,7 +1460,7 @@ class IssuesClient:
 
         You can use the REST API to unpin comments on issues.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#unpin-an-issue-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#unpin-an-issue-comment
         """
 
         from ..models import (
@@ -1501,7 +1501,7 @@ class IssuesClient:
 
         You can use the REST API to unpin comments on issues.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#unpin-an-issue-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#unpin-an-issue-comment
         """
 
         from ..models import (
@@ -1543,7 +1543,7 @@ class IssuesClient:
 
         Lists events for a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#list-issue-events-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/events#list-issue-events-for-a-repository
         """
 
         from ..models import IssueEvent, ValidationError
@@ -1585,7 +1585,7 @@ class IssuesClient:
 
         Lists events for a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#list-issue-events-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/events#list-issue-events-for-a-repository
         """
 
         from ..models import IssueEvent, ValidationError
@@ -1626,7 +1626,7 @@ class IssuesClient:
 
         Gets a single event by the event id.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#get-an-issue-event
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/events#get-an-issue-event
         """
 
         from ..models import BasicError, IssueEvent
@@ -1663,7 +1663,7 @@ class IssuesClient:
 
         Gets a single event by the event id.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#get-an-issue-event
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/events#get-an-issue-event
         """
 
         from ..models import BasicError, IssueEvent
@@ -1698,24 +1698,24 @@ class IssuesClient:
 
         GET /repos/{owner}/{repo}/issues/{issue_number}
 
-        The API returns a [`301 Moved Permanently` status](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api#follow-redirects) if the issue was
-        [transferred](https://docs.github.com/enterprise-cloud@latest//articles/transferring-an-issue-to-another-repository/) to another repository. If
+        The API returns a [`301 Moved Permanently` status](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api#follow-redirects) if the issue was
+        [transferred](https://docs.github.com/enterprise-cloud@latest/articles/transferring-an-issue-to-another-repository/) to another repository. If
         the issue was transferred to or deleted from a repository where the authenticated user lacks read access, the API
         returns a `404 Not Found` status. If the issue was deleted from a repository where the authenticated user has read
         access, the API returns a `410 Gone` status. To receive webhook events for transferred and deleted issues, subscribe
-        to the [`issues`](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#issues) webhook.
+        to the [`issues`](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#issues) webhook.
 
         > [!NOTE]
-        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#list-pull-requests)" endpoint.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue
         """
 
         from ..models import BasicError, Issue
@@ -1749,24 +1749,24 @@ class IssuesClient:
 
         GET /repos/{owner}/{repo}/issues/{issue_number}
 
-        The API returns a [`301 Moved Permanently` status](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api#follow-redirects) if the issue was
-        [transferred](https://docs.github.com/enterprise-cloud@latest//articles/transferring-an-issue-to-another-repository/) to another repository. If
+        The API returns a [`301 Moved Permanently` status](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api#follow-redirects) if the issue was
+        [transferred](https://docs.github.com/enterprise-cloud@latest/articles/transferring-an-issue-to-another-repository/) to another repository. If
         the issue was transferred to or deleted from a repository where the authenticated user lacks read access, the API
         returns a `404 Not Found` status. If the issue was deleted from a repository where the authenticated user has read
         access, the API returns a `410 Gone` status. To receive webhook events for transferred and deleted issues, subscribe
-        to the [`issues`](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#issues) webhook.
+        to the [`issues`](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#issues) webhook.
 
         > [!NOTE]
-        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#list-pull-requests)" endpoint.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue
         """
 
         from ..models import BasicError, Issue
@@ -1849,14 +1849,14 @@ class IssuesClient:
 
         Issue owners and users with push access or Triage role can edit an issue.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#update-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#update-an-issue
         """
 
         from ..models import (
@@ -1958,14 +1958,14 @@ class IssuesClient:
 
         Issue owners and users with push access or Triage role can edit an issue.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#update-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#update-an-issue
         """
 
         from ..models import (
@@ -2047,7 +2047,7 @@ class IssuesClient:
 
         Adds up to 10 assignees to an issue. Users already assigned to an issue are not replaced.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#add-assignees-to-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/assignees#add-assignees-to-an-issue
         """
 
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesPostBody
@@ -2118,7 +2118,7 @@ class IssuesClient:
 
         Adds up to 10 assignees to an issue. Users already assigned to an issue are not replaced.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#add-assignees-to-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/assignees#add-assignees-to-an-issue
         """
 
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesPostBody
@@ -2189,7 +2189,7 @@ class IssuesClient:
 
         Removes one or more assignees from an issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#remove-assignees-from-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/assignees#remove-assignees-from-an-issue
         """
 
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody
@@ -2260,7 +2260,7 @@ class IssuesClient:
 
         Removes one or more assignees from an issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#remove-assignees-from-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/assignees#remove-assignees-from-an-issue
         """
 
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody
@@ -2309,7 +2309,7 @@ class IssuesClient:
 
         Otherwise a `404` status code is returned.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue
         """
 
         from ..models import BasicError
@@ -2348,7 +2348,7 @@ class IssuesClient:
 
         Otherwise a `404` status code is returned.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue
         """
 
         from ..models import BasicError
@@ -2387,14 +2387,14 @@ class IssuesClient:
 
         Issue comments are ordered by ascending ID.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#list-issue-comments
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#list-issue-comments
         """
 
         from ..models import BasicError, IssueComment
@@ -2442,14 +2442,14 @@ class IssuesClient:
 
         Issue comments are ordered by ascending ID.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#list-issue-comments
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#list-issue-comments
         """
 
         from ..models import BasicError, IssueComment
@@ -2519,19 +2519,19 @@ class IssuesClient:
 
         You can use the REST API to create comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications).
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications).
         Creating content too quickly using this endpoint may result in secondary rate limiting.
-        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#create-an-issue-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#create-an-issue-comment
         """
 
         from ..models import (
@@ -2613,19 +2613,19 @@ class IssuesClient:
 
         You can use the REST API to create comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications).
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications).
         Creating content too quickly using this endpoint may result in secondary rate limiting.
-        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#create-an-issue-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#create-an-issue-comment
         """
 
         from ..models import (
@@ -2682,14 +2682,14 @@ class IssuesClient:
 
         You can use the REST API to list the dependencies an issue is blocked by.
 
-        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
 
         - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-dependencies#list-dependencies-an-issue-is-blocked-by
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issue-dependencies#list-dependencies-an-issue-is-blocked-by
         """
 
         from ..models import BasicError, Issue
@@ -2733,14 +2733,14 @@ class IssuesClient:
 
         You can use the REST API to list the dependencies an issue is blocked by.
 
-        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
 
         - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-dependencies#list-dependencies-an-issue-is-blocked-by
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issue-dependencies#list-dependencies-an-issue-is-blocked-by
         """
 
         from ..models import BasicError, Issue
@@ -2812,17 +2812,17 @@ class IssuesClient:
         You can use the REST API to add a 'blocked by' relationship to an issue.
 
         Creating content too quickly using this endpoint may result in secondary rate limiting.
-        For more information, see [Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)
-        and [Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api).
+        For more information, see [Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)
+        and [Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api).
 
-        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
 
         - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-dependencies#add-a-dependency-an-issue-is-blocked-by
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issue-dependencies#add-a-dependency-an-issue-is-blocked-by
         """
 
         from ..models import (
@@ -2907,17 +2907,17 @@ class IssuesClient:
         You can use the REST API to add a 'blocked by' relationship to an issue.
 
         Creating content too quickly using this endpoint may result in secondary rate limiting.
-        For more information, see [Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)
-        and [Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api).
+        For more information, see [Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)
+        and [Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api).
 
-        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
 
         - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-dependencies#add-a-dependency-an-issue-is-blocked-by
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issue-dependencies#add-a-dependency-an-issue-is-blocked-by
         """
 
         from ..models import (
@@ -2974,16 +2974,16 @@ class IssuesClient:
         You can use the REST API to remove a dependency that an issue is blocked by.
 
         Removing content too quickly using this endpoint may result in secondary rate limiting.
-        For more information, see [Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)
-        and [Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api).
+        For more information, see [Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)
+        and [Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api).
 
-        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
         - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass a specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-dependencies#remove-dependency-an-issue-is-blocked-by
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issue-dependencies#remove-dependency-an-issue-is-blocked-by
         """
 
         from ..models import BasicError, Issue
@@ -3024,16 +3024,16 @@ class IssuesClient:
         You can use the REST API to remove a dependency that an issue is blocked by.
 
         Removing content too quickly using this endpoint may result in secondary rate limiting.
-        For more information, see [Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)
-        and [Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api).
+        For more information, see [Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)
+        and [Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api).
 
-        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
         - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass a specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-dependencies#remove-dependency-an-issue-is-blocked-by
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issue-dependencies#remove-dependency-an-issue-is-blocked-by
         """
 
         from ..models import BasicError, Issue
@@ -3074,14 +3074,14 @@ class IssuesClient:
 
         You can use the REST API to list the dependencies an issue is blocking.
 
-        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
 
         - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-dependencies#list-dependencies-an-issue-is-blocking
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issue-dependencies#list-dependencies-an-issue-is-blocking
         """
 
         from ..models import BasicError, Issue
@@ -3125,14 +3125,14 @@ class IssuesClient:
 
         You can use the REST API to list the dependencies an issue is blocking.
 
-        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
 
         - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-dependencies#list-dependencies-an-issue-is-blocking
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issue-dependencies#list-dependencies-an-issue-is-blocking
         """
 
         from ..models import BasicError, Issue
@@ -3215,7 +3215,7 @@ class IssuesClient:
 
         Lists all events for an issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#list-issue-events
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/events#list-issue-events
         """
 
         from typing import Union
@@ -3334,7 +3334,7 @@ class IssuesClient:
 
         Lists all events for an issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#list-issue-events
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/events#list-issue-events
         """
 
         from typing import Union
@@ -3414,7 +3414,7 @@ class IssuesClient:
 
         Lists all issue field values for an issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-field-values#list-issue-field-values-for-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issue-field-values#list-issue-field-values-for-an-issue
         """
 
         from ..models import BasicError, IssueFieldValue
@@ -3458,7 +3458,7 @@ class IssuesClient:
 
         Lists all issue field values for an issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-field-values#list-issue-field-values-for-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issue-field-values#list-issue-field-values-for-an-issue
         """
 
         from ..models import BasicError, IssueFieldValue
@@ -3485,6 +3485,514 @@ class IssuesClient:
             },
         )
 
+    @overload
+    def set_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    @overload
+    def set_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        issue_field_values: Missing[
+            list[
+                ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    def set_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
+        """issues/set-issue-field-values
+
+        PUT /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values
+
+        Set custom field values for an issue, replacing any existing values. You can set values for organization-level issue fields that have been defined for the repository's organization.
+
+        This endpoint supports the following field data types:
+        - **`text`**: String values for text fields
+        - **`single_select`**: Option names for single-select fields (must match an existing option name)
+        - **`number`**: Numeric values for number fields
+        - **`date`**: ISO 8601 date strings for date fields
+
+        This operation will replace all existing field values with the provided ones. If you want to add field values without replacing existing ones, use the `POST` endpoint instead.
+
+        Only users with push access to the repository can set issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issue-field-values#set-issue-field-values-for-an-issue
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            IssueFieldValue,
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueFieldValue],
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_set_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    @overload
+    async def async_set_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        issue_field_values: Missing[
+            list[
+                ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    async def async_set_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
+        """issues/set-issue-field-values
+
+        PUT /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values
+
+        Set custom field values for an issue, replacing any existing values. You can set values for organization-level issue fields that have been defined for the repository's organization.
+
+        This endpoint supports the following field data types:
+        - **`text`**: String values for text fields
+        - **`single_select`**: Option names for single-select fields (must match an existing option name)
+        - **`number`**: Numeric values for number fields
+        - **`date`**: ISO 8601 date strings for date fields
+
+        This operation will replace all existing field values with the provided ones. If you want to add field values without replacing existing ones, use the `POST` endpoint instead.
+
+        Only users with push access to the repository can set issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issue-field-values#set-issue-field-values-for-an-issue
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            IssueFieldValue,
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueFieldValue],
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def add_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    @overload
+    def add_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        issue_field_values: Missing[
+            list[
+                ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    def add_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
+        """issues/add-issue-field-values
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values
+
+        Add custom field values to an issue. You can set values for organization-level issue fields that have been defined for the repository's organization.
+        Adding an empty array will clear all existing field values for the issue.
+
+        This endpoint supports the following field data types:
+        - **`text`**: String values for text fields
+        - **`single_select`**: Option names for single-select fields (must match an existing option name)
+        - **`number`**: Numeric values for number fields
+        - **`date`**: ISO 8601 date strings for date fields
+
+        Only users with push access to the repository can add issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issue-field-values#add-issue-field-values-to-an-issue
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            IssueFieldValue,
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueFieldValue],
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_add_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    @overload
+    async def async_add_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        issue_field_values: Missing[
+            list[
+                ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    async def async_add_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
+        """issues/add-issue-field-values
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values
+
+        Add custom field values to an issue. You can set values for organization-level issue fields that have been defined for the repository's organization.
+        Adding an empty array will clear all existing field values for the issue.
+
+        This endpoint supports the following field data types:
+        - **`text`**: String values for text fields
+        - **`single_select`**: Option names for single-select fields (must match an existing option name)
+        - **`number`**: Numeric values for number fields
+        - **`date`**: ISO 8601 date strings for date fields
+
+        Only users with push access to the repository can add issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issue-field-values#add-issue-field-values-to-an-issue
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            IssueFieldValue,
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueFieldValue],
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    def delete_issue_field_value(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """issues/delete-issue-field-value
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values/{issue_field_id}
+
+        Remove a specific custom field value from an issue.
+
+        Only users with push access to the repository can delete issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        If the specified field does not have a value set on the issue, this operation will return a `404` error.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issue-field-values#delete-an-issue-field-value-from-an-issue
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values/{issue_field_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_delete_issue_field_value(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """issues/delete-issue-field-value
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values/{issue_field_id}
+
+        Remove a specific custom field value from an issue.
+
+        Only users with push access to the repository can delete issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        If the specified field does not have a value set on the issue, this operation will return a `404` error.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issue-field-values#delete-an-issue-field-value-from-an-issue
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values/{issue_field_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
     def list_labels_on_issue(
         self,
         owner: str,
@@ -3502,7 +4010,7 @@ class IssuesClient:
 
         Lists all labels for an issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#list-labels-for-an-issue
         """
 
         from ..models import BasicError, Label
@@ -3546,7 +4054,7 @@ class IssuesClient:
 
         Lists all labels for an issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#list-labels-for-an-issue
         """
 
         from ..models import BasicError, Label
@@ -3646,7 +4154,7 @@ class IssuesClient:
 
         Removes any previous labels and sets the new labels for an issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#set-labels-for-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#set-labels-for-an-issue
         """
 
         from typing import Union
@@ -3774,7 +4282,7 @@ class IssuesClient:
 
         Removes any previous labels and sets the new labels for an issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#set-labels-for-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#set-labels-for-an-issue
         """
 
         from typing import Union
@@ -3883,7 +4391,7 @@ class IssuesClient:
 
         Adds labels to an issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#add-labels-to-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#add-labels-to-an-issue
         """
 
         from typing import Union
@@ -3984,7 +4492,7 @@ class IssuesClient:
 
         Adds labels to an issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#add-labels-to-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#add-labels-to-an-issue
         """
 
         from typing import Union
@@ -4046,7 +4554,7 @@ class IssuesClient:
 
         Removes all labels from an issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#remove-all-labels-from-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#remove-all-labels-from-an-issue
         """
 
         from ..models import BasicError
@@ -4081,7 +4589,7 @@ class IssuesClient:
 
         Removes all labels from an issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#remove-all-labels-from-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#remove-all-labels-from-an-issue
         """
 
         from ..models import BasicError
@@ -4117,7 +4625,7 @@ class IssuesClient:
 
         Removes the specified label from the issue, and returns the remaining labels on the issue. This endpoint returns a `404 Not Found` status if the label does not exist.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#remove-a-label-from-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#remove-a-label-from-an-issue
         """
 
         from ..models import BasicError, Label
@@ -4154,7 +4662,7 @@ class IssuesClient:
 
         Removes the specified label from the issue, and returns the remaining labels on the issue. This endpoint returns a `404 Not Found` status if the label does not exist.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#remove-a-label-from-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#remove-a-label-from-an-issue
         """
 
         from ..models import BasicError, Label
@@ -4223,9 +4731,9 @@ class IssuesClient:
 
         Users with push access can lock an issue or pull request's conversation.
 
-        Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+        Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#http-method)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#lock-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#lock-an-issue
         """
 
         from typing import Union
@@ -4313,9 +4821,9 @@ class IssuesClient:
 
         Users with push access can lock an issue or pull request's conversation.
 
-        Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+        Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#http-method)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#lock-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#lock-an-issue
         """
 
         from typing import Union
@@ -4370,7 +4878,7 @@ class IssuesClient:
 
         Users with push access can unlock an issue's conversation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#unlock-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#unlock-an-issue
         """
 
         from ..models import BasicError
@@ -4405,7 +4913,7 @@ class IssuesClient:
 
         Users with push access can unlock an issue's conversation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#unlock-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#unlock-an-issue
         """
 
         from ..models import BasicError
@@ -4440,14 +4948,14 @@ class IssuesClient:
 
         You can use the REST API to get the parent issue of a sub-issue.
 
-        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#get-parent-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/sub-issues#get-parent-issue
         """
 
         from ..models import BasicError, Issue
@@ -4483,14 +4991,14 @@ class IssuesClient:
 
         You can use the REST API to get the parent issue of a sub-issue.
 
-        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#get-parent-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/sub-issues#get-parent-issue
         """
 
         from ..models import BasicError, Issue
@@ -4553,15 +5061,15 @@ class IssuesClient:
 
         You can use the REST API to remove a sub-issue from an issue.
         Removing content too quickly using this endpoint may result in secondary rate limiting.
-        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass a specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#remove-sub-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/sub-issues#remove-sub-issue
         """
 
         from ..models import (
@@ -4640,15 +5148,15 @@ class IssuesClient:
 
         You can use the REST API to remove a sub-issue from an issue.
         Removing content too quickly using this endpoint may result in secondary rate limiting.
-        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass a specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#remove-sub-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/sub-issues#remove-sub-issue
         """
 
         from ..models import (
@@ -4702,14 +5210,14 @@ class IssuesClient:
 
         You can use the REST API to list the sub-issues on an issue.
 
-        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
 
         - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#list-sub-issues
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/sub-issues#list-sub-issues
         """
 
         from ..models import BasicError, Issue
@@ -4753,14 +5261,14 @@ class IssuesClient:
 
         You can use the REST API to list the sub-issues on an issue.
 
-        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
 
         - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#list-sub-issues
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/sub-issues#list-sub-issues
         """
 
         from ..models import BasicError, Issue
@@ -4831,17 +5339,17 @@ class IssuesClient:
         You can use the REST API to add sub-issues to issues.
 
         Creating content too quickly using this endpoint may result in secondary rate limiting.
-        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#add-sub-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/sub-issues#add-sub-issue
         """
 
         from ..models import (
@@ -4925,17 +5433,17 @@ class IssuesClient:
         You can use the REST API to add sub-issues to issues.
 
         Creating content too quickly using this endpoint may result in secondary rate limiting.
-        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#add-sub-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/sub-issues#add-sub-issue
         """
 
         from ..models import (
@@ -5021,7 +5529,7 @@ class IssuesClient:
 
         You can use the REST API to reprioritize a sub-issue to a different position in the parent list.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#reprioritize-sub-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/sub-issues#reprioritize-sub-issue
         """
 
         from ..models import (
@@ -5108,7 +5616,7 @@ class IssuesClient:
 
         You can use the REST API to reprioritize a sub-issue to a different position in the parent list.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#reprioritize-sub-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/sub-issues#reprioritize-sub-issue
         """
 
         from ..models import (
@@ -5219,7 +5727,7 @@ class IssuesClient:
 
         List all timeline events for an issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/timeline#list-timeline-events-for-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/timeline#list-timeline-events-for-an-issue
         """
 
         from typing import Union
@@ -5367,7 +5875,7 @@ class IssuesClient:
 
         List all timeline events for an issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/timeline#list-timeline-events-for-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/timeline#list-timeline-events-for-an-issue
         """
 
         from typing import Union
@@ -5461,7 +5969,7 @@ class IssuesClient:
 
         Lists all labels for a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#list-labels-for-a-repository
         """
 
         from ..models import BasicError, Label
@@ -5503,7 +6011,7 @@ class IssuesClient:
 
         Lists all labels for a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#list-labels-for-a-repository
         """
 
         from ..models import BasicError, Label
@@ -5570,7 +6078,7 @@ class IssuesClient:
 
         Creates a label for the specified repository with the given name and color. The name and color parameters are required. The color must be a valid [hexadecimal color code](http://www.color-hex.com/).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#create-a-label
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#create-a-label
         """
 
         from ..models import (
@@ -5647,7 +6155,7 @@ class IssuesClient:
 
         Creates a label for the specified repository with the given name and color. The name and color parameters are required. The color must be a valid [hexadecimal color code](http://www.color-hex.com/).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#create-a-label
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#create-a-label
         """
 
         from ..models import (
@@ -5698,7 +6206,7 @@ class IssuesClient:
 
         Gets a label using the given name.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#get-a-label
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#get-a-label
         """
 
         from ..models import BasicError, Label
@@ -5733,7 +6241,7 @@ class IssuesClient:
 
         Gets a label using the given name.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#get-a-label
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#get-a-label
         """
 
         from ..models import BasicError, Label
@@ -5768,7 +6276,7 @@ class IssuesClient:
 
         Deletes a label using the given label name.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#delete-a-label
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#delete-a-label
         """
 
         url = f"/repos/{owner}/{repo}/labels/{name}"
@@ -5797,7 +6305,7 @@ class IssuesClient:
 
         Deletes a label using the given label name.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#delete-a-label
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#delete-a-label
         """
 
         url = f"/repos/{owner}/{repo}/labels/{name}"
@@ -5855,7 +6363,7 @@ class IssuesClient:
 
         Updates a label using the given label name.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#update-a-label
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#update-a-label
         """
 
         from ..models import Label, ReposOwnerRepoLabelsNamePatchBody
@@ -5926,7 +6434,7 @@ class IssuesClient:
 
         Updates a label using the given label name.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#update-a-label
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#update-a-label
         """
 
         from ..models import Label, ReposOwnerRepoLabelsNamePatchBody
@@ -5972,7 +6480,7 @@ class IssuesClient:
 
         Lists milestones for a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#list-milestones
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/milestones#list-milestones
         """
 
         from ..models import BasicError, Milestone
@@ -6020,7 +6528,7 @@ class IssuesClient:
 
         Lists milestones for a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#list-milestones
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/milestones#list-milestones
         """
 
         from ..models import BasicError, Milestone
@@ -6091,7 +6599,7 @@ class IssuesClient:
 
         Creates a milestone.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#create-a-milestone
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/milestones#create-a-milestone
         """
 
         from ..models import (
@@ -6169,7 +6677,7 @@ class IssuesClient:
 
         Creates a milestone.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#create-a-milestone
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/milestones#create-a-milestone
         """
 
         from ..models import (
@@ -6220,7 +6728,7 @@ class IssuesClient:
 
         Gets a milestone using the given milestone number.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#get-a-milestone
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/milestones#get-a-milestone
         """
 
         from ..models import BasicError, Milestone
@@ -6255,7 +6763,7 @@ class IssuesClient:
 
         Gets a milestone using the given milestone number.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#get-a-milestone
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/milestones#get-a-milestone
         """
 
         from ..models import BasicError, Milestone
@@ -6290,7 +6798,7 @@ class IssuesClient:
 
         Deletes a milestone using the given milestone number.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#delete-a-milestone
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/milestones#delete-a-milestone
         """
 
         from ..models import BasicError
@@ -6324,7 +6832,7 @@ class IssuesClient:
 
         Deletes a milestone using the given milestone number.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#delete-a-milestone
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/milestones#delete-a-milestone
         """
 
         from ..models import BasicError
@@ -6386,7 +6894,7 @@ class IssuesClient:
 
         PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#update-a-milestone
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/milestones#update-a-milestone
         """
 
         from ..models import Milestone, ReposOwnerRepoMilestonesMilestoneNumberPatchBody
@@ -6458,7 +6966,7 @@ class IssuesClient:
 
         PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#update-a-milestone
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/milestones#update-a-milestone
         """
 
         from ..models import Milestone, ReposOwnerRepoMilestonesMilestoneNumberPatchBody
@@ -6504,7 +7012,7 @@ class IssuesClient:
 
         Lists labels for issues in a milestone.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-issues-in-a-milestone
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#list-labels-for-issues-in-a-milestone
         """
 
         from ..models import Label
@@ -6544,7 +7052,7 @@ class IssuesClient:
 
         Lists labels for issues in a milestone.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-issues-in-a-milestone
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#list-labels-for-issues-in-a-milestone
         """
 
         from ..models import Label
@@ -6565,500 +7073,6 @@ class IssuesClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Label],
-        )
-
-    @overload
-    def set_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
-
-    @overload
-    def set_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        issue_field_values: Missing[
-            list[
-                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
-            ]
-        ] = UNSET,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
-
-    def set_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
-        """issues/set-issue-field-values
-
-        PUT /repositories/{repository_id}/issues/{issue_number}/issue-field-values
-
-        Set custom field values for an issue, replacing any existing values. You can set values for organization-level issue fields that have been defined for the repository's organization.
-
-        This endpoint supports the following field data types:
-        - **`text`**: String values for text fields
-        - **`single_select`**: Option names for single-select fields (must match an existing option name)
-        - **`number`**: Numeric values for number fields
-        - **`date`**: ISO 8601 date strings for date fields
-
-        This operation will replace all existing field values with the provided ones. If you want to add field values without replacing existing ones, use the `POST` endpoint instead.
-
-        Only users with push access to the repository can set issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
-
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-field-values#set-issue-field-values-for-an-issue
-        """
-
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            IssueFieldValue,
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody,
-            ValidationError,
-        )
-
-        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[IssueFieldValue],
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "422": ValidationError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    @overload
-    async def async_set_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
-
-    @overload
-    async def async_set_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        issue_field_values: Missing[
-            list[
-                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
-            ]
-        ] = UNSET,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
-
-    async def async_set_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
-        """issues/set-issue-field-values
-
-        PUT /repositories/{repository_id}/issues/{issue_number}/issue-field-values
-
-        Set custom field values for an issue, replacing any existing values. You can set values for organization-level issue fields that have been defined for the repository's organization.
-
-        This endpoint supports the following field data types:
-        - **`text`**: String values for text fields
-        - **`single_select`**: Option names for single-select fields (must match an existing option name)
-        - **`number`**: Numeric values for number fields
-        - **`date`**: ISO 8601 date strings for date fields
-
-        This operation will replace all existing field values with the provided ones. If you want to add field values without replacing existing ones, use the `POST` endpoint instead.
-
-        Only users with push access to the repository can set issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
-
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-field-values#set-issue-field-values-for-an-issue
-        """
-
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            IssueFieldValue,
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody,
-            ValidationError,
-        )
-
-        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[IssueFieldValue],
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "422": ValidationError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    @overload
-    def add_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
-
-    @overload
-    def add_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        issue_field_values: Missing[
-            list[
-                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
-            ]
-        ] = UNSET,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
-
-    def add_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
-        """issues/add-issue-field-values
-
-        POST /repositories/{repository_id}/issues/{issue_number}/issue-field-values
-
-        Add custom field values to an issue. You can set values for organization-level issue fields that have been defined for the repository's organization.
-        Adding an empty array will clear all existing field values for the issue.
-
-        This endpoint supports the following field data types:
-        - **`text`**: String values for text fields
-        - **`single_select`**: Option names for single-select fields (must match an existing option name)
-        - **`number`**: Numeric values for number fields
-        - **`date`**: ISO 8601 date strings for date fields
-
-        Only users with push access to the repository can add issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
-
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-field-values#add-issue-field-values-to-an-issue
-        """
-
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            IssueFieldValue,
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody,
-            ValidationError,
-        )
-
-        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[IssueFieldValue],
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "422": ValidationError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    @overload
-    async def async_add_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
-
-    @overload
-    async def async_add_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        issue_field_values: Missing[
-            list[
-                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
-            ]
-        ] = UNSET,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
-
-    async def async_add_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
-        """issues/add-issue-field-values
-
-        POST /repositories/{repository_id}/issues/{issue_number}/issue-field-values
-
-        Add custom field values to an issue. You can set values for organization-level issue fields that have been defined for the repository's organization.
-        Adding an empty array will clear all existing field values for the issue.
-
-        This endpoint supports the following field data types:
-        - **`text`**: String values for text fields
-        - **`single_select`**: Option names for single-select fields (must match an existing option name)
-        - **`number`**: Numeric values for number fields
-        - **`date`**: ISO 8601 date strings for date fields
-
-        Only users with push access to the repository can add issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
-
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-field-values#add-issue-field-values-to-an-issue
-        """
-
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            IssueFieldValue,
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody,
-            ValidationError,
-        )
-
-        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[IssueFieldValue],
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "422": ValidationError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    def delete_issue_field_value(
-        self,
-        repository_id: int,
-        issue_number: int,
-        issue_field_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """issues/delete-issue-field-value
-
-        DELETE /repositories/{repository_id}/issues/{issue_number}/issue-field-values/{issue_field_id}
-
-        Remove a specific custom field value from an issue.
-
-        Only users with push access to the repository can delete issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
-
-        If the specified field does not have a value set on the issue, this operation will return a `404` error.
-
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-field-values#delete-an-issue-field-value-from-an-issue
-        """
-
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            ValidationError,
-        )
-
-        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values/{issue_field_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-                "422": ValidationError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    async def async_delete_issue_field_value(
-        self,
-        repository_id: int,
-        issue_number: int,
-        issue_field_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """issues/delete-issue-field-value
-
-        DELETE /repositories/{repository_id}/issues/{issue_number}/issue-field-values/{issue_field_id}
-
-        Remove a specific custom field value from an issue.
-
-        Only users with push access to the repository can delete issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
-
-        If the specified field does not have a value set on the issue, this operation will return a `404` error.
-
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issue-field-values#delete-an-issue-field-value-from-an-issue
-        """
-
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            ValidationError,
-        )
-
-        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values/{issue_field_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-                "422": ValidationError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
         )
 
     def list_for_authenticated_user(
@@ -7084,16 +7098,16 @@ class IssuesClient:
         List issues across owned and member repositories assigned to the authenticated user.
 
         > [!NOTE]
-        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#list-pull-requests)" endpoint.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user
         """
 
         from ..models import BasicError, Issue
@@ -7148,16 +7162,16 @@ class IssuesClient:
         List issues across owned and member repositories assigned to the authenticated user.
 
         > [!NOTE]
-        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#list-pull-requests)" endpoint.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user
         """
 
         from ..models import BasicError, Issue

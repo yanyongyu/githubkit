@@ -9,94 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0057 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0089 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import TypedDict
 
 
-class SimpleCheckSuiteType(TypedDict):
-    """SimpleCheckSuite
+class SimpleInstallationType(TypedDict):
+    """Simple Installation
 
-    A suite of checks performed on the code of a given code change
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
+    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
     """
 
-    after: NotRequired[Union[str, None]]
-    app: NotRequired[Union[IntegrationType, None]]
-    before: NotRequired[Union[str, None]]
-    conclusion: NotRequired[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-        ]
-    ]
-    created_at: NotRequired[_dt.datetime]
-    head_branch: NotRequired[Union[str, None]]
-    head_sha: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    pull_requests: NotRequired[list[PullRequestMinimalType]]
-    repository: NotRequired[MinimalRepositoryType]
-    status: NotRequired[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ]
-    updated_at: NotRequired[_dt.datetime]
-    url: NotRequired[str]
+    id: int
+    node_id: str
 
 
-class SimpleCheckSuiteTypeForResponse(TypedDict):
-    """SimpleCheckSuite
+class SimpleInstallationTypeForResponse(TypedDict):
+    """Simple Installation
 
-    A suite of checks performed on the code of a given code change
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
+    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
     """
 
-    after: NotRequired[Union[str, None]]
-    app: NotRequired[Union[IntegrationTypeForResponse, None]]
-    before: NotRequired[Union[str, None]]
-    conclusion: NotRequired[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-        ]
-    ]
-    created_at: NotRequired[str]
-    head_branch: NotRequired[Union[str, None]]
-    head_sha: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    pull_requests: NotRequired[list[PullRequestMinimalTypeForResponse]]
-    repository: NotRequired[MinimalRepositoryTypeForResponse]
-    status: NotRequired[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
+    id: int
+    node_id: str
 
 
 __all__ = (
-    "SimpleCheckSuiteType",
-    "SimpleCheckSuiteTypeForResponse",
+    "SimpleInstallationType",
+    "SimpleInstallationTypeForResponse",
 )

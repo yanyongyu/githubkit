@@ -50,7 +50,7 @@ class CodesOfConductClient:
 
         Returns array of all GitHub's codes of conduct.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct
         """
 
         from ..models import CodeOfConduct
@@ -79,7 +79,7 @@ class CodesOfConductClient:
 
         Returns array of all GitHub's codes of conduct.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct
         """
 
         from ..models import CodeOfConduct
@@ -109,7 +109,7 @@ class CodesOfConductClient:
 
         Returns information about the specified GitHub code of conduct.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codes-of-conduct/codes-of-conduct#get-a-code-of-conduct
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codes-of-conduct/codes-of-conduct#get-a-code-of-conduct
         """
 
         from ..models import BasicError, CodeOfConduct
@@ -142,7 +142,7 @@ class CodesOfConductClient:
 
         Returns information about the specified GitHub code of conduct.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codes-of-conduct/codes-of-conduct#get-a-code-of-conduct
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codes-of-conduct/codes-of-conduct#get-a-code-of-conduct
         """
 
         from ..models import BasicError, CodeOfConduct

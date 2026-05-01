@@ -65,7 +65,7 @@ class EnterpriseTeamsClient:
 
         List all teams in the enterprise for the authenticated user
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-teams#list-enterprise-teams
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-teams#list-enterprise-teams
         """
 
         from ..models import BasicError, EnterpriseTeam
@@ -106,7 +106,7 @@ class EnterpriseTeamsClient:
 
         List all teams in the enterprise for the authenticated user
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-teams#list-enterprise-teams
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-teams#list-enterprise-teams
         """
 
         from ..models import BasicError, EnterpriseTeam
@@ -174,7 +174,7 @@ class EnterpriseTeamsClient:
 
         To create an enterprise team, the authenticated user must be an owner of the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-teams#create-an-enterprise-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-teams#create-an-enterprise-team
         """
 
         from ..models import EnterprisesEnterpriseTeamsPostBody, EnterpriseTeam
@@ -243,7 +243,7 @@ class EnterpriseTeamsClient:
 
         To create an enterprise team, the authenticated user must be an owner of the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-teams#create-an-enterprise-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-teams#create-an-enterprise-team
         """
 
         from ..models import EnterprisesEnterpriseTeamsPostBody, EnterpriseTeam
@@ -284,7 +284,7 @@ class EnterpriseTeamsClient:
 
         Gets a team using the team's slug. To create the slug, GitHub replaces special characters in the name string, changes all words to lowercase, and replaces spaces with a `-` separator and adds the "ent:" prefix. For example, "My TEam Näme" would become `ent:my-team-name`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-teams#get-an-enterprise-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-teams#get-an-enterprise-team
         """
 
         from ..models import BasicError, EnterpriseTeam
@@ -318,7 +318,7 @@ class EnterpriseTeamsClient:
 
         Gets a team using the team's slug. To create the slug, GitHub replaces special characters in the name string, changes all words to lowercase, and replaces spaces with a `-` separator and adds the "ent:" prefix. For example, "My TEam Näme" would become `ent:my-team-name`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-teams#get-an-enterprise-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-teams#get-an-enterprise-team
         """
 
         from ..models import BasicError, EnterpriseTeam
@@ -354,7 +354,7 @@ class EnterpriseTeamsClient:
 
         If you are an enterprise owner, deleting an enterprise team will delete all of its IdP mappings as well.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-teams#delete-an-enterprise-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-teams#delete-an-enterprise-team
         """
 
         from ..models import BasicError
@@ -389,7 +389,7 @@ class EnterpriseTeamsClient:
 
         If you are an enterprise owner, deleting an enterprise team will delete all of its IdP mappings as well.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-teams#delete-an-enterprise-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-teams#delete-an-enterprise-team
         """
 
         from ..models import BasicError
@@ -453,7 +453,7 @@ class EnterpriseTeamsClient:
 
         To edit a team, the authenticated user must be an enterprise owner.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-teams#update-an-enterprise-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-teams#update-an-enterprise-team
         """
 
         from ..models import (
@@ -534,7 +534,7 @@ class EnterpriseTeamsClient:
 
         To edit a team, the authenticated user must be an enterprise owner.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-teams#update-an-enterprise-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-teams#update-an-enterprise-team
         """
 
         from ..models import (

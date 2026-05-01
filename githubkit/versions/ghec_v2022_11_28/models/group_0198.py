@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,48 +19,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingUsageReport(GitHubModel):
-    """BillingUsageReport"""
+class UsageReportExportRequest(GitHubModel):
+    """UsageReportExportRequest"""
 
-    usage_items: Missing[list[BillingUsageReportPropUsageItemsItems]] = Field(
-        default=UNSET, alias="usageItems"
+    report_type: Literal["detailed", "summarized", "premium_request"] = Field(
+        description="The type of usage report to generate"
     )
-
-
-class BillingUsageReportPropUsageItemsItems(GitHubModel):
-    """BillingUsageReportPropUsageItemsItems"""
-
-    date: str = Field(description="Date of the usage line item.")
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    quantity: int = Field(description="Quantity of the usage line item.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
+    start_date: _dt.date = Field(
+        description="The start date for the report in YYYY-MM-DD format"
     )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
+    end_date: Missing[_dt.date] = Field(
+        default=UNSET,
+        description="The end date for the report in YYYY-MM-DD format. Defaults to today (UTC) if not provided.",
     )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
-    )
-    organization_name: str = Field(
-        alias="organizationName", description="Name of the organization."
-    )
-    repository_name: Missing[str] = Field(
-        default=UNSET, alias="repositoryName", description="Name of the repository."
+    send_email: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to send an email notification to the requester when the report is ready. Defaults to false.",
     )
 
 
-model_rebuild(BillingUsageReport)
-model_rebuild(BillingUsageReportPropUsageItemsItems)
+model_rebuild(UsageReportExportRequest)
 
-__all__ = (
-    "BillingUsageReport",
-    "BillingUsageReportPropUsageItemsItems",
-)
+__all__ = ("UsageReportExportRequest",)

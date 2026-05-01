@@ -99,7 +99,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `user` scope in order for the response to include private profile information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/users#get-the-authenticated-user
         """
 
         from typing import Union
@@ -137,7 +137,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `user` scope in order for the response to include private profile information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/users#get-the-authenticated-user
         """
 
         from typing import Union
@@ -200,7 +200,7 @@ class UsersClient:
 
         **Note:** If your email is set to private and you send an `email` parameter as part of this request to update your profile, your privacy settings are still enforced: the email address will not be displayed on your public profile or via the API.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#update-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/users#update-the-authenticated-user
         """
 
         from ..models import BasicError, PrivateUser, UserPatchBody, ValidationError
@@ -273,7 +273,7 @@ class UsersClient:
 
         **Note:** If your email is set to private and you send an `email` parameter as part of this request to update your profile, your privacy settings are still enforced: the email address will not be displayed on your public profile or via the API.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#update-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/users#update-the-authenticated-user
         """
 
         from ..models import BasicError, PrivateUser, UserPatchBody, ValidationError
@@ -320,7 +320,7 @@ class UsersClient:
 
         List the users you've blocked on your personal account.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#list-users-blocked-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/blocking#list-users-blocked-by-the-authenticated-user
         """
 
         from ..models import BasicError, SimpleUser
@@ -362,7 +362,7 @@ class UsersClient:
 
         List the users you've blocked on your personal account.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#list-users-blocked-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/blocking#list-users-blocked-by-the-authenticated-user
         """
 
         from ..models import BasicError, SimpleUser
@@ -403,7 +403,7 @@ class UsersClient:
 
         Returns a 204 if the given user is blocked by the authenticated user. Returns a 404 if the given user is not blocked by the authenticated user, or if the given user account has been identified as spam by GitHub.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#check-if-a-user-is-blocked-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/blocking#check-if-a-user-is-blocked-by-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -437,7 +437,7 @@ class UsersClient:
 
         Returns a 204 if the given user is blocked by the authenticated user. Returns a 404 if the given user is not blocked by the authenticated user, or if the given user account has been identified as spam by GitHub.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#check-if-a-user-is-blocked-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/blocking#check-if-a-user-is-blocked-by-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -471,7 +471,7 @@ class UsersClient:
 
         Blocks the given user and returns a 204. If the authenticated user cannot block the given user a 422 is returned.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#block-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/blocking#block-a-user
         """
 
         from ..models import BasicError, ValidationError
@@ -506,7 +506,7 @@ class UsersClient:
 
         Blocks the given user and returns a 204. If the authenticated user cannot block the given user a 422 is returned.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#block-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/blocking#block-a-user
         """
 
         from ..models import BasicError, ValidationError
@@ -541,7 +541,7 @@ class UsersClient:
 
         Unblocks the given user and returns a 204.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#unblock-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/blocking#unblock-a-user
         """
 
         from ..models import BasicError
@@ -575,7 +575,7 @@ class UsersClient:
 
         Unblocks the given user and returns a 204.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#unblock-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/blocking#unblock-a-user
         """
 
         from ..models import BasicError
@@ -629,7 +629,7 @@ class UsersClient:
 
         Sets the visibility for your primary email addresses.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#set-primary-email-visibility-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/emails#set-primary-email-visibility-for-the-authenticated-user
         """
 
         from ..models import (
@@ -700,7 +700,7 @@ class UsersClient:
 
         Sets the visibility for your primary email addresses.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#set-primary-email-visibility-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/emails#set-primary-email-visibility-for-the-authenticated-user
         """
 
         from ..models import (
@@ -755,7 +755,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `user:email` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#list-email-addresses-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/emails#list-email-addresses-for-the-authenticated-user
         """
 
         from ..models import BasicError, Email
@@ -800,7 +800,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `user:email` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#list-email-addresses-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/emails#list-email-addresses-for-the-authenticated-user
         """
 
         from ..models import BasicError, Email
@@ -861,7 +861,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#add-an-email-address-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/emails#add-an-email-address-for-the-authenticated-user
         """
 
         from typing import Union
@@ -943,7 +943,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#add-an-email-address-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/emails#add-an-email-address-for-the-authenticated-user
         """
 
         from typing import Union
@@ -1025,7 +1025,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#delete-an-email-address-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/emails#delete-an-email-address-for-the-authenticated-user
         """
 
         from typing import Union
@@ -1101,7 +1101,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#delete-an-email-address-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/emails#delete-an-email-address-for-the-authenticated-user
         """
 
         from typing import Union
@@ -1158,7 +1158,7 @@ class UsersClient:
 
         Lists the people following the authenticated user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-followers-of-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/followers#list-followers-of-the-authenticated-user
         """
 
         from ..models import BasicError, SimpleUser
@@ -1199,7 +1199,7 @@ class UsersClient:
 
         Lists the people following the authenticated user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-followers-of-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/followers#list-followers-of-the-authenticated-user
         """
 
         from ..models import BasicError, SimpleUser
@@ -1240,7 +1240,7 @@ class UsersClient:
 
         Lists the people who the authenticated user follows.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-the-people-the-authenticated-user-follows
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/followers#list-the-people-the-authenticated-user-follows
         """
 
         from ..models import BasicError, SimpleUser
@@ -1281,7 +1281,7 @@ class UsersClient:
 
         Lists the people who the authenticated user follows.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-the-people-the-authenticated-user-follows
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/followers#list-the-people-the-authenticated-user-follows
         """
 
         from ..models import BasicError, SimpleUser
@@ -1319,7 +1319,7 @@ class UsersClient:
 
         GET /user/following/{username}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#check-if-a-person-is-followed-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/followers#check-if-a-person-is-followed-by-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -1351,7 +1351,7 @@ class UsersClient:
 
         GET /user/following/{username}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#check-if-a-person-is-followed-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/followers#check-if-a-person-is-followed-by-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -1383,11 +1383,11 @@ class UsersClient:
 
         PUT /user/following/{username}
 
-        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#http-method)."
 
         OAuth app tokens and personal access tokens (classic) need the `user:follow` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#follow-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/followers#follow-a-user
         """
 
         from ..models import BasicError, ValidationError
@@ -1420,11 +1420,11 @@ class UsersClient:
 
         PUT /user/following/{username}
 
-        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#http-method)."
 
         OAuth app tokens and personal access tokens (classic) need the `user:follow` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#follow-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/followers#follow-a-user
         """
 
         from ..models import BasicError, ValidationError
@@ -1459,7 +1459,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `user:follow` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#unfollow-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/followers#unfollow-a-user
         """
 
         from ..models import BasicError
@@ -1493,7 +1493,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `user:follow` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#unfollow-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/followers#unfollow-a-user
         """
 
         from ..models import BasicError
@@ -1530,7 +1530,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:gpg_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#list-gpg-keys-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/gpg-keys#list-gpg-keys-for-the-authenticated-user
         """
 
         from ..models import BasicError, GpgKey
@@ -1574,7 +1574,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:gpg_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#list-gpg-keys-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/gpg-keys#list-gpg-keys-for-the-authenticated-user
         """
 
         from ..models import BasicError, GpgKey
@@ -1638,7 +1638,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:gpg_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#create-a-gpg-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/gpg-keys#create-a-gpg-key-for-the-authenticated-user
         """
 
         from ..models import BasicError, GpgKey, UserGpgKeysPostBody, ValidationError
@@ -1707,7 +1707,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:gpg_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#create-a-gpg-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/gpg-keys#create-a-gpg-key-for-the-authenticated-user
         """
 
         from ..models import BasicError, GpgKey, UserGpgKeysPostBody, ValidationError
@@ -1755,7 +1755,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:gpg_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#get-a-gpg-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/gpg-keys#get-a-gpg-key-for-the-authenticated-user
         """
 
         from ..models import BasicError, GpgKey
@@ -1792,7 +1792,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:gpg_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#get-a-gpg-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/gpg-keys#get-a-gpg-key-for-the-authenticated-user
         """
 
         from ..models import BasicError, GpgKey
@@ -1829,7 +1829,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:gpg_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#delete-a-gpg-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/gpg-keys#delete-a-gpg-key-for-the-authenticated-user
         """
 
         from ..models import BasicError, ValidationError
@@ -1866,7 +1866,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:gpg_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#delete-a-gpg-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/gpg-keys#delete-a-gpg-key-for-the-authenticated-user
         """
 
         from ..models import BasicError, ValidationError
@@ -1904,7 +1904,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:public_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#list-public-ssh-keys-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/keys#list-public-ssh-keys-for-the-authenticated-user
         """
 
         from ..models import BasicError, Key
@@ -1948,7 +1948,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:public_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#list-public-ssh-keys-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/keys#list-public-ssh-keys-for-the-authenticated-user
         """
 
         from ..models import BasicError, Key
@@ -2012,7 +2012,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:public_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user
         """
 
         from ..models import BasicError, Key, UserKeysPostBody, ValidationError
@@ -2081,7 +2081,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:public_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user
         """
 
         from ..models import BasicError, Key, UserKeysPostBody, ValidationError
@@ -2129,7 +2129,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:public_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#get-a-public-ssh-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/keys#get-a-public-ssh-key-for-the-authenticated-user
         """
 
         from ..models import BasicError, Key
@@ -2166,7 +2166,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:public_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#get-a-public-ssh-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/keys#get-a-public-ssh-key-for-the-authenticated-user
         """
 
         from ..models import BasicError, Key
@@ -2203,7 +2203,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:public_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#delete-a-public-ssh-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/keys#delete-a-public-ssh-key-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -2239,7 +2239,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:public_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#delete-a-public-ssh-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/keys#delete-a-public-ssh-key-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -2273,12 +2273,12 @@ class UsersClient:
         GET /user/public_emails
 
         Lists your publicly visible email address, which you can set with the
-        [Set primary email visibility for the authenticated user](https://docs.github.com/enterprise-cloud@latest//rest/users/emails#set-primary-email-visibility-for-the-authenticated-user)
+        [Set primary email visibility for the authenticated user](https://docs.github.com/enterprise-cloud@latest/rest/users/emails#set-primary-email-visibility-for-the-authenticated-user)
         endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `user:email` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#list-public-email-addresses-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/emails#list-public-email-addresses-for-the-authenticated-user
         """
 
         from ..models import BasicError, Email
@@ -2319,12 +2319,12 @@ class UsersClient:
         GET /user/public_emails
 
         Lists your publicly visible email address, which you can set with the
-        [Set primary email visibility for the authenticated user](https://docs.github.com/enterprise-cloud@latest//rest/users/emails#set-primary-email-visibility-for-the-authenticated-user)
+        [Set primary email visibility for the authenticated user](https://docs.github.com/enterprise-cloud@latest/rest/users/emails#set-primary-email-visibility-for-the-authenticated-user)
         endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `user:email` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#list-public-email-addresses-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/emails#list-public-email-addresses-for-the-authenticated-user
         """
 
         from ..models import BasicError, Email
@@ -2366,7 +2366,7 @@ class UsersClient:
 
         Lists all of your social accounts.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#list-social-accounts-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/social-accounts#list-social-accounts-for-the-authenticated-user
         """
 
         from ..models import BasicError, SocialAccount
@@ -2408,7 +2408,7 @@ class UsersClient:
 
         Lists all of your social accounts.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#list-social-accounts-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/social-accounts#list-social-accounts-for-the-authenticated-user
         """
 
         from ..models import BasicError, SocialAccount
@@ -2471,7 +2471,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#add-social-accounts-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/social-accounts#add-social-accounts-for-the-authenticated-user
         """
 
         from ..models import (
@@ -2544,7 +2544,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#add-social-accounts-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/social-accounts#add-social-accounts-for-the-authenticated-user
         """
 
         from ..models import (
@@ -2617,7 +2617,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#delete-social-accounts-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/social-accounts#delete-social-accounts-for-the-authenticated-user
         """
 
         from ..models import BasicError, UserSocialAccountsDeleteBody, ValidationError
@@ -2684,7 +2684,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#delete-social-accounts-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/social-accounts#delete-social-accounts-for-the-authenticated-user
         """
 
         from ..models import BasicError, UserSocialAccountsDeleteBody, ValidationError
@@ -2732,7 +2732,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:ssh_signing_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#list-ssh-signing-keys-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-the-authenticated-user
         """
 
         from ..models import BasicError, SshSigningKey
@@ -2776,7 +2776,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:ssh_signing_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#list-ssh-signing-keys-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-the-authenticated-user
         """
 
         from ..models import BasicError, SshSigningKey
@@ -2840,7 +2840,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:ssh_signing_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#create-a-ssh-signing-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/ssh-signing-keys#create-a-ssh-signing-key-for-the-authenticated-user
         """
 
         from ..models import (
@@ -2914,7 +2914,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:ssh_signing_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#create-a-ssh-signing-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/ssh-signing-keys#create-a-ssh-signing-key-for-the-authenticated-user
         """
 
         from ..models import (
@@ -2967,7 +2967,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:ssh_signing_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#get-an-ssh-signing-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/ssh-signing-keys#get-an-ssh-signing-key-for-the-authenticated-user
         """
 
         from ..models import BasicError, SshSigningKey
@@ -3004,7 +3004,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:ssh_signing_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#get-an-ssh-signing-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/ssh-signing-keys#get-an-ssh-signing-key-for-the-authenticated-user
         """
 
         from ..models import BasicError, SshSigningKey
@@ -3041,7 +3041,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:ssh_signing_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#delete-an-ssh-signing-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/ssh-signing-keys#delete-an-ssh-signing-key-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -3077,7 +3077,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:ssh_signing_key` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#delete-an-ssh-signing-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/ssh-signing-keys#delete-an-ssh-signing-key-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -3114,13 +3114,13 @@ class UsersClient:
 
         Provides publicly available information about someone with a GitHub account. This method takes their durable user `ID` instead of their `login`, which can change over time.
 
-        If you are requesting information about an [Enterprise Managed User](https://docs.github.com/enterprise-cloud@latest//enterprise-cloud@latest/admin/managing-iam/understanding-iam-for-enterprises/about-enterprise-managed-users), or a GitHub App bot that is installed in an organization that uses Enterprise Managed Users, your requests must be authenticated as a user or GitHub App that has access to the organization to view that account's information. If you are not authorized, the request will return a `404 Not Found` status.
+        If you are requesting information about an [Enterprise Managed User](https://docs.github.com/enterprise-cloud@latest/enterprise-cloud@latest/admin/managing-iam/understanding-iam-for-enterprises/about-enterprise-managed-users), or a GitHub App bot that is installed in an organization that uses Enterprise Managed Users, your requests must be authenticated as a user or GitHub App that has access to the organization to view that account's information. If you are not authorized, the request will return a `404 Not Found` status.
 
-        The `email` key in the following response is the publicly visible email address from your GitHub Enterprise Cloud [profile page](https://github.com/settings/profile). When setting up your profile, you can select a primary email address to be public which provides an email entry for this endpoint. If you do not set a public email address for `email`, then it will have a value of `null`. You only see publicly visible email addresses when authenticated with GitHub Enterprise Cloud. For more information, see [Authentication](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#authentication).
+        The `email` key in the following response is the publicly visible email address from your GitHub Enterprise Cloud [profile page](https://github.com/settings/profile). When setting up your profile, you can select a primary email address to be public which provides an email entry for this endpoint. If you do not set a public email address for `email`, then it will have a value of `null`. You only see publicly visible email addresses when authenticated with GitHub Enterprise Cloud. For more information, see [Authentication](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#authentication).
 
-        The Emails API enables you to list all of your email addresses, and toggle a primary email to be visible publicly. For more information, see [Emails API](https://docs.github.com/enterprise-cloud@latest//rest/users/emails).
+        The Emails API enables you to list all of your email addresses, and toggle a primary email to be visible publicly. For more information, see [Emails API](https://docs.github.com/enterprise-cloud@latest/rest/users/emails).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-a-user-using-their-id
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/users#get-a-user-using-their-id
         """
 
         from typing import Union
@@ -3158,13 +3158,13 @@ class UsersClient:
 
         Provides publicly available information about someone with a GitHub account. This method takes their durable user `ID` instead of their `login`, which can change over time.
 
-        If you are requesting information about an [Enterprise Managed User](https://docs.github.com/enterprise-cloud@latest//enterprise-cloud@latest/admin/managing-iam/understanding-iam-for-enterprises/about-enterprise-managed-users), or a GitHub App bot that is installed in an organization that uses Enterprise Managed Users, your requests must be authenticated as a user or GitHub App that has access to the organization to view that account's information. If you are not authorized, the request will return a `404 Not Found` status.
+        If you are requesting information about an [Enterprise Managed User](https://docs.github.com/enterprise-cloud@latest/enterprise-cloud@latest/admin/managing-iam/understanding-iam-for-enterprises/about-enterprise-managed-users), or a GitHub App bot that is installed in an organization that uses Enterprise Managed Users, your requests must be authenticated as a user or GitHub App that has access to the organization to view that account's information. If you are not authorized, the request will return a `404 Not Found` status.
 
-        The `email` key in the following response is the publicly visible email address from your GitHub Enterprise Cloud [profile page](https://github.com/settings/profile). When setting up your profile, you can select a primary email address to be public which provides an email entry for this endpoint. If you do not set a public email address for `email`, then it will have a value of `null`. You only see publicly visible email addresses when authenticated with GitHub Enterprise Cloud. For more information, see [Authentication](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#authentication).
+        The `email` key in the following response is the publicly visible email address from your GitHub Enterprise Cloud [profile page](https://github.com/settings/profile). When setting up your profile, you can select a primary email address to be public which provides an email entry for this endpoint. If you do not set a public email address for `email`, then it will have a value of `null`. You only see publicly visible email addresses when authenticated with GitHub Enterprise Cloud. For more information, see [Authentication](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#authentication).
 
-        The Emails API enables you to list all of your email addresses, and toggle a primary email to be visible publicly. For more information, see [Emails API](https://docs.github.com/enterprise-cloud@latest//rest/users/emails).
+        The Emails API enables you to list all of your email addresses, and toggle a primary email to be visible publicly. For more information, see [Emails API](https://docs.github.com/enterprise-cloud@latest/rest/users/emails).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-a-user-using-their-id
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/users#get-a-user-using-their-id
         """
 
         from typing import Union
@@ -3200,9 +3200,9 @@ class UsersClient:
 
         Lists all users, in the order that they signed up on GitHub Enterprise Cloud. This list includes personal user accounts and organization accounts.
 
-        Note: Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/enterprise-cloud@latest//rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of users.
+        Note: Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/enterprise-cloud@latest/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of users.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#list-users
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/users#list-users
         """
 
         from ..models import SimpleUser
@@ -3239,9 +3239,9 @@ class UsersClient:
 
         Lists all users, in the order that they signed up on GitHub Enterprise Cloud. This list includes personal user accounts and organization accounts.
 
-        Note: Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/enterprise-cloud@latest//rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of users.
+        Note: Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/enterprise-cloud@latest/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of users.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#list-users
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/users#list-users
         """
 
         from ..models import SimpleUser
@@ -3280,13 +3280,13 @@ class UsersClient:
 
         Provides publicly available information about someone with a GitHub account.
 
-        If you are requesting information about an [Enterprise Managed User](https://docs.github.com/enterprise-cloud@latest//enterprise-cloud@latest/admin/managing-iam/understanding-iam-for-enterprises/about-enterprise-managed-users), or a GitHub App bot that is installed in an organization that uses Enterprise Managed Users, your requests must be authenticated as a user or GitHub App that has access to the organization to view that account's information. If you are not authorized, the request will return a `404 Not Found` status.
+        If you are requesting information about an [Enterprise Managed User](https://docs.github.com/enterprise-cloud@latest/enterprise-cloud@latest/admin/managing-iam/understanding-iam-for-enterprises/about-enterprise-managed-users), or a GitHub App bot that is installed in an organization that uses Enterprise Managed Users, your requests must be authenticated as a user or GitHub App that has access to the organization to view that account's information. If you are not authorized, the request will return a `404 Not Found` status.
 
-        The `email` key in the following response is the publicly visible email address from your GitHub Enterprise Cloud [profile page](https://github.com/settings/profile). When setting up your profile, you can select a primary email address to be public which provides an email entry for this endpoint. If you do not set a public email address for `email`, then it will have a value of `null`. You only see publicly visible email addresses when authenticated with GitHub Enterprise Cloud. For more information, see [Authentication](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#authentication).
+        The `email` key in the following response is the publicly visible email address from your GitHub Enterprise Cloud [profile page](https://github.com/settings/profile). When setting up your profile, you can select a primary email address to be public which provides an email entry for this endpoint. If you do not set a public email address for `email`, then it will have a value of `null`. You only see publicly visible email addresses when authenticated with GitHub Enterprise Cloud. For more information, see [Authentication](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#authentication).
 
-        The Emails API enables you to list all of your email addresses, and toggle a primary email to be visible publicly. For more information, see [Emails API](https://docs.github.com/enterprise-cloud@latest//rest/users/emails).
+        The Emails API enables you to list all of your email addresses, and toggle a primary email to be visible publicly. For more information, see [Emails API](https://docs.github.com/enterprise-cloud@latest/rest/users/emails).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/users#get-a-user
         """
 
         from typing import Union
@@ -3324,13 +3324,13 @@ class UsersClient:
 
         Provides publicly available information about someone with a GitHub account.
 
-        If you are requesting information about an [Enterprise Managed User](https://docs.github.com/enterprise-cloud@latest//enterprise-cloud@latest/admin/managing-iam/understanding-iam-for-enterprises/about-enterprise-managed-users), or a GitHub App bot that is installed in an organization that uses Enterprise Managed Users, your requests must be authenticated as a user or GitHub App that has access to the organization to view that account's information. If you are not authorized, the request will return a `404 Not Found` status.
+        If you are requesting information about an [Enterprise Managed User](https://docs.github.com/enterprise-cloud@latest/enterprise-cloud@latest/admin/managing-iam/understanding-iam-for-enterprises/about-enterprise-managed-users), or a GitHub App bot that is installed in an organization that uses Enterprise Managed Users, your requests must be authenticated as a user or GitHub App that has access to the organization to view that account's information. If you are not authorized, the request will return a `404 Not Found` status.
 
-        The `email` key in the following response is the publicly visible email address from your GitHub Enterprise Cloud [profile page](https://github.com/settings/profile). When setting up your profile, you can select a primary email address to be public which provides an email entry for this endpoint. If you do not set a public email address for `email`, then it will have a value of `null`. You only see publicly visible email addresses when authenticated with GitHub Enterprise Cloud. For more information, see [Authentication](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#authentication).
+        The `email` key in the following response is the publicly visible email address from your GitHub Enterprise Cloud [profile page](https://github.com/settings/profile). When setting up your profile, you can select a primary email address to be public which provides an email entry for this endpoint. If you do not set a public email address for `email`, then it will have a value of `null`. You only see publicly visible email addresses when authenticated with GitHub Enterprise Cloud. For more information, see [Authentication](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#authentication).
 
-        The Emails API enables you to list all of your email addresses, and toggle a primary email to be visible publicly. For more information, see [Emails API](https://docs.github.com/enterprise-cloud@latest//rest/users/emails).
+        The Emails API enables you to list all of your email addresses, and toggle a primary email to be visible publicly. For more information, see [Emails API](https://docs.github.com/enterprise-cloud@latest/rest/users/emails).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/users#get-a-user
         """
 
         from typing import Union
@@ -3409,9 +3409,9 @@ class UsersClient:
 
         The collection of attestations returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `attestations:read` permission is required.
 
-        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
+        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#list-attestations-by-bulk-subject-digests
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/attestations#list-attestations-by-bulk-subject-digests
         """
 
         from ..models import (
@@ -3505,9 +3505,9 @@ class UsersClient:
 
         The collection of attestations returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `attestations:read` permission is required.
 
-        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
+        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#list-attestations-by-bulk-subject-digests
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/attestations#list-attestations-by-bulk-subject-digests
         """
 
         from ..models import (
@@ -3599,7 +3599,7 @@ class UsersClient:
 
         Delete artifact attestations in bulk by either subject digests or unique ID.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#delete-attestations-in-bulk
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/attestations#delete-attestations-in-bulk
         """
 
         from typing import Union
@@ -3695,7 +3695,7 @@ class UsersClient:
 
         Delete artifact attestations in bulk by either subject digests or unique ID.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#delete-attestations-in-bulk
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/attestations#delete-attestations-in-bulk
         """
 
         from typing import Union
@@ -3750,7 +3750,7 @@ class UsersClient:
 
         Delete an artifact attestation by subject digest.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#delete-attestations-by-subject-digest
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/attestations#delete-attestations-by-subject-digest
         """
 
         from ..models import BasicError
@@ -3783,7 +3783,7 @@ class UsersClient:
 
         Delete an artifact attestation by subject digest.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#delete-attestations-by-subject-digest
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/attestations#delete-attestations-by-subject-digest
         """
 
         from ..models import BasicError
@@ -3816,7 +3816,7 @@ class UsersClient:
 
         Delete an artifact attestation by unique ID that is associated with a repository owned by a user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#delete-attestations-by-id
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/attestations#delete-attestations-by-id
         """
 
         from ..models import BasicError
@@ -3850,7 +3850,7 @@ class UsersClient:
 
         Delete an artifact attestation by unique ID that is associated with a repository owned by a user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#delete-attestations-by-id
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/attestations#delete-attestations-by-id
         """
 
         from ..models import BasicError
@@ -3893,9 +3893,9 @@ class UsersClient:
 
         The collection of attestations returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `attestations:read` permission is required.
 
-        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
+        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#list-attestations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/attestations#list-attestations
         """
 
         from ..models import (
@@ -3949,9 +3949,9 @@ class UsersClient:
 
         The collection of attestations returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `attestations:read` permission is required.
 
-        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
+        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#list-attestations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/attestations#list-attestations
         """
 
         from ..models import (
@@ -3997,7 +3997,7 @@ class UsersClient:
 
         Lists the people following the specified user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-followers-of-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/followers#list-followers-of-a-user
         """
 
         from ..models import SimpleUser
@@ -4035,7 +4035,7 @@ class UsersClient:
 
         Lists the people following the specified user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-followers-of-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/followers#list-followers-of-a-user
         """
 
         from ..models import SimpleUser
@@ -4073,7 +4073,7 @@ class UsersClient:
 
         Lists the people who the specified user follows.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-the-people-a-user-follows
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/followers#list-the-people-a-user-follows
         """
 
         from ..models import SimpleUser
@@ -4111,7 +4111,7 @@ class UsersClient:
 
         Lists the people who the specified user follows.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-the-people-a-user-follows
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/followers#list-the-people-a-user-follows
         """
 
         from ..models import SimpleUser
@@ -4146,7 +4146,7 @@ class UsersClient:
 
         GET /users/{username}/following/{target_user}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#check-if-a-user-follows-another-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/followers#check-if-a-user-follows-another-user
         """
 
         url = f"/users/{username}/following/{target_user}"
@@ -4173,7 +4173,7 @@ class UsersClient:
 
         GET /users/{username}/following/{target_user}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#check-if-a-user-follows-another-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/followers#check-if-a-user-follows-another-user
         """
 
         url = f"/users/{username}/following/{target_user}"
@@ -4203,7 +4203,7 @@ class UsersClient:
 
         Lists the GPG keys for a user. This information is accessible by anyone.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#list-gpg-keys-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/gpg-keys#list-gpg-keys-for-a-user
         """
 
         from ..models import GpgKey
@@ -4241,7 +4241,7 @@ class UsersClient:
 
         Lists the GPG keys for a user. This information is accessible by anyone.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#list-gpg-keys-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/gpg-keys#list-gpg-keys-for-a-user
         """
 
         from ..models import GpgKey
@@ -4285,7 +4285,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-contextual-information-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/users#get-contextual-information-for-a-user
         """
 
         from ..models import BasicError, Hovercard, ValidationError
@@ -4333,7 +4333,7 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-contextual-information-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/users#get-contextual-information-for-a-user
         """
 
         from ..models import BasicError, Hovercard, ValidationError
@@ -4375,7 +4375,7 @@ class UsersClient:
 
         Lists the _verified_ public SSH keys for a user. This is accessible by anyone.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#list-public-keys-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/keys#list-public-keys-for-a-user
         """
 
         from ..models import KeySimple
@@ -4413,7 +4413,7 @@ class UsersClient:
 
         Lists the _verified_ public SSH keys for a user. This is accessible by anyone.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#list-public-keys-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/keys#list-public-keys-for-a-user
         """
 
         from ..models import KeySimple
@@ -4451,7 +4451,7 @@ class UsersClient:
 
         Lists social media accounts for a user. This endpoint is accessible by anyone.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#list-social-accounts-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/social-accounts#list-social-accounts-for-a-user
         """
 
         from ..models import SocialAccount
@@ -4489,7 +4489,7 @@ class UsersClient:
 
         Lists social media accounts for a user. This endpoint is accessible by anyone.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#list-social-accounts-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/social-accounts#list-social-accounts-for-a-user
         """
 
         from ..models import SocialAccount
@@ -4527,7 +4527,7 @@ class UsersClient:
 
         Lists the SSH signing keys for a user. This operation is accessible by anyone.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#list-ssh-signing-keys-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-a-user
         """
 
         from ..models import SshSigningKey
@@ -4565,7 +4565,7 @@ class UsersClient:
 
         Lists the SSH signing keys for a user. This operation is accessible by anyone.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#list-ssh-signing-keys-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-a-user
         """
 
         from ..models import SshSigningKey

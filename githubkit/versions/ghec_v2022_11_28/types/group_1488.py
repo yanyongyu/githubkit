@@ -13,35 +13,53 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserMigrationsPostBodyType(TypedDict):
-    """UserMigrationsPostBody"""
+class UserCodespacesPostBodyOneof1Type(TypedDict):
+    """UserCodespacesPostBodyOneof1"""
 
-    lock_repositories: NotRequired[bool]
-    exclude_metadata: NotRequired[bool]
-    exclude_git_data: NotRequired[bool]
-    exclude_attachments: NotRequired[bool]
-    exclude_releases: NotRequired[bool]
-    exclude_owner_projects: NotRequired[bool]
-    org_metadata_only: NotRequired[bool]
-    exclude: NotRequired[list[Literal["repositories"]]]
-    repositories: list[str]
+    pull_request: UserCodespacesPostBodyOneof1PropPullRequestType
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
 
 
-class UserMigrationsPostBodyTypeForResponse(TypedDict):
-    """UserMigrationsPostBody"""
+class UserCodespacesPostBodyOneof1TypeForResponse(TypedDict):
+    """UserCodespacesPostBodyOneof1"""
 
-    lock_repositories: NotRequired[bool]
-    exclude_metadata: NotRequired[bool]
-    exclude_git_data: NotRequired[bool]
-    exclude_attachments: NotRequired[bool]
-    exclude_releases: NotRequired[bool]
-    exclude_owner_projects: NotRequired[bool]
-    org_metadata_only: NotRequired[bool]
-    exclude: NotRequired[list[Literal["repositories"]]]
-    repositories: list[str]
+    pull_request: UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+
+
+class UserCodespacesPostBodyOneof1PropPullRequestType(TypedDict):
+    """UserCodespacesPostBodyOneof1PropPullRequest
+
+    Pull request number for this codespace
+    """
+
+    pull_request_number: int
+    repository_id: int
+
+
+class UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse(TypedDict):
+    """UserCodespacesPostBodyOneof1PropPullRequest
+
+    Pull request number for this codespace
+    """
+
+    pull_request_number: int
+    repository_id: int
 
 
 __all__ = (
-    "UserMigrationsPostBodyType",
-    "UserMigrationsPostBodyTypeForResponse",
+    "UserCodespacesPostBodyOneof1PropPullRequestType",
+    "UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse",
+    "UserCodespacesPostBodyOneof1Type",
+    "UserCodespacesPostBodyOneof1TypeForResponse",
 )

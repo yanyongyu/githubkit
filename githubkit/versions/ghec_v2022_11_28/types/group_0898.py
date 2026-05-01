@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0202 import MilestoneType, MilestoneTypeForResponse
-from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0566 import (
+from .group_0203 import MilestoneType, MilestoneTypeForResponse
+from .group_0568 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0570 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0603 import WebhooksPullRequest5Type, WebhooksPullRequest5TypeForResponse
+from .group_0571 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0607 import WebhooksPullRequest5Type, WebhooksPullRequest5TypeForResponse
 
 
-class WebhookPullRequestMilestonedType(TypedDict):
-    """pull_request milestoned event"""
+class WebhookPullRequestDemilestonedType(TypedDict):
+    """pull_request demilestoned event"""
 
-    action: Literal["milestoned"]
+    action: Literal["demilestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     milestone: NotRequired[MilestoneType]
     number: int
@@ -36,10 +36,10 @@ class WebhookPullRequestMilestonedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookPullRequestMilestonedTypeForResponse(TypedDict):
-    """pull_request milestoned event"""
+class WebhookPullRequestDemilestonedTypeForResponse(TypedDict):
+    """pull_request demilestoned event"""
 
-    action: Literal["milestoned"]
+    action: Literal["demilestoned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     milestone: NotRequired[MilestoneTypeForResponse]
     number: int
@@ -50,6 +50,6 @@ class WebhookPullRequestMilestonedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookPullRequestMilestonedType",
-    "WebhookPullRequestMilestonedTypeForResponse",
+    "WebhookPullRequestDemilestonedType",
+    "WebhookPullRequestDemilestonedTypeForResponse",
 )

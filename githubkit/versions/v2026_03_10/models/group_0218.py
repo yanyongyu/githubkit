@@ -17,23 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0219 import RepositoryRuleFilePathRestrictionPropParameters
+from .group_0219 import RepositoryRuleBranchNamePatternPropParameters
 
 
-class RepositoryRuleFilePathRestriction(GitHubModel):
-    """file_path_restriction
+class RepositoryRuleBranchNamePattern(GitHubModel):
+    """branch_name_pattern
 
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
+    Parameters to be used for the branch_name_pattern rule
     """
 
-    type: Literal["file_path_restriction"] = Field()
-    parameters: Missing[RepositoryRuleFilePathRestrictionPropParameters] = Field(
+    type: Literal["branch_name_pattern"] = Field()
+    parameters: Missing[RepositoryRuleBranchNamePatternPropParameters] = Field(
         default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleFilePathRestriction)
+model_rebuild(RepositoryRuleBranchNamePattern)
 
-__all__ = ("RepositoryRuleFilePathRestriction",)
+__all__ = ("RepositoryRuleBranchNamePattern",)

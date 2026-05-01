@@ -13,20 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class UserSocialAccountsDeleteBody(GitHubModel):
-    """UserSocialAccountsDeleteBody
-
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str] = Field(
-        description="Full URLs for the social media profiles to delete."
-    )
+from .group_0243 import MinimalRepository
 
 
-model_rebuild(UserSocialAccountsDeleteBody)
+class UserCodespacesSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-__all__ = ("UserSocialAccountsDeleteBody",)
+    total_count: int = Field()
+    repositories: list[MinimalRepository] = Field()
+
+
+model_rebuild(UserCodespacesSecretsSecretNameRepositoriesGetResponse200)
+
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200",)

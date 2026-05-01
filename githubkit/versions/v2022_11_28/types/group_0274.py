@@ -10,78 +10,63 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class DeploymentType(TypedDict):
-    """Deployment
+class EnvironmentApprovalsType(TypedDict):
+    """Environment Approval
 
-    A request for a specific ref(branch,sha,tag) to be deployed
+    An entry in the reviews log for environment deployments
     """
 
-    url: str
-    id: int
-    node_id: str
-    sha: str
-    ref: str
-    task: str
-    payload: Union[DeploymentPropPayloadOneof0Type, str]
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    creator: Union[None, SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    environments: list[EnvironmentApprovalsPropEnvironmentsItemsType]
+    state: Literal["approved", "rejected", "pending"]
+    user: SimpleUserType
+    comment: str
 
 
-class DeploymentTypeForResponse(TypedDict):
-    """Deployment
+class EnvironmentApprovalsTypeForResponse(TypedDict):
+    """Environment Approval
 
-    A request for a specific ref(branch,sha,tag) to be deployed
+    An entry in the reviews log for environment deployments
     """
 
-    url: str
-    id: int
-    node_id: str
-    sha: str
-    ref: str
-    task: str
-    payload: Union[DeploymentPropPayloadOneof0TypeForResponse, str]
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    creator: Union[None, SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    environments: list[EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse]
+    state: Literal["approved", "rejected", "pending"]
+    user: SimpleUserTypeForResponse
+    comment: str
 
 
-DeploymentPropPayloadOneof0Type: TypeAlias = dict[str, Any]
-"""DeploymentPropPayloadOneof0
-"""
+class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-DeploymentPropPayloadOneof0TypeForResponse: TypeAlias = dict[str, Any]
-"""DeploymentPropPayloadOneof0
-"""
+class EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse(TypedDict):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "DeploymentPropPayloadOneof0Type",
-    "DeploymentPropPayloadOneof0TypeForResponse",
-    "DeploymentType",
-    "DeploymentTypeForResponse",
+    "EnvironmentApprovalsPropEnvironmentsItemsType",
+    "EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse",
+    "EnvironmentApprovalsType",
+    "EnvironmentApprovalsTypeForResponse",
 )

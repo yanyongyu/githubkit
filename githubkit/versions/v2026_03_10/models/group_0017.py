@@ -166,7 +166,7 @@ class AppPermissions(GitHubModel):
     )
     organization_copilot_agent_settings: Missing[Literal["read", "write"]] = Field(
         default=UNSET,
-        description="The level of permission to grant the access token to view and manage Copilot coding agent settings for an organization.",
+        description="The level of permission to grant the access token to view and manage Copilot cloud agent settings for an organization.",
     )
     organization_announcement_banners: Missing[Literal["read", "write"]] = Field(
         default=UNSET,

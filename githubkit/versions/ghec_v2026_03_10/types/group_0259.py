@@ -9,52 +9,113 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CredentialAuthorizationType(TypedDict):
-    """Credential Authorization
+class CopilotSpaceCollaboratorAnyof0Type(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0"""
 
-    Credential Authorization
-    """
-
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
     login: str
-    credential_id: int
-    credential_type: str
-    token_last_eight: NotRequired[str]
-    credential_authorized_at: _dt.datetime
-    scopes: NotRequired[list[str]]
-    fingerprint: NotRequired[str]
-    credential_accessed_at: Union[_dt.datetime, None]
-    authorized_credential_id: Union[int, None]
-    authorized_credential_title: NotRequired[Union[str, None]]
-    authorized_credential_note: NotRequired[Union[str, None]]
-    authorized_credential_expires_at: NotRequired[Union[_dt.datetime, None]]
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
 
 
-class CredentialAuthorizationTypeForResponse(TypedDict):
-    """Credential Authorization
+class CopilotSpaceCollaboratorAnyof0TypeForResponse(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0"""
 
-    Credential Authorization
-    """
-
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
     login: str
-    credential_id: int
-    credential_type: str
-    token_last_eight: NotRequired[str]
-    credential_authorized_at: str
-    scopes: NotRequired[list[str]]
-    fingerprint: NotRequired[str]
-    credential_accessed_at: Union[str, None]
-    authorized_credential_id: Union[int, None]
-    authorized_credential_title: NotRequired[Union[str, None]]
-    authorized_credential_note: NotRequired[Union[str, None]]
-    authorized_credential_expires_at: NotRequired[Union[str, None]]
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
+
+
+class CopilotSpaceCollaboratorAnyof1Type(TypedDict):
+    """CopilotSpaceCollaboratorAnyof1"""
+
+    actor_type: Literal["Team"]
+    role: Literal["reader", "writer", "admin"]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    type: Literal["Team"]
+    description: NotRequired[Union[str, None]]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    members_url: NotRequired[str]
+    repositories_url: NotRequired[str]
+    organization_id: NotRequired[int]
+    parent: NotRequired[None]
+
+
+class CopilotSpaceCollaboratorAnyof1TypeForResponse(TypedDict):
+    """CopilotSpaceCollaboratorAnyof1"""
+
+    actor_type: Literal["Team"]
+    role: Literal["reader", "writer", "admin"]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    type: Literal["Team"]
+    description: NotRequired[Union[str, None]]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    members_url: NotRequired[str]
+    repositories_url: NotRequired[str]
+    organization_id: NotRequired[int]
+    parent: NotRequired[None]
 
 
 __all__ = (
-    "CredentialAuthorizationType",
-    "CredentialAuthorizationTypeForResponse",
+    "CopilotSpaceCollaboratorAnyof0Type",
+    "CopilotSpaceCollaboratorAnyof0TypeForResponse",
+    "CopilotSpaceCollaboratorAnyof1Type",
+    "CopilotSpaceCollaboratorAnyof1TypeForResponse",
 )

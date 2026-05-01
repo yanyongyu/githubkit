@@ -101,7 +101,7 @@ class GitClient:
 
         POST /repos/{owner}/{repo}/git/blobs
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#create-a-blob
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/blobs#create-a-blob
         """
 
         from typing import Union
@@ -180,7 +180,7 @@ class GitClient:
 
         POST /repos/{owner}/{repo}/git/blobs
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#create-a-blob
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/blobs#create-a-blob
         """
 
         from typing import Union
@@ -236,14 +236,14 @@ class GitClient:
 
         The `content` in the response will always be Base64 encoded.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw blob data.
         - **`application/vnd.github+json`**: Returns a JSON representation of the blob with `content` as a base64 encoded string. This is the default if no media type is specified.
 
         **Note** This endpoint supports blobs up to 100 megabytes in size.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#get-a-blob
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/blobs#get-a-blob
         """
 
         from ..models import BasicError, Blob, ValidationError
@@ -281,14 +281,14 @@ class GitClient:
 
         The `content` in the response will always be Base64 encoded.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw blob data.
         - **`application/vnd.github+json`**: Returns a JSON representation of the blob with `content` as a base64 encoded string. This is the default if no media type is specified.
 
         **Note** This endpoint supports blobs up to 100 megabytes in size.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#get-a-blob
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/blobs#get-a-blob
         """
 
         from ..models import BasicError, Blob, ValidationError
@@ -385,7 +385,7 @@ class GitClient:
         | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
         | `valid` | None of the above errors applied, so the signature is considered to be verified. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#create-a-commit
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/commits#create-a-commit
         """
 
         from ..models import (
@@ -496,7 +496,7 @@ class GitClient:
         | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
         | `valid` | None of the above errors applied, so the signature is considered to be verified. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#create-a-commit
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/commits#create-a-commit
         """
 
         from ..models import (
@@ -580,7 +580,7 @@ class GitClient:
         | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
         | `valid` | None of the above errors applied, so the signature is considered to be verified. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#get-a-commit-object
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/commits#get-a-commit-object
         """
 
         from ..models import BasicError, GitCommit
@@ -648,7 +648,7 @@ class GitClient:
         | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
         | `valid` | None of the above errors applied, so the signature is considered to be verified. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#get-a-commit-object
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/commits#get-a-commit-object
         """
 
         from ..models import BasicError, GitCommit
@@ -687,11 +687,11 @@ class GitClient:
         When you use this endpoint without providing a `:ref`, it will return an array of all the references from your Git database, including notes and stashes if they exist on the server. Anything in the namespace is returned, not just `heads` and `tags`.
 
         > [!NOTE]
-        > You need to explicitly [request a pull request](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+        > You need to explicitly [request a pull request](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
 
         If you request matching references for a branch named `feature` but the branch `feature` doesn't exist, the response can still include other matching head refs that start with the word `feature`, such as `featureA` and `featureB`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#list-matching-references
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/refs#list-matching-references
         """
 
         from ..models import BasicError, GitRef
@@ -729,11 +729,11 @@ class GitClient:
         When you use this endpoint without providing a `:ref`, it will return an array of all the references from your Git database, including notes and stashes if they exist on the server. Anything in the namespace is returned, not just `heads` and `tags`.
 
         > [!NOTE]
-        > You need to explicitly [request a pull request](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+        > You need to explicitly [request a pull request](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
 
         If you request matching references for a branch named `feature` but the branch `feature` doesn't exist, the response can still include other matching head refs that start with the word `feature`, such as `featureA` and `featureB`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#list-matching-references
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/refs#list-matching-references
         """
 
         from ..models import BasicError, GitRef
@@ -769,9 +769,9 @@ class GitClient:
         Returns a single reference from your Git database. The `:ref` in the URL must be formatted as `heads/<branch name>` for branches and `tags/<tag name>` for tags. If the `:ref` doesn't match an existing ref, a `404` is returned.
 
         > [!NOTE]
-        > You need to explicitly [request a pull request](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+        > You need to explicitly [request a pull request](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#get-a-reference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/refs#get-a-reference
         """
 
         from ..models import BasicError, GitRef
@@ -808,9 +808,9 @@ class GitClient:
         Returns a single reference from your Git database. The `:ref` in the URL must be formatted as `heads/<branch name>` for branches and `tags/<tag name>` for tags. If the `:ref` doesn't match an existing ref, a `404` is returned.
 
         > [!NOTE]
-        > You need to explicitly [request a pull request](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+        > You need to explicitly [request a pull request](https://docs.github.com/enterprise-cloud@latest/rest/pulls/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#get-a-reference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/refs#get-a-reference
         """
 
         from ..models import BasicError, GitRef
@@ -871,7 +871,7 @@ class GitClient:
 
         Creates a reference for your repository. You are unable to create new references for empty repositories, even if the commit SHA-1 hash used exists. Empty repositories are repositories without branches.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/refs#create-a-reference
         """
 
         from ..models import (
@@ -947,7 +947,7 @@ class GitClient:
 
         Creates a reference for your repository. You are unable to create new references for empty repositories, even if the commit SHA-1 hash used exists. Empty repositories are repositories without branches.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/refs#create-a-reference
         """
 
         from ..models import (
@@ -998,7 +998,7 @@ class GitClient:
 
         Deletes the provided reference.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#delete-a-reference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/refs#delete-a-reference
         """
 
         from ..models import BasicError
@@ -1032,7 +1032,7 @@ class GitClient:
 
         Deletes the provided reference.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#delete-a-reference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/refs#delete-a-reference
         """
 
         from ..models import BasicError
@@ -1094,7 +1094,7 @@ class GitClient:
 
         Updates the provided reference to point to a new SHA. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#update-a-reference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/refs#update-a-reference
         """
 
         from ..models import (
@@ -1173,7 +1173,7 @@ class GitClient:
 
         Updates the provided reference to point to a new SHA. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#update-a-reference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/refs#update-a-reference
         """
 
         from ..models import (
@@ -1250,7 +1250,7 @@ class GitClient:
 
         POST /repos/{owner}/{repo}/git/tags
 
-        Note that creating a tag object does not create the reference that makes a tag in Git. If you want to create an annotated tag in Git, you have to do this call to create the tag object, and then [create](https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference) the `refs/tags/[tag]` reference. If you want to create a lightweight tag, you only have to [create](https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference) the tag reference - this call would be unnecessary.
+        Note that creating a tag object does not create the reference that makes a tag in Git. If you want to create an annotated tag in Git, you have to do this call to create the tag object, and then [create](https://docs.github.com/enterprise-cloud@latest/rest/git/refs#create-a-reference) the `refs/tags/[tag]` reference. If you want to create a lightweight tag, you only have to [create](https://docs.github.com/enterprise-cloud@latest/rest/git/refs#create-a-reference) the tag reference - this call would be unnecessary.
 
         **Signature verification object**
 
@@ -1282,7 +1282,7 @@ class GitClient:
         | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
         | `valid` | None of the above errors applied, so the signature is considered to be verified. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#create-a-tag-object
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/tags#create-a-tag-object
         """
 
         from ..models import (
@@ -1359,7 +1359,7 @@ class GitClient:
 
         POST /repos/{owner}/{repo}/git/tags
 
-        Note that creating a tag object does not create the reference that makes a tag in Git. If you want to create an annotated tag in Git, you have to do this call to create the tag object, and then [create](https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference) the `refs/tags/[tag]` reference. If you want to create a lightweight tag, you only have to [create](https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference) the tag reference - this call would be unnecessary.
+        Note that creating a tag object does not create the reference that makes a tag in Git. If you want to create an annotated tag in Git, you have to do this call to create the tag object, and then [create](https://docs.github.com/enterprise-cloud@latest/rest/git/refs#create-a-reference) the `refs/tags/[tag]` reference. If you want to create a lightweight tag, you only have to [create](https://docs.github.com/enterprise-cloud@latest/rest/git/refs#create-a-reference) the tag reference - this call would be unnecessary.
 
         **Signature verification object**
 
@@ -1391,7 +1391,7 @@ class GitClient:
         | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
         | `valid` | None of the above errors applied, so the signature is considered to be verified. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#create-a-tag-object
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/tags#create-a-tag-object
         """
 
         from ..models import (
@@ -1470,7 +1470,7 @@ class GitClient:
         | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
         | `valid` | None of the above errors applied, so the signature is considered to be verified. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#get-a-tag
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/tags#get-a-tag
         """
 
         from ..models import BasicError, GitTag
@@ -1534,7 +1534,7 @@ class GitClient:
         | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
         | `valid` | None of the above errors applied, so the signature is considered to be verified. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#get-a-tag
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/tags#get-a-tag
         """
 
         from ..models import BasicError, GitTag
@@ -1595,11 +1595,11 @@ class GitClient:
 
         The tree creation API accepts nested entries. If you specify both a tree and a nested path modifying that tree, this endpoint will overwrite the contents of the tree with the new path contents, and create a new tree structure.
 
-        If you use this endpoint to add, delete, or modify the file contents in a tree, you will need to commit the tree and then update a branch to point to the commit. For more information see "[Create a commit](https://docs.github.com/enterprise-cloud@latest//rest/git/commits#create-a-commit)" and "[Update a reference](https://docs.github.com/enterprise-cloud@latest//rest/git/refs#update-a-reference)."
+        If you use this endpoint to add, delete, or modify the file contents in a tree, you will need to commit the tree and then update a branch to point to the commit. For more information see "[Create a commit](https://docs.github.com/enterprise-cloud@latest/rest/git/commits#create-a-commit)" and "[Update a reference](https://docs.github.com/enterprise-cloud@latest/rest/git/refs#update-a-reference)."
 
         Returns an error if you try to delete a file that does not exist.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#create-a-tree
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/trees#create-a-tree
         """
 
         from ..models import (
@@ -1677,11 +1677,11 @@ class GitClient:
 
         The tree creation API accepts nested entries. If you specify both a tree and a nested path modifying that tree, this endpoint will overwrite the contents of the tree with the new path contents, and create a new tree structure.
 
-        If you use this endpoint to add, delete, or modify the file contents in a tree, you will need to commit the tree and then update a branch to point to the commit. For more information see "[Create a commit](https://docs.github.com/enterprise-cloud@latest//rest/git/commits#create-a-commit)" and "[Update a reference](https://docs.github.com/enterprise-cloud@latest//rest/git/refs#update-a-reference)."
+        If you use this endpoint to add, delete, or modify the file contents in a tree, you will need to commit the tree and then update a branch to point to the commit. For more information see "[Create a commit](https://docs.github.com/enterprise-cloud@latest/rest/git/commits#create-a-commit)" and "[Update a reference](https://docs.github.com/enterprise-cloud@latest/rest/git/refs#update-a-reference)."
 
         Returns an error if you try to delete a file that does not exist.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#create-a-tree
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/trees#create-a-tree
         """
 
         from ..models import (
@@ -1740,7 +1740,7 @@ class GitClient:
         > [!NOTE]
         > The limit for the `tree` array is 100,000 entries with a maximum size of 7 MB when using the `recursive` parameter.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#get-a-tree
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/trees#get-a-tree
         """
 
         from ..models import BasicError, GitTree, ValidationError
@@ -1788,7 +1788,7 @@ class GitClient:
         > [!NOTE]
         > The limit for the `tree` array is 100,000 entries with a maximum size of 7 MB when using the `recursive` parameter.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#get-a-tree
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/git/trees#get-a-tree
         """
 
         from ..models import BasicError, GitTree, ValidationError

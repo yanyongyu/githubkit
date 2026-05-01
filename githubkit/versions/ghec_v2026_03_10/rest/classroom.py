@@ -68,7 +68,7 @@ class ClassroomClient:
 
         Gets a GitHub Classroom assignment. Assignment will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-an-assignment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#get-an-assignment
         """
 
         from ..models import BasicError, ClassroomAssignment
@@ -101,7 +101,7 @@ class ClassroomClient:
 
         Gets a GitHub Classroom assignment. Assignment will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-an-assignment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#get-an-assignment
         """
 
         from ..models import BasicError, ClassroomAssignment
@@ -139,7 +139,7 @@ class ClassroomClient:
 
         Lists any assignment repositories that have been created by students accepting a GitHub Classroom assignment. Accepted assignments will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-accepted-assignments-for-an-assignment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#list-accepted-assignments-for-an-assignment
         """
 
         from ..models import ClassroomAcceptedAssignment
@@ -180,7 +180,7 @@ class ClassroomClient:
 
         Lists any assignment repositories that have been created by students accepting a GitHub Classroom assignment. Accepted assignments will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-accepted-assignments-for-an-assignment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#list-accepted-assignments-for-an-assignment
         """
 
         from ..models import ClassroomAcceptedAssignment
@@ -218,7 +218,7 @@ class ClassroomClient:
 
         Gets grades for a GitHub Classroom assignment. Grades will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-assignment-grades
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#get-assignment-grades
         """
 
         from ..models import BasicError, ClassroomAssignmentGrade
@@ -253,7 +253,7 @@ class ClassroomClient:
 
         Gets grades for a GitHub Classroom assignment. Grades will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-assignment-grades
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#get-assignment-grades
         """
 
         from ..models import BasicError, ClassroomAssignmentGrade
@@ -287,7 +287,7 @@ class ClassroomClient:
 
         Lists GitHub Classroom classrooms for the current user. Classrooms will only be returned if the current user is an administrator of one or more GitHub Classrooms.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-classrooms
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#list-classrooms
         """
 
         from ..models import SimpleClassroom
@@ -324,7 +324,7 @@ class ClassroomClient:
 
         Lists GitHub Classroom classrooms for the current user. Classrooms will only be returned if the current user is an administrator of one or more GitHub Classrooms.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-classrooms
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#list-classrooms
         """
 
         from ..models import SimpleClassroom
@@ -360,7 +360,7 @@ class ClassroomClient:
 
         Gets a GitHub Classroom classroom for the current user. Classroom will only be returned if the current user is an administrator of the GitHub Classroom.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-a-classroom
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#get-a-classroom
         """
 
         from ..models import BasicError, Classroom
@@ -393,7 +393,7 @@ class ClassroomClient:
 
         Gets a GitHub Classroom classroom for the current user. Classroom will only be returned if the current user is an administrator of the GitHub Classroom.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-a-classroom
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#get-a-classroom
         """
 
         from ..models import BasicError, Classroom
@@ -430,7 +430,7 @@ class ClassroomClient:
 
         Lists GitHub Classroom assignments for a classroom. Assignments will only be returned if the current user is an administrator of the GitHub Classroom.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-assignments-for-a-classroom
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#list-assignments-for-a-classroom
         """
 
         from ..models import SimpleClassroomAssignment
@@ -470,7 +470,7 @@ class ClassroomClient:
 
         Lists GitHub Classroom assignments for a classroom. Assignments will only be returned if the current user is an administrator of the GitHub Classroom.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-assignments-for-a-classroom
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/classroom/classroom#list-assignments-for-a-classroom
         """
 
         from ..models import SimpleClassroomAssignment

@@ -119,7 +119,7 @@ class BillingClient:
 
         The total number of repositories with committer information is tracked by the `total_count` field.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/licensing#get-github-advanced-security-active-committers-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#get-github-advanced-security-active-committers-for-an-enterprise
         """
 
         from ..models import AdvancedSecurityActiveCommitters
@@ -168,7 +168,7 @@ class BillingClient:
 
         The total number of repositories with committer information is tracked by the `total_count` field.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/licensing#get-github-advanced-security-active-committers-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#get-github-advanced-security-active-committers-for-an-enterprise
         """
 
         from ..models import AdvancedSecurityActiveCommitters
@@ -214,7 +214,7 @@ class BillingClient:
         Gets all budgets for an enterprise. The authenticated user must be an enterprise admin or billing manager.
         Each page returns up to 10 budgets.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#get-all-budgets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#get-all-budgets
         """
 
         from ..models import BasicError, GetAllBudgets
@@ -264,7 +264,7 @@ class BillingClient:
         Gets all budgets for an enterprise. The authenticated user must be an enterprise admin or billing manager.
         Each page returns up to 10 budgets.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#get-all-budgets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#get-all-budgets
         """
 
         from ..models import BasicError, GetAllBudgets
@@ -339,7 +339,7 @@ class BillingClient:
 
         Creates a new budget for an enterprise. The authenticated user must be an enterprise admin, organization admin, or billing manager of the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#create-a-budget
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#create-a-budget
         """
 
         from ..models import (
@@ -428,7 +428,7 @@ class BillingClient:
 
         Creates a new budget for an enterprise. The authenticated user must be an enterprise admin, organization admin, or billing manager of the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#create-a-budget
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#create-a-budget
         """
 
         from ..models import (
@@ -487,7 +487,7 @@ class BillingClient:
 
         Gets a budget by ID. The authenticated user must be an enterprise admin or billing manager.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#get-a-budget-by-id
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#get-a-budget-by-id
         """
 
         from ..models import (
@@ -532,7 +532,7 @@ class BillingClient:
 
         Gets a budget by ID. The authenticated user must be an enterprise admin or billing manager.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#get-a-budget-by-id
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#get-a-budget-by-id
         """
 
         from ..models import (
@@ -577,7 +577,7 @@ class BillingClient:
 
         Deletes a budget by ID. The authenticated user must be an enterprise admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#delete-a-budget
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#delete-a-budget
         """
 
         from ..models import (
@@ -622,7 +622,7 @@ class BillingClient:
 
         Deletes a budget by ID. The authenticated user must be an enterprise admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#delete-a-budget
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#delete-a-budget
         """
 
         from ..models import (
@@ -704,7 +704,7 @@ class BillingClient:
 
         Updates an existing budget for an enterprise. The authenticated user must be an enterprise admin, organization admin, or billing manager of the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#update-a-budget
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#update-a-budget
         """
 
         from ..models import (
@@ -801,7 +801,7 @@ class BillingClient:
 
         Updates an existing budget for an enterprise. The authenticated user must be an enterprise admin, organization admin, or billing manager of the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#update-a-budget
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#update-a-budget
         """
 
         from ..models import (
@@ -858,7 +858,7 @@ class BillingClient:
 
         Gets a list of all the cost centers for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#get-all-cost-centers-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#get-all-cost-centers-for-an-enterprise
         """
 
         from ..models import (
@@ -904,7 +904,7 @@ class BillingClient:
 
         Gets a list of all the cost centers for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#get-all-cost-centers-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#get-all-cost-centers-for-an-enterprise
         """
 
         from ..models import (
@@ -983,7 +983,7 @@ class BillingClient:
 
         Creates a new cost center for an enterprise. The authenticated user must be an enterprise admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#create-a-new-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#create-a-new-cost-center
         """
 
         from ..models import (
@@ -1063,7 +1063,7 @@ class BillingClient:
 
         Creates a new cost center for an enterprise. The authenticated user must be an enterprise admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#create-a-new-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#create-a-new-cost-center
         """
 
         from ..models import (
@@ -1112,7 +1112,7 @@ class BillingClient:
 
         Gets a cost center by ID. The authenticated user must be an enterprise admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#get-a-cost-center-by-id
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#get-a-cost-center-by-id
         """
 
         from ..models import (
@@ -1163,7 +1163,7 @@ class BillingClient:
 
         Gets a cost center by ID. The authenticated user must be an enterprise admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#get-a-cost-center-by-id
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#get-a-cost-center-by-id
         """
 
         from ..models import (
@@ -1212,7 +1212,7 @@ class BillingClient:
 
         Archieves a cost center by ID. The authenticated user must be an enterprise admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#delete-a-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#delete-a-cost-center
         """
 
         from ..models import (
@@ -1256,7 +1256,7 @@ class BillingClient:
 
         Archieves a cost center by ID. The authenticated user must be an enterprise admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#delete-a-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#delete-a-cost-center
         """
 
         from ..models import (
@@ -1327,7 +1327,7 @@ class BillingClient:
 
         Updates an existing cost center name.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#update-a-cost-center-name
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#update-a-cost-center-name
         """
 
         from ..models import (
@@ -1413,7 +1413,7 @@ class BillingClient:
 
         Updates an existing cost center name.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#update-a-cost-center-name
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#update-a-cost-center-name
         """
 
         from ..models import (
@@ -1512,7 +1512,7 @@ class BillingClient:
 
         The usage for the resources will be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#add-resources-to-a-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#add-resources-to-a-cost-center
         """
 
         from ..models import (
@@ -1608,7 +1608,7 @@ class BillingClient:
 
         The usage for the resources will be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#add-resources-to-a-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#add-resources-to-a-cost-center
         """
 
         from ..models import (
@@ -1704,7 +1704,7 @@ class BillingClient:
 
         The usage for the resources will no longer be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#remove-resources-from-a-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#remove-resources-from-a-cost-center
         """
 
         from ..models import (
@@ -1799,7 +1799,7 @@ class BillingClient:
 
         The usage for the resources will no longer be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#remove-resources-from-a-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#remove-resources-from-a-cost-center
         """
 
         from ..models import (
@@ -1866,7 +1866,7 @@ class BillingClient:
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage#get-billing-premium-request-usage-report-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage#get-billing-premium-request-usage-report-for-an-enterprise
         """
 
         from ..models import (
@@ -1932,7 +1932,7 @@ class BillingClient:
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage#get-billing-premium-request-usage-report-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage#get-billing-premium-request-usage-report-for-an-enterprise
         """
 
         from ..models import (
@@ -1988,7 +1988,7 @@ class BillingClient:
 
         Lists all usage report exports for an enterprise. The authenticated user must be an enterprise admin or billing manager.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage-reports#list-usage-report-exports
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#list-usage-report-exports
         """
 
         from ..models import (
@@ -2032,7 +2032,7 @@ class BillingClient:
 
         Lists all usage report exports for an enterprise. The authenticated user must be an enterprise admin or billing manager.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage-reports#list-usage-report-exports
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#list-usage-report-exports
         """
 
         from ..models import (
@@ -2103,7 +2103,7 @@ class BillingClient:
         Initiates the generation of a usage report export for an enterprise. The report will be processed asynchronously
         and can be downloaded once completed. The authenticated user must be an enterprise admin or billing manager.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage-reports#create-a-usage-report-export
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#create-a-usage-report-export
         """
 
         from ..models import (
@@ -2186,7 +2186,7 @@ class BillingClient:
         Initiates the generation of a usage report export for an enterprise. The report will be processed asynchronously
         and can be downloaded once completed. The authenticated user must be an enterprise admin or billing manager.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage-reports#create-a-usage-report-export
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#create-a-usage-report-export
         """
 
         from ..models import (
@@ -2243,7 +2243,7 @@ class BillingClient:
 
         Gets the status and details of a usage report export by ID. The authenticated user must be an enterprise admin or billing manager.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage-reports#get-a-usage-report-export
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#get-a-usage-report-export
         """
 
         from ..models import (
@@ -2288,7 +2288,7 @@ class BillingClient:
 
         Gets the status and details of a usage report export by ID. The authenticated user must be an enterprise admin or billing manager.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage-reports#get-a-usage-report-export
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#get-a-usage-report-export
         """
 
         from ..models import (
@@ -2333,9 +2333,9 @@ class BillingClient:
 
         Gets a report of usage by cost center for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise. By default this endpoint will return usage that does not have a cost center.
 
-        **Note:** This endpoint is only available to enterprises with access to the enhanced billing platform. For more information, see "[About the enhanced billing platform for enterprises](https://docs.github.com/enterprise-cloud@latest//billing/using-the-enhanced-billing-platform-for-enterprises/about-the-enhanced-billing-platform-for-enterprises#how-do-i-know-if-i-can-access-the-enhanced-billing-platform)."
+        **Note:** This endpoint is only available to enterprises with access to the enhanced billing platform. For more information, see "[About the enhanced billing platform for enterprises](https://docs.github.com/enterprise-cloud@latest/billing/using-the-enhanced-billing-platform-for-enterprises/about-the-enhanced-billing-platform-for-enterprises#how-do-i-know-if-i-can-access-the-enhanced-billing-platform)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage#get-billing-usage-report-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage#get-billing-usage-report-for-an-enterprise
         """
 
         from ..models import (
@@ -2387,9 +2387,9 @@ class BillingClient:
 
         Gets a report of usage by cost center for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise. By default this endpoint will return usage that does not have a cost center.
 
-        **Note:** This endpoint is only available to enterprises with access to the enhanced billing platform. For more information, see "[About the enhanced billing platform for enterprises](https://docs.github.com/enterprise-cloud@latest//billing/using-the-enhanced-billing-platform-for-enterprises/about-the-enhanced-billing-platform-for-enterprises#how-do-i-know-if-i-can-access-the-enhanced-billing-platform)."
+        **Note:** This endpoint is only available to enterprises with access to the enhanced billing platform. For more information, see "[About the enhanced billing platform for enterprises](https://docs.github.com/enterprise-cloud@latest/billing/using-the-enhanced-billing-platform-for-enterprises/about-the-enhanced-billing-platform-for-enterprises#how-do-i-know-if-i-can-access-the-enhanced-billing-platform)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage#get-billing-usage-report-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage#get-billing-usage-report-for-an-enterprise
         """
 
         from ..models import (
@@ -2452,7 +2452,7 @@ class BillingClient:
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage#get-billing-usage-summary-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage#get-billing-usage-summary-for-an-enterprise
         """
 
         from ..models import (
@@ -2519,7 +2519,7 @@ class BillingClient:
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage#get-billing-usage-summary-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage#get-billing-usage-summary-for-an-enterprise
         """
 
         from ..models import (
@@ -2585,7 +2585,7 @@ class BillingClient:
 
         The total number of repositories with committer information is tracked by the `total_count` field.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-advanced-security-active-committers-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/billing#get-github-advanced-security-active-committers-for-an-organization
         """
 
         from ..models import AdvancedSecurityActiveCommitters
@@ -2636,7 +2636,7 @@ class BillingClient:
 
         The total number of repositories with committer information is tracked by the `total_count` field.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-advanced-security-active-committers-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/billing#get-github-advanced-security-active-committers-for-an-organization
         """
 
         from ..models import AdvancedSecurityActiveCommitters

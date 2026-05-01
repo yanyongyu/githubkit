@@ -9,60 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+LanguageType: TypeAlias = dict[str, Any]
+"""Language
 
-
-class PageBuildType(TypedDict):
-    """Page Build
-
-    Page Build
-    """
-
-    url: str
-    status: str
-    error: PageBuildPropErrorType
-    pusher: Union[None, SimpleUserType]
-    commit: str
-    duration: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+Language
+"""
 
 
-class PageBuildTypeForResponse(TypedDict):
-    """Page Build
+LanguageTypeForResponse: TypeAlias = dict[str, Any]
+"""Language
 
-    Page Build
-    """
-
-    url: str
-    status: str
-    error: PageBuildPropErrorTypeForResponse
-    pusher: Union[None, SimpleUserTypeForResponse]
-    commit: str
-    duration: int
-    created_at: str
-    updated_at: str
-
-
-class PageBuildPropErrorType(TypedDict):
-    """PageBuildPropError"""
-
-    message: Union[str, None]
-
-
-class PageBuildPropErrorTypeForResponse(TypedDict):
-    """PageBuildPropError"""
-
-    message: Union[str, None]
+Language
+"""
 
 
 __all__ = (
-    "PageBuildPropErrorType",
-    "PageBuildPropErrorTypeForResponse",
-    "PageBuildType",
-    "PageBuildTypeForResponse",
+    "LanguageType",
+    "LanguageTypeForResponse",
 )

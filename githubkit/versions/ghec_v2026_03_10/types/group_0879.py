@@ -13,75 +13,137 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0565 import (
+from .group_0303 import ProjectsV2Type, ProjectsV2TypeForResponse
+from .group_0568 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0569 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0599 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookProjectsV2ItemReorderedType(TypedDict):
-    """Projects v2 Item Reordered Event"""
+class WebhookProjectsV2ProjectEditedType(TypedDict):
+    """Projects v2 Project Edited Event"""
 
-    action: Literal["reordered"]
-    changes: WebhookProjectsV2ItemReorderedPropChangesType
+    action: Literal["edited"]
+    changes: WebhookProjectsV2ProjectEditedPropChangesType
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    projects_v2: ProjectsV2Type
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ItemReorderedTypeForResponse(TypedDict):
-    """Projects v2 Item Reordered Event"""
+class WebhookProjectsV2ProjectEditedTypeForResponse(TypedDict):
+    """Projects v2 Project Edited Event"""
 
-    action: Literal["reordered"]
-    changes: WebhookProjectsV2ItemReorderedPropChangesTypeForResponse
+    action: Literal["edited"]
+    changes: WebhookProjectsV2ProjectEditedPropChangesTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2_item: ProjectsV2ItemTypeForResponse
+    projects_v2: ProjectsV2TypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookProjectsV2ItemReorderedPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemReorderedPropChanges"""
+class WebhookProjectsV2ProjectEditedPropChangesType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChanges"""
 
-    previous_projects_v2_item_node_id: NotRequired[
-        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType
+    description: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType
+    ]
+    public: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropPublicType]
+    short_description: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType
+    ]
+    title: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropTitleType]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChanges"""
+
+    description: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropDescriptionTypeForResponse
+    ]
+    public: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropPublicTypeForResponse
+    ]
+    short_description: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionTypeForResponse
+    ]
+    title: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropTitleTypeForResponse
     ]
 
 
-class WebhookProjectsV2ItemReorderedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectsV2ItemReorderedPropChanges"""
-
-    previous_projects_v2_item_node_id: NotRequired[
-        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse
-    ]
-
-
-class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType(
-    TypedDict
-):
-    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
+class WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
 
     from_: NotRequired[Union[str, None]]
     to: NotRequired[Union[str, None]]
 
 
-class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse(
+class WebhookProjectsV2ProjectEditedPropChangesPropDescriptionTypeForResponse(
     TypedDict
 ):
-    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
+    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
 
     from_: NotRequired[Union[str, None]]
     to: NotRequired[Union[str, None]]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropPublicType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
+
+    from_: NotRequired[bool]
+    to: NotRequired[bool]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropPublicTypeForResponse(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
+
+    from_: NotRequired[bool]
+    to: NotRequired[bool]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionTypeForResponse(
+    TypedDict
+):
+    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropTitleType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
+
+    from_: NotRequired[str]
+    to: NotRequired[str]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropTitleTypeForResponse(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
+
+    from_: NotRequired[str]
+    to: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType",
-    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse",
-    "WebhookProjectsV2ItemReorderedPropChangesType",
-    "WebhookProjectsV2ItemReorderedPropChangesTypeForResponse",
-    "WebhookProjectsV2ItemReorderedType",
-    "WebhookProjectsV2ItemReorderedTypeForResponse",
+    "WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropDescriptionTypeForResponse",
+    "WebhookProjectsV2ProjectEditedPropChangesPropPublicType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropPublicTypeForResponse",
+    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionTypeForResponse",
+    "WebhookProjectsV2ProjectEditedPropChangesPropTitleType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropTitleTypeForResponse",
+    "WebhookProjectsV2ProjectEditedPropChangesType",
+    "WebhookProjectsV2ProjectEditedPropChangesTypeForResponse",
+    "WebhookProjectsV2ProjectEditedType",
+    "WebhookProjectsV2ProjectEditedTypeForResponse",
 )

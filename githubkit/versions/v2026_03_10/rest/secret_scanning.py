@@ -785,6 +785,7 @@ class SecretScanningClient:
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
+        validity: Missing[Union[None, Literal["active", "inactive"]]] = UNSET,
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     @overload
@@ -805,6 +806,7 @@ class SecretScanningClient:
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Union[str, None],
+        validity: Missing[Union[None, Literal["active", "inactive"]]] = UNSET,
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     @overload
@@ -825,6 +827,7 @@ class SecretScanningClient:
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
+        validity: Union[None, Literal["active", "inactive"]],
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     def update_alert(
@@ -935,6 +938,7 @@ class SecretScanningClient:
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
+        validity: Missing[Union[None, Literal["active", "inactive"]]] = UNSET,
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     @overload
@@ -955,6 +959,7 @@ class SecretScanningClient:
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Union[str, None],
+        validity: Missing[Union[None, Literal["active", "inactive"]]] = UNSET,
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     @overload
@@ -975,6 +980,7 @@ class SecretScanningClient:
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
+        validity: Union[None, Literal["active", "inactive"]],
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     async def async_update_alert(

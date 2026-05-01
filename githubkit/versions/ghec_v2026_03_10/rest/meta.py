@@ -55,7 +55,7 @@ class MetaClient:
 
         Get Hypermedia links to resources accessible in GitHub's REST API
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#github-api-root
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/meta/meta#github-api-root
         """
 
         from ..models import Root
@@ -84,7 +84,7 @@ class MetaClient:
 
         Get Hypermedia links to resources accessible in GitHub's REST API
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#github-api-root
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/meta/meta#github-api-root
         """
 
         from ..models import Root
@@ -111,7 +111,7 @@ class MetaClient:
 
         GET /meta
 
-        Returns meta information about GitHub, including a list of GitHub's IP addresses. For more information, see "[About GitHub's IP addresses](https://docs.github.com/enterprise-cloud@latest//articles/about-github-s-ip-addresses/)."
+        Returns meta information about GitHub, including a list of GitHub's IP addresses. For more information, see "[About GitHub's IP addresses](https://docs.github.com/enterprise-cloud@latest/articles/about-github-s-ip-addresses/)."
 
         The API's response also includes a list of GitHub's domain names.
 
@@ -120,7 +120,7 @@ class MetaClient:
         > [!NOTE]
         > This endpoint returns both IPv4 and IPv6 addresses. However, not all features support IPv6. You should refer to the specific documentation for each feature to determine if IPv6 is supported.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-apiname-meta-information
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/meta/meta#get-apiname-meta-information
         """
 
         from ..models import ApiOverview
@@ -147,7 +147,7 @@ class MetaClient:
 
         GET /meta
 
-        Returns meta information about GitHub, including a list of GitHub's IP addresses. For more information, see "[About GitHub's IP addresses](https://docs.github.com/enterprise-cloud@latest//articles/about-github-s-ip-addresses/)."
+        Returns meta information about GitHub, including a list of GitHub's IP addresses. For more information, see "[About GitHub's IP addresses](https://docs.github.com/enterprise-cloud@latest/articles/about-github-s-ip-addresses/)."
 
         The API's response also includes a list of GitHub's domain names.
 
@@ -156,7 +156,7 @@ class MetaClient:
         > [!NOTE]
         > This endpoint returns both IPv4 and IPv6 addresses. However, not all features support IPv6. You should refer to the specific documentation for each feature to determine if IPv6 is supported.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-apiname-meta-information
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/meta/meta#get-apiname-meta-information
         """
 
         from ..models import ApiOverview
@@ -186,7 +186,7 @@ class MetaClient:
 
         Get the octocat as ASCII art
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-octocat
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/meta/meta#get-octocat
         """
 
         url = "/octocat"
@@ -219,7 +219,7 @@ class MetaClient:
 
         Get the octocat as ASCII art
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-octocat
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/meta/meta#get-octocat
         """
 
         url = "/octocat"
@@ -251,7 +251,7 @@ class MetaClient:
 
         Get all supported GitHub Enterprise Cloud API versions.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-all-api-versions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/meta/meta#get-all-api-versions
         """
 
         import datetime as _dt
@@ -285,7 +285,7 @@ class MetaClient:
 
         Get all supported GitHub Enterprise Cloud API versions.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-all-api-versions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/meta/meta#get-all-api-versions
         """
 
         import datetime as _dt
@@ -319,7 +319,7 @@ class MetaClient:
 
         Get a random sentence from the Zen of GitHub
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-the-zen-of-github
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/meta/meta#get-the-zen-of-github
         """
 
         url = "/zen"
@@ -346,7 +346,7 @@ class MetaClient:
 
         Get a random sentence from the Zen of GitHub
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-the-zen-of-github
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/meta/meta#get-the-zen-of-github
         """
 
         url = "/zen"

@@ -9,34 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0326 import RateLimit
 
 
-class RateLimitOverviewPropResources(GitHubModel):
-    """RateLimitOverviewPropResources"""
+class TeamMembership(GitHubModel):
+    """Team Membership
 
-    core: RateLimit = Field(title="Rate Limit")
-    graphql: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    search: RateLimit = Field(title="Rate Limit")
-    code_search: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    source_import: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    integration_manifest: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    code_scanning_upload: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    actions_runner_registration: Missing[RateLimit] = Field(
-        default=UNSET, title="Rate Limit"
+    Team Membership
+    """
+
+    url: str = Field()
+    role: Literal["member", "maintainer"] = Field(
+        default="member", description="The role of the user in the team."
     )
-    scim: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    dependency_snapshots: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    dependency_sbom: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    code_scanning_autofix: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    state: Literal["active", "pending"] = Field(
+        description="The state of the user's membership in the team."
+    )
 
 
-model_rebuild(RateLimitOverviewPropResources)
+model_rebuild(TeamMembership)
 
-__all__ = ("RateLimitOverviewPropResources",)
+__all__ = ("TeamMembership",)

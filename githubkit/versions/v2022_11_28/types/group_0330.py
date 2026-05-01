@@ -10,84 +10,45 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
-from .group_0182 import CodeOfConductSimpleType, CodeOfConductSimpleTypeForResponse
-
-
-class CommunityProfilePropFilesType(TypedDict):
-    """CommunityProfilePropFiles"""
-
-    code_of_conduct: Union[None, CodeOfConductSimpleType]
-    code_of_conduct_file: Union[None, CommunityHealthFileType]
-    license_: Union[None, LicenseSimpleType]
-    contributing: Union[None, CommunityHealthFileType]
-    readme: Union[None, CommunityHealthFileType]
-    issue_template: Union[None, CommunityHealthFileType]
-    pull_request_template: Union[None, CommunityHealthFileType]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CommunityProfilePropFilesTypeForResponse(TypedDict):
-    """CommunityProfilePropFiles"""
+class ReactionType(TypedDict):
+    """Reaction
 
-    code_of_conduct: Union[None, CodeOfConductSimpleTypeForResponse]
-    code_of_conduct_file: Union[None, CommunityHealthFileTypeForResponse]
-    license_: Union[None, LicenseSimpleTypeForResponse]
-    contributing: Union[None, CommunityHealthFileTypeForResponse]
-    readme: Union[None, CommunityHealthFileTypeForResponse]
-    issue_template: Union[None, CommunityHealthFileTypeForResponse]
-    pull_request_template: Union[None, CommunityHealthFileTypeForResponse]
-
-
-class CommunityHealthFileType(TypedDict):
-    """Community Health File"""
-
-    url: str
-    html_url: str
-
-
-class CommunityHealthFileTypeForResponse(TypedDict):
-    """Community Health File"""
-
-    url: str
-    html_url: str
-
-
-class CommunityProfileType(TypedDict):
-    """Community Profile
-
-    Community Profile
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    health_percentage: int
-    description: Union[str, None]
-    documentation: Union[str, None]
-    files: CommunityProfilePropFilesType
-    updated_at: Union[_dt.datetime, None]
-    content_reports_enabled: NotRequired[bool]
+    id: int
+    node_id: str
+    user: Union[None, SimpleUserType]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+    created_at: _dt.datetime
 
 
-class CommunityProfileTypeForResponse(TypedDict):
-    """Community Profile
+class ReactionTypeForResponse(TypedDict):
+    """Reaction
 
-    Community Profile
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    health_percentage: int
-    description: Union[str, None]
-    documentation: Union[str, None]
-    files: CommunityProfilePropFilesTypeForResponse
-    updated_at: Union[str, None]
-    content_reports_enabled: NotRequired[bool]
+    id: int
+    node_id: str
+    user: Union[None, SimpleUserTypeForResponse]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+    created_at: str
 
 
 __all__ = (
-    "CommunityHealthFileType",
-    "CommunityHealthFileTypeForResponse",
-    "CommunityProfilePropFilesType",
-    "CommunityProfilePropFilesTypeForResponse",
-    "CommunityProfileType",
-    "CommunityProfileTypeForResponse",
+    "ReactionType",
+    "ReactionTypeForResponse",
 )

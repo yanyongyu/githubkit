@@ -664,6 +664,28 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit.versions.v2026_03_10.models import (
         CopilotSeatDetails as CopilotSeatDetails,
     )
+    from githubkit.versions.v2026_03_10.models import CopilotSpace as CopilotSpace
+    from githubkit.versions.v2026_03_10.models import (
+        CopilotSpaceCollaboratorAnyof0 as CopilotSpaceCollaboratorAnyof0,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        CopilotSpaceCollaboratorAnyof0Allof1 as CopilotSpaceCollaboratorAnyof0Allof1,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        CopilotSpaceCollaboratorAnyof1 as CopilotSpaceCollaboratorAnyof1,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        CopilotSpacePropResourcesAttributesItems as CopilotSpacePropResourcesAttributesItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        CopilotSpacePropResourcesAttributesItemsPropMetadata as CopilotSpacePropResourcesAttributesItemsPropMetadata,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        CopilotSpaceResource as CopilotSpaceResource,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        CopilotSpaceResourcePropMetadata as CopilotSpaceResourcePropMetadata,
+    )
     from githubkit.versions.v2026_03_10.models import (
         CopilotUsageMetrics1DayReport as CopilotUsageMetrics1DayReport,
     )
@@ -855,6 +877,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2026_03_10.models import (
         EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody as EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody as EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        EnterprisesEnterpriseDependabotRepositoryAccessPatchBody as EnterprisesEnterpriseDependabotRepositoryAccessPatchBody,
     )
     from githubkit.versions.v2026_03_10.models import (
         EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody as EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody,
@@ -1681,6 +1709,51 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrgsOrgCopilotContentExclusionPutResponse200 as OrgsOrgCopilotContentExclusionPutResponse200,
     )
     from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotSpacesGetResponse200 as OrgsOrgCopilotSpacesGetResponse200,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotSpacesPostBody as OrgsOrgCopilotSpacesPostBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems as OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata as OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody as OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200 as OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody as OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotSpacesSpaceNumberPutBody as OrgsOrgCopilotSpacesSpaceNumberPutBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems as OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata as OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200 as OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody as OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata as OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody as OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata as OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata,
+    )
+    from githubkit.versions.v2026_03_10.models import (
         OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody as OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody,
     )
     from githubkit.versions.v2026_03_10.models import (
@@ -2258,18 +2331,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2026_03_10.models import (
         RepoSearchResultItemPropPermissions as RepoSearchResultItemPropPermissions,
-    )
-    from githubkit.versions.v2026_03_10.models import (
-        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody as RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody,
-    )
-    from githubkit.versions.v2026_03_10.models import (
-        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems as RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems,
-    )
-    from githubkit.versions.v2026_03_10.models import (
-        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody as RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody,
-    )
-    from githubkit.versions.v2026_03_10.models import (
-        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems as RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems,
     )
     from githubkit.versions.v2026_03_10.models import Repository as Repository
     from githubkit.versions.v2026_03_10.models import (
@@ -3074,6 +3135,18 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody as ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody,
     )
     from githubkit.versions.v2026_03_10.models import (
+        ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody as ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems as ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody as ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems as ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0 as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
     )
     from githubkit.versions.v2026_03_10.models import (
@@ -3842,6 +3915,51 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2026_03_10.models import (
         UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        UsersUsernameCopilotSpacesGetResponse200 as UsersUsernameCopilotSpacesGetResponse200,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        UsersUsernameCopilotSpacesPostBody as UsersUsernameCopilotSpacesPostBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems as UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata as UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody as UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200 as UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody as UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        UsersUsernameCopilotSpacesSpaceNumberPutBody as UsersUsernameCopilotSpacesSpaceNumberPutBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems as UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata as UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200 as UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody as UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata as UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody as UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata as UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata,
     )
     from githubkit.versions.v2026_03_10.models import (
         UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0 as UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0,
@@ -5397,6 +5515,42 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2026_03_10.models import (
         WebhookIssuesEditedPropIssuePropUser as WebhookIssuesEditedPropIssuePropUser,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        WebhookIssuesFieldAdded as WebhookIssuesFieldAdded,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        WebhookIssuesFieldAddedPropChanges as WebhookIssuesFieldAddedPropChanges,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        WebhookIssuesFieldAddedPropChangesPropIssueFieldValue as WebhookIssuesFieldAddedPropChangesPropIssueFieldValue,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom as WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption as WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        WebhookIssuesFieldAddedPropIssueField as WebhookIssuesFieldAddedPropIssueField,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        WebhookIssuesFieldAddedPropIssueFieldValue as WebhookIssuesFieldAddedPropIssueFieldValue,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        WebhookIssuesFieldAddedPropIssueFieldValuePropOption as WebhookIssuesFieldAddedPropIssueFieldValuePropOption,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        WebhookIssuesFieldRemoved as WebhookIssuesFieldRemoved,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        WebhookIssuesFieldRemovedPropIssueField as WebhookIssuesFieldRemovedPropIssueField,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        WebhookIssuesFieldRemovedPropIssueFieldValue as WebhookIssuesFieldRemovedPropIssueFieldValue,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        WebhookIssuesFieldRemovedPropIssueFieldValuePropOption as WebhookIssuesFieldRemovedPropIssueFieldValuePropOption,
     )
     from githubkit.versions.v2026_03_10.models import (
         WebhookIssuesLabeled as WebhookIssuesLabeled,
@@ -10401,6 +10555,7 @@ else:
             "DependabotAlertDismissalRequestSimplePropRequester",
             "DependabotAlertWithRepository",
             "DependabotAlertWithRepositoryPropDependency",
+            "DependabotRepositoryAccessDetails",
             "OrganizationSimple",
             "Label",
             "Discussion",
@@ -10566,6 +10721,14 @@ else:
             "CodespacePropGitStatus",
             "CodespacePropRuntimeConstraints",
             "CodespacesPublicKey",
+            "CopilotSpace",
+            "CopilotSpacePropResourcesAttributesItems",
+            "CopilotSpacePropResourcesAttributesItemsPropMetadata",
+            "CopilotSpaceCollaboratorAnyof0",
+            "CopilotSpaceCollaboratorAnyof1",
+            "CopilotSpaceCollaboratorAnyof0Allof1",
+            "CopilotSpaceResource",
+            "CopilotSpaceResourcePropMetadata",
             "CopilotOrganizationDetails",
             "CopilotOrganizationSeatBreakdown",
             "CopilotSeatDetails",
@@ -10586,7 +10749,6 @@ else:
             "CopilotIdeCodeCompletionsPropEditorsItems",
             "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems",
             "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems",
-            "DependabotRepositoryAccessDetails",
             "DependabotPublicKey",
             "Package",
             "OrganizationInvitation",
@@ -11883,6 +12045,18 @@ else:
             "WebhookIssuesEditedPropIssuePropPullRequest",
             "WebhookIssuesEditedPropIssuePropReactions",
             "WebhookIssuesEditedPropIssuePropUser",
+            "WebhookIssuesFieldAdded",
+            "WebhookIssuesFieldAddedPropIssueField",
+            "WebhookIssuesFieldAddedPropIssueFieldValue",
+            "WebhookIssuesFieldAddedPropIssueFieldValuePropOption",
+            "WebhookIssuesFieldAddedPropChanges",
+            "WebhookIssuesFieldAddedPropChangesPropIssueFieldValue",
+            "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom",
+            "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption",
+            "WebhookIssuesFieldRemoved",
+            "WebhookIssuesFieldRemovedPropIssueField",
+            "WebhookIssuesFieldRemovedPropIssueFieldValue",
+            "WebhookIssuesFieldRemovedPropIssueFieldValuePropOption",
             "WebhookIssuesLabeled",
             "WebhookIssuesLabeledPropIssue",
             "WebhookIssuesLabeledPropIssuePropAssignee",
@@ -13404,6 +13578,8 @@ else:
             "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems",
             "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody",
             "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems",
+            "EnterprisesEnterpriseDependabotRepositoryAccessPatchBody",
+            "EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody",
             "EnterprisesEnterpriseTeamsPostBody",
             "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody",
             "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody",
@@ -13527,6 +13703,21 @@ else:
             "OrgsOrgCodespacesSecretsSecretNamePutBody",
             "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200",
             "OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",
+            "OrgsOrgCopilotSpacesGetResponse200",
+            "OrgsOrgCopilotSpacesPostBody",
+            "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems",
+            "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata",
+            "OrgsOrgCopilotSpacesSpaceNumberPutBody",
+            "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems",
+            "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata",
+            "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200",
+            "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody",
+            "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody",
+            "OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200",
+            "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody",
+            "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
+            "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody",
+            "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata",
             "OrgsOrgCopilotBillingSelectedTeamsPostBody",
             "OrgsOrgCopilotBillingSelectedTeamsPostResponse201",
             "OrgsOrgCopilotBillingSelectedTeamsDeleteBody",
@@ -13775,6 +13966,10 @@ else:
             "ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody",
             "ReposOwnerRepoIssuesIssueNumberCommentsPostBody",
             "ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody",
+            "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody",
+            "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems",
+            "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody",
+            "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems",
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0",
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2",
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems",
@@ -13843,10 +14038,6 @@ else:
             "ReposOwnerRepoTopicsPutBody",
             "ReposOwnerRepoTransferPostBody",
             "ReposTemplateOwnerTemplateRepoGeneratePostBody",
-            "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody",
-            "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems",
-            "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody",
-            "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems",
             "TeamsTeamIdPatchBody",
             "TeamsTeamIdMembershipsUsernamePutBody",
             "TeamsTeamIdReposOwnerRepoPutBody",
@@ -13888,6 +14079,21 @@ else:
             "UsersUsernameAttestationsDeleteRequestPostBodyOneof1",
             "UsersUsernameAttestationsSubjectDigestGetResponse200",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+            "UsersUsernameCopilotSpacesGetResponse200",
+            "UsersUsernameCopilotSpacesPostBody",
+            "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems",
+            "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata",
+            "UsersUsernameCopilotSpacesSpaceNumberPutBody",
+            "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems",
+            "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata",
+            "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200",
+            "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody",
+            "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody",
+            "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200",
+            "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody",
+            "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
+            "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody",
+            "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata",
             "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0",
             "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1",
             "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2",

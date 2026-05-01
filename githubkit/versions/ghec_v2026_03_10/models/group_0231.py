@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -18,49 +19,44 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0232 import GistSimplePropForkOf
 
 
-class GistSimple(GitHubModel):
-    """Gist Simple
+class BaseGist(GitHubModel):
+    """Base Gist
 
-    Gist Simple
+    Base Gist
     """
 
-    fork_of: Missing[Union[GistSimplePropForkOf, None]] = Field(
-        default=UNSET, title="Gist", description="Gist"
-    )
-    url: Missing[str] = Field(default=UNSET)
-    forks_url: Missing[str] = Field(default=UNSET)
-    commits_url: Missing[str] = Field(default=UNSET)
-    id: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    git_pull_url: Missing[str] = Field(default=UNSET)
-    git_push_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    files: Missing[GistSimplePropFiles] = Field(default=UNSET)
-    public: Missing[bool] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    comments: Missing[int] = Field(default=UNSET)
+    url: str = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
+    node_id: str = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
+    html_url: str = Field()
+    files: BaseGistPropFiles = Field()
+    public: bool = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    description: Union[str, None] = Field()
+    comments: int = Field()
     comments_enabled: Missing[bool] = Field(default=UNSET)
-    user: Missing[Union[str, None]] = Field(default=UNSET)
-    comments_url: Missing[str] = Field(default=UNSET)
+    comments_url: str = Field()
     owner: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
     )
     truncated: Missing[bool] = Field(default=UNSET)
 
 
-class GistSimplePropFiles(ExtraGitHubModel):
-    """GistSimplePropFiles"""
+class BaseGistPropFiles(ExtraGitHubModel):
+    """BaseGistPropFiles"""
 
 
-model_rebuild(GistSimple)
-model_rebuild(GistSimplePropFiles)
+model_rebuild(BaseGist)
+model_rebuild(BaseGistPropFiles)
 
 __all__ = (
-    "GistSimple",
-    "GistSimplePropFiles",
+    "BaseGist",
+    "BaseGistPropFiles",
 )

@@ -19,21 +19,21 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0018 import Installation
-from .group_0564 import EnterpriseWebhooks
-from .group_0566 import OrganizationSimpleWebhooks
-from .group_0567 import RepositoryWebhooks
-from .group_0577 import WebhooksUser
-from .group_0582 import WebhooksRepositoriesAddedItems
+from .group_0568 import EnterpriseWebhooks
+from .group_0570 import OrganizationSimpleWebhooks
+from .group_0571 import RepositoryWebhooks
+from .group_0581 import WebhooksUser
+from .group_0585 import WebhooksRepositoriesItems
 
 
-class WebhookInstallationRepositoriesRemoved(GitHubModel):
-    """installation_repositories removed event"""
+class WebhookInstallationCreated(GitHubModel):
+    """installation created event"""
 
-    action: Literal["removed"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
     )
     installation: Installation = Field(title="Installation", description="Installation")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
@@ -41,40 +41,19 @@ class WebhookInstallationRepositoriesRemoved(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repositories_added: list[WebhooksRepositoriesAddedItems] = Field(
-        description="An array of repository objects, which were added to the installation."
-    )
-    repositories_removed: list[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems
-    ] = Field(
-        description="An array of repository objects, which were removed from the installation."
+    repositories: Missing[list[WebhooksRepositoriesItems]] = Field(
+        default=UNSET,
+        description="An array of repository objects that the installation can access.",
     )
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    repository_selection: Literal["all", "selected"] = Field(
-        description="Describe whether all repositories have been selected or there's a selection involved"
-    )
-    requester: Union[WebhooksUser, None] = Field(title="User")
+    requester: Missing[Union[WebhooksUser, None]] = Field(default=UNSET, title="User")
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems(GitHubModel):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
+model_rebuild(WebhookInstallationCreated)
 
-    full_name: str = Field()
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="The name of the repository.")
-    node_id: str = Field()
-    private: bool = Field(description="Whether the repository is private or public.")
-
-
-model_rebuild(WebhookInstallationRepositoriesRemoved)
-model_rebuild(WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems)
-
-__all__ = (
-    "WebhookInstallationRepositoriesRemoved",
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems",
-)
+__all__ = ("WebhookInstallationCreated",)

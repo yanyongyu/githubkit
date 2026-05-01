@@ -10,80 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RuleSuiteRequiredStatusChecksType(TypedDict):
-    """Required status checks rule suite metadata
+class CodeOfConductSimpleType(TypedDict):
+    """Code Of Conduct Simple
 
-    Metadata for a required status checks rule evaluation result.
+    Code of Conduct Simple
     """
 
-    checks: NotRequired[list[RuleSuiteRequiredStatusChecksPropChecksItemsType]]
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
 
 
-class RuleSuiteRequiredStatusChecksTypeForResponse(TypedDict):
-    """Required status checks rule suite metadata
+class CodeOfConductSimpleTypeForResponse(TypedDict):
+    """Code Of Conduct Simple
 
-    Metadata for a required status checks rule evaluation result.
+    Code of Conduct Simple
     """
 
-    checks: NotRequired[
-        list[RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse]
-    ]
-
-
-class RuleSuiteRequiredStatusChecksPropChecksItemsType(TypedDict):
-    """RuleSuiteRequiredStatusChecksPropChecksItems"""
-
-    id: NotRequired[int]
-    context: NotRequired[str]
-    state: NotRequired[str]
-    type: NotRequired[str]
-    app: NotRequired[
-        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType, None]
-    ]
-
-
-class RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse(TypedDict):
-    """RuleSuiteRequiredStatusChecksPropChecksItems"""
-
-    id: NotRequired[int]
-    context: NotRequired[str]
-    state: NotRequired[str]
-    type: NotRequired[str]
-    app: NotRequired[
-        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse, None]
-    ]
-
-
-class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType(TypedDict):
-    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
-
-    The GitHub App associated with the status check.
-    """
-
-    id: NotRequired[int]
-    slug: NotRequired[str]
-    name: NotRequired[str]
-
-
-class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse(TypedDict):
-    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
-
-    The GitHub App associated with the status check.
-    """
-
-    id: NotRequired[int]
-    slug: NotRequired[str]
-    name: NotRequired[str]
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
 
 
 __all__ = (
-    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsType",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse",
-    "RuleSuiteRequiredStatusChecksType",
-    "RuleSuiteRequiredStatusChecksTypeForResponse",
+    "CodeOfConductSimpleType",
+    "CodeOfConductSimpleTypeForResponse",
 )

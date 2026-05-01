@@ -13,45 +13,61 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetCostCenterType(TypedDict):
-    """GetCostCenter"""
+class GetAllCostCentersType(TypedDict):
+    """GetAllCostCenters"""
+
+    cost_centers: NotRequired[list[GetAllCostCentersPropCostCentersItemsType]]
+
+
+class GetAllCostCentersTypeForResponse(TypedDict):
+    """GetAllCostCenters"""
+
+    cost_centers: NotRequired[
+        list[GetAllCostCentersPropCostCentersItemsTypeForResponse]
+    ]
+
+
+class GetAllCostCentersPropCostCentersItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
 
     id: str
     name: str
-    azure_subscription: NotRequired[Union[str, None]]
     state: NotRequired[Literal["active", "deleted"]]
-    resources: list[GetCostCenterPropResourcesItemsType]
-    has_next_page: NotRequired[bool]
+    azure_subscription: NotRequired[Union[str, None]]
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
 
 
-class GetCostCenterTypeForResponse(TypedDict):
-    """GetCostCenter"""
+class GetAllCostCentersPropCostCentersItemsTypeForResponse(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
 
     id: str
     name: str
-    azure_subscription: NotRequired[Union[str, None]]
     state: NotRequired[Literal["active", "deleted"]]
-    resources: list[GetCostCenterPropResourcesItemsTypeForResponse]
-    has_next_page: NotRequired[bool]
+    azure_subscription: NotRequired[Union[str, None]]
+    resources: list[
+        GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse
+    ]
 
 
-class GetCostCenterPropResourcesItemsType(TypedDict):
-    """GetCostCenterPropResourcesItems"""
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
 
     type: str
     name: str
 
 
-class GetCostCenterPropResourcesItemsTypeForResponse(TypedDict):
-    """GetCostCenterPropResourcesItems"""
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
 
     type: str
     name: str
 
 
 __all__ = (
-    "GetCostCenterPropResourcesItemsType",
-    "GetCostCenterPropResourcesItemsTypeForResponse",
-    "GetCostCenterType",
-    "GetCostCenterTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsType",
+    "GetAllCostCentersPropCostCentersItemsTypeForResponse",
+    "GetAllCostCentersType",
+    "GetAllCostCentersTypeForResponse",
 )

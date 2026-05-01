@@ -9,20 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0018 import Installation
-
-
-class UserInstallationsGetResponse200(GitHubModel):
-    """UserInstallationsGetResponse200"""
-
-    total_count: int = Field()
-    installations: list[Installation] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(UserInstallationsGetResponse200)
+class TeamsTeamIdMembershipsUsernamePutBody(GitHubModel):
+    """TeamsTeamIdMembershipsUsernamePutBody"""
 
-__all__ = ("UserInstallationsGetResponse200",)
+    role: Missing[Literal["member", "maintainer"]] = Field(
+        default=UNSET, description="The role that this user should have in the team."
+    )
+
+
+model_rebuild(TeamsTeamIdMembershipsUsernamePutBody)
+
+__all__ = ("TeamsTeamIdMembershipsUsernamePutBody",)

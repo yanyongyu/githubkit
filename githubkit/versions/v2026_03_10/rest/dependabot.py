@@ -46,6 +46,8 @@ if TYPE_CHECKING:
         DependabotRepositoryAccessDetailsTypeForResponse,
         DependabotSecretTypeForResponse,
         EmptyObjectTypeForResponse,
+        EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType,
+        EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType,
         OrganizationDependabotSecretTypeForResponse,
         OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
         OrgsOrgDependabotRepositoryAccessPatchBodyType,
@@ -232,6 +234,422 @@ class DependabotClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": ValidationErrorSimple,
+            },
+        )
+
+    def repository_access_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        DependabotRepositoryAccessDetails,
+        DependabotRepositoryAccessDetailsTypeForResponse,
+    ]:
+        """dependabot/repository-access-for-enterprise
+
+        GET /enterprises/{enterprise}/dependabot/repository-access
+
+        Lists repositories that enterprise admins have allowed Dependabot to access when updating dependencies across organizations in the enterprise.
+
+        The authenticated user must be an enterprise owner to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/repository-access#lists-the-repositories-dependabot-can-access-in-an-enterprise
+        """
+
+        from ..models import BasicError, DependabotRepositoryAccessDetails
+
+        url = f"/enterprises/{enterprise}/dependabot/repository-access"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotRepositoryAccessDetails,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_repository_access_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        DependabotRepositoryAccessDetails,
+        DependabotRepositoryAccessDetailsTypeForResponse,
+    ]:
+        """dependabot/repository-access-for-enterprise
+
+        GET /enterprises/{enterprise}/dependabot/repository-access
+
+        Lists repositories that enterprise admins have allowed Dependabot to access when updating dependencies across organizations in the enterprise.
+
+        The authenticated user must be an enterprise owner to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/repository-access#lists-the-repositories-dependabot-can-access-in-an-enterprise
+        """
+
+        from ..models import BasicError, DependabotRepositoryAccessDetails
+
+        url = f"/enterprises/{enterprise}/dependabot/repository-access"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotRepositoryAccessDetails,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def update_repository_access_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    def update_repository_access_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        repository_ids_to_add: Missing[list[int]] = UNSET,
+        repository_ids_to_remove: Missing[list[int]] = UNSET,
+    ) -> Response: ...
+
+    def update_repository_access_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """dependabot/update-repository-access-for-enterprise
+
+        PATCH /enterprises/{enterprise}/dependabot/repository-access
+
+        Updates repositories according to the list of repositories that enterprise admins have given Dependabot access to when they've updated dependencies across organizations in the enterprise.
+
+        The authenticated user must be an enterprise owner to use this endpoint.
+
+        **Example request body:**
+        ```json
+        {
+          "repository_ids_to_add": [123, 456],
+          "repository_ids_to_remove": [789]
+        }
+        ```
+
+        See also: https://docs.github.com/rest/dependabot/repository-access#updates-dependabots-repository-access-list-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseDependabotRepositoryAccessPatchBody,
+        )
+
+        url = f"/enterprises/{enterprise}/dependabot/repository-access"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseDependabotRepositoryAccessPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_update_repository_access_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_update_repository_access_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        repository_ids_to_add: Missing[list[int]] = UNSET,
+        repository_ids_to_remove: Missing[list[int]] = UNSET,
+    ) -> Response: ...
+
+    async def async_update_repository_access_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """dependabot/update-repository-access-for-enterprise
+
+        PATCH /enterprises/{enterprise}/dependabot/repository-access
+
+        Updates repositories according to the list of repositories that enterprise admins have given Dependabot access to when they've updated dependencies across organizations in the enterprise.
+
+        The authenticated user must be an enterprise owner to use this endpoint.
+
+        **Example request body:**
+        ```json
+        {
+          "repository_ids_to_add": [123, 456],
+          "repository_ids_to_remove": [789]
+        }
+        ```
+
+        See also: https://docs.github.com/rest/dependabot/repository-access#updates-dependabots-repository-access-list-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseDependabotRepositoryAccessPatchBody,
+        )
+
+        url = f"/enterprises/{enterprise}/dependabot/repository-access"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseDependabotRepositoryAccessPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_repository_access_default_level_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_repository_access_default_level_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        default_level: Literal["public", "internal"],
+    ) -> Response: ...
+
+    def set_repository_access_default_level_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """dependabot/set-repository-access-default-level-for-enterprise
+
+        PUT /enterprises/{enterprise}/dependabot/repository-access/default-level
+
+        Sets the default level of repository access Dependabot will have while performing an update across organizations in the enterprise. Available values are:
+        - 'public' - Dependabot will only have access to public repositories, unless access is explicitly granted to non-public repositories.
+        - 'internal' - Dependabot will only have access to public and internal repositories, unless access is explicitly granted to private repositories.
+
+        The authenticated user must be an enterprise owner to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody,
+        )
+
+        url = f"/enterprises/{enterprise}/dependabot/repository-access/default-level"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_set_repository_access_default_level_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_repository_access_default_level_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        default_level: Literal["public", "internal"],
+    ) -> Response: ...
+
+    async def async_set_repository_access_default_level_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """dependabot/set-repository-access-default-level-for-enterprise
+
+        PUT /enterprises/{enterprise}/dependabot/repository-access/default-level
+
+        Sets the default level of repository access Dependabot will have while performing an update across organizations in the enterprise. Available values are:
+        - 'public' - Dependabot will only have access to public repositories, unless access is explicitly granted to non-public repositories.
+        - 'internal' - Dependabot will only have access to public and internal repositories, unless access is explicitly granted to private repositories.
+
+        The authenticated user must be an enterprise owner to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody,
+        )
+
+        url = f"/enterprises/{enterprise}/dependabot/repository-access/default-level"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
             },
         )
 

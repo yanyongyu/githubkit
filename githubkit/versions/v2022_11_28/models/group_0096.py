@@ -9,20 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class DeleteBudget(GitHubModel):
-    """DeleteBudget"""
+class GetBudget(GitHubModel):
+    """GetBudget"""
 
-    message: str = Field(
-        description="A message indicating the result of the deletion operation"
+    id: str = Field(description="ID of the budget.")
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"] = (
+        Field(description="The type of scope for the budget")
     )
-    id: str = Field(description="The ID of the deleted budget")
+    budget_entity_name: str = Field(
+        description="The name of the entity to apply the budget to"
+    )
+    budget_amount: int = Field(
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
+    )
+    prevent_further_usage: bool = Field(
+        description="Whether to prevent additional spending once the budget is exceeded"
+    )
+    budget_product_sku: str = Field(
+        description="A single product or sku to apply the budget to."
+    )
+    budget_type: Literal["ProductPricing", "SkuPricing"] = Field(
+        description="The type of pricing for the budget"
+    )
+    budget_alerting: GetBudgetPropBudgetAlerting = Field()
 
 
-model_rebuild(DeleteBudget)
+class GetBudgetPropBudgetAlerting(GitHubModel):
+    """GetBudgetPropBudgetAlerting"""
 
-__all__ = ("DeleteBudget",)
+    will_alert: Missing[bool] = Field(
+        default=UNSET, description="Whether alerts are enabled for this budget"
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET, description="Array of user login names who will receive alerts"
+    )
+
+
+model_rebuild(GetBudget)
+model_rebuild(GetBudgetPropBudgetAlerting)
+
+__all__ = (
+    "GetBudget",
+    "GetBudgetPropBudgetAlerting",
+)

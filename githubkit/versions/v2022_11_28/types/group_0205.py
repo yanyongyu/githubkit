@@ -10,86 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RepositoryRulePullRequestPropParametersType(TypedDict):
-    """RepositoryRulePullRequestPropParameters"""
+class RepositoryRuleMergeQueuePropParametersType(TypedDict):
+    """RepositoryRuleMergeQueuePropParameters"""
 
-    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
-    dismiss_stale_reviews_on_push: bool
-    require_code_owner_review: bool
-    require_last_push_approval: bool
-    required_approving_review_count: int
-    required_review_thread_resolution: bool
-    required_reviewers: NotRequired[
-        list[RepositoryRuleParamsRequiredReviewerConfigurationType]
-    ]
+    check_response_timeout_minutes: int
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
+    max_entries_to_build: int
+    max_entries_to_merge: int
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
+    min_entries_to_merge: int
+    min_entries_to_merge_wait_minutes: int
 
 
-class RepositoryRulePullRequestPropParametersTypeForResponse(TypedDict):
-    """RepositoryRulePullRequestPropParameters"""
+class RepositoryRuleMergeQueuePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleMergeQueuePropParameters"""
 
-    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
-    dismiss_stale_reviews_on_push: bool
-    require_code_owner_review: bool
-    require_last_push_approval: bool
-    required_approving_review_count: int
-    required_review_thread_resolution: bool
-    required_reviewers: NotRequired[
-        list[RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse]
-    ]
-
-
-class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
-    """RequiredReviewerConfiguration
-
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
-    """
-
-    file_patterns: list[str]
-    minimum_approvals: int
-    reviewer: RepositoryRuleParamsReviewerType
-
-
-class RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse(TypedDict):
-    """RequiredReviewerConfiguration
-
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
-    """
-
-    file_patterns: list[str]
-    minimum_approvals: int
-    reviewer: RepositoryRuleParamsReviewerTypeForResponse
-
-
-class RepositoryRuleParamsReviewerType(TypedDict):
-    """Reviewer
-
-    A required reviewing team
-    """
-
-    id: int
-    type: Literal["Team"]
-
-
-class RepositoryRuleParamsReviewerTypeForResponse(TypedDict):
-    """Reviewer
-
-    A required reviewing team
-    """
-
-    id: int
-    type: Literal["Team"]
+    check_response_timeout_minutes: int
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
+    max_entries_to_build: int
+    max_entries_to_merge: int
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
+    min_entries_to_merge: int
+    min_entries_to_merge_wait_minutes: int
 
 
 __all__ = (
-    "RepositoryRuleParamsRequiredReviewerConfigurationType",
-    "RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse",
-    "RepositoryRuleParamsReviewerType",
-    "RepositoryRuleParamsReviewerTypeForResponse",
-    "RepositoryRulePullRequestPropParametersType",
-    "RepositoryRulePullRequestPropParametersTypeForResponse",
+    "RepositoryRuleMergeQueuePropParametersType",
+    "RepositoryRuleMergeQueuePropParametersTypeForResponse",
 )

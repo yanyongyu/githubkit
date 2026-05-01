@@ -14,64 +14,20 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RuleSuiteRequiredStatusChecks(GitHubModel):
-    """Required status checks rule suite metadata
+class CodeOfConductSimple(GitHubModel):
+    """Code Of Conduct Simple
 
-    Metadata for a required status checks rule evaluation result.
+    Code of Conduct Simple
     """
 
-    checks: Missing[list[RuleSuiteRequiredStatusChecksPropChecksItems]] = Field(
-        default=UNSET,
-        description="The status checks associated with the rule evaluation.",
-    )
+    url: str = Field()
+    key: str = Field()
+    name: str = Field()
+    html_url: Union[str, None] = Field()
 
 
-class RuleSuiteRequiredStatusChecksPropChecksItems(GitHubModel):
-    """RuleSuiteRequiredStatusChecksPropChecksItems"""
+model_rebuild(CodeOfConductSimple)
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the status check."
-    )
-    context: Missing[str] = Field(
-        default=UNSET, description="The context name of the status check."
-    )
-    state: Missing[str] = Field(
-        default=UNSET, description="The state of the status check."
-    )
-    type: Missing[str] = Field(
-        default=UNSET, description="The type of the status check."
-    )
-    app: Missing[Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropApp, None]] = (
-        Field(
-            default=UNSET,
-            description="The GitHub App associated with the status check.",
-        )
-    )
-
-
-class RuleSuiteRequiredStatusChecksPropChecksItemsPropApp(GitHubModel):
-    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
-
-    The GitHub App associated with the status check.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the GitHub App."
-    )
-    slug: Missing[str] = Field(default=UNSET, description="The slug of the GitHub App.")
-    name: Missing[str] = Field(default=UNSET, description="The name of the GitHub App.")
-
-
-model_rebuild(RuleSuiteRequiredStatusChecks)
-model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItems)
-model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItemsPropApp)
-
-__all__ = (
-    "RuleSuiteRequiredStatusChecks",
-    "RuleSuiteRequiredStatusChecksPropChecksItems",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsPropApp",
-)
+__all__ = ("CodeOfConductSimple",)

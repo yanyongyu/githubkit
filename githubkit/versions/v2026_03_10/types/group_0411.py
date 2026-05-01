@@ -11,28 +11,31 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0125 import TeamType, TeamTypeForResponse
 
-class ReleaseNotesContentType(TypedDict):
-    """Generated Release Notes Content
 
-    Generated name and body describing a release
+class PullRequestReviewRequestType(TypedDict):
+    """Pull Request Review Request
+
+    Pull Request Review Request
     """
 
-    name: str
-    body: str
+    users: list[SimpleUserType]
+    teams: list[TeamType]
 
 
-class ReleaseNotesContentTypeForResponse(TypedDict):
-    """Generated Release Notes Content
+class PullRequestReviewRequestTypeForResponse(TypedDict):
+    """Pull Request Review Request
 
-    Generated name and body describing a release
+    Pull Request Review Request
     """
 
-    name: str
-    body: str
+    users: list[SimpleUserTypeForResponse]
+    teams: list[TeamTypeForResponse]
 
 
 __all__ = (
-    "ReleaseNotesContentType",
-    "ReleaseNotesContentTypeForResponse",
+    "PullRequestReviewRequestType",
+    "PullRequestReviewRequestTypeForResponse",
 )

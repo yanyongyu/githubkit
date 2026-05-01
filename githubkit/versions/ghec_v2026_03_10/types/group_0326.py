@@ -9,84 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
+class GroupMappingType(TypedDict):
+    """GroupMapping
 
-    Rate Limit Overview
+    External Groups to be mapped to a team for membership
     """
 
-    resources: RateLimitOverviewPropResourcesType
+    groups: NotRequired[list[GroupMappingPropGroupsItemsType]]
 
 
-class RateLimitOverviewTypeForResponse(TypedDict):
-    """Rate Limit Overview
+class GroupMappingTypeForResponse(TypedDict):
+    """GroupMapping
 
-    Rate Limit Overview
+    External Groups to be mapped to a team for membership
     """
 
-    resources: RateLimitOverviewPropResourcesTypeForResponse
+    groups: NotRequired[list[GroupMappingPropGroupsItemsTypeForResponse]]
 
 
-class RateLimitOverviewPropResourcesType(TypedDict):
-    """RateLimitOverviewPropResources"""
+class GroupMappingPropGroupsItemsType(TypedDict):
+    """GroupMappingPropGroupsItems"""
 
-    core: RateLimitType
-    graphql: NotRequired[RateLimitType]
-    search: RateLimitType
-    code_search: NotRequired[RateLimitType]
-    source_import: NotRequired[RateLimitType]
-    integration_manifest: NotRequired[RateLimitType]
-    code_scanning_upload: NotRequired[RateLimitType]
-    actions_runner_registration: NotRequired[RateLimitType]
-    scim: NotRequired[RateLimitType]
-    dependency_snapshots: NotRequired[RateLimitType]
-    dependency_sbom: NotRequired[RateLimitType]
-    code_scanning_autofix: NotRequired[RateLimitType]
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
 
 
-class RateLimitOverviewPropResourcesTypeForResponse(TypedDict):
-    """RateLimitOverviewPropResources"""
+class GroupMappingPropGroupsItemsTypeForResponse(TypedDict):
+    """GroupMappingPropGroupsItems"""
 
-    core: RateLimitTypeForResponse
-    graphql: NotRequired[RateLimitTypeForResponse]
-    search: RateLimitTypeForResponse
-    code_search: NotRequired[RateLimitTypeForResponse]
-    source_import: NotRequired[RateLimitTypeForResponse]
-    integration_manifest: NotRequired[RateLimitTypeForResponse]
-    code_scanning_upload: NotRequired[RateLimitTypeForResponse]
-    actions_runner_registration: NotRequired[RateLimitTypeForResponse]
-    scim: NotRequired[RateLimitTypeForResponse]
-    dependency_snapshots: NotRequired[RateLimitTypeForResponse]
-    dependency_sbom: NotRequired[RateLimitTypeForResponse]
-    code_scanning_autofix: NotRequired[RateLimitTypeForResponse]
-
-
-class RateLimitType(TypedDict):
-    """Rate Limit"""
-
-    limit: int
-    remaining: int
-    reset: int
-    used: int
-
-
-class RateLimitTypeForResponse(TypedDict):
-    """Rate Limit"""
-
-    limit: int
-    remaining: int
-    reset: int
-    used: int
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "RateLimitOverviewPropResourcesType",
-    "RateLimitOverviewPropResourcesTypeForResponse",
-    "RateLimitOverviewType",
-    "RateLimitOverviewTypeForResponse",
-    "RateLimitType",
-    "RateLimitTypeForResponse",
+    "GroupMappingPropGroupsItemsType",
+    "GroupMappingPropGroupsItemsTypeForResponse",
+    "GroupMappingType",
+    "GroupMappingTypeForResponse",
 )

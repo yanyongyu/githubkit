@@ -10,53 +10,95 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class PackageVersionType(TypedDict):
+    """Package Version
 
-class ProjectsV2StatusUpdateType(TypedDict):
-    """Projects v2 Status Update
-
-    An status update belonging to a project
+    A version of a software package
     """
 
-    id: float
-    node_id: str
-    project_node_id: NotRequired[str]
-    creator: NotRequired[SimpleUserType]
+    id: int
+    name: str
+    url: str
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    status: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ]
-    start_date: NotRequired[_dt.date]
-    target_date: NotRequired[_dt.date]
-    body: NotRequired[Union[str, None]]
+    deleted_at: NotRequired[_dt.datetime]
+    metadata: NotRequired[PackageVersionPropMetadataType]
 
 
-class ProjectsV2StatusUpdateTypeForResponse(TypedDict):
-    """Projects v2 Status Update
+class PackageVersionTypeForResponse(TypedDict):
+    """Package Version
 
-    An status update belonging to a project
+    A version of a software package
     """
 
-    id: float
-    node_id: str
-    project_node_id: NotRequired[str]
-    creator: NotRequired[SimpleUserTypeForResponse]
+    id: int
+    name: str
+    url: str
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
     created_at: str
     updated_at: str
-    status: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ]
-    start_date: NotRequired[str]
-    target_date: NotRequired[str]
-    body: NotRequired[Union[str, None]]
+    deleted_at: NotRequired[str]
+    metadata: NotRequired[PackageVersionPropMetadataTypeForResponse]
+
+
+class PackageVersionPropMetadataType(TypedDict):
+    """Package Version Metadata"""
+
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerType]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
+
+
+class PackageVersionPropMetadataTypeForResponse(TypedDict):
+    """Package Version Metadata"""
+
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerTypeForResponse]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerTypeForResponse]
+
+
+class PackageVersionPropMetadataPropContainerType(TypedDict):
+    """Container Metadata"""
+
+    tags: list[str]
+
+
+class PackageVersionPropMetadataPropContainerTypeForResponse(TypedDict):
+    """Container Metadata"""
+
+    tags: list[str]
+
+
+class PackageVersionPropMetadataPropDockerType(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[list[str]]
+
+
+class PackageVersionPropMetadataPropDockerTypeForResponse(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[list[str]]
 
 
 __all__ = (
-    "ProjectsV2StatusUpdateType",
-    "ProjectsV2StatusUpdateTypeForResponse",
+    "PackageVersionPropMetadataPropContainerType",
+    "PackageVersionPropMetadataPropContainerTypeForResponse",
+    "PackageVersionPropMetadataPropDockerType",
+    "PackageVersionPropMetadataPropDockerTypeForResponse",
+    "PackageVersionPropMetadataType",
+    "PackageVersionPropMetadataTypeForResponse",
+    "PackageVersionType",
+    "PackageVersionTypeForResponse",
 )

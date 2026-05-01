@@ -14,16 +14,19 @@ from pydantic import Field
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof0(GitHubModel):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
+class UserEmailsPostBodyOneof0(GitHubModel):
+    """UserEmailsPostBodyOneof0
 
-    subject_digests: list[str] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: list[str] = Field(
         min_length=1 if PYDANTIC_V2 else None,
-        description="List of subject digests associated with the artifact attestations to delete.",
+        description="Adds one or more email addresses to your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key.",
     )
 
 
-model_rebuild(UsersUsernameAttestationsDeleteRequestPostBodyOneof0)
+model_rebuild(UserEmailsPostBodyOneof0)
 
-__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof0",)
+__all__ = ("UserEmailsPostBodyOneof0",)

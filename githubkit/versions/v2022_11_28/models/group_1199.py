@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,45 +18,40 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoGitTreesPostBody(GitHubModel):
-    """ReposOwnerRepoGitTreesPostBody"""
+class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody(GitHubModel):
+    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
 
-    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItems] = Field(
-        description="Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure."
+    state: Literal[
+        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
+    ] = Field(
+        description="The state of the status. When you set a transient deployment to `inactive`, the deployment will be shown as `destroyed` in GitHub."
     )
-    base_tree: Missing[str] = Field(
+    target_url: Missing[str] = Field(
         default=UNSET,
-        description="The SHA1 of an existing Git tree object which will be used as the base for the new tree. If provided, a new Git tree object will be created from entries in the Git tree object pointed to by `base_tree` and entries defined in the `tree` parameter. Entries defined in the `tree` parameter will overwrite items from `base_tree` with the same `path`. If you're creating new changes on a branch, then normally you'd set `base_tree` to the SHA1 of the Git tree object of the current latest commit on the branch you're working on.\nIf not provided, GitHub will create a new Git tree object from only the entries defined in the `tree` parameter. If you create a new commit pointing to such a tree, then all files which were a part of the parent commit's tree and were not defined in the `tree` parameter will be listed as deleted by the new commit.",
+        description="The target URL to associate with this status. This URL should contain output to keep the user updated while the task is running or serve as historical information for what happened in the deployment.\n\n> [!NOTE]\n> It's recommended to use the `log_url` parameter, which replaces `target_url`.",
     )
-
-
-class ReposOwnerRepoGitTreesPostBodyPropTreeItems(GitHubModel):
-    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
-
-    path: Missing[str] = Field(
-        default=UNSET, description="The file referenced in the tree."
-    )
-    mode: Missing[Literal["100644", "100755", "040000", "160000", "120000"]] = Field(
+    log_url: Missing[str] = Field(
         default=UNSET,
-        description="The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink.",
+        description='The full URL of the deployment\'s output. This parameter replaces `target_url`. We will continue to accept `target_url` to support legacy uses, but we recommend replacing `target_url` with `log_url`. Setting `log_url` will automatically set `target_url` to the same value. Default: `""`',
     )
-    type: Missing[Literal["blob", "tree", "commit"]] = Field(
-        default=UNSET, description="Either `blob`, `tree`, or `commit`."
-    )
-    sha: Missing[Union[str, None]] = Field(
+    description: Missing[str] = Field(
         default=UNSET,
-        description="The SHA1 checksum ID of the object in the tree. Also called `tree.sha`. If the value is `null` then the file will be deleted.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
+        description="A short description of the status. The maximum description length is 140 characters.",
     )
-    content: Missing[str] = Field(
+    environment: Missing[str] = Field(
         default=UNSET,
-        description="The content you want this file to have. GitHub will write this blob out and use that SHA for this entry. Use either this, or `tree.sha`.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
+        description="Name for the target deployment environment, which can be changed when setting a deploy status. For example, `production`, `staging`, or `qa`. If not defined, the environment of the previous status on the deployment will be used, if it exists. Otherwise, the environment of the deployment will be used.",
+    )
+    environment_url: Missing[str] = Field(
+        default=UNSET,
+        description='Sets the URL for accessing your environment. Default: `""`',
+    )
+    auto_inactive: Missing[bool] = Field(
+        default=UNSET,
+        description="Adds a new `inactive` status to all prior non-transient, non-production environment deployments with the same repository and `environment` name as the created status's deployment. An `inactive` status is only added to deployments that had a `success` state. Default: `true`",
     )
 
 
-model_rebuild(ReposOwnerRepoGitTreesPostBody)
-model_rebuild(ReposOwnerRepoGitTreesPostBodyPropTreeItems)
+model_rebuild(ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody)
 
-__all__ = (
-    "ReposOwnerRepoGitTreesPostBody",
-    "ReposOwnerRepoGitTreesPostBodyPropTreeItems",
-)
+__all__ = ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody",)

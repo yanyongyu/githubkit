@@ -13,16 +13,13 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0338 import WorkflowRun
+
+class OrgsOrgTeamsTeamSlugExternalGroupsPatchBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
+
+    group_id: int = Field(description="External Group Id")
 
 
-class ReposOwnerRepoActionsRunsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsRunsGetResponse200"""
+model_rebuild(OrgsOrgTeamsTeamSlugExternalGroupsPatchBody)
 
-    total_count: int = Field()
-    workflow_runs: list[WorkflowRun] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsRunsGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsRunsGetResponse200",)
+__all__ = ("OrgsOrgTeamsTeamSlugExternalGroupsPatchBody",)

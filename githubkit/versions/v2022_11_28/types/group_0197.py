@@ -9,36 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0198 import (
-    RepositoryRuleUpdatePropParametersType,
-    RepositoryRuleUpdatePropParametersTypeForResponse,
+from .group_0190 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
+from .group_0192 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
 )
 
 
-class RepositoryRuleUpdateType(TypedDict):
-    """update
+class OrgRulesetConditionsOneof0Type(TypedDict):
+    """repository_name_and_ref_name
 
-    Only allow users with bypass permission to update matching refs.
+    Conditions to target repositories by name and refs by name
     """
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
 
 
-class RepositoryRuleUpdateTypeForResponse(TypedDict):
-    """update
+class OrgRulesetConditionsOneof0TypeForResponse(TypedDict):
+    """repository_name_and_ref_name
 
-    Only allow users with bypass permission to update matching refs.
+    Conditions to target repositories by name and refs by name
     """
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
 
 
 __all__ = (
-    "RepositoryRuleUpdateType",
-    "RepositoryRuleUpdateTypeForResponse",
+    "OrgRulesetConditionsOneof0Type",
+    "OrgRulesetConditionsOneof0TypeForResponse",
 )

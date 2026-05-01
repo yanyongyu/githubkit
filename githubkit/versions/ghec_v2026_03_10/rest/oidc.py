@@ -68,7 +68,7 @@ class OidcClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#list-oidc-custom-property-inclusions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#list-oidc-custom-property-inclusions-for-an-enterprise
         """
 
         from ..models import BasicError, OidcCustomPropertyInclusion
@@ -107,7 +107,7 @@ class OidcClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#list-oidc-custom-property-inclusions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#list-oidc-custom-property-inclusions-for-an-enterprise
         """
 
         from ..models import BasicError, OidcCustomPropertyInclusion
@@ -172,7 +172,7 @@ class OidcClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#create-an-oidc-custom-property-inclusion-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#create-an-oidc-custom-property-inclusion-for-an-enterprise
         """
 
         from ..models import (
@@ -250,7 +250,7 @@ class OidcClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#create-an-oidc-custom-property-inclusion-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#create-an-oidc-custom-property-inclusion-for-an-enterprise
         """
 
         from ..models import (
@@ -300,7 +300,7 @@ class OidcClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#delete-an-oidc-custom-property-inclusion-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#delete-an-oidc-custom-property-inclusion-for-an-enterprise
         """
 
         from ..models import BasicError
@@ -335,7 +335,7 @@ class OidcClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#delete-an-oidc-custom-property-inclusion-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#delete-an-oidc-custom-property-inclusion-for-an-enterprise
         """
 
         from ..models import BasicError
@@ -372,7 +372,7 @@ class OidcClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#list-oidc-custom-property-inclusions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#list-oidc-custom-property-inclusions-for-an-organization
         """
 
         from ..models import BasicError, OidcCustomPropertyInclusion
@@ -411,7 +411,7 @@ class OidcClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#list-oidc-custom-property-inclusions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#list-oidc-custom-property-inclusions-for-an-organization
         """
 
         from ..models import BasicError, OidcCustomPropertyInclusion
@@ -476,7 +476,7 @@ class OidcClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#create-an-oidc-custom-property-inclusion-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#create-an-oidc-custom-property-inclusion-for-an-organization
         """
 
         from ..models import (
@@ -554,7 +554,7 @@ class OidcClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#create-an-oidc-custom-property-inclusion-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#create-an-oidc-custom-property-inclusion-for-an-organization
         """
 
         from ..models import (
@@ -604,7 +604,7 @@ class OidcClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#delete-an-oidc-custom-property-inclusion-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#delete-an-oidc-custom-property-inclusion-for-an-organization
         """
 
         from ..models import BasicError
@@ -639,7 +639,7 @@ class OidcClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#delete-an-oidc-custom-property-inclusion-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#delete-an-oidc-custom-property-inclusion-for-an-organization
         """
 
         from ..models import BasicError
@@ -673,7 +673,7 @@ class OidcClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization
         """
 
         from ..models import OidcCustomSub
@@ -705,7 +705,7 @@ class OidcClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization
         """
 
         from ..models import OidcCustomSub
@@ -741,6 +741,7 @@ class OidcClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         include_claim_keys: Missing[list[str]] = UNSET,
+        use_immutable_subject: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def update_oidc_custom_sub_template_for_org(
@@ -760,7 +761,7 @@ class OidcClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization
         """
 
         from ..models import (
@@ -814,6 +815,7 @@ class OidcClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         include_claim_keys: Missing[list[str]] = UNSET,
+        use_immutable_subject: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_update_oidc_custom_sub_template_for_org(
@@ -833,7 +835,7 @@ class OidcClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization
         """
 
         from ..models import (

@@ -50,7 +50,7 @@ class EmojisClient:
 
         Lists all the emojis available to use on GitHub Enterprise Cloud.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/emojis/emojis#get-emojis
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/emojis/emojis#get-emojis
         """
 
         from ..models import EmojisGetResponse200
@@ -79,7 +79,7 @@ class EmojisClient:
 
         Lists all the emojis available to use on GitHub Enterprise Cloud.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/emojis/emojis#get-emojis
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/emojis/emojis#get-emojis
         """
 
         from ..models import EmojisGetResponse200

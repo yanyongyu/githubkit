@@ -64,7 +64,7 @@ class EnterpriseTeamMembershipsClient:
 
         Lists all team members in an enterprise team.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-members#list-members-in-an-enterprise-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-members#list-members-in-an-enterprise-team
         """
 
         from ..models import SimpleUser
@@ -103,7 +103,7 @@ class EnterpriseTeamMembershipsClient:
 
         Lists all team members in an enterprise team.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-members#list-members-in-an-enterprise-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-members#list-members-in-an-enterprise-team
         """
 
         from ..models import SimpleUser
@@ -167,7 +167,7 @@ class EnterpriseTeamMembershipsClient:
 
         Add multiple team members to an enterprise team.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-members#bulk-add-team-members
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-members#bulk-add-team-members
         """
 
         from ..models import (
@@ -240,7 +240,7 @@ class EnterpriseTeamMembershipsClient:
 
         Add multiple team members to an enterprise team.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-members#bulk-add-team-members
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-members#bulk-add-team-members
         """
 
         from ..models import (
@@ -313,7 +313,7 @@ class EnterpriseTeamMembershipsClient:
 
         Remove multiple team members from an enterprise team.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-members#bulk-remove-team-members
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-members#bulk-remove-team-members
         """
 
         from ..models import (
@@ -386,7 +386,7 @@ class EnterpriseTeamMembershipsClient:
 
         Remove multiple team members from an enterprise team.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-members#bulk-remove-team-members
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-members#bulk-remove-team-members
         """
 
         from ..models import (
@@ -433,7 +433,7 @@ class EnterpriseTeamMembershipsClient:
 
         Returns whether the user is a member of the enterprise team.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-members#get-enterprise-team-membership
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-members#get-enterprise-team-membership
         """
 
         from ..models import SimpleUser
@@ -467,7 +467,7 @@ class EnterpriseTeamMembershipsClient:
 
         Returns whether the user is a member of the enterprise team.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-members#get-enterprise-team-membership
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-members#get-enterprise-team-membership
         """
 
         from ..models import SimpleUser
@@ -501,7 +501,7 @@ class EnterpriseTeamMembershipsClient:
 
         Add a team member to an enterprise team.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-members#add-team-member
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-members#add-team-member
         """
 
         from ..models import SimpleUser
@@ -535,7 +535,7 @@ class EnterpriseTeamMembershipsClient:
 
         Add a team member to an enterprise team.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-members#add-team-member
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-members#add-team-member
         """
 
         from ..models import SimpleUser
@@ -569,7 +569,7 @@ class EnterpriseTeamMembershipsClient:
 
         Remove membership of a specific user from a particular team in an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-members#remove-team-membership
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-members#remove-team-membership
         """
 
         from ..models import BasicError
@@ -605,7 +605,7 @@ class EnterpriseTeamMembershipsClient:
 
         Remove membership of a specific user from a particular team in an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-members#remove-team-membership
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-members#remove-team-membership
         """
 
         from ..models import BasicError

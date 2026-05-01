@@ -121,7 +121,7 @@ class SecretScanningClient:
         Delegated bypass must be enabled on repositories in the enterprise and the user must be a bypass reviewer to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-enterprise
         """
 
         from ..models import BasicError, SecretScanningBypassRequest
@@ -190,7 +190,7 @@ class SecretScanningClient:
         Delegated bypass must be enabled on repositories in the enterprise and the user must be a bypass reviewer to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-enterprise
         """
 
         from ..models import BasicError, SecretScanningBypassRequest
@@ -252,7 +252,7 @@ class SecretScanningClient:
         The authenticated user must be an enterprise owner or an enterprise security manager to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-enterprise
         """
 
         from ..models import BasicError, SecretScanningDismissalRequest
@@ -315,7 +315,7 @@ class SecretScanningClient:
         The authenticated user must be an enterprise owner or an enterprise security manager to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-enterprise
         """
 
         from ..models import BasicError, SecretScanningDismissalRequest
@@ -379,9 +379,9 @@ class SecretScanningClient:
         GET /enterprises/{enterprise}/secret-scanning/alerts
 
         Lists secret scanning alerts for eligible repositories in an enterprise, from newest to oldest.
-        To use this endpoint, you must be a member of the enterprise, and you must use an access token with the `repo` scope or `security_events` scope. Alerts are only returned for organizations in the enterprise for which you are an organization owner or a [security manager](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization), or for repositories owned by enterprise managed users.
+        To use this endpoint, you must be a member of the enterprise, and you must use an access token with the `repo` scope or `security_events` scope. Alerts are only returned for organizations in the enterprise for which you are an organization owner or a [security manager](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization), or for repositories owned by enterprise managed users.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise
         """
 
         from ..models import (
@@ -457,9 +457,9 @@ class SecretScanningClient:
         GET /enterprises/{enterprise}/secret-scanning/alerts
 
         Lists secret scanning alerts for eligible repositories in an enterprise, from newest to oldest.
-        To use this endpoint, you must be a member of the enterprise, and you must use an access token with the `repo` scope or `security_events` scope. Alerts are only returned for organizations in the enterprise for which you are an organization owner or a [security manager](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization), or for repositories owned by enterprise managed users.
+        To use this endpoint, you must be a member of the enterprise, and you must use an access token with the `repo` scope or `security_events` scope. Alerts are only returned for organizations in the enterprise for which you are an organization owner or a [security manager](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization), or for repositories owned by enterprise managed users.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise
         """
 
         from ..models import (
@@ -522,7 +522,7 @@ class SecretScanningClient:
 
         Personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#list-enterprise-pattern-configurations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/push-protection#list-enterprise-pattern-configurations
         """
 
         from ..models import BasicError, SecretScanningPatternConfiguration
@@ -561,7 +561,7 @@ class SecretScanningClient:
 
         Personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#list-enterprise-pattern-configurations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/push-protection#list-enterprise-pattern-configurations
         """
 
         from ..models import BasicError, SecretScanningPatternConfiguration
@@ -641,7 +641,7 @@ class SecretScanningClient:
 
         Personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#update-enterprise-pattern-configurations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/push-protection#update-enterprise-pattern-configurations
         """
 
         from ..models import (
@@ -741,7 +741,7 @@ class SecretScanningClient:
 
         Personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#update-enterprise-pattern-configurations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/push-protection#update-enterprise-pattern-configurations
         """
 
         from ..models import (
@@ -819,7 +819,7 @@ class SecretScanningClient:
         Delegated bypass must be enabled on repositories in the org and the user must be a bypass reviewer to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-org
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-org
         """
 
         from ..models import BasicError, SecretScanningBypassRequest
@@ -888,7 +888,7 @@ class SecretScanningClient:
         Delegated bypass must be enabled on repositories in the org and the user must be a bypass reviewer to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-org
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-org
         """
 
         from ..models import BasicError, SecretScanningBypassRequest
@@ -950,7 +950,7 @@ class SecretScanningClient:
         Delegated alert dismissal must be enabled on repositories in the org and the user must be an org admin, security manager,
         or have the "Review and manage secret scanning alert dismissal requests" permission to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-org
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-org
         """
 
         from ..models import BasicError, SecretScanningDismissalRequest
@@ -1013,7 +1013,7 @@ class SecretScanningClient:
         Delegated alert dismissal must be enabled on repositories in the org and the user must be an org admin, security manager,
         or have the "Review and manage secret scanning alert dismissal requests" permission to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-org
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-org
         """
 
         from ..models import BasicError, SecretScanningDismissalRequest
@@ -1083,7 +1083,7 @@ class SecretScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization
         """
 
         from ..models import (
@@ -1166,7 +1166,7 @@ class SecretScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization
         """
 
         from ..models import (
@@ -1230,7 +1230,7 @@ class SecretScanningClient:
 
         Personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#list-organization-pattern-configurations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/push-protection#list-organization-pattern-configurations
         """
 
         from ..models import BasicError, SecretScanningPatternConfiguration
@@ -1269,7 +1269,7 @@ class SecretScanningClient:
 
         Personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#list-organization-pattern-configurations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/push-protection#list-organization-pattern-configurations
         """
 
         from ..models import BasicError, SecretScanningPatternConfiguration
@@ -1347,7 +1347,7 @@ class SecretScanningClient:
 
         Personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#update-organization-pattern-configurations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/push-protection#update-organization-pattern-configurations
         """
 
         from ..models import (
@@ -1445,7 +1445,7 @@ class SecretScanningClient:
 
         Personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#update-organization-pattern-configurations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/push-protection#update-organization-pattern-configurations
         """
 
         from ..models import (
@@ -1523,7 +1523,7 @@ class SecretScanningClient:
         Delegated bypass must be enabled on the repository and the user must be a bypass reviewer to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-a-repository
         """
 
         from ..models import BasicError, SecretScanningBypassRequest
@@ -1592,7 +1592,7 @@ class SecretScanningClient:
         Delegated bypass must be enabled on the repository and the user must be a bypass reviewer to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-a-repository
         """
 
         from ..models import BasicError, SecretScanningBypassRequest
@@ -1644,7 +1644,7 @@ class SecretScanningClient:
         Delegated bypass must be enabled on the repository and the user must be a bypass reviewer to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#get-a-bypass-request-for-secret-scanning
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/delegated-bypass#get-a-bypass-request-for-secret-scanning
         """
 
         from ..models import BasicError, SecretScanningBypassRequest
@@ -1686,7 +1686,7 @@ class SecretScanningClient:
         Delegated bypass must be enabled on the repository and the user must be a bypass reviewer to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#get-a-bypass-request-for-secret-scanning
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/delegated-bypass#get-a-bypass-request-for-secret-scanning
         """
 
         from ..models import BasicError, SecretScanningBypassRequest
@@ -1765,7 +1765,7 @@ class SecretScanningClient:
         Delegated bypass must be enabled on the repository and the user must be a bypass reviewer to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#review-a-bypass-request-for-secret-scanning
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/delegated-bypass#review-a-bypass-request-for-secret-scanning
         """
 
         from ..models import (
@@ -1863,7 +1863,7 @@ class SecretScanningClient:
         Delegated bypass must be enabled on the repository and the user must be a bypass reviewer to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#review-a-bypass-request-for-secret-scanning
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/delegated-bypass#review-a-bypass-request-for-secret-scanning
         """
 
         from ..models import (
@@ -1922,7 +1922,7 @@ class SecretScanningClient:
         Delegated bypass must be enabled on the repository and the user must be a bypass reviewer to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#dismiss-a-response-on-a-bypass-request-for-secret-scanning
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/delegated-bypass#dismiss-a-response-on-a-bypass-request-for-secret-scanning
         """
 
         from ..models import BasicError, ValidationError
@@ -1962,7 +1962,7 @@ class SecretScanningClient:
         Delegated bypass must be enabled on the repository and the user must be a bypass reviewer to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#dismiss-a-response-on-a-bypass-request-for-secret-scanning
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/delegated-bypass#dismiss-a-response-on-a-bypass-request-for-secret-scanning
         """
 
         from ..models import BasicError, ValidationError
@@ -2014,7 +2014,7 @@ class SecretScanningClient:
         Delegated alert dismissal must be enabled on the repository and the user must be an org admin, security manager,
         or have the "Review and manage secret scanning alert dismissal requests" permission to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-a-repository
         """
 
         from ..models import BasicError, SecretScanningDismissalRequest
@@ -2076,7 +2076,7 @@ class SecretScanningClient:
         Delegated alert dismissal must be enabled on the repository and the user must be an org admin, security manager,
         or have the "Review and manage secret scanning alert dismissal requests" permission to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-a-repository
         """
 
         from ..models import BasicError, SecretScanningDismissalRequest
@@ -2129,7 +2129,7 @@ class SecretScanningClient:
         or have the "Review and manage secret scanning alert dismissal requests" permission to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#get-an-alert-dismissal-request-for-secret-scanning
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/alert-dismissal-requests#get-an-alert-dismissal-request-for-secret-scanning
         """
 
         from ..models import BasicError, SecretScanningDismissalRequest
@@ -2172,7 +2172,7 @@ class SecretScanningClient:
         or have the "Review and manage secret scanning alert dismissal requests" permission to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#get-an-alert-dismissal-request-for-secret-scanning
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/alert-dismissal-requests#get-an-alert-dismissal-request-for-secret-scanning
         """
 
         from ..models import BasicError, SecretScanningDismissalRequest
@@ -2252,7 +2252,7 @@ class SecretScanningClient:
         or have the "Review and manage secret scanning alert dismissal requests" permission to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#review-an-alert-dismissal-request-for-secret-scanning
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/alert-dismissal-requests#review-an-alert-dismissal-request-for-secret-scanning
         """
 
         from ..models import (
@@ -2350,7 +2350,7 @@ class SecretScanningClient:
         or have the "Review and manage secret scanning alert dismissal requests" permission to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#review-an-alert-dismissal-request-for-secret-scanning
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/alert-dismissal-requests#review-an-alert-dismissal-request-for-secret-scanning
         """
 
         from ..models import (
@@ -2425,7 +2425,7 @@ class SecretScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository
         """
 
         from ..models import (
@@ -2504,7 +2504,7 @@ class SecretScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository
         """
 
         from ..models import (
@@ -2568,7 +2568,7 @@ class SecretScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert
         """
 
         from ..models import (
@@ -2616,7 +2616,7 @@ class SecretScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert
         """
 
         from ..models import (
@@ -2678,6 +2678,7 @@ class SecretScanningClient:
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
+        validity: Missing[Union[None, Literal["active", "inactive"]]] = UNSET,
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     @overload
@@ -2698,6 +2699,7 @@ class SecretScanningClient:
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Union[str, None],
+        validity: Missing[Union[None, Literal["active", "inactive"]]] = UNSET,
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     @overload
@@ -2718,6 +2720,7 @@ class SecretScanningClient:
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
+        validity: Union[None, Literal["active", "inactive"]],
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     def update_alert(
@@ -2749,7 +2752,7 @@ class SecretScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert
         """
 
         from typing import Union
@@ -2828,6 +2831,7 @@ class SecretScanningClient:
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
+        validity: Missing[Union[None, Literal["active", "inactive"]]] = UNSET,
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     @overload
@@ -2848,6 +2852,7 @@ class SecretScanningClient:
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Union[str, None],
+        validity: Missing[Union[None, Literal["active", "inactive"]]] = UNSET,
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     @overload
@@ -2868,6 +2873,7 @@ class SecretScanningClient:
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
+        validity: Union[None, Literal["active", "inactive"]],
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     async def async_update_alert(
@@ -2899,7 +2905,7 @@ class SecretScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert
         """
 
         from typing import Union
@@ -2967,7 +2973,7 @@ class SecretScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert
         """
 
         from ..models import (
@@ -3019,7 +3025,7 @@ class SecretScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert
         """
 
         from ..models import (
@@ -3103,7 +3109,7 @@ class SecretScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#create-a-push-protection-bypass
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#create-a-push-protection-bypass
         """
 
         from ..models import (
@@ -3194,7 +3200,7 @@ class SecretScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#create-a-push-protection-bypass
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#create-a-push-protection-bypass
         """
 
         from ..models import (
@@ -3245,11 +3251,11 @@ class SecretScanningClient:
         Lists the latest default incremental and backfill scans by type for a repository.
 
         > [!NOTE]
-        > This endpoint requires [GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest//get-started/learning-about-github/about-github-advanced-security).
+        > This endpoint requires [GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest/get-started/learning-about-github/about-github-advanced-security).
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository
         """
 
         from ..models import (
@@ -3287,11 +3293,11 @@ class SecretScanningClient:
         Lists the latest default incremental and backfill scans by type for a repository.
 
         > [!NOTE]
-        > This endpoint requires [GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest//get-started/learning-about-github/about-github-advanced-security).
+        > This endpoint requires [GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest/get-started/learning-about-github/about-github-advanced-security).
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository
         """
 
         from ..models import (

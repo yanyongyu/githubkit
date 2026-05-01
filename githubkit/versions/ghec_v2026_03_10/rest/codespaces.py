@@ -131,7 +131,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#list-codespaces-for-the-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#list-codespaces-for-the-organization
         """
 
         from ..models import BasicError, OrgsOrgCodespacesGetResponse200
@@ -179,7 +179,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#list-codespaces-for-the-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#list-codespaces-for-the-organization
         """
 
         from ..models import BasicError, OrgsOrgCodespacesGetResponse200
@@ -254,7 +254,7 @@ class CodespacesClient:
         Sets which users can access codespaces in an organization. This is synonymous with granting or revoking codespaces access permissions for users according to the visibility.
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#manage-access-control-for-organization-codespaces
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#manage-access-control-for-organization-codespaces
         """
 
         from ..models import BasicError, OrgsOrgCodespacesAccessPutBody, ValidationError
@@ -331,7 +331,7 @@ class CodespacesClient:
         Sets which users can access codespaces in an organization. This is synonymous with granting or revoking codespaces access permissions for users according to the visibility.
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#manage-access-control-for-organization-codespaces
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#manage-access-control-for-organization-codespaces
         """
 
         from ..models import BasicError, OrgsOrgCodespacesAccessPutBody, ValidationError
@@ -402,11 +402,11 @@ class CodespacesClient:
         Codespaces for the specified users will be billed to the organization.
 
         To use this endpoint, the access settings for the organization must be set to `selected_members`.
-        For information on how to change this setting, see "[Manage access control for organization codespaces](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#manage-access-control-for-organization-codespaces)."
+        For information on how to change this setting, see "[Manage access control for organization codespaces](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#manage-access-control-for-organization-codespaces)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#add-users-to-codespaces-access-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#add-users-to-codespaces-access-for-an-organization
         """
 
         from ..models import (
@@ -483,11 +483,11 @@ class CodespacesClient:
         Codespaces for the specified users will be billed to the organization.
 
         To use this endpoint, the access settings for the organization must be set to `selected_members`.
-        For information on how to change this setting, see "[Manage access control for organization codespaces](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#manage-access-control-for-organization-codespaces)."
+        For information on how to change this setting, see "[Manage access control for organization codespaces](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#manage-access-control-for-organization-codespaces)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#add-users-to-codespaces-access-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#add-users-to-codespaces-access-for-an-organization
         """
 
         from ..models import (
@@ -564,11 +564,11 @@ class CodespacesClient:
         Codespaces for the specified users will no longer be billed to the organization.
 
         To use this endpoint, the access settings for the organization must be set to `selected_members`.
-        For information on how to change this setting, see "[Manage access control for organization codespaces](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#manage-access-control-for-organization-codespaces)."
+        For information on how to change this setting, see "[Manage access control for organization codespaces](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#manage-access-control-for-organization-codespaces)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#remove-users-from-codespaces-access-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#remove-users-from-codespaces-access-for-an-organization
         """
 
         from ..models import (
@@ -645,11 +645,11 @@ class CodespacesClient:
         Codespaces for the specified users will no longer be billed to the organization.
 
         To use this endpoint, the access settings for the organization must be set to `selected_members`.
-        For information on how to change this setting, see "[Manage access control for organization codespaces](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#manage-access-control-for-organization-codespaces)."
+        For information on how to change this setting, see "[Manage access control for organization codespaces](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#manage-access-control-for-organization-codespaces)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#remove-users-from-codespaces-access-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#remove-users-from-codespaces-access-for-an-organization
         """
 
         from ..models import (
@@ -707,7 +707,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#list-organization-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#list-organization-secrets
         """
 
         from ..models import OrgsOrgCodespacesSecretsGetResponse200
@@ -751,7 +751,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#list-organization-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#list-organization-secrets
         """
 
         from ..models import OrgsOrgCodespacesSecretsGetResponse200
@@ -788,7 +788,7 @@ class CodespacesClient:
         Gets a public key for an organization, which is required in order to encrypt secrets. You need to encrypt the value of a secret before you can create or update secrets.
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#get-an-organization-public-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#get-an-organization-public-key
         """
 
         from ..models import CodespacesPublicKey
@@ -819,7 +819,7 @@ class CodespacesClient:
         Gets a public key for an organization, which is required in order to encrypt secrets. You need to encrypt the value of a secret before you can create or update secrets.
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#get-an-organization-public-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#get-an-organization-public-key
         """
 
         from ..models import CodespacesPublicKey
@@ -852,7 +852,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#get-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#get-an-organization-secret
         """
 
         from ..models import CodespacesOrgSecret
@@ -885,7 +885,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#get-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#get-an-organization-secret
         """
 
         from ..models import CodespacesOrgSecret
@@ -943,11 +943,11 @@ class CodespacesClient:
         PUT /orgs/{org}/codespaces/secrets/{secret_name}
 
         Creates or updates an organization development environment secret with an encrypted value. Encrypt your secret using
-        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#create-or-update-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#create-or-update-an-organization-secret
         """
 
         from ..models import (
@@ -1024,11 +1024,11 @@ class CodespacesClient:
         PUT /orgs/{org}/codespaces/secrets/{secret_name}
 
         Creates or updates an organization development environment secret with an encrypted value. Encrypt your secret using
-        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#create-or-update-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#create-or-update-an-organization-secret
         """
 
         from ..models import (
@@ -1080,7 +1080,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#delete-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#delete-an-organization-secret
         """
 
         from ..models import BasicError
@@ -1115,7 +1115,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#delete-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#delete-an-organization-secret
         """
 
         from ..models import BasicError
@@ -1156,7 +1156,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret
         """
 
         from ..models import (
@@ -1207,7 +1207,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret
         """
 
         from ..models import (
@@ -1277,11 +1277,11 @@ class CodespacesClient:
 
         Replaces all repositories for an organization development environment secret when the `visibility`
         for repository access is set to `selected`. The visibility is set when you [Create
-        or update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
+        or update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret
         """
 
         from ..models import (
@@ -1356,11 +1356,11 @@ class CodespacesClient:
 
         Replaces all repositories for an organization development environment secret when the `visibility`
         for repository access is set to `selected`. The visibility is set when you [Create
-        or update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
+        or update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret
         """
 
         from ..models import (
@@ -1407,10 +1407,10 @@ class CodespacesClient:
 
         PUT /orgs/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}
 
-        Adds a repository to an organization development environment secret when the `visibility` for repository access is set to `selected`. The visibility is set when you [Create or update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
+        Adds a repository to an organization development environment secret when the `visibility` for repository access is set to `selected`. The visibility is set when you [Create or update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#add-selected-repository-to-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#add-selected-repository-to-an-organization-secret
         """
 
         from ..models import BasicError, ValidationError
@@ -1445,10 +1445,10 @@ class CodespacesClient:
 
         PUT /orgs/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}
 
-        Adds a repository to an organization development environment secret when the `visibility` for repository access is set to `selected`. The visibility is set when you [Create or update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
+        Adds a repository to an organization development environment secret when the `visibility` for repository access is set to `selected`. The visibility is set when you [Create or update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#add-selected-repository-to-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#add-selected-repository-to-an-organization-secret
         """
 
         from ..models import BasicError, ValidationError
@@ -1485,11 +1485,11 @@ class CodespacesClient:
 
         Removes a repository from an organization development environment secret when the `visibility`
         for repository access is set to `selected`. The visibility is set when you [Create
-        or update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
+        or update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret
         """
 
         from ..models import BasicError, ValidationError
@@ -1526,11 +1526,11 @@ class CodespacesClient:
 
         Removes a repository from an organization development environment secret when the `visibility`
         for repository access is set to `selected`. The visibility is set when you [Create
-        or update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
+        or update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret
         """
 
         from ..models import BasicError, ValidationError
@@ -1573,7 +1573,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#list-codespaces-for-a-user-in-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#list-codespaces-for-a-user-in-organization
         """
 
         from ..models import BasicError, OrgsOrgMembersUsernameCodespacesGetResponse200
@@ -1623,7 +1623,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#list-codespaces-for-a-user-in-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#list-codespaces-for-a-user-in-organization
         """
 
         from ..models import BasicError, OrgsOrgMembersUsernameCodespacesGetResponse200
@@ -1672,7 +1672,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#delete-a-codespace-from-the-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#delete-a-codespace-from-the-organization
         """
 
         from ..models import (
@@ -1718,7 +1718,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#delete-a-codespace-from-the-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#delete-a-codespace-from-the-organization
         """
 
         from ..models import (
@@ -1761,7 +1761,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#stop-a-codespace-for-an-organization-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#stop-a-codespace-for-an-organization-user
         """
 
         from ..models import BasicError, Codespace
@@ -1801,7 +1801,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#stop-a-codespace-for-an-organization-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/organizations#stop-a-codespace-for-an-organization-user
         """
 
         from ..models import BasicError, Codespace
@@ -1845,7 +1845,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#list-codespaces-in-a-repository-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#list-codespaces-in-a-repository-for-the-authenticated-user
         """
 
         from ..models import BasicError, ReposOwnerRepoCodespacesGetResponse200
@@ -1895,7 +1895,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#list-codespaces-in-a-repository-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#list-codespaces-in-a-repository-for-the-authenticated-user
         """
 
         from ..models import BasicError, ReposOwnerRepoCodespacesGetResponse200
@@ -1977,7 +1977,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#create-a-codespace-in-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#create-a-codespace-in-a-repository
         """
 
         from typing import Union
@@ -2073,7 +2073,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#create-a-codespace-in-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#create-a-codespace-in-a-repository
         """
 
         from typing import Union
@@ -2138,7 +2138,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#list-devcontainer-configurations-in-a-repository-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#list-devcontainer-configurations-in-a-repository-for-the-authenticated-user
         """
 
         from ..models import (
@@ -2193,7 +2193,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#list-devcontainer-configurations-in-a-repository-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#list-devcontainer-configurations-in-a-repository-for-the-authenticated-user
         """
 
         from ..models import (
@@ -2248,7 +2248,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/machines#list-available-machine-types-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/machines#list-available-machine-types-for-a-repository
         """
 
         from ..models import BasicError, ReposOwnerRepoCodespacesMachinesGetResponse200
@@ -2300,7 +2300,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/machines#list-available-machine-types-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/machines#list-available-machine-types-for-a-repository
         """
 
         from ..models import BasicError, ReposOwnerRepoCodespacesMachinesGetResponse200
@@ -2351,7 +2351,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#get-default-attributes-for-a-codespace
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#get-default-attributes-for-a-codespace
         """
 
         from ..models import BasicError, ReposOwnerRepoCodespacesNewGetResponse200
@@ -2400,7 +2400,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#get-default-attributes-for-a-codespace
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#get-default-attributes-for-a-codespace
         """
 
         from ..models import BasicError, ReposOwnerRepoCodespacesNewGetResponse200
@@ -2449,7 +2449,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#check-if-permissions-defined-by-a-devcontainer-have-been-accepted-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#check-if-permissions-defined-by-a-devcontainer-have-been-accepted-by-the-authenticated-user
         """
 
         from ..models import (
@@ -2505,7 +2505,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#check-if-permissions-defined-by-a-devcontainer-have-been-accepted-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#check-if-permissions-defined-by-a-devcontainer-have-been-accepted-by-the-authenticated-user
         """
 
         from ..models import (
@@ -2562,7 +2562,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#list-repository-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/repository-secrets#list-repository-secrets
         """
 
         from ..models import ReposOwnerRepoCodespacesSecretsGetResponse200
@@ -2607,7 +2607,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#list-repository-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/repository-secrets#list-repository-secrets
         """
 
         from ..models import ReposOwnerRepoCodespacesSecretsGetResponse200
@@ -2647,7 +2647,7 @@ class CodespacesClient:
 
         If the repository is private, OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#get-a-repository-public-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/repository-secrets#get-a-repository-public-key
         """
 
         from ..models import CodespacesPublicKey
@@ -2681,7 +2681,7 @@ class CodespacesClient:
 
         If the repository is private, OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#get-a-repository-public-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/repository-secrets#get-a-repository-public-key
         """
 
         from ..models import CodespacesPublicKey
@@ -2715,7 +2715,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#get-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/repository-secrets#get-a-repository-secret
         """
 
         from ..models import RepoCodespacesSecret
@@ -2749,7 +2749,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#get-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/repository-secrets#get-a-repository-secret
         """
 
         from ..models import RepoCodespacesSecret
@@ -2808,11 +2808,11 @@ class CodespacesClient:
         PUT /repos/{owner}/{repo}/codespaces/secrets/{secret_name}
 
         Creates or updates a repository development environment secret with an encrypted value. Encrypt your secret using
-        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. The associated user must be a repository admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#create-or-update-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/repository-secrets#create-or-update-a-repository-secret
         """
 
         from ..models import (
@@ -2886,11 +2886,11 @@ class CodespacesClient:
         PUT /repos/{owner}/{repo}/codespaces/secrets/{secret_name}
 
         Creates or updates a repository development environment secret with an encrypted value. Encrypt your secret using
-        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. The associated user must be a repository admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#create-or-update-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/repository-secrets#create-or-update-a-repository-secret
         """
 
         from ..models import (
@@ -2939,7 +2939,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. The associated user must be a repository admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#delete-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/repository-secrets#delete-a-repository-secret
         """
 
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
@@ -2970,7 +2970,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. The associated user must be a repository admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#delete-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/repository-secrets#delete-a-repository-secret
         """
 
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
@@ -3041,7 +3041,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#create-a-codespace-from-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#create-a-codespace-from-a-pull-request
         """
 
         from typing import Union
@@ -3140,7 +3140,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#create-a-codespace-from-a-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#create-a-codespace-from-a-pull-request
         """
 
         from typing import Union
@@ -3201,7 +3201,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user
         """
 
         from ..models import BasicError, UserCodespacesGetResponse200
@@ -3250,7 +3250,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user
         """
 
         from ..models import BasicError, UserCodespacesGetResponse200
@@ -3350,7 +3350,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#create-a-codespace-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#create-a-codespace-for-the-authenticated-user
         """
 
         from typing import Union
@@ -3463,7 +3463,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#create-a-codespace-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#create-a-codespace-for-the-authenticated-user
         """
 
         from typing import Union
@@ -3528,7 +3528,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#list-secrets-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#list-secrets-for-the-authenticated-user
         """
 
         from ..models import UserCodespacesSecretsGetResponse200
@@ -3573,7 +3573,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#list-secrets-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#list-secrets-for-the-authenticated-user
         """
 
         from ..models import UserCodespacesSecretsGetResponse200
@@ -3612,7 +3612,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#get-public-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#get-public-key-for-the-authenticated-user
         """
 
         from ..models import CodespacesUserPublicKey
@@ -3645,7 +3645,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#get-public-key-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#get-public-key-for-the-authenticated-user
         """
 
         from ..models import CodespacesUserPublicKey
@@ -3679,7 +3679,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#get-a-secret-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#get-a-secret-for-the-authenticated-user
         """
 
         from ..models import CodespacesSecret
@@ -3713,7 +3713,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#get-a-secret-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#get-a-secret-for-the-authenticated-user
         """
 
         from ..models import CodespacesSecret
@@ -3767,13 +3767,13 @@ class CodespacesClient:
         PUT /user/codespaces/secrets/{secret_name}
 
         Creates or updates a development environment secret for a user's codespace with an encrypted value. Encrypt your secret using
-        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
 
         The authenticated user must have Codespaces access to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#create-or-update-a-secret-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#create-or-update-a-secret-for-the-authenticated-user
         """
 
         from ..models import (
@@ -3846,13 +3846,13 @@ class CodespacesClient:
         PUT /user/codespaces/secrets/{secret_name}
 
         Creates or updates a development environment secret for a user's codespace with an encrypted value. Encrypt your secret using
-        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
 
         The authenticated user must have Codespaces access to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#create-or-update-a-secret-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#create-or-update-a-secret-for-the-authenticated-user
         """
 
         from ..models import (
@@ -3905,7 +3905,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#delete-a-secret-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#delete-a-secret-for-the-authenticated-user
         """
 
         url = f"/user/codespaces/secrets/{secret_name}"
@@ -3936,7 +3936,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#delete-a-secret-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#delete-a-secret-for-the-authenticated-user
         """
 
         url = f"/user/codespaces/secrets/{secret_name}"
@@ -3970,7 +3970,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#list-selected-repositories-for-a-user-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret
         """
 
         from ..models import (
@@ -4016,7 +4016,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#list-selected-repositories-for-a-user-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret
         """
 
         from ..models import (
@@ -4082,7 +4082,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#set-selected-repositories-for-a-user-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret
         """
 
         from ..models import (
@@ -4159,7 +4159,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#set-selected-repositories-for-a-user-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret
         """
 
         from ..models import (
@@ -4214,7 +4214,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret
         """
 
         from ..models import BasicError
@@ -4254,7 +4254,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret
         """
 
         from ..models import BasicError
@@ -4294,7 +4294,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret
         """
 
         from ..models import BasicError
@@ -4334,7 +4334,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret
         """
 
         from ..models import BasicError
@@ -4371,7 +4371,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user
         """
 
         from ..models import BasicError, Codespace
@@ -4409,7 +4409,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user
         """
 
         from ..models import BasicError, Codespace
@@ -4450,7 +4450,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#delete-a-codespace-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#delete-a-codespace-for-the-authenticated-user
         """
 
         from ..models import (
@@ -4494,7 +4494,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#delete-a-codespace-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#delete-a-codespace-for-the-authenticated-user
         """
 
         from ..models import (
@@ -4562,7 +4562,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#update-a-codespace-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#update-a-codespace-for-the-authenticated-user
         """
 
         from ..models import BasicError, Codespace, UserCodespacesCodespaceNamePatchBody
@@ -4636,7 +4636,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#update-a-codespace-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#update-a-codespace-for-the-authenticated-user
         """
 
         from ..models import BasicError, Codespace, UserCodespacesCodespaceNamePatchBody
@@ -4685,7 +4685,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user
         """
 
         from ..models import BasicError, CodespaceExportDetails, ValidationError
@@ -4726,7 +4726,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user
         """
 
         from ..models import BasicError, CodespaceExportDetails, ValidationError
@@ -4766,7 +4766,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#get-details-about-a-codespace-export
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#get-details-about-a-codespace-export
         """
 
         from ..models import BasicError, CodespaceExportDetails
@@ -4802,7 +4802,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#get-details-about-a-codespace-export
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#get-details-about-a-codespace-export
         """
 
         from ..models import BasicError, CodespaceExportDetails
@@ -4840,7 +4840,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/machines#list-machine-types-for-a-codespace
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/machines#list-machine-types-for-a-codespace
         """
 
         from ..models import (
@@ -4884,7 +4884,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/machines#list-machine-types-for-a-codespace
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/machines#list-machine-types-for-a-codespace
         """
 
         from ..models import (
@@ -4959,7 +4959,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#create-a-repository-from-an-unpublished-codespace
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#create-a-repository-from-an-unpublished-codespace
         """
 
         from ..models import (
@@ -5048,7 +5048,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#create-a-repository-from-an-unpublished-codespace
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#create-a-repository-from-an-unpublished-codespace
         """
 
         from ..models import (
@@ -5103,7 +5103,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user
         """
 
         from ..models import BasicError, Codespace
@@ -5144,7 +5144,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user
         """
 
         from ..models import BasicError, Codespace
@@ -5185,7 +5185,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user
         """
 
         from ..models import BasicError, Codespace
@@ -5223,7 +5223,7 @@ class CodespacesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user
         """
 
         from ..models import BasicError, Codespace

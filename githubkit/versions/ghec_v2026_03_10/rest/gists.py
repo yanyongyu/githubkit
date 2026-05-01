@@ -73,7 +73,7 @@ class GistsClient:
 
         Lists the authenticated user's gists or if called anonymously, this endpoint returns all public gists:
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gists-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#list-gists-for-the-authenticated-user
         """
 
         from ..models import BaseGist, BasicError
@@ -115,7 +115,7 @@ class GistsClient:
 
         Lists the authenticated user's gists or if called anonymously, this endpoint returns all public gists:
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gists-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#list-gists-for-the-authenticated-user
         """
 
         from ..models import BaseGist, BasicError
@@ -180,7 +180,7 @@ class GistsClient:
         > [!NOTE]
         > Don't name your files "gistfile" with a numerical suffix. This is the format of the automatic naming scheme that Gist uses internally.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#create-a-gist
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#create-a-gist
         """
 
         from ..models import BasicError, GistSimple, GistsPostBody, ValidationError
@@ -250,7 +250,7 @@ class GistsClient:
         > [!NOTE]
         > Don't name your files "gistfile" with a numerical suffix. This is the format of the automatic naming scheme that Gist uses internally.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#create-a-gist
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#create-a-gist
         """
 
         from ..models import BasicError, GistSimple, GistsPostBody, ValidationError
@@ -297,9 +297,9 @@ class GistsClient:
 
         List public gists sorted by most recently updated to least recently updated.
 
-        Note: With [pagination](https://docs.github.com/enterprise-cloud@latest//rest/guides/using-pagination-in-the-rest-api), you can fetch up to 3000 gists. For example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
+        Note: With [pagination](https://docs.github.com/enterprise-cloud@latest/rest/guides/using-pagination-in-the-rest-api), you can fetch up to 3000 gists. For example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-public-gists
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#list-public-gists
         """
 
         from ..models import BaseGist, BasicError, ValidationError
@@ -342,9 +342,9 @@ class GistsClient:
 
         List public gists sorted by most recently updated to least recently updated.
 
-        Note: With [pagination](https://docs.github.com/enterprise-cloud@latest//rest/guides/using-pagination-in-the-rest-api), you can fetch up to 3000 gists. For example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
+        Note: With [pagination](https://docs.github.com/enterprise-cloud@latest/rest/guides/using-pagination-in-the-rest-api), you can fetch up to 3000 gists. For example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-public-gists
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#list-public-gists
         """
 
         from ..models import BaseGist, BasicError, ValidationError
@@ -387,7 +387,7 @@ class GistsClient:
 
         List the authenticated user's starred gists:
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-starred-gists
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#list-starred-gists
         """
 
         from ..models import BaseGist, BasicError
@@ -430,7 +430,7 @@ class GistsClient:
 
         List the authenticated user's starred gists:
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-starred-gists
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#list-starred-gists
         """
 
         from ..models import BaseGist, BasicError
@@ -471,11 +471,11 @@ class GistsClient:
 
         Gets a specified gist.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#get-a-gist
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#get-a-gist
         """
 
         from ..models import BasicError, GistsGistIdGetResponse403, GistSimple
@@ -509,11 +509,11 @@ class GistsClient:
 
         Gets a specified gist.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#get-a-gist
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#get-a-gist
         """
 
         from ..models import BasicError, GistsGistIdGetResponse403, GistSimple
@@ -545,7 +545,7 @@ class GistsClient:
 
         DELETE /gists/{gist_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#delete-a-gist
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#delete-a-gist
         """
 
         from ..models import BasicError
@@ -576,7 +576,7 @@ class GistsClient:
 
         DELETE /gists/{gist_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#delete-a-gist
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#delete-a-gist
         """
 
         from ..models import BasicError
@@ -637,11 +637,11 @@ class GistsClient:
 
         At least one of `description` or `files` is required.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#update-a-gist
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#update-a-gist
         """
 
         from typing import Union
@@ -720,11 +720,11 @@ class GistsClient:
 
         At least one of `description` or `files` is required.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#update-a-gist
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#update-a-gist
         """
 
         from typing import Union
@@ -777,11 +777,11 @@ class GistsClient:
 
         Lists the comments on a gist.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#list-gist-comments
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/comments#list-gist-comments
         """
 
         from ..models import BasicError, GistComment
@@ -823,11 +823,11 @@ class GistsClient:
 
         Lists the comments on a gist.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#list-gist-comments
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/comments#list-gist-comments
         """
 
         from ..models import BasicError, GistComment
@@ -890,11 +890,11 @@ class GistsClient:
 
         Creates a comment on a gist.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#create-a-gist-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/comments#create-a-gist-comment
         """
 
         from ..models import BasicError, GistComment, GistsGistIdCommentsPostBody
@@ -961,11 +961,11 @@ class GistsClient:
 
         Creates a comment on a gist.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#create-a-gist-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/comments#create-a-gist-comment
         """
 
         from ..models import BasicError, GistComment, GistsGistIdCommentsPostBody
@@ -1010,11 +1010,11 @@ class GistsClient:
 
         Gets a comment on a gist.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#get-a-gist-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/comments#get-a-gist-comment
         """
 
         from ..models import BasicError, GistComment, GistsGistIdGetResponse403
@@ -1049,11 +1049,11 @@ class GistsClient:
 
         Gets a comment on a gist.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#get-a-gist-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/comments#get-a-gist-comment
         """
 
         from ..models import BasicError, GistComment, GistsGistIdGetResponse403
@@ -1086,7 +1086,7 @@ class GistsClient:
 
         DELETE /gists/{gist_id}/comments/{comment_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#delete-a-gist-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/comments#delete-a-gist-comment
         """
 
         from ..models import BasicError
@@ -1118,7 +1118,7 @@ class GistsClient:
 
         DELETE /gists/{gist_id}/comments/{comment_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#delete-a-gist-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/comments#delete-a-gist-comment
         """
 
         from ..models import BasicError
@@ -1177,11 +1177,11 @@ class GistsClient:
 
         Updates a comment on a gist.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#update-a-gist-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/comments#update-a-gist-comment
         """
 
         from ..models import (
@@ -1254,11 +1254,11 @@ class GistsClient:
 
         Updates a comment on a gist.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#update-a-gist-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/comments#update-a-gist-comment
         """
 
         from ..models import (
@@ -1305,7 +1305,7 @@ class GistsClient:
 
         GET /gists/{gist_id}/commits
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gist-commits
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#list-gist-commits
         """
 
         from ..models import BasicError, GistCommit
@@ -1345,7 +1345,7 @@ class GistsClient:
 
         GET /gists/{gist_id}/commits
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gist-commits
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#list-gist-commits
         """
 
         from ..models import BasicError, GistCommit
@@ -1385,7 +1385,7 @@ class GistsClient:
 
         GET /gists/{gist_id}/forks
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gist-forks
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#list-gist-forks
         """
 
         from ..models import BasicError, GistSimple
@@ -1425,7 +1425,7 @@ class GistsClient:
 
         GET /gists/{gist_id}/forks
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gist-forks
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#list-gist-forks
         """
 
         from ..models import BasicError, GistSimple
@@ -1463,7 +1463,7 @@ class GistsClient:
 
         POST /gists/{gist_id}/forks
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#fork-a-gist
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#fork-a-gist
         """
 
         from ..models import BaseGist, BasicError, ValidationError
@@ -1496,7 +1496,7 @@ class GistsClient:
 
         POST /gists/{gist_id}/forks
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#fork-a-gist
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#fork-a-gist
         """
 
         from ..models import BaseGist, BasicError, ValidationError
@@ -1529,7 +1529,7 @@ class GistsClient:
 
         GET /gists/{gist_id}/star
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#check-if-a-gist-is-starred
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#check-if-a-gist-is-starred
         """
 
         from ..models import BasicError, GistsGistIdStarGetResponse404
@@ -1560,7 +1560,7 @@ class GistsClient:
 
         GET /gists/{gist_id}/star
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#check-if-a-gist-is-starred
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#check-if-a-gist-is-starred
         """
 
         from ..models import BasicError, GistsGistIdStarGetResponse404
@@ -1591,9 +1591,9 @@ class GistsClient:
 
         PUT /gists/{gist_id}/star
 
-        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#http-method)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#star-a-gist
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#star-a-gist
         """
 
         from ..models import BasicError
@@ -1624,9 +1624,9 @@ class GistsClient:
 
         PUT /gists/{gist_id}/star
 
-        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#http-method)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#star-a-gist
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#star-a-gist
         """
 
         from ..models import BasicError
@@ -1657,7 +1657,7 @@ class GistsClient:
 
         DELETE /gists/{gist_id}/star
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#unstar-a-gist
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#unstar-a-gist
         """
 
         from ..models import BasicError
@@ -1688,7 +1688,7 @@ class GistsClient:
 
         DELETE /gists/{gist_id}/star
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#unstar-a-gist
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#unstar-a-gist
         """
 
         from ..models import BasicError
@@ -1722,11 +1722,11 @@ class GistsClient:
 
         Gets a specified gist revision.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#get-a-gist-revision
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#get-a-gist-revision
         """
 
         from ..models import BasicError, GistSimple, ValidationError
@@ -1762,11 +1762,11 @@ class GistsClient:
 
         Gets a specified gist revision.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#get-a-gist-revision
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#get-a-gist-revision
         """
 
         from ..models import BasicError, GistSimple, ValidationError
@@ -1804,7 +1804,7 @@ class GistsClient:
 
         Lists public gists for the specified user:
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gists-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#list-gists-for-a-user
         """
 
         from ..models import BaseGist, ValidationError
@@ -1847,7 +1847,7 @@ class GistsClient:
 
         Lists public gists for the specified user:
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gists-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gists/gists#list-gists-for-a-user
         """
 
         from ..models import BaseGist, ValidationError

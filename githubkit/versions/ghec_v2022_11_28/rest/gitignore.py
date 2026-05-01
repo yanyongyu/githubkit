@@ -48,9 +48,9 @@ class GitignoreClient:
 
         GET /gitignore/templates
 
-        List all templates available to pass as an option when [creating a repository](https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#create-a-repository-for-the-authenticated-user).
+        List all templates available to pass as an option when [creating a repository](https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#create-a-repository-for-the-authenticated-user).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gitignore/gitignore#get-all-gitignore-templates
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gitignore/gitignore#get-all-gitignore-templates
         """
 
         url = "/gitignore/templates"
@@ -75,9 +75,9 @@ class GitignoreClient:
 
         GET /gitignore/templates
 
-        List all templates available to pass as an option when [creating a repository](https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#create-a-repository-for-the-authenticated-user).
+        List all templates available to pass as an option when [creating a repository](https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#create-a-repository-for-the-authenticated-user).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gitignore/gitignore#get-all-gitignore-templates
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gitignore/gitignore#get-all-gitignore-templates
         """
 
         url = "/gitignore/templates"
@@ -105,11 +105,11 @@ class GitignoreClient:
 
         Get the content of a gitignore template.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw .gitignore contents.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gitignore/gitignore#get-a-gitignore-template
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gitignore/gitignore#get-a-gitignore-template
         """
 
         from ..models import GitignoreTemplate
@@ -139,11 +139,11 @@ class GitignoreClient:
 
         Get the content of a gitignore template.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw .gitignore contents.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/gitignore/gitignore#get-a-gitignore-template
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/gitignore/gitignore#get-a-gitignore-template
         """
 
         from ..models import GitignoreTemplate

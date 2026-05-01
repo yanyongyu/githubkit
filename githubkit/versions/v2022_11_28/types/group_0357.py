@@ -9,30 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ShortBlobType(TypedDict):
-    """Short Blob
+class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
+    """Deployment branch and tag policy name pattern"""
 
-    Short Blob
-    """
-
-    url: str
-    sha: str
+    name: str
+    type: NotRequired[Literal["branch", "tag"]]
 
 
-class ShortBlobTypeForResponse(TypedDict):
-    """Short Blob
+class DeploymentBranchPolicyNamePatternWithTypeTypeForResponse(TypedDict):
+    """Deployment branch and tag policy name pattern"""
 
-    Short Blob
-    """
-
-    url: str
-    sha: str
+    name: str
+    type: NotRequired[Literal["branch", "tag"]]
 
 
 __all__ = (
-    "ShortBlobType",
-    "ShortBlobTypeForResponse",
+    "DeploymentBranchPolicyNamePatternWithTypeType",
+    "DeploymentBranchPolicyNamePatternWithTypeTypeForResponse",
 )

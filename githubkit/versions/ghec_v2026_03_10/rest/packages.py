@@ -58,7 +58,7 @@ class PackagesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization
         """
 
         from ..models import BasicError, Package
@@ -94,7 +94,7 @@ class PackagesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization
         """
 
         from ..models import BasicError, Package
@@ -134,9 +134,9 @@ class PackagesClient:
 
         Lists packages in an organization readable by the user.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-packages-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#list-packages-for-an-organization
         """
 
         from ..models import BasicError, Package
@@ -184,9 +184,9 @@ class PackagesClient:
 
         Lists packages in an organization readable by the user.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-packages-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#list-packages-for-an-organization
         """
 
         from ..models import BasicError, Package
@@ -232,9 +232,9 @@ class PackagesClient:
 
         Gets a specific package in an organization.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-a-package-for-an-organization
         """
 
         from ..models import Package
@@ -268,9 +268,9 @@ class PackagesClient:
 
         Gets a specific package in an organization.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-a-package-for-an-organization
         """
 
         from ..models import Package
@@ -304,11 +304,11 @@ class PackagesClient:
 
         Deletes an entire package in an organization. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance.
 
-        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-a-package-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#delete-a-package-for-an-organization
         """
 
         from ..models import BasicError
@@ -346,11 +346,11 @@ class PackagesClient:
 
         Deletes an entire package in an organization. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance.
 
-        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-a-package-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#delete-a-package-for-an-organization
         """
 
         from ..models import BasicError
@@ -393,11 +393,11 @@ class PackagesClient:
           - The package was deleted within the last 30 days.
           - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
 
-        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-a-package-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#restore-a-package-for-an-organization
         """
 
         from ..models import BasicError
@@ -445,11 +445,11 @@ class PackagesClient:
           - The package was deleted within the last 30 days.
           - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
 
-        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-a-package-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#restore-a-package-for-an-organization
         """
 
         from ..models import BasicError
@@ -495,9 +495,9 @@ class PackagesClient:
 
         Lists package versions for a package owned by an organization.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization
         """
 
         from ..models import BasicError, PackageVersion
@@ -546,9 +546,9 @@ class PackagesClient:
 
         Lists package versions for a package owned by an organization.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization
         """
 
         from ..models import BasicError, PackageVersion
@@ -595,9 +595,9 @@ class PackagesClient:
 
         Gets a specific package version in an organization.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-version-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-a-package-version-for-an-organization
         """
 
         from ..models import PackageVersion
@@ -632,9 +632,9 @@ class PackagesClient:
 
         Gets a specific package version in an organization.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-version-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-a-package-version-for-an-organization
         """
 
         from ..models import PackageVersion
@@ -669,11 +669,11 @@ class PackagesClient:
 
         Deletes a specific package version in an organization. If the package is public and the package version has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact GitHub support for further assistance.
 
-        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-package-version-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#delete-package-version-for-an-organization
         """
 
         from ..models import BasicError
@@ -712,11 +712,11 @@ class PackagesClient:
 
         Deletes a specific package version in an organization. If the package is public and the package version has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact GitHub support for further assistance.
 
-        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-package-version-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#delete-package-version-for-an-organization
         """
 
         from ..models import BasicError
@@ -759,11 +759,11 @@ class PackagesClient:
           - The package was deleted within the last 30 days.
           - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
 
-        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-package-version-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#restore-package-version-for-an-organization
         """
 
         from ..models import BasicError
@@ -806,11 +806,11 @@ class PackagesClient:
           - The package was deleted within the last 30 days.
           - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
 
-        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-package-version-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#restore-package-version-for-an-organization
         """
 
         from ..models import BasicError
@@ -845,7 +845,7 @@ class PackagesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user
         """
 
         from ..models import Package
@@ -876,7 +876,7 @@ class PackagesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user
         """
 
         from ..models import Package
@@ -911,9 +911,9 @@ class PackagesClient:
 
         Lists packages owned by the authenticated user within the user's namespace.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-packages-for-the-authenticated-users-namespace
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#list-packages-for-the-authenticated-users-namespace
         """
 
         from ..models import Package
@@ -957,9 +957,9 @@ class PackagesClient:
 
         Lists packages owned by the authenticated user within the user's namespace.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-packages-for-the-authenticated-users-namespace
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#list-packages-for-the-authenticated-users-namespace
         """
 
         from ..models import Package
@@ -1001,9 +1001,9 @@ class PackagesClient:
 
         Gets a specific package for a package owned by the authenticated user.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-a-package-for-the-authenticated-user
         """
 
         from ..models import Package
@@ -1036,9 +1036,9 @@ class PackagesClient:
 
         Gets a specific package for a package owned by the authenticated user.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-a-package-for-the-authenticated-user
         """
 
         from ..models import Package
@@ -1071,9 +1071,9 @@ class PackagesClient:
 
         Deletes a package owned by the authenticated user. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-a-package-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#delete-a-package-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -1110,9 +1110,9 @@ class PackagesClient:
 
         Deletes a package owned by the authenticated user. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-a-package-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#delete-a-package-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -1154,9 +1154,9 @@ class PackagesClient:
           - The package was deleted within the last 30 days.
           - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-a-package-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#restore-a-package-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -1203,9 +1203,9 @@ class PackagesClient:
           - The package was deleted within the last 30 days.
           - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-a-package-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#restore-a-package-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -1250,9 +1250,9 @@ class PackagesClient:
 
         Lists package versions for a package owned by the authenticated user.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user
         """
 
         from ..models import BasicError, PackageVersion
@@ -1300,9 +1300,9 @@ class PackagesClient:
 
         Lists package versions for a package owned by the authenticated user.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user
         """
 
         from ..models import BasicError, PackageVersion
@@ -1348,9 +1348,9 @@ class PackagesClient:
 
         Gets a specific package version for a package owned by the authenticated user.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-version-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-a-package-version-for-the-authenticated-user
         """
 
         from ..models import PackageVersion
@@ -1384,9 +1384,9 @@ class PackagesClient:
 
         Gets a specific package version for a package owned by the authenticated user.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-version-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-a-package-version-for-the-authenticated-user
         """
 
         from ..models import PackageVersion
@@ -1422,9 +1422,9 @@ class PackagesClient:
 
         The authenticated user must have admin permissions in the organization to use this endpoint.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-a-package-version-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#delete-a-package-version-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -1464,9 +1464,9 @@ class PackagesClient:
 
         The authenticated user must have admin permissions in the organization to use this endpoint.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-a-package-version-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#delete-a-package-version-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -1508,9 +1508,9 @@ class PackagesClient:
           - The package was deleted within the last 30 days.
           - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-a-package-version-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#restore-a-package-version-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -1552,9 +1552,9 @@ class PackagesClient:
           - The package was deleted within the last 30 days.
           - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-a-package-version-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#restore-a-package-version-for-the-authenticated-user
         """
 
         from ..models import BasicError
@@ -1590,7 +1590,7 @@ class PackagesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user
         """
 
         from ..models import BasicError, Package
@@ -1626,7 +1626,7 @@ class PackagesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user
         """
 
         from ..models import BasicError, Package
@@ -1666,9 +1666,9 @@ class PackagesClient:
 
         Lists all packages in a user's namespace for which the requesting user has access.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-packages-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#list-packages-for-a-user
         """
 
         from ..models import BasicError, Package
@@ -1716,9 +1716,9 @@ class PackagesClient:
 
         Lists all packages in a user's namespace for which the requesting user has access.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-packages-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#list-packages-for-a-user
         """
 
         from ..models import BasicError, Package
@@ -1764,9 +1764,9 @@ class PackagesClient:
 
         Gets a specific package metadata for a public package owned by a user.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-a-package-for-a-user
         """
 
         from ..models import Package
@@ -1800,9 +1800,9 @@ class PackagesClient:
 
         Gets a specific package metadata for a public package owned by a user.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-a-package-for-a-user
         """
 
         from ..models import Package
@@ -1836,11 +1836,11 @@ class PackagesClient:
 
         Deletes an entire package for a user. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance.
 
-        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-a-package-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#delete-a-package-for-a-user
         """
 
         from ..models import BasicError
@@ -1878,11 +1878,11 @@ class PackagesClient:
 
         Deletes an entire package for a user. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance.
 
-        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-a-package-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#delete-a-package-for-a-user
         """
 
         from ..models import BasicError
@@ -1925,11 +1925,11 @@ class PackagesClient:
           - The package was deleted within the last 30 days.
           - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
 
-        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-a-package-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#restore-a-package-for-a-user
         """
 
         from ..models import BasicError
@@ -1977,11 +1977,11 @@ class PackagesClient:
           - The package was deleted within the last 30 days.
           - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
 
-        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-a-package-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#restore-a-package-for-a-user
         """
 
         from ..models import BasicError
@@ -2024,9 +2024,9 @@ class PackagesClient:
 
         Lists package versions for a public package owned by a specified user.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user
         """
 
         from ..models import BasicError, PackageVersion
@@ -2065,9 +2065,9 @@ class PackagesClient:
 
         Lists package versions for a public package owned by a specified user.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user
         """
 
         from ..models import BasicError, PackageVersion
@@ -2107,9 +2107,9 @@ class PackagesClient:
 
         Gets a specific package version for a public package owned by a specified user.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-version-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-a-package-version-for-a-user
         """
 
         from ..models import PackageVersion
@@ -2144,9 +2144,9 @@ class PackagesClient:
 
         Gets a specific package version for a public package owned by a specified user.
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-version-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#get-a-package-version-for-a-user
         """
 
         from ..models import PackageVersion
@@ -2181,11 +2181,11 @@ class PackagesClient:
 
         Deletes a specific package version for a user. If the package is public and the package version has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact GitHub support for further assistance.
 
-        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-package-version-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#delete-package-version-for-a-user
         """
 
         from ..models import BasicError
@@ -2224,11 +2224,11 @@ class PackagesClient:
 
         Deletes a specific package version for a user. If the package is public and the package version has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact GitHub support for further assistance.
 
-        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-package-version-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#delete-package-version-for-a-user
         """
 
         from ..models import BasicError
@@ -2271,11 +2271,11 @@ class PackagesClient:
           - The package was deleted within the last 30 days.
           - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
 
-        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-package-version-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#restore-package-version-for-a-user
         """
 
         from ..models import BasicError
@@ -2318,11 +2318,11 @@ class PackagesClient:
           - The package was deleted within the last 30 days.
           - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
 
-        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
 
-        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/enterprise-cloud@latest/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-package-version-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/packages/packages#restore-package-version-for-a-user
         """
 
         from ..models import BasicError

@@ -64,7 +64,7 @@ class EnterpriseTeamOrganizationsClient:
 
         Get all organizations assigned to an enterprise team
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-organizations#get-organization-assignments
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#get-organization-assignments
         """
 
         from ..models import OrganizationSimple
@@ -103,7 +103,7 @@ class EnterpriseTeamOrganizationsClient:
 
         Get all organizations assigned to an enterprise team
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-organizations#get-organization-assignments
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#get-organization-assignments
         """
 
         from ..models import OrganizationSimple
@@ -171,7 +171,7 @@ class EnterpriseTeamOrganizationsClient:
 
         Assign an enterprise team to multiple organizations.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments
         """
 
         from ..models import (
@@ -248,7 +248,7 @@ class EnterpriseTeamOrganizationsClient:
 
         Assign an enterprise team to multiple organizations.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments
         """
 
         from ..models import (
@@ -321,7 +321,7 @@ class EnterpriseTeamOrganizationsClient:
 
         Unassign an enterprise team from multiple organizations.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-organizations#remove-organization-assignments
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#remove-organization-assignments
         """
 
         from ..models import (
@@ -393,7 +393,7 @@ class EnterpriseTeamOrganizationsClient:
 
         Unassign an enterprise team from multiple organizations.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-organizations#remove-organization-assignments
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#remove-organization-assignments
         """
 
         from ..models import (
@@ -439,7 +439,7 @@ class EnterpriseTeamOrganizationsClient:
 
         Check if an enterprise team is assigned to an organization
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-organizations#get-organization-assignment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#get-organization-assignment
         """
 
         from ..models import OrganizationSimple
@@ -472,7 +472,7 @@ class EnterpriseTeamOrganizationsClient:
 
         Check if an enterprise team is assigned to an organization
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-organizations#get-organization-assignment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#get-organization-assignment
         """
 
         from ..models import OrganizationSimple
@@ -505,7 +505,7 @@ class EnterpriseTeamOrganizationsClient:
 
         Assign an enterprise team to an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-organizations#add-an-organization-assignment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#add-an-organization-assignment
         """
 
         from ..models import OrganizationSimple
@@ -537,7 +537,7 @@ class EnterpriseTeamOrganizationsClient:
 
         Assign an enterprise team to an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-organizations#add-an-organization-assignment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#add-an-organization-assignment
         """
 
         from ..models import OrganizationSimple
@@ -569,7 +569,7 @@ class EnterpriseTeamOrganizationsClient:
 
         Unassign an enterprise team from an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-organizations#delete-an-organization-assignment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#delete-an-organization-assignment
         """
 
         url = f"/enterprises/{enterprise}/teams/{enterprise_team}/organizations/{org}"
@@ -598,7 +598,7 @@ class EnterpriseTeamOrganizationsClient:
 
         Unassign an enterprise team from an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-organizations#delete-an-organization-assignment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#delete-an-organization-assignment
         """
 
         url = f"/enterprises/{enterprise}/teams/{enterprise_team}/organizations/{org}"

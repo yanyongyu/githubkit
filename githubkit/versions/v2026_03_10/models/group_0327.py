@@ -9,34 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0052 import ReactionRollup
 
 
-class Status(GitHubModel):
-    """Status
+class CommitComment(GitHubModel):
+    """Commit Comment
 
-    The status of a commit.
+    Commit Comment
     """
 
+    html_url: str = Field()
     url: str = Field()
-    avatar_url: Union[str, None] = Field()
     id: int = Field()
     node_id: str = Field()
-    state: str = Field()
-    description: Union[str, None] = Field()
-    target_url: Union[str, None] = Field()
-    context: str = Field()
-    created_at: str = Field()
-    updated_at: str = Field()
-    creator: Union[None, SimpleUser] = Field()
+    body: str = Field()
+    path: Union[str, None] = Field()
+    position: Union[int, None] = Field()
+    line: Union[int, None] = Field()
+    commit_id: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(Status)
+class TimelineCommitCommentedEvent(GitHubModel):
+    """Timeline Commit Commented Event
 
-__all__ = ("Status",)
+    Timeline Commit Commented Event
+    """
+
+    event: Missing[Literal["commit_commented"]] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    commit_id: Missing[str] = Field(default=UNSET)
+    comments: Missing[list[CommitComment]] = Field(default=UNSET)
+
+
+model_rebuild(CommitComment)
+model_rebuild(TimelineCommitCommentedEvent)
+
+__all__ = (
+    "CommitComment",
+    "TimelineCommitCommentedEvent",
+)

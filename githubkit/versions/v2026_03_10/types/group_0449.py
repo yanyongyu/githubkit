@@ -9,28 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class TopicType(TypedDict):
-    """Topic
+class ContributorActivityType(TypedDict):
+    """Contributor Activity
 
-    A topic aggregates entities that are related to a subject.
+    Contributor Activity
     """
 
-    names: list[str]
+    author: Union[None, SimpleUserType]
+    total: int
+    weeks: list[ContributorActivityPropWeeksItemsType]
 
 
-class TopicTypeForResponse(TypedDict):
-    """Topic
+class ContributorActivityTypeForResponse(TypedDict):
+    """Contributor Activity
 
-    A topic aggregates entities that are related to a subject.
+    Contributor Activity
     """
 
-    names: list[str]
+    author: Union[None, SimpleUserTypeForResponse]
+    total: int
+    weeks: list[ContributorActivityPropWeeksItemsTypeForResponse]
+
+
+class ContributorActivityPropWeeksItemsType(TypedDict):
+    """ContributorActivityPropWeeksItems"""
+
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
+
+
+class ContributorActivityPropWeeksItemsTypeForResponse(TypedDict):
+    """ContributorActivityPropWeeksItems"""
+
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
 
 
 __all__ = (
-    "TopicType",
-    "TopicTypeForResponse",
+    "ContributorActivityPropWeeksItemsType",
+    "ContributorActivityPropWeeksItemsTypeForResponse",
+    "ContributorActivityType",
+    "ContributorActivityTypeForResponse",
 )

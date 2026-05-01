@@ -83,7 +83,7 @@ class MigrationsClient:
 
         A list of `repositories` is only returned for export migrations.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#list-organization-migrations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/orgs#list-organization-migrations
         """
 
         from ..models import Migration
@@ -125,7 +125,7 @@ class MigrationsClient:
 
         A list of `repositories` is only returned for export migrations.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#list-organization-migrations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/orgs#list-organization-migrations
         """
 
         from ..models import Migration
@@ -193,7 +193,7 @@ class MigrationsClient:
 
         Initiates the generation of a migration archive.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#start-an-organization-migration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/orgs#start-an-organization-migration
         """
 
         from ..models import (
@@ -273,7 +273,7 @@ class MigrationsClient:
 
         Initiates the generation of a migration archive.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#start-an-organization-migration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/orgs#start-an-organization-migration
         """
 
         from ..models import (
@@ -331,7 +331,7 @@ class MigrationsClient:
         *   `exported`, which means the migration finished successfully.
         *   `failed`, which means the migration failed.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#get-an-organization-migration-status
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/orgs#get-an-organization-migration-status
         """
 
         from ..models import BasicError, Migration
@@ -378,7 +378,7 @@ class MigrationsClient:
         *   `exported`, which means the migration finished successfully.
         *   `failed`, which means the migration failed.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#get-an-organization-migration-status
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/orgs#get-an-organization-migration-status
         """
 
         from ..models import BasicError, Migration
@@ -417,7 +417,7 @@ class MigrationsClient:
 
         Fetches the URL to a migration archive.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#download-an-organization-migration-archive
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/orgs#download-an-organization-migration-archive
         """
 
         from ..models import BasicError
@@ -450,7 +450,7 @@ class MigrationsClient:
 
         Fetches the URL to a migration archive.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#download-an-organization-migration-archive
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/orgs#download-an-organization-migration-archive
         """
 
         from ..models import BasicError
@@ -483,7 +483,7 @@ class MigrationsClient:
 
         Deletes a previous migration archive. Migration archives are automatically deleted after seven days.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#delete-an-organization-migration-archive
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/orgs#delete-an-organization-migration-archive
         """
 
         from ..models import BasicError
@@ -516,7 +516,7 @@ class MigrationsClient:
 
         Deletes a previous migration archive. Migration archives are automatically deleted after seven days.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#delete-an-organization-migration-archive
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/orgs#delete-an-organization-migration-archive
         """
 
         from ..models import BasicError
@@ -548,9 +548,9 @@ class MigrationsClient:
 
         DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
 
-        Unlocks a repository that was locked for migration. You should unlock each migrated repository and [delete them](https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#delete-a-repository) when the migration is complete and you no longer need the source data.
+        Unlocks a repository that was locked for migration. You should unlock each migrated repository and [delete them](https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#delete-a-repository) when the migration is complete and you no longer need the source data.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#unlock-an-organization-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/orgs#unlock-an-organization-repository
         """
 
         from ..models import BasicError
@@ -582,9 +582,9 @@ class MigrationsClient:
 
         DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
 
-        Unlocks a repository that was locked for migration. You should unlock each migrated repository and [delete them](https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#delete-a-repository) when the migration is complete and you no longer need the source data.
+        Unlocks a repository that was locked for migration. You should unlock each migrated repository and [delete them](https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#delete-a-repository) when the migration is complete and you no longer need the source data.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#unlock-an-organization-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/orgs#unlock-an-organization-repository
         """
 
         from ..models import BasicError
@@ -619,7 +619,7 @@ class MigrationsClient:
 
         List all the repositories for this organization migration.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#list-repositories-in-an-organization-migration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/orgs#list-repositories-in-an-organization-migration
         """
 
         from ..models import BasicError, MinimalRepository
@@ -661,7 +661,7 @@ class MigrationsClient:
 
         List all the repositories for this organization migration.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#list-repositories-in-an-organization-migration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/orgs#list-repositories-in-an-organization-migration
         """
 
         from ..models import BasicError, MinimalRepository
@@ -719,11 +719,11 @@ class MigrationsClient:
 
         If there are problems, you will see one of these in the `status` field:
 
-        *   `auth_failed` - the import requires authentication in order to connect to the original repository. To update authentication for the import, please see the [Update an import](https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#update-an-import) section.
+        *   `auth_failed` - the import requires authentication in order to connect to the original repository. To update authentication for the import, please see the [Update an import](https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#update-an-import) section.
         *   `error` - the import encountered an error. The import progress response will include the `failed_step` and an error message. Contact [GitHub Enterprise Cloud Support](https://support.github.com/contact?tags=dotcom-rest-api) for more information.
-        *   `detection_needs_auth` - the importer requires authentication for the originating repository to continue detection. To update authentication for the import, please see the [Update an import](https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#update-an-import) section.
-        *   `detection_found_nothing` - the importer didn't recognize any source control at the URL. To resolve, [Cancel the import](https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#cancel-an-import) and [retry](https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#start-an-import) with the correct URL.
-        *   `detection_found_multiple` - the importer found several projects or repositories at the provided URL. When this is the case, the Import Progress response will also include a `project_choices` field with the possible project choices as values. To update project choice, please see the [Update an import](https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#update-an-import) section.
+        *   `detection_needs_auth` - the importer requires authentication for the originating repository to continue detection. To update authentication for the import, please see the [Update an import](https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#update-an-import) section.
+        *   `detection_found_nothing` - the importer didn't recognize any source control at the URL. To resolve, [Cancel the import](https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#cancel-an-import) and [retry](https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#start-an-import) with the correct URL.
+        *   `detection_found_multiple` - the importer found several projects or repositories at the provided URL. When this is the case, the Import Progress response will also include a `project_choices` field with the possible project choices as values. To update project choice, please see the [Update an import](https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#update-an-import) section.
 
         **The project_choices field**
 
@@ -738,7 +738,7 @@ class MigrationsClient:
         *   `large_files_size` - the total size in gigabytes of files larger than 100MB found in the originating repository.
         *   `large_files_count` - the total number of files larger than 100MB found in the originating repository. To see a list of these files, make a "Get Large Files" request.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-an-import-status
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#get-an-import-status
         """
 
         from ..models import BasicError, Import
@@ -791,11 +791,11 @@ class MigrationsClient:
 
         If there are problems, you will see one of these in the `status` field:
 
-        *   `auth_failed` - the import requires authentication in order to connect to the original repository. To update authentication for the import, please see the [Update an import](https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#update-an-import) section.
+        *   `auth_failed` - the import requires authentication in order to connect to the original repository. To update authentication for the import, please see the [Update an import](https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#update-an-import) section.
         *   `error` - the import encountered an error. The import progress response will include the `failed_step` and an error message. Contact [GitHub Enterprise Cloud Support](https://support.github.com/contact?tags=dotcom-rest-api) for more information.
-        *   `detection_needs_auth` - the importer requires authentication for the originating repository to continue detection. To update authentication for the import, please see the [Update an import](https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#update-an-import) section.
-        *   `detection_found_nothing` - the importer didn't recognize any source control at the URL. To resolve, [Cancel the import](https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#cancel-an-import) and [retry](https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#start-an-import) with the correct URL.
-        *   `detection_found_multiple` - the importer found several projects or repositories at the provided URL. When this is the case, the Import Progress response will also include a `project_choices` field with the possible project choices as values. To update project choice, please see the [Update an import](https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#update-an-import) section.
+        *   `detection_needs_auth` - the importer requires authentication for the originating repository to continue detection. To update authentication for the import, please see the [Update an import](https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#update-an-import) section.
+        *   `detection_found_nothing` - the importer didn't recognize any source control at the URL. To resolve, [Cancel the import](https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#cancel-an-import) and [retry](https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#start-an-import) with the correct URL.
+        *   `detection_found_multiple` - the importer found several projects or repositories at the provided URL. When this is the case, the Import Progress response will also include a `project_choices` field with the possible project choices as values. To update project choice, please see the [Update an import](https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#update-an-import) section.
 
         **The project_choices field**
 
@@ -810,7 +810,7 @@ class MigrationsClient:
         *   `large_files_size` - the total size in gigabytes of files larger than 100MB found in the originating repository.
         *   `large_files_count` - the total number of files larger than 100MB found in the originating repository. To see a list of these files, make a "Get Large Files" request.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-an-import-status
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#get-an-import-status
         """
 
         from ..models import BasicError, Import
@@ -882,7 +882,7 @@ class MigrationsClient:
         > [!WARNING]
         > **Endpoint closing down notice:** Due to very low levels of usage and available alternatives, this endpoint is closing down and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#start-an-import
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#start-an-import
         """
 
         from ..models import (
@@ -970,7 +970,7 @@ class MigrationsClient:
         > [!WARNING]
         > **Endpoint closing down notice:** Due to very low levels of usage and available alternatives, this endpoint is closing down and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#start-an-import
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#start-an-import
         """
 
         from ..models import (
@@ -1025,7 +1025,7 @@ class MigrationsClient:
         > [!WARNING]
         > **Endpoint closing down notice:** Due to very low levels of usage and available alternatives, this endpoint is closing down and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#cancel-an-import
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#cancel-an-import
         """
 
         from ..models import BasicError
@@ -1062,7 +1062,7 @@ class MigrationsClient:
         > [!WARNING]
         > **Endpoint closing down notice:** Due to very low levels of usage and available alternatives, this endpoint is closing down and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#cancel-an-import
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#cancel-an-import
         """
 
         from ..models import BasicError
@@ -1134,7 +1134,7 @@ class MigrationsClient:
         > [!WARNING]
         > **Endpoint closing down notice:** Due to very low levels of usage and available alternatives, this endpoint is closing down and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#update-an-import
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#update-an-import
         """
 
         from typing import Union
@@ -1221,7 +1221,7 @@ class MigrationsClient:
         > [!WARNING]
         > **Endpoint closing down notice:** Due to very low levels of usage and available alternatives, this endpoint is closing down and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#update-an-import
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#update-an-import
         """
 
         from typing import Union
@@ -1271,12 +1271,12 @@ class MigrationsClient:
 
         Each type of source control system represents authors in a different way. For example, a Git commit author has a display name and an email address, but a Subversion commit author just has a username. The GitHub Enterprise Cloud Importer will make the author information valid, but the author might not be correct. For example, it will change the bare Subversion username `hubot` into something like `hubot <hubot@12341234-abab-fefe-8787-fedcba987654>`.
 
-        This endpoint and the [Map a commit author](https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#map-a-commit-author) endpoint allow you to provide correct Git author information.
+        This endpoint and the [Map a commit author](https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#map-a-commit-author) endpoint allow you to provide correct Git author information.
 
         > [!WARNING]
         > **Endpoint closing down notice:** Due to very low levels of usage and available alternatives, this endpoint is closing down and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-commit-authors
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#get-commit-authors
         """
 
         from ..models import BasicError, PorterAuthor
@@ -1318,12 +1318,12 @@ class MigrationsClient:
 
         Each type of source control system represents authors in a different way. For example, a Git commit author has a display name and an email address, but a Subversion commit author just has a username. The GitHub Enterprise Cloud Importer will make the author information valid, but the author might not be correct. For example, it will change the bare Subversion username `hubot` into something like `hubot <hubot@12341234-abab-fefe-8787-fedcba987654>`.
 
-        This endpoint and the [Map a commit author](https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#map-a-commit-author) endpoint allow you to provide correct Git author information.
+        This endpoint and the [Map a commit author](https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#map-a-commit-author) endpoint allow you to provide correct Git author information.
 
         > [!WARNING]
         > **Endpoint closing down notice:** Due to very low levels of usage and available alternatives, this endpoint is closing down and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-commit-authors
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#get-commit-authors
         """
 
         from ..models import BasicError, PorterAuthor
@@ -1399,7 +1399,7 @@ class MigrationsClient:
         > [!WARNING]
         > **Endpoint closing down notice:** Due to very low levels of usage and available alternatives, this endpoint is closing down and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#map-a-commit-author
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#map-a-commit-author
         """
 
         from ..models import (
@@ -1488,7 +1488,7 @@ class MigrationsClient:
         > [!WARNING]
         > **Endpoint closing down notice:** Due to very low levels of usage and available alternatives, this endpoint is closing down and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#map-a-commit-author
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#map-a-commit-author
         """
 
         from ..models import (
@@ -1545,7 +1545,7 @@ class MigrationsClient:
         > [!WARNING]
         > **Endpoint closing down notice:** Due to very low levels of usage and available alternatives, this endpoint is closing down and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-large-files
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#get-large-files
         """
 
         from ..models import BasicError, PorterLargeFile
@@ -1583,7 +1583,7 @@ class MigrationsClient:
         > [!WARNING]
         > **Endpoint closing down notice:** Due to very low levels of usage and available alternatives, this endpoint is closing down and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-large-files
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#get-large-files
         """
 
         from ..models import BasicError, PorterLargeFile
@@ -1647,12 +1647,12 @@ class MigrationsClient:
         is powered by [Git LFS](https://git-lfs.com).
 
         You can learn more about our LFS feature and working with large files [on our help
-        site](https://docs.github.com/enterprise-cloud@latest//repositories/working-with-files/managing-large-files).
+        site](https://docs.github.com/enterprise-cloud@latest/repositories/working-with-files/managing-large-files).
 
         > [!WARNING]
         > **Endpoint closing down notice:** Due to very low levels of usage and available alternatives, this endpoint is closing down and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#update-git-lfs-preference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#update-git-lfs-preference
         """
 
         from ..models import (
@@ -1732,12 +1732,12 @@ class MigrationsClient:
         is powered by [Git LFS](https://git-lfs.com).
 
         You can learn more about our LFS feature and working with large files [on our help
-        site](https://docs.github.com/enterprise-cloud@latest//repositories/working-with-files/managing-large-files).
+        site](https://docs.github.com/enterprise-cloud@latest/repositories/working-with-files/managing-large-files).
 
         > [!WARNING]
         > **Endpoint closing down notice:** Due to very low levels of usage and available alternatives, this endpoint is closing down and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#update-git-lfs-preference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/source-imports#update-git-lfs-preference
         """
 
         from ..models import (
@@ -1787,7 +1787,7 @@ class MigrationsClient:
 
         Lists all migrations a user has started.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-user-migrations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#list-user-migrations
         """
 
         from ..models import BasicError, Migration
@@ -1828,7 +1828,7 @@ class MigrationsClient:
 
         Lists all migrations a user has started.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-user-migrations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#list-user-migrations
         """
 
         from ..models import BasicError, Migration
@@ -1896,7 +1896,7 @@ class MigrationsClient:
 
         Initiates the generation of a user migration archive.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#start-a-user-migration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#start-a-user-migration
         """
 
         from ..models import (
@@ -1974,7 +1974,7 @@ class MigrationsClient:
 
         Initiates the generation of a user migration archive.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#start-a-user-migration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#start-a-user-migration
         """
 
         from ..models import (
@@ -2030,9 +2030,9 @@ class MigrationsClient:
         *   `exported` - the migration finished successfully.
         *   `failed` - the migration failed.
 
-        Once the migration has been `exported` you can [download the migration archive](https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#download-a-user-migration-archive).
+        Once the migration has been `exported` you can [download the migration archive](https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#download-a-user-migration-archive).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#get-a-user-migration-status
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#get-a-user-migration-status
         """
 
         from ..models import BasicError, Migration
@@ -2078,9 +2078,9 @@ class MigrationsClient:
         *   `exported` - the migration finished successfully.
         *   `failed` - the migration failed.
 
-        Once the migration has been `exported` you can [download the migration archive](https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#download-a-user-migration-archive).
+        Once the migration has been `exported` you can [download the migration archive](https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#download-a-user-migration-archive).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#get-a-user-migration-status
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#get-a-user-migration-status
         """
 
         from ..models import BasicError, Migration
@@ -2140,7 +2140,7 @@ class MigrationsClient:
 
         The archive will also contain an `attachments` directory that includes all attachment files uploaded to GitHub.com and a `repositories` directory that contains the repository's Git data.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#download-a-user-migration-archive
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#download-a-user-migration-archive
         """
 
         from ..models import BasicError
@@ -2193,7 +2193,7 @@ class MigrationsClient:
 
         The archive will also contain an `attachments` directory that includes all attachment files uploaded to GitHub.com and a `repositories` directory that contains the repository's Git data.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#download-a-user-migration-archive
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#download-a-user-migration-archive
         """
 
         from ..models import BasicError
@@ -2224,9 +2224,9 @@ class MigrationsClient:
 
         DELETE /user/migrations/{migration_id}/archive
 
-        Deletes a previous migration archive. Downloadable migration archives are automatically deleted after seven days. Migration metadata, which is returned in the [List user migrations](https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-user-migrations) and [Get a user migration status](https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#get-a-user-migration-status) endpoints, will continue to be available even after an archive is deleted.
+        Deletes a previous migration archive. Downloadable migration archives are automatically deleted after seven days. Migration metadata, which is returned in the [List user migrations](https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#list-user-migrations) and [Get a user migration status](https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#get-a-user-migration-status) endpoints, will continue to be available even after an archive is deleted.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#delete-a-user-migration-archive
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#delete-a-user-migration-archive
         """
 
         from ..models import BasicError
@@ -2258,9 +2258,9 @@ class MigrationsClient:
 
         DELETE /user/migrations/{migration_id}/archive
 
-        Deletes a previous migration archive. Downloadable migration archives are automatically deleted after seven days. Migration metadata, which is returned in the [List user migrations](https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-user-migrations) and [Get a user migration status](https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#get-a-user-migration-status) endpoints, will continue to be available even after an archive is deleted.
+        Deletes a previous migration archive. Downloadable migration archives are automatically deleted after seven days. Migration metadata, which is returned in the [List user migrations](https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#list-user-migrations) and [Get a user migration status](https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#get-a-user-migration-status) endpoints, will continue to be available even after an archive is deleted.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#delete-a-user-migration-archive
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#delete-a-user-migration-archive
         """
 
         from ..models import BasicError
@@ -2293,9 +2293,9 @@ class MigrationsClient:
 
         DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
 
-        Unlocks a repository. You can lock repositories when you [start a user migration](https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#start-a-user-migration). Once the migration is complete you can unlock each repository to begin using it again or [delete the repository](https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#delete-a-repository) if you no longer need the source data. Returns a status of `404 Not Found` if the repository is not locked.
+        Unlocks a repository. You can lock repositories when you [start a user migration](https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#start-a-user-migration). Once the migration is complete you can unlock each repository to begin using it again or [delete the repository](https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#delete-a-repository) if you no longer need the source data. Returns a status of `404 Not Found` if the repository is not locked.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#unlock-a-user-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#unlock-a-user-repository
         """
 
         from ..models import BasicError
@@ -2328,9 +2328,9 @@ class MigrationsClient:
 
         DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
 
-        Unlocks a repository. You can lock repositories when you [start a user migration](https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#start-a-user-migration). Once the migration is complete you can unlock each repository to begin using it again or [delete the repository](https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#delete-a-repository) if you no longer need the source data. Returns a status of `404 Not Found` if the repository is not locked.
+        Unlocks a repository. You can lock repositories when you [start a user migration](https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#start-a-user-migration). Once the migration is complete you can unlock each repository to begin using it again or [delete the repository](https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#delete-a-repository) if you no longer need the source data. Returns a status of `404 Not Found` if the repository is not locked.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#unlock-a-user-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#unlock-a-user-repository
         """
 
         from ..models import BasicError
@@ -2366,7 +2366,7 @@ class MigrationsClient:
 
         Lists all the repositories for this user migration.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-repositories-for-a-user-migration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#list-repositories-for-a-user-migration
         """
 
         from ..models import BasicError, MinimalRepository
@@ -2407,7 +2407,7 @@ class MigrationsClient:
 
         Lists all the repositories for this user migration.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-repositories-for-a-user-migration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/migrations/users#list-repositories-for-a-user-migration
         """
 
         from ..models import BasicError, MinimalRepository

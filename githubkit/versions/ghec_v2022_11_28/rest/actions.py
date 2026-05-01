@@ -292,7 +292,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-retention-limit-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-retention-limit-for-an-enterprise
         """
 
         from ..models import ActionsCacheRetentionLimitForEnterprise, BasicError
@@ -332,7 +332,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-retention-limit-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-retention-limit-for-an-enterprise
         """
 
         from ..models import ActionsCacheRetentionLimitForEnterprise, BasicError
@@ -392,7 +392,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#set-github-actions-cache-retention-limit-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#set-github-actions-cache-retention-limit-for-an-enterprise
         """
 
         from ..models import ActionsCacheRetentionLimitForEnterprise, BasicError
@@ -462,7 +462,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#set-github-actions-cache-retention-limit-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#set-github-actions-cache-retention-limit-for-an-enterprise
         """
 
         from ..models import ActionsCacheRetentionLimitForEnterprise, BasicError
@@ -512,7 +512,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-storage-limit-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-storage-limit-for-an-enterprise
         """
 
         from ..models import ActionsCacheStorageLimitForEnterprise, BasicError
@@ -552,7 +552,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-storage-limit-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-storage-limit-for-an-enterprise
         """
 
         from ..models import ActionsCacheStorageLimitForEnterprise, BasicError
@@ -612,7 +612,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#set-github-actions-cache-storage-limit-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#set-github-actions-cache-storage-limit-for-an-enterprise
         """
 
         from ..models import ActionsCacheStorageLimitForEnterprise, BasicError
@@ -682,7 +682,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#set-github-actions-cache-storage-limit-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#set-github-actions-cache-storage-limit-for-an-enterprise
         """
 
         from ..models import ActionsCacheStorageLimitForEnterprise, BasicError
@@ -731,7 +731,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-usage-for-an-enterprise
         """
 
         from ..models import ActionsCacheUsageOrgEnterprise
@@ -766,7 +766,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-usage-for-an-enterprise
         """
 
         from ..models import ActionsCacheUsageOrgEnterprise
@@ -803,7 +803,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#list-github-hosted-runners-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#list-github-hosted-runners-for-an-enterprise
         """
 
         from ..models import EnterprisesEnterpriseActionsHostedRunnersGetResponse200
@@ -846,7 +846,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#list-github-hosted-runners-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#list-github-hosted-runners-for-an-enterprise
         """
 
         from ..models import EnterprisesEnterpriseActionsHostedRunnersGetResponse200
@@ -912,7 +912,7 @@ class ActionsClient:
         Creates a GitHub-hosted runner for an enterprise.
         OAuth tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#create-a-github-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#create-a-github-hosted-runner-for-an-enterprise
         """
 
         from ..models import (
@@ -987,7 +987,7 @@ class ActionsClient:
         Creates a GitHub-hosted runner for an enterprise.
         OAuth tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#create-a-github-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#create-a-github-hosted-runner-for-an-enterprise
         """
 
         from ..models import (
@@ -1037,7 +1037,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#list-custom-images-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#list-custom-images-for-an-enterprise
         """
 
         from ..models import (
@@ -1074,7 +1074,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#list-custom-images-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#list-custom-images-for-an-enterprise
         """
 
         from ..models import (
@@ -1111,7 +1111,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-an-enterprise-custom-image-definition-for-github-actions-hosted-runners
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-an-enterprise-custom-image-definition-for-github-actions-hosted-runners
         """
 
         from ..models import ActionsHostedRunnerCustomImage
@@ -1146,7 +1146,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-an-enterprise-custom-image-definition-for-github-actions-hosted-runners
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-an-enterprise-custom-image-definition-for-github-actions-hosted-runners
         """
 
         from ..models import ActionsHostedRunnerCustomImage
@@ -1179,7 +1179,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#delete-a-custom-image-from-the-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#delete-a-custom-image-from-the-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/hosted-runners/images/custom/{image_definition_id}"
@@ -1209,7 +1209,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#delete-a-custom-image-from-the-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#delete-a-custom-image-from-the-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/hosted-runners/images/custom/{image_definition_id}"
@@ -1242,7 +1242,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#list-image-versions-of-a-custom-image-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#list-image-versions-of-a-custom-image-for-an-enterprise
         """
 
         from ..models import (
@@ -1280,7 +1280,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#list-image-versions-of-a-custom-image-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#list-image-versions-of-a-custom-image-for-an-enterprise
         """
 
         from ..models import (
@@ -1319,7 +1319,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-an-image-version-of-an-enterprise-custom-image-for-github-actions-hosted-runners
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-an-image-version-of-an-enterprise-custom-image-for-github-actions-hosted-runners
         """
 
         from ..models import ActionsHostedRunnerCustomImageVersion
@@ -1356,7 +1356,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-an-image-version-of-an-enterprise-custom-image-for-github-actions-hosted-runners
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-an-image-version-of-an-enterprise-custom-image-for-github-actions-hosted-runners
         """
 
         from ..models import ActionsHostedRunnerCustomImageVersion
@@ -1390,7 +1390,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#delete-an-image-version-of-custom-image-from-the-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#delete-an-image-version-of-custom-image-from-the-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/hosted-runners/images/custom/{image_definition_id}/versions/{version}"
@@ -1421,7 +1421,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#delete-an-image-version-of-custom-image-from-the-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#delete-an-image-version-of-custom-image-from-the-enterprise
         """
 
         url = f"/enterprises/{enterprise}/actions/hosted-runners/images/custom/{image_definition_id}/versions/{version}"
@@ -1451,7 +1451,7 @@ class ActionsClient:
 
         Get the list of GitHub-owned images available for GitHub-hosted runners for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-github-owned-images-for-github-hosted-runners-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-github-owned-images-for-github-hosted-runners-in-an-enterprise
         """
 
         from ..models import (
@@ -1486,7 +1486,7 @@ class ActionsClient:
 
         Get the list of GitHub-owned images available for GitHub-hosted runners for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-github-owned-images-for-github-hosted-runners-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-github-owned-images-for-github-hosted-runners-in-an-enterprise
         """
 
         from ..models import (
@@ -1521,7 +1521,7 @@ class ActionsClient:
 
         Get the list of partner images available for GitHub-hosted runners for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-partner-images-for-github-hosted-runners-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-partner-images-for-github-hosted-runners-in-an-enterprise
         """
 
         from ..models import (
@@ -1556,7 +1556,7 @@ class ActionsClient:
 
         Get the list of partner images available for GitHub-hosted runners for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-partner-images-for-github-hosted-runners-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-partner-images-for-github-hosted-runners-in-an-enterprise
         """
 
         from ..models import (
@@ -1588,7 +1588,7 @@ class ActionsClient:
 
         Get the GitHub-hosted runners limits for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-limits-on-github-hosted-runners-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-limits-on-github-hosted-runners-for-an-enterprise
         """
 
         from ..models import ActionsHostedRunnerLimits
@@ -1618,7 +1618,7 @@ class ActionsClient:
 
         Get the GitHub-hosted runners limits for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-limits-on-github-hosted-runners-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-limits-on-github-hosted-runners-for-an-enterprise
         """
 
         from ..models import ActionsHostedRunnerLimits
@@ -1651,7 +1651,7 @@ class ActionsClient:
 
         Get the list of machine specs available for GitHub-hosted runners for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-github-hosted-runners-machine-specs-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-github-hosted-runners-machine-specs-for-an-enterprise
         """
 
         from ..models import (
@@ -1686,7 +1686,7 @@ class ActionsClient:
 
         Get the list of machine specs available for GitHub-hosted runners for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-github-hosted-runners-machine-specs-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-github-hosted-runners-machine-specs-for-an-enterprise
         """
 
         from ..models import (
@@ -1721,7 +1721,7 @@ class ActionsClient:
 
         Get the list of platforms available for GitHub-hosted runners for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-platforms-for-github-hosted-runners-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-platforms-for-github-hosted-runners-in-an-enterprise
         """
 
         from ..models import (
@@ -1756,7 +1756,7 @@ class ActionsClient:
 
         Get the list of platforms available for GitHub-hosted runners for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-platforms-for-github-hosted-runners-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-platforms-for-github-hosted-runners-in-an-enterprise
         """
 
         from ..models import (
@@ -1791,7 +1791,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-a-github-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-a-github-hosted-runner-for-an-enterprise
         """
 
         from ..models import ActionsHostedRunner
@@ -1824,7 +1824,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-a-github-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-a-github-hosted-runner-for-an-enterprise
         """
 
         from ..models import ActionsHostedRunner
@@ -1855,7 +1855,7 @@ class ActionsClient:
 
         Deletes a GitHub-hosted runner for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#delete-a-github-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#delete-a-github-hosted-runner-for-an-enterprise
         """
 
         from ..models import ActionsHostedRunner
@@ -1886,7 +1886,7 @@ class ActionsClient:
 
         Deletes a GitHub-hosted runner for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#delete-a-github-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#delete-a-github-hosted-runner-for-an-enterprise
         """
 
         from ..models import ActionsHostedRunner
@@ -1928,8 +1928,10 @@ class ActionsClient:
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
         size: Missing[str] = UNSET,
+        image_source: Missing[Literal["github", "partner", "custom"]] = UNSET,
         image_id: Missing[str] = UNSET,
         image_version: Missing[Union[str, None]] = UNSET,
+        image_gen: Missing[bool] = UNSET,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     def update_hosted_runner_for_enterprise(
@@ -1951,7 +1953,7 @@ class ActionsClient:
         Updates a GitHub-hosted runner for an enterprise.
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#update-a-github-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#update-a-github-hosted-runner-for-an-enterprise
         """
 
         from ..models import (
@@ -2008,8 +2010,10 @@ class ActionsClient:
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
         size: Missing[str] = UNSET,
+        image_source: Missing[Literal["github", "partner", "custom"]] = UNSET,
         image_id: Missing[str] = UNSET,
         image_version: Missing[Union[str, None]] = UNSET,
+        image_gen: Missing[bool] = UNSET,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     async def async_update_hosted_runner_for_enterprise(
@@ -2031,7 +2035,7 @@ class ActionsClient:
         Updates a GitHub-hosted runner for an enterprise.
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#update-a-github-hosted-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#update-a-github-hosted-runner-for-an-enterprise
         """
 
         from ..models import (
@@ -2101,7 +2105,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#set-the-github-actions-oidc-custom-issuer-policy-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#set-the-github-actions-oidc-custom-issuer-policy-for-an-enterprise
         """
 
         from ..models import ActionsOidcCustomIssuerPolicyForEnterprise
@@ -2167,7 +2171,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#set-the-github-actions-oidc-custom-issuer-policy-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#set-the-github-actions-oidc-custom-issuer-policy-for-an-enterprise
         """
 
         from ..models import ActionsOidcCustomIssuerPolicyForEnterprise
@@ -2211,11 +2215,11 @@ class ActionsClient:
 
         Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an enterprise,
         as well as whether GitHub Actions can submit approving pull request reviews. For more information, see
-        "[Enforcing a policy for workflow permissions in your enterprise](https://docs.github.com/enterprise-cloud@latest//admin/policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#enforcing-a-policy-for-workflow-permissions-in-your-enterprise)."
+        "[Enforcing a policy for workflow permissions in your enterprise](https://docs.github.com/enterprise-cloud@latest/admin/policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#enforcing-a-policy-for-workflow-permissions-in-your-enterprise)."
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-default-workflow-permissions-for-an-enterprise
         """
 
         from ..models import ActionsGetDefaultWorkflowPermissions
@@ -2248,11 +2252,11 @@ class ActionsClient:
 
         Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an enterprise,
         as well as whether GitHub Actions can submit approving pull request reviews. For more information, see
-        "[Enforcing a policy for workflow permissions in your enterprise](https://docs.github.com/enterprise-cloud@latest//admin/policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#enforcing-a-policy-for-workflow-permissions-in-your-enterprise)."
+        "[Enforcing a policy for workflow permissions in your enterprise](https://docs.github.com/enterprise-cloud@latest/admin/policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#enforcing-a-policy-for-workflow-permissions-in-your-enterprise)."
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-default-workflow-permissions-for-an-enterprise
         """
 
         from ..models import ActionsGetDefaultWorkflowPermissions
@@ -2306,11 +2310,11 @@ class ActionsClient:
 
         Sets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an enterprise, and sets
         whether GitHub Actions can submit approving pull request reviews. For more information, see
-        "[Enforcing a policy for workflow permissions in your enterprise](https://docs.github.com/enterprise-cloud@latest//admin/policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#enforcing-a-policy-for-workflow-permissions-in-your-enterprise)."
+        "[Enforcing a policy for workflow permissions in your enterprise](https://docs.github.com/enterprise-cloud@latest/admin/policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#enforcing-a-policy-for-workflow-permissions-in-your-enterprise)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-default-workflow-permissions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-default-workflow-permissions-for-an-enterprise
         """
 
         from ..models import ActionsSetDefaultWorkflowPermissions
@@ -2373,11 +2377,11 @@ class ActionsClient:
 
         Sets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an enterprise, and sets
         whether GitHub Actions can submit approving pull request reviews. For more information, see
-        "[Enforcing a policy for workflow permissions in your enterprise](https://docs.github.com/enterprise-cloud@latest//admin/policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#enforcing-a-policy-for-workflow-permissions-in-your-enterprise)."
+        "[Enforcing a policy for workflow permissions in your enterprise](https://docs.github.com/enterprise-cloud@latest/admin/policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#enforcing-a-policy-for-workflow-permissions-in-your-enterprise)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-default-workflow-permissions-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-default-workflow-permissions-for-an-enterprise
         """
 
         from ..models import ActionsSetDefaultWorkflowPermissions
@@ -2455,7 +2459,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-enterprise
         """
 
         from ..models import (
@@ -2546,7 +2550,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-enterprise
         """
 
         from ..models import (
@@ -2604,7 +2608,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-retention-limit-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-retention-limit-for-an-organization
         """
 
         from ..models import ActionsCacheRetentionLimitForOrganization, BasicError
@@ -2644,7 +2648,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-retention-limit-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-retention-limit-for-an-organization
         """
 
         from ..models import ActionsCacheRetentionLimitForOrganization, BasicError
@@ -2704,7 +2708,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#set-github-actions-cache-retention-limit-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#set-github-actions-cache-retention-limit-for-an-organization
         """
 
         from ..models import ActionsCacheRetentionLimitForOrganization, BasicError
@@ -2774,7 +2778,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#set-github-actions-cache-retention-limit-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#set-github-actions-cache-retention-limit-for-an-organization
         """
 
         from ..models import ActionsCacheRetentionLimitForOrganization, BasicError
@@ -2824,7 +2828,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-storage-limit-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-storage-limit-for-an-organization
         """
 
         from ..models import ActionsCacheStorageLimitForOrganization, BasicError
@@ -2864,7 +2868,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-storage-limit-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-storage-limit-for-an-organization
         """
 
         from ..models import ActionsCacheStorageLimitForOrganization, BasicError
@@ -2924,7 +2928,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#set-github-actions-cache-storage-limit-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#set-github-actions-cache-storage-limit-for-an-organization
         """
 
         from ..models import ActionsCacheStorageLimitForOrganization, BasicError
@@ -2994,7 +2998,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#set-github-actions-cache-storage-limit-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#set-github-actions-cache-storage-limit-for-an-organization
         """
 
         from ..models import ActionsCacheStorageLimitForOrganization, BasicError
@@ -3043,7 +3047,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-usage-for-an-organization
         """
 
         from ..models import ActionsCacheUsageOrgEnterprise
@@ -3078,7 +3082,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-usage-for-an-organization
         """
 
         from ..models import ActionsCacheUsageOrgEnterprise
@@ -3116,7 +3120,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#list-repositories-with-github-actions-cache-usage-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#list-repositories-with-github-actions-cache-usage-for-an-organization
         """
 
         from ..models import OrgsOrgActionsCacheUsageByRepositoryGetResponse200
@@ -3160,7 +3164,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#list-repositories-with-github-actions-cache-usage-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#list-repositories-with-github-actions-cache-usage-for-an-organization
         """
 
         from ..models import OrgsOrgActionsCacheUsageByRepositoryGetResponse200
@@ -3203,7 +3207,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runner:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#list-github-hosted-runners-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#list-github-hosted-runners-for-an-organization
         """
 
         from ..models import OrgsOrgActionsHostedRunnersGetResponse200
@@ -3246,7 +3250,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runner:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#list-github-hosted-runners-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#list-github-hosted-runners-for-an-organization
         """
 
         from ..models import OrgsOrgActionsHostedRunnersGetResponse200
@@ -3312,7 +3316,7 @@ class ActionsClient:
         Creates a GitHub-hosted runner for an organization.
         OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#create-a-github-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#create-a-github-hosted-runner-for-an-organization
         """
 
         from ..models import ActionsHostedRunner, OrgsOrgActionsHostedRunnersPostBody
@@ -3382,7 +3386,7 @@ class ActionsClient:
         Creates a GitHub-hosted runner for an organization.
         OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#create-a-github-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#create-a-github-hosted-runner-for-an-organization
         """
 
         from ..models import ActionsHostedRunner, OrgsOrgActionsHostedRunnersPostBody
@@ -3427,7 +3431,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#list-custom-images-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#list-custom-images-for-an-organization
         """
 
         from ..models import OrgsOrgActionsHostedRunnersImagesCustomGetResponse200
@@ -3462,7 +3466,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#list-custom-images-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#list-custom-images-for-an-organization
         """
 
         from ..models import OrgsOrgActionsHostedRunnersImagesCustomGetResponse200
@@ -3497,7 +3501,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-a-custom-image-definition-for-github-actions-hosted-runners
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-a-custom-image-definition-for-github-actions-hosted-runners
         """
 
         from ..models import ActionsHostedRunnerCustomImage
@@ -3532,7 +3536,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-a-custom-image-definition-for-github-actions-hosted-runners
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-a-custom-image-definition-for-github-actions-hosted-runners
         """
 
         from ..models import ActionsHostedRunnerCustomImage
@@ -3565,7 +3569,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#delete-a-custom-image-from-the-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#delete-a-custom-image-from-the-organization
         """
 
         url = f"/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}"
@@ -3595,7 +3599,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#delete-a-custom-image-from-the-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#delete-a-custom-image-from-the-organization
         """
 
         url = f"/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}"
@@ -3628,7 +3632,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#list-image-versions-of-a-custom-image-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#list-image-versions-of-a-custom-image-for-an-organization
         """
 
         from ..models import (
@@ -3666,7 +3670,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#list-image-versions-of-a-custom-image-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#list-image-versions-of-a-custom-image-for-an-organization
         """
 
         from ..models import (
@@ -3705,7 +3709,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-an-image-version-of-a-custom-image-for-github-actions-hosted-runners
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-an-image-version-of-a-custom-image-for-github-actions-hosted-runners
         """
 
         from ..models import ActionsHostedRunnerCustomImageVersion
@@ -3742,7 +3746,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-an-image-version-of-a-custom-image-for-github-actions-hosted-runners
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-an-image-version-of-a-custom-image-for-github-actions-hosted-runners
         """
 
         from ..models import ActionsHostedRunnerCustomImageVersion
@@ -3776,7 +3780,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#delete-an-image-version-of-custom-image-from-the-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#delete-an-image-version-of-custom-image-from-the-organization
         """
 
         url = f"/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions/{version}"
@@ -3807,7 +3811,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#delete-an-image-version-of-custom-image-from-the-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#delete-an-image-version-of-custom-image-from-the-organization
         """
 
         url = f"/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions/{version}"
@@ -3837,7 +3841,7 @@ class ActionsClient:
 
         Get the list of GitHub-owned images available for GitHub-hosted runners for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-github-owned-images-for-github-hosted-runners-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-github-owned-images-for-github-hosted-runners-in-an-organization
         """
 
         from ..models import OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200
@@ -3870,7 +3874,7 @@ class ActionsClient:
 
         Get the list of GitHub-owned images available for GitHub-hosted runners for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-github-owned-images-for-github-hosted-runners-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-github-owned-images-for-github-hosted-runners-in-an-organization
         """
 
         from ..models import OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200
@@ -3903,7 +3907,7 @@ class ActionsClient:
 
         Get the list of partner images available for GitHub-hosted runners for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-partner-images-for-github-hosted-runners-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-partner-images-for-github-hosted-runners-in-an-organization
         """
 
         from ..models import OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200
@@ -3936,7 +3940,7 @@ class ActionsClient:
 
         Get the list of partner images available for GitHub-hosted runners for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-partner-images-for-github-hosted-runners-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-partner-images-for-github-hosted-runners-in-an-organization
         """
 
         from ..models import OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200
@@ -3966,7 +3970,7 @@ class ActionsClient:
 
         Get the GitHub-hosted runners limits for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-limits-on-github-hosted-runners-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-limits-on-github-hosted-runners-for-an-organization
         """
 
         from ..models import ActionsHostedRunnerLimits
@@ -3996,7 +4000,7 @@ class ActionsClient:
 
         Get the GitHub-hosted runners limits for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-limits-on-github-hosted-runners-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-limits-on-github-hosted-runners-for-an-organization
         """
 
         from ..models import ActionsHostedRunnerLimits
@@ -4029,7 +4033,7 @@ class ActionsClient:
 
         Get the list of machine specs available for GitHub-hosted runners for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-github-hosted-runners-machine-specs-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-github-hosted-runners-machine-specs-for-an-organization
         """
 
         from ..models import OrgsOrgActionsHostedRunnersMachineSizesGetResponse200
@@ -4062,7 +4066,7 @@ class ActionsClient:
 
         Get the list of machine specs available for GitHub-hosted runners for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-github-hosted-runners-machine-specs-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-github-hosted-runners-machine-specs-for-an-organization
         """
 
         from ..models import OrgsOrgActionsHostedRunnersMachineSizesGetResponse200
@@ -4095,7 +4099,7 @@ class ActionsClient:
 
         Get the list of platforms available for GitHub-hosted runners for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-platforms-for-github-hosted-runners-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-platforms-for-github-hosted-runners-in-an-organization
         """
 
         from ..models import OrgsOrgActionsHostedRunnersPlatformsGetResponse200
@@ -4128,7 +4132,7 @@ class ActionsClient:
 
         Get the list of platforms available for GitHub-hosted runners for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-platforms-for-github-hosted-runners-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-platforms-for-github-hosted-runners-in-an-organization
         """
 
         from ..models import OrgsOrgActionsHostedRunnersPlatformsGetResponse200
@@ -4161,7 +4165,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-a-github-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-a-github-hosted-runner-for-an-organization
         """
 
         from ..models import ActionsHostedRunner
@@ -4194,7 +4198,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-a-github-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#get-a-github-hosted-runner-for-an-organization
         """
 
         from ..models import ActionsHostedRunner
@@ -4225,7 +4229,7 @@ class ActionsClient:
 
         Deletes a GitHub-hosted runner for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#delete-a-github-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#delete-a-github-hosted-runner-for-an-organization
         """
 
         from ..models import ActionsHostedRunner
@@ -4256,7 +4260,7 @@ class ActionsClient:
 
         Deletes a GitHub-hosted runner for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#delete-a-github-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#delete-a-github-hosted-runner-for-an-organization
         """
 
         from ..models import ActionsHostedRunner
@@ -4298,8 +4302,10 @@ class ActionsClient:
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
         size: Missing[str] = UNSET,
+        image_source: Missing[Literal["github", "partner", "custom"]] = UNSET,
         image_id: Missing[str] = UNSET,
         image_version: Missing[Union[str, None]] = UNSET,
+        image_gen: Missing[bool] = UNSET,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     def update_hosted_runner_for_org(
@@ -4319,7 +4325,7 @@ class ActionsClient:
         Updates a GitHub-hosted runner for an organization.
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#update-a-github-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#update-a-github-hosted-runner-for-an-organization
         """
 
         from ..models import (
@@ -4376,8 +4382,10 @@ class ActionsClient:
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
         size: Missing[str] = UNSET,
+        image_source: Missing[Literal["github", "partner", "custom"]] = UNSET,
         image_id: Missing[str] = UNSET,
         image_version: Missing[Union[str, None]] = UNSET,
+        image_gen: Missing[bool] = UNSET,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     async def async_update_hosted_runner_for_org(
@@ -4397,7 +4405,7 @@ class ActionsClient:
         Updates a GitHub-hosted runner for an organization.
         OAuth app tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#update-a-github-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/hosted-runners#update-a-github-hosted-runner-for-an-organization
         """
 
         from ..models import (
@@ -4446,7 +4454,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-github-actions-permissions-for-an-organization
         """
 
         from ..models import ActionsOrganizationPermissions
@@ -4480,7 +4488,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-github-actions-permissions-for-an-organization
         """
 
         from ..models import ActionsOrganizationPermissions
@@ -4539,7 +4547,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-github-actions-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-github-actions-permissions-for-an-organization
         """
 
         from ..models import OrgsOrgActionsPermissionsPutBody
@@ -4607,7 +4615,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-github-actions-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-github-actions-permissions-for-an-organization
         """
 
         from ..models import OrgsOrgActionsPermissionsPutBody
@@ -4651,7 +4659,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-artifact-and-log-retention-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-artifact-and-log-retention-settings-for-an-organization
         """
 
         from ..models import ActionsArtifactAndLogRetentionResponse, BasicError
@@ -4690,7 +4698,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-artifact-and-log-retention-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-artifact-and-log-retention-settings-for-an-organization
         """
 
         from ..models import ActionsArtifactAndLogRetentionResponse, BasicError
@@ -4749,7 +4757,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-artifact-and-log-retention-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-artifact-and-log-retention-settings-for-an-organization
         """
 
         from ..models import ActionsArtifactAndLogRetention, BasicError, ValidationError
@@ -4819,7 +4827,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-artifact-and-log-retention-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-artifact-and-log-retention-settings-for-an-organization
         """
 
         from ..models import ActionsArtifactAndLogRetention, BasicError, ValidationError
@@ -4869,7 +4877,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-an-organization
         """
 
         from ..models import ActionsForkPrContributorApproval, BasicError
@@ -4907,7 +4915,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-an-organization
         """
 
         from ..models import ActionsForkPrContributorApproval, BasicError
@@ -4969,7 +4977,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-an-organization
         """
 
         from ..models import (
@@ -5045,7 +5053,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-an-organization
         """
 
         from ..models import (
@@ -5095,7 +5103,7 @@ class ActionsClient:
 
         Gets the settings for whether workflows from fork pull requests can run on private repositories in an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-an-organization
         """
 
         from ..models import ActionsForkPrWorkflowsPrivateRepos, BasicError
@@ -5132,7 +5140,7 @@ class ActionsClient:
 
         Gets the settings for whether workflows from fork pull requests can run on private repositories in an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-an-organization
         """
 
         from ..models import ActionsForkPrWorkflowsPrivateRepos, BasicError
@@ -5192,7 +5200,7 @@ class ActionsClient:
 
         Sets the settings for whether workflows from fork pull requests can run on private repositories in an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-an-organization
         """
 
         from ..models import (
@@ -5266,7 +5274,7 @@ class ActionsClient:
 
         Sets the settings for whether workflows from fork pull requests can run on private repositories in an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-an-organization
         """
 
         from ..models import (
@@ -5321,7 +5329,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#list-selected-repositories-enabled-for-github-actions-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#list-selected-repositories-enabled-for-github-actions-in-an-organization
         """
 
         from ..models import OrgsOrgActionsPermissionsRepositoriesGetResponse200
@@ -5364,7 +5372,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#list-selected-repositories-enabled-for-github-actions-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#list-selected-repositories-enabled-for-github-actions-in-an-organization
         """
 
         from ..models import OrgsOrgActionsPermissionsRepositoriesGetResponse200
@@ -5426,7 +5434,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-selected-repositories-enabled-for-github-actions-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-selected-repositories-enabled-for-github-actions-in-an-organization
         """
 
         from ..models import OrgsOrgActionsPermissionsRepositoriesPutBody
@@ -5493,7 +5501,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-selected-repositories-enabled-for-github-actions-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-selected-repositories-enabled-for-github-actions-in-an-organization
         """
 
         from ..models import OrgsOrgActionsPermissionsRepositoriesPutBody
@@ -5537,7 +5545,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#enable-a-selected-repository-for-github-actions-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#enable-a-selected-repository-for-github-actions-in-an-organization
         """
 
         url = f"/orgs/{org}/actions/permissions/repositories/{repository_id}"
@@ -5567,7 +5575,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#enable-a-selected-repository-for-github-actions-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#enable-a-selected-repository-for-github-actions-in-an-organization
         """
 
         url = f"/orgs/{org}/actions/permissions/repositories/{repository_id}"
@@ -5597,7 +5605,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#disable-a-selected-repository-for-github-actions-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#disable-a-selected-repository-for-github-actions-in-an-organization
         """
 
         url = f"/orgs/{org}/actions/permissions/repositories/{repository_id}"
@@ -5627,7 +5635,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#disable-a-selected-repository-for-github-actions-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#disable-a-selected-repository-for-github-actions-in-an-organization
         """
 
         url = f"/orgs/{org}/actions/permissions/repositories/{repository_id}"
@@ -5656,7 +5664,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization
         """
 
         from ..models import SelectedActions
@@ -5688,7 +5696,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization
         """
 
         from ..models import SelectedActions
@@ -5749,7 +5757,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-organization
         """
 
         from ..models import SelectedActions
@@ -5819,7 +5827,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-organization
         """
 
         from ..models import SelectedActions
@@ -5860,7 +5868,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-self-hosted-runners-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-self-hosted-runners-settings-for-an-organization
         """
 
         from ..models import BasicError, SelfHostedRunnersSettings
@@ -5896,7 +5904,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-self-hosted-runners-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-self-hosted-runners-settings-for-an-organization
         """
 
         from ..models import BasicError, SelfHostedRunnersSettings
@@ -5955,7 +5963,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-self-hosted-runners-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-self-hosted-runners-settings-for-an-organization
         """
 
         from ..models import (
@@ -6031,7 +6039,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-self-hosted-runners-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-self-hosted-runners-settings-for-an-organization
         """
 
         from ..models import (
@@ -6089,7 +6097,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#list-repositories-allowed-to-use-self-hosted-runners-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#list-repositories-allowed-to-use-self-hosted-runners-in-an-organization
         """
 
         from ..models import (
@@ -6139,7 +6147,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#list-repositories-allowed-to-use-self-hosted-runners-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#list-repositories-allowed-to-use-self-hosted-runners-in-an-organization
         """
 
         from ..models import (
@@ -6209,7 +6217,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-repositories-allowed-to-use-self-hosted-runners-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-repositories-allowed-to-use-self-hosted-runners-in-an-organization
         """
 
         from ..models import (
@@ -6286,7 +6294,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-repositories-allowed-to-use-self-hosted-runners-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-repositories-allowed-to-use-self-hosted-runners-in-an-organization
         """
 
         from ..models import (
@@ -6339,7 +6347,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#add-a-repository-to-the-list-of-repositories-allowed-to-use-self-hosted-runners-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#add-a-repository-to-the-list-of-repositories-allowed-to-use-self-hosted-runners-in-an-organization
         """
 
         from ..models import BasicError, ValidationError
@@ -6377,7 +6385,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#add-a-repository-to-the-list-of-repositories-allowed-to-use-self-hosted-runners-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#add-a-repository-to-the-list-of-repositories-allowed-to-use-self-hosted-runners-in-an-organization
         """
 
         from ..models import BasicError, ValidationError
@@ -6415,7 +6423,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#remove-a-repository-from-the-list-of-repositories-allowed-to-use-self-hosted-runners-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#remove-a-repository-from-the-list-of-repositories-allowed-to-use-self-hosted-runners-in-an-organization
         """
 
         from ..models import BasicError, ValidationError
@@ -6453,7 +6461,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#remove-a-repository-from-the-list-of-repositories-allowed-to-use-self-hosted-runners-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#remove-a-repository-from-the-list-of-repositories-allowed-to-use-self-hosted-runners-in-an-organization
         """
 
         from ..models import BasicError, ValidationError
@@ -6491,11 +6499,11 @@ class ActionsClient:
 
         Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an organization,
         as well as whether GitHub Actions can submit approving pull request reviews. For more information, see
-        "[Setting the permissions of the GITHUB_TOKEN for your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization)."
+        "[Setting the permissions of the GITHUB_TOKEN for your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization)."
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-default-workflow-permissions-for-an-organization
         """
 
         from ..models import ActionsGetDefaultWorkflowPermissions
@@ -6528,11 +6536,11 @@ class ActionsClient:
 
         Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an organization,
         as well as whether GitHub Actions can submit approving pull request reviews. For more information, see
-        "[Setting the permissions of the GITHUB_TOKEN for your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization)."
+        "[Setting the permissions of the GITHUB_TOKEN for your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization)."
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-default-workflow-permissions-for-an-organization
         """
 
         from ..models import ActionsGetDefaultWorkflowPermissions
@@ -6586,11 +6594,11 @@ class ActionsClient:
 
         Sets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an organization, and sets if GitHub Actions
         can submit approving pull request reviews. For more information, see
-        "[Setting the permissions of the GITHUB_TOKEN for your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization)."
+        "[Setting the permissions of the GITHUB_TOKEN for your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-default-workflow-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-default-workflow-permissions-for-an-organization
         """
 
         from ..models import ActionsSetDefaultWorkflowPermissions
@@ -6654,11 +6662,11 @@ class ActionsClient:
 
         Sets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an organization, and sets if GitHub Actions
         can submit approving pull request reviews. For more information, see
-        "[Setting the permissions of the GITHUB_TOKEN for your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization)."
+        "[Setting the permissions of the GITHUB_TOKEN for your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-default-workflow-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-default-workflow-permissions-for-an-organization
         """
 
         from ..models import ActionsSetDefaultWorkflowPermissions
@@ -6706,7 +6714,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-organization
         """
 
         from ..models import OrgsOrgActionsRunnerGroupsGetResponse200
@@ -6751,7 +6759,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-organization
         """
 
         from ..models import OrgsOrgActionsRunnerGroupsGetResponse200
@@ -6820,7 +6828,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-organization
         """
 
         from ..models import OrgsOrgActionsRunnerGroupsPostBody, RunnerGroupsOrg
@@ -6892,7 +6900,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-organization
         """
 
         from ..models import OrgsOrgActionsRunnerGroupsPostBody, RunnerGroupsOrg
@@ -6935,7 +6943,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-organization
         """
 
         from ..models import RunnerGroupsOrg
@@ -6968,7 +6976,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-organization
         """
 
         from ..models import RunnerGroupsOrg
@@ -7001,7 +7009,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-organization
         """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
@@ -7031,7 +7039,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-organization
         """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
@@ -7091,7 +7099,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-organization
         """
 
         from ..models import (
@@ -7169,7 +7177,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-organization
         """
 
         from ..models import (
@@ -7222,7 +7230,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-github-hosted-runners-in-a-group-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#list-github-hosted-runners-in-a-group-for-an-organization
         """
 
         from ..models import (
@@ -7268,7 +7276,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-github-hosted-runners-in-a-group-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#list-github-hosted-runners-in-a-group-for-an-organization
         """
 
         from ..models import (
@@ -7314,7 +7322,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-repository-access-to-a-self-hosted-runner-group-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#list-repository-access-to-a-self-hosted-runner-group-in-an-organization
         """
 
         from ..models import (
@@ -7360,7 +7368,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-repository-access-to-a-self-hosted-runner-group-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#list-repository-access-to-a-self-hosted-runner-group-in-an-organization
         """
 
         from ..models import (
@@ -7428,7 +7436,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#set-repository-access-for-a-self-hosted-runner-group-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#set-repository-access-for-a-self-hosted-runner-group-in-an-organization
         """
 
         from ..models import OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody
@@ -7499,7 +7507,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#set-repository-access-for-a-self-hosted-runner-group-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#set-repository-access-for-a-self-hosted-runner-group-in-an-organization
         """
 
         from ..models import OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody
@@ -7544,7 +7552,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-repository-access-to-a-self-hosted-runner-group-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#add-repository-access-to-a-self-hosted-runner-group-in-an-organization
         """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
@@ -7575,7 +7583,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-repository-access-to-a-self-hosted-runner-group-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#add-repository-access-to-a-self-hosted-runner-group-in-an-organization
         """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
@@ -7606,7 +7614,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-repository-access-to-a-self-hosted-runner-group-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#remove-repository-access-to-a-self-hosted-runner-group-in-an-organization
         """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
@@ -7637,7 +7645,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-repository-access-to-a-self-hosted-runner-group-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#remove-repository-access-to-a-self-hosted-runner-group-in-an-organization
         """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
@@ -7672,7 +7680,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-organization
         """
 
         from ..models import (
@@ -7718,7 +7726,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-organization
         """
 
         from ..models import (
@@ -7786,7 +7794,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-organization
         """
 
         from ..models import OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody
@@ -7857,7 +7865,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-organization
         """
 
         from ..models import OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody
@@ -7902,7 +7910,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-organization
         """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
@@ -7933,7 +7941,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-organization
         """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
@@ -7964,7 +7972,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-organization
         """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
@@ -7995,7 +8003,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-organization
         """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
@@ -8032,7 +8040,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-organization
         """
 
         from ..models import OrgsOrgActionsRunnersGetResponse200
@@ -8079,7 +8087,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-organization
         """
 
         from ..models import OrgsOrgActionsRunnersGetResponse200
@@ -8120,7 +8128,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.  If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-runner-applications-for-an-organization
         """
 
         from ..models import RunnerApplication
@@ -8154,7 +8162,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.  If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-runner-applications-for-an-organization
         """
 
         from ..models import RunnerApplication
@@ -8223,7 +8231,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-organization
         """
 
         from ..models import (
@@ -8314,7 +8322,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-organization
         """
 
         from ..models import (
@@ -8376,7 +8384,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization
         """
 
         from ..models import AuthenticationToken
@@ -8416,7 +8424,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization
         """
 
         from ..models import AuthenticationToken
@@ -8456,7 +8464,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization
         """
 
         from ..models import AuthenticationToken
@@ -8496,7 +8504,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization
         """
 
         from ..models import AuthenticationToken
@@ -8531,7 +8539,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization
         """
 
         from ..models import Runner
@@ -8566,7 +8574,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization
         """
 
         from ..models import Runner
@@ -8601,7 +8609,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization
         """
 
         from ..models import ValidationErrorSimple
@@ -8638,7 +8646,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization
         """
 
         from ..models import ValidationErrorSimple
@@ -8678,7 +8686,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-organization
         """
 
         from ..models import (
@@ -8722,7 +8730,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-organization
         """
 
         from ..models import (
@@ -8798,7 +8806,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-organization
         """
 
         from ..models import (
@@ -8889,7 +8897,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-organization
         """
 
         from ..models import (
@@ -8979,7 +8987,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-organization
         """
 
         from ..models import (
@@ -9069,7 +9077,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-organization
         """
 
         from ..models import (
@@ -9129,7 +9137,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-organization
         """
 
         from ..models import (
@@ -9174,7 +9182,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-organization
         """
 
         from ..models import (
@@ -9223,7 +9231,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-organization
         """
 
         from ..models import (
@@ -9274,7 +9282,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-organization
         """
 
         from ..models import (
@@ -9322,7 +9330,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-organization-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#list-organization-secrets
         """
 
         from ..models import OrgsOrgActionsSecretsGetResponse200
@@ -9368,7 +9376,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-organization-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#list-organization-secrets
         """
 
         from ..models import OrgsOrgActionsSecretsGetResponse200
@@ -9409,7 +9417,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-organization-public-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#get-an-organization-public-key
         """
 
         from ..models import ActionsPublicKey
@@ -9444,7 +9452,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-organization-public-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#get-an-organization-public-key
         """
 
         from ..models import ActionsPublicKey
@@ -9479,7 +9487,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#get-an-organization-secret
         """
 
         from ..models import OrganizationActionsSecret
@@ -9514,7 +9522,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#get-an-organization-secret
         """
 
         from ..models import OrganizationActionsSecret
@@ -9572,13 +9580,13 @@ class ActionsClient:
         PUT /orgs/{org}/actions/secrets/{secret_name}
 
         Creates or updates an organization secret with an encrypted value. Encrypt your secret using
-        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
 
         Authenticated users must have collaborator access to a repository to create, update, or read secrets.
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#create-or-update-an-organization-secret
         """
 
         from ..models import EmptyObject, OrgsOrgActionsSecretsSecretNamePutBody
@@ -9646,13 +9654,13 @@ class ActionsClient:
         PUT /orgs/{org}/actions/secrets/{secret_name}
 
         Creates or updates an organization secret with an encrypted value. Encrypt your secret using
-        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
 
         Authenticated users must have collaborator access to a repository to create, update, or read secrets.
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#create-or-update-an-organization-secret
         """
 
         from ..models import EmptyObject, OrgsOrgActionsSecretsSecretNamePutBody
@@ -9697,7 +9705,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#delete-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#delete-an-organization-secret
         """
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
@@ -9729,7 +9737,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#delete-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#delete-an-organization-secret
         """
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
@@ -9767,7 +9775,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-selected-repositories-for-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#list-selected-repositories-for-an-organization-secret
         """
 
         from ..models import OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200
@@ -9814,7 +9822,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-selected-repositories-for-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#list-selected-repositories-for-an-organization-secret
         """
 
         from ..models import OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200
@@ -9876,13 +9884,13 @@ class ActionsClient:
 
         Replaces all repositories for an organization secret when the `visibility`
         for repository access is set to `selected`. The visibility is set when you [Create
-        or update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-an-organization-secret).
+        or update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#create-or-update-an-organization-secret).
 
         Authenticated users must have collaborator access to a repository to create, update, or read secrets.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#set-selected-repositories-for-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#set-selected-repositories-for-an-organization-secret
         """
 
         from ..models import OrgsOrgActionsSecretsSecretNameRepositoriesPutBody
@@ -9949,13 +9957,13 @@ class ActionsClient:
 
         Replaces all repositories for an organization secret when the `visibility`
         for repository access is set to `selected`. The visibility is set when you [Create
-        or update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-an-organization-secret).
+        or update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#create-or-update-an-organization-secret).
 
         Authenticated users must have collaborator access to a repository to create, update, or read secrets.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#set-selected-repositories-for-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#set-selected-repositories-for-an-organization-secret
         """
 
         from ..models import OrgsOrgActionsSecretsSecretNameRepositoriesPutBody
@@ -9998,13 +10006,13 @@ class ActionsClient:
 
         Adds a repository to an organization secret when the `visibility` for
         repository access is set to `selected`. For more information about setting the visibility, see [Create or
-        update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-an-organization-secret).
+        update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#create-or-update-an-organization-secret).
 
         Authenticated users must have collaborator access to a repository to create, update, or read secrets.
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#add-selected-repository-to-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#add-selected-repository-to-an-organization-secret
         """
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
@@ -10034,13 +10042,13 @@ class ActionsClient:
 
         Adds a repository to an organization secret when the `visibility` for
         repository access is set to `selected`. For more information about setting the visibility, see [Create or
-        update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-an-organization-secret).
+        update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#create-or-update-an-organization-secret).
 
         Authenticated users must have collaborator access to a repository to create, update, or read secrets.
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#add-selected-repository-to-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#add-selected-repository-to-an-organization-secret
         """
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
@@ -10070,13 +10078,13 @@ class ActionsClient:
 
         Removes a repository from an organization secret when the `visibility`
         for repository access is set to `selected`. The visibility is set when you [Create
-        or update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-an-organization-secret).
+        or update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#create-or-update-an-organization-secret).
 
         Authenticated users must have collaborator access to a repository to create, update, or read secrets.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#remove-selected-repository-from-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#remove-selected-repository-from-an-organization-secret
         """
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
@@ -10106,13 +10114,13 @@ class ActionsClient:
 
         Removes a repository from an organization secret when the `visibility`
         for repository access is set to `selected`. The visibility is set when you [Create
-        or update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-an-organization-secret).
+        or update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#create-or-update-an-organization-secret).
 
         Authenticated users must have collaborator access to a repository to create, update, or read secrets.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#remove-selected-repository-from-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#remove-selected-repository-from-an-organization-secret
         """
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
@@ -10149,7 +10157,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-organization-variables
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#list-organization-variables
         """
 
         from ..models import OrgsOrgActionsVariablesGetResponse200
@@ -10194,7 +10202,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-organization-variables
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#list-organization-variables
         """
 
         from ..models import OrgsOrgActionsVariablesGetResponse200
@@ -10260,7 +10268,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#create-an-organization-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#create-an-organization-variable
         """
 
         from ..models import EmptyObject, OrgsOrgActionsVariablesPostBody
@@ -10330,7 +10338,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#create-an-organization-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#create-an-organization-variable
         """
 
         from ..models import EmptyObject, OrgsOrgActionsVariablesPostBody
@@ -10377,7 +10385,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-an-organization-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#get-an-organization-variable
         """
 
         from ..models import OrganizationActionsVariable
@@ -10414,7 +10422,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-an-organization-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#get-an-organization-variable
         """
 
         from ..models import OrganizationActionsVariable
@@ -10449,7 +10457,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#delete-an-organization-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#delete-an-organization-variable
         """
 
         url = f"/orgs/{org}/actions/variables/{name}"
@@ -10481,7 +10489,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#delete-an-organization-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#delete-an-organization-variable
         """
 
         url = f"/orgs/{org}/actions/variables/{name}"
@@ -10540,7 +10548,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#update-an-organization-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#update-an-organization-variable
         """
 
         from ..models import OrgsOrgActionsVariablesNamePatchBody
@@ -10611,7 +10619,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#update-an-organization-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#update-an-organization-variable
         """
 
         from ..models import OrgsOrgActionsVariablesNamePatchBody
@@ -10661,7 +10669,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-selected-repositories-for-an-organization-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#list-selected-repositories-for-an-organization-variable
         """
 
         from ..models import OrgsOrgActionsVariablesNameRepositoriesGetResponse200
@@ -10709,7 +10717,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-selected-repositories-for-an-organization-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#list-selected-repositories-for-an-organization-variable
         """
 
         from ..models import OrgsOrgActionsVariablesNameRepositoriesGetResponse200
@@ -10778,7 +10786,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#set-selected-repositories-for-an-organization-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#set-selected-repositories-for-an-organization-variable
         """
 
         from ..models import OrgsOrgActionsVariablesNameRepositoriesPutBody
@@ -10852,7 +10860,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#set-selected-repositories-for-an-organization-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#set-selected-repositories-for-an-organization-variable
         """
 
         from ..models import OrgsOrgActionsVariablesNameRepositoriesPutBody
@@ -10901,7 +10909,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#add-selected-repository-to-an-organization-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#add-selected-repository-to-an-organization-variable
         """
 
         url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
@@ -10936,7 +10944,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#add-selected-repository-to-an-organization-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#add-selected-repository-to-an-organization-variable
         """
 
         url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
@@ -10972,7 +10980,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#remove-selected-repository-from-an-organization-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#remove-selected-repository-from-an-organization-variable
         """
 
         url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
@@ -11008,7 +11016,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#remove-selected-repository-from-an-organization-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#remove-selected-repository-from-an-organization-variable
         """
 
         url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
@@ -11047,7 +11055,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#list-artifacts-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/artifacts#list-artifacts-for-a-repository
         """
 
         from ..models import ReposOwnerRepoActionsArtifactsGetResponse200
@@ -11095,7 +11103,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#list-artifacts-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/artifacts#list-artifacts-for-a-repository
         """
 
         from ..models import ReposOwnerRepoActionsArtifactsGetResponse200
@@ -11138,7 +11146,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#get-an-artifact
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/artifacts#get-an-artifact
         """
 
         from ..models import Artifact
@@ -11174,7 +11182,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#get-an-artifact
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/artifacts#get-an-artifact
         """
 
         from ..models import Artifact
@@ -11207,7 +11215,7 @@ class ActionsClient:
         Deletes an artifact for a workflow run.
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#delete-an-artifact
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/artifacts#delete-an-artifact
         """
 
         url = f"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
@@ -11237,7 +11245,7 @@ class ActionsClient:
         Deletes an artifact for a workflow run.
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#delete-an-artifact
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/artifacts#delete-an-artifact
         """
 
         url = f"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
@@ -11270,7 +11278,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#download-an-artifact
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/artifacts#download-an-artifact
         """
 
         from ..models import BasicError
@@ -11308,7 +11316,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#download-an-artifact
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/artifacts#download-an-artifact
         """
 
         from ..models import BasicError
@@ -11347,7 +11355,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-retention-limit-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-retention-limit-for-a-repository
         """
 
         from ..models import ActionsCacheRetentionLimitForRepository, BasicError
@@ -11388,7 +11396,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-retention-limit-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-retention-limit-for-a-repository
         """
 
         from ..models import ActionsCacheRetentionLimitForRepository, BasicError
@@ -11451,7 +11459,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#set-github-actions-cache-retention-limit-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#set-github-actions-cache-retention-limit-for-a-repository
         """
 
         from ..models import ActionsCacheRetentionLimitForRepository, BasicError
@@ -11524,7 +11532,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#set-github-actions-cache-retention-limit-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#set-github-actions-cache-retention-limit-for-a-repository
         """
 
         from ..models import ActionsCacheRetentionLimitForRepository, BasicError
@@ -11575,7 +11583,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-storage-limit-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-storage-limit-for-a-repository
         """
 
         from ..models import ActionsCacheStorageLimitForRepository, BasicError
@@ -11616,7 +11624,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-storage-limit-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-storage-limit-for-a-repository
         """
 
         from ..models import ActionsCacheStorageLimitForRepository, BasicError
@@ -11679,7 +11687,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#set-github-actions-cache-storage-limit-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#set-github-actions-cache-storage-limit-for-a-repository
         """
 
         from ..models import ActionsCacheStorageLimitForRepository, BasicError
@@ -11752,7 +11760,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#set-github-actions-cache-storage-limit-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#set-github-actions-cache-storage-limit-for-a-repository
         """
 
         from ..models import ActionsCacheStorageLimitForRepository, BasicError
@@ -11804,7 +11812,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-usage-for-a-repository
         """
 
         from ..models import ActionsCacheUsageByRepository
@@ -11842,7 +11850,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-usage-for-a-repository
         """
 
         from ..models import ActionsCacheUsageByRepository
@@ -11883,7 +11891,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#list-github-actions-caches-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#list-github-actions-caches-for-a-repository
         """
 
         from ..models import ActionsCacheList
@@ -11934,7 +11942,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#list-github-actions-caches-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#list-github-actions-caches-for-a-repository
         """
 
         from ..models import ActionsCacheList
@@ -11979,7 +11987,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key
         """
 
         from ..models import ActionsCacheList
@@ -12020,7 +12028,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key
         """
 
         from ..models import ActionsCacheList
@@ -12060,7 +12068,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#delete-a-github-actions-cache-for-a-repository-using-a-cache-id
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#delete-a-github-actions-cache-for-a-repository-using-a-cache-id
         """
 
         url = f"/repos/{owner}/{repo}/actions/caches/{cache_id}"
@@ -12091,7 +12099,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#delete-a-github-actions-cache-for-a-repository-using-a-cache-id
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#delete-a-github-actions-cache-for-a-repository-using-a-cache-id
         """
 
         url = f"/repos/{owner}/{repo}/actions/caches/{cache_id}"
@@ -12124,7 +12132,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#get-a-job-for-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-jobs#get-a-job-for-a-workflow-run
         """
 
         from ..models import Job
@@ -12160,7 +12168,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#get-a-job-for-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-jobs#get-a-job-for-a-workflow-run
         """
 
         from ..models import Job
@@ -12197,7 +12205,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run
         """
 
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/logs"
@@ -12231,7 +12239,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run
         """
 
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/logs"
@@ -12293,7 +12301,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run
         """
 
         from typing import Union
@@ -12379,7 +12387,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run
         """
 
         from typing import Union
@@ -12433,7 +12441,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository
         """
 
         from ..models import BasicError, OidcCustomSubRepo
@@ -12470,7 +12478,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository
         """
 
         from ..models import BasicError, OidcCustomSubRepo
@@ -12513,6 +12521,7 @@ class ActionsClient:
         stream: bool = False,
         use_default: bool,
         include_claim_keys: Missing[list[str]] = UNSET,
+        use_immutable_subject: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def set_custom_oidc_sub_claim_for_repo(
@@ -12533,7 +12542,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-a-repository
         """
 
         from ..models import (
@@ -12594,6 +12603,7 @@ class ActionsClient:
         stream: bool = False,
         use_default: bool,
         include_claim_keys: Missing[list[str]] = UNSET,
+        use_immutable_subject: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_set_custom_oidc_sub_claim_for_repo(
@@ -12614,7 +12624,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-a-repository
         """
 
         from ..models import (
@@ -12677,7 +12687,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-repository-organization-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#list-repository-organization-secrets
         """
 
         from ..models import ReposOwnerRepoActionsOrganizationSecretsGetResponse200
@@ -12724,7 +12734,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-repository-organization-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#list-repository-organization-secrets
         """
 
         from ..models import ReposOwnerRepoActionsOrganizationSecretsGetResponse200
@@ -12770,7 +12780,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-repository-organization-variables
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#list-repository-organization-variables
         """
 
         from ..models import ReposOwnerRepoActionsOrganizationVariablesGetResponse200
@@ -12816,7 +12826,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-repository-organization-variables
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#list-repository-organization-variables
         """
 
         from ..models import ReposOwnerRepoActionsOrganizationVariablesGetResponse200
@@ -12857,7 +12867,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-github-actions-permissions-for-a-repository
         """
 
         from ..models import ActionsRepositoryPermissions
@@ -12892,7 +12902,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-github-actions-permissions-for-a-repository
         """
 
         from ..models import ActionsRepositoryPermissions
@@ -12954,7 +12964,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-github-actions-permissions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-github-actions-permissions-for-a-repository
         """
 
         from ..models import ReposOwnerRepoActionsPermissionsPutBody
@@ -13025,7 +13035,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-github-actions-permissions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-github-actions-permissions-for-a-repository
         """
 
         from ..models import ReposOwnerRepoActionsPermissionsPutBody
@@ -13068,12 +13078,12 @@ class ActionsClient:
 
         Gets the level of access that workflows outside of the repository have to actions and reusable workflows in the repository.
         This endpoint only applies to internal and private repositories.
-        For more information, see "[Allowing access to components in a private repository](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository)" and
-        "[Allowing access to components in an internal repository](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-an-internal-repository)."
+        For more information, see "[Allowing access to components in a private repository](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository)" and
+        "[Allowing access to components in an internal repository](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-an-internal-repository)."
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-the-level-of-access-for-workflows-outside-of-the-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-the-level-of-access-for-workflows-outside-of-the-repository
         """
 
         from ..models import ActionsWorkflowAccessToRepository
@@ -13107,12 +13117,12 @@ class ActionsClient:
 
         Gets the level of access that workflows outside of the repository have to actions and reusable workflows in the repository.
         This endpoint only applies to internal and private repositories.
-        For more information, see "[Allowing access to components in a private repository](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository)" and
-        "[Allowing access to components in an internal repository](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-an-internal-repository)."
+        For more information, see "[Allowing access to components in a private repository](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository)" and
+        "[Allowing access to components in an internal repository](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-an-internal-repository)."
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-the-level-of-access-for-workflows-outside-of-the-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-the-level-of-access-for-workflows-outside-of-the-repository
         """
 
         from ..models import ActionsWorkflowAccessToRepository
@@ -13168,12 +13178,12 @@ class ActionsClient:
 
         Sets the level of access that workflows outside of the repository have to actions and reusable workflows in the repository.
         This endpoint only applies to internal and private repositories.
-        For more information, see "[Allowing access to components in a private repository](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository)" and
-        "[Allowing access to components in an internal repository](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-an-internal-repository)."
+        For more information, see "[Allowing access to components in a private repository](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository)" and
+        "[Allowing access to components in an internal repository](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-an-internal-repository)."
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-the-level-of-access-for-workflows-outside-of-the-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-the-level-of-access-for-workflows-outside-of-the-repository
         """
 
         from ..models import ActionsWorkflowAccessToRepository
@@ -13238,12 +13248,12 @@ class ActionsClient:
 
         Sets the level of access that workflows outside of the repository have to actions and reusable workflows in the repository.
         This endpoint only applies to internal and private repositories.
-        For more information, see "[Allowing access to components in a private repository](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository)" and
-        "[Allowing access to components in an internal repository](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-an-internal-repository)."
+        For more information, see "[Allowing access to components in a private repository](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository)" and
+        "[Allowing access to components in an internal repository](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-an-internal-repository)."
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-the-level-of-access-for-workflows-outside-of-the-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-the-level-of-access-for-workflows-outside-of-the-repository
         """
 
         from ..models import ActionsWorkflowAccessToRepository
@@ -13288,7 +13298,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-artifact-and-log-retention-settings-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-artifact-and-log-retention-settings-for-a-repository
         """
 
         from ..models import ActionsArtifactAndLogRetentionResponse, BasicError
@@ -13327,7 +13337,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-artifact-and-log-retention-settings-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-artifact-and-log-retention-settings-for-a-repository
         """
 
         from ..models import ActionsArtifactAndLogRetentionResponse, BasicError
@@ -13388,7 +13398,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-artifact-and-log-retention-settings-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-artifact-and-log-retention-settings-for-a-repository
         """
 
         from ..models import ActionsArtifactAndLogRetention, BasicError, ValidationError
@@ -13459,7 +13469,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-artifact-and-log-retention-settings-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-artifact-and-log-retention-settings-for-a-repository
         """
 
         from ..models import ActionsArtifactAndLogRetention, BasicError, ValidationError
@@ -13508,7 +13518,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-a-repository
         """
 
         from ..models import ActionsForkPrContributorApproval, BasicError
@@ -13547,7 +13557,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-a-repository
         """
 
         from ..models import ActionsForkPrContributorApproval, BasicError
@@ -13612,7 +13622,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-a-repository
         """
 
         from ..models import (
@@ -13691,7 +13701,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-a-repository
         """
 
         from ..models import (
@@ -13744,7 +13754,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-a-repository
         """
 
         from ..models import ActionsForkPrWorkflowsPrivateRepos, BasicError
@@ -13786,7 +13796,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-a-repository
         """
 
         from ..models import ActionsForkPrWorkflowsPrivateRepos, BasicError
@@ -13853,7 +13863,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-a-repository
         """
 
         from ..models import (
@@ -13933,7 +13943,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-a-repository
         """
 
         from ..models import (
@@ -13985,7 +13995,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository
         """
 
         from ..models import SelectedActions
@@ -14018,7 +14028,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository
         """
 
         from ..models import SelectedActions
@@ -14082,7 +14092,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-a-repository
         """
 
         from ..models import SelectedActions
@@ -14155,7 +14165,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-a-repository
         """
 
         from ..models import SelectedActions
@@ -14198,11 +14208,11 @@ class ActionsClient:
 
         Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in a repository,
         as well as if GitHub Actions can submit approving pull request reviews.
-        For more information, see "[Setting the permissions of the GITHUB_TOKEN for your repository](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#setting-the-permissions-of-the-github_token-for-your-repository)."
+        For more information, see "[Setting the permissions of the GITHUB_TOKEN for your repository](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#setting-the-permissions-of-the-github_token-for-your-repository)."
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-default-workflow-permissions-for-a-repository
         """
 
         from ..models import ActionsGetDefaultWorkflowPermissions
@@ -14236,11 +14246,11 @@ class ActionsClient:
 
         Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in a repository,
         as well as if GitHub Actions can submit approving pull request reviews.
-        For more information, see "[Setting the permissions of the GITHUB_TOKEN for your repository](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#setting-the-permissions-of-the-github_token-for-your-repository)."
+        For more information, see "[Setting the permissions of the GITHUB_TOKEN for your repository](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#setting-the-permissions-of-the-github_token-for-your-repository)."
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-default-workflow-permissions-for-a-repository
         """
 
         from ..models import ActionsGetDefaultWorkflowPermissions
@@ -14297,11 +14307,11 @@ class ActionsClient:
 
         Sets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in a repository, and sets if GitHub Actions
         can submit approving pull request reviews.
-        For more information, see "[Setting the permissions of the GITHUB_TOKEN for your repository](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#setting-the-permissions-of-the-github_token-for-your-repository)."
+        For more information, see "[Setting the permissions of the GITHUB_TOKEN for your repository](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#setting-the-permissions-of-the-github_token-for-your-repository)."
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-default-workflow-permissions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-default-workflow-permissions-for-a-repository
         """
 
         from ..models import ActionsSetDefaultWorkflowPermissions
@@ -14368,11 +14378,11 @@ class ActionsClient:
 
         Sets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in a repository, and sets if GitHub Actions
         can submit approving pull request reviews.
-        For more information, see "[Setting the permissions of the GITHUB_TOKEN for your repository](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#setting-the-permissions-of-the-github_token-for-your-repository)."
+        For more information, see "[Setting the permissions of the GITHUB_TOKEN for your repository](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#setting-the-permissions-of-the-github_token-for-your-repository)."
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-default-workflow-permissions-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-default-workflow-permissions-for-a-repository
         """
 
         from ..models import ActionsSetDefaultWorkflowPermissions
@@ -14423,7 +14433,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-self-hosted-runners-for-a-repository
         """
 
         from ..models import ReposOwnerRepoActionsRunnersGetResponse200
@@ -14471,7 +14481,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-self-hosted-runners-for-a-repository
         """
 
         from ..models import ReposOwnerRepoActionsRunnersGetResponse200
@@ -14513,7 +14523,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-runner-applications-for-a-repository
         """
 
         from ..models import RunnerApplication
@@ -14548,7 +14558,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-runner-applications-for-a-repository
         """
 
         from ..models import RunnerApplication
@@ -14622,7 +14632,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-a-repository
         """
 
         from ..models import (
@@ -14718,7 +14728,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the`repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-a-repository
         """
 
         from ..models import (
@@ -14781,7 +14791,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository
         """
 
         from ..models import AuthenticationToken
@@ -14822,7 +14832,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository
         """
 
         from ..models import AuthenticationToken
@@ -14863,7 +14873,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository
         """
 
         from ..models import AuthenticationToken
@@ -14904,7 +14914,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository
         """
 
         from ..models import AuthenticationToken
@@ -14940,7 +14950,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository
         """
 
         from ..models import Runner
@@ -14976,7 +14986,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository
         """
 
         from ..models import Runner
@@ -15012,7 +15022,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository
         """
 
         from ..models import ValidationErrorSimple
@@ -15050,7 +15060,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository
         """
 
         from ..models import ValidationErrorSimple
@@ -15091,7 +15101,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-a-repository
         """
 
         from ..models import (
@@ -15136,7 +15146,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-a-repository
         """
 
         from ..models import (
@@ -15215,7 +15225,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-a-repository
         """
 
         from ..models import (
@@ -15309,7 +15319,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-a-repository
         """
 
         from ..models import (
@@ -15402,7 +15412,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-a-repository
         """
 
         from ..models import (
@@ -15495,7 +15505,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-a-repository
         """
 
         from ..models import (
@@ -15556,7 +15566,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-a-repository
         """
 
         from ..models import (
@@ -15602,7 +15612,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-a-repository
         """
 
         from ..models import (
@@ -15652,7 +15662,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-a-repository
         """
 
         from ..models import (
@@ -15704,7 +15714,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-a-repository
         """
 
         from ..models import (
@@ -15771,7 +15781,7 @@ class ActionsClient:
 
         GET /repos/{owner}/{repo}/actions/runs
 
-        Lists all workflow runs for a repository. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#parameters).
+        Lists all workflow runs for a repository. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#parameters).
 
         Anyone with read access to the repository can use this endpoint.
 
@@ -15779,7 +15789,7 @@ class ActionsClient:
 
         This endpoint will return up to 1,000 results for each search when using the following parameters: `actor`, `branch`, `check_suite_id`, `created`, `event`, `head_sha`, `status`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#list-workflow-runs-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#list-workflow-runs-for-a-repository
         """
 
         from ..models import ReposOwnerRepoActionsRunsGetResponse200
@@ -15852,7 +15862,7 @@ class ActionsClient:
 
         GET /repos/{owner}/{repo}/actions/runs
 
-        Lists all workflow runs for a repository. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#parameters).
+        Lists all workflow runs for a repository. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#parameters).
 
         Anyone with read access to the repository can use this endpoint.
 
@@ -15860,7 +15870,7 @@ class ActionsClient:
 
         This endpoint will return up to 1,000 results for each search when using the following parameters: `actor`, `branch`, `check_suite_id`, `created`, `event`, `head_sha`, `status`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#list-workflow-runs-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#list-workflow-runs-for-a-repository
         """
 
         from ..models import ReposOwnerRepoActionsRunsGetResponse200
@@ -15911,7 +15921,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#get-a-workflow-run
         """
 
         from ..models import WorkflowRun
@@ -15953,7 +15963,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#get-a-workflow-run
         """
 
         from ..models import WorkflowRun
@@ -15994,7 +16004,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#delete-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#delete-a-workflow-run
         """
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}"
@@ -16027,7 +16037,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#delete-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#delete-a-workflow-run
         """
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}"
@@ -16060,7 +16070,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run
         """
 
         from ..models import EnvironmentApprovals
@@ -16096,7 +16106,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run
         """
 
         from ..models import EnvironmentApprovals
@@ -16126,11 +16136,11 @@ class ActionsClient:
 
         POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
 
-        Approves a workflow run for a pull request from a public fork of a first time contributor. For more information, see ["Approving workflow runs from public forks](https://docs.github.com/enterprise-cloud@latest//actions/managing-workflow-runs/approving-workflow-runs-from-public-forks)."
+        Approves a workflow run for a pull request from a public fork of a first time contributor. For more information, see ["Approving workflow runs from public forks](https://docs.github.com/enterprise-cloud@latest/actions/managing-workflow-runs/approving-workflow-runs-from-public-forks)."
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request
         """
 
         from ..models import BasicError, EmptyObject
@@ -16164,11 +16174,11 @@ class ActionsClient:
 
         POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
 
-        Approves a workflow run for a pull request from a public fork of a first time contributor. For more information, see ["Approving workflow runs from public forks](https://docs.github.com/enterprise-cloud@latest//actions/managing-workflow-runs/approving-workflow-runs-from-public-forks)."
+        Approves a workflow run for a pull request from a public fork of a first time contributor. For more information, see ["Approving workflow runs from public forks](https://docs.github.com/enterprise-cloud@latest/actions/managing-workflow-runs/approving-workflow-runs-from-public-forks)."
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request
         """
 
         from ..models import BasicError, EmptyObject
@@ -16215,7 +16225,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#list-workflow-run-artifacts
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/artifacts#list-workflow-run-artifacts
         """
 
         from ..models import ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200
@@ -16266,7 +16276,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#list-workflow-run-artifacts
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/artifacts#list-workflow-run-artifacts
         """
 
         from ..models import ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200
@@ -16312,7 +16322,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-a-workflow-run-attempt
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#get-a-workflow-run-attempt
         """
 
         from ..models import WorkflowRun
@@ -16355,7 +16365,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-a-workflow-run-attempt
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#get-a-workflow-run-attempt
         """
 
         from ..models import WorkflowRun
@@ -16397,13 +16407,13 @@ class ActionsClient:
         GET /repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/jobs
 
         Lists jobs for a specific workflow run attempt. You can use parameters to narrow the list of results. For more information
-        about using parameters, see [Parameters](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#parameters).
+        about using parameters, see [Parameters](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#parameters).
 
         Anyone with read access to the repository can use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint  with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#list-jobs-for-a-workflow-run-attempt
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run-attempt
         """
 
         from ..models import (
@@ -16452,13 +16462,13 @@ class ActionsClient:
         GET /repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/jobs
 
         Lists jobs for a specific workflow run attempt. You can use parameters to narrow the list of results. For more information
-        about using parameters, see [Parameters](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#parameters).
+        about using parameters, see [Parameters](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#parameters).
 
         Anyone with read access to the repository can use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint  with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#list-jobs-for-a-workflow-run-attempt
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run-attempt
         """
 
         from ..models import (
@@ -16508,7 +16518,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#download-workflow-run-attempt-logs
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#download-workflow-run-attempt-logs
         """
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/logs"
@@ -16543,7 +16553,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#download-workflow-run-attempt-logs
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#download-workflow-run-attempt-logs
         """
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/logs"
@@ -16574,7 +16584,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#cancel-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#cancel-a-workflow-run
         """
 
         from ..models import BasicError, EmptyObject
@@ -16611,7 +16621,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#cancel-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#cancel-a-workflow-run
         """
 
         from ..models import BasicError, EmptyObject
@@ -16693,14 +16703,14 @@ class ActionsClient:
 
         POST /repos/{owner}/{repo}/actions/runs/{run_id}/deployment_protection_rule
 
-        Approve or reject custom deployment protection rules provided by a GitHub App for a workflow run. For more information, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest//actions/deployment/targeting-different-environments/using-environments-for-deployment)."
+        Approve or reject custom deployment protection rules provided by a GitHub App for a workflow run. For more information, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest/actions/deployment/targeting-different-environments/using-environments-for-deployment)."
 
         > [!NOTE]
         > GitHub Apps can only review their own custom deployment protection rules. To approve or reject pending deployments that are waiting for review from a specific person or team, see [`POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments`](/rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run).
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#review-custom-deployment-protection-rules-for-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#review-custom-deployment-protection-rules-for-a-workflow-run
         """
 
         from typing import Union
@@ -16796,14 +16806,14 @@ class ActionsClient:
 
         POST /repos/{owner}/{repo}/actions/runs/{run_id}/deployment_protection_rule
 
-        Approve or reject custom deployment protection rules provided by a GitHub App for a workflow run. For more information, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest//actions/deployment/targeting-different-environments/using-environments-for-deployment)."
+        Approve or reject custom deployment protection rules provided by a GitHub App for a workflow run. For more information, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest/actions/deployment/targeting-different-environments/using-environments-for-deployment)."
 
         > [!NOTE]
         > GitHub Apps can only review their own custom deployment protection rules. To approve or reject pending deployments that are waiting for review from a specific person or team, see [`POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments`](/rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run).
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#review-custom-deployment-protection-rules-for-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#review-custom-deployment-protection-rules-for-a-workflow-run
         """
 
         from typing import Union
@@ -16855,7 +16865,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#force-cancel-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#force-cancel-a-workflow-run
         """
 
         from ..models import BasicError, EmptyObject
@@ -16893,7 +16903,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#force-cancel-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#force-cancel-a-workflow-run
         """
 
         from ..models import BasicError, EmptyObject
@@ -16933,13 +16943,13 @@ class ActionsClient:
         GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
 
         Lists jobs for a workflow run. You can use parameters to narrow the list of results. For more information
-        about using parameters, see [Parameters](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#parameters).
+        about using parameters, see [Parameters](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#parameters).
 
         Anyone with read access to the repository can use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#list-jobs-for-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run
         """
 
         from ..models import ReposOwnerRepoActionsRunsRunIdJobsGetResponse200
@@ -16983,13 +16993,13 @@ class ActionsClient:
         GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
 
         Lists jobs for a workflow run. You can use parameters to narrow the list of results. For more information
-        about using parameters, see [Parameters](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#parameters).
+        about using parameters, see [Parameters](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#parameters).
 
         Anyone with read access to the repository can use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#list-jobs-for-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run
         """
 
         from ..models import ReposOwnerRepoActionsRunsRunIdJobsGetResponse200
@@ -17033,7 +17043,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#download-workflow-run-logs
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#download-workflow-run-logs
         """
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
@@ -17067,7 +17077,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#download-workflow-run-logs
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#download-workflow-run-logs
         """
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
@@ -17098,7 +17108,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#delete-workflow-run-logs
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#delete-workflow-run-logs
         """
 
         from ..models import BasicError
@@ -17135,7 +17145,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#delete-workflow-run-logs
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#delete-workflow-run-logs
         """
 
         from ..models import BasicError
@@ -17174,7 +17184,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run
         """
 
         from ..models import PendingDeployment
@@ -17210,7 +17220,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run
         """
 
         from ..models import PendingDeployment
@@ -17277,7 +17287,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run
         """
 
         from ..models import (
@@ -17359,7 +17369,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run
         """
 
         from ..models import (
@@ -17439,7 +17449,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#re-run-a-workflow
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#re-run-a-workflow
         """
 
         from typing import Union
@@ -17518,7 +17528,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#re-run-a-workflow
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#re-run-a-workflow
         """
 
         from typing import Union
@@ -17597,7 +17607,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#re-run-failed-jobs-from-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#re-run-failed-jobs-from-a-workflow-run
         """
 
         from typing import Union
@@ -17679,7 +17689,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#re-run-failed-jobs-from-a-workflow-run
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#re-run-failed-jobs-from-a-workflow-run
         """
 
         from typing import Union
@@ -17729,13 +17739,13 @@ class ActionsClient:
         > [!WARNING]
         > This endpoint is in the process of closing down. Refer to "[Actions Get workflow usage and Get workflow run usage endpoints closing down](https://github.blog/changelog/2025-02-02-actions-get-workflow-usage-and-get-workflow-run-usage-endpoints-closing-down/)" for more information.
 
-        Gets the number of billable minutes and total run time for a specific workflow run. Billable minutes only apply to workflows in private repositories that use GitHub Enterprise Cloud-hosted runners. Usage is listed for each GitHub Enterprise Cloud-hosted runner operating system in milliseconds. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+        Gets the number of billable minutes and total run time for a specific workflow run. Billable minutes only apply to workflows in private repositories that use GitHub Enterprise Cloud-hosted runners. Usage is listed for each GitHub Enterprise Cloud-hosted runner operating system in milliseconds. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
 
         Anyone with read access to the repository can use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-workflow-run-usage
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#get-workflow-run-usage
         """
 
         from ..models import WorkflowRunUsage
@@ -17768,13 +17778,13 @@ class ActionsClient:
         > [!WARNING]
         > This endpoint is in the process of closing down. Refer to "[Actions Get workflow usage and Get workflow run usage endpoints closing down](https://github.blog/changelog/2025-02-02-actions-get-workflow-usage-and-get-workflow-run-usage-endpoints-closing-down/)" for more information.
 
-        Gets the number of billable minutes and total run time for a specific workflow run. Billable minutes only apply to workflows in private repositories that use GitHub Enterprise Cloud-hosted runners. Usage is listed for each GitHub Enterprise Cloud-hosted runner operating system in milliseconds. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+        Gets the number of billable minutes and total run time for a specific workflow run. Billable minutes only apply to workflows in private repositories that use GitHub Enterprise Cloud-hosted runners. Usage is listed for each GitHub Enterprise Cloud-hosted runner operating system in milliseconds. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
 
         Anyone with read access to the repository can use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-workflow-run-usage
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#get-workflow-run-usage
         """
 
         from ..models import WorkflowRunUsage
@@ -17815,7 +17825,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-repository-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#list-repository-secrets
         """
 
         from ..models import ReposOwnerRepoActionsSecretsGetResponse200
@@ -17862,7 +17872,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-repository-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#list-repository-secrets
         """
 
         from ..models import ReposOwnerRepoActionsSecretsGetResponse200
@@ -17904,7 +17914,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-a-repository-public-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#get-a-repository-public-key
         """
 
         from ..models import ActionsPublicKey
@@ -17940,7 +17950,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-a-repository-public-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#get-a-repository-public-key
         """
 
         from ..models import ActionsPublicKey
@@ -17976,7 +17986,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#get-a-repository-secret
         """
 
         from ..models import ActionsSecret
@@ -18012,7 +18022,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#get-a-repository-secret
         """
 
         from ..models import ActionsSecret
@@ -18071,13 +18081,13 @@ class ActionsClient:
         PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
 
         Creates or updates a repository secret with an encrypted value. Encrypt your secret using
-        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
 
         Authenticated users must have collaborator access to a repository to create, update, or read secrets.
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#create-or-update-a-repository-secret
         """
 
         from ..models import EmptyObject, ReposOwnerRepoActionsSecretsSecretNamePutBody
@@ -18148,13 +18158,13 @@ class ActionsClient:
         PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
 
         Creates or updates a repository secret with an encrypted value. Encrypt your secret using
-        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
 
         Authenticated users must have collaborator access to a repository to create, update, or read secrets.
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#create-or-update-a-repository-secret
         """
 
         from ..models import EmptyObject, ReposOwnerRepoActionsSecretsSecretNamePutBody
@@ -18202,7 +18212,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#delete-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#delete-a-repository-secret
         """
 
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
@@ -18235,7 +18245,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#delete-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#delete-a-repository-secret
         """
 
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
@@ -18272,7 +18282,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-repository-variables
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#list-repository-variables
         """
 
         from ..models import ReposOwnerRepoActionsVariablesGetResponse200
@@ -18318,7 +18328,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-repository-variables
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#list-repository-variables
         """
 
         from ..models import ReposOwnerRepoActionsVariablesGetResponse200
@@ -18385,7 +18395,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#create-a-repository-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#create-a-repository-variable
         """
 
         from ..models import EmptyObject, ReposOwnerRepoActionsVariablesPostBody
@@ -18456,7 +18466,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#create-a-repository-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#create-a-repository-variable
         """
 
         from ..models import EmptyObject, ReposOwnerRepoActionsVariablesPostBody
@@ -18502,7 +18512,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-a-repository-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#get-a-repository-variable
         """
 
         from ..models import ActionsVariable
@@ -18538,7 +18548,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-a-repository-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#get-a-repository-variable
         """
 
         from ..models import ActionsVariable
@@ -18574,7 +18584,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#delete-a-repository-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#delete-a-repository-variable
         """
 
         url = f"/repos/{owner}/{repo}/actions/variables/{name}"
@@ -18607,7 +18617,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#delete-a-repository-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#delete-a-repository-variable
         """
 
         url = f"/repos/{owner}/{repo}/actions/variables/{name}"
@@ -18667,7 +18677,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#update-a-repository-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#update-a-repository-variable
         """
 
         from ..models import ReposOwnerRepoActionsVariablesNamePatchBody
@@ -18741,7 +18751,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#update-a-repository-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#update-a-repository-variable
         """
 
         from ..models import ReposOwnerRepoActionsVariablesNamePatchBody
@@ -18792,7 +18802,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#list-repository-workflows
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflows#list-repository-workflows
         """
 
         from ..models import ReposOwnerRepoActionsWorkflowsGetResponse200
@@ -18838,7 +18848,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#list-repository-workflows
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflows#list-repository-workflows
         """
 
         from ..models import ReposOwnerRepoActionsWorkflowsGetResponse200
@@ -18881,7 +18891,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#get-a-workflow
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflows#get-a-workflow
         """
 
         from ..models import Workflow
@@ -18918,7 +18928,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#get-a-workflow
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflows#get-a-workflow
         """
 
         from ..models import Workflow
@@ -18952,7 +18962,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#disable-a-workflow
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflows#disable-a-workflow
         """
 
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable"
@@ -18983,7 +18993,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#disable-a-workflow
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflows#disable-a-workflow
         """
 
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable"
@@ -19049,7 +19059,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#create-a-workflow-dispatch-event
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflows#create-a-workflow-dispatch-event
         """
 
         from ..models import ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody
@@ -19129,7 +19139,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#create-a-workflow-dispatch-event
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflows#create-a-workflow-dispatch-event
         """
 
         from ..models import ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody
@@ -19174,7 +19184,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#enable-a-workflow
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflows#enable-a-workflow
         """
 
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable"
@@ -19205,7 +19215,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#enable-a-workflow
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflows#enable-a-workflow
         """
 
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable"
@@ -19262,7 +19272,7 @@ class ActionsClient:
 
         GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs
 
-        List all workflow runs for a workflow. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#parameters).
+        List all workflow runs for a workflow. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#parameters).
 
         Anyone with read access to the repository can use this endpoint
 
@@ -19270,7 +19280,7 @@ class ActionsClient:
 
         This endpoint will return up to 1,000 results for each search when using the following parameters: `actor`, `branch`, `check_suite_id`, `created`, `event`, `head_sha`, `status`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#list-workflow-runs-for-a-workflow
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#list-workflow-runs-for-a-workflow
         """
 
         from ..models import ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200
@@ -19344,7 +19354,7 @@ class ActionsClient:
 
         GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs
 
-        List all workflow runs for a workflow. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#parameters).
+        List all workflow runs for a workflow. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#parameters).
 
         Anyone with read access to the repository can use this endpoint
 
@@ -19352,7 +19362,7 @@ class ActionsClient:
 
         This endpoint will return up to 1,000 results for each search when using the following parameters: `actor`, `branch`, `check_suite_id`, `created`, `event`, `head_sha`, `status`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#list-workflow-runs-for-a-workflow
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-runs#list-workflow-runs-for-a-workflow
         """
 
         from ..models import ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200
@@ -19399,7 +19409,7 @@ class ActionsClient:
         > [!WARNING]
         > This endpoint is in the process of closing down. Refer to "[Actions Get workflow usage and Get workflow run usage endpoints closing down](https://github.blog/changelog/2025-02-02-actions-get-workflow-usage-and-get-workflow-run-usage-endpoints-closing-down/)" for more information.
 
-        Gets the number of billable minutes used by a specific workflow during the current billing cycle. Billable minutes only apply to workflows in private repositories that use GitHub Enterprise Cloud-hosted runners. Usage is listed for each GitHub Enterprise Cloud-hosted runner operating system in milliseconds. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+        Gets the number of billable minutes used by a specific workflow during the current billing cycle. Billable minutes only apply to workflows in private repositories that use GitHub Enterprise Cloud-hosted runners. Usage is listed for each GitHub Enterprise Cloud-hosted runner operating system in milliseconds. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
 
         You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
 
@@ -19407,7 +19417,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#get-workflow-usage
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflows#get-workflow-usage
         """
 
         from ..models import WorkflowUsage
@@ -19440,7 +19450,7 @@ class ActionsClient:
         > [!WARNING]
         > This endpoint is in the process of closing down. Refer to "[Actions Get workflow usage and Get workflow run usage endpoints closing down](https://github.blog/changelog/2025-02-02-actions-get-workflow-usage-and-get-workflow-run-usage-endpoints-closing-down/)" for more information.
 
-        Gets the number of billable minutes used by a specific workflow during the current billing cycle. Billable minutes only apply to workflows in private repositories that use GitHub Enterprise Cloud-hosted runners. Usage is listed for each GitHub Enterprise Cloud-hosted runner operating system in milliseconds. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+        Gets the number of billable minutes used by a specific workflow during the current billing cycle. Billable minutes only apply to workflows in private repositories that use GitHub Enterprise Cloud-hosted runners. Usage is listed for each GitHub Enterprise Cloud-hosted runner operating system in milliseconds. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
 
         You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
 
@@ -19448,7 +19458,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#get-workflow-usage
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflows#get-workflow-usage
         """
 
         from ..models import WorkflowUsage
@@ -19490,7 +19500,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-environment-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#list-environment-secrets
         """
 
         from ..models import (
@@ -19540,7 +19550,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-environment-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#list-environment-secrets
         """
 
         from ..models import (
@@ -19585,7 +19595,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-environment-public-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#get-an-environment-public-key
         """
 
         from ..models import ActionsPublicKey
@@ -19624,7 +19634,7 @@ class ActionsClient:
 
         If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-environment-public-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#get-an-environment-public-key
         """
 
         from ..models import ActionsPublicKey
@@ -19663,7 +19673,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-environment-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#get-an-environment-secret
         """
 
         from ..models import ActionsSecret
@@ -19700,7 +19710,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-environment-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#get-an-environment-secret
         """
 
         from ..models import ActionsSecret
@@ -19764,13 +19774,13 @@ class ActionsClient:
         PUT /repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}
 
         Creates or updates an environment secret with an encrypted value. Encrypt your secret using
-        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
 
         Authenticated users must have collaborator access to a repository to create, update, or read secrets.
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-an-environment-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#create-or-update-an-environment-secret
         """
 
         from ..models import (
@@ -19849,13 +19859,13 @@ class ActionsClient:
         PUT /repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}
 
         Creates or updates an environment secret with an encrypted value. Encrypt your secret using
-        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
 
         Authenticated users must have collaborator access to a repository to create, update, or read secrets.
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-an-environment-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#create-or-update-an-environment-secret
         """
 
         from ..models import (
@@ -19907,7 +19917,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#delete-an-environment-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#delete-an-environment-secret
         """
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}"
@@ -19941,7 +19951,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#delete-an-environment-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#delete-an-environment-secret
         """
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}"
@@ -19979,7 +19989,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-environment-variables
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#list-environment-variables
         """
 
         from ..models import (
@@ -20028,7 +20038,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-environment-variables
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#list-environment-variables
         """
 
         from ..models import (
@@ -20102,7 +20112,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#create-an-environment-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#create-an-environment-variable
         """
 
         from ..models import (
@@ -20183,7 +20193,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#create-an-environment-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#create-an-environment-variable
         """
 
         from ..models import (
@@ -20235,7 +20245,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-an-environment-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#get-an-environment-variable
         """
 
         from ..models import ActionsVariable
@@ -20272,7 +20282,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-an-environment-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#get-an-environment-variable
         """
 
         from ..models import ActionsVariable
@@ -20309,7 +20319,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#delete-an-environment-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#delete-an-environment-variable
         """
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables/{name}"
@@ -20343,7 +20353,7 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#delete-an-environment-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#delete-an-environment-variable
         """
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables/{name}"
@@ -20408,7 +20418,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#update-an-environment-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#update-an-environment-variable
         """
 
         from ..models import (
@@ -20489,7 +20499,7 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#update-an-environment-variable
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/variables#update-an-environment-variable
         """
 
         from ..models import (

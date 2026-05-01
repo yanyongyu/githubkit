@@ -143,13 +143,13 @@ class CopilotClient:
         For each organization or enterprise team which grants Copilot access to a user, a seat detail object will appear in the `seats` array.
         Each seat object contains information about the assigned user's most recent Copilot activity. Users must have
         telemetry enabled in their IDE for Copilot in the IDE activity to be reflected in `last_activity_at`. For more information about activity data,
-        see [Metrics data properties for GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/reference/metrics-data).
+        see [Metrics data properties for GitHub Copilot](https://docs.github.com/enterprise-cloud@latest/copilot/reference/metrics-data).
 
         Only enterprise owners and billing managers can view assigned Copilot seats across their child organizations or enterprise teams.
 
         Personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-enterprise
         """
 
         from ..models import (
@@ -207,13 +207,13 @@ class CopilotClient:
         For each organization or enterprise team which grants Copilot access to a user, a seat detail object will appear in the `seats` array.
         Each seat object contains information about the assigned user's most recent Copilot activity. Users must have
         telemetry enabled in their IDE for Copilot in the IDE activity to be reflected in `last_activity_at`. For more information about activity data,
-        see [Metrics data properties for GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/reference/metrics-data).
+        see [Metrics data properties for GitHub Copilot](https://docs.github.com/enterprise-cloud@latest/copilot/reference/metrics-data).
 
         Only enterprise owners and billing managers can view assigned Copilot seats across their child organizations or enterprise teams.
 
         Personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-enterprise
         """
 
         from ..models import (
@@ -301,7 +301,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-enterprise-teams-to-the-copilot-subscription-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#add-enterprise-teams-to-the-copilot-subscription-for-an-enterprise
         """
 
         from ..models import (
@@ -396,7 +396,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-enterprise-teams-to-the-copilot-subscription-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#add-enterprise-teams-to-the-copilot-subscription-for-an-enterprise
         """
 
         from ..models import (
@@ -492,7 +492,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-enterprise-teams-from-the-copilot-subscription-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#remove-enterprise-teams-from-the-copilot-subscription-for-an-enterprise
         """
 
         from ..models import (
@@ -589,7 +589,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-enterprise-teams-from-the-copilot-subscription-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#remove-enterprise-teams-from-the-copilot-subscription-for-an-enterprise
         """
 
         from ..models import (
@@ -686,7 +686,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-enterprise
         """
 
         from ..models import (
@@ -782,7 +782,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-enterprise
         """
 
         from ..models import (
@@ -878,7 +878,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-enterprise
         """
 
         from ..models import (
@@ -974,7 +974,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-enterprise
         """
 
         from ..models import (
@@ -1032,7 +1032,7 @@ class CopilotClient:
 
         Gets information about an enterprise's Copilot content exclusion path rules.
         To configure these settings, go to the enterprise's settings on GitHub.
-        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-enterprise)."
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-enterprise)."
 
         Enterprise owners can view details about Copilot content exclusion rules for the enterprise.
 
@@ -1042,7 +1042,7 @@ class CopilotClient:
         > * At this time, the API does not support comments. This endpoint will not return any comments in the existing rules.
         > * At this time, the API does not support duplicate keys. If your content exclusion configuration contains duplicate keys, the API will return only the last occurrence of that key. For example, if duplicate entries are present, only the final value will be included in the response.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-enterprise
         """
 
         from ..models import BasicError, CopilotEnterpriseContentExclusionDetails
@@ -1084,7 +1084,7 @@ class CopilotClient:
 
         Gets information about an enterprise's Copilot content exclusion path rules.
         To configure these settings, go to the enterprise's settings on GitHub.
-        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-enterprise)."
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-enterprise)."
 
         Enterprise owners can view details about Copilot content exclusion rules for the enterprise.
 
@@ -1094,7 +1094,7 @@ class CopilotClient:
         > * At this time, the API does not support comments. This endpoint will not return any comments in the existing rules.
         > * At this time, the API does not support duplicate keys. If your content exclusion configuration contains duplicate keys, the API will return only the last occurrence of that key. For example, if duplicate entries are present, only the final value will be included in the response.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-enterprise
         """
 
         from ..models import BasicError, CopilotEnterpriseContentExclusionDetails
@@ -1164,7 +1164,7 @@ class CopilotClient:
 
         Sets Copilot content exclusion path rules for an enterprise.
         To configure these settings, go to the enterprise's settings on GitHub.
-        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-enterprise)."
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-enterprise)."
 
         Enterprise owners can set Copilot content exclusion rules for the enterprise.
 
@@ -1174,7 +1174,7 @@ class CopilotClient:
         > * At this time, the API does not support comments. When using this endpoint, any existing comments in your rules will be deleted.
         > * At this time, the API does not support duplicate keys. If you submit content exclusions through the API with duplicate keys, only the last occurrence will be saved. Earlier entries with the same key will be overwritten.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-enterprise
         """
 
         from ..models import (
@@ -1263,7 +1263,7 @@ class CopilotClient:
 
         Sets Copilot content exclusion path rules for an enterprise.
         To configure these settings, go to the enterprise's settings on GitHub.
-        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-enterprise)."
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-enterprise)."
 
         Enterprise owners can set Copilot content exclusion rules for the enterprise.
 
@@ -1273,7 +1273,7 @@ class CopilotClient:
         > * At this time, the API does not support comments. When using this endpoint, any existing comments in your rules will be deleted.
         > * At this time, the API does not support duplicate keys. If you submit content exclusions through the API with duplicate keys, only the last occurrence will be saved. Earlier entries with the same key will be overwritten.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-enterprise
         """
 
         from ..models import (
@@ -1339,7 +1339,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#get-custom-agents-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-custom-agents#get-custom-agents-for-an-enterprise
         """
 
         from ..models import (
@@ -1396,7 +1396,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#get-custom-agents-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-custom-agents#get-custom-agents-for-an-enterprise
         """
 
         from ..models import (
@@ -1454,7 +1454,7 @@ class CopilotClient:
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#get-the-source-organization-for-custom-agents-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-custom-agents#get-the-source-organization-for-custom-agents-in-an-enterprise
         """
 
         from ..models import (
@@ -1503,7 +1503,7 @@ class CopilotClient:
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#get-the-source-organization-for-custom-agents-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-custom-agents#get-the-source-organization-for-custom-agents-in-an-enterprise
         """
 
         from ..models import (
@@ -1584,7 +1584,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#set-the-source-organization-for-custom-agents-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-custom-agents#set-the-source-organization-for-custom-agents-in-an-enterprise
         """
 
         from ..models import (
@@ -1682,7 +1682,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#set-the-source-organization-for-custom-agents-in-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-custom-agents#set-the-source-organization-for-custom-agents-in-an-enterprise
         """
 
         from ..models import (
@@ -1746,7 +1746,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#delete-the-custom-agents-source-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-custom-agents#delete-the-custom-agents-source-for-an-enterprise
         """
 
         from ..models import BasicError
@@ -1789,7 +1789,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#delete-the-custom-agents-source-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-custom-agents#delete-the-custom-agents-source-for-an-enterprise
         """
 
         from ..models import BasicError
@@ -1837,7 +1837,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise
         """
 
         from ..models import BasicError, CopilotUsageMetricsDay
@@ -1896,7 +1896,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise
         """
 
         from ..models import BasicError, CopilotUsageMetricsDay
@@ -1949,7 +1949,7 @@ class CopilotClient:
 
         Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-enterprise-usage-metrics-for-a-specific-day
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-enterprise-usage-metrics-for-a-specific-day
         """
 
         from ..models import BasicError, CopilotUsageMetrics1DayReport
@@ -1998,7 +1998,7 @@ class CopilotClient:
 
         Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-enterprise-usage-metrics-for-a-specific-day
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-enterprise-usage-metrics-for-a-specific-day
         """
 
         from ..models import BasicError, CopilotUsageMetrics1DayReport
@@ -2046,7 +2046,7 @@ class CopilotClient:
 
         Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-enterprise-usage-metrics
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-enterprise-usage-metrics
         """
 
         from ..models import BasicError, CopilotUsageMetrics28DayReport
@@ -2089,7 +2089,7 @@ class CopilotClient:
 
         Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-enterprise-usage-metrics
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-enterprise-usage-metrics
         """
 
         from ..models import BasicError, CopilotUsageMetrics28DayReport
@@ -2133,7 +2133,7 @@ class CopilotClient:
 
         Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-users-usage-metrics-for-a-specific-day
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-users-usage-metrics-for-a-specific-day
         """
 
         from ..models import BasicError, CopilotUsageMetrics1DayReport
@@ -2182,7 +2182,7 @@ class CopilotClient:
 
         Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-users-usage-metrics-for-a-specific-day
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-users-usage-metrics-for-a-specific-day
         """
 
         from ..models import BasicError, CopilotUsageMetrics1DayReport
@@ -2230,7 +2230,7 @@ class CopilotClient:
 
         Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-users-usage-metrics
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-users-usage-metrics
         """
 
         from ..models import BasicError, CopilotUsageMetrics28DayReport
@@ -2273,7 +2273,7 @@ class CopilotClient:
 
         Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-users-usage-metrics
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-users-usage-metrics
         """
 
         from ..models import BasicError, CopilotUsageMetrics28DayReport
@@ -2336,9 +2336,9 @@ class CopilotClient:
 
         PUT /enterprises/{enterprise}/copilot/policies/coding_agent
 
-        Sets the policy for Copilot coding agent usage across an enterprise.
+        Sets the policy for Copilot cloud agent usage across an enterprise.
 
-        Enterprise owners can configure whether Copilot coding agent is enabled for all
+        Enterprise owners can configure whether Copilot cloud agent is enabled for all
         organizations, disabled for all organizations, configured by individual organization
         admins, or enabled for selected organizations only.
 
@@ -2346,7 +2346,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#set-the-coding-agent-policy-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#set-the-coding-agent-policy-for-an-enterprise
         """
 
         from ..models import (
@@ -2421,9 +2421,9 @@ class CopilotClient:
 
         PUT /enterprises/{enterprise}/copilot/policies/coding_agent
 
-        Sets the policy for Copilot coding agent usage across an enterprise.
+        Sets the policy for Copilot cloud agent usage across an enterprise.
 
-        Enterprise owners can configure whether Copilot coding agent is enabled for all
+        Enterprise owners can configure whether Copilot cloud agent is enabled for all
         organizations, disabled for all organizations, configured by individual organization
         admins, or enabled for selected organizations only.
 
@@ -2431,7 +2431,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#set-the-coding-agent-policy-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#set-the-coding-agent-policy-for-an-enterprise
         """
 
         from ..models import (
@@ -2506,7 +2506,7 @@ class CopilotClient:
 
         POST /enterprises/{enterprise}/copilot/policies/coding_agent/organizations
 
-        Enables Copilot coding agent for the specified organizations within the enterprise.
+        Enables Copilot cloud agent for the specified organizations within the enterprise.
 
         The enterprise's coding agent policy must be set to `enabled_for_selected_orgs` before
         using this endpoint. Organizations can be specified by login or matched via custom properties.
@@ -2517,7 +2517,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#add-organizations-to-the-enterprise-coding-agent-policy
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#add-organizations-to-the-enterprise-coding-agent-policy
         """
 
         from ..models import (
@@ -2593,7 +2593,7 @@ class CopilotClient:
 
         POST /enterprises/{enterprise}/copilot/policies/coding_agent/organizations
 
-        Enables Copilot coding agent for the specified organizations within the enterprise.
+        Enables Copilot cloud agent for the specified organizations within the enterprise.
 
         The enterprise's coding agent policy must be set to `enabled_for_selected_orgs` before
         using this endpoint. Organizations can be specified by login or matched via custom properties.
@@ -2604,7 +2604,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#add-organizations-to-the-enterprise-coding-agent-policy
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#add-organizations-to-the-enterprise-coding-agent-policy
         """
 
         from ..models import (
@@ -2680,7 +2680,7 @@ class CopilotClient:
 
         DELETE /enterprises/{enterprise}/copilot/policies/coding_agent/organizations
 
-        Disables Copilot coding agent for the specified organizations within the enterprise.
+        Disables Copilot cloud agent for the specified organizations within the enterprise.
 
         The enterprise's coding agent policy must be set to `enabled_for_selected_orgs` before
         using this endpoint. Organizations can be specified by login or matched via custom properties.
@@ -2691,7 +2691,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#remove-organizations-from-the-enterprise-coding-agent-policy
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#remove-organizations-from-the-enterprise-coding-agent-policy
         """
 
         from ..models import (
@@ -2767,7 +2767,7 @@ class CopilotClient:
 
         DELETE /enterprises/{enterprise}/copilot/policies/coding_agent/organizations
 
-        Disables Copilot coding agent for the specified organizations within the enterprise.
+        Disables Copilot cloud agent for the specified organizations within the enterprise.
 
         The enterprise's coding agent policy must be set to `enabled_for_selected_orgs` before
         using this endpoint. Organizations can be specified by login or matched via custom properties.
@@ -2778,7 +2778,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#remove-organizations-from-the-enterprise-coding-agent-policy
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#remove-organizations-from-the-enterprise-coding-agent-policy
         """
 
         from ..models import (
@@ -2839,7 +2839,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-an-enterprise-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-an-enterprise-user
         """
 
         from ..models import (
@@ -2891,7 +2891,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-an-enterprise-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-an-enterprise-user
         """
 
         from ..models import (
@@ -2936,7 +2936,7 @@ class CopilotClient:
         GET /enterprises/{enterprise}/team/{team_slug}/copilot/metrics
 
         > [!NOTE]
-        > This endpoint is only applicable to dedicated enterprise accounts for Copilot Business. See "[About enterprise accounts for Copilot Business](https://docs.github.com/enterprise-cloud@latest//admin/copilot-business-only/about-enterprise-accounts-for-copilot-business)."
+        > This endpoint is only applicable to dedicated enterprise accounts for Copilot Business. See "[About enterprise accounts for Copilot Business](https://docs.github.com/enterprise-cloud@latest/admin/copilot-business-only/about-enterprise-accounts-for-copilot-business)."
 
         Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
 
@@ -2952,7 +2952,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise-team
         """
 
         from ..models import BasicError, CopilotUsageMetricsDay
@@ -3002,7 +3002,7 @@ class CopilotClient:
         GET /enterprises/{enterprise}/team/{team_slug}/copilot/metrics
 
         > [!NOTE]
-        > This endpoint is only applicable to dedicated enterprise accounts for Copilot Business. See "[About enterprise accounts for Copilot Business](https://docs.github.com/enterprise-cloud@latest//admin/copilot-business-only/about-enterprise-accounts-for-copilot-business)."
+        > This endpoint is only applicable to dedicated enterprise accounts for Copilot Business. See "[About enterprise accounts for Copilot Business](https://docs.github.com/enterprise-cloud@latest/admin/copilot-business-only/about-enterprise-accounts-for-copilot-business)."
 
         Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
 
@@ -3018,7 +3018,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise-team
         """
 
         from ..models import BasicError, CopilotUsageMetricsDay
@@ -3067,13 +3067,13 @@ class CopilotClient:
 
         Gets information about an organization's Copilot subscription, including seat breakdown
         and feature policies. To configure these settings, go to your organization's settings on GitHub.com.
-        For more information, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-policies-for-copilot-business-in-your-organization)."
+        For more information, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-policies-for-copilot-business-in-your-organization)."
 
         Only organization owners can view details about the organization's Copilot Business or Copilot Enterprise subscription.
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization
         """
 
         from ..models import BasicError, CopilotOrganizationDetails
@@ -3114,13 +3114,13 @@ class CopilotClient:
 
         Gets information about an organization's Copilot subscription, including seat breakdown
         and feature policies. To configure these settings, go to your organization's settings on GitHub.com.
-        For more information, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-policies-for-copilot-business-in-your-organization)."
+        For more information, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-policies-for-copilot-business-in-your-organization)."
 
         Only organization owners can view details about the organization's Copilot Business or Copilot Enterprise subscription.
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization
         """
 
         from ..models import BasicError, CopilotOrganizationDetails
@@ -3166,11 +3166,11 @@ class CopilotClient:
         Only organization owners can view assigned seats.
 
         Each seat object contains information about the assigned user's most recent Copilot activity. Users must have telemetry enabled in their IDE for Copilot in the IDE activity to be reflected in `last_activity_at`.
-        For more information about activity data, see [Metrics data properties for GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/reference/metrics-data).
+        For more information about activity data, see [Metrics data properties for GitHub Copilot](https://docs.github.com/enterprise-cloud@latest/copilot/reference/metrics-data).
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-organization
         """
 
         from ..models import BasicError, OrgsOrgCopilotBillingSeatsGetResponse200
@@ -3222,11 +3222,11 @@ class CopilotClient:
         Only organization owners can view assigned seats.
 
         Each seat object contains information about the assigned user's most recent Copilot activity. Users must have telemetry enabled in their IDE for Copilot in the IDE activity to be reflected in `last_activity_at`.
-        For more information about activity data, see [Metrics data properties for GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/reference/metrics-data).
+        For more information about activity data, see [Metrics data properties for GitHub Copilot](https://docs.github.com/enterprise-cloud@latest/copilot/reference/metrics-data).
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-organization
         """
 
         from ..models import BasicError, OrgsOrgCopilotBillingSeatsGetResponse200
@@ -3302,17 +3302,17 @@ class CopilotClient:
         > This endpoint is in public preview and is subject to change.
 
         Purchases a GitHub Copilot seat for all users within each specified team.
-        The organization will be billed for each seat based on the organization's Copilot plan. For more information about Copilot pricing, see "[About billing for GitHub Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/about-billing-for-github-copilot-in-your-organization)."
+        The organization will be billed for each seat based on the organization's Copilot plan. For more information about Copilot pricing, see "[About billing for GitHub Copilot in your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/about-billing-for-github-copilot-in-your-organization)."
 
         Only organization owners can purchase Copilot seats for their organization members. The organization must have a Copilot Business or Copilot Enterprise subscription and a configured suggestion matching policy.
-        For more information about setting up a Copilot subscription, see "[Subscribing to Copilot for your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/subscribing-to-copilot-for-your-organization)."
-        For more information about setting a suggestion matching policy, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/setting-policies-for-copilot-in-your-organization/managing-policies-for-copilot-in-your-organization#policies-for-suggestion-matching)."
+        For more information about setting up a Copilot subscription, see "[Subscribing to Copilot for your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/subscribing-to-copilot-for-your-organization)."
+        For more information about setting a suggestion matching policy, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-github-copilot-in-your-organization/setting-policies-for-copilot-in-your-organization/managing-policies-for-copilot-in-your-organization#policies-for-suggestion-matching)."
 
         The response contains the total number of new seats that were created and existing seats that were refreshed.
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-teams-to-the-copilot-subscription-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#add-teams-to-the-copilot-subscription-for-an-organization
         """
 
         from ..models import (
@@ -3398,17 +3398,17 @@ class CopilotClient:
         > This endpoint is in public preview and is subject to change.
 
         Purchases a GitHub Copilot seat for all users within each specified team.
-        The organization will be billed for each seat based on the organization's Copilot plan. For more information about Copilot pricing, see "[About billing for GitHub Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/about-billing-for-github-copilot-in-your-organization)."
+        The organization will be billed for each seat based on the organization's Copilot plan. For more information about Copilot pricing, see "[About billing for GitHub Copilot in your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/about-billing-for-github-copilot-in-your-organization)."
 
         Only organization owners can purchase Copilot seats for their organization members. The organization must have a Copilot Business or Copilot Enterprise subscription and a configured suggestion matching policy.
-        For more information about setting up a Copilot subscription, see "[Subscribing to Copilot for your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/subscribing-to-copilot-for-your-organization)."
-        For more information about setting a suggestion matching policy, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/setting-policies-for-copilot-in-your-organization/managing-policies-for-copilot-in-your-organization#policies-for-suggestion-matching)."
+        For more information about setting up a Copilot subscription, see "[Subscribing to Copilot for your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/subscribing-to-copilot-for-your-organization)."
+        For more information about setting a suggestion matching policy, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-github-copilot-in-your-organization/setting-policies-for-copilot-in-your-organization/managing-policies-for-copilot-in-your-organization#policies-for-suggestion-matching)."
 
         The response contains the total number of new seats that were created and existing seats that were refreshed.
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-teams-to-the-copilot-subscription-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#add-teams-to-the-copilot-subscription-for-an-organization
         """
 
         from ..models import (
@@ -3495,7 +3495,7 @@ class CopilotClient:
 
         Sets seats for all members of each team specified to "pending cancellation".
         This will cause the members of the specified team(s) to lose access to GitHub Copilot at the end of the current billing cycle unless they retain access through another team.
-        For more information about disabling access to Copilot, see "[Revoking access to Copilot for members of your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-access-to-github-copilot-in-your-organization/revoking-access-to-copilot-for-members-of-your-organization)."
+        For more information about disabling access to Copilot, see "[Revoking access to Copilot for members of your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-access-to-github-copilot-in-your-organization/revoking-access-to-copilot-for-members-of-your-organization)."
 
         Only organization owners can cancel Copilot seats for their organization members.
 
@@ -3503,7 +3503,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-teams-from-the-copilot-subscription-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#remove-teams-from-the-copilot-subscription-for-an-organization
         """
 
         from ..models import (
@@ -3590,7 +3590,7 @@ class CopilotClient:
 
         Sets seats for all members of each team specified to "pending cancellation".
         This will cause the members of the specified team(s) to lose access to GitHub Copilot at the end of the current billing cycle unless they retain access through another team.
-        For more information about disabling access to Copilot, see "[Revoking access to Copilot for members of your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-access-to-github-copilot-in-your-organization/revoking-access-to-copilot-for-members-of-your-organization)."
+        For more information about disabling access to Copilot, see "[Revoking access to Copilot for members of your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-access-to-github-copilot-in-your-organization/revoking-access-to-copilot-for-members-of-your-organization)."
 
         Only organization owners can cancel Copilot seats for their organization members.
 
@@ -3598,7 +3598,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-teams-from-the-copilot-subscription-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#remove-teams-from-the-copilot-subscription-for-an-organization
         """
 
         from ..models import (
@@ -3684,17 +3684,17 @@ class CopilotClient:
         > This endpoint is in public preview and is subject to change.
 
         Purchases a GitHub Copilot seat for each user specified.
-        The organization will be billed for each seat based on the organization's Copilot plan. For more information about Copilot pricing, see "[About billing for GitHub Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/about-billing-for-github-copilot-in-your-organization)."
+        The organization will be billed for each seat based on the organization's Copilot plan. For more information about Copilot pricing, see "[About billing for GitHub Copilot in your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/about-billing-for-github-copilot-in-your-organization)."
 
         Only organization owners can purchase Copilot seats for their organization members. The organization must have a Copilot Business or Copilot Enterprise subscription and a configured suggestion matching policy.
-        For more information about setting up a Copilot subscription, see "[Subscribing to Copilot for your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/subscribing-to-copilot-for-your-organization)."
-        For more information about setting a suggestion matching policy, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/setting-policies-for-copilot-in-your-organization/managing-policies-for-copilot-in-your-organization#policies-for-suggestion-matching)."
+        For more information about setting up a Copilot subscription, see "[Subscribing to Copilot for your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/subscribing-to-copilot-for-your-organization)."
+        For more information about setting a suggestion matching policy, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-github-copilot-in-your-organization/setting-policies-for-copilot-in-your-organization/managing-policies-for-copilot-in-your-organization#policies-for-suggestion-matching)."
 
         The response contains the total number of new seats that were created and existing seats that were refreshed.
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-organization
         """
 
         from ..models import (
@@ -3780,17 +3780,17 @@ class CopilotClient:
         > This endpoint is in public preview and is subject to change.
 
         Purchases a GitHub Copilot seat for each user specified.
-        The organization will be billed for each seat based on the organization's Copilot plan. For more information about Copilot pricing, see "[About billing for GitHub Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/about-billing-for-github-copilot-in-your-organization)."
+        The organization will be billed for each seat based on the organization's Copilot plan. For more information about Copilot pricing, see "[About billing for GitHub Copilot in your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/about-billing-for-github-copilot-in-your-organization)."
 
         Only organization owners can purchase Copilot seats for their organization members. The organization must have a Copilot Business or Copilot Enterprise subscription and a configured suggestion matching policy.
-        For more information about setting up a Copilot subscription, see "[Subscribing to Copilot for your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/subscribing-to-copilot-for-your-organization)."
-        For more information about setting a suggestion matching policy, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/setting-policies-for-copilot-in-your-organization/managing-policies-for-copilot-in-your-organization#policies-for-suggestion-matching)."
+        For more information about setting up a Copilot subscription, see "[Subscribing to Copilot for your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/subscribing-to-copilot-for-your-organization)."
+        For more information about setting a suggestion matching policy, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-github-copilot-in-your-organization/setting-policies-for-copilot-in-your-organization/managing-policies-for-copilot-in-your-organization#policies-for-suggestion-matching)."
 
         The response contains the total number of new seats that were created and existing seats that were refreshed.
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-organization
         """
 
         from ..models import (
@@ -3877,7 +3877,7 @@ class CopilotClient:
 
         Sets seats for all users specified to "pending cancellation".
         This will cause the specified users to lose access to GitHub Copilot at the end of the current billing cycle unless they retain access through team membership.
-        For more information about disabling access to Copilot, see "[Revoking access to Copilot for members of your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-access-to-github-copilot-in-your-organization/revoking-access-to-copilot-for-members-of-your-organization)."
+        For more information about disabling access to Copilot, see "[Revoking access to Copilot for members of your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-access-to-github-copilot-in-your-organization/revoking-access-to-copilot-for-members-of-your-organization)."
 
         Only organization owners can cancel Copilot seats for their organization members.
 
@@ -3885,7 +3885,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-organization
         """
 
         from ..models import (
@@ -3972,7 +3972,7 @@ class CopilotClient:
 
         Sets seats for all users specified to "pending cancellation".
         This will cause the specified users to lose access to GitHub Copilot at the end of the current billing cycle unless they retain access through team membership.
-        For more information about disabling access to Copilot, see "[Revoking access to Copilot for members of your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-access-to-github-copilot-in-your-organization/revoking-access-to-copilot-for-members-of-your-organization)."
+        For more information about disabling access to Copilot, see "[Revoking access to Copilot for members of your organization](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-access-to-github-copilot-in-your-organization/revoking-access-to-copilot-for-members-of-your-organization)."
 
         Only organization owners can cancel Copilot seats for their organization members.
 
@@ -3980,7 +3980,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-organization
         """
 
         from ..models import (
@@ -4037,14 +4037,14 @@ class CopilotClient:
         > This endpoint is in public preview and is subject to change.
 
         Gets information about which repositories in an organization have been enabled
-        or disabled for the Copilot coding agent.
+        or disabled for the Copilot cloud agent.
 
-        Organization owners can configure whether Copilot coding agent is enabled for
+        Organization owners can configure whether Copilot cloud agent is enabled for
         all repositories, selected repositories, or no repositories owned by organization.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#get-copilot-coding-agent-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#get-copilot-cloud-agent-permissions-for-an-organization
         """
 
         from ..models import (
@@ -4088,14 +4088,14 @@ class CopilotClient:
         > This endpoint is in public preview and is subject to change.
 
         Gets information about which repositories in an organization have been enabled
-        or disabled for the Copilot coding agent.
+        or disabled for the Copilot cloud agent.
 
-        Organization owners can configure whether Copilot coding agent is enabled for
+        Organization owners can configure whether Copilot cloud agent is enabled for
         all repositories, selected repositories, or no repositories owned by organization.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#get-copilot-coding-agent-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#get-copilot-cloud-agent-permissions-for-an-organization
         """
 
         from ..models import (
@@ -4158,14 +4158,14 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint is in public preview and is subject to change.
 
-        Sets the policy for which repositories in an organization can use Copilot coding agent.
+        Sets the policy for which repositories in an organization can use Copilot cloud agent.
 
-        Organization owners can configure whether Copilot coding agent is enabled for
+        Organization owners can configure whether Copilot cloud agent is enabled for
         all repositories, selected repositories, or no repositories owned by the organization.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#set-copilot-coding-agent-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#set-copilot-cloud-agent-permissions-for-an-organization
         """
 
         from ..models import (
@@ -4241,14 +4241,14 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint is in public preview and is subject to change.
 
-        Sets the policy for which repositories in an organization can use Copilot coding agent.
+        Sets the policy for which repositories in an organization can use Copilot cloud agent.
 
-        Organization owners can configure whether Copilot coding agent is enabled for
+        Organization owners can configure whether Copilot cloud agent is enabled for
         all repositories, selected repositories, or no repositories owned by the organization.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#set-copilot-coding-agent-permissions-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#set-copilot-cloud-agent-permissions-for-an-organization
         """
 
         from ..models import (
@@ -4306,14 +4306,14 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint is in public preview and is subject to change.
 
-        Lists the selected repositories that are enabled for Copilot coding agent in an organization.
+        Lists the selected repositories that are enabled for Copilot cloud agent in an organization.
 
         Organization owners can use this endpoint when the coding agent repository policy
         is set to `selected` to see which repositories have been enabled.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#list-repositories-enabled-for-copilot-coding-agent-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#list-repositories-enabled-for-copilot-cloud-agent-in-an-organization
         """
 
         from ..models import (
@@ -4365,14 +4365,14 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint is in public preview and is subject to change.
 
-        Lists the selected repositories that are enabled for Copilot coding agent in an organization.
+        Lists the selected repositories that are enabled for Copilot cloud agent in an organization.
 
         Organization owners can use this endpoint when the coding agent repository policy
         is set to `selected` to see which repositories have been enabled.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#list-repositories-enabled-for-copilot-coding-agent-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#list-repositories-enabled-for-copilot-cloud-agent-in-an-organization
         """
 
         from ..models import (
@@ -4444,13 +4444,13 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint is in public preview and is subject to change.
 
-        Replaces the list of selected repositories that are enabled for Copilot coding
-        agent in an organization. This method can only be called when the coding agent
+        Replaces the list of selected repositories that are enabled for Copilot cloud
+        agent in an organization. This method can only be called when the cloud agent
         repository policy is set to `selected`.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#set-selected-repositories-for-copilot-coding-agent-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#set-selected-repositories-for-copilot-cloud-agent-in-an-organization
         """
 
         from ..models import (
@@ -4529,13 +4529,13 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint is in public preview and is subject to change.
 
-        Replaces the list of selected repositories that are enabled for Copilot coding
-        agent in an organization. This method can only be called when the coding agent
+        Replaces the list of selected repositories that are enabled for Copilot cloud
+        agent in an organization. This method can only be called when the cloud agent
         repository policy is set to `selected`.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#set-selected-repositories-for-copilot-coding-agent-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#set-selected-repositories-for-copilot-cloud-agent-in-an-organization
         """
 
         from ..models import (
@@ -4591,12 +4591,12 @@ class CopilotClient:
         > This endpoint is in public preview and is subject to change.
 
         Adds a repository to the list of selected repositories enabled for Copilot
-        coding agent in an organization. This method can only be called when the
-        coding agent repository policy is set to `selected`.
+        cloud agent in an organization. This method can only be called when the
+        cloud agent repository policy is set to `selected`.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#enable-a-repository-for-copilot-coding-agent-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#enable-a-repository-for-copilot-cloud-agent-in-an-organization
         """
 
         from ..models import BasicError, ValidationError
@@ -4638,12 +4638,12 @@ class CopilotClient:
         > This endpoint is in public preview and is subject to change.
 
         Adds a repository to the list of selected repositories enabled for Copilot
-        coding agent in an organization. This method can only be called when the
-        coding agent repository policy is set to `selected`.
+        cloud agent in an organization. This method can only be called when the
+        cloud agent repository policy is set to `selected`.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#enable-a-repository-for-copilot-coding-agent-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#enable-a-repository-for-copilot-cloud-agent-in-an-organization
         """
 
         from ..models import BasicError, ValidationError
@@ -4685,12 +4685,12 @@ class CopilotClient:
         > This endpoint is in public preview and is subject to change.
 
         Removes a repository from the list of selected repositories enabled for Copilot
-        coding agent in an organization. This method can only be called when the
-        coding agent repository policy is set to `selected`.
+        cloud agent in an organization. This method can only be called when the
+        cloud agent repository policy is set to `selected`.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#disable-a-repository-for-copilot-coding-agent-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#disable-a-repository-for-copilot-cloud-agent-in-an-organization
         """
 
         from ..models import BasicError
@@ -4731,12 +4731,12 @@ class CopilotClient:
         > This endpoint is in public preview and is subject to change.
 
         Removes a repository from the list of selected repositories enabled for Copilot
-        coding agent in an organization. This method can only be called when the
-        coding agent repository policy is set to `selected`.
+        cloud agent in an organization. This method can only be called when the
+        cloud agent repository policy is set to `selected`.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#disable-a-repository-for-copilot-coding-agent-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#disable-a-repository-for-copilot-cloud-agent-in-an-organization
         """
 
         from ..models import BasicError
@@ -4780,7 +4780,7 @@ class CopilotClient:
 
         Gets information about an organization's Copilot content exclusion path rules.
         To configure these settings, go to the organization's settings on GitHub.
-        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
 
         Organization owners can view details about Copilot content exclusion rules for the organization.
 
@@ -4790,7 +4790,7 @@ class CopilotClient:
         > * At this time, the API does not support comments. This endpoint will not return any comments in the existing rules.
         > * At this time, the API does not support duplicate keys. If your content exclusion configuration contains duplicate keys, the API will return only the last occurrence of that key. For example, if duplicate entries are present, only the final value will be included in the response.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-organization
         """
 
         from ..models import BasicError, CopilotOrganizationContentExclusionDetails
@@ -4832,7 +4832,7 @@ class CopilotClient:
 
         Gets information about an organization's Copilot content exclusion path rules.
         To configure these settings, go to the organization's settings on GitHub.
-        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
 
         Organization owners can view details about Copilot content exclusion rules for the organization.
 
@@ -4842,7 +4842,7 @@ class CopilotClient:
         > * At this time, the API does not support comments. This endpoint will not return any comments in the existing rules.
         > * At this time, the API does not support duplicate keys. If your content exclusion configuration contains duplicate keys, the API will return only the last occurrence of that key. For example, if duplicate entries are present, only the final value will be included in the response.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-organization
         """
 
         from ..models import BasicError, CopilotOrganizationContentExclusionDetails
@@ -4912,7 +4912,7 @@ class CopilotClient:
 
         Sets Copilot content exclusion path rules for an organization.
         To configure these settings, go to the organization's settings on GitHub.
-        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
 
         Organization owners can set Copilot content exclusion rules for the organization.
 
@@ -4922,7 +4922,7 @@ class CopilotClient:
         > * At this time, the API does not support comments. When using this endpoint, any existing comments in your rules will be deleted.
         > * At this time, the API does not support duplicate keys. If you submit content exclusions through the API with duplicate keys, only the last occurrence will be saved. Earlier entries with the same key will be overwritten.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-organization
         """
 
         from ..models import (
@@ -5009,7 +5009,7 @@ class CopilotClient:
 
         Sets Copilot content exclusion path rules for an organization.
         To configure these settings, go to the organization's settings on GitHub.
-        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
 
         Organization owners can set Copilot content exclusion rules for the organization.
 
@@ -5019,7 +5019,7 @@ class CopilotClient:
         > * At this time, the API does not support comments. When using this endpoint, any existing comments in your rules will be deleted.
         > * At this time, the API does not support duplicate keys. If you submit content exclusions through the API with duplicate keys, only the last occurrence will be saved. Earlier entries with the same key will be overwritten.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-organization
         """
 
         from ..models import (
@@ -5090,7 +5090,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot`, `read:org`, or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-metrics#get-copilot-metrics-for-an-organization
         """
 
         from ..models import BasicError, CopilotUsageMetricsDay
@@ -5152,7 +5152,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot`, `read:org`, or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-metrics#get-copilot-metrics-for-an-organization
         """
 
         from ..models import BasicError, CopilotUsageMetricsDay
@@ -5205,9 +5205,9 @@ class CopilotClient:
 
         Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-usage-metrics-for-a-specific-day
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-organization-usage-metrics-for-a-specific-day
         """
 
         from ..models import BasicError, CopilotUsageMetrics1DayReport
@@ -5256,9 +5256,9 @@ class CopilotClient:
 
         Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-usage-metrics-for-a-specific-day
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-organization-usage-metrics-for-a-specific-day
         """
 
         from ..models import BasicError, CopilotUsageMetrics1DayReport
@@ -5306,9 +5306,9 @@ class CopilotClient:
 
         Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-usage-metrics
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-organization-usage-metrics
         """
 
         from ..models import BasicError, CopilotUsageMetrics28DayReport
@@ -5351,9 +5351,9 @@ class CopilotClient:
 
         Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-usage-metrics
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-organization-usage-metrics
         """
 
         from ..models import BasicError, CopilotUsageMetrics28DayReport
@@ -5397,9 +5397,9 @@ class CopilotClient:
 
         Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-users-usage-metrics-for-a-specific-day
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-organization-users-usage-metrics-for-a-specific-day
         """
 
         from ..models import BasicError, CopilotUsageMetrics1DayReport
@@ -5448,9 +5448,9 @@ class CopilotClient:
 
         Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-users-usage-metrics-for-a-specific-day
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-organization-users-usage-metrics-for-a-specific-day
         """
 
         from ..models import BasicError, CopilotUsageMetrics1DayReport
@@ -5498,9 +5498,9 @@ class CopilotClient:
 
         Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-users-usage-metrics
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-organization-users-usage-metrics
         """
 
         from ..models import BasicError, CopilotUsageMetrics28DayReport
@@ -5543,9 +5543,9 @@ class CopilotClient:
 
         Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
-        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-users-usage-metrics
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-organization-users-usage-metrics
         """
 
         from ..models import BasicError, CopilotUsageMetrics28DayReport
@@ -5585,13 +5585,13 @@ class CopilotClient:
         Gets the GitHub Copilot seat details for a member of an organization who currently has access to GitHub Copilot.
 
         The seat object contains information about the user's most recent Copilot activity. Users must have telemetry enabled in their IDE for Copilot in the IDE activity to be reflected in `last_activity_at`.
-        For more information about activity data, see [Metrics data properties for GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/reference/metrics-data).
+        For more information about activity data, see [Metrics data properties for GitHub Copilot](https://docs.github.com/enterprise-cloud@latest/copilot/reference/metrics-data).
 
         Only organization owners can view Copilot seat assignment details for members of their organization.
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user
         """
 
         from ..models import BasicError, CopilotSeatDetails
@@ -5632,13 +5632,13 @@ class CopilotClient:
         Gets the GitHub Copilot seat details for a member of an organization who currently has access to GitHub Copilot.
 
         The seat object contains information about the user's most recent Copilot activity. Users must have telemetry enabled in their IDE for Copilot in the IDE activity to be reflected in `last_activity_at`.
-        For more information about activity data, see [Metrics data properties for GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/reference/metrics-data).
+        For more information about activity data, see [Metrics data properties for GitHub Copilot](https://docs.github.com/enterprise-cloud@latest/copilot/reference/metrics-data).
 
         Only organization owners can view Copilot seat assignment details for members of their organization.
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:org` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user
         """
 
         from ..models import BasicError, CopilotSeatDetails
@@ -5693,7 +5693,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot`, `read:org`, or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-a-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-metrics#get-copilot-metrics-for-a-team
         """
 
         from ..models import BasicError, CopilotUsageMetricsDay
@@ -5756,7 +5756,7 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot`, `read:org`, or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-a-team
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-metrics#get-copilot-metrics-for-a-team
         """
 
         from ..models import BasicError, CopilotUsageMetricsDay

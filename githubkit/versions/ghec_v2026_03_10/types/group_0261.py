@@ -9,29 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class OrganizationCustomRepositoryRoleCreateSchemaType(TypedDict):
-    """OrganizationCustomRepositoryRoleCreateSchema"""
+class CopilotSpaceResourceType(TypedDict):
+    """Copilot Space Resource
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
+    A resource attached to a Copilot Space.
+    """
+
+    id: int
+    resource_type: Literal[
+        "repository",
+        "github_file",
+        "free_text",
+        "github_issue",
+        "github_pull_request",
+        "media_content",
+        "uploaded_text_file",
+    ]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    metadata: CopilotSpaceResourcePropMetadataType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class OrganizationCustomRepositoryRoleCreateSchemaTypeForResponse(TypedDict):
-    """OrganizationCustomRepositoryRoleCreateSchema"""
+class CopilotSpaceResourceTypeForResponse(TypedDict):
+    """Copilot Space Resource
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
+    A resource attached to a Copilot Space.
+    """
+
+    id: int
+    resource_type: Literal[
+        "repository",
+        "github_file",
+        "free_text",
+        "github_issue",
+        "github_pull_request",
+        "media_content",
+        "uploaded_text_file",
+    ]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    metadata: CopilotSpaceResourcePropMetadataTypeForResponse
+    created_at: str
+    updated_at: str
+
+
+CopilotSpaceResourcePropMetadataType: TypeAlias = dict[str, Any]
+"""CopilotSpaceResourcePropMetadata
+
+Resource-specific metadata. The keys and values depend on the resource type.
+"""
+
+
+CopilotSpaceResourcePropMetadataTypeForResponse: TypeAlias = dict[str, Any]
+"""CopilotSpaceResourcePropMetadata
+
+Resource-specific metadata. The keys and values depend on the resource type.
+"""
 
 
 __all__ = (
-    "OrganizationCustomRepositoryRoleCreateSchemaType",
-    "OrganizationCustomRepositoryRoleCreateSchemaTypeForResponse",
+    "CopilotSpaceResourcePropMetadataType",
+    "CopilotSpaceResourcePropMetadataTypeForResponse",
+    "CopilotSpaceResourceType",
+    "CopilotSpaceResourceTypeForResponse",
 )

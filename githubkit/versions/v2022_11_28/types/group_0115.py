@@ -10,24 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsGetDefaultWorkflowPermissionsType(TypedDict):
-    """ActionsGetDefaultWorkflowPermissions"""
+class SelfHostedRunnersSettingsType(TypedDict):
+    """SelfHostedRunnersSettings"""
 
-    default_workflow_permissions: Literal["read", "write"]
-    can_approve_pull_request_reviews: bool
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
-class ActionsGetDefaultWorkflowPermissionsTypeForResponse(TypedDict):
-    """ActionsGetDefaultWorkflowPermissions"""
+class SelfHostedRunnersSettingsTypeForResponse(TypedDict):
+    """SelfHostedRunnersSettings"""
 
-    default_workflow_permissions: Literal["read", "write"]
-    can_approve_pull_request_reviews: bool
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "ActionsGetDefaultWorkflowPermissionsType",
-    "ActionsGetDefaultWorkflowPermissionsTypeForResponse",
+    "SelfHostedRunnersSettingsType",
+    "SelfHostedRunnersSettingsTypeForResponse",
 )

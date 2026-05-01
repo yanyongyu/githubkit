@@ -9,29 +9,124 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsRepositoryPermissionsType(TypedDict):
-    """ActionsRepositoryPermissions"""
+class JobType(TypedDict):
+    """Job
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    Information of a job execution in a workflow run
+    """
+
+    id: int
+    run_id: int
+    run_url: str
+    run_attempt: NotRequired[int]
+    node_id: str
+    head_sha: str
+    url: str
+    html_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    created_at: _dt.datetime
+    started_at: _dt.datetime
+    completed_at: Union[_dt.datetime, None]
+    name: str
+    steps: NotRequired[list[JobPropStepsItemsType]]
+    check_run_url: str
+    labels: list[str]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    workflow_name: Union[str, None]
+    head_branch: Union[str, None]
 
 
-class ActionsRepositoryPermissionsTypeForResponse(TypedDict):
-    """ActionsRepositoryPermissions"""
+class JobTypeForResponse(TypedDict):
+    """Job
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    Information of a job execution in a workflow run
+    """
+
+    id: int
+    run_id: int
+    run_url: str
+    run_attempt: NotRequired[int]
+    node_id: str
+    head_sha: str
+    url: str
+    html_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    created_at: str
+    started_at: str
+    completed_at: Union[str, None]
+    name: str
+    steps: NotRequired[list[JobPropStepsItemsTypeForResponse]]
+    check_run_url: str
+    labels: list[str]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    workflow_name: Union[str, None]
+    head_branch: Union[str, None]
+
+
+class JobPropStepsItemsType(TypedDict):
+    """JobPropStepsItems"""
+
+    status: Literal["queued", "in_progress", "completed"]
+    conclusion: Union[str, None]
+    name: str
+    number: int
+    started_at: NotRequired[Union[_dt.datetime, None]]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+
+
+class JobPropStepsItemsTypeForResponse(TypedDict):
+    """JobPropStepsItems"""
+
+    status: Literal["queued", "in_progress", "completed"]
+    conclusion: Union[str, None]
+    name: str
+    number: int
+    started_at: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ActionsRepositoryPermissionsType",
-    "ActionsRepositoryPermissionsTypeForResponse",
+    "JobPropStepsItemsType",
+    "JobPropStepsItemsTypeForResponse",
+    "JobType",
+    "JobTypeForResponse",
 )

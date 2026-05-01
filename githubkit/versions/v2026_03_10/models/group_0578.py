@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,58 +18,40 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0272 import Deployment
-from .group_0402 import PullRequest
-from .group_0482 import SimpleInstallation
-from .group_0483 import OrganizationSimpleWebhooks
-from .group_0484 import RepositoryWebhooks
+from .group_0342 import DependabotAlert
+from .group_0485 import EnterpriseWebhooks
+from .group_0486 import SimpleInstallation
+from .group_0487 import OrganizationSimpleWebhooks
+from .group_0488 import RepositoryWebhooks
 
 
-class WebhookDeploymentProtectionRuleRequested(GitHubModel):
-    """deployment protection rule requested event"""
+class WebhookDependabotAlertReopened(GitHubModel):
+    """Dependabot alert reopened event"""
 
-    action: Literal["requested"] = Field()
-    environment: Missing[str] = Field(
+    action: Literal["reopened"] = Field()
+    alert: DependabotAlert = Field(description="A Dependabot alert.")
+    installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
-        description="The name of the environment that has the deployment protection rule.",
-    )
-    event: Missing[str] = Field(
-        default=UNSET,
-        description="The event that triggered the deployment protection rule.",
-    )
-    sha: Missing[str] = Field(
-        default=UNSET,
-        description="The commit SHA that triggered the workflow. Always populated from the check suite, regardless of whether a deployment is created.",
-    )
-    ref: Missing[str] = Field(
-        default=UNSET,
-        description="The ref (branch or tag) that triggered the workflow. Always populated from the check suite, regardless of whether a deployment is created.",
-    )
-    deployment_callback_url: Missing[str] = Field(
-        default=UNSET, description="The URL to review the deployment protection rule."
-    )
-    deployment: Missing[Union[None, Deployment]] = Field(default=UNSET)
-    pull_requests: Missing[list[PullRequest]] = Field(default=UNSET)
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    installation: Missing[SimpleInstallation] = Field(
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDeploymentProtectionRuleRequested)
+model_rebuild(WebhookDependabotAlertReopened)
 
-__all__ = ("WebhookDeploymentProtectionRuleRequested",)
+__all__ = ("WebhookDependabotAlertReopened",)

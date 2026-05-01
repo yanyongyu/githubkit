@@ -9,27 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class TrafficType(TypedDict):
-    """Traffic"""
+class ParticipationStatsType(TypedDict):
+    """Participation Stats"""
 
-    timestamp: _dt.datetime
-    uniques: int
-    count: int
+    all_: list[int]
+    owner: list[int]
 
 
-class TrafficTypeForResponse(TypedDict):
-    """Traffic"""
+class ParticipationStatsTypeForResponse(TypedDict):
+    """Participation Stats"""
 
-    timestamp: str
-    uniques: int
-    count: int
+    all_: list[int]
+    owner: list[int]
 
 
 __all__ = (
-    "TrafficType",
-    "TrafficTypeForResponse",
+    "ParticipationStatsType",
+    "ParticipationStatsTypeForResponse",
 )

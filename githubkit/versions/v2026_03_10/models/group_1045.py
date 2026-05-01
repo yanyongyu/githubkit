@@ -13,17 +13,31 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 
 
-class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
-    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
 
-    default_level: Literal["public", "internal"] = Field(
-        description="The default repository access level for Dependabot updates."
+    resource_type: Literal[
+        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
+    ] = Field(description="The type of resource to create.")
+    metadata: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata = Field(
+        description="Resource-specific metadata."
     )
 
 
-model_rebuild(OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody)
+class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata(ExtraGitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
 
-__all__ = ("OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody",)
+    Resource-specific metadata.
+    """
+
+
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata)
+
+__all__ = (
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
+)

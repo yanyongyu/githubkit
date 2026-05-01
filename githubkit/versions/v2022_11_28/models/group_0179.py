@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 
 from pydantic import Field
 
@@ -18,36 +18,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CustomPropertySetPayload(GitHubModel):
-    """Custom Property Set Payload
+class ProjectsV2FieldIterationConfiguration(GitHubModel):
+    """ProjectsV2FieldIterationConfiguration
 
-    Custom property set payload
+    The configuration for iteration fields.
     """
 
-    value_type: Literal[
-        "string", "single_select", "multi_select", "true_false", "url"
-    ] = Field(description="The type of the value for the property")
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
+    start_date: Missing[_dt.date] = Field(
+        default=UNSET, description="The start date of the first iteration."
     )
-    default_value: Missing[Union[str, list[str], None]] = Field(
-        default=UNSET, description="Default value of the property"
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
-    )
-    allowed_values: Missing[Union[list[str], None]] = Field(
+    duration: Missing[int] = Field(
         default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+        description="The default duration for iterations in days. Individual iterations can override this value.",
     )
-    values_editable_by: Missing[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ] = Field(default=UNSET, description="Who can edit the values of the property")
-    require_explicit_values: Missing[bool] = Field(
-        default=UNSET, description="Whether setting properties values is mandatory"
+    iterations: Missing[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItems]
+    ] = Field(default=UNSET, description="Zero or more iterations for the field.")
+
+
+class ProjectsV2FieldIterationConfigurationPropIterationsItems(GitHubModel):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the iteration."
+    )
+    start_date: Missing[_dt.date] = Field(
+        default=UNSET, description="The start date of the iteration."
+    )
+    duration: Missing[int] = Field(
+        default=UNSET, description="The duration of the iteration in days."
     )
 
 
-model_rebuild(CustomPropertySetPayload)
+model_rebuild(ProjectsV2FieldIterationConfiguration)
+model_rebuild(ProjectsV2FieldIterationConfigurationPropIterationsItems)
 
-__all__ = ("CustomPropertySetPayload",)
+__all__ = (
+    "ProjectsV2FieldIterationConfiguration",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItems",
+)

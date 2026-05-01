@@ -18,13 +18,13 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0050 import IssueType
-from .group_0052 import IssueDependenciesSummary, SubIssuesSummary
-from .group_0054 import IssueComment
-from .group_0055 import IssueFieldValue
+from .group_0051 import IssueType
+from .group_0053 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0055 import IssueComment
+from .group_0056 import IssueFieldValue
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssue(GitHubModel):
+class WebhookIssuesOpenedPropIssue(GitHubModel):
     """Issue
 
     The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
@@ -33,12 +33,12 @@ class WebhookIssuesTransferredPropChangesPropNewIssue(GitHubModel):
     active_lock_reason: Union[
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ] = Field()
-    assignee: Missing[
-        Union[WebhookIssuesTransferredPropChangesPropNewIssuePropAssignee, None]
-    ] = Field(default=UNSET, title="User")
-    assignees: list[
-        Union[WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItems, None]
-    ] = Field()
+    assignee: Missing[Union[WebhookIssuesOpenedPropIssuePropAssignee, None]] = Field(
+        default=UNSET, title="User"
+    )
+    assignees: list[Union[WebhookIssuesOpenedPropIssuePropAssigneesItems, None]] = (
+        Field()
+    )
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -61,37 +61,29 @@ class WebhookIssuesTransferredPropChangesPropNewIssue(GitHubModel):
     events_url: str = Field()
     html_url: str = Field()
     id: int = Field()
-    labels: Missing[
-        list[WebhookIssuesTransferredPropChangesPropNewIssuePropLabelsItems]
-    ] = Field(default=UNSET)
+    labels: Missing[list[WebhookIssuesOpenedPropIssuePropLabelsItems]] = Field(
+        default=UNSET
+    )
     labels_url: str = Field()
     locked: Missing[bool] = Field(default=UNSET)
-    milestone: Union[
-        WebhookIssuesTransferredPropChangesPropNewIssuePropMilestone, None
-    ] = Field(
+    milestone: Union[WebhookIssuesOpenedPropIssuePropMilestone, None] = Field(
         title="Milestone",
         description="A collection of related issues and pull requests.",
     )
     node_id: str = Field()
     number: int = Field()
     performed_via_github_app: Missing[
-        Union[
-            WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubApp,
-            None,
-        ]
+        Union[WebhookIssuesOpenedPropIssuePropPerformedViaGithubApp, None]
     ] = Field(
         default=UNSET,
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
     )
-    pull_request: Missing[
-        WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequest
-    ] = Field(default=UNSET)
-    reactions: WebhookIssuesTransferredPropChangesPropNewIssuePropReactions = Field(
-        title="Reactions"
+    pull_request: Missing[WebhookIssuesOpenedPropIssuePropPullRequest] = Field(
+        default=UNSET
     )
+    reactions: WebhookIssuesOpenedPropIssuePropReactions = Field(title="Reactions")
     repository_url: str = Field()
-    pinned_comment: Missing[Union[None, IssueComment]] = Field(default=UNSET)
     sub_issues_summary: Missing[SubIssuesSummary] = Field(
         default=UNSET, title="Sub-issues Summary"
     )
@@ -110,12 +102,11 @@ class WebhookIssuesTransferredPropChangesPropNewIssue(GitHubModel):
     )
     updated_at: _dt.datetime = Field()
     url: str = Field(description="URL for the issue")
-    user: Union[WebhookIssuesTransferredPropChangesPropNewIssuePropUser, None] = Field(
-        title="User"
-    )
+    pinned_comment: Missing[Union[None, IssueComment]] = Field(default=UNSET)
+    user: Union[WebhookIssuesOpenedPropIssuePropUser, None] = Field(title="User")
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropAssignee(GitHubModel):
+class WebhookIssuesOpenedPropIssuePropAssignee(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -142,7 +133,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropAssignee(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItems(GitHubModel):
+class WebhookIssuesOpenedPropIssuePropAssigneesItems(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -169,7 +160,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItems(GitHubMo
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropLabelsItems(GitHubModel):
+class WebhookIssuesOpenedPropIssuePropLabelsItems(GitHubModel):
     """Label"""
 
     color: str = Field(
@@ -183,7 +174,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropLabelsItems(GitHubModel
     url: str = Field(description="URL for the label")
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropMilestone(GitHubModel):
+class WebhookIssuesOpenedPropIssuePropMilestone(GitHubModel):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -192,9 +183,9 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropMilestone(GitHubModel):
     closed_at: Union[_dt.datetime, None] = Field()
     closed_issues: int = Field()
     created_at: _dt.datetime = Field()
-    creator: Union[
-        WebhookIssuesTransferredPropChangesPropNewIssuePropMilestonePropCreator, None
-    ] = Field(title="User")
+    creator: Union[WebhookIssuesOpenedPropIssuePropMilestonePropCreator, None] = Field(
+        title="User"
+    )
     description: Union[str, None] = Field()
     due_on: Union[_dt.datetime, None] = Field()
     html_url: str = Field()
@@ -209,9 +200,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropMilestone(GitHubModel):
     url: str = Field()
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropMilestonePropCreator(
-    GitHubModel
-):
+class WebhookIssuesOpenedPropIssuePropMilestonePropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -233,14 +222,14 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropMilestonePropCreator(
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
     url: Missing[str] = Field(default=UNSET)
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubApp(
-    GitHubModel
-):
+class WebhookIssuesOpenedPropIssuePropPerformedViaGithubApp(GitHubModel):
     """App
 
     GitHub apps are a new way to extend GitHub. They can be installed directly on
@@ -260,11 +249,10 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubApp(
     name: str = Field(description="The name of the GitHub app")
     node_id: str = Field()
     owner: Union[
-        WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropOwner,
-        None,
+        WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropOwner, None
     ] = Field(title="User")
     permissions: Missing[
-        WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPermissions
+        WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissions
     ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
     slug: Missing[str] = Field(
         default=UNSET, description="The slug name of the GitHub app"
@@ -272,9 +260,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubApp(
     updated_at: Union[_dt.datetime, None] = Field()
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropOwner(
-    GitHubModel
-):
+class WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropOwner(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -301,11 +287,8 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPr
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPermissions(
-    GitHubModel
-):
-    """WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPerm
-    issions
+class WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissions(GitHubModel):
+    """WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissions
 
     The set of permissions for the GitHub app
     """
@@ -329,7 +312,9 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPr
     organization_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
     organization_packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
     organization_plan: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_projects: Missing[Literal["read", "write", "admin"]] = Field(
+        default=UNSET
+    )
     organization_secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
     organization_self_hosted_runners: Missing[Literal["read", "write"]] = Field(
         default=UNSET
@@ -350,8 +335,8 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPr
     workflows: Missing[Literal["read", "write"]] = Field(default=UNSET)
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequest(GitHubModel):
-    """WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequest"""
+class WebhookIssuesOpenedPropIssuePropPullRequest(GitHubModel):
+    """WebhookIssuesOpenedPropIssuePropPullRequest"""
 
     diff_url: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
@@ -360,7 +345,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequest(GitHubModel
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropReactions(GitHubModel):
+class WebhookIssuesOpenedPropIssuePropReactions(GitHubModel):
     """Reactions"""
 
     plus_one: int = Field(alias="+1")
@@ -375,7 +360,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropReactions(GitHubModel):
     url: str = Field()
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropUser(GitHubModel):
+class WebhookIssuesOpenedPropIssuePropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -402,34 +387,30 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropUser(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssuesTransferredPropChangesPropNewIssue)
-model_rebuild(WebhookIssuesTransferredPropChangesPropNewIssuePropAssignee)
-model_rebuild(WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItems)
-model_rebuild(WebhookIssuesTransferredPropChangesPropNewIssuePropLabelsItems)
-model_rebuild(WebhookIssuesTransferredPropChangesPropNewIssuePropMilestone)
-model_rebuild(WebhookIssuesTransferredPropChangesPropNewIssuePropMilestonePropCreator)
-model_rebuild(WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubApp)
-model_rebuild(
-    WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropOwner
-)
-model_rebuild(
-    WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPermissions
-)
-model_rebuild(WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequest)
-model_rebuild(WebhookIssuesTransferredPropChangesPropNewIssuePropReactions)
-model_rebuild(WebhookIssuesTransferredPropChangesPropNewIssuePropUser)
+model_rebuild(WebhookIssuesOpenedPropIssue)
+model_rebuild(WebhookIssuesOpenedPropIssuePropAssignee)
+model_rebuild(WebhookIssuesOpenedPropIssuePropAssigneesItems)
+model_rebuild(WebhookIssuesOpenedPropIssuePropLabelsItems)
+model_rebuild(WebhookIssuesOpenedPropIssuePropMilestone)
+model_rebuild(WebhookIssuesOpenedPropIssuePropMilestonePropCreator)
+model_rebuild(WebhookIssuesOpenedPropIssuePropPerformedViaGithubApp)
+model_rebuild(WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropOwner)
+model_rebuild(WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissions)
+model_rebuild(WebhookIssuesOpenedPropIssuePropPullRequest)
+model_rebuild(WebhookIssuesOpenedPropIssuePropReactions)
+model_rebuild(WebhookIssuesOpenedPropIssuePropUser)
 
 __all__ = (
-    "WebhookIssuesTransferredPropChangesPropNewIssue",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropAssignee",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItems",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropLabelsItems",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropMilestone",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropMilestonePropCreator",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubApp",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropOwner",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPermissions",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequest",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropReactions",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropUser",
+    "WebhookIssuesOpenedPropIssue",
+    "WebhookIssuesOpenedPropIssuePropAssignee",
+    "WebhookIssuesOpenedPropIssuePropAssigneesItems",
+    "WebhookIssuesOpenedPropIssuePropLabelsItems",
+    "WebhookIssuesOpenedPropIssuePropMilestone",
+    "WebhookIssuesOpenedPropIssuePropMilestonePropCreator",
+    "WebhookIssuesOpenedPropIssuePropPerformedViaGithubApp",
+    "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropOwner",
+    "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissions",
+    "WebhookIssuesOpenedPropIssuePropPullRequest",
+    "WebhookIssuesOpenedPropIssuePropReactions",
+    "WebhookIssuesOpenedPropIssuePropUser",
 )

@@ -9,55 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCreateIssueFieldType(TypedDict):
-    """OrganizationCreateIssueField"""
+class ApiInsightsUserStatsItemsType(TypedDict):
+    """ApiInsightsUserStatsItems"""
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "number"]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[
-        Union[list[OrganizationCreateIssueFieldPropOptionsItemsType], None]
-    ]
-
-
-class OrganizationCreateIssueFieldTypeForResponse(TypedDict):
-    """OrganizationCreateIssueField"""
-
-    name: str
-    description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "number"]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[
-        Union[list[OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse], None]
-    ]
+    actor_type: NotRequired[str]
+    actor_name: NotRequired[str]
+    actor_id: NotRequired[int]
+    integration_id: NotRequired[Union[int, None]]
+    oauth_application_id: NotRequired[Union[int, None]]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
-class OrganizationCreateIssueFieldPropOptionsItemsType(TypedDict):
-    """OrganizationCreateIssueFieldPropOptionsItems"""
+class ApiInsightsUserStatsItemsTypeForResponse(TypedDict):
+    """ApiInsightsUserStatsItems"""
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
-    priority: int
-
-
-class OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
-    """OrganizationCreateIssueFieldPropOptionsItems"""
-
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
-    priority: int
+    actor_type: NotRequired[str]
+    actor_name: NotRequired[str]
+    actor_id: NotRequired[int]
+    integration_id: NotRequired[Union[int, None]]
+    oauth_application_id: NotRequired[Union[int, None]]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationCreateIssueFieldPropOptionsItemsType",
-    "OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse",
-    "OrganizationCreateIssueFieldType",
-    "OrganizationCreateIssueFieldTypeForResponse",
+    "ApiInsightsUserStatsItemsType",
+    "ApiInsightsUserStatsItemsTypeForResponse",
 )

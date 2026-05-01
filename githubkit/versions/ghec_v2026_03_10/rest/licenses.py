@@ -58,9 +58,9 @@ class LicensesClient:
 
         GET /licenses
 
-        Lists the most commonly used licenses on GitHub. For more information, see "[Licensing a repository ](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
+        Lists the most commonly used licenses on GitHub. For more information, see "[Licensing a repository ](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-all-commonly-used-licenses
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/licenses/licenses#get-all-commonly-used-licenses
         """
 
         from ..models import LicenseSimple
@@ -97,9 +97,9 @@ class LicensesClient:
 
         GET /licenses
 
-        Lists the most commonly used licenses on GitHub. For more information, see "[Licensing a repository ](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
+        Lists the most commonly used licenses on GitHub. For more information, see "[Licensing a repository ](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-all-commonly-used-licenses
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/licenses/licenses#get-all-commonly-used-licenses
         """
 
         from ..models import LicenseSimple
@@ -134,9 +134,9 @@ class LicensesClient:
 
         GET /licenses/{license}
 
-        Gets information about a specific license. For more information, see "[Licensing a repository ](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
+        Gets information about a specific license. For more information, see "[Licensing a repository ](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-a-license
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/licenses/licenses#get-a-license
         """
 
         from ..models import BasicError, License
@@ -168,9 +168,9 @@ class LicensesClient:
 
         GET /licenses/{license}
 
-        Gets information about a specific license. For more information, see "[Licensing a repository ](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
+        Gets information about a specific license. For more information, see "[Licensing a repository ](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-a-license
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/licenses/licenses#get-a-license
         """
 
         from ..models import BasicError, License
@@ -206,12 +206,12 @@ class LicensesClient:
 
         This method returns the contents of the repository's license file, if one is detected.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw contents of the license.
         - **`application/vnd.github.html+json`**: Returns the license contents in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-the-license-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/licenses/licenses#get-the-license-for-a-repository
         """
 
         from ..models import BasicError, LicenseContent
@@ -251,12 +251,12 @@ class LicensesClient:
 
         This method returns the contents of the repository's license file, if one is detected.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw contents of the license.
         - **`application/vnd.github.html+json`**: Returns the license contents in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-the-license-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/licenses/licenses#get-the-license-for-a-repository
         """
 
         from ..models import BasicError, LicenseContent

@@ -10,6 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -17,43 +18,28 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class ProjectsV2FieldIterationConfiguration(GitHubModel):
-    """ProjectsV2FieldIterationConfiguration
 
-    The configuration for iteration fields.
+class ProjectsV2DraftIssue(GitHubModel):
+    """Draft Issue
+
+    A draft issue in a project
     """
 
-    start_date: Missing[_dt.date] = Field(
-        default=UNSET, description="The start date of the first iteration."
+    id: float = Field(description="The ID of the draft issue")
+    node_id: str = Field(description="The node ID of the draft issue")
+    title: str = Field(description="The title of the draft issue")
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The body content of the draft issue"
     )
-    duration: Missing[int] = Field(
-        default=UNSET,
-        description="The default duration for iterations in days. Individual iterations can override this value.",
-    )
-    iterations: Missing[
-        list[ProjectsV2FieldIterationConfigurationPropIterationsItems]
-    ] = Field(default=UNSET, description="Zero or more iterations for the field.")
-
-
-class ProjectsV2FieldIterationConfigurationPropIterationsItems(GitHubModel):
-    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
-
-    title: Missing[str] = Field(
-        default=UNSET, description="The title of the iteration."
-    )
-    start_date: Missing[_dt.date] = Field(
-        default=UNSET, description="The start date of the iteration."
-    )
-    duration: Missing[int] = Field(
-        default=UNSET, description="The duration of the iteration in days."
+    user: Union[None, SimpleUser] = Field()
+    created_at: _dt.datetime = Field(description="The time the draft issue was created")
+    updated_at: _dt.datetime = Field(
+        description="The time the draft issue was last updated"
     )
 
 
-model_rebuild(ProjectsV2FieldIterationConfiguration)
-model_rebuild(ProjectsV2FieldIterationConfigurationPropIterationsItems)
+model_rebuild(ProjectsV2DraftIssue)
 
-__all__ = (
-    "ProjectsV2FieldIterationConfiguration",
-    "ProjectsV2FieldIterationConfigurationPropIterationsItems",
-)
+__all__ = ("ProjectsV2DraftIssue",)

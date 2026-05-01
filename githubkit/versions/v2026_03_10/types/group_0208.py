@@ -13,34 +13,34 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0209 import (
-    RepositoryRuleCommitMessagePatternPropParametersType,
-    RepositoryRuleCommitMessagePatternPropParametersTypeForResponse,
+    RepositoryRulePullRequestPropParametersType,
+    RepositoryRulePullRequestPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleCommitMessagePatternType(TypedDict):
-    """commit_message_pattern
+class RepositoryRulePullRequestType(TypedDict):
+    """pull_request
 
-    Parameters to be used for the commit_message_pattern rule
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
     """
 
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
 
 
-class RepositoryRuleCommitMessagePatternTypeForResponse(TypedDict):
-    """commit_message_pattern
+class RepositoryRulePullRequestTypeForResponse(TypedDict):
+    """pull_request
 
-    Parameters to be used for the commit_message_pattern rule
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
     """
 
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[
-        RepositoryRuleCommitMessagePatternPropParametersTypeForResponse
-    ]
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleCommitMessagePatternType",
-    "RepositoryRuleCommitMessagePatternTypeForResponse",
+    "RepositoryRulePullRequestType",
+    "RepositoryRulePullRequestTypeForResponse",
 )

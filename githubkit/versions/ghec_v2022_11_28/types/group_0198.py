@@ -9,56 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingUsageReportType(TypedDict):
-    """BillingUsageReport"""
+class UsageReportExportRequestType(TypedDict):
+    """UsageReportExportRequest"""
 
-    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsType]]
-
-
-class BillingUsageReportTypeForResponse(TypedDict):
-    """BillingUsageReport"""
-
-    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsTypeForResponse]]
+    report_type: Literal["detailed", "summarized", "premium_request"]
+    start_date: _dt.date
+    end_date: NotRequired[_dt.date]
+    send_email: NotRequired[bool]
 
 
-class BillingUsageReportPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportPropUsageItemsItems"""
+class UsageReportExportRequestTypeForResponse(TypedDict):
+    """UsageReportExportRequest"""
 
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    organization_name: str
-    repository_name: NotRequired[str]
-
-
-class BillingUsageReportPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageReportPropUsageItemsItems"""
-
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    organization_name: str
-    repository_name: NotRequired[str]
+    report_type: Literal["detailed", "summarized", "premium_request"]
+    start_date: str
+    end_date: NotRequired[str]
+    send_email: NotRequired[bool]
 
 
 __all__ = (
-    "BillingUsageReportPropUsageItemsItemsType",
-    "BillingUsageReportPropUsageItemsItemsTypeForResponse",
-    "BillingUsageReportType",
-    "BillingUsageReportTypeForResponse",
+    "UsageReportExportRequestType",
+    "UsageReportExportRequestTypeForResponse",
 )

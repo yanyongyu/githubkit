@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,60 +16,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RuleSuiteRequiredStatusChecks(GitHubModel):
-    """Required status checks rule suite metadata
+class RepositoryRuleCopilotCodeReviewPropParameters(GitHubModel):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    Metadata for a required status checks rule evaluation result.
-    """
-
-    checks: Missing[list[RuleSuiteRequiredStatusChecksPropChecksItems]] = Field(
+    review_draft_pull_requests: Missing[bool] = Field(
         default=UNSET,
-        description="The status checks associated with the rule evaluation.",
+        description="Copilot automatically reviews draft pull requests before they are marked as ready for review.",
+    )
+    review_on_push: Missing[bool] = Field(
+        default=UNSET,
+        description="Copilot automatically reviews each new push to the pull request.",
     )
 
 
-class RuleSuiteRequiredStatusChecksPropChecksItems(GitHubModel):
-    """RuleSuiteRequiredStatusChecksPropChecksItems"""
+model_rebuild(RepositoryRuleCopilotCodeReviewPropParameters)
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the status check."
-    )
-    context: Missing[str] = Field(
-        default=UNSET, description="The context name of the status check."
-    )
-    state: Missing[str] = Field(
-        default=UNSET, description="The state of the status check."
-    )
-    type: Missing[str] = Field(
-        default=UNSET, description="The type of the status check."
-    )
-    app: Missing[Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropApp, None]] = (
-        Field(
-            default=UNSET,
-            description="The GitHub App associated with the status check.",
-        )
-    )
-
-
-class RuleSuiteRequiredStatusChecksPropChecksItemsPropApp(GitHubModel):
-    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
-
-    The GitHub App associated with the status check.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the GitHub App."
-    )
-    slug: Missing[str] = Field(default=UNSET, description="The slug of the GitHub App.")
-    name: Missing[str] = Field(default=UNSET, description="The name of the GitHub App.")
-
-
-model_rebuild(RuleSuiteRequiredStatusChecks)
-model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItems)
-model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItemsPropApp)
-
-__all__ = (
-    "RuleSuiteRequiredStatusChecks",
-    "RuleSuiteRequiredStatusChecksPropChecksItems",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsPropApp",
-)
+__all__ = ("RepositoryRuleCopilotCodeReviewPropParameters",)

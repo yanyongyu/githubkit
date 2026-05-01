@@ -16,57 +16,59 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class MilestonedIssueEventType(TypedDict):
-    """Milestoned Issue Event
+class LabeledIssueEventType(TypedDict):
+    """Labeled Issue Event
 
-    Milestoned Issue Event
+    Labeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["milestoned"]
+    event: Literal["labeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    milestone: MilestonedIssueEventPropMilestoneType
+    label: LabeledIssueEventPropLabelType
 
 
-class MilestonedIssueEventTypeForResponse(TypedDict):
-    """Milestoned Issue Event
+class LabeledIssueEventTypeForResponse(TypedDict):
+    """Labeled Issue Event
 
-    Milestoned Issue Event
+    Labeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["milestoned"]
+    event: Literal["labeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    milestone: MilestonedIssueEventPropMilestoneTypeForResponse
+    label: LabeledIssueEventPropLabelTypeForResponse
 
 
-class MilestonedIssueEventPropMilestoneType(TypedDict):
-    """MilestonedIssueEventPropMilestone"""
+class LabeledIssueEventPropLabelType(TypedDict):
+    """LabeledIssueEventPropLabel"""
 
-    title: str
+    name: str
+    color: str
 
 
-class MilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
-    """MilestonedIssueEventPropMilestone"""
+class LabeledIssueEventPropLabelTypeForResponse(TypedDict):
+    """LabeledIssueEventPropLabel"""
 
-    title: str
+    name: str
+    color: str
 
 
 __all__ = (
-    "MilestonedIssueEventPropMilestoneType",
-    "MilestonedIssueEventPropMilestoneTypeForResponse",
-    "MilestonedIssueEventType",
-    "MilestonedIssueEventTypeForResponse",
+    "LabeledIssueEventPropLabelType",
+    "LabeledIssueEventPropLabelTypeForResponse",
+    "LabeledIssueEventType",
+    "LabeledIssueEventTypeForResponse",
 )

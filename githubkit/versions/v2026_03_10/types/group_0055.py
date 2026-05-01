@@ -9,65 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class IssueFieldValueType(TypedDict):
-    """Issue Field Value
-
-    A value assigned to an issue field
-    """
-
-    issue_field_id: int
-    node_id: str
-    data_type: Literal["text", "single_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionType, None]
-    ]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0052 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0054 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
 
 
-class IssueFieldValueTypeForResponse(TypedDict):
-    """Issue Field Value
+class IssueCommentType(TypedDict):
+    """Issue Comment
 
-    A value assigned to an issue field
-    """
-
-    issue_field_id: int
-    node_id: str
-    data_type: Literal["text", "single_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionTypeForResponse, None]
-    ]
-
-
-class IssueFieldValuePropSingleSelectOptionType(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
-
-    Details about the selected option (only present for single_select fields)
+    Comments provide a way for people to collaborate on an issue.
     """
 
     id: int
-    name: str
-    color: str
+    node_id: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: Union[None, SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    issue_url: str
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
+    pin: NotRequired[Union[None, PinnedIssueCommentType]]
 
 
-class IssueFieldValuePropSingleSelectOptionTypeForResponse(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
+class IssueCommentTypeForResponse(TypedDict):
+    """Issue Comment
 
-    Details about the selected option (only present for single_select fields)
+    Comments provide a way for people to collaborate on an issue.
     """
 
     id: int
-    name: str
-    color: str
+    node_id: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    issue_url: str
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    pin: NotRequired[Union[None, PinnedIssueCommentTypeForResponse]]
 
 
 __all__ = (
-    "IssueFieldValuePropSingleSelectOptionType",
-    "IssueFieldValuePropSingleSelectOptionTypeForResponse",
-    "IssueFieldValueType",
-    "IssueFieldValueTypeForResponse",
+    "IssueCommentType",
+    "IssueCommentTypeForResponse",
 )

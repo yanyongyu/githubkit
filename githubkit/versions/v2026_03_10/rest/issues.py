@@ -78,15 +78,15 @@ if TYPE_CHECKING:
         MovedColumnInProjectIssueEventTypeForResponse,
         RemovedFromProjectIssueEventTypeForResponse,
         RenamedIssueEventTypeForResponse,
-        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType,
-        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType,
-        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType,
-        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType,
         ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
         ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType,
         ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType,
         ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
         ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType,
+        ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType,
+        ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType,
+        ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType,
+        ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType,
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType,
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
@@ -3475,6 +3475,506 @@ class IssuesClient:
             },
         )
 
+    @overload
+    def set_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    @overload
+    def set_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        issue_field_values: Missing[
+            list[
+                ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    def set_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
+        """issues/set-issue-field-values
+
+        PUT /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values
+
+        Set custom field values for an issue, replacing any existing values. You can set values for organization-level issue fields that have been defined for the repository's organization.
+
+        This endpoint supports the following field data types:
+        - **`text`**: String values for text fields
+        - **`single_select`**: Option names for single-select fields (must match an existing option name)
+        - **`number`**: Numeric values for number fields
+        - **`date`**: ISO 8601 date strings for date fields
+
+        This operation will replace all existing field values with the provided ones. If you want to add field values without replacing existing ones, use the `POST` endpoint instead.
+
+        Only users with push access to the repository can set issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/rest/issues/issue-field-values#set-issue-field-values-for-an-issue
+        """
+
+        from ..models import (
+            BasicError,
+            EventsGetResponse503,
+            IssueFieldValue,
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueFieldValue],
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_set_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    @overload
+    async def async_set_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        issue_field_values: Missing[
+            list[
+                ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    async def async_set_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
+        """issues/set-issue-field-values
+
+        PUT /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values
+
+        Set custom field values for an issue, replacing any existing values. You can set values for organization-level issue fields that have been defined for the repository's organization.
+
+        This endpoint supports the following field data types:
+        - **`text`**: String values for text fields
+        - **`single_select`**: Option names for single-select fields (must match an existing option name)
+        - **`number`**: Numeric values for number fields
+        - **`date`**: ISO 8601 date strings for date fields
+
+        This operation will replace all existing field values with the provided ones. If you want to add field values without replacing existing ones, use the `POST` endpoint instead.
+
+        Only users with push access to the repository can set issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/rest/issues/issue-field-values#set-issue-field-values-for-an-issue
+        """
+
+        from ..models import (
+            BasicError,
+            EventsGetResponse503,
+            IssueFieldValue,
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueFieldValue],
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    @overload
+    def add_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    @overload
+    def add_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        issue_field_values: Missing[
+            list[
+                ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    def add_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
+        """issues/add-issue-field-values
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values
+
+        Add custom field values to an issue. You can set values for organization-level issue fields that have been defined for the repository's organization.
+        Adding an empty array will clear all existing field values for the issue.
+
+        This endpoint supports the following field data types:
+        - **`text`**: String values for text fields
+        - **`single_select`**: Option names for single-select fields (must match an existing option name)
+        - **`number`**: Numeric values for number fields
+        - **`date`**: ISO 8601 date strings for date fields
+
+        Only users with push access to the repository can add issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/rest/issues/issue-field-values#add-issue-field-values-to-an-issue
+        """
+
+        from ..models import (
+            BasicError,
+            EventsGetResponse503,
+            IssueFieldValue,
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueFieldValue],
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_add_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    @overload
+    async def async_add_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        issue_field_values: Missing[
+            list[
+                ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
+
+    async def async_add_issue_field_values(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
+        """issues/add-issue-field-values
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values
+
+        Add custom field values to an issue. You can set values for organization-level issue fields that have been defined for the repository's organization.
+        Adding an empty array will clear all existing field values for the issue.
+
+        This endpoint supports the following field data types:
+        - **`text`**: String values for text fields
+        - **`single_select`**: Option names for single-select fields (must match an existing option name)
+        - **`number`**: Numeric values for number fields
+        - **`date`**: ISO 8601 date strings for date fields
+
+        Only users with push access to the repository can add issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/rest/issues/issue-field-values#add-issue-field-values-to-an-issue
+        """
+
+        from ..models import (
+            BasicError,
+            EventsGetResponse503,
+            IssueFieldValue,
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueFieldValue],
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    def delete_issue_field_value(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """issues/delete-issue-field-value
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values/{issue_field_id}
+
+        Remove a specific custom field value from an issue.
+
+        Only users with push access to the repository can delete issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        If the specified field does not have a value set on the issue, this operation will return a `404` error.
+
+        This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/rest/issues/issue-field-values#delete-an-issue-field-value-from-an-issue
+        """
+
+        from ..models import BasicError, EventsGetResponse503, ValidationError
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values/{issue_field_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    async def async_delete_issue_field_value(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """issues/delete-issue-field-value
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values/{issue_field_id}
+
+        Remove a specific custom field value from an issue.
+
+        Only users with push access to the repository can delete issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
+
+        If the specified field does not have a value set on the issue, this operation will return a `404` error.
+
+        This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/rest/issues/issue-field-values#delete-an-issue-field-value-from-an-issue
+        """
+
+        from ..models import BasicError, EventsGetResponse503, ValidationError
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values/{issue_field_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EventsGetResponse503,
+            },
+        )
+
     def list_labels_on_issue(
         self,
         owner: str,
@@ -6555,492 +7055,6 @@ class IssuesClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Label],
-        )
-
-    @overload
-    def set_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
-
-    @overload
-    def set_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        issue_field_values: Missing[
-            list[
-                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
-            ]
-        ] = UNSET,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
-
-    def set_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
-        """issues/set-issue-field-values
-
-        PUT /repositories/{repository_id}/issues/{issue_number}/issue-field-values
-
-        Set custom field values for an issue, replacing any existing values. You can set values for organization-level issue fields that have been defined for the repository's organization.
-
-        This endpoint supports the following field data types:
-        - **`text`**: String values for text fields
-        - **`single_select`**: Option names for single-select fields (must match an existing option name)
-        - **`number`**: Numeric values for number fields
-        - **`date`**: ISO 8601 date strings for date fields
-
-        This operation will replace all existing field values with the provided ones. If you want to add field values without replacing existing ones, use the `POST` endpoint instead.
-
-        Only users with push access to the repository can set issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
-
-        This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
-
-        See also: https://docs.github.com/rest/issues/issue-field-values#set-issue-field-values-for-an-issue
-        """
-
-        from ..models import (
-            BasicError,
-            EventsGetResponse503,
-            IssueFieldValue,
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody,
-            ValidationError,
-        )
-
-        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[IssueFieldValue],
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "422": ValidationError,
-                "503": EventsGetResponse503,
-            },
-        )
-
-    @overload
-    async def async_set_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
-
-    @overload
-    async def async_set_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        issue_field_values: Missing[
-            list[
-                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
-            ]
-        ] = UNSET,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
-
-    async def async_set_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
-        """issues/set-issue-field-values
-
-        PUT /repositories/{repository_id}/issues/{issue_number}/issue-field-values
-
-        Set custom field values for an issue, replacing any existing values. You can set values for organization-level issue fields that have been defined for the repository's organization.
-
-        This endpoint supports the following field data types:
-        - **`text`**: String values for text fields
-        - **`single_select`**: Option names for single-select fields (must match an existing option name)
-        - **`number`**: Numeric values for number fields
-        - **`date`**: ISO 8601 date strings for date fields
-
-        This operation will replace all existing field values with the provided ones. If you want to add field values without replacing existing ones, use the `POST` endpoint instead.
-
-        Only users with push access to the repository can set issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
-
-        This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
-
-        See also: https://docs.github.com/rest/issues/issue-field-values#set-issue-field-values-for-an-issue
-        """
-
-        from ..models import (
-            BasicError,
-            EventsGetResponse503,
-            IssueFieldValue,
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody,
-            ValidationError,
-        )
-
-        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[IssueFieldValue],
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "422": ValidationError,
-                "503": EventsGetResponse503,
-            },
-        )
-
-    @overload
-    def add_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
-
-    @overload
-    def add_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        issue_field_values: Missing[
-            list[
-                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
-            ]
-        ] = UNSET,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
-
-    def add_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
-        """issues/add-issue-field-values
-
-        POST /repositories/{repository_id}/issues/{issue_number}/issue-field-values
-
-        Add custom field values to an issue. You can set values for organization-level issue fields that have been defined for the repository's organization.
-        Adding an empty array will clear all existing field values for the issue.
-
-        This endpoint supports the following field data types:
-        - **`text`**: String values for text fields
-        - **`single_select`**: Option names for single-select fields (must match an existing option name)
-        - **`number`**: Numeric values for number fields
-        - **`date`**: ISO 8601 date strings for date fields
-
-        Only users with push access to the repository can add issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
-
-        This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
-
-        See also: https://docs.github.com/rest/issues/issue-field-values#add-issue-field-values-to-an-issue
-        """
-
-        from ..models import (
-            BasicError,
-            EventsGetResponse503,
-            IssueFieldValue,
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody,
-            ValidationError,
-        )
-
-        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[IssueFieldValue],
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "422": ValidationError,
-                "503": EventsGetResponse503,
-            },
-        )
-
-    @overload
-    async def async_add_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
-
-    @overload
-    async def async_add_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        issue_field_values: Missing[
-            list[
-                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
-            ]
-        ] = UNSET,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
-
-    async def async_add_issue_field_values(
-        self,
-        repository_id: int,
-        issue_number: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
-        """issues/add-issue-field-values
-
-        POST /repositories/{repository_id}/issues/{issue_number}/issue-field-values
-
-        Add custom field values to an issue. You can set values for organization-level issue fields that have been defined for the repository's organization.
-        Adding an empty array will clear all existing field values for the issue.
-
-        This endpoint supports the following field data types:
-        - **`text`**: String values for text fields
-        - **`single_select`**: Option names for single-select fields (must match an existing option name)
-        - **`number`**: Numeric values for number fields
-        - **`date`**: ISO 8601 date strings for date fields
-
-        Only users with push access to the repository can add issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
-
-        This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
-
-        See also: https://docs.github.com/rest/issues/issue-field-values#add-issue-field-values-to-an-issue
-        """
-
-        from ..models import (
-            BasicError,
-            EventsGetResponse503,
-            IssueFieldValue,
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody,
-            ValidationError,
-        )
-
-        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[IssueFieldValue],
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "422": ValidationError,
-                "503": EventsGetResponse503,
-            },
-        )
-
-    def delete_issue_field_value(
-        self,
-        repository_id: int,
-        issue_number: int,
-        issue_field_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """issues/delete-issue-field-value
-
-        DELETE /repositories/{repository_id}/issues/{issue_number}/issue-field-values/{issue_field_id}
-
-        Remove a specific custom field value from an issue.
-
-        Only users with push access to the repository can delete issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
-
-        If the specified field does not have a value set on the issue, this operation will return a `404` error.
-
-        This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
-
-        See also: https://docs.github.com/rest/issues/issue-field-values#delete-an-issue-field-value-from-an-issue
-        """
-
-        from ..models import BasicError, EventsGetResponse503, ValidationError
-
-        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values/{issue_field_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-                "422": ValidationError,
-                "503": EventsGetResponse503,
-            },
-        )
-
-    async def async_delete_issue_field_value(
-        self,
-        repository_id: int,
-        issue_number: int,
-        issue_field_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """issues/delete-issue-field-value
-
-        DELETE /repositories/{repository_id}/issues/{issue_number}/issue-field-values/{issue_field_id}
-
-        Remove a specific custom field value from an issue.
-
-        Only users with push access to the repository can delete issue field values. If you don't have the proper permissions, you'll receive a `403 Forbidden` response.
-
-        If the specified field does not have a value set on the issue, this operation will return a `404` error.
-
-        This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-        and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
-
-        See also: https://docs.github.com/rest/issues/issue-field-values#delete-an-issue-field-value-from-an-issue
-        """
-
-        from ..models import BasicError, EventsGetResponse503, ValidationError
-
-        url = f"/repositories/{repository_id}/issues/{issue_number}/issue-field-values/{issue_field_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-                "422": ValidationError,
-                "503": EventsGetResponse503,
-            },
         )
 
     def list_for_authenticated_user(

@@ -80,7 +80,7 @@ class PrivateRegistriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#list-private-registries-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/private-registries/organization-configurations#list-private-registries-for-an-organization
         """
 
         from ..models import BasicError, OrgsOrgPrivateRegistriesGetResponse200
@@ -129,7 +129,7 @@ class PrivateRegistriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#list-private-registries-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/private-registries/organization-configurations#list-private-registries-for-an-organization
         """
 
         from ..models import BasicError, OrgsOrgPrivateRegistriesGetResponse200
@@ -203,7 +203,12 @@ class PrivateRegistriesClient:
         selected_repository_ids: Missing[list[int]] = UNSET,
         auth_type: Missing[
             Literal[
-                "token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"
+                "token",
+                "username_password",
+                "oidc_azure",
+                "oidc_aws",
+                "oidc_jfrog",
+                "oidc_cloudsmith",
             ]
         ] = UNSET,
         tenant_id: Missing[str] = UNSET,
@@ -216,6 +221,9 @@ class PrivateRegistriesClient:
         jfrog_oidc_provider_name: Missing[str] = UNSET,
         audience: Missing[str] = UNSET,
         identity_mapping_name: Missing[str] = UNSET,
+        namespace: Missing[str] = UNSET,
+        service_slug: Missing[str] = UNSET,
+        api_host: Missing[str] = UNSET,
     ) -> Response[
         OrgPrivateRegistryConfigurationWithSelectedRepositories,
         OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse,
@@ -238,12 +246,12 @@ class PrivateRegistriesClient:
         POST /orgs/{org}/private-registries
 
 
-        Creates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
-        For OIDC-based registries (`oidc_azure`, `oidc_aws`, or `oidc_jfrog`), the `encrypted_value` and `key_id` fields should be omitted.
+        Creates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
+        For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, or `oidc_cloudsmith`), the `encrypted_value` and `key_id` fields should be omitted.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#create-a-private-registry-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/private-registries/organization-configurations#create-a-private-registry-for-an-organization
         """
 
         from ..models import (
@@ -326,7 +334,12 @@ class PrivateRegistriesClient:
         selected_repository_ids: Missing[list[int]] = UNSET,
         auth_type: Missing[
             Literal[
-                "token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"
+                "token",
+                "username_password",
+                "oidc_azure",
+                "oidc_aws",
+                "oidc_jfrog",
+                "oidc_cloudsmith",
             ]
         ] = UNSET,
         tenant_id: Missing[str] = UNSET,
@@ -339,6 +352,9 @@ class PrivateRegistriesClient:
         jfrog_oidc_provider_name: Missing[str] = UNSET,
         audience: Missing[str] = UNSET,
         identity_mapping_name: Missing[str] = UNSET,
+        namespace: Missing[str] = UNSET,
+        service_slug: Missing[str] = UNSET,
+        api_host: Missing[str] = UNSET,
     ) -> Response[
         OrgPrivateRegistryConfigurationWithSelectedRepositories,
         OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse,
@@ -361,12 +377,12 @@ class PrivateRegistriesClient:
         POST /orgs/{org}/private-registries
 
 
-        Creates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
-        For OIDC-based registries (`oidc_azure`, `oidc_aws`, or `oidc_jfrog`), the `encrypted_value` and `key_id` fields should be omitted.
+        Creates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
+        For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, or `oidc_cloudsmith`), the `encrypted_value` and `key_id` fields should be omitted.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#create-a-private-registry-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/private-registries/organization-configurations#create-a-private-registry-for-an-organization
         """
 
         from ..models import (
@@ -421,7 +437,7 @@ class PrivateRegistriesClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization
         """
 
         from ..models import BasicError, OrgsOrgPrivateRegistriesPublicKeyGetResponse200
@@ -460,7 +476,7 @@ class PrivateRegistriesClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization
         """
 
         from ..models import BasicError, OrgsOrgPrivateRegistriesPublicKeyGetResponse200
@@ -499,7 +515,7 @@ class PrivateRegistriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-a-private-registry-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/private-registries/organization-configurations#get-a-private-registry-for-an-organization
         """
 
         from ..models import BasicError, OrgPrivateRegistryConfiguration
@@ -538,7 +554,7 @@ class PrivateRegistriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-a-private-registry-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/private-registries/organization-configurations#get-a-private-registry-for-an-organization
         """
 
         from ..models import BasicError, OrgPrivateRegistryConfiguration
@@ -575,7 +591,7 @@ class PrivateRegistriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#delete-a-private-registry-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/private-registries/organization-configurations#delete-a-private-registry-for-an-organization
         """
 
         from ..models import BasicError
@@ -612,7 +628,7 @@ class PrivateRegistriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#delete-a-private-registry-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/private-registries/organization-configurations#delete-a-private-registry-for-an-organization
         """
 
         from ..models import BasicError
@@ -680,7 +696,12 @@ class PrivateRegistriesClient:
         selected_repository_ids: Missing[list[int]] = UNSET,
         auth_type: Missing[
             Literal[
-                "token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"
+                "token",
+                "username_password",
+                "oidc_azure",
+                "oidc_aws",
+                "oidc_jfrog",
+                "oidc_cloudsmith",
             ]
         ] = UNSET,
         tenant_id: Missing[str] = UNSET,
@@ -693,6 +714,9 @@ class PrivateRegistriesClient:
         jfrog_oidc_provider_name: Missing[str] = UNSET,
         audience: Missing[str] = UNSET,
         identity_mapping_name: Missing[str] = UNSET,
+        namespace: Missing[str] = UNSET,
+        service_slug: Missing[str] = UNSET,
+        api_host: Missing[str] = UNSET,
     ) -> Response: ...
 
     def update_org_private_registry(
@@ -710,12 +734,12 @@ class PrivateRegistriesClient:
         PATCH /orgs/{org}/private-registries/{secret_name}
 
 
-        Updates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
-        For OIDC-based registries (`oidc_azure`, `oidc_aws`, or `oidc_jfrog`), the `encrypted_value` and `key_id` fields should be omitted.
+        Updates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
+        For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, or `oidc_cloudsmith`), the `encrypted_value` and `key_id` fields should be omitted.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#update-a-private-registry-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/private-registries/organization-configurations#update-a-private-registry-for-an-organization
         """
 
         from ..models import (
@@ -799,7 +823,12 @@ class PrivateRegistriesClient:
         selected_repository_ids: Missing[list[int]] = UNSET,
         auth_type: Missing[
             Literal[
-                "token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"
+                "token",
+                "username_password",
+                "oidc_azure",
+                "oidc_aws",
+                "oidc_jfrog",
+                "oidc_cloudsmith",
             ]
         ] = UNSET,
         tenant_id: Missing[str] = UNSET,
@@ -812,6 +841,9 @@ class PrivateRegistriesClient:
         jfrog_oidc_provider_name: Missing[str] = UNSET,
         audience: Missing[str] = UNSET,
         identity_mapping_name: Missing[str] = UNSET,
+        namespace: Missing[str] = UNSET,
+        service_slug: Missing[str] = UNSET,
+        api_host: Missing[str] = UNSET,
     ) -> Response: ...
 
     async def async_update_org_private_registry(
@@ -829,12 +861,12 @@ class PrivateRegistriesClient:
         PATCH /orgs/{org}/private-registries/{secret_name}
 
 
-        Updates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
-        For OIDC-based registries (`oidc_azure`, `oidc_aws`, or `oidc_jfrog`), the `encrypted_value` and `key_id` fields should be omitted.
+        Updates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
+        For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, or `oidc_cloudsmith`), the `encrypted_value` and `key_id` fields should be omitted.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#update-a-private-registry-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/private-registries/organization-configurations#update-a-private-registry-for-an-organization
         """
 
         from ..models import (

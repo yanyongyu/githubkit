@@ -9,30 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0227 import (
+    RepositoryRuleFileExtensionRestrictionPropParametersType,
+    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
+)
 
-class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
-    """RestrictedCommits
 
-    Restricted commit
+class RepositoryRuleFileExtensionRestrictionType(TypedDict):
+    """file_extension_restriction
+
+    Prevent commits that include files with specified file extensions from being
+    pushed to the commit graph.
     """
 
-    oid: str
-    reason: NotRequired[str]
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
 
 
-class RepositoryRuleParamsRestrictedCommitsTypeForResponse(TypedDict):
-    """RestrictedCommits
+class RepositoryRuleFileExtensionRestrictionTypeForResponse(TypedDict):
+    """file_extension_restriction
 
-    Restricted commit
+    Prevent commits that include files with specified file extensions from being
+    pushed to the commit graph.
     """
 
-    oid: str
-    reason: NotRequired[str]
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[
+        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleParamsRestrictedCommitsType",
-    "RepositoryRuleParamsRestrictedCommitsTypeForResponse",
+    "RepositoryRuleFileExtensionRestrictionType",
+    "RepositoryRuleFileExtensionRestrictionTypeForResponse",
 )

@@ -49,6 +49,8 @@ if TYPE_CHECKING:
         DependabotRepositoryAccessDetailsTypeForResponse,
         DependabotSecretTypeForResponse,
         EmptyObjectTypeForResponse,
+        EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType,
+        EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType,
         OrganizationDependabotSecretTypeForResponse,
         OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
         OrgsOrgDependabotRepositoryAccessPatchBodyType,
@@ -113,11 +115,11 @@ class DependabotClient:
 
         The authenticated user must be a member of the enterprise to use this endpoint.
 
-        Alerts are only returned for organizations in the enterprise for which you are an organization owner or a security manager. For more information about security managers, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+        Alerts are only returned for organizations in the enterprise for which you are an organization owner or a security manager. For more information about security managers, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#list-dependabot-alerts-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alerts#list-dependabot-alerts-for-an-enterprise
         """
 
         from ..models import (
@@ -193,11 +195,11 @@ class DependabotClient:
 
         The authenticated user must be a member of the enterprise to use this endpoint.
 
-        Alerts are only returned for organizations in the enterprise for which you are an organization owner or a security manager. For more information about security managers, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+        Alerts are only returned for organizations in the enterprise for which you are an organization owner or a security manager. For more information about security managers, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#list-dependabot-alerts-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alerts#list-dependabot-alerts-for-an-enterprise
         """
 
         from ..models import (
@@ -241,6 +243,422 @@ class DependabotClient:
             },
         )
 
+    def repository_access_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        DependabotRepositoryAccessDetails,
+        DependabotRepositoryAccessDetailsTypeForResponse,
+    ]:
+        """dependabot/repository-access-for-enterprise
+
+        GET /enterprises/{enterprise}/dependabot/repository-access
+
+        Lists repositories that enterprise admins have allowed Dependabot to access when updating dependencies across organizations in the enterprise.
+
+        The authenticated user must be an enterprise owner to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#lists-the-repositories-dependabot-can-access-in-an-enterprise
+        """
+
+        from ..models import BasicError, DependabotRepositoryAccessDetails
+
+        url = f"/enterprises/{enterprise}/dependabot/repository-access"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotRepositoryAccessDetails,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_repository_access_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        DependabotRepositoryAccessDetails,
+        DependabotRepositoryAccessDetailsTypeForResponse,
+    ]:
+        """dependabot/repository-access-for-enterprise
+
+        GET /enterprises/{enterprise}/dependabot/repository-access
+
+        Lists repositories that enterprise admins have allowed Dependabot to access when updating dependencies across organizations in the enterprise.
+
+        The authenticated user must be an enterprise owner to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#lists-the-repositories-dependabot-can-access-in-an-enterprise
+        """
+
+        from ..models import BasicError, DependabotRepositoryAccessDetails
+
+        url = f"/enterprises/{enterprise}/dependabot/repository-access"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotRepositoryAccessDetails,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def update_repository_access_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    def update_repository_access_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        repository_ids_to_add: Missing[list[int]] = UNSET,
+        repository_ids_to_remove: Missing[list[int]] = UNSET,
+    ) -> Response: ...
+
+    def update_repository_access_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """dependabot/update-repository-access-for-enterprise
+
+        PATCH /enterprises/{enterprise}/dependabot/repository-access
+
+        Updates repositories according to the list of repositories that enterprise admins have given Dependabot access to when they've updated dependencies across organizations in the enterprise.
+
+        The authenticated user must be an enterprise owner to use this endpoint.
+
+        **Example request body:**
+        ```json
+        {
+          "repository_ids_to_add": [123, 456],
+          "repository_ids_to_remove": [789]
+        }
+        ```
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#updates-dependabots-repository-access-list-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseDependabotRepositoryAccessPatchBody,
+        )
+
+        url = f"/enterprises/{enterprise}/dependabot/repository-access"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseDependabotRepositoryAccessPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_update_repository_access_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_update_repository_access_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        repository_ids_to_add: Missing[list[int]] = UNSET,
+        repository_ids_to_remove: Missing[list[int]] = UNSET,
+    ) -> Response: ...
+
+    async def async_update_repository_access_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """dependabot/update-repository-access-for-enterprise
+
+        PATCH /enterprises/{enterprise}/dependabot/repository-access
+
+        Updates repositories according to the list of repositories that enterprise admins have given Dependabot access to when they've updated dependencies across organizations in the enterprise.
+
+        The authenticated user must be an enterprise owner to use this endpoint.
+
+        **Example request body:**
+        ```json
+        {
+          "repository_ids_to_add": [123, 456],
+          "repository_ids_to_remove": [789]
+        }
+        ```
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#updates-dependabots-repository-access-list-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseDependabotRepositoryAccessPatchBody,
+        )
+
+        url = f"/enterprises/{enterprise}/dependabot/repository-access"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseDependabotRepositoryAccessPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_repository_access_default_level_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_repository_access_default_level_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        default_level: Literal["public", "internal"],
+    ) -> Response: ...
+
+    def set_repository_access_default_level_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """dependabot/set-repository-access-default-level-for-enterprise
+
+        PUT /enterprises/{enterprise}/dependabot/repository-access/default-level
+
+        Sets the default level of repository access Dependabot will have while performing an update across organizations in the enterprise. Available values are:
+        - 'public' - Dependabot will only have access to public repositories, unless access is explicitly granted to non-public repositories.
+        - 'internal' - Dependabot will only have access to public and internal repositories, unless access is explicitly granted to private repositories.
+
+        The authenticated user must be an enterprise owner to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody,
+        )
+
+        url = f"/enterprises/{enterprise}/dependabot/repository-access/default-level"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_set_repository_access_default_level_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_repository_access_default_level_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        default_level: Literal["public", "internal"],
+    ) -> Response: ...
+
+    async def async_set_repository_access_default_level_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """dependabot/set-repository-access-default-level-for-enterprise
+
+        PUT /enterprises/{enterprise}/dependabot/repository-access/default-level
+
+        Sets the default level of repository access Dependabot will have while performing an update across organizations in the enterprise. Available values are:
+        - 'public' - Dependabot will only have access to public repositories, unless access is explicitly granted to non-public repositories.
+        - 'internal' - Dependabot will only have access to public and internal repositories, unless access is explicitly granted to private repositories.
+
+        The authenticated user must be an enterprise owner to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody,
+        )
+
+        url = f"/enterprises/{enterprise}/dependabot/repository-access/default-level"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
     def list_alerts_for_org(
         self,
         org: str,
@@ -278,7 +696,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#list-dependabot-alerts-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alerts#list-dependabot-alerts-for-an-organization
         """
 
         from ..models import (
@@ -363,7 +781,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#list-dependabot-alerts-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alerts#list-dependabot-alerts-for-an-organization
         """
 
         from ..models import (
@@ -432,7 +850,7 @@ class DependabotClient:
         >    This operation supports both server-to-server and user-to-server access.
         Unauthorized users will not see the existence of this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/repository-access#lists-the-repositories-dependabot-can-access-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#lists-the-repositories-dependabot-can-access-in-an-organization
         """
 
         from ..models import BasicError, DependabotRepositoryAccessDetails
@@ -480,7 +898,7 @@ class DependabotClient:
         >    This operation supports both server-to-server and user-to-server access.
         Unauthorized users will not see the existence of this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/repository-access#lists-the-repositories-dependabot-can-access-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#lists-the-repositories-dependabot-can-access-in-an-organization
         """
 
         from ..models import BasicError, DependabotRepositoryAccessDetails
@@ -556,7 +974,7 @@ class DependabotClient:
         }
         ```
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/repository-access#updates-dependabots-repository-access-list-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#updates-dependabots-repository-access-list-for-an-organization
         """
 
         from ..models import BasicError, OrgsOrgDependabotRepositoryAccessPatchBody
@@ -637,7 +1055,7 @@ class DependabotClient:
         }
         ```
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/repository-access#updates-dependabots-repository-access-list-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#updates-dependabots-repository-access-list-for-an-organization
         """
 
         from ..models import BasicError, OrgsOrgDependabotRepositoryAccessPatchBody
@@ -711,7 +1129,7 @@ class DependabotClient:
 
         This operation supports both server-to-server and user-to-server access.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot
         """
 
         from ..models import (
@@ -788,7 +1206,7 @@ class DependabotClient:
 
         This operation supports both server-to-server and user-to-server access.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot
         """
 
         from ..models import (
@@ -844,7 +1262,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#list-organization-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#list-organization-secrets
         """
 
         from ..models import OrgsOrgDependabotSecretsGetResponse200
@@ -888,7 +1306,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#list-organization-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#list-organization-secrets
         """
 
         from ..models import OrgsOrgDependabotSecretsGetResponse200
@@ -927,7 +1345,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-an-organization-public-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#get-an-organization-public-key
         """
 
         from ..models import DependabotPublicKey
@@ -960,7 +1378,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-an-organization-public-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#get-an-organization-public-key
         """
 
         from ..models import DependabotPublicKey
@@ -995,7 +1413,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#get-an-organization-secret
         """
 
         from ..models import OrganizationDependabotSecret
@@ -1030,7 +1448,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#get-an-organization-secret
         """
 
         from ..models import OrganizationDependabotSecret
@@ -1088,11 +1506,11 @@ class DependabotClient:
         PUT /orgs/{org}/dependabot/secrets/{secret_name}
 
         Creates or updates an organization secret with an encrypted value. Encrypt your secret using
-        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#create-or-update-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#create-or-update-an-organization-secret
         """
 
         from ..models import EmptyObject, OrgsOrgDependabotSecretsSecretNamePutBody
@@ -1160,11 +1578,11 @@ class DependabotClient:
         PUT /orgs/{org}/dependabot/secrets/{secret_name}
 
         Creates or updates an organization secret with an encrypted value. Encrypt your secret using
-        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#create-or-update-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#create-or-update-an-organization-secret
         """
 
         from ..models import EmptyObject, OrgsOrgDependabotSecretsSecretNamePutBody
@@ -1207,7 +1625,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#delete-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#delete-an-organization-secret
         """
 
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
@@ -1237,7 +1655,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#delete-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#delete-an-organization-secret
         """
 
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
@@ -1273,7 +1691,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret
         """
 
         from ..models import (
@@ -1320,7 +1738,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret
         """
 
         from ..models import (
@@ -1386,11 +1804,11 @@ class DependabotClient:
 
         Replaces all repositories for an organization secret when the `visibility`
         for repository access is set to `selected`. The visibility is set when you [Create
-        or update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#create-or-update-an-organization-secret).
+        or update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#create-or-update-an-organization-secret).
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret
         """
 
         from ..models import OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody
@@ -1459,11 +1877,11 @@ class DependabotClient:
 
         Replaces all repositories for an organization secret when the `visibility`
         for repository access is set to `selected`. The visibility is set when you [Create
-        or update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#create-or-update-an-organization-secret).
+        or update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#create-or-update-an-organization-secret).
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret
         """
 
         from ..models import OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody
@@ -1506,11 +1924,11 @@ class DependabotClient:
 
         Adds a repository to an organization secret when the `visibility` for
         repository access is set to `selected`. The visibility is set when you [Create or
-        update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#create-or-update-an-organization-secret).
+        update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#create-or-update-an-organization-secret).
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#add-selected-repository-to-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#add-selected-repository-to-an-organization-secret
         """
 
         url = (
@@ -1542,11 +1960,11 @@ class DependabotClient:
 
         Adds a repository to an organization secret when the `visibility` for
         repository access is set to `selected`. The visibility is set when you [Create or
-        update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#create-or-update-an-organization-secret).
+        update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#create-or-update-an-organization-secret).
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#add-selected-repository-to-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#add-selected-repository-to-an-organization-secret
         """
 
         url = (
@@ -1578,11 +1996,11 @@ class DependabotClient:
 
         Removes a repository from an organization secret when the `visibility`
         for repository access is set to `selected`. The visibility is set when you [Create
-        or update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#create-or-update-an-organization-secret).
+        or update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#create-or-update-an-organization-secret).
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret
         """
 
         url = (
@@ -1614,11 +2032,11 @@ class DependabotClient:
 
         Removes a repository from an organization secret when the `visibility`
         for repository access is set to `selected`. The visibility is set when you [Create
-        or update an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#create-or-update-an-organization-secret).
+        or update an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#create-or-update-an-organization-secret).
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret
         """
 
         url = (
@@ -1666,7 +2084,7 @@ class DependabotClient:
         or have the appropriate permission to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#list-dismissal-requests-for-dependabot-alerts-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alert-dismissal-requests#list-dismissal-requests-for-dependabot-alerts-for-an-organization
         """
 
         from ..models import BasicError, DependabotAlertDismissalRequest
@@ -1730,7 +2148,7 @@ class DependabotClient:
         or have the appropriate permission to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#list-dismissal-requests-for-dependabot-alerts-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alert-dismissal-requests#list-dismissal-requests-for-dependabot-alerts-for-an-organization
         """
 
         from ..models import BasicError, DependabotAlertDismissalRequest
@@ -1792,7 +2210,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#list-dependabot-alerts-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alerts#list-dependabot-alerts-for-a-repository
         """
 
         from ..models import BasicError, DependabotAlert, ValidationErrorSimple
@@ -1863,7 +2281,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#list-dependabot-alerts-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alerts#list-dependabot-alerts-for-a-repository
         """
 
         from ..models import BasicError, DependabotAlert, ValidationErrorSimple
@@ -1920,7 +2338,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#get-a-dependabot-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alerts#get-a-dependabot-alert
         """
 
         from ..models import BasicError, DependabotAlert
@@ -1956,7 +2374,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#get-a-dependabot-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alerts#get-a-dependabot-alert
         """
 
         from ..models import BasicError, DependabotAlert
@@ -2060,11 +2478,11 @@ class DependabotClient:
 
         PATCH /repos/{owner}/{repo}/dependabot/alerts/{alert_number}
 
-        The authenticated user must have access to security alerts for the repository to use this endpoint. For more information, see "[Granting access to security alerts](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-security-and-analysis-settings-for-your-repository#granting-access-to-security-alerts)."
+        The authenticated user must have access to security alerts for the repository to use this endpoint. For more information, see "[Granting access to security alerts](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-security-and-analysis-settings-for-your-repository#granting-access-to-security-alerts)."
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#update-a-dependabot-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alerts#update-a-dependabot-alert
         """
 
         from typing import Union
@@ -2195,11 +2613,11 @@ class DependabotClient:
 
         PATCH /repos/{owner}/{repo}/dependabot/alerts/{alert_number}
 
-        The authenticated user must have access to security alerts for the repository to use this endpoint. For more information, see "[Granting access to security alerts](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-security-and-analysis-settings-for-your-repository#granting-access-to-security-alerts)."
+        The authenticated user must have access to security alerts for the repository to use this endpoint. For more information, see "[Granting access to security alerts](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-security-and-analysis-settings-for-your-repository#granting-access-to-security-alerts)."
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#update-a-dependabot-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alerts#update-a-dependabot-alert
         """
 
         from typing import Union
@@ -2269,7 +2687,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#list-repository-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#list-repository-secrets
         """
 
         from ..models import ReposOwnerRepoDependabotSecretsGetResponse200
@@ -2314,7 +2732,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#list-repository-secrets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#list-repository-secrets
         """
 
         from ..models import ReposOwnerRepoDependabotSecretsGetResponse200
@@ -2355,7 +2773,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint if the repository is private.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-a-repository-public-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#get-a-repository-public-key
         """
 
         from ..models import DependabotPublicKey
@@ -2390,7 +2808,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint if the repository is private.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-a-repository-public-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#get-a-repository-public-key
         """
 
         from ..models import DependabotPublicKey
@@ -2424,7 +2842,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#get-a-repository-secret
         """
 
         from ..models import DependabotSecret
@@ -2458,7 +2876,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#get-a-repository-secret
         """
 
         from ..models import DependabotSecret
@@ -2517,11 +2935,11 @@ class DependabotClient:
         PUT /repos/{owner}/{repo}/dependabot/secrets/{secret_name}
 
         Creates or updates a repository secret with an encrypted value. Encrypt your secret using
-        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#create-or-update-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#create-or-update-a-repository-secret
         """
 
         from ..models import (
@@ -2595,11 +3013,11 @@ class DependabotClient:
         PUT /repos/{owner}/{repo}/dependabot/secrets/{secret_name}
 
         Creates or updates a repository secret with an encrypted value. Encrypt your secret using
-        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#create-or-update-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#create-or-update-a-repository-secret
         """
 
         from ..models import (
@@ -2648,7 +3066,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#delete-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#delete-a-repository-secret
         """
 
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
@@ -2679,7 +3097,7 @@ class DependabotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#delete-a-repository-secret
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#delete-a-repository-secret
         """
 
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
@@ -2721,7 +3139,7 @@ class DependabotClient:
         Delegated alert dismissal must be enabled on the repository.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#list-dismissal-requests-for-dependabot-alerts-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alert-dismissal-requests#list-dismissal-requests-for-dependabot-alerts-for-a-repository
         """
 
         from ..models import BasicError, DependabotAlertDismissalRequest
@@ -2781,7 +3199,7 @@ class DependabotClient:
         Delegated alert dismissal must be enabled on the repository.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#list-dismissal-requests-for-dependabot-alerts-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alert-dismissal-requests#list-dismissal-requests-for-dependabot-alerts-for-a-repository
         """
 
         from ..models import BasicError, DependabotAlertDismissalRequest
@@ -2833,7 +3251,7 @@ class DependabotClient:
         Delegated alert dismissal must be enabled on the repository.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#get-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alert-dismissal-requests#get-a-dismissal-request-for-a-dependabot-alert-for-a-repository
         """
 
         from ..models import BasicError, DependabotAlertDismissalRequest
@@ -2875,7 +3293,7 @@ class DependabotClient:
         Delegated alert dismissal must be enabled on the repository.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#get-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alert-dismissal-requests#get-a-dismissal-request-for-a-dependabot-alert-for-a-repository
         """
 
         from ..models import BasicError, DependabotAlertDismissalRequest
@@ -2953,7 +3371,7 @@ class DependabotClient:
         Delegated alert dismissal must be enabled on the repository and the user must have permission to view Dependabot alerts to access this endpoint.
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#create-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alert-dismissal-requests#create-a-dismissal-request-for-a-dependabot-alert-for-a-repository
         """
 
         from ..models import (
@@ -3049,7 +3467,7 @@ class DependabotClient:
         Delegated alert dismissal must be enabled on the repository and the user must have permission to view Dependabot alerts to access this endpoint.
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#create-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alert-dismissal-requests#create-a-dismissal-request-for-a-dependabot-alert-for-a-repository
         """
 
         from ..models import (
@@ -3108,7 +3526,7 @@ class DependabotClient:
         Delegated alert dismissal must be enabled on the repository.
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#cancel-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alert-dismissal-requests#cancel-a-dismissal-request-for-a-dependabot-alert-for-a-repository
         """
 
         from ..models import BasicError
@@ -3148,7 +3566,7 @@ class DependabotClient:
         Delegated alert dismissal must be enabled on the repository.
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#cancel-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alert-dismissal-requests#cancel-a-dismissal-request-for-a-dependabot-alert-for-a-repository
         """
 
         from ..models import BasicError
@@ -3226,7 +3644,7 @@ class DependabotClient:
         Delegated alert dismissal must be enabled on the repository and the user must be a dismissal reviewer to access this endpoint.
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#review-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alert-dismissal-requests#review-a-dismissal-request-for-a-dependabot-alert-for-a-repository
         """
 
         from ..models import (
@@ -3323,7 +3741,7 @@ class DependabotClient:
         Delegated alert dismissal must be enabled on the repository and the user must be a dismissal reviewer to access this endpoint.
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#review-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/alert-dismissal-requests#review-a-dismissal-request-for-a-dependabot-alert-for-a-repository
         """
 
         from ..models import (

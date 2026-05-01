@@ -695,6 +695,30 @@ if TYPE_CHECKING or is_lazy_disabled():
         CopilotSeatDetailsType as CopilotSeatDetailsType,
     )
     from githubkit.versions.v2026_03_10.types import (
+        CopilotSpaceCollaboratorAnyof0Allof1Type as CopilotSpaceCollaboratorAnyof0Allof1Type,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        CopilotSpaceCollaboratorAnyof0Type as CopilotSpaceCollaboratorAnyof0Type,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        CopilotSpaceCollaboratorAnyof1Type as CopilotSpaceCollaboratorAnyof1Type,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        CopilotSpacePropResourcesAttributesItemsPropMetadataType as CopilotSpacePropResourcesAttributesItemsPropMetadataType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        CopilotSpacePropResourcesAttributesItemsType as CopilotSpacePropResourcesAttributesItemsType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        CopilotSpaceResourcePropMetadataType as CopilotSpaceResourcePropMetadataType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        CopilotSpaceResourceType as CopilotSpaceResourceType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        CopilotSpaceType as CopilotSpaceType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
         CopilotUsageMetrics1DayReportType as CopilotUsageMetrics1DayReportType,
     )
     from githubkit.versions.v2026_03_10.types import (
@@ -894,6 +918,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2026_03_10.types import (
         EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType as EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType as EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType as EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType,
     )
     from githubkit.versions.v2026_03_10.types import (
         EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType as EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType,
@@ -1761,6 +1791,51 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrgsOrgCopilotContentExclusionPutResponse200Type as OrgsOrgCopilotContentExclusionPutResponse200Type,
     )
     from githubkit.versions.v2026_03_10.types import (
+        OrgsOrgCopilotSpacesGetResponse200Type as OrgsOrgCopilotSpacesGetResponse200Type,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType as OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType as OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        OrgsOrgCopilotSpacesPostBodyType as OrgsOrgCopilotSpacesPostBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType as OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type as OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyType as OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType as OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType as OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        OrgsOrgCopilotSpacesSpaceNumberPutBodyType as OrgsOrgCopilotSpacesSpaceNumberPutBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200Type as OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200Type,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType as OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType as OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType as OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType as OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
         OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType as OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
     )
     from githubkit.versions.v2026_03_10.types import (
@@ -2366,18 +2441,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2026_03_10.types import (
         RepoSearchResultItemType as RepoSearchResultItemType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType as RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType as RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType as RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType as RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType,
     )
     from githubkit.versions.v2026_03_10.types import (
         RepositoryAdvisoryCreatePropCreditsItemsType as RepositoryAdvisoryCreatePropCreditsItemsType,
@@ -3182,6 +3245,18 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType as ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType,
     )
     from githubkit.versions.v2026_03_10.types import (
+        ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType as ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType as ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType as ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType as ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
     )
     from githubkit.versions.v2026_03_10.types import (
@@ -3978,6 +4053,51 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2026_03_10.types import (
         UsersUsernameAttestationsSubjectDigestGetResponse200Type as UsersUsernameAttestationsSubjectDigestGetResponse200Type,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        UsersUsernameCopilotSpacesGetResponse200Type as UsersUsernameCopilotSpacesGetResponse200Type,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType as UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType as UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        UsersUsernameCopilotSpacesPostBodyType as UsersUsernameCopilotSpacesPostBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType as UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type as UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType as UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType as UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType as UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        UsersUsernameCopilotSpacesSpaceNumberPutBodyType as UsersUsernameCopilotSpacesSpaceNumberPutBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type as UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType as UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType as UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType as UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType as UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType,
     )
     from githubkit.versions.v2026_03_10.types import (
         UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type as UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
@@ -5547,6 +5667,42 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2026_03_10.types import (
         WebhookIssuesEditedType as WebhookIssuesEditedType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionType as WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromType as WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        WebhookIssuesFieldAddedPropChangesPropIssueFieldValueType as WebhookIssuesFieldAddedPropChangesPropIssueFieldValueType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        WebhookIssuesFieldAddedPropChangesType as WebhookIssuesFieldAddedPropChangesType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        WebhookIssuesFieldAddedPropIssueFieldType as WebhookIssuesFieldAddedPropIssueFieldType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        WebhookIssuesFieldAddedPropIssueFieldValuePropOptionType as WebhookIssuesFieldAddedPropIssueFieldValuePropOptionType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        WebhookIssuesFieldAddedPropIssueFieldValueType as WebhookIssuesFieldAddedPropIssueFieldValueType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        WebhookIssuesFieldAddedType as WebhookIssuesFieldAddedType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        WebhookIssuesFieldRemovedPropIssueFieldType as WebhookIssuesFieldRemovedPropIssueFieldType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType as WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        WebhookIssuesFieldRemovedPropIssueFieldValueType as WebhookIssuesFieldRemovedPropIssueFieldValueType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        WebhookIssuesFieldRemovedType as WebhookIssuesFieldRemovedType,
     )
     from githubkit.versions.v2026_03_10.types import (
         WebhookIssuesLabeledPropIssuePropAssigneesItemsType as WebhookIssuesLabeledPropIssuePropAssigneesItemsType,
@@ -10587,6 +10743,7 @@ else:
             "DependabotAlertDismissalRequestSimplePropRequesterType",
             "DependabotAlertWithRepositoryType",
             "DependabotAlertWithRepositoryPropDependencyType",
+            "DependabotRepositoryAccessDetailsType",
             "OrganizationSimpleType",
             "LabelType",
             "DiscussionType",
@@ -10752,6 +10909,14 @@ else:
             "CodespacePropGitStatusType",
             "CodespacePropRuntimeConstraintsType",
             "CodespacesPublicKeyType",
+            "CopilotSpaceType",
+            "CopilotSpacePropResourcesAttributesItemsType",
+            "CopilotSpacePropResourcesAttributesItemsPropMetadataType",
+            "CopilotSpaceCollaboratorAnyof0Type",
+            "CopilotSpaceCollaboratorAnyof1Type",
+            "CopilotSpaceCollaboratorAnyof0Allof1Type",
+            "CopilotSpaceResourceType",
+            "CopilotSpaceResourcePropMetadataType",
             "CopilotOrganizationDetailsType",
             "CopilotOrganizationSeatBreakdownType",
             "CopilotSeatDetailsType",
@@ -10772,7 +10937,6 @@ else:
             "CopilotIdeCodeCompletionsPropEditorsItemsType",
             "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType",
             "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType",
-            "DependabotRepositoryAccessDetailsType",
             "DependabotPublicKeyType",
             "PackageType",
             "OrganizationInvitationType",
@@ -12069,6 +12233,18 @@ else:
             "WebhookIssuesEditedPropIssuePropPullRequestType",
             "WebhookIssuesEditedPropIssuePropReactionsType",
             "WebhookIssuesEditedPropIssuePropUserType",
+            "WebhookIssuesFieldAddedType",
+            "WebhookIssuesFieldAddedPropIssueFieldType",
+            "WebhookIssuesFieldAddedPropIssueFieldValueType",
+            "WebhookIssuesFieldAddedPropIssueFieldValuePropOptionType",
+            "WebhookIssuesFieldAddedPropChangesType",
+            "WebhookIssuesFieldAddedPropChangesPropIssueFieldValueType",
+            "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromType",
+            "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionType",
+            "WebhookIssuesFieldRemovedType",
+            "WebhookIssuesFieldRemovedPropIssueFieldType",
+            "WebhookIssuesFieldRemovedPropIssueFieldValueType",
+            "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType",
             "WebhookIssuesLabeledType",
             "WebhookIssuesLabeledPropIssueType",
             "WebhookIssuesLabeledPropIssuePropAssigneeType",
@@ -13590,6 +13766,8 @@ else:
             "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType",
             "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType",
             "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType",
+            "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType",
+            "EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType",
             "EnterprisesEnterpriseTeamsPostBodyType",
             "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType",
             "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType",
@@ -13713,6 +13891,21 @@ else:
             "OrgsOrgCodespacesSecretsSecretNamePutBodyType",
             "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
             "OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType",
+            "OrgsOrgCopilotSpacesGetResponse200Type",
+            "OrgsOrgCopilotSpacesPostBodyType",
+            "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType",
+            "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType",
+            "OrgsOrgCopilotSpacesSpaceNumberPutBodyType",
+            "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType",
+            "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType",
+            "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type",
+            "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyType",
+            "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType",
+            "OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200Type",
+            "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType",
+            "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType",
+            "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType",
+            "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType",
             "OrgsOrgCopilotBillingSelectedTeamsPostBodyType",
             "OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",
             "OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType",
@@ -13961,6 +14154,10 @@ else:
             "ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType",
             "ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType",
             "ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType",
+            "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType",
+            "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType",
+            "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType",
+            "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType",
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type",
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type",
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType",
@@ -14029,10 +14226,6 @@ else:
             "ReposOwnerRepoTopicsPutBodyType",
             "ReposOwnerRepoTransferPostBodyType",
             "ReposTemplateOwnerTemplateRepoGeneratePostBodyType",
-            "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType",
-            "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType",
-            "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType",
-            "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType",
             "TeamsTeamIdPatchBodyType",
             "TeamsTeamIdMembershipsUsernamePutBodyType",
             "TeamsTeamIdReposOwnerRepoPutBodyType",
@@ -14074,6 +14267,21 @@ else:
             "UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type",
             "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+            "UsersUsernameCopilotSpacesGetResponse200Type",
+            "UsersUsernameCopilotSpacesPostBodyType",
+            "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType",
+            "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType",
+            "UsersUsernameCopilotSpacesSpaceNumberPutBodyType",
+            "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType",
+            "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType",
+            "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type",
+            "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType",
+            "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType",
+            "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type",
+            "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType",
+            "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType",
+            "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType",
+            "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType",
             "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
             "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type",
             "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type",

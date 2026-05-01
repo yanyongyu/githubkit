@@ -12,16 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0190 import RepositoryRulesetConditionsPropRefName
+from .group_0194 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
 
-class RepositoryRuleUpdatePropParameters(GitHubModel):
-    """RepositoryRuleUpdatePropParameters"""
+class OrgRulesetConditionsOneof1(GitHubModel):
+    """repository_id_and_ref_name
 
-    update_allows_fetch_and_merge: bool = Field(
-        description="Branch can pull changes from its upstream repository"
+    Conditions to target repositories by id and refs by name
+    """
+
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
+        Field()
     )
 
 
-model_rebuild(RepositoryRuleUpdatePropParameters)
+model_rebuild(OrgRulesetConditionsOneof1)
 
-__all__ = ("RepositoryRuleUpdatePropParameters",)
+__all__ = ("OrgRulesetConditionsOneof1",)

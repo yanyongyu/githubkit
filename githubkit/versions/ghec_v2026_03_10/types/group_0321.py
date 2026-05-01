@@ -9,31 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ImmutableReleasesOrganizationSettingsType(TypedDict):
-    """Check immutable releases organization settings
+class RuleSuiteRequiredStatusChecksType(TypedDict):
+    """Required status checks rule suite metadata
 
-    Check immutable releases settings for an organization.
+    Metadata for a required status checks rule evaluation result.
     """
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
+    checks: NotRequired[list[RuleSuiteRequiredStatusChecksPropChecksItemsType]]
 
 
-class ImmutableReleasesOrganizationSettingsTypeForResponse(TypedDict):
-    """Check immutable releases organization settings
+class RuleSuiteRequiredStatusChecksTypeForResponse(TypedDict):
+    """Required status checks rule suite metadata
 
-    Check immutable releases settings for an organization.
+    Metadata for a required status checks rule evaluation result.
     """
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
+    checks: NotRequired[
+        list[RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse]
+    ]
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsType(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItems"""
+
+    id: NotRequired[int]
+    context: NotRequired[str]
+    state: NotRequired[str]
+    type: NotRequired[str]
+    app: NotRequired[
+        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType, None]
+    ]
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItems"""
+
+    id: NotRequired[int]
+    context: NotRequired[str]
+    state: NotRequired[str]
+    type: NotRequired[str]
+    app: NotRequired[
+        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse, None]
+    ]
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
+
+    The GitHub App associated with the status check.
+    """
+
+    id: NotRequired[int]
+    slug: NotRequired[str]
+    name: NotRequired[str]
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
+
+    The GitHub App associated with the status check.
+    """
+
+    id: NotRequired[int]
+    slug: NotRequired[str]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "ImmutableReleasesOrganizationSettingsType",
-    "ImmutableReleasesOrganizationSettingsTypeForResponse",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsType",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse",
+    "RuleSuiteRequiredStatusChecksType",
+    "RuleSuiteRequiredStatusChecksTypeForResponse",
 )

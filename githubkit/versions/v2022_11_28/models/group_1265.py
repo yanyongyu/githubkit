@@ -12,19 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200(GitHubModel):
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
 
-    expected_head_sha: Missing[str] = Field(
-        default=UNSET,
-        description="The expected SHA of the pull request's HEAD ref. This is the most recent commit on the pull request's branch. If the expected SHA does not match the pull request's HEAD, you will receive a `422 Unprocessable Entity` status. You can use the \"[List commits](https://docs.github.com/rest/commits/commits#list-commits)\" endpoint to find the most recent commit SHA. Default: SHA of the pull request's current HEAD ref.",
+    enabled: bool = Field(
+        description="Whether or not private vulnerability reporting is enabled for the repository."
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberUpdateBranchPutBody)
+model_rebuild(ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBody",)
+__all__ = ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",)

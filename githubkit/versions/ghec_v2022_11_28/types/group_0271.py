@@ -9,53 +9,157 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0269 import (
+    DismissalRequestResponseType,
+    DismissalRequestResponseTypeForResponse,
+)
 
 
-class OrganizationInvitationType(TypedDict):
-    """Organization Invitation
+class DependabotAlertDismissalRequestType(TypedDict):
+    """Dependabot alert dismissal request
 
-    Organization Invitation
+    Alert dismissal request made by a user asking to dismiss a Dependabot alert.
     """
 
-    id: int
-    login: Union[str, None]
-    email: Union[str, None]
-    role: str
-    created_at: str
-    failed_at: NotRequired[Union[str, None]]
-    failed_reason: NotRequired[Union[str, None]]
-    inviter: SimpleUserType
-    team_count: int
-    node_id: str
-    invitation_teams_url: str
-    invitation_source: NotRequired[str]
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[DependabotAlertDismissalRequestPropRepositoryType]
+    organization: NotRequired[DependabotAlertDismissalRequestPropOrganizationType]
+    requester: NotRequired[DependabotAlertDismissalRequestPropRequesterType]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[DependabotAlertDismissalRequestPropDataItemsType], None]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[_dt.datetime]
+    created_at: NotRequired[_dt.datetime]
+    responses: NotRequired[Union[list[DismissalRequestResponseType], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
-class OrganizationInvitationTypeForResponse(TypedDict):
-    """Organization Invitation
+class DependabotAlertDismissalRequestTypeForResponse(TypedDict):
+    """Dependabot alert dismissal request
 
-    Organization Invitation
+    Alert dismissal request made by a user asking to dismiss a Dependabot alert.
     """
 
-    id: int
-    login: Union[str, None]
-    email: Union[str, None]
-    role: str
-    created_at: str
-    failed_at: NotRequired[Union[str, None]]
-    failed_reason: NotRequired[Union[str, None]]
-    inviter: SimpleUserTypeForResponse
-    team_count: int
-    node_id: str
-    invitation_teams_url: str
-    invitation_source: NotRequired[str]
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[
+        DependabotAlertDismissalRequestPropRepositoryTypeForResponse
+    ]
+    organization: NotRequired[
+        DependabotAlertDismissalRequestPropOrganizationTypeForResponse
+    ]
+    requester: NotRequired[DependabotAlertDismissalRequestPropRequesterTypeForResponse]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[DependabotAlertDismissalRequestPropDataItemsTypeForResponse], None]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[str]
+    created_at: NotRequired[str]
+    responses: NotRequired[Union[list[DismissalRequestResponseTypeForResponse], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestPropRepositoryType(TypedDict):
+    """DependabotAlertDismissalRequestPropRepository
+
+    The repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestPropRepositoryTypeForResponse(TypedDict):
+    """DependabotAlertDismissalRequestPropRepository
+
+    The repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestPropOrganizationType(TypedDict):
+    """DependabotAlertDismissalRequestPropOrganization
+
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestPropOrganizationTypeForResponse(TypedDict):
+    """DependabotAlertDismissalRequestPropOrganization
+
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestPropRequesterType(TypedDict):
+    """DependabotAlertDismissalRequestPropRequester
+
+    The user who requested the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestPropRequesterTypeForResponse(TypedDict):
+    """DependabotAlertDismissalRequestPropRequester
+
+    The user who requested the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestPropDataItemsType(TypedDict):
+    """DependabotAlertDismissalRequestPropDataItems"""
+
+    reason: NotRequired[str]
+    alert_number: NotRequired[str]
+    alert_title: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestPropDataItemsTypeForResponse(TypedDict):
+    """DependabotAlertDismissalRequestPropDataItems"""
+
+    reason: NotRequired[str]
+    alert_number: NotRequired[str]
+    alert_title: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationInvitationType",
-    "OrganizationInvitationTypeForResponse",
+    "DependabotAlertDismissalRequestPropDataItemsType",
+    "DependabotAlertDismissalRequestPropDataItemsTypeForResponse",
+    "DependabotAlertDismissalRequestPropOrganizationType",
+    "DependabotAlertDismissalRequestPropOrganizationTypeForResponse",
+    "DependabotAlertDismissalRequestPropRepositoryType",
+    "DependabotAlertDismissalRequestPropRepositoryTypeForResponse",
+    "DependabotAlertDismissalRequestPropRequesterType",
+    "DependabotAlertDismissalRequestPropRequesterTypeForResponse",
+    "DependabotAlertDismissalRequestType",
+    "DependabotAlertDismissalRequestTypeForResponse",
 )

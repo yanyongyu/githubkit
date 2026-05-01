@@ -114,9 +114,9 @@ class SecurityAdvisoriesClient:
 
         Lists all global security advisories that match the specified parameters. If no other parameters are defined, the request will return only GitHub-reviewed advisories that are not malware.
 
-        By default, all responses will exclude advisories for malware, because malware are not standard vulnerabilities. To list advisories for malware, you must include the `type` parameter in your request, with the value `malware`. For more information about the different types of security advisories, see "[About the GitHub Advisory database](https://docs.github.com/enterprise-cloud@latest//code-security/security-advisories/global-security-advisories/about-the-github-advisory-database#about-types-of-security-advisories)."
+        By default, all responses will exclude advisories for malware, because malware are not standard vulnerabilities. To list advisories for malware, you must include the `type` parameter in your request, with the value `malware`. For more information about the different types of security advisories, see "[About the GitHub Advisory database](https://docs.github.com/enterprise-cloud@latest/code-security/security-advisories/global-security-advisories/about-the-github-advisory-database#about-types-of-security-advisories)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories#list-global-security-advisories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/global-advisories#list-global-security-advisories
         """
 
         from ..models import BasicError, GlobalAdvisory, ValidationErrorSimple
@@ -209,9 +209,9 @@ class SecurityAdvisoriesClient:
 
         Lists all global security advisories that match the specified parameters. If no other parameters are defined, the request will return only GitHub-reviewed advisories that are not malware.
 
-        By default, all responses will exclude advisories for malware, because malware are not standard vulnerabilities. To list advisories for malware, you must include the `type` parameter in your request, with the value `malware`. For more information about the different types of security advisories, see "[About the GitHub Advisory database](https://docs.github.com/enterprise-cloud@latest//code-security/security-advisories/global-security-advisories/about-the-github-advisory-database#about-types-of-security-advisories)."
+        By default, all responses will exclude advisories for malware, because malware are not standard vulnerabilities. To list advisories for malware, you must include the `type` parameter in your request, with the value `malware`. For more information about the different types of security advisories, see "[About the GitHub Advisory database](https://docs.github.com/enterprise-cloud@latest/code-security/security-advisories/global-security-advisories/about-the-github-advisory-database#about-types-of-security-advisories)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories#list-global-security-advisories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/global-advisories#list-global-security-advisories
         """
 
         from ..models import BasicError, GlobalAdvisory, ValidationErrorSimple
@@ -267,7 +267,7 @@ class SecurityAdvisoriesClient:
 
         Gets a global security advisory using its GitHub Security Advisory (GHSA) identifier.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories#get-a-global-security-advisory
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/global-advisories#get-a-global-security-advisory
         """
 
         from ..models import BasicError, GlobalAdvisory
@@ -300,7 +300,7 @@ class SecurityAdvisoriesClient:
 
         Gets a global security advisory using its GitHub Security Advisory (GHSA) identifier.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories#get-a-global-security-advisory
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/global-advisories#get-a-global-security-advisory
         """
 
         from ..models import BasicError, GlobalAdvisory
@@ -343,7 +343,7 @@ class SecurityAdvisoriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization
         """
 
         from ..models import BasicError, RepositoryAdvisory
@@ -397,7 +397,7 @@ class SecurityAdvisoriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization
         """
 
         from ..models import BasicError, RepositoryAdvisory
@@ -452,7 +452,7 @@ class SecurityAdvisoriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:read` scope to to get a published security advisory in a private repository, or any unpublished security advisory that the authenticated user has access to.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#list-repository-security-advisories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#list-repository-security-advisories
         """
 
         from ..models import BasicError, RepositoryAdvisory
@@ -507,7 +507,7 @@ class SecurityAdvisoriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:read` scope to to get a published security advisory in a private repository, or any unpublished security advisory that the authenticated user has access to.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#list-repository-security-advisories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#list-repository-security-advisories
         """
 
         from ..models import BasicError, RepositoryAdvisory
@@ -593,7 +593,7 @@ class SecurityAdvisoriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#create-a-repository-security-advisory
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#create-a-repository-security-advisory
         """
 
         from ..models import (
@@ -685,7 +685,7 @@ class SecurityAdvisoriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#create-a-repository-security-advisory
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#create-a-repository-security-advisory
         """
 
         from ..models import (
@@ -772,9 +772,9 @@ class SecurityAdvisoriesClient:
         POST /repos/{owner}/{repo}/security-advisories/reports
 
         Report a security vulnerability to the maintainers of the repository.
-        See "[Privately reporting a security vulnerability](https://docs.github.com/enterprise-cloud@latest//code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)" for more information about private vulnerability reporting.
+        See "[Privately reporting a security vulnerability](https://docs.github.com/enterprise-cloud@latest/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)" for more information about private vulnerability reporting.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#privately-report-a-security-vulnerability
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#privately-report-a-security-vulnerability
         """
 
         from ..models import (
@@ -861,9 +861,9 @@ class SecurityAdvisoriesClient:
         POST /repos/{owner}/{repo}/security-advisories/reports
 
         Report a security vulnerability to the maintainers of the repository.
-        See "[Privately reporting a security vulnerability](https://docs.github.com/enterprise-cloud@latest//code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)" for more information about private vulnerability reporting.
+        See "[Privately reporting a security vulnerability](https://docs.github.com/enterprise-cloud@latest/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)" for more information about private vulnerability reporting.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#privately-report-a-security-vulnerability
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#privately-report-a-security-vulnerability
         """
 
         from ..models import (
@@ -922,7 +922,7 @@ class SecurityAdvisoriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:read` scope to to get a published security advisory in a private repository, or any unpublished security advisory that the authenticated user has access to.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#get-a-repository-security-advisory
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#get-a-repository-security-advisory
         """
 
         from ..models import BasicError, RepositoryAdvisory
@@ -965,7 +965,7 @@ class SecurityAdvisoriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:read` scope to to get a published security advisory in a private repository, or any unpublished security advisory that the authenticated user has access to.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#get-a-repository-security-advisory
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#get-a-repository-security-advisory
         """
 
         from ..models import BasicError, RepositoryAdvisory
@@ -1049,7 +1049,7 @@ class SecurityAdvisoriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#update-a-repository-security-advisory
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#update-a-repository-security-advisory
         """
 
         from ..models import (
@@ -1149,7 +1149,7 @@ class SecurityAdvisoriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#update-a-repository-security-advisory
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#update-a-repository-security-advisory
         """
 
         from ..models import (
@@ -1202,7 +1202,7 @@ class SecurityAdvisoriesClient:
 
         POST /repos/{owner}/{repo}/security-advisories/{ghsa_id}/cve
 
-        If you want a CVE identification number for the security vulnerability in your project, and don't already have one, you can request a CVE identification number from GitHub. For more information see "[Requesting a CVE identification number](https://docs.github.com/enterprise-cloud@latest//code-security/security-advisories/repository-security-advisories/publishing-a-repository-security-advisory#requesting-a-cve-identification-number-optional)."
+        If you want a CVE identification number for the security vulnerability in your project, and don't already have one, you can request a CVE identification number from GitHub. For more information see "[Requesting a CVE identification number](https://docs.github.com/enterprise-cloud@latest/code-security/security-advisories/repository-security-advisories/publishing-a-repository-security-advisory#requesting-a-cve-identification-number-optional)."
 
         You may request a CVE for public repositories, but cannot do so for private repositories.
 
@@ -1210,7 +1210,7 @@ class SecurityAdvisoriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#request-a-cve-for-a-repository-security-advisory
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#request-a-cve-for-a-repository-security-advisory
         """
 
         from ..models import (
@@ -1253,7 +1253,7 @@ class SecurityAdvisoriesClient:
 
         POST /repos/{owner}/{repo}/security-advisories/{ghsa_id}/cve
 
-        If you want a CVE identification number for the security vulnerability in your project, and don't already have one, you can request a CVE identification number from GitHub. For more information see "[Requesting a CVE identification number](https://docs.github.com/enterprise-cloud@latest//code-security/security-advisories/repository-security-advisories/publishing-a-repository-security-advisory#requesting-a-cve-identification-number-optional)."
+        If you want a CVE identification number for the security vulnerability in your project, and don't already have one, you can request a CVE identification number from GitHub. For more information see "[Requesting a CVE identification number](https://docs.github.com/enterprise-cloud@latest/code-security/security-advisories/repository-security-advisories/publishing-a-repository-security-advisory#requesting-a-cve-identification-number-optional)."
 
         You may request a CVE for public repositories, but cannot do so for private repositories.
 
@@ -1261,7 +1261,7 @@ class SecurityAdvisoriesClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#request-a-cve-for-a-repository-security-advisory
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#request-a-cve-for-a-repository-security-advisory
         """
 
         from ..models import (
@@ -1306,7 +1306,7 @@ class SecurityAdvisoriesClient:
         > [!NOTE]
         > Forking a repository happens asynchronously. You may have to wait up to 5 minutes before you can access the fork.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#create-a-temporary-private-fork
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#create-a-temporary-private-fork
         """
 
         from ..models import BasicError, FullRepository, ValidationError
@@ -1347,7 +1347,7 @@ class SecurityAdvisoriesClient:
         > [!NOTE]
         > Forking a repository happens asynchronously. You may have to wait up to 5 minutes before you can access the fork.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#create-a-temporary-private-fork
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#create-a-temporary-private-fork
         """
 
         from ..models import BasicError, FullRepository, ValidationError

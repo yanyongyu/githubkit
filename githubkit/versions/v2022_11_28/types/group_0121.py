@@ -9,38 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
-class ActionsPublicKeyType(TypedDict):
-    """ActionsPublicKey
 
-    The public key used for setting Actions Secrets.
+class AuthenticationTokenType(TypedDict):
+    """Authentication Token
+
+    Authentication Token
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    token: str
+    expires_at: _dt.datetime
+    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
+    repositories: NotRequired[list[RepositoryType]]
+    single_file: NotRequired[Union[str, None]]
+    repository_selection: NotRequired[Literal["all", "selected"]]
 
 
-class ActionsPublicKeyTypeForResponse(TypedDict):
-    """ActionsPublicKey
+class AuthenticationTokenTypeForResponse(TypedDict):
+    """Authentication Token
 
-    The public key used for setting Actions Secrets.
+    Authentication Token
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    token: str
+    expires_at: str
+    permissions: NotRequired[AuthenticationTokenPropPermissionsTypeForResponse]
+    repositories: NotRequired[list[RepositoryTypeForResponse]]
+    single_file: NotRequired[Union[str, None]]
+    repository_selection: NotRequired[Literal["all", "selected"]]
+
+
+class AuthenticationTokenPropPermissionsType(TypedDict):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+class AuthenticationTokenPropPermissionsTypeForResponse(TypedDict):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
 
 
 __all__ = (
-    "ActionsPublicKeyType",
-    "ActionsPublicKeyTypeForResponse",
+    "AuthenticationTokenPropPermissionsType",
+    "AuthenticationTokenPropPermissionsTypeForResponse",
+    "AuthenticationTokenType",
+    "AuthenticationTokenTypeForResponse",
 )

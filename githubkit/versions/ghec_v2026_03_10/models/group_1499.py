@@ -9,25 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0309 import ProjectsV2FieldIterationConfiguration
+
+class UserInteractionLimitsGetResponse200Anyof1(GitHubModel):
+    """UserInteractionLimitsGetResponse200Anyof1"""
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+model_rebuild(UserInteractionLimitsGetResponse200Anyof1)
 
-    name: str = Field(description="The name of the field.")
-    data_type: Literal["iteration"] = Field(description="The field's data type.")
-    iteration_configuration: ProjectsV2FieldIterationConfiguration = Field(
-        description="The configuration for iteration fields."
-    )
-
-
-model_rebuild(UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2)
-
-__all__ = ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2",)
+__all__ = ("UserInteractionLimitsGetResponse200Anyof1",)

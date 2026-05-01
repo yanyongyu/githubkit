@@ -9,32 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class WebhooksChanges(GitHubModel):
-    """WebhooksChanges
+class WebhooksLabel(GitHubModel):
+    """Label"""
 
-    The changes to the comment.
-    """
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    id: int = Field()
+    name: str = Field(description="The name of the label.")
+    node_id: str = Field()
+    url: str = Field(description="URL for the label")
 
-    body: Missing[WebhooksChangesPropBody] = Field(default=UNSET)
 
+model_rebuild(WebhooksLabel)
 
-class WebhooksChangesPropBody(GitHubModel):
-    """WebhooksChangesPropBody"""
-
-    from_: str = Field(alias="from", description="The previous version of the body.")
-
-
-model_rebuild(WebhooksChanges)
-model_rebuild(WebhooksChangesPropBody)
-
-__all__ = (
-    "WebhooksChanges",
-    "WebhooksChangesPropBody",
-)
+__all__ = ("WebhooksLabel",)

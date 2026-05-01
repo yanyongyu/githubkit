@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,18 +19,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsCacheRetentionLimitForOrganization(GitHubModel):
-    """Actions cache retention limit for an organization
+class ThreadSubscription(GitHubModel):
+    """Thread Subscription
 
-    GitHub Actions cache retention policy for an organization.
+    Thread Subscription
     """
 
-    max_cache_retention_days: Missing[int] = Field(
-        default=UNSET,
-        description="For repositories in this organization, the maximum duration, in days, for which caches in a repository may be retained.",
-    )
+    subscribed: bool = Field()
+    ignored: bool = Field()
+    reason: Union[str, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
+    url: str = Field()
+    thread_url: Missing[str] = Field(default=UNSET)
+    repository_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ActionsCacheRetentionLimitForOrganization)
+model_rebuild(ThreadSubscription)
 
-__all__ = ("ActionsCacheRetentionLimitForOrganization",)
+__all__ = ("ThreadSubscription",)

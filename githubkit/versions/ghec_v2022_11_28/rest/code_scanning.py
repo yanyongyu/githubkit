@@ -114,13 +114,13 @@ class CodeScanningClient:
 
         GET /enterprises/{enterprise}/code-scanning/alerts
 
-        Lists code scanning alerts for the default branch for all eligible repositories in an enterprise. Eligible repositories are repositories that are owned by organizations that you own or for which you are a security manager. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+        Lists code scanning alerts for the default branch for all eligible repositories in an enterprise. Eligible repositories are repositories that are owned by organizations that you own or for which you are a security manager. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
 
         The authenticated user must be a member of the enterprise to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-enterprise
         """
 
         from ..models import (
@@ -183,13 +183,13 @@ class CodeScanningClient:
 
         GET /enterprises/{enterprise}/code-scanning/alerts
 
-        Lists code scanning alerts for the default branch for all eligible repositories in an enterprise. Eligible repositories are repositories that are owned by organizations that you own or for which you are a security manager. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+        Lists code scanning alerts for the default branch for all eligible repositories in an enterprise. Eligible repositories are repositories that are owned by organizations that you own or for which you are a security manager. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
 
         The authenticated user must be a member of the enterprise to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-enterprise
         """
 
         from ..models import (
@@ -255,13 +255,13 @@ class CodeScanningClient:
 
         GET /orgs/{org}/code-scanning/alerts
 
-        Lists code scanning alerts for the default branch for all eligible repositories in an organization. Eligible repositories are repositories that are owned by organizations that you own or for which you are a security manager. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+        Lists code scanning alerts for the default branch for all eligible repositories in an organization. Eligible repositories are repositories that are owned by organizations that you own or for which you are a security manager. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
 
         The authenticated user must be an owner or security manager for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` or `repo`s cope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-organization
         """
 
         from ..models import (
@@ -328,13 +328,13 @@ class CodeScanningClient:
 
         GET /orgs/{org}/code-scanning/alerts
 
-        Lists code scanning alerts for the default branch for all eligible repositories in an organization. Eligible repositories are repositories that are owned by organizations that you own or for which you are a security manager. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+        Lists code scanning alerts for the default branch for all eligible repositories in an organization. Eligible repositories are repositories that are owned by organizations that you own or for which you are a security manager. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
 
         The authenticated user must be an owner or security manager for the organization to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` or `repo`s cope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-organization
         """
 
         from ..models import (
@@ -402,7 +402,7 @@ class CodeScanningClient:
         The user must be authorized to review dismissal requests for the organization.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/alert-dismissal-requests#list-dismissal-requests-for-code-scanning-alerts-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/alert-dismissal-requests#list-dismissal-requests-for-code-scanning-alerts-for-an-organization
         """
 
         from ..models import (
@@ -468,7 +468,7 @@ class CodeScanningClient:
         The user must be authorized to review dismissal requests for the organization.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/alert-dismissal-requests#list-dismissal-requests-for-code-scanning-alerts-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/alert-dismissal-requests#list-dismissal-requests-for-code-scanning-alerts-for-an-organization
         """
 
         from ..models import (
@@ -543,7 +543,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository
         """
 
         from ..models import (
@@ -623,7 +623,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository
         """
 
         from ..models import (
@@ -683,7 +683,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-a-code-scanning-alert
         """
 
         from ..models import (
@@ -726,7 +726,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-a-code-scanning-alert
         """
 
         from ..models import (
@@ -828,7 +828,7 @@ class CodeScanningClient:
         Updates the status of a single code scanning alert.
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#update-a-code-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#update-a-code-scanning-alert
         """
 
         from typing import Union
@@ -951,7 +951,7 @@ class CodeScanningClient:
         Updates the status of a single code scanning alert.
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#update-a-code-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#update-a-code-scanning-alert
         """
 
         from typing import Union
@@ -1015,7 +1015,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-the-status-of-an-autofix-for-a-code-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-the-status-of-an-autofix-for-a-code-scanning-alert
         """
 
         from ..models import (
@@ -1059,7 +1059,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-the-status-of-an-autofix-for-a-code-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-the-status-of-an-autofix-for-a-code-scanning-alert
         """
 
         from ..models import (
@@ -1107,7 +1107,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#create-an-autofix-for-a-code-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#create-an-autofix-for-a-code-scanning-alert
         """
 
         from ..models import (
@@ -1155,7 +1155,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#create-an-autofix-for-a-code-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#create-an-autofix-for-a-code-scanning-alert
         """
 
         from ..models import (
@@ -1238,7 +1238,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#commit-an-autofix-for-a-code-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#commit-an-autofix-for-a-code-scanning-alert
         """
 
         from typing import Union
@@ -1336,7 +1336,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#commit-an-autofix-for-a-code-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#commit-an-autofix-for-a-code-scanning-alert
         """
 
         from typing import Union
@@ -1402,7 +1402,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-instances-of-a-code-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#list-instances-of-a-code-scanning-alert
         """
 
         from ..models import (
@@ -1460,7 +1460,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-instances-of-a-code-scanning-alert
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#list-instances-of-a-code-scanning-alert
         """
 
         from ..models import (
@@ -1533,7 +1533,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository
         """
 
         from ..models import (
@@ -1611,7 +1611,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository
         """
 
         from ..models import (
@@ -1675,13 +1675,13 @@ class CodeScanningClient:
         For very old analyses this data is not available,
         and `0` is returned in this field.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/sarif+json`**: Instead of returning a summary of the analysis, this endpoint returns a subset of the analysis data that was uploaded. The data is formatted as [SARIF version 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/cs01/sarif-v2.1.0-cs01.html). It also returns additional data such as the `github/alertNumber` and `github/alertUrl` properties.
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository
         """
 
         from ..models import (
@@ -1733,13 +1733,13 @@ class CodeScanningClient:
         For very old analyses this data is not available,
         and `0` is returned in this field.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/sarif+json`**: Instead of returning a summary of the analysis, this endpoint returns a subset of the analysis data that was uploaded. The data is formatted as [SARIF version 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/cs01/sarif-v2.1.0-cs01.html). It also returns additional data such as the `github/alertNumber` and `github/alertUrl` properties.
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository
         """
 
         from ..models import (
@@ -1847,7 +1847,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#delete-a-code-scanning-analysis-from-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#delete-a-code-scanning-analysis-from-a-repository
         """
 
         from ..models import (
@@ -1960,7 +1960,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#delete-a-code-scanning-analysis-from-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#delete-a-code-scanning-analysis-from-a-repository
         """
 
         from ..models import (
@@ -2011,7 +2011,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-codeql-databases-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#list-codeql-databases-for-a-repository
         """
 
         from ..models import (
@@ -2056,7 +2056,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-codeql-databases-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#list-codeql-databases-for-a-repository
         """
 
         from ..models import (
@@ -2101,13 +2101,13 @@ class CodeScanningClient:
 
         By default this endpoint returns JSON metadata about the CodeQL database. To
         download the CodeQL database binary content, set the `Accept` header of the request
-        to [`application/zip`](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types), and make sure
+        to [`application/zip`](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types), and make sure
         your HTTP client is configured to follow redirects or use the `Location` header
         to make a second request to get the redirect URL.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-codeql-database-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-a-codeql-database-for-a-repository
         """
 
         from ..models import (
@@ -2152,13 +2152,13 @@ class CodeScanningClient:
 
         By default this endpoint returns JSON metadata about the CodeQL database. To
         download the CodeQL database binary content, set the `Accept` header of the request
-        to [`application/zip`](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types), and make sure
+        to [`application/zip`](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types), and make sure
         your HTTP client is configured to follow redirects or use the `Location` header
         to make a second request to get the redirect URL.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-codeql-database-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-a-codeql-database-for-a-repository
         """
 
         from ..models import (
@@ -2201,7 +2201,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#delete-a-codeql-database
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#delete-a-codeql-database
         """
 
         from ..models import (
@@ -2242,7 +2242,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#delete-a-codeql-database
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#delete-a-codeql-database
         """
 
         from ..models import (
@@ -2394,14 +2394,14 @@ class CodeScanningClient:
 
         Creates a new CodeQL variant analysis, which will run a CodeQL query against one or more repositories.
 
-        Get started by learning more about [running CodeQL queries at scale with Multi-Repository Variant Analysis](https://docs.github.com/enterprise-cloud@latest//code-security/codeql-for-vs-code/getting-started-with-codeql-for-vs-code/running-codeql-queries-at-scale-with-multi-repository-variant-analysis).
+        Get started by learning more about [running CodeQL queries at scale with Multi-Repository Variant Analysis](https://docs.github.com/enterprise-cloud@latest/code-security/codeql-for-vs-code/getting-started-with-codeql-for-vs-code/running-codeql-queries-at-scale-with-multi-repository-variant-analysis).
 
         Use the `owner` and `repo` parameters in the URL to specify the controller repository that
         will be used for running GitHub Actions workflows and storing the results of the CodeQL variant analysis.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#create-a-codeql-variant-analysis
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#create-a-codeql-variant-analysis
         """
 
         from typing import Union
@@ -2577,14 +2577,14 @@ class CodeScanningClient:
 
         Creates a new CodeQL variant analysis, which will run a CodeQL query against one or more repositories.
 
-        Get started by learning more about [running CodeQL queries at scale with Multi-Repository Variant Analysis](https://docs.github.com/enterprise-cloud@latest//code-security/codeql-for-vs-code/getting-started-with-codeql-for-vs-code/running-codeql-queries-at-scale-with-multi-repository-variant-analysis).
+        Get started by learning more about [running CodeQL queries at scale with Multi-Repository Variant Analysis](https://docs.github.com/enterprise-cloud@latest/code-security/codeql-for-vs-code/getting-started-with-codeql-for-vs-code/running-codeql-queries-at-scale-with-multi-repository-variant-analysis).
 
         Use the `owner` and `repo` parameters in the URL to specify the controller repository that
         will be used for running GitHub Actions workflows and storing the results of the CodeQL variant analysis.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#create-a-codeql-variant-analysis
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#create-a-codeql-variant-analysis
         """
 
         from typing import Union
@@ -2651,7 +2651,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-the-summary-of-a-codeql-variant-analysis
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-the-summary-of-a-codeql-variant-analysis
         """
 
         from ..models import (
@@ -2695,7 +2695,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-the-summary-of-a-codeql-variant-analysis
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-the-summary-of-a-codeql-variant-analysis
         """
 
         from ..models import (
@@ -2742,7 +2742,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-the-analysis-status-of-a-repository-in-a-codeql-variant-analysis
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-the-analysis-status-of-a-repository-in-a-codeql-variant-analysis
         """
 
         from ..models import (
@@ -2789,7 +2789,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-the-analysis-status-of-a-repository-in-a-codeql-variant-analysis
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-the-analysis-status-of-a-repository-in-a-codeql-variant-analysis
         """
 
         from ..models import (
@@ -2830,7 +2830,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-default-setup-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-a-code-scanning-default-setup-configuration
         """
 
         from ..models import (
@@ -2872,7 +2872,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-default-setup-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-a-code-scanning-default-setup-configuration
         """
 
         from ..models import (
@@ -2958,7 +2958,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#update-a-code-scanning-default-setup-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#update-a-code-scanning-default-setup-configuration
         """
 
         from ..models import (
@@ -3057,7 +3057,7 @@ class CodeScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#update-a-code-scanning-default-setup-configuration
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#update-a-code-scanning-default-setup-configuration
         """
 
         from ..models import (
@@ -3143,7 +3143,7 @@ class CodeScanningClient:
 
         POST /repos/{owner}/{repo}/code-scanning/sarifs
 
-        Uploads SARIF data containing the results of a code scanning analysis to make the results available in a repository. For troubleshooting information, see "[Troubleshooting SARIF uploads](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/troubleshooting-sarif)."
+        Uploads SARIF data containing the results of a code scanning analysis to make the results available in a repository. For troubleshooting information, see "[Troubleshooting SARIF uploads](https://docs.github.com/enterprise-cloud@latest/code-security/code-scanning/troubleshooting-sarif)."
 
         There are two places where you can upload code scanning results.
          - If you upload to a pull request, for example `--ref refs/pull/42/merge` or `--ref refs/pull/42/head`, then the results appear as alerts in a pull request check. For more information, see "[Triaging code scanning alerts in pull requests](/code-security/secure-coding/triaging-code-scanning-alerts-in-pull-requests)."
@@ -3156,7 +3156,7 @@ class CodeScanningClient:
         ```
 
         SARIF upload supports a maximum number of entries per the following data objects, and an analysis will be rejected if any of these objects is above its maximum value. For some objects, there are additional values over which the entries will be ignored while keeping the most important entries whenever applicable.
-        To get the most out of your analysis when it includes data above the supported limits, try to optimize the analysis configuration. For example, for the CodeQL tool, identify and remove the most noisy queries. For more information, see "[SARIF results exceed one or more limits](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/troubleshooting-sarif/results-exceed-limit)."
+        To get the most out of your analysis when it includes data above the supported limits, try to optimize the analysis configuration. For example, for the CodeQL tool, identify and remove the most noisy queries. For more information, see "[SARIF results exceed one or more limits](https://docs.github.com/enterprise-cloud@latest/code-security/code-scanning/troubleshooting-sarif/results-exceed-limit)."
 
 
         | **SARIF data**                   | **Maximum values** | **Additional limits**                                                            |
@@ -3178,7 +3178,7 @@ class CodeScanningClient:
 
         This endpoint is limited to 1,000 requests per hour for each user or app installation calling it.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#upload-an-analysis-as-sarif-data
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#upload-an-analysis-as-sarif-data
         """
 
         from ..models import (
@@ -3262,7 +3262,7 @@ class CodeScanningClient:
 
         POST /repos/{owner}/{repo}/code-scanning/sarifs
 
-        Uploads SARIF data containing the results of a code scanning analysis to make the results available in a repository. For troubleshooting information, see "[Troubleshooting SARIF uploads](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/troubleshooting-sarif)."
+        Uploads SARIF data containing the results of a code scanning analysis to make the results available in a repository. For troubleshooting information, see "[Troubleshooting SARIF uploads](https://docs.github.com/enterprise-cloud@latest/code-security/code-scanning/troubleshooting-sarif)."
 
         There are two places where you can upload code scanning results.
          - If you upload to a pull request, for example `--ref refs/pull/42/merge` or `--ref refs/pull/42/head`, then the results appear as alerts in a pull request check. For more information, see "[Triaging code scanning alerts in pull requests](/code-security/secure-coding/triaging-code-scanning-alerts-in-pull-requests)."
@@ -3275,7 +3275,7 @@ class CodeScanningClient:
         ```
 
         SARIF upload supports a maximum number of entries per the following data objects, and an analysis will be rejected if any of these objects is above its maximum value. For some objects, there are additional values over which the entries will be ignored while keeping the most important entries whenever applicable.
-        To get the most out of your analysis when it includes data above the supported limits, try to optimize the analysis configuration. For example, for the CodeQL tool, identify and remove the most noisy queries. For more information, see "[SARIF results exceed one or more limits](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/troubleshooting-sarif/results-exceed-limit)."
+        To get the most out of your analysis when it includes data above the supported limits, try to optimize the analysis configuration. For example, for the CodeQL tool, identify and remove the most noisy queries. For more information, see "[SARIF results exceed one or more limits](https://docs.github.com/enterprise-cloud@latest/code-security/code-scanning/troubleshooting-sarif/results-exceed-limit)."
 
 
         | **SARIF data**                   | **Maximum values** | **Additional limits**                                                            |
@@ -3297,7 +3297,7 @@ class CodeScanningClient:
 
         This endpoint is limited to 1,000 requests per hour for each user or app installation calling it.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#upload-an-analysis-as-sarif-data
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#upload-an-analysis-as-sarif-data
         """
 
         from ..models import (
@@ -3350,7 +3350,7 @@ class CodeScanningClient:
         Gets information about a SARIF upload, including the status and the URL of the analysis that was uploaded so that you can retrieve details of the analysis. For more information, see "[Get a code scanning analysis for a repository](/rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository)."
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-information-about-a-sarif-upload
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-information-about-a-sarif-upload
         """
 
         from ..models import (
@@ -3391,7 +3391,7 @@ class CodeScanningClient:
         Gets information about a SARIF upload, including the status and the URL of the analysis that was uploaded so that you can retrieve details of the analysis. For more information, see "[Get a code scanning analysis for a repository](/rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository)."
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-information-about-a-sarif-upload
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#get-information-about-a-sarif-upload
         """
 
         from ..models import (
@@ -3444,7 +3444,7 @@ class CodeScanningClient:
         Delegated alert dismissal must be enabled on the repository.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/alert-dismissal-requests#list-dismissal-requests-for-code-scanning-alerts-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/alert-dismissal-requests#list-dismissal-requests-for-code-scanning-alerts-for-a-repository
         """
 
         from ..models import BasicError, CodeScanningAlertDismissalRequest
@@ -3504,7 +3504,7 @@ class CodeScanningClient:
         Delegated alert dismissal must be enabled on the repository.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/alert-dismissal-requests#list-dismissal-requests-for-code-scanning-alerts-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/alert-dismissal-requests#list-dismissal-requests-for-code-scanning-alerts-for-a-repository
         """
 
         from ..models import BasicError, CodeScanningAlertDismissalRequest
@@ -3557,7 +3557,7 @@ class CodeScanningClient:
         Delegated alert dismissal must be enabled on the repository.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/alert-dismissal-requests#get-a-dismissal-request-for-a-code-scanning-alert-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/alert-dismissal-requests#get-a-dismissal-request-for-a-code-scanning-alert-for-a-repository
         """
 
         from ..models import BasicError, CodeScanningAlertDismissalRequest
@@ -3600,7 +3600,7 @@ class CodeScanningClient:
         Delegated alert dismissal must be enabled on the repository.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/alert-dismissal-requests#get-a-dismissal-request-for-a-code-scanning-alert-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/alert-dismissal-requests#get-a-dismissal-request-for-a-code-scanning-alert-for-a-repository
         """
 
         from ..models import BasicError, CodeScanningAlertDismissalRequest
@@ -3670,7 +3670,7 @@ class CodeScanningClient:
         Delegated alert dismissal must be enabled on the repository and the user must be a dismissal reviewer to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/alert-dismissal-requests#review-a-dismissal-request-for-a-code-scanning-alert-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/alert-dismissal-requests#review-a-dismissal-request-for-a-code-scanning-alert-for-a-repository
         """
 
         from ..models import (
@@ -3756,7 +3756,7 @@ class CodeScanningClient:
         Delegated alert dismissal must be enabled on the repository and the user must be a dismissal reviewer to access this endpoint.
         Personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/alert-dismissal-requests#review-a-dismissal-request-for-a-code-scanning-alert-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/alert-dismissal-requests#review-a-dismissal-request-for-a-code-scanning-alert-for-a-repository
         """
 
         from ..models import (

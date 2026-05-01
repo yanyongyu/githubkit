@@ -9,31 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseNetworkConfigurationsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseNetworkConfigurationsPostBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
 
-    name: str
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: list[str]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    message: NotRequired[str]
 
 
-class EnterprisesEnterpriseNetworkConfigurationsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseNetworkConfigurationsPostBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
 
-    name: str
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: list[str]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseNetworkConfigurationsPostBodyType",
-    "EnterprisesEnterpriseNetworkConfigurationsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422TypeForResponse",
 )

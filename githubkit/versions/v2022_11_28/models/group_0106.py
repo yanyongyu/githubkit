@@ -14,17 +14,33 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OidcCustomSub(GitHubModel):
-    """Actions OIDC Subject customization
+class ActionsHostedRunnerLimits(GitHubModel):
+    """ActionsHostedRunnerLimits"""
 
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: list[str] = Field(
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
+    public_ips: ActionsHostedRunnerLimitsPropPublicIps = Field(
+        title="Static public IP Limits for GitHub-hosted Hosted Runners.",
+        description="Provides details of static public IP limits for GitHub-hosted Hosted Runners",
     )
 
 
-model_rebuild(OidcCustomSub)
+class ActionsHostedRunnerLimitsPropPublicIps(GitHubModel):
+    """Static public IP Limits for GitHub-hosted Hosted Runners.
 
-__all__ = ("OidcCustomSub",)
+    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    """
+
+    maximum: int = Field(
+        description="The maximum number of static public IP addresses that can be used for Hosted Runners."
+    )
+    current_usage: int = Field(
+        description="The current number of static public IP addresses in use by Hosted Runners."
+    )
+
+
+model_rebuild(ActionsHostedRunnerLimits)
+model_rebuild(ActionsHostedRunnerLimitsPropPublicIps)
+
+__all__ = (
+    "ActionsHostedRunnerLimits",
+    "ActionsHostedRunnerLimitsPropPublicIps",
+)

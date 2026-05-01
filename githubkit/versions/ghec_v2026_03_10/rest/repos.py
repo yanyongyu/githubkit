@@ -450,7 +450,7 @@ class ReposClient:
 
         Create a repository ruleset for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#create-an-enterprise-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#create-an-enterprise-repository-ruleset
         """
 
         from ..models import (
@@ -561,7 +561,7 @@ class ReposClient:
 
         Create a repository ruleset for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#create-an-enterprise-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#create-an-enterprise-repository-ruleset
         """
 
         from ..models import (
@@ -613,7 +613,7 @@ class ReposClient:
         **Note:** To prevent leaking sensitive information, the `bypass_actors` property is only returned if the user
         making the API request has write access to the ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#get-an-enterprise-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#get-an-enterprise-repository-ruleset
         """
 
         from ..models import BasicError, RepositoryRuleset
@@ -651,7 +651,7 @@ class ReposClient:
         **Note:** To prevent leaking sensitive information, the `bypass_actors` property is only returned if the user
         making the API request has write access to the ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#get-an-enterprise-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#get-an-enterprise-repository-ruleset
         """
 
         from ..models import BasicError, RepositoryRuleset
@@ -751,7 +751,7 @@ class ReposClient:
 
         Update a ruleset for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#update-an-enterprise-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#update-an-enterprise-repository-ruleset
         """
 
         from ..models import (
@@ -867,7 +867,7 @@ class ReposClient:
 
         Update a ruleset for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#update-an-enterprise-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#update-an-enterprise-repository-ruleset
         """
 
         from ..models import (
@@ -918,7 +918,7 @@ class ReposClient:
 
         Delete a ruleset for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#delete-an-enterprise-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#delete-an-enterprise-repository-ruleset
         """
 
         from ..models import BasicError
@@ -952,7 +952,7 @@ class ReposClient:
 
         Delete a ruleset for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#delete-an-enterprise-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#delete-an-enterprise-repository-ruleset
         """
 
         from ..models import BasicError
@@ -993,9 +993,9 @@ class ReposClient:
         Lists repositories for the specified organization.
 
         > [!NOTE]
-        > In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+        > In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-organization-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-organization-repositories
         """
 
         from ..models import MinimalRepository
@@ -1042,9 +1042,9 @@ class ReposClient:
         Lists repositories for the specified organization.
 
         > [!NOTE]
-        > In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+        > In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-organization-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-organization-repositories
         """
 
         from ..models import MinimalRepository
@@ -1138,7 +1138,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to create a public repository, and `repo` scope to create a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#create-an-organization-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#create-an-organization-repository
         """
 
         from ..models import (
@@ -1243,7 +1243,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to create a public repository, and `repo` scope to create a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#create-an-organization-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#create-an-organization-repository
         """
 
         from ..models import (
@@ -1296,7 +1296,7 @@ class ReposClient:
 
         Get all the repository rulesets for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-all-organization-repository-rulesets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rules#get-all-organization-repository-rulesets
         """
 
         from ..models import BasicError, RepositoryRuleset
@@ -1340,7 +1340,7 @@ class ReposClient:
 
         Get all the repository rulesets for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-all-organization-repository-rulesets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rules#get-all-organization-repository-rulesets
         """
 
         from ..models import BasicError, RepositoryRuleset
@@ -1441,7 +1441,7 @@ class ReposClient:
 
         Create a repository ruleset for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#create-an-organization-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rules#create-an-organization-repository-ruleset
         """
 
         from ..models import (
@@ -1551,7 +1551,7 @@ class ReposClient:
 
         Create a repository ruleset for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#create-an-organization-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rules#create-an-organization-repository-ruleset
         """
 
         from ..models import (
@@ -1607,9 +1607,9 @@ class ReposClient:
         GET /orgs/{org}/rulesets/rule-suites
 
         Lists suites of rule evaluations at the organization level.
-        For more information, see "[Managing rulesets for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-rulesets-for-repositories-in-your-organization#viewing-insights-for-rulesets)."
+        For more information, see "[Managing rulesets for repositories in your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-organization-settings/managing-rulesets-for-repositories-in-your-organization#viewing-insights-for-rulesets)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rule-suites#list-organization-rule-suites
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rule-suites#list-organization-rule-suites
         """
 
         from ..models import BasicError, RuleSuitesItems
@@ -1660,9 +1660,9 @@ class ReposClient:
         GET /orgs/{org}/rulesets/rule-suites
 
         Lists suites of rule evaluations at the organization level.
-        For more information, see "[Managing rulesets for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-rulesets-for-repositories-in-your-organization#viewing-insights-for-rulesets)."
+        For more information, see "[Managing rulesets for repositories in your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-organization-settings/managing-rulesets-for-repositories-in-your-organization#viewing-insights-for-rulesets)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rule-suites#list-organization-rule-suites
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rule-suites#list-organization-rule-suites
         """
 
         from ..models import BasicError, RuleSuitesItems
@@ -1707,9 +1707,9 @@ class ReposClient:
         GET /orgs/{org}/rulesets/rule-suites/{rule_suite_id}
 
         Gets information about a suite of rule evaluations from within an organization.
-        For more information, see "[Managing rulesets for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-rulesets-for-repositories-in-your-organization#viewing-insights-for-rulesets)."
+        For more information, see "[Managing rulesets for repositories in your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-organization-settings/managing-rulesets-for-repositories-in-your-organization#viewing-insights-for-rulesets)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rule-suites#get-an-organization-rule-suite
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rule-suites#get-an-organization-rule-suite
         """
 
         from ..models import BasicError, RuleSuite
@@ -1743,9 +1743,9 @@ class ReposClient:
         GET /orgs/{org}/rulesets/rule-suites/{rule_suite_id}
 
         Gets information about a suite of rule evaluations from within an organization.
-        For more information, see "[Managing rulesets for repositories in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/managing-rulesets-for-repositories-in-your-organization#viewing-insights-for-rulesets)."
+        For more information, see "[Managing rulesets for repositories in your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-organization-settings/managing-rulesets-for-repositories-in-your-organization#viewing-insights-for-rulesets)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rule-suites#get-an-organization-rule-suite
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rule-suites#get-an-organization-rule-suite
         """
 
         from ..models import BasicError, RuleSuite
@@ -1783,7 +1783,7 @@ class ReposClient:
         **Note:** To prevent leaking sensitive information, the `bypass_actors` property is only returned if the user
         making the API request has write access to the ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-an-organization-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rules#get-an-organization-repository-ruleset
         """
 
         from ..models import BasicError, RepositoryRuleset
@@ -1821,7 +1821,7 @@ class ReposClient:
         **Note:** To prevent leaking sensitive information, the `bypass_actors` property is only returned if the user
         making the API request has write access to the ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-an-organization-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rules#get-an-organization-repository-ruleset
         """
 
         from ..models import BasicError, RepositoryRuleset
@@ -1918,7 +1918,7 @@ class ReposClient:
 
         Update a ruleset for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#update-an-organization-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rules#update-an-organization-repository-ruleset
         """
 
         from ..models import (
@@ -2031,7 +2031,7 @@ class ReposClient:
 
         Update a ruleset for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#update-an-organization-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rules#update-an-organization-repository-ruleset
         """
 
         from ..models import (
@@ -2082,7 +2082,7 @@ class ReposClient:
 
         Delete a ruleset for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#delete-an-organization-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rules#delete-an-organization-repository-ruleset
         """
 
         from ..models import BasicError
@@ -2116,7 +2116,7 @@ class ReposClient:
 
         Delete a ruleset for an organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#delete-an-organization-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/orgs/rules#delete-an-organization-repository-ruleset
         """
 
         from ..models import BasicError
@@ -2151,10 +2151,10 @@ class ReposClient:
         The `parent` and `source` objects are present when the repository is a fork. `parent` is the repository this repository was forked from, `source` is the ultimate source for the network.
 
         > [!NOTE]
-        > - In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+        > - In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
         > - To view merge-related settings, you must have the `contents:read` and `contents:write` permissions.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#get-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#get-a-repository
         """
 
         from ..models import BasicError, FullRepository
@@ -2190,10 +2190,10 @@ class ReposClient:
         The `parent` and `source` objects are present when the repository is a fork. `parent` is the repository this repository was forked from, `source` is the ultimate source for the network.
 
         > [!NOTE]
-        > - In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+        > - In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
         > - To view merge-related settings, you must have the `contents:read` and `contents:write` permissions.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#get-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#get-a-repository
         """
 
         from ..models import BasicError, FullRepository
@@ -2233,7 +2233,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `delete_repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#delete-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#delete-a-repository
         """
 
         from ..models import BasicError, ReposOwnerRepoDeleteResponse403
@@ -2273,7 +2273,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `delete_repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#delete-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#delete-a-repository
         """
 
         from ..models import BasicError, ReposOwnerRepoDeleteResponse403
@@ -2361,9 +2361,9 @@ class ReposClient:
 
         PATCH /repos/{owner}/{repo}
 
-        **Note**: To edit a repository's topics, use the [Replace all repository topics](https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#replace-all-repository-topics) endpoint.
+        **Note**: To edit a repository's topics, use the [Replace all repository topics](https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#replace-all-repository-topics) endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#update-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#update-a-repository
         """
 
         from ..models import (
@@ -2467,9 +2467,9 @@ class ReposClient:
 
         PATCH /repos/{owner}/{repo}
 
-        **Note**: To edit a repository's topics, use the [Replace all repository topics](https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#replace-all-repository-topics) endpoint.
+        **Note**: To edit a repository's topics, use the [Replace all repository topics](https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#replace-all-repository-topics) endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#update-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#update-a-repository
         """
 
         from ..models import (
@@ -2540,9 +2540,9 @@ class ReposClient:
         Lists a detailed history of changes to a repository, such as pushes, merges, force pushes, and branch changes, and associates these changes with commits and users.
 
         For more information about viewing repository activity,
-        see "[Viewing activity and data for your repository](https://docs.github.com/enterprise-cloud@latest//repositories/viewing-activity-and-data-for-your-repository)."
+        see "[Viewing activity and data for your repository](https://docs.github.com/enterprise-cloud@latest/repositories/viewing-activity-and-data-for-your-repository)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-activities
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-repository-activities
         """
 
         from ..models import Activity, ValidationErrorSimple
@@ -2608,9 +2608,9 @@ class ReposClient:
         Lists a detailed history of changes to a repository, such as pushes, merges, force pushes, and branch changes, and associates these changes with commits and users.
 
         For more information about viewing repository activity,
-        see "[Viewing activity and data for your repository](https://docs.github.com/enterprise-cloud@latest//repositories/viewing-activity-and-data-for-your-repository)."
+        see "[Viewing activity and data for your repository](https://docs.github.com/enterprise-cloud@latest/repositories/viewing-activity-and-data-for-your-repository)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-activities
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-repository-activities
         """
 
         from ..models import Activity, ValidationErrorSimple
@@ -2692,9 +2692,9 @@ class ReposClient:
 
         The authenticated user must have write permission to the repository and, if using a fine-grained access token, the `attestations:write` permission is required.
 
-        Artifact attestations are meant to be created using the [attest action](https://github.com/actions/attest). For more information, see our guide on [using artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
+        Artifact attestations are meant to be created using the [attest action](https://github.com/actions/attest). For more information, see our guide on [using artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/attestations#create-an-attestation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/attestations#create-an-attestation
         """
 
         from ..models import (
@@ -2780,9 +2780,9 @@ class ReposClient:
 
         The authenticated user must have write permission to the repository and, if using a fine-grained access token, the `attestations:write` permission is required.
 
-        Artifact attestations are meant to be created using the [attest action](https://github.com/actions/attest). For more information, see our guide on [using artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
+        Artifact attestations are meant to be created using the [attest action](https://github.com/actions/attest). For more information, see our guide on [using artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/attestations#create-an-attestation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/attestations#create-an-attestation
         """
 
         from ..models import (
@@ -2842,9 +2842,9 @@ class ReposClient:
 
         The authenticated user making the request must have read access to the repository. In addition, when using a fine-grained access token the `attestations:read` permission is required.
 
-        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
+        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/attestations#list-attestations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/attestations#list-attestations
         """
 
         from ..models import ReposOwnerRepoAttestationsSubjectDigestGetResponse200
@@ -2893,9 +2893,9 @@ class ReposClient:
 
         The authenticated user making the request must have read access to the repository. In addition, when using a fine-grained access token the `attestations:read` permission is required.
 
-        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
+        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/attestations#list-attestations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/attestations#list-attestations
         """
 
         from ..models import ReposOwnerRepoAttestationsSubjectDigestGetResponse200
@@ -2936,7 +2936,7 @@ class ReposClient:
 
         Information about autolinks are only available to repository administrators.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/autolinks#get-all-autolinks-of-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/autolinks#get-all-autolinks-of-a-repository
         """
 
         from ..models import Autolink
@@ -2969,7 +2969,7 @@ class ReposClient:
 
         Information about autolinks are only available to repository administrators.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/autolinks#get-all-autolinks-of-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/autolinks#get-all-autolinks-of-a-repository
         """
 
         from ..models import Autolink
@@ -3027,7 +3027,7 @@ class ReposClient:
 
         Users with admin access to the repository can create an autolink.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/autolinks#create-an-autolink-reference-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/autolinks#create-an-autolink-reference-for-a-repository
         """
 
         from ..models import Autolink, ReposOwnerRepoAutolinksPostBody, ValidationError
@@ -3098,7 +3098,7 @@ class ReposClient:
 
         Users with admin access to the repository can create an autolink.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/autolinks#create-an-autolink-reference-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/autolinks#create-an-autolink-reference-for-a-repository
         """
 
         from ..models import Autolink, ReposOwnerRepoAutolinksPostBody, ValidationError
@@ -3145,7 +3145,7 @@ class ReposClient:
 
         Information about autolinks are only available to repository administrators.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/autolinks#get-an-autolink-reference-of-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/autolinks#get-an-autolink-reference-of-a-repository
         """
 
         from ..models import Autolink, BasicError
@@ -3182,7 +3182,7 @@ class ReposClient:
 
         Information about autolinks are only available to repository administrators.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/autolinks#get-an-autolink-reference-of-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/autolinks#get-an-autolink-reference-of-a-repository
         """
 
         from ..models import Autolink, BasicError
@@ -3219,7 +3219,7 @@ class ReposClient:
 
         Information about autolinks are only available to repository administrators.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/autolinks#delete-an-autolink-reference-from-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/autolinks#delete-an-autolink-reference-from-a-repository
         """
 
         from ..models import BasicError
@@ -3255,7 +3255,7 @@ class ReposClient:
 
         Information about autolinks are only available to repository administrators.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/autolinks#delete-an-autolink-reference-from-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/autolinks#delete-an-autolink-reference-from-a-repository
         """
 
         from ..models import BasicError
@@ -3288,9 +3288,9 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/automated-security-fixes
 
-        Shows whether Dependabot security updates are enabled, disabled or paused for a repository. The authenticated user must have admin read access to the repository. For more information, see "[Configuring Dependabot security updates](https://docs.github.com/enterprise-cloud@latest//articles/configuring-automated-security-fixes)".
+        Shows whether Dependabot security updates are enabled, disabled or paused for a repository. The authenticated user must have admin read access to the repository. For more information, see "[Configuring Dependabot security updates](https://docs.github.com/enterprise-cloud@latest/articles/configuring-automated-security-fixes)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-dependabot-security-updates-are-enabled-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#check-if-dependabot-security-updates-are-enabled-for-a-repository
         """
 
         from ..models import CheckAutomatedSecurityFixes
@@ -3322,9 +3322,9 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/automated-security-fixes
 
-        Shows whether Dependabot security updates are enabled, disabled or paused for a repository. The authenticated user must have admin read access to the repository. For more information, see "[Configuring Dependabot security updates](https://docs.github.com/enterprise-cloud@latest//articles/configuring-automated-security-fixes)".
+        Shows whether Dependabot security updates are enabled, disabled or paused for a repository. The authenticated user must have admin read access to the repository. For more information, see "[Configuring Dependabot security updates](https://docs.github.com/enterprise-cloud@latest/articles/configuring-automated-security-fixes)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-dependabot-security-updates-are-enabled-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#check-if-dependabot-security-updates-are-enabled-for-a-repository
         """
 
         from ..models import CheckAutomatedSecurityFixes
@@ -3354,9 +3354,9 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/automated-security-fixes
 
-        Enables Dependabot security updates for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring Dependabot security updates](https://docs.github.com/enterprise-cloud@latest//articles/configuring-automated-security-fixes)".
+        Enables Dependabot security updates for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring Dependabot security updates](https://docs.github.com/enterprise-cloud@latest/articles/configuring-automated-security-fixes)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-dependabot-security-updates
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#enable-dependabot-security-updates
         """
 
         url = f"/repos/{owner}/{repo}/automated-security-fixes"
@@ -3382,9 +3382,9 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/automated-security-fixes
 
-        Enables Dependabot security updates for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring Dependabot security updates](https://docs.github.com/enterprise-cloud@latest//articles/configuring-automated-security-fixes)".
+        Enables Dependabot security updates for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring Dependabot security updates](https://docs.github.com/enterprise-cloud@latest/articles/configuring-automated-security-fixes)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-dependabot-security-updates
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#enable-dependabot-security-updates
         """
 
         url = f"/repos/{owner}/{repo}/automated-security-fixes"
@@ -3410,9 +3410,9 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/automated-security-fixes
 
-        Disables Dependabot security updates for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring Dependabot security updates](https://docs.github.com/enterprise-cloud@latest//articles/configuring-automated-security-fixes)".
+        Disables Dependabot security updates for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring Dependabot security updates](https://docs.github.com/enterprise-cloud@latest/articles/configuring-automated-security-fixes)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-dependabot-security-updates
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#disable-dependabot-security-updates
         """
 
         url = f"/repos/{owner}/{repo}/automated-security-fixes"
@@ -3438,9 +3438,9 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/automated-security-fixes
 
-        Disables Dependabot security updates for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring Dependabot security updates](https://docs.github.com/enterprise-cloud@latest//articles/configuring-automated-security-fixes)".
+        Disables Dependabot security updates for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring Dependabot security updates](https://docs.github.com/enterprise-cloud@latest/articles/configuring-automated-security-fixes)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-dependabot-security-updates
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#disable-dependabot-security-updates
         """
 
         url = f"/repos/{owner}/{repo}/automated-security-fixes"
@@ -3469,7 +3469,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branches#list-branches
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branches#list-branches
         """
 
         from ..models import BasicError, ShortBranch
@@ -3511,7 +3511,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branches#list-branches
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branches#list-branches
         """
 
         from ..models import BasicError, ShortBranch
@@ -3551,7 +3551,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branches#get-a-branch
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branches#get-a-branch
         """
 
         from ..models import BasicError, BranchWithProtection
@@ -3584,7 +3584,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branches#get-a-branch
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branches#get-a-branch
         """
 
         from ..models import BasicError, BranchWithProtection
@@ -3617,9 +3617,9 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-branch-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-branch-protection
         """
 
         from ..models import BasicError, BranchProtection
@@ -3652,9 +3652,9 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-branch-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-branch-protection
         """
 
         from ..models import BasicError, BranchProtection
@@ -3732,7 +3732,7 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Protecting a branch requires admin or owner permissions to the repository.
 
@@ -3742,7 +3742,7 @@ class ReposClient:
         > [!NOTE]
         > The list of users, apps, and teams in total is limited to 100 items.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#update-branch-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#update-branch-protection
         """
 
         from ..models import (
@@ -3839,7 +3839,7 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Protecting a branch requires admin or owner permissions to the repository.
 
@@ -3849,7 +3849,7 @@ class ReposClient:
         > [!NOTE]
         > The list of users, apps, and teams in total is limited to 100 items.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#update-branch-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#update-branch-protection
         """
 
         from ..models import (
@@ -3901,9 +3901,9 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-branch-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#delete-branch-protection
         """
 
         from ..models import BasicError
@@ -3935,9 +3935,9 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-branch-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#delete-branch-protection
         """
 
         from ..models import BasicError
@@ -3971,9 +3971,9 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-admin-branch-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-admin-branch-protection
         """
 
         from ..models import ProtectedBranchAdminEnforced
@@ -4005,9 +4005,9 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-admin-branch-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-admin-branch-protection
         """
 
         from ..models import ProtectedBranchAdminEnforced
@@ -4039,11 +4039,11 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Adding admin enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-admin-branch-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#set-admin-branch-protection
         """
 
         from ..models import ProtectedBranchAdminEnforced
@@ -4075,11 +4075,11 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Adding admin enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-admin-branch-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#set-admin-branch-protection
         """
 
         from ..models import ProtectedBranchAdminEnforced
@@ -4109,11 +4109,11 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Removing admin enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-admin-branch-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#delete-admin-branch-protection
         """
 
         from ..models import BasicError
@@ -4145,11 +4145,11 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Removing admin enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-admin-branch-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#delete-admin-branch-protection
         """
 
         from ..models import BasicError
@@ -4184,9 +4184,9 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-pull-request-review-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-pull-request-review-protection
         """
 
         from ..models import ProtectedBranchPullRequestReview
@@ -4219,9 +4219,9 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-pull-request-review-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-pull-request-review-protection
         """
 
         from ..models import ProtectedBranchPullRequestReview
@@ -4251,9 +4251,9 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-pull-request-review-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#delete-pull-request-review-protection
         """
 
         from ..models import BasicError
@@ -4285,9 +4285,9 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-pull-request-review-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#delete-pull-request-review-protection
         """
 
         from ..models import BasicError
@@ -4368,14 +4368,14 @@ class ReposClient:
 
         PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Updating pull request review enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
 
         > [!NOTE]
         > Passing new arrays of `users` and `teams` replaces their previous values.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#update-pull-request-review-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#update-pull-request-review-protection
         """
 
         from ..models import (
@@ -4474,14 +4474,14 @@ class ReposClient:
 
         PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Updating pull request review enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
 
         > [!NOTE]
         > Passing new arrays of `users` and `teams` replaces their previous values.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#update-pull-request-review-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#update-pull-request-review-protection
         """
 
         from ..models import (
@@ -4533,14 +4533,14 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        When authenticated with admin or owner permissions to the repository, you can use this endpoint to check whether a branch requires signed commits. An enabled status of `true` indicates you must sign commits on this branch. For more information, see [Signing commits with GPG](https://docs.github.com/enterprise-cloud@latest//articles/signing-commits-with-gpg) in GitHub Help.
+        When authenticated with admin or owner permissions to the repository, you can use this endpoint to check whether a branch requires signed commits. An enabled status of `true` indicates you must sign commits on this branch. For more information, see [Signing commits with GPG](https://docs.github.com/enterprise-cloud@latest/articles/signing-commits-with-gpg) in GitHub Help.
 
         > [!NOTE]
         > You must enable branch protection to require signed commits.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-commit-signature-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-commit-signature-protection
         """
 
         from ..models import BasicError, ProtectedBranchAdminEnforced
@@ -4575,14 +4575,14 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        When authenticated with admin or owner permissions to the repository, you can use this endpoint to check whether a branch requires signed commits. An enabled status of `true` indicates you must sign commits on this branch. For more information, see [Signing commits with GPG](https://docs.github.com/enterprise-cloud@latest//articles/signing-commits-with-gpg) in GitHub Help.
+        When authenticated with admin or owner permissions to the repository, you can use this endpoint to check whether a branch requires signed commits. An enabled status of `true` indicates you must sign commits on this branch. For more information, see [Signing commits with GPG](https://docs.github.com/enterprise-cloud@latest/articles/signing-commits-with-gpg) in GitHub Help.
 
         > [!NOTE]
         > You must enable branch protection to require signed commits.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-commit-signature-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-commit-signature-protection
         """
 
         from ..models import BasicError, ProtectedBranchAdminEnforced
@@ -4617,11 +4617,11 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         When authenticated with admin or owner permissions to the repository, you can use this endpoint to require signed commits on a branch. You must enable branch protection to require signed commits.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#create-commit-signature-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#create-commit-signature-protection
         """
 
         from ..models import BasicError, ProtectedBranchAdminEnforced
@@ -4656,11 +4656,11 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         When authenticated with admin or owner permissions to the repository, you can use this endpoint to require signed commits on a branch. You must enable branch protection to require signed commits.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#create-commit-signature-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#create-commit-signature-protection
         """
 
         from ..models import BasicError, ProtectedBranchAdminEnforced
@@ -4693,11 +4693,11 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         When authenticated with admin or owner permissions to the repository, you can use this endpoint to disable required signed commits on a branch. You must enable branch protection to require signed commits.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-commit-signature-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#delete-commit-signature-protection
         """
 
         from ..models import BasicError
@@ -4729,11 +4729,11 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         When authenticated with admin or owner permissions to the repository, you can use this endpoint to disable required signed commits on a branch. You must enable branch protection to require signed commits.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-commit-signature-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#delete-commit-signature-protection
         """
 
         from ..models import BasicError
@@ -4765,9 +4765,9 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-status-checks-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-status-checks-protection
         """
 
         from ..models import BasicError, StatusCheckPolicy
@@ -4802,9 +4802,9 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-status-checks-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-status-checks-protection
         """
 
         from ..models import BasicError, StatusCheckPolicy
@@ -4839,9 +4839,9 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-status-check-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#remove-status-check-protection
         """
 
         url = (
@@ -4870,9 +4870,9 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-status-check-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#remove-status-check-protection
         """
 
         url = (
@@ -4938,11 +4938,11 @@ class ReposClient:
 
         PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Updating required status checks requires admin or owner permissions to the repository and branch protection to be enabled.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#update-status-check-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#update-status-check-protection
         """
 
         from ..models import (
@@ -5033,11 +5033,11 @@ class ReposClient:
 
         PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Updating required status checks requires admin or owner permissions to the repository and branch protection to be enabled.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#update-status-check-protection
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#update-status-check-protection
         """
 
         from ..models import (
@@ -5091,9 +5091,9 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-all-status-check-contexts
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-all-status-check-contexts
         """
 
         from ..models import BasicError
@@ -5126,9 +5126,9 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-all-status-check-contexts
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-all-status-check-contexts
         """
 
         from ..models import BasicError
@@ -5198,9 +5198,9 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-status-check-contexts
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#set-status-check-contexts
         """
 
         from typing import Union
@@ -5293,9 +5293,9 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-status-check-contexts
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#set-status-check-contexts
         """
 
         from typing import Union
@@ -5388,9 +5388,9 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#add-status-check-contexts
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#add-status-check-contexts
         """
 
         from typing import Union
@@ -5484,9 +5484,9 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#add-status-check-contexts
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#add-status-check-contexts
         """
 
         from typing import Union
@@ -5580,9 +5580,9 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-status-check-contexts
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#remove-status-check-contexts
         """
 
         from typing import Union
@@ -5675,9 +5675,9 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-status-check-contexts
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#remove-status-check-contexts
         """
 
         from typing import Union
@@ -5733,14 +5733,14 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Lists who has access to this protected branch.
 
         > [!NOTE]
         > Users, apps, and teams `restrictions` are only available for organization-owned repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-access-restrictions
         """
 
         from ..models import BasicError, BranchRestrictionPolicy
@@ -5773,14 +5773,14 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Lists who has access to this protected branch.
 
         > [!NOTE]
         > Users, apps, and teams `restrictions` are only available for organization-owned repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-access-restrictions
         """
 
         from ..models import BasicError, BranchRestrictionPolicy
@@ -5813,11 +5813,11 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Disables the ability to restrict who can push to this branch.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#delete-access-restrictions
         """
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"
@@ -5844,11 +5844,11 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Disables the ability to restrict who can push to this branch.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#delete-access-restrictions
         """
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"
@@ -5877,11 +5877,11 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Lists the GitHub Apps that have push access to this branch. Only GitHub Apps that are installed on the repository and that have been granted write access to the repository contents can be added as authorized actors on a protected branch.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch
         """
 
         from typing import Union
@@ -5918,11 +5918,11 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Lists the GitHub Apps that have push access to this branch. Only GitHub Apps that are installed on the repository and that have been granted write access to the repository contents can be added as authorized actors on a protected branch.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch
         """
 
         from typing import Union
@@ -5992,11 +5992,11 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Replaces the list of apps that have push access to this branch. This removes all apps that previously had push access and grants push access to the new list of apps. Only GitHub Apps that are installed on the repository and that have been granted write access to the repository contents can be added as authorized actors on a protected branch.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-app-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#set-app-access-restrictions
         """
 
         from typing import Union
@@ -6082,11 +6082,11 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Replaces the list of apps that have push access to this branch. This removes all apps that previously had push access and grants push access to the new list of apps. Only GitHub Apps that are installed on the repository and that have been granted write access to the repository contents can be added as authorized actors on a protected branch.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-app-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#set-app-access-restrictions
         """
 
         from typing import Union
@@ -6172,11 +6172,11 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Grants the specified apps push access for this branch. Only GitHub Apps that are installed on the repository and that have been granted write access to the repository contents can be added as authorized actors on a protected branch.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#add-app-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#add-app-access-restrictions
         """
 
         from typing import Union
@@ -6262,11 +6262,11 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Grants the specified apps push access for this branch. Only GitHub Apps that are installed on the repository and that have been granted write access to the repository contents can be added as authorized actors on a protected branch.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#add-app-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#add-app-access-restrictions
         """
 
         from typing import Union
@@ -6352,11 +6352,11 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Removes the ability of an app to push to this branch. Only GitHub Apps that are installed on the repository and that have been granted write access to the repository contents can be added as authorized actors on a protected branch.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-app-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#remove-app-access-restrictions
         """
 
         from typing import Union
@@ -6442,11 +6442,11 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Removes the ability of an app to push to this branch. Only GitHub Apps that are installed on the repository and that have been granted write access to the repository contents can be added as authorized actors on a protected branch.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-app-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#remove-app-access-restrictions
         """
 
         from typing import Union
@@ -6497,11 +6497,11 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Lists the teams who have push access to this branch. The list includes child teams.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch
         """
 
         from ..models import BasicError, Team
@@ -6534,11 +6534,11 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Lists the teams who have push access to this branch. The list includes child teams.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch
         """
 
         from ..models import BasicError, Team
@@ -6608,11 +6608,11 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Replaces the list of teams that have push access to this branch. This removes all teams that previously had push access and grants push access to the new list of teams. Team restrictions include child teams.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-team-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#set-team-access-restrictions
         """
 
         from typing import Union
@@ -6704,11 +6704,11 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Replaces the list of teams that have push access to this branch. This removes all teams that previously had push access and grants push access to the new list of teams. Team restrictions include child teams.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-team-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#set-team-access-restrictions
         """
 
         from typing import Union
@@ -6800,11 +6800,11 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Grants the specified teams push access for this branch. You can also give push access to child teams.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#add-team-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#add-team-access-restrictions
         """
 
         from typing import Union
@@ -6896,11 +6896,11 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Grants the specified teams push access for this branch. You can also give push access to child teams.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#add-team-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#add-team-access-restrictions
         """
 
         from typing import Union
@@ -6992,11 +6992,11 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Removes the ability of a team to push to this branch. You can also remove push access for child teams.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-team-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#remove-team-access-restrictions
         """
 
         from typing import Union
@@ -7088,11 +7088,11 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Removes the ability of a team to push to this branch. You can also remove push access for child teams.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-team-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#remove-team-access-restrictions
         """
 
         from typing import Union
@@ -7147,11 +7147,11 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Lists the people who have push access to this branch.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-users-with-access-to-the-protected-branch
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-users-with-access-to-the-protected-branch
         """
 
         from ..models import BasicError, SimpleUser
@@ -7184,11 +7184,11 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Lists the people who have push access to this branch.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-users-with-access-to-the-protected-branch
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#get-users-with-access-to-the-protected-branch
         """
 
         from ..models import BasicError, SimpleUser
@@ -7250,7 +7250,7 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Replaces the list of people that have push access to this branch. This removes all people that previously had push access and grants push access to the new list of people.
 
@@ -7258,7 +7258,7 @@ class ReposClient:
         | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
         | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-user-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#set-user-access-restrictions
         """
 
         from ..models import (
@@ -7336,7 +7336,7 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Replaces the list of people that have push access to this branch. This removes all people that previously had push access and grants push access to the new list of people.
 
@@ -7344,7 +7344,7 @@ class ReposClient:
         | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
         | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-user-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#set-user-access-restrictions
         """
 
         from ..models import (
@@ -7422,7 +7422,7 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Grants the specified people push access for this branch.
 
@@ -7430,7 +7430,7 @@ class ReposClient:
         | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
         | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#add-user-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#add-user-access-restrictions
         """
 
         from ..models import (
@@ -7508,7 +7508,7 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Grants the specified people push access for this branch.
 
@@ -7516,7 +7516,7 @@ class ReposClient:
         | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
         | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#add-user-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#add-user-access-restrictions
         """
 
         from ..models import (
@@ -7594,7 +7594,7 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Removes the ability of a user to push to this branch.
 
@@ -7602,7 +7602,7 @@ class ReposClient:
         | ------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
         | `array` | Usernames of the people who should no longer have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-user-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#remove-user-access-restrictions
         """
 
         from ..models import (
@@ -7680,7 +7680,7 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Removes the ability of a user to push to this branch.
 
@@ -7688,7 +7688,7 @@ class ReposClient:
         | ------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
         | `array` | Usernames of the people who should no longer have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-user-access-restrictions
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branch-protection#remove-user-access-restrictions
         """
 
         from ..models import (
@@ -7767,13 +7767,13 @@ class ReposClient:
         Renames a branch in a repository.
 
         > [!NOTE]
-        > Although the API responds immediately, the branch rename process might take some extra time to complete in the background. You won't be able to push to the old branch name while the rename process is in progress. For more information, see "[Renaming a branch](https://docs.github.com/enterprise-cloud@latest//github/administering-a-repository/renaming-a-branch)".
+        > Although the API responds immediately, the branch rename process might take some extra time to complete in the background. You won't be able to push to the old branch name while the rename process is in progress. For more information, see "[Renaming a branch](https://docs.github.com/enterprise-cloud@latest/github/administering-a-repository/renaming-a-branch)".
 
         The authenticated user must have push access to the branch. If the branch is the default branch, the authenticated user must also have admin or owner permissions.
 
         In order to rename the default branch, fine-grained access tokens also need the `administration:write` repository permission.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branches#rename-a-branch
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branches#rename-a-branch
         """
 
         from ..models import (
@@ -7855,13 +7855,13 @@ class ReposClient:
         Renames a branch in a repository.
 
         > [!NOTE]
-        > Although the API responds immediately, the branch rename process might take some extra time to complete in the background. You won't be able to push to the old branch name while the rename process is in progress. For more information, see "[Renaming a branch](https://docs.github.com/enterprise-cloud@latest//github/administering-a-repository/renaming-a-branch)".
+        > Although the API responds immediately, the branch rename process might take some extra time to complete in the background. You won't be able to push to the old branch name while the rename process is in progress. For more information, see "[Renaming a branch](https://docs.github.com/enterprise-cloud@latest/github/administering-a-repository/renaming-a-branch)".
 
         The authenticated user must have push access to the branch. If the branch is the default branch, the authenticated user must also have admin or owner permissions.
 
         In order to rename the default branch, fine-grained access tokens also need the `administration:write` repository permission.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branches#rename-a-branch
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branches#rename-a-branch
         """
 
         from ..models import (
@@ -7933,7 +7933,7 @@ class ReposClient:
 
         Lists the requests made by users of a repository to bypass push protection rules
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/bypass-requests#list-repository-push-rule-bypass-requests
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/bypass-requests#list-repository-push-rule-bypass-requests
         """
 
         from ..models import BasicError, PushRuleBypassRequest
@@ -7997,7 +7997,7 @@ class ReposClient:
 
         Lists the requests made by users of a repository to bypass push protection rules
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/bypass-requests#list-repository-push-rule-bypass-requests
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/bypass-requests#list-repository-push-rule-bypass-requests
         """
 
         from ..models import BasicError, PushRuleBypassRequest
@@ -8043,7 +8043,7 @@ class ReposClient:
 
         Get information about a request to bypass push protection rules for a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/bypass-requests#get-a-repository-push-bypass-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/bypass-requests#get-a-repository-push-bypass-request
         """
 
         from ..models import BasicError, PushRuleBypassRequest
@@ -8081,7 +8081,7 @@ class ReposClient:
 
         Get information about a request to bypass push protection rules for a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/bypass-requests#get-a-repository-push-bypass-request
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/bypass-requests#get-a-repository-push-bypass-request
         """
 
         from ..models import BasicError, PushRuleBypassRequest
@@ -8121,9 +8121,9 @@ class ReposClient:
         file.
 
         For more information about the correct CODEOWNERS syntax,
-        see "[About code owners](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)."
+        see "[About code owners](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-codeowners-errors
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-codeowners-errors
         """
 
         from ..models import CodeownersErrors
@@ -8163,9 +8163,9 @@ class ReposClient:
         file.
 
         For more information about the correct CODEOWNERS syntax,
-        see "[About code owners](https://docs.github.com/enterprise-cloud@latest//repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)."
+        see "[About code owners](https://docs.github.com/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-codeowners-errors
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-codeowners-errors
         """
 
         from ..models import CodeownersErrors
@@ -8215,7 +8215,7 @@ class ReposClient:
         The authenticated user must have write, maintain, or admin privileges on the repository to use this endpoint. For organization-owned repositories, the authenticated user needs to be a member of the organization.
         OAuth app tokens and personal access tokens (classic) need the `read:org` and `repo` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#list-repository-collaborators
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/collaborators#list-repository-collaborators
         """
 
         from ..models import BasicError, Collaborator
@@ -8270,7 +8270,7 @@ class ReposClient:
         The authenticated user must have write, maintain, or admin privileges on the repository to use this endpoint. For organization-owned repositories, the authenticated user needs to be a member of the organization.
         OAuth app tokens and personal access tokens (classic) need the `read:org` and `repo` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#list-repository-collaborators
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/collaborators#list-repository-collaborators
         """
 
         from ..models import BasicError, Collaborator
@@ -8319,7 +8319,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` and `repo` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#check-if-a-user-is-a-repository-collaborator
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/collaborators#check-if-a-user-is-a-repository-collaborator
         """
 
         url = f"/repos/{owner}/{repo}/collaborators/{username}"
@@ -8355,7 +8355,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` and `repo` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#check-if-a-user-is-a-repository-collaborator
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/collaborators#check-if-a-user-is-a-repository-collaborator
         """
 
         url = f"/repos/{owner}/{repo}/collaborators/{username}"
@@ -8410,21 +8410,21 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/collaborators/{username}
 
-        Add a user to a repository with a specified level of access. If the repository is owned by an organization, this API does not add the user to the organization - a user that has repository access without being an organization member is called an "outside collaborator" (if they are not an Enterprise Managed User) or a "repository collaborator" if they are an Enterprise Managed User. These users are exempt from some organization policies - see "[Adding outside collaborators to repositories](https://docs.github.com/enterprise-cloud@latest//organizations/managing-user-access-to-your-organizations-repositories/managing-outside-collaborators/adding-outside-collaborators-to-repositories-in-your-organization)" to learn more about these collaborator types.
+        Add a user to a repository with a specified level of access. If the repository is owned by an organization, this API does not add the user to the organization - a user that has repository access without being an organization member is called an "outside collaborator" (if they are not an Enterprise Managed User) or a "repository collaborator" if they are an Enterprise Managed User. These users are exempt from some organization policies - see "[Adding outside collaborators to repositories](https://docs.github.com/enterprise-cloud@latest/organizations/managing-user-access-to-your-organizations-repositories/managing-outside-collaborators/adding-outside-collaborators-to-repositories-in-your-organization)" to learn more about these collaborator types.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications).
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications).
 
-        Adding an outside collaborator may be restricted by enterprise and organization administrators. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-cloud@latest//admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#enforcing-a-policy-for-inviting-outside-collaborators-to-repositories)" and "[Setting permissions for adding outside collaborators](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/setting-permissions-for-adding-outside-collaborators)" for organization settings.
+        Adding an outside collaborator may be restricted by enterprise and organization administrators. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-cloud@latest/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#enforcing-a-policy-for-inviting-outside-collaborators-to-repositories)" and "[Setting permissions for adding outside collaborators](https://docs.github.com/enterprise-cloud@latest/organizations/managing-organization-settings/setting-permissions-for-adding-outside-collaborators)" for organization settings.
 
-        For more information on permission levels, see "[Repository permission levels for an organization](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)". There are restrictions on which permissions can be granted to organization members when an organization base role is in place. In this case, the role being given must be equal to or higher than the org base permission. Otherwise, the request will fail with:
+        For more information on permission levels, see "[Repository permission levels for an organization](https://docs.github.com/enterprise-cloud@latest/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)". There are restrictions on which permissions can be granted to organization members when an organization base role is in place. In this case, the role being given must be equal to or higher than the org base permission. Otherwise, the request will fail with:
 
         ```
         Cannot assign {member} permission of {role name}
         ```
 
-        Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+        Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#http-method)."
 
-        The invitee will receive a notification that they have been invited to the repository, which they must accept or decline. They may do this via the notifications page, the email they receive, or by using the [API](https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations).
+        The invitee will receive a notification that they have been invited to the repository, which they must accept or decline. They may do this via the notifications page, the email they receive, or by using the [API](https://docs.github.com/enterprise-cloud@latest/rest/collaborators/invitations).
 
         For Enterprise Managed Users, this endpoint does not send invitations - these users are automatically added to organizations and repositories. Enterprise Managed Users can only be added to organizations and repositories within their enterprise.
 
@@ -8436,7 +8436,7 @@ class ReposClient:
 
         You are limited to sending 50 invitations to a repository per 24 hour period. Note there is no limit if you are inviting organization members to an organization repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#add-a-repository-collaborator
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/collaborators#add-a-repository-collaborator
         """
 
         from ..models import (
@@ -8514,21 +8514,21 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/collaborators/{username}
 
-        Add a user to a repository with a specified level of access. If the repository is owned by an organization, this API does not add the user to the organization - a user that has repository access without being an organization member is called an "outside collaborator" (if they are not an Enterprise Managed User) or a "repository collaborator" if they are an Enterprise Managed User. These users are exempt from some organization policies - see "[Adding outside collaborators to repositories](https://docs.github.com/enterprise-cloud@latest//organizations/managing-user-access-to-your-organizations-repositories/managing-outside-collaborators/adding-outside-collaborators-to-repositories-in-your-organization)" to learn more about these collaborator types.
+        Add a user to a repository with a specified level of access. If the repository is owned by an organization, this API does not add the user to the organization - a user that has repository access without being an organization member is called an "outside collaborator" (if they are not an Enterprise Managed User) or a "repository collaborator" if they are an Enterprise Managed User. These users are exempt from some organization policies - see "[Adding outside collaborators to repositories](https://docs.github.com/enterprise-cloud@latest/organizations/managing-user-access-to-your-organizations-repositories/managing-outside-collaborators/adding-outside-collaborators-to-repositories-in-your-organization)" to learn more about these collaborator types.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications).
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications).
 
-        Adding an outside collaborator may be restricted by enterprise and organization administrators. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-cloud@latest//admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#enforcing-a-policy-for-inviting-outside-collaborators-to-repositories)" and "[Setting permissions for adding outside collaborators](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/setting-permissions-for-adding-outside-collaborators)" for organization settings.
+        Adding an outside collaborator may be restricted by enterprise and organization administrators. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-cloud@latest/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#enforcing-a-policy-for-inviting-outside-collaborators-to-repositories)" and "[Setting permissions for adding outside collaborators](https://docs.github.com/enterprise-cloud@latest/organizations/managing-organization-settings/setting-permissions-for-adding-outside-collaborators)" for organization settings.
 
-        For more information on permission levels, see "[Repository permission levels for an organization](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)". There are restrictions on which permissions can be granted to organization members when an organization base role is in place. In this case, the role being given must be equal to or higher than the org base permission. Otherwise, the request will fail with:
+        For more information on permission levels, see "[Repository permission levels for an organization](https://docs.github.com/enterprise-cloud@latest/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)". There are restrictions on which permissions can be granted to organization members when an organization base role is in place. In this case, the role being given must be equal to or higher than the org base permission. Otherwise, the request will fail with:
 
         ```
         Cannot assign {member} permission of {role name}
         ```
 
-        Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+        Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest/rest/guides/getting-started-with-the-rest-api#http-method)."
 
-        The invitee will receive a notification that they have been invited to the repository, which they must accept or decline. They may do this via the notifications page, the email they receive, or by using the [API](https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations).
+        The invitee will receive a notification that they have been invited to the repository, which they must accept or decline. They may do this via the notifications page, the email they receive, or by using the [API](https://docs.github.com/enterprise-cloud@latest/rest/collaborators/invitations).
 
         For Enterprise Managed Users, this endpoint does not send invitations - these users are automatically added to organizations and repositories. Enterprise Managed Users can only be added to organizations and repositories within their enterprise.
 
@@ -8540,7 +8540,7 @@ class ReposClient:
 
         You are limited to sending 50 invitations to a repository per 24 hour period. Note there is no limit if you are inviting organization members to an organization repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#add-a-repository-collaborator
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/collaborators#add-a-repository-collaborator
         """
 
         from ..models import (
@@ -8612,9 +8612,9 @@ class ReposClient:
 
         Although the API responds immediately, the additional permission updates might take some extra time to complete in the background.
 
-        For more information on fork permissions, see "[About permissions and visibility of forks](https://docs.github.com/enterprise-cloud@latest//pull-requests/collaborating-with-pull-requests/working-with-forks/about-permissions-and-visibility-of-forks)".
+        For more information on fork permissions, see "[About permissions and visibility of forks](https://docs.github.com/enterprise-cloud@latest/pull-requests/collaborating-with-pull-requests/working-with-forks/about-permissions-and-visibility-of-forks)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#remove-a-repository-collaborator
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/collaborators#remove-a-repository-collaborator
         """
 
         from ..models import BasicError, ValidationError
@@ -8668,9 +8668,9 @@ class ReposClient:
 
         Although the API responds immediately, the additional permission updates might take some extra time to complete in the background.
 
-        For more information on fork permissions, see "[About permissions and visibility of forks](https://docs.github.com/enterprise-cloud@latest//pull-requests/collaborating-with-pull-requests/working-with-forks/about-permissions-and-visibility-of-forks)".
+        For more information on fork permissions, see "[About permissions and visibility of forks](https://docs.github.com/enterprise-cloud@latest/pull-requests/collaborating-with-pull-requests/working-with-forks/about-permissions-and-visibility-of-forks)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#remove-a-repository-collaborator
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/collaborators#remove-a-repository-collaborator
         """
 
         from ..models import BasicError, ValidationError
@@ -8716,7 +8716,7 @@ class ReposClient:
         The calculated permissions are the highest role assigned to the collaborator after considering all sources of grants, including: repo, teams, organization, and enterprise.
         There is presently not a way to differentiate between an organization level grant and a repository level grant from this endpoint response.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#get-repository-permissions-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/collaborators#get-repository-permissions-for-a-user
         """
 
         from ..models import BasicError, RepositoryCollaboratorPermission
@@ -8762,7 +8762,7 @@ class ReposClient:
         The calculated permissions are the highest role assigned to the collaborator after considering all sources of grants, including: repo, teams, organization, and enterprise.
         There is presently not a way to differentiate between an organization level grant and a repository level grant from this endpoint response.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#get-repository-permissions-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/collaborators#get-repository-permissions-for-a-user
         """
 
         from ..models import BasicError, RepositoryCollaboratorPermission
@@ -8798,14 +8798,14 @@ class ReposClient:
 
         Lists the commit comments for a specified repository. Comments are ordered by ascending ID.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#list-commit-comments-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#list-commit-comments-for-a-repository
         """
 
         from ..models import CommitComment
@@ -8844,14 +8844,14 @@ class ReposClient:
 
         Lists the commit comments for a specified repository. Comments are ordered by ascending ID.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#list-commit-comments-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#list-commit-comments-for-a-repository
         """
 
         from ..models import CommitComment
@@ -8889,14 +8889,14 @@ class ReposClient:
 
         Gets a specified commit comment.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#get-a-commit-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#get-a-commit-comment
         """
 
         from ..models import BasicError, CommitComment
@@ -8931,14 +8931,14 @@ class ReposClient:
 
         Gets a specified commit comment.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#get-a-commit-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#get-a-commit-comment
         """
 
         from ..models import BasicError, CommitComment
@@ -8971,7 +8971,7 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/comments/{comment_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#delete-a-commit-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#delete-a-commit-comment
         """
 
         from ..models import BasicError
@@ -9003,7 +9003,7 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/comments/{comment_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#delete-a-commit-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#delete-a-commit-comment
         """
 
         from ..models import BasicError
@@ -9064,14 +9064,14 @@ class ReposClient:
 
         Updates the contents of a specified commit comment.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#update-a-commit-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#update-a-commit-comment
         """
 
         from ..models import (
@@ -9147,14 +9147,14 @@ class ReposClient:
 
         Updates the contents of a specified commit comment.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#update-a-commit-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#update-a-commit-comment
         """
 
         from ..models import (
@@ -9238,7 +9238,7 @@ class ReposClient:
         | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
         | `valid` | None of the above errors applied, so the signature is considered to be verified. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-commits
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/commits#list-commits
         """
 
         from ..models import BasicError, Commit
@@ -9323,7 +9323,7 @@ class ReposClient:
         | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
         | `valid` | None of the above errors applied, so the signature is considered to be verified. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-commits
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/commits#list-commits
         """
 
         from ..models import BasicError, Commit
@@ -9371,11 +9371,11 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Returns all branches where the given commit SHA is the HEAD, or latest commit for the branch.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-branches-for-head-commit
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/commits#list-branches-for-head-commit
         """
 
         from ..models import BasicError, BranchShort, ValidationError
@@ -9409,11 +9409,11 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
 
-        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+        Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 
         Returns all branches where the given commit SHA is the HEAD, or latest commit for the branch.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-branches-for-head-commit
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/commits#list-branches-for-head-commit
         """
 
         from ..models import BasicError, BranchShort, ValidationError
@@ -9451,14 +9451,14 @@ class ReposClient:
 
         Lists the comments for a specified commit.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#list-commit-comments
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#list-commit-comments
         """
 
         from ..models import CommitComment
@@ -9498,14 +9498,14 @@ class ReposClient:
 
         Lists the comments for a specified commit.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#list-commit-comments
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#list-commit-comments
         """
 
         from ..models import CommitComment
@@ -9573,16 +9573,16 @@ class ReposClient:
 
         Create a comment for a commit using its `:commit_sha`.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#create-a-commit-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#create-a-commit-comment
         """
 
         from ..models import (
@@ -9665,16 +9665,16 @@ class ReposClient:
 
         Create a comment for a commit using its `:commit_sha`.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
         - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
         - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
         - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#create-a-commit-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#create-a-commit-comment
         """
 
         from ..models import (
@@ -9731,7 +9731,7 @@ class ReposClient:
 
         To list the open or merged pull requests associated with a branch, you can set the `commit_sha` parameter to the branch name.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-pull-requests-associated-with-a-commit
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/commits#list-pull-requests-associated-with-a-commit
         """
 
         from ..models import BasicError, PullRequestSimple
@@ -9776,7 +9776,7 @@ class ReposClient:
 
         To list the open or merged pull requests associated with a branch, you can set the `commit_sha` parameter to the branch name.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-pull-requests-associated-with-a-commit
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/commits#list-pull-requests-associated-with-a-commit
         """
 
         from ..models import BasicError, PullRequestSimple
@@ -9822,7 +9822,7 @@ class ReposClient:
         > [!NOTE]
         > If there are more than 300 files in the commit diff and the default JSON media type is requested, the response will include pagination link headers for the remaining files, up to a limit of 3000 files. Each page contains the static commit information, and the only changes are to the file listing.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." Pagination query parameters are not supported for these media types.
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." Pagination query parameters are not supported for these media types.
 
         - **`application/vnd.github.diff`**: Returns the diff of the commit. Larger diffs may time out and return a 5xx status code.
         - **`application/vnd.github.patch`**: Returns the patch of the commit. Diffs with binary data will have no `patch` property. Larger diffs may time out and return a 5xx status code.
@@ -9858,7 +9858,7 @@ class ReposClient:
         | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
         | `valid` | None of the above errors applied, so the signature is considered to be verified. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#get-a-commit
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/commits#get-a-commit
         """
 
         from ..models import (
@@ -9913,7 +9913,7 @@ class ReposClient:
         > [!NOTE]
         > If there are more than 300 files in the commit diff and the default JSON media type is requested, the response will include pagination link headers for the remaining files, up to a limit of 3000 files. Each page contains the static commit information, and the only changes are to the file listing.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." Pagination query parameters are not supported for these media types.
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." Pagination query parameters are not supported for these media types.
 
         - **`application/vnd.github.diff`**: Returns the diff of the commit. Larger diffs may time out and return a 5xx status code.
         - **`application/vnd.github.patch`**: Returns the patch of the commit. Diffs with binary data will have no `patch` property. Larger diffs may time out and return a 5xx status code.
@@ -9949,7 +9949,7 @@ class ReposClient:
         | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
         | `valid` | None of the above errors applied, so the signature is considered to be verified. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#get-a-commit
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/commits#get-a-commit
         """
 
         from ..models import (
@@ -10008,7 +10008,7 @@ class ReposClient:
         *   **pending** if there are no statuses or a context is `pending`
         *   **success** if the latest status for all contexts is `success`
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses#get-the-combined-status-for-a-specific-reference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/statuses#get-the-combined-status-for-a-specific-reference
         """
 
         from ..models import BasicError, CombinedCommitStatus
@@ -10058,7 +10058,7 @@ class ReposClient:
         *   **pending** if there are no statuses or a context is `pending`
         *   **success** if the latest status for all contexts is `success`
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses#get-the-combined-status-for-a-specific-reference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/statuses#get-the-combined-status-for-a-specific-reference
         """
 
         from ..models import BasicError, CombinedCommitStatus
@@ -10103,7 +10103,7 @@ class ReposClient:
 
         This resource is also available via a legacy route: `GET /repos/:owner/:repo/statuses/:ref`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses#list-commit-statuses-for-a-reference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/statuses#list-commit-statuses-for-a-reference
         """
 
         from ..models import Status
@@ -10145,7 +10145,7 @@ class ReposClient:
 
         This resource is also available via a legacy route: `GET /repos/:owner/:repo/statuses/:ref`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses#list-commit-statuses-for-a-reference
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/statuses#list-commit-statuses-for-a-reference
         """
 
         from ..models import Status
@@ -10188,11 +10188,11 @@ class ReposClient:
 
         The `health_percentage` score is defined as a percentage of how many of
         the recommended community health files are present. For more information, see
-        "[About community profiles for public repositories](https://docs.github.com/enterprise-cloud@latest//communities/setting-up-your-project-for-healthy-contributions/about-community-profiles-for-public-repositories)."
+        "[About community profiles for public repositories](https://docs.github.com/enterprise-cloud@latest/communities/setting-up-your-project-for-healthy-contributions/about-community-profiles-for-public-repositories)."
 
         `content_reports_enabled` is only returned for organization-owned repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/community#get-community-profile-metrics
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/community#get-community-profile-metrics
         """
 
         from ..models import CommunityProfile
@@ -10229,11 +10229,11 @@ class ReposClient:
 
         The `health_percentage` score is defined as a percentage of how many of
         the recommended community health files are present. For more information, see
-        "[About community profiles for public repositories](https://docs.github.com/enterprise-cloud@latest//communities/setting-up-your-project-for-healthy-contributions/about-community-profiles-for-public-repositories)."
+        "[About community profiles for public repositories](https://docs.github.com/enterprise-cloud@latest/communities/setting-up-your-project-for-healthy-contributions/about-community-profiles-for-public-repositories)."
 
         `content_reports_enabled` is only returned for organization-owned repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/community#get-community-profile-metrics
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/community#get-community-profile-metrics
         """
 
         from ..models import CommunityProfile
@@ -10265,11 +10265,11 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/compare/{basehead}
 
-        Compares two commits against one another. You can compare refs (branches or tags) and commit SHAs in the same repository, or you can compare refs and commit SHAs that exist in different repositories within the same repository network, including fork branches. For more information about how to view a repository's network, see "[Understanding connections between repositories](https://docs.github.com/enterprise-cloud@latest//repositories/viewing-activity-and-data-for-your-repository/understanding-connections-between-repositories)."
+        Compares two commits against one another. You can compare refs (branches or tags) and commit SHAs in the same repository, or you can compare refs and commit SHAs that exist in different repositories within the same repository network, including fork branches. For more information about how to view a repository's network, see "[Understanding connections between repositories](https://docs.github.com/enterprise-cloud@latest/repositories/viewing-activity-and-data-for-your-repository/understanding-connections-between-repositories)."
 
         This endpoint is equivalent to running the `git log BASE..HEAD` command, but it returns commits in a different order. The `git log BASE..HEAD` command returns commits in reverse chronological order, whereas the API returns commits in chronological order.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.diff`**: Returns the diff of the commit.
         - **`application/vnd.github.patch`**: Returns the patch of the commit. Diffs with binary data will have no `patch` property.
@@ -10285,7 +10285,7 @@ class ReposClient:
         - The list of changed files is only shown on the first page of results, and it includes up to 300 changed files for the entire comparison.
         - The results are returned in chronological order, but the last commit in the returned list may not be the most recent one in the entire set if there are more pages of results.
 
-        For more information on working with pagination, see "[Using pagination in the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/using-pagination-in-the-rest-api)."
+        For more information on working with pagination, see "[Using pagination in the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/using-pagination-in-the-rest-api)."
 
         **Signature verification object**
 
@@ -10317,7 +10317,7 @@ class ReposClient:
         | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
         | `valid` | None of the above errors applied, so the signature is considered to be verified. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#compare-two-commits
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/commits#compare-two-commits
         """
 
         from ..models import (
@@ -10364,11 +10364,11 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/compare/{basehead}
 
-        Compares two commits against one another. You can compare refs (branches or tags) and commit SHAs in the same repository, or you can compare refs and commit SHAs that exist in different repositories within the same repository network, including fork branches. For more information about how to view a repository's network, see "[Understanding connections between repositories](https://docs.github.com/enterprise-cloud@latest//repositories/viewing-activity-and-data-for-your-repository/understanding-connections-between-repositories)."
+        Compares two commits against one another. You can compare refs (branches or tags) and commit SHAs in the same repository, or you can compare refs and commit SHAs that exist in different repositories within the same repository network, including fork branches. For more information about how to view a repository's network, see "[Understanding connections between repositories](https://docs.github.com/enterprise-cloud@latest/repositories/viewing-activity-and-data-for-your-repository/understanding-connections-between-repositories)."
 
         This endpoint is equivalent to running the `git log BASE..HEAD` command, but it returns commits in a different order. The `git log BASE..HEAD` command returns commits in reverse chronological order, whereas the API returns commits in chronological order.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.diff`**: Returns the diff of the commit.
         - **`application/vnd.github.patch`**: Returns the patch of the commit. Diffs with binary data will have no `patch` property.
@@ -10384,7 +10384,7 @@ class ReposClient:
         - The list of changed files is only shown on the first page of results, and it includes up to 300 changed files for the entire comparison.
         - The results are returned in chronological order, but the last commit in the returned list may not be the most recent one in the entire set if there are more pages of results.
 
-        For more information on working with pagination, see "[Using pagination in the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/using-pagination-in-the-rest-api)."
+        For more information on working with pagination, see "[Using pagination in the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/using-pagination-in-the-rest-api)."
 
         **Signature verification object**
 
@@ -10416,7 +10416,7 @@ class ReposClient:
         | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
         | `valid` | None of the above errors applied, so the signature is considered to be verified. |
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#compare-two-commits
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/commits#compare-two-commits
         """
 
         from ..models import (
@@ -10474,7 +10474,7 @@ class ReposClient:
 
         Gets the contents of a file or directory in a repository. Specify the file path or directory with the `path` parameter. If you omit the `path` parameter, you will receive the contents of the repository's root directory.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw file contents for files and symlinks.
         - **`application/vnd.github.html+json`**: Returns the file contents in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
@@ -10488,9 +10488,9 @@ class ReposClient:
 
         **Notes**:
 
-        - To get a repository's contents recursively, you can [recursively get the tree](https://docs.github.com/enterprise-cloud@latest//rest/git/trees#get-a-tree).
+        - To get a repository's contents recursively, you can [recursively get the tree](https://docs.github.com/enterprise-cloud@latest/rest/git/trees#get-a-tree).
         - This API has an upper limit of 1,000 files for a directory. If you need to retrieve
-        more files, use the [Git Trees API](https://docs.github.com/enterprise-cloud@latest//rest/git/trees#get-a-tree).
+        more files, use the [Git Trees API](https://docs.github.com/enterprise-cloud@latest/rest/git/trees#get-a-tree).
         - Download URLs expire and are meant to be used just once. To ensure the download URL does not expire, please use the contents API to obtain a fresh download URL for each download.
         - If the requested file's size is:
           - 1 MB or smaller: All features of this endpoint are supported.
@@ -10498,7 +10498,7 @@ class ReposClient:
         string and the `encoding` field will be `"none"`. To get the contents of these larger files, use the `raw` media type.
           - Greater than 100 MB: This endpoint is not supported.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#get-repository-content
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/contents#get-repository-content
         """
 
         from typing import Union
@@ -10563,7 +10563,7 @@ class ReposClient:
 
         Gets the contents of a file or directory in a repository. Specify the file path or directory with the `path` parameter. If you omit the `path` parameter, you will receive the contents of the repository's root directory.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw file contents for files and symlinks.
         - **`application/vnd.github.html+json`**: Returns the file contents in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
@@ -10577,9 +10577,9 @@ class ReposClient:
 
         **Notes**:
 
-        - To get a repository's contents recursively, you can [recursively get the tree](https://docs.github.com/enterprise-cloud@latest//rest/git/trees#get-a-tree).
+        - To get a repository's contents recursively, you can [recursively get the tree](https://docs.github.com/enterprise-cloud@latest/rest/git/trees#get-a-tree).
         - This API has an upper limit of 1,000 files for a directory. If you need to retrieve
-        more files, use the [Git Trees API](https://docs.github.com/enterprise-cloud@latest//rest/git/trees#get-a-tree).
+        more files, use the [Git Trees API](https://docs.github.com/enterprise-cloud@latest/rest/git/trees#get-a-tree).
         - Download URLs expire and are meant to be used just once. To ensure the download URL does not expire, please use the contents API to obtain a fresh download URL for each download.
         - If the requested file's size is:
           - 1 MB or smaller: All features of this endpoint are supported.
@@ -10587,7 +10587,7 @@ class ReposClient:
         string and the `encoding` field will be `"none"`. To get the contents of these larger files, use the `raw` media type.
           - Greater than 100 MB: This endpoint is not supported.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#get-repository-content
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/contents#get-repository-content
         """
 
         from typing import Union
@@ -10674,11 +10674,11 @@ class ReposClient:
         Creates a new file or replaces an existing file in a repository.
 
         > [!NOTE]
-        > If you use this endpoint and the "[Delete a file](https://docs.github.com/enterprise-cloud@latest//rest/repos/contents/#delete-a-file)" endpoint in parallel, the concurrent requests will conflict and you will receive errors. You must use these endpoints serially instead.
+        > If you use this endpoint and the "[Delete a file](https://docs.github.com/enterprise-cloud@latest/rest/repos/contents/#delete-a-file)" endpoint in parallel, the concurrent requests will conflict and you will receive errors. You must use these endpoints serially instead.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. The `workflow` scope is also required in order to modify files in the `.github/workflows` directory.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#create-or-update-file-contents
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/contents#create-or-update-file-contents
         """
 
         from typing import Union
@@ -10766,11 +10766,11 @@ class ReposClient:
         Creates a new file or replaces an existing file in a repository.
 
         > [!NOTE]
-        > If you use this endpoint and the "[Delete a file](https://docs.github.com/enterprise-cloud@latest//rest/repos/contents/#delete-a-file)" endpoint in parallel, the concurrent requests will conflict and you will receive errors. You must use these endpoints serially instead.
+        > If you use this endpoint and the "[Delete a file](https://docs.github.com/enterprise-cloud@latest/rest/repos/contents/#delete-a-file)" endpoint in parallel, the concurrent requests will conflict and you will receive errors. You must use these endpoints serially instead.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. The `workflow` scope is also required in order to modify files in the `.github/workflows` directory.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#create-or-update-file-contents
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/contents#create-or-update-file-contents
         """
 
         from typing import Union
@@ -10865,9 +10865,9 @@ class ReposClient:
         You must provide values for both `name` and `email`, whether you choose to use `author` or `committer`. Otherwise, you'll receive a `422` status code.
 
         > [!NOTE]
-        > If you use this endpoint and the "[Create or update file contents](https://docs.github.com/enterprise-cloud@latest//rest/repos/contents/#create-or-update-file-contents)" endpoint in parallel, the concurrent requests will conflict and you will receive errors. You must use these endpoints serially instead.
+        > If you use this endpoint and the "[Create or update file contents](https://docs.github.com/enterprise-cloud@latest/rest/repos/contents/#create-or-update-file-contents)" endpoint in parallel, the concurrent requests will conflict and you will receive errors. You must use these endpoints serially instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#delete-a-file
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/contents#delete-a-file
         """
 
         from ..models import (
@@ -10961,9 +10961,9 @@ class ReposClient:
         You must provide values for both `name` and `email`, whether you choose to use `author` or `committer`. Otherwise, you'll receive a `422` status code.
 
         > [!NOTE]
-        > If you use this endpoint and the "[Create or update file contents](https://docs.github.com/enterprise-cloud@latest//rest/repos/contents/#create-or-update-file-contents)" endpoint in parallel, the concurrent requests will conflict and you will receive errors. You must use these endpoints serially instead.
+        > If you use this endpoint and the "[Create or update file contents](https://docs.github.com/enterprise-cloud@latest/rest/repos/contents/#create-or-update-file-contents)" endpoint in parallel, the concurrent requests will conflict and you will receive errors. You must use these endpoints serially instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#delete-a-file
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/contents#delete-a-file
         """
 
         from ..models import (
@@ -11021,7 +11021,7 @@ class ReposClient:
 
         GitHub identifies contributors by author email address. This endpoint groups contribution counts by GitHub user, which includes all associated email addresses. To improve performance, only the first 500 author email addresses in the repository link to GitHub users. The rest will appear as anonymous contributors without associated GitHub user information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-contributors
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-repository-contributors
         """
 
         from ..models import BasicError, Contributor
@@ -11068,7 +11068,7 @@ class ReposClient:
 
         GitHub identifies contributors by author email address. This endpoint groups contribution counts by GitHub user, which includes all associated email addresses. To improve performance, only the first 500 author email addresses in the repository link to GitHub users. The rest will appear as anonymous contributors without associated GitHub user information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-contributors
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-repository-contributors
         """
 
         from ..models import BasicError, Contributor
@@ -11116,7 +11116,7 @@ class ReposClient:
 
         Simple filtering of deployments is available via query parameters:
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#list-deployments
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/deployments#list-deployments
         """
 
         from ..models import Deployment
@@ -11163,7 +11163,7 @@ class ReposClient:
 
         Simple filtering of deployments is available via query parameters:
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#list-deployments
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/deployments#list-deployments
         """
 
         from ..models import Deployment
@@ -11251,7 +11251,7 @@ class ReposClient:
         the API will return a successful merge commit. If merge conflicts prevent the merge from succeeding, the API will
         return a failure response.
 
-        By default, [commit statuses](https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses) for every submitted context must be in a `success`
+        By default, [commit statuses](https://docs.github.com/enterprise-cloud@latest/rest/commits/statuses) for every submitted context must be in a `success`
         state. The `required_contexts` parameter allows you to specify a subset of contexts that must be `success`, or to
         specify contexts that have not yet been submitted. You are not required to use commit statuses to deploy. If you do
         not require any contexts or create any commit statuses, the deployment will always succeed.
@@ -11286,7 +11286,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `repo_deployment` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#create-a-deployment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/deployments#create-a-deployment
         """
 
         from ..models import (
@@ -11381,7 +11381,7 @@ class ReposClient:
         the API will return a successful merge commit. If merge conflicts prevent the merge from succeeding, the API will
         return a failure response.
 
-        By default, [commit statuses](https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses) for every submitted context must be in a `success`
+        By default, [commit statuses](https://docs.github.com/enterprise-cloud@latest/rest/commits/statuses) for every submitted context must be in a `success`
         state. The `required_contexts` parameter allows you to specify a subset of contexts that must be `success`, or to
         specify contexts that have not yet been submitted. You are not required to use commit statuses to deploy. If you do
         not require any contexts or create any commit statuses, the deployment will always succeed.
@@ -11416,7 +11416,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `repo_deployment` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#create-a-deployment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/deployments#create-a-deployment
         """
 
         from ..models import (
@@ -11463,7 +11463,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/deployments/{deployment_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#get-a-deployment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/deployments#get-a-deployment
         """
 
         from ..models import BasicError, Deployment
@@ -11496,7 +11496,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/deployments/{deployment_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#get-a-deployment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/deployments#get-a-deployment
         """
 
         from ..models import BasicError, Deployment
@@ -11536,11 +11536,11 @@ class ReposClient:
         *   Create a new deployment that is active so that the system has a record of the current state, then delete the previously active deployment.
         *   Mark the active deployment as inactive by adding any non-successful deployment status.
 
-        For more information, see "[Create a deployment](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments/#create-a-deployment)" and "[Create a deployment status](https://docs.github.com/enterprise-cloud@latest//rest/deployments/statuses#create-a-deployment-status)."
+        For more information, see "[Create a deployment](https://docs.github.com/enterprise-cloud@latest/rest/deployments/deployments/#create-a-deployment)" and "[Create a deployment status](https://docs.github.com/enterprise-cloud@latest/rest/deployments/statuses#create-a-deployment-status)."
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `repo_deployment` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#delete-a-deployment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/deployments#delete-a-deployment
         """
 
         from ..models import BasicError, ValidationErrorSimple
@@ -11580,11 +11580,11 @@ class ReposClient:
         *   Create a new deployment that is active so that the system has a record of the current state, then delete the previously active deployment.
         *   Mark the active deployment as inactive by adding any non-successful deployment status.
 
-        For more information, see "[Create a deployment](https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments/#create-a-deployment)" and "[Create a deployment status](https://docs.github.com/enterprise-cloud@latest//rest/deployments/statuses#create-a-deployment-status)."
+        For more information, see "[Create a deployment](https://docs.github.com/enterprise-cloud@latest/rest/deployments/deployments/#create-a-deployment)" and "[Create a deployment status](https://docs.github.com/enterprise-cloud@latest/rest/deployments/statuses#create-a-deployment-status)."
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `repo_deployment` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#delete-a-deployment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/deployments#delete-a-deployment
         """
 
         from ..models import BasicError, ValidationErrorSimple
@@ -11621,7 +11621,7 @@ class ReposClient:
 
         Users with pull access can view deployment statuses for a deployment:
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/statuses#list-deployment-statuses
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/statuses#list-deployment-statuses
         """
 
         from ..models import BasicError, DeploymentStatus
@@ -11664,7 +11664,7 @@ class ReposClient:
 
         Users with pull access can view deployment statuses for a deployment:
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/statuses#list-deployment-statuses
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/statuses#list-deployment-statuses
         """
 
         from ..models import BasicError, DeploymentStatus
@@ -11750,7 +11750,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo_deployment` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/statuses#create-a-deployment-status
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/statuses#create-a-deployment-status
         """
 
         from ..models import (
@@ -11846,7 +11846,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo_deployment` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/statuses#create-a-deployment-status
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/statuses#create-a-deployment-status
         """
 
         from ..models import (
@@ -11898,7 +11898,7 @@ class ReposClient:
 
         Users with pull access can view a deployment status for a deployment:
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/statuses#get-a-deployment-status
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/statuses#get-a-deployment-status
         """
 
         from ..models import BasicError, DeploymentStatus
@@ -11934,7 +11934,7 @@ class ReposClient:
 
         Users with pull access can view a deployment status for a deployment:
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/statuses#get-a-deployment-status
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/statuses#get-a-deployment-status
         """
 
         from ..models import BasicError, DeploymentStatus
@@ -11994,7 +11994,7 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/dispatches
 
-        You can use this endpoint to trigger a webhook event called `repository_dispatch` when you want activity that happens outside of GitHub Enterprise Cloud to trigger a GitHub Actions workflow or GitHub App webhook. You must configure your GitHub Actions workflow or GitHub App to run when the `repository_dispatch` event occurs. For an example `repository_dispatch` webhook payload, see "[RepositoryDispatchEvent](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#repository_dispatch)."
+        You can use this endpoint to trigger a webhook event called `repository_dispatch` when you want activity that happens outside of GitHub Enterprise Cloud to trigger a GitHub Actions workflow or GitHub App webhook. You must configure your GitHub Actions workflow or GitHub App to run when the `repository_dispatch` event occurs. For an example `repository_dispatch` webhook payload, see "[RepositoryDispatchEvent](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#repository_dispatch)."
 
         The `client_payload` parameter is available for any extra information that your workflow might need. This parameter is a JSON payload that will be passed on when the webhook event is dispatched. For example, the `client_payload` can include a message that a user would like to send using a GitHub Actions workflow. Or the `client_payload` can be used as a test to debug your workflow.
 
@@ -12002,7 +12002,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#create-a-repository-dispatch-event
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#create-a-repository-dispatch-event
         """
 
         from ..models import (
@@ -12076,7 +12076,7 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/dispatches
 
-        You can use this endpoint to trigger a webhook event called `repository_dispatch` when you want activity that happens outside of GitHub Enterprise Cloud to trigger a GitHub Actions workflow or GitHub App webhook. You must configure your GitHub Actions workflow or GitHub App to run when the `repository_dispatch` event occurs. For an example `repository_dispatch` webhook payload, see "[RepositoryDispatchEvent](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#repository_dispatch)."
+        You can use this endpoint to trigger a webhook event called `repository_dispatch` when you want activity that happens outside of GitHub Enterprise Cloud to trigger a GitHub Actions workflow or GitHub App webhook. You must configure your GitHub Actions workflow or GitHub App to run when the `repository_dispatch` event occurs. For an example `repository_dispatch` webhook payload, see "[RepositoryDispatchEvent](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#repository_dispatch)."
 
         The `client_payload` parameter is available for any extra information that your workflow might need. This parameter is a JSON payload that will be passed on when the webhook event is dispatched. For example, the `client_payload` can include a message that a user would like to send using a GitHub Actions workflow. Or the `client_payload` can be used as a test to debug your workflow.
 
@@ -12084,7 +12084,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#create-a-repository-dispatch-event
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#create-a-repository-dispatch-event
         """
 
         from ..models import (
@@ -12141,7 +12141,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/environments#list-environments
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/environments#list-environments
         """
 
         from ..models import ReposOwnerRepoEnvironmentsGetResponse200
@@ -12187,7 +12187,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/environments#list-environments
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/environments#list-environments
         """
 
         from ..models import ReposOwnerRepoEnvironmentsGetResponse200
@@ -12230,7 +12230,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/environments#get-an-environment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/environments#get-an-environment
         """
 
         from ..models import Environment
@@ -12267,7 +12267,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/environments#get-an-environment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/environments#get-an-environment
         """
 
         from ..models import Environment
@@ -12350,7 +12350,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/environments#create-or-update-an-environment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/environments#create-or-update-an-environment
         """
 
         from typing import Union
@@ -12454,7 +12454,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/environments#create-or-update-an-environment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/environments#create-or-update-an-environment
         """
 
         from typing import Union
@@ -12507,7 +12507,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/environments#delete-an-environment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/environments#delete-an-environment
         """
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}"
@@ -12536,7 +12536,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/environments#delete-an-environment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/environments#delete-an-environment
         """
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}"
@@ -12574,7 +12574,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/branch-policies#list-deployment-branch-policies
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/branch-policies#list-deployment-branch-policies
         """
 
         from ..models import (
@@ -12623,7 +12623,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/branch-policies#list-deployment-branch-policies
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/branch-policies#list-deployment-branch-policies
         """
 
         from ..models import (
@@ -12693,7 +12693,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/branch-policies#create-a-deployment-branch-policy
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/branch-policies#create-a-deployment-branch-policy
         """
 
         from ..models import (
@@ -12769,7 +12769,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/branch-policies#create-a-deployment-branch-policy
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/branch-policies#create-a-deployment-branch-policy
         """
 
         from ..models import (
@@ -12820,7 +12820,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/branch-policies#get-a-deployment-branch-policy
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/branch-policies#get-a-deployment-branch-policy
         """
 
         from ..models import DeploymentBranchPolicy
@@ -12857,7 +12857,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/branch-policies#get-a-deployment-branch-policy
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/branch-policies#get-a-deployment-branch-policy
         """
 
         from ..models import DeploymentBranchPolicy
@@ -12921,7 +12921,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/branch-policies#update-a-deployment-branch-policy
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/branch-policies#update-a-deployment-branch-policy
         """
 
         from ..models import DeploymentBranchPolicy, DeploymentBranchPolicyNamePattern
@@ -12995,7 +12995,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/branch-policies#update-a-deployment-branch-policy
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/branch-policies#update-a-deployment-branch-policy
         """
 
         from ..models import DeploymentBranchPolicy, DeploymentBranchPolicyNamePattern
@@ -13040,7 +13040,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/branch-policies#delete-a-deployment-branch-policy
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/branch-policies#delete-a-deployment-branch-policy
         """
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
@@ -13072,7 +13072,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/branch-policies#delete-a-deployment-branch-policy
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/branch-policies#delete-a-deployment-branch-policy
         """
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
@@ -13102,13 +13102,13 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules
 
-        Gets all custom deployment protection rules that are enabled for an environment. Anyone with read access to the repository can use this endpoint. For more information about environments, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest//actions/deployment/targeting-different-environments/using-environments-for-deployment)."
+        Gets all custom deployment protection rules that are enabled for an environment. Anyone with read access to the repository can use this endpoint. For more information about environments, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest/actions/deployment/targeting-different-environments/using-environments-for-deployment)."
 
-        For more information about the app that is providing this custom deployment rule, see the [documentation for the `GET /apps/{app_slug}` endpoint](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-app).
+        For more information about the app that is providing this custom deployment rule, see the [documentation for the `GET /apps/{app_slug}` endpoint](https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-an-app).
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/protection-rules#get-all-deployment-protection-rules-for-an-environment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/protection-rules#get-all-deployment-protection-rules-for-an-environment
         """
 
         from ..models import (
@@ -13143,13 +13143,13 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules
 
-        Gets all custom deployment protection rules that are enabled for an environment. Anyone with read access to the repository can use this endpoint. For more information about environments, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest//actions/deployment/targeting-different-environments/using-environments-for-deployment)."
+        Gets all custom deployment protection rules that are enabled for an environment. Anyone with read access to the repository can use this endpoint. For more information about environments, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest/actions/deployment/targeting-different-environments/using-environments-for-deployment)."
 
-        For more information about the app that is providing this custom deployment rule, see the [documentation for the `GET /apps/{app_slug}` endpoint](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-app).
+        For more information about the app that is providing this custom deployment rule, see the [documentation for the `GET /apps/{app_slug}` endpoint](https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-an-app).
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/protection-rules#get-all-deployment-protection-rules-for-an-environment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/protection-rules#get-all-deployment-protection-rules-for-an-environment
         """
 
         from ..models import (
@@ -13218,11 +13218,11 @@ class ReposClient:
 
         The authenticated user must have admin or owner permissions to the repository to use this endpoint.
 
-        For more information about the app that is providing this custom deployment rule, see the [documentation for the `GET /apps/{app_slug}` endpoint](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-app), as well as the [guide to creating custom deployment protection rules](https://docs.github.com/enterprise-cloud@latest//actions/managing-workflow-runs-and-deployments/managing-deployments/creating-custom-deployment-protection-rules).
+        For more information about the app that is providing this custom deployment rule, see the [documentation for the `GET /apps/{app_slug}` endpoint](https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-an-app), as well as the [guide to creating custom deployment protection rules](https://docs.github.com/enterprise-cloud@latest/actions/managing-workflow-runs-and-deployments/managing-deployments/creating-custom-deployment-protection-rules).
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/protection-rules#create-a-custom-deployment-protection-rule-on-an-environment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/protection-rules#create-a-custom-deployment-protection-rule-on-an-environment
         """
 
         from ..models import (
@@ -13305,11 +13305,11 @@ class ReposClient:
 
         The authenticated user must have admin or owner permissions to the repository to use this endpoint.
 
-        For more information about the app that is providing this custom deployment rule, see the [documentation for the `GET /apps/{app_slug}` endpoint](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-app), as well as the [guide to creating custom deployment protection rules](https://docs.github.com/enterprise-cloud@latest//actions/managing-workflow-runs-and-deployments/managing-deployments/creating-custom-deployment-protection-rules).
+        For more information about the app that is providing this custom deployment rule, see the [documentation for the `GET /apps/{app_slug}` endpoint](https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-an-app), as well as the [guide to creating custom deployment protection rules](https://docs.github.com/enterprise-cloud@latest/actions/managing-workflow-runs-and-deployments/managing-deployments/creating-custom-deployment-protection-rules).
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/protection-rules#create-a-custom-deployment-protection-rule-on-an-environment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/protection-rules#create-a-custom-deployment-protection-rule-on-an-environment
         """
 
         from ..models import (
@@ -13364,13 +13364,13 @@ class ReposClient:
 
         The authenticated user must have admin or owner permissions to the repository to use this endpoint.
 
-        For more information about environments, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest//actions/deployment/targeting-different-environments/using-environments-for-deployment)."
+        For more information about environments, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest/actions/deployment/targeting-different-environments/using-environments-for-deployment)."
 
-        For more information about the app that is providing this custom deployment rule, see "[GET an app](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-app)".
+        For more information about the app that is providing this custom deployment rule, see "[GET an app](https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-an-app)".
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/protection-rules#list-custom-deployment-rule-integrations-available-for-an-environment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/protection-rules#list-custom-deployment-rule-integrations-available-for-an-environment
         """
 
         from ..models import (
@@ -13417,13 +13417,13 @@ class ReposClient:
 
         The authenticated user must have admin or owner permissions to the repository to use this endpoint.
 
-        For more information about environments, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest//actions/deployment/targeting-different-environments/using-environments-for-deployment)."
+        For more information about environments, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest/actions/deployment/targeting-different-environments/using-environments-for-deployment)."
 
-        For more information about the app that is providing this custom deployment rule, see "[GET an app](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-app)".
+        For more information about the app that is providing this custom deployment rule, see "[GET an app](https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-an-app)".
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/protection-rules#list-custom-deployment-rule-integrations-available-for-an-environment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/protection-rules#list-custom-deployment-rule-integrations-available-for-an-environment
         """
 
         from ..models import (
@@ -13462,13 +13462,13 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/{protection_rule_id}
 
-        Gets an enabled custom deployment protection rule for an environment. Anyone with read access to the repository can use this endpoint. For more information about environments, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest//actions/deployment/targeting-different-environments/using-environments-for-deployment)."
+        Gets an enabled custom deployment protection rule for an environment. Anyone with read access to the repository can use this endpoint. For more information about environments, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest/actions/deployment/targeting-different-environments/using-environments-for-deployment)."
 
-        For more information about the app that is providing this custom deployment rule, see [`GET /apps/{app_slug}`](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-app).
+        For more information about the app that is providing this custom deployment rule, see [`GET /apps/{app_slug}`](https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-an-app).
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/protection-rules#get-a-custom-deployment-protection-rule
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/protection-rules#get-a-custom-deployment-protection-rule
         """
 
         from ..models import DeploymentProtectionRule
@@ -13499,13 +13499,13 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/{protection_rule_id}
 
-        Gets an enabled custom deployment protection rule for an environment. Anyone with read access to the repository can use this endpoint. For more information about environments, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest//actions/deployment/targeting-different-environments/using-environments-for-deployment)."
+        Gets an enabled custom deployment protection rule for an environment. Anyone with read access to the repository can use this endpoint. For more information about environments, see "[Using environments for deployment](https://docs.github.com/enterprise-cloud@latest/actions/deployment/targeting-different-environments/using-environments-for-deployment)."
 
-        For more information about the app that is providing this custom deployment rule, see [`GET /apps/{app_slug}`](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-app).
+        For more information about the app that is providing this custom deployment rule, see [`GET /apps/{app_slug}`](https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-an-app).
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/protection-rules#get-a-custom-deployment-protection-rule
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/protection-rules#get-a-custom-deployment-protection-rule
         """
 
         from ..models import DeploymentProtectionRule
@@ -13542,7 +13542,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment
         """
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/{protection_rule_id}"
@@ -13576,7 +13576,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment
         """
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/{protection_rule_id}"
@@ -13605,7 +13605,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/forks
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/forks#list-forks
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/forks#list-forks
         """
 
         from ..models import BasicError, MinimalRepository
@@ -13647,7 +13647,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/forks
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/forks#list-forks
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/forks#list-forks
         """
 
         from ..models import BasicError, MinimalRepository
@@ -13721,7 +13721,7 @@ class ReposClient:
         > [!NOTE]
         > Although this endpoint works with GitHub Apps, the GitHub App must be installed on the destination account with access to all repositories and on the source account with access to the source repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/forks#create-a-fork
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/forks#create-a-fork
         """
 
         from typing import Union
@@ -13808,7 +13808,7 @@ class ReposClient:
         > [!NOTE]
         > Although this endpoint works with GitHub Apps, the GitHub App must be installed on the destination account with access to all repositories and on the source account with access to the source repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/forks#create-a-fork
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/forks#create-a-fork
         """
 
         from typing import Union
@@ -13864,7 +13864,7 @@ class ReposClient:
 
         Lists webhooks for a repository. `last response` may return null if there have not been any deliveries within 30 days.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#list-repository-webhooks
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#list-repository-webhooks
         """
 
         from ..models import BasicError, Hook
@@ -13906,7 +13906,7 @@ class ReposClient:
 
         Lists webhooks for a repository. `last response` may return null if there have not been any deliveries within 30 days.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#list-repository-webhooks
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#list-repository-webhooks
         """
 
         from ..models import BasicError, Hook
@@ -13975,7 +13975,7 @@ class ReposClient:
         Repositories can have multiple webhooks installed. Each webhook should have a unique `config`. Multiple webhooks can
         share the same `config` as long as those webhooks do not have any `events` that overlap.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#create-a-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#create-a-repository-webhook
         """
 
         from typing import Union
@@ -14057,7 +14057,7 @@ class ReposClient:
         Repositories can have multiple webhooks installed. Each webhook should have a unique `config`. Multiple webhooks can
         share the same `config` as long as those webhooks do not have any `events` that overlap.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#create-a-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#create-a-repository-webhook
         """
 
         from typing import Union
@@ -14111,7 +14111,7 @@ class ReposClient:
 
         Returns a webhook configured in a repository. To get only the webhook `config` properties, see "[Get a webhook configuration for a repository](/rest/webhooks/repo-config#get-a-webhook-configuration-for-a-repository)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#get-a-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#get-a-repository-webhook
         """
 
         from ..models import BasicError, Hook
@@ -14146,7 +14146,7 @@ class ReposClient:
 
         Returns a webhook configured in a repository. To get only the webhook `config` properties, see "[Get a webhook configuration for a repository](/rest/webhooks/repo-config#get-a-webhook-configuration-for-a-repository)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#get-a-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#get-a-repository-webhook
         """
 
         from ..models import BasicError, Hook
@@ -14183,7 +14183,7 @@ class ReposClient:
 
         The authenticated user must be a repository owner, or have admin access in the repository, to delete the webhook.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#delete-a-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#delete-a-repository-webhook
         """
 
         from ..models import BasicError
@@ -14219,7 +14219,7 @@ class ReposClient:
 
         The authenticated user must be a repository owner, or have admin access in the repository, to delete the webhook.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#delete-a-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#delete-a-repository-webhook
         """
 
         from ..models import BasicError
@@ -14284,7 +14284,7 @@ class ReposClient:
 
         Updates a webhook configured in a repository. If you previously had a `secret` set, you must provide the same `secret` or set a new `secret` or the secret will be removed. If you are only updating individual webhook `config` properties, use "[Update a webhook configuration for a repository](/rest/webhooks/repo-config#update-a-webhook-configuration-for-a-repository)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#update-a-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#update-a-repository-webhook
         """
 
         from ..models import (
@@ -14366,7 +14366,7 @@ class ReposClient:
 
         Updates a webhook configured in a repository. If you previously had a `secret` set, you must provide the same `secret` or set a new `secret` or the secret will be removed. If you are only updating individual webhook `config` properties, use "[Update a webhook configuration for a repository](/rest/webhooks/repo-config#update-a-webhook-configuration-for-a-repository)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#update-a-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#update-a-repository-webhook
         """
 
         from ..models import (
@@ -14419,7 +14419,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:repo_hook` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#get-a-webhook-configuration-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#get-a-webhook-configuration-for-a-repository
         """
 
         from ..models import WebhookConfig
@@ -14453,7 +14453,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:repo_hook` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#get-a-webhook-configuration-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#get-a-webhook-configuration-for-a-repository
         """
 
         from ..models import WebhookConfig
@@ -14517,7 +14517,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:repo_hook` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#update-a-webhook-configuration-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#update-a-webhook-configuration-for-a-repository
         """
 
         from ..models import ReposOwnerRepoHooksHookIdConfigPatchBody, WebhookConfig
@@ -14591,7 +14591,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `write:repo_hook` or `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#update-a-webhook-configuration-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#update-a-webhook-configuration-for-a-repository
         """
 
         from ..models import ReposOwnerRepoHooksHookIdConfigPatchBody, WebhookConfig
@@ -14636,7 +14636,7 @@ class ReposClient:
 
         Returns a list of webhook deliveries for a webhook configured in a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#list-deliveries-for-a-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#list-deliveries-for-a-repository-webhook
         """
 
         from ..models import BasicError, HookDeliveryItem, ValidationError
@@ -14682,7 +14682,7 @@ class ReposClient:
 
         Returns a list of webhook deliveries for a webhook configured in a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#list-deliveries-for-a-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#list-deliveries-for-a-repository-webhook
         """
 
         from ..models import BasicError, HookDeliveryItem, ValidationError
@@ -14726,7 +14726,7 @@ class ReposClient:
 
         Returns a delivery for a webhook configured in a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#get-a-delivery-for-a-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#get-a-delivery-for-a-repository-webhook
         """
 
         from ..models import BasicError, HookDelivery, ValidationError
@@ -14763,7 +14763,7 @@ class ReposClient:
 
         Returns a delivery for a webhook configured in a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#get-a-delivery-for-a-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#get-a-delivery-for-a-repository-webhook
         """
 
         from ..models import BasicError, HookDelivery, ValidationError
@@ -14803,7 +14803,7 @@ class ReposClient:
 
         Redeliver a webhook delivery for a webhook configured in a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook
         """
 
         from ..models import (
@@ -14847,7 +14847,7 @@ class ReposClient:
 
         Redeliver a webhook delivery for a webhook configured in a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook
         """
 
         from ..models import (
@@ -14885,9 +14885,9 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
 
-        This will trigger a [ping event](https://docs.github.com/enterprise-cloud@latest//webhooks/#ping-event) to be sent to the hook.
+        This will trigger a [ping event](https://docs.github.com/enterprise-cloud@latest/webhooks/#ping-event) to be sent to the hook.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#ping-a-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#ping-a-repository-webhook
         """
 
         from ..models import BasicError
@@ -14919,9 +14919,9 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
 
-        This will trigger a [ping event](https://docs.github.com/enterprise-cloud@latest//webhooks/#ping-event) to be sent to the hook.
+        This will trigger a [ping event](https://docs.github.com/enterprise-cloud@latest/webhooks/#ping-event) to be sent to the hook.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#ping-a-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#ping-a-repository-webhook
         """
 
         from ..models import BasicError
@@ -14958,7 +14958,7 @@ class ReposClient:
         > [!NOTE]
         > Previously `/repos/:owner/:repo/hooks/:hook_id/test`
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#test-the-push-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#test-the-push-repository-webhook
         """
 
         from ..models import BasicError
@@ -14995,7 +14995,7 @@ class ReposClient:
         > [!NOTE]
         > Previously `/repos/:owner/:repo/hooks/:hook_id/test`
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#test-the-push-repository-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/webhooks#test-the-push-repository-webhook
         """
 
         from ..models import BasicError
@@ -15029,7 +15029,7 @@ class ReposClient:
         Shows whether immutable releases are enabled or disabled. Also identifies whether immutability is being
         enforced by the repository owner.  The authenticated user must have admin read access to the repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-immutable-releases-are-enabled-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#check-if-immutable-releases-are-enabled-for-a-repository
         """
 
         from ..models import CheckImmutableReleases
@@ -15062,7 +15062,7 @@ class ReposClient:
         Shows whether immutable releases are enabled or disabled. Also identifies whether immutability is being
         enforced by the repository owner.  The authenticated user must have admin read access to the repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-immutable-releases-are-enabled-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#check-if-immutable-releases-are-enabled-for-a-repository
         """
 
         from ..models import CheckImmutableReleases
@@ -15094,7 +15094,7 @@ class ReposClient:
 
         Enables immutable releases for a repository. The authenticated user must have admin access to the repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-immutable-releases
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#enable-immutable-releases
         """
 
         from ..models import BasicError
@@ -15127,7 +15127,7 @@ class ReposClient:
 
         Enables immutable releases for a repository. The authenticated user must have admin access to the repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-immutable-releases
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#enable-immutable-releases
         """
 
         from ..models import BasicError
@@ -15160,7 +15160,7 @@ class ReposClient:
 
         Disables immutable releases for a repository. The authenticated user must have admin access to the repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-immutable-releases
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#disable-immutable-releases
         """
 
         from ..models import BasicError
@@ -15193,7 +15193,7 @@ class ReposClient:
 
         Disables immutable releases for a repository. The authenticated user must have admin access to the repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-immutable-releases
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#disable-immutable-releases
         """
 
         from ..models import BasicError
@@ -15230,7 +15230,7 @@ class ReposClient:
 
         When authenticating as a user with admin rights to a repository, this endpoint will list all currently open repository invitations.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#list-repository-invitations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/invitations#list-repository-invitations
         """
 
         from ..models import RepositoryInvitation
@@ -15271,7 +15271,7 @@ class ReposClient:
 
         When authenticating as a user with admin rights to a repository, this endpoint will list all currently open repository invitations.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#list-repository-invitations
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/invitations#list-repository-invitations
         """
 
         from ..models import RepositoryInvitation
@@ -15307,7 +15307,7 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#delete-a-repository-invitation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/invitations#delete-a-repository-invitation
         """
 
         url = f"/repos/{owner}/{repo}/invitations/{invitation_id}"
@@ -15334,7 +15334,7 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#delete-a-repository-invitation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/invitations#delete-a-repository-invitation
         """
 
         url = f"/repos/{owner}/{repo}/invitations/{invitation_id}"
@@ -15390,7 +15390,7 @@ class ReposClient:
 
         PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#update-a-repository-invitation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/invitations#update-a-repository-invitation
         """
 
         from ..models import (
@@ -15464,7 +15464,7 @@ class ReposClient:
 
         PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#update-a-repository-invitation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/invitations#update-a-repository-invitation
         """
 
         from ..models import (
@@ -15510,7 +15510,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/keys
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#list-deploy-keys
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deploy-keys/deploy-keys#list-deploy-keys
         """
 
         from ..models import DeployKey
@@ -15547,7 +15547,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/keys
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#list-deploy-keys
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deploy-keys/deploy-keys#list-deploy-keys
         """
 
         from ..models import DeployKey
@@ -15611,7 +15611,7 @@ class ReposClient:
 
         You can create a read-only deploy key.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#create-a-deploy-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deploy-keys/deploy-keys#create-a-deploy-key
         """
 
         from ..models import DeployKey, ReposOwnerRepoKeysPostBody, ValidationError
@@ -15682,7 +15682,7 @@ class ReposClient:
 
         You can create a read-only deploy key.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#create-a-deploy-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deploy-keys/deploy-keys#create-a-deploy-key
         """
 
         from ..models import DeployKey, ReposOwnerRepoKeysPostBody, ValidationError
@@ -15725,7 +15725,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/keys/{key_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#get-a-deploy-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deploy-keys/deploy-keys#get-a-deploy-key
         """
 
         from ..models import BasicError, DeployKey
@@ -15758,7 +15758,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/keys/{key_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#get-a-deploy-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deploy-keys/deploy-keys#get-a-deploy-key
         """
 
         from ..models import BasicError, DeployKey
@@ -15793,7 +15793,7 @@ class ReposClient:
 
         Deploy keys are immutable. If you need to update a key, remove the key and create a new one instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#delete-a-deploy-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deploy-keys/deploy-keys#delete-a-deploy-key
         """
 
         url = f"/repos/{owner}/{repo}/keys/{key_id}"
@@ -15822,7 +15822,7 @@ class ReposClient:
 
         Deploy keys are immutable. If you need to update a key, remove the key and create a new one instead.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#delete-a-deploy-key
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/deploy-keys/deploy-keys#delete-a-deploy-key
         """
 
         url = f"/repos/{owner}/{repo}/keys/{key_id}"
@@ -15850,7 +15850,7 @@ class ReposClient:
 
         Lists languages for the specified repository. The value shown for each language is the number of bytes of code written in that language.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-languages
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-repository-languages
         """
 
         from ..models import Language
@@ -15881,7 +15881,7 @@ class ReposClient:
 
         Lists languages for the specified repository. The value shown for each language is the number of bytes of code written in that language.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-languages
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-repository-languages
         """
 
         from ..models import Language
@@ -15917,7 +15917,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/lfs#enable-git-lfs-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/lfs#enable-git-lfs-for-a-repository
         """
 
         from ..models import AppHookDeliveriesDeliveryIdAttemptsPostResponse202
@@ -15954,7 +15954,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/lfs#enable-git-lfs-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/lfs#enable-git-lfs-for-a-repository
         """
 
         from ..models import AppHookDeliveriesDeliveryIdAttemptsPostResponse202
@@ -15988,7 +15988,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/lfs#disable-git-lfs-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/lfs#disable-git-lfs-for-a-repository
         """
 
         url = f"/repos/{owner}/{repo}/lfs"
@@ -16018,7 +16018,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/lfs#disable-git-lfs-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/lfs#disable-git-lfs-for-a-repository
         """
 
         url = f"/repos/{owner}/{repo}/lfs"
@@ -16071,7 +16071,7 @@ class ReposClient:
 
         Sync a branch of a forked repository to keep it up-to-date with the upstream repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branches#sync-a-fork-branch-with-the-upstream-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branches#sync-a-fork-branch-with-the-upstream-repository
         """
 
         from ..models import MergedUpstream, ReposOwnerRepoMergeUpstreamPostBody
@@ -16138,7 +16138,7 @@ class ReposClient:
 
         Sync a branch of a forked repository to keep it up-to-date with the upstream repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branches#sync-a-fork-branch-with-the-upstream-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branches#sync-a-fork-branch-with-the-upstream-repository
         """
 
         from ..models import MergedUpstream, ReposOwnerRepoMergeUpstreamPostBody
@@ -16205,7 +16205,7 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/merges
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branches#merge-a-branch
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branches#merge-a-branch
         """
 
         from ..models import (
@@ -16280,7 +16280,7 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/merges
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branches#merge-a-branch
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/branches/branches#merge-a-branch
         """
 
         from ..models import (
@@ -16332,7 +16332,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-a-apiname-pages-site
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#get-a-apiname-pages-site
         """
 
         from ..models import BasicError, Page
@@ -16368,7 +16368,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-a-apiname-pages-site
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#get-a-apiname-pages-site
         """
 
         from ..models import BasicError, Page
@@ -16536,7 +16536,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#update-information-about-a-apiname-pages-site
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#update-information-about-a-apiname-pages-site
         """
 
         from typing import Union
@@ -16734,7 +16734,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#update-information-about-a-apiname-pages-site
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#update-information-about-a-apiname-pages-site
         """
 
         from typing import Union
@@ -16853,7 +16853,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#create-a-apiname-pages-site
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#create-a-apiname-pages-site
         """
 
         from typing import Union
@@ -16969,7 +16969,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#create-a-apiname-pages-site
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#create-a-apiname-pages-site
         """
 
         from typing import Union
@@ -17034,7 +17034,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#delete-a-apiname-pages-site
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#delete-a-apiname-pages-site
         """
 
         from ..models import BasicError, ValidationError
@@ -17073,7 +17073,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#delete-a-apiname-pages-site
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#delete-a-apiname-pages-site
         """
 
         from ..models import BasicError, ValidationError
@@ -17112,7 +17112,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#list-apiname-pages-builds
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#list-apiname-pages-builds
         """
 
         from ..models import PageBuild
@@ -17153,7 +17153,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#list-apiname-pages-builds
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#list-apiname-pages-builds
         """
 
         from ..models import PageBuild
@@ -17192,7 +17192,7 @@ class ReposClient:
 
         Build requests are limited to one concurrent build per repository and one concurrent build per requester. If you request a build while another is still in progress, the second request will be queued until the first completes.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#request-a-apiname-pages-build
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#request-a-apiname-pages-build
         """
 
         from ..models import PageBuildStatus
@@ -17225,7 +17225,7 @@ class ReposClient:
 
         Build requests are limited to one concurrent build per repository and one concurrent build per requester. If you request a build while another is still in progress, the second request will be queued until the first completes.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#request-a-apiname-pages-build
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#request-a-apiname-pages-build
         """
 
         from ..models import PageBuildStatus
@@ -17258,7 +17258,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-latest-pages-build
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#get-latest-pages-build
         """
 
         from ..models import PageBuild
@@ -17291,7 +17291,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-latest-pages-build
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#get-latest-pages-build
         """
 
         from ..models import PageBuild
@@ -17325,7 +17325,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-apiname-pages-build
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#get-apiname-pages-build
         """
 
         from ..models import PageBuild
@@ -17359,7 +17359,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-apiname-pages-build
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#get-apiname-pages-build
         """
 
         from ..models import PageBuild
@@ -17421,7 +17421,7 @@ class ReposClient:
 
         The authenticated user must have write permission to the repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#create-a-github-pages-deployment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#create-a-github-pages-deployment
         """
 
         from ..models import (
@@ -17503,7 +17503,7 @@ class ReposClient:
 
         The authenticated user must have write permission to the repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#create-a-github-pages-deployment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#create-a-github-pages-deployment
         """
 
         from ..models import (
@@ -17557,7 +17557,7 @@ class ReposClient:
 
         The authenticated user must have read permission for the GitHub Pages site.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-the-status-of-a-github-pages-deployment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#get-the-status-of-a-github-pages-deployment
         """
 
         from ..models import BasicError, PagesDeploymentStatus
@@ -17594,7 +17594,7 @@ class ReposClient:
 
         The authenticated user must have read permission for the GitHub Pages site.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-the-status-of-a-github-pages-deployment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#get-the-status-of-a-github-pages-deployment
         """
 
         from ..models import BasicError, PagesDeploymentStatus
@@ -17631,7 +17631,7 @@ class ReposClient:
 
         The authenticated user must have write permissions for the GitHub Pages site.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#cancel-a-github-pages-deployment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#cancel-a-github-pages-deployment
         """
 
         from ..models import BasicError
@@ -17667,7 +17667,7 @@ class ReposClient:
 
         The authenticated user must have write permissions for the GitHub Pages site.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#cancel-a-github-pages-deployment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#cancel-a-github-pages-deployment
         """
 
         from ..models import BasicError
@@ -17706,7 +17706,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-a-dns-health-check-for-github-pages
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#get-a-dns-health-check-for-github-pages
         """
 
         from ..models import BasicError, PagesHealthCheck
@@ -17746,7 +17746,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-a-dns-health-check-for-github-pages
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/pages/pages#get-a-dns-health-check-for-github-pages
         """
 
         from ..models import BasicError, PagesHealthCheck
@@ -17781,9 +17781,9 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/private-vulnerability-reporting
 
-        Returns a boolean indicating whether or not private vulnerability reporting is enabled for the repository. For more information, see "[Evaluating the security settings of a repository](https://docs.github.com/enterprise-cloud@latest//code-security/security-advisories/working-with-repository-security-advisories/evaluating-the-security-settings-of-a-repository)".
+        Returns a boolean indicating whether or not private vulnerability reporting is enabled for the repository. For more information, see "[Evaluating the security settings of a repository](https://docs.github.com/enterprise-cloud@latest/code-security/security-advisories/working-with-repository-security-advisories/evaluating-the-security-settings-of-a-repository)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-private-vulnerability-reporting-is-enabled-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#check-if-private-vulnerability-reporting-is-enabled-for-a-repository
         """
 
         from ..models import (
@@ -17821,9 +17821,9 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/private-vulnerability-reporting
 
-        Returns a boolean indicating whether or not private vulnerability reporting is enabled for the repository. For more information, see "[Evaluating the security settings of a repository](https://docs.github.com/enterprise-cloud@latest//code-security/security-advisories/working-with-repository-security-advisories/evaluating-the-security-settings-of-a-repository)".
+        Returns a boolean indicating whether or not private vulnerability reporting is enabled for the repository. For more information, see "[Evaluating the security settings of a repository](https://docs.github.com/enterprise-cloud@latest/code-security/security-advisories/working-with-repository-security-advisories/evaluating-the-security-settings-of-a-repository)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-private-vulnerability-reporting-is-enabled-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#check-if-private-vulnerability-reporting-is-enabled-for-a-repository
         """
 
         from ..models import (
@@ -17858,9 +17858,9 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/private-vulnerability-reporting
 
-        Enables private vulnerability reporting for a repository. The authenticated user must have admin access to the repository. For more information, see "[Privately reporting a security vulnerability](https://docs.github.com/enterprise-cloud@latest//code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)."
+        Enables private vulnerability reporting for a repository. The authenticated user must have admin access to the repository. For more information, see "[Privately reporting a security vulnerability](https://docs.github.com/enterprise-cloud@latest/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-private-vulnerability-reporting-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#enable-private-vulnerability-reporting-for-a-repository
         """
 
         from ..models import BasicError
@@ -17891,9 +17891,9 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/private-vulnerability-reporting
 
-        Enables private vulnerability reporting for a repository. The authenticated user must have admin access to the repository. For more information, see "[Privately reporting a security vulnerability](https://docs.github.com/enterprise-cloud@latest//code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)."
+        Enables private vulnerability reporting for a repository. The authenticated user must have admin access to the repository. For more information, see "[Privately reporting a security vulnerability](https://docs.github.com/enterprise-cloud@latest/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-private-vulnerability-reporting-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#enable-private-vulnerability-reporting-for-a-repository
         """
 
         from ..models import BasicError
@@ -17924,9 +17924,9 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/private-vulnerability-reporting
 
-        Disables private vulnerability reporting for a repository. The authenticated user must have admin access to the repository. For more information, see "[Privately reporting a security vulnerability](https://docs.github.com/enterprise-cloud@latest//code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)".
+        Disables private vulnerability reporting for a repository. The authenticated user must have admin access to the repository. For more information, see "[Privately reporting a security vulnerability](https://docs.github.com/enterprise-cloud@latest/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-private-vulnerability-reporting-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#disable-private-vulnerability-reporting-for-a-repository
         """
 
         from ..models import BasicError
@@ -17957,9 +17957,9 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/private-vulnerability-reporting
 
-        Disables private vulnerability reporting for a repository. The authenticated user must have admin access to the repository. For more information, see "[Privately reporting a security vulnerability](https://docs.github.com/enterprise-cloud@latest//code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)".
+        Disables private vulnerability reporting for a repository. The authenticated user must have admin access to the repository. For more information, see "[Privately reporting a security vulnerability](https://docs.github.com/enterprise-cloud@latest/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-private-vulnerability-reporting-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#disable-private-vulnerability-reporting-for-a-repository
         """
 
         from ..models import BasicError
@@ -17993,7 +17993,7 @@ class ReposClient:
         Gets all custom property values that are set for a repository.
         Users with read access to the repository can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/custom-properties#get-all-custom-property-values-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/custom-properties#get-all-custom-property-values-for-a-repository
         """
 
         from ..models import BasicError, CustomPropertyValue
@@ -18029,7 +18029,7 @@ class ReposClient:
         Gets all custom property values that are set for a repository.
         Users with read access to the repository can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/custom-properties#get-all-custom-property-values-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/custom-properties#get-all-custom-property-values-for-a-repository
         """
 
         from ..models import BasicError, CustomPropertyValue
@@ -18092,7 +18092,7 @@ class ReposClient:
 
         Repository admins and other users with the repository-level "edit custom property values" fine-grained permission can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/custom-properties#create-or-update-custom-property-values-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/custom-properties#create-or-update-custom-property-values-for-a-repository
         """
 
         from ..models import (
@@ -18169,7 +18169,7 @@ class ReposClient:
 
         Repository admins and other users with the repository-level "edit custom property values" fine-grained permission can use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/custom-properties#create-or-update-custom-property-values-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/custom-properties#create-or-update-custom-property-values-for-a-repository
         """
 
         from ..models import (
@@ -18219,12 +18219,12 @@ class ReposClient:
 
         Gets the preferred README for a repository.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw file contents. This is the default if you do not specify a media type.
         - **`application/vnd.github.html+json`**: Returns the README in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#get-a-repository-readme
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/contents#get-a-repository-readme
         """
 
         from ..models import BasicError, ContentFile, ValidationError
@@ -18265,12 +18265,12 @@ class ReposClient:
 
         Gets the preferred README for a repository.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw file contents. This is the default if you do not specify a media type.
         - **`application/vnd.github.html+json`**: Returns the README in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#get-a-repository-readme
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/contents#get-a-repository-readme
         """
 
         from ..models import BasicError, ContentFile, ValidationError
@@ -18312,12 +18312,12 @@ class ReposClient:
 
         Gets the README from a repository directory.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw file contents. This is the default if you do not specify a media type.
         - **`application/vnd.github.html+json`**: Returns the README in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#get-a-repository-readme-for-a-directory
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/contents#get-a-repository-readme-for-a-directory
         """
 
         from ..models import BasicError, ContentFile, ValidationError
@@ -18359,12 +18359,12 @@ class ReposClient:
 
         Gets the README from a repository directory.
 
-        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
 
         - **`application/vnd.github.raw+json`**: Returns the raw file contents. This is the default if you do not specify a media type.
         - **`application/vnd.github.html+json`**: Returns the README in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#get-a-repository-readme-for-a-directory
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/contents#get-a-repository-readme-for-a-directory
         """
 
         from ..models import BasicError, ContentFile, ValidationError
@@ -18404,11 +18404,11 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/releases
 
-        This returns a list of releases, which does not include regular Git tags that have not been associated with a release. To get a list of Git tags, use the [Repository Tags API](https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-tags).
+        This returns a list of releases, which does not include regular Git tags that have not been associated with a release. To get a list of Git tags, use the [Repository Tags API](https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-repository-tags).
 
         Information about published releases are available to everyone. Only users with push access will receive listings for draft releases.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#list-releases
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#list-releases
         """
 
         from ..models import BasicError, Release
@@ -18448,11 +18448,11 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/releases
 
-        This returns a list of releases, which does not include regular Git tags that have not been associated with a release. To get a list of Git tags, use the [Repository Tags API](https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-tags).
+        This returns a list of releases, which does not include regular Git tags that have not been associated with a release. To get a list of Git tags, use the [Repository Tags API](https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-repository-tags).
 
         Information about published releases are available to everyone. Only users with push access will receive listings for draft releases.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#list-releases
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#list-releases
         """
 
         from ..models import BasicError, Release
@@ -18525,9 +18525,9 @@ class ReposClient:
 
         Users with push access to the repository can create a release.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#create-a-release
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#create-a-release
         """
 
         from ..models import (
@@ -18610,9 +18610,9 @@ class ReposClient:
 
         Users with push access to the repository can create a release.
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/best-practices-for-using-the-rest-api)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#create-a-release
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#create-a-release
         """
 
         from ..models import (
@@ -18665,11 +18665,11 @@ class ReposClient:
 
         - If within a browser, fetch the location specified in the `browser_download_url` key provided in the response.
         - Alternatively, set the `Accept` header of the request to
-          [`application/octet-stream`](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+          [`application/octet-stream`](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
           The API will either redirect the client to the location, or stream it directly if possible.
           API clients should handle both a `200` or `302` response.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#get-a-release-asset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/assets#get-a-release-asset
         """
 
         from ..models import BasicError, ReleaseAsset
@@ -18706,11 +18706,11 @@ class ReposClient:
 
         - If within a browser, fetch the location specified in the `browser_download_url` key provided in the response.
         - Alternatively, set the `Accept` header of the request to
-          [`application/octet-stream`](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+          [`application/octet-stream`](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
           The API will either redirect the client to the location, or stream it directly if possible.
           API clients should handle both a `200` or `302` response.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#get-a-release-asset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/assets#get-a-release-asset
         """
 
         from ..models import BasicError, ReleaseAsset
@@ -18743,7 +18743,7 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#delete-a-release-asset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/assets#delete-a-release-asset
         """
 
         from ..models import BasicError
@@ -18775,7 +18775,7 @@ class ReposClient:
 
         DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#delete-a-release-asset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/assets#delete-a-release-asset
         """
 
         from ..models import BasicError
@@ -18838,7 +18838,7 @@ class ReposClient:
 
         Users with push access to the repository can edit a release asset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#update-a-release-asset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/assets#update-a-release-asset
         """
 
         from ..models import ReleaseAsset, ReposOwnerRepoReleasesAssetsAssetIdPatchBody
@@ -18911,7 +18911,7 @@ class ReposClient:
 
         Users with push access to the repository can edit a release asset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#update-a-release-asset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/assets#update-a-release-asset
         """
 
         from ..models import ReleaseAsset, ReposOwnerRepoReleasesAssetsAssetIdPatchBody
@@ -18980,9 +18980,9 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/releases/generate-notes
 
-        Generate a name and body describing a [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-a-release). The body content will be markdown formatted and contain information like the changes since last release and users who contributed. The generated release notes are not saved anywhere. They are intended to be generated and used when creating a new release.
+        Generate a name and body describing a [release](https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#get-a-release). The body content will be markdown formatted and contain information like the changes since last release and users who contributed. The generated release notes are not saved anywhere. They are intended to be generated and used when creating a new release.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#generate-release-notes-content-for-a-release
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#generate-release-notes-content-for-a-release
         """
 
         from ..models import (
@@ -19058,9 +19058,9 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/releases/generate-notes
 
-        Generate a name and body describing a [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-a-release). The body content will be markdown formatted and contain information like the changes since last release and users who contributed. The generated release notes are not saved anywhere. They are intended to be generated and used when creating a new release.
+        Generate a name and body describing a [release](https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#get-a-release). The body content will be markdown formatted and contain information like the changes since last release and users who contributed. The generated release notes are not saved anywhere. They are intended to be generated and used when creating a new release.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#generate-release-notes-content-for-a-release
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#generate-release-notes-content-for-a-release
         """
 
         from ..models import (
@@ -19112,7 +19112,7 @@ class ReposClient:
 
         The latest release is the most recent non-prerelease, non-draft release, sorted by the `created_at` attribute. The `created_at` attribute is the date of the commit used for the release, and not the date when the release was drafted or published.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-the-latest-release
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#get-the-latest-release
         """
 
         from ..models import BasicError, Release
@@ -19148,7 +19148,7 @@ class ReposClient:
 
         The latest release is the most recent non-prerelease, non-draft release, sorted by the `created_at` attribute. The `created_at` attribute is the date of the commit used for the release, and not the date when the release was drafted or published.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-the-latest-release
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#get-the-latest-release
         """
 
         from ..models import BasicError, Release
@@ -19183,7 +19183,7 @@ class ReposClient:
 
         Get a published release with the specified tag.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-a-release-by-tag-name
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#get-a-release-by-tag-name
         """
 
         from ..models import BasicError, Release
@@ -19218,7 +19218,7 @@ class ReposClient:
 
         Get a published release with the specified tag.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-a-release-by-tag-name
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#get-a-release-by-tag-name
         """
 
         from ..models import BasicError, Release
@@ -19254,9 +19254,9 @@ class ReposClient:
         Gets a public release with the specified release ID.
 
         > [!NOTE]
-        > This returns an `upload_url` key corresponding to the endpoint for uploading release assets. This key is a hypermedia resource. For more information, see "[Getting started with the REST API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia)."
+        > This returns an `upload_url` key corresponding to the endpoint for uploading release assets. This key is a hypermedia resource. For more information, see "[Getting started with the REST API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-a-release
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#get-a-release
         """
 
         from ..models import Release
@@ -19290,9 +19290,9 @@ class ReposClient:
         Gets a public release with the specified release ID.
 
         > [!NOTE]
-        > This returns an `upload_url` key corresponding to the endpoint for uploading release assets. This key is a hypermedia resource. For more information, see "[Getting started with the REST API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia)."
+        > This returns an `upload_url` key corresponding to the endpoint for uploading release assets. This key is a hypermedia resource. For more information, see "[Getting started with the REST API](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-a-release
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#get-a-release
         """
 
         from ..models import Release
@@ -19325,7 +19325,7 @@ class ReposClient:
 
         Users with push access to the repository can delete a release.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#delete-a-release
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#delete-a-release
         """
 
         from ..models import BasicError
@@ -19359,7 +19359,7 @@ class ReposClient:
 
         Users with push access to the repository can delete a release.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#delete-a-release
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#delete-a-release
         """
 
         from ..models import BasicError
@@ -19427,7 +19427,7 @@ class ReposClient:
 
         Users with push access to the repository can edit a release.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#update-a-release
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#update-a-release
         """
 
         from ..models import (
@@ -19510,7 +19510,7 @@ class ReposClient:
 
         Users with push access to the repository can edit a release.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#update-a-release
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#update-a-release
         """
 
         from ..models import (
@@ -19559,7 +19559,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/releases/{release_id}/assets
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#list-release-assets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/assets#list-release-assets
         """
 
         from ..models import ReleaseAsset
@@ -19597,7 +19597,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/releases/{release_id}/assets
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#list-release-assets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/assets#list-release-assets
         """
 
         from ..models import ReleaseAsset
@@ -19636,8 +19636,8 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/releases/{release_id}/assets
 
-        This endpoint makes use of a [Hypermedia relation](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia) to determine which URL to access. The endpoint you call to upload release assets is specific to your release. Use the `upload_url` returned in
-        the response of the [Create a release endpoint](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#create-a-release) to upload a release asset.
+        This endpoint makes use of a [Hypermedia relation](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia) to determine which URL to access. The endpoint you call to upload release assets is specific to your release. Use the `upload_url` returned in
+        the response of the [Create a release endpoint](https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#create-a-release) to upload a release asset.
 
         You need to use an HTTP client which supports [SNI](http://en.wikipedia.org/wiki/Server_Name_Indication) to make calls to this endpoint.
 
@@ -19651,12 +19651,12 @@ class ReposClient:
         When an upstream failure occurs, you will receive a `502 Bad Gateway` status. This may leave an empty asset with a state of `starter`. It can be safely deleted.
 
         **Notes:**
-        *   GitHub Enterprise Cloud renames asset filenames that have special characters, non-alphanumeric characters, and leading or trailing periods. The "[List release assets](https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#list-release-assets)"
+        *   GitHub Enterprise Cloud renames asset filenames that have special characters, non-alphanumeric characters, and leading or trailing periods. The "[List release assets](https://docs.github.com/enterprise-cloud@latest/rest/releases/assets#list-release-assets)"
         endpoint lists the renamed filenames. For more information and help, contact [GitHub Enterprise Cloud Support](https://support.github.com/contact?tags=dotcom-rest-api).
-        *   To find the `release_id` query the [`GET /repos/{owner}/{repo}/releases/latest` endpoint](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-the-latest-release).
+        *   To find the `release_id` query the [`GET /repos/{owner}/{repo}/releases/latest` endpoint](https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#get-the-latest-release).
         *   If you upload an asset with the same filename as another uploaded asset, you'll receive an error and must delete the old file before you can re-upload the new asset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#upload-a-release-asset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/assets#upload-a-release-asset
         """
 
         from ..models import ReleaseAsset
@@ -19703,8 +19703,8 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/releases/{release_id}/assets
 
-        This endpoint makes use of a [Hypermedia relation](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia) to determine which URL to access. The endpoint you call to upload release assets is specific to your release. Use the `upload_url` returned in
-        the response of the [Create a release endpoint](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#create-a-release) to upload a release asset.
+        This endpoint makes use of a [Hypermedia relation](https://docs.github.com/enterprise-cloud@latest/rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia) to determine which URL to access. The endpoint you call to upload release assets is specific to your release. Use the `upload_url` returned in
+        the response of the [Create a release endpoint](https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#create-a-release) to upload a release asset.
 
         You need to use an HTTP client which supports [SNI](http://en.wikipedia.org/wiki/Server_Name_Indication) to make calls to this endpoint.
 
@@ -19718,12 +19718,12 @@ class ReposClient:
         When an upstream failure occurs, you will receive a `502 Bad Gateway` status. This may leave an empty asset with a state of `starter`. It can be safely deleted.
 
         **Notes:**
-        *   GitHub Enterprise Cloud renames asset filenames that have special characters, non-alphanumeric characters, and leading or trailing periods. The "[List release assets](https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#list-release-assets)"
+        *   GitHub Enterprise Cloud renames asset filenames that have special characters, non-alphanumeric characters, and leading or trailing periods. The "[List release assets](https://docs.github.com/enterprise-cloud@latest/rest/releases/assets#list-release-assets)"
         endpoint lists the renamed filenames. For more information and help, contact [GitHub Enterprise Cloud Support](https://support.github.com/contact?tags=dotcom-rest-api).
-        *   To find the `release_id` query the [`GET /repos/{owner}/{repo}/releases/latest` endpoint](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-the-latest-release).
+        *   To find the `release_id` query the [`GET /repos/{owner}/{repo}/releases/latest` endpoint](https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#get-the-latest-release).
         *   If you upload an asset with the same filename as another uploaded asset, you'll receive an error and must delete the old file before you can re-upload the new asset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#upload-a-release-asset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/releases/assets#upload-a-release-asset
         """
 
         from ..models import ReleaseAsset
@@ -19827,7 +19827,7 @@ class ReposClient:
         at which they are configured (e.g. repository or organization). Rules in rulesets with "evaluate" or "disabled"
         enforcement statuses are not returned.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-rules-for-a-branch
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rules#get-rules-for-a-branch
         """
 
         from typing import Union
@@ -19973,7 +19973,7 @@ class ReposClient:
         at which they are configured (e.g. repository or organization). Rules in rulesets with "evaluate" or "disabled"
         enforcement statuses are not returned.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-rules-for-a-branch
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rules#get-rules-for-a-branch
         """
 
         from typing import Union
@@ -20064,7 +20064,7 @@ class ReposClient:
 
         Get all the rulesets for a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-all-repository-rulesets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rules#get-all-repository-rulesets
         """
 
         from ..models import BasicError, RepositoryRuleset
@@ -20111,7 +20111,7 @@ class ReposClient:
 
         Get all the rulesets for a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-all-repository-rulesets
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rules#get-all-repository-rulesets
         """
 
         from ..models import BasicError, RepositoryRuleset
@@ -20211,7 +20211,7 @@ class ReposClient:
 
         Create a ruleset for a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#create-a-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rules#create-a-repository-ruleset
         """
 
         from ..models import (
@@ -20319,7 +20319,7 @@ class ReposClient:
 
         Create a ruleset for a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#create-a-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rules#create-a-repository-ruleset
         """
 
         from ..models import (
@@ -20375,9 +20375,9 @@ class ReposClient:
         GET /repos/{owner}/{repo}/rulesets/rule-suites
 
         Lists suites of rule evaluations at the repository level.
-        For more information, see "[Managing rulesets for a repository](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#viewing-insights-for-rulesets)."
+        For more information, see "[Managing rulesets for a repository](https://docs.github.com/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#viewing-insights-for-rulesets)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rule-suites#list-repository-rule-suites
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rule-suites#list-repository-rule-suites
         """
 
         from ..models import BasicError, RuleSuitesItems
@@ -20427,9 +20427,9 @@ class ReposClient:
         GET /repos/{owner}/{repo}/rulesets/rule-suites
 
         Lists suites of rule evaluations at the repository level.
-        For more information, see "[Managing rulesets for a repository](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#viewing-insights-for-rulesets)."
+        For more information, see "[Managing rulesets for a repository](https://docs.github.com/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#viewing-insights-for-rulesets)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rule-suites#list-repository-rule-suites
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rule-suites#list-repository-rule-suites
         """
 
         from ..models import BasicError, RuleSuitesItems
@@ -20474,9 +20474,9 @@ class ReposClient:
         GET /repos/{owner}/{repo}/rulesets/rule-suites/{rule_suite_id}
 
         Gets information about a suite of rule evaluations from within a repository.
-        For more information, see "[Managing rulesets for a repository](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#viewing-insights-for-rulesets)."
+        For more information, see "[Managing rulesets for a repository](https://docs.github.com/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#viewing-insights-for-rulesets)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rule-suites#get-a-repository-rule-suite
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rule-suites#get-a-repository-rule-suite
         """
 
         from ..models import BasicError, RuleSuite
@@ -20511,9 +20511,9 @@ class ReposClient:
         GET /repos/{owner}/{repo}/rulesets/rule-suites/{rule_suite_id}
 
         Gets information about a suite of rule evaluations from within a repository.
-        For more information, see "[Managing rulesets for a repository](https://docs.github.com/enterprise-cloud@latest//repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#viewing-insights-for-rulesets)."
+        For more information, see "[Managing rulesets for a repository](https://docs.github.com/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#viewing-insights-for-rulesets)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rule-suites#get-a-repository-rule-suite
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rule-suites#get-a-repository-rule-suite
         """
 
         from ..models import BasicError, RuleSuite
@@ -20553,7 +20553,7 @@ class ReposClient:
         **Note:** To prevent leaking sensitive information, the `bypass_actors` property is only returned if the user
         making the API request has write access to the ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-a-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rules#get-a-repository-ruleset
         """
 
         from ..models import BasicError, RepositoryRuleset
@@ -20598,7 +20598,7 @@ class ReposClient:
         **Note:** To prevent leaking sensitive information, the `bypass_actors` property is only returned if the user
         making the API request has write access to the ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-a-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rules#get-a-repository-ruleset
         """
 
         from ..models import BasicError, RepositoryRuleset
@@ -20698,7 +20698,7 @@ class ReposClient:
 
         Update a ruleset for a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#update-a-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rules#update-a-repository-ruleset
         """
 
         from ..models import (
@@ -20809,7 +20809,7 @@ class ReposClient:
 
         Update a ruleset for a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#update-a-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rules#update-a-repository-ruleset
         """
 
         from ..models import (
@@ -20861,7 +20861,7 @@ class ReposClient:
 
         Delete a ruleset for a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#delete-a-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rules#delete-a-repository-ruleset
         """
 
         from ..models import BasicError
@@ -20896,7 +20896,7 @@ class ReposClient:
 
         Delete a ruleset for a repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#delete-a-repository-ruleset
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rules#delete-a-repository-ruleset
         """
 
         from ..models import BasicError
@@ -20933,7 +20933,7 @@ class ReposClient:
 
         Get the history of a repository ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-repository-ruleset-history
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rules#get-repository-ruleset-history
         """
 
         from ..models import BasicError, RulesetVersion
@@ -20977,7 +20977,7 @@ class ReposClient:
 
         Get the history of a repository ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-repository-ruleset-history
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rules#get-repository-ruleset-history
         """
 
         from ..models import BasicError, RulesetVersion
@@ -21020,7 +21020,7 @@ class ReposClient:
 
         Get a version of a repository ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-repository-ruleset-version
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rules#get-repository-ruleset-version
         """
 
         from ..models import BasicError, RulesetVersionWithState
@@ -21057,7 +21057,7 @@ class ReposClient:
 
         Get a version of a repository ruleset.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-repository-ruleset-version
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/rules#get-repository-ruleset-version
         """
 
         from ..models import BasicError, RulesetVersionWithState
@@ -21095,7 +21095,7 @@ class ReposClient:
         > [!NOTE]
         > This endpoint can only be used for repositories with fewer than 10,000 commits. If the repository contains 10,000 or more commits, a 422 status code will be returned.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-the-weekly-commit-activity
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/statistics#get-the-weekly-commit-activity
         """
 
         url = f"/repos/{owner}/{repo}/stats/code_frequency"
@@ -21128,7 +21128,7 @@ class ReposClient:
         > [!NOTE]
         > This endpoint can only be used for repositories with fewer than 10,000 commits. If the repository contains 10,000 or more commits, a 422 status code will be returned.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-the-weekly-commit-activity
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/statistics#get-the-weekly-commit-activity
         """
 
         url = f"/repos/{owner}/{repo}/stats/code_frequency"
@@ -21158,7 +21158,7 @@ class ReposClient:
 
         Returns the last year of commit activity grouped by week. The `days` array is a group of commits per day, starting on `Sunday`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-the-last-year-of-commit-activity
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/statistics#get-the-last-year-of-commit-activity
         """
 
         from ..models import CommitActivity
@@ -21189,7 +21189,7 @@ class ReposClient:
 
         Returns the last year of commit activity grouped by week. The `days` array is a group of commits per day, starting on `Sunday`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-the-last-year-of-commit-activity
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/statistics#get-the-last-year-of-commit-activity
         """
 
         from ..models import CommitActivity
@@ -21229,7 +21229,7 @@ class ReposClient:
         > [!NOTE]
         > This endpoint will return `0` values for all addition and deletion counts in repositories with 10,000 or more commits.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-all-contributor-commit-activity
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/statistics#get-all-contributor-commit-activity
         """
 
         from ..models import ContributorActivity
@@ -21269,7 +21269,7 @@ class ReposClient:
         > [!NOTE]
         > This endpoint will return `0` values for all addition and deletion counts in repositories with 10,000 or more commits.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-all-contributor-commit-activity
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/statistics#get-all-contributor-commit-activity
         """
 
         from ..models import ContributorActivity
@@ -21304,7 +21304,7 @@ class ReposClient:
 
         The most recent week is seven days ago at UTC midnight to today at UTC midnight.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-the-weekly-commit-count
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/statistics#get-the-weekly-commit-count
         """
 
         from ..models import BasicError, ParticipationStats
@@ -21342,7 +21342,7 @@ class ReposClient:
 
         The most recent week is seven days ago at UTC midnight to today at UTC midnight.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-the-weekly-commit-count
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/statistics#get-the-weekly-commit-count
         """
 
         from ..models import BasicError, ParticipationStats
@@ -21382,7 +21382,7 @@ class ReposClient:
 
         For example, `[2, 14, 25]` indicates that there were 25 total commits, during the 2:00pm hour on Tuesdays. All times are based on the time zone of individual commits.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-the-hourly-commit-count-for-each-day
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/statistics#get-the-hourly-commit-count-for-each-day
         """
 
         url = f"/repos/{owner}/{repo}/stats/punch_card"
@@ -21417,7 +21417,7 @@ class ReposClient:
 
         For example, `[2, 14, 25]` indicates that there were 25 total commits, during the 2:00pm hour on Tuesdays. All times are based on the time zone of individual commits.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-the-hourly-commit-count-for-each-day
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/statistics#get-the-hourly-commit-count-for-each-day
         """
 
         url = f"/repos/{owner}/{repo}/stats/punch_card"
@@ -21479,7 +21479,7 @@ class ReposClient:
 
         Note: there is a limit of 1000 statuses per `sha` and `context` within a repository. Attempts to create more than 1000 statuses will result in a validation error.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses#create-a-commit-status
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/statuses#create-a-commit-status
         """
 
         from ..models import ReposOwnerRepoStatusesShaPostBody, Status
@@ -21553,7 +21553,7 @@ class ReposClient:
 
         Note: there is a limit of 1000 statuses per `sha` and `context` within a repository. Attempts to create more than 1000 statuses will result in a validation error.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses#create-a-commit-status
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/commits/statuses#create-a-commit-status
         """
 
         from ..models import ReposOwnerRepoStatusesShaPostBody, Status
@@ -21594,7 +21594,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/tags
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-tags
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-repository-tags
         """
 
         from ..models import Tag
@@ -21631,7 +21631,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/tags
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-tags
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-repository-tags
         """
 
         from ..models import Tag
@@ -21674,7 +21674,7 @@ class ReposClient:
         > [!NOTE]
         > For private repositories, these links are temporary and expire after five minutes.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#download-a-repository-archive-tar
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/contents#download-a-repository-archive-tar
         """
 
         url = f"/repos/{owner}/{repo}/tarball/{ref}"
@@ -21708,7 +21708,7 @@ class ReposClient:
         > [!NOTE]
         > For private repositories, these links are temporary and expire after five minutes.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#download-a-repository-archive-tar
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/contents#download-a-repository-archive-tar
         """
 
         url = f"/repos/{owner}/{repo}/tarball/{ref}"
@@ -21742,7 +21742,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to use this endpoint with a public repository, and `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-teams
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-repository-teams
         """
 
         from ..models import BasicError, Team
@@ -21788,7 +21788,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to use this endpoint with a public repository, and `repo` scope to use this endpoint with a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-teams
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-repository-teams
         """
 
         from ..models import BasicError, Team
@@ -21828,7 +21828,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/topics
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#get-all-repository-topics
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#get-all-repository-topics
         """
 
         from ..models import BasicError, Topic
@@ -21868,7 +21868,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/topics
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#get-all-repository-topics
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#get-all-repository-topics
         """
 
         from ..models import BasicError, Topic
@@ -21931,7 +21931,7 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/topics
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#replace-all-repository-topics
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#replace-all-repository-topics
         """
 
         from ..models import (
@@ -22004,7 +22004,7 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/topics
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#replace-all-repository-topics
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#replace-all-repository-topics
         """
 
         from ..models import (
@@ -22055,7 +22055,7 @@ class ReposClient:
 
         Get the total number of clones and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-repository-clones
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/traffic#get-repository-clones
         """
 
         from ..models import BasicError, CloneTraffic
@@ -22095,7 +22095,7 @@ class ReposClient:
 
         Get the total number of clones and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-repository-clones
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/traffic#get-repository-clones
         """
 
         from ..models import BasicError, CloneTraffic
@@ -22134,7 +22134,7 @@ class ReposClient:
 
         Get the top 10 popular contents over the last 14 days.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-top-referral-paths
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/traffic#get-top-referral-paths
         """
 
         from ..models import BasicError, ContentTraffic
@@ -22168,7 +22168,7 @@ class ReposClient:
 
         Get the top 10 popular contents over the last 14 days.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-top-referral-paths
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/traffic#get-top-referral-paths
         """
 
         from ..models import BasicError, ContentTraffic
@@ -22202,7 +22202,7 @@ class ReposClient:
 
         Get the top 10 referrers over the last 14 days.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-top-referral-sources
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/traffic#get-top-referral-sources
         """
 
         from ..models import BasicError, ReferrerTraffic
@@ -22236,7 +22236,7 @@ class ReposClient:
 
         Get the top 10 referrers over the last 14 days.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-top-referral-sources
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/traffic#get-top-referral-sources
         """
 
         from ..models import BasicError, ReferrerTraffic
@@ -22271,7 +22271,7 @@ class ReposClient:
 
         Get the total number of views and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-page-views
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/traffic#get-page-views
         """
 
         from ..models import BasicError, ViewTraffic
@@ -22311,7 +22311,7 @@ class ReposClient:
 
         Get the total number of views and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-page-views
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/metrics/traffic#get-page-views
         """
 
         from ..models import BasicError, ViewTraffic
@@ -22375,9 +22375,9 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/transfer
 
-        A transfer request will need to be accepted by the new owner when transferring a personal repository to another user. The response will contain the original `owner`, and the transfer will continue asynchronously. For more details on the requirements to transfer personal and organization-owned repositories, see [about repository transfers](https://docs.github.com/enterprise-cloud@latest//articles/about-repository-transfers/).
+        A transfer request will need to be accepted by the new owner when transferring a personal repository to another user. The response will contain the original `owner`, and the transfer will continue asynchronously. For more details on the requirements to transfer personal and organization-owned repositories, see [about repository transfers](https://docs.github.com/enterprise-cloud@latest/articles/about-repository-transfers/).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#transfer-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#transfer-a-repository
         """
 
         from ..models import MinimalRepository, ReposOwnerRepoTransferPostBody
@@ -22443,9 +22443,9 @@ class ReposClient:
 
         POST /repos/{owner}/{repo}/transfer
 
-        A transfer request will need to be accepted by the new owner when transferring a personal repository to another user. The response will contain the original `owner`, and the transfer will continue asynchronously. For more details on the requirements to transfer personal and organization-owned repositories, see [about repository transfers](https://docs.github.com/enterprise-cloud@latest//articles/about-repository-transfers/).
+        A transfer request will need to be accepted by the new owner when transferring a personal repository to another user. The response will contain the original `owner`, and the transfer will continue asynchronously. For more details on the requirements to transfer personal and organization-owned repositories, see [about repository transfers](https://docs.github.com/enterprise-cloud@latest/articles/about-repository-transfers/).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#transfer-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#transfer-a-repository
         """
 
         from ..models import MinimalRepository, ReposOwnerRepoTransferPostBody
@@ -22484,9 +22484,9 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/vulnerability-alerts
 
-        Shows whether dependency alerts are enabled or disabled for a repository. The authenticated user must have admin read access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://docs.github.com/enterprise-cloud@latest//articles/about-security-alerts-for-vulnerable-dependencies)".
+        Shows whether dependency alerts are enabled or disabled for a repository. The authenticated user must have admin read access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://docs.github.com/enterprise-cloud@latest/articles/about-security-alerts-for-vulnerable-dependencies)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository
         """
 
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
@@ -22513,9 +22513,9 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/vulnerability-alerts
 
-        Shows whether dependency alerts are enabled or disabled for a repository. The authenticated user must have admin read access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://docs.github.com/enterprise-cloud@latest//articles/about-security-alerts-for-vulnerable-dependencies)".
+        Shows whether dependency alerts are enabled or disabled for a repository. The authenticated user must have admin read access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://docs.github.com/enterprise-cloud@latest/articles/about-security-alerts-for-vulnerable-dependencies)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository
         """
 
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
@@ -22542,9 +22542,9 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/vulnerability-alerts
 
-        Enables dependency alerts and the dependency graph for a repository. The authenticated user must have admin access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://docs.github.com/enterprise-cloud@latest//articles/about-security-alerts-for-vulnerable-dependencies)".
+        Enables dependency alerts and the dependency graph for a repository. The authenticated user must have admin access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://docs.github.com/enterprise-cloud@latest/articles/about-security-alerts-for-vulnerable-dependencies)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-vulnerability-alerts
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#enable-vulnerability-alerts
         """
 
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
@@ -22570,9 +22570,9 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/vulnerability-alerts
 
-        Enables dependency alerts and the dependency graph for a repository. The authenticated user must have admin access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://docs.github.com/enterprise-cloud@latest//articles/about-security-alerts-for-vulnerable-dependencies)".
+        Enables dependency alerts and the dependency graph for a repository. The authenticated user must have admin access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://docs.github.com/enterprise-cloud@latest/articles/about-security-alerts-for-vulnerable-dependencies)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-vulnerability-alerts
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#enable-vulnerability-alerts
         """
 
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
@@ -22600,9 +22600,9 @@ class ReposClient:
 
         Disables dependency alerts and the dependency graph for a repository.
         The authenticated user must have admin access to the repository. For more information,
-        see "[About security alerts for vulnerable dependencies](https://docs.github.com/enterprise-cloud@latest//articles/about-security-alerts-for-vulnerable-dependencies)".
+        see "[About security alerts for vulnerable dependencies](https://docs.github.com/enterprise-cloud@latest/articles/about-security-alerts-for-vulnerable-dependencies)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-vulnerability-alerts
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#disable-vulnerability-alerts
         """
 
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
@@ -22630,9 +22630,9 @@ class ReposClient:
 
         Disables dependency alerts and the dependency graph for a repository.
         The authenticated user must have admin access to the repository. For more information,
-        see "[About security alerts for vulnerable dependencies](https://docs.github.com/enterprise-cloud@latest//articles/about-security-alerts-for-vulnerable-dependencies)".
+        see "[About security alerts for vulnerable dependencies](https://docs.github.com/enterprise-cloud@latest/articles/about-security-alerts-for-vulnerable-dependencies)".
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-vulnerability-alerts
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#disable-vulnerability-alerts
         """
 
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
@@ -22666,7 +22666,7 @@ class ReposClient:
         > [!NOTE]
         > For private repositories, these links are temporary and expire after five minutes. If the repository is empty, you will receive a 404 when you follow the redirect.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#download-a-repository-archive-zip
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/contents#download-a-repository-archive-zip
         """
 
         url = f"/repos/{owner}/{repo}/zipball/{ref}"
@@ -22700,7 +22700,7 @@ class ReposClient:
         > [!NOTE]
         > For private repositories, these links are temporary and expire after five minutes. If the repository is empty, you will receive a 404 when you follow the redirect.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#download-a-repository-archive-zip
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/contents#download-a-repository-archive-zip
         """
 
         url = f"/repos/{owner}/{repo}/zipball/{ref}"
@@ -22755,11 +22755,11 @@ class ReposClient:
 
         POST /repos/{template_owner}/{template_repo}/generate
 
-        Creates a new repository using a repository template. Use the `template_owner` and `template_repo` route parameters to specify the repository to use as the template. If the repository is not public, the authenticated user must own or be a member of an organization that owns the repository. To check if a repository is available to use as a template, get the repository's information using the [Get a repository](https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#get-a-repository) endpoint and check that the `is_template` key is `true`.
+        Creates a new repository using a repository template. Use the `template_owner` and `template_repo` route parameters to specify the repository to use as the template. If the repository is not public, the authenticated user must own or be a member of an organization that owns the repository. To check if a repository is available to use as a template, get the repository's information using the [Get a repository](https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#get-a-repository) endpoint and check that the `is_template` key is `true`.
 
         OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to create a public repository, and `repo` scope to create a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#create-a-repository-using-a-template
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#create-a-repository-using-a-template
         """
 
         from ..models import (
@@ -22832,11 +22832,11 @@ class ReposClient:
 
         POST /repos/{template_owner}/{template_repo}/generate
 
-        Creates a new repository using a repository template. Use the `template_owner` and `template_repo` route parameters to specify the repository to use as the template. If the repository is not public, the authenticated user must own or be a member of an organization that owns the repository. To check if a repository is available to use as a template, get the repository's information using the [Get a repository](https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#get-a-repository) endpoint and check that the `is_template` key is `true`.
+        Creates a new repository using a repository template. Use the `template_owner` and `template_repo` route parameters to specify the repository to use as the template. If the repository is not public, the authenticated user must own or be a member of an organization that owns the repository. To check if a repository is available to use as a template, get the repository's information using the [Get a repository](https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#get-a-repository) endpoint and check that the `is_template` key is `true`.
 
         OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to create a public repository, and `repo` scope to create a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#create-a-repository-using-a-template
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#create-a-repository-using-a-template
         """
 
         from ..models import (
@@ -22883,9 +22883,9 @@ class ReposClient:
 
         Note:
         - For GitHub Enterprise Server, this endpoint will only list repositories available to all users on the enterprise.
-        - Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/enterprise-cloud@latest//rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of repositories.
+        - Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/enterprise-cloud@latest/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-public-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-public-repositories
         """
 
         from ..models import MinimalRepository, ValidationError
@@ -22925,9 +22925,9 @@ class ReposClient:
 
         Note:
         - For GitHub Enterprise Server, this endpoint will only list repositories available to all users on the enterprise.
-        - Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/enterprise-cloud@latest//rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of repositories.
+        - Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/enterprise-cloud@latest/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of repositories.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-public-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-public-repositories
         """
 
         from ..models import MinimalRepository, ValidationError
@@ -22975,7 +22975,7 @@ class ReposClient:
 
         The authenticated user has explicit permission to access repositories they own, repositories where they are a collaborator, and repositories that they can access through an organization membership.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repositories-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-repositories-for-the-authenticated-user
         """
 
         from ..models import BasicError, Repository, ValidationError
@@ -23033,7 +23033,7 @@ class ReposClient:
 
         The authenticated user has explicit permission to access repositories they own, repositories where they are a collaborator, and repositories that they can access through an organization membership.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repositories-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-repositories-for-the-authenticated-user
         """
 
         from ..models import BasicError, Repository, ValidationError
@@ -23129,7 +23129,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to create a public repository, and `repo` scope to create a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#create-a-repository-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#create-a-repository-for-the-authenticated-user
         """
 
         from ..models import (
@@ -23230,7 +23230,7 @@ class ReposClient:
 
         OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to create a public repository, and `repo` scope to create a private repository.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#create-a-repository-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#create-a-repository-for-the-authenticated-user
         """
 
         from ..models import (
@@ -23286,7 +23286,7 @@ class ReposClient:
 
         When authenticating as a user, this endpoint will list all currently open repository invitations for that user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user
         """
 
         from ..models import BasicError, RepositoryInvitation
@@ -23330,7 +23330,7 @@ class ReposClient:
 
         When authenticating as a user, this endpoint will list all currently open repository invitations for that user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user
         """
 
         from ..models import BasicError, RepositoryInvitation
@@ -23369,7 +23369,7 @@ class ReposClient:
 
         DELETE /user/repository_invitations/{invitation_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#decline-a-repository-invitation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/invitations#decline-a-repository-invitation
         """
 
         from ..models import BasicError
@@ -23401,7 +23401,7 @@ class ReposClient:
 
         DELETE /user/repository_invitations/{invitation_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#decline-a-repository-invitation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/invitations#decline-a-repository-invitation
         """
 
         from ..models import BasicError
@@ -23433,7 +23433,7 @@ class ReposClient:
 
         PATCH /user/repository_invitations/{invitation_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#accept-a-repository-invitation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/invitations#accept-a-repository-invitation
         """
 
         from ..models import BasicError, ValidationError
@@ -23466,7 +23466,7 @@ class ReposClient:
 
         PATCH /user/repository_invitations/{invitation_id}
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#accept-a-repository-invitation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/collaborators/invitations#accept-a-repository-invitation
         """
 
         from ..models import BasicError, ValidationError
@@ -23506,7 +23506,7 @@ class ReposClient:
 
         Lists public repositories for the specified user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repositories-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-repositories-for-a-user
         """
 
         from ..models import MinimalRepository
@@ -23550,7 +23550,7 @@ class ReposClient:
 
         Lists public repositories for the specified user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repositories-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#list-repositories-for-a-user
         """
 
         from ..models import MinimalRepository

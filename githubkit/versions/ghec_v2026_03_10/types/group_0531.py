@@ -13,39 +13,31 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class PatchSchemaType(TypedDict):
-    """PatchSchema"""
+class MetaType(TypedDict):
+    """Meta
 
-    operations: list[PatchSchemaPropOperationsItemsType]
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
+    The metadata associated with the creation/updates to the user.
+    """
 
-
-class PatchSchemaTypeForResponse(TypedDict):
-    """PatchSchema"""
-
-    operations: list[PatchSchemaPropOperationsItemsTypeForResponse]
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
+    resource_type: Literal["User", "Group"]
+    created: NotRequired[str]
+    last_modified: NotRequired[str]
+    location: NotRequired[str]
 
 
-class PatchSchemaPropOperationsItemsType(TypedDict):
-    """PatchSchemaPropOperationsItems"""
+class MetaTypeForResponse(TypedDict):
+    """Meta
 
-    op: Literal["add", "replace", "remove"]
-    path: NotRequired[str]
-    value: NotRequired[str]
+    The metadata associated with the creation/updates to the user.
+    """
 
-
-class PatchSchemaPropOperationsItemsTypeForResponse(TypedDict):
-    """PatchSchemaPropOperationsItems"""
-
-    op: Literal["add", "replace", "remove"]
-    path: NotRequired[str]
-    value: NotRequired[str]
+    resource_type: Literal["User", "Group"]
+    created: NotRequired[str]
+    last_modified: NotRequired[str]
+    location: NotRequired[str]
 
 
 __all__ = (
-    "PatchSchemaPropOperationsItemsType",
-    "PatchSchemaPropOperationsItemsTypeForResponse",
-    "PatchSchemaType",
-    "PatchSchemaTypeForResponse",
+    "MetaType",
+    "MetaTypeForResponse",
 )

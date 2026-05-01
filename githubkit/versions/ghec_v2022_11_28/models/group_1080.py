@@ -9,85 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
-
-    organization: Missing[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization
-    ] = Field(default=UNSET)
-    repository: Missing[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository
-    ] = Field(default=UNSET)
-    ruleset: Missing[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
-    ] = Field(
-        default=UNSET,
-        description="The created or existing ruleset (if create_ruleset was true).",
-    )
+class EnterprisesEnterpriseCopilotContentExclusionPutBody(ExtraGitHubModel):
+    """EnterprisesEnterpriseCopilotContentExclusionPutBody"""
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
+model_rebuild(EnterprisesEnterpriseCopilotContentExclusionPutBody)
 
-    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
-    login: Missing[str] = Field(
-        default=UNSET, description="The login name of the organization."
-    )
-    avatar_url: Missing[str] = Field(
-        default=UNSET, description="The avatar URL of the organization."
-    )
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the .github-private repository."
-    )
-    name: Missing[str] = Field(default=UNSET, description="The name of the repository.")
-    full_name: Missing[str] = Field(
-        default=UNSET, description="The full name of the repository (owner/name)."
-    )
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
-
-    The created or existing ruleset (if create_ruleset was true).
-    """
-
-    id: Missing[int] = Field(default=UNSET, description="The ID of the ruleset.")
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
-    enforcement: Missing[str] = Field(
-        default=UNSET, description="The enforcement level of the ruleset."
-    )
-
-
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200)
-model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization
-)
-model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository
-)
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset)
-
-__all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset",
-)
+__all__ = ("EnterprisesEnterpriseCopilotContentExclusionPutBody",)

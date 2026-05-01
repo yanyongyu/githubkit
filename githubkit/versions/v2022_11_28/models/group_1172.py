@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Annotated, Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,66 +18,34 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoContentsPathPutBody(GitHubModel):
-    """ReposOwnerRepoContentsPathPutBody"""
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    message: str = Field(description="The commit message.")
-    content: str = Field(description="The new file content, using Base64 encoding.")
-    sha: Missing[str] = Field(
+    state: Missing[Literal["open", "dismissed"]] = Field(
         default=UNSET,
-        description="**Required if you are updating a file**. The blob SHA of the file being replaced.",
+        description="Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`.",
     )
-    branch: Missing[str] = Field(
+    dismissed_reason: Missing[
+        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+    ] = Field(
         default=UNSET,
-        description="The branch name. Default: the repository’s default branch.",
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
     )
-    committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitter] = Field(
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
+    )
+    create_request: Missing[bool] = Field(
         default=UNSET,
-        description="The person that committed the file. Default: the authenticated user.",
+        description="If `true`, attempt to create an alert dismissal request.",
     )
-    author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthor] = Field(
-        default=UNSET,
-        description="The author of the file. Default: The `committer` or the authenticated user if you omit `committer`.",
+    assignees: list[str] = Field(
+        description="The list of users to assign to the code scanning alert. An empty array unassigns all previous assignees from the alert."
     )
 
 
-class ReposOwnerRepoContentsPathPutBodyPropCommitter(GitHubModel):
-    """ReposOwnerRepoContentsPathPutBodyPropCommitter
+model_rebuild(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1)
 
-    The person that committed the file. Default: the authenticated user.
-    """
-
-    name: str = Field(
-        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
-    )
-    email: str = Field(
-        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
-    )
-    date: Missing[str] = Field(default=UNSET)
-
-
-class ReposOwnerRepoContentsPathPutBodyPropAuthor(GitHubModel):
-    """ReposOwnerRepoContentsPathPutBodyPropAuthor
-
-    The author of the file. Default: The `committer` or the authenticated user if
-    you omit `committer`.
-    """
-
-    name: str = Field(
-        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
-    )
-    email: str = Field(
-        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
-    )
-    date: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ReposOwnerRepoContentsPathPutBody)
-model_rebuild(ReposOwnerRepoContentsPathPutBodyPropCommitter)
-model_rebuild(ReposOwnerRepoContentsPathPutBodyPropAuthor)
-
-__all__ = (
-    "ReposOwnerRepoContentsPathPutBody",
-    "ReposOwnerRepoContentsPathPutBodyPropAuthor",
-    "ReposOwnerRepoContentsPathPutBodyPropCommitter",
-)
+__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1",)

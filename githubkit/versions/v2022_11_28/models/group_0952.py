@@ -9,27 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class NotificationsPutBody(GitHubModel):
-    """NotificationsPutBody"""
+class GistsPostBody(GitHubModel):
+    """GistsPostBody"""
 
-    last_read_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
+    description: Missing[str] = Field(
+        default=UNSET, description="Description of the gist"
     )
-    read: Missing[bool] = Field(
-        default=UNSET, description="Whether the notification has been read."
+    files: GistsPostBodyPropFiles = Field(
+        description="Names and content for the files that make up the gist"
     )
+    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
 
 
-model_rebuild(NotificationsPutBody)
+class GistsPostBodyPropFiles(ExtraGitHubModel):
+    """GistsPostBodyPropFiles
 
-__all__ = ("NotificationsPutBody",)
+    Names and content for the files that make up the gist
+
+    Examples:
+        {'hello.rb': {'content': 'puts "Hello, World!"'}}
+    """
+
+
+model_rebuild(GistsPostBody)
+model_rebuild(GistsPostBodyPropFiles)
+
+__all__ = (
+    "GistsPostBody",
+    "GistsPostBodyPropFiles",
+)

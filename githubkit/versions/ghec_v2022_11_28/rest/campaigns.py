@@ -75,7 +75,7 @@ class CampaignsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/campaigns/campaigns#list-campaigns-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/campaigns/campaigns#list-campaigns-for-an-organization
         """
 
         from ..models import (
@@ -131,7 +131,7 @@ class CampaignsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/campaigns/campaigns#list-campaigns-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/campaigns/campaigns#list-campaigns-for-an-organization
         """
 
         from ..models import (
@@ -243,7 +243,7 @@ class CampaignsClient:
         Fine-grained tokens must have the "Code scanning alerts" repository permissions (read) on all repositories included
         in the campaign.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/campaigns/campaigns#create-a-campaign-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/campaigns/campaigns#create-a-campaign-for-an-organization
         """
 
         from typing import Union
@@ -365,7 +365,7 @@ class CampaignsClient:
         Fine-grained tokens must have the "Code scanning alerts" repository permissions (read) on all repositories included
         in the campaign.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/campaigns/campaigns#create-a-campaign-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/campaigns/campaigns#create-a-campaign-for-an-organization
         """
 
         from typing import Union
@@ -427,7 +427,7 @@ class CampaignsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/campaigns/campaigns#get-a-campaign-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/campaigns/campaigns#get-a-campaign-for-an-organization
         """
 
         from ..models import (
@@ -471,7 +471,7 @@ class CampaignsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/campaigns/campaigns#get-a-campaign-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/campaigns/campaigns#get-a-campaign-for-an-organization
         """
 
         from ..models import (
@@ -515,7 +515,7 @@ class CampaignsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/campaigns/campaigns#delete-a-campaign-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/campaigns/campaigns#delete-a-campaign-for-an-organization
         """
 
         from ..models import (
@@ -556,7 +556,7 @@ class CampaignsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/campaigns/campaigns#delete-a-campaign-for-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/campaigns/campaigns#delete-a-campaign-for-an-organization
         """
 
         from ..models import (
@@ -628,7 +628,7 @@ class CampaignsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/campaigns/campaigns#update-a-campaign
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/campaigns/campaigns#update-a-campaign
         """
 
         from ..models import (
@@ -715,7 +715,7 @@ class CampaignsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/campaigns/campaigns#update-a-campaign
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/campaigns/campaigns#update-a-campaign
         """
 
         from ..models import (

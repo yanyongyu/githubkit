@@ -18,52 +18,45 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class DismissalRequestResponse(GitHubModel):
-    """Dismissal request response
 
-    A response made by a requester to dismiss the request.
+class OrganizationCustomRepositoryRole(GitHubModel):
+    """Organization Custom Repository Role
+
+    Custom repository roles created by organization owners
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the response to the dismissal request."
-    )
-    reviewer: Missing[DismissalRequestResponsePropReviewer] = Field(
-        default=UNSET, description="The user who reviewed the dismissal request."
-    )
-    message: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The response comment of the reviewer."
-    )
-    status: Missing[Literal["approved", "denied", "dismissed"]] = Field(
+    id: int = Field(description="The unique identifier of the custom role.")
+    name: str = Field(description="The name of the custom role.")
+    description: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The response status to the dismissal request until dismissed.",
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the response to the dismissal request was created.",
+    base_role: Literal["read", "triage", "write", "maintain"] = Field(
+        description="The system role from which this role inherits permissions."
     )
-
-
-class DismissalRequestResponsePropReviewer(GitHubModel):
-    """DismissalRequestResponsePropReviewer
-
-    The user who reviewed the dismissal request.
-    """
-
-    actor_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the GitHub user who reviewed the dismissal request.",
+    permissions: list[str] = Field(
+        description="A list of additional permissions included in this role."
     )
-    actor_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the GitHub user who reviewed the dismissal request.",
+    organization: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+
+
+class OrgsOrgCustomRepositoryRolesGetResponse200(GitHubModel):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+
+    total_count: Missing[int] = Field(
+        default=UNSET, description="The number of custom roles in this organization"
     )
+    custom_roles: Missing[list[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
 
 
-model_rebuild(DismissalRequestResponse)
-model_rebuild(DismissalRequestResponsePropReviewer)
+model_rebuild(OrganizationCustomRepositoryRole)
+model_rebuild(OrgsOrgCustomRepositoryRolesGetResponse200)
 
 __all__ = (
-    "DismissalRequestResponse",
-    "DismissalRequestResponsePropReviewer",
+    "OrganizationCustomRepositoryRole",
+    "OrgsOrgCustomRepositoryRolesGetResponse200",
 )

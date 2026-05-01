@@ -18,42 +18,50 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserMigrationsPostBody(GitHubModel):
-    """UserMigrationsPostBody"""
+class UserCodespacesPostBodyOneof1(GitHubModel):
+    """UserCodespacesPostBodyOneof1"""
 
-    lock_repositories: Missing[bool] = Field(
+    pull_request: UserCodespacesPostBodyOneof1PropPullRequest = Field(
+        description="Pull request number for this codespace"
+    )
+    location: Missing[str] = Field(
         default=UNSET,
-        description="Lock the repositories being migrated at the start of the migration",
+        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
     )
-    exclude_metadata: Missing[bool] = Field(
+    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
         default=UNSET,
-        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
+        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
     )
-    exclude_git_data: Missing[bool] = Field(
+    machine: Missing[str] = Field(
+        default=UNSET, description="Machine type to use for this codespace"
+    )
+    devcontainer_path: Missing[str] = Field(
         default=UNSET,
-        description="Indicates whether the repository git data should be excluded from the migration.",
+        description="Path to devcontainer.json config to use for this codespace",
     )
-    exclude_attachments: Missing[bool] = Field(
-        default=UNSET, description="Do not include attachments in the migration"
+    working_directory: Missing[str] = Field(
+        default=UNSET, description="Working directory for this codespace"
     )
-    exclude_releases: Missing[bool] = Field(
-        default=UNSET, description="Do not include releases in the migration"
-    )
-    exclude_owner_projects: Missing[bool] = Field(
+    idle_timeout_minutes: Missing[int] = Field(
         default=UNSET,
-        description="Indicates whether projects owned by the organization or users should be excluded.",
+        description="Time in minutes before codespace stops from inactivity",
     )
-    org_metadata_only: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
-    )
-    exclude: Missing[list[Literal["repositories"]]] = Field(
-        default=UNSET,
-        description="Exclude attributes from the API response to improve performance",
-    )
-    repositories: list[str] = Field()
 
 
-model_rebuild(UserMigrationsPostBody)
+class UserCodespacesPostBodyOneof1PropPullRequest(GitHubModel):
+    """UserCodespacesPostBodyOneof1PropPullRequest
 
-__all__ = ("UserMigrationsPostBody",)
+    Pull request number for this codespace
+    """
+
+    pull_request_number: int = Field(description="Pull request number")
+    repository_id: int = Field(description="Repository id for this codespace")
+
+
+model_rebuild(UserCodespacesPostBodyOneof1)
+model_rebuild(UserCodespacesPostBodyOneof1PropPullRequest)
+
+__all__ = (
+    "UserCodespacesPostBodyOneof1",
+    "UserCodespacesPostBodyOneof1PropPullRequest",
+)

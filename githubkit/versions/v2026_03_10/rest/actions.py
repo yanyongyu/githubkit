@@ -2409,8 +2409,10 @@ class ActionsClient:
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
         size: Missing[str] = UNSET,
+        image_source: Missing[Literal["github", "partner", "custom"]] = UNSET,
         image_id: Missing[str] = UNSET,
         image_version: Missing[Union[str, None]] = UNSET,
+        image_gen: Missing[bool] = UNSET,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     def update_hosted_runner_for_org(
@@ -2487,8 +2489,10 @@ class ActionsClient:
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
         size: Missing[str] = UNSET,
+        image_source: Missing[Literal["github", "partner", "custom"]] = UNSET,
         image_id: Missing[str] = UNSET,
         image_version: Missing[Union[str, None]] = UNSET,
+        image_gen: Missing[bool] = UNSET,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     async def async_update_hosted_runner_for_org(
@@ -10610,6 +10614,7 @@ class ActionsClient:
         stream: bool = False,
         use_default: bool,
         include_claim_keys: Missing[list[str]] = UNSET,
+        use_immutable_subject: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def set_custom_oidc_sub_claim_for_repo(
@@ -10691,6 +10696,7 @@ class ActionsClient:
         stream: bool = False,
         use_default: bool,
         include_claim_keys: Missing[list[str]] = UNSET,
+        use_immutable_subject: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_set_custom_oidc_sub_claim_for_repo(

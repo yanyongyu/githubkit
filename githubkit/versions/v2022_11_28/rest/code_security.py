@@ -1931,7 +1931,7 @@ class CodeSecurityClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        selected_repository_ids: Missing[list[int]] = UNSET,
+        selected_repository_ids: list[int],
     ) -> Response: ...
 
     def detach_configuration(
@@ -2009,7 +2009,7 @@ class CodeSecurityClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        selected_repository_ids: Missing[list[int]] = UNSET,
+        selected_repository_ids: list[int],
     ) -> Response: ...
 
     async def async_detach_configuration(

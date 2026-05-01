@@ -9,37 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class OrganizationInvitation(GitHubModel):
-    """Organization Invitation
+class CopilotOrganizationContentExclusionDetails(ExtraGitHubModel):
+    """Copilot Organization Content Exclusion Details
 
-    Organization Invitation
+    List all Copilot Content Exclusion rules for an organization.
     """
 
-    id: int = Field()
-    login: Union[str, None] = Field()
-    email: Union[str, None] = Field()
-    role: str = Field()
-    created_at: str = Field()
-    failed_at: Missing[Union[str, None]] = Field(default=UNSET)
-    failed_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    inviter: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    team_count: int = Field()
-    node_id: str = Field()
-    invitation_teams_url: str = Field()
-    invitation_source: Missing[str] = Field(default=UNSET)
 
+model_rebuild(CopilotOrganizationContentExclusionDetails)
 
-model_rebuild(OrganizationInvitation)
-
-__all__ = ("OrganizationInvitation",)
+__all__ = ("CopilotOrganizationContentExclusionDetails",)

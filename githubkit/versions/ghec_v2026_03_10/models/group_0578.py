@@ -18,52 +18,40 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksComment(GitHubModel):
-    """WebhooksComment"""
+class WebhooksApprover(GitHubModel):
+    """WebhooksApprover"""
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
+    avatar_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhooksReviewersItems(GitHubModel):
+    """WebhooksReviewersItems"""
+
+    reviewer: Missing[Union[WebhooksReviewersItemsPropReviewer, None]] = Field(
+        default=UNSET, title="User"
     )
-    body: str = Field()
-    child_comment_count: int = Field()
-    created_at: str = Field()
-    discussion_id: int = Field()
-    html_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    parent_id: Union[int, None] = Field()
-    reactions: WebhooksCommentPropReactions = Field(title="Reactions")
-    repository_url: str = Field()
-    updated_at: str = Field()
-    user: Union[WebhooksCommentPropUser, None] = Field(title="User")
+    type: Missing[Literal["User"]] = Field(default=UNSET)
 
 
-class WebhooksCommentPropReactions(GitHubModel):
-    """Reactions"""
-
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
-    url: str = Field()
-
-
-class WebhooksCommentPropUser(GitHubModel):
+class WebhooksReviewersItemsPropReviewer(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -87,15 +75,14 @@ class WebhooksCommentPropUser(GitHubModel):
     subscriptions_url: Missing[str] = Field(default=UNSET)
     type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksComment)
-model_rebuild(WebhooksCommentPropReactions)
-model_rebuild(WebhooksCommentPropUser)
+model_rebuild(WebhooksApprover)
+model_rebuild(WebhooksReviewersItems)
+model_rebuild(WebhooksReviewersItemsPropReviewer)
 
 __all__ = (
-    "WebhooksComment",
-    "WebhooksCommentPropReactions",
-    "WebhooksCommentPropUser",
+    "WebhooksApprover",
+    "WebhooksReviewersItems",
+    "WebhooksReviewersItemsPropReviewer",
 )

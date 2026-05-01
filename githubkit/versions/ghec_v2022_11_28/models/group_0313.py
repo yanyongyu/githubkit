@@ -9,25 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodeOfConductSimple(GitHubModel):
-    """Code Of Conduct Simple
+class ProjectsV2FieldIterationConfiguration(GitHubModel):
+    """ProjectsV2FieldIterationConfiguration
 
-    Code of Conduct Simple
+    The configuration for iteration fields.
     """
 
-    url: str = Field()
-    key: str = Field()
-    name: str = Field()
-    html_url: Union[str, None] = Field()
+    start_date: Missing[_dt.date] = Field(
+        default=UNSET, description="The start date of the first iteration."
+    )
+    duration: Missing[int] = Field(
+        default=UNSET,
+        description="The default duration for iterations in days. Individual iterations can override this value.",
+    )
+    iterations: Missing[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItems]
+    ] = Field(default=UNSET, description="Zero or more iterations for the field.")
 
 
-model_rebuild(CodeOfConductSimple)
+class ProjectsV2FieldIterationConfigurationPropIterationsItems(GitHubModel):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
 
-__all__ = ("CodeOfConductSimple",)
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the iteration."
+    )
+    start_date: Missing[_dt.date] = Field(
+        default=UNSET, description="The start date of the iteration."
+    )
+    duration: Missing[int] = Field(
+        default=UNSET, description="The duration of the iteration in days."
+    )
+
+
+model_rebuild(ProjectsV2FieldIterationConfiguration)
+model_rebuild(ProjectsV2FieldIterationConfigurationPropIterationsItems)
+
+__all__ = (
+    "ProjectsV2FieldIterationConfiguration",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItems",
+)

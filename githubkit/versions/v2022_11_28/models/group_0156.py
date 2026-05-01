@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,41 +17,45 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0020 import Repository
 
+class OrganizationUpdateIssueField(GitHubModel):
+    """OrganizationUpdateIssueField"""
 
-class Migration(GitHubModel):
-    """Migration
-
-    A migration.
-    """
-
-    id: int = Field()
-    owner: Union[None, SimpleUser] = Field()
-    guid: str = Field()
-    state: str = Field()
-    lock_repositories: bool = Field()
-    exclude_metadata: bool = Field()
-    exclude_git_data: bool = Field()
-    exclude_attachments: bool = Field()
-    exclude_releases: bool = Field()
-    exclude_owner_projects: bool = Field()
-    org_metadata_only: bool = Field()
-    repositories: list[Repository] = Field(
-        description="The repositories included in the migration. Only returned for export migrations."
+    name: Missing[str] = Field(default=UNSET, description="Name of the issue field.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the issue field."
     )
-    url: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    node_id: str = Field()
-    archive_url: Missing[str] = Field(default=UNSET)
-    exclude: Missing[list[str]] = Field(
+    visibility: Missing[Literal["organization_members_only", "all"]] = Field(
         default=UNSET,
-        description='Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`.',
+        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled.",
+    )
+    options: Missing[list[OrganizationUpdateIssueFieldPropOptionsItems]] = Field(
+        default=UNSET,
+        description="Options for single select fields. Only applicable when updating single_select fields. When provided, this array **replaces** the entire existing set of options rather than adding to or updating individual options. To retain or update an existing option, include it in the array with its `id`. Options sent without an `id` are treated as new options and may cause existing options to be deleted and recreated.",
     )
 
 
-model_rebuild(Migration)
+class OrganizationUpdateIssueFieldPropOptionsItems(GitHubModel):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
 
-__all__ = ("Migration",)
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The id of an existing option to retain or update. Omit this when creating a new option.",
+    )
+    name: str = Field(description="Name of the option.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the option."
+    )
+    color: Literal[
+        "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+    ] = Field(description="Color for the option.")
+    priority: int = Field(description="Priority of the option for ordering.")
+
+
+model_rebuild(OrganizationUpdateIssueField)
+model_rebuild(OrganizationUpdateIssueFieldPropOptionsItems)
+
+__all__ = (
+    "OrganizationUpdateIssueField",
+    "OrganizationUpdateIssueFieldPropOptionsItems",
+)

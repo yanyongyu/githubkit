@@ -73,9 +73,9 @@ class ReactionsClient:
 
         GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
 
-        List the reactions to a [commit comment](https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#get-a-commit-comment).
+        List the reactions to a [commit comment](https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#get-a-commit-comment).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-commit-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#list-reactions-for-a-commit-comment
         """
 
         from ..models import BasicError, Reaction
@@ -122,9 +122,9 @@ class ReactionsClient:
 
         GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
 
-        List the reactions to a [commit comment](https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#get-a-commit-comment).
+        List the reactions to a [commit comment](https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#get-a-commit-comment).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-commit-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#list-reactions-for-a-commit-comment
         """
 
         from ..models import BasicError, Reaction
@@ -193,9 +193,9 @@ class ReactionsClient:
 
         POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
 
-        Create a reaction to a [commit comment](https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#get-a-commit-comment). A response with an HTTP `200` status means that you already added the reaction type to this commit comment.
+        Create a reaction to a [commit comment](https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#get-a-commit-comment). A response with an HTTP `200` status means that you already added the reaction type to this commit comment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-commit-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#create-reaction-for-a-commit-comment
         """
 
         from ..models import (
@@ -273,9 +273,9 @@ class ReactionsClient:
 
         POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
 
-        Create a reaction to a [commit comment](https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#get-a-commit-comment). A response with an HTTP `200` status means that you already added the reaction type to this commit comment.
+        Create a reaction to a [commit comment](https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#get-a-commit-comment). A response with an HTTP `200` status means that you already added the reaction type to this commit comment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-commit-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#create-reaction-for-a-commit-comment
         """
 
         from ..models import (
@@ -328,9 +328,9 @@ class ReactionsClient:
         > [!NOTE]
         > You can also specify a repository by `repository_id` using the route `DELETE /repositories/:repository_id/comments/:comment_id/reactions/:reaction_id`.
 
-        Delete a reaction to a [commit comment](https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#get-a-commit-comment).
+        Delete a reaction to a [commit comment](https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#get-a-commit-comment).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-a-commit-comment-reaction
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#delete-a-commit-comment-reaction
         """
 
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}"
@@ -361,9 +361,9 @@ class ReactionsClient:
         > [!NOTE]
         > You can also specify a repository by `repository_id` using the route `DELETE /repositories/:repository_id/comments/:comment_id/reactions/:reaction_id`.
 
-        Delete a reaction to a [commit comment](https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#get-a-commit-comment).
+        Delete a reaction to a [commit comment](https://docs.github.com/enterprise-cloud@latest/rest/commits/comments#get-a-commit-comment).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-a-commit-comment-reaction
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#delete-a-commit-comment-reaction
         """
 
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}"
@@ -397,9 +397,9 @@ class ReactionsClient:
 
         GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
 
-        List the reactions to an [issue comment](https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment).
+        List the reactions to an [issue comment](https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#get-an-issue-comment).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-an-issue-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#list-reactions-for-an-issue-comment
         """
 
         from ..models import BasicError, Reaction
@@ -446,9 +446,9 @@ class ReactionsClient:
 
         GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
 
-        List the reactions to an [issue comment](https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment).
+        List the reactions to an [issue comment](https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#get-an-issue-comment).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-an-issue-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#list-reactions-for-an-issue-comment
         """
 
         from ..models import BasicError, Reaction
@@ -519,9 +519,9 @@ class ReactionsClient:
 
         POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
 
-        Create a reaction to an [issue comment](https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment). A response with an HTTP `200` status means that you already added the reaction type to this issue comment.
+        Create a reaction to an [issue comment](https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#get-an-issue-comment). A response with an HTTP `200` status means that you already added the reaction type to this issue comment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-an-issue-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#create-reaction-for-an-issue-comment
         """
 
         from ..models import (
@@ -601,9 +601,9 @@ class ReactionsClient:
 
         POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
 
-        Create a reaction to an [issue comment](https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment). A response with an HTTP `200` status means that you already added the reaction type to this issue comment.
+        Create a reaction to an [issue comment](https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#get-an-issue-comment). A response with an HTTP `200` status means that you already added the reaction type to this issue comment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-an-issue-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#create-reaction-for-an-issue-comment
         """
 
         from ..models import (
@@ -656,9 +656,9 @@ class ReactionsClient:
         > [!NOTE]
         > You can also specify a repository by `repository_id` using the route `DELETE delete /repositories/:repository_id/issues/comments/:comment_id/reactions/:reaction_id`.
 
-        Delete a reaction to an [issue comment](https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment).
+        Delete a reaction to an [issue comment](https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#get-an-issue-comment).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-an-issue-comment-reaction
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#delete-an-issue-comment-reaction
         """
 
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}"
@@ -689,9 +689,9 @@ class ReactionsClient:
         > [!NOTE]
         > You can also specify a repository by `repository_id` using the route `DELETE delete /repositories/:repository_id/issues/comments/:comment_id/reactions/:reaction_id`.
 
-        Delete a reaction to an [issue comment](https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment).
+        Delete a reaction to an [issue comment](https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#get-an-issue-comment).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-an-issue-comment-reaction
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#delete-an-issue-comment-reaction
         """
 
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}"
@@ -725,9 +725,9 @@ class ReactionsClient:
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
 
-        List the reactions to an [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue).
+        List the reactions to an [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#list-reactions-for-an-issue
         """
 
         from ..models import BasicError, Reaction
@@ -775,9 +775,9 @@ class ReactionsClient:
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
 
-        List the reactions to an [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue).
+        List the reactions to an [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#list-reactions-for-an-issue
         """
 
         from ..models import BasicError, Reaction
@@ -847,9 +847,9 @@ class ReactionsClient:
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
 
-        Create a reaction to an [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue). A response with an HTTP `200` status means that you already added the reaction type to this issue.
+        Create a reaction to an [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue). A response with an HTTP `200` status means that you already added the reaction type to this issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#create-reaction-for-an-issue
         """
 
         from ..models import (
@@ -927,9 +927,9 @@ class ReactionsClient:
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
 
-        Create a reaction to an [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue). A response with an HTTP `200` status means that you already added the reaction type to this issue.
+        Create a reaction to an [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue). A response with an HTTP `200` status means that you already added the reaction type to this issue.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-an-issue
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#create-reaction-for-an-issue
         """
 
         from ..models import (
@@ -982,9 +982,9 @@ class ReactionsClient:
         > [!NOTE]
         > You can also specify a repository by `repository_id` using the route `DELETE /repositories/:repository_id/issues/:issue_number/reactions/:reaction_id`.
 
-        Delete a reaction to an [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue).
+        Delete a reaction to an [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-an-issue-reaction
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#delete-an-issue-reaction
         """
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}"
@@ -1015,9 +1015,9 @@ class ReactionsClient:
         > [!NOTE]
         > You can also specify a repository by `repository_id` using the route `DELETE /repositories/:repository_id/issues/:issue_number/reactions/:reaction_id`.
 
-        Delete a reaction to an [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue).
+        Delete a reaction to an [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-an-issue-reaction
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#delete-an-issue-reaction
         """
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}"
@@ -1051,9 +1051,9 @@ class ReactionsClient:
 
         GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
 
-        List the reactions to a [pull request review comment](https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request).
+        List the reactions to a [pull request review comment](https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment
         """
 
         from ..models import BasicError, Reaction
@@ -1100,9 +1100,9 @@ class ReactionsClient:
 
         GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
 
-        List the reactions to a [pull request review comment](https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request).
+        List the reactions to a [pull request review comment](https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment
         """
 
         from ..models import BasicError, Reaction
@@ -1173,9 +1173,9 @@ class ReactionsClient:
 
         POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
 
-        Create a reaction to a [pull request review comment](https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request). A response with an HTTP `200` status means that you already added the reaction type to this pull request review comment.
+        Create a reaction to a [pull request review comment](https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request). A response with an HTTP `200` status means that you already added the reaction type to this pull request review comment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-pull-request-review-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#create-reaction-for-a-pull-request-review-comment
         """
 
         from ..models import (
@@ -1255,9 +1255,9 @@ class ReactionsClient:
 
         POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
 
-        Create a reaction to a [pull request review comment](https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request). A response with an HTTP `200` status means that you already added the reaction type to this pull request review comment.
+        Create a reaction to a [pull request review comment](https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request). A response with an HTTP `200` status means that you already added the reaction type to this pull request review comment.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-pull-request-review-comment
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#create-reaction-for-a-pull-request-review-comment
         """
 
         from ..models import (
@@ -1310,9 +1310,9 @@ class ReactionsClient:
         > [!NOTE]
         > You can also specify a repository by `repository_id` using the route `DELETE /repositories/:repository_id/pulls/comments/:comment_id/reactions/:reaction_id.`
 
-        Delete a reaction to a [pull request review comment](https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request).
+        Delete a reaction to a [pull request review comment](https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-a-pull-request-comment-reaction
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#delete-a-pull-request-comment-reaction
         """
 
         url = (
@@ -1345,9 +1345,9 @@ class ReactionsClient:
         > [!NOTE]
         > You can also specify a repository by `repository_id` using the route `DELETE /repositories/:repository_id/pulls/comments/:comment_id/reactions/:reaction_id.`
 
-        Delete a reaction to a [pull request review comment](https://docs.github.com/enterprise-cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request).
+        Delete a reaction to a [pull request review comment](https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-a-pull-request-comment-reaction
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#delete-a-pull-request-comment-reaction
         """
 
         url = (
@@ -1381,9 +1381,9 @@ class ReactionsClient:
 
         GET /repos/{owner}/{repo}/releases/{release_id}/reactions
 
-        List the reactions to a [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-a-release).
+        List the reactions to a [release](https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#get-a-release).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-release
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#list-reactions-for-a-release
         """
 
         from ..models import BasicError, Reaction
@@ -1428,9 +1428,9 @@ class ReactionsClient:
 
         GET /repos/{owner}/{repo}/releases/{release_id}/reactions
 
-        List the reactions to a [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-a-release).
+        List the reactions to a [release](https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#get-a-release).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-release
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#list-reactions-for-a-release
         """
 
         from ..models import BasicError, Reaction
@@ -1497,9 +1497,9 @@ class ReactionsClient:
 
         POST /repos/{owner}/{repo}/releases/{release_id}/reactions
 
-        Create a reaction to a [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-a-release). A response with a `Status: 200 OK` means that you already added the reaction type to this release.
+        Create a reaction to a [release](https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#get-a-release). A response with a `Status: 200 OK` means that you already added the reaction type to this release.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-release
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#create-reaction-for-a-release
         """
 
         from ..models import (
@@ -1575,9 +1575,9 @@ class ReactionsClient:
 
         POST /repos/{owner}/{repo}/releases/{release_id}/reactions
 
-        Create a reaction to a [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-a-release). A response with a `Status: 200 OK` means that you already added the reaction type to this release.
+        Create a reaction to a [release](https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#get-a-release). A response with a `Status: 200 OK` means that you already added the reaction type to this release.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-release
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#create-reaction-for-a-release
         """
 
         from ..models import (
@@ -1630,9 +1630,9 @@ class ReactionsClient:
         > [!NOTE]
         > You can also specify a repository by `repository_id` using the route `DELETE delete /repositories/:repository_id/releases/:release_id/reactions/:reaction_id`.
 
-        Delete a reaction to a [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-a-release).
+        Delete a reaction to a [release](https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#get-a-release).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-a-release-reaction
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#delete-a-release-reaction
         """
 
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions/{reaction_id}"
@@ -1663,9 +1663,9 @@ class ReactionsClient:
         > [!NOTE]
         > You can also specify a repository by `repository_id` using the route `DELETE delete /repositories/:repository_id/releases/:release_id/reactions/:reaction_id`.
 
-        Delete a reaction to a [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-a-release).
+        Delete a reaction to a [release](https://docs.github.com/enterprise-cloud@latest/rest/releases/releases#get-a-release).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-a-release-reaction
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#delete-a-release-reaction
         """
 
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions/{reaction_id}"

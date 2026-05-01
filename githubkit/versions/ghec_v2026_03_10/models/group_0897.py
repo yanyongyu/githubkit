@@ -18,21 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0202 import Milestone
-from .group_0563 import EnterpriseWebhooks
-from .group_0565 import OrganizationSimpleWebhooks
-from .group_0566 import RepositoryWebhooks
-from .group_0602 import WebhooksPullRequest5
+from .group_0203 import Milestone
+from .group_0567 import EnterpriseWebhooks
+from .group_0569 import OrganizationSimpleWebhooks
+from .group_0570 import RepositoryWebhooks
+from .group_0606 import WebhooksPullRequest5
 
 
-class WebhookPullRequestMilestoned(GitHubModel):
-    """pull_request milestoned event"""
+class WebhookPullRequestDemilestoned(GitHubModel):
+    """pull_request demilestoned event"""
 
-    action: Literal["milestoned"] = Field()
+    action: Literal["demilestoned"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
     )
     milestone: Missing[Milestone] = Field(
         default=UNSET,
@@ -55,6 +55,6 @@ class WebhookPullRequestMilestoned(GitHubModel):
     )
 
 
-model_rebuild(WebhookPullRequestMilestoned)
+model_rebuild(WebhookPullRequestDemilestoned)
 
-__all__ = ("WebhookPullRequestMilestoned",)
+__all__ = ("WebhookPullRequestDemilestoned",)

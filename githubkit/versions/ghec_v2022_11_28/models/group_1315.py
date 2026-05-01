@@ -9,117 +9,104 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCheckRunsPostBodyPropOutput(GitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutput
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
 
-    Check runs can accept a variety of data in the `output` object, including a
-    `title` and `summary` and can optionally provide descriptive details about the
-    run.
+    dismissal_restrictions: Missing[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions
+    ] = Field(
+        default=UNSET,
+        description="Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.",
+    )
+    dismiss_stale_reviews: Missing[bool] = Field(
+        default=UNSET,
+        description="Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new commit.",
+    )
+    require_code_owner_reviews: Missing[bool] = Field(
+        default=UNSET,
+        description="Blocks merging pull requests until [code owners](https://docs.github.com/enterprise-cloud@latest/articles/about-code-owners/) have reviewed.",
+    )
+    required_approving_review_count: Missing[int] = Field(
+        default=UNSET,
+        description="Specifies the number of reviewers required to approve pull requests. Use a number between 1 and 6 or 0 to not require reviewers.",
+    )
+    require_last_push_approval: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the most recent push must be approved by someone other than the person who pushed it. Default: `false`",
+    )
+    bypass_pull_request_allowances: Missing[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances
+    ] = Field(
+        default=UNSET,
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
+    )
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
+    missalRestrictions
+
+    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
+    empty `dismissal_restrictions` object to disable. User and team
+    `dismissal_restrictions` are only available for organization-owned repositories.
+    Omit this parameter for personal repositories.
     """
 
-    title: str = Field(description="The title of the check run.")
-    summary: str = Field(
-        max_length=65535,
-        description="The summary of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters.",
+    users: Missing[list[str]] = Field(
+        default=UNSET, description="The list of user `login`s with dismissal access"
     )
-    text: Missing[str] = Field(
-        max_length=65535,
+    teams: Missing[list[str]] = Field(
+        default=UNSET, description="The list of team `slug`s with dismissal access"
+    )
+    apps: Missing[list[str]] = Field(
+        default=UNSET, description="The list of app `slug`s with dismissal access"
+    )
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
+    assPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
+
+    users: Missing[list[str]] = Field(
         default=UNSET,
-        description="The details of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters.",
+        description="The list of user `login`s allowed to bypass pull request requirements.",
     )
-    annotations: Missing[
-        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems]
-    ] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
+    teams: Missing[list[str]] = Field(
         default=UNSET,
-        description='Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the **Checks** and **Files changed** tab of the pull request. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. GitHub Actions are limited to 10 warning annotations and 10 error annotations per step. For details about how you can view annotations on GitHub, see "[About status checks](https://docs.github.com/enterprise-cloud@latest//articles/about-status-checks#checks)".',
+        description="The list of team `slug`s allowed to bypass pull request requirements.",
     )
-    images: Missing[list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems]] = (
-        Field(
-            default=UNSET,
-            description="Adds images to the output displayed in the GitHub pull request UI.",
-        )
-    )
-
-
-class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems(GitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
-
-    path: str = Field(
-        description="The path of the file to add an annotation to. For example, `assets/css/main.css`."
-    )
-    start_line: int = Field(
-        description="The start line of the annotation. Line numbers start at 1."
-    )
-    end_line: int = Field(description="The end line of the annotation.")
-    start_column: Missing[int] = Field(
+    apps: Missing[list[str]] = Field(
         default=UNSET,
-        description="The start column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values. Column numbers start at 1.",
-    )
-    end_column: Missing[int] = Field(
-        default=UNSET,
-        description="The end column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values.",
-    )
-    annotation_level: Literal["notice", "warning", "failure"] = Field(
-        description="The level of the annotation."
-    )
-    message: str = Field(
-        description="A short description of the feedback for these lines of code. The maximum size is 64 KB."
-    )
-    title: Missing[str] = Field(
-        default=UNSET,
-        description="The title that represents the annotation. The maximum size is 255 characters.",
-    )
-    raw_details: Missing[str] = Field(
-        default=UNSET,
-        description="Details about this annotation. The maximum size is 64 KB.",
+        description="The list of app `slug`s allowed to bypass pull request requirements.",
     )
 
 
-class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems(GitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
-
-    alt: str = Field(description="The alternative text for the image.")
-    image_url: str = Field(description="The full URL of the image.")
-    caption: Missing[str] = Field(
-        default=UNSET, description="A short image description."
-    )
-
-
-class ReposOwnerRepoCheckRunsPostBodyPropActionsItems(GitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
-
-    label: str = Field(
-        max_length=20,
-        description="The text to be displayed on a button in the web UI. The maximum size is 20 characters.",
-    )
-    description: str = Field(
-        max_length=40,
-        description="A short explanation of what this action would do. The maximum size is 40 characters.",
-    )
-    identifier: str = Field(
-        max_length=20,
-        description="A reference for the action on the integrator's system. The maximum size is 20 characters.",
-    )
-
-
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropOutput)
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems)
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems)
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropActionsItems)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions
+)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances
+)
 
 __all__ = (
-    "ReposOwnerRepoCheckRunsPostBodyPropActionsItems",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutput",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions",
 )

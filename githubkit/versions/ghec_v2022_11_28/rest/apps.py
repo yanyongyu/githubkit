@@ -109,11 +109,11 @@ class AppsClient:
 
         GET /app
 
-        Returns the GitHub App associated with the authentication credentials used. To see how many app installations are associated with this GitHub App, see the `installations_count` in the response. For more details about your app's installations, see the "[List installations for the authenticated app](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#list-installations-for-the-authenticated-app)" endpoint.
+        Returns the GitHub App associated with the authentication credentials used. To see how many app installations are associated with this GitHub App, see the `installations_count` in the response. For more details about your app's installations, see the "[List installations for the authenticated app](https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#list-installations-for-the-authenticated-app)" endpoint.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-the-authenticated-app
         """
 
         from typing import Union
@@ -142,11 +142,11 @@ class AppsClient:
 
         GET /app
 
-        Returns the GitHub App associated with the authentication credentials used. To see how many app installations are associated with this GitHub App, see the `installations_count` in the response. For more details about your app's installations, see the "[List installations for the authenticated app](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#list-installations-for-the-authenticated-app)" endpoint.
+        Returns the GitHub App associated with the authentication credentials used. To see how many app installations are associated with this GitHub App, see the `installations_count` in the response. For more details about your app's installations, see the "[List installations for the authenticated app](https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#list-installations-for-the-authenticated-app)" endpoint.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-the-authenticated-app
         """
 
         from typing import Union
@@ -179,9 +179,9 @@ class AppsClient:
 
         POST /app-manifests/{code}/conversions
 
-        Use this endpoint to complete the handshake necessary when implementing the [GitHub App Manifest flow](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/creating-github-apps-from-a-manifest/). When you create a GitHub App with the manifest flow, you receive a temporary `code` used to retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
+        Use this endpoint to complete the handshake necessary when implementing the [GitHub App Manifest flow](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/creating-github-apps-from-a-manifest/). When you create a GitHub App with the manifest flow, you receive a temporary `code` used to retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#create-a-github-app-from-a-manifest
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#create-a-github-app-from-a-manifest
         """
 
         from ..models import (
@@ -220,9 +220,9 @@ class AppsClient:
 
         POST /app-manifests/{code}/conversions
 
-        Use this endpoint to complete the handshake necessary when implementing the [GitHub App Manifest flow](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/creating-github-apps-from-a-manifest/). When you create a GitHub App with the manifest flow, you receive a temporary `code` used to retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
+        Use this endpoint to complete the handshake necessary when implementing the [GitHub App Manifest flow](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/creating-github-apps-from-a-manifest/). When you create a GitHub App with the manifest flow, you receive a temporary `code` used to retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#create-a-github-app-from-a-manifest
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#create-a-github-app-from-a-manifest
         """
 
         from ..models import (
@@ -259,9 +259,9 @@ class AppsClient:
 
         Returns the webhook configuration for a GitHub App. For more information about configuring a webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#get-a-webhook-configuration-for-an-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/webhooks#get-a-webhook-configuration-for-an-app
         """
 
         from ..models import WebhookConfig
@@ -290,9 +290,9 @@ class AppsClient:
 
         Returns the webhook configuration for a GitHub App. For more information about configuring a webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#get-a-webhook-configuration-for-an-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/webhooks#get-a-webhook-configuration-for-an-app
         """
 
         from ..models import WebhookConfig
@@ -345,9 +345,9 @@ class AppsClient:
 
         Updates the webhook configuration for a GitHub App. For more information about configuring a webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#update-a-webhook-configuration-for-an-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/webhooks#update-a-webhook-configuration-for-an-app
         """
 
         from ..models import AppHookConfigPatchBody, WebhookConfig
@@ -410,9 +410,9 @@ class AppsClient:
 
         Updates the webhook configuration for a GitHub App. For more information about configuring a webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#update-a-webhook-configuration-for-an-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/webhooks#update-a-webhook-configuration-for-an-app
         """
 
         from ..models import AppHookConfigPatchBody, WebhookConfig
@@ -454,9 +454,9 @@ class AppsClient:
 
         Returns a list of webhook deliveries for the webhook configured for a GitHub App.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#list-deliveries-for-an-app-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/webhooks#list-deliveries-for-an-app-webhook
         """
 
         from ..models import BasicError, HookDeliveryItem, ValidationError
@@ -499,9 +499,9 @@ class AppsClient:
 
         Returns a list of webhook deliveries for the webhook configured for a GitHub App.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#list-deliveries-for-an-app-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/webhooks#list-deliveries-for-an-app-webhook
         """
 
         from ..models import BasicError, HookDeliveryItem, ValidationError
@@ -542,9 +542,9 @@ class AppsClient:
 
         Returns a delivery for the webhook configured for a GitHub App.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#get-a-delivery-for-an-app-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/webhooks#get-a-delivery-for-an-app-webhook
         """
 
         from ..models import BasicError, HookDelivery, ValidationError
@@ -578,9 +578,9 @@ class AppsClient:
 
         Returns a delivery for the webhook configured for a GitHub App.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#get-a-delivery-for-an-app-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/webhooks#get-a-delivery-for-an-app-webhook
         """
 
         from ..models import BasicError, HookDelivery, ValidationError
@@ -617,9 +617,9 @@ class AppsClient:
 
         Redeliver a delivery for the webhook configured for a GitHub App.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook
         """
 
         from ..models import (
@@ -660,9 +660,9 @@ class AppsClient:
 
         Redeliver a delivery for the webhook configured for a GitHub App.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook
         """
 
         from ..models import (
@@ -704,7 +704,7 @@ class AppsClient:
 
         Lists all the pending installation requests for the authenticated GitHub App.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#list-installation-requests-for-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#list-installation-requests-for-the-authenticated-app
         """
 
         from ..models import BasicError, IntegrationInstallationRequest
@@ -747,7 +747,7 @@ class AppsClient:
 
         Lists all the pending installation requests for the authenticated GitHub App.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#list-installation-requests-for-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#list-installation-requests-for-the-authenticated-app
         """
 
         from ..models import BasicError, IntegrationInstallationRequest
@@ -789,9 +789,9 @@ class AppsClient:
 
         The permissions the installation has are included under the `permissions` key.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#list-installations-for-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#list-installations-for-the-authenticated-app
         """
 
         from ..models import Installation
@@ -832,9 +832,9 @@ class AppsClient:
 
         The permissions the installation has are included under the `permissions` key.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#list-installations-for-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#list-installations-for-the-authenticated-app
         """
 
         from ..models import Installation
@@ -872,9 +872,9 @@ class AppsClient:
 
         Enables an authenticated GitHub App to find an installation's information using the installation id.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-installation-for-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-an-installation-for-the-authenticated-app
         """
 
         from ..models import BasicError, Installation
@@ -907,9 +907,9 @@ class AppsClient:
 
         Enables an authenticated GitHub App to find an installation's information using the installation id.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-installation-for-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-an-installation-for-the-authenticated-app
         """
 
         from ..models import BasicError, Installation
@@ -940,11 +940,11 @@ class AppsClient:
 
         DELETE /app/installations/{installation_id}
 
-        Uninstalls a GitHub App on a user, organization, or enterprise account. If you prefer to temporarily suspend an app's access to your account's resources, then we recommend the "[Suspend an app installation](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#suspend-an-app-installation)" endpoint.
+        Uninstalls a GitHub App on a user, organization, or enterprise account. If you prefer to temporarily suspend an app's access to your account's resources, then we recommend the "[Suspend an app installation](https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#suspend-an-app-installation)" endpoint.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#delete-an-installation-for-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#delete-an-installation-for-the-authenticated-app
         """
 
         from ..models import BasicError
@@ -974,11 +974,11 @@ class AppsClient:
 
         DELETE /app/installations/{installation_id}
 
-        Uninstalls a GitHub App on a user, organization, or enterprise account. If you prefer to temporarily suspend an app's access to your account's resources, then we recommend the "[Suspend an app installation](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#suspend-an-app-installation)" endpoint.
+        Uninstalls a GitHub App on a user, organization, or enterprise account. If you prefer to temporarily suspend an app's access to your account's resources, then we recommend the "[Suspend an app installation](https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#suspend-an-app-installation)" endpoint.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#delete-an-installation-for-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#delete-an-installation-for-the-authenticated-app
         """
 
         from ..models import BasicError
@@ -1041,9 +1041,9 @@ class AppsClient:
 
         Enterprise account installations do not have access to repositories and cannot be scoped down using the `permissions` parameter.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#create-an-installation-access-token-for-an-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#create-an-installation-access-token-for-an-app
         """
 
         from ..models import (
@@ -1127,9 +1127,9 @@ class AppsClient:
 
         Enterprise account installations do not have access to repositories and cannot be scoped down using the `permissions` parameter.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#create-an-installation-access-token-for-an-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#create-an-installation-access-token-for-an-app
         """
 
         from ..models import (
@@ -1182,9 +1182,9 @@ class AppsClient:
 
         Suspends a GitHub App on a user, organization, or enterprise account, which blocks the app from accessing the account's resources. When a GitHub App is suspended, the app's access to the GitHub Enterprise Cloud API or webhook events is blocked for that account.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#suspend-an-app-installation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#suspend-an-app-installation
         """
 
         from ..models import BasicError
@@ -1216,9 +1216,9 @@ class AppsClient:
 
         Suspends a GitHub App on a user, organization, or enterprise account, which blocks the app from accessing the account's resources. When a GitHub App is suspended, the app's access to the GitHub Enterprise Cloud API or webhook events is blocked for that account.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#suspend-an-app-installation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#suspend-an-app-installation
         """
 
         from ..models import BasicError
@@ -1250,9 +1250,9 @@ class AppsClient:
 
         Removes a GitHub App installation suspension.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#unsuspend-an-app-installation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#unsuspend-an-app-installation
         """
 
         from ..models import BasicError
@@ -1284,9 +1284,9 @@ class AppsClient:
 
         Removes a GitHub App installation suspension.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#unsuspend-an-app-installation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#unsuspend-an-app-installation
         """
 
         from ..models import BasicError
@@ -1342,7 +1342,7 @@ class AppsClient:
         OAuth and GitHub application owners can revoke a grant for their application and a specific user. You must provide a valid OAuth `access_token` as an input parameter and the grant for the token's owner will be deleted.
         Deleting an application's grant will also delete all OAuth tokens associated with the application for the user. Once deleted, the application will have no access to the user's account and will no longer be listed on [the application authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/oauth-applications#delete-an-app-authorization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/oauth-applications#delete-an-app-authorization
         """
 
         from ..models import ApplicationsClientIdGrantDeleteBody, ValidationError
@@ -1408,7 +1408,7 @@ class AppsClient:
         OAuth and GitHub application owners can revoke a grant for their application and a specific user. You must provide a valid OAuth `access_token` as an input parameter and the grant for the token's owner will be deleted.
         Deleting an application's grant will also delete all OAuth tokens associated with the application for the user. Once deleted, the application will have no access to the user's account and will no longer be listed on [the application authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/oauth-applications#delete-an-app-authorization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/oauth-applications#delete-an-app-authorization
         """
 
         from ..models import ApplicationsClientIdGrantDeleteBody, ValidationError
@@ -1473,7 +1473,7 @@ class AppsClient:
 
         OAuth applications and GitHub applications with OAuth authorizations can use this API method for checking OAuth token validity without exceeding the normal rate limits for failed login attempts. Authentication works differently with this particular endpoint. Invalid tokens will return `404 NOT FOUND`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/oauth-applications#check-a-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/oauth-applications#check-a-token
         """
 
         from ..models import (
@@ -1545,7 +1545,7 @@ class AppsClient:
 
         OAuth applications and GitHub applications with OAuth authorizations can use this API method for checking OAuth token validity without exceeding the normal rate limits for failed login attempts. Authentication works differently with this particular endpoint. Invalid tokens will return `404 NOT FOUND`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/oauth-applications#check-a-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/oauth-applications#check-a-token
         """
 
         from ..models import (
@@ -1617,7 +1617,7 @@ class AppsClient:
 
         OAuth  or GitHub application owners can revoke a single token for an OAuth application or a GitHub application with an OAuth authorization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/oauth-applications#delete-an-app-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/oauth-applications#delete-an-app-token
         """
 
         from ..models import ApplicationsClientIdTokenDeleteBody, ValidationError
@@ -1682,7 +1682,7 @@ class AppsClient:
 
         OAuth  or GitHub application owners can revoke a single token for an OAuth application or a GitHub application with an OAuth authorization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/oauth-applications#delete-an-app-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/oauth-applications#delete-an-app-token
         """
 
         from ..models import ApplicationsClientIdTokenDeleteBody, ValidationError
@@ -1747,7 +1747,7 @@ class AppsClient:
 
         OAuth applications and GitHub applications with OAuth authorizations can use this API method to reset a valid OAuth token without end-user involvement. Applications must save the "token" property in the response because changes take effect immediately. Invalid tokens will return `404 NOT FOUND`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/oauth-applications#reset-a-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/oauth-applications#reset-a-token
         """
 
         from ..models import (
@@ -1817,7 +1817,7 @@ class AppsClient:
 
         OAuth applications and GitHub applications with OAuth authorizations can use this API method to reset a valid OAuth token without end-user involvement. Applications must save the "token" property in the response because changes take effect immediately. Invalid tokens will return `404 NOT FOUND`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/oauth-applications#reset-a-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/oauth-applications#reset-a-token
         """
 
         from ..models import (
@@ -1896,7 +1896,7 @@ class AppsClient:
 
         Invalid tokens will return `404 NOT FOUND`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#create-a-scoped-access-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#create-a-scoped-access-token
         """
 
         from ..models import (
@@ -1979,7 +1979,7 @@ class AppsClient:
 
         Invalid tokens will return `404 NOT FOUND`.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#create-a-scoped-access-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#create-a-scoped-access-token
         """
 
         from ..models import (
@@ -2031,7 +2031,7 @@ class AppsClient:
         > [!NOTE]
         > The `:app_slug` is just the URL-friendly name of your GitHub App. You can find this on the settings page for your GitHub App (e.g., `https://github.com/settings/apps/:app_slug`).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-an-app
         """
 
         from typing import Union
@@ -2068,7 +2068,7 @@ class AppsClient:
         > [!NOTE]
         > The `:app_slug` is just the URL-friendly name of your GitHub App. You can find this on the settings page for your GitHub App (e.g., `https://github.com/settings/apps/:app_slug`).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-an-app
         """
 
         from typing import Union
@@ -2110,7 +2110,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#get-enterprise-owned-organizations-that-can-have-github-apps-installed
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#get-enterprise-owned-organizations-that-can-have-github-apps-installed
         """
 
         from ..models import InstallableOrganization
@@ -2152,7 +2152,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#get-enterprise-owned-organizations-that-can-have-github-apps-installed
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#get-enterprise-owned-organizations-that-can-have-github-apps-installed
         """
 
         from ..models import InstallableOrganization
@@ -2195,7 +2195,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#get-repositories-belonging-to-an-enterprise-owned-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#get-repositories-belonging-to-an-enterprise-owned-organization
         """
 
         from ..models import AccessibleRepository
@@ -2238,7 +2238,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#get-repositories-belonging-to-an-enterprise-owned-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#get-repositories-belonging-to-an-enterprise-owned-organization
         """
 
         from ..models import AccessibleRepository
@@ -2282,7 +2282,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#list-github-apps-installed-on-an-enterprise-owned-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#list-github-apps-installed-on-an-enterprise-owned-organization
         """
 
         from ..models import EnterpriseOrganizationInstallation
@@ -2326,7 +2326,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#list-github-apps-installed-on-an-enterprise-owned-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#list-github-apps-installed-on-an-enterprise-owned-organization
         """
 
         from ..models import EnterpriseOrganizationInstallation
@@ -2397,7 +2397,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#install-a-github-app-on-an-enterprise-owned-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#install-a-github-app-on-an-enterprise-owned-organization
         """
 
         from ..models import (
@@ -2477,7 +2477,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#install-a-github-app-on-an-enterprise-owned-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#install-a-github-app-on-an-enterprise-owned-organization
         """
 
         from ..models import (
@@ -2526,7 +2526,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#uninstall-a-github-app-from-an-enterprise-owned-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#uninstall-a-github-app-from-an-enterprise-owned-organization
         """
 
         from ..models import BasicError
@@ -2563,7 +2563,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#uninstall-a-github-app-from-an-enterprise-owned-organization
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#uninstall-a-github-app-from-an-enterprise-owned-organization
         """
 
         from ..models import BasicError
@@ -2604,7 +2604,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#get-the-repositories-accessible-to-a-given-github-app-installation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#get-the-repositories-accessible-to-a-given-github-app-installation
         """
 
         from ..models import AccessibleRepository
@@ -2648,7 +2648,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#get-the-repositories-accessible-to-a-given-github-app-installation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#get-the-repositories-accessible-to-a-given-github-app-installation
         """
 
         from ..models import AccessibleRepository
@@ -2718,7 +2718,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#toggle-installation-repository-access-between-selected-and-all-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#toggle-installation-repository-access-between-selected-and-all-repositories
         """
 
         from ..models import (
@@ -2798,7 +2798,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#toggle-installation-repository-access-between-selected-and-all-repositories
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#toggle-installation-repository-access-between-selected-and-all-repositories
         """
 
         from ..models import (
@@ -2883,7 +2883,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#grant-repository-access-to-an-organization-installation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#grant-repository-access-to-an-organization-installation
         """
 
         from ..models import (
@@ -2968,7 +2968,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#grant-repository-access-to-an-organization-installation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#grant-repository-access-to-an-organization-installation
         """
 
         from ..models import (
@@ -3053,7 +3053,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#remove-repository-access-from-an-organization-installation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#remove-repository-access-from-an-organization-installation
         """
 
         from ..models import (
@@ -3142,7 +3142,7 @@ class AppsClient:
 
         This API can only be called by a GitHub App installed on the enterprise that owns the organization.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#remove-repository-access-from-an-organization-installation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/organization-installations#remove-repository-access-from-an-organization-installation
         """
 
         from ..models import (
@@ -3192,9 +3192,9 @@ class AppsClient:
 
         Enables an authenticated GitHub App to find its installation on a particular enterprise.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-enterprise-installation-for-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-an-enterprise-installation-for-the-authenticated-app
         """
 
         from ..models import Installation
@@ -3224,9 +3224,9 @@ class AppsClient:
 
         Enables an authenticated GitHub App to find its installation on a particular enterprise.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-enterprise-installation-for-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-an-enterprise-installation-for-the-authenticated-app
         """
 
         from ..models import Installation
@@ -3260,7 +3260,7 @@ class AppsClient:
 
         List repositories that an app installation can access.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#list-repositories-accessible-to-the-app-installation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/installations#list-repositories-accessible-to-the-app-installation
         """
 
         from ..models import BasicError, InstallationRepositoriesGetResponse200
@@ -3304,7 +3304,7 @@ class AppsClient:
 
         List repositories that an app installation can access.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#list-repositories-accessible-to-the-app-installation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/installations#list-repositories-accessible-to-the-app-installation
         """
 
         from ..models import BasicError, InstallationRepositoriesGetResponse200
@@ -3343,9 +3343,9 @@ class AppsClient:
 
         Revokes the installation token you're using to authenticate as an installation and access this endpoint.
 
-        Once an installation token is revoked, the token is invalidated and cannot be used. Other endpoints that require the revoked installation token must have a new installation token to work. You can create a new token using the "[Create an installation access token for an app](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#create-an-installation-access-token-for-an-app)" endpoint.
+        Once an installation token is revoked, the token is invalidated and cannot be used. Other endpoints that require the revoked installation token must have a new installation token to work. You can create a new token using the "[Create an installation access token for an app](https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#create-an-installation-access-token-for-an-app)" endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#revoke-an-installation-access-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/installations#revoke-an-installation-access-token
         """
 
         url = "/installation/token"
@@ -3371,9 +3371,9 @@ class AppsClient:
 
         Revokes the installation token you're using to authenticate as an installation and access this endpoint.
 
-        Once an installation token is revoked, the token is invalidated and cannot be used. Other endpoints that require the revoked installation token must have a new installation token to work. You can create a new token using the "[Create an installation access token for an app](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#create-an-installation-access-token-for-an-app)" endpoint.
+        Once an installation token is revoked, the token is invalidated and cannot be used. Other endpoints that require the revoked installation token must have a new installation token to work. You can create a new token using the "[Create an installation access token for an app](https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#create-an-installation-access-token-for-an-app)" endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#revoke-an-installation-access-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/installations#revoke-an-installation-access-token
         """
 
         url = "/installation/token"
@@ -3400,9 +3400,9 @@ class AppsClient:
 
         Shows whether the user or organization account actively subscribes to a plan listed by the authenticated GitHub App. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
 
-        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest//rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#get-a-subscription-plan-for-an-account
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/marketplace#get-a-subscription-plan-for-an-account
         """
 
         from ..models import BasicError, MarketplacePurchase
@@ -3436,9 +3436,9 @@ class AppsClient:
 
         Shows whether the user or organization account actively subscribes to a plan listed by the authenticated GitHub App. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
 
-        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest//rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#get-a-subscription-plan-for-an-account
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/marketplace#get-a-subscription-plan-for-an-account
         """
 
         from ..models import BasicError, MarketplacePurchase
@@ -3475,9 +3475,9 @@ class AppsClient:
 
         Lists all plans that are part of your GitHub Enterprise Cloud Marketplace listing.
 
-        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest//rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-plans
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/marketplace#list-plans
         """
 
         from ..models import BasicError, MarketplaceListingPlan
@@ -3520,9 +3520,9 @@ class AppsClient:
 
         Lists all plans that are part of your GitHub Enterprise Cloud Marketplace listing.
 
-        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest//rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-plans
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/marketplace#list-plans
         """
 
         from ..models import BasicError, MarketplaceListingPlan
@@ -3566,9 +3566,9 @@ class AppsClient:
 
         Returns user and organization accounts associated with the specified plan, including free plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including the number of seats purchased. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
 
-        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest//rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-accounts-for-a-plan
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/marketplace#list-accounts-for-a-plan
         """
 
         from ..models import BasicError, MarketplacePurchase, ValidationError
@@ -3615,9 +3615,9 @@ class AppsClient:
 
         Returns user and organization accounts associated with the specified plan, including free plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including the number of seats purchased. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
 
-        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest//rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-accounts-for-a-plan
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/marketplace#list-accounts-for-a-plan
         """
 
         from ..models import BasicError, MarketplacePurchase, ValidationError
@@ -3660,9 +3660,9 @@ class AppsClient:
 
         Shows whether the user or organization account actively subscribes to a plan listed by the authenticated GitHub App. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
 
-        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest//rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed
         """
 
         from ..models import BasicError, MarketplacePurchase
@@ -3695,9 +3695,9 @@ class AppsClient:
 
         Shows whether the user or organization account actively subscribes to a plan listed by the authenticated GitHub App. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
 
-        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest//rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed
         """
 
         from ..models import BasicError, MarketplacePurchase
@@ -3733,9 +3733,9 @@ class AppsClient:
 
         Lists all plans that are part of your GitHub Enterprise Cloud Marketplace listing.
 
-        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest//rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-plans-stubbed
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/marketplace#list-plans-stubbed
         """
 
         from ..models import BasicError, MarketplaceListingPlan
@@ -3777,9 +3777,9 @@ class AppsClient:
 
         Lists all plans that are part of your GitHub Enterprise Cloud Marketplace listing.
 
-        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest//rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-plans-stubbed
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/marketplace#list-plans-stubbed
         """
 
         from ..models import BasicError, MarketplaceListingPlan
@@ -3822,9 +3822,9 @@ class AppsClient:
 
         Returns repository and organization accounts associated with the specified plan, including free plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including the number of seats purchased. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
 
-        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest//rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-accounts-for-a-plan-stubbed
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/marketplace#list-accounts-for-a-plan-stubbed
         """
 
         from ..models import BasicError, MarketplacePurchase
@@ -3869,9 +3869,9 @@ class AppsClient:
 
         Returns repository and organization accounts associated with the specified plan, including free plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including the number of seats purchased. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
 
-        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest//rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+        GitHub Apps must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/enterprise-cloud@latest/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-accounts-for-a-plan-stubbed
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/marketplace#list-accounts-for-a-plan-stubbed
         """
 
         from ..models import BasicError, MarketplacePurchase
@@ -3912,9 +3912,9 @@ class AppsClient:
 
         Enables an authenticated GitHub App to find the organization's installation information.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-organization-installation-for-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app
         """
 
         from ..models import Installation
@@ -3944,9 +3944,9 @@ class AppsClient:
 
         Enables an authenticated GitHub App to find the organization's installation information.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-organization-installation-for-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app
         """
 
         from ..models import Installation
@@ -3977,9 +3977,9 @@ class AppsClient:
 
         Enables an authenticated GitHub App to find the repository's installation information. The installation's account type will be either an organization or a user account, depending which account the repository belongs to.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-a-repository-installation-for-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-a-repository-installation-for-the-authenticated-app
         """
 
         from ..models import BasicError, Installation
@@ -4013,9 +4013,9 @@ class AppsClient:
 
         Enables an authenticated GitHub App to find the repository's installation information. The installation's account type will be either an organization or a user account, depending which account the repository belongs to.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-a-repository-installation-for-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-a-repository-installation-for-the-authenticated-app
         """
 
         from ..models import BasicError, Installation
@@ -4055,7 +4055,7 @@ class AppsClient:
 
         You can find the permissions for the installation under the `permissions` key.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#list-app-installations-accessible-to-the-user-access-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/installations#list-app-installations-accessible-to-the-user-access-token
         """
 
         from ..models import BasicError, UserInstallationsGetResponse200
@@ -4102,7 +4102,7 @@ class AppsClient:
 
         You can find the permissions for the installation under the `permissions` key.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#list-app-installations-accessible-to-the-user-access-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/installations#list-app-installations-accessible-to-the-user-access-token
         """
 
         from ..models import BasicError, UserInstallationsGetResponse200
@@ -4151,7 +4151,7 @@ class AppsClient:
 
         The access the user has to each repository is included in the hash under the `permissions` key.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#list-repositories-accessible-to-the-user-access-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/installations#list-repositories-accessible-to-the-user-access-token
         """
 
         from ..models import (
@@ -4203,7 +4203,7 @@ class AppsClient:
 
         The access the user has to each repository is included in the hash under the `permissions` key.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#list-repositories-accessible-to-the-user-access-token
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/installations#list-repositories-accessible-to-the-user-access-token
         """
 
         from ..models import (
@@ -4249,7 +4249,7 @@ class AppsClient:
 
         This endpoint only works for PATs (classic) with the `repo` scope.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#add-a-repository-to-an-app-installation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/installations#add-a-repository-to-an-app-installation
         """
 
         from ..models import BasicError
@@ -4285,7 +4285,7 @@ class AppsClient:
 
         This endpoint only works for PATs (classic) with the `repo` scope.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#add-a-repository-to-an-app-installation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/installations#add-a-repository-to-an-app-installation
         """
 
         from ..models import BasicError
@@ -4321,7 +4321,7 @@ class AppsClient:
 
         This endpoint only works for PATs (classic) with the `repo` scope.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#remove-a-repository-from-an-app-installation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/installations#remove-a-repository-from-an-app-installation
         """
 
         from ..models import BasicError
@@ -4357,7 +4357,7 @@ class AppsClient:
 
         This endpoint only works for PATs (classic) with the `repo` scope.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#remove-a-repository-from-an-app-installation
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/installations#remove-a-repository-from-an-app-installation
         """
 
         from ..models import BasicError
@@ -4393,7 +4393,7 @@ class AppsClient:
 
         Lists the active subscriptions for the authenticated user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-subscriptions-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user
         """
 
         from ..models import BasicError, UserMarketplacePurchase
@@ -4436,7 +4436,7 @@ class AppsClient:
 
         Lists the active subscriptions for the authenticated user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-subscriptions-for-the-authenticated-user
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user
         """
 
         from ..models import BasicError, UserMarketplacePurchase
@@ -4479,7 +4479,7 @@ class AppsClient:
 
         Lists the active subscriptions for the authenticated user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed
         """
 
         from ..models import BasicError, UserMarketplacePurchase
@@ -4521,7 +4521,7 @@ class AppsClient:
 
         Lists the active subscriptions for the authenticated user.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed
         """
 
         from ..models import BasicError, UserMarketplacePurchase
@@ -4560,9 +4560,9 @@ class AppsClient:
 
         Enables an authenticated GitHub App to find the user’s installation information.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-a-user-installation-for-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-a-user-installation-for-the-authenticated-app
         """
 
         from ..models import Installation
@@ -4592,9 +4592,9 @@ class AppsClient:
 
         Enables an authenticated GitHub App to find the user’s installation information.
 
-        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-a-user-installation-for-the-authenticated-app
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/apps#get-a-user-installation-for-the-authenticated-app
         """
 
         from ..models import Installation
