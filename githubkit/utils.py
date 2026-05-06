@@ -1,7 +1,8 @@
 from enum import Enum
 from functools import partial
 import inspect
-from typing import Any, Generic, Literal, Optional, TypeVar, final, overload
+from typing import Any, Generic, Literal, Optional, TypeVar, final
+from typing_extensions import TypeForm
 
 from hishel._utils import generate_key
 import httpcore
@@ -98,13 +99,7 @@ def parse_query_params(params: dict[str, Any]) -> dict[str, Any]:
 class TaggedUnion(Generic[T]):
     __slots__ = ("discriminator", "tag", "type_")
 
-    @overload
-    def __init__(self, type_: type[T], discriminator: str, tag: str) -> None: ...
-
-    @overload
-    def __init__(self, type_: Any, discriminator: str, tag: str) -> None: ...
-
-    def __init__(self, type_: type[T], discriminator: str, tag: str) -> None:
+    def __init__(self, type_: TypeForm[T], discriminator: str, tag: str) -> None:
         self.type_ = type_
         self.discriminator = discriminator
         self.tag = tag

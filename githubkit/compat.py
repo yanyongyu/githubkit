@@ -1,5 +1,6 @@
 from collections.abc import Generator
-from typing import TYPE_CHECKING, Any, Callable, Protocol, TypeVar, overload
+from typing import TYPE_CHECKING, Any, Callable, Protocol, TypeVar
+from typing_extensions import TypeForm
 
 from pydantic import VERSION
 
@@ -36,24 +37,10 @@ if PYDANTIC_V2:  # pragma: pydantic-v2
     class ExtraGitHubModel(GitHubModel):
         model_config = ConfigDict(extra="allow")
 
-    # Remove the overload once [PEP747](https://peps.python.org/pep-0747/) is accepted
-    # We should use TypeForm here
-    @overload
-    def type_validate_python(type_: type[T], data: Any) -> T: ...
-
-    @overload
-    def type_validate_python(type_: Any, data: Any) -> Any: ...
-
-    def type_validate_python(type_: type[T], data: Any) -> T:
+    def type_validate_python(type_: TypeForm[T], data: Any) -> T:
         return TypeAdapter(type_).validate_python(data)
 
-    @overload
-    def type_validate_json(type_: type[T], data: Any) -> T: ...
-
-    @overload
-    def type_validate_json(type_: Any, data: Any) -> Any: ...
-
-    def type_validate_json(type_: type[T], data: Any) -> T:
+    def type_validate_json(type_: TypeForm[T], data: Any) -> T:
         return TypeAdapter(type_).validate_json(data)
 
     def model_dump(model: BaseModel, by_alias: bool = True) -> dict[str, Any]:
@@ -97,22 +84,10 @@ else:  # pragma: pydantic-v1
         class Config:
             extra = Extra.allow
 
-    @overload
-    def type_validate_python(type_: type[T], data: Any) -> T: ...
-
-    @overload
-    def type_validate_python(type_: Any, data: Any) -> Any: ...
-
-    def type_validate_python(type_: type[T], data: Any) -> T:
+    def type_validate_python(type_: TypeForm[T], data: Any) -> T:
         return parse_obj_as(type_, data)
 
-    @overload
-    def type_validate_json(type_: type[T], data: Any) -> T: ...
-
-    @overload
-    def type_validate_json(type_: Any, data: Any) -> Any: ...
-
-    def type_validate_json(type_: type[T], data: Any) -> T:
+    def type_validate_json(type_: TypeForm[T], data: Any) -> T:
         return parse_raw_as(type_, data)
 
     def to_jsonable_python(obj: Any) -> Any:
