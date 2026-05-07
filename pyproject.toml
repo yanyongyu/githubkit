@@ -1,6 +1,6 @@
 [project]
 name = "GitHubKit"
-version = "0.15.5"
+version = "0.16.0.dev0"
 description = "GitHub SDK for Python"
 authors = [{ name = "yanyongyu", email = "yyy@yyydl.top" }]
 license = "MIT"
@@ -13,14 +13,16 @@ dependencies = [
   "hishel >=0.0.21, <=0.2.0",
   "typing-extensions >=4.11.0, <5.0.0",
   "pydantic >=1.9.1, <3.0.0, !=2.5.0, !=2.5.1",
+  "githubkit-schemas >=26.5.7",
 ]
 
 [project.optional-dependencies]
 jwt = ["PyJWT[crypto] >=2.4.0, <3.0.0"]
 auth-app = ["PyJWT[crypto] >=2.4.0, <3.0.0"]
-auth-oauth-device = []                       # backward compatibility
+auth-oauth-device = []                                                     # backward compatibility
 auth = ["PyJWT[crypto] >=2.4.0, <3.0.0"]
-all = ["PyJWT[crypto] >=2.4.0, <3.0.0"]
+all-schemas = ["githubkit-schemas[all] >=26.5.7"]
+all = ["PyJWT[crypto] >=2.4.0, <3.0.0", "githubkit-schemas[all] >=26.5.7"]
 
 [project.urls]
 Homepage = "https://github.com/yanyongyu/githubkit"
@@ -65,6 +67,12 @@ pydantic-v2 = ["pydantic >=2.0.0, <3.0.0"]
 [tool.uv]
 required-version = ">=0.8.0"
 conflicts = [[{ group = "pydantic-v1" }, { group = "pydantic-v2" }]]
+
+[tool.uv.sources]
+githubkit-schemas = { workspace = true }
+
+[tool.uv.workspace]
+members = ["packages/*"]
 
 [tool.uv.build-backend]
 module-root = ""
@@ -131,8 +139,12 @@ ignore = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"githubkit/rest/**" = ["E501", "PYI016", "TID"]
-"githubkit/versions/**" = ["E501", "PYI016", "TID"]
+"packages/githubkit-schemas-**/**" = ["E501", "PYI016", "TID"]
+"packages/githubkit-schemas/githubkit_schemas/latest/**" = [
+  "E501",
+  "PYI016",
+  "TID",
+]
 
 [tool.ruff.lint.isort]
 force-sort-within-sections = true
