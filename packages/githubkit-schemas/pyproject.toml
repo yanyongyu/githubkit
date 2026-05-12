@@ -1,0 +1,57 @@
+[project]
+name = "GitHubKit-schemas"
+version = "26.5.12"
+description = "GitHub Schemas for GitHubKit"
+authors = [{ name = "yanyongyu", email = "yyy@yyydl.top" }]
+license = "MIT"
+readme = "README.md"
+keywords = ["github", "octokit"]
+requires-python = ">=3.9, <4.0"
+dependencies = ["githubkit >=0.16.0", "githubkit-schemas-2026-03-10 ==26.5.12"]
+
+[project.optional-dependencies]
+2022-11-28 = ["githubkit-schemas-2022-11-28 ==26.5.12"]
+2026-03-10 = ["githubkit-schemas-2026-03-10 ==26.5.12"]
+ghec-2022-11-28 = ["githubkit-schemas-ghec-2022-11-28 ==26.5.12"]
+ghec-2026-03-10 = ["githubkit-schemas-ghec-2026-03-10 ==26.5.12"]
+ghec = ["githubkit-schemas-ghec-2026-03-10 ==26.5.12"]
+
+all-gh = [
+  "githubkit-schemas-2022-11-28 ==26.5.12",
+  "githubkit-schemas-2026-03-10 ==26.5.12",
+]
+all-ghec = [
+  "githubkit-schemas-ghec-2022-11-28 ==26.5.12",
+  "githubkit-schemas-ghec-2026-03-10 ==26.5.12",
+]
+all = [
+  "githubkit-schemas-2022-11-28 ==26.5.12",
+  "githubkit-schemas-2026-03-10 ==26.5.12",
+  "githubkit-schemas-ghec-2022-11-28 ==26.5.12",
+  "githubkit-schemas-ghec-2026-03-10 ==26.5.12",
+]
+
+[project.urls]
+Homepage = "https://github.com/yanyongyu/githubkit"
+Repository = "https://github.com/yanyongyu/githubkit"
+Documentation = "https://github.com/yanyongyu/githubkit"
+"Bug Tracker" = "https://github.com/yanyongyu/githubkit/issues"
+
+[tool.uv]
+required-version = ">=0.8.0"
+
+[tool.uv.sources]
+githubkit = { workspace = true }
+githubkit-schemas-2022-11-28 = { workspace = true }
+githubkit-schemas-2026-03-10 = { workspace = true }
+githubkit-schemas-ghec-2022-11-28 = { workspace = true }
+githubkit-schemas-ghec-2026-03-10 = { workspace = true }
+
+[tool.uv.build-backend]
+module-root = ""
+module-name = "githubkit_schemas"
+namespace = true
+
+[build-system]
+requires = ["uv_build >=0.8.3, <0.10.0"]
+build-backend = "uv_build"

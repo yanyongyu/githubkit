@@ -20,7 +20,7 @@ If you can't provide a githubkit test client to your business logic, you can moc
     from githubkit.utils import UNSET
     from githubkit.response import Response
     from githubkit.typing import URLTypes, UnsetType
-    from githubkit.versions.latest.models import FullRepository
+    from githubkit_schemas.latest.models import FullRepository
 
     FAKE_RESPONSE = json.loads(Path("fake_response.json").read_text())
 
@@ -72,7 +72,7 @@ If you can't provide a githubkit test client to your business logic, you can moc
     from githubkit.utils import UNSET
     from githubkit.response import Response
     from githubkit.typing import URLTypes, UnsetType
-    from githubkit.versions.latest.models import FullRepository
+    from githubkit_schemas.latest.models import FullRepository
 
     FAKE_RESPONSE = json.loads(Path("fake_response.json").read_text())
 
@@ -125,7 +125,7 @@ You can also create a test client with mock transport and provide it to your bus
     import pytest
 
     from githubkit import GitHub
-    from githubkit.versions.latest.models import FullRepository
+    from githubkit_schemas.latest.models import FullRepository
 
     FAKE_RESPONSE = json.loads(Path("fake_response.json").read_text())
 
@@ -154,7 +154,7 @@ You can also create a test client with mock transport and provide it to your bus
     import pytest
 
     from githubkit import GitHub
-    from githubkit.versions.latest.models import FullRepository
+    from githubkit_schemas.latest.models import FullRepository
 
     FAKE_RESPONSE = json.loads(Path("fake_response.json").read_text())
 

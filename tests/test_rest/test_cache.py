@@ -1,5 +1,6 @@
+from githubkit_schemas.core import LATEST_VERSION
+
 from githubkit import GitHub
-from githubkit.versions import LATEST_VERSION
 
 
 def test_cache(g: GitHub):

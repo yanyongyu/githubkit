@@ -1,0 +1,32 @@
+[project]
+name = "GitHubKit-schemas-ghec-2026-03-10"
+version = "26.5.12"
+description = "GitHub Schemas for GitHubKit"
+authors = [{ name = "yanyongyu", email = "yyy@yyydl.top" }]
+license = "MIT"
+readme = "README.md"
+keywords = ["github", "octokit"]
+requires-python = ">=3.9, <4.0"
+dependencies = ["githubkit-schemas ==26.5.12"]
+
+[project.optional-dependencies]
+
+[project.urls]
+Homepage = "https://github.com/yanyongyu/githubkit"
+Repository = "https://github.com/yanyongyu/githubkit"
+Documentation = "https://github.com/yanyongyu/githubkit"
+"Bug Tracker" = "https://github.com/yanyongyu/githubkit/issues"
+
+[tool.uv]
+required-version = ">=0.8.0"
+
+[tool.uv.sources]
+githubkit-schemas = { workspace = true }
+
+[tool.uv.build-backend]
+module-root = ""
+module-name = "githubkit_schemas.ghec_v2026_03_10"
+
+[build-system]
+requires = ["uv_build >=0.8.3, <0.10.0"]
+build-backend = "uv_build"

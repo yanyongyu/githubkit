@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 from typing import Any, TypeVar, Union
 
+from githubkit_schemas.latest.models import FullRepository
 import httpx
 import pytest
 
@@ -9,7 +10,6 @@ from githubkit import GitHub
 from githubkit.response import Response
 from githubkit.typing import UnsetType, URLTypes
 from githubkit.utils import UNSET
-from githubkit.versions.latest.models import FullRepository
 
 T = TypeVar("T")
 

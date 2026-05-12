@@ -94,7 +94,7 @@ Then, enjoy githubkit now!
 
 ```python
 from githubkit import Response
-from githubkit.versions.latest.models import FullRepository
+from githubkit_schemas.latest.models import FullRepository
 
 resp: Response[FullRepository] = github.rest.repos.get("owner", "repo")
 repo: FullRepository = resp.parsed_data
