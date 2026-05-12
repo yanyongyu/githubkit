@@ -12,47 +12,27 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200Type(TypedDict):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgActionsOidcCustomizationSubPutBodyType(TypedDict):
+    """Actions OIDC Subject customization
 
-    attestations: NotRequired[
-        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType]
-    ]
+    Actions OIDC Subject customization
+    """
 
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
-
-    attestations: NotRequired[
-        list[
-            OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
-        ]
-    ]
+    include_claim_keys: NotRequired[list[str]]
+    use_immutable_subject: NotRequired[bool]
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
-    TypedDict
-):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+class OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
 
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
+    Actions OIDC Subject customization
+    """
 
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
+    include_claim_keys: NotRequired[list[str]]
+    use_immutable_subject: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200Type",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse",
+    "OrgsOrgActionsOidcCustomizationSubPutBodyType",
+    "OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse",
 )

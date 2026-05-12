@@ -12,19 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class GistsGistIdCommentsCommentIdPatchBodyType(TypedDict):
-    """GistsGistIdCommentsCommentIdPatchBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200
 
-    body: str
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int
 
 
-class GistsGistIdCommentsCommentIdPatchBodyTypeForResponse(TypedDict):
-    """GistsGistIdCommentsCommentIdPatchBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200
 
-    body: str
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int
 
 
 __all__ = (
-    "GistsGistIdCommentsCommentIdPatchBodyType",
-    "GistsGistIdCommentsCommentIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse",
 )

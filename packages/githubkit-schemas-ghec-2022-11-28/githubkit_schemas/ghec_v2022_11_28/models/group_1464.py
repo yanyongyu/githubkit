@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,26 +18,60 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoReleasesGenerateNotesPostBody(GitHubModel):
-    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
+class ReposOwnerRepoIssuesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesPostBody"""
 
-    tag_name: str = Field(
-        description="The tag name for the release. This can be an existing tag or a new one."
-    )
-    target_commitish: Missing[str] = Field(
+    title: Union[str, int] = Field(description="The title of the issue.")
+    body: Missing[str] = Field(default=UNSET, description="The contents of the issue.")
+    assignee: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Specifies the commitish value that will be the target for the release's tag. Required if the supplied tag_name does not reference an existing tag. Ignored if the tag_name already exists.",
+        description="Login for the user that this issue should be assigned to. _NOTE: Only users with push access can set the assignee for new issues. The assignee is silently dropped otherwise. **This field is closing down.**_",
     )
-    previous_tag_name: Missing[str] = Field(
+    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
+    labels: Missing[
+        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1]]
+    ] = Field(
         default=UNSET,
-        description="The name of the previous tag to use as the starting point for the release notes. Use to manually specify the range for the set of changes considered as part this release.",
+        description="Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._",
     )
-    configuration_file_path: Missing[str] = Field(
+    assignees: Missing[list[str]] = Field(
         default=UNSET,
-        description="Specifies a path to a file in the repository containing configuration settings used for generating the release notes. If unspecified, the configuration file located in the repository at '.github/release.yml' or '.github/release.yaml' will be used. If that is not present, the default configuration will be used.",
+        description="Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._",
+    )
+    issue_field_values: Missing[
+        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems]
+    ] = Field(
+        default=UNSET,
+        description="An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Issue fields are only available for organization-owned repositories with the feature enabled. Field values are silently dropped otherwise.",
+    )
+    type: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The name of the issue type to associate with this issue. _NOTE: Only users with push access can set the type for new issues. The type is silently dropped otherwise._",
     )
 
 
-model_rebuild(ReposOwnerRepoReleasesGenerateNotesPostBody)
+class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1(GitHubModel):
+    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
 
-__all__ = ("ReposOwnerRepoReleasesGenerateNotesPostBody",)
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    color: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems(GitHubModel):
+    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
+
+    field_id: int = Field(description="The ID of the issue field to set")
+    value: Union[str, float] = Field(description="The value to set for the field")
+
+
+model_rebuild(ReposOwnerRepoIssuesPostBody)
+model_rebuild(ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1)
+model_rebuild(ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems)
+
+__all__ = (
+    "ReposOwnerRepoIssuesPostBody",
+    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems",
+    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1",
+)

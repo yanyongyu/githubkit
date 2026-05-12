@@ -11,34 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200(GitHubModel):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
 
-    total_count: int = Field()
-    devcontainers: list[
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems
-    ] = Field()
-
-
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems(
-    GitHubModel
-):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
-
-    path: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    display_name: Missing[str] = Field(default=UNSET)
+    labels: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of the custom labels to add to the runner.",
+    )
 
 
-model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200)
-model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems)
+model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody)
 
-__all__ = (
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200",
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems",
-)
+__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",)

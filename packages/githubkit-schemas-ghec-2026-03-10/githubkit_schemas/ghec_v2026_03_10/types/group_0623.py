@@ -13,41 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0567 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0568 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0569 import (
+from .group_0572 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0573 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0574 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0570 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0573 import ExemptionRequestType, ExemptionRequestTypeForResponse
+from .group_0575 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookExemptionRequestCompletedType(TypedDict):
-    """Exemption request completed event"""
+class WebhookBranchProtectionConfigurationEnabledType(TypedDict):
+    """branch protection configuration enabled event"""
 
-    action: Literal["completed"]
+    action: Literal["enabled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    exemption_request: ExemptionRequestType
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookExemptionRequestCompletedTypeForResponse(TypedDict):
-    """Exemption request completed event"""
+class WebhookBranchProtectionConfigurationEnabledTypeForResponse(TypedDict):
+    """branch protection configuration enabled event"""
 
-    action: Literal["completed"]
+    action: Literal["enabled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    exemption_request: ExemptionRequestTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookExemptionRequestCompletedType",
-    "WebhookExemptionRequestCompletedTypeForResponse",
+    "WebhookBranchProtectionConfigurationEnabledType",
+    "WebhookBranchProtectionConfigurationEnabledTypeForResponse",
 )

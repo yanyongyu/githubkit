@@ -9,13 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_1321 import ReposOwnerRepoPagesPostBodyPropSource
 
 
-class UserInteractionLimitsGetResponse200Anyof1(GitHubModel):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoPagesPostBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
+
+    build_type: Missing[Literal["legacy", "workflow"]] = Field(
+        default=UNSET,
+        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.',
+    )
+    source: ReposOwnerRepoPagesPostBodyPropSource = Field(
+        description="The source branch and directory used to publish your Pages site."
+    )
 
 
-model_rebuild(UserInteractionLimitsGetResponse200Anyof1)
+model_rebuild(ReposOwnerRepoPagesPostBodyAnyof0)
 
-__all__ = ("UserInteractionLimitsGetResponse200Anyof1",)
+__all__ = ("ReposOwnerRepoPagesPostBodyAnyof0",)

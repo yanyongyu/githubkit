@@ -9,51 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type(TypedDict):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
 
-    issue_field_values: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
-        ]
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
     ]
+    query_pack: str
+    repositories: NotRequired[list[str]]
+    repository_lists: NotRequired[list[str]]
+    repository_owners: list[str]
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
-
-    issue_field_values: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse
-        ]
-    ]
-
-
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType(
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
 
-    field_id: int
-    value: Union[str, float]
-
-
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
-
-    field_id: int
-    value: Union[str, float]
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ]
+    query_pack: str
+    repositories: NotRequired[list[str]]
+    repository_lists: NotRequired[list[str]]
+    repository_owners: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2TypeForResponse",
 )

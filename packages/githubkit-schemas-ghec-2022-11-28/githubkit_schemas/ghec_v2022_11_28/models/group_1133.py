@@ -12,36 +12,46 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200(GitHubModel):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody"""
 
-    total_count: int = Field()
-    repository_cache_usages: list[ActionsCacheUsageByRepository] = Field()
+    organizations: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of organization logins within the enterprise to enable Copilot cloud agent for.",
+    )
+    custom_properties: Missing[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="List of custom property filters to match organizations. Organizations matching any of the specified property name/value pairs will be included. This is a one-time operation, setting the property on an organization in the future will not automatically update its coding agent policy.",
+    )
 
 
-class ActionsCacheUsageByRepository(GitHubModel):
-    """Actions Cache Usage by repository
-
-    GitHub Actions Cache Usage by repository.
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPr
+    opertiesItems
     """
 
-    full_name: str = Field(
-        description="The repository owner and name for the cache usage being shown."
+    property_name: str = Field(
+        description="The name of the custom property to filter by."
     )
-    active_caches_size_in_bytes: int = Field(
-        description="The sum of the size in bytes of all the active cache items in the repository."
-    )
-    active_caches_count: int = Field(
-        description="The number of active caches in the repository."
-    )
+    values: list[str] = Field(description="The values of the custom property to match.")
 
 
-model_rebuild(OrgsOrgActionsCacheUsageByRepositoryGetResponse200)
-model_rebuild(ActionsCacheUsageByRepository)
+model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody)
+model_rebuild(
+    EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems
+)
 
 __all__ = (
-    "ActionsCacheUsageByRepository",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems",
 )

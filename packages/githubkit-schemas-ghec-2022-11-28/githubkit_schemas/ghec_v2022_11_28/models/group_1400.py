@@ -9,13 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1(GitHubModel):
-    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoCheckSuitesPostBody(GitHubModel):
+    """ReposOwnerRepoCheckSuitesPostBody"""
+
+    head_sha: str = Field(description="The sha of the head commit.")
 
 
-model_rebuild(ReposOwnerRepoInteractionLimitsGetResponse200Anyof1)
+model_rebuild(ReposOwnerRepoCheckSuitesPostBody)
 
-__all__ = ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1",)
+__all__ = ("ReposOwnerRepoCheckSuitesPostBody",)

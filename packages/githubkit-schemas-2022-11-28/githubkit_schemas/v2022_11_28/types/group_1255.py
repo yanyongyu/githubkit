@@ -9,31 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type(TypedDict):
+    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
 
-    Update the source for the repository. Must include the branch name and path.
-    """
-
-    branch: str
-    path: Literal["/", "/docs"]
+    sbom_url: NotRequired[str]
 
 
-class ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
 
-    Update the source for the repository. Must include the branch name and path.
-    """
-
-    branch: str
-    path: Literal["/", "/docs"]
+    sbom_url: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",
-    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse",
+    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type",
+    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse",
 )

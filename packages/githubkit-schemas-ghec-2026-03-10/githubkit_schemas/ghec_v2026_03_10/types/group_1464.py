@@ -12,172 +12,99 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0114 import (
-    RepositoryRulesetBypassActorType,
-    RepositoryRulesetBypassActorTypeForResponse,
-)
-from .group_0119 import (
-    RepositoryRulesetConditionsType,
-    RepositoryRulesetConditionsTypeForResponse,
-)
-from .group_0133 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleCreationTypeForResponse,
-    RepositoryRuleDeletionType,
-    RepositoryRuleDeletionTypeForResponse,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleNonFastForwardTypeForResponse,
-    RepositoryRuleRequiredSignaturesType,
-    RepositoryRuleRequiredSignaturesTypeForResponse,
-)
-from .group_0134 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
-from .group_0136 import (
-    RepositoryRuleRequiredLinearHistoryType,
-    RepositoryRuleRequiredLinearHistoryTypeForResponse,
-)
-from .group_0137 import (
-    RepositoryRuleRequiredDeploymentsType,
-    RepositoryRuleRequiredDeploymentsTypeForResponse,
-)
-from .group_0139 import (
-    RepositoryRulePullRequestType,
-    RepositoryRulePullRequestTypeForResponse,
-)
-from .group_0141 import (
-    RepositoryRuleRequiredStatusChecksType,
-    RepositoryRuleRequiredStatusChecksTypeForResponse,
-)
-from .group_0143 import (
-    RepositoryRuleCommitMessagePatternType,
-    RepositoryRuleCommitMessagePatternTypeForResponse,
-)
-from .group_0145 import (
-    RepositoryRuleCommitAuthorEmailPatternType,
-    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-)
-from .group_0147 import (
-    RepositoryRuleCommitterEmailPatternType,
-    RepositoryRuleCommitterEmailPatternTypeForResponse,
-)
-from .group_0149 import (
-    RepositoryRuleBranchNamePatternType,
-    RepositoryRuleBranchNamePatternTypeForResponse,
-)
-from .group_0151 import (
-    RepositoryRuleTagNamePatternType,
-    RepositoryRuleTagNamePatternTypeForResponse,
-)
-from .group_0153 import (
-    RepositoryRuleFilePathRestrictionType,
-    RepositoryRuleFilePathRestrictionTypeForResponse,
-)
-from .group_0155 import (
-    RepositoryRuleMaxFilePathLengthType,
-    RepositoryRuleMaxFilePathLengthTypeForResponse,
-)
-from .group_0157 import (
-    RepositoryRuleFileExtensionRestrictionType,
-    RepositoryRuleFileExtensionRestrictionTypeForResponse,
-)
-from .group_0159 import (
-    RepositoryRuleMaxFileSizeType,
-    RepositoryRuleMaxFileSizeTypeForResponse,
-)
-from .group_0162 import (
-    RepositoryRuleWorkflowsType,
-    RepositoryRuleWorkflowsTypeForResponse,
-)
-from .group_0164 import (
-    RepositoryRuleCodeScanningType,
-    RepositoryRuleCodeScanningTypeForResponse,
-)
-from .group_0166 import (
-    RepositoryRuleCopilotCodeReviewType,
-    RepositoryRuleCopilotCodeReviewTypeForResponse,
-)
-from .group_0173 import (
-    RepositoryRuleMergeQueueType,
-    RepositoryRuleMergeQueueTypeForResponse,
-)
 
+class ReposOwnerRepoIssuesIssueNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
 
-class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
-    """ReposOwnerRepoRulesetsPostBody"""
-
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[RepositoryRulesetConditionsType]
-    rules: NotRequired[
+    title: NotRequired[Union[str, int, None]]
+    body: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
+    state_reason: NotRequired[
+        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+    ]
+    milestone: NotRequired[Union[str, int, None]]
+    labels: NotRequired[
         list[
             Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-                RepositoryRuleCopilotCodeReviewType,
+                str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type
             ]
         ]
     ]
+    assignees: NotRequired[list[str]]
+    issue_field_values: NotRequired[
+        list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType]
+    ]
+    type: NotRequired[Union[str, None]]
 
 
-class ReposOwnerRepoRulesetsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoRulesetsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
 
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
-    conditions: NotRequired[RepositoryRulesetConditionsTypeForResponse]
-    rules: NotRequired[
+    title: NotRequired[Union[str, int, None]]
+    body: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
+    state_reason: NotRequired[
+        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+    ]
+    milestone: NotRequired[Union[str, int, None]]
+    labels: NotRequired[
         list[
             Union[
-                RepositoryRuleCreationTypeForResponse,
-                RepositoryRuleUpdateTypeForResponse,
-                RepositoryRuleDeletionTypeForResponse,
-                RepositoryRuleRequiredLinearHistoryTypeForResponse,
-                RepositoryRuleMergeQueueTypeForResponse,
-                RepositoryRuleRequiredDeploymentsTypeForResponse,
-                RepositoryRuleRequiredSignaturesTypeForResponse,
-                RepositoryRulePullRequestTypeForResponse,
-                RepositoryRuleRequiredStatusChecksTypeForResponse,
-                RepositoryRuleNonFastForwardTypeForResponse,
-                RepositoryRuleCommitMessagePatternTypeForResponse,
-                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-                RepositoryRuleCommitterEmailPatternTypeForResponse,
-                RepositoryRuleBranchNamePatternTypeForResponse,
-                RepositoryRuleTagNamePatternTypeForResponse,
-                RepositoryRuleFilePathRestrictionTypeForResponse,
-                RepositoryRuleMaxFilePathLengthTypeForResponse,
-                RepositoryRuleFileExtensionRestrictionTypeForResponse,
-                RepositoryRuleMaxFileSizeTypeForResponse,
-                RepositoryRuleWorkflowsTypeForResponse,
-                RepositoryRuleCodeScanningTypeForResponse,
-                RepositoryRuleCopilotCodeReviewTypeForResponse,
+                str,
+                ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse,
             ]
         ]
     ]
+    assignees: NotRequired[list[str]]
+    issue_field_values: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse
+        ]
+    ]
+    type: NotRequired[Union[str, None]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float]
 
 
 __all__ = (
-    "ReposOwnerRepoRulesetsPostBodyType",
-    "ReposOwnerRepoRulesetsPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyType",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyTypeForResponse",
 )

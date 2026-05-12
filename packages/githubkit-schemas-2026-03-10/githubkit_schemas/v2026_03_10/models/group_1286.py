@@ -12,21 +12,14 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoReleasesAssetsAssetIdPatchBody(GitHubModel):
-    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
+class ReposOwnerRepoIssuesCommentsCommentIdPatchBody(GitHubModel):
+    """ReposOwnerRepoIssuesCommentsCommentIdPatchBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The file name of the asset.")
-    label: Missing[str] = Field(
-        default=UNSET,
-        description="An alternate short description of the asset. Used in place of the filename.",
-    )
-    state: Missing[str] = Field(default=UNSET)
+    body: str = Field(description="The contents of the comment.")
 
 
-model_rebuild(ReposOwnerRepoReleasesAssetsAssetIdPatchBody)
+model_rebuild(ReposOwnerRepoIssuesCommentsCommentIdPatchBody)
 
-__all__ = ("ReposOwnerRepoReleasesAssetsAssetIdPatchBody",)
+__all__ = ("ReposOwnerRepoIssuesCommentsCommentIdPatchBody",)

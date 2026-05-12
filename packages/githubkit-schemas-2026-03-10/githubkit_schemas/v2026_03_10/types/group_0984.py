@@ -9,33 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody"""
 
-    name: str
-    visibility: NotRequired[Literal["selected", "all", "private"]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
-    network_configuration_id: NotRequired[Union[str, None]]
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType
+        ]
+    ]
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody"""
 
-    name: str
-    visibility: NotRequired[Literal["selected", "all", "private"]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
-    network_configuration_id: NotRequired[Union[str, None]]
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse
+        ]
+    ]
+
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPr
+    opertiesItems
+    """
+
+    property_name: str
+    values: list[str]
+
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPr
+    opertiesItems
+    """
+
+    property_name: str
+    values: list[str]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyTypeForResponse",
 )

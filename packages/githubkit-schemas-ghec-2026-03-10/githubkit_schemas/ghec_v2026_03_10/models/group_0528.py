@@ -14,17 +14,30 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReferrerTraffic(GitHubModel):
-    """Referrer Traffic
+class Tag(GitHubModel):
+    """Tag
 
-    Referrer Traffic
+    Tag
     """
 
-    referrer: str = Field()
-    count: int = Field()
-    uniques: int = Field()
+    name: str = Field()
+    commit: TagPropCommit = Field()
+    zipball_url: str = Field()
+    tarball_url: str = Field()
+    node_id: str = Field()
 
 
-model_rebuild(ReferrerTraffic)
+class TagPropCommit(GitHubModel):
+    """TagPropCommit"""
 
-__all__ = ("ReferrerTraffic",)
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(Tag)
+model_rebuild(TagPropCommit)
+
+__all__ = (
+    "Tag",
+    "TagPropCommit",
+)

@@ -9,35 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0053 import RunnerLabelType, RunnerLabelTypeForResponse
 
 
-class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
+
+    total_count: int
+    labels: list[RunnerLabelType]
+
+
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
 
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
-
-
-class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
-
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    total_count: int
+    labels: list[RunnerLabelTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
-    "EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse",
 )

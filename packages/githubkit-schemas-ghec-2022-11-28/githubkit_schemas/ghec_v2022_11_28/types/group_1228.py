@@ -9,32 +9,117 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from githubkit.typing import UniqueList
 
 
-class OrgsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessPatchBody
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    logical_environment: str
+    physical_environment: NotRequired[str]
+    deployments: list[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
+    ]
+    return_records: NotRequired[bool]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
+
+    logical_environment: str
+    physical_environment: NotRequired[str]
+    deployments: list[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse
+    ]
+    return_records: NotRequired[bool]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    ms
     """
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    name: str
+    digest: str
+    version: NotRequired[str]
+    status: NotRequired[Literal["deployed", "decommissioned"]]
+    deployment_name: str
+    github_repository: NotRequired[str]
+    tags: NotRequired[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType
+    ]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
 
 
-class OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessPatchBody
-
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    ms
     """
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    name: str
+    digest: str
+    version: NotRequired[str]
+    status: NotRequired[Literal["deployed", "decommissioned"]]
+    deployment_name: str
+    github_repository: NotRequired[str]
+    tags: NotRequired[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse
+    ]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+
+
+OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+msPropTags
+
+Key-value pairs to tag the deployment record.
+"""
+
+
+OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+msPropTags
+
+Key-value pairs to tag the deployment record.
+"""
 
 
 __all__ = (
-    "OrgsOrgDependabotRepositoryAccessPatchBodyType",
-    "OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyTypeForResponse",
 )

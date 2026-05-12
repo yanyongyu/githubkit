@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdMembershipsUsernamePutBodyType(TypedDict):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    sub_issue_id: int
+    replace_parent: NotRequired[bool]
 
 
-class TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    sub_issue_id: int
+    replace_parent: NotRequired[bool]
 
 
 __all__ = (
-    "TeamsTeamIdMembershipsUsernamePutBodyType",
-    "TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyTypeForResponse",
 )

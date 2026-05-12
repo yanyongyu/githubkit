@@ -12,16 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
+class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody(GitHubModel):
+    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
 
-    message: Missing[str] = Field(default=UNSET)
+    selected_organization_ids: list[int] = Field(
+        description="List of organization IDs to enable for GitHub Actions."
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsGetResponse404)
+model_rebuild(EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody)
 
-__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsGetResponse404",)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody",)

@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse409Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
+class ReposOwnerRepoGitRefsRefPatchBodyType(TypedDict):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    sha: str
+    force: NotRequired[bool]
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
+class ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    sha: str
+    force: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergePutResponse409Type",
-    "ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse",
+    "ReposOwnerRepoGitRefsRefPatchBodyType",
+    "ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse",
 )

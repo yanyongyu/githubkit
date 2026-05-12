@@ -9,45 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-
-
-class ReposOwnerRepoCodespacesNewGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200"""
-
-    billable_owner: NotRequired[SimpleUserType]
-    defaults: NotRequired[ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType]
+from .group_0264 import ArtifactType, ArtifactTypeForResponse
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200"""
+class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
 
-    billable_owner: NotRequired[SimpleUserTypeForResponse]
-    defaults: NotRequired[
-        ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse
-    ]
+    total_count: int
+    artifacts: list[ArtifactType]
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
+class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
 
-    location: str
-    devcontainer_path: Union[str, None]
-
-
-class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
-
-    location: str
-    devcontainer_path: Union[str, None]
+    total_count: int
+    artifacts: list[ArtifactTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType",
-    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse",
-    "ReposOwnerRepoCodespacesNewGetResponse200Type",
-    "ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type",
+    "ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200TypeForResponse",
 )

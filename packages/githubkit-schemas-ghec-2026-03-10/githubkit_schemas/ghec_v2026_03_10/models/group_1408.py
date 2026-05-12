@@ -9,46 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
 
-    issue_field_values: Missing[
-        list[
-            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
-        ]
-    ] = Field(
-        max_length=25 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="An array of issue field values to add to this issue. Each field value must include the field ID and the value to set.",
-    )
+    total_count: int = Field()
+    devcontainers: list[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems
+    ] = Field()
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems(
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems(
     GitHubModel
 ):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
 
-    field_id: int = Field(description="The ID of the issue field to set")
-    value: Union[str, float] = Field(
-        description="The value to set for the field. The type depends on the field's data type:\n- For text fields: provide a string value\n- For single_select fields: provide the option name as a string (must match an existing option)\n- For number fields: provide a numeric value\n- For date fields: provide an ISO 8601 date string"
-    )
+    path: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    display_name: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
-)
+model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200)
+model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems)
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems",
 )

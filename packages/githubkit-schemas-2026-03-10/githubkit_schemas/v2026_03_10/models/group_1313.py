@@ -12,17 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0132 import CodespaceMachine
-
-
-class UserCodespacesCodespaceNameMachinesGetResponse200(GitHubModel):
-    """UserCodespacesCodespaceNameMachinesGetResponse200"""
-
-    total_count: int = Field()
-    machines: list[CodespaceMachine] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(UserCodespacesCodespaceNameMachinesGetResponse200)
+class ReposOwnerRepoNotificationsPutResponse202(GitHubModel):
+    """ReposOwnerRepoNotificationsPutResponse202"""
 
-__all__ = ("UserCodespacesCodespaceNameMachinesGetResponse200",)
+    message: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoNotificationsPutResponse202)
+
+__all__ = ("ReposOwnerRepoNotificationsPutResponse202",)

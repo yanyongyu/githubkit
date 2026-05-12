@@ -9,19 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
-    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints."
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the milestone."
+    )
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET,
+        description="The state of the milestone. Either `open` or `closed`.",
+    )
+    description: Missing[str] = Field(
+        default=UNSET, description="A description of the milestone."
+    )
+    due_on: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
 
 
-model_rebuild(UserCodespacesSecretsSecretNameRepositoriesPutBody)
+model_rebuild(ReposOwnerRepoMilestonesMilestoneNumberPatchBody)
 
-__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBody",)
+__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",)

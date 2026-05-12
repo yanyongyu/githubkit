@@ -9,69 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1162 import (
-    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
-    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse,
-    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
-    ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse,
-)
 
-
-class ReposOwnerRepoCheckRunsPostBodyOneof0Type(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
+class OrgsOrgTeamsPostBodyType(TypedDict):
+    """OrgsOrgTeamsPostBody"""
 
     name: str
-    head_sha: str
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    status: Literal["completed"]
-    started_at: NotRequired[_dt.datetime]
-    conclusion: Literal[
-        "action_required",
-        "cancelled",
-        "failure",
-        "neutral",
-        "success",
-        "skipped",
-        "stale",
-        "timed_out",
+    description: NotRequired[str]
+    maintainers: NotRequired[list[str]]
+    repo_names: NotRequired[list[str]]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
-    completed_at: NotRequired[_dt.datetime]
-    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
-    actions: NotRequired[list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
+    permission: NotRequired[Literal["pull", "push"]]
+    parent_team_id: NotRequired[int]
 
 
-class ReposOwnerRepoCheckRunsPostBodyOneof0TypeForResponse(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
+class OrgsOrgTeamsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsPostBody"""
 
     name: str
-    head_sha: str
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    status: Literal["completed"]
-    started_at: NotRequired[str]
-    conclusion: Literal[
-        "action_required",
-        "cancelled",
-        "failure",
-        "neutral",
-        "success",
-        "skipped",
-        "stale",
-        "timed_out",
+    description: NotRequired[str]
+    maintainers: NotRequired[list[str]]
+    repo_names: NotRequired[list[str]]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
-    completed_at: NotRequired[str]
-    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse]
-    actions: NotRequired[
-        list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse]
-    ]
+    permission: NotRequired[Literal["pull", "push"]]
+    parent_team_id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoCheckRunsPostBodyOneof0Type",
-    "ReposOwnerRepoCheckRunsPostBodyOneof0TypeForResponse",
+    "OrgsOrgTeamsPostBodyType",
+    "OrgsOrgTeamsPostBodyTypeForResponse",
 )

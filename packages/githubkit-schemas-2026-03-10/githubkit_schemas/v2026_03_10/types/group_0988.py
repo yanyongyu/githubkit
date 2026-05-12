@@ -9,28 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0119 import RunnerType, RunnerTypeForResponse
-
-
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
-
-    total_count: float
-    runners: list[RunnerType]
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
+class EnterprisesEnterpriseTeamsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseTeamsPostBody"""
 
-    total_count: float
-    runners: list[RunnerTypeForResponse]
+    name: str
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
+    group_id: NotRequired[Union[str, None]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+
+
+class EnterprisesEnterpriseTeamsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseTeamsPostBody"""
+
+    name: str
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
+    group_id: NotRequired[Union[str, None]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseTeamsPostBodyType",
+    "EnterprisesEnterpriseTeamsPostBodyTypeForResponse",
 )

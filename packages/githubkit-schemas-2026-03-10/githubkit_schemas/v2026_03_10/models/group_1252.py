@@ -14,19 +14,30 @@ import datetime as _dt
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoNotificationsPutBody(GitHubModel):
-    """ReposOwnerRepoNotificationsPutBody"""
+class ReposOwnerRepoDependabotSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
-    last_read_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
-    )
+    total_count: int = Field()
+    secrets: list[DependabotSecret] = Field()
 
 
-model_rebuild(ReposOwnerRepoNotificationsPutBody)
+class DependabotSecret(GitHubModel):
+    """Dependabot Secret
 
-__all__ = ("ReposOwnerRepoNotificationsPutBody",)
+    Set secrets for Dependabot.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+
+
+model_rebuild(ReposOwnerRepoDependabotSecretsGetResponse200)
+model_rebuild(DependabotSecret)
+
+__all__ = (
+    "DependabotSecret",
+    "ReposOwnerRepoDependabotSecretsGetResponse200",
+)

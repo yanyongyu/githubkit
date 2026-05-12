@@ -9,26 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
-
-    name: NotRequired[str]
-    value: NotRequired[str]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyTypeForResponse(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
 
-    name: NotRequired[str]
-    value: NotRequired[str]
+    Examples:
+        {'teams': ['justice-league']}
+    """
+
+    teams: list[str]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
+
+    Examples:
+        {'teams': ['justice-league']}
+    """
+
+    teams: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0TypeForResponse",
 )

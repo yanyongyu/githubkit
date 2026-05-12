@@ -9,56 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsVariablesGetResponse200"""
+class GistsGistIdGetResponse403Type(TypedDict):
+    """GistsGistIdGetResponse403"""
 
-    total_count: int
-    variables: list[OrganizationActionsVariableType]
-
-
-class OrgsOrgActionsVariablesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesGetResponse200"""
-
-    total_count: int
-    variables: list[OrganizationActionsVariableTypeForResponse]
+    block: NotRequired[GistsGistIdGetResponse403PropBlockType]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class OrganizationActionsVariableType(TypedDict):
-    """Actions Variable for an Organization
+class GistsGistIdGetResponse403TypeForResponse(TypedDict):
+    """GistsGistIdGetResponse403"""
 
-    Organization variable for GitHub Actions.
-    """
-
-    name: str
-    value: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    block: NotRequired[GistsGistIdGetResponse403PropBlockTypeForResponse]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class OrganizationActionsVariableTypeForResponse(TypedDict):
-    """Actions Variable for an Organization
+class GistsGistIdGetResponse403PropBlockType(TypedDict):
+    """GistsGistIdGetResponse403PropBlock"""
 
-    Organization variable for GitHub Actions.
-    """
+    reason: NotRequired[str]
+    created_at: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
-    name: str
-    value: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+
+class GistsGistIdGetResponse403PropBlockTypeForResponse(TypedDict):
+    """GistsGistIdGetResponse403PropBlock"""
+
+    reason: NotRequired[str]
+    created_at: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrganizationActionsVariableType",
-    "OrganizationActionsVariableTypeForResponse",
-    "OrgsOrgActionsVariablesGetResponse200Type",
-    "OrgsOrgActionsVariablesGetResponse200TypeForResponse",
+    "GistsGistIdGetResponse403PropBlockType",
+    "GistsGistIdGetResponse403PropBlockTypeForResponse",
+    "GistsGistIdGetResponse403Type",
+    "GistsGistIdGetResponse403TypeForResponse",
 )

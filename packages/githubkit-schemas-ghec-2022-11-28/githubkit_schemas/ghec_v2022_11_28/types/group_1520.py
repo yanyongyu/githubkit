@@ -9,39 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0260 import (
-    CopilotSpaceCollaboratorAnyof0Type,
-    CopilotSpaceCollaboratorAnyof0TypeForResponse,
-    CopilotSpaceCollaboratorAnyof1Type,
-    CopilotSpaceCollaboratorAnyof1TypeForResponse,
-)
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-    collaborators: list[
-        Union[CopilotSpaceCollaboratorAnyof0Type, CopilotSpaceCollaboratorAnyof1Type]
-    ]
+    message: str
+    event: NotRequired[Literal["DISMISS"]]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse(
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-    collaborators: list[
-        Union[
-            CopilotSpaceCollaboratorAnyof0TypeForResponse,
-            CopilotSpaceCollaboratorAnyof1TypeForResponse,
-        ]
-    ]
+    message: str
+    event: NotRequired[Literal["DISMISS"]]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type",
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse",
 )

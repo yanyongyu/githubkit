@@ -9,56 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsVariablesGetResponse200"""
+class GistsPostBodyType(TypedDict):
+    """GistsPostBody"""
 
-    total_count: int
-    variables: list[OrganizationActionsVariableType]
-
-
-class OrgsOrgActionsVariablesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesGetResponse200"""
-
-    total_count: int
-    variables: list[OrganizationActionsVariableTypeForResponse]
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesType
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
 
 
-class OrganizationActionsVariableType(TypedDict):
-    """Actions Variable for an Organization
+class GistsPostBodyTypeForResponse(TypedDict):
+    """GistsPostBody"""
 
-    Organization variable for GitHub Actions.
-    """
-
-    name: str
-    value: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesTypeForResponse
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
 
 
-class OrganizationActionsVariableTypeForResponse(TypedDict):
-    """Actions Variable for an Organization
+GistsPostBodyPropFilesType: TypeAlias = dict[str, Any]
+"""GistsPostBodyPropFiles
 
-    Organization variable for GitHub Actions.
-    """
+Names and content for the files that make up the gist
 
-    name: str
-    value: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+Examples:
+    {'hello.rb': {'content': 'puts "Hello, World!"'}}
+"""
+
+
+GistsPostBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistsPostBodyPropFiles
+
+Names and content for the files that make up the gist
+
+Examples:
+    {'hello.rb': {'content': 'puts "Hello, World!"'}}
+"""
 
 
 __all__ = (
-    "OrganizationActionsVariableType",
-    "OrganizationActionsVariableTypeForResponse",
-    "OrgsOrgActionsVariablesGetResponse200Type",
-    "OrgsOrgActionsVariablesGetResponse200TypeForResponse",
+    "GistsPostBodyPropFilesType",
+    "GistsPostBodyPropFilesTypeForResponse",
+    "GistsPostBodyType",
+    "GistsPostBodyTypeForResponse",
 )

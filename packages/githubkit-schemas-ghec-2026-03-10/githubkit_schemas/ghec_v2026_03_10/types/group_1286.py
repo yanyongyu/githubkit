@@ -9,28 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0338 import ActionsVariableType, ActionsVariableTypeForResponse
-
-
-class ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
-
-    total_count: int
-    variables: list[ActionsVariableType]
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
+class OrgsOrgHooksPostBodyType(TypedDict):
+    """OrgsOrgHooksPostBody"""
 
-    total_count: int
-    variables: list[ActionsVariableTypeForResponse]
+    name: str
+    config: OrgsOrgHooksPostBodyPropConfigType
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class OrgsOrgHooksPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgHooksPostBody"""
+
+    name: str
+    config: OrgsOrgHooksPostBodyPropConfigTypeForResponse
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class OrgsOrgHooksPostBodyPropConfigType(TypedDict):
+    """OrgsOrgHooksPostBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    username: NotRequired[str]
+    password: NotRequired[str]
+
+
+class OrgsOrgHooksPostBodyPropConfigTypeForResponse(TypedDict):
+    """OrgsOrgHooksPostBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    username: NotRequired[str]
+    password: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",
-    "ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse",
+    "OrgsOrgHooksPostBodyPropConfigType",
+    "OrgsOrgHooksPostBodyPropConfigTypeForResponse",
+    "OrgsOrgHooksPostBodyType",
+    "OrgsOrgHooksPostBodyTypeForResponse",
 )

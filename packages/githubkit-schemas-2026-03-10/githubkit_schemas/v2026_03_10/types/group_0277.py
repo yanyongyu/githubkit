@@ -9,162 +9,93 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WorkflowRunUsageType(TypedDict):
-    """Workflow Run Usage
+class ConcurrencyGroupRunListType(TypedDict):
+    """Concurrency Group Run List
 
-    Workflow Run Usage
+    A list of concurrency groups associated with a workflow run.
     """
 
-    billable: WorkflowRunUsagePropBillableType
-    run_duration_ms: NotRequired[int]
+    total_count: int
+    concurrency_groups: list[ConcurrencyGroupRunListPropConcurrencyGroupsItemsType]
 
 
-class WorkflowRunUsageTypeForResponse(TypedDict):
-    """Workflow Run Usage
+class ConcurrencyGroupRunListTypeForResponse(TypedDict):
+    """Concurrency Group Run List
 
-    Workflow Run Usage
+    A list of concurrency groups associated with a workflow run.
     """
 
-    billable: WorkflowRunUsagePropBillableTypeForResponse
-    run_duration_ms: NotRequired[int]
-
-
-class WorkflowRunUsagePropBillableType(TypedDict):
-    """WorkflowRunUsagePropBillable"""
-
-    ubuntu: NotRequired[WorkflowRunUsagePropBillablePropUbuntuType]
-    macos: NotRequired[WorkflowRunUsagePropBillablePropMacosType]
-    windows: NotRequired[WorkflowRunUsagePropBillablePropWindowsType]
-
-
-class WorkflowRunUsagePropBillableTypeForResponse(TypedDict):
-    """WorkflowRunUsagePropBillable"""
-
-    ubuntu: NotRequired[WorkflowRunUsagePropBillablePropUbuntuTypeForResponse]
-    macos: NotRequired[WorkflowRunUsagePropBillablePropMacosTypeForResponse]
-    windows: NotRequired[WorkflowRunUsagePropBillablePropWindowsTypeForResponse]
-
-
-class WorkflowRunUsagePropBillablePropUbuntuType(TypedDict):
-    """WorkflowRunUsagePropBillablePropUbuntu"""
-
-    total_ms: int
-    jobs: int
-    job_runs: NotRequired[
-        list[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType]
+    total_count: int
+    concurrency_groups: list[
+        ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse
     ]
 
 
-class WorkflowRunUsagePropBillablePropUbuntuTypeForResponse(TypedDict):
-    """WorkflowRunUsagePropBillablePropUbuntu"""
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsType(TypedDict):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
 
-    total_ms: int
-    jobs: int
-    job_runs: NotRequired[
-        list[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsTypeForResponse]
+    group_name: str
+    group_url: str
+    group_members: list[
+        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType
     ]
 
 
-class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType(TypedDict):
-    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
 
-    job_id: int
-    duration_ms: int
-
-
-class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsTypeForResponse(TypedDict):
-    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
-
-    job_id: int
-    duration_ms: int
-
-
-class WorkflowRunUsagePropBillablePropMacosType(TypedDict):
-    """WorkflowRunUsagePropBillablePropMacos"""
-
-    total_ms: int
-    jobs: int
-    job_runs: NotRequired[
-        list[WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType]
+    group_name: str
+    group_url: str
+    group_members: list[
+        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse
     ]
 
 
-class WorkflowRunUsagePropBillablePropMacosTypeForResponse(TypedDict):
-    """WorkflowRunUsagePropBillablePropMacos"""
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType(
+    TypedDict
+):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
 
-    total_ms: int
-    jobs: int
-    job_runs: NotRequired[
-        list[WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsTypeForResponse]
-    ]
-
-
-class WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType(TypedDict):
-    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
-
-    job_id: int
-    duration_ms: int
-
-
-class WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsTypeForResponse(TypedDict):
-    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
-
-    job_id: int
-    duration_ms: int
+    run_id: int
+    run_name: str
+    run_url: Union[str, None]
+    run_html_url: Union[str, None]
+    position: int
+    position_url: str
+    job_id: NotRequired[Union[int, None]]
+    job_name: NotRequired[Union[str, None]]
+    job_url: NotRequired[Union[str, None]]
+    job_html_url: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "pending"]
 
 
-class WorkflowRunUsagePropBillablePropWindowsType(TypedDict):
-    """WorkflowRunUsagePropBillablePropWindows"""
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse(
+    TypedDict
+):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
 
-    total_ms: int
-    jobs: int
-    job_runs: NotRequired[
-        list[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType]
-    ]
-
-
-class WorkflowRunUsagePropBillablePropWindowsTypeForResponse(TypedDict):
-    """WorkflowRunUsagePropBillablePropWindows"""
-
-    total_ms: int
-    jobs: int
-    job_runs: NotRequired[
-        list[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsTypeForResponse]
-    ]
-
-
-class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType(TypedDict):
-    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
-
-    job_id: int
-    duration_ms: int
-
-
-class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsTypeForResponse(TypedDict):
-    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
-
-    job_id: int
-    duration_ms: int
+    run_id: int
+    run_name: str
+    run_url: Union[str, None]
+    run_html_url: Union[str, None]
+    position: int
+    position_url: str
+    job_id: NotRequired[Union[int, None]]
+    job_name: NotRequired[Union[str, None]]
+    job_url: NotRequired[Union[str, None]]
+    job_html_url: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "pending"]
 
 
 __all__ = (
-    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType",
-    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsTypeForResponse",
-    "WorkflowRunUsagePropBillablePropMacosType",
-    "WorkflowRunUsagePropBillablePropMacosTypeForResponse",
-    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType",
-    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsTypeForResponse",
-    "WorkflowRunUsagePropBillablePropUbuntuType",
-    "WorkflowRunUsagePropBillablePropUbuntuTypeForResponse",
-    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType",
-    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsTypeForResponse",
-    "WorkflowRunUsagePropBillablePropWindowsType",
-    "WorkflowRunUsagePropBillablePropWindowsTypeForResponse",
-    "WorkflowRunUsagePropBillableType",
-    "WorkflowRunUsagePropBillableTypeForResponse",
-    "WorkflowRunUsageType",
-    "WorkflowRunUsageTypeForResponse",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsType",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse",
+    "ConcurrencyGroupRunListType",
+    "ConcurrencyGroupRunListTypeForResponse",
 )

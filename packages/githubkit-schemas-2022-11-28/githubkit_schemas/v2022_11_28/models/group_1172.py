@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,34 +16,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoActionsOidcCustomizationSubPutBody(GitHubModel):
+    """Actions OIDC subject customization for a repository
 
-    state: Missing[Literal["open", "dismissed"]] = Field(
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool = Field(
+        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
+    )
+    include_claim_keys: Missing[list[str]] = Field(
         default=UNSET,
-        description="Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`.",
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
     )
-    dismissed_reason: Missing[
-        Union[None, Literal["false positive", "won't fix", "used in tests"]]
-    ] = Field(
+    use_immutable_subject: Missing[bool] = Field(
         default=UNSET,
-        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
-    )
-    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
-        Field(
-            default=UNSET,
-            description="The dismissal comment associated with the dismissal of the alert.",
-        )
-    )
-    create_request: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, attempt to create an alert dismissal request.",
-    )
-    assignees: list[str] = Field(
-        description="The list of users to assign to the code scanning alert. An empty array unassigns all previous assignees from the alert."
+        description="Whether to opt in to the immutable OIDC subject claim format for this repository. When `true`, OIDC tokens will use a stable, repository-ID-based `sub` claim.",
     )
 
 
-model_rebuild(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1)
+model_rebuild(ReposOwnerRepoActionsOidcCustomizationSubPutBody)
 
-__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1",)
+__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",)

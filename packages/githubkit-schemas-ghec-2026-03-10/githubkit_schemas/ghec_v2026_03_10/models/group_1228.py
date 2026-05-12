@@ -18,26 +18,52 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgDependabotSecretsSecretNamePutBody(GitHubModel):
-    """OrgsOrgDependabotSecretsSecretNamePutBody"""
+class OrgsOrgArtifactsMetadataStorageRecordPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
 
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+    name: str = Field(
+        min_length=1, max_length=256, description="The name of the artifact."
+    )
+    digest: str = Field(
+        min_length=71,
+        max_length=71,
+        pattern="^sha256:[a-f0-9]{64}$",
+        description="The digest of the artifact (algorithm:hex-encoded-digest).",
+    )
+    version: Missing[str] = Field(
+        min_length=1, max_length=100, default=UNSET, description="The artifact version."
+    )
+    artifact_url: Missing[str] = Field(
+        pattern="^https://",
         default=UNSET,
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#get-an-organization-public-key) endpoint.",
+        description="The URL where the artifact is stored.",
     )
-    key_id: Missing[str] = Field(
-        default=UNSET, description="ID of the key you used to encrypt the secret."
+    path: Missing[str] = Field(default=UNSET, description="The path of the artifact.")
+    registry_url: str = Field(
+        min_length=1,
+        pattern="^https://",
+        description="The base URL of the artifact registry.",
     )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret."
+    repository: Missing[str] = Field(
+        default=UNSET, description="The repository name within the registry."
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    status: Missing[Literal["active", "eol", "deleted"]] = Field(
         default=UNSET,
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
+        description="The status of the artifact (e.g., active, inactive).",
+    )
+    github_repository: Missing[str] = Field(
+        min_length=1,
+        max_length=100,
+        pattern="^[A-Za-z0-9.\\-_]+$",
+        default=UNSET,
+        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
+    )
+    return_records: Missing[bool] = Field(
+        default=UNSET,
+        description="If true, the endpoint will return the created record in the response body.\n",
     )
 
 
-model_rebuild(OrgsOrgDependabotSecretsSecretNamePutBody)
+model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostBody)
 
-__all__ = ("OrgsOrgDependabotSecretsSecretNamePutBody",)
+__all__ = ("OrgsOrgArtifactsMetadataStorageRecordPostBody",)

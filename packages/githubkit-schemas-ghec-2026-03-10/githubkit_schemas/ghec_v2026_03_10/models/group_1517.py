@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0259 import CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1
-
-
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
-
-    collaborators: list[
-        Union[CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1]
-    ] = Field(description="The list of collaborators for this Copilot Space.")
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200)
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-__all__ = ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200",)
+    message: str = Field(
+        description="The message for the pull request review dismissal"
+    )
+    event: Missing[Literal["DISMISS"]] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody)
+
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody",)

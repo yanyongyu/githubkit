@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,21 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesCodespaceNamePatchBody(GitHubModel):
-    """UserCodespacesCodespaceNamePatchBody"""
+class ReposOwnerRepoNotificationsPutBody(GitHubModel):
+    """ReposOwnerRepoNotificationsPutBody"""
 
-    machine: Missing[str] = Field(
-        default=UNSET, description="A valid machine to transition this codespace to."
-    )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    recent_folders: Missing[list[str]] = Field(
+    last_read_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in.",
+        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
     )
 
 
-model_rebuild(UserCodespacesCodespaceNamePatchBody)
+model_rebuild(ReposOwnerRepoNotificationsPutBody)
 
-__all__ = ("UserCodespacesCodespaceNamePatchBody",)
+__all__ = ("ReposOwnerRepoNotificationsPutBody",)

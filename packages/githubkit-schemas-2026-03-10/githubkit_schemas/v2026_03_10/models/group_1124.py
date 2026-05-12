@@ -9,20 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
-
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
-    )
+class OrgsOrgInteractionLimitsGetResponse200Anyof1(GitHubModel):
+    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody)
+model_rebuild(OrgsOrgInteractionLimitsGetResponse200Anyof1)
 
-__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",)
+__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1",)

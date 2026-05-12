@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0262 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
-
-
-class OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200"""
-
-    resources: list[CopilotSpaceResourceType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200"""
+class OrgsOrgActionsSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgActionsSecretsSecretNamePutBody"""
 
-    resources: list[CopilotSpaceResourceTypeForResponse]
+    encrypted_value: str
+    key_id: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
+
+
+class OrgsOrgActionsSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsSecretsSecretNamePutBody"""
+
+    encrypted_value: str
+    key_id: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200Type",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse",
+    "OrgsOrgActionsSecretsSecretNamePutBodyType",
+    "OrgsOrgActionsSecretsSecretNamePutBodyTypeForResponse",
 )

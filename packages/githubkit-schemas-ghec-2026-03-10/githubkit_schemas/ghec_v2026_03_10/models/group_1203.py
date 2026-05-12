@@ -9,86 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBody(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostBody(GitHubModel):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the Copilot Space."
+    name: str = Field(description="The name of the new runner.")
+    runner_group_id: int = Field(
+        description="The ID of the runner group to register the runner to."
     )
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the Copilot Space."
+    labels: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
     )
-    general_instructions: Missing[str] = Field(
-        max_length=4000,
+    work_folder: Missing[str] = Field(
         default=UNSET,
-        description="General instructions for the Copilot Space.",
+        description="The working directory to be used for job execution, relative to the runner install directory.",
     )
-    base_role: Missing[Literal["reader", "writer", "admin", "no_access"]] = Field(
-        default=UNSET,
-        description="The base role that determines default permissions for organization members. Changing this field requires admin permissions.\n- `no_access`: No default access (default)\n- `reader`: Organization members can read the space\n- `writer`: Organization members can read and edit the space\n- `admin`: Organization members have full admin access to the space",
-    )
-    resources_attributes: Missing[
-        list[OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems]
-    ] = Field(default=UNSET, description="Resources to attach to the space.")
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+model_rebuild(OrgsOrgActionsRunnersGenerateJitconfigPostBody)
 
-    resource_type: Missing[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ] = Field(default=UNSET, description="The type of resource.")
-    metadata: Missing[
-        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-    ] = Field(default=UNSET, description="Metadata specific to the resource type.")
-
-
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata(
-    GitHubModel
-):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: Missing[int] = Field(
-        default=UNSET, description="Repository ID for repository or file resources."
-    )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="File path for file resources."
-    )
-    text: Missing[str] = Field(
-        default=UNSET, description="Text content for free text resources."
-    )
-    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
-    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
-
-
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBody)
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems)
-model_rebuild(
-    OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-)
-
-__all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberPutBody",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata",
-)
+__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostBody",)

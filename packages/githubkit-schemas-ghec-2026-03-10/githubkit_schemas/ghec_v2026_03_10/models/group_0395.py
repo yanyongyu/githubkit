@@ -12,19 +12,26 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodespacesPermissionsCheckForDevcontainer(GitHubModel):
-    """Codespaces Permissions Check
+class CodeScanningDefaultSetupUpdateResponse(GitHubModel):
+    """CodeScanningDefaultSetupUpdateResponse
 
-    Permission check result for a given devcontainer config.
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    accepted: bool = Field(
-        description="Whether the user has accepted the permissions defined by the devcontainer config"
+    run_id: Missing[int] = Field(
+        default=UNSET, description="ID of the corresponding run."
+    )
+    run_url: Missing[str] = Field(
+        default=UNSET, description="URL of the corresponding run."
     )
 
 
-model_rebuild(CodespacesPermissionsCheckForDevcontainer)
+model_rebuild(CodeScanningDefaultSetupUpdateResponse)
 
-__all__ = ("CodespacesPermissionsCheckForDevcontainer",)
+__all__ = ("CodeScanningDefaultSetupUpdateResponse",)

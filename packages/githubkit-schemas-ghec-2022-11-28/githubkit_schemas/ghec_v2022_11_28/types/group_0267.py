@@ -9,29 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomRepositoryRoleUpdateSchemaType(TypedDict):
-    """OrganizationCustomRepositoryRoleUpdateSchema"""
+class CredentialAuthorizationType(TypedDict):
+    """Credential Authorization
 
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    base_role: NotRequired[Literal["read", "triage", "write", "maintain"]]
-    permissions: NotRequired[list[str]]
+    Credential Authorization
+    """
+
+    login: str
+    credential_id: int
+    credential_type: str
+    token_last_eight: NotRequired[str]
+    credential_authorized_at: _dt.datetime
+    scopes: NotRequired[list[str]]
+    fingerprint: NotRequired[str]
+    credential_accessed_at: Union[_dt.datetime, None]
+    authorized_credential_id: Union[int, None]
+    authorized_credential_title: NotRequired[Union[str, None]]
+    authorized_credential_note: NotRequired[Union[str, None]]
+    authorized_credential_expires_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class OrganizationCustomRepositoryRoleUpdateSchemaTypeForResponse(TypedDict):
-    """OrganizationCustomRepositoryRoleUpdateSchema"""
+class CredentialAuthorizationTypeForResponse(TypedDict):
+    """Credential Authorization
 
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    base_role: NotRequired[Literal["read", "triage", "write", "maintain"]]
-    permissions: NotRequired[list[str]]
+    Credential Authorization
+    """
+
+    login: str
+    credential_id: int
+    credential_type: str
+    token_last_eight: NotRequired[str]
+    credential_authorized_at: str
+    scopes: NotRequired[list[str]]
+    fingerprint: NotRequired[str]
+    credential_accessed_at: Union[str, None]
+    authorized_credential_id: Union[int, None]
+    authorized_credential_title: NotRequired[Union[str, None]]
+    authorized_credential_note: NotRequired[Union[str, None]]
+    authorized_credential_expires_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrganizationCustomRepositoryRoleUpdateSchemaType",
-    "OrganizationCustomRepositoryRoleUpdateSchemaTypeForResponse",
+    "CredentialAuthorizationType",
+    "CredentialAuthorizationTypeForResponse",
 )

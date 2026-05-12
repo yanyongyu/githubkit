@@ -9,25 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgSettingsImmutableReleasesPutBodyType(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    The total number of seats created for members of the specified team(s).
+    """
+
+    seats_created: int
 
 
-class OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    The total number of seats created for members of the specified team(s).
+    """
+
+    seats_created: int
 
 
 __all__ = (
-    "OrgsOrgSettingsImmutableReleasesPutBodyType",
-    "OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse",
 )

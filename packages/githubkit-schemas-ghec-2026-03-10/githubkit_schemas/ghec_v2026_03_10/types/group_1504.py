@@ -9,32 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class UserSocialAccountsPostBodyType(TypedDict):
-    """UserSocialAccountsPostBody
+class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
-class UserSocialAccountsPostBodyTypeForResponse(TypedDict):
-    """UserSocialAccountsPostBody
+class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
 __all__ = (
-    "UserSocialAccountsPostBodyType",
-    "UserSocialAccountsPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType",
+    "ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyTypeForResponse",
 )

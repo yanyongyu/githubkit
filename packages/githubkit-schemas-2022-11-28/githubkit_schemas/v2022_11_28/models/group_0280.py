@@ -14,19 +14,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WorkflowDispatchResponse(GitHubModel):
-    """Workflow Dispatch Response
+class ReviewCustomGatesCommentRequired(GitHubModel):
+    """ReviewCustomGatesCommentRequired"""
 
-    Response containing the workflow run ID and URLs.
-    """
-
-    workflow_run_id: int = Field(
-        title="Workflow Run ID", description="The ID of the workflow run."
+    environment_name: str = Field(
+        description="The name of the environment to approve or reject."
     )
-    run_url: str = Field(description="The URL to the workflow run.")
-    html_url: str = Field()
+    comment: str = Field(
+        description="Comment associated with the pending deployment protection rule. **Required when state is not provided.**"
+    )
 
 
-model_rebuild(WorkflowDispatchResponse)
+model_rebuild(ReviewCustomGatesCommentRequired)
 
-__all__ = ("WorkflowDispatchResponse",)
+__all__ = ("ReviewCustomGatesCommentRequired",)

@@ -14,28 +14,22 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberViewsPostBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody"""
 
-    name: str = Field(description="The name of the view.")
-    layout: Literal["table", "board", "roadmap"] = Field(
-        description="The layout of the view."
+    actor_type: Literal["User", "Team"] = Field(
+        description="The type of actor (user or team)."
     )
-    filter_: Missing[str] = Field(
-        default=UNSET,
-        alias="filter",
-        description="The filter query for the view. See [Filtering projects](https://docs.github.com/enterprise-cloud@latest/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
+    actor_identifier: str = Field(
+        description="The username (for users) or team slug (for teams). The numeric ID of a user or team is also accepted."
     )
-    visible_fields: Missing[list[int]] = Field(
-        default=UNSET,
-        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role to grant to the collaborator."
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberViewsPostBody)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberViewsPostBody",)
+__all__ = ("OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody",)

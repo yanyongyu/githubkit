@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0253 import OrganizationActionsSecret
 
 
-class OrgsOrgCopilotBillingSelectedUsersPostBody(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
+class OrgsOrgAgentsSecretsGetResponse200(GitHubModel):
+    """OrgsOrgAgentsSecretsGetResponse200"""
 
-    selected_usernames: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The usernames of the organization members to be granted access to GitHub Copilot.",
-    )
+    total_count: int = Field()
+    secrets: list[OrganizationActionsSecret] = Field()
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersPostBody)
+model_rebuild(OrgsOrgAgentsSecretsGetResponse200)
 
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostBody",)
+__all__ = ("OrgsOrgAgentsSecretsGetResponse200",)

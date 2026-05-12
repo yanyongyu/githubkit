@@ -9,59 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0374 import CheckRunType, CheckRunTypeForResponse
 
 
-class ReposOwnerRepoIssuesPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesPostBody"""
+class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
 
-    title: Union[str, int]
-    body: NotRequired[str]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
-        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
-    ]
-    assignees: NotRequired[list[str]]
-    type: NotRequired[Union[str, None]]
+    total_count: int
+    check_runs: list[CheckRunType]
 
 
-class ReposOwnerRepoIssuesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesPostBody"""
+class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
 
-    title: Union[str, int]
-    body: NotRequired[str]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
-        list[
-            Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse]
-        ]
-    ]
-    assignees: NotRequired[list[str]]
-    type: NotRequired[Union[str, None]]
-
-
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
-
-
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
+    total_count: int
+    check_runs: list[CheckRunTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type",
-    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse",
-    "ReposOwnerRepoIssuesPostBodyType",
-    "ReposOwnerRepoIssuesPostBodyTypeForResponse",
+    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type",
+    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse",
 )

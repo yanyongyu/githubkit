@@ -12,16 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsVariablesNameRepositoriesPutBody(GitHubModel):
-    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
+class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="The IDs of the repositories that can access the organization variable."
+    ignored: Missing[bool] = Field(
+        default=UNSET, description="Whether to block all notifications from a thread."
     )
 
 
-model_rebuild(OrgsOrgActionsVariablesNameRepositoriesPutBody)
+model_rebuild(NotificationsThreadsThreadIdSubscriptionPutBody)
 
-__all__ = ("OrgsOrgActionsVariablesNameRepositoriesPutBody",)
+__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBody",)

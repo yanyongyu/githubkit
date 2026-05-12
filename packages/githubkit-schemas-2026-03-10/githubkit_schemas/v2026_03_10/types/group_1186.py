@@ -9,28 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0270 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoCommitsCommitShaCommentsPostBodyType(TypedDict):
-    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
+class ReposOwnerRepoActionsSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsSecretsGetResponse200"""
 
-    body: str
-    path: NotRequired[str]
-    position: NotRequired[int]
-    line: NotRequired[int]
+    total_count: int
+    secrets: list[ActionsSecretType]
 
 
-class ReposOwnerRepoCommitsCommitShaCommentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
+class ReposOwnerRepoActionsSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsSecretsGetResponse200"""
 
-    body: str
-    path: NotRequired[str]
-    position: NotRequired[int]
-    line: NotRequired[int]
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoCommitsCommitShaCommentsPostBodyType",
-    "ReposOwnerRepoCommitsCommitShaCommentsPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsSecretsGetResponse200Type",
+    "ReposOwnerRepoActionsSecretsGetResponse200TypeForResponse",
 )

@@ -9,57 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0343 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoDeploymentsPostBodyType(TypedDict):
-    """ReposOwnerRepoDeploymentsPostBody"""
+class ReposOwnerRepoAgentsSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoAgentsSecretsGetResponse200"""
 
-    ref: str
-    task: NotRequired[str]
-    auto_merge: NotRequired[bool]
-    required_contexts: NotRequired[list[str]]
-    payload: NotRequired[
-        Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
-    ]
-    environment: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
+    total_count: int
+    secrets: list[ActionsSecretType]
 
 
-class ReposOwnerRepoDeploymentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoDeploymentsPostBody"""
+class ReposOwnerRepoAgentsSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoAgentsSecretsGetResponse200"""
 
-    ref: str
-    task: NotRequired[str]
-    auto_merge: NotRequired[bool]
-    required_contexts: NotRequired[list[str]]
-    payload: NotRequired[
-        Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse, str]
-    ]
-    environment: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-
-
-ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type: TypeAlias = dict[str, Any]
-"""ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0
-"""
-
-
-ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0
-"""
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type",
-    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse",
-    "ReposOwnerRepoDeploymentsPostBodyType",
-    "ReposOwnerRepoDeploymentsPostBodyTypeForResponse",
+    "ReposOwnerRepoAgentsSecretsGetResponse200Type",
+    "ReposOwnerRepoAgentsSecretsGetResponse200TypeForResponse",
 )

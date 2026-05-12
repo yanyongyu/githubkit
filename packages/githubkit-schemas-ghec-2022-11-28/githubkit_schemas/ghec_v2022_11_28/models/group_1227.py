@@ -15,18 +15,16 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0246 import OrganizationCustomRepositoryRole
+from .group_0256 import ArtifactDeploymentRecord
 
 
-class OrgsOrgCustomRepositoryRolesGetResponse200(GitHubModel):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200(GitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
 
-    total_count: Missing[int] = Field(
-        default=UNSET, description="The number of custom roles in this organization"
-    )
-    custom_roles: Missing[list[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
+    total_count: int = Field(description="The number of deployment records created")
+    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCustomRepositoryRolesGetResponse200)
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200)
 
-__all__ = ("OrgsOrgCustomRepositoryRolesGetResponse200",)
+__all__ = ("OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200",)

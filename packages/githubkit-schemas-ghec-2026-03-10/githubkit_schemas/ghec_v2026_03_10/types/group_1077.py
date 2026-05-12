@@ -11,22 +11,31 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0034 import (
+    ActionsHostedRunnerMachineSpecType,
+    ActionsHostedRunnerMachineSpecTypeForResponse,
+)
 
-class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
 
-    selected_usernames: list[str]
-
-
-class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyTypeForResponse(
+class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
+    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
 
-    selected_usernames: list[str]
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecType]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
+
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType",
-    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
 )

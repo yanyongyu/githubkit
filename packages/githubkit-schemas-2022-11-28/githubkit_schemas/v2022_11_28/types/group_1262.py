@@ -12,27 +12,52 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1261 import (
-    ReposOwnerRepoPagesPostBodyPropSourceType,
-    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
-)
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+
+    total_count: int
+    branch_policies: list[DeploymentBranchPolicyType]
 
 
-class ReposOwnerRepoPagesPostBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof0"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
 
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: ReposOwnerRepoPagesPostBodyPropSourceType
+    total_count: int
+    branch_policies: list[DeploymentBranchPolicyTypeForResponse]
 
 
-class ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof0"""
+class DeploymentBranchPolicyType(TypedDict):
+    """Deployment branch policy
 
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse
+    Details of a deployment branch or tag policy.
+    """
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[Literal["branch", "tag"]]
+
+
+class DeploymentBranchPolicyTypeForResponse(TypedDict):
+    """Deployment branch policy
+
+    Details of a deployment branch or tag policy.
+    """
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[Literal["branch", "tag"]]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPostBodyAnyof0Type",
-    "ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse",
+    "DeploymentBranchPolicyType",
+    "DeploymentBranchPolicyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse",
 )

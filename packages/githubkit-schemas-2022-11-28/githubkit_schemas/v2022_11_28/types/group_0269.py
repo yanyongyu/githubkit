@@ -9,29 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsVariableType(TypedDict):
-    """Actions Variable"""
+class ConcurrencyGroupType(TypedDict):
+    """Concurrency Group
 
-    name: str
-    value: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    A concurrency group with the workflow runs and jobs that are either currently
+    holding
+    or waiting for the concurrency group lease.
+    """
+
+    group_name: str
+    group_url: str
+    total_count: int
+    group_members: list[ConcurrencyGroupPropGroupMembersItemsType]
 
 
-class ActionsVariableTypeForResponse(TypedDict):
-    """Actions Variable"""
+class ConcurrencyGroupTypeForResponse(TypedDict):
+    """Concurrency Group
 
-    name: str
-    value: str
-    created_at: str
-    updated_at: str
+    A concurrency group with the workflow runs and jobs that are either currently
+    holding
+    or waiting for the concurrency group lease.
+    """
+
+    group_name: str
+    group_url: str
+    total_count: int
+    group_members: list[ConcurrencyGroupPropGroupMembersItemsTypeForResponse]
+
+
+class ConcurrencyGroupPropGroupMembersItemsType(TypedDict):
+    """ConcurrencyGroupPropGroupMembersItems"""
+
+    run_id: int
+    run_name: str
+    run_url: Union[str, None]
+    run_html_url: Union[str, None]
+    job_id: NotRequired[int]
+    job_name: NotRequired[str]
+    job_url: NotRequired[Union[str, None]]
+    job_html_url: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "pending"]
+
+
+class ConcurrencyGroupPropGroupMembersItemsTypeForResponse(TypedDict):
+    """ConcurrencyGroupPropGroupMembersItems"""
+
+    run_id: int
+    run_name: str
+    run_url: Union[str, None]
+    run_html_url: Union[str, None]
+    job_id: NotRequired[int]
+    job_name: NotRequired[str]
+    job_url: NotRequired[Union[str, None]]
+    job_html_url: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "pending"]
 
 
 __all__ = (
-    "ActionsVariableType",
-    "ActionsVariableTypeForResponse",
+    "ConcurrencyGroupPropGroupMembersItemsType",
+    "ConcurrencyGroupPropGroupMembersItemsTypeForResponse",
+    "ConcurrencyGroupType",
+    "ConcurrencyGroupTypeForResponse",
 )

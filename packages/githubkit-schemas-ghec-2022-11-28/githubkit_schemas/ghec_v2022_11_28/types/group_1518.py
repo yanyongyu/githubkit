@@ -13,107 +13,59 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesPostBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesPostBody"""
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
 
-    name: str
-    description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "no_access"]]
-    resources_attributes: NotRequired[
-        list[UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType]
+    commit_id: NotRequired[str]
+    body: NotRequired[str]
+    event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
+    comments: NotRequired[
+        list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
     ]
 
 
-class UsersUsernameCopilotSpacesPostBodyTypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesPostBody"""
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
 
-    name: str
-    description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "no_access"]]
-    resources_attributes: NotRequired[
+    commit_id: NotRequired[str]
+    body: NotRequired[str]
+    event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
+    comments: NotRequired[
         list[
-            UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse
+            ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse
         ]
     ]
 
 
-class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType(TypedDict):
-    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems"""
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
 
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType
-    ]
+    path: str
+    position: NotRequired[int]
+    body: str
+    line: NotRequired[int]
+    side: NotRequired[str]
+    start_line: NotRequired[int]
+    start_side: NotRequired[str]
 
 
-class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse(
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems"""
+    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
 
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
-    ]
-
-
-class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
-
-
-class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
+    path: str
+    position: NotRequired[int]
+    body: str
+    line: NotRequired[int]
+    side: NotRequired[str]
+    start_line: NotRequired[int]
+    start_side: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType",
-    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
-    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType",
-    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse",
-    "UsersUsernameCopilotSpacesPostBodyType",
-    "UsersUsernameCopilotSpacesPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyTypeForResponse",
 )

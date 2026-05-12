@@ -9,29 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+CopilotOrganizationContentExclusionDetailsType: TypeAlias = dict[str, Any]
+"""Copilot Organization Content Exclusion Details
+
+List all Copilot Content Exclusion rules for an organization.
+"""
 
 
-class OrganizationCustomRepositoryRoleCreateSchemaType(TypedDict):
-    """OrganizationCustomRepositoryRoleCreateSchema"""
+CopilotOrganizationContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
+"""Copilot Organization Content Exclusion Details
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
-
-
-class OrganizationCustomRepositoryRoleCreateSchemaTypeForResponse(TypedDict):
-    """OrganizationCustomRepositoryRoleCreateSchema"""
-
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
+List all Copilot Content Exclusion rules for an organization.
+"""
 
 
 __all__ = (
-    "OrganizationCustomRepositoryRoleCreateSchemaType",
-    "OrganizationCustomRepositoryRoleCreateSchemaTypeForResponse",
+    "CopilotOrganizationContentExclusionDetailsType",
+    "CopilotOrganizationContentExclusionDetailsTypeForResponse",
 )

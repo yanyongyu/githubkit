@@ -16,14 +16,38 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ScimEnterpriseUserResponseAllof1PropGroupsItems(GitHubModel):
-    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
+class UserNameResponse(GitHubModel):
+    """UserNameResponse"""
 
-    value: Missing[str] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET, alias="$ref")
-    display: Missing[str] = Field(default=UNSET)
+    formatted: Missing[str] = Field(
+        default=UNSET,
+        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
+    )
+    family_name: Missing[str] = Field(
+        default=UNSET, alias="familyName", description="The family name of the user."
+    )
+    given_name: Missing[str] = Field(
+        default=UNSET, alias="givenName", description="The given name of the user."
+    )
+    middle_name: Missing[str] = Field(
+        default=UNSET, alias="middleName", description="The middle name(s) of the user."
+    )
 
 
-model_rebuild(ScimEnterpriseUserResponseAllof1PropGroupsItems)
+class UserEmailsResponseItems(GitHubModel):
+    """UserEmailsResponseItems"""
 
-__all__ = ("ScimEnterpriseUserResponseAllof1PropGroupsItems",)
+    value: str = Field(description="The email address.")
+    type: Missing[str] = Field(default=UNSET, description="The type of email address.")
+    primary: Missing[bool] = Field(
+        default=UNSET, description="Whether this email address is the primary address."
+    )
+
+
+model_rebuild(UserNameResponse)
+model_rebuild(UserEmailsResponseItems)
+
+__all__ = (
+    "UserEmailsResponseItems",
+    "UserNameResponse",
+)

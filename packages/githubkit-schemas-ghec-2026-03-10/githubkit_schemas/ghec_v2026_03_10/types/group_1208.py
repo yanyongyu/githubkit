@@ -9,51 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal
-from typing_extensions import TypeAlias, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0243 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
+class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ]
-    metadata: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
+class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ]
-    metadata: (
-        OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse
-    )
-
-
-OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
-
-Resource-specific metadata.
-"""
-
-
-OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
-
-Resource-specific metadata.
-"""
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse",
+    "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type",
+    "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
 )

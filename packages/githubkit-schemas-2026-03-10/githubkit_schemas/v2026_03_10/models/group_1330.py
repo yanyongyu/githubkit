@@ -18,24 +18,48 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBody(GitHubModel):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class ReposOwnerRepoPullsPullNumberCodespacesPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
 
-    name: str = Field(description="The name of the view.")
-    layout: Literal["table", "board", "roadmap"] = Field(
-        description="The layout of the view."
-    )
-    filter_: Missing[str] = Field(
+    location: Missing[str] = Field(
         default=UNSET,
-        alias="filter",
-        description="The filter query for the view. See [Filtering projects](https://docs.github.com/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
+        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
     )
-    visible_fields: Missing[list[int]] = Field(
+    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
         default=UNSET,
-        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
+        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
+    )
+    client_ip: Missing[str] = Field(
+        default=UNSET,
+        description="IP for location auto-detection when proxying a request",
+    )
+    machine: Missing[str] = Field(
+        default=UNSET, description="Machine type to use for this codespace"
+    )
+    devcontainer_path: Missing[str] = Field(
+        default=UNSET,
+        description="Path to devcontainer.json config to use for this codespace",
+    )
+    multi_repo_permissions_opt_out: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to authorize requested permissions from devcontainer.json",
+    )
+    working_directory: Missing[str] = Field(
+        default=UNSET, description="Working directory for this codespace"
+    )
+    idle_timeout_minutes: Missing[int] = Field(
+        default=UNSET,
+        description="Time in minutes before codespace stops from inactivity",
+    )
+    display_name: Missing[str] = Field(
+        default=UNSET, description="Display name for this codespace"
+    )
+    retention_period_minutes: Missing[int] = Field(
+        default=UNSET,
+        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
     )
 
 
-model_rebuild(UsersUserIdProjectsV2ProjectNumberViewsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberCodespacesPostBody)
 
-__all__ = ("UsersUserIdProjectsV2ProjectNumberViewsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberCodespacesPostBody",)

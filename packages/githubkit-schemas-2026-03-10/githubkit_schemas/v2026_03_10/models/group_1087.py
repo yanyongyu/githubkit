@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,18 +19,39 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
+class OrgsOrgCodespacesSecretsGetResponse200(GitHubModel):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
 
-    title: str = Field(
-        description="The title of the draft issue item to create in the project."
+    total_count: int = Field()
+    secrets: list[CodespacesOrgSecret] = Field()
+
+
+class CodespacesOrgSecret(GitHubModel):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str = Field(description="The name of the secret")
+    created_at: _dt.datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    body: Missing[str] = Field(
+    updated_at: _dt.datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that the secret is visible to"
+    )
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="The body content of the draft issue item to create in the project.",
+        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberDraftsPostBody)
+model_rebuild(OrgsOrgCodespacesSecretsGetResponse200)
+model_rebuild(CodespacesOrgSecret)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberDraftsPostBody",)
+__all__ = (
+    "CodespacesOrgSecret",
+    "OrgsOrgCodespacesSecretsGetResponse200",
+)

@@ -9,27 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0"""
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
-    placeholder_id: str
+    labels: NotRequired[list[str]]
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0TypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0"""
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
-    placeholder_id: str
+    labels: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",
-    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0TypeForResponse",
 )

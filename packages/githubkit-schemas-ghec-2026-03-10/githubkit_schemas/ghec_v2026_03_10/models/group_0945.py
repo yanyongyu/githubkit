@@ -18,16 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0567 import EnterpriseWebhooks
-from .group_0568 import SimpleInstallation
-from .group_0569 import OrganizationSimpleWebhooks
-from .group_0570 import RepositoryWebhooks
+from .group_0572 import EnterpriseWebhooks
+from .group_0573 import SimpleInstallation
+from .group_0574 import OrganizationSimpleWebhooks
+from .group_0575 import RepositoryWebhooks
 
 
-class WebhookRepositoryPrivatized(GitHubModel):
-    """repository privatized event"""
+class WebhookRepositoryCreated(GitHubModel):
+    """repository created event"""
 
-    action: Literal["privatized"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -50,6 +50,6 @@ class WebhookRepositoryPrivatized(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryPrivatized)
+model_rebuild(WebhookRepositoryCreated)
 
-__all__ = ("WebhookRepositoryPrivatized",)
+__all__ = ("WebhookRepositoryCreated",)

@@ -12,18 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0135 import CopilotSpace
 
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
 
-class UsersUsernameCopilotSpacesGetResponse200(GitHubModel):
-    """UsersUsernameCopilotSpacesGetResponse200"""
-
-    spaces: list[CopilotSpace] = Field(
-        description="The list of Copilot Spaces on this page of results."
+    reviewers: list[str] = Field(
+        description="An array of user `login`s that will be requested."
+    )
+    team_reviewers: Missing[list[str]] = Field(
+        default=UNSET, description="An array of team `slug`s that will be requested."
     )
 
 
-model_rebuild(UsersUsernameCopilotSpacesGetResponse200)
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0)
 
-__all__ = ("UsersUsernameCopilotSpacesGetResponse200",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0",)

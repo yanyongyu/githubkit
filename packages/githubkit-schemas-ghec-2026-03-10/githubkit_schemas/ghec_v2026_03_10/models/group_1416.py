@@ -12,14 +12,26 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
+class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubModel):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
-    sub_issue_id: int = Field(description="The id of the sub-issue to remove")
+    body: str = Field(description="The contents of the comment.")
+    path: Missing[str] = Field(
+        default=UNSET, description="Relative path of the file to comment on."
+    )
+    position: Missing[int] = Field(
+        default=UNSET, description="Line index in the diff to comment on."
+    )
+    line: Missing[int] = Field(
+        default=UNSET,
+        description="**Closing down notice**. Use **position** parameter instead. Line number in the file to comment on.",
+    )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody)
+model_rebuild(ReposOwnerRepoCommitsCommitShaCommentsPostBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody",)
+__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",)

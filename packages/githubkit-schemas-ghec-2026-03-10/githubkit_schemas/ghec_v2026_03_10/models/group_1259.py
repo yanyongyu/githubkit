@@ -9,33 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0261 import CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1
 
 
-class OrgsOrgProjectsV2ProjectNumberViewsPostBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-    name: str = Field(description="The name of the view.")
-    layout: Literal["table", "board", "roadmap"] = Field(
-        description="The layout of the view."
-    )
-    filter_: Missing[str] = Field(
-        default=UNSET,
-        alias="filter",
-        description="The filter query for the view. See [Filtering projects](https://docs.github.com/enterprise-cloud@latest/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
-    )
-    visible_fields: Missing[list[int]] = Field(
-        default=UNSET,
-        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
-    )
+    collaborators: list[
+        Union[CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1]
+    ] = Field(description="The list of collaborators for this Copilot Space.")
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberViewsPostBody)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberViewsPostBody",)
+__all__ = ("OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200",)

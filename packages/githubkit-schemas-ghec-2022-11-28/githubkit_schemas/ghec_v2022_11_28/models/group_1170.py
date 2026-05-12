@@ -9,19 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsVariablesNameRepositoriesPutBody(GitHubModel):
-    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
-
-    selected_repository_ids: list[int] = Field(
-        description="The IDs of the repositories that can access the organization variable."
-    )
+class GistsGistIdStarGetResponse404(GitHubModel):
+    """GistsGistIdStarGetResponse404"""
 
 
-model_rebuild(OrgsOrgActionsVariablesNameRepositoriesPutBody)
+model_rebuild(GistsGistIdStarGetResponse404)
 
-__all__ = ("OrgsOrgActionsVariablesNameRepositoriesPutBody",)
+__all__ = ("GistsGistIdStarGetResponse404",)

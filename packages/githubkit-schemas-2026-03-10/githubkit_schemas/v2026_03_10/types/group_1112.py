@@ -9,22 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+OrgsOrgCopilotContentExclusionPutBodyType: TypeAlias = dict[str, Any]
+"""OrgsOrgCopilotContentExclusionPutBody
+"""
 
 
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
-
-    permission: NotRequired[str]
-
-
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
-
-    permission: NotRequired[str]
+OrgsOrgCopilotContentExclusionPutBodyTypeForResponse: TypeAlias = dict[str, Any]
+"""OrgsOrgCopilotContentExclusionPutBody
+"""
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",
-    "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyTypeForResponse",
+    "OrgsOrgCopilotContentExclusionPutBodyType",
+    "OrgsOrgCopilotContentExclusionPutBodyTypeForResponse",
 )

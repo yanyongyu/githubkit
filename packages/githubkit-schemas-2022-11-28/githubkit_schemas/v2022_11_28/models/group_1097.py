@@ -9,23 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-
-from .group_0182 import CustomProperty
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
-    """OrgsOrgPropertiesSchemaPatchBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody(
+    GitHubModel
+):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody"""
 
-    properties: list[CustomProperty] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The array of custom properties to create or update.",
+    role: Literal["reader", "writer", "admin", "no_access"] = Field(
+        description="The new role to grant to the collaborator. Use `no_access` to remove the collaborator."
     )
 
 
-model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
+model_rebuild(
+    OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody
+)
 
-__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)
+__all__ = (
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody",
+)

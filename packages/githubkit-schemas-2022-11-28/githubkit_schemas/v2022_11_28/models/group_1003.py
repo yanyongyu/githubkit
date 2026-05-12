@@ -18,20 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsVariablesPostBody(GitHubModel):
-    """OrgsOrgActionsVariablesPostBody"""
+class MarkdownPostBody(GitHubModel):
+    """MarkdownPostBody"""
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable."
+    text: str = Field(description="The Markdown text to render in HTML.")
+    mode: Missing[Literal["markdown", "gfm"]] = Field(
+        default=UNSET, description="The rendering mode."
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    context: Missing[str] = Field(
         default=UNSET,
-        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
+        description="The repository context to use when creating references in `gfm` mode.  For example, setting `context` to `octo-org/octo-repo` will change the text `#42` into an HTML link to issue 42 in the `octo-org/octo-repo` repository.",
     )
 
 
-model_rebuild(OrgsOrgActionsVariablesPostBody)
+model_rebuild(MarkdownPostBody)
 
-__all__ = ("OrgsOrgActionsVariablesPostBody",)
+__all__ = ("MarkdownPostBody",)

@@ -13,44 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0486 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0487 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0488 import (
+from .group_0491 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0492 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0493 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0489 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0500 import WebhooksLabelType, WebhooksLabelTypeForResponse
-from .group_0505 import WebhooksIssueType, WebhooksIssueTypeForResponse
+from .group_0494 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0512 import WebhooksIssue2Type, WebhooksIssue2TypeForResponse
+from .group_0721 import (
+    WebhookIssuesTransferredPropChangesType,
+    WebhookIssuesTransferredPropChangesTypeForResponse,
+)
 
 
-class WebhookIssuesUnlabeledType(TypedDict):
-    """issues unlabeled event"""
+class WebhookIssuesTransferredType(TypedDict):
+    """issues transferred event"""
 
-    action: Literal["unlabeled"]
+    action: Literal["transferred"]
+    changes: WebhookIssuesTransferredPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
-    label: NotRequired[WebhooksLabelType]
+    issue: WebhooksIssue2Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesUnlabeledTypeForResponse(TypedDict):
-    """issues unlabeled event"""
+class WebhookIssuesTransferredTypeForResponse(TypedDict):
+    """issues transferred event"""
 
-    action: Literal["unlabeled"]
+    action: Literal["transferred"]
+    changes: WebhookIssuesTransferredPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhooksIssueTypeForResponse
-    label: NotRequired[WebhooksLabelTypeForResponse]
+    issue: WebhooksIssue2TypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesUnlabeledType",
-    "WebhookIssuesUnlabeledTypeForResponse",
+    "WebhookIssuesTransferredType",
+    "WebhookIssuesTransferredTypeForResponse",
 )

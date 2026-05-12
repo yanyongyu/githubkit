@@ -9,26 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0054 import RunnerType, RunnerTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnersGetResponse200"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
 
-    total_count: int
-    runners: list[RunnerType]
+    users: NotRequired[list[str]]
+    organizations: NotRequired[list[str]]
+    repositories: NotRequired[list[str]]
 
 
-class OrgsOrgActionsRunnersGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersGetResponse200"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
 
-    total_count: int
-    runners: list[RunnerTypeForResponse]
+    users: NotRequired[list[str]]
+    organizations: NotRequired[list[str]]
+    repositories: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersGetResponse200Type",
-    "OrgsOrgActionsRunnersGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyTypeForResponse",
 )

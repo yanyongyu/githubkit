@@ -9,24 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse405Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
+class ReposOwnerRepoGitTagsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitTagsPostBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    tag: str
+    message: str
+    object_: str
+    type: Literal["commit", "tree", "blob"]
+    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerType]
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse405TypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
+class ReposOwnerRepoGitTagsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTagsPostBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    tag: str
+    message: str
+    object_: str
+    type: Literal["commit", "tree", "blob"]
+    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse]
+
+
+class ReposOwnerRepoGitTagsPostBodyPropTaggerType(TypedDict):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
+
+    An object with information about the individual creating the tag.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[_dt.datetime]
+
+
+class ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
+
+    An object with information about the individual creating the tag.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergePutResponse405Type",
-    "ReposOwnerRepoPullsPullNumberMergePutResponse405TypeForResponse",
+    "ReposOwnerRepoGitTagsPostBodyPropTaggerType",
+    "ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse",
+    "ReposOwnerRepoGitTagsPostBodyType",
+    "ReposOwnerRepoGitTagsPostBodyTypeForResponse",
 )

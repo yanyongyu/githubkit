@@ -13,46 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0567 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0568 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0569 import (
+from .group_0516 import (
+    SecretScanningLocationType,
+    SecretScanningLocationTypeForResponse,
+)
+from .group_0573 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0574 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0570 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0612 import (
+from .group_0575 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0617 import (
     SecretScanningAlertWebhookType,
     SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecretScanningAlertUnassignedType(TypedDict):
-    """secret_scanning_alert unassigned event"""
+class WebhookSecretScanningAlertLocationCreatedType(TypedDict):
+    """Secret Scanning Alert Location Created Event"""
 
-    action: Literal["unassigned"]
+    action: Literal["created"]
     alert: SecretScanningAlertWebhookType
-    assignee: NotRequired[SimpleUserType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    location: SecretScanningLocationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookSecretScanningAlertUnassignedTypeForResponse(TypedDict):
-    """secret_scanning_alert unassigned event"""
+class WebhookSecretScanningAlertLocationCreatedTypeForResponse(TypedDict):
+    """Secret Scanning Alert Location Created Event"""
 
-    action: Literal["unassigned"]
+    action: Literal["created"]
     alert: SecretScanningAlertWebhookTypeForResponse
-    assignee: NotRequired[SimpleUserTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    location: SecretScanningLocationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookSecretScanningAlertUnassignedType",
-    "WebhookSecretScanningAlertUnassignedTypeForResponse",
+    "WebhookSecretScanningAlertLocationCreatedType",
+    "WebhookSecretScanningAlertLocationCreatedTypeForResponse",
 )

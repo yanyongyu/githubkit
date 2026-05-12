@@ -9,89 +9,207 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing, UniqueList
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0019 import LicenseSimple
+from .group_0021 import RepositoryPropCodeSearchIndexStatus, RepositoryPropPermissions
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostBody(GitHubModel):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
 
-    name: str = Field(
-        min_length=1, max_length=256, description="The name of the artifact."
+class InstallationRepositoriesGetResponse200PropRepositoriesItems(GitHubModel):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItems"""
+
+    id: int = Field(description="Unique identifier of the repository")
+    node_id: str = Field()
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field()
+    license_: Union[None, LicenseSimple] = Field(alias="license")
+    forks: int = Field()
+    permissions: Missing[RepositoryPropPermissions] = Field(default=UNSET)
+    owner: Union[None, SimpleUser] = Field()
+    private: bool = Field(
+        default=False, description="Whether the repository is private or public."
     )
-    digest: str = Field(
-        min_length=71,
-        max_length=71,
-        pattern="^sha256:[a-f0-9]{64}$",
-        description="The hex encoded digest of the artifact.",
+    html_url: str = Field()
+    description: Union[str, None] = Field()
+    fork: bool = Field()
+    url: str = Field()
+    archive_url: str = Field()
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    deployments_url: str = Field()
+    downloads_url: str = Field()
+    events_url: str = Field()
+    forks_url: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    git_url: str = Field()
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    languages_url: str = Field()
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    notifications_url: str = Field()
+    pulls_url: str = Field()
+    releases_url: str = Field()
+    ssh_url: str = Field()
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    trees_url: str = Field()
+    clone_url: str = Field()
+    mirror_url: Union[str, None] = Field()
+    hooks_url: str = Field()
+    svn_url: str = Field()
+    homepage: Union[str, None] = Field()
+    language: Union[str, None] = Field()
+    forks_count: int = Field()
+    stargazers_count: int = Field()
+    watchers_count: int = Field()
+    size: int = Field(
+        description="The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0."
     )
-    version: Missing[str] = Field(
-        min_length=1, max_length=100, default=UNSET, description="The artifact version."
-    )
-    status: Literal["deployed", "decommissioned"] = Field(
-        description="The status of the artifact. Can be either deployed or decommissioned."
-    )
-    logical_environment: str = Field(
-        min_length=1, max_length=128, description="The stage of the deployment."
-    )
-    physical_environment: Missing[str] = Field(
-        max_length=128,
+    default_branch: str = Field(description="The default branch of the repository.")
+    open_issues_count: int = Field()
+    is_template: Missing[bool] = Field(
         default=UNSET,
-        description="The physical region of the deployment.",
+        description="Whether this repository acts as a template that can be used to generate new repositories.",
     )
-    cluster: Missing[str] = Field(
-        max_length=128, default=UNSET, description="The deployment cluster."
+    topics: Missing[list[str]] = Field(default=UNSET)
+    has_issues: bool = Field(default=True, description="Whether issues are enabled.")
+    has_projects: bool = Field(
+        default=True, description="Whether projects are enabled."
     )
-    deployment_name: str = Field(
-        max_length=256,
-        description="The unique identifier for the deployment represented by the new record. To accommodate differing\ncontainers and namespaces within a cluster, the following format is recommended:\n{namespaceName}-{deploymentName}-{containerName}.\n",
+    has_wiki: bool = Field(default=True, description="Whether the wiki is enabled.")
+    has_pages: bool = Field()
+    has_downloads: bool = Field(
+        default=True, description="Whether downloads are enabled."
     )
-    tags: Missing[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags] = Field(
-        default=UNSET, description="The tags associated with the deployment."
+    has_discussions: Missing[bool] = Field(
+        default=UNSET, description="Whether discussions are enabled."
     )
-    runtime_risks: Missing[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
+    has_pull_requests: Missing[bool] = Field(
+        default=UNSET, description="Whether pull requests are enabled."
+    )
+    pull_request_creation_policy: Missing[Literal["all", "collaborators_only"]] = Field(
+        default=UNSET,
+        description="The policy controlling who can create pull requests: all or collaborators_only.",
+    )
+    archived: bool = Field(
+        default=False, description="Whether the repository is archived."
+    )
+    disabled: bool = Field(
+        description="Returns whether or not this repository disabled."
+    )
+    visibility: Missing[str] = Field(
+        default=UNSET,
+        description="The repository visibility: public, private, or internal.",
+    )
+    pushed_at: Union[_dt.datetime, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
+    allow_rebase_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow rebase merges for pull requests."
+    )
+    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
+    allow_squash_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow squash merges for pull requests."
+    )
+    allow_auto_merge: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to allow Auto-merge to be used on pull requests.",
+    )
+    delete_branch_on_merge: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to delete head branches when pull requests are merged",
+    )
+    allow_update_branch: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether or not a pull request head branch that is behind its base branch can always be updated even if it is not required to be up to date before merging.",
+    )
+    use_squash_pr_title_as_default: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether a squash merge commit can use the pull request title as default. **This property is closing down. Please use `squash_merge_commit_title` instead.",
+    )
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
+    )
+    squash_merge_commit_message: Missing[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
     ] = Field(
-        max_length=4 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="A list of runtime risks associated with the deployment.",
+        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
     )
-    github_repository: Missing[str] = Field(
-        min_length=1,
-        max_length=100,
-        pattern="^[A-Za-z0-9.\\-_]+$",
+    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
         default=UNSET,
-        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
+        description="The default value for a merge commit title.\n\n- `PR_TITLE` - default to the pull request's title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
     )
-    return_records: Missing[bool] = Field(
+    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
         default=UNSET,
-        description="If true, the endpoint will return the created or updated record in the response body.\n",
+        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+    )
+    allow_merge_commit: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow merge commits for pull requests."
+    )
+    allow_forking: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow forking this repo"
+    )
+    web_commit_signoff_required: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to require contributors to sign off on web-based commits",
+    )
+    open_issues: int = Field()
+    watchers: int = Field()
+    master_branch: Missing[str] = Field(default=UNSET)
+    starred_at: Missing[str] = Field(default=UNSET)
+    anonymous_access_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether anonymous git access is enabled for this repository",
+    )
+    code_search_index_status: Missing[RepositoryPropCodeSearchIndexStatus] = Field(
+        default=UNSET,
+        description="The status of the code search index for this repository",
     )
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags(ExtraGitHubModel):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
+class InstallationRepositoriesGetResponse200(GitHubModel):
+    """InstallationRepositoriesGetResponse200"""
 
-    The tags associated with the deployment.
-    """
+    total_count: int = Field()
+    repositories: list[InstallationRepositoriesGetResponse200PropRepositoriesItems] = (
+        Field()
+    )
+    repository_selection: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostBody)
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags)
+model_rebuild(InstallationRepositoriesGetResponse200PropRepositoriesItems)
+model_rebuild(InstallationRepositoriesGetResponse200)
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBody",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags",
+    "InstallationRepositoriesGetResponse200",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItems",
 )

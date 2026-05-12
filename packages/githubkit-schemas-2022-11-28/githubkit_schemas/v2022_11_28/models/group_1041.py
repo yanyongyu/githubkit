@@ -9,86 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0118 import RunnerLabel
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBody(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
+class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200(GitHubModel):
+    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the Copilot Space."
-    )
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the Copilot Space."
-    )
-    general_instructions: Missing[str] = Field(
-        max_length=4000,
-        default=UNSET,
-        description="General instructions for the Copilot Space.",
-    )
-    base_role: Missing[Literal["reader", "writer", "admin", "no_access"]] = Field(
-        default=UNSET,
-        description="The base role that determines default permissions for organization members. Changing this field requires admin permissions.\n- `no_access`: No default access (default)\n- `reader`: Organization members can read the space\n- `writer`: Organization members can read and edit the space\n- `admin`: Organization members have full admin access to the space",
-    )
-    resources_attributes: Missing[
-        list[OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems]
-    ] = Field(default=UNSET, description="Resources to attach to the space.")
+    total_count: int = Field()
+    labels: list[RunnerLabel] = Field()
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200)
 
-    resource_type: Missing[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ] = Field(default=UNSET, description="The type of resource.")
-    metadata: Missing[
-        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-    ] = Field(default=UNSET, description="Metadata specific to the resource type.")
-
-
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata(
-    GitHubModel
-):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: Missing[int] = Field(
-        default=UNSET, description="Repository ID for repository or file resources."
-    )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="File path for file resources."
-    )
-    text: Missing[str] = Field(
-        default=UNSET, description="Text content for free text resources."
-    )
-    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
-    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
-
-
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBody)
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems)
-model_rebuild(
-    OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-)
-
-__all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberPutBody",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata",
-)
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200",)

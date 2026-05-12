@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
+class AppHookConfigPatchBodyType(TypedDict):
+    """AppHookConfigPatchBody"""
 
-    errors: NotRequired[list[str]]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
+class AppHookConfigPatchBodyTypeForResponse(TypedDict):
+    """AppHookConfigPatchBody"""
 
-    errors: NotRequired[list[str]]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse",
+    "AppHookConfigPatchBodyType",
+    "AppHookConfigPatchBodyTypeForResponse",
 )

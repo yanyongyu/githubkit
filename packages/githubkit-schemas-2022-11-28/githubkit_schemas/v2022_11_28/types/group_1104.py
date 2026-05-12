@@ -9,25 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgSettingsImmutableReleasesPutBodyType(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    The total number of seats set to "pending cancellation" for members of the
+    specified team(s).
+    """
+
+    seats_cancelled: int
 
 
-class OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    The total number of seats set to "pending cancellation" for members of the
+    specified team(s).
+    """
+
+    seats_cancelled: int
 
 
 __all__ = (
-    "OrgsOrgSettingsImmutableReleasesPutBodyType",
-    "OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse",
 )

@@ -9,54 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class OrgsOrgActionsSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsSecretsGetResponse200"""
+class GistsGistIdPatchBodyType(TypedDict):
+    """GistsGistIdPatchBody"""
 
-    total_count: int
-    secrets: list[OrganizationActionsSecretType]
-
-
-class OrgsOrgActionsSecretsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[OrganizationActionsSecretTypeForResponse]
+    description: NotRequired[str]
+    files: NotRequired[GistsGistIdPatchBodyPropFilesType]
 
 
-class OrganizationActionsSecretType(TypedDict):
-    """Actions Secret for an Organization
+class GistsGistIdPatchBodyTypeForResponse(TypedDict):
+    """GistsGistIdPatchBody"""
 
-    Secrets for GitHub Actions for an organization.
-    """
-
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    description: NotRequired[str]
+    files: NotRequired[GistsGistIdPatchBodyPropFilesTypeForResponse]
 
 
-class OrganizationActionsSecretTypeForResponse(TypedDict):
-    """Actions Secret for an Organization
+GistsGistIdPatchBodyPropFilesType: TypeAlias = dict[str, Any]
+"""GistsGistIdPatchBodyPropFiles
 
-    Secrets for GitHub Actions for an organization.
-    """
+The gist files to be updated, renamed, or deleted. Each `key` must match the
+current filename
+(including extension) of the targeted gist file. For example: `hello.py`.
 
-    name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+To delete a file, set the whole file to null. For example: `hello.py : null`.
+The file will also be
+deleted if the specified object does not contain at least one of `content` or
+`filename`.
+
+Examples:
+    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+"""
+
+
+GistsGistIdPatchBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistsGistIdPatchBodyPropFiles
+
+The gist files to be updated, renamed, or deleted. Each `key` must match the
+current filename
+(including extension) of the targeted gist file. For example: `hello.py`.
+
+To delete a file, set the whole file to null. For example: `hello.py : null`.
+The file will also be
+deleted if the specified object does not contain at least one of `content` or
+`filename`.
+
+Examples:
+    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+"""
 
 
 __all__ = (
-    "OrganizationActionsSecretType",
-    "OrganizationActionsSecretTypeForResponse",
-    "OrgsOrgActionsSecretsGetResponse200Type",
-    "OrgsOrgActionsSecretsGetResponse200TypeForResponse",
+    "GistsGistIdPatchBodyPropFilesType",
+    "GistsGistIdPatchBodyPropFilesTypeForResponse",
+    "GistsGistIdPatchBodyType",
+    "GistsGistIdPatchBodyTypeForResponse",
 )

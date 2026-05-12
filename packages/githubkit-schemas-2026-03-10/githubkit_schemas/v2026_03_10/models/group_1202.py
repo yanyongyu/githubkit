@@ -16,21 +16,12 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+class ReposOwnerRepoAttestationsPostResponse201(GitHubModel):
+    """ReposOwnerRepoAttestationsPostResponse201"""
 
-    integration_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the custom app that will be enabled on the environment.",
-    )
+    id: Missing[int] = Field(default=UNSET, description="The ID of the attestation.")
 
 
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody
-)
+model_rebuild(ReposOwnerRepoAttestationsPostResponse201)
 
-__all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody",
-)
+__all__ = ("ReposOwnerRepoAttestationsPostResponse201",)

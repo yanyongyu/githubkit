@@ -11,18 +11,17 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
+class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
 
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+    usernames: list[str] = Field(
+        description="The GitHub user handles to add to the team."
     )
 
 
-model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPutBody)
+model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody)
 
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPutBody",)
+__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody",)

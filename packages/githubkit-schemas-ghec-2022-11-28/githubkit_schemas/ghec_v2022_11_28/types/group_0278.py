@@ -9,33 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ApiInsightsRouteStatsItemsType(TypedDict):
-    """ApiInsightsRouteStatsItems"""
+class RepositoryFineGrainedPermissionType(TypedDict):
+    """Repository Fine-Grained Permission
 
-    http_method: NotRequired[str]
-    api_route: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    A fine-grained permission that protects repository resources.
+    """
+
+    name: str
+    description: str
 
 
-class ApiInsightsRouteStatsItemsTypeForResponse(TypedDict):
-    """ApiInsightsRouteStatsItems"""
+class RepositoryFineGrainedPermissionTypeForResponse(TypedDict):
+    """Repository Fine-Grained Permission
 
-    http_method: NotRequired[str]
-    api_route: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    A fine-grained permission that protects repository resources.
+    """
+
+    name: str
+    description: str
 
 
 __all__ = (
-    "ApiInsightsRouteStatsItemsType",
-    "ApiInsightsRouteStatsItemsTypeForResponse",
+    "RepositoryFineGrainedPermissionType",
+    "RepositoryFineGrainedPermissionTypeForResponse",
 )

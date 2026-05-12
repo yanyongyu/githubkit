@@ -12,14 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
+class ReposOwnerRepoGitBlobsPostBody(GitHubModel):
+    """ReposOwnerRepoGitBlobsPostBody"""
 
-    body: str = Field(description="The text of the review comment.")
+    content: str = Field(description="The new blob's content.")
+    encoding: Missing[str] = Field(
+        default=UNSET,
+        description='The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported.',
+    )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody)
+model_rebuild(ReposOwnerRepoGitBlobsPostBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody",)
+__all__ = ("ReposOwnerRepoGitBlobsPostBody",)

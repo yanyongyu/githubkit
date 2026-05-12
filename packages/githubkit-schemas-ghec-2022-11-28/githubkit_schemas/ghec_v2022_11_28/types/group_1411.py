@@ -9,51 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
 
-    issue_field_values: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
-        ]
+    total_count: int
+    devcontainers: list[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType
     ]
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
 
-    issue_field_values: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse
-        ]
+    total_count: int
+    devcontainers: list[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse
     ]
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType(
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType(
     TypedDict
 ):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
 
-    field_id: int
-    value: Union[str, float]
+    path: str
+    name: NotRequired[str]
+    display_name: NotRequired[str]
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse(
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
 
-    field_id: int
-    value: Union[str, float]
+    path: str
+    name: NotRequired[str]
+    display_name: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200Type",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200TypeForResponse",
 )

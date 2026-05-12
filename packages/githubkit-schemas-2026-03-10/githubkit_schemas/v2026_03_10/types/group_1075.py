@@ -9,39 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgMigrationsPostBodyType(TypedDict):
-    """OrgsOrgMigrationsPostBody"""
-
-    repositories: list[str]
-    lock_repositories: NotRequired[bool]
-    exclude_metadata: NotRequired[bool]
-    exclude_git_data: NotRequired[bool]
-    exclude_attachments: NotRequired[bool]
-    exclude_releases: NotRequired[bool]
-    exclude_owner_projects: NotRequired[bool]
-    org_metadata_only: NotRequired[bool]
-    exclude: NotRequired[list[Literal["repositories"]]]
+from .group_1073 import (
+    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
+    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse,
+)
 
 
-class OrgsOrgMigrationsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgMigrationsPostBody"""
+class OrgsOrgCampaignsPostBodyOneof1Type(TypedDict):
+    """OrgsOrgCampaignsPostBodyOneof1"""
 
-    repositories: list[str]
-    lock_repositories: NotRequired[bool]
-    exclude_metadata: NotRequired[bool]
-    exclude_git_data: NotRequired[bool]
-    exclude_attachments: NotRequired[bool]
-    exclude_releases: NotRequired[bool]
-    exclude_owner_projects: NotRequired[bool]
-    org_metadata_only: NotRequired[bool]
-    exclude: NotRequired[list[Literal["repositories"]]]
+    name: str
+    description: str
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: _dt.datetime
+    contact_link: NotRequired[Union[str, None]]
+    code_scanning_alerts: NotRequired[
+        Union[list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None]
+    ]
+    generate_issues: NotRequired[bool]
+
+
+class OrgsOrgCampaignsPostBodyOneof1TypeForResponse(TypedDict):
+    """OrgsOrgCampaignsPostBodyOneof1"""
+
+    name: str
+    description: str
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: str
+    contact_link: NotRequired[Union[str, None]]
+    code_scanning_alerts: NotRequired[
+        Union[
+            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse],
+            None,
+        ]
+    ]
+    generate_issues: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgMigrationsPostBodyType",
-    "OrgsOrgMigrationsPostBodyTypeForResponse",
+    "OrgsOrgCampaignsPostBodyOneof1Type",
+    "OrgsOrgCampaignsPostBodyOneof1TypeForResponse",
 )

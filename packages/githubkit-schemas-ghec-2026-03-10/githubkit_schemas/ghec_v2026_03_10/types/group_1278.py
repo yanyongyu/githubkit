@@ -9,48 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+OrgsOrgCopilotContentExclusionPutBodyType: TypeAlias = dict[str, Any]
+"""OrgsOrgCopilotContentExclusionPutBody
+"""
 
 
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
-
-    groups: NotRequired[
-        list[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
-    ]
-
-
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
-
-    groups: NotRequired[
-        list[
-            OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse
-        ]
-    ]
-
-
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
-
-
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
+OrgsOrgCopilotContentExclusionPutBodyTypeForResponse: TypeAlias = dict[str, Any]
+"""OrgsOrgCopilotContentExclusionPutBody
+"""
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyTypeForResponse",
+    "OrgsOrgCopilotContentExclusionPutBodyType",
+    "OrgsOrgCopilotContentExclusionPutBodyTypeForResponse",
 )

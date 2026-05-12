@@ -10,24 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPersonalAccessTokensPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokensPostBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    action: Literal["revoke"]
-    pat_ids: list[int]
+    scope: Literal[
+        "all", "all_without_configurations", "public", "private_or_internal", "selected"
+    ]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgPersonalAccessTokensPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPersonalAccessTokensPostBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    action: Literal["revoke"]
-    pat_ids: list[int]
+    scope: Literal[
+        "all", "all_without_configurations", "public", "private_or_internal", "selected"
+    ]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgPersonalAccessTokensPostBodyType",
-    "OrgsOrgPersonalAccessTokensPostBodyTypeForResponse",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse",
 )

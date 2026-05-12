@@ -9,22 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type(TypedDict):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
+class ReposOwnerRepoPullsPullNumberMergePutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutBody"""
 
-    subject_digests: list[str]
+    commit_title: NotRequired[str]
+    commit_message: NotRequired[str]
+    sha: NotRequired[str]
+    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse(TypedDict):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
+class ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutBody"""
 
-    subject_digests: list[str]
+    commit_title: NotRequired[str]
+    commit_message: NotRequired[str]
+    sha: NotRequired[str]
+    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
 
 
 __all__ = (
-    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type",
-    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberMergePutBodyType",
+    "ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse",
 )

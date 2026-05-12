@@ -9,23 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoInvitationsInvitationIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyType(TypedDict):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
 
-    permissions: NotRequired[Literal["read", "write", "maintain", "triage", "admin"]]
+    auto_trigger_checks: NotRequired[
+        list[
+            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
+        ]
+    ]
 
 
-class ReposOwnerRepoInvitationsInvitationIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
 
-    permissions: NotRequired[Literal["read", "write", "maintain", "triage", "admin"]]
+    auto_trigger_checks: NotRequired[
+        list[
+            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
+
+
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
 
 
 __all__ = (
-    "ReposOwnerRepoInvitationsInvitationIdPatchBodyType",
-    "ReposOwnerRepoInvitationsInvitationIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyType",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyTypeForResponse",
 )

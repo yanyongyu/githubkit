@@ -9,34 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type(
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type(TypedDict):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+
+    pattern_config_version: NotRequired[str]
+
+
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
-
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str]
+    pattern_config_version: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0TypeForResponse",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
 )

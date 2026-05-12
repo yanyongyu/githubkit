@@ -9,34 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0533 import MetaType, MetaTypeForResponse
-from .group_0543 import (
-    ScimEnterpriseUserResponseAllof1PropGroupsItemsType,
-    ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse,
-)
+
+class PatchSchemaType(TypedDict):
+    """PatchSchema"""
+
+    operations: list[PatchSchemaPropOperationsItemsType]
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
 
 
-class ScimEnterpriseUserResponseAllof1Type(TypedDict):
-    """ScimEnterpriseUserResponseAllof1"""
+class PatchSchemaTypeForResponse(TypedDict):
+    """PatchSchema"""
 
-    id: str
-    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
-    meta: MetaType
+    operations: list[PatchSchemaPropOperationsItemsTypeForResponse]
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
 
 
-class ScimEnterpriseUserResponseAllof1TypeForResponse(TypedDict):
-    """ScimEnterpriseUserResponseAllof1"""
+class PatchSchemaPropOperationsItemsType(TypedDict):
+    """PatchSchemaPropOperationsItems"""
 
-    id: str
-    groups: NotRequired[
-        list[ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse]
-    ]
-    meta: MetaTypeForResponse
+    op: Literal["add", "replace", "remove"]
+    path: NotRequired[str]
+    value: NotRequired[str]
+
+
+class PatchSchemaPropOperationsItemsTypeForResponse(TypedDict):
+    """PatchSchemaPropOperationsItems"""
+
+    op: Literal["add", "replace", "remove"]
+    path: NotRequired[str]
+    value: NotRequired[str]
 
 
 __all__ = (
-    "ScimEnterpriseUserResponseAllof1Type",
-    "ScimEnterpriseUserResponseAllof1TypeForResponse",
+    "PatchSchemaPropOperationsItemsType",
+    "PatchSchemaPropOperationsItemsTypeForResponse",
+    "PatchSchemaType",
+    "PatchSchemaTypeForResponse",
 )

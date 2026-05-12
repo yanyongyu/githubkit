@@ -9,29 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsVariablesPostBodyType(TypedDict):
-    """OrgsOrgActionsVariablesPostBody"""
+class GistsGistIdGetResponse403Type(TypedDict):
+    """GistsGistIdGetResponse403"""
 
-    name: str
-    value: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    block: NotRequired[GistsGistIdGetResponse403PropBlockType]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class OrgsOrgActionsVariablesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesPostBody"""
+class GistsGistIdGetResponse403TypeForResponse(TypedDict):
+    """GistsGistIdGetResponse403"""
 
-    name: str
-    value: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    block: NotRequired[GistsGistIdGetResponse403PropBlockTypeForResponse]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+
+
+class GistsGistIdGetResponse403PropBlockType(TypedDict):
+    """GistsGistIdGetResponse403PropBlock"""
+
+    reason: NotRequired[str]
+    created_at: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
+
+
+class GistsGistIdGetResponse403PropBlockTypeForResponse(TypedDict):
+    """GistsGistIdGetResponse403PropBlock"""
+
+    reason: NotRequired[str]
+    created_at: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesPostBodyType",
-    "OrgsOrgActionsVariablesPostBodyTypeForResponse",
+    "GistsGistIdGetResponse403PropBlockType",
+    "GistsGistIdGetResponse403PropBlockTypeForResponse",
+    "GistsGistIdGetResponse403Type",
+    "GistsGistIdGetResponse403TypeForResponse",
 )

@@ -12,21 +12,23 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody"""
-
-    selected_repository_ids: list[int]
-
-
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyTypeForResponse(
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType(
     TypedDict
 ):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody"""
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody"""
 
-    selected_repository_ids: list[int]
+    name: str
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody"""
+
+    name: str
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyTypeForResponse",
 )

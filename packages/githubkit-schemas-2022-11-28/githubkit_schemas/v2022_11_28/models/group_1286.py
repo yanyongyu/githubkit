@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,40 +18,60 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoReleasesPostBody(GitHubModel):
-    """ReposOwnerRepoReleasesPostBody"""
+class ReposOwnerRepoIssuesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesPostBody"""
 
-    tag_name: str = Field(description="The name of the tag.")
-    target_commitish: Missing[str] = Field(
+    title: Union[str, int] = Field(description="The title of the issue.")
+    body: Missing[str] = Field(default=UNSET, description="The contents of the issue.")
+    assignee: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.",
+        description="Login for the user that this issue should be assigned to. _NOTE: Only users with push access can set the assignee for new issues. The assignee is silently dropped otherwise. **This field is closing down.**_",
     )
-    name: Missing[str] = Field(default=UNSET, description="The name of the release.")
-    body: Missing[str] = Field(
-        default=UNSET, description="Text describing the contents of the tag."
-    )
-    draft: Missing[bool] = Field(
+    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
+    labels: Missing[
+        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1]]
+    ] = Field(
         default=UNSET,
-        description="`true` to create a draft (unpublished) release, `false` to create a published one.",
+        description="Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._",
     )
-    prerelease: Missing[bool] = Field(
+    assignees: Missing[list[str]] = Field(
         default=UNSET,
-        description="`true` to identify the release as a prerelease. `false` to identify the release as a full release.",
+        description="Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._",
     )
-    discussion_category_name: Missing[str] = Field(
+    issue_field_values: Missing[
+        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems]
+    ] = Field(
         default=UNSET,
-        description='If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. For more information, see "[Managing categories for discussions in your repository](https://docs.github.com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository)."',
+        description="An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Issue fields are only available for organization-owned repositories with the feature enabled. Field values are silently dropped otherwise.",
     )
-    generate_release_notes: Missing[bool] = Field(
+    type: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Whether to automatically generate the name and body for this release. If `name` is specified, the specified name will be used; otherwise, a name will be automatically generated. If `body` is specified, the body will be pre-pended to the automatically generated notes.",
-    )
-    make_latest: Missing[Literal["true", "false", "legacy"]] = Field(
-        default=UNSET,
-        description="Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.",
+        description="The name of the issue type to associate with this issue. _NOTE: Only users with push access can set the type for new issues. The type is silently dropped otherwise._",
     )
 
 
-model_rebuild(ReposOwnerRepoReleasesPostBody)
+class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1(GitHubModel):
+    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
 
-__all__ = ("ReposOwnerRepoReleasesPostBody",)
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    color: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems(GitHubModel):
+    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
+
+    field_id: int = Field(description="The ID of the issue field to set")
+    value: Union[str, float] = Field(description="The value to set for the field")
+
+
+model_rebuild(ReposOwnerRepoIssuesPostBody)
+model_rebuild(ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1)
+model_rebuild(ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems)
+
+__all__ = (
+    "ReposOwnerRepoIssuesPostBody",
+    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems",
+    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1",
+)

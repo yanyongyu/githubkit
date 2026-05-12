@@ -12,21 +12,49 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0054 import Runner
 
+class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
 
-class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
+    A GitHub user
+    """
 
-    runner: Runner = Field(
-        title="Self hosted runners", description="A self hosted runner"
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
     )
-    encoded_jit_config: str = Field(
-        description="The base64 encoded runner configuration."
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+
+    A GitHub user
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201)
+class AgentsTasksTaskIdGetResponse200Allof0PropRepository(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201",)
+    The repository this task belongs to
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the repository"
+    )
+
+
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropRepository)
+
+__all__ = (
+    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0",
+    "AgentsTasksTaskIdGetResponse200Allof0PropRepository",
+    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems",
+)

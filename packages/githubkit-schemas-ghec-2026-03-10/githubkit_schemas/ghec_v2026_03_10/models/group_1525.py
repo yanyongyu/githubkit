@@ -15,19 +15,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0313 import ProjectsV2FieldIterationConfiguration
 
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBody(GitHubModel):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
-
-    name: str = Field(description="The name of the field.")
-    data_type: Literal["iteration"] = Field(description="The field's data type.")
-    iteration_configuration: ProjectsV2FieldIterationConfiguration = Field(
-        description="The configuration for iteration fields."
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"] = Field(
+        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#about-reactions) to add to the release."
     )
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2)
+model_rebuild(ReposOwnerRepoReleasesReleaseIdReactionsPostBody)
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2",)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",)

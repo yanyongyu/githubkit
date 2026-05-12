@@ -11,34 +11,17 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class OrgsOrgActionsSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
 
-    metadata: Missing[
-        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-    ] = Field(default=UNSET, description="Updated resource-specific metadata.")
-
-
-class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata(
-    ExtraGitHubModel
-):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-
-    Updated resource-specific metadata.
-    """
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints."
+    )
 
 
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody)
-model_rebuild(
-    OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-)
+model_rebuild(OrgsOrgActionsSecretsSecretNameRepositoriesPutBody)
 
-__all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata",
-)
+__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesPutBody",)

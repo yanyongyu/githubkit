@@ -18,30 +18,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0485 import EnterpriseWebhooks
-from .group_0486 import SimpleInstallation
-from .group_0487 import OrganizationSimpleWebhooks
-from .group_0488 import RepositoryWebhooks
-from .group_0491 import CheckRunWithSimpleCheckSuite
+from .group_0490 import EnterpriseWebhooks
+from .group_0491 import SimpleInstallation
+from .group_0492 import OrganizationSimpleWebhooks
+from .group_0493 import RepositoryWebhooks
 
 
-class WebhookCheckRunCompleted(GitHubModel):
-    """Check Run Completed Event"""
+class WebhookBranchProtectionConfigurationDisabled(GitHubModel):
+    """branch protection configuration disabled event"""
 
-    action: Literal["completed"] = Field()
-    check_run: CheckRunWithSimpleCheckSuite = Field(
-        title="CheckRun",
-        description="A check performed on the code of a given code change",
+    action: Literal["disabled"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -55,6 +50,6 @@ class WebhookCheckRunCompleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCheckRunCompleted)
+model_rebuild(WebhookBranchProtectionConfigurationDisabled)
 
-__all__ = ("WebhookCheckRunCompleted",)
+__all__ = ("WebhookBranchProtectionConfigurationDisabled",)

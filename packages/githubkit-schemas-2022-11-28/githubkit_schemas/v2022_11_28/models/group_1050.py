@@ -11,18 +11,17 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotBillingSelectedTeamsDeleteBody(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
+class OrgsOrgActionsVariablesNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
 
-    selected_teams: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of teams from which to revoke access to GitHub Copilot.",
+    selected_repository_ids: list[int] = Field(
+        description="The IDs of the repositories that can access the organization variable."
     )
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedTeamsDeleteBody)
+model_rebuild(OrgsOrgActionsVariablesNameRepositoriesPutBody)
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteBody",)
+__all__ = ("OrgsOrgActionsVariablesNameRepositoriesPutBody",)

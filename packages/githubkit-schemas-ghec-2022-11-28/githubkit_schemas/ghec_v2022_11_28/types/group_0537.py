@@ -9,43 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class PatchSchemaType(TypedDict):
-    """PatchSchema"""
+class GroupResponseType(TypedDict):
+    """GroupResponse"""
 
-    operations: list[PatchSchemaPropOperationsItemsType]
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
-
-
-class PatchSchemaTypeForResponse(TypedDict):
-    """PatchSchema"""
-
-    operations: list[PatchSchemaPropOperationsItemsTypeForResponse]
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
-
-
-class PatchSchemaPropOperationsItemsType(TypedDict):
-    """PatchSchemaPropOperationsItems"""
-
-    op: Literal["add", "replace", "remove"]
-    path: NotRequired[str]
-    value: NotRequired[str]
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[GroupResponsePropMembersItemsType]]
 
 
-class PatchSchemaPropOperationsItemsTypeForResponse(TypedDict):
-    """PatchSchemaPropOperationsItems"""
+class GroupResponseTypeForResponse(TypedDict):
+    """GroupResponse"""
 
-    op: Literal["add", "replace", "remove"]
-    path: NotRequired[str]
-    value: NotRequired[str]
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[GroupResponsePropMembersItemsTypeForResponse]]
+
+
+class GroupResponsePropMembersItemsType(TypedDict):
+    """GroupResponsePropMembersItems"""
+
+    value: str
+    ref: str
+    display: NotRequired[str]
+
+
+class GroupResponsePropMembersItemsTypeForResponse(TypedDict):
+    """GroupResponsePropMembersItems"""
+
+    value: str
+    ref: str
+    display: NotRequired[str]
 
 
 __all__ = (
-    "PatchSchemaPropOperationsItemsType",
-    "PatchSchemaPropOperationsItemsTypeForResponse",
-    "PatchSchemaType",
-    "PatchSchemaTypeForResponse",
+    "GroupResponsePropMembersItemsType",
+    "GroupResponsePropMembersItemsTypeForResponse",
+    "GroupResponseType",
+    "GroupResponseTypeForResponse",
 )

@@ -17,21 +17,43 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1260 import ReposOwnerRepoPagesPostBodyPropSource
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+
+    total_count: int = Field(
+        description="The number of deployment branch policies for the environment."
+    )
+    branch_policies: list[DeploymentBranchPolicy] = Field()
 
 
-class ReposOwnerRepoPagesPostBodyAnyof0(GitHubModel):
-    """ReposOwnerRepoPagesPostBodyAnyof0"""
+class DeploymentBranchPolicy(GitHubModel):
+    """Deployment branch policy
 
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
+    Details of a deployment branch or tag policy.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the branch or tag policy."
+    )
+    node_id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(
         default=UNSET,
-        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.',
+        description="The name pattern that branches or tags must match in order to deploy to the environment.",
     )
-    source: ReposOwnerRepoPagesPostBodyPropSource = Field(
-        description="The source branch and directory used to publish your Pages site."
+    type: Missing[Literal["branch", "tag"]] = Field(
+        default=UNSET, description="Whether this rule targets a branch or tag."
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPostBodyAnyof0)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
+)
+model_rebuild(DeploymentBranchPolicy)
 
-__all__ = ("ReposOwnerRepoPagesPostBodyAnyof0",)
+__all__ = (
+    "DeploymentBranchPolicy",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200",
+)

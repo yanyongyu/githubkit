@@ -9,51 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType
-    ]
+    message: NotRequired[str]
+    url: NotRequired[str]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse
-    ]
-
-
-UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-
-Updated resource-specific metadata.
-"""
-
-
-UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-
-Updated resource-specific metadata.
-"""
+    message: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse",
 )

@@ -9,32 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
 
-    Actions OIDC subject customization for a repository
-    """
-
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
-    """Actions OIDC subject customization for a repository
+class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
 
-    Actions OIDC subject customization for a repository
-    """
-
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
-    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse",
+    "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",
+    "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
 )

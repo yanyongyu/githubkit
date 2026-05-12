@@ -11,26 +11,34 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0339 import ActionsSecretType, ActionsSecretTypeForResponse
 
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[ActionsSecretType]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse(
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
+    f0
 
-    total_count: int
-    secrets: list[ActionsSecretTypeForResponse]
+    Examples:
+        {'contexts': ['contexts']}
+    """
+
+    contexts: list[str]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
+    f0
+
+    Examples:
+        {'contexts': ['contexts']}
+    """
+
+    contexts: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0TypeForResponse",
 )

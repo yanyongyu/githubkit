@@ -9,48 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class AgentsTasksTaskIdGetResponse422Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse422
 
-    total_count: int
-    repository_cache_usages: list[ActionsCacheUsageByRepositoryType]
-
-
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
-
-    total_count: int
-    repository_cache_usages: list[ActionsCacheUsageByRepositoryTypeForResponse]
-
-
-class ActionsCacheUsageByRepositoryType(TypedDict):
-    """Actions Cache Usage by repository
-
-    GitHub Actions Cache Usage by repository.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
+    message: str
+    errors: NotRequired[list[AgentsTasksTaskIdGetResponse422PropErrorsItemsType]]
+    documentation_url: str
 
 
-class ActionsCacheUsageByRepositoryTypeForResponse(TypedDict):
-    """Actions Cache Usage by repository
+class AgentsTasksTaskIdGetResponse422TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse422
 
-    GitHub Actions Cache Usage by repository.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
+    message: str
+    errors: NotRequired[
+        list[AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse]
+    ]
+    documentation_url: str
+
+
+class AgentsTasksTaskIdGetResponse422PropErrorsItemsType(TypedDict):
+    """AgentsTasksTaskIdGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "ActionsCacheUsageByRepositoryType",
-    "ActionsCacheUsageByRepositoryTypeForResponse",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse",
+    "AgentsTasksTaskIdGetResponse422PropErrorsItemsType",
+    "AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse",
+    "AgentsTasksTaskIdGetResponse422Type",
+    "AgentsTasksTaskIdGetResponse422TypeForResponse",
 )

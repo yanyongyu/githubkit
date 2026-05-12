@@ -368,6 +368,7 @@ class SecretScanningClient:
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
+        is_bypassed: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
@@ -409,6 +410,7 @@ class SecretScanningClient:
             "is_publicly_leaked": is_publicly_leaked,
             "is_multi_repo": is_multi_repo,
             "hide_secret": hide_secret,
+            "is_bypassed": is_bypassed,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -446,6 +448,7 @@ class SecretScanningClient:
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
+        is_bypassed: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
@@ -487,6 +490,7 @@ class SecretScanningClient:
             "is_publicly_leaked": is_publicly_leaked,
             "is_multi_repo": is_multi_repo,
             "hide_secret": hide_secret,
+            "is_bypassed": is_bypassed,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1067,6 +1071,7 @@ class SecretScanningClient:
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
+        is_bypassed: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
@@ -1112,6 +1117,7 @@ class SecretScanningClient:
             "is_publicly_leaked": is_publicly_leaked,
             "is_multi_repo": is_multi_repo,
             "hide_secret": hide_secret,
+            "is_bypassed": is_bypassed,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1150,6 +1156,7 @@ class SecretScanningClient:
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
+        is_bypassed: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
@@ -1195,6 +1202,7 @@ class SecretScanningClient:
             "is_publicly_leaked": is_publicly_leaked,
             "is_multi_repo": is_multi_repo,
             "hide_secret": hide_secret,
+            "is_bypassed": is_bypassed,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -2412,6 +2420,7 @@ class SecretScanningClient:
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
+        is_bypassed: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertTypeForResponse]]:
@@ -2453,6 +2462,7 @@ class SecretScanningClient:
             "is_publicly_leaked": is_publicly_leaked,
             "is_multi_repo": is_multi_repo,
             "hide_secret": hide_secret,
+            "is_bypassed": is_bypassed,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -2491,6 +2501,7 @@ class SecretScanningClient:
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
+        is_bypassed: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertTypeForResponse]]:
@@ -2532,6 +2543,7 @@ class SecretScanningClient:
             "is_publicly_leaked": is_publicly_leaked,
             "is_multi_repo": is_multi_repo,
             "hide_secret": hide_secret,
+            "is_bypassed": is_bypassed,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

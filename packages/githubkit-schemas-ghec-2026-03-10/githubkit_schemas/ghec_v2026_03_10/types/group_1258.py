@@ -9,43 +9,111 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyType(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
 
-    fields: list[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType]
-
-
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
-
-    fields: list[
-        OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
+    name: NotRequired[str]
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
+    resources_attributes: NotRequired[
+        list[OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType]
     ]
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
 
-    id: int
-    value: Union[str, float, None]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
+    resources_attributes: NotRequired[
+        list[
+            OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse
+        ]
+    ]
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType
+    ]
+
+
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
 
-    id: int
-    value: Union[str, float, None]
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
+    ]
+
+
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
+
+
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType",
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyType",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyTypeForResponse",
 )

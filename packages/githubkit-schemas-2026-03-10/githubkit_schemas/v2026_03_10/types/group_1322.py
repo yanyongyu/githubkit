@@ -9,24 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class UserKeysPostBodyType(TypedDict):
-    """UserKeysPostBody"""
-
-    title: NotRequired[str]
-    key: str
+from .group_1320 import (
+    ReposOwnerRepoPagesPostBodyPropSourceType,
+    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
+)
 
 
-class UserKeysPostBodyTypeForResponse(TypedDict):
-    """UserKeysPostBody"""
+class ReposOwnerRepoPagesPostBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
 
-    title: NotRequired[str]
-    key: str
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceType]
+
+
+class ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
+
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse]
 
 
 __all__ = (
-    "UserKeysPostBodyType",
-    "UserKeysPostBodyTypeForResponse",
+    "ReposOwnerRepoPagesPostBodyAnyof1Type",
+    "ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse",
 )

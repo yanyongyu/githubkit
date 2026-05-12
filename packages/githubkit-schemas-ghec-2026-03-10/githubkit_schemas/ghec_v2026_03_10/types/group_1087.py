@@ -9,33 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    policy_state: Literal[
-        "enabled_for_all_orgs",
-        "disabled_for_all_orgs",
-        "enabled_for_selected_orgs",
-        "configured_by_org_admins",
-    ]
+    name: NotRequired[str]
+    visibility: NotRequired[Literal["selected", "all"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[Union[str, None]]
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    policy_state: Literal[
-        "enabled_for_all_orgs",
-        "disabled_for_all_orgs",
-        "enabled_for_selected_orgs",
-        "configured_by_org_admins",
-    ]
+    name: NotRequired[str]
+    visibility: NotRequired[Literal["selected", "all"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse",
 )

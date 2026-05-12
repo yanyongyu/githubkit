@@ -13,32 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0107 import (
-    OrganizationCustomPropertyType,
-    OrganizationCustomPropertyTypeForResponse,
+from .group_0572 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0573 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0574 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0567 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0575 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0594 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
 
 
-class WebhookOrganizationCustomPropertyCreatedType(TypedDict):
-    """organization custom property created event"""
+class WebhookMilestoneDeletedType(TypedDict):
+    """milestone deleted event"""
 
-    action: Literal["created"]
-    definition: OrganizationCustomPropertyType
-    enterprise: EnterpriseWebhooksType
-    sender: NotRequired[SimpleUserType]
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    milestone: WebhooksMilestoneType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookOrganizationCustomPropertyCreatedTypeForResponse(TypedDict):
-    """organization custom property created event"""
+class WebhookMilestoneDeletedTypeForResponse(TypedDict):
+    """milestone deleted event"""
 
-    action: Literal["created"]
-    definition: OrganizationCustomPropertyTypeForResponse
-    enterprise: EnterpriseWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    milestone: WebhooksMilestoneTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookOrganizationCustomPropertyCreatedType",
-    "WebhookOrganizationCustomPropertyCreatedTypeForResponse",
+    "WebhookMilestoneDeletedType",
+    "WebhookMilestoneDeletedTypeForResponse",
 )

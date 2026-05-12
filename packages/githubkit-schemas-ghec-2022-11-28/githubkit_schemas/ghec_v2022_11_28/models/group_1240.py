@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0257 import Codespace
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgMembersUsernameCodespacesGetResponse200(GitHubModel):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems(GitHubModel):
+    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
 
-    total_count: int = Field()
-    codespaces: list[Codespace] = Field()
+    repository_id: int = Field(description="The repository id")
+    alert_numbers: list[int] = Field(
+        min_length=1 if PYDANTIC_V2 else None, description="The alert numbers"
+    )
 
 
-model_rebuild(OrgsOrgMembersUsernameCodespacesGetResponse200)
+model_rebuild(OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems)
 
-__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200",)
+__all__ = ("OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems",)

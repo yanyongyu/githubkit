@@ -10,28 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType(
+class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
     TypedDict
 ):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody"""
+    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    status: Literal["approve", "reject"]
-    message: str
+    name: NotRequired[str]
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyTypeForResponse(
+class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody"""
+    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    status: Literal["approve", "reject"]
-    message: str
+    name: NotRequired[str]
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType",
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyTypeForResponse",
+    "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
+    "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse",
 )

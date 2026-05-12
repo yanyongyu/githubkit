@@ -9,55 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0272 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type(TypedDict):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0"""
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
 
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ]
-    query_pack: str
-    repositories: list[str]
-    repository_lists: NotRequired[list[str]]
-    repository_owners: NotRequired[list[str]]
+    total_count: int
+    secrets: list[ActionsSecretType]
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0"""
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
 
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ]
-    query_pack: str
-    repositories: list[str]
-    repository_lists: NotRequired[list[str]]
-    repository_owners: NotRequired[list[str]]
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type",
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type",
+    "ReposOwnerRepoActionsOrganizationSecretsGetResponse200TypeForResponse",
 )

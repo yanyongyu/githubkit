@@ -9,42 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class OrgsOrgDependabotSecretsGetResponse200(GitHubModel):
-    """OrgsOrgDependabotSecretsGetResponse200"""
-
-    total_count: int = Field()
-    secrets: list[OrganizationDependabotSecret] = Field()
+from .group_0255 import ArtifactDeploymentRecord
 
 
-class OrganizationDependabotSecret(GitHubModel):
-    """Dependabot Secret for an Organization
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
 
-    Secrets for GitHub Dependabot for an organization.
-    """
-
-    name: str = Field(description="The name of the secret.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a secret"
-    )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
+    total_count: int = Field(description="The number of deployment records created")
+    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgDependabotSecretsGetResponse200)
-model_rebuild(OrganizationDependabotSecret)
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200)
 
-__all__ = (
-    "OrganizationDependabotSecret",
-    "OrgsOrgDependabotSecretsGetResponse200",
-)
+__all__ = ("OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200",)

@@ -19,16 +19,18 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0202 import Discussion
-from .group_0567 import EnterpriseWebhooks
-from .group_0568 import SimpleInstallation
-from .group_0569 import OrganizationSimpleWebhooks
-from .group_0570 import RepositoryWebhooks
+from .group_0572 import EnterpriseWebhooks
+from .group_0573 import SimpleInstallation
+from .group_0574 import OrganizationSimpleWebhooks
+from .group_0575 import RepositoryWebhooks
+from .group_0695 import WebhookDiscussionTransferredPropChanges
 
 
-class WebhookDiscussionUnpinned(GitHubModel):
-    """discussion unpinned event"""
+class WebhookDiscussionTransferred(GitHubModel):
+    """discussion transferred event"""
 
-    action: Literal["unpinned"] = Field()
+    action: Literal["transferred"] = Field()
+    changes: WebhookDiscussionTransferredPropChanges = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -54,6 +56,6 @@ class WebhookDiscussionUnpinned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionUnpinned)
+model_rebuild(WebhookDiscussionTransferred)
 
-__all__ = ("WebhookDiscussionUnpinned",)
+__all__ = ("WebhookDiscussionTransferred",)

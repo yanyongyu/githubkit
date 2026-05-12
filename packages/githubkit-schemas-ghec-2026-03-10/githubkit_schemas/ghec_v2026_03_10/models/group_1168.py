@@ -14,14 +14,12 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsVariablesNameRepositoriesPutBody(GitHubModel):
-    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
+class GistsGistIdCommentsCommentIdPatchBody(GitHubModel):
+    """GistsGistIdCommentsCommentIdPatchBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="The IDs of the repositories that can access the organization variable."
-    )
+    body: str = Field(max_length=65535, description="The comment text.")
 
 
-model_rebuild(OrgsOrgActionsVariablesNameRepositoriesPutBody)
+model_rebuild(GistsGistIdCommentsCommentIdPatchBody)
 
-__all__ = ("OrgsOrgActionsVariablesNameRepositoriesPutBody",)
+__all__ = ("GistsGistIdCommentsCommentIdPatchBody",)

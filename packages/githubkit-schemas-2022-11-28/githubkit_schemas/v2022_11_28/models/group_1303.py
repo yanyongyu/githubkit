@@ -9,23 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class TeamsTeamIdMembershipsUsernamePutBody(GitHubModel):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
 
-    role: Missing[Literal["member", "maintainer"]] = Field(
-        default=UNSET, description="The role that this user should have in the team."
-    )
+    sub_issue_id: int = Field(description="The id of the sub-issue to remove")
 
 
-model_rebuild(TeamsTeamIdMembershipsUsernamePutBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody)
 
-__all__ = ("TeamsTeamIdMembershipsUsernamePutBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody",)

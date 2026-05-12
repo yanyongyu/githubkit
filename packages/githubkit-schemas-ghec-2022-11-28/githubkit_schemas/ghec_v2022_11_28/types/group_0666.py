@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0415 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0568 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0569 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0570 import (
+from .group_0420 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0573 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0574 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0575 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0571 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0576 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertFixedType(TypedDict):
-    """Dependabot alert fixed event"""
+class WebhookDependabotAlertAssigneesChangedType(TypedDict):
+    """Dependabot alert assignees changed event"""
 
-    action: Literal["fixed"]
+    action: Literal["assignees_changed"]
     alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,10 +35,10 @@ class WebhookDependabotAlertFixedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertFixedTypeForResponse(TypedDict):
-    """Dependabot alert fixed event"""
+class WebhookDependabotAlertAssigneesChangedTypeForResponse(TypedDict):
+    """Dependabot alert assignees changed event"""
 
-    action: Literal["fixed"]
+    action: Literal["assignees_changed"]
     alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookDependabotAlertFixedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDependabotAlertFixedType",
-    "WebhookDependabotAlertFixedTypeForResponse",
+    "WebhookDependabotAlertAssigneesChangedType",
+    "WebhookDependabotAlertAssigneesChangedTypeForResponse",
 )

@@ -13,51 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type(TypedDict):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
+class ReposOwnerRepoActionsPermissionsPutBodyType(TypedDict):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
 
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ]
-    query_pack: str
-    repositories: NotRequired[list[str]]
-    repository_lists: NotRequired[list[str]]
-    repository_owners: list[str]
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
+class ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
 
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ]
-    query_pack: str
-    repositories: NotRequired[list[str]]
-    repository_lists: NotRequired[list[str]]
-    repository_owners: list[str]
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type",
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2TypeForResponse",
+    "ReposOwnerRepoActionsPermissionsPutBodyType",
+    "ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse",
 )

@@ -18,16 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0485 import EnterpriseWebhooks
-from .group_0486 import SimpleInstallation
-from .group_0487 import OrganizationSimpleWebhooks
+from .group_0490 import EnterpriseWebhooks
+from .group_0491 import SimpleInstallation
+from .group_0492 import OrganizationSimpleWebhooks
+from .group_0493 import RepositoryWebhooks
+from .group_0567 import WebhookCodeScanningAlertUpdatedAssignmentPropAlert
 
 
-class WebhookCustomPropertyDeleted(GitHubModel):
-    """custom property deleted event"""
+class WebhookCodeScanningAlertUpdatedAssignment(GitHubModel):
+    """code_scanning_alert updated_assignment event"""
 
-    action: Literal["deleted"] = Field()
-    definition: WebhookCustomPropertyDeletedPropDefinition = Field()
+    action: Literal["updated_assignment"] = Field()
+    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlert = Field(
+        description="The code scanning alert involved in the event."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,21 +47,13 @@ class WebhookCustomPropertyDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookCustomPropertyDeletedPropDefinition(GitHubModel):
-    """WebhookCustomPropertyDeletedPropDefinition"""
+model_rebuild(WebhookCodeScanningAlertUpdatedAssignment)
 
-    property_name: str = Field(description="The name of the property that was deleted.")
-
-
-model_rebuild(WebhookCustomPropertyDeleted)
-model_rebuild(WebhookCustomPropertyDeletedPropDefinition)
-
-__all__ = (
-    "WebhookCustomPropertyDeleted",
-    "WebhookCustomPropertyDeletedPropDefinition",
-)
+__all__ = ("WebhookCodeScanningAlertUpdatedAssignment",)

@@ -13,31 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
-    TypedDict
-):
-    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
-class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
-    "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse",
+    "OrgsOrgCopilotCodingAgentPermissionsGetResponse200Type",
+    "OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse",
 )

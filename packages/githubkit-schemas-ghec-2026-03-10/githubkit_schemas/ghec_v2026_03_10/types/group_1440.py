@@ -9,36 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0341 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoPullsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
 
-    title: NotRequired[str]
-    head: str
-    head_repo: NotRequired[str]
-    base: str
-    body: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
-    draft: NotRequired[bool]
-    issue: NotRequired[int]
+    total_count: int
+    secrets: list[ActionsSecretType]
 
 
-class ReposOwnerRepoPullsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
 
-    title: NotRequired[str]
-    head: str
-    head_repo: NotRequired[str]
-    base: str
-    body: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
-    draft: NotRequired[bool]
-    issue: NotRequired[int]
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPostBodyType",
-    "ReposOwnerRepoPullsPostBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse",
 )

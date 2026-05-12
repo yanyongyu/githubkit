@@ -9,26 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesCodespaceNamePatchBodyType(TypedDict):
-    """UserCodespacesCodespaceNamePatchBody"""
+class ReposOwnerRepoNotificationsPutBodyType(TypedDict):
+    """ReposOwnerRepoNotificationsPutBody"""
 
-    machine: NotRequired[str]
-    display_name: NotRequired[str]
-    recent_folders: NotRequired[list[str]]
+    last_read_at: NotRequired[_dt.datetime]
 
 
-class UserCodespacesCodespaceNamePatchBodyTypeForResponse(TypedDict):
-    """UserCodespacesCodespaceNamePatchBody"""
+class ReposOwnerRepoNotificationsPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoNotificationsPutBody"""
 
-    machine: NotRequired[str]
-    display_name: NotRequired[str]
-    recent_folders: NotRequired[list[str]]
+    last_read_at: NotRequired[str]
 
 
 __all__ = (
-    "UserCodespacesCodespaceNamePatchBodyType",
-    "UserCodespacesCodespaceNamePatchBodyTypeForResponse",
+    "ReposOwnerRepoNotificationsPutBodyType",
+    "ReposOwnerRepoNotificationsPutBodyTypeForResponse",
 )

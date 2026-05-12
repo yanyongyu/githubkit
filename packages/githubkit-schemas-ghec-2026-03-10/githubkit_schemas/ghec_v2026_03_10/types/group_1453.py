@@ -9,63 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
-
-    commit_id: NotRequired[str]
-    body: NotRequired[str]
-    event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
-    comments: NotRequired[
-        list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
-    ]
+from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
+class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
 
-    commit_id: NotRequired[str]
-    body: NotRequired[str]
-    event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
-    comments: NotRequired[
-        list[
-            ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse
-        ]
-    ]
+    config: NotRequired[WebhookConfigType]
+    events: NotRequired[list[str]]
+    add_events: NotRequired[list[str]]
+    remove_events: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
+class ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
 
-    path: str
-    position: NotRequired[int]
-    body: str
-    line: NotRequired[int]
-    side: NotRequired[str]
-    start_line: NotRequired[int]
-    start_side: NotRequired[str]
-
-
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
-
-    path: str
-    position: NotRequired[int]
-    body: str
-    line: NotRequired[int]
-    side: NotRequired[str]
-    start_line: NotRequired[int]
-    start_side: NotRequired[str]
+    config: NotRequired[WebhookConfigTypeForResponse]
+    events: NotRequired[list[str]]
+    add_events: NotRequired[list[str]]
+    remove_events: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyType",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyTypeForResponse",
+    "ReposOwnerRepoHooksHookIdPatchBodyType",
+    "ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse",
 )

@@ -16,13 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse409(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
+class ReposOwnerRepoGitRefsRefPatchBody(GitHubModel):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    sha: str = Field(description="The SHA1 value to set this reference to")
+    force: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether to force the update or to make sure the update is a fast-forward update. Leaving this out or setting it to `false` will make sure you're not overwriting work.",
+    )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergePutResponse409)
+model_rebuild(ReposOwnerRepoGitRefsRefPatchBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse409",)
+__all__ = ("ReposOwnerRepoGitRefsRefPatchBody",)

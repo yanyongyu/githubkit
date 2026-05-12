@@ -9,38 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0078 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type(
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type(
     TypedDict
 ):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    total_count: NotRequired[int]
+    repositories: NotRequired[list[RepositoryType]]
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse(
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    total_count: NotRequired[int]
+    repositories: NotRequired[list[RepositoryTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse",
 )

@@ -15,22 +15,16 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class OrgsOrgDependabotRepositoryAccessPatchBody(GitHubModel):
-    """OrgsOrgDependabotRepositoryAccessPatchBody
-
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to add."
-    )
-    repository_ids_to_remove: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to remove."
-    )
+from .group_0255 import ArtifactDeploymentRecord
 
 
-model_rebuild(OrgsOrgDependabotRepositoryAccessPatchBody)
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200(GitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
 
-__all__ = ("OrgsOrgDependabotRepositoryAccessPatchBody",)
+    total_count: int = Field(description="The number of deployment records created")
+    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200)
+
+__all__ = ("OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200",)

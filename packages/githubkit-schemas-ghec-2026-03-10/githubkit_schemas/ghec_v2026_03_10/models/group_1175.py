@@ -12,22 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0253 import ArtifactDeploymentRecord
+from .group_0110 import CustomPropertyValue
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200(GitHubModel):
-    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
+class OrganizationsOrgOrgPropertiesValuesPatchBody(GitHubModel):
+    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
 
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of deployment records for this digest and organization",
+    properties: list[CustomPropertyValue] = Field(
+        description="A list of custom property names and associated values to apply to the organization."
     )
-    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200)
+model_rebuild(OrganizationsOrgOrgPropertiesValuesPatchBody)
 
-__all__ = ("OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200",)
+__all__ = ("OrganizationsOrgOrgPropertiesValuesPatchBody",)

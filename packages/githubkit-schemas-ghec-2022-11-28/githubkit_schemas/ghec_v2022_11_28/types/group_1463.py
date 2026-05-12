@@ -9,26 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
+class ReposOwnerRepoInvitationsInvitationIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
 
-    name: NotRequired[str]
-    label: NotRequired[str]
-    state: NotRequired[str]
+    permissions: NotRequired[Literal["read", "write", "maintain", "triage", "admin"]]
 
 
-class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
+class ReposOwnerRepoInvitationsInvitationIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
 
-    name: NotRequired[str]
-    label: NotRequired[str]
-    state: NotRequired[str]
+    permissions: NotRequired[Literal["read", "write", "maintain", "triage", "admin"]]
 
 
 __all__ = (
-    "ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType",
-    "ReposOwnerRepoReleasesAssetsAssetIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoInvitationsInvitationIdPatchBodyType",
+    "ReposOwnerRepoInvitationsInvitationIdPatchBodyTypeForResponse",
 )

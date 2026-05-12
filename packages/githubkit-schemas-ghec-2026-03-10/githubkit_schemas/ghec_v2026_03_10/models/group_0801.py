@@ -18,17 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0567 import EnterpriseWebhooks
-from .group_0568 import SimpleInstallation
-from .group_0569 import OrganizationSimpleWebhooks
-from .group_0570 import RepositoryWebhooks
-from .group_0802 import WebhookIssuesReopenedPropIssue
+from .group_0572 import EnterpriseWebhooks
+from .group_0573 import SimpleInstallation
+from .group_0574 import OrganizationSimpleWebhooks
+from .group_0575 import RepositoryWebhooks
+from .group_0802 import WebhookIssuesOpenedPropChanges
+from .group_0804 import WebhookIssuesOpenedPropIssue
 
 
-class WebhookIssuesReopened(GitHubModel):
-    """issues reopened event"""
+class WebhookIssuesOpened(GitHubModel):
+    """issues opened event"""
 
-    action: Literal["reopened"] = Field()
+    action: Literal["opened"] = Field()
+    changes: Missing[WebhookIssuesOpenedPropChanges] = Field(default=UNSET)
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +41,7 @@ class WebhookIssuesReopened(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssuesReopenedPropIssue = Field(
+    issue: WebhookIssuesOpenedPropIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) itself.",
     )
@@ -55,6 +57,6 @@ class WebhookIssuesReopened(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesReopened)
+model_rebuild(WebhookIssuesOpened)
 
-__all__ = ("WebhookIssuesReopened",)
+__all__ = ("WebhookIssuesOpened",)

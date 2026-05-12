@@ -12,25 +12,24 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody(
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0(
     GitHubModel
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
 
-    integration_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the custom app that will be enabled on the environment.",
-    )
+    Examples:
+        {'contexts': ['contexts']}
+    """
+
+    contexts: list[str] = Field(description="The name of the status checks")
 
 
 model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
 )
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0",
 )

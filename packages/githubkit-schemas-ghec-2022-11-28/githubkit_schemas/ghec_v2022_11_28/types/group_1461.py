@@ -9,24 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
+class ReposOwnerRepoImportLfsPatchBodyType(TypedDict):
+    """ReposOwnerRepoImportLfsPatchBody"""
 
-    message: NotRequired[str]
-    url: NotRequired[str]
+    use_lfs: Literal["opt_in", "opt_out"]
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
+class ReposOwnerRepoImportLfsPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportLfsPatchBody"""
 
-    message: NotRequired[str]
-    url: NotRequired[str]
+    use_lfs: Literal["opt_in", "opt_out"]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type",
-    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse",
+    "ReposOwnerRepoImportLfsPatchBodyType",
+    "ReposOwnerRepoImportLfsPatchBodyTypeForResponse",
 )

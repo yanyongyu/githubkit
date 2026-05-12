@@ -9,49 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
 
-    total_count: int
-    secrets: list[DependabotSecretType]
-
-
-class ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[DependabotSecretTypeForResponse]
+    ref: str
+    inputs: NotRequired[
+        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
+    ]
+    return_run_details: NotRequired[bool]
 
 
-class DependabotSecretType(TypedDict):
-    """Dependabot Secret
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
 
-    Set secrets for Dependabot.
-    """
+    ref: str
+    inputs: NotRequired[
+        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse
+    ]
+    return_run_details: NotRequired[bool]
 
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+
+ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType: TypeAlias = (
+    dict[str, Any]
+)
+"""ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+
+Input keys and values configured in the workflow file. The maximum number of
+properties is 25. Any default properties configured in the workflow file will be
+used when `inputs` are omitted.
+"""
 
 
-class DependabotSecretTypeForResponse(TypedDict):
-    """Dependabot Secret
+ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
 
-    Set secrets for Dependabot.
-    """
-
-    name: str
-    created_at: str
-    updated_at: str
+Input keys and values configured in the workflow file. The maximum number of
+properties is 25. Any default properties configured in the workflow file will be
+used when `inputs` are omitted.
+"""
 
 
 __all__ = (
-    "DependabotSecretType",
-    "DependabotSecretTypeForResponse",
-    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
-    "ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyTypeForResponse",
 )

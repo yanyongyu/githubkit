@@ -9,27 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody"""
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
-    placeholder_id: str
+    issue_field_values: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
+        ]
+    ]
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse(
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody"""
+
+    issue_field_values: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType(
     TypedDict
 ):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems"""
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
-    placeholder_id: str
+    field_id: int
+    value: Union[str, float]
+
+
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",
-    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse",
 )

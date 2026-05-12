@@ -9,27 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterprisesEnterpriseActionsPermissionsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsPutBody"""
-
-    enabled_organizations: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+from .group_1037 import (
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseActionsPermissionsPutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsPutBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
 
-    enabled_organizations: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    sessions: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
+    ]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
+
+    sessions: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse
+        ]
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsPutBodyType",
-    "EnterprisesEnterpriseActionsPermissionsPutBodyTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse",
 )

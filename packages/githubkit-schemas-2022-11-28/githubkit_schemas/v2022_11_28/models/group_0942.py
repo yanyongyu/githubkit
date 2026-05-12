@@ -16,44 +16,49 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
 
-    organizations: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of organization logins within the enterprise to disable Copilot cloud agent for.",
-    )
-    custom_properties: Missing[
-        list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems
-        ]
-    ] = Field(
-        default=UNSET,
-        description="List of custom property filters to match organizations. Organizations matching any of the specified property name/value pairs will be included. This is a one-time operation, setting the property on an organization in the future will not automatically update its coding agent policy.",
-    )
-
-
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
-    PropertiesItems
+    A GitHub user
     """
 
-    property_name: str = Field(
-        description="The name of the custom property to filter by."
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
     )
-    values: list[str] = Field(description="The values of the custom property to match.")
 
 
-model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody)
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+
+    A GitHub user
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
+
+    The repository this task belongs to
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the repository"
+    )
+
+
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0)
 model_rebuild(
-    EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
 )
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository)
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems",
 )

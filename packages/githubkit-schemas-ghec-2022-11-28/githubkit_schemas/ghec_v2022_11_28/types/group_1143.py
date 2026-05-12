@@ -9,30 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0107 import (
+    OrganizationCustomPropertyType,
+    OrganizationCustomPropertyTypeForResponse,
+)
 
 
-class OrgsOrgActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC Subject customization
+class EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
 
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+    properties: list[OrganizationCustomPropertyType]
 
 
-class OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
-    """Actions OIDC Subject customization
+class EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
 
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+    properties: list[OrganizationCustomPropertyTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsOidcCustomizationSubPutBodyType",
-    "OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse",
+    "EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType",
+    "EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyTypeForResponse",
 )

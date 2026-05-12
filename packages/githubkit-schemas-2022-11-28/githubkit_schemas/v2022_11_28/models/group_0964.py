@@ -18,68 +18,49 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200(GitHubModel):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
+class AgentsTasksTaskIdGetResponse403(GitHubModel):
+    """AgentsTasksTaskIdGetResponse403
 
-    message: Missing[str] = Field(default=UNSET)
-    budget: Missing[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget
-    ] = Field(default=UNSET)
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget(
-    GitHubModel
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
-
-    id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
-    budget_amount: Missing[float] = Field(
-        default=UNSET,
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
-    )
-    prevent_further_usage: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to prevent additional spending once the budget is exceeded",
-    )
-    budget_alerting: Missing[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting
-    ] = Field(default=UNSET)
-    budget_scope: Missing[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ] = Field(default=UNSET, description="The scope of the budget")
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET, description="The name of the entity to apply the budget to"
-    )
-    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
-        default=UNSET, description="The type of pricing for the budget"
-    )
-    budget_product_sku: Missing[str] = Field(
-        default=UNSET,
-        description="A single product or SKU that will be covered in the budget",
-    )
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting(
-    GitHubModel
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
-    etAlerting
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
-    alert_recipients: list[str] = Field(
-        description="Array of user login names who will receive alerts"
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[list[AgentsTasksTaskIdGetResponse403PropErrorsItems]] = Field(
+        default=UNSET,
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsTasksTaskIdGetResponse403PropErrorsItems(GitHubModel):
+    """AgentsTasksTaskIdGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200)
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget)
-model_rebuild(
-    OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting
-)
+model_rebuild(AgentsTasksTaskIdGetResponse403)
+model_rebuild(AgentsTasksTaskIdGetResponse403PropErrorsItems)
 
 __all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting",
+    "AgentsTasksTaskIdGetResponse403",
+    "AgentsTasksTaskIdGetResponse403PropErrorsItems",
 )

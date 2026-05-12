@@ -11,30 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody
-
-    Examples:
-        {'users': ['mona']}
-    """
-
-    users: list[str]
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyTypeForResponse(
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryType]
+
+
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
 
-    Examples:
-        {'users': ['mona']}
-    """
-
-    users: list[str]
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyTypeForResponse",
+    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type",
+    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse",
 )

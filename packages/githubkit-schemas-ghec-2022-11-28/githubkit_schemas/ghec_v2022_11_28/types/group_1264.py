@@ -11,24 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0110 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+from .group_0264 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
 
 
-class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200"""
 
-    repository_names: list[str]
-    properties: list[CustomPropertyValueType]
+    resources: list[CopilotSpaceResourceType]
 
 
-class OrgsOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200"""
 
-    repository_names: list[str]
-    properties: list[CustomPropertyValueTypeForResponse]
+    resources: list[CopilotSpaceResourceTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgPropertiesValuesPatchBodyType",
-    "OrgsOrgPropertiesValuesPatchBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200Type",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse",
 )

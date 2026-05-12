@@ -9,26 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0087 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
+class CredentialsRevokePostBodyType(TypedDict):
+    """CredentialsRevokePostBody"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsType]]
+    credentials: list[str]
 
 
-class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
+class CredentialsRevokePostBodyTypeForResponse(TypedDict):
+    """CredentialsRevokePostBody"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
+    credentials: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",
-    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse",
+    "CredentialsRevokePostBodyType",
+    "CredentialsRevokePostBodyTypeForResponse",
 )

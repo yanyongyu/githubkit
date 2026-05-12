@@ -9,59 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0049 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
+class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
 
-    custom_agents: NotRequired[
-        Union[
-            list[
-                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType
-            ],
-            None,
-        ]
-    ]
+    total_count: float
+    organizations: list[OrganizationSimpleType]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
-
-    custom_agents: NotRequired[
-        Union[
-            list[
-                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse
-            ],
-            None,
-        ]
-    ]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType(
+class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
+    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
 
-    name: NotRequired[str]
-    file_path: NotRequired[str]
-    url: NotRequired[str]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
-
-    name: NotRequired[str]
-    file_path: NotRequired[str]
-    url: NotRequired[str]
+    total_count: float
+    organizations: list[OrganizationSimpleTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200Type",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type",
+    "EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse",
 )

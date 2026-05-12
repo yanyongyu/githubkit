@@ -9,22 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
-    selected_repository_ids: list[int]
+    title: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    description: NotRequired[str]
+    due_on: NotRequired[_dt.datetime]
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
-    selected_repository_ids: list[int]
+    title: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    description: NotRequired[str]
+    due_on: NotRequired[str]
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesPutBodyType",
-    "UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse",
+    "ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType",
+    "ReposOwnerRepoMilestonesMilestoneNumberPatchBodyTypeForResponse",
 )

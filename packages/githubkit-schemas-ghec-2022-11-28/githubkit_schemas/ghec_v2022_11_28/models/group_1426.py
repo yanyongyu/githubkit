@@ -16,21 +16,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoMergesPostBody(GitHubModel):
-    """ReposOwnerRepoMergesPostBody"""
+class ReposOwnerRepoDependabotSecretsSecretNamePutBody(GitHubModel):
+    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
 
-    base: str = Field(
-        description="The name of the base branch that the head will be merged into."
-    )
-    head: str = Field(
-        description="The head to merge. This can be a branch name or a commit SHA1."
-    )
-    commit_message: Missing[str] = Field(
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
-        description="Commit message to use for the merge commit. If omitted, a default message will be used.",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#get-a-repository-public-key) endpoint.",
+    )
+    key_id: Missing[str] = Field(
+        default=UNSET, description="ID of the key you used to encrypt the secret."
     )
 
 
-model_rebuild(ReposOwnerRepoMergesPostBody)
+model_rebuild(ReposOwnerRepoDependabotSecretsSecretNamePutBody)
 
-__all__ = ("ReposOwnerRepoMergesPostBody",)
+__all__ = ("ReposOwnerRepoDependabotSecretsSecretNamePutBody",)

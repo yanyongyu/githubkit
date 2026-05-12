@@ -12,109 +12,57 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
+class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
 
-    organization: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType
-    ]
-    repository: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType
-    ]
-    ruleset: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType
-    ]
+    total_count: float
+    runner_groups: list[RunnerGroupsEnterpriseType]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
+class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
 
-    organization: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse
-    ]
-    repository: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse
-    ]
-    ruleset: NotRequired[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse
-    ]
+    total_count: float
+    runner_groups: list[RunnerGroupsEnterpriseTypeForResponse]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
+class RunnerGroupsEnterpriseType(TypedDict):
+    """RunnerGroupsEnterprise"""
 
-    id: NotRequired[int]
-    login: NotRequired[str]
-    avatar_url: NotRequired[str]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    avatar_url: NotRequired[str]
+    id: float
+    name: str
+    visibility: str
+    default: bool
+    selected_organizations_url: NotRequired[str]
+    runners_url: str
+    hosted_runners_url: NotRequired[str]
+    network_configuration_id: NotRequired[str]
+    allows_public_repositories: bool
+    workflow_restrictions_read_only: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
+class RunnerGroupsEnterpriseTypeForResponse(TypedDict):
+    """RunnerGroupsEnterprise"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
-
-    The created or existing ruleset (if create_ruleset was true).
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    enforcement: NotRequired[str]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
-
-    The created or existing ruleset (if create_ruleset was true).
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    enforcement: NotRequired[str]
+    id: float
+    name: str
+    visibility: str
+    default: bool
+    selected_organizations_url: NotRequired[str]
+    runners_url: str
+    hosted_runners_url: NotRequired[str]
+    network_configuration_id: NotRequired[str]
+    allows_public_repositories: bool
+    workflow_restrictions_read_only: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200Type",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200TypeForResponse",
+    "RunnerGroupsEnterpriseType",
+    "RunnerGroupsEnterpriseTypeForResponse",
 )

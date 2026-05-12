@@ -13,42 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0486 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0487 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0488 import (
+from .group_0184 import CustomPropertyType, CustomPropertyTypeForResponse
+from .group_0491 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0492 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0493 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0489 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDeleteType(TypedDict):
-    """delete event"""
+class WebhookCustomPropertyCreatedType(TypedDict):
+    """custom property created event"""
 
+    action: Literal["created"]
+    definition: CustomPropertyType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pusher_type: str
-    ref: str
-    ref_type: Literal["tag", "branch"]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookDeleteTypeForResponse(TypedDict):
-    """delete event"""
+class WebhookCustomPropertyCreatedTypeForResponse(TypedDict):
+    """custom property created event"""
 
+    action: Literal["created"]
+    definition: CustomPropertyTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pusher_type: str
-    ref: str
-    ref_type: Literal["tag", "branch"]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookDeleteType",
-    "WebhookDeleteTypeForResponse",
+    "WebhookCustomPropertyCreatedType",
+    "WebhookCustomPropertyCreatedTypeForResponse",
 )

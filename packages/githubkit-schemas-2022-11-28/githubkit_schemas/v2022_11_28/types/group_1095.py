@@ -12,40 +12,36 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0138 import (
+    CopilotSpaceCollaboratorAnyof0Type,
+    CopilotSpaceCollaboratorAnyof0TypeForResponse,
+    CopilotSpaceCollaboratorAnyof1Type,
+    CopilotSpaceCollaboratorAnyof1TypeForResponse,
+)
 
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    fields: list[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType]
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
-
-    fields: list[
-        OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
+    collaborators: list[
+        Union[CopilotSpaceCollaboratorAnyof0Type, CopilotSpaceCollaboratorAnyof1Type]
     ]
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
-
-    id: int
-    value: Union[str, float, None]
-
-
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-    id: int
-    value: Union[str, float, None]
+    collaborators: list[
+        Union[
+            CopilotSpaceCollaboratorAnyof0TypeForResponse,
+            CopilotSpaceCollaboratorAnyof1TypeForResponse,
+        ]
+    ]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType",
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse",
 )

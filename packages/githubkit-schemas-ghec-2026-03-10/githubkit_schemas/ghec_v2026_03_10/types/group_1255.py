@@ -9,32 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0313 import (
-    ProjectsV2FieldIterationConfigurationType,
-    ProjectsV2FieldIterationConfigurationTypeForResponse,
-)
+
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
+
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationType
-
-
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
-
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationTypeForResponse
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type",
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse",
+    "OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType",
+    "OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse",
 )

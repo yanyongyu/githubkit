@@ -9,22 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoCollaboratorsUsernamePutBodyType(TypedDict):
-    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
+class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
 
-    permission: NotRequired[str]
+    environment_ids: list[int]
+    state: Literal["approved", "rejected"]
+    comment: str
 
 
-class ReposOwnerRepoCollaboratorsUsernamePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
+class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
 
-    permission: NotRequired[str]
+    environment_ids: list[int]
+    state: Literal["approved", "rejected"]
+    comment: str
 
 
 __all__ = (
-    "ReposOwnerRepoCollaboratorsUsernamePutBodyType",
-    "ReposOwnerRepoCollaboratorsUsernamePutBodyTypeForResponse",
+    "ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType",
+    "ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyTypeForResponse",
 )

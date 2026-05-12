@@ -13,59 +13,27 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
+class ReposOwnerRepoImportPutBodyType(TypedDict):
+    """ReposOwnerRepoImportPutBody"""
 
-    commit_id: NotRequired[str]
-    body: NotRequired[str]
-    event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
-    comments: NotRequired[
-        list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
-    ]
-
-
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
-
-    commit_id: NotRequired[str]
-    body: NotRequired[str]
-    event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
-    comments: NotRequired[
-        list[
-            ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse
-        ]
-    ]
+    vcs_url: str
+    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    tfvc_project: NotRequired[str]
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
+class ReposOwnerRepoImportPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportPutBody"""
 
-    path: str
-    position: NotRequired[int]
-    body: str
-    line: NotRequired[int]
-    side: NotRequired[str]
-    start_line: NotRequired[int]
-    start_side: NotRequired[str]
-
-
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
-
-    path: str
-    position: NotRequired[int]
-    body: str
-    line: NotRequired[int]
-    side: NotRequired[str]
-    start_line: NotRequired[int]
-    start_side: NotRequired[str]
+    vcs_url: str
+    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    tfvc_project: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyType",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyTypeForResponse",
+    "ReposOwnerRepoImportPutBodyType",
+    "ReposOwnerRepoImportPutBodyTypeForResponse",
 )

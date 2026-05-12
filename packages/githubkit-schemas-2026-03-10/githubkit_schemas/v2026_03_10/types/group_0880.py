@@ -13,44 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0485 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0486 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0487 import (
+from .group_0490 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0491 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0492 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0488 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0529 import (
-    WebhooksSecurityAdvisoryType,
-    WebhooksSecurityAdvisoryTypeForResponse,
+from .group_0493 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0533 import (
+    SecretScanningAlertWebhookType,
+    SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecurityAdvisoryUpdatedType(TypedDict):
-    """security_advisory updated event"""
+class WebhookSecretScanningAlertResolvedType(TypedDict):
+    """secret_scanning_alert resolved event"""
 
-    action: Literal["updated"]
+    action: Literal["resolved"]
+    alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    security_advisory: WebhooksSecurityAdvisoryType
+    repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecurityAdvisoryUpdatedTypeForResponse(TypedDict):
-    """security_advisory updated event"""
+class WebhookSecretScanningAlertResolvedTypeForResponse(TypedDict):
+    """secret_scanning_alert resolved event"""
 
-    action: Literal["updated"]
+    action: Literal["resolved"]
+    alert: SecretScanningAlertWebhookTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    security_advisory: WebhooksSecurityAdvisoryTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSecurityAdvisoryUpdatedType",
-    "WebhookSecurityAdvisoryUpdatedTypeForResponse",
+    "WebhookSecretScanningAlertResolvedType",
+    "WebhookSecretScanningAlertResolvedTypeForResponse",
 )

@@ -15,34 +15,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0362 import CustomDeploymentRuleApp
 
-class ReposOwnerRepoPagesDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoPagesDeploymentsPostBody
 
-    The object used to create GitHub Pages deployment
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
     """
 
-    artifact_id: Missing[int] = Field(
+    total_count: Missing[int] = Field(
         default=UNSET,
-        description="The ID of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
+        description="The total number of custom deployment protection rule integrations available for this environment.",
     )
-    artifact_url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="The target environment for this GitHub Pages deployment.",
-    )
-    pages_build_version: str = Field(
-        default="GITHUB_SHA",
-        description="A unique string that represents the version of the build for this deployment.",
-    )
-    oidc_token: str = Field(
-        description="The OIDC token issued by GitHub Actions certifying the origin of the deployment."
-    )
+    available_custom_deployment_protection_rule_integrations: Missing[
+        list[CustomDeploymentRuleApp]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoPagesDeploymentsPostBody)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200
+)
 
-__all__ = ("ReposOwnerRepoPagesDeploymentsPostBody",)
+__all__ = (
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200",
+)

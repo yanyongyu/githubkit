@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
@@ -18,45 +18,74 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberCommentsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
+class ReposOwnerRepoGitCommitsPostBody(GitHubModel):
+    """ReposOwnerRepoGitCommitsPostBody"""
 
-    body: str = Field(description="The text of the review comment.")
-    commit_id: str = Field(
-        description="The SHA of the commit needing a comment. Not using the latest commit SHA may render your comment outdated if a subsequent commit modifies the line you specify as the `position`."
-    )
-    path: str = Field(
-        description="The relative path to the file that necessitates a comment."
-    )
-    position: Missing[int] = Field(
+    message: str = Field(description="The commit message")
+    tree: str = Field(description="The SHA of the tree object this commit points to")
+    parents: Missing[list[str]] = Field(
         default=UNSET,
-        description='**This parameter is closing down. Use `line` instead**. The position in the diff where you want to add a review comment. Note this value is not the same as the line number in the file. The position value equals the number of lines down from the first "@@" hunk header in the file you want to add a comment. The line just below the "@@" line is position 1, the next line is position 2, and so on. The position in the diff continues to increase through lines of whitespace and additional hunks until the beginning of a new file.',
+        description="The full SHAs of the commits that were the parents of this commit. If omitted or empty, the commit will be written as a root commit. For a single parent, an array of one SHA should be provided; for a merge commit, an array of more than one should be provided.",
     )
-    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
+    author: Missing[ReposOwnerRepoGitCommitsPostBodyPropAuthor] = Field(
         default=UNSET,
-        description='In a split diff view, the side of the diff that the pull request\'s changes appear on. Can be `LEFT` or `RIGHT`. Use `LEFT` for deletions that appear in red. Use `RIGHT` for additions that appear in green or unchanged lines that appear in white and are shown for context. For a multi-line comment, side represents whether the last line of the comment range is a deletion or addition. For more information, see "[Diff view options](https://docs.github.com/articles/about-comparing-branches-in-pull-requests#diff-view-options)" in the GitHub Help documentation.',
+        description="Information about the author of the commit. By default, the `author` will be the authenticated user and the current date. See the `author` and `committer` object below for details.",
     )
-    line: Missing[int] = Field(
+    committer: Missing[ReposOwnerRepoGitCommitsPostBodyPropCommitter] = Field(
         default=UNSET,
-        description="**Required unless using `subject_type:file`**. The line of the blob in the pull request diff that the comment applies to. For a multi-line comment, the last line of the range that your comment applies to.",
+        description="Information about the person who is making the commit. By default, `committer` will use the information set in `author`. See the `author` and `committer` object below for details.",
     )
-    start_line: Missing[int] = Field(
+    signature: Missing[str] = Field(
         default=UNSET,
-        description='**Required when using multi-line comments unless using `in_reply_to`**. The `start_line` is the first line in the pull request diff that your multi-line comment applies to. To learn more about multi-line comments, see "[Commenting on a pull request](https://docs.github.com/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the GitHub Help documentation.',
-    )
-    start_side: Missing[Literal["LEFT", "RIGHT", "side"]] = Field(
-        default=UNSET,
-        description='**Required when using multi-line comments unless using `in_reply_to`**. The `start_side` is the starting side of the diff that the comment applies to. Can be `LEFT` or `RIGHT`. To learn more about multi-line comments, see "[Commenting on a pull request](https://docs.github.com/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the GitHub Help documentation. See `side` in this table for additional context.',
-    )
-    in_reply_to: Missing[int] = Field(
-        default=UNSET,
-        description='The ID of the review comment to reply to. To find the ID of a review comment with ["List review comments on a pull request"](#list-review-comments-on-a-pull-request). When specified, all parameters other than `body` in the request body are ignored.',
-    )
-    subject_type: Missing[Literal["line", "file"]] = Field(
-        default=UNSET, description="The level at which the comment is targeted."
+        description="The [PGP signature](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) of the commit. GitHub adds the signature to the `gpgsig` header of the created commit. For a commit signature to be verifiable by Git or GitHub, it must be an ASCII-armored detached PGP signature over the string commit as it would be written to the object database. To pass a `signature` parameter, you need to first manually create a valid PGP signature, which can be complicated. You may find it easier to [use the command line](https://git-scm.com/book/id/v2/Git-Tools-Signing-Your-Work) to create signed commits.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberCommentsPostBody)
+class ReposOwnerRepoGitCommitsPostBodyPropAuthor(GitHubModel):
+    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
 
-__all__ = ("ReposOwnerRepoPullsPullNumberCommentsPostBody",)
+    Information about the author of the commit. By default, the `author` will be the
+    authenticated user and the current date. See the `author` and `committer` object
+    below for details.
+    """
+
+    name: str = Field(description="The name of the author (or committer) of the commit")
+    email: str = Field(
+        description="The email of the author (or committer) of the commit"
+    )
+    date: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+
+
+class ReposOwnerRepoGitCommitsPostBodyPropCommitter(GitHubModel):
+    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
+
+    Information about the person who is making the commit. By default, `committer`
+    will use the information set in `author`. See the `author` and `committer`
+    object below for details.
+    """
+
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the author (or committer) of the commit"
+    )
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="The email of the author (or committer) of the commit",
+    )
+    date: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+
+
+model_rebuild(ReposOwnerRepoGitCommitsPostBody)
+model_rebuild(ReposOwnerRepoGitCommitsPostBodyPropAuthor)
+model_rebuild(ReposOwnerRepoGitCommitsPostBodyPropCommitter)
+
+__all__ = (
+    "ReposOwnerRepoGitCommitsPostBody",
+    "ReposOwnerRepoGitCommitsPostBodyPropAuthor",
+    "ReposOwnerRepoGitCommitsPostBodyPropCommitter",
+)

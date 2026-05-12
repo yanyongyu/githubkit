@@ -9,27 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0110 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class OrgsOrgActionsPermissionsPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsPutBody"""
+class EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    organization_logins: list[str]
+    properties: list[CustomPropertyValueType]
 
 
-class OrgsOrgActionsPermissionsPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPermissionsPutBody"""
+class EnterprisesEnterpriseOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    organization_logins: list[str]
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsPutBodyType",
-    "OrgsOrgActionsPermissionsPutBodyTypeForResponse",
+    "EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType",
+    "EnterprisesEnterpriseOrgPropertiesValuesPatchBodyTypeForResponse",
 )

@@ -13,41 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0237 import RepositoryRulesetType, RepositoryRulesetTypeForResponse
-from .group_0486 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0487 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0488 import (
+from .group_0491 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0492 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0493 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0489 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0494 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryRulesetDeletedType(TypedDict):
-    """repository ruleset deleted event"""
+class WebhookRepositoryImportType(TypedDict):
+    """repository_import event"""
 
-    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_ruleset: RepositoryRulesetType
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
+    status: Literal["success", "cancelled", "failure"]
 
 
-class WebhookRepositoryRulesetDeletedTypeForResponse(TypedDict):
-    """repository ruleset deleted event"""
+class WebhookRepositoryImportTypeForResponse(TypedDict):
+    """repository_import event"""
 
-    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    repository_ruleset: RepositoryRulesetTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
+    status: Literal["success", "cancelled", "failure"]
 
 
 __all__ = (
-    "WebhookRepositoryRulesetDeletedType",
-    "WebhookRepositoryRulesetDeletedTypeForResponse",
+    "WebhookRepositoryImportType",
+    "WebhookRepositoryImportTypeForResponse",
 )

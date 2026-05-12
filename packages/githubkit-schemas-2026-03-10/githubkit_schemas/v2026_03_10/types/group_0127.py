@@ -12,40 +12,82 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeScanningAlertRuleSummaryType(TypedDict):
-    """CodeScanningAlertRuleSummary"""
-
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
-    security_severity_level: NotRequired[
-        Union[None, Literal["low", "medium", "high", "critical"]]
-    ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[list[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
+from .group_0126 import TeamSimpleType, TeamSimpleTypeForResponse
 
 
-class CodeScanningAlertRuleSummaryTypeForResponse(TypedDict):
-    """CodeScanningAlertRuleSummary"""
+class TeamType(TypedDict):
+    """Team
 
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
-    security_severity_level: NotRequired[
-        Union[None, Literal["low", "medium", "high", "critical"]]
-    ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[list[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsType]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    parent: Union[None, TeamSimpleType]
+
+
+class TeamTypeForResponse(TypedDict):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsTypeForResponse]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    parent: Union[None, TeamSimpleTypeForResponse]
+
+
+class TeamPropPermissionsType(TypedDict):
+    """TeamPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
+
+
+class TeamPropPermissionsTypeForResponse(TypedDict):
+    """TeamPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
 
 
 __all__ = (
-    "CodeScanningAlertRuleSummaryType",
-    "CodeScanningAlertRuleSummaryTypeForResponse",
+    "TeamPropPermissionsType",
+    "TeamPropPermissionsTypeForResponse",
+    "TeamType",
+    "TeamTypeForResponse",
 )

@@ -9,70 +9,110 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0424 import (
-    DeploymentBranchPolicySettingsType,
-    DeploymentBranchPolicySettingsTypeForResponse,
-)
 
-
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
-
-    wait_timer: NotRequired[int]
-    prevent_self_review: NotRequired[bool]
-    reviewers: NotRequired[
-        Union[
-            list[
-                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType
-            ],
-            None,
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
-    ]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
-
-    wait_timer: NotRequired[int]
-    prevent_self_review: NotRequired[bool]
-    reviewers: NotRequired[
-        Union[
-            list[
-                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse
-            ],
-            None,
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
-    ]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
-
-    type: NotRequired[Literal["User", "Team"]]
-    id: NotRequired[int]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse(
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
 
-    type: NotRequired[Literal["User", "Team"]]
-    id: NotRequired[int]
+    dismissal_restrictions: NotRequired[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType
+    ]
+    dismiss_stale_reviews: NotRequired[bool]
+    require_code_owner_reviews: NotRequired[bool]
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
+    bypass_pull_request_allowances: NotRequired[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType
+    ]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
+
+    dismissal_restrictions: NotRequired[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse
+    ]
+    dismiss_stale_reviews: NotRequired[bool]
+    require_code_owner_reviews: NotRequired[bool]
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
+    bypass_pull_request_allowances: NotRequired[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse
+    ]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
+    missalRestrictions
+
+    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
+    empty `dismissal_restrictions` object to disable. User and team
+    `dismissal_restrictions` are only available for organization-owned repositories.
+    Omit this parameter for personal repositories.
+    """
+
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
+    missalRestrictions
+
+    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
+    empty `dismissal_restrictions` object to disable. User and team
+    `dismissal_restrictions` are only available for organization-owned repositories.
+    Omit this parameter for personal repositories.
+    """
+
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
+    assPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
+
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
+    assPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
+
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyTypeForResponse",
 )

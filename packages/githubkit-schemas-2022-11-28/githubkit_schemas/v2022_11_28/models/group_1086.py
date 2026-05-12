@@ -11,16 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgPrivateRegistriesPublicKeyGetResponse200(GitHubModel):
-    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
+class OrgsOrgCodespacesAccessSelectedUsersPostBody(GitHubModel):
+    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
+    selected_usernames: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The usernames of the organization members and outside collaborators whose codespaces should be billed to the organization.",
+    )
 
 
-model_rebuild(OrgsOrgPrivateRegistriesPublicKeyGetResponse200)
+model_rebuild(OrgsOrgCodespacesAccessSelectedUsersPostBody)
 
-__all__ = ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200",)
+__all__ = ("OrgsOrgCodespacesAccessSelectedUsersPostBody",)

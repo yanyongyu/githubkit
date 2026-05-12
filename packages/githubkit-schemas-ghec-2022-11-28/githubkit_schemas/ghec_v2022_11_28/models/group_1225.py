@@ -9,13 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotContentExclusionPutBody(ExtraGitHubModel):
-    """OrgsOrgCopilotContentExclusionPutBody"""
+class OrgsOrgAgentsVariablesNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgAgentsVariablesNameRepositoriesPutBody"""
+
+    selected_repository_ids: list[int] = Field(
+        description="The IDs of the repositories that can access the organization variable."
+    )
 
 
-model_rebuild(OrgsOrgCopilotContentExclusionPutBody)
+model_rebuild(OrgsOrgAgentsVariablesNameRepositoriesPutBody)
 
-__all__ = ("OrgsOrgCopilotContentExclusionPutBody",)
+__all__ = ("OrgsOrgAgentsVariablesNameRepositoriesPutBody",)

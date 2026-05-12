@@ -12,45 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
+class OrgsOrgCopilotContentExclusionPutResponse200Type(TypedDict):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    groups: NotRequired[
-        list[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
-    ]
+    message: NotRequired[str]
 
 
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
+class OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    groups: NotRequired[
-        list[
-            OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse
-        ]
-    ]
-
-
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
-
-
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
+    message: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyTypeForResponse",
+    "OrgsOrgCopilotContentExclusionPutResponse200Type",
+    "OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse",
 )

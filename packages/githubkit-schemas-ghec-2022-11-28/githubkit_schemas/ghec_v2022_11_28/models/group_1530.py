@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,22 +17,84 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0114 import RepositoryRulesetBypassActor
+from .group_0119 import RepositoryRulesetConditions
+from .group_0133 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0134 import RepositoryRuleUpdate
+from .group_0136 import RepositoryRuleRequiredLinearHistory
+from .group_0137 import RepositoryRuleRequiredDeployments
+from .group_0139 import RepositoryRulePullRequest
+from .group_0141 import RepositoryRuleRequiredStatusChecks
+from .group_0143 import RepositoryRuleCommitMessagePattern
+from .group_0145 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0147 import RepositoryRuleCommitterEmailPattern
+from .group_0149 import RepositoryRuleBranchNamePattern
+from .group_0151 import RepositoryRuleTagNamePattern
+from .group_0153 import RepositoryRuleFilePathRestriction
+from .group_0155 import RepositoryRuleMaxFilePathLength
+from .group_0157 import RepositoryRuleFileExtensionRestriction
+from .group_0159 import RepositoryRuleMaxFileSize
+from .group_0162 import RepositoryRuleWorkflows
+from .group_0164 import RepositoryRuleCodeScanning
+from .group_0166 import RepositoryRuleCopilotCodeReview
+from .group_0173 import RepositoryRuleMergeQueue
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
+class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
-    id: Missing[int] = Field(
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
         default=UNSET,
-        description="The unique identifier of the issue or pull request to add to the project.",
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
     )
-    owner: str = Field(description="The repository owner login.")
-    repo: str = Field(description="The repository name.")
-    number: int = Field(description="The issue or pull request number.")
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[RepositoryRulesetConditions] = Field(
+        default=UNSET,
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
+    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1)
+model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1",)
+__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)

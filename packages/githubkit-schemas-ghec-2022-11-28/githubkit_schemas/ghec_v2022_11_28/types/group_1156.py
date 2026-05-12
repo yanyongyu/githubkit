@@ -9,28 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0054 import RunnerType, RunnerTypeForResponse
-
-
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
-
-    total_count: float
-    runners: list[RunnerType]
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse(
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type(
     TypedDict
 ):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
+    00
+    """
 
-    total_count: float
-    runners: list[RunnerTypeForResponse]
+    message: NotRequired[str]
+    reassigned_resources: NotRequired[
+        Union[
+            list[
+                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType
+            ],
+            None,
+        ]
+    ]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
+    00
+    """
+
+    message: NotRequired[str]
+    reassigned_resources: NotRequired[
+        Union[
+            list[
+                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse
+            ],
+            None,
+        ]
+    ]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
+    00PropReassignedResourcesItems
+    """
+
+    resource_type: NotRequired[str]
+    name: NotRequired[str]
+    previous_cost_center: NotRequired[str]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
+    00PropReassignedResourcesItems
+    """
+
+    resource_type: NotRequired[str]
+    name: NotRequired[str]
+    previous_cost_center: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse",
 )

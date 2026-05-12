@@ -9,54 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0035 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
 
 
-class OrgsOrgCodespacesSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200"""
 
-    total_count: int
-    secrets: list[CodespacesOrgSecretType]
-
-
-class OrgsOrgCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[CodespacesOrgSecretTypeForResponse]
+    total_count: float
+    runners: list[ActionsHostedRunnerType]
 
 
-class CodespacesOrgSecretType(TypedDict):
-    """Codespaces Secret
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200"""
 
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
-
-
-class CodespacesOrgSecretTypeForResponse(TypedDict):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    total_count: float
+    runners: list[ActionsHostedRunnerTypeForResponse]
 
 
 __all__ = (
-    "CodespacesOrgSecretType",
-    "CodespacesOrgSecretTypeForResponse",
-    "OrgsOrgCodespacesSecretsGetResponse200Type",
-    "OrgsOrgCodespacesSecretsGetResponse200TypeForResponse",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse",
 )

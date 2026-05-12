@@ -9,22 +9,109 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0957 import (
+    AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type,
+    AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse,
+    AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType,
+    AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse,
+    AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType,
+    AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse,
+)
+from .group_0958 import (
+    AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsType,
+    AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse,
+    AgentsTasksTaskIdGetResponse200Allof0PropOwnerType,
+    AgentsTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse,
+)
+from .group_0960 import (
+    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
+    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
+)
 
 
-class GistsGistIdCommentsCommentIdPatchBodyType(TypedDict):
-    """GistsGistIdCommentsCommentIdPatchBody"""
+class AgentsTasksTaskIdGetResponse200Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse200"""
 
-    body: str
+    id: str
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    name: NotRequired[str]
+    creator: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type]
+    creator_type: NotRequired[Literal["user", "organization"]]
+    user_collaborators: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType]
+    ]
+    owner: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropOwnerType]
+    repository: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    session_count: NotRequired[int]
+    artifacts: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsType]
+    ]
+    archived_at: NotRequired[Union[_dt.datetime, None]]
+    updated_at: NotRequired[_dt.datetime]
+    created_at: _dt.datetime
+    sessions: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
+    ]
 
 
-class GistsGistIdCommentsCommentIdPatchBodyTypeForResponse(TypedDict):
-    """GistsGistIdCommentsCommentIdPatchBody"""
+class AgentsTasksTaskIdGetResponse200TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200"""
 
-    body: str
+    id: str
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    name: NotRequired[str]
+    creator: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse
+    ]
+    creator_type: NotRequired[Literal["user", "organization"]]
+    user_collaborators: NotRequired[
+        list[
+            AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse
+        ]
+    ]
+    owner: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse]
+    repository: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse
+    ]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    session_count: NotRequired[int]
+    artifacts: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse]
+    ]
+    archived_at: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    created_at: str
+    sessions: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "GistsGistIdCommentsCommentIdPatchBodyType",
-    "GistsGistIdCommentsCommentIdPatchBodyTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Type",
+    "AgentsTasksTaskIdGetResponse200TypeForResponse",
 )

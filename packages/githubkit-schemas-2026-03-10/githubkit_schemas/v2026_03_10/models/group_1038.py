@@ -11,19 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0135 import CopilotSpace
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotSpacesGetResponse200(GitHubModel):
-    """OrgsOrgCopilotSpacesGetResponse200"""
+class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
+    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
 
-    spaces: list[CopilotSpace] = Field(
-        description="The list of Copilot Spaces on this page of results."
+    labels: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
     )
 
 
-model_rebuild(OrgsOrgCopilotSpacesGetResponse200)
+model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPutBody)
 
-__all__ = ("OrgsOrgCopilotSpacesGetResponse200",)
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPutBody",)

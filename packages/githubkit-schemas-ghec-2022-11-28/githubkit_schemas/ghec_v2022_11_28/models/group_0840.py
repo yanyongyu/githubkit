@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,17 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0110 import CustomPropertyValue
-from .group_0568 import EnterpriseWebhooks
-from .group_0569 import SimpleInstallation
-from .group_0570 import OrganizationSimpleWebhooks
+from .group_0573 import EnterpriseWebhooks
+from .group_0574 import SimpleInstallation
+from .group_0575 import OrganizationSimpleWebhooks
+from .group_0576 import RepositoryWebhooks
+from .group_0586 import WebhooksUser
 
 
-class WebhookOrganizationCustomPropertyValuesUpdated(GitHubModel):
-    """Custom property values updated event"""
+class WebhookOrgBlockBlocked(GitHubModel):
+    """org_block blocked event"""
 
-    action: Literal["updated"] = Field()
-    enterprise: EnterpriseWebhooks = Field(
+    action: Literal["blocked"] = Field()
+    blocked_user: Union[WebhooksUser, None] = Field(title="User")
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
     )
@@ -41,17 +44,14 @@ class WebhookOrganizationCustomPropertyValuesUpdated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    new_property_values: list[CustomPropertyValue] = Field(
-        description="The new custom property values."
-    )
-    old_property_values: list[CustomPropertyValue] = Field(
-        description="The old custom property values."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookOrganizationCustomPropertyValuesUpdated)
+model_rebuild(WebhookOrgBlockBlocked)
 
-__all__ = ("WebhookOrganizationCustomPropertyValuesUpdated",)
+__all__ = ("WebhookOrgBlockBlocked",)

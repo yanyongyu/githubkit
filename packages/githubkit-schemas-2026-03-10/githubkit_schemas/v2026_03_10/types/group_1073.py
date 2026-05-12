@@ -11,24 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0133 import CodespaceType, CodespaceTypeForResponse
+
+class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType(TypedDict):
+    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
+
+    repository_id: int
+    alert_numbers: list[int]
 
 
-class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse(TypedDict):
+    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
 
-    total_count: int
-    codespaces: list[CodespaceType]
-
-
-class OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: list[CodespaceTypeForResponse]
+    repository_id: int
+    alert_numbers: list[int]
 
 
 __all__ = (
-    "OrgsOrgMembersUsernameCodespacesGetResponse200Type",
-    "OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse",
+    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType",
+    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse",
 )

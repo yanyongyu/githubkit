@@ -9,20 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0262 import Artifact
 
-
-class ReposOwnerRepoActionsArtifactsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
+class OrgsOrgDependabotSecretsGetResponse200(GitHubModel):
+    """OrgsOrgDependabotSecretsGetResponse200"""
 
     total_count: int = Field()
-    artifacts: list[Artifact] = Field()
+    secrets: list[OrganizationDependabotSecret] = Field()
 
 
-model_rebuild(ReposOwnerRepoActionsArtifactsGetResponse200)
+class OrganizationDependabotSecret(GitHubModel):
+    """Dependabot Secret for an Organization
 
-__all__ = ("ReposOwnerRepoActionsArtifactsGetResponse200",)
+    Secrets for GitHub Dependabot for an organization.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a secret"
+    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgDependabotSecretsGetResponse200)
+model_rebuild(OrganizationDependabotSecret)
+
+__all__ = (
+    "OrganizationDependabotSecret",
+    "OrgsOrgDependabotSecretsGetResponse200",
+)

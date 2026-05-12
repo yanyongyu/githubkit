@@ -16794,6 +16794,7 @@ class ReposClient:
             ReposOwnerRepoPagesPostBodyAnyof0Type,
             None,
             ReposOwnerRepoPagesPostBodyAnyof1Type,
+            None,
         ],
     ) -> Response[Page, PageTypeForResponse]: ...
 
@@ -16835,6 +16836,7 @@ class ReposClient:
                 ReposOwnerRepoPagesPostBodyAnyof0Type,
                 None,
                 ReposOwnerRepoPagesPostBodyAnyof1Type,
+                None,
             ]
         ] = UNSET,
         **kwargs,
@@ -16877,6 +16879,7 @@ class ReposClient:
                     ReposOwnerRepoPagesPostBodyAnyof0,
                     None,
                     ReposOwnerRepoPagesPostBodyAnyof1,
+                    None,
                 ],
                 json,
             )
@@ -16907,6 +16910,7 @@ class ReposClient:
             ReposOwnerRepoPagesPostBodyAnyof0Type,
             None,
             ReposOwnerRepoPagesPostBodyAnyof1Type,
+            None,
         ],
     ) -> Response[Page, PageTypeForResponse]: ...
 
@@ -16948,6 +16952,7 @@ class ReposClient:
                 ReposOwnerRepoPagesPostBodyAnyof0Type,
                 None,
                 ReposOwnerRepoPagesPostBodyAnyof1Type,
+                None,
             ]
         ] = UNSET,
         **kwargs,
@@ -16990,6 +16995,7 @@ class ReposClient:
                     ReposOwnerRepoPagesPostBodyAnyof0,
                     None,
                     ReposOwnerRepoPagesPostBodyAnyof1,
+                    None,
                 ],
                 json,
             )

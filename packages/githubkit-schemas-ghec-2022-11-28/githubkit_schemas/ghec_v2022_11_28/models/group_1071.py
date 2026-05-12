@@ -9,20 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody"""
-
-    selected_enterprise_teams: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of enterprise team names within the enterprise to which to grant access to GitHub Copilot.",
-    )
+class EmojisGetResponse200(ExtraGitHubModel):
+    """EmojisGetResponse200"""
 
 
-model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody)
+model_rebuild(EmojisGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody",)
+__all__ = ("EmojisGetResponse200",)

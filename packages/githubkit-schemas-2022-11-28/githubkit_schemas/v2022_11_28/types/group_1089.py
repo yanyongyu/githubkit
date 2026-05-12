@@ -9,22 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class OrgsOrgCodespacesSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNamePutBody"""
 
-    issue_field_id: int
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class OrgsOrgCodespacesSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNamePutBody"""
 
-    issue_field_id: int
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
+    "OrgsOrgCodespacesSecretsSecretNamePutBodyType",
+    "OrgsOrgCodespacesSecretsSecretNamePutBodyTypeForResponse",
 )

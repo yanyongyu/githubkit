@@ -16,78 +16,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
+class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
 
-    organization: Missing[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization
-    ] = Field(default=UNSET)
-    repository: Missing[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository
-    ] = Field(default=UNSET)
-    ruleset: Missing[
-        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
-    ] = Field(
+    total_count: float = Field()
+    runner_groups: list[RunnerGroupsEnterprise] = Field()
+
+
+class RunnerGroupsEnterprise(GitHubModel):
+    """RunnerGroupsEnterprise"""
+
+    id: float = Field()
+    name: str = Field()
+    visibility: str = Field()
+    default: bool = Field()
+    selected_organizations_url: Missing[str] = Field(default=UNSET)
+    runners_url: str = Field()
+    hosted_runners_url: Missing[str] = Field(default=UNSET)
+    network_configuration_id: Missing[str] = Field(
         default=UNSET,
-        description="The created or existing ruleset (if create_ruleset was true).",
+        description="The identifier of a hosted compute network configuration.",
+    )
+    allows_public_repositories: bool = Field()
+    workflow_restrictions_read_only: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
+    )
+    restricted_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    )
+    selected_workflows: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
     )
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
-
-    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
-    login: Missing[str] = Field(
-        default=UNSET, description="The login name of the organization."
-    )
-    avatar_url: Missing[str] = Field(
-        default=UNSET, description="The avatar URL of the organization."
-    )
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the .github-private repository."
-    )
-    name: Missing[str] = Field(default=UNSET, description="The name of the repository.")
-    full_name: Missing[str] = Field(
-        default=UNSET, description="The full name of the repository (owner/name)."
-    )
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
-
-    The created or existing ruleset (if create_ruleset was true).
-    """
-
-    id: Missing[int] = Field(default=UNSET, description="The ID of the ruleset.")
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
-    enforcement: Missing[str] = Field(
-        default=UNSET, description="The enforcement level of the ruleset."
-    )
-
-
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200)
-model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization
-)
-model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository
-)
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset)
+model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsGetResponse200)
+model_rebuild(RunnerGroupsEnterprise)
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset",
+    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200",
+    "RunnerGroupsEnterprise",
 )

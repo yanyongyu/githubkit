@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0567 import EnterpriseWebhooks
-from .group_0568 import SimpleInstallation
-from .group_0569 import OrganizationSimpleWebhooks
-from .group_0570 import RepositoryWebhooks
-from .group_0588 import WebhooksIssue
+from .group_0572 import EnterpriseWebhooks
+from .group_0573 import SimpleInstallation
+from .group_0574 import OrganizationSimpleWebhooks
+from .group_0575 import RepositoryWebhooks
+from .group_0594 import WebhooksMilestone
+from .group_0790 import WebhookIssuesDemilestonedPropIssue
 
 
-class WebhookIssuesFieldRemoved(GitHubModel):
-    """issues field_removed event"""
+class WebhookIssuesDemilestoned(GitHubModel):
+    """issues demilestoned event"""
 
-    action: Literal["field_removed"] = Field()
+    action: Literal["demilestoned"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,15 +40,14 @@ class WebhookIssuesFieldRemoved(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhooksIssue = Field(
+    issue: WebhookIssuesDemilestonedPropIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) itself.",
     )
-    issue_field: WebhookIssuesFieldRemovedPropIssueField = Field(
-        description="The issue field whose value was cleared from the issue."
-    )
-    issue_field_value: Missing[WebhookIssuesFieldRemovedPropIssueFieldValue] = Field(
-        default=UNSET, description="The value that was cleared from the issue field."
+    milestone: Missing[WebhooksMilestone] = Field(
+        default=UNSET,
+        title="Milestone",
+        description="A collection of related issues and pull requests.",
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -61,60 +61,6 @@ class WebhookIssuesFieldRemoved(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookIssuesFieldRemovedPropIssueField(GitHubModel):
-    """WebhookIssuesFieldRemovedPropIssueField
+model_rebuild(WebhookIssuesDemilestoned)
 
-    The issue field whose value was cleared from the issue.
-    """
-
-    id: int = Field(description="The unique identifier of the issue field.")
-    name: str = Field(description="The name of the issue field.")
-    field_type: Literal["text", "date", "single_select", "number"] = Field(
-        description="The data type of the issue field."
-    )
-
-
-class WebhookIssuesFieldRemovedPropIssueFieldValue(GitHubModel):
-    """WebhookIssuesFieldRemovedPropIssueFieldValue
-
-    The value that was cleared from the issue field.
-    """
-
-    id: int = Field(description="The unique identifier of the issue field value.")
-    value: Missing[Union[str, float, int, None]] = Field(
-        default=UNSET,
-        description="The value of the field. Present for text, date, and number field types.",
-    )
-    value_id: Missing[int] = Field(
-        default=UNSET,
-        description="The identifier of the selected option. Present for single_select field types.",
-    )
-    option: Missing[WebhookIssuesFieldRemovedPropIssueFieldValuePropOption] = Field(
-        default=UNSET,
-        description="The selected option details. Present for single_select field types.",
-    )
-
-
-class WebhookIssuesFieldRemovedPropIssueFieldValuePropOption(GitHubModel):
-    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOption
-
-    The selected option details. Present for single_select field types.
-    """
-
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    color: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(WebhookIssuesFieldRemoved)
-model_rebuild(WebhookIssuesFieldRemovedPropIssueField)
-model_rebuild(WebhookIssuesFieldRemovedPropIssueFieldValue)
-model_rebuild(WebhookIssuesFieldRemovedPropIssueFieldValuePropOption)
-
-__all__ = (
-    "WebhookIssuesFieldRemoved",
-    "WebhookIssuesFieldRemovedPropIssueField",
-    "WebhookIssuesFieldRemovedPropIssueFieldValue",
-    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOption",
-)
+__all__ = ("WebhookIssuesDemilestoned",)

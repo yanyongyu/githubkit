@@ -12,74 +12,48 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0537 import UserRoleItemsType, UserRoleItemsTypeForResponse
+
+class UserRoleItemsType(TypedDict):
+    """UserRoleItems"""
+
+    display: NotRequired[str]
+    type: NotRequired[str]
+    value: Literal[
+        "user",
+        "27d9891d-2c17-4f45-a262-781a0e55c80a",
+        "guest_collaborator",
+        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
+        "enterprise_owner",
+        "981df190-8801-4618-a08a-d91f6206c954",
+        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
+        "billing_manager",
+        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
+        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
+    ]
+    primary: NotRequired[bool]
 
 
-class UserType(TypedDict):
-    """User"""
+class UserRoleItemsTypeForResponse(TypedDict):
+    """UserRoleItems"""
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: str
-    active: bool
-    user_name: str
-    name: NotRequired[UserNameType]
-    display_name: str
-    emails: list[UserEmailsItemsType]
-    roles: NotRequired[list[UserRoleItemsType]]
-
-
-class UserTypeForResponse(TypedDict):
-    """User"""
-
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: str
-    active: bool
-    user_name: str
-    name: NotRequired[UserNameTypeForResponse]
-    display_name: str
-    emails: list[UserEmailsItemsTypeForResponse]
-    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
-
-
-class UserNameType(TypedDict):
-    """UserName"""
-
-    formatted: NotRequired[str]
-    family_name: str
-    given_name: str
-    middle_name: NotRequired[str]
-
-
-class UserNameTypeForResponse(TypedDict):
-    """UserName"""
-
-    formatted: NotRequired[str]
-    family_name: str
-    given_name: str
-    middle_name: NotRequired[str]
-
-
-class UserEmailsItemsType(TypedDict):
-    """UserEmailsItems"""
-
-    value: str
-    type: str
-    primary: bool
-
-
-class UserEmailsItemsTypeForResponse(TypedDict):
-    """UserEmailsItems"""
-
-    value: str
-    type: str
-    primary: bool
+    display: NotRequired[str]
+    type: NotRequired[str]
+    value: Literal[
+        "user",
+        "27d9891d-2c17-4f45-a262-781a0e55c80a",
+        "guest_collaborator",
+        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
+        "enterprise_owner",
+        "981df190-8801-4618-a08a-d91f6206c954",
+        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
+        "billing_manager",
+        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
+        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
+    ]
+    primary: NotRequired[bool]
 
 
 __all__ = (
-    "UserEmailsItemsType",
-    "UserEmailsItemsTypeForResponse",
-    "UserNameType",
-    "UserNameTypeForResponse",
-    "UserType",
-    "UserTypeForResponse",
+    "UserRoleItemsType",
+    "UserRoleItemsTypeForResponse",
 )

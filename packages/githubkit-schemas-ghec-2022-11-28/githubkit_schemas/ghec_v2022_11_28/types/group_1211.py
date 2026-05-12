@@ -9,49 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
 
-    metadata: NotRequired[
-        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType
-    ]
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
 
-    metadata: NotRequired[
-        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse
-    ]
-
-
-OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-
-Updated resource-specific metadata.
-"""
-
-
-OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-
-Updated resource-specific metadata.
-"""
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse",
+    "OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType",
+    "OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyTypeForResponse",
 )

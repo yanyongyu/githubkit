@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0119 import RunnerType, RunnerTypeForResponse
+
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
+
+    organization_slugs: list[str]
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type(TypedDict):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
 
-    runner: RunnerType
-    encoded_jit_config: str
-
-
-class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201TypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
-
-    runner: RunnerTypeForResponse
-    encoded_jit_config: str
+    organization_slugs: list[str]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type",
-    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201TypeForResponse",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyTypeForResponse",
 )

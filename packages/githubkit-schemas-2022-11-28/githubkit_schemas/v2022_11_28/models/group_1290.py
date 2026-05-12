@@ -9,21 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoReleasesReleaseIdReactionsPostBody(GitHubModel):
-    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"] = Field(
-        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the release."
+    assignees: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._",
     )
 
 
-model_rebuild(ReposOwnerRepoReleasesReleaseIdReactionsPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBody)
 
-__all__ = ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",)

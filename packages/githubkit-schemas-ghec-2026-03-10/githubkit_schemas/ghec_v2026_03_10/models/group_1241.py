@@ -9,13 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import GitHubModel, model_rebuild
+import datetime as _dt
+from typing import Literal, Union
+
+from pydantic import Field
+
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutResponse202(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
+class OrgsOrgCampaignsCampaignNumberPatchBody(GitHubModel):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+
+    name: Missing[str] = Field(
+        min_length=1,
+        max_length=50,
+        default=UNSET,
+        description="The name of the campaign",
+    )
+    description: Missing[str] = Field(
+        min_length=1,
+        max_length=255,
+        default=UNSET,
+        description="A description for the campaign",
+    )
+    managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
+    )
+    team_managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The slugs of the teams to set as the campaign managers.",
+    )
+    ends_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The end date and time of the campaign, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+    )
+    contact_link: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contact link of the campaign. Must be a URI."
+    )
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET,
+        title="Campaign state",
+        description="Indicates whether a campaign is open or closed",
+    )
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutResponse202)
+model_rebuild(OrgsOrgCampaignsCampaignNumberPatchBody)
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202",)
+__all__ = ("OrgsOrgCampaignsCampaignNumberPatchBody",)

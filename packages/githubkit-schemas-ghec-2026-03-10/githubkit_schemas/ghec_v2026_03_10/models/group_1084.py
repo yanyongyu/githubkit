@@ -12,22 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody(GitHubModel):
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
 
-    organization_id: int = Field(
-        description="The ID of the organization to use as the custom agents source."
-    )
-    create_ruleset: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to create a ruleset to protect agent definition files. Defaults to true.",
+    disable_self_hosted_runners_for_all_orgs: bool = Field(
+        description="When true, repository-level runners will be disabled across all organizations in the enterprise"
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody)
+model_rebuild(EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody)
 
-__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody",)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody",)

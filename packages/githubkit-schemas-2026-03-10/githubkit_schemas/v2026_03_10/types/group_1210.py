@@ -9,24 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoGitBlobsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitBlobsPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
+    f0
 
-    content: str
-    encoding: NotRequired[str]
+    Examples:
+        {'contexts': ['contexts']}
+    """
+
+    contexts: list[str]
 
 
-class ReposOwnerRepoGitBlobsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitBlobsPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
+    f0
 
-    content: str
-    encoding: NotRequired[str]
+    Examples:
+        {'contexts': ['contexts']}
+    """
+
+    contexts: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoGitBlobsPostBodyType",
-    "ReposOwnerRepoGitBlobsPostBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0TypeForResponse",
 )

@@ -157,6 +157,9 @@ class EnterpriseTeamsClient:
             Literal["disabled", "selected", "all"]
         ] = UNSET,
         group_id: Missing[Union[str, None]] = UNSET,
+        notification_setting: Missing[
+            Literal["notifications_enabled", "notifications_disabled"]
+        ] = UNSET,
     ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]: ...
 
     def create(
@@ -226,6 +229,9 @@ class EnterpriseTeamsClient:
             Literal["disabled", "selected", "all"]
         ] = UNSET,
         group_id: Missing[Union[str, None]] = UNSET,
+        notification_setting: Missing[
+            Literal["notifications_enabled", "notifications_disabled"]
+        ] = UNSET,
     ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]: ...
 
     async def async_create(
@@ -435,6 +441,9 @@ class EnterpriseTeamsClient:
             Literal["disabled", "selected", "all"]
         ] = UNSET,
         group_id: Missing[Union[str, None]] = UNSET,
+        notification_setting: Missing[
+            Literal["notifications_enabled", "notifications_disabled"]
+        ] = UNSET,
     ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]: ...
 
     def update(
@@ -516,6 +525,9 @@ class EnterpriseTeamsClient:
             Literal["disabled", "selected", "all"]
         ] = UNSET,
         group_id: Missing[Union[str, None]] = UNSET,
+        notification_setting: Missing[
+            Literal["notifications_enabled", "notifications_disabled"]
+        ] = UNSET,
     ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]: ...
 
     async def async_update(

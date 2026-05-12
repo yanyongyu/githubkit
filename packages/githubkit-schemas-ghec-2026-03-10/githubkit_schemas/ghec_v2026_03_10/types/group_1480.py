@@ -9,23 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdReposOwnerRepoPutBodyType(TypedDict):
-    """TeamsTeamIdReposOwnerRepoPutBody"""
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
 
-    permission: NotRequired[Literal["pull", "push", "admin"]]
+    sub_issue_id: int
+    after_id: NotRequired[int]
+    before_id: NotRequired[int]
 
 
-class TeamsTeamIdReposOwnerRepoPutBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdReposOwnerRepoPutBody"""
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
 
-    permission: NotRequired[Literal["pull", "push", "admin"]]
+    sub_issue_id: int
+    after_id: NotRequired[int]
+    before_id: NotRequired[int]
 
 
 __all__ = (
-    "TeamsTeamIdReposOwnerRepoPutBodyType",
-    "TeamsTeamIdReposOwnerRepoPutBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType",
+    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse",
 )

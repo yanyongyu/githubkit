@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -19,37 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsVariablesGetResponse200(GitHubModel):
-    """OrgsOrgActionsVariablesGetResponse200"""
+class GistsGistIdGetResponse403(GitHubModel):
+    """GistsGistIdGetResponse403"""
 
-    total_count: int = Field()
-    variables: list[OrganizationActionsVariable] = Field()
-
-
-class OrganizationActionsVariable(GitHubModel):
-    """Actions Variable for an Organization
-
-    Organization variable for GitHub Actions.
-    """
-
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    created_at: _dt.datetime = Field(
-        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a variable"
-    )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
+    block: Missing[GistsGistIdGetResponse403PropBlock] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgActionsVariablesGetResponse200)
-model_rebuild(OrganizationActionsVariable)
+class GistsGistIdGetResponse403PropBlock(GitHubModel):
+    """GistsGistIdGetResponse403PropBlock"""
+
+    reason: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    html_url: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(GistsGistIdGetResponse403)
+model_rebuild(GistsGistIdGetResponse403PropBlock)
 
 __all__ = (
-    "OrganizationActionsVariable",
-    "OrgsOrgActionsVariablesGetResponse200",
+    "GistsGistIdGetResponse403",
+    "GistsGistIdGetResponse403PropBlock",
 )

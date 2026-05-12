@@ -11,32 +11,31 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0036 import (
+    ActionsHostedRunnerCustomImageType,
+    ActionsHostedRunnerCustomImageTypeForResponse,
+)
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type(
+
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200"""
 
-    The total number of seats set to "pending cancellation" for the members of the
-    specified enterprise team(s).
-    """
-
-    seats_cancelled: int
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageType]
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse(
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200"""
 
-    The total number of seats set to "pending cancellation" for the members of the
-    specified enterprise team(s).
-    """
-
-    seats_cancelled: int
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type",
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
 )

@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,51 +18,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnerGroupsGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsGetResponse200"""
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
 
-    total_count: float = Field()
-    runner_groups: list[RunnerGroupsOrg] = Field()
-
-
-class RunnerGroupsOrg(GitHubModel):
-    """RunnerGroupsOrg"""
-
-    id: float = Field()
-    name: str = Field()
-    visibility: str = Field()
-    default: bool = Field()
-    selected_repositories_url: Missing[str] = Field(
-        default=UNSET,
-        description="Link to the selected repositories resource for this runner group. Not present unless visibility was set to `selected`",
+    budget_amount: int = Field(
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
     )
-    runners_url: str = Field()
-    hosted_runners_url: Missing[str] = Field(default=UNSET)
-    network_configuration_id: Missing[str] = Field(
-        default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
+    prevent_further_usage: bool = Field(
+        description="Whether to prevent additional spending once the budget is exceeded"
     )
-    inherited: bool = Field()
-    inherited_allows_public_repositories: Missing[bool] = Field(default=UNSET)
-    allows_public_repositories: bool = Field()
-    workflow_restrictions_read_only: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
+    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting = Field()
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"] = (
+        Field(description="The scope of the budget")
     )
-    restricted_to_workflows: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
     )
-    selected_workflows: Missing[list[str]] = Field(
+    budget_type: Literal["ProductPricing", "SkuPricing"] = Field(
+        description="The type of pricing for the budget"
+    )
+    budget_product_sku: Missing[str] = Field(
         default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+        description="A single product or SKU that will be covered in the budget",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsGetResponse200)
-model_rebuild(RunnerGroupsOrg)
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+
+    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
+    alert_recipients: list[str] = Field(
+        description="Array of user login names who will receive alerts"
+    )
+
+
+model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBody)
+model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting)
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsGetResponse200",
-    "RunnerGroupsOrg",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBody",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting",
 )

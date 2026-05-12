@@ -12,31 +12,20 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0313 import (
-    ProjectsV2FieldIterationConfigurationType,
-    ProjectsV2FieldIterationConfigurationTypeForResponse,
-)
+
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
+
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationType
-
-
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
-
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationTypeForResponse
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse",
+    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType",
+    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse",
 )

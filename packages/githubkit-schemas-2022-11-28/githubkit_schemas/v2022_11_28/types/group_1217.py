@@ -9,55 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoHooksPostBodyType(TypedDict):
-    """ReposOwnerRepoHooksPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
 
-    name: NotRequired[str]
-    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigType]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-
-
-class ReposOwnerRepoHooksPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksPostBody"""
-
-    name: NotRequired[str]
-    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-
-
-class ReposOwnerRepoHooksPostBodyPropConfigType(TypedDict):
-    """ReposOwnerRepoHooksPostBodyPropConfig
-
-    Key/value pairs to provide settings for this webhook.
+    Examples:
+        {'teams': ['my-team']}
     """
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    teams: list[str]
 
 
-class ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksPostBodyPropConfig
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
 
-    Key/value pairs to provide settings for this webhook.
+    Examples:
+        {'teams': ['my-team']}
     """
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    teams: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoHooksPostBodyPropConfigType",
-    "ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse",
-    "ReposOwnerRepoHooksPostBodyType",
-    "ReposOwnerRepoHooksPostBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0TypeForResponse",
 )

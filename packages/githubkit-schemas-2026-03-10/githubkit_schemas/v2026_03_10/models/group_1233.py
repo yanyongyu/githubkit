@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,37 +18,39 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1(GitHubModel):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1"""
 
-    issue_field_values: Missing[
-        list[
-            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems
-        ]
-    ] = Field(
-        max_length=25 if PYDANTIC_V2 else None,
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ] = Field(description="The language targeted by the CodeQL query")
+    query_pack: str = Field(
+        description="A Base64-encoded tarball containing a CodeQL query and all its dependencies"
+    )
+    repositories: Missing[list[str]] = Field(
         default=UNSET,
-        description="An array of issue field values to set for this issue. Each field value must include the field ID and the value to set. All existing field values will be replaced.",
+        description="List of repository names (in the form `owner/repo-name`) to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
+    )
+    repository_lists: list[str] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
+        description="List of repository lists to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
+    )
+    repository_owners: Missing[list[str]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="List of organization or user names whose repositories the query should be run against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems"""
+model_rebuild(ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1)
 
-    field_id: int = Field(description="The ID of the issue field to set")
-    value: Union[str, float] = Field(
-        description="The value to set for the field. The type depends on the field's data type:\n- For text fields: provide a string value\n- For single_select fields: provide the option name as a string (must match an existing option)\n- For number fields: provide a numeric value\n- For date fields: provide an ISO 8601 date string"
-    )
-
-
-model_rebuild(ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems
-)
-
-__all__ = (
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems",
-)
+__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1",)

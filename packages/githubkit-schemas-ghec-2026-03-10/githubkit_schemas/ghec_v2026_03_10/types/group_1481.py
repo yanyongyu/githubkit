@@ -12,49 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyType(TypedDict):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
+class ReposOwnerRepoKeysPostBodyType(TypedDict):
+    """ReposOwnerRepoKeysPostBody"""
 
-    groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
-    synced_at: NotRequired[str]
-
-
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
-
-    groups: list[
-        TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse
-    ]
-    synced_at: NotRequired[str]
+    title: NotRequired[str]
+    key: str
+    read_only: NotRequired[bool]
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+class ReposOwnerRepoKeysPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoKeysPostBody"""
 
-    group_id: str
-    group_name: str
-    group_description: str
-    id: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[str]
-
-
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse(
-    TypedDict
-):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
-    id: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[str]
+    title: NotRequired[str]
+    key: str
+    read_only: NotRequired[bool]
 
 
 __all__ = (
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyType",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyTypeForResponse",
+    "ReposOwnerRepoKeysPostBodyType",
+    "ReposOwnerRepoKeysPostBodyTypeForResponse",
 )

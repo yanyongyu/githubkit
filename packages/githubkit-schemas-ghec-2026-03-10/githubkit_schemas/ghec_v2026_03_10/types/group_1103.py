@@ -9,57 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0065 import (
+    AmazonS3AccessKeysConfigType,
+    AmazonS3AccessKeysConfigTypeForResponse,
+    AzureBlobConfigType,
+    AzureBlobConfigTypeForResponse,
+    AzureHubConfigType,
+    AzureHubConfigTypeForResponse,
+    DatadogConfigType,
+    DatadogConfigTypeForResponse,
+    HecConfigType,
+    HecConfigTypeForResponse,
+)
+from .group_0066 import (
+    AmazonS3OidcConfigType,
+    AmazonS3OidcConfigTypeForResponse,
+    SplunkConfigType,
+    SplunkConfigTypeForResponse,
+)
+from .group_0067 import GoogleCloudConfigType, GoogleCloudConfigTypeForResponse
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
+class EnterprisesEnterpriseAuditLogStreamsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
 
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_alerting: (
-        EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType
-    )
-    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
-    budget_entity_name: NotRequired[str]
-    budget_type: Literal["ProductPricing", "SkuPricing"]
-    budget_product_sku: NotRequired[str]
-
-
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
-
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse
-    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
-    budget_entity_name: NotRequired[str]
-    budget_type: Literal["ProductPricing", "SkuPricing"]
-    budget_product_sku: NotRequired[str]
-
-
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
-
-    will_alert: bool
-    alert_recipients: list[str]
+    enabled: bool
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+    ]
+    vendor_specific: Union[
+        AzureBlobConfigType,
+        AzureHubConfigType,
+        AmazonS3OidcConfigType,
+        AmazonS3AccessKeysConfigType,
+        SplunkConfigType,
+        HecConfigType,
+        GoogleCloudConfigType,
+        DatadogConfigType,
+    ]
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+class EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
 
-    will_alert: bool
-    alert_recipients: list[str]
+    enabled: bool
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+    ]
+    vendor_specific: Union[
+        AzureBlobConfigTypeForResponse,
+        AzureHubConfigTypeForResponse,
+        AmazonS3OidcConfigTypeForResponse,
+        AmazonS3AccessKeysConfigTypeForResponse,
+        SplunkConfigTypeForResponse,
+        HecConfigTypeForResponse,
+        GoogleCloudConfigTypeForResponse,
+        DatadogConfigTypeForResponse,
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseAuditLogStreamsPostBodyType",
+    "EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse",
 )

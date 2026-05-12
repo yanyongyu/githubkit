@@ -11,30 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody
-
-    Examples:
-        {'users': ['mona']}
-    """
-
-    users: list[str]
+from .group_0104 import NetworkConfigurationType, NetworkConfigurationTypeForResponse
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
 
-    Examples:
-        {'users': ['mona']}
-    """
+    total_count: int
+    network_configurations: list[NetworkConfigurationType]
 
-    users: list[str]
+
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+
+    total_count: int
+    network_configurations: list[NetworkConfigurationTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyTypeForResponse",
+    "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
+    "OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse",
 )

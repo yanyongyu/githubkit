@@ -9,24 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import TypeAlias
+import datetime as _dt
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-CopilotOrganizationContentExclusionDetailsType: TypeAlias = dict[str, Any]
-"""Copilot Organization Content Exclusion Details
 
-List all Copilot Content Exclusion rules for an organization.
+class CopilotSpaceResourceType(TypedDict):
+    """Copilot Space Resource
+
+    A resource attached to a Copilot Space.
+    """
+
+    id: int
+    resource_type: Literal[
+        "repository",
+        "github_file",
+        "free_text",
+        "github_issue",
+        "github_pull_request",
+        "media_content",
+        "uploaded_text_file",
+    ]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    metadata: CopilotSpaceResourcePropMetadataType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+
+
+class CopilotSpaceResourceTypeForResponse(TypedDict):
+    """Copilot Space Resource
+
+    A resource attached to a Copilot Space.
+    """
+
+    id: int
+    resource_type: Literal[
+        "repository",
+        "github_file",
+        "free_text",
+        "github_issue",
+        "github_pull_request",
+        "media_content",
+        "uploaded_text_file",
+    ]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    metadata: CopilotSpaceResourcePropMetadataTypeForResponse
+    created_at: str
+    updated_at: str
+
+
+CopilotSpaceResourcePropMetadataType: TypeAlias = dict[str, Any]
+"""CopilotSpaceResourcePropMetadata
+
+Resource-specific metadata. The keys and values depend on the resource type.
 """
 
 
-CopilotOrganizationContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
-"""Copilot Organization Content Exclusion Details
+CopilotSpaceResourcePropMetadataTypeForResponse: TypeAlias = dict[str, Any]
+"""CopilotSpaceResourcePropMetadata
 
-List all Copilot Content Exclusion rules for an organization.
+Resource-specific metadata. The keys and values depend on the resource type.
 """
 
 
 __all__ = (
-    "CopilotOrganizationContentExclusionDetailsType",
-    "CopilotOrganizationContentExclusionDetailsTypeForResponse",
+    "CopilotSpaceResourcePropMetadataType",
+    "CopilotSpaceResourcePropMetadataTypeForResponse",
+    "CopilotSpaceResourceType",
+    "CopilotSpaceResourceTypeForResponse",
 )

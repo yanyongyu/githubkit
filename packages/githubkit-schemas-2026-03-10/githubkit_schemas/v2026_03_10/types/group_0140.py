@@ -10,115 +10,71 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0047 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
-from .group_0125 import TeamType, TeamTypeForResponse
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class CopilotSeatDetailsType(TypedDict):
-    """Copilot Business Seat Detail
+class CopilotSpaceResourceType(TypedDict):
+    """Copilot Space Resource
 
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
-    """
-
-    assignee: NotRequired[Union[None, SimpleUserType]]
-    organization: NotRequired[Union[None, OrganizationSimpleType]]
-    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
-    pending_cancellation_date: NotRequired[Union[_dt.date, None]]
-    last_activity_at: NotRequired[Union[_dt.datetime, None]]
-    last_activity_editor: NotRequired[Union[str, None]]
-    last_authenticated_at: NotRequired[Union[_dt.datetime, None]]
-    created_at: _dt.datetime
-    updated_at: NotRequired[_dt.datetime]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
-
-
-class CopilotSeatDetailsTypeForResponse(TypedDict):
-    """Copilot Business Seat Detail
-
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
-    """
-
-    assignee: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    organization: NotRequired[Union[None, OrganizationSimpleTypeForResponse]]
-    assigning_team: NotRequired[
-        Union[TeamTypeForResponse, EnterpriseTeamTypeForResponse, None]
-    ]
-    pending_cancellation_date: NotRequired[Union[str, None]]
-    last_activity_at: NotRequired[Union[str, None]]
-    last_activity_editor: NotRequired[Union[str, None]]
-    last_authenticated_at: NotRequired[Union[str, None]]
-    created_at: str
-    updated_at: NotRequired[str]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
-
-
-class EnterpriseTeamType(TypedDict):
-    """Enterprise Team
-
-    Group of enterprise owners and/or members
+    A resource attached to a Copilot Space.
     """
 
     id: int
-    name: str
-    description: NotRequired[str]
-    slug: str
-    url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: Union[str, None]
-    group_name: NotRequired[Union[str, None]]
-    html_url: str
-    members_url: str
+    resource_type: Literal[
+        "repository",
+        "github_file",
+        "free_text",
+        "github_issue",
+        "github_pull_request",
+        "media_content",
+        "uploaded_text_file",
+    ]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    metadata: CopilotSpaceResourcePropMetadataType
     created_at: _dt.datetime
     updated_at: _dt.datetime
 
 
-class EnterpriseTeamTypeForResponse(TypedDict):
-    """Enterprise Team
+class CopilotSpaceResourceTypeForResponse(TypedDict):
+    """Copilot Space Resource
 
-    Group of enterprise owners and/or members
+    A resource attached to a Copilot Space.
     """
 
     id: int
-    name: str
-    description: NotRequired[str]
-    slug: str
-    url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: Union[str, None]
-    group_name: NotRequired[Union[str, None]]
-    html_url: str
-    members_url: str
+    resource_type: Literal[
+        "repository",
+        "github_file",
+        "free_text",
+        "github_issue",
+        "github_pull_request",
+        "media_content",
+        "uploaded_text_file",
+    ]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    metadata: CopilotSpaceResourcePropMetadataTypeForResponse
     created_at: str
     updated_at: str
 
 
-class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+CopilotSpaceResourcePropMetadataType: TypeAlias = dict[str, Any]
+"""CopilotSpaceResourcePropMetadata
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsType]]
+Resource-specific metadata. The keys and values depend on the resource type.
+"""
 
 
-class OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+CopilotSpaceResourcePropMetadataTypeForResponse: TypeAlias = dict[str, Any]
+"""CopilotSpaceResourcePropMetadata
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
+Resource-specific metadata. The keys and values depend on the resource type.
+"""
 
 
 __all__ = (
-    "CopilotSeatDetailsType",
-    "CopilotSeatDetailsTypeForResponse",
-    "EnterpriseTeamType",
-    "EnterpriseTeamTypeForResponse",
-    "OrgsOrgCopilotBillingSeatsGetResponse200Type",
-    "OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse",
+    "CopilotSpaceResourcePropMetadataType",
+    "CopilotSpaceResourcePropMetadataTypeForResponse",
+    "CopilotSpaceResourceType",
+    "CopilotSpaceResourceTypeForResponse",
 )

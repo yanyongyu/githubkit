@@ -12,21 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoNotificationsPutResponse202Type(TypedDict):
-    """ReposOwnerRepoNotificationsPutResponse202"""
+class ReposOwnerRepoDeploymentsPostResponse202Type(TypedDict):
+    """ReposOwnerRepoDeploymentsPostResponse202"""
 
     message: NotRequired[str]
-    url: NotRequired[str]
 
 
-class ReposOwnerRepoNotificationsPutResponse202TypeForResponse(TypedDict):
-    """ReposOwnerRepoNotificationsPutResponse202"""
+class ReposOwnerRepoDeploymentsPostResponse202TypeForResponse(TypedDict):
+    """ReposOwnerRepoDeploymentsPostResponse202"""
 
     message: NotRequired[str]
-    url: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoNotificationsPutResponse202Type",
-    "ReposOwnerRepoNotificationsPutResponse202TypeForResponse",
+    "ReposOwnerRepoDeploymentsPostResponse202Type",
+    "ReposOwnerRepoDeploymentsPostResponse202TypeForResponse",
 )

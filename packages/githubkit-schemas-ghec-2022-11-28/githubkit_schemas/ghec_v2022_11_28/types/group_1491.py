@@ -9,28 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0243 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-
-
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class ReposOwnerRepoNotificationsPutBodyType(TypedDict):
+    """ReposOwnerRepoNotificationsPutBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    last_read_at: NotRequired[_dt.datetime]
+
+
+class ReposOwnerRepoNotificationsPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoNotificationsPutBody"""
+
+    last_read_at: NotRequired[str]
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "ReposOwnerRepoNotificationsPutBodyType",
+    "ReposOwnerRepoNotificationsPutBodyTypeForResponse",
 )

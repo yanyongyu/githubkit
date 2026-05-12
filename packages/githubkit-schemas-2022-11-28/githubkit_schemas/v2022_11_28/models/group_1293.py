@@ -9,41 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0(GitHubModel):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
+class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
 
-    state: Literal["open", "resolved"] = Field(
-        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
-    )
-    resolution: Missing[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
-    ] = Field(
-        default=UNSET,
-        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
-    )
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
-    )
-    assignee: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The username of the user to assign to the alert. Set to `null` to unassign the alert.",
-    )
-    validity: Missing[Union[None, Literal["active", "inactive"]]] = Field(
-        default=UNSET,
-        description="Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override.",
+    issue_id: int = Field(
+        description="The id of the issue that blocks the current issue"
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody",)

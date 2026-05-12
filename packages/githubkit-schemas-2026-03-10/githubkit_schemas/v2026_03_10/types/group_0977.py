@@ -9,26 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
 
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-
-
-class OrgsOrgActionsPermissionsRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
-
-    total_count: float
-    repositories: list[RepositoryType]
+EmojisGetResponse200Type: TypeAlias = dict[str, Any]
+"""EmojisGetResponse200
+"""
 
 
-class OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
-
-    total_count: float
-    repositories: list[RepositoryTypeForResponse]
+EmojisGetResponse200TypeForResponse: TypeAlias = dict[str, Any]
+"""EmojisGetResponse200
+"""
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsRepositoriesGetResponse200Type",
-    "OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse",
+    "EmojisGetResponse200Type",
+    "EmojisGetResponse200TypeForResponse",
 )

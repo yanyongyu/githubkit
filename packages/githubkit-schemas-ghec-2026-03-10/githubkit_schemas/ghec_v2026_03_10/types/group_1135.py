@@ -9,33 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0037 import (
-    ActionsHostedRunnerCustomImageVersionType,
-    ActionsHostedRunnerCustomImageVersionTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202Type(
     TypedDict
 ):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202"""
 
-    total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202"""
 
-    total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionTypeForResponse]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse",
 )

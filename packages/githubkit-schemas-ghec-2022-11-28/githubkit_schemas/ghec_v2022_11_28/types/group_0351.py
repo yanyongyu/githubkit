@@ -12,29 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class WorkflowDispatchResponseType(TypedDict):
-    """Workflow Dispatch Response
+class ReviewCustomGatesCommentRequiredType(TypedDict):
+    """ReviewCustomGatesCommentRequired"""
 
-    Response containing the workflow run ID and URLs.
-    """
-
-    workflow_run_id: int
-    run_url: str
-    html_url: str
+    environment_name: str
+    comment: str
 
 
-class WorkflowDispatchResponseTypeForResponse(TypedDict):
-    """Workflow Dispatch Response
+class ReviewCustomGatesCommentRequiredTypeForResponse(TypedDict):
+    """ReviewCustomGatesCommentRequired"""
 
-    Response containing the workflow run ID and URLs.
-    """
-
-    workflow_run_id: int
-    run_url: str
-    html_url: str
+    environment_name: str
+    comment: str
 
 
 __all__ = (
-    "WorkflowDispatchResponseType",
-    "WorkflowDispatchResponseTypeForResponse",
+    "ReviewCustomGatesCommentRequiredType",
+    "ReviewCustomGatesCommentRequiredTypeForResponse",
 )

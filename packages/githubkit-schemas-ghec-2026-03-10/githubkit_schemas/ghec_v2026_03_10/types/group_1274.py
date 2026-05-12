@@ -9,37 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugPatchBody"""
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
-class OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugPatchBody"""
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugPatchBodyType",
-    "OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse",
+    "OrgsOrgCopilotCodingAgentPermissionsGetResponse200Type",
+    "OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse",
 )

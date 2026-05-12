@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type(TypedDict):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
 
-    pattern_config_version: NotRequired[str]
+    selected_teams: list[str]
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
 
-    pattern_config_version: NotRequired[str]
+    selected_teams: list[str]
 
 
 __all__ = (
-    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteBodyTypeForResponse",
 )

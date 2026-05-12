@@ -9,28 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-
-
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class ReposOwnerRepoMilestonesPostBodyType(TypedDict):
+    """ReposOwnerRepoMilestonesPostBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    title: str
+    state: NotRequired[Literal["open", "closed"]]
+    description: NotRequired[str]
+    due_on: NotRequired[_dt.datetime]
+
+
+class ReposOwnerRepoMilestonesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoMilestonesPostBody"""
+
+    title: str
+    state: NotRequired[Literal["open", "closed"]]
+    description: NotRequired[str]
+    due_on: NotRequired[str]
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "ReposOwnerRepoMilestonesPostBodyType",
+    "ReposOwnerRepoMilestonesPostBodyTypeForResponse",
 )

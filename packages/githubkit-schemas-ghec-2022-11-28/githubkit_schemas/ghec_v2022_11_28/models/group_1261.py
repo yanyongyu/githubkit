@@ -15,28 +15,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
-
-    fields: list[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems] = (
-        Field(description="A list of field updates to apply.")
-    )
+from .group_0262 import CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-    id: int = Field(description="The ID of the project field to update.")
-    value: Union[str, float, None] = Field(
-        description="The new value for the field:\n- For text, number, and date fields, provide the new value directly.\n- For single select and iteration fields, provide the ID of the option or iteration.\n- To clear the field, set this to null."
-    )
+    collaborators: list[
+        Union[CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1]
+    ] = Field(description="The list of collaborators for this Copilot Space.")
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody)
-model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200)
 
-__all__ = (
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody",
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
-)
+__all__ = ("OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200",)

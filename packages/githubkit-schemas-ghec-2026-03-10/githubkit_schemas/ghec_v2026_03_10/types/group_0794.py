@@ -9,51 +9,129 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0567 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0568 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0569 import (
+from .group_0572 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0573 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0574 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0570 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0589 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
-from .group_0795 import (
-    WebhookIssuesMilestonedPropIssueType,
-    WebhookIssuesMilestonedPropIssueTypeForResponse,
-)
+from .group_0575 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0593 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
 
-class WebhookIssuesMilestonedType(TypedDict):
-    """issues milestoned event"""
+class WebhookIssuesFieldRemovedType(TypedDict):
+    """issues field_removed event"""
 
-    action: Literal["milestoned"]
+    action: Literal["field_removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesMilestonedPropIssueType
-    milestone: WebhooksMilestoneType
+    issue: WebhooksIssueType
+    issue_field: WebhookIssuesFieldRemovedPropIssueFieldType
+    issue_field_value: NotRequired[WebhookIssuesFieldRemovedPropIssueFieldValueType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesMilestonedTypeForResponse(TypedDict):
-    """issues milestoned event"""
+class WebhookIssuesFieldRemovedTypeForResponse(TypedDict):
+    """issues field_removed event"""
 
-    action: Literal["milestoned"]
+    action: Literal["field_removed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesMilestonedPropIssueTypeForResponse
-    milestone: WebhooksMilestoneTypeForResponse
+    issue: WebhooksIssueTypeForResponse
+    issue_field: WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse
+    issue_field_value: NotRequired[
+        WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse
+    ]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
+class WebhookIssuesFieldRemovedPropIssueFieldType(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueField
+
+    The issue field whose value was cleared from the issue.
+    """
+
+    id: int
+    name: str
+    field_type: Literal["text", "date", "single_select", "number"]
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueField
+
+    The issue field whose value was cleared from the issue.
+    """
+
+    id: int
+    name: str
+    field_type: Literal["text", "date", "single_select", "number"]
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldValueType(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueFieldValue
+
+    The value that was cleared from the issue field.
+    """
+
+    id: int
+    value: NotRequired[Union[str, float, int, None]]
+    value_id: NotRequired[int]
+    option: NotRequired[WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType]
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueFieldValue
+
+    The value that was cleared from the issue field.
+    """
+
+    id: int
+    value: NotRequired[Union[str, float, int, None]]
+    value_id: NotRequired[int]
+    option: NotRequired[
+        WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse
+    ]
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOption
+
+    The selected option details. Present for single_select field types.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOption
+
+    The selected option details. Present for single_select field types.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+
+
 __all__ = (
-    "WebhookIssuesMilestonedType",
-    "WebhookIssuesMilestonedTypeForResponse",
+    "WebhookIssuesFieldRemovedPropIssueFieldType",
+    "WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse",
+    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType",
+    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse",
+    "WebhookIssuesFieldRemovedPropIssueFieldValueType",
+    "WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse",
+    "WebhookIssuesFieldRemovedType",
+    "WebhookIssuesFieldRemovedTypeForResponse",
 )

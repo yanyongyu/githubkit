@@ -9,42 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsSecretsGetResponse200(GitHubModel):
-    """OrgsOrgActionsSecretsGetResponse200"""
+class GistsGistIdPatchBody(GitHubModel):
+    """GistsGistIdPatchBody"""
 
-    total_count: int = Field()
-    secrets: list[OrganizationActionsSecret] = Field()
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the gist."
+    )
+    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
+        default=UNSET,
+        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be\ndeleted if the specified object does not contain at least one of `content` or `filename`.",
+    )
 
 
-class OrganizationActionsSecret(GitHubModel):
-    """Actions Secret for an Organization
+class GistsGistIdPatchBodyPropFiles(ExtraGitHubModel):
+    """GistsGistIdPatchBodyPropFiles
 
-    Secrets for GitHub Actions for an organization.
+    The gist files to be updated, renamed, or deleted. Each `key` must match the
+    current filename
+    (including extension) of the targeted gist file. For example: `hello.py`.
+
+    To delete a file, set the whole file to null. For example: `hello.py : null`.
+    The file will also be
+    deleted if the specified object does not contain at least one of `content` or
+    `filename`.
+
+    Examples:
+        {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
     """
 
-    name: str = Field(description="The name of the secret.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a secret"
-    )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
-
-model_rebuild(OrgsOrgActionsSecretsGetResponse200)
-model_rebuild(OrganizationActionsSecret)
+model_rebuild(GistsGistIdPatchBody)
+model_rebuild(GistsGistIdPatchBodyPropFiles)
 
 __all__ = (
-    "OrganizationActionsSecret",
-    "OrgsOrgActionsSecretsGetResponse200",
+    "GistsGistIdPatchBody",
+    "GistsGistIdPatchBodyPropFiles",
 )

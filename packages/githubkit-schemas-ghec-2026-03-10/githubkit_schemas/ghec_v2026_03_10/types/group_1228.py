@@ -13,25 +13,37 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgDependabotSecretsSecretNamePutBodyType(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNamePutBody"""
+class OrgsOrgArtifactsMetadataStorageRecordPostBodyType(TypedDict):
+    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    name: str
+    digest: str
+    version: NotRequired[str]
+    artifact_url: NotRequired[str]
+    path: NotRequired[str]
+    registry_url: str
+    repository: NotRequired[str]
+    status: NotRequired[Literal["active", "eol", "deleted"]]
+    github_repository: NotRequired[str]
+    return_records: NotRequired[bool]
 
 
-class OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNamePutBody"""
+class OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    name: str
+    digest: str
+    version: NotRequired[str]
+    artifact_url: NotRequired[str]
+    path: NotRequired[str]
+    registry_url: str
+    repository: NotRequired[str]
+    status: NotRequired[Literal["active", "eol", "deleted"]]
+    github_repository: NotRequired[str]
+    return_records: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgDependabotSecretsSecretNamePutBodyType",
-    "OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse",
+    "OrgsOrgArtifactsMetadataStorageRecordPostBodyType",
+    "OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse",
 )

@@ -9,26 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type(TypedDict):
-    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
-
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type(TypedDict):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
-class EnterprisesEnterpriseCodeScanningAlertsGetResponse503TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
-
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse(TypedDict):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type",
-    "EnterprisesEnterpriseCodeScanningAlertsGetResponse503TypeForResponse",
+    "AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type",
+    "AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse",
 )

@@ -14,19 +14,19 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0049 import DiscussionType, DiscussionTypeForResponse
-from .group_0485 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0486 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0487 import (
+from .group_0490 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0491 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0492 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0488 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0493 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionReopenedType(TypedDict):
-    """discussion reopened event"""
+class WebhookDiscussionDeletedType(TypedDict):
+    """discussion deleted event"""
 
-    action: Literal["reopened"]
+    action: Literal["deleted"]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -35,10 +35,10 @@ class WebhookDiscussionReopenedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionReopenedTypeForResponse(TypedDict):
-    """discussion reopened event"""
+class WebhookDiscussionDeletedTypeForResponse(TypedDict):
+    """discussion deleted event"""
 
-    action: Literal["reopened"]
+    action: Literal["deleted"]
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookDiscussionReopenedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionReopenedType",
-    "WebhookDiscussionReopenedTypeForResponse",
+    "WebhookDiscussionDeletedType",
+    "WebhookDiscussionDeletedTypeForResponse",
 )

@@ -13,44 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0567 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0568 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0569 import (
+from .group_0572 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0573 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0574 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0570 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0572 import ExemptionResponseType, ExemptionResponseTypeForResponse
-from .group_0573 import ExemptionRequestType, ExemptionRequestTypeForResponse
+from .group_0575 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0576 import WebhooksRuleType, WebhooksRuleTypeForResponse
 
 
-class WebhookExemptionRequestResponseDismissedType(TypedDict):
-    """Exemption response dismissed event"""
+class WebhookBranchProtectionRuleDeletedType(TypedDict):
+    """branch protection rule deleted event"""
 
-    action: Literal["response_dismissed"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    exemption_request: ExemptionRequestType
-    exemption_response: ExemptionResponseType
+    repository: RepositoryWebhooksType
+    rule: WebhooksRuleType
     sender: SimpleUserType
 
 
-class WebhookExemptionRequestResponseDismissedTypeForResponse(TypedDict):
-    """Exemption response dismissed event"""
+class WebhookBranchProtectionRuleDeletedTypeForResponse(TypedDict):
+    """branch protection rule deleted event"""
 
-    action: Literal["response_dismissed"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    exemption_request: ExemptionRequestTypeForResponse
-    exemption_response: ExemptionResponseTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    rule: WebhooksRuleTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookExemptionRequestResponseDismissedType",
-    "WebhookExemptionRequestResponseDismissedTypeForResponse",
+    "WebhookBranchProtectionRuleDeletedType",
+    "WebhookBranchProtectionRuleDeletedTypeForResponse",
 )

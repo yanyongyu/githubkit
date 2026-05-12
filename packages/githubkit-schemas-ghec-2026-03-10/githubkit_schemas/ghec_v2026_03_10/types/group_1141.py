@@ -9,30 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC Subject customization
+class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    Actions OIDC Subject customization
-    """
+    name: NotRequired[str]
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
 
+class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-class OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
-    """Actions OIDC Subject customization
-
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+    name: NotRequired[str]
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgActionsOidcCustomizationSubPutBodyType",
-    "OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse",
+    "EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
+    "EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse",
 )

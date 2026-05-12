@@ -14,15 +14,18 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoGitRefsPostBody(GitHubModel):
-    """ReposOwnerRepoGitRefsPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody
 
-    ref: str = Field(
-        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: list[str] = Field(
+        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items."
     )
-    sha: str = Field(description="The SHA1 value for this reference.")
 
 
-model_rebuild(ReposOwnerRepoGitRefsPostBody)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody)
 
-__all__ = ("ReposOwnerRepoGitRefsPostBody",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody",)

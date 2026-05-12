@@ -10,26 +10,38 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class ReposOwnerRepoReleasesPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesPostBody"""
 
-    name: str
-    data_type: Literal["text", "number", "date"]
+    tag_name: str
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    discussion_category_name: NotRequired[str]
+    generate_release_notes: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class ReposOwnerRepoReleasesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesPostBody"""
 
-    name: str
-    data_type: Literal["text", "number", "date"]
+    tag_name: str
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    discussion_category_name: NotRequired[str]
+    generate_release_notes: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoReleasesPostBodyType",
+    "ReposOwnerRepoReleasesPostBodyTypeForResponse",
 )

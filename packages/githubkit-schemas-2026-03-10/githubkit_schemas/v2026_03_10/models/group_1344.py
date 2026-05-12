@@ -11,34 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    metadata: Missing[
-        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-    ] = Field(default=UNSET, description="Updated resource-specific metadata.")
-
-
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata(
-    ExtraGitHubModel
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-
-    Updated resource-specific metadata.
-    """
+    message: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody)
-model_rebuild(
-    UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-)
+model_rebuild(ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202)
 
-__all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202",)

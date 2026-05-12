@@ -12,21 +12,29 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDeleteResponse403Type(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
+class OrgsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessPatchBody
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
-class ReposOwnerRepoDeleteResponse403TypeForResponse(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
+class OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessPatchBody
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
 __all__ = (
-    "ReposOwnerRepoDeleteResponse403Type",
-    "ReposOwnerRepoDeleteResponse403TypeForResponse",
+    "OrgsOrgDependabotRepositoryAccessPatchBodyType",
+    "OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse",
 )

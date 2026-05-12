@@ -13,117 +13,31 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCheckRunsPostBodyPropOutputType(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutput
-
-    Check runs can accept a variety of data in the `output` object, including a
-    `title` and `summary` and can optionally provide descriptive details about the
-    run.
-    """
-
-    title: str
-    summary: str
-    text: NotRequired[str]
-    annotations: NotRequired[
-        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType]
-    ]
-    images: NotRequired[
-        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType]
-    ]
-
-
-class ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutput
-
-    Check runs can accept a variety of data in the `output` object, including a
-    `title` and `summary` and can optionally provide descriptive details about the
-    run.
-    """
-
-    title: str
-    summary: str
-    text: NotRequired[str]
-    annotations: NotRequired[
-        list[
-            ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsTypeForResponse
-        ]
-    ]
-    images: NotRequired[
-        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsTypeForResponse]
-    ]
-
-
-class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
-
-    path: str
-    start_line: int
-    end_line: int
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
-    annotation_level: Literal["notice", "warning", "failure"]
-    message: str
-    title: NotRequired[str]
-    raw_details: NotRequired[str]
-
-
-class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsTypeForResponse(
+class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
     TypedDict
 ):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
+    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    path: str
-    start_line: int
-    end_line: int
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
-    annotation_level: Literal["notice", "warning", "failure"]
-    message: str
-    title: NotRequired[str]
-    raw_details: NotRequired[str]
+    name: NotRequired[str]
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
-class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
-
-    alt: str
-    image_url: str
-    caption: NotRequired[str]
-
-
-class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsTypeForResponse(
+class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
+    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    alt: str
-    image_url: str
-    caption: NotRequired[str]
-
-
-class ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
-
-    label: str
-    description: str
-    identifier: str
-
-
-class ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
-
-    label: str
-    description: str
-    identifier: str
+    name: NotRequired[str]
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType",
-    "ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsTypeForResponse",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsTypeForResponse",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputType",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse",
+    "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
+    "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse",
 )

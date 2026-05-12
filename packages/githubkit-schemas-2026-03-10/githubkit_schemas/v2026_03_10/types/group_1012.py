@@ -9,33 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0123 import (
-    ArtifactDeploymentRecordType,
-    ArtifactDeploymentRecordTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200Type(
-    TypedDict
-):
-    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
-    total_count: NotRequired[int]
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageType]
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
-    total_count: NotRequired[int]
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
+
+
+class ActionsHostedRunnerCustomImageType(TypedDict):
+    """GitHub-hosted runner custom image details
+
+    Provides details of a custom runner image
+    """
+
+    id: int
+    platform: str
+    total_versions_size: int
+    name: str
+    source: str
+    versions_count: int
+    latest_version: str
+    state: str
+
+
+class ActionsHostedRunnerCustomImageTypeForResponse(TypedDict):
+    """GitHub-hosted runner custom image details
+
+    Provides details of a custom runner image
+    """
+
+    id: int
+    platform: str
+    total_versions_size: int
+    name: str
+    source: str
+    versions_count: int
+    latest_version: str
+    state: str
 
 
 __all__ = (
-    "OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200Type",
-    "OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse",
+    "ActionsHostedRunnerCustomImageType",
+    "ActionsHostedRunnerCustomImageTypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
 )

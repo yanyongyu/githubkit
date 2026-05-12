@@ -53,6 +53,9 @@ if TYPE_CHECKING:
         ActionsWorkflowAccessToRepository,
         Artifact,
         AuthenticationToken,
+        ConcurrencyGroup,
+        ConcurrencyGroupList,
+        ConcurrencyGroupRunList,
         Deployment,
         EmptyObject,
         EnvironmentApprovals,
@@ -145,6 +148,9 @@ if TYPE_CHECKING:
         ActionsWorkflowAccessToRepositoryTypeForResponse,
         ArtifactTypeForResponse,
         AuthenticationTokenTypeForResponse,
+        ConcurrencyGroupListTypeForResponse,
+        ConcurrencyGroupRunListTypeForResponse,
+        ConcurrencyGroupTypeForResponse,
         DeploymentTypeForResponse,
         EmptyObjectTypeForResponse,
         EnvironmentApprovalsTypeForResponse,
@@ -10206,6 +10212,212 @@ class ActionsClient:
             stream=stream,
         )
 
+    def list_concurrency_groups_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        after: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[ConcurrencyGroupList, ConcurrencyGroupListTypeForResponse]:
+        """actions/list-concurrency-groups-for-repository
+
+        GET /repos/{owner}/{repo}/actions/concurrency_groups
+
+        Lists the active concurrency groups for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/concurrency-groups#list-concurrency-groups-for-a-repository
+        """
+
+        from ..models import ConcurrencyGroupList, ValidationError
+
+        url = f"/repos/{owner}/{repo}/actions/concurrency_groups"
+
+        params = {
+            "per_page": per_page,
+            "after": after,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ConcurrencyGroupList,
+            error_models={
+                "422": ValidationError,
+            },
+        )
+
+    async def async_list_concurrency_groups_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        after: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[ConcurrencyGroupList, ConcurrencyGroupListTypeForResponse]:
+        """actions/list-concurrency-groups-for-repository
+
+        GET /repos/{owner}/{repo}/actions/concurrency_groups
+
+        Lists the active concurrency groups for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/concurrency-groups#list-concurrency-groups-for-a-repository
+        """
+
+        from ..models import ConcurrencyGroupList, ValidationError
+
+        url = f"/repos/{owner}/{repo}/actions/concurrency_groups"
+
+        params = {
+            "per_page": per_page,
+            "after": after,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ConcurrencyGroupList,
+            error_models={
+                "422": ValidationError,
+            },
+        )
+
+    def get_concurrency_group_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        concurrency_group_name: str,
+        *,
+        ahead_of_run: Missing[int] = UNSET,
+        ahead_of_job: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[ConcurrencyGroup, ConcurrencyGroupTypeForResponse]:
+        """actions/get-concurrency-group-for-repository
+
+        GET /repos/{owner}/{repo}/actions/concurrency_groups/{concurrency_group_name}
+
+        Gets a specific concurrency group for a repository, including all instances in the group's queue.
+        Returns 404 if the group is inactive or does not exist.
+
+        Optionally, pass `ahead_of_run` or `ahead_of_job` to filter the results to only the items
+        ahead of the specified workflow run or job in the queue, plus the specified item itself
+        (returned as the last element). This is useful for determining what is blocking a particular
+        run or job. Returns 422 if the specified run or job is not in this concurrency group.
+
+        When using `ahead_of_run`, this matches workflow-level concurrency and any reusable-workflow
+        leases held on behalf of that run. Job-level leases within the run are not considered to
+        block the run as a whole. Use `ahead_of_job` to match job-level concurrency and reusable-workflow
+        leases on the job's ancestor paths.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/concurrency-groups#get-a-concurrency-group-for-a-repository
+        """
+
+        from ..models import BasicError, ConcurrencyGroup, ValidationError
+
+        url = (
+            f"/repos/{owner}/{repo}/actions/concurrency_groups/{concurrency_group_name}"
+        )
+
+        params = {
+            "ahead_of_run": ahead_of_run,
+            "ahead_of_job": ahead_of_job,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ConcurrencyGroup,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_get_concurrency_group_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        concurrency_group_name: str,
+        *,
+        ahead_of_run: Missing[int] = UNSET,
+        ahead_of_job: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[ConcurrencyGroup, ConcurrencyGroupTypeForResponse]:
+        """actions/get-concurrency-group-for-repository
+
+        GET /repos/{owner}/{repo}/actions/concurrency_groups/{concurrency_group_name}
+
+        Gets a specific concurrency group for a repository, including all instances in the group's queue.
+        Returns 404 if the group is inactive or does not exist.
+
+        Optionally, pass `ahead_of_run` or `ahead_of_job` to filter the results to only the items
+        ahead of the specified workflow run or job in the queue, plus the specified item itself
+        (returned as the last element). This is useful for determining what is blocking a particular
+        run or job. Returns 422 if the specified run or job is not in this concurrency group.
+
+        When using `ahead_of_run`, this matches workflow-level concurrency and any reusable-workflow
+        leases held on behalf of that run. Job-level leases within the run are not considered to
+        block the run as a whole. Use `ahead_of_job` to match job-level concurrency and reusable-workflow
+        leases on the job's ancestor paths.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/concurrency-groups#get-a-concurrency-group-for-a-repository
+        """
+
+        from ..models import BasicError, ConcurrencyGroup, ValidationError
+
+        url = (
+            f"/repos/{owner}/{repo}/actions/concurrency_groups/{concurrency_group_name}"
+        )
+
+        params = {
+            "ahead_of_run": ahead_of_run,
+            "ahead_of_job": ahead_of_job,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ConcurrencyGroup,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
     def get_job_for_workflow_run(
         self,
         owner: str,
@@ -10371,6 +10583,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         enable_debug_logging: Missing[bool] = UNSET,
+        enable_debugger: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def re_run_job_for_workflow_run(
@@ -10457,6 +10670,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         enable_debug_logging: Missing[bool] = UNSET,
+        enable_debugger: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_re_run_job_for_workflow_run(
@@ -14715,6 +14929,134 @@ class ActionsClient:
             response_model=EmptyObject,
             error_models={
                 "409": BasicError,
+            },
+        )
+
+    def list_concurrency_groups_for_workflow_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[ConcurrencyGroupRunList, ConcurrencyGroupRunListTypeForResponse]:
+        """actions/list-concurrency-groups-for-workflow-run
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/concurrency_groups
+
+        Lists all concurrency groups associated with a workflow run or its jobs.
+
+        The set of groups is derived from the run's configuration, so a group is
+        included even when the run no longer has any items currently holding or
+        waiting in it. In that case the `group_members` array will be empty.
+        `total_count` reflects the number of groups the run participates in by
+        configuration, not the number with active items.
+
+        This differs from `GET /repos/{owner}/{repo}/actions/concurrency_groups/{group_name}`,
+        which returns 404 when a group has no active items. That endpoint reports
+        the live state of a group repo-wide, while this endpoint reports the
+        groups associated with a specific run by configuration.
+
+        Results are sorted by group name and support cursor-based pagination via
+        `before` and `after`. The `after` cursor paginates forward only and does
+        not emit a `rel="prev"` Link; use `before` to page backward from a
+        forward page's `next` cursor.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/concurrency-groups#list-concurrency-groups-for-a-workflow-run
+        """
+
+        from ..models import BasicError, ConcurrencyGroupRunList, ValidationError
+
+        url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/concurrency_groups"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ConcurrencyGroupRunList,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_list_concurrency_groups_for_workflow_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[ConcurrencyGroupRunList, ConcurrencyGroupRunListTypeForResponse]:
+        """actions/list-concurrency-groups-for-workflow-run
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/concurrency_groups
+
+        Lists all concurrency groups associated with a workflow run or its jobs.
+
+        The set of groups is derived from the run's configuration, so a group is
+        included even when the run no longer has any items currently holding or
+        waiting in it. In that case the `group_members` array will be empty.
+        `total_count` reflects the number of groups the run participates in by
+        configuration, not the number with active items.
+
+        This differs from `GET /repos/{owner}/{repo}/actions/concurrency_groups/{group_name}`,
+        which returns 404 when a group has no active items. That endpoint reports
+        the live state of a group repo-wide, while this endpoint reports the
+        groups associated with a specific run by configuration.
+
+        Results are sorted by group name and support cursor-based pagination via
+        `before` and `after`. The `after` cursor paginates forward only and does
+        not emit a `rel="prev"` Link; use `before` to page backward from a
+        forward page's `next` cursor.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/concurrency-groups#list-concurrency-groups-for-a-workflow-run
+        """
+
+        from ..models import BasicError, ConcurrencyGroupRunList, ValidationError
+
+        url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/concurrency_groups"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ConcurrencyGroupRunList,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
             },
         )
 

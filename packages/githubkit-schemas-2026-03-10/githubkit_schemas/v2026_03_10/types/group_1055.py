@@ -13,21 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotCodingAgentPermissionsGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
+class OrgsOrgAgentsVariablesPostBodyType(TypedDict):
+    """OrgsOrgAgentsVariablesPostBody"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+    name: str
+    value: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
+class OrgsOrgAgentsVariablesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgAgentsVariablesPostBody"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+    name: str
+    value: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgCopilotCodingAgentPermissionsGetResponse200Type",
-    "OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse",
+    "OrgsOrgAgentsVariablesPostBodyType",
+    "OrgsOrgAgentsVariablesPostBodyTypeForResponse",
 )

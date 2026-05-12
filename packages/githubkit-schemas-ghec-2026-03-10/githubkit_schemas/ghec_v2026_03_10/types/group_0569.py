@@ -9,57 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 from typing_extensions import TypedDict
 
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
-class OrganizationSimpleWebhooksType(TypedDict):
-    """Organization Simple
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
+class StarredRepositoryType(TypedDict):
+    """Starred Repository
+
+    Starred Repository
     """
 
-    login: str
-    id: int
-    node_id: str
-    url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
+    starred_at: _dt.datetime
+    repo: RepositoryType
 
 
-class OrganizationSimpleWebhooksTypeForResponse(TypedDict):
-    """Organization Simple
+class StarredRepositoryTypeForResponse(TypedDict):
+    """Starred Repository
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
+    Starred Repository
     """
 
-    login: str
-    id: int
-    node_id: str
-    url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
+    starred_at: str
+    repo: RepositoryTypeForResponse
 
 
 __all__ = (
-    "OrganizationSimpleWebhooksType",
-    "OrganizationSimpleWebhooksTypeForResponse",
+    "StarredRepositoryType",
+    "StarredRepositoryTypeForResponse",
 )

@@ -13,25 +13,54 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody(GitHubModel):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
+class AgentsTasksTaskIdGetResponse401(GitHubModel):
+    """AgentsTasksTaskIdGetResponse401
 
-    client_id: str = Field(description="The Client ID of the GitHub App to install.")
-    repository_selection: Literal["all", "selected", "none"] = Field(
-        description="The repository selection for the GitHub App. Must be one of:\n* `all` - the installation can access all repositories in the organization.\n* `selected` - the installation can access only the listed repositories.\n* `none` - no repository permissions are requested. Only use when the app does not request repository permissions."
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    repositories: Missing[list[str]] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
+    errors: Missing[list[AgentsTasksTaskIdGetResponse401PropErrorsItems]] = Field(
         default=UNSET,
-        description="The names of the repositories to which the installation will be granted access. This is the simple name of the repository, not the full name (e.g., `hello-world` not `octocat/hello-world`). This is only required when `repository_selection` is `selected`.",
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsTasksTaskIdGetResponse401PropErrorsItems(GitHubModel):
+    """AgentsTasksTaskIdGetResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody)
+model_rebuild(AgentsTasksTaskIdGetResponse401)
+model_rebuild(AgentsTasksTaskIdGetResponse401PropErrorsItems)
 
-__all__ = ("EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody",)
+__all__ = (
+    "AgentsTasksTaskIdGetResponse401",
+    "AgentsTasksTaskIdGetResponse401PropErrorsItems",
+)

@@ -9,45 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0567 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0568 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0569 import (
+from .group_0572 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0573 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0574 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0570 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0580 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0575 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0601 import WebhooksMilestone3Type, WebhooksMilestone3TypeForResponse
 
 
-class WebhookOrgBlockUnblockedType(TypedDict):
-    """org_block unblocked event"""
+class WebhookMilestoneCreatedType(TypedDict):
+    """milestone created event"""
 
-    action: Literal["unblocked"]
-    blocked_user: Union[WebhooksUserType, None]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
+    milestone: WebhooksMilestone3Type
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookOrgBlockUnblockedTypeForResponse(TypedDict):
-    """org_block unblocked event"""
+class WebhookMilestoneCreatedTypeForResponse(TypedDict):
+    """milestone created event"""
 
-    action: Literal["unblocked"]
-    blocked_user: Union[WebhooksUserTypeForResponse, None]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    milestone: WebhooksMilestone3TypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookOrgBlockUnblockedType",
-    "WebhookOrgBlockUnblockedTypeForResponse",
+    "WebhookMilestoneCreatedType",
+    "WebhookMilestoneCreatedTypeForResponse",
 )

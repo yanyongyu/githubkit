@@ -9,54 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
-
-    organization: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization,
-        None,
-    ] = Field()
-    repository: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository, None
-    ] = Field()
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization(
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
 
-    id: int = Field(description="Unique identifier of the organization")
-    login: str = Field(description="Login of the organization")
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
-
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="Name of the repository")
-    full_name: str = Field(description="Full name of the repository including owner")
+    disable_self_hosted_runners_for_all_orgs: bool = Field(
+        description="When true, repository-level runners will be disabled across all organizations in the enterprise"
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200)
-model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization
-)
-model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository
-)
+model_rebuild(EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200)
 
-__all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository",
-)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200",)

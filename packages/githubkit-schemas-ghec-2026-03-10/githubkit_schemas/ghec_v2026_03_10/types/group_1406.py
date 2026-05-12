@@ -11,22 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
-
-    issue_id: int
+from .group_0258 import CodespaceType, CodespaceTypeForResponse
 
 
-class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
+class ReposOwnerRepoCodespacesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesGetResponse200"""
 
-    issue_id: int
+    total_count: int
+    codespaces: list[CodespaceType]
+
+
+class ReposOwnerRepoCodespacesGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesGetResponse200"""
+
+    total_count: int
+    codespaces: list[CodespaceTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyTypeForResponse",
+    "ReposOwnerRepoCodespacesGetResponse200Type",
+    "ReposOwnerRepoCodespacesGetResponse200TypeForResponse",
 )

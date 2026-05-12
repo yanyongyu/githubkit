@@ -12,21 +12,29 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoGitRefsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitRefsPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
 
-    ref: str
-    sha: str
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str]
 
 
-class ReposOwnerRepoGitRefsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitRefsPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
 
-    ref: str
-    sha: str
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoGitRefsPostBodyType",
-    "ReposOwnerRepoGitRefsPostBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyTypeForResponse",
 )

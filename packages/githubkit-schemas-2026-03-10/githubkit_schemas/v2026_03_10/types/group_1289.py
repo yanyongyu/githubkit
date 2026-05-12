@@ -9,23 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType(TypedDict):
-    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
+    assignees: NotRequired[list[str]]
 
 
-class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
+    assignees: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType",
-    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyTypeForResponse",
 )

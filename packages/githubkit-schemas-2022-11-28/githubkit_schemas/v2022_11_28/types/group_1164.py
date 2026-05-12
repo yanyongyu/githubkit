@@ -9,77 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1162 import (
-    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
-    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse,
-    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
-    ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse,
-)
 
+class OrgsOrgTeamsTeamSlugPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugPatchBody"""
 
-class ReposOwnerRepoCheckRunsPostBodyOneof1Type(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyOneof1"""
-
-    name: str
-    head_sha: str
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    status: NotRequired[
-        Literal["queued", "in_progress", "waiting", "requested", "pending"]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
-    started_at: NotRequired[_dt.datetime]
-    conclusion: NotRequired[
-        Literal[
-            "action_required",
-            "cancelled",
-            "failure",
-            "neutral",
-            "success",
-            "skipped",
-            "stale",
-            "timed_out",
-        ]
-    ]
-    completed_at: NotRequired[_dt.datetime]
-    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
-    actions: NotRequired[list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
 
 
-class ReposOwnerRepoCheckRunsPostBodyOneof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyOneof1"""
+class OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugPatchBody"""
 
-    name: str
-    head_sha: str
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    status: NotRequired[
-        Literal["queued", "in_progress", "waiting", "requested", "pending"]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
-    started_at: NotRequired[str]
-    conclusion: NotRequired[
-        Literal[
-            "action_required",
-            "cancelled",
-            "failure",
-            "neutral",
-            "success",
-            "skipped",
-            "stale",
-            "timed_out",
-        ]
-    ]
-    completed_at: NotRequired[str]
-    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse]
-    actions: NotRequired[
-        list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse]
-    ]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
 
 
 __all__ = (
-    "ReposOwnerRepoCheckRunsPostBodyOneof1Type",
-    "ReposOwnerRepoCheckRunsPostBodyOneof1TypeForResponse",
+    "OrgsOrgTeamsTeamSlugPatchBodyType",
+    "OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse",
 )

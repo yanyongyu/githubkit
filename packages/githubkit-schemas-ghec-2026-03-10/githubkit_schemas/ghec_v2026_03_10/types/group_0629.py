@@ -13,44 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0567 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0568 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0569 import (
+from .group_0572 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0573 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0574 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0570 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0575 import (
-    CheckRunWithSimpleCheckSuiteType,
-    CheckRunWithSimpleCheckSuiteTypeForResponse,
-)
+from .group_0575 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0578 import ExemptionRequestType, ExemptionRequestTypeForResponse
 
 
-class WebhookCheckRunCreatedType(TypedDict):
-    """Check Run Created Event"""
+class WebhookExemptionRequestCreatedType(TypedDict):
+    """Exemption request created event"""
 
     action: Literal["created"]
-    check_run: CheckRunWithSimpleCheckSuiteType
-    installation: NotRequired[SimpleInstallationType]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    exemption_request: ExemptionRequestType
     sender: SimpleUserType
 
 
-class WebhookCheckRunCreatedTypeForResponse(TypedDict):
-    """Check Run Created Event"""
+class WebhookExemptionRequestCreatedTypeForResponse(TypedDict):
+    """Exemption request created event"""
 
     action: Literal["created"]
-    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    exemption_request: ExemptionRequestTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCheckRunCreatedType",
-    "WebhookCheckRunCreatedTypeForResponse",
+    "WebhookExemptionRequestCreatedType",
+    "WebhookExemptionRequestCreatedTypeForResponse",
 )

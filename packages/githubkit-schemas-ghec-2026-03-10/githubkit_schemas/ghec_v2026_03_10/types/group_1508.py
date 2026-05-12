@@ -9,29 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
 
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    body: str
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
 
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    body: str
 
 
 __all__ = (
-    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyType",
-    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType",
+    "ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyTypeForResponse",
 )

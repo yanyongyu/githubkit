@@ -9,55 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class OrgsOrgHooksHookIdPatchBodyType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBody"""
+class OrgsOrgAttestationsBulkListPostResponse200Type(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200"""
 
-    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigType]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-    name: NotRequired[str]
-
-
-class OrgsOrgHooksHookIdPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgHooksHookIdPatchBody"""
-
-    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-    name: NotRequired[str]
+    attestations_subject_digests: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
+    ]
+    page_info: NotRequired[OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType]
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
+class OrgsOrgAttestationsBulkListPostResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200"""
 
-    Key/value pairs to provide settings for this webhook.
+    attestations_subject_digests: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse
+    ]
+    page_info: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse
+    ]
+
+
+OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+
+Mapping of subject digest to bundles.
+"""
+
+
+OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+
+Mapping of subject digest to bundles.
+"""
+
+
+class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
     """
 
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse(TypedDict):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
+class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
 
-    Key/value pairs to provide settings for this webhook.
+    Information about the current page.
     """
 
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgHooksHookIdPatchBodyPropConfigType",
-    "OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse",
-    "OrgsOrgHooksHookIdPatchBodyType",
-    "OrgsOrgHooksHookIdPatchBodyTypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
+    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType",
+    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200Type",
+    "OrgsOrgAttestationsBulkListPostResponse200TypeForResponse",
 )

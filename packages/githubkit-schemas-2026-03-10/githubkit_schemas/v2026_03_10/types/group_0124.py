@@ -9,59 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamSimpleType(TypedDict):
-    """Team Simple
+class OrganizationActionsVariableType(TypedDict):
+    """Actions Variable for an Organization
 
-    Groups of organization members that gives permissions on specified repositories.
+    Organization variable for GitHub Actions.
     """
 
-    id: int
-    node_id: str
-    url: str
-    members_url: str
     name: str
-    description: Union[str, None]
-    permission: str
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    html_url: str
-    repositories_url: str
-    slug: str
-    ldap_dn: NotRequired[str]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    value: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class TeamSimpleTypeForResponse(TypedDict):
-    """Team Simple
+class OrganizationActionsVariableTypeForResponse(TypedDict):
+    """Actions Variable for an Organization
 
-    Groups of organization members that gives permissions on specified repositories.
+    Organization variable for GitHub Actions.
     """
 
-    id: int
-    node_id: str
-    url: str
-    members_url: str
     name: str
-    description: Union[str, None]
-    permission: str
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    html_url: str
-    repositories_url: str
-    slug: str
-    ldap_dn: NotRequired[str]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    value: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "TeamSimpleType",
-    "TeamSimpleTypeForResponse",
+    "OrganizationActionsVariableType",
+    "OrganizationActionsVariableTypeForResponse",
 )

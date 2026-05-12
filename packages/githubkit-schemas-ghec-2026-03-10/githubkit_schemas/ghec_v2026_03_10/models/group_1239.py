@@ -9,55 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Annotated, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class OrgsOrgMigrationsPostBody(GitHubModel):
-    """OrgsOrgMigrationsPostBody"""
-
-    repositories: list[str] = Field(
-        description="A list of arrays indicating which repositories should be migrated."
-    )
-    lock_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether repositories should be locked (to prevent manipulation) while migrating data.",
-    )
-    exclude_metadata: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
-    )
-    exclude_git_data: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether the repository git data should be excluded from the migration.",
-    )
-    exclude_attachments: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether attachments should be excluded from the migration (to reduce migration archive file size).",
-    )
-    exclude_releases: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether releases should be excluded from the migration (to reduce migration archive file size).",
-    )
-    exclude_owner_projects: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether projects owned by the organization or users should be excluded. from the migration.",
-    )
-    org_metadata_only: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
-    )
-    exclude: Missing[list[Literal["repositories"]]] = Field(
-        default=UNSET,
-        description="Exclude related items from being returned in the response in order to improve performance of the request.",
-    )
+from .group_1238 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems
 
 
-model_rebuild(OrgsOrgMigrationsPostBody)
+class OrgsOrgCampaignsPostBodyOneof0(GitHubModel):
+    """OrgsOrgCampaignsPostBodyOneof0"""
 
-__all__ = ("OrgsOrgMigrationsPostBody",)
+    name: str = Field(
+        min_length=1, max_length=50, description="The name of the campaign"
+    )
+    description: str = Field(
+        min_length=1, max_length=255, description="A description for the campaign"
+    )
+    managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
+    )
+    team_managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The slugs of the teams to set as the campaign managers.",
+    )
+    ends_at: _dt.datetime = Field(
+        description="The end date and time of the campaign. The date must be in the future."
+    )
+    contact_link: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contact link of the campaign. Must be a URI."
+    )
+    code_scanning_alerts: Union[
+        Annotated[
+            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems],
+            Field(min_length=1 if PYDANTIC_V2 else None),
+        ],
+        None,
+    ] = Field(description="The code scanning alerts to include in this campaign")
+    generate_issues: Missing[bool] = Field(
+        default=UNSET,
+        description="If true, will automatically generate issues for the campaign. The default is false.",
+    )
+
+
+model_rebuild(OrgsOrgCampaignsPostBodyOneof0)
+
+__all__ = ("OrgsOrgCampaignsPostBodyOneof0",)

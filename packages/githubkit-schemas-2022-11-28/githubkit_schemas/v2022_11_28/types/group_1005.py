@@ -9,26 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
+class NotificationsPutResponse202Type(TypedDict):
+    """NotificationsPutResponse202"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+    message: NotRequired[str]
 
 
-class OrgsOrgActionsVariablesNameRepositoriesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
+class NotificationsPutResponse202TypeForResponse(TypedDict):
+    """NotificationsPutResponse202"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type",
-    "OrgsOrgActionsVariablesNameRepositoriesGetResponse200TypeForResponse",
+    "NotificationsPutResponse202Type",
+    "NotificationsPutResponse202TypeForResponse",
 )

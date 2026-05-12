@@ -13,41 +13,51 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0413 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0567 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0568 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0569 import (
+from .group_0572 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0573 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0574 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0570 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertAssigneesChangedType(TypedDict):
-    """Dependabot alert assignees changed event"""
+class WebhookCustomPropertyDeletedType(TypedDict):
+    """custom property deleted event"""
 
-    action: Literal["assignees_changed"]
-    alert: DependabotAlertType
+    action: Literal["deleted"]
+    definition: WebhookCustomPropertyDeletedPropDefinitionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookDependabotAlertAssigneesChangedTypeForResponse(TypedDict):
-    """Dependabot alert assignees changed event"""
+class WebhookCustomPropertyDeletedTypeForResponse(TypedDict):
+    """custom property deleted event"""
 
-    action: Literal["assignees_changed"]
-    alert: DependabotAlertTypeForResponse
+    action: Literal["deleted"]
+    definition: WebhookCustomPropertyDeletedPropDefinitionTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+class WebhookCustomPropertyDeletedPropDefinitionType(TypedDict):
+    """WebhookCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
+
+
+class WebhookCustomPropertyDeletedPropDefinitionTypeForResponse(TypedDict):
+    """WebhookCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
 
 
 __all__ = (
-    "WebhookDependabotAlertAssigneesChangedType",
-    "WebhookDependabotAlertAssigneesChangedTypeForResponse",
+    "WebhookCustomPropertyDeletedPropDefinitionType",
+    "WebhookCustomPropertyDeletedPropDefinitionTypeForResponse",
+    "WebhookCustomPropertyDeletedType",
+    "WebhookCustomPropertyDeletedTypeForResponse",
 )

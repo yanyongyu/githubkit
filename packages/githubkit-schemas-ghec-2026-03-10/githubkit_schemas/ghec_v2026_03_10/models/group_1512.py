@@ -11,19 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof1(GitHubModel):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof1"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
 
-    attestation_ids: list[int] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of unique IDs associated with the artifact attestations to delete.",
+    reviewers: list[str] = Field(
+        description="An array of user `login`s that will be requested."
+    )
+    team_reviewers: Missing[list[str]] = Field(
+        default=UNSET, description="An array of team `slug`s that will be requested."
     )
 
 
-model_rebuild(UsersUsernameAttestationsDeleteRequestPostBodyOneof1)
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0)
 
-__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof1",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0",)

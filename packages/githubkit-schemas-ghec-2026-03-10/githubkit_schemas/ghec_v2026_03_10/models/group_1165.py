@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,20 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsVariablesPostBody(GitHubModel):
-    """OrgsOrgActionsVariablesPostBody"""
+class GistsGistIdGetResponse403(GitHubModel):
+    """GistsGistIdGetResponse403"""
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable."
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
-    )
+    block: Missing[GistsGistIdGetResponse403PropBlock] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgActionsVariablesPostBody)
+class GistsGistIdGetResponse403PropBlock(GitHubModel):
+    """GistsGistIdGetResponse403PropBlock"""
 
-__all__ = ("OrgsOrgActionsVariablesPostBody",)
+    reason: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    html_url: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(GistsGistIdGetResponse403)
+model_rebuild(GistsGistIdGetResponse403PropBlock)
+
+__all__ = (
+    "GistsGistIdGetResponse403",
+    "GistsGistIdGetResponse403PropBlock",
+)

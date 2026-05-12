@@ -9,55 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgHooksHookIdPatchBody(GitHubModel):
-    """OrgsOrgHooksHookIdPatchBody"""
+class OrgsOrgAttestationsBulkListPostResponse200(GitHubModel):
+    """OrgsOrgAttestationsBulkListPostResponse200"""
 
-    config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfig] = Field(
-        default=UNSET,
-        description="Key/value pairs to provide settings for this webhook.",
+    attestations_subject_digests: Missing[
+        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+    ] = Field(default=UNSET, description="Mapping of subject digest to bundles.")
+    page_info: Missing[OrgsOrgAttestationsBulkListPostResponse200PropPageInfo] = Field(
+        default=UNSET, description="Information about the current page."
     )
-    events: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads) the hook is triggered for.",
-    )
-    active: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
-    )
-    name: Missing[str] = Field(default=UNSET)
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfig(GitHubModel):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
+class OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests(
+    ExtraGitHubModel
+):
+    """OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
 
-    Key/value pairs to provide settings for this webhook.
+    Mapping of subject digest to bundles.
     """
 
-    url: str = Field(description="The URL to which the payloads will be delivered.")
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+
+class OrgsOrgAttestationsBulkListPostResponse200PropPageInfo(GitHubModel):
+    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: Missing[bool] = Field(
+        default=UNSET, description="Indicates whether there is a next page."
     )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#delivery-headers).",
+    has_previous: Missing[bool] = Field(
+        default=UNSET, description="Indicates whether there is a previous page."
     )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
+    next_: Missing[str] = Field(
+        default=UNSET, alias="next", description="The cursor to the next page."
+    )
+    previous: Missing[str] = Field(
+        default=UNSET, description="The cursor to the previous page."
+    )
 
 
-model_rebuild(OrgsOrgHooksHookIdPatchBody)
-model_rebuild(OrgsOrgHooksHookIdPatchBodyPropConfig)
+model_rebuild(OrgsOrgAttestationsBulkListPostResponse200)
+model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests)
+model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropPageInfo)
 
 __all__ = (
-    "OrgsOrgHooksHookIdPatchBody",
-    "OrgsOrgHooksHookIdPatchBodyPropConfig",
+    "OrgsOrgAttestationsBulkListPostResponse200",
+    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
+    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfo",
 )

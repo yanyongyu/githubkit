@@ -9,75 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1332 import (
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse,
-)
+
+class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
+    """OrgsOrgSecurityProductEnablementPostBody"""
+
+    query_suite: NotRequired[Literal["default", "extended"]]
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1"""
+class OrgsOrgSecurityProductEnablementPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgSecurityProductEnablementPostBody"""
 
-    name: NotRequired[str]
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    started_at: NotRequired[_dt.datetime]
-    status: NotRequired[Literal["queued", "in_progress"]]
-    conclusion: NotRequired[
-        Literal[
-            "action_required",
-            "cancelled",
-            "failure",
-            "neutral",
-            "success",
-            "skipped",
-            "stale",
-            "timed_out",
-        ]
-    ]
-    completed_at: NotRequired[_dt.datetime]
-    output: NotRequired[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType]
-    actions: NotRequired[
-        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
-    ]
-
-
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1"""
-
-    name: NotRequired[str]
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    started_at: NotRequired[str]
-    status: NotRequired[Literal["queued", "in_progress"]]
-    conclusion: NotRequired[
-        Literal[
-            "action_required",
-            "cancelled",
-            "failure",
-            "neutral",
-            "success",
-            "skipped",
-            "stale",
-            "timed_out",
-        ]
-    ]
-    completed_at: NotRequired[str]
-    output: NotRequired[
-        ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse
-    ]
-    actions: NotRequired[
-        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse]
-    ]
+    query_suite: NotRequired[Literal["default", "extended"]]
 
 
 __all__ = (
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1TypeForResponse",
+    "OrgsOrgSecurityProductEnablementPostBodyType",
+    "OrgsOrgSecurityProductEnablementPostBodyTypeForResponse",
 )

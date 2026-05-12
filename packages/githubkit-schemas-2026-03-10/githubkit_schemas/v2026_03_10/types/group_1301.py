@@ -9,37 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class TeamsTeamIdPatchBodyType(TypedDict):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
 
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
 
 
-class TeamsTeamIdPatchBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoIssuesIssueNumberReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
 
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
 
 
 __all__ = (
-    "TeamsTeamIdPatchBodyType",
-    "TeamsTeamIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberReactionsPostBodyTypeForResponse",
 )

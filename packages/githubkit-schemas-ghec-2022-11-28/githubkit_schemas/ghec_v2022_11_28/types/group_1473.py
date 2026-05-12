@@ -9,29 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoStatusesShaPostBodyType(TypedDict):
-    """ReposOwnerRepoStatusesShaPostBody"""
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
 
-    state: Literal["error", "failure", "pending", "success"]
-    target_url: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    context: NotRequired[str]
+    issue_field_values: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
+        ]
+    ]
 
 
-class ReposOwnerRepoStatusesShaPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoStatusesShaPostBody"""
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
 
-    state: Literal["error", "failure", "pending", "success"]
-    target_url: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    context: NotRequired[str]
+    issue_field_values: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float]
+
+
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float]
 
 
 __all__ = (
-    "ReposOwnerRepoStatusesShaPostBodyType",
-    "ReposOwnerRepoStatusesShaPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse",
 )

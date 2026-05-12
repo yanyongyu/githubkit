@@ -9,18 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+EnterprisesEnterpriseCopilotContentExclusionPutBodyType: TypeAlias = dict[str, Any]
+"""EnterprisesEnterpriseCopilotContentExclusionPutBody
+"""
 
 
-class GistsGistIdStarGetResponse404Type(TypedDict):
-    """GistsGistIdStarGetResponse404"""
-
-
-class GistsGistIdStarGetResponse404TypeForResponse(TypedDict):
-    """GistsGistIdStarGetResponse404"""
+EnterprisesEnterpriseCopilotContentExclusionPutBodyTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""EnterprisesEnterpriseCopilotContentExclusionPutBody
+"""
 
 
 __all__ = (
-    "GistsGistIdStarGetResponse404Type",
-    "GistsGistIdStarGetResponse404TypeForResponse",
+    "EnterprisesEnterpriseCopilotContentExclusionPutBodyType",
+    "EnterprisesEnterpriseCopilotContentExclusionPutBodyTypeForResponse",
 )

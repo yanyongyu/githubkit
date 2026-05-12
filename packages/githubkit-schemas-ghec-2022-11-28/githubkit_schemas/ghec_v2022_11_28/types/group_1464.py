@@ -9,28 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoReleasesGenerateNotesPostBodyType(TypedDict):
-    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
+class ReposOwnerRepoIssuesPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesPostBody"""
 
-    tag_name: str
-    target_commitish: NotRequired[str]
-    previous_tag_name: NotRequired[str]
-    configuration_file_path: NotRequired[str]
+    title: Union[str, int]
+    body: NotRequired[str]
+    assignee: NotRequired[Union[str, None]]
+    milestone: NotRequired[Union[str, int, None]]
+    labels: NotRequired[
+        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
+    ]
+    assignees: NotRequired[list[str]]
+    issue_field_values: NotRequired[
+        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType]
+    ]
+    type: NotRequired[Union[str, None]]
 
 
-class ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
+class ReposOwnerRepoIssuesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesPostBody"""
 
-    tag_name: str
-    target_commitish: NotRequired[str]
-    previous_tag_name: NotRequired[str]
-    configuration_file_path: NotRequired[str]
+    title: Union[str, int]
+    body: NotRequired[str]
+    assignee: NotRequired[Union[str, None]]
+    milestone: NotRequired[Union[str, int, None]]
+    labels: NotRequired[
+        list[
+            Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse]
+        ]
+    ]
+    assignees: NotRequired[list[str]]
+    issue_field_values: NotRequired[
+        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsTypeForResponse]
+    ]
+    type: NotRequired[Union[str, None]]
+
+
+class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type(TypedDict):
+    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+
+
+class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+
+
+class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType(TypedDict):
+    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float]
+
+
+class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float]
 
 
 __all__ = (
-    "ReposOwnerRepoReleasesGenerateNotesPostBodyType",
-    "ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType",
+    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsTypeForResponse",
+    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type",
+    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse",
+    "ReposOwnerRepoIssuesPostBodyType",
+    "ReposOwnerRepoIssuesPostBodyTypeForResponse",
 )

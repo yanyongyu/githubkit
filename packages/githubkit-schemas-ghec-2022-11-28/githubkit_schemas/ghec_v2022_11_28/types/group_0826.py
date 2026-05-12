@@ -9,105 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0568 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0569 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0570 import (
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0573 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0574 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0575 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0571 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0581 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0595 import WebhooksTeamType, WebhooksTeamTypeForResponse
+from .group_0576 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0598 import (
+    WebhooksMarketplacePurchaseType,
+    WebhooksMarketplacePurchaseTypeForResponse,
+)
+from .group_0599 import (
+    WebhooksPreviousMarketplacePurchaseType,
+    WebhooksPreviousMarketplacePurchaseTypeForResponse,
+)
 
 
-class WebhookMembershipRemovedType(TypedDict):
-    """membership removed event"""
+class WebhookMarketplacePurchasePurchasedType(TypedDict):
+    """marketplace_purchase purchased event"""
 
-    action: Literal["removed"]
+    action: Literal["purchased"]
+    effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhooksUserType, None]
-    organization: OrganizationSimpleWebhooksType
+    marketplace_purchase: WebhooksMarketplacePurchaseType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
     repository: NotRequired[RepositoryWebhooksType]
-    scope: Literal["team", "organization"]
-    sender: Union[WebhookMembershipRemovedPropSenderType, None]
-    team: WebhooksTeamType
+    sender: SimpleUserType
 
 
-class WebhookMembershipRemovedTypeForResponse(TypedDict):
-    """membership removed event"""
+class WebhookMarketplacePurchasePurchasedTypeForResponse(TypedDict):
+    """marketplace_purchase purchased event"""
 
-    action: Literal["removed"]
+    action: Literal["purchased"]
+    effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    member: Union[WebhooksUserTypeForResponse, None]
-    organization: OrganizationSimpleWebhooksTypeForResponse
+    marketplace_purchase: WebhooksMarketplacePurchaseTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    previous_marketplace_purchase: NotRequired[
+        WebhooksPreviousMarketplacePurchaseTypeForResponse
+    ]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    scope: Literal["team", "organization"]
-    sender: Union[WebhookMembershipRemovedPropSenderTypeForResponse, None]
-    team: WebhooksTeamTypeForResponse
-
-
-class WebhookMembershipRemovedPropSenderType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookMembershipRemovedPropSenderTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookMembershipRemovedPropSenderType",
-    "WebhookMembershipRemovedPropSenderTypeForResponse",
-    "WebhookMembershipRemovedType",
-    "WebhookMembershipRemovedTypeForResponse",
+    "WebhookMarketplacePurchasePurchasedType",
+    "WebhookMarketplacePurchasePurchasedTypeForResponse",
 )

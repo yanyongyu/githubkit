@@ -13,23 +13,27 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
+class ReposOwnerRepoImportPutBodyType(TypedDict):
+    """ReposOwnerRepoImportPutBody"""
 
-    message: str
-    event: NotRequired[Literal["DISMISS"]]
+    vcs_url: str
+    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    tfvc_project: NotRequired[str]
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
+class ReposOwnerRepoImportPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportPutBody"""
 
-    message: str
-    event: NotRequired[Literal["DISMISS"]]
+    vcs_url: str
+    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    tfvc_project: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType",
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse",
+    "ReposOwnerRepoImportPutBodyType",
+    "ReposOwnerRepoImportPutBodyTypeForResponse",
 )

@@ -11,18 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_1054 import AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
+class AgentsTasksTaskIdGetResponse200Allof1(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof1"""
 
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+    sessions: Missing[list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems]] = (
+        Field(default=UNSET, description="Sessions associated with this task")
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof1)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody",)
+__all__ = ("AgentsTasksTaskIdGetResponse200Allof1",)

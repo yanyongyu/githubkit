@@ -11,24 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0104 import NetworkConfigurationType, NetworkConfigurationTypeForResponse
+
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
+
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
 
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
+    The total number of seats created for the specified user(s).
+    """
 
-
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
-
-    total_count: int
-    network_configurations: list[NetworkConfigurationTypeForResponse]
+    seats_created: int
 
 
 __all__ = (
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse",
+    "OrgsOrgCopilotBillingSelectedUsersPostResponse201Type",
+    "OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse",
 )

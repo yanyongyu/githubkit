@@ -12,16 +12,31 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
 
-    runners: list[int] = Field(
-        description="List of runner IDs to add to the runner group."
+    users: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The usernames of the users to remove from the cost center.",
+    )
+    organizations: Missing[list[str]] = Field(
+        default=UNSET, description="The organizations to remove from the cost center."
+    )
+    repositories: Missing[list[str]] = Field(
+        default=UNSET, description="The repositories to remove from the cost center."
     )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody
+)
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody",)
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody",
+)

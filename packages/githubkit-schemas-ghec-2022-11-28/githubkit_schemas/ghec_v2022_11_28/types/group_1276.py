@@ -13,37 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsPostBodyType(TypedDict):
-    """OrgsOrgTeamsPostBody"""
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-    name: str
-    description: NotRequired[str]
-    maintainers: NotRequired[list[str]]
-    repo_names: NotRequired[list[str]]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push"]]
-    parent_team_id: NotRequired[int]
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
-class OrgsOrgTeamsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsPostBody"""
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-    name: str
-    description: NotRequired[str]
-    maintainers: NotRequired[list[str]]
-    repo_names: NotRequired[list[str]]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push"]]
-    parent_team_id: NotRequired[int]
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgTeamsPostBodyType",
-    "OrgsOrgTeamsPostBodyTypeForResponse",
+    "OrgsOrgCopilotCodingAgentPermissionsGetResponse200Type",
+    "OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse",
 )

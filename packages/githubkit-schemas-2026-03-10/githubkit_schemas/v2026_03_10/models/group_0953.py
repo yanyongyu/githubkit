@@ -9,46 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GistsGistIdPatchBody(GitHubModel):
-    """GistsGistIdPatchBody"""
+class AgentsTasksGetResponse403(GitHubModel):
+    """AgentsTasksGetResponse403
 
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the gist."
-    )
-    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
-        default=UNSET,
-        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be\ndeleted if the specified object does not contain at least one of `content` or `filename`.",
-    )
-
-
-class GistsGistIdPatchBodyPropFiles(ExtraGitHubModel):
-    """GistsGistIdPatchBodyPropFiles
-
-    The gist files to be updated, renamed, or deleted. Each `key` must match the
-    current filename
-    (including extension) of the targeted gist file. For example: `hello.py`.
-
-    To delete a file, set the whole file to null. For example: `hello.py : null`.
-    The file will also be
-    deleted if the specified object does not contain at least one of `content` or
-    `filename`.
-
-    Examples:
-        {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[list[AgentsTasksGetResponse403PropErrorsItems]] = Field(
+        default=UNSET,
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
 
-model_rebuild(GistsGistIdPatchBody)
-model_rebuild(GistsGistIdPatchBodyPropFiles)
+
+class AgentsTasksGetResponse403PropErrorsItems(GitHubModel):
+    """AgentsTasksGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
+    )
+
+
+model_rebuild(AgentsTasksGetResponse403)
+model_rebuild(AgentsTasksGetResponse403PropErrorsItems)
 
 __all__ = (
-    "GistsGistIdPatchBody",
-    "GistsGistIdPatchBodyPropFiles",
+    "AgentsTasksGetResponse403",
+    "AgentsTasksGetResponse403PropErrorsItems",
 )

@@ -9,13 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgInteractionLimitsGetResponse200Anyof1(GitHubModel):
-    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
+class OrgsOrgAttestationsRepositoriesGetResponse200Items(GitHubModel):
+    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgInteractionLimitsGetResponse200Anyof1)
+model_rebuild(OrgsOrgAttestationsRepositoriesGetResponse200Items)
 
-__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1",)
+__all__ = ("OrgsOrgAttestationsRepositoriesGetResponse200Items",)

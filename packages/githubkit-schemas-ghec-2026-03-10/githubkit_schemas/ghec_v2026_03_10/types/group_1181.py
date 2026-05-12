@@ -9,24 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0037 import (
+    ActionsHostedRunnerCustomImageVersionType,
+    ActionsHostedRunnerCustomImageVersionTypeForResponse,
+)
 
 
-class OrgsOrgAttestationsRepositoriesGetResponse200ItemsType(TypedDict):
-    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
+class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
+    TypedDict
+):
+    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
+    total_count: int
+    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
 
 
-class OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse(TypedDict):
-    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
+class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
+    total_count: int
+    image_versions: list[ActionsHostedRunnerCustomImageVersionTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsType",
-    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse",
 )

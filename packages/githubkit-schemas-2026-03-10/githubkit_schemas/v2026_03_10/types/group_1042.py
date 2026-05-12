@@ -10,26 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyType(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class OrgsOrgActionsSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgActionsSecretsSecretNamePutBody"""
 
-    actor_type: Literal["User", "Team"]
-    actor_identifier: str
-    role: Literal["reader", "writer", "admin"]
+    encrypted_value: str
+    key_id: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class OrgsOrgActionsSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsSecretsSecretNamePutBody"""
 
-    actor_type: Literal["User", "Team"]
-    actor_identifier: str
-    role: Literal["reader", "writer", "admin"]
+    encrypted_value: str
+    key_id: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyType",
-    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse",
+    "OrgsOrgActionsSecretsSecretNamePutBodyType",
+    "OrgsOrgActionsSecretsSecretNamePutBodyTypeForResponse",
 )

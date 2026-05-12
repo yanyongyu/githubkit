@@ -209,6 +209,7 @@ class PrivateRegistriesClient:
                 "oidc_aws",
                 "oidc_jfrog",
                 "oidc_cloudsmith",
+                "oidc_gcp",
             ]
         ] = UNSET,
         tenant_id: Missing[str] = UNSET,
@@ -224,6 +225,8 @@ class PrivateRegistriesClient:
         namespace: Missing[str] = UNSET,
         service_slug: Missing[str] = UNSET,
         api_host: Missing[str] = UNSET,
+        workload_identity_provider: Missing[str] = UNSET,
+        service_account: Missing[str] = UNSET,
     ) -> Response[
         OrgPrivateRegistryConfigurationWithSelectedRepositories,
         OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse,
@@ -247,7 +250,7 @@ class PrivateRegistriesClient:
 
 
         Creates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
-        For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, or `oidc_cloudsmith`), the `encrypted_value` and `key_id` fields should be omitted.
+        For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, `oidc_cloudsmith`, or `oidc_gcp`), the `encrypted_value` and `key_id` fields should be omitted.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -340,6 +343,7 @@ class PrivateRegistriesClient:
                 "oidc_aws",
                 "oidc_jfrog",
                 "oidc_cloudsmith",
+                "oidc_gcp",
             ]
         ] = UNSET,
         tenant_id: Missing[str] = UNSET,
@@ -355,6 +359,8 @@ class PrivateRegistriesClient:
         namespace: Missing[str] = UNSET,
         service_slug: Missing[str] = UNSET,
         api_host: Missing[str] = UNSET,
+        workload_identity_provider: Missing[str] = UNSET,
+        service_account: Missing[str] = UNSET,
     ) -> Response[
         OrgPrivateRegistryConfigurationWithSelectedRepositories,
         OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse,
@@ -378,7 +384,7 @@ class PrivateRegistriesClient:
 
 
         Creates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
-        For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, or `oidc_cloudsmith`), the `encrypted_value` and `key_id` fields should be omitted.
+        For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, `oidc_cloudsmith`, or `oidc_gcp`), the `encrypted_value` and `key_id` fields should be omitted.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -702,6 +708,7 @@ class PrivateRegistriesClient:
                 "oidc_aws",
                 "oidc_jfrog",
                 "oidc_cloudsmith",
+                "oidc_gcp",
             ]
         ] = UNSET,
         tenant_id: Missing[str] = UNSET,
@@ -717,6 +724,8 @@ class PrivateRegistriesClient:
         namespace: Missing[str] = UNSET,
         service_slug: Missing[str] = UNSET,
         api_host: Missing[str] = UNSET,
+        workload_identity_provider: Missing[str] = UNSET,
+        service_account: Missing[str] = UNSET,
     ) -> Response: ...
 
     def update_org_private_registry(
@@ -735,7 +744,7 @@ class PrivateRegistriesClient:
 
 
         Updates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
-        For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, or `oidc_cloudsmith`), the `encrypted_value` and `key_id` fields should be omitted.
+        For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, `oidc_cloudsmith`, or `oidc_gcp`), the `encrypted_value` and `key_id` fields should be omitted.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -829,6 +838,7 @@ class PrivateRegistriesClient:
                 "oidc_aws",
                 "oidc_jfrog",
                 "oidc_cloudsmith",
+                "oidc_gcp",
             ]
         ] = UNSET,
         tenant_id: Missing[str] = UNSET,
@@ -844,6 +854,8 @@ class PrivateRegistriesClient:
         namespace: Missing[str] = UNSET,
         service_slug: Missing[str] = UNSET,
         api_host: Missing[str] = UNSET,
+        workload_identity_provider: Missing[str] = UNSET,
+        service_account: Missing[str] = UNSET,
     ) -> Response: ...
 
     async def async_update_org_private_registry(
@@ -862,7 +874,7 @@ class PrivateRegistriesClient:
 
 
         Updates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest/rest/guides/encrypting-secrets-for-the-rest-api)."
-        For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, or `oidc_cloudsmith`), the `encrypted_value` and `key_id` fields should be omitted.
+        For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, `oidc_cloudsmith`, or `oidc_gcp`), the `encrypted_value` and `key_id` fields should be omitted.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 

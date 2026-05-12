@@ -9,49 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal
-from typing_extensions import TypeAlias, TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
+class ReposOwnerRepoReleasesPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesPostBody"""
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ]
-    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType
-
-
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
-
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ]
-    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse
+    tag_name: str
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    discussion_category_name: NotRequired[str]
+    generate_release_notes: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
 
 
-UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType: TypeAlias = (
-    dict[str, Any]
-)
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+class ReposOwnerRepoReleasesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesPostBody"""
 
-Resource-specific metadata.
-"""
-
-
-UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
-
-Resource-specific metadata.
-"""
+    tag_name: str
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    discussion_category_name: NotRequired[str]
+    generate_release_notes: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse",
+    "ReposOwnerRepoReleasesPostBodyType",
+    "ReposOwnerRepoReleasesPostBodyTypeForResponse",
 )

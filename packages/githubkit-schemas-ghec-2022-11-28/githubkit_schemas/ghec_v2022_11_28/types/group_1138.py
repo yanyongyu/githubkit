@@ -9,31 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0038 import (
-    ActionsHostedRunnerCuratedImageType,
-    ActionsHostedRunnerCuratedImageTypeForResponse,
-)
+
+class EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
+    """EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody"""
+
+    default_level: Literal["public", "internal"]
 
 
-class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
-
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageType]
-
-
-class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse(
+class EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
+    """EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
+    default_level: Literal["public", "internal"]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType",
+    "EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
 )

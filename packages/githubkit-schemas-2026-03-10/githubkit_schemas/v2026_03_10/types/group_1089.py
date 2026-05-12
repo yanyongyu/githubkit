@@ -9,25 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
-
-    name: str
-    data_type: Literal["text", "number", "date"]
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-    name: str
-    data_type: Literal["text", "number", "date"]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
+
+
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type",
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse",
+    "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
+    "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
 )

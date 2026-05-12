@@ -9,60 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody"""
 
-    organizations: NotRequired[list[str]]
-    custom_properties: NotRequired[
-        list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType
-        ]
-    ]
+    selected_organization_ids: list[int]
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody"""
 
-    organizations: NotRequired[list[str]]
-    custom_properties: NotRequired[
-        list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse
-        ]
-    ]
-
-
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
-    PropertiesItems
-    """
-
-    property_name: str
-    values: list[str]
-
-
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
-    PropertiesItems
-    """
-
-    property_name: str
-    values: list[str]
+    selected_organization_ids: list[int]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyTypeForResponse",
 )

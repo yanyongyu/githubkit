@@ -14,30 +14,26 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GitRef(GitHubModel):
-    """Git Reference
+class CustomDeploymentRuleApp(GitHubModel):
+    """Custom deployment protection rule app
 
-    Git references within a repository
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
-    ref: str = Field()
-    node_id: str = Field()
-    url: str = Field()
-    object_: GitRefPropObject = Field(alias="object")
+    id: int = Field(
+        description="The unique identifier of the deployment protection rule integration."
+    )
+    slug: str = Field(
+        description="The slugified name of the deployment protection rule integration."
+    )
+    integration_url: str = Field(
+        description="The URL for the endpoint to get details about the app."
+    )
+    node_id: str = Field(
+        description="The node ID for the deployment protection rule integration."
+    )
 
 
-class GitRefPropObject(GitHubModel):
-    """GitRefPropObject"""
+model_rebuild(CustomDeploymentRuleApp)
 
-    type: str = Field()
-    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
-    url: str = Field()
-
-
-model_rebuild(GitRef)
-model_rebuild(GitRefPropObject)
-
-__all__ = (
-    "GitRef",
-    "GitRefPropObject",
-)
+__all__ = ("CustomDeploymentRuleApp",)

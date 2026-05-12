@@ -9,45 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GistsGistIdGetResponse403Type(TypedDict):
-    """GistsGistIdGetResponse403"""
+class AgentsTasksGetResponse401Type(TypedDict):
+    """AgentsTasksGetResponse401
 
-    block: NotRequired[GistsGistIdGetResponse403PropBlockType]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[list[AgentsTasksGetResponse401PropErrorsItemsType]]
+    documentation_url: str
+
+
+class AgentsTasksGetResponse401TypeForResponse(TypedDict):
+    """AgentsTasksGetResponse401
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[list[AgentsTasksGetResponse401PropErrorsItemsTypeForResponse]]
+    documentation_url: str
+
+
+class AgentsTasksGetResponse401PropErrorsItemsType(TypedDict):
+    """AgentsTasksGetResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
     message: NotRequired[str]
-    documentation_url: NotRequired[str]
 
 
-class GistsGistIdGetResponse403TypeForResponse(TypedDict):
-    """GistsGistIdGetResponse403"""
+class AgentsTasksGetResponse401PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsTasksGetResponse401PropErrorsItems
 
-    block: NotRequired[GistsGistIdGetResponse403PropBlockTypeForResponse]
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
     message: NotRequired[str]
-    documentation_url: NotRequired[str]
-
-
-class GistsGistIdGetResponse403PropBlockType(TypedDict):
-    """GistsGistIdGetResponse403PropBlock"""
-
-    reason: NotRequired[str]
-    created_at: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
-
-
-class GistsGistIdGetResponse403PropBlockTypeForResponse(TypedDict):
-    """GistsGistIdGetResponse403PropBlock"""
-
-    reason: NotRequired[str]
-    created_at: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "GistsGistIdGetResponse403PropBlockType",
-    "GistsGistIdGetResponse403PropBlockTypeForResponse",
-    "GistsGistIdGetResponse403Type",
-    "GistsGistIdGetResponse403TypeForResponse",
+    "AgentsTasksGetResponse401PropErrorsItemsType",
+    "AgentsTasksGetResponse401PropErrorsItemsTypeForResponse",
+    "AgentsTasksGetResponse401Type",
+    "AgentsTasksGetResponse401TypeForResponse",
 )

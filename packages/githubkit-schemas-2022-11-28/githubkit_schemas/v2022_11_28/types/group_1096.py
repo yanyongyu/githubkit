@@ -10,28 +10,26 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyType(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody"""
 
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    actor_type: Literal["User", "Team"]
+    actor_identifier: str
+    role: Literal["reader", "writer", "admin"]
 
 
-class OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody"""
 
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    actor_type: Literal["User", "Team"]
+    actor_identifier: str
+    role: Literal["reader", "writer", "admin"]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyType",
-    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyType",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse",
 )

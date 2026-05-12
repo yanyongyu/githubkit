@@ -12,17 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse405(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
+class ReposOwnerRepoGitRefsPostBody(GitHubModel):
+    """ReposOwnerRepoGitRefsPostBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    ref: str = Field(
+        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
+    )
+    sha: str = Field(description="The SHA1 value for this reference.")
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergePutResponse405)
+model_rebuild(ReposOwnerRepoGitRefsPostBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse405",)
+__all__ = ("ReposOwnerRepoGitRefsPostBody",)

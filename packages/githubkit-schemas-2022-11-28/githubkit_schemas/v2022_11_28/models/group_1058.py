@@ -16,13 +16,13 @@ from githubkit.compat import GitHubModel, model_rebuild
 from .group_0090 import MinimalRepository
 
 
-class OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200"""
+class OrgsOrgAgentsVariablesNameRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgAgentsVariablesNameRepositoriesGetResponse200"""
 
     total_count: int = Field()
     repositories: list[MinimalRepository] = Field()
 
 
-model_rebuild(OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200)
+model_rebuild(OrgsOrgAgentsVariablesNameRepositoriesGetResponse200)
 
-__all__ = ("OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200",)
+__all__ = ("OrgsOrgAgentsVariablesNameRepositoriesGetResponse200",)

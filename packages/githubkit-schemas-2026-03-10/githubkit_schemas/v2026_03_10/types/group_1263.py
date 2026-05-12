@@ -11,34 +11,39 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0362 import (
+    CustomDeploymentRuleAppType,
+    CustomDeploymentRuleAppTypeForResponse,
+)
 
-class ReposOwnerRepoPagesDeploymentsPostBodyType(TypedDict):
-    """ReposOwnerRepoPagesDeploymentsPostBody
 
-    The object used to create GitHub Pages deployment
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
     """
 
-    artifact_id: NotRequired[int]
-    artifact_url: NotRequired[str]
-    environment: NotRequired[str]
-    pages_build_version: str
-    oidc_token: str
+    total_count: NotRequired[int]
+    available_custom_deployment_protection_rule_integrations: NotRequired[
+        list[CustomDeploymentRuleAppType]
+    ]
 
 
-class ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesDeploymentsPostBody
-
-    The object used to create GitHub Pages deployment
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
     """
 
-    artifact_id: NotRequired[int]
-    artifact_url: NotRequired[str]
-    environment: NotRequired[str]
-    pages_build_version: str
-    oidc_token: str
+    total_count: NotRequired[int]
+    available_custom_deployment_protection_rule_integrations: NotRequired[
+        list[CustomDeploymentRuleAppTypeForResponse]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesDeploymentsPostBodyType",
-    "ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse",
 )

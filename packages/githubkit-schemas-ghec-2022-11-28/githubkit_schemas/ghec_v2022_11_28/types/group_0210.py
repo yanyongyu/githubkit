@@ -70,7 +70,7 @@ class IssueType(TypedDict):
     timeline_url: NotRequired[str]
     type: NotRequired[Union[IssueTypeType, None]]
     repository: NotRequired[RepositoryType]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType]]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
     author_association: NotRequired[
         Literal[
             "COLLABORATOR",
@@ -132,7 +132,7 @@ class IssueTypeForResponse(TypedDict):
     timeline_url: NotRequired[str]
     type: NotRequired[Union[IssueTypeTypeForResponse, None]]
     repository: NotRequired[RepositoryTypeForResponse]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse]]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
     author_association: NotRequired[
         Literal[
             "COLLABORATOR",

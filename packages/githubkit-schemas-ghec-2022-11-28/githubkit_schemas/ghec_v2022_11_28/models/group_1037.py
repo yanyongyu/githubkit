@@ -9,31 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class EnterprisesEnterpriseActionsPermissionsPutBody(GitHubModel):
-    """EnterprisesEnterpriseActionsPermissionsPutBody"""
-
-    enabled_organizations: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the organizations in the enterprise that are allowed to run GitHub Actions."
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
-    sha_pinning_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
-    )
+from .group_1038 import (
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems,
+)
 
 
-model_rebuild(EnterprisesEnterpriseActionsPermissionsPutBody)
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsPutBody",)
+    sessions: Missing[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems]
+    ] = Field(default=UNSET, description="Sessions associated with this task")
+
+
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1)
+
+__all__ = ("AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1",)

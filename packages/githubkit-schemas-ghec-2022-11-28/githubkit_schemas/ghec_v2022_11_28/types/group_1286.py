@@ -9,22 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsJobsJobIdRerunPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
+class OrgsOrgDependabotSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNamePutBody"""
 
-    enable_debug_logging: NotRequired[bool]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[Union[int, str]]]
 
 
-class ReposOwnerRepoActionsJobsJobIdRerunPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
+class OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNamePutBody"""
 
-    enable_debug_logging: NotRequired[bool]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[Union[int, str]]]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",
-    "ReposOwnerRepoActionsJobsJobIdRerunPostBodyTypeForResponse",
+    "OrgsOrgDependabotSecretsSecretNamePutBodyType",
+    "OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse",
 )

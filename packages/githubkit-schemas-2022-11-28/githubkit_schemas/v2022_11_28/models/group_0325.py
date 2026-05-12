@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,38 +18,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeownersErrors(GitHubModel):
-    """CODEOWNERS errors
+class CodeScanningDefaultSetupUpdate(GitHubModel):
+    """CodeScanningDefaultSetupUpdate
 
-    A list of errors found in a repo's CODEOWNERS file
+    Configuration for code scanning default setup.
     """
 
-    errors: list[CodeownersErrorsPropErrorsItems] = Field()
-
-
-class CodeownersErrorsPropErrorsItems(GitHubModel):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int = Field(description="The line number where this errors occurs.")
-    column: int = Field(description="The column number where this errors occurs.")
-    source: Missing[str] = Field(
-        default=UNSET, description="The contents of the line where the error occurs."
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET, description="The desired state of code scanning default setup."
     )
-    kind: str = Field(description="The type of error.")
-    suggestion: Missing[Union[str, None]] = Field(
+    runner_type: Missing[Literal["standard", "labeled"]] = Field(
+        default=UNSET, description="Runner type to be used."
+    )
+    runner_label: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
+        description="Runner label to be used if the runner type is labeled.",
     )
-    message: str = Field(
-        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
+    query_suite: Missing[Literal["default", "extended"]] = Field(
+        default=UNSET, description="CodeQL query suite to be used."
     )
-    path: str = Field(description="The path of the file where the error occured.")
+    threat_model: Missing[Literal["remote", "remote_and_local"]] = Field(
+        default=UNSET,
+        description="Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
+    )
+    languages: Missing[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ] = Field(default=UNSET, description="CodeQL languages to be analyzed.")
 
 
-model_rebuild(CodeownersErrors)
-model_rebuild(CodeownersErrorsPropErrorsItems)
+model_rebuild(CodeScanningDefaultSetupUpdate)
 
-__all__ = (
-    "CodeownersErrors",
-    "CodeownersErrorsPropErrorsItems",
-)
+__all__ = ("CodeScanningDefaultSetupUpdate",)

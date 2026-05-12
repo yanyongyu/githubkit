@@ -9,39 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200(GitHubModel):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class AgentsTasksTaskIdGetResponse422(GitHubModel):
+    """AgentsTasksTaskIdGetResponse422
 
-    total_count: int = Field()
-    repository_cache_usages: list[ActionsCacheUsageByRepository] = Field()
-
-
-class ActionsCacheUsageByRepository(GitHubModel):
-    """Actions Cache Usage by repository
-
-    GitHub Actions Cache Usage by repository.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    full_name: str = Field(
-        description="The repository owner and name for the cache usage being shown."
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    active_caches_size_in_bytes: int = Field(
-        description="The sum of the size in bytes of all the active cache items in the repository."
+    errors: Missing[list[AgentsTasksTaskIdGetResponse422PropErrorsItems]] = Field(
+        default=UNSET,
+        description="List of validation errors (present only for 422 responses)",
     )
-    active_caches_count: int = Field(
-        description="The number of active caches in the repository."
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsTasksTaskIdGetResponse422PropErrorsItems(GitHubModel):
+    """AgentsTasksTaskIdGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(OrgsOrgActionsCacheUsageByRepositoryGetResponse200)
-model_rebuild(ActionsCacheUsageByRepository)
+model_rebuild(AgentsTasksTaskIdGetResponse422)
+model_rebuild(AgentsTasksTaskIdGetResponse422PropErrorsItems)
 
 __all__ = (
-    "ActionsCacheUsageByRepository",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
+    "AgentsTasksTaskIdGetResponse422",
+    "AgentsTasksTaskIdGetResponse422PropErrorsItems",
 )

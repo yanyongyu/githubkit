@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,97 +18,72 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WorkflowRunUsage(GitHubModel):
-    """Workflow Run Usage
+class ConcurrencyGroupRunList(GitHubModel):
+    """Concurrency Group Run List
 
-    Workflow Run Usage
+    A list of concurrency groups associated with a workflow run.
     """
 
-    billable: WorkflowRunUsagePropBillable = Field()
-    run_duration_ms: Missing[int] = Field(default=UNSET)
-
-
-class WorkflowRunUsagePropBillable(GitHubModel):
-    """WorkflowRunUsagePropBillable"""
-
-    ubuntu: Missing[WorkflowRunUsagePropBillablePropUbuntu] = Field(
-        default=UNSET, alias="UBUNTU"
+    total_count: int = Field(
+        description="The total number of concurrency groups this workflow run participates in,\nderived from the run's configuration. This count is not filtered by\nwhether the run currently holds or is waiting in each group, so it can\ninclude groups whose `group_members` array is empty (for example, when\nthe run has already released its lease in that group)."
     )
-    macos: Missing[WorkflowRunUsagePropBillablePropMacos] = Field(
-        default=UNSET, alias="MACOS"
-    )
-    windows: Missing[WorkflowRunUsagePropBillablePropWindows] = Field(
-        default=UNSET, alias="WINDOWS"
+    concurrency_groups: list[ConcurrencyGroupRunListPropConcurrencyGroupsItems] = (
+        Field()
     )
 
 
-class WorkflowRunUsagePropBillablePropUbuntu(GitHubModel):
-    """WorkflowRunUsagePropBillablePropUbuntu"""
+class ConcurrencyGroupRunListPropConcurrencyGroupsItems(GitHubModel):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
 
-    total_ms: int = Field()
-    jobs: int = Field()
-    job_runs: Missing[list[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems]] = (
-        Field(default=UNSET)
+    group_name: str = Field(description="The name of the concurrency group.")
+    group_url: str = Field(
+        description="API URL for this concurrency group. May return 404 if the group\nhas no active items at the time it is requested, since the\nget-by-name endpoint reports the live repo-wide state of a group\nwhile this endpoint lists groups associated with a run by\nconfiguration."
+    )
+    group_members: list[
+        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems
+    ] = Field(
+        description="Items belonging to this workflow run that are either currently holding or\nwaiting for the concurrency group lease. May be empty if the run no\nlonger has any active or queued items in this group."
     )
 
 
-class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems(GitHubModel):
-    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems(
+    GitHubModel
+):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
 
-    job_id: int = Field()
-    duration_ms: int = Field()
-
-
-class WorkflowRunUsagePropBillablePropMacos(GitHubModel):
-    """WorkflowRunUsagePropBillablePropMacos"""
-
-    total_ms: int = Field()
-    jobs: int = Field()
-    job_runs: Missing[list[WorkflowRunUsagePropBillablePropMacosPropJobRunsItems]] = (
-        Field(default=UNSET)
+    run_id: int = Field(description="The ID of the workflow run.")
+    run_name: str = Field(description="The name of the workflow run.")
+    run_url: Union[str, None] = Field(description="API URL for the workflow run.")
+    run_html_url: Union[str, None] = Field(description="Web URL for the workflow run.")
+    position: int = Field(
+        description="Queue position. 0 means the item holds the concurrency lease (in_progress), 1 or higher means queued (pending)."
     )
-
-
-class WorkflowRunUsagePropBillablePropMacosPropJobRunsItems(GitHubModel):
-    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
-
-    job_id: int = Field()
-    duration_ms: int = Field()
-
-
-class WorkflowRunUsagePropBillablePropWindows(GitHubModel):
-    """WorkflowRunUsagePropBillablePropWindows"""
-
-    total_ms: int = Field()
-    jobs: int = Field()
-    job_runs: Missing[list[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems]] = (
-        Field(default=UNSET)
+    position_url: str = Field(
+        description="API URL to get items ahead of this item in the concurrency group."
     )
+    job_id: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The ID of the job, when the item represents a job-level or reusable-workflow-level lease.",
+    )
+    job_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The display name of the job, when the item represents a job-level or reusable-workflow-level lease.",
+    )
+    job_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="API URL for the job."
+    )
+    job_html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Web URL for the job."
+    )
+    status: Literal["in_progress", "pending"] = Field()
 
 
-class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems(GitHubModel):
-    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
-
-    job_id: int = Field()
-    duration_ms: int = Field()
-
-
-model_rebuild(WorkflowRunUsage)
-model_rebuild(WorkflowRunUsagePropBillable)
-model_rebuild(WorkflowRunUsagePropBillablePropUbuntu)
-model_rebuild(WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems)
-model_rebuild(WorkflowRunUsagePropBillablePropMacos)
-model_rebuild(WorkflowRunUsagePropBillablePropMacosPropJobRunsItems)
-model_rebuild(WorkflowRunUsagePropBillablePropWindows)
-model_rebuild(WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems)
+model_rebuild(ConcurrencyGroupRunList)
+model_rebuild(ConcurrencyGroupRunListPropConcurrencyGroupsItems)
+model_rebuild(ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems)
 
 __all__ = (
-    "WorkflowRunUsage",
-    "WorkflowRunUsagePropBillable",
-    "WorkflowRunUsagePropBillablePropMacos",
-    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItems",
-    "WorkflowRunUsagePropBillablePropUbuntu",
-    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems",
-    "WorkflowRunUsagePropBillablePropWindows",
-    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems",
+    "ConcurrencyGroupRunList",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItems",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems",
 )

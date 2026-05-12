@@ -11,24 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0256 import CodespaceType, CodespaceTypeForResponse
+
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
+
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgCodespacesGetResponse200"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
 
-    total_count: int
-    codespaces: list[CodespaceType]
-
-
-class OrgsOrgCodespacesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: list[CodespaceTypeForResponse]
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgCodespacesGetResponse200Type",
-    "OrgsOrgCodespacesGetResponse200TypeForResponse",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyTypeForResponse",
 )

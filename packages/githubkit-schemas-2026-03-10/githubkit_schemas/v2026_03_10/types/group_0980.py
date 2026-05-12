@@ -9,30 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
-
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type(
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(
     TypedDict
 ):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    total_count: NotRequired[int]
-    repositories: NotRequired[list[RepositoryType]]
+    scope: Literal["all", "all_without_configurations"]
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse(
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    total_count: NotRequired[int]
-    repositories: NotRequired[list[RepositoryTypeForResponse]]
+    scope: Literal["all", "all_without_configurations"]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type",
-    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse",
 )

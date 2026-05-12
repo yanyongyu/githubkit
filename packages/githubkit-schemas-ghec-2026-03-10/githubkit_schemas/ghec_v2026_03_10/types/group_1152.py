@@ -9,28 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0243 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-
-
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
-
-    total_count: float
-    repositories: list[MinimalRepositoryType]
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200TypeForResponse(
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
+
+    id: NotRequired[str]
+    name: NotRequired[str]
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: NotRequired[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType
+        ]
+    ]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-    total_count: float
-    repositories: list[MinimalRepositoryTypeForResponse]
+    id: NotRequired[str]
+    name: NotRequired[str]
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: NotRequired[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse
+        ]
+    ]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+
+    type: NotRequired[str]
+    name: NotRequired[str]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+
+    type: NotRequired[str]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse",
 )

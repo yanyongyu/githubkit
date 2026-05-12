@@ -10,300 +10,76 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0204 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0206 import (
-    IssueDependenciesSummaryType,
-    IssueDependenciesSummaryTypeForResponse,
-    SubIssuesSummaryType,
-    SubIssuesSummaryTypeForResponse,
-)
-from .group_0747 import (
-    WebhookIssueCommentPinnedPropIssueAllof0PropAssigneeType,
-    WebhookIssueCommentPinnedPropIssueAllof0PropAssigneeTypeForResponse,
-    WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItemsType,
-    WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItemsTypeForResponse,
-    WebhookIssueCommentPinnedPropIssueAllof0PropPullRequestType,
-    WebhookIssueCommentPinnedPropIssueAllof0PropPullRequestTypeForResponse,
-)
-from .group_0753 import (
-    WebhookIssueCommentPinnedPropIssueMergedMilestoneType,
-    WebhookIssueCommentPinnedPropIssueMergedMilestoneTypeForResponse,
-)
-from .group_0754 import (
-    WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppType,
-    WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppTypeForResponse,
+from .group_0744 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
 )
 
 
-class WebhookIssueCommentPinnedPropIssueType(TypedDict):
-    """WebhookIssueCommentPinnedPropIssue
+class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
+    """App
 
-    The [issue](https://docs.github.com/enterprise-
-    cloud@latest/rest/issues/issues#get-an-issue) the comment belongs to.
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
     """
 
-    active_lock_reason: Union[
-        Literal["resolved", "off-topic", "too heated", "spam"], None
-    ]
-    assignee: Union[WebhookIssueCommentPinnedPropIssueAllof0PropAssigneeType, None]
-    assignees: list[WebhookIssueCommentPinnedPropIssueMergedAssigneesType]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: Union[str, None]
-    closed_at: Union[_dt.datetime, None]
-    comments: int
-    comments_url: str
-    created_at: _dt.datetime
-    draft: NotRequired[bool]
-    events_url: str
+    created_at: Union[_dt.datetime, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
     html_url: str
-    id: int
-    labels: list[WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItemsType]
-    labels_url: str
-    locked: bool
-    milestone: Union[WebhookIssueCommentPinnedPropIssueMergedMilestoneType, None]
+    id: Union[int, None]
+    name: str
     node_id: str
-    number: int
-    performed_via_github_app: NotRequired[
-        Union[WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppType, None]
+    owner: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+        None,
     ]
-    pull_request: NotRequired[
-        WebhookIssueCommentPinnedPropIssueAllof0PropPullRequestType
+    permissions: NotRequired[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
     ]
-    reactions: WebhookIssueCommentPinnedPropIssueMergedReactionsType
-    repository_url: str
-    sub_issues_summary: NotRequired[SubIssuesSummaryType]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
-    state: Literal["open", "closed"]
-    state_reason: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    title: str
-    type: NotRequired[Union[IssueTypeType, None]]
-    updated_at: _dt.datetime
-    url: str
-    user: WebhookIssueCommentPinnedPropIssueMergedUserType
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
 
 
-class WebhookIssueCommentPinnedPropIssueTypeForResponse(TypedDict):
-    """WebhookIssueCommentPinnedPropIssue
+class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse(
+    TypedDict
+):
+    """App
 
-    The [issue](https://docs.github.com/enterprise-
-    cloud@latest/rest/issues/issues#get-an-issue) the comment belongs to.
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
     """
 
-    active_lock_reason: Union[
-        Literal["resolved", "off-topic", "too heated", "spam"], None
-    ]
-    assignee: Union[
-        WebhookIssueCommentPinnedPropIssueAllof0PropAssigneeTypeForResponse, None
-    ]
-    assignees: list[WebhookIssueCommentPinnedPropIssueMergedAssigneesTypeForResponse]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: Union[str, None]
-    closed_at: Union[str, None]
-    comments: int
-    comments_url: str
-    created_at: str
-    draft: NotRequired[bool]
-    events_url: str
+    created_at: Union[str, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
     html_url: str
-    id: int
-    labels: list[WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItemsTypeForResponse]
-    labels_url: str
-    locked: bool
-    milestone: Union[
-        WebhookIssueCommentPinnedPropIssueMergedMilestoneTypeForResponse, None
-    ]
+    id: Union[int, None]
+    name: str
     node_id: str
-    number: int
-    performed_via_github_app: NotRequired[
-        Union[
-            WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppTypeForResponse,
-            None,
-        ]
+    owner: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        None,
     ]
-    pull_request: NotRequired[
-        WebhookIssueCommentPinnedPropIssueAllof0PropPullRequestTypeForResponse
+    permissions: NotRequired[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
     ]
-    reactions: WebhookIssueCommentPinnedPropIssueMergedReactionsTypeForResponse
-    repository_url: str
-    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
-    state: Literal["open", "closed"]
-    state_reason: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    title: str
-    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
-    updated_at: str
-    url: str
-    user: WebhookIssueCommentPinnedPropIssueMergedUserTypeForResponse
-
-
-class WebhookIssueCommentPinnedPropIssueMergedAssigneesType(TypedDict):
-    """WebhookIssueCommentPinnedPropIssueMergedAssignees"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssueCommentPinnedPropIssueMergedAssigneesTypeForResponse(TypedDict):
-    """WebhookIssueCommentPinnedPropIssueMergedAssignees"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssueCommentPinnedPropIssueMergedReactionsType(TypedDict):
-    """WebhookIssueCommentPinnedPropIssueMergedReactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookIssueCommentPinnedPropIssueMergedReactionsTypeForResponse(TypedDict):
-    """WebhookIssueCommentPinnedPropIssueMergedReactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookIssueCommentPinnedPropIssueMergedUserType(TypedDict):
-    """WebhookIssueCommentPinnedPropIssueMergedUser"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssueCommentPinnedPropIssueMergedUserTypeForResponse(TypedDict):
-    """WebhookIssueCommentPinnedPropIssueMergedUser"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookIssueCommentPinnedPropIssueMergedAssigneesType",
-    "WebhookIssueCommentPinnedPropIssueMergedAssigneesTypeForResponse",
-    "WebhookIssueCommentPinnedPropIssueMergedReactionsType",
-    "WebhookIssueCommentPinnedPropIssueMergedReactionsTypeForResponse",
-    "WebhookIssueCommentPinnedPropIssueMergedUserType",
-    "WebhookIssueCommentPinnedPropIssueMergedUserTypeForResponse",
-    "WebhookIssueCommentPinnedPropIssueType",
-    "WebhookIssueCommentPinnedPropIssueTypeForResponse",
+    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppType",
+    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse",
 )

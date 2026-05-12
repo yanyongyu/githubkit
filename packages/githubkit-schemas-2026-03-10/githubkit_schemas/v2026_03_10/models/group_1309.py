@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,21 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesSecretsSecretNamePutBody(GitHubModel):
-    """UserCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoMergesPostBody(GitHubModel):
+    """ReposOwnerRepoMergesPostBody"""
 
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        default=UNSET,
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get the public key for the authenticated user](https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user) endpoint.",
+    base: str = Field(
+        description="The name of the base branch that the head will be merged into."
     )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
-    selected_repository_ids: Missing[list[Union[int, str]]] = Field(
+    head: str = Field(
+        description="The head to merge. This can be a branch name or a commit SHA1."
+    )
+    commit_message: Missing[str] = Field(
         default=UNSET,
-        description="An array of repository ids that can access the user secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Set selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints.",
+        description="Commit message to use for the merge commit. If omitted, a default message will be used.",
     )
 
 
-model_rebuild(UserCodespacesSecretsSecretNamePutBody)
+model_rebuild(ReposOwnerRepoMergesPostBody)
 
-__all__ = ("UserCodespacesSecretsSecretNamePutBody",)
+__all__ = ("ReposOwnerRepoMergesPostBody",)

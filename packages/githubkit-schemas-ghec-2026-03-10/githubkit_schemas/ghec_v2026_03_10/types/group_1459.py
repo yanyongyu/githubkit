@@ -9,39 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoReleasesPostBodyType(TypedDict):
-    """ReposOwnerRepoReleasesPostBody"""
-
-    tag_name: str
-    target_commitish: NotRequired[str]
-    name: NotRequired[str]
-    body: NotRequired[str]
-    draft: NotRequired[bool]
-    prerelease: NotRequired[bool]
-    discussion_category_name: NotRequired[str]
-    generate_release_notes: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
 
 
-class ReposOwnerRepoReleasesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoReleasesPostBody"""
-
-    tag_name: str
-    target_commitish: NotRequired[str]
-    name: NotRequired[str]
-    body: NotRequired[str]
-    draft: NotRequired[bool]
-    prerelease: NotRequired[bool]
-    discussion_category_name: NotRequired[str]
-    generate_release_notes: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
 
 
 __all__ = (
-    "ReposOwnerRepoReleasesPostBodyType",
-    "ReposOwnerRepoReleasesPostBodyTypeForResponse",
+    "ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type",
+    "ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse",
 )

@@ -11,24 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0300 import CheckRunType, CheckRunTypeForResponse
+
+class ReposOwnerRepoActionsSecretsSecretNamePutBodyType(TypedDict):
+    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
+
+    encrypted_value: str
+    key_id: str
 
 
-class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
+class ReposOwnerRepoActionsSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
 
-    total_count: int
-    check_runs: list[CheckRunType]
-
-
-class ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
-
-    total_count: int
-    check_runs: list[CheckRunTypeForResponse]
+    encrypted_value: str
+    key_id: str
 
 
 __all__ = (
-    "ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",
-    "ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsSecretsSecretNamePutBodyType",
+    "ReposOwnerRepoActionsSecretsSecretNamePutBodyTypeForResponse",
 )

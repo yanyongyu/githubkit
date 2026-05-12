@@ -11,19 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200(GitHubModel):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
 
-    pattern_config_version: Missing[str] = Field(
-        default=UNSET, description="The updated pattern configuration version."
+    selected_teams: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of teams from which to revoke access to GitHub Copilot.",
     )
 
 
-model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchResponse200)
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsDeleteBody)
 
-__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteBody",)

@@ -9,45 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0538 import (
-    UserEmailsResponseItemsType,
-    UserEmailsResponseItemsTypeForResponse,
-    UserNameResponseType,
-    UserNameResponseTypeForResponse,
-)
-from .group_0539 import UserRoleItemsType, UserRoleItemsTypeForResponse
+from .group_0538 import MetaType, MetaTypeForResponse
 
 
-class UserResponseType(TypedDict):
-    """UserResponse"""
+class ScimEnterpriseGroupResponseAllof1Type(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1"""
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseType]
-    display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsType]
-    roles: NotRequired[list[UserRoleItemsType]]
+    id: NotRequired[str]
+    members: NotRequired[list[ScimEnterpriseGroupResponseAllof1PropMembersItemsType]]
+    meta: NotRequired[MetaType]
 
 
-class UserResponseTypeForResponse(TypedDict):
-    """UserResponse"""
+class ScimEnterpriseGroupResponseAllof1TypeForResponse(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1"""
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseTypeForResponse]
-    display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsTypeForResponse]
-    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
+    id: NotRequired[str]
+    members: NotRequired[
+        list[ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse]
+    ]
+    meta: NotRequired[MetaTypeForResponse]
+
+
+class ScimEnterpriseGroupResponseAllof1PropMembersItemsType(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+
+    value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+
+    value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
 
 
 __all__ = (
-    "UserResponseType",
-    "UserResponseTypeForResponse",
+    "ScimEnterpriseGroupResponseAllof1PropMembersItemsType",
+    "ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse",
+    "ScimEnterpriseGroupResponseAllof1Type",
+    "ScimEnterpriseGroupResponseAllof1TypeForResponse",
 )

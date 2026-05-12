@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,14 +18,49 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
-    """NotificationsThreadsThreadIdSubscriptionPutBody"""
+class AgentsTasksTaskIdGetResponse400(GitHubModel):
+    """AgentsTasksTaskIdGetResponse400
 
-    ignored: Missing[bool] = Field(
-        default=UNSET, description="Whether to block all notifications from a thread."
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[list[AgentsTasksTaskIdGetResponse400PropErrorsItems]] = Field(
+        default=UNSET,
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsTasksTaskIdGetResponse400PropErrorsItems(GitHubModel):
+    """AgentsTasksTaskIdGetResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(NotificationsThreadsThreadIdSubscriptionPutBody)
+model_rebuild(AgentsTasksTaskIdGetResponse400)
+model_rebuild(AgentsTasksTaskIdGetResponse400PropErrorsItems)
 
-__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBody",)
+__all__ = (
+    "AgentsTasksTaskIdGetResponse400",
+    "AgentsTasksTaskIdGetResponse400PropErrorsItems",
+)

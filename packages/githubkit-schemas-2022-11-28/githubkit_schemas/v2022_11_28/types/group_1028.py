@@ -13,27 +13,33 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+class OrgsOrgActionsRunnerGroupsPostBodyType(TypedDict):
+    """OrgsOrgActionsRunnerGroupsPostBody"""
 
-    scope: Literal[
-        "all", "all_without_configurations", "public", "private_or_internal", "selected"
-    ]
+    name: str
+    visibility: NotRequired[Literal["selected", "all", "private"]]
     selected_repository_ids: NotRequired[list[int]]
+    runners: NotRequired[list[int]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[str]
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+class OrgsOrgActionsRunnerGroupsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnerGroupsPostBody"""
 
-    scope: Literal[
-        "all", "all_without_configurations", "public", "private_or_internal", "selected"
-    ]
+    name: str
+    visibility: NotRequired[Literal["selected", "all", "private"]]
     selected_repository_ids: NotRequired[list[int]]
+    runners: NotRequired[list[int]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse",
+    "OrgsOrgActionsRunnerGroupsPostBodyType",
+    "OrgsOrgActionsRunnerGroupsPostBodyTypeForResponse",
 )

@@ -9,37 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0180 import ProjectsV2FieldSingleSelectOption
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200(GitHubModel):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
 
-    attestations: Missing[
-        list[ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems]
-    ] = Field(default=UNSET)
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems(
-    GitHubModel
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: Missing[int] = Field(default=UNSET)
-    bundle_url: Missing[str] = Field(default=UNSET)
-    initiator: Missing[str] = Field(default=UNSET)
+    name: str = Field(description="The name of the field.")
+    data_type: Literal["single_select"] = Field(description="The field's data type.")
+    single_select_options: list[ProjectsV2FieldSingleSelectOption] = Field(
+        description="The options available for single select fields. At least one option must be provided when creating a single select field."
+    )
 
 
-model_rebuild(ReposOwnerRepoAttestationsSubjectDigestGetResponse200)
-model_rebuild(
-    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems
-)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2)
 
-__all__ = (
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems",
-)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2",)

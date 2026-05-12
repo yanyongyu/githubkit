@@ -9,29 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0036 import (
-    ActionsHostedRunnerCustomImageType,
-    ActionsHostedRunnerCustomImageTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCustomImageType]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse",
 )

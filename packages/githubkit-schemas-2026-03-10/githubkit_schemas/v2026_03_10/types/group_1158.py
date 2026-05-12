@@ -12,29 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
+class OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
 
-    Examples:
-        {'users': ['mona']}
-    """
-
-    users: list[str]
+    selected_repository_ids: list[int]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
+class OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
 
-    Examples:
-        {'users': ['mona']}
-    """
-
-    users: list[str]
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyTypeForResponse",
+    "OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType",
+    "OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyTypeForResponse",
 )

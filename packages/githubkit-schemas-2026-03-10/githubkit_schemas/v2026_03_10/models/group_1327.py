@@ -14,19 +14,12 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserSocialAccountsDeleteBody(GitHubModel):
-    """UserSocialAccountsDeleteBody
+class ReposOwnerRepoPullsCommentsCommentIdPatchBody(GitHubModel):
+    """ReposOwnerRepoPullsCommentsCommentIdPatchBody"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str] = Field(
-        description="Full URLs for the social media profiles to delete."
-    )
+    body: str = Field(description="The text of the reply to the review comment.")
 
 
-model_rebuild(UserSocialAccountsDeleteBody)
+model_rebuild(ReposOwnerRepoPullsCommentsCommentIdPatchBody)
 
-__all__ = ("UserSocialAccountsDeleteBody",)
+__all__ = ("ReposOwnerRepoPullsCommentsCommentIdPatchBody",)

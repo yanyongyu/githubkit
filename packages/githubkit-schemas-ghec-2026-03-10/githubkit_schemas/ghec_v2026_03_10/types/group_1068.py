@@ -9,39 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
-
-    advanced_security_enabled_for_new_repositories: NotRequired[bool]
-    advanced_security_enabled_new_user_namespace_repos: NotRequired[bool]
-    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
-    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
-        Union[bool, None]
-    ]
+from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
 
 
-class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
+class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
+    """ApplicationsClientIdTokenScopedPostBody"""
 
-    advanced_security_enabled_for_new_repositories: NotRequired[bool]
-    advanced_security_enabled_new_user_namespace_repos: NotRequired[bool]
-    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
-    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
-        Union[bool, None]
-    ]
+    access_token: str
+    target: NotRequired[str]
+    target_id: NotRequired[int]
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsType]
+
+
+class ApplicationsClientIdTokenScopedPostBodyTypeForResponse(TypedDict):
+    """ApplicationsClientIdTokenScopedPostBody"""
+
+    access_token: str
+    target: NotRequired[str]
+    target_id: NotRequired[int]
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType",
-    "EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyTypeForResponse",
+    "ApplicationsClientIdTokenScopedPostBodyType",
+    "ApplicationsClientIdTokenScopedPostBodyTypeForResponse",
 )

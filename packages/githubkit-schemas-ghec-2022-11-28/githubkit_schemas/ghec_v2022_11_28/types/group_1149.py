@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
-
-    selected_repository_ids: list[int]
-
-
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyTypeForResponse(
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type(
     TypedDict
 ):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
 
-    selected_repository_ids: list[int]
+    pattern_config_version: NotRequired[str]
+
+
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
+
+    pattern_config_version: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType",
-    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
 )

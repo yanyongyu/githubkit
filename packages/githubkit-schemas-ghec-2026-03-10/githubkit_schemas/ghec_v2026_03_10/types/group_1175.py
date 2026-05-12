@@ -9,33 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0253 import (
-    ArtifactDeploymentRecordType,
-    ArtifactDeploymentRecordTypeForResponse,
-)
+from .group_0110 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200Type(
-    TypedDict
-):
-    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
+class OrganizationsOrgOrgPropertiesValuesPatchBodyType(TypedDict):
+    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
 
-    total_count: NotRequired[int]
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
+    properties: list[CustomPropertyValueType]
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
+class OrganizationsOrgOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
 
-    total_count: NotRequired[int]
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200Type",
-    "OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse",
+    "OrganizationsOrgOrgPropertiesValuesPatchBodyType",
+    "OrganizationsOrgOrgPropertiesValuesPatchBodyTypeForResponse",
 )

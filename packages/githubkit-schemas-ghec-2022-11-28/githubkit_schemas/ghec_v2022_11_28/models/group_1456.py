@@ -9,59 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0011 import WebhookConfig
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
 
-    commit_id: Missing[str] = Field(
+class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
+
+    config: Missing[WebhookConfig] = Field(
         default=UNSET,
-        description="The SHA of the commit that needs a review. Not using the latest commit SHA may render your review comment outdated if a subsequent commit modifies the line you specify as the `position`. Defaults to the most recent commit in the pull request when you do not specify a value.",
+        title="Webhook Configuration",
+        description="Configuration object of the webhook",
     )
-    body: Missing[str] = Field(
+    events: Missing[list[str]] = Field(
         default=UNSET,
-        description="**Required** when using `REQUEST_CHANGES` or `COMMENT` for the `event` parameter. The body text of the pull request review.",
+        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.",
     )
-    event: Missing[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = Field(
+    add_events: Missing[list[str]] = Field(
         default=UNSET,
-        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/enterprise-cloud@latest/rest/pulls/reviews#submit-a-review-for-a-pull-request) when you are ready.",
+        description="Determines a list of events to be added to the list of events that the Hook triggers for.",
     )
-    comments: Missing[
-        list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems]
-    ] = Field(
+    remove_events: Missing[list[str]] = Field(
         default=UNSET,
-        description="Use the following table to specify the location, destination, and contents of the draft review comment.",
+        description="Determines a list of events to be removed from the list of events that the Hook triggers for.",
     )
-
-
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
-
-    path: str = Field(
-        description="The relative path to the file that necessitates a review comment."
-    )
-    position: Missing[int] = Field(
+    active: Missing[bool] = Field(
         default=UNSET,
-        description='The position in the diff where you want to add a review comment. Note this value is not the same as the line number in the file. The `position` value equals the number of lines down from the first "@@" hunk header in the file you want to add a comment. The line just below the "@@" line is position 1, the next line is position 2, and so on. The position in the diff continues to increase through lines of whitespace and additional hunks until the beginning of a new file.',
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
     )
-    body: str = Field(description="Text of the review comment.")
-    line: Missing[int] = Field(default=UNSET)
-    side: Missing[str] = Field(default=UNSET)
-    start_line: Missing[int] = Field(default=UNSET)
-    start_side: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberReviewsPostBody)
-model_rebuild(ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems)
+model_rebuild(ReposOwnerRepoHooksHookIdPatchBody)
 
-__all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsPostBody",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems",
-)
+__all__ = ("ReposOwnerRepoHooksHookIdPatchBody",)

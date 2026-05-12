@@ -9,41 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody"""
 
-    state: Missing[Literal["open", "resolved"]] = Field(
-        default=UNSET,
-        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
-    )
-    resolution: Missing[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    issue_field_values: Missing[
+        list[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems
+        ]
     ] = Field(
+        max_length=25 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
-    )
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
-    )
-    assignee: Union[str, None] = Field(
-        description="The username of the user to assign to the alert. Set to `null` to unassign the alert."
-    )
-    validity: Missing[Union[None, Literal["active", "inactive"]]] = Field(
-        default=UNSET,
-        description="Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override.",
+        description="An array of issue field values to set for this issue. Each field value must include the field ID and the value to set. All existing field values will be replaced.",
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1)
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems"""
 
-__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1",)
+    field_id: int = Field(description="The ID of the issue field to set")
+    value: Union[str, float] = Field(
+        description="The value to set for the field. The type depends on the field's data type:\n- For text fields: provide a string value\n- For single_select fields: provide the option name as a string (must match an existing option)\n- For number fields: provide a numeric value\n- For date fields: provide an ISO 8601 date string"
+    )
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems
+)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems",
+)

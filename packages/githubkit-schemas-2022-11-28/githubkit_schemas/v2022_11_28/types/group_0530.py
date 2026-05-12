@@ -9,183 +9,170 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
 
+class WebhooksReviewType(TypedDict):
+    """WebhooksReview
 
-class WebhooksSecurityAdvisoryType(TypedDict):
-    """WebhooksSecurityAdvisory
-
-    The details of the security advisory, including summary, description, and
-    severity.
+    The review that was affected.
     """
 
-    cvss: WebhooksSecurityAdvisoryPropCvssType
-    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    cwes: list[WebhooksSecurityAdvisoryPropCwesItemsType]
-    description: str
-    ghsa_id: str
-    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItemsType]
-    published_at: str
-    references: list[WebhooksSecurityAdvisoryPropReferencesItemsType]
-    severity: str
-    summary: str
-    updated_at: str
-    vulnerabilities: list[WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType]
-    withdrawn_at: Union[str, None]
+    links: WebhooksReviewPropLinksType
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[str, None]
+    commit_id: str
+    html_url: str
+    id: int
+    node_id: str
+    pull_request_url: str
+    state: str
+    submitted_at: Union[_dt.datetime, None]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    user: Union[WebhooksReviewPropUserType, None]
 
 
-class WebhooksSecurityAdvisoryTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisory
+class WebhooksReviewTypeForResponse(TypedDict):
+    """WebhooksReview
 
-    The details of the security advisory, including summary, description, and
-    severity.
+    The review that was affected.
     """
 
-    cvss: WebhooksSecurityAdvisoryPropCvssTypeForResponse
-    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
-    cwes: list[WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse]
-    description: str
-    ghsa_id: str
-    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse]
-    published_at: str
-    references: list[WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse]
-    severity: str
-    summary: str
-    updated_at: str
-    vulnerabilities: list[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse
+    links: WebhooksReviewPropLinksTypeForResponse
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
-    withdrawn_at: Union[str, None]
+    body: Union[str, None]
+    commit_id: str
+    html_url: str
+    id: int
+    node_id: str
+    pull_request_url: str
+    state: str
+    submitted_at: Union[str, None]
+    updated_at: NotRequired[Union[str, None]]
+    user: Union[WebhooksReviewPropUserTypeForResponse, None]
 
 
-class WebhooksSecurityAdvisoryPropCvssType(TypedDict):
-    """WebhooksSecurityAdvisoryPropCvss"""
+class WebhooksReviewPropUserType(TypedDict):
+    """User"""
 
-    score: float
-    vector_string: Union[str, None]
-
-
-class WebhooksSecurityAdvisoryPropCvssTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisoryPropCvss"""
-
-    score: float
-    vector_string: Union[str, None]
-
-
-class WebhooksSecurityAdvisoryPropCwesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class WebhooksSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str
-    value: str
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
+class WebhooksReviewPropUserTypeForResponse(TypedDict):
+    """User"""
 
-    type: str
-    value: str
-
-
-class WebhooksSecurityAdvisoryPropReferencesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropReferencesItems"""
-
-    url: str
-
-
-class WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisoryPropReferencesItems"""
-
-    url: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
-
-    first_patched_version: Union[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
-        None,
-    ]
-    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
-    severity: str
-    vulnerable_version_range: str
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
+class WebhooksReviewPropLinksType(TypedDict):
+    """WebhooksReviewPropLinks"""
 
-    first_patched_version: Union[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse,
-        None,
-    ]
-    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse
-    severity: str
-    vulnerable_version_range: str
+    html: WebhooksReviewPropLinksPropHtmlType
+    pull_request: WebhooksReviewPropLinksPropPullRequestType
 
 
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
-    TypedDict
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
+class WebhooksReviewPropLinksTypeForResponse(TypedDict):
+    """WebhooksReviewPropLinks"""
 
-    identifier: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse(
-    TypedDict
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
-
-    identifier: str
+    html: WebhooksReviewPropLinksPropHtmlTypeForResponse
+    pull_request: WebhooksReviewPropLinksPropPullRequestTypeForResponse
 
 
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(TypedDict):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
+class WebhooksReviewPropLinksPropHtmlType(TypedDict):
+    """Link"""
 
-    ecosystem: str
-    name: str
+    href: str
 
 
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse(
-    TypedDict
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
+class WebhooksReviewPropLinksPropHtmlTypeForResponse(TypedDict):
+    """Link"""
 
-    ecosystem: str
-    name: str
+    href: str
+
+
+class WebhooksReviewPropLinksPropPullRequestType(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class WebhooksReviewPropLinksPropPullRequestTypeForResponse(TypedDict):
+    """Link"""
+
+    href: str
 
 
 __all__ = (
-    "WebhooksSecurityAdvisoryPropCvssType",
-    "WebhooksSecurityAdvisoryPropCvssTypeForResponse",
-    "WebhooksSecurityAdvisoryPropCwesItemsType",
-    "WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse",
-    "WebhooksSecurityAdvisoryPropIdentifiersItemsType",
-    "WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
-    "WebhooksSecurityAdvisoryPropReferencesItemsType",
-    "WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse",
-    "WebhooksSecurityAdvisoryType",
-    "WebhooksSecurityAdvisoryTypeForResponse",
+    "WebhooksReviewPropLinksPropHtmlType",
+    "WebhooksReviewPropLinksPropHtmlTypeForResponse",
+    "WebhooksReviewPropLinksPropPullRequestType",
+    "WebhooksReviewPropLinksPropPullRequestTypeForResponse",
+    "WebhooksReviewPropLinksType",
+    "WebhooksReviewPropLinksTypeForResponse",
+    "WebhooksReviewPropUserType",
+    "WebhooksReviewPropUserTypeForResponse",
+    "WebhooksReviewType",
+    "WebhooksReviewTypeForResponse",
 )

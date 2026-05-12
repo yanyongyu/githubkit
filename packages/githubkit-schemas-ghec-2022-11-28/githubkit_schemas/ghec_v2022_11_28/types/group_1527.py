@@ -10,33 +10,36 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
-
-from .group_0312 import (
-    ProjectsV2FieldSingleSelectOptionType,
-    ProjectsV2FieldSingleSelectOptionTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class ReposOwnerRepoReleasesReleaseIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
 
-    name: str
-    data_type: Literal["single_select"]
-    single_select_options: list[ProjectsV2FieldSingleSelectOptionType]
+    tag_name: NotRequired[str]
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+    discussion_category_name: NotRequired[str]
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
 
-    name: str
-    data_type: Literal["single_select"]
-    single_select_options: list[ProjectsV2FieldSingleSelectOptionTypeForResponse]
+    tag_name: NotRequired[str]
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+    discussion_category_name: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse",
+    "ReposOwnerRepoReleasesReleaseIdPatchBodyType",
+    "ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse",
 )

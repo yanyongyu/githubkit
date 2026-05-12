@@ -9,27 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class MarkdownPostBodyType(TypedDict):
-    """MarkdownPostBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
 
-    text: str
-    mode: NotRequired[Literal["markdown", "gfm"]]
-    context: NotRequired[str]
+    custom_agents: NotRequired[
+        Union[
+            list[
+                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType
+            ],
+            None,
+        ]
+    ]
 
 
-class MarkdownPostBodyTypeForResponse(TypedDict):
-    """MarkdownPostBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
 
-    text: str
-    mode: NotRequired[Literal["markdown", "gfm"]]
-    context: NotRequired[str]
+    custom_agents: NotRequired[
+        Union[
+            list[
+                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse
+            ],
+            None,
+        ]
+    ]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
+
+    name: NotRequired[str]
+    file_path: NotRequired[str]
+    url: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
+
+    name: NotRequired[str]
+    file_path: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "MarkdownPostBodyType",
-    "MarkdownPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse",
 )

@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoReleasesAssetsAssetIdPatchBody(GitHubModel):
-    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
+class ReposOwnerRepoInvitationsInvitationIdPatchBody(GitHubModel):
+    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The file name of the asset.")
-    label: Missing[str] = Field(
-        default=UNSET,
-        description="An alternate short description of the asset. Used in place of the filename.",
+    permissions: Missing[Literal["read", "write", "maintain", "triage", "admin"]] = (
+        Field(
+            default=UNSET,
+            description="The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.",
+        )
     )
-    state: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoReleasesAssetsAssetIdPatchBody)
+model_rebuild(ReposOwnerRepoInvitationsInvitationIdPatchBody)
 
-__all__ = ("ReposOwnerRepoReleasesAssetsAssetIdPatchBody",)
+__all__ = ("ReposOwnerRepoInvitationsInvitationIdPatchBody",)

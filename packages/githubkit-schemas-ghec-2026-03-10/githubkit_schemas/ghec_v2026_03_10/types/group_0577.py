@@ -10,40 +10,39 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksWorkflowType(TypedDict):
-    """Workflow"""
+class ExemptionResponseType(TypedDict):
+    """Exemption response
 
-    badge_url: str
-    created_at: _dt.datetime
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    path: str
-    state: str
-    updated_at: _dt.datetime
-    url: str
+    A response to an exemption request by a delegated bypasser.
+    """
+
+    id: NotRequired[int]
+    reviewer_id: NotRequired[int]
+    reviewer_login: NotRequired[str]
+    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
+    reviewer_comment: NotRequired[Union[str, None]]
+    created_at: NotRequired[_dt.datetime]
 
 
-class WebhooksWorkflowTypeForResponse(TypedDict):
-    """Workflow"""
+class ExemptionResponseTypeForResponse(TypedDict):
+    """Exemption response
 
-    badge_url: str
-    created_at: str
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    path: str
-    state: str
-    updated_at: str
-    url: str
+    A response to an exemption request by a delegated bypasser.
+    """
+
+    id: NotRequired[int]
+    reviewer_id: NotRequired[int]
+    reviewer_login: NotRequired[str]
+    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
+    reviewer_comment: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksWorkflowType",
-    "WebhooksWorkflowTypeForResponse",
+    "ExemptionResponseType",
+    "ExemptionResponseTypeForResponse",
 )

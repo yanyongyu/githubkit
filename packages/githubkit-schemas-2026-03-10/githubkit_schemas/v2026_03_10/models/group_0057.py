@@ -79,7 +79,9 @@ class Issue(GitHubModel):
     repository: Missing[Repository] = Field(
         default=UNSET, title="Repository", description="A repository on GitHub."
     )
-    performed_via_github_app: Missing[Union[None, Integration]] = Field(default=UNSET)
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
     author_association: Missing[
         Literal[
             "COLLABORATOR",

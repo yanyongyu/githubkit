@@ -11,34 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class ReposOwnerRepoReleasesAssetsAssetIdPatchBody(GitHubModel):
+    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
 
-    metadata: Missing[
-        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-    ] = Field(default=UNSET, description="Updated resource-specific metadata.")
-
-
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata(
-    ExtraGitHubModel
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-
-    Updated resource-specific metadata.
-    """
+    name: Missing[str] = Field(default=UNSET, description="The file name of the asset.")
+    label: Missing[str] = Field(
+        default=UNSET,
+        description="An alternate short description of the asset. Used in place of the filename.",
+    )
+    state: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody)
-model_rebuild(
-    UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-)
+model_rebuild(ReposOwnerRepoReleasesAssetsAssetIdPatchBody)
 
-__all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata",
-)
+__all__ = ("ReposOwnerRepoReleasesAssetsAssetIdPatchBody",)

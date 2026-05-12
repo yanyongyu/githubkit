@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class UserMembershipsOrgsOrgPatchBodyType(TypedDict):
-    """UserMembershipsOrgsOrgPatchBody"""
-
-    state: Literal["active"]
+from .group_0110 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class UserMembershipsOrgsOrgPatchBodyTypeForResponse(TypedDict):
-    """UserMembershipsOrgsOrgPatchBody"""
+class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
 
-    state: Literal["active"]
+    properties: list[CustomPropertyValueType]
+
+
+class ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
+
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "UserMembershipsOrgsOrgPatchBodyType",
-    "UserMembershipsOrgsOrgPatchBodyTypeForResponse",
+    "ReposOwnerRepoPropertiesValuesPatchBodyType",
+    "ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse",
 )

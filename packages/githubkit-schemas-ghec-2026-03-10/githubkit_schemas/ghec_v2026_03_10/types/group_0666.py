@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0413 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0567 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0568 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0569 import (
+from .group_0418 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0572 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0573 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0574 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0570 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0575 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertReintroducedType(TypedDict):
-    """Dependabot alert reintroduced event"""
+class WebhookDependabotAlertAutoDismissedType(TypedDict):
+    """Dependabot alert auto-dismissed event"""
 
-    action: Literal["reintroduced"]
+    action: Literal["auto_dismissed"]
     alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,10 +35,10 @@ class WebhookDependabotAlertReintroducedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertReintroducedTypeForResponse(TypedDict):
-    """Dependabot alert reintroduced event"""
+class WebhookDependabotAlertAutoDismissedTypeForResponse(TypedDict):
+    """Dependabot alert auto-dismissed event"""
 
-    action: Literal["reintroduced"]
+    action: Literal["auto_dismissed"]
     alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookDependabotAlertReintroducedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDependabotAlertReintroducedType",
-    "WebhookDependabotAlertReintroducedTypeForResponse",
+    "WebhookDependabotAlertAutoDismissedType",
+    "WebhookDependabotAlertAutoDismissedTypeForResponse",
 )

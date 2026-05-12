@@ -9,27 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
-class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType(
+
+class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryType]
+
+
+class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody"""
+    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
 
-    role: Literal["reader", "writer", "admin", "no_access"]
-
-
-class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody"""
-
-    role: Literal["reader", "writer", "admin", "no_access"]
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType",
-    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse",
+    "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type",
+    "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
 )

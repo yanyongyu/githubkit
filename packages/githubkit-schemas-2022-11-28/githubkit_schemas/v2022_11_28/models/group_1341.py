@@ -9,27 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
 
-    actor_type: Literal["User", "Team"] = Field(
-        description="The type of actor (must be `User` for user-owned spaces; `Team` will be rejected)."
-    )
-    actor_identifier: str = Field(
-        description="The username of the collaborator. The numeric user ID is also accepted."
-    )
-    role: Literal["reader", "writer", "admin"] = Field(
-        description="The role to grant to the collaborator."
-    )
+    body: str = Field(description="The body text of the pull request review.")
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody)
 
-__all__ = ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody",)

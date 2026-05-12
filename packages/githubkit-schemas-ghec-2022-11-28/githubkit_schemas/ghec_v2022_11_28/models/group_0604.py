@@ -9,50 +9,196 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 
 
-class ProjectsV2Item(GitHubModel):
-    """Projects v2 Item
+class PersonalAccessTokenRequest(GitHubModel):
+    """Personal Access Token Request
 
-    An item belonging to a project
+    Details of a Personal Access Token Request.
     """
 
-    id: float = Field(description="The unique identifier of the project item.")
-    node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the project item."
+    id: int = Field(
+        description="Unique identifier of the request for access via fine-grained personal access token. Used as the `pat_request_id` parameter in the list and review API calls."
     )
-    project_node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the project that contains this item."
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    permissions_added: PersonalAccessTokenRequestPropPermissionsAdded = Field(
+        description="New requested permissions, categorized by type of permission."
     )
-    content_node_id: str = Field(
-        description="The node ID of the content represented by this item."
+    permissions_upgraded: PersonalAccessTokenRequestPropPermissionsUpgraded = Field(
+        description="Requested permissions that elevate access for a previously approved request for access, categorized by type of permission."
     )
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
-        title="Projects v2 Item Content Type",
-        description="The type of content tracked in a project item",
+    permissions_result: PersonalAccessTokenRequestPropPermissionsResult = Field(
+        description="Permissions requested, categorized by type of permission. This field incorporates `permissions_added` and `permissions_upgraded`."
     )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    repository_selection: Literal["none", "all", "subset"] = Field(
+        description="Type of repository selection requested."
     )
-    created_at: _dt.datetime = Field(description="The time when the item was created.")
-    updated_at: _dt.datetime = Field(
-        description="The time when the item was last updated."
+    repository_count: Union[int, None] = Field(
+        description="The number of repositories the token is requesting access to. This field is only populated when `repository_selection` is `subset`."
     )
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="The time when the item was archived."
+    repositories: Union[list[PersonalAccessTokenRequestPropRepositoriesItems], None] = (
+        Field(
+            description="An array of repository objects the token is requesting access to. This field is only populated when `repository_selection` is `subset`."
+        )
+    )
+    created_at: str = Field(
+        description="Date and time when the request for access was created."
+    )
+    token_id: int = Field(
+        description="Unique identifier of the user's token. This field can also be found in audit log events and the organization's settings for their PAT grants."
+    )
+    token_name: str = Field(
+        description="The name given to the user's token. This field can also be found in an organization's settings page for Active Tokens."
+    )
+    token_expired: bool = Field(
+        description="Whether the associated fine-grained personal access token has expired."
+    )
+    token_expires_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token expires."
+    )
+    token_last_used_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token was last used for authentication."
     )
 
 
-model_rebuild(ProjectsV2Item)
+class PersonalAccessTokenRequestPropRepositoriesItems(GitHubModel):
+    """PersonalAccessTokenRequestPropRepositoriesItems"""
 
-__all__ = ("ProjectsV2Item",)
+    full_name: str = Field()
+    id: int = Field(description="Unique identifier of the repository")
+    name: str = Field(description="The name of the repository.")
+    node_id: str = Field()
+    private: bool = Field(description="Whether the repository is private or public.")
+
+
+class PersonalAccessTokenRequestPropPermissionsAdded(GitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsAdded
+
+    New requested permissions, categorized by type of permission.
+    """
+
+    organization: Missing[
+        PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        PersonalAccessTokenRequestPropPermissionsAddedPropRepository
+    ] = Field(default=UNSET)
+    other: Missing[PersonalAccessTokenRequestPropPermissionsAddedPropOther] = Field(
+        default=UNSET
+    )
+
+
+class PersonalAccessTokenRequestPropPermissionsAddedPropOrganization(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsAddedPropOrganization"""
+
+
+class PersonalAccessTokenRequestPropPermissionsAddedPropRepository(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsAddedPropRepository"""
+
+
+class PersonalAccessTokenRequestPropPermissionsAddedPropOther(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsAddedPropOther"""
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgraded(GitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsUpgraded
+
+    Requested permissions that elevate access for a previously approved request for
+    access, categorized by type of permission.
+    """
+
+    organization: Missing[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
+    ] = Field(default=UNSET)
+    other: Missing[PersonalAccessTokenRequestPropPermissionsUpgradedPropOther] = Field(
+        default=UNSET
+    )
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization(
+    ExtraGitHubModel
+):
+    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization"""
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository"""
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedPropOther(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOther"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResult(GitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsResult
+
+    Permissions requested, categorized by type of permission. This field
+    incorporates `permissions_added` and `permissions_upgraded`.
+    """
+
+    organization: Missing[
+        PersonalAccessTokenRequestPropPermissionsResultPropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        PersonalAccessTokenRequestPropPermissionsResultPropRepository
+    ] = Field(default=UNSET)
+    other: Missing[PersonalAccessTokenRequestPropPermissionsResultPropOther] = Field(
+        default=UNSET
+    )
+
+
+class PersonalAccessTokenRequestPropPermissionsResultPropOrganization(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsResultPropOrganization"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResultPropRepository(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsResultPropRepository"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResultPropOther(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsResultPropOther"""
+
+
+model_rebuild(PersonalAccessTokenRequest)
+model_rebuild(PersonalAccessTokenRequestPropRepositoriesItems)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsAdded)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsAddedPropOrganization)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsAddedPropRepository)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsAddedPropOther)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsUpgraded)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsUpgradedPropOther)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsResult)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsResultPropOrganization)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsResultPropRepository)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsResultPropOther)
+
+__all__ = (
+    "PersonalAccessTokenRequest",
+    "PersonalAccessTokenRequestPropPermissionsAdded",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganization",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOther",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropRepository",
+    "PersonalAccessTokenRequestPropPermissionsResult",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOrganization",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOther",
+    "PersonalAccessTokenRequestPropPermissionsResultPropRepository",
+    "PersonalAccessTokenRequestPropPermissionsUpgraded",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOther",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository",
+    "PersonalAccessTokenRequestPropRepositoriesItems",
+)

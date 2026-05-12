@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0138 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
-
-
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
-
-    resources: list[CopilotSpaceResourceType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse(
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
+
+    body: NotRequired[str]
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
+
+
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
-    resources: list[CopilotSpaceResourceTypeForResponse]
+    body: NotRequired[str]
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyTypeForResponse",
 )

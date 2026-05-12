@@ -9,35 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(GitHubModel):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
 
-    total_count: int = Field()
-    secrets: list[DependabotSecret] = Field()
+    ref: str = Field(
+        description="The git reference for the workflow. The reference can be a branch or tag name."
+    )
+    inputs: Missing[
+        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+    ] = Field(
+        default=UNSET,
+        description="Input keys and values configured in the workflow file. The maximum number of properties is 25. Any default properties configured in the workflow file will be used when `inputs` are omitted.",
+    )
 
 
-class DependabotSecret(GitHubModel):
-    """Dependabot Secret
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
 
-    Set secrets for Dependabot.
+    Input keys and values configured in the workflow file. The maximum number of
+    properties is 25. Any default properties configured in the workflow file will be
+    used when `inputs` are omitted.
     """
 
-    name: str = Field(description="The name of the secret.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
 
-
-model_rebuild(ReposOwnerRepoDependabotSecretsGetResponse200)
-model_rebuild(DependabotSecret)
+model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody)
+model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs)
 
 __all__ = (
-    "DependabotSecret",
-    "ReposOwnerRepoDependabotSecretsGetResponse200",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
 )

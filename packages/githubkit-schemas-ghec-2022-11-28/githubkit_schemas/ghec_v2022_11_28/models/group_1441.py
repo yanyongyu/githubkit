@@ -12,16 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200(GitHubModel):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
 
-    enabled: bool = Field(
-        description="Whether or not private vulnerability reporting is enabled for the repository."
+    integration_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the custom app that will be enabled on the environment.",
     )
 
 
-model_rebuild(ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody
+)
 
-__all__ = ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",)
+__all__ = (
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody",
+)

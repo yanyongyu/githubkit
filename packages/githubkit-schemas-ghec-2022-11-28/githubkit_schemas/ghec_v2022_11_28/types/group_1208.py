@@ -9,27 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType(
-    TypedDict
-):
-    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody"""
-
-    role: Literal["reader", "writer", "admin", "no_access"]
+from .group_0253 import (
+    OrganizationActionsSecretType,
+    OrganizationActionsSecretTypeForResponse,
+)
 
 
-class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody"""
+class OrgsOrgActionsSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgActionsSecretsGetResponse200"""
 
-    role: Literal["reader", "writer", "admin", "no_access"]
+    total_count: int
+    secrets: list[OrganizationActionsSecretType]
+
+
+class OrgsOrgActionsSecretsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[OrganizationActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType",
-    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse",
+    "OrgsOrgActionsSecretsGetResponse200Type",
+    "OrgsOrgActionsSecretsGetResponse200TypeForResponse",
 )

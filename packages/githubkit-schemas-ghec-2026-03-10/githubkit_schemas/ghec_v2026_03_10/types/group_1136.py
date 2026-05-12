@@ -9,31 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0038 import (
-    ActionsHostedRunnerCuratedImageType,
-    ActionsHostedRunnerCuratedImageTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
+class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
 
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageType]
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
-class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse(
+class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
+    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
 
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType",
+    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse",
 )

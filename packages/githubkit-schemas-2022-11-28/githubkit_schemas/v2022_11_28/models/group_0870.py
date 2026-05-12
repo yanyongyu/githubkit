@@ -18,21 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0486 import EnterpriseWebhooks
-from .group_0487 import SimpleInstallation
-from .group_0488 import OrganizationSimpleWebhooks
-from .group_0489 import RepositoryWebhooks
-from .group_0529 import SecretScanningAlertWebhook
+from .group_0491 import EnterpriseWebhooks
+from .group_0492 import SimpleInstallation
+from .group_0493 import OrganizationSimpleWebhooks
+from .group_0494 import RepositoryWebhooks
 
 
-class WebhookSecretScanningAlertAssigned(GitHubModel):
-    """secret_scanning_alert assigned event"""
+class WebhookRepositoryUnarchived(GitHubModel):
+    """repository unarchived event"""
 
-    action: Literal["assigned"] = Field()
-    alert: SecretScanningAlertWebhook = Field()
-    assignee: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    action: Literal["unarchived"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -52,11 +47,9 @@ class WebhookSecretScanningAlertAssigned(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookSecretScanningAlertAssigned)
+model_rebuild(WebhookRepositoryUnarchived)
 
-__all__ = ("WebhookSecretScanningAlertAssigned",)
+__all__ = ("WebhookRepositoryUnarchived",)

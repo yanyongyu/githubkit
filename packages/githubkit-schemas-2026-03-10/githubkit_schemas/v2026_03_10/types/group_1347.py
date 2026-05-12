@@ -9,34 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
-
-from .group_0179 import (
-    ProjectsV2FieldIterationConfigurationType,
-    ProjectsV2FieldIterationConfigurationTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+class ReposOwnerRepoReleasesGenerateNotesPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
 
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationType
+    tag_name: str
+    target_commitish: NotRequired[str]
+    previous_tag_name: NotRequired[str]
+    configuration_file_path: NotRequired[str]
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+class ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
 
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationTypeForResponse
+    tag_name: str
+    target_commitish: NotRequired[str]
+    previous_tag_name: NotRequired[str]
+    configuration_file_path: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse",
+    "ReposOwnerRepoReleasesGenerateNotesPostBodyType",
+    "ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse",
 )

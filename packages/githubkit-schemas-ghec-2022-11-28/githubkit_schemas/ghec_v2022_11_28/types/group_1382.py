@@ -12,23 +12,29 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody
 
-    encrypted_value: str
-    key_id: str
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: list[str]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyTypeForResponse(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody
 
-    encrypted_value: str
-    key_id: str
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyTypeForResponse",
 )

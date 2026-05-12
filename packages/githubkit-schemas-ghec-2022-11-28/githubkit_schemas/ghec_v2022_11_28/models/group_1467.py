@@ -17,83 +17,74 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0114 import RepositoryRulesetBypassActor
-from .group_0119 import RepositoryRulesetConditions
-from .group_0133 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
+
+class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
+
+    title: Missing[Union[str, int, None]] = Field(
+        default=UNSET, description="The title of the issue."
+    )
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contents of the issue."
+    )
+    assignee: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Username to assign to this issue. **This field is closing down.**",
+    )
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET, description="The open or closed state of the issue."
+    )
+    state_reason: Missing[
+        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+    ] = Field(
+        default=UNSET,
+        description="The reason for the state change. Ignored unless `state` is changed.",
+    )
+    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
+    labels: Missing[
+        list[Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1]]
+    ] = Field(
+        default=UNSET,
+        description="Labels to associate with this issue. Pass one or more labels to _replace_ the set of labels on this issue. Send an empty array (`[]`) to clear all labels from the issue. Only users with push access can set labels for issues. Without push access to the repository, label changes are silently dropped.",
+    )
+    assignees: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Usernames to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this issue. Send an empty array (`[]`) to clear all assignees from the issue. Only users with push access can set assignees for new issues. Without push access to the repository, assignee changes are silently dropped.",
+    )
+    issue_field_values: Missing[
+        list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems]
+    ] = Field(
+        default=UNSET,
+        description="An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Only users with push access can set field values for issues",
+    )
+    type: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The name of the issue type to associate with this issue or use `null` to remove the current issue type. Only users with push access can set the type for issues. Without push access to the repository, type changes are silently dropped.",
+    )
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    color: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
+
+    field_id: int = Field(description="The ID of the issue field to set")
+    value: Union[str, float] = Field(description="The value to set for the field")
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberPatchBody",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1",
 )
-from .group_0134 import RepositoryRuleUpdate
-from .group_0136 import RepositoryRuleRequiredLinearHistory
-from .group_0137 import RepositoryRuleRequiredDeployments
-from .group_0139 import RepositoryRulePullRequest
-from .group_0141 import RepositoryRuleRequiredStatusChecks
-from .group_0143 import RepositoryRuleCommitMessagePattern
-from .group_0145 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0147 import RepositoryRuleCommitterEmailPattern
-from .group_0149 import RepositoryRuleBranchNamePattern
-from .group_0151 import RepositoryRuleTagNamePattern
-from .group_0153 import RepositoryRuleFilePathRestriction
-from .group_0155 import RepositoryRuleMaxFilePathLength
-from .group_0157 import RepositoryRuleFileExtensionRestriction
-from .group_0159 import RepositoryRuleMaxFileSize
-from .group_0162 import RepositoryRuleWorkflows
-from .group_0164 import RepositoryRuleCodeScanning
-from .group_0166 import RepositoryRuleCopilotCodeReview
-from .group_0173 import RepositoryRuleMergeQueue
-
-
-class ReposOwnerRepoRulesetsPostBody(GitHubModel):
-    """ReposOwnerRepoRulesetsPostBody"""
-
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
-        default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
-    )
-    conditions: Missing[RepositoryRulesetConditions] = Field(
-        default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
-    )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
-
-
-model_rebuild(ReposOwnerRepoRulesetsPostBody)
-
-__all__ = ("ReposOwnerRepoRulesetsPostBody",)

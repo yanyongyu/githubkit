@@ -9,25 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-
-class NotificationsPutBodyType(TypedDict):
-    """NotificationsPutBody"""
-
-    last_read_at: NotRequired[_dt.datetime]
-    read: NotRequired[bool]
+from .group_0960 import (
+    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
+    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
+)
 
 
-class NotificationsPutBodyTypeForResponse(TypedDict):
-    """NotificationsPutBody"""
+class AgentsTasksTaskIdGetResponse200Allof1Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1"""
 
-    last_read_at: NotRequired[str]
-    read: NotRequired[bool]
+    sessions: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
+    ]
+
+
+class AgentsTasksTaskIdGetResponse200Allof1TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1"""
+
+    sessions: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "NotificationsPutBodyType",
-    "NotificationsPutBodyTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof1Type",
+    "AgentsTasksTaskIdGetResponse200Allof1TypeForResponse",
 )

@@ -9,26 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0255 import CodespaceMachineType, CodespaceMachineTypeForResponse
-
-
-class UserCodespacesCodespaceNameMachinesGetResponse200Type(TypedDict):
-    """UserCodespacesCodespaceNameMachinesGetResponse200"""
-
-    total_count: int
-    machines: list[CodespaceMachineType]
+from .group_1490 import (
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+)
 
 
-class UserCodespacesCodespaceNameMachinesGetResponse200TypeForResponse(TypedDict):
-    """UserCodespacesCodespaceNameMachinesGetResponse200"""
+class ReposOwnerRepoPagesPutBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof0"""
 
-    total_count: int
-    machines: list[CodespaceMachineTypeForResponse]
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
+    public: NotRequired[bool]
+
+
+class ReposOwnerRepoPagesPutBodyAnyof0TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof0"""
+
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+        ]
+    ]
+    public: NotRequired[bool]
 
 
 __all__ = (
-    "UserCodespacesCodespaceNameMachinesGetResponse200Type",
-    "UserCodespacesCodespaceNameMachinesGetResponse200TypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof0Type",
+    "ReposOwnerRepoPagesPutBodyAnyof0TypeForResponse",
 )

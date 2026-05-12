@@ -9,29 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0038 import (
-    ActionsHostedRunnerCuratedImageType,
-    ActionsHostedRunnerCuratedImageTypeForResponse,
-)
+from .group_0087 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
 
 
-class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200"""
+class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageType]
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
 
 
-class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200"""
+class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type",
+    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse",
 )

@@ -15,23 +15,38 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0017 import AppPermissions
 
-class OrgsOrgActionsOidcCustomizationSubPutBody(GitHubModel):
-    """Actions OIDC Subject customization
 
-    Actions OIDC Subject customization
-    """
+class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
+    """ApplicationsClientIdTokenScopedPostBody"""
 
-    include_claim_keys: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
+    access_token: str = Field(
+        description="The access token used to authenticate to the GitHub API."
     )
-    use_immutable_subject: Missing[bool] = Field(
+    target: Missing[str] = Field(
         default=UNSET,
-        description="Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.",
+        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
+    )
+    target_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
+    )
+    repositories: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
+    )
+    repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
+    )
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
     )
 
 
-model_rebuild(OrgsOrgActionsOidcCustomizationSubPutBody)
+model_rebuild(ApplicationsClientIdTokenScopedPostBody)
 
-__all__ = ("OrgsOrgActionsOidcCustomizationSubPutBody",)
+__all__ = ("ApplicationsClientIdTokenScopedPostBody",)

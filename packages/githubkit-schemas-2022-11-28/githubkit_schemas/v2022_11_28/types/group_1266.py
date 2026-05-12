@@ -11,22 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0184 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
+
+    encrypted_value: str
+    key_id: str
 
 
-class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
 
-    properties: list[CustomPropertyValueType]
-
-
-class ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
-
-    properties: list[CustomPropertyValueTypeForResponse]
+    encrypted_value: str
+    key_id: str
 
 
 __all__ = (
-    "ReposOwnerRepoPropertiesValuesPatchBodyType",
-    "ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyTypeForResponse",
 )

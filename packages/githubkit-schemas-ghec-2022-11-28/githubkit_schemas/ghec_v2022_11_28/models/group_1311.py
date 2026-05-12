@@ -9,19 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoAttestationsPostResponse201(GitHubModel):
-    """ReposOwnerRepoAttestationsPostResponse201"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
 
-    id: Missing[int] = Field(default=UNSET, description="The ID of the attestation.")
+    name: str = Field(description="The name of the field.")
+    data_type: Literal["text", "number", "date"] = Field(
+        description="The field's data type."
+    )
 
 
-model_rebuild(ReposOwnerRepoAttestationsPostResponse201)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1)
 
-__all__ = ("ReposOwnerRepoAttestationsPostResponse201",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1",)

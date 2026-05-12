@@ -13,25 +13,37 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class ReposOwnerRepoPullsPullNumberCodespacesPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
 
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    client_ip: NotRequired[str]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    multi_repo_permissions_opt_out: NotRequired[bool]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+    display_name: NotRequired[str]
+    retention_period_minutes: NotRequired[int]
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class ReposOwnerRepoPullsPullNumberCodespacesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
 
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    client_ip: NotRequired[str]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    multi_repo_permissions_opt_out: NotRequired[bool]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+    display_name: NotRequired[str]
+    retention_period_minutes: NotRequired[int]
 
 
 __all__ = (
-    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyType",
-    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberCodespacesPostBodyType",
+    "ReposOwnerRepoPullsPullNumberCodespacesPostBodyTypeForResponse",
 )

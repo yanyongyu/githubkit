@@ -9,23 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0243 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
+class OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
 
-class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
+class OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType",
-    "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyTypeForResponse",
+    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200Type",
+    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse",
 )

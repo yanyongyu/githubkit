@@ -13,38 +13,23 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody(GitHubModel):
-    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`."
     )
-    compute_service: Missing[Literal["none", "actions"]] = Field(
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="The hosted compute service to use for the network configuration.",
-    )
-    network_settings_ids: Missing[list[str]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="A list of identifiers of the network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
-    )
-    failover_network_settings_ids: Missing[list[str]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="A list of identifiers of the failover network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
-    )
-    failover_network_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether the failover network resource is enabled.",
+        description="The URL for the selected repositories endpoint. Only present when `enabled_repositories` is `selected`.",
     )
 
 
-model_rebuild(OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody)
+model_rebuild(OrgsOrgCopilotCodingAgentPermissionsGetResponse200)
 
-__all__ = ("OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody",)
+__all__ = ("OrgsOrgCopilotCodingAgentPermissionsGetResponse200",)

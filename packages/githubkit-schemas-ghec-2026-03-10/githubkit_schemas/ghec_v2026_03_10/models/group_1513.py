@@ -16,28 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200(GitHubModel):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
 
-    attestations: Missing[
-        list[UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems]
-    ] = Field(default=UNSET)
-
-
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems(
-    GitHubModel
-):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: Missing[int] = Field(default=UNSET)
-    bundle_url: Missing[str] = Field(default=UNSET)
-    initiator: Missing[str] = Field(default=UNSET)
+    reviewers: Missing[list[str]] = Field(
+        default=UNSET, description="An array of user `login`s that will be requested."
+    )
+    team_reviewers: list[str] = Field(
+        description="An array of team `slug`s that will be requested."
+    )
 
 
-model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200)
-model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems)
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1)
 
-__all__ = (
-    "UsersUsernameAttestationsSubjectDigestGetResponse200",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1",)

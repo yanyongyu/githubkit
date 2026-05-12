@@ -19,16 +19,16 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0018 import Installation
-from .group_0567 import EnterpriseWebhooks
-from .group_0569 import OrganizationSimpleWebhooks
-from .group_0570 import RepositoryWebhooks
-from .group_0584 import WebhooksRepositoriesItems
+from .group_0572 import EnterpriseWebhooks
+from .group_0574 import OrganizationSimpleWebhooks
+from .group_0575 import RepositoryWebhooks
+from .group_0589 import WebhooksRepositoriesItems
 
 
-class WebhookInstallationUnsuspend(GitHubModel):
-    """installation unsuspend event"""
+class WebhookInstallationNewPermissionsAccepted(GitHubModel):
+    """installation new_permissions_accepted event"""
 
-    action: Literal["unsuspend"] = Field()
+    action: Literal["new_permissions_accepted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,6 +53,6 @@ class WebhookInstallationUnsuspend(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookInstallationUnsuspend)
+model_rebuild(WebhookInstallationNewPermissionsAccepted)
 
-__all__ = ("WebhookInstallationUnsuspend",)
+__all__ = ("WebhookInstallationNewPermissionsAccepted",)

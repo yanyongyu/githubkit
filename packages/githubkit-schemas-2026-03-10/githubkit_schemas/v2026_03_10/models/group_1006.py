@@ -13,85 +13,57 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing, UniqueList
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostBody(GitHubModel):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    name: str = Field(
-        min_length=1, max_length=256, description="The name of the artifact."
-    )
-    digest: str = Field(
-        min_length=71,
-        max_length=71,
-        pattern="^sha256:[a-f0-9]{64}$",
-        description="The hex encoded digest of the artifact.",
-    )
-    version: Missing[str] = Field(
-        min_length=1, max_length=100, default=UNSET, description="The artifact version."
-    )
-    status: Literal["deployed", "decommissioned"] = Field(
-        description="The status of the artifact. Can be either deployed or decommissioned."
-    )
-    logical_environment: str = Field(
-        min_length=1, max_length=128, description="The stage of the deployment."
-    )
-    physical_environment: Missing[str] = Field(
-        max_length=128,
+    budget_amount: Missing[int] = Field(
         default=UNSET,
-        description="The physical region of the deployment.",
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
     )
-    cluster: Missing[str] = Field(
-        max_length=128, default=UNSET, description="The deployment cluster."
-    )
-    deployment_name: str = Field(
-        max_length=256,
-        description="The unique identifier for the deployment represented by the new record. To accommodate differing\ncontainers and namespaces within a cluster, the following format is recommended:\n{namespaceName}-{deploymentName}-{containerName}.\n",
-    )
-    tags: Missing[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags] = Field(
-        default=UNSET, description="The tags associated with the deployment."
-    )
-    runtime_risks: Missing[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ] = Field(
-        max_length=4 if PYDANTIC_V2 else None,
+    prevent_further_usage: Missing[bool] = Field(
         default=UNSET,
-        description="A list of runtime risks associated with the deployment.",
+        description="Whether to prevent additional spending once the budget is exceeded",
     )
-    github_repository: Missing[str] = Field(
-        min_length=1,
-        max_length=100,
-        pattern="^[A-Za-z0-9.\\-_]+$",
+    budget_alerting: Missing[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+    ] = Field(default=UNSET)
+    budget_scope: Missing[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ] = Field(default=UNSET, description="The scope of the budget")
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
+    )
+    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
+        default=UNSET, description="The type of pricing for the budget"
+    )
+    budget_product_sku: Missing[str] = Field(
         default=UNSET,
-        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
-    )
-    return_records: Missing[bool] = Field(
-        default=UNSET,
-        description="If true, the endpoint will return the created or updated record in the response body.\n",
+        description="A single product or SKU that will be covered in the budget",
     )
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags(ExtraGitHubModel):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
+    GitHubModel
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
 
-    The tags associated with the deployment.
-    """
+    will_alert: Missing[bool] = Field(
+        default=UNSET, description="Whether alerts are enabled for this budget"
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET, description="Array of user login names who will receive alerts"
+    )
 
 
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostBody)
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting)
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBody",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
 )

@@ -16,14 +16,13 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
+class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422(GitHubModel):
+    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
 
-    enable_debug_logging: Missing[bool] = Field(
-        default=UNSET, description="Whether to enable debug logging for the re-run."
-    )
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdRerunPostBody)
+model_rebuild(OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422)
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunPostBody",)
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",)

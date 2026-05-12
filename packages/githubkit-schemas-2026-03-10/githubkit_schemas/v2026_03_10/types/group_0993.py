@@ -9,26 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0118 import RunnerLabelType, RunnerLabelTypeForResponse
-
-
-class OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200"""
-
-    total_count: int
-    labels: list[RunnerLabelType]
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200"""
+class EnterprisesEnterpriseTeamsTeamSlugPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
 
-    total_count: int
-    labels: list[RunnerLabelTypeForResponse]
+    name: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
+    group_id: NotRequired[Union[str, None]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+
+
+class EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+
+    name: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
+    group_id: NotRequired[Union[str, None]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type",
-    "OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyType",
+    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse",
 )

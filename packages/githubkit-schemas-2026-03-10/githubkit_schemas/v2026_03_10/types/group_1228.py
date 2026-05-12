@@ -9,102 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyType(TypedDict):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
 
-    title: NotRequired[Union[str, int, None]]
-    body: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[
-        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
-    ]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
+    auto_trigger_checks: NotRequired[
         list[
-            Union[
-                str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type
-            ]
+            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
         ]
     ]
-    assignees: NotRequired[list[str]]
-    issue_field_values: NotRequired[
-        list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType]
-    ]
-    type: NotRequired[Union[str, None]]
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
 
-    title: NotRequired[Union[str, int, None]]
-    body: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[
-        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
-    ]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
+    auto_trigger_checks: NotRequired[
         list[
-            Union[
-                str,
-                ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse,
-            ]
+            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse
         ]
     ]
-    assignees: NotRequired[list[str]]
-    issue_field_values: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse
-        ]
-    ]
-    type: NotRequired[Union[str, None]]
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse(
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType(
     TypedDict
 ):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
+    app_id: int
+    setting: bool
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
-
-    field_id: int
-    value: Union[str, float]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse(
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
 
-    field_id: int
-    value: Union[str, float]
+    app_id: int
+    setting: bool
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyType",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyTypeForResponse",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyType",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyTypeForResponse",
 )

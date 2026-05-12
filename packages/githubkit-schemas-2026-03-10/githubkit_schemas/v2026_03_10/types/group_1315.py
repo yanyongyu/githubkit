@@ -9,23 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_1314 import (
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+)
 
 
-class UserEmailVisibilityPatchBodyType(TypedDict):
-    """UserEmailVisibilityPatchBody"""
+class ReposOwnerRepoPagesPutBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof0"""
 
-    visibility: Literal["public", "private"]
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
 
 
-class UserEmailVisibilityPatchBodyTypeForResponse(TypedDict):
-    """UserEmailVisibilityPatchBody"""
+class ReposOwnerRepoPagesPutBodyAnyof0TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof0"""
 
-    visibility: Literal["public", "private"]
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+        ]
+    ]
 
 
 __all__ = (
-    "UserEmailVisibilityPatchBodyType",
-    "UserEmailVisibilityPatchBodyTypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof0Type",
+    "ReposOwnerRepoPagesPutBodyAnyof0TypeForResponse",
 )

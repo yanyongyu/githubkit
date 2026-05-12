@@ -9,24 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0277 import WorkflowRunType, WorkflowRunTypeForResponse
 
 
-class ReposOwnerRepoDependabotSecretsSecretNamePutBodyType(TypedDict):
-    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
+class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+    total_count: int
+    workflow_runs: list[WorkflowRunType]
 
 
-class ReposOwnerRepoDependabotSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
+class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+    total_count: int
+    workflow_runs: list[WorkflowRunTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotSecretsSecretNamePutBodyType",
-    "ReposOwnerRepoDependabotSecretsSecretNamePutBodyTypeForResponse",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200TypeForResponse",
 )

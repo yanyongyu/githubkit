@@ -9,25 +9,147 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0047 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
 
 
-class CopilotSpaceCollaboratorAnyof0Allof1Type(TypedDict):
-    """CopilotSpaceCollaboratorAnyof0Allof1"""
+class CopilotSpaceType(TypedDict):
+    """Space
 
-    actor_type: Literal["User"]
-    role: Literal["reader", "writer", "admin"]
+    A GitHub Copilot Space represents an interactive AI workspace where users can
+    ask questions and get assistance.
+    """
+
+    id: int
+    number: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    general_instructions: NotRequired[Union[str, None]]
+    base_role: Literal["reader", "writer", "admin", "no_access"]
+    owner: Union[SimpleUserType, OrganizationSimpleType]
+    creator: SimpleUserType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    html_url: str
+    api_url: str
+    resources_attributes: NotRequired[
+        list[CopilotSpacePropResourcesAttributesItemsType]
+    ]
 
 
-class CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse(TypedDict):
-    """CopilotSpaceCollaboratorAnyof0Allof1"""
+class CopilotSpaceTypeForResponse(TypedDict):
+    """Space
 
-    actor_type: Literal["User"]
-    role: Literal["reader", "writer", "admin"]
+    A GitHub Copilot Space represents an interactive AI workspace where users can
+    ask questions and get assistance.
+    """
+
+    id: int
+    number: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    general_instructions: NotRequired[Union[str, None]]
+    base_role: Literal["reader", "writer", "admin", "no_access"]
+    owner: Union[SimpleUserTypeForResponse, OrganizationSimpleTypeForResponse]
+    creator: SimpleUserTypeForResponse
+    created_at: str
+    updated_at: str
+    html_url: str
+    api_url: str
+    resources_attributes: NotRequired[
+        list[CopilotSpacePropResourcesAttributesItemsTypeForResponse]
+    ]
+
+
+class CopilotSpacePropResourcesAttributesItemsType(TypedDict):
+    """CopilotSpacePropResourcesAttributesItems"""
+
+    id: NotRequired[int]
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    metadata: NotRequired[CopilotSpacePropResourcesAttributesItemsPropMetadataType]
+
+
+class CopilotSpacePropResourcesAttributesItemsTypeForResponse(TypedDict):
+    """CopilotSpacePropResourcesAttributesItems"""
+
+    id: NotRequired[int]
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    metadata: NotRequired[
+        CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse
+    ]
+
+
+class CopilotSpacePropResourcesAttributesItemsPropMetadataType(TypedDict):
+    """CopilotSpacePropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
+    copilot_chat_attachment_id: NotRequired[int]
+    media_type: NotRequired[str]
+    url: NotRequired[str]
+    height: NotRequired[int]
+    width: NotRequired[int]
+
+
+class CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse(TypedDict):
+    """CopilotSpacePropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
+    copilot_chat_attachment_id: NotRequired[int]
+    media_type: NotRequired[str]
+    url: NotRequired[str]
+    height: NotRequired[int]
+    width: NotRequired[int]
 
 
 __all__ = (
-    "CopilotSpaceCollaboratorAnyof0Allof1Type",
-    "CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse",
+    "CopilotSpacePropResourcesAttributesItemsPropMetadataType",
+    "CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse",
+    "CopilotSpacePropResourcesAttributesItemsType",
+    "CopilotSpacePropResourcesAttributesItemsTypeForResponse",
+    "CopilotSpaceType",
+    "CopilotSpaceTypeForResponse",
 )

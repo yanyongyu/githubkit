@@ -13,17 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody
-
-    Examples:
-        {'users': ['mona']}
-    """
-
-    users: list[str] = Field(description="The username for users")
+from .group_0243 import MinimalRepository
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody)
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody",)
+    total_count: int = Field()
+    repositories: list[MinimalRepository] = Field()
+
+
+model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200)
+
+__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200",)

@@ -9,44 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class KeyType(TypedDict):
-    """Key
+class CodespacesUserPublicKeyType(TypedDict):
+    """CodespacesUserPublicKey
 
-    Key
+    The public key used for setting user Codespaces' Secrets.
     """
 
+    key_id: str
     key: str
-    id: int
-    url: str
-    title: str
-    created_at: _dt.datetime
-    verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[_dt.datetime, None]]
 
 
-class KeyTypeForResponse(TypedDict):
-    """Key
+class CodespacesUserPublicKeyTypeForResponse(TypedDict):
+    """CodespacesUserPublicKey
 
-    Key
+    The public key used for setting user Codespaces' Secrets.
     """
 
+    key_id: str
     key: str
-    id: int
-    url: str
-    title: str
-    created_at: str
-    verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "KeyType",
-    "KeyTypeForResponse",
+    "CodespacesUserPublicKeyType",
+    "CodespacesUserPublicKeyTypeForResponse",
 )

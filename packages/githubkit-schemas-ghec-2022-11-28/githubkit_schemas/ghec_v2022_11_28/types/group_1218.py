@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
+class OrgsOrgAgentsSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgAgentsSecretsSecretNamePutBody"""
 
-    The total number of seats created for the specified user(s).
-    """
+    encrypted_value: str
+    key_id: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
-    seats_created: int
 
+class OrgsOrgAgentsSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgAgentsSecretsSecretNamePutBody"""
 
-class OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
-
-    The total number of seats created for the specified user(s).
-    """
-
-    seats_created: int
+    encrypted_value: str
+    key_id: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedUsersPostResponse201Type",
-    "OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse",
+    "OrgsOrgAgentsSecretsSecretNamePutBodyType",
+    "OrgsOrgAgentsSecretsSecretNamePutBodyTypeForResponse",
 )

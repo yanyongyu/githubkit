@@ -9,29 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsVariablesNamePatchBodyType(TypedDict):
-    """OrgsOrgActionsVariablesNamePatchBody"""
+class NotificationsPutBodyType(TypedDict):
+    """NotificationsPutBody"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+    last_read_at: NotRequired[_dt.datetime]
+    read: NotRequired[bool]
 
 
-class OrgsOrgActionsVariablesNamePatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesNamePatchBody"""
+class NotificationsPutBodyTypeForResponse(TypedDict):
+    """NotificationsPutBody"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+    last_read_at: NotRequired[str]
+    read: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesNamePatchBodyType",
-    "OrgsOrgActionsVariablesNamePatchBodyTypeForResponse",
+    "NotificationsPutBodyType",
+    "NotificationsPutBodyTypeForResponse",
 )

@@ -9,50 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0485 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0486 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0487 import (
+from .group_0490 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0491 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0492 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0488 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0493 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0565 import (
+    WebhookCodeScanningAlertReopenedByUserPropAlertType,
+    WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse,
+)
 
 
-class WebhookCreateType(TypedDict):
-    """create event"""
+class WebhookCodeScanningAlertReopenedByUserType(TypedDict):
+    """code_scanning_alert reopened_by_user event"""
 
-    description: Union[str, None]
+    action: Literal["reopened_by_user"]
+    alert: WebhookCodeScanningAlertReopenedByUserPropAlertType
+    commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    master_branch: str
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pusher_type: str
     ref: str
-    ref_type: Literal["tag", "branch"]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookCreateTypeForResponse(TypedDict):
-    """create event"""
+class WebhookCodeScanningAlertReopenedByUserTypeForResponse(TypedDict):
+    """code_scanning_alert reopened_by_user event"""
 
-    description: Union[str, None]
+    action: Literal["reopened_by_user"]
+    alert: WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse
+    commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    master_branch: str
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pusher_type: str
     ref: str
-    ref_type: Literal["tag", "branch"]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCreateType",
-    "WebhookCreateTypeForResponse",
+    "WebhookCodeScanningAlertReopenedByUserType",
+    "WebhookCodeScanningAlertReopenedByUserTypeForResponse",
 )

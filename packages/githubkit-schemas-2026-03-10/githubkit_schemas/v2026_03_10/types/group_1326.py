@@ -9,32 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserSocialAccountsPostBodyType(TypedDict):
-    """UserSocialAccountsPostBody
+class ReposOwnerRepoPullsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPostBody"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
+    title: NotRequired[str]
+    head: str
+    head_repo: NotRequired[str]
+    base: str
+    body: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
+    draft: NotRequired[bool]
+    issue: NotRequired[int]
 
-    account_urls: list[str]
 
+class ReposOwnerRepoPullsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPostBody"""
 
-class UserSocialAccountsPostBodyTypeForResponse(TypedDict):
-    """UserSocialAccountsPostBody
-
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str]
+    title: NotRequired[str]
+    head: str
+    head_repo: NotRequired[str]
+    base: str
+    body: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
+    draft: NotRequired[bool]
+    issue: NotRequired[int]
 
 
 __all__ = (
-    "UserSocialAccountsPostBodyType",
-    "UserSocialAccountsPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPostBodyType",
+    "ReposOwnerRepoPullsPostBodyTypeForResponse",
 )

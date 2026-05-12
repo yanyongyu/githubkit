@@ -9,26 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
+
+from .group_0181 import (
+    ProjectsV2FieldIterationConfigurationType,
+    ProjectsV2FieldIterationConfigurationTypeForResponse,
+)
 
 
-class ReposOwnerRepoAutolinksPostBodyType(TypedDict):
-    """ReposOwnerRepoAutolinksPostBody"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
 
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: NotRequired[bool]
+    name: str
+    data_type: Literal["iteration"]
+    iteration_configuration: ProjectsV2FieldIterationConfigurationType
 
 
-class ReposOwnerRepoAutolinksPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoAutolinksPostBody"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
 
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: NotRequired[bool]
+    name: str
+    data_type: Literal["iteration"]
+    iteration_configuration: ProjectsV2FieldIterationConfigurationTypeForResponse
 
 
 __all__ = (
-    "ReposOwnerRepoAutolinksPostBodyType",
-    "ReposOwnerRepoAutolinksPostBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse",
 )

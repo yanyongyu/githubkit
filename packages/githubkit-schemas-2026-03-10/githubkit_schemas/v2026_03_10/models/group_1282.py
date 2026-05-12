@@ -14,21 +14,16 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
+class ReposOwnerRepoImportLfsPatchBody(GitHubModel):
+    """ReposOwnerRepoImportLfsPatchBody"""
 
-    body: Missing[str] = Field(
-        default=UNSET, description="The body text of the pull request review"
-    )
-    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"] = Field(
-        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. When you leave this blank, the API returns _HTTP 422 (Unrecognizable entity)_ and sets the review action state to `PENDING`, which means you will need to re-submit the pull request review using a review action."
+    use_lfs: Literal["opt_in", "opt_out"] = Field(
+        description="Whether to store large files during the import. `opt_in` means large files will be stored using Git LFS. `opt_out` means large files will be removed during the import."
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody)
+model_rebuild(ReposOwnerRepoImportLfsPatchBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody",)
+__all__ = ("ReposOwnerRepoImportLfsPatchBody",)

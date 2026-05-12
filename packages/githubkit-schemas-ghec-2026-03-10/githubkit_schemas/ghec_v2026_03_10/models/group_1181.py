@@ -12,17 +12,23 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0037 import ActionsHostedRunnerCustomImageVersion
 
 
-class OrgsOrgAttestationsRepositoriesGetResponse200Items(GitHubModel):
-    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
+class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200(
+    GitHubModel
+):
+    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
 
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
+    total_count: int = Field()
+    image_versions: list[ActionsHostedRunnerCustomImageVersion] = Field()
 
 
-model_rebuild(OrgsOrgAttestationsRepositoriesGetResponse200Items)
+model_rebuild(
+    OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200
+)
 
-__all__ = ("OrgsOrgAttestationsRepositoriesGetResponse200Items",)
+__all__ = (
+    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200",
+)

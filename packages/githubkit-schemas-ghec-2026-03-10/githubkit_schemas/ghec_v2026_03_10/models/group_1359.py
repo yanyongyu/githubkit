@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -18,31 +19,38 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoActionsWorkflowsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
-    state: Missing[Literal["dismissed", "open"]] = Field(
-        default=UNSET,
-        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`.",
-    )
-    dismissed_reason: Missing[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ] = Field(
-        default=UNSET,
-        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
-    )
-    dismissed_comment: Missing[str] = Field(
-        max_length=280,
-        default=UNSET,
-        description="An optional comment associated with dismissing the alert.",
-    )
-    assignees: list[str] = Field(
-        description="Usernames to assign to this Dependabot Alert.\nPass one or more user logins to _replace_ the set of assignees on this alert.\nSend an empty array (`[]`) to clear all assignees from the alert."
-    )
+    total_count: int = Field()
+    workflows: list[Workflow] = Field()
 
 
-model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1)
+class Workflow(GitHubModel):
+    """Workflow
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1",)
+    A GitHub Actions workflow
+    """
+
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    path: str = Field()
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    ] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    url: str = Field()
+    html_url: str = Field()
+    badge_url: str = Field()
+    deleted_at: Missing[_dt.datetime] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoActionsWorkflowsGetResponse200)
+model_rebuild(Workflow)
+
+__all__ = (
+    "ReposOwnerRepoActionsWorkflowsGetResponse200",
+    "Workflow",
+)

@@ -9,41 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBodyType(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class NotificationsThreadsThreadIdSubscriptionPutBodyType(TypedDict):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
-    name: str
-    digest: str
-    version: NotRequired[str]
-    artifact_url: NotRequired[str]
-    path: NotRequired[str]
-    registry_url: str
-    repository: NotRequired[str]
-    status: NotRequired[Literal["active", "eol", "deleted"]]
-    github_repository: NotRequired[str]
-    return_records: NotRequired[bool]
+    ignored: NotRequired[bool]
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class NotificationsThreadsThreadIdSubscriptionPutBodyTypeForResponse(TypedDict):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
-    name: str
-    digest: str
-    version: NotRequired[str]
-    artifact_url: NotRequired[str]
-    path: NotRequired[str]
-    registry_url: str
-    repository: NotRequired[str]
-    status: NotRequired[Literal["active", "eol", "deleted"]]
-    github_repository: NotRequired[str]
-    return_records: NotRequired[bool]
+    ignored: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataStorageRecordPostBodyType",
-    "OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse",
+    "NotificationsThreadsThreadIdSubscriptionPutBodyType",
+    "NotificationsThreadsThreadIdSubscriptionPutBodyTypeForResponse",
 )

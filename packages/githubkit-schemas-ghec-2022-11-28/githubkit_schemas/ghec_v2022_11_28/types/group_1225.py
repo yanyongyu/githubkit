@@ -9,20 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import TypeAlias
-
-OrgsOrgCopilotContentExclusionPutBodyType: TypeAlias = dict[str, Any]
-"""OrgsOrgCopilotContentExclusionPutBody
-"""
+from typing_extensions import TypedDict
 
 
-OrgsOrgCopilotContentExclusionPutBodyTypeForResponse: TypeAlias = dict[str, Any]
-"""OrgsOrgCopilotContentExclusionPutBody
-"""
+class OrgsOrgAgentsVariablesNameRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgAgentsVariablesNameRepositoriesPutBody"""
+
+    selected_repository_ids: list[int]
+
+
+class OrgsOrgAgentsVariablesNameRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgAgentsVariablesNameRepositoriesPutBody"""
+
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgCopilotContentExclusionPutBodyType",
-    "OrgsOrgCopilotContentExclusionPutBodyTypeForResponse",
+    "OrgsOrgAgentsVariablesNameRepositoriesPutBodyType",
+    "OrgsOrgAgentsVariablesNameRepositoriesPutBodyTypeForResponse",
 )

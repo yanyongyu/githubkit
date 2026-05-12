@@ -9,709 +9,239 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0204 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0206 import (
-    IssueDependenciesSummaryType,
-    IssueDependenciesSummaryTypeForResponse,
-    SubIssuesSummaryType,
-    SubIssuesSummaryTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0572 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0573 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0574 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0208 import IssueCommentType, IssueCommentTypeForResponse
-from .group_0209 import IssueFieldValueType, IssueFieldValueTypeForResponse
+from .group_0575 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0593 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
 
-class WebhookIssuesLockedPropIssueType(TypedDict):
-    """Issue
+class WebhookIssuesFieldAddedType(TypedDict):
+    """issues field_added event"""
 
-    The [issue](https://docs.github.com/enterprise-
-    cloud@latest/rest/issues/issues#get-an-issue) itself.
+    action: Literal["field_added"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    issue: WebhooksIssueType
+    issue_field: WebhookIssuesFieldAddedPropIssueFieldType
+    issue_field_value: NotRequired[WebhookIssuesFieldAddedPropIssueFieldValueType]
+    changes: NotRequired[WebhookIssuesFieldAddedPropChangesType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+
+
+class WebhookIssuesFieldAddedTypeForResponse(TypedDict):
+    """issues field_added event"""
+
+    action: Literal["field_added"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    issue: WebhooksIssueTypeForResponse
+    issue_field: WebhookIssuesFieldAddedPropIssueFieldTypeForResponse
+    issue_field_value: NotRequired[
+        WebhookIssuesFieldAddedPropIssueFieldValueTypeForResponse
+    ]
+    changes: NotRequired[WebhookIssuesFieldAddedPropChangesTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookIssuesFieldAddedPropIssueFieldType(TypedDict):
+    """WebhookIssuesFieldAddedPropIssueField
+
+    The issue field whose value was set or updated on the issue.
     """
 
-    active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
-    ]
-    assignee: NotRequired[Union[WebhookIssuesLockedPropIssuePropAssigneeType, None]]
-    assignees: list[Union[WebhookIssuesLockedPropIssuePropAssigneesItemsType, None]]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: Union[str, None]
-    closed_at: Union[_dt.datetime, None]
-    comments: int
-    comments_url: str
-    created_at: _dt.datetime
-    draft: NotRequired[bool]
-    events_url: str
-    html_url: str
-    id: int
-    labels: NotRequired[
-        list[Union[WebhookIssuesLockedPropIssuePropLabelsItemsType, None]]
-    ]
-    labels_url: str
-    locked: Literal[True]
-    milestone: Union[WebhookIssuesLockedPropIssuePropMilestoneType, None]
-    node_id: str
-    number: int
-    performed_via_github_app: NotRequired[
-        Union[WebhookIssuesLockedPropIssuePropPerformedViaGithubAppType, None]
-    ]
-    pull_request: NotRequired[WebhookIssuesLockedPropIssuePropPullRequestType]
-    reactions: WebhookIssuesLockedPropIssuePropReactionsType
-    repository_url: str
-    pinned_comment: NotRequired[Union[None, IssueCommentType]]
-    sub_issues_summary: NotRequired[SubIssuesSummaryType]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
-    issue_field_values: NotRequired[list[IssueFieldValueType]]
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    type: NotRequired[Union[IssueTypeType, None]]
-    title: str
-    updated_at: _dt.datetime
-    url: str
-    user: Union[WebhookIssuesLockedPropIssuePropUserType, None]
-
-
-class WebhookIssuesLockedPropIssueTypeForResponse(TypedDict):
-    """Issue
-
-    The [issue](https://docs.github.com/enterprise-
-    cloud@latest/rest/issues/issues#get-an-issue) itself.
-    """
-
-    active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
-    ]
-    assignee: NotRequired[
-        Union[WebhookIssuesLockedPropIssuePropAssigneeTypeForResponse, None]
-    ]
-    assignees: list[
-        Union[WebhookIssuesLockedPropIssuePropAssigneesItemsTypeForResponse, None]
-    ]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: Union[str, None]
-    closed_at: Union[str, None]
-    comments: int
-    comments_url: str
-    created_at: str
-    draft: NotRequired[bool]
-    events_url: str
-    html_url: str
-    id: int
-    labels: NotRequired[
-        list[Union[WebhookIssuesLockedPropIssuePropLabelsItemsTypeForResponse, None]]
-    ]
-    labels_url: str
-    locked: Literal[True]
-    milestone: Union[WebhookIssuesLockedPropIssuePropMilestoneTypeForResponse, None]
-    node_id: str
-    number: int
-    performed_via_github_app: NotRequired[
-        Union[
-            WebhookIssuesLockedPropIssuePropPerformedViaGithubAppTypeForResponse, None
-        ]
-    ]
-    pull_request: NotRequired[
-        WebhookIssuesLockedPropIssuePropPullRequestTypeForResponse
-    ]
-    reactions: WebhookIssuesLockedPropIssuePropReactionsTypeForResponse
-    repository_url: str
-    pinned_comment: NotRequired[Union[None, IssueCommentTypeForResponse]]
-    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
-    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
-    title: str
-    updated_at: str
-    url: str
-    user: Union[WebhookIssuesLockedPropIssuePropUserTypeForResponse, None]
-
-
-class WebhookIssuesLockedPropIssuePropAssigneeType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssuesLockedPropIssuePropAssigneeTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssuesLockedPropIssuePropAssigneesItemsType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssuesLockedPropIssuePropAssigneesItemsTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssuesLockedPropIssuePropLabelsItemsType(TypedDict):
-    """Label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
     id: int
     name: str
-    node_id: str
-    url: str
+    field_type: Literal["text", "date", "single_select", "number"]
 
 
-class WebhookIssuesLockedPropIssuePropLabelsItemsTypeForResponse(TypedDict):
-    """Label"""
+class WebhookIssuesFieldAddedPropIssueFieldTypeForResponse(TypedDict):
+    """WebhookIssuesFieldAddedPropIssueField
 
-    color: str
-    default: bool
-    description: Union[str, None]
+    The issue field whose value was set or updated on the issue.
+    """
+
     id: int
     name: str
-    node_id: str
-    url: str
+    field_type: Literal["text", "date", "single_select", "number"]
 
 
-class WebhookIssuesLockedPropIssuePropMilestoneType(TypedDict):
-    """Milestone
+class WebhookIssuesFieldAddedPropIssueFieldValueType(TypedDict):
+    """WebhookIssuesFieldAddedPropIssueFieldValue
 
-    A collection of related issues and pull requests.
+    The value that was set or updated for the issue field. When updating an existing
+    value, the previous value is available in `changes`.
     """
 
-    closed_at: Union[_dt.datetime, None]
-    closed_issues: int
-    created_at: _dt.datetime
-    creator: Union[WebhookIssuesLockedPropIssuePropMilestonePropCreatorType, None]
-    description: Union[str, None]
-    due_on: Union[_dt.datetime, None]
-    html_url: str
     id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: _dt.datetime
-    url: str
+    value: NotRequired[Union[str, float, int, None]]
+    value_id: NotRequired[int]
+    option: NotRequired[WebhookIssuesFieldAddedPropIssueFieldValuePropOptionType]
 
 
-class WebhookIssuesLockedPropIssuePropMilestoneTypeForResponse(TypedDict):
-    """Milestone
+class WebhookIssuesFieldAddedPropIssueFieldValueTypeForResponse(TypedDict):
+    """WebhookIssuesFieldAddedPropIssueFieldValue
 
-    A collection of related issues and pull requests.
+    The value that was set or updated for the issue field. When updating an existing
+    value, the previous value is available in `changes`.
     """
 
-    closed_at: Union[str, None]
-    closed_issues: int
-    created_at: str
-    creator: Union[
-        WebhookIssuesLockedPropIssuePropMilestonePropCreatorTypeForResponse, None
+    id: int
+    value: NotRequired[Union[str, float, int, None]]
+    value_id: NotRequired[int]
+    option: NotRequired[
+        WebhookIssuesFieldAddedPropIssueFieldValuePropOptionTypeForResponse
     ]
-    description: Union[str, None]
-    due_on: Union[str, None]
-    html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: str
-    url: str
 
 
-class WebhookIssuesLockedPropIssuePropMilestonePropCreatorType(TypedDict):
-    """User"""
+class WebhookIssuesFieldAddedPropIssueFieldValuePropOptionType(TypedDict):
+    """WebhookIssuesFieldAddedPropIssueFieldValuePropOption
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
+    The selected option details. Present for single_select field types.
+    """
+
+    id: NotRequired[int]
     name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[Union[str, None]]
 
 
-class WebhookIssuesLockedPropIssuePropMilestonePropCreatorTypeForResponse(TypedDict):
-    """User"""
+class WebhookIssuesFieldAddedPropIssueFieldValuePropOptionTypeForResponse(TypedDict):
+    """WebhookIssuesFieldAddedPropIssueFieldValuePropOption
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssuesLockedPropIssuePropPerformedViaGithubAppType(TypedDict):
-    """App
-
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
+    The selected option details. Present for single_select field types.
     """
 
-    created_at: Union[_dt.datetime, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    name: str
-    node_id: str
-    owner: Union[
-        WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropOwnerType, None
-    ]
-    permissions: NotRequired[
-        WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissionsType
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[_dt.datetime, None]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[Union[str, None]]
 
 
-class WebhookIssuesLockedPropIssuePropPerformedViaGithubAppTypeForResponse(TypedDict):
-    """App
+class WebhookIssuesFieldAddedPropChangesType(TypedDict):
+    """WebhookIssuesFieldAddedPropChanges
 
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
+    The previous field value, present when an existing value was updated.
     """
 
-    created_at: Union[str, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    name: str
-    node_id: str
-    owner: Union[
-        WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropOwnerTypeForResponse,
-        None,
+    issue_field_value: NotRequired[
+        WebhookIssuesFieldAddedPropChangesPropIssueFieldValueType
     ]
-    permissions: NotRequired[
-        WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissionsTypeForResponse
+
+
+class WebhookIssuesFieldAddedPropChangesTypeForResponse(TypedDict):
+    """WebhookIssuesFieldAddedPropChanges
+
+    The previous field value, present when an existing value was updated.
+    """
+
+    issue_field_value: NotRequired[
+        WebhookIssuesFieldAddedPropChangesPropIssueFieldValueTypeForResponse
     ]
-    slug: NotRequired[str]
-    updated_at: Union[str, None]
 
 
-class WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropOwnerType(TypedDict):
-    """User"""
+class WebhookIssuesFieldAddedPropChangesPropIssueFieldValueType(TypedDict):
+    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValue
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
+    The previous issue field value data.
+    """
+
+    from_: WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromType
+
+
+class WebhookIssuesFieldAddedPropChangesPropIssueFieldValueTypeForResponse(TypedDict):
+    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValue
+
+    The previous issue field value data.
+    """
+
+    from_: WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromTypeForResponse
+
+
+class WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromType(TypedDict):
+    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom
+
+    The previous value of the issue field before the update.
+    """
+
     id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    value: NotRequired[Union[str, float, int, None]]
+    value_id: NotRequired[int]
+    option: NotRequired[
+        WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionType
+    ]
 
 
-class WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropOwnerTypeForResponse(
+class WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromTypeForResponse(
     TypedDict
 ):
-    """User"""
+    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissionsType(
-    TypedDict
-):
-    """WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissions
-
-    The set of permissions for the GitHub app
+    The previous value of the issue field before the update.
     """
 
-    actions: NotRequired[Literal["read", "write"]]
-    administration: NotRequired[Literal["read", "write"]]
-    checks: NotRequired[Literal["read", "write"]]
-    content_references: NotRequired[Literal["read", "write"]]
-    contents: NotRequired[Literal["read", "write"]]
-    deployments: NotRequired[Literal["read", "write"]]
-    discussions: NotRequired[Literal["read", "write"]]
-    emails: NotRequired[Literal["read", "write"]]
-    environments: NotRequired[Literal["read", "write"]]
-    issues: NotRequired[Literal["read", "write"]]
-    keys: NotRequired[Literal["read", "write"]]
-    members: NotRequired[Literal["read", "write"]]
-    metadata: NotRequired[Literal["read", "write"]]
-    organization_administration: NotRequired[Literal["read", "write"]]
-    organization_hooks: NotRequired[Literal["read", "write"]]
-    organization_packages: NotRequired[Literal["read", "write"]]
-    organization_plan: NotRequired[Literal["read", "write"]]
-    organization_projects: NotRequired[Literal["read", "write"]]
-    organization_secrets: NotRequired[Literal["read", "write"]]
-    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
-    organization_user_blocking: NotRequired[Literal["read", "write"]]
-    packages: NotRequired[Literal["read", "write"]]
-    pages: NotRequired[Literal["read", "write"]]
-    pull_requests: NotRequired[Literal["read", "write"]]
-    repository_hooks: NotRequired[Literal["read", "write"]]
-    repository_projects: NotRequired[Literal["read", "write"]]
-    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
-    secrets: NotRequired[Literal["read", "write"]]
-    security_events: NotRequired[Literal["read", "write"]]
-    security_scanning_alert: NotRequired[Literal["read", "write"]]
-    single_file: NotRequired[Literal["read", "write"]]
-    statuses: NotRequired[Literal["read", "write"]]
-    vulnerability_alerts: NotRequired[Literal["read", "write"]]
-    workflows: NotRequired[Literal["read", "write"]]
+    id: int
+    value: NotRequired[Union[str, float, int, None]]
+    value_id: NotRequired[int]
+    option: NotRequired[
+        WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionTypeForResponse
+    ]
 
 
-class WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissionsTypeForResponse(
+class WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionType(
     TypedDict
 ):
-    """WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissions
+    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption
 
-    The set of permissions for the GitHub app
+    The previously selected option details. Present for single_select field types.
     """
 
-    actions: NotRequired[Literal["read", "write"]]
-    administration: NotRequired[Literal["read", "write"]]
-    checks: NotRequired[Literal["read", "write"]]
-    content_references: NotRequired[Literal["read", "write"]]
-    contents: NotRequired[Literal["read", "write"]]
-    deployments: NotRequired[Literal["read", "write"]]
-    discussions: NotRequired[Literal["read", "write"]]
-    emails: NotRequired[Literal["read", "write"]]
-    environments: NotRequired[Literal["read", "write"]]
-    issues: NotRequired[Literal["read", "write"]]
-    keys: NotRequired[Literal["read", "write"]]
-    members: NotRequired[Literal["read", "write"]]
-    metadata: NotRequired[Literal["read", "write"]]
-    organization_administration: NotRequired[Literal["read", "write"]]
-    organization_hooks: NotRequired[Literal["read", "write"]]
-    organization_packages: NotRequired[Literal["read", "write"]]
-    organization_plan: NotRequired[Literal["read", "write"]]
-    organization_projects: NotRequired[Literal["read", "write"]]
-    organization_secrets: NotRequired[Literal["read", "write"]]
-    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
-    organization_user_blocking: NotRequired[Literal["read", "write"]]
-    packages: NotRequired[Literal["read", "write"]]
-    pages: NotRequired[Literal["read", "write"]]
-    pull_requests: NotRequired[Literal["read", "write"]]
-    repository_hooks: NotRequired[Literal["read", "write"]]
-    repository_projects: NotRequired[Literal["read", "write"]]
-    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
-    secrets: NotRequired[Literal["read", "write"]]
-    security_events: NotRequired[Literal["read", "write"]]
-    security_scanning_alert: NotRequired[Literal["read", "write"]]
-    single_file: NotRequired[Literal["read", "write"]]
-    statuses: NotRequired[Literal["read", "write"]]
-    vulnerability_alerts: NotRequired[Literal["read", "write"]]
-    workflows: NotRequired[Literal["read", "write"]]
-
-
-class WebhookIssuesLockedPropIssuePropPullRequestType(TypedDict):
-    """WebhookIssuesLockedPropIssuePropPullRequest"""
-
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[_dt.datetime, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
-
-
-class WebhookIssuesLockedPropIssuePropPullRequestTypeForResponse(TypedDict):
-    """WebhookIssuesLockedPropIssuePropPullRequest"""
-
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[str, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
-
-
-class WebhookIssuesLockedPropIssuePropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookIssuesLockedPropIssuePropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookIssuesLockedPropIssuePropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
+    id: NotRequired[int]
     name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[Union[str, None]]
 
 
-class WebhookIssuesLockedPropIssuePropUserTypeForResponse(TypedDict):
-    """User"""
+class WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionTypeForResponse(
+    TypedDict
+):
+    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
+    The previously selected option details. Present for single_select field types.
+    """
+
+    id: NotRequired[int]
     name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhookIssuesLockedPropIssuePropAssigneeType",
-    "WebhookIssuesLockedPropIssuePropAssigneeTypeForResponse",
-    "WebhookIssuesLockedPropIssuePropAssigneesItemsType",
-    "WebhookIssuesLockedPropIssuePropAssigneesItemsTypeForResponse",
-    "WebhookIssuesLockedPropIssuePropLabelsItemsType",
-    "WebhookIssuesLockedPropIssuePropLabelsItemsTypeForResponse",
-    "WebhookIssuesLockedPropIssuePropMilestonePropCreatorType",
-    "WebhookIssuesLockedPropIssuePropMilestonePropCreatorTypeForResponse",
-    "WebhookIssuesLockedPropIssuePropMilestoneType",
-    "WebhookIssuesLockedPropIssuePropMilestoneTypeForResponse",
-    "WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropOwnerType",
-    "WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropOwnerTypeForResponse",
-    "WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissionsType",
-    "WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissionsTypeForResponse",
-    "WebhookIssuesLockedPropIssuePropPerformedViaGithubAppType",
-    "WebhookIssuesLockedPropIssuePropPerformedViaGithubAppTypeForResponse",
-    "WebhookIssuesLockedPropIssuePropPullRequestType",
-    "WebhookIssuesLockedPropIssuePropPullRequestTypeForResponse",
-    "WebhookIssuesLockedPropIssuePropReactionsType",
-    "WebhookIssuesLockedPropIssuePropReactionsTypeForResponse",
-    "WebhookIssuesLockedPropIssuePropUserType",
-    "WebhookIssuesLockedPropIssuePropUserTypeForResponse",
-    "WebhookIssuesLockedPropIssueType",
-    "WebhookIssuesLockedPropIssueTypeForResponse",
+    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionType",
+    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionTypeForResponse",
+    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromType",
+    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromTypeForResponse",
+    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValueType",
+    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValueTypeForResponse",
+    "WebhookIssuesFieldAddedPropChangesType",
+    "WebhookIssuesFieldAddedPropChangesTypeForResponse",
+    "WebhookIssuesFieldAddedPropIssueFieldType",
+    "WebhookIssuesFieldAddedPropIssueFieldTypeForResponse",
+    "WebhookIssuesFieldAddedPropIssueFieldValuePropOptionType",
+    "WebhookIssuesFieldAddedPropIssueFieldValuePropOptionTypeForResponse",
+    "WebhookIssuesFieldAddedPropIssueFieldValueType",
+    "WebhookIssuesFieldAddedPropIssueFieldValueTypeForResponse",
+    "WebhookIssuesFieldAddedType",
+    "WebhookIssuesFieldAddedTypeForResponse",
 )

@@ -43,7 +43,7 @@ class ValidationErrorPropErrorsItemsType(TypedDict):
     message: NotRequired[str]
     code: str
     index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, list[str]]]
+    value: NotRequired[Union[str, None, int, None, list[str], None]]
 
 
 class ValidationErrorPropErrorsItemsTypeForResponse(TypedDict):
@@ -54,7 +54,7 @@ class ValidationErrorPropErrorsItemsTypeForResponse(TypedDict):
     message: NotRequired[str]
     code: str
     index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, list[str]]]
+    value: NotRequired[Union[str, None, int, None, list[str], None]]
 
 
 __all__ = (

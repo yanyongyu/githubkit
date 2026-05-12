@@ -9,30 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1434 import (
-    ReposOwnerRepoPagesPostBodyPropSourceType,
-    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
+from .group_0427 import (
+    DeploymentBranchPolicySettingsType,
+    DeploymentBranchPolicySettingsTypeForResponse,
 )
 
 
-class ReposOwnerRepoPagesPostBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof1"""
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
 
-    build_type: Literal["legacy", "workflow"]
-    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceType]
+    wait_timer: NotRequired[int]
+    prevent_self_review: NotRequired[bool]
+    reviewers: NotRequired[
+        Union[
+            list[
+                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType
+            ],
+            None,
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsType, None]
+    ]
 
 
-class ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof1"""
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
 
-    build_type: Literal["legacy", "workflow"]
-    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse]
+    wait_timer: NotRequired[int]
+    prevent_self_review: NotRequired[bool]
+    reviewers: NotRequired[
+        Union[
+            list[
+                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse
+            ],
+            None,
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
+    ]
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    id: NotRequired[int]
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPostBodyAnyof1Type",
-    "ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse",
 )

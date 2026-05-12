@@ -9,34 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
+class OrgsOrgProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str]
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    filter_: NotRequired[str]
+    visible_fields: NotRequired[list[int]]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
+class OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str]
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    filter_: NotRequired[str]
+    visible_fields: NotRequired[list[int]]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyType",
+    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
 )

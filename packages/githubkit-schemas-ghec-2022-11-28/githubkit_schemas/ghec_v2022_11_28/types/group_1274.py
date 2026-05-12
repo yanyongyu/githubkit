@@ -9,31 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgSettingsNetworkConfigurationsPostBodyType(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    name: str
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: list[str]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    selected_usernames: list[str]
 
 
-class OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    name: str
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: list[str]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "OrgsOrgSettingsNetworkConfigurationsPostBodyType",
-    "OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteBodyType",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteBodyTypeForResponse",
 )

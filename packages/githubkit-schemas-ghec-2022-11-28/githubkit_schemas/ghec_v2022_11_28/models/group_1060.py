@@ -9,50 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0065 import (
-    AmazonS3AccessKeysConfig,
-    AzureBlobConfig,
-    AzureHubConfig,
-    DatadogConfig,
-    HecConfig,
-)
-from .group_0066 import AmazonS3OidcConfig, SplunkConfig
-from .group_0067 import GoogleCloudConfig
+from .group_0003 import SimpleUser
+from .group_0008 import Enterprise
+from .group_0009 import IntegrationPropPermissions
 
 
-class EnterprisesEnterpriseAuditLogStreamsPostBody(GitHubModel):
-    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+class AppManifestsCodeConversionsPostResponse201(GitHubModel):
+    """AppManifestsCodeConversionsPostResponse201"""
 
-    enabled: bool = Field(description="This setting pauses or resumes a stream.")
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
-    ] = Field(
-        description="The audit log streaming provider. The name is case sensitive."
+    id: int = Field(description="Unique identifier of the GitHub app")
+    slug: Missing[str] = Field(
+        default=UNSET, description="The slug name of the GitHub app"
     )
-    vendor_specific: Union[
-        AzureBlobConfig,
-        AzureHubConfig,
-        AmazonS3OidcConfig,
-        AmazonS3AccessKeysConfig,
-        SplunkConfig,
-        HecConfig,
-        GoogleCloudConfig,
-        DatadogConfig,
-    ] = Field()
+    node_id: str = Field()
+    client_id: str = Field()
+    owner: Union[SimpleUser, Enterprise] = Field()
+    name: str = Field(description="The name of the GitHub app")
+    description: Union[str, None] = Field()
+    external_url: str = Field()
+    html_url: str = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    permissions: IntegrationPropPermissions = Field(
+        description="The set of permissions for the GitHub app"
+    )
+    events: list[str] = Field(
+        description="The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation."
+    )
+    installations_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself.",
+    )
+    client_secret: str = Field()
+    webhook_secret: Union[str, None] = Field()
+    pem: str = Field()
 
 
-model_rebuild(EnterprisesEnterpriseAuditLogStreamsPostBody)
+model_rebuild(AppManifestsCodeConversionsPostResponse201)
 
-__all__ = ("EnterprisesEnterpriseAuditLogStreamsPostBody",)
+__all__ = ("AppManifestsCodeConversionsPostResponse201",)

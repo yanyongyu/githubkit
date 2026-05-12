@@ -12,22 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0037 import ActionsHostedRunnerCustomImageVersion
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202(
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGe
+    tResponse200
+    """
 
-    message: Missing[str] = Field(default=UNSET)
+    total_count: int = Field()
+    image_versions: list[ActionsHostedRunnerCustomImageVersion] = Field()
 
 
 model_rebuild(
-    EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202
+    EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200
 )
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200",
 )

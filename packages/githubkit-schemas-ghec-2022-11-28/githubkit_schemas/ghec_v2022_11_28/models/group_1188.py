@@ -9,55 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCampaignsCampaignNumberPatchBody(GitHubModel):
-    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody(GitHubModel):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
 
     name: Missing[str] = Field(
-        min_length=1,
-        max_length=50,
         default=UNSET,
-        description="The name of the campaign",
+        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
     )
-    description: Missing[str] = Field(
-        min_length=1,
-        max_length=255,
+    runner_group_id: Missing[int] = Field(
+        default=UNSET, description="The existing runner group to add this runner to."
+    )
+    maximum_runners: Missing[int] = Field(
         default=UNSET,
-        description="A description for the campaign",
+        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
     )
-    managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
+    enable_static_ip: Missing[bool] = Field(
         default=UNSET,
-        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
+        description="Whether this runner should be updated with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
     )
-    team_managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
+    size: Missing[str] = Field(
         default=UNSET,
-        description="The slugs of the teams to set as the campaign managers.",
+        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`",
     )
-    ends_at: Missing[_dt.datetime] = Field(
+    image_source: Missing[Literal["github", "partner", "custom"]] = Field(
         default=UNSET,
-        description="The end date and time of the campaign, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        description="The source type of the runner image to use. Must match the source of the image specified by `image_id`. Can be one of `github`, `partner`, or `custom`.",
     )
-    contact_link: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The contact link of the campaign. Must be a URI."
-    )
-    state: Missing[Literal["open", "closed"]] = Field(
+    image_id: Missing[str] = Field(
         default=UNSET,
-        title="Campaign state",
-        description="Indicates whether a campaign is open or closed",
+        description="The unique identifier of the runner image. To list available images, use `GET /actions/hosted-runners/images/github-owned`, `GET /actions/hosted-runners/images/partner`, or `GET /actions/hosted-runners/images/custom`.",
+    )
+    image_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
+    )
+    image_gen: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to enable image generation for this runner pool. When enabled, the runner pool is used to build and publish custom runner images.",
     )
 
 
-model_rebuild(OrgsOrgCampaignsCampaignNumberPatchBody)
+model_rebuild(OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody)
 
-__all__ = ("OrgsOrgCampaignsCampaignNumberPatchBody",)
+__all__ = ("OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody",)

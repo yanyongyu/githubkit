@@ -9,28 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType(TypedDict):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    organization_slugs: list[str]
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    organization_slugs: list[str]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",
-    "OrgsOrgActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyTypeForResponse",
 )

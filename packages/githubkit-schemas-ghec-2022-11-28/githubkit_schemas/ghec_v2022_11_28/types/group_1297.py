@@ -9,30 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0337 import JobType, JobTypeForResponse
-
-
-class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
-
-    total_count: int
-    jobs: list[JobType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
+class OrgsOrgMigrationsPostBodyType(TypedDict):
+    """OrgsOrgMigrationsPostBody"""
 
-    total_count: int
-    jobs: list[JobTypeForResponse]
+    repositories: list[str]
+    lock_repositories: NotRequired[bool]
+    exclude_metadata: NotRequired[bool]
+    exclude_git_data: NotRequired[bool]
+    exclude_attachments: NotRequired[bool]
+    exclude_releases: NotRequired[bool]
+    exclude_owner_projects: NotRequired[bool]
+    org_metadata_only: NotRequired[bool]
+    exclude: NotRequired[list[Literal["repositories"]]]
+
+
+class OrgsOrgMigrationsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgMigrationsPostBody"""
+
+    repositories: list[str]
+    lock_repositories: NotRequired[bool]
+    exclude_metadata: NotRequired[bool]
+    exclude_git_data: NotRequired[bool]
+    exclude_attachments: NotRequired[bool]
+    exclude_releases: NotRequired[bool]
+    exclude_owner_projects: NotRequired[bool]
+    org_metadata_only: NotRequired[bool]
+    exclude: NotRequired[list[Literal["repositories"]]]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type",
-    "ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200TypeForResponse",
+    "OrgsOrgMigrationsPostBodyType",
+    "OrgsOrgMigrationsPostBodyTypeForResponse",
 )

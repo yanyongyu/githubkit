@@ -9,189 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0114 import (
-    RepositoryRulesetBypassActorType,
-    RepositoryRulesetBypassActorTypeForResponse,
-)
-from .group_0133 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleCreationTypeForResponse,
-    RepositoryRuleDeletionType,
-    RepositoryRuleDeletionTypeForResponse,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleNonFastForwardTypeForResponse,
-    RepositoryRuleRequiredSignaturesType,
-    RepositoryRuleRequiredSignaturesTypeForResponse,
-)
-from .group_0134 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
-from .group_0136 import (
-    RepositoryRuleRequiredLinearHistoryType,
-    RepositoryRuleRequiredLinearHistoryTypeForResponse,
-)
-from .group_0137 import (
-    RepositoryRuleRequiredDeploymentsType,
-    RepositoryRuleRequiredDeploymentsTypeForResponse,
-)
-from .group_0139 import (
-    RepositoryRulePullRequestType,
-    RepositoryRulePullRequestTypeForResponse,
-)
-from .group_0141 import (
-    RepositoryRuleRequiredStatusChecksType,
-    RepositoryRuleRequiredStatusChecksTypeForResponse,
-)
-from .group_0143 import (
-    RepositoryRuleCommitMessagePatternType,
-    RepositoryRuleCommitMessagePatternTypeForResponse,
-)
-from .group_0145 import (
-    RepositoryRuleCommitAuthorEmailPatternType,
-    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-)
-from .group_0147 import (
-    RepositoryRuleCommitterEmailPatternType,
-    RepositoryRuleCommitterEmailPatternTypeForResponse,
-)
-from .group_0149 import (
-    RepositoryRuleBranchNamePatternType,
-    RepositoryRuleBranchNamePatternTypeForResponse,
-)
-from .group_0151 import (
-    RepositoryRuleTagNamePatternType,
-    RepositoryRuleTagNamePatternTypeForResponse,
-)
-from .group_0153 import (
-    RepositoryRuleFilePathRestrictionType,
-    RepositoryRuleFilePathRestrictionTypeForResponse,
-)
-from .group_0155 import (
-    RepositoryRuleMaxFilePathLengthType,
-    RepositoryRuleMaxFilePathLengthTypeForResponse,
-)
-from .group_0157 import (
-    RepositoryRuleFileExtensionRestrictionType,
-    RepositoryRuleFileExtensionRestrictionTypeForResponse,
-)
-from .group_0159 import (
-    RepositoryRuleMaxFileSizeType,
-    RepositoryRuleMaxFileSizeTypeForResponse,
-)
-from .group_0162 import (
-    RepositoryRuleWorkflowsType,
-    RepositoryRuleWorkflowsTypeForResponse,
-)
-from .group_0164 import (
-    RepositoryRuleCodeScanningType,
-    RepositoryRuleCodeScanningTypeForResponse,
-)
-from .group_0166 import (
-    RepositoryRuleCopilotCodeReviewType,
-    RepositoryRuleCopilotCodeReviewTypeForResponse,
-)
-from .group_0170 import (
-    OrgRulesetConditionsOneof0Type,
-    OrgRulesetConditionsOneof0TypeForResponse,
-)
-from .group_0171 import (
-    OrgRulesetConditionsOneof1Type,
-    OrgRulesetConditionsOneof1TypeForResponse,
-)
-from .group_0172 import (
-    OrgRulesetConditionsOneof2Type,
-    OrgRulesetConditionsOneof2TypeForResponse,
-)
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class OrgsOrgRulesetsPostBodyType(TypedDict):
-    """OrgsOrgRulesetsPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
 
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[
-        Union[
-            OrgRulesetConditionsOneof0Type,
-            OrgRulesetConditionsOneof1Type,
-            OrgRulesetConditionsOneof2Type,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-                RepositoryRuleCopilotCodeReviewType,
-            ]
-        ]
+    metadata: NotRequired[
+        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType
     ]
 
 
-class OrgsOrgRulesetsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgRulesetsPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
 
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
-    conditions: NotRequired[
-        Union[
-            OrgRulesetConditionsOneof0TypeForResponse,
-            OrgRulesetConditionsOneof1TypeForResponse,
-            OrgRulesetConditionsOneof2TypeForResponse,
-        ]
+    metadata: NotRequired[
+        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse
     ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationTypeForResponse,
-                RepositoryRuleUpdateTypeForResponse,
-                RepositoryRuleDeletionTypeForResponse,
-                RepositoryRuleRequiredLinearHistoryTypeForResponse,
-                RepositoryRuleRequiredDeploymentsTypeForResponse,
-                RepositoryRuleRequiredSignaturesTypeForResponse,
-                RepositoryRulePullRequestTypeForResponse,
-                RepositoryRuleRequiredStatusChecksTypeForResponse,
-                RepositoryRuleNonFastForwardTypeForResponse,
-                RepositoryRuleCommitMessagePatternTypeForResponse,
-                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-                RepositoryRuleCommitterEmailPatternTypeForResponse,
-                RepositoryRuleBranchNamePatternTypeForResponse,
-                RepositoryRuleTagNamePatternTypeForResponse,
-                RepositoryRuleFilePathRestrictionTypeForResponse,
-                RepositoryRuleMaxFilePathLengthTypeForResponse,
-                RepositoryRuleFileExtensionRestrictionTypeForResponse,
-                RepositoryRuleMaxFileSizeTypeForResponse,
-                RepositoryRuleWorkflowsTypeForResponse,
-                RepositoryRuleCodeScanningTypeForResponse,
-                RepositoryRuleCopilotCodeReviewTypeForResponse,
-            ]
-        ]
-    ]
+
+
+OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+
+Updated resource-specific metadata.
+"""
+
+
+OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+
+Updated resource-specific metadata.
+"""
 
 
 __all__ = (
-    "OrgsOrgRulesetsPostBodyType",
-    "OrgsOrgRulesetsPostBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse",
 )

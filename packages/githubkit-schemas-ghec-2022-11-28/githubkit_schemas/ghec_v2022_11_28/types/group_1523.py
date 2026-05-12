@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0262 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    resources: list[CopilotSpaceResourceType]
+    message: NotRequired[str]
+    url: NotRequired[str]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    resources: list[CopilotSpaceResourceTypeForResponse]
+    message: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse",
 )

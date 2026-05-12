@@ -9,27 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class ReviewCustomGatesStateRequiredType(TypedDict):
-    """ReviewCustomGatesStateRequired"""
+class SimpleCommitType(TypedDict):
+    """Simple Commit
 
-    environment_name: str
-    state: Literal["approved", "rejected"]
-    comment: NotRequired[str]
+    A commit.
+    """
+
+    id: str
+    tree_id: str
+    message: str
+    timestamp: _dt.datetime
+    author: Union[SimpleCommitPropAuthorType, None]
+    committer: Union[SimpleCommitPropCommitterType, None]
 
 
-class ReviewCustomGatesStateRequiredTypeForResponse(TypedDict):
-    """ReviewCustomGatesStateRequired"""
+class SimpleCommitTypeForResponse(TypedDict):
+    """Simple Commit
 
-    environment_name: str
-    state: Literal["approved", "rejected"]
-    comment: NotRequired[str]
+    A commit.
+    """
+
+    id: str
+    tree_id: str
+    message: str
+    timestamp: str
+    author: Union[SimpleCommitPropAuthorTypeForResponse, None]
+    committer: Union[SimpleCommitPropCommitterTypeForResponse, None]
+
+
+class SimpleCommitPropAuthorType(TypedDict):
+    """SimpleCommitPropAuthor
+
+    Information about the Git author
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropAuthorTypeForResponse(TypedDict):
+    """SimpleCommitPropAuthor
+
+    Information about the Git author
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropCommitterType(TypedDict):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropCommitterTypeForResponse(TypedDict):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
 
 
 __all__ = (
-    "ReviewCustomGatesStateRequiredType",
-    "ReviewCustomGatesStateRequiredTypeForResponse",
+    "SimpleCommitPropAuthorType",
+    "SimpleCommitPropAuthorTypeForResponse",
+    "SimpleCommitPropCommitterType",
+    "SimpleCommitPropCommitterTypeForResponse",
+    "SimpleCommitType",
+    "SimpleCommitTypeForResponse",
 )

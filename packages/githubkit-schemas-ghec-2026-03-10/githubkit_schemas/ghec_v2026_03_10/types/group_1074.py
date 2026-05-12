@@ -9,26 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0037 import (
+    ActionsHostedRunnerCustomImageVersionType,
+    ActionsHostedRunnerCustomImageVersionTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202Type(
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGe
+    tResponse200
+    """
 
-    message: NotRequired[str]
+    total_count: int
+    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202TypeForResponse(
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGe
+    tResponse200
+    """
 
-    message: NotRequired[str]
+    total_count: int
+    image_versions: list[ActionsHostedRunnerCustomImageVersionTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202Type",
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202TypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse",
 )

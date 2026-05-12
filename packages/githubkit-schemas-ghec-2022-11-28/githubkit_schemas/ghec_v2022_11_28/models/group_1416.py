@@ -12,14 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
+class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubModel):
+    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
 
-    name: str = Field()
+    permission: Missing[str] = Field(
+        default=UNSET,
+        description="The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any.",
+    )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items)
+model_rebuild(ReposOwnerRepoCollaboratorsUsernamePutBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items",)
+__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBody",)

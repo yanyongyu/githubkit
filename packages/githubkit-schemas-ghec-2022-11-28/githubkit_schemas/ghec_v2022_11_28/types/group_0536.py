@@ -9,45 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0532 import TrafficType, TrafficTypeForResponse
 
 
-class GroupType(TypedDict):
-    """Group"""
+class ViewTrafficType(TypedDict):
+    """View Traffic
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
-    external_id: str
-    display_name: str
-    members: NotRequired[list[GroupPropMembersItemsType]]
+    View Traffic
+    """
 
-
-class GroupTypeForResponse(TypedDict):
-    """Group"""
-
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
-    external_id: str
-    display_name: str
-    members: NotRequired[list[GroupPropMembersItemsTypeForResponse]]
+    count: int
+    uniques: int
+    views: list[TrafficType]
 
 
-class GroupPropMembersItemsType(TypedDict):
-    """GroupPropMembersItems"""
+class ViewTrafficTypeForResponse(TypedDict):
+    """View Traffic
 
-    value: str
-    display_name: str
+    View Traffic
+    """
 
-
-class GroupPropMembersItemsTypeForResponse(TypedDict):
-    """GroupPropMembersItems"""
-
-    value: str
-    display_name: str
+    count: int
+    uniques: int
+    views: list[TrafficTypeForResponse]
 
 
 __all__ = (
-    "GroupPropMembersItemsType",
-    "GroupPropMembersItemsTypeForResponse",
-    "GroupType",
-    "GroupTypeForResponse",
+    "ViewTrafficType",
+    "ViewTrafficTypeForResponse",
 )

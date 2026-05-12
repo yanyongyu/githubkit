@@ -9,38 +9,92 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgInvitationsPostBody(GitHubModel):
-    """OrgsOrgInvitationsPostBody"""
+class OrgsOrgAttestationsSubjectDigestGetResponse200(GitHubModel):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
 
-    invitee_id: Missing[int] = Field(
+    attestations: Missing[
+        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+    ] = Field(default=UNSET)
+
+
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems(GitHubModel):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    bundle: Missing[
+        Union[
+            OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle,
+            None,
+        ]
+    ] = Field(
         default=UNSET,
-        description="**Required unless you provide `email`**. GitHub user ID for the person you are inviting.",
+        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information.",
     )
-    email: Missing[str] = Field(
-        default=UNSET,
-        description="**Required unless you provide `invitee_id`**. Email address of the person you are inviting, which can be an existing GitHub user.",
-    )
-    role: Missing[Literal["admin", "direct_member", "billing_manager", "reinstate"]] = (
-        Field(
-            default=UNSET,
-            description="The role for the new member. \n * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  \n * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  \n * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization. \n * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization.",
-        )
-    )
-    team_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="Specify IDs for the teams you want to invite new members to.",
-    )
+    repository_id: Missing[int] = Field(default=UNSET)
+    bundle_url: Missing[str] = Field(default=UNSET)
+    initiator: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgInvitationsPostBody)
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle(
+    GitHubModel
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
 
-__all__ = ("OrgsOrgInvitationsPostBody",)
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    """
+
+    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
+    verification_material: Missing[
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
+    ] = Field(default=UNSET, alias="verificationMaterial")
+    dsse_envelope: Missing[
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
+    ] = Field(default=UNSET, alias="dsseEnvelope")
+
+
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial(
+    ExtraGitHubModel
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
+    pVerificationMaterial
+    """
+
+
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope(
+    ExtraGitHubModel
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
+    pDsseEnvelope
+    """
+
+
+model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200)
+model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems)
+model_rebuild(
+    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
+)
+model_rebuild(
+    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
+)
+model_rebuild(
+    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
+)
+
+__all__ = (
+    "OrgsOrgAttestationsSubjectDigestGetResponse200",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
+)

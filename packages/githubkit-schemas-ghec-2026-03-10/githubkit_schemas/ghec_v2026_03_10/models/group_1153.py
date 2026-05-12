@@ -14,14 +14,12 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="List of repository IDs that can access the runner group."
-    )
+    name: str = Field(description="The new name for the cost center")
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody)
+model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody)
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody",)
+__all__ = ("EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody",)

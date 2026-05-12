@@ -9,28 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+class ReposOwnerRepoCommentsCommentIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoCommentsCommentIdPatchBody"""
 
-    sub_issue_id: int
-    after_id: NotRequired[int]
-    before_id: NotRequired[int]
+    body: str
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+class ReposOwnerRepoCommentsCommentIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCommentsCommentIdPatchBody"""
 
-    sub_issue_id: int
-    after_id: NotRequired[int]
-    before_id: NotRequired[int]
+    body: str
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType",
-    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse",
+    "ReposOwnerRepoCommentsCommentIdPatchBodyType",
+    "ReposOwnerRepoCommentsCommentIdPatchBodyTypeForResponse",
 )

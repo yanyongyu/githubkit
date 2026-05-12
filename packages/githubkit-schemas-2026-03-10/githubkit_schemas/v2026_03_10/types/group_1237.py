@@ -9,22 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items"""
+class ReposOwnerRepoCodespacesPostBodyType(TypedDict):
+    """ReposOwnerRepoCodespacesPostBody"""
 
-    name: str
+    ref: NotRequired[str]
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    client_ip: NotRequired[str]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    multi_repo_permissions_opt_out: NotRequired[bool]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+    display_name: NotRequired[str]
+    retention_period_minutes: NotRequired[int]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items"""
+class ReposOwnerRepoCodespacesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesPostBody"""
 
-    name: str
+    ref: NotRequired[str]
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    client_ip: NotRequired[str]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    multi_repo_permissions_opt_out: NotRequired[bool]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+    display_name: NotRequired[str]
+    retention_period_minutes: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsTypeForResponse",
+    "ReposOwnerRepoCodespacesPostBodyType",
+    "ReposOwnerRepoCodespacesPostBodyTypeForResponse",
 )

@@ -9,40 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_1314 import (
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+)
 
 
-class UserEmailsDeleteBodyOneof0Type(TypedDict):
-    """UserEmailsDeleteBodyOneof0
+class ReposOwnerRepoPagesPutBodyAnyof2Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof2"""
 
-    Deletes one or more email addresses from your GitHub account. Must contain at
-    least one email address. **Note:** Alternatively, you can pass a single email
-    address or an `array` of emails addresses directly, but we recommend that you
-    pass an object using the `emails` key.
+    cname: Union[str, None]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
 
-    emails: list[str]
+class ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof2"""
 
-
-class UserEmailsDeleteBodyOneof0TypeForResponse(TypedDict):
-    """UserEmailsDeleteBodyOneof0
-
-    Deletes one or more email addresses from your GitHub account. Must contain at
-    least one email address. **Note:** Alternatively, you can pass a single email
-    address or an `array` of emails addresses directly, but we recommend that you
-    pass an object using the `emails` key.
-
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str]
+    cname: Union[str, None]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+        ]
+    ]
 
 
 __all__ = (
-    "UserEmailsDeleteBodyOneof0Type",
-    "UserEmailsDeleteBodyOneof0TypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof2Type",
+    "ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse",
 )

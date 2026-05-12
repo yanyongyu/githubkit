@@ -9,104 +9,107 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectCardType(TypedDict):
-    """Project Card"""
+class WebhooksTeamType(TypedDict):
+    """Team
 
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
-    created_at: _dt.datetime
-    creator: Union[WebhooksProjectCardPropCreatorType, None]
-    id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: _dt.datetime
-    url: str
+    Groups of organization members that gives permissions on specified repositories.
+    """
 
-
-class WebhooksProjectCardTypeForResponse(TypedDict):
-    """Project Card"""
-
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
-    created_at: str
-    creator: Union[WebhooksProjectCardPropCreatorTypeForResponse, None]
-    id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: str
-    url: str
-
-
-class WebhooksProjectCardPropCreatorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
+    description: NotRequired[Union[str, None]]
     html_url: NotRequired[str]
     id: int
-    login: str
-    name: NotRequired[str]
+    members_url: NotRequired[str]
+    name: str
     node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    parent: NotRequired[Union[WebhooksTeamPropParentType, None]]
+    permission: NotRequired[str]
+    privacy: NotRequired[Literal["open", "closed", "secret"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    repositories_url: NotRequired[str]
+    slug: NotRequired[str]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    type: NotRequired[Literal["enterprise", "organization"]]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class WebhooksProjectCardPropCreatorTypeForResponse(TypedDict):
-    """User"""
+class WebhooksTeamTypeForResponse(TypedDict):
+    """Team
 
-    avatar_url: NotRequired[str]
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
     deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
+    description: NotRequired[Union[str, None]]
     html_url: NotRequired[str]
     id: int
-    login: str
-    name: NotRequired[str]
+    members_url: NotRequired[str]
+    name: str
     node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    parent: NotRequired[Union[WebhooksTeamPropParentTypeForResponse, None]]
+    permission: NotRequired[str]
+    privacy: NotRequired[Literal["open", "closed", "secret"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    repositories_url: NotRequired[str]
+    slug: NotRequired[str]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    type: NotRequired[Literal["enterprise", "organization"]]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+
+
+class WebhooksTeamPropParentType(TypedDict):
+    """WebhooksTeamPropParent"""
+
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
+    repositories_url: str
+    slug: str
+    url: str
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+
+
+class WebhooksTeamPropParentTypeForResponse(TypedDict):
+    """WebhooksTeamPropParent"""
+
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
+    repositories_url: str
+    slug: str
+    url: str
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
 __all__ = (
-    "WebhooksProjectCardPropCreatorType",
-    "WebhooksProjectCardPropCreatorTypeForResponse",
-    "WebhooksProjectCardType",
-    "WebhooksProjectCardTypeForResponse",
+    "WebhooksTeamPropParentType",
+    "WebhooksTeamPropParentTypeForResponse",
+    "WebhooksTeamType",
+    "WebhooksTeamTypeForResponse",
 )

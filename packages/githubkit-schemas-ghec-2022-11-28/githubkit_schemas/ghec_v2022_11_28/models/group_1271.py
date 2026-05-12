@@ -13,16 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0243 import MinimalRepository
+
+class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
+
+    The total number of seats set to "pending cancellation" for members of the
+    specified team(s).
+    """
+
+    seats_cancelled: int = Field()
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200)
 
-    total_count: int = Field()
-    repositories: list[MinimalRepository] = Field()
-
-
-model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200)
-
-__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200",)

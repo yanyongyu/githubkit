@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0486 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0487 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0488 import (
+from .group_0491 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0492 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0493 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0489 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0517 import WebhooksProjectType, WebhooksProjectTypeForResponse
+from .group_0494 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0522 import WebhooksProjectType, WebhooksProjectTypeForResponse
 
 
-class WebhookProjectCreatedType(TypedDict):
-    """project created event"""
+class WebhookProjectClosedType(TypedDict):
+    """project closed event"""
 
-    action: Literal["created"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,10 +35,10 @@ class WebhookProjectCreatedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookProjectCreatedTypeForResponse(TypedDict):
-    """project created event"""
+class WebhookProjectClosedTypeForResponse(TypedDict):
+    """project closed event"""
 
-    action: Literal["created"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookProjectCreatedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookProjectCreatedType",
-    "WebhookProjectCreatedTypeForResponse",
+    "WebhookProjectClosedType",
+    "WebhookProjectClosedTypeForResponse",
 )

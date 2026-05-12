@@ -14,16 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
+class OrgsOrgSettingsImmutableReleasesRepositoriesPutBody(GitHubModel):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
 
-    Examples:
-        {'users': ['mona']}
-    """
-
-    users: list[str] = Field(description="The username for users")
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints."
+    )
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody)
+model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesPutBody)
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody",)
+__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesPutBody",)

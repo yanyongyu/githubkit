@@ -9,78 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0243 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0544 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
+from .group_0536 import MetaType, MetaTypeForResponse
+from .group_0546 import (
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsType,
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse,
 )
 
 
-class CodeSearchResultItemType(TypedDict):
-    """Code Search Result Item
+class ScimEnterpriseUserResponseAllof1Type(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    Code Search Result Item
-    """
-
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryType
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[_dt.datetime]
-    line_numbers: NotRequired[list[str]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    id: str
+    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
 
 
-class CodeSearchResultItemTypeForResponse(TypedDict):
-    """Code Search Result Item
+class ScimEnterpriseUserResponseAllof1TypeForResponse(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    Code Search Result Item
-    """
-
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryTypeForResponse
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[str]
-    line_numbers: NotRequired[list[str]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
-
-
-class SearchCodeGetResponse200Type(TypedDict):
-    """SearchCodeGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[CodeSearchResultItemType]
-
-
-class SearchCodeGetResponse200TypeForResponse(TypedDict):
-    """SearchCodeGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[CodeSearchResultItemTypeForResponse]
+    id: str
+    groups: NotRequired[
+        list[ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse]
+    ]
+    meta: MetaTypeForResponse
 
 
 __all__ = (
-    "CodeSearchResultItemType",
-    "CodeSearchResultItemTypeForResponse",
-    "SearchCodeGetResponse200Type",
-    "SearchCodeGetResponse200TypeForResponse",
+    "ScimEnterpriseUserResponseAllof1Type",
+    "ScimEnterpriseUserResponseAllof1TypeForResponse",
 )

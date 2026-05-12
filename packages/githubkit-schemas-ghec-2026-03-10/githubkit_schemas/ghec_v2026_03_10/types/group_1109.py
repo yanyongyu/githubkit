@@ -9,73 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type(
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00
-    """
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    message: NotRequired[str]
-    reassigned_resources: NotRequired[
-        Union[
-            list[
-                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType
-            ],
-            None,
-        ]
-    ]
+    scope: Literal["all", "all_without_configurations"]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse(
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00
-    """
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    message: NotRequired[str]
-    reassigned_resources: NotRequired[
-        Union[
-            list[
-                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse
-            ],
-            None,
-        ]
-    ]
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00PropReassignedResourcesItems
-    """
-
-    resource_type: NotRequired[str]
-    name: NotRequired[str]
-    previous_cost_center: NotRequired[str]
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00PropReassignedResourcesItems
-    """
-
-    resource_type: NotRequired[str]
-    name: NotRequired[str]
-    previous_cost_center: NotRequired[str]
+    scope: Literal["all", "all_without_configurations"]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse",
 )

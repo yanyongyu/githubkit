@@ -10,30 +10,22 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: NotRequired[int]
-    owner: str
-    repo: str
-    number: int
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: NotRequired[int]
-    owner: str
-    repo: str
-    number: int
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type",
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse",
+    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType",
+    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse",
 )

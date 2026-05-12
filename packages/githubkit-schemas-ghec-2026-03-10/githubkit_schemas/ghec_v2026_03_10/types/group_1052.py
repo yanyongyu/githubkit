@@ -9,24 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_1053 import (
+    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
+    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
+class AgentsTasksTaskIdGetResponse200Allof1Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1"""
 
-    labels: list[str]
+    sessions: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
+    ]
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
+class AgentsTasksTaskIdGetResponse200Allof1TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1"""
 
-    labels: list[str]
+    sessions: NotRequired[
+        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType",
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof1Type",
+    "AgentsTasksTaskIdGetResponse200Allof1TypeForResponse",
 )

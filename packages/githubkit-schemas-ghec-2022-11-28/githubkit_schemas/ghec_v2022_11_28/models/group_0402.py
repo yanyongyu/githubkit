@@ -14,28 +14,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class BranchShort(GitHubModel):
-    """Branch Short
+class CodespacesPermissionsCheckForDevcontainer(GitHubModel):
+    """Codespaces Permissions Check
 
-    Branch Short
+    Permission check result for a given devcontainer config.
     """
 
-    name: str = Field()
-    commit: BranchShortPropCommit = Field()
-    protected: bool = Field()
+    accepted: bool = Field(
+        description="Whether the user has accepted the permissions defined by the devcontainer config"
+    )
 
 
-class BranchShortPropCommit(GitHubModel):
-    """BranchShortPropCommit"""
+model_rebuild(CodespacesPermissionsCheckForDevcontainer)
 
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(BranchShort)
-model_rebuild(BranchShortPropCommit)
-
-__all__ = (
-    "BranchShort",
-    "BranchShortPropCommit",
-)
+__all__ = ("CodespacesPermissionsCheckForDevcontainer",)

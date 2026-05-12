@@ -14,22 +14,22 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0485 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0487 import (
+from .group_0490 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0492 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0488 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0500 import (
+from .group_0493 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0505 import (
     WebhooksRepositoriesItemsType,
     WebhooksRepositoriesItemsTypeForResponse,
 )
 
 
-class WebhookInstallationUnsuspendType(TypedDict):
-    """installation unsuspend event"""
+class WebhookInstallationNewPermissionsAcceptedType(TypedDict):
+    """installation new_permissions_accepted event"""
 
-    action: Literal["unsuspend"]
+    action: Literal["new_permissions_accepted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -39,10 +39,10 @@ class WebhookInstallationUnsuspendType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookInstallationUnsuspendTypeForResponse(TypedDict):
-    """installation unsuspend event"""
+class WebhookInstallationNewPermissionsAcceptedTypeForResponse(TypedDict):
+    """installation new_permissions_accepted event"""
 
-    action: Literal["unsuspend"]
+    action: Literal["new_permissions_accepted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: InstallationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -53,6 +53,6 @@ class WebhookInstallationUnsuspendTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookInstallationUnsuspendType",
-    "WebhookInstallationUnsuspendTypeForResponse",
+    "WebhookInstallationNewPermissionsAcceptedType",
+    "WebhookInstallationNewPermissionsAcceptedTypeForResponse",
 )

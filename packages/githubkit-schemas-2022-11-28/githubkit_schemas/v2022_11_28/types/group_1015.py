@@ -9,24 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0105 import (
+    ActionsHostedRunnerCuratedImageType,
+    ActionsHostedRunnerCuratedImageTypeForResponse,
+)
 
 
-class OrgsOrgAttestationsBulkListPostBodyType(TypedDict):
-    """OrgsOrgAttestationsBulkListPostBody"""
+class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
 
-    subject_digests: list[str]
-    predicate_type: NotRequired[str]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageType]
 
 
-class OrgsOrgAttestationsBulkListPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgAttestationsBulkListPostBody"""
+class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
 
-    subject_digests: list[str]
-    predicate_type: NotRequired[str]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgAttestationsBulkListPostBodyType",
-    "OrgsOrgAttestationsBulkListPostBodyTypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse",
 )

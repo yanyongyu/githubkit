@@ -9,48 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200(GitHubModel):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
-
-    total_count: int = Field()
-    storage_records: Missing[
-        list[
-            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
-        ]
-    ] = Field(default=UNSET)
+from .group_0246 import OrganizationCustomRepositoryRole
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
+class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubModel):
+    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
 
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    digest: Missing[str] = Field(default=UNSET)
-    artifact_url: Missing[Union[str, None]] = Field(default=UNSET)
-    registry_url: Missing[str] = Field(default=UNSET)
-    repository: Missing[Union[str, None]] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
+    total_count: Missing[int] = Field(
+        default=UNSET, description="The number of custom roles in this organization"
+    )
+    custom_roles: Missing[list[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostResponse200)
-model_rebuild(
-    OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
-)
+model_rebuild(OrganizationsOrganizationIdCustomRolesGetResponse200)
 
-__all__ = (
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems",
-)
+__all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200",)

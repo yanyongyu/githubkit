@@ -13,16 +13,19 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0338 import ActionsVariable
+
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody
+
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: list[str] = Field(
+        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items."
+    )
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody)
 
-    total_count: int = Field()
-    variables: list[ActionsVariable] = Field()
-
-
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200)
-
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody",)

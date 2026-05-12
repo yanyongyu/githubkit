@@ -9,19 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsSecretsSecretNameRepositoriesPutBody(GitHubModel):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
+class GistsPostBody(GitHubModel):
+    """GistsPostBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints."
+    description: Missing[str] = Field(
+        default=UNSET, description="Description of the gist"
     )
+    files: GistsPostBodyPropFiles = Field(
+        description="Names and content for the files that make up the gist"
+    )
+    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgActionsSecretsSecretNameRepositoriesPutBody)
+class GistsPostBodyPropFiles(ExtraGitHubModel):
+    """GistsPostBodyPropFiles
 
-__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesPutBody",)
+    Names and content for the files that make up the gist
+
+    Examples:
+        {'hello.rb': {'content': 'puts "Hello, World!"'}}
+    """
+
+
+model_rebuild(GistsPostBody)
+model_rebuild(GistsPostBodyPropFiles)
+
+__all__ = (
+    "GistsPostBody",
+    "GistsPostBodyPropFiles",
+)

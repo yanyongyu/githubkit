@@ -13,17 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0258 import CopilotSpace
 
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
 
-class OrgsOrgCopilotSpacesGetResponse200(GitHubModel):
-    """OrgsOrgCopilotSpacesGetResponse200"""
-
-    spaces: list[CopilotSpace] = Field(
-        description="The list of Copilot Spaces on this page of results."
+    runners: list[int] = Field(
+        description="List of runner IDs to add to the runner group."
     )
 
 
-model_rebuild(OrgsOrgCopilotSpacesGetResponse200)
+model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody)
 
-__all__ = ("OrgsOrgCopilotSpacesGetResponse200",)
+__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody",)

@@ -9,26 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
-
-    name: NotRequired[str]
-    value: NotRequired[str]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyTypeForResponse(
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
 
-    name: NotRequired[str]
-    value: NotRequired[str]
+    Examples:
+        {'contexts': ['contexts']}
+    """
+
+    contexts: list[str]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
+
+    Examples:
+        {'contexts': ['contexts']}
+    """
+
+    contexts: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0TypeForResponse",
 )

@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0344 import WorkflowRunType, WorkflowRunTypeForResponse
+from .group_0259 import CodespaceType, CodespaceTypeForResponse
 
 
-class ReposOwnerRepoActionsRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunsGetResponse200"""
-
-    total_count: int
-    workflow_runs: list[WorkflowRunType]
-
-
-class ReposOwnerRepoActionsRunsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunsGetResponse200"""
+class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
+    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
 
     total_count: int
-    workflow_runs: list[WorkflowRunTypeForResponse]
+    codespaces: list[CodespaceType]
+
+
+class OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+
+    total_count: int
+    codespaces: list[CodespaceTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunsGetResponse200Type",
-    "ReposOwnerRepoActionsRunsGetResponse200TypeForResponse",
+    "OrgsOrgMembersUsernameCodespacesGetResponse200Type",
+    "OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse",
 )

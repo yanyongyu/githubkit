@@ -100,6 +100,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
         ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType,
         ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType,
+        ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType,
         ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type,
         ReposOwnerRepoIssuesPostBodyType,
         ReposOwnerRepoLabelsNamePatchBodyType,
@@ -757,6 +758,9 @@ class IssuesClient:
             list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
+        issue_field_values: Missing[
+            list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType]
+        ] = UNSET,
         type: Missing[Union[str, None]] = UNSET,
     ) -> Response[Issue, IssueTypeForResponse]: ...
 
@@ -855,6 +859,9 @@ class IssuesClient:
             list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
+        issue_field_values: Missing[
+            list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType]
+        ] = UNSET,
         type: Missing[Union[str, None]] = UNSET,
     ) -> Response[Issue, IssueTypeForResponse]: ...
 

@@ -9,44 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_1255 import (
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
-)
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class ReposOwnerRepoPagesPutBodyAnyof4Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof4"""
+class ReposOwnerRepoDispatchesPostBodyType(TypedDict):
+    """ReposOwnerRepoDispatchesPostBody"""
 
-    cname: NotRequired[Union[str, None]]
-    https_enforced: bool
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-        ]
+    event_type: str
+    client_payload: NotRequired[ReposOwnerRepoDispatchesPostBodyPropClientPayloadType]
+
+
+class ReposOwnerRepoDispatchesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoDispatchesPostBody"""
+
+    event_type: str
+    client_payload: NotRequired[
+        ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse
     ]
 
 
-class ReposOwnerRepoPagesPutBodyAnyof4TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof4"""
+ReposOwnerRepoDispatchesPostBodyPropClientPayloadType: TypeAlias = dict[str, Any]
+"""ReposOwnerRepoDispatchesPostBodyPropClientPayload
 
-    cname: NotRequired[Union[str, None]]
-    https_enforced: bool
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
-        ]
-    ]
+JSON payload with extra information about the webhook event that your action or
+workflow may use. The maximum number of top-level properties is 10. The total
+size of the JSON payload must be less than 64KB.
+"""
+
+
+ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoDispatchesPostBodyPropClientPayload
+
+JSON payload with extra information about the webhook event that your action or
+workflow may use. The maximum number of top-level properties is 10. The total
+size of the JSON payload must be less than 64KB.
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPutBodyAnyof4Type",
-    "ReposOwnerRepoPagesPutBodyAnyof4TypeForResponse",
+    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadType",
+    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse",
+    "ReposOwnerRepoDispatchesPostBodyType",
+    "ReposOwnerRepoDispatchesPostBodyTypeForResponse",
 )

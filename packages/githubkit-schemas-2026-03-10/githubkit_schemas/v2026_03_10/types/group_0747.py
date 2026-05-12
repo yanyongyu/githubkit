@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0485 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0486 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0487 import (
+from .group_0490 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0491 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0492 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0488 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0513 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
+from .group_0493 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0510 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
 
 
-class WebhookOrganizationDeletedType(TypedDict):
-    """organization deleted event"""
+class WebhookMilestoneDeletedType(TypedDict):
+    """milestone deleted event"""
 
     action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    membership: NotRequired[WebhooksMembershipType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
+    milestone: WebhooksMilestoneType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookOrganizationDeletedTypeForResponse(TypedDict):
-    """organization deleted event"""
+class WebhookMilestoneDeletedTypeForResponse(TypedDict):
+    """milestone deleted event"""
 
     action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    membership: NotRequired[WebhooksMembershipTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    milestone: WebhooksMilestoneTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookOrganizationDeletedType",
-    "WebhookOrganizationDeletedTypeForResponse",
+    "WebhookMilestoneDeletedType",
+    "WebhookMilestoneDeletedTypeForResponse",
 )

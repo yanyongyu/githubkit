@@ -51,6 +51,7 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseActionsRunnersGetResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202,
         EnterprisesEnterpriseEnterpriseRolesGetResponse200,
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
         EnterpriseTeam,
@@ -120,6 +121,8 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseAuditLogStreamsPostBodyType,
         EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
         EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse,
         EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse,
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse,
         EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
@@ -5777,6 +5780,212 @@ class EnterpriseAdminClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GetConsumedLicenses,
+        )
+
+    @overload
+    def revoke_all_credential_authorizations(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType
+        ] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse,
+    ]: ...
+
+    @overload
+    def revoke_all_credential_authorizations(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        revoke_credentials: Missing[bool] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse,
+    ]: ...
+
+    def revoke_all_credential_authorizations(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse,
+    ]:
+        """enterprise-admin/revoke-all-credential-authorizations
+
+        POST /enterprises/{enterprise}/credential-authorizations/revoke-all
+
+        Revokes all credential authorizations for all organizations within the enterprise.
+        This includes any guest, outside, or repository collaborators.
+
+        For Enterprise Managed User (EMU) enterprises, you can optionally also destroy all
+        credentials (PATs v1, PATs v2, and SSH keys) owned by enterprise members by setting
+        the `revoke_credentials` parameter to `true`.
+
+        This operation is performed asynchronously. A background job will be queued to process
+        the revocations.
+
+        > [!WARNING]
+        > If you use a personal access token to call this endpoint, that token may also be
+        > revoked or destroyed as part of this operation.
+
+        The authenticated user must be an enterprise owner or have the `write_enterprise_credentials` permission to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/credential-authorizations#revoke-all-credential-authorizations-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody,
+            EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202,
+        )
+
+        url = f"/enterprises/{enterprise}/credential-authorizations/revoke-all"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": BasicError,
+            },
+        )
+
+    @overload
+    async def async_revoke_all_credential_authorizations(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType
+        ] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_revoke_all_credential_authorizations(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        revoke_credentials: Missing[bool] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse,
+    ]: ...
+
+    async def async_revoke_all_credential_authorizations(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse,
+    ]:
+        """enterprise-admin/revoke-all-credential-authorizations
+
+        POST /enterprises/{enterprise}/credential-authorizations/revoke-all
+
+        Revokes all credential authorizations for all organizations within the enterprise.
+        This includes any guest, outside, or repository collaborators.
+
+        For Enterprise Managed User (EMU) enterprises, you can optionally also destroy all
+        credentials (PATs v1, PATs v2, and SSH keys) owned by enterprise members by setting
+        the `revoke_credentials` parameter to `true`.
+
+        This operation is performed asynchronously. A background job will be queued to process
+        the revocations.
+
+        > [!WARNING]
+        > If you use a personal access token to call this endpoint, that token may also be
+        > revoked or destroyed as part of this operation.
+
+        The authenticated user must be an enterprise owner or have the `write_enterprise_credentials` permission to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/credential-authorizations#revoke-all-credential-authorizations-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody,
+            EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202,
+        )
+
+        url = f"/enterprises/{enterprise}/credential-authorizations/revoke-all"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": BasicError,
+            },
         )
 
     def list_enterprise_roles(

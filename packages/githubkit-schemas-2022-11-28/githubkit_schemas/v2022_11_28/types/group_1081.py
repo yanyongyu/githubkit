@@ -9,25 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    action: Literal["approve", "deny"]
-    reason: NotRequired[Union[str, None]]
+    scope: Literal[
+        "all", "all_without_configurations", "public", "private_or_internal", "selected"
+    ]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    action: Literal["approve", "deny"]
-    reason: NotRequired[Union[str, None]]
+    scope: Literal[
+        "all", "all_without_configurations", "public", "private_or_internal", "selected"
+    ]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType",
-    "OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyTypeForResponse",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse",
 )

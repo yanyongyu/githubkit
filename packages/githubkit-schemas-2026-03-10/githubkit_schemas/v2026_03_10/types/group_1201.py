@@ -9,55 +9,93 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+class ReposOwnerRepoAttestationsPostBodyType(TypedDict):
+    """ReposOwnerRepoAttestationsPostBody"""
 
-    total_count: int
-    branch_policies: list[DeploymentBranchPolicyType]
+    bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+class ReposOwnerRepoAttestationsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoAttestationsPostBody"""
 
-    total_count: int
-    branch_policies: list[DeploymentBranchPolicyTypeForResponse]
+    bundle: ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse
 
 
-class DeploymentBranchPolicyType(TypedDict):
-    """Deployment branch policy
+class ReposOwnerRepoAttestationsPostBodyPropBundleType(TypedDict):
+    """ReposOwnerRepoAttestationsPostBodyPropBundle
 
-    Details of a deployment branch or tag policy.
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
     """
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[Literal["branch", "tag"]]
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType
+    ]
+    dsse_envelope: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType
+    ]
 
 
-class DeploymentBranchPolicyTypeForResponse(TypedDict):
-    """Deployment branch policy
+class ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse(TypedDict):
+    """ReposOwnerRepoAttestationsPostBodyPropBundle
 
-    Details of a deployment branch or tag policy.
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
     """
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[Literal["branch", "tag"]]
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse
+    ]
+    dsse_envelope: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse
+    ]
+
+
+ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType: TypeAlias = (
+    dict[str, Any]
+)
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
+"""
+
+
+ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
+"""
+
+
+ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
+"""
+
+
+ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
+"""
 
 
 __all__ = (
-    "DeploymentBranchPolicyType",
-    "DeploymentBranchPolicyTypeForResponse",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse",
+    "ReposOwnerRepoAttestationsPostBodyPropBundleType",
+    "ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse",
+    "ReposOwnerRepoAttestationsPostBodyType",
+    "ReposOwnerRepoAttestationsPostBodyTypeForResponse",
 )

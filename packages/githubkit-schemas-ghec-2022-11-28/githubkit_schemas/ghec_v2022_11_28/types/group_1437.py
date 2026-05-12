@@ -9,31 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPagesPostBodyPropSourceType(TypedDict):
-    """ReposOwnerRepoPagesPostBodyPropSource
+class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
 
-    The source branch and directory used to publish your Pages site.
-    """
-
-    branch: str
-    path: NotRequired[Literal["/", "/docs"]]
+    dismissal_review_id: NotRequired[int]
 
 
-class ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPostBodyPropSource
+class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
 
-    The source branch and directory used to publish your Pages site.
-    """
-
-    branch: str
-    path: NotRequired[Literal["/", "/docs"]]
+    dismissal_review_id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPostBodyPropSourceType",
-    "ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse",
+    "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type",
+    "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse",
 )

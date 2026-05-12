@@ -12,17 +12,27 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0257 import Codespace
-
-
-class UserCodespacesGetResponse200(GitHubModel):
-    """UserCodespacesGetResponse200"""
-
-    total_count: int = Field()
-    codespaces: list[Codespace] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(UserCodespacesGetResponse200)
+class ReposOwnerRepoLabelsNamePatchBody(GitHubModel):
+    """ReposOwnerRepoLabelsNamePatchBody"""
 
-__all__ = ("UserCodespacesGetResponse200",)
+    new_name: Missing[str] = Field(
+        default=UNSET,
+        description='The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."',
+    )
+    color: Missing[str] = Field(
+        default=UNSET,
+        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
+    )
+    description: Missing[str] = Field(
+        default=UNSET,
+        description="A short description of the label. Must be 100 characters or fewer.",
+    )
+
+
+model_rebuild(ReposOwnerRepoLabelsNamePatchBody)
+
+__all__ = ("ReposOwnerRepoLabelsNamePatchBody",)

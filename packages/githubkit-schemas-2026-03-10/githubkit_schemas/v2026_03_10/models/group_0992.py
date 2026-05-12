@@ -13,20 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0119 import Runner
 
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201(GitHubModel):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
-
-    runner: Runner = Field(
-        title="Self hosted runners", description="A self hosted runner"
-    )
-    encoded_jit_config: str = Field(
-        description="The base64 encoded runner configuration."
+    organization_slugs: list[str] = Field(
+        description="Organization slug to unassign the team from."
     )
 
 
-model_rebuild(OrgsOrgActionsRunnersGenerateJitconfigPostResponse201)
+model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody)
 
-__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostResponse201",)
+__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody",)

@@ -9,55 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type(
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
 
-    total_count: int
-    branch_policies: list[DeploymentBranchPolicyType]
+    strict: NotRequired[bool]
+    contexts: NotRequired[list[str]]
+    checks: NotRequired[
+        list[
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
+        ]
+    ]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse(
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
 
-    total_count: int
-    branch_policies: list[DeploymentBranchPolicyTypeForResponse]
+    strict: NotRequired[bool]
+    contexts: NotRequired[list[str]]
+    checks: NotRequired[
+        list[
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse
+        ]
+    ]
 
 
-class DeploymentBranchPolicyType(TypedDict):
-    """Deployment branch policy
-
-    Details of a deployment branch or tag policy.
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
+    ms
     """
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[Literal["branch", "tag"]]
+    context: str
+    app_id: NotRequired[int]
 
 
-class DeploymentBranchPolicyTypeForResponse(TypedDict):
-    """Deployment branch policy
-
-    Details of a deployment branch or tag policy.
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
+    ms
     """
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[Literal["branch", "tag"]]
+    context: str
+    app_id: NotRequired[int]
 
 
 __all__ = (
-    "DeploymentBranchPolicyType",
-    "DeploymentBranchPolicyTypeForResponse",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyTypeForResponse",
 )

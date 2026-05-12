@@ -9,62 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    strict: NotRequired[bool]
-    contexts: NotRequired[list[str]]
-    checks: NotRequired[
-        list[
-            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
-        ]
+    fields: list[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType]
+
+
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
+
+    fields: list[
+        OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
     ]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyTypeForResponse(
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+
+    id: int
+    value: Union[str, float, None]
+
+
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
 
-    strict: NotRequired[bool]
-    contexts: NotRequired[list[str]]
-    checks: NotRequired[
-        list[
-            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse
-        ]
-    ]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
-    ms
-    """
-
-    context: str
-    app_id: NotRequired[int]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
-    ms
-    """
-
-    context: str
-    app_id: NotRequired[int]
+    id: int
+    value: Union[str, float, None]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
 )

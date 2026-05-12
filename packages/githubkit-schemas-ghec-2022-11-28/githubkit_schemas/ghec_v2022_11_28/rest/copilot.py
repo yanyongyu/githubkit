@@ -1443,11 +1443,12 @@ class CopilotClient:
 
         GET /enterprises/{enterprise}/copilot/custom-agents/source
 
-        Gets the organization and repository configured as the source for custom agent definitions in an enterprise.
+        Gets the organization and repository configured as the source for custom agent definitions and Copilot CLI client settings in an enterprise.
 
         Custom agents are enterprise-defined AI agents stored as markdown files in a special repository.
-        An enterprise admin configures one organization as the "source" and that org must have a repo named
-        `.github-private` containing agent definitions in `/agents/*.md`.
+        An enterprise admin configures one organization as the "source" for custom agents and
+        Copilot CLI client settings, and that org must have a repo named `.github-private` containing agent
+        definitions in `/agents/*.md`, or enterprise-managed AI standards in `.github/copilot/settings.json`. [Learn more about configuring enterprise-managed AI standards for Copilot clients](https://docs.github.com/enterprise-cloud@latest/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/configure-enterprise-plugin-standards).
 
         Enterprise owners with read access to AI Controls can use this endpoint.
 
@@ -1492,11 +1493,12 @@ class CopilotClient:
 
         GET /enterprises/{enterprise}/copilot/custom-agents/source
 
-        Gets the organization and repository configured as the source for custom agent definitions in an enterprise.
+        Gets the organization and repository configured as the source for custom agent definitions and Copilot CLI client settings in an enterprise.
 
         Custom agents are enterprise-defined AI agents stored as markdown files in a special repository.
-        An enterprise admin configures one organization as the "source" and that org must have a repo named
-        `.github-private` containing agent definitions in `/agents/*.md`.
+        An enterprise admin configures one organization as the "source" for custom agents and
+        Copilot CLI client settings, and that org must have a repo named `.github-private` containing agent
+        definitions in `/agents/*.md`, or enterprise-managed AI standards in `.github/copilot/settings.json`. [Learn more about configuring enterprise-managed AI standards for Copilot clients](https://docs.github.com/enterprise-cloud@latest/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/configure-enterprise-plugin-standards).
 
         Enterprise owners with read access to AI Controls can use this endpoint.
 
@@ -1573,7 +1575,7 @@ class CopilotClient:
 
         PUT /enterprises/{enterprise}/copilot/custom-agents/source
 
-        Sets an organization as the source for custom agent definitions in the enterprise.
+        Sets an organization as the source for custom agent definitions and Copilot CLI client settings in the enterprise.
         The organization must have a `.github-private` repository containing agent definitions.
 
         By default, this endpoint also creates an enterprise-level ruleset to protect
@@ -1671,7 +1673,7 @@ class CopilotClient:
 
         PUT /enterprises/{enterprise}/copilot/custom-agents/source
 
-        Sets an organization as the source for custom agent definitions in the enterprise.
+        Sets an organization as the source for custom agent definitions and Copilot CLI client settings in the enterprise.
         The organization must have a `.github-private` repository containing agent definitions.
 
         By default, this endpoint also creates an enterprise-level ruleset to protect
@@ -1735,8 +1737,8 @@ class CopilotClient:
         DELETE /enterprises/{enterprise}/copilot/custom-agents/source
 
         Removes the custom agents source configuration for the enterprise.
-        This effectively disables custom agents for the enterprise by removing
-        the reference to the source organization's `.github-private` repository.
+        This effectively disables custom agents and Copilot CLI client settings
+        for the enterprise by removing the reference to the source organization's `.github-private` repository.
 
         Note: This does not delete the `.github-private` repository or any agent
         definition files. It only removes the association between the enterprise
@@ -1778,8 +1780,8 @@ class CopilotClient:
         DELETE /enterprises/{enterprise}/copilot/custom-agents/source
 
         Removes the custom agents source configuration for the enterprise.
-        This effectively disables custom agents for the enterprise by removing
-        the reference to the source organization's `.github-private` repository.
+        This effectively disables custom agents and Copilot CLI client settings
+        for the enterprise by removing the reference to the source organization's `.github-private` repository.
 
         Note: This does not delete the `.github-private` repository or any agent
         definition files. It only removes the association between the enterprise

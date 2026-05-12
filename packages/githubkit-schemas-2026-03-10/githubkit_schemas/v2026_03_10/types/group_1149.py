@@ -11,32 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0
-
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str]
+from .group_0184 import CustomPropertyType, CustomPropertyTypeForResponse
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0
+class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
+    properties: list[CustomPropertyType]
 
-    contexts: list[str]
+
+class OrgsOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
+
+    properties: list[CustomPropertyTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0TypeForResponse",
+    "OrgsOrgPropertiesSchemaPatchBodyType",
+    "OrgsOrgPropertiesSchemaPatchBodyTypeForResponse",
 )

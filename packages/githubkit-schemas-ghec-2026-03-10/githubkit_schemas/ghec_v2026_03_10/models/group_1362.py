@@ -12,18 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0341 import ActionsSecret
 
 
-class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201(GitHubModel):
-    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
+class ReposOwnerRepoAgentsOrganizationSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoAgentsOrganizationSecretsGetResponse200"""
 
-    sbom_url: Missing[str] = Field(
-        default=UNSET, description="URL to poll for the SBOM export result."
-    )
+    total_count: int = Field()
+    secrets: list[ActionsSecret] = Field()
 
 
-model_rebuild(ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201)
+model_rebuild(ReposOwnerRepoAgentsOrganizationSecretsGetResponse200)
 
-__all__ = ("ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201",)
+__all__ = ("ReposOwnerRepoAgentsOrganizationSecretsGetResponse200",)

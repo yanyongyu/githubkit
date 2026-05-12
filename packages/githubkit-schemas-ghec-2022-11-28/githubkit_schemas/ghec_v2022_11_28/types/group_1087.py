@@ -9,24 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422Type(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
+class EnterprisesEnterpriseActionsRunnerGroupsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
 
-    message: NotRequired[str]
+    name: str
+    visibility: NotRequired[Literal["selected", "all"]]
+    selected_organization_ids: NotRequired[list[int]]
+    runners: NotRequired[list[int]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[str]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
+class EnterprisesEnterpriseActionsRunnerGroupsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
 
-    message: NotRequired[str]
+    name: str
+    visibility: NotRequired[Literal["selected", "all"]]
+    selected_organization_ids: NotRequired[list[int]]
+    runners: NotRequired[list[int]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422Type",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsPostBodyType",
+    "EnterprisesEnterpriseActionsRunnerGroupsPostBodyTypeForResponse",
 )

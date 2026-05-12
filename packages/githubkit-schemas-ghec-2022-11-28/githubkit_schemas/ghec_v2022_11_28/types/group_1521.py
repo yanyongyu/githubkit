@@ -10,28 +10,26 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
-    actor_type: Literal["User", "Team"]
-    actor_identifier: str
-    role: Literal["reader", "writer", "admin"]
+    body: NotRequired[str]
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse(
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
-    actor_type: Literal["User", "Team"]
-    actor_identifier: str
-    role: Literal["reader", "writer", "admin"]
+    body: NotRequired[str]
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyTypeForResponse",
 )

@@ -11,32 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0525 import TrafficType, TrafficTypeForResponse
+
+class ParticipationStatsType(TypedDict):
+    """Participation Stats"""
+
+    all_: list[int]
+    owner: list[int]
 
 
-class CloneTrafficType(TypedDict):
-    """Clone Traffic
+class ParticipationStatsTypeForResponse(TypedDict):
+    """Participation Stats"""
 
-    Clone Traffic
-    """
-
-    count: int
-    uniques: int
-    clones: list[TrafficType]
-
-
-class CloneTrafficTypeForResponse(TypedDict):
-    """Clone Traffic
-
-    Clone Traffic
-    """
-
-    count: int
-    uniques: int
-    clones: list[TrafficTypeForResponse]
+    all_: list[int]
+    owner: list[int]
 
 
 __all__ = (
-    "CloneTrafficType",
-    "CloneTrafficTypeForResponse",
+    "ParticipationStatsType",
+    "ParticipationStatsTypeForResponse",
 )

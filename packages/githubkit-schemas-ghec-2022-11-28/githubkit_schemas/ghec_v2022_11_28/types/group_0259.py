@@ -14,142 +14,169 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0049 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
+from .group_0243 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0258 import CodespaceMachineType, CodespaceMachineTypeForResponse
 
 
-class CopilotSpaceType(TypedDict):
-    """Space
+class CodespaceType(TypedDict):
+    """Codespace
 
-    A GitHub Copilot Space represents an interactive AI workspace where users can
-    ask questions and get assistance.
+    A codespace.
     """
 
     id: int
-    number: int
     name: str
-    description: NotRequired[Union[str, None]]
-    general_instructions: NotRequired[Union[str, None]]
-    base_role: Literal["reader", "writer", "admin", "no_access"]
-    owner: Union[SimpleUserType, OrganizationSimpleType]
-    creator: SimpleUserType
+    display_name: NotRequired[Union[str, None]]
+    environment_id: Union[str, None]
+    owner: SimpleUserType
+    billable_owner: SimpleUserType
+    repository: MinimalRepositoryType
+    machine: Union[None, CodespaceMachineType]
+    devcontainer_path: NotRequired[Union[str, None]]
+    prebuild: Union[bool, None]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    html_url: str
-    api_url: str
-    resources_attributes: NotRequired[
-        list[CopilotSpacePropResourcesAttributesItemsType]
+    last_used_at: _dt.datetime
+    state: Literal[
+        "Unknown",
+        "Created",
+        "Queued",
+        "Provisioning",
+        "Available",
+        "Awaiting",
+        "Unavailable",
+        "Deleted",
+        "Moved",
+        "Shutdown",
+        "Archived",
+        "Starting",
+        "ShuttingDown",
+        "Failed",
+        "Exporting",
+        "Updating",
+        "Rebuilding",
     ]
+    url: str
+    git_status: CodespacePropGitStatusType
+    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
+    idle_timeout_minutes: Union[int, None]
+    web_url: str
+    machines_url: str
+    start_url: str
+    stop_url: str
+    publish_url: NotRequired[Union[str, None]]
+    pulls_url: Union[str, None]
+    recent_folders: list[str]
+    runtime_constraints: NotRequired[CodespacePropRuntimeConstraintsType]
+    pending_operation: NotRequired[Union[bool, None]]
+    pending_operation_disabled_reason: NotRequired[Union[str, None]]
+    idle_timeout_notice: NotRequired[Union[str, None]]
+    retention_period_minutes: NotRequired[Union[int, None]]
+    retention_expires_at: NotRequired[Union[_dt.datetime, None]]
+    last_known_stop_notice: NotRequired[Union[str, None]]
 
 
-class CopilotSpaceTypeForResponse(TypedDict):
-    """Space
+class CodespaceTypeForResponse(TypedDict):
+    """Codespace
 
-    A GitHub Copilot Space represents an interactive AI workspace where users can
-    ask questions and get assistance.
+    A codespace.
     """
 
     id: int
-    number: int
     name: str
-    description: NotRequired[Union[str, None]]
-    general_instructions: NotRequired[Union[str, None]]
-    base_role: Literal["reader", "writer", "admin", "no_access"]
-    owner: Union[SimpleUserTypeForResponse, OrganizationSimpleTypeForResponse]
-    creator: SimpleUserTypeForResponse
+    display_name: NotRequired[Union[str, None]]
+    environment_id: Union[str, None]
+    owner: SimpleUserTypeForResponse
+    billable_owner: SimpleUserTypeForResponse
+    repository: MinimalRepositoryTypeForResponse
+    machine: Union[None, CodespaceMachineTypeForResponse]
+    devcontainer_path: NotRequired[Union[str, None]]
+    prebuild: Union[bool, None]
     created_at: str
     updated_at: str
-    html_url: str
-    api_url: str
-    resources_attributes: NotRequired[
-        list[CopilotSpacePropResourcesAttributesItemsTypeForResponse]
+    last_used_at: str
+    state: Literal[
+        "Unknown",
+        "Created",
+        "Queued",
+        "Provisioning",
+        "Available",
+        "Awaiting",
+        "Unavailable",
+        "Deleted",
+        "Moved",
+        "Shutdown",
+        "Archived",
+        "Starting",
+        "ShuttingDown",
+        "Failed",
+        "Exporting",
+        "Updating",
+        "Rebuilding",
     ]
+    url: str
+    git_status: CodespacePropGitStatusTypeForResponse
+    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
+    idle_timeout_minutes: Union[int, None]
+    web_url: str
+    machines_url: str
+    start_url: str
+    stop_url: str
+    publish_url: NotRequired[Union[str, None]]
+    pulls_url: Union[str, None]
+    recent_folders: list[str]
+    runtime_constraints: NotRequired[CodespacePropRuntimeConstraintsTypeForResponse]
+    pending_operation: NotRequired[Union[bool, None]]
+    pending_operation_disabled_reason: NotRequired[Union[str, None]]
+    idle_timeout_notice: NotRequired[Union[str, None]]
+    retention_period_minutes: NotRequired[Union[int, None]]
+    retention_expires_at: NotRequired[Union[str, None]]
+    last_known_stop_notice: NotRequired[Union[str, None]]
 
 
-class CopilotSpacePropResourcesAttributesItemsType(TypedDict):
-    """CopilotSpacePropResourcesAttributesItems"""
+class CodespacePropGitStatusType(TypedDict):
+    """CodespacePropGitStatus
 
-    id: NotRequired[int]
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    copilot_chat_attachment_id: NotRequired[Union[int, None]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    metadata: NotRequired[CopilotSpacePropResourcesAttributesItemsPropMetadataType]
-
-
-class CopilotSpacePropResourcesAttributesItemsTypeForResponse(TypedDict):
-    """CopilotSpacePropResourcesAttributesItems"""
-
-    id: NotRequired[int]
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    copilot_chat_attachment_id: NotRequired[Union[int, None]]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    metadata: NotRequired[
-        CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse
-    ]
-
-
-class CopilotSpacePropResourcesAttributesItemsPropMetadataType(TypedDict):
-    """CopilotSpacePropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
+    Details about the codespace's git repository.
     """
 
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
-    copilot_chat_attachment_id: NotRequired[int]
-    media_type: NotRequired[str]
-    url: NotRequired[str]
-    height: NotRequired[int]
-    width: NotRequired[int]
+    ahead: NotRequired[int]
+    behind: NotRequired[int]
+    has_unpushed_changes: NotRequired[bool]
+    has_uncommitted_changes: NotRequired[bool]
+    ref: NotRequired[str]
 
 
-class CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse(TypedDict):
-    """CopilotSpacePropResourcesAttributesItemsPropMetadata
+class CodespacePropGitStatusTypeForResponse(TypedDict):
+    """CodespacePropGitStatus
 
-    Metadata specific to the resource type.
+    Details about the codespace's git repository.
     """
 
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
-    copilot_chat_attachment_id: NotRequired[int]
-    media_type: NotRequired[str]
-    url: NotRequired[str]
-    height: NotRequired[int]
-    width: NotRequired[int]
+    ahead: NotRequired[int]
+    behind: NotRequired[int]
+    has_unpushed_changes: NotRequired[bool]
+    has_uncommitted_changes: NotRequired[bool]
+    ref: NotRequired[str]
+
+
+class CodespacePropRuntimeConstraintsType(TypedDict):
+    """CodespacePropRuntimeConstraints"""
+
+    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
+
+
+class CodespacePropRuntimeConstraintsTypeForResponse(TypedDict):
+    """CodespacePropRuntimeConstraints"""
+
+    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
 
 
 __all__ = (
-    "CopilotSpacePropResourcesAttributesItemsPropMetadataType",
-    "CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse",
-    "CopilotSpacePropResourcesAttributesItemsType",
-    "CopilotSpacePropResourcesAttributesItemsTypeForResponse",
-    "CopilotSpaceType",
-    "CopilotSpaceTypeForResponse",
+    "CodespacePropGitStatusType",
+    "CodespacePropGitStatusTypeForResponse",
+    "CodespacePropRuntimeConstraintsType",
+    "CodespacePropRuntimeConstraintsTypeForResponse",
+    "CodespaceType",
+    "CodespaceTypeForResponse",
 )

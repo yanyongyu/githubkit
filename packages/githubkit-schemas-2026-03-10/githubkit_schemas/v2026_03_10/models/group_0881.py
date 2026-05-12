@@ -18,17 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0485 import EnterpriseWebhooks
-from .group_0486 import SimpleInstallation
-from .group_0487 import OrganizationSimpleWebhooks
-from .group_0488 import RepositoryWebhooks
-from .group_0882 import WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
+from .group_0490 import EnterpriseWebhooks
+from .group_0491 import SimpleInstallation
+from .group_0492 import OrganizationSimpleWebhooks
+from .group_0493 import RepositoryWebhooks
+from .group_0533 import SecretScanningAlertWebhook
 
 
-class WebhookSecurityAdvisoryWithdrawn(GitHubModel):
-    """security_advisory withdrawn event"""
+class WebhookSecretScanningAlertUnassigned(GitHubModel):
+    """secret_scanning_alert unassigned event"""
 
-    action: Literal["withdrawn"] = Field()
+    action: Literal["unassigned"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
+    assignee: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,19 +48,15 @@ class WebhookSecurityAdvisoryWithdrawn(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory = Field(
-        description="The details of the security advisory, including summary, description, and severity."
     )
     sender: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-model_rebuild(WebhookSecurityAdvisoryWithdrawn)
+model_rebuild(WebhookSecretScanningAlertUnassigned)
 
-__all__ = ("WebhookSecurityAdvisoryWithdrawn",)
+__all__ = ("WebhookSecretScanningAlertUnassigned",)

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,50 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesPostBodyOneof1(GitHubModel):
-    """UserCodespacesPostBodyOneof1"""
+class ReposOwnerRepoLabelsNamePatchBody(GitHubModel):
+    """ReposOwnerRepoLabelsNamePatchBody"""
 
-    pull_request: UserCodespacesPostBodyOneof1PropPullRequest = Field(
-        description="Pull request number for this codespace"
-    )
-    location: Missing[str] = Field(
+    new_name: Missing[str] = Field(
         default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
+        description='The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."',
     )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
+    color: Missing[str] = Field(
         default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
+        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
     )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
+    description: Missing[str] = Field(
         default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
-    )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
+        description="A short description of the label. Must be 100 characters or fewer.",
     )
 
 
-class UserCodespacesPostBodyOneof1PropPullRequest(GitHubModel):
-    """UserCodespacesPostBodyOneof1PropPullRequest
+model_rebuild(ReposOwnerRepoLabelsNamePatchBody)
 
-    Pull request number for this codespace
-    """
-
-    pull_request_number: int = Field(description="Pull request number")
-    repository_id: int = Field(description="Repository id for this codespace")
-
-
-model_rebuild(UserCodespacesPostBodyOneof1)
-model_rebuild(UserCodespacesPostBodyOneof1PropPullRequest)
-
-__all__ = (
-    "UserCodespacesPostBodyOneof1",
-    "UserCodespacesPostBodyOneof1PropPullRequest",
-)
+__all__ = ("ReposOwnerRepoLabelsNamePatchBody",)

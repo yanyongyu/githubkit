@@ -12,49 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200Type(TypedDict):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
 
-    attestations: NotRequired[
-        list[
-            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
-        ]
-    ]
+    reviewers: NotRequired[list[str]]
+    team_reviewers: list[str]
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
-
-    attestations: NotRequired[
-        list[
-            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
-        ]
-    ]
-
-
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1TypeForResponse(
     TypedDict
 ):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
 
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
-
-
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
+    reviewers: NotRequired[list[str]]
+    team_reviewers: list[str]
 
 
 __all__ = (
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1TypeForResponse",
 )

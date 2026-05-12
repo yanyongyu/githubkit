@@ -9,24 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgAttestationsRepositoriesGetResponse200ItemsType(TypedDict):
-    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
 
-    id: NotRequired[int]
     name: NotRequired[str]
+    runner_group_id: NotRequired[int]
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    size: NotRequired[str]
+    image_source: NotRequired[Literal["github", "partner", "custom"]]
+    image_id: NotRequired[str]
+    image_version: NotRequired[Union[str, None]]
+    image_gen: NotRequired[bool]
 
 
-class OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse(TypedDict):
-    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
 
-    id: NotRequired[int]
     name: NotRequired[str]
+    runner_group_id: NotRequired[int]
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    size: NotRequired[str]
+    image_source: NotRequired[Literal["github", "partner", "custom"]]
+    image_id: NotRequired[str]
+    image_version: NotRequired[Union[str, None]]
+    image_gen: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsType",
-    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse",
+    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType",
+    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse",
 )

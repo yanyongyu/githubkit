@@ -11,26 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0243 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
-
-class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
-
-
-class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType(
     TypedDict
 ):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    organization_slugs: list[str]
+
+
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
+
+    organization_slugs: list[str]
 
 
 __all__ = (
-    "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type",
-    "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyTypeForResponse",
 )

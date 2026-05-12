@@ -9,24 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameAttestationsBulkListPostBodyType(TypedDict):
-    """UsersUsernameAttestationsBulkListPostBody"""
+class ReposOwnerRepoPullsPullNumberCommentsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
 
-    subject_digests: list[str]
-    predicate_type: NotRequired[str]
+    body: str
+    commit_id: str
+    path: str
+    position: NotRequired[int]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    line: NotRequired[int]
+    start_line: NotRequired[int]
+    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
+    in_reply_to: NotRequired[int]
+    subject_type: NotRequired[Literal["line", "file"]]
 
 
-class UsersUsernameAttestationsBulkListPostBodyTypeForResponse(TypedDict):
-    """UsersUsernameAttestationsBulkListPostBody"""
+class ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
 
-    subject_digests: list[str]
-    predicate_type: NotRequired[str]
+    body: str
+    commit_id: str
+    path: str
+    position: NotRequired[int]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    line: NotRequired[int]
+    start_line: NotRequired[int]
+    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
+    in_reply_to: NotRequired[int]
+    subject_type: NotRequired[Literal["line", "file"]]
 
 
 __all__ = (
-    "UsersUsernameAttestationsBulkListPostBodyType",
-    "UsersUsernameAttestationsBulkListPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberCommentsPostBodyType",
+    "ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse",
 )

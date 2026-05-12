@@ -13,49 +13,155 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0243 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0271 import (
+    DismissalRequestResponseType,
+    DismissalRequestResponseTypeForResponse,
+)
 
 
-class PackageType(TypedDict):
-    """Package
+class CodeScanningAlertDismissalRequestType(TypedDict):
+    """Code scanning alert dismissal request
 
-    A software package
+    Alert dismisal request made by a user asking to dismiss a code scanning alert.
     """
 
-    id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserType]]
-    repository: NotRequired[Union[None, MinimalRepositoryType]]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[CodeScanningAlertDismissalRequestPropRepositoryType]
+    organization: NotRequired[CodeScanningAlertDismissalRequestPropOrganizationType]
+    requester: NotRequired[CodeScanningAlertDismissalRequestPropRequesterType]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[CodeScanningAlertDismissalRequestPropDataItemsType], None]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[_dt.datetime]
+    created_at: NotRequired[_dt.datetime]
+    responses: NotRequired[Union[list[DismissalRequestResponseType], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
-class PackageTypeForResponse(TypedDict):
-    """Package
+class CodeScanningAlertDismissalRequestTypeForResponse(TypedDict):
+    """Code scanning alert dismissal request
 
-    A software package
+    Alert dismisal request made by a user asking to dismiss a code scanning alert.
     """
 
-    id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    repository: NotRequired[Union[None, MinimalRepositoryTypeForResponse]]
-    created_at: str
-    updated_at: str
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[
+        CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse
+    ]
+    organization: NotRequired[
+        CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse
+    ]
+    requester: NotRequired[
+        CodeScanningAlertDismissalRequestPropRequesterTypeForResponse
+    ]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse], None]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[str]
+    created_at: NotRequired[str]
+    responses: NotRequired[Union[list[DismissalRequestResponseTypeForResponse], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropRepositoryType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropRepository
+
+    The repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse(TypedDict):
+    """CodeScanningAlertDismissalRequestPropRepository
+
+    The repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropOrganizationType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropOrganization
+
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse(TypedDict):
+    """CodeScanningAlertDismissalRequestPropOrganization
+
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropRequesterType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropRequester
+
+    The user who requested the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropRequesterTypeForResponse(TypedDict):
+    """CodeScanningAlertDismissalRequestPropRequester
+
+    The user who requested the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropDataItemsType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropDataItems"""
+
+    reason: NotRequired[str]
+    alert_number: NotRequired[str]
+    pr_review_thread_id: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse(TypedDict):
+    """CodeScanningAlertDismissalRequestPropDataItems"""
+
+    reason: NotRequired[str]
+    alert_number: NotRequired[str]
+    pr_review_thread_id: NotRequired[str]
 
 
 __all__ = (
-    "PackageType",
-    "PackageTypeForResponse",
+    "CodeScanningAlertDismissalRequestPropDataItemsType",
+    "CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse",
+    "CodeScanningAlertDismissalRequestPropOrganizationType",
+    "CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse",
+    "CodeScanningAlertDismissalRequestPropRepositoryType",
+    "CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse",
+    "CodeScanningAlertDismissalRequestPropRequesterType",
+    "CodeScanningAlertDismissalRequestPropRequesterTypeForResponse",
+    "CodeScanningAlertDismissalRequestType",
+    "CodeScanningAlertDismissalRequestTypeForResponse",
 )

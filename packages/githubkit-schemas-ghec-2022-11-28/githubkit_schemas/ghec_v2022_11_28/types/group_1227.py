@@ -11,27 +11,27 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0246 import (
-    OrganizationCustomRepositoryRoleType,
-    OrganizationCustomRepositoryRoleTypeForResponse,
+from .group_0256 import (
+    ArtifactDeploymentRecordType,
+    ArtifactDeploymentRecordTypeForResponse,
 )
 
 
-class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
 
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
+    total_count: int
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
 
 
-class OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
 
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
+    total_count: int
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgCustomRepositoryRolesGetResponse200Type",
-    "OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse",
 )

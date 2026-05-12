@@ -9,24 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserUserIdProjectsV2ProjectNumberDraftsPostBodyType(TypedDict):
-    """UserUserIdProjectsV2ProjectNumberDraftsPostBody"""
+class ReposOwnerRepoPullsPullNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    title: str
+    title: NotRequired[str]
     body: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    base: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
 
 
-class UserUserIdProjectsV2ProjectNumberDraftsPostBodyTypeForResponse(TypedDict):
-    """UserUserIdProjectsV2ProjectNumberDraftsPostBody"""
+class ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    title: str
+    title: NotRequired[str]
     body: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    base: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
 
 
 __all__ = (
-    "UserUserIdProjectsV2ProjectNumberDraftsPostBodyType",
-    "UserUserIdProjectsV2ProjectNumberDraftsPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberPatchBodyType",
+    "ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse",
 )

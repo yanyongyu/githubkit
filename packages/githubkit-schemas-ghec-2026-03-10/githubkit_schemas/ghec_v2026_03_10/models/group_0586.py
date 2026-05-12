@@ -18,16 +18,9 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0010 import Integration
-from .group_0207 import PinnedIssueComment
 
-
-class WebhooksIssueComment(GitHubModel):
-    """issue comment
-
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest/rest/issues/comments#get-an-issue-comment) itself.
-    """
+class WebhooksAnswer(GitHubModel):
+    """WebhooksAnswer"""
 
     author_association: Literal[
         "COLLABORATOR",
@@ -42,24 +35,23 @@ class WebhooksIssueComment(GitHubModel):
         title="AuthorAssociation",
         description="How the author is associated with the repository.",
     )
-    body: str = Field(description="Contents of the issue comment")
+    body: str = Field()
+    child_comment_count: int = Field()
     created_at: _dt.datetime = Field()
+    discussion_id: int = Field()
     html_url: str = Field()
-    id: int = Field(description="Unique identifier of the issue comment")
-    issue_url: str = Field()
+    id: int = Field()
     node_id: str = Field()
-    performed_via_github_app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    parent_id: Union[int, None] = Field()
+    reactions: Missing[WebhooksAnswerPropReactions] = Field(
+        default=UNSET, title="Reactions"
     )
-    reactions: WebhooksIssueCommentPropReactions = Field(title="Reactions")
+    repository_url: str = Field()
     updated_at: _dt.datetime = Field()
-    url: str = Field(description="URL for the issue comment")
-    user: Union[WebhooksIssueCommentPropUser, None] = Field(title="User")
-    pin: Missing[Union[None, PinnedIssueComment]] = Field(default=UNSET)
+    user: Union[WebhooksAnswerPropUser, None] = Field(title="User")
 
 
-class WebhooksIssueCommentPropReactions(GitHubModel):
+class WebhooksAnswerPropReactions(GitHubModel):
     """Reactions"""
 
     plus_one: int = Field(alias="+1")
@@ -74,7 +66,7 @@ class WebhooksIssueCommentPropReactions(GitHubModel):
     url: str = Field()
 
 
-class WebhooksIssueCommentPropUser(GitHubModel):
+class WebhooksAnswerPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -96,19 +88,17 @@ class WebhooksIssueCommentPropUser(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
-    )
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksIssueComment)
-model_rebuild(WebhooksIssueCommentPropReactions)
-model_rebuild(WebhooksIssueCommentPropUser)
+model_rebuild(WebhooksAnswer)
+model_rebuild(WebhooksAnswerPropReactions)
+model_rebuild(WebhooksAnswerPropUser)
 
 __all__ = (
-    "WebhooksIssueComment",
-    "WebhooksIssueCommentPropReactions",
-    "WebhooksIssueCommentPropUser",
+    "WebhooksAnswer",
+    "WebhooksAnswerPropReactions",
+    "WebhooksAnswerPropUser",
 )

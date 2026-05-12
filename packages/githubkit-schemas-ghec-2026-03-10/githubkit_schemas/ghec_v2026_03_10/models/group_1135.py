@@ -12,23 +12,24 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0037 import ActionsHostedRunnerCustomImageVersion
 
-
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200(
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202(
     GitHubModel
 ):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202"""
 
-    total_count: int = Field()
-    image_versions: list[ActionsHostedRunnerCustomImageVersion] = Field()
+    message: Missing[str] = Field(
+        default=UNSET, description="A message indicating the revocation has been queued"
+    )
+    warning: Missing[str] = Field(
+        default=UNSET,
+        description="A warning message if the token used for this request may be revoked",
+    )
 
 
-model_rebuild(
-    OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200
-)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202)
 
-__all__ = (
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200",
-)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202",)

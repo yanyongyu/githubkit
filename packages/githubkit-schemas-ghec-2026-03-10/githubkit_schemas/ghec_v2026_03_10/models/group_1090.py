@@ -12,25 +12,23 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0054 import Runner
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessPatchBody(GitHubModel):
-    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to add."
-    )
-    repository_ids_to_remove: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to remove."
-    )
+    total_count: float = Field()
+    runners: list[Runner] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseDependabotRepositoryAccessPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200
+)
 
-__all__ = ("EnterprisesEnterpriseDependabotRepositoryAccessPatchBody",)
+__all__ = (
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200",
+)

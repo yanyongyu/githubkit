@@ -14,23 +14,21 @@ from typing_extensions import TypedDict
 from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200"""
+class OrgsOrgAgentsVariablesNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgAgentsVariablesNameRepositoriesGetResponse200"""
 
     total_count: int
     repositories: list[MinimalRepositoryType]
 
 
-class OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200"""
+class OrgsOrgAgentsVariablesNameRepositoriesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAgentsVariablesNameRepositoriesGetResponse200"""
 
     total_count: int
     repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200Type",
-    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse",
+    "OrgsOrgAgentsVariablesNameRepositoriesGetResponse200Type",
+    "OrgsOrgAgentsVariablesNameRepositoriesGetResponse200TypeForResponse",
 )

@@ -12,21 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
+class ApplicationsClientIdTokenDeleteBodyType(TypedDict):
+    """ApplicationsClientIdTokenDeleteBody"""
 
-    total_count: int
-    platforms: list[str]
+    access_token: str
 
 
-class OrgsOrgActionsHostedRunnersPlatformsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
+class ApplicationsClientIdTokenDeleteBodyTypeForResponse(TypedDict):
+    """ApplicationsClientIdTokenDeleteBody"""
 
-    total_count: int
-    platforms: list[str]
+    access_token: str
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersPlatformsGetResponse200TypeForResponse",
+    "ApplicationsClientIdTokenDeleteBodyType",
+    "ApplicationsClientIdTokenDeleteBodyTypeForResponse",
 )

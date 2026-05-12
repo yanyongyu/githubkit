@@ -9,33 +9,109 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0034 import (
-    ActionsHostedRunnerMachineSpecType,
-    ActionsHostedRunnerMachineSpecTypeForResponse,
+from .group_1034 import (
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse,
+)
+from .group_1035 import (
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse,
 )
 
 
-class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0"""
 
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecType]
+    id: str
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    name: NotRequired[str]
+    creator: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type
+    ]
+    creator_type: NotRequired[Literal["user", "organization"]]
+    user_collaborators: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType
+        ]
+    ]
+    owner: NotRequired[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerType]
+    repository: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType
+    ]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    session_count: NotRequired[int]
+    artifacts: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsType]
+    ]
+    archived_at: NotRequired[Union[_dt.datetime, None]]
+    updated_at: NotRequired[_dt.datetime]
+    created_at: _dt.datetime
 
 
-class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0"""
 
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
+    id: str
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    name: NotRequired[str]
+    creator: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse
+    ]
+    creator_type: NotRequired[Literal["user", "organization"]]
+    user_collaborators: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse
+        ]
+    ]
+    owner: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse
+    ]
+    repository: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse
+    ]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    session_count: NotRequired[int]
+    artifacts: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse
+        ]
+    ]
+    archived_at: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    created_at: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type",
-    "EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0TypeForResponse",
 )

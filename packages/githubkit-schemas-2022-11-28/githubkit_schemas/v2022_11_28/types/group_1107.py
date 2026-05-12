@@ -9,58 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
-
-
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
-
-    total_count: int
-    network_configurations: list[NetworkConfigurationTypeForResponse]
+    selected_usernames: list[str]
 
 
-class NetworkConfigurationType(TypedDict):
-    """Hosted compute network configuration
+class OrgsOrgCopilotBillingSelectedUsersDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    A hosted compute network configuration.
-    """
-
-    id: str
-    name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
-    created_on: Union[_dt.datetime, None]
-
-
-class NetworkConfigurationTypeForResponse(TypedDict):
-    """Hosted compute network configuration
-
-    A hosted compute network configuration.
-    """
-
-    id: str
-    name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
-    created_on: Union[str, None]
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "NetworkConfigurationType",
-    "NetworkConfigurationTypeForResponse",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteBodyType",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteBodyTypeForResponse",
 )

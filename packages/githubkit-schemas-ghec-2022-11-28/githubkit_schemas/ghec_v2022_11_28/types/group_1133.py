@@ -9,48 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody"""
 
-    total_count: int
-    repository_cache_usages: list[ActionsCacheUsageByRepositoryType]
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType
+        ]
+    ]
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody"""
 
-    total_count: int
-    repository_cache_usages: list[ActionsCacheUsageByRepositoryTypeForResponse]
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse
+        ]
+    ]
 
 
-class ActionsCacheUsageByRepositoryType(TypedDict):
-    """Actions Cache Usage by repository
-
-    GitHub Actions Cache Usage by repository.
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPr
+    opertiesItems
     """
 
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
+    property_name: str
+    values: list[str]
 
 
-class ActionsCacheUsageByRepositoryTypeForResponse(TypedDict):
-    """Actions Cache Usage by repository
-
-    GitHub Actions Cache Usage by repository.
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPr
+    opertiesItems
     """
 
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
+    property_name: str
+    values: list[str]
 
 
 __all__ = (
-    "ActionsCacheUsageByRepositoryType",
-    "ActionsCacheUsageByRepositoryTypeForResponse",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyTypeForResponse",
 )

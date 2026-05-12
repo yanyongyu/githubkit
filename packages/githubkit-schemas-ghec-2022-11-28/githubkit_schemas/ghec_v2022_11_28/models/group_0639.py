@@ -18,40 +18,35 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0568 import EnterpriseWebhooks
-from .group_0569 import SimpleInstallation
-from .group_0570 import OrganizationSimpleWebhooks
-from .group_0571 import RepositoryWebhooks
-from .group_0640 import WebhookCodeScanningAlertAppearedInBranchPropAlert
+from .group_0573 import EnterpriseWebhooks
+from .group_0574 import SimpleInstallation
+from .group_0575 import OrganizationSimpleWebhooks
+from .group_0576 import RepositoryWebhooks
+from .group_0581 import CheckRunWithSimpleCheckSuite
 
 
-class WebhookCodeScanningAlertAppearedInBranch(GitHubModel):
-    """code_scanning_alert appeared_in_branch event"""
+class WebhookCheckRunRerequested(GitHubModel):
+    """Check Run Re-Requested Event"""
 
-    action: Literal["appeared_in_branch"] = Field()
-    alert: WebhookCodeScanningAlertAppearedInBranchPropAlert = Field(
-        description="The code scanning alert involved in the event."
-    )
-    commit_oid: str = Field(
-        description="The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
-    )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
+    action: Literal["rerequested"] = Field()
+    check_run: CheckRunWithSimpleCheckSuite = Field(
+        title="CheckRun",
+        description="A check performed on the code of a given code change",
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    ref: str = Field(
-        description="The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
     )
     repository: RepositoryWebhooks = Field(
         title="Repository",
@@ -60,6 +55,6 @@ class WebhookCodeScanningAlertAppearedInBranch(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCodeScanningAlertAppearedInBranch)
+model_rebuild(WebhookCheckRunRerequested)
 
-__all__ = ("WebhookCodeScanningAlertAppearedInBranch",)
+__all__ = ("WebhookCheckRunRerequested",)

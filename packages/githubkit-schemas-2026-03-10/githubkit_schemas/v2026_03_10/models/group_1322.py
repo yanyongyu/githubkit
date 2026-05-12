@@ -9,25 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_1320 import ReposOwnerRepoPagesPostBodyPropSource
 
-class UserKeysPostBody(GitHubModel):
-    """UserKeysPostBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
+class ReposOwnerRepoPagesPostBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
+
+    build_type: Literal["legacy", "workflow"] = Field(
+        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.'
     )
-    key: str = Field(
-        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ",
-        description="The public SSH key to add to your GitHub account.",
+    source: Missing[ReposOwnerRepoPagesPostBodyPropSource] = Field(
+        default=UNSET,
+        description="The source branch and directory used to publish your Pages site.",
     )
 
 
-model_rebuild(UserKeysPostBody)
+model_rebuild(ReposOwnerRepoPagesPostBodyAnyof1)
 
-__all__ = ("UserKeysPostBody",)
+__all__ = ("ReposOwnerRepoPagesPostBodyAnyof1",)

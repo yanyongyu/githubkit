@@ -9,71 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1335 import (
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse,
-)
 
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
-
-    name: NotRequired[str]
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    started_at: NotRequired[_dt.datetime]
-    status: NotRequired[Literal["completed"]]
-    conclusion: Literal[
-        "action_required",
-        "cancelled",
-        "failure",
-        "neutral",
-        "success",
-        "skipped",
-        "stale",
-        "timed_out",
-    ]
-    completed_at: NotRequired[_dt.datetime]
-    output: NotRequired[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType]
-    actions: NotRequired[
-        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
+    groups: NotRequired[
+        list[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
     ]
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0TypeForResponse(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
 
-    name: NotRequired[str]
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    started_at: NotRequired[str]
-    status: NotRequired[Literal["completed"]]
-    conclusion: Literal[
-        "action_required",
-        "cancelled",
-        "failure",
-        "neutral",
-        "success",
-        "skipped",
-        "stale",
-        "timed_out",
+    groups: NotRequired[
+        list[
+            OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse
+        ]
     ]
-    completed_at: NotRequired[str]
-    output: NotRequired[
-        ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse
-    ]
-    actions: NotRequired[
-        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse]
-    ]
+
+
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+
+
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
 
 
 __all__ = (
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0TypeForResponse",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyTypeForResponse",
 )

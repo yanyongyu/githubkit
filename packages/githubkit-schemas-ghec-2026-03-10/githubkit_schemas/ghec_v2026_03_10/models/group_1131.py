@@ -9,39 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200(GitHubModel):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
 
-    total_count: int = Field()
-    repository_cache_usages: list[ActionsCacheUsageByRepository] = Field()
-
-
-class ActionsCacheUsageByRepository(GitHubModel):
-    """Actions Cache Usage by repository
-
-    GitHub Actions Cache Usage by repository.
-    """
-
-    full_name: str = Field(
-        description="The repository owner and name for the cache usage being shown."
-    )
-    active_caches_size_in_bytes: int = Field(
-        description="The sum of the size in bytes of all the active cache items in the repository."
-    )
-    active_caches_count: int = Field(
-        description="The number of active caches in the repository."
+    policy_state: Literal[
+        "enabled_for_all_orgs",
+        "disabled_for_all_orgs",
+        "enabled_for_selected_orgs",
+        "configured_by_org_admins",
+    ] = Field(
+        description="The policy state for Copilot cloud agent in the enterprise. Can be one of `enabled_for_all_orgs`, `disabled_for_all_orgs`, `enabled_for_selected_orgs`, or `configured_by_org_admins`."
     )
 
 
-model_rebuild(OrgsOrgActionsCacheUsageByRepositoryGetResponse200)
-model_rebuild(ActionsCacheUsageByRepository)
+model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody)
 
-__all__ = (
-    "ActionsCacheUsageByRepository",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
-)
+__all__ = ("EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody",)

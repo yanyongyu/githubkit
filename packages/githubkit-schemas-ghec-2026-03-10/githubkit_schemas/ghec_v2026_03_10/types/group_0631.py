@@ -13,68 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0567 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0568 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0569 import (
+from .group_0572 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0573 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0574 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0570 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0575 import (
-    CheckRunWithSimpleCheckSuiteType,
-    CheckRunWithSimpleCheckSuiteTypeForResponse,
-)
+from .group_0575 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0577 import ExemptionResponseType, ExemptionResponseTypeForResponse
+from .group_0578 import ExemptionRequestType, ExemptionRequestTypeForResponse
 
 
-class WebhookCheckRunRequestedActionType(TypedDict):
-    """Check Run Requested Action Event"""
+class WebhookExemptionRequestResponseSubmittedType(TypedDict):
+    """Exemption response submitted event"""
 
-    action: Literal["requested_action"]
-    check_run: CheckRunWithSimpleCheckSuiteType
-    installation: NotRequired[SimpleInstallationType]
+    action: Literal["response_submitted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    requested_action: NotRequired[WebhookCheckRunRequestedActionPropRequestedActionType]
+    repository: NotRequired[RepositoryWebhooksType]
+    exemption_request: ExemptionRequestType
+    exemption_response: ExemptionResponseType
     sender: SimpleUserType
 
 
-class WebhookCheckRunRequestedActionTypeForResponse(TypedDict):
-    """Check Run Requested Action Event"""
+class WebhookExemptionRequestResponseSubmittedTypeForResponse(TypedDict):
+    """Exemption response submitted event"""
 
-    action: Literal["requested_action"]
-    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
+    action: Literal["response_submitted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    requested_action: NotRequired[
-        WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse
-    ]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    exemption_request: ExemptionRequestTypeForResponse
+    exemption_response: ExemptionResponseTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookCheckRunRequestedActionPropRequestedActionType(TypedDict):
-    """WebhookCheckRunRequestedActionPropRequestedAction
-
-    The action requested by the user.
-    """
-
-    identifier: NotRequired[str]
-
-
-class WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse(TypedDict):
-    """WebhookCheckRunRequestedActionPropRequestedAction
-
-    The action requested by the user.
-    """
-
-    identifier: NotRequired[str]
-
-
 __all__ = (
-    "WebhookCheckRunRequestedActionPropRequestedActionType",
-    "WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse",
-    "WebhookCheckRunRequestedActionType",
-    "WebhookCheckRunRequestedActionTypeForResponse",
+    "WebhookExemptionRequestResponseSubmittedType",
+    "WebhookExemptionRequestResponseSubmittedTypeForResponse",
 )

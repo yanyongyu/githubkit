@@ -13,44 +13,27 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2(GitHubModel):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
+class ReposOwnerRepoActionsPermissionsPutBody(GitHubModel):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
 
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ] = Field(description="The language targeted by the CodeQL query")
-    query_pack: str = Field(
-        description="A Base64-encoded tarball containing a CodeQL query and all its dependencies"
+    enabled: bool = Field(
+        description="Whether GitHub Actions is enabled on the repository."
     )
-    repositories: Missing[list[str]] = Field(
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
         default=UNSET,
-        description="List of repository names (in the form `owner/repo-name`) to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
     )
-    repository_lists: Missing[list[str]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
+    sha_pinning_required: Missing[bool] = Field(
         default=UNSET,
-        description="List of repository lists to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
-    )
-    repository_owners: list[str] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        description="List of organization or user names whose repositories the query should be run against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
+        description="Whether actions must be pinned to a full-length commit SHA.",
     )
 
 
-model_rebuild(ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2)
+model_rebuild(ReposOwnerRepoActionsPermissionsPutBody)
 
-__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2",)
+__all__ = ("ReposOwnerRepoActionsPermissionsPutBody",)

@@ -9,22 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberCommentsPostBody"""
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    body: str
+    state: NotRequired[Literal["open", "dismissed"]]
+    dismissed_reason: NotRequired[
+        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    create_request: NotRequired[bool]
+    assignees: list[str]
 
 
-class ReposOwnerRepoIssuesIssueNumberCommentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberCommentsPostBody"""
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    body: str
+    state: NotRequired[Literal["open", "dismissed"]]
+    dismissed_reason: NotRequired[
+        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    create_request: NotRequired[bool]
+    assignees: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberCommentsPostBodyTypeForResponse",
+    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1Type",
+    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
 )

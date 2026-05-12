@@ -9,56 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class PullRequestSimplePropHeadType(TypedDict):
-    """PullRequestSimplePropHead"""
+class AutoMergeType(TypedDict):
+    """Auto merge
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryType]
-    sha: str
-    user: Union[None, SimpleUserType]
+    The status of auto merging a pull request.
+    """
 
-
-class PullRequestSimplePropHeadTypeForResponse(TypedDict):
-    """PullRequestSimplePropHead"""
-
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryTypeForResponse]
-    sha: str
-    user: Union[None, SimpleUserTypeForResponse]
+    enabled_by: SimpleUserType
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
-class PullRequestSimplePropBaseType(TypedDict):
-    """PullRequestSimplePropBase"""
+class AutoMergeTypeForResponse(TypedDict):
+    """Auto merge
 
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: Union[None, SimpleUserType]
+    The status of auto merging a pull request.
+    """
 
-
-class PullRequestSimplePropBaseTypeForResponse(TypedDict):
-    """PullRequestSimplePropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryTypeForResponse
-    sha: str
-    user: Union[None, SimpleUserTypeForResponse]
+    enabled_by: SimpleUserTypeForResponse
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
 __all__ = (
-    "PullRequestSimplePropBaseType",
-    "PullRequestSimplePropBaseTypeForResponse",
-    "PullRequestSimplePropHeadType",
-    "PullRequestSimplePropHeadTypeForResponse",
+    "AutoMergeType",
+    "AutoMergeTypeForResponse",
 )

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Annotated, Literal, Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,119 +19,156 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0049 import OrganizationSimple
+from .group_0243 import MinimalRepository
+from .group_0258 import CodespaceMachine
 
 
-class CopilotSpace(GitHubModel):
-    """Space
+class Codespace(GitHubModel):
+    """Codespace
 
-    A GitHub Copilot Space represents an interactive AI workspace where users can
-    ask questions and get assistance.
+    A codespace.
     """
 
-    id: int = Field(description="The unique identifier of the space.")
-    number: int = Field(
-        description="The number that identifies the space within its owner."
+    id: int = Field()
+    name: str = Field(description="Automatically generated name of this codespace.")
+    display_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Display name for this codespace."
     )
-    name: str = Field(description="The display name of the space.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A description of the space."
+    environment_id: Union[str, None] = Field(
+        description="UUID identifying this codespace's environment."
     )
-    general_instructions: Missing[
-        Union[Annotated[str, Field(max_length=4000)], None]
-    ] = Field(default=UNSET, description="General instructions for the Copilot Space.")
-    base_role: Literal["reader", "writer", "admin", "no_access"] = Field(
-        description="The base role that determines default permissions.\n- `no_access`: No default access\n- `reader`: Default read permissions\n- `writer`: Default write permissions (organization spaces only)\n- `admin`: Default admin permissions (organization spaces only)"
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    billable_owner: SimpleUser = Field(
+        title="Simple User", description="A GitHub user."
     )
-    owner: Union[SimpleUser, OrganizationSimple] = Field(
-        description="The user or organization that owns this space."
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    created_at: _dt.datetime = Field(
-        description="The date and time the space was created."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The date and time the space was last updated."
-    )
-    html_url: str = Field(description="The HTML URL of the space.")
-    api_url: str = Field(description="The API URL of the space.")
-    resources_attributes: Missing[list[CopilotSpacePropResourcesAttributesItems]] = (
-        Field(default=UNSET, description="Resources attached to the space.")
-    )
-
-
-class CopilotSpacePropResourcesAttributesItems(GitHubModel):
-    """CopilotSpacePropResourcesAttributesItems"""
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the resource."
-    )
-    resource_type: Missing[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ] = Field(default=UNSET, description="The type of resource.")
-    copilot_chat_attachment_id: Missing[Union[int, None]] = Field(
+    machine: Union[None, CodespaceMachine] = Field()
+    devcontainer_path: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The unique identifier of the chat attachment for uploaded files or media content.",
+        description="Path to devcontainer.json from repo root used to create Codespace.",
     )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The date and time the resource was created."
+    prebuild: Union[bool, None] = Field(
+        description="Whether the codespace was created from a prebuild."
     )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The date and time the resource was last updated."
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    last_used_at: _dt.datetime = Field(
+        description="Last known time this codespace was started."
     )
-    metadata: Missing[CopilotSpacePropResourcesAttributesItemsPropMetadata] = Field(
-        default=UNSET, description="Metadata specific to the resource type."
+    state: Literal[
+        "Unknown",
+        "Created",
+        "Queued",
+        "Provisioning",
+        "Available",
+        "Awaiting",
+        "Unavailable",
+        "Deleted",
+        "Moved",
+        "Shutdown",
+        "Archived",
+        "Starting",
+        "ShuttingDown",
+        "Failed",
+        "Exporting",
+        "Updating",
+        "Rebuilding",
+    ] = Field(description="State of this codespace.")
+    url: str = Field(description="API URL for this codespace.")
+    git_status: CodespacePropGitStatus = Field(
+        description="Details about the codespace's git repository."
+    )
+    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"] = Field(
+        description="The initally assigned location of a new codespace."
+    )
+    idle_timeout_minutes: Union[int, None] = Field(
+        description="The number of minutes of inactivity after which this codespace will be automatically stopped."
+    )
+    web_url: str = Field(description="URL to access this codespace on the web.")
+    machines_url: str = Field(
+        description="API URL to access available alternate machine types for this codespace."
+    )
+    start_url: str = Field(description="API URL to start this codespace.")
+    stop_url: str = Field(description="API URL to stop this codespace.")
+    publish_url: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="API URL to publish this codespace to a new repository.",
+    )
+    pulls_url: Union[str, None] = Field(
+        description="API URL for the Pull Request associated with this codespace, if any."
+    )
+    recent_folders: list[str] = Field()
+    runtime_constraints: Missing[CodespacePropRuntimeConstraints] = Field(default=UNSET)
+    pending_operation: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether or not a codespace has a pending async operation. This would mean that the codespace is temporarily unavailable. The only thing that you can do with a codespace in this state is delete it.",
+    )
+    pending_operation_disabled_reason: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Text to show user when codespace is disabled by a pending operation",
+    )
+    idle_timeout_notice: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Text to show user when codespace idle timeout minutes has been overriden by an organization policy",
+    )
+    retention_period_minutes: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+    )
+    retention_expires_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description='When a codespace will be auto-deleted based on the "retention_period_minutes" and "last_used_at"',
+    )
+    last_known_stop_notice: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The text to display to a user when a codespace has been stopped for a potentially actionable reason.",
     )
 
 
-class CopilotSpacePropResourcesAttributesItemsPropMetadata(GitHubModel):
-    """CopilotSpacePropResourcesAttributesItemsPropMetadata
+class CodespacePropGitStatus(GitHubModel):
+    """CodespacePropGitStatus
 
-    Metadata specific to the resource type.
+    Details about the codespace's git repository.
     """
 
-    repository_id: Missing[int] = Field(
-        default=UNSET, description="Repository ID for repository or file resources."
+    ahead: Missing[int] = Field(
+        default=UNSET,
+        description="The number of commits the local repository is ahead of the remote.",
     )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="File path for file resources."
+    behind: Missing[int] = Field(
+        default=UNSET,
+        description="The number of commits the local repository is behind the remote.",
     )
-    text: Missing[str] = Field(
-        default=UNSET, description="Text content for free text resources."
+    has_unpushed_changes: Missing[bool] = Field(
+        default=UNSET, description="Whether the local repository has unpushed changes."
     )
-    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
-    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
-    copilot_chat_attachment_id: Missing[int] = Field(
-        default=UNSET, description="Chat attachment ID for uploaded files or media."
+    has_uncommitted_changes: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the local repository has uncommitted changes.",
     )
-    media_type: Missing[str] = Field(
-        default=UNSET, description="Media type for media content resources."
-    )
-    url: Missing[str] = Field(
-        default=UNSET, description="URL for media content resources."
-    )
-    height: Missing[int] = Field(
-        default=UNSET, description="Height for media content resources."
-    )
-    width: Missing[int] = Field(
-        default=UNSET, description="Width for media content resources."
+    ref: Missing[str] = Field(
+        default=UNSET,
+        description="The current branch (or SHA if in detached HEAD state) of the local repository.",
     )
 
 
-model_rebuild(CopilotSpace)
-model_rebuild(CopilotSpacePropResourcesAttributesItems)
-model_rebuild(CopilotSpacePropResourcesAttributesItemsPropMetadata)
+class CodespacePropRuntimeConstraints(GitHubModel):
+    """CodespacePropRuntimeConstraints"""
+
+    allowed_port_privacy_settings: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="The privacy settings a user can select from when forwarding a port.",
+    )
+
+
+model_rebuild(Codespace)
+model_rebuild(CodespacePropGitStatus)
+model_rebuild(CodespacePropRuntimeConstraints)
 
 __all__ = (
-    "CopilotSpace",
-    "CopilotSpacePropResourcesAttributesItems",
-    "CopilotSpacePropResourcesAttributesItemsPropMetadata",
+    "Codespace",
+    "CodespacePropGitStatus",
+    "CodespacePropRuntimeConstraints",
 )

@@ -11,22 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type(TypedDict):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
-
-    enabled: bool
+from .group_0272 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse(
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[ActionsSecretType]
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
 
-    enabled: bool
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",
-    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse",
 )

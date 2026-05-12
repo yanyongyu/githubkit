@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,29 +18,41 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsPostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsPostBody"""
+class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody(GitHubModel):
+    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
 
-    name: str = Field(description="The name of the team.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A description of the team."
-    )
-    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
+    advanced_security_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be set.\n",
+        description='Whether GitHub Advanced Security is automatically enabled for new repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest/get-started/learning-about-github/about-github-advanced-security)."',
     )
-    organization_selection_type: Missing[Literal["disabled", "selected", "all"]] = (
-        Field(
-            default=UNSET,
-            description="Specifies which organizations in the enterprise should have access to this team. Can be one of `disabled`, `selected`, or `all`.\n`disabled`: The team is not assigned to any organizations. This is the default when you create a new team.\n`selected`: The team is assigned to specific organizations. You can then use the [add organization assignments API](https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments) endpoint.\n`all`: The team is assigned to all current and future organizations in the enterprise.\n",
-        )
-    )
-    group_id: Missing[Union[str, None]] = Field(
+    advanced_security_enabled_new_user_namespace_repos: Missing[bool] = Field(
         default=UNSET,
-        description="The ID of the IdP group to assign team membership with. You can get this value from the [REST API endpoints for SCIM](https://docs.github.com/enterprise-cloud@latest/rest/scim#list-provisioned-scim-groups-for-an-enterprise).",
+        description='Whether GitHub Advanced Security is automatically enabled for new user namespace repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest/get-started/learning-about-github/about-github-advanced-security)."',
+    )
+    dependabot_alerts_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether Dependabot alerts are automatically enabled for new repositories. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."',
+    )
+    secret_scanning_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether secret scanning is automatically enabled for new repositories. For more information, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/about-secret-scanning)."',
+    )
+    secret_scanning_push_protection_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether secret scanning push protection is automatically enabled for new repositories. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."',
+    )
+    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description='The URL that will be displayed to contributors who are blocked from pushing a secret. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."\nTo disable this functionality, set this field to `null`.',
+    )
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: Missing[
+        Union[bool, None]
+    ] = Field(
+        default=UNSET,
+        description="Whether secret scanning of non-provider patterns is enabled for new repositories under this enterprise.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsPostBody)
+model_rebuild(EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody)
 
-__all__ = ("EnterprisesEnterpriseTeamsPostBody",)
+__all__ = ("EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody",)

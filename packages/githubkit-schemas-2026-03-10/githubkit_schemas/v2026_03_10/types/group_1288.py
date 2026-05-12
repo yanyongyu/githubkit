@@ -9,37 +9,102 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoReleasesReleaseIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
+class ReposOwnerRepoIssuesIssueNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
 
-    tag_name: NotRequired[str]
-    target_commitish: NotRequired[str]
+    title: NotRequired[Union[str, int, None]]
+    body: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
+    state_reason: NotRequired[
+        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+    ]
+    milestone: NotRequired[Union[str, int, None]]
+    labels: NotRequired[
+        list[
+            Union[
+                str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type
+            ]
+        ]
+    ]
+    assignees: NotRequired[list[str]]
+    issue_field_values: NotRequired[
+        list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType]
+    ]
+    type: NotRequired[Union[str, None]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
+
+    title: NotRequired[Union[str, int, None]]
+    body: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
+    state_reason: NotRequired[
+        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+    ]
+    milestone: NotRequired[Union[str, int, None]]
+    labels: NotRequired[
+        list[
+            Union[
+                str,
+                ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse,
+            ]
+        ]
+    ]
+    assignees: NotRequired[list[str]]
+    issue_field_values: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse
+        ]
+    ]
+    type: NotRequired[Union[str, None]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
     name: NotRequired[str]
-    body: NotRequired[str]
-    draft: NotRequired[bool]
-    prerelease: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
-    discussion_category_name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
 
 
-class ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
 
-    tag_name: NotRequired[str]
-    target_commitish: NotRequired[str]
+    id: NotRequired[int]
     name: NotRequired[str]
-    body: NotRequired[str]
-    draft: NotRequired[bool]
-    prerelease: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
-    discussion_category_name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float]
 
 
 __all__ = (
-    "ReposOwnerRepoReleasesReleaseIdPatchBodyType",
-    "ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyType",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyTypeForResponse",
 )

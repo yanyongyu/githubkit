@@ -9,18 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoPagesDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoPagesDeploymentsPostBody
+
+    The object used to create GitHub Pages deployment
+    """
+
+    artifact_id: NotRequired[int]
+    artifact_url: NotRequired[str]
+    environment: NotRequired[str]
+    pages_build_version: str
+    oidc_token: str
 
 
-class UserInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesDeploymentsPostBody
+
+    The object used to create GitHub Pages deployment
+    """
+
+    artifact_id: NotRequired[int]
+    artifact_url: NotRequired[str]
+    environment: NotRequired[str]
+    pages_build_version: str
+    oidc_token: str
 
 
 __all__ = (
-    "UserInteractionLimitsGetResponse200Anyof1Type",
-    "UserInteractionLimitsGetResponse200Anyof1TypeForResponse",
+    "ReposOwnerRepoPagesDeploymentsPostBodyType",
+    "ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse",
 )

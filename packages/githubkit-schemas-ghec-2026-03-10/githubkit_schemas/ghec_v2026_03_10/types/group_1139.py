@@ -11,22 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
-
-    total_count: int
-    platforms: list[str]
+from .group_0104 import NetworkConfigurationType, NetworkConfigurationTypeForResponse
 
 
-class OrgsOrgActionsHostedRunnersPlatformsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
+class EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
 
     total_count: int
-    platforms: list[str]
+    network_configurations: list[NetworkConfigurationType]
+
+
+class EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
+
+    total_count: int
+    network_configurations: list[NetworkConfigurationTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersPlatformsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type",
+    "EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse",
 )

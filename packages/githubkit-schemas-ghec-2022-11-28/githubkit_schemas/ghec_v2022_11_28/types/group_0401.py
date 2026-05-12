@@ -9,46 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReactionType(TypedDict):
-    """Reaction
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserType]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
-    created_at: _dt.datetime
+    errors: list[CodeownersErrorsPropErrorsItemsType]
 
 
-class ReactionTypeForResponse(TypedDict):
-    """Reaction
+class CodeownersErrorsTypeForResponse(TypedDict):
+    """CODEOWNERS errors
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserTypeForResponse]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
-    created_at: str
+    errors: list[CodeownersErrorsPropErrorsItemsTypeForResponse]
+
+
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
+
+
+class CodeownersErrorsPropErrorsItemsTypeForResponse(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
 
 __all__ = (
-    "ReactionType",
-    "ReactionTypeForResponse",
+    "CodeownersErrorsPropErrorsItemsType",
+    "CodeownersErrorsPropErrorsItemsTypeForResponse",
+    "CodeownersErrorsType",
+    "CodeownersErrorsTypeForResponse",
 )

@@ -9,92 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200(GitHubModel):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgActionsOidcCustomizationSubPutBody(GitHubModel):
+    """Actions OIDC Subject customization
 
-    attestations: Missing[
-        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems]
-    ] = Field(default=UNSET)
+    Actions OIDC Subject customization
+    """
 
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems(GitHubModel):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    bundle: Missing[
-        Union[
-            OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle,
-            None,
-        ]
-    ] = Field(
+    include_claim_keys: Missing[list[str]] = Field(
         default=UNSET,
-        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information.",
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
     )
-    repository_id: Missing[int] = Field(default=UNSET)
-    bundle_url: Missing[str] = Field(default=UNSET)
-    initiator: Missing[str] = Field(default=UNSET)
+    use_immutable_subject: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.",
+    )
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle(
-    GitHubModel
-):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
+model_rebuild(OrgsOrgActionsOidcCustomizationSubPutBody)
 
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
-    """
-
-    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
-    verification_material: Missing[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
-    ] = Field(default=UNSET, alias="verificationMaterial")
-    dsse_envelope: Missing[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
-    ] = Field(default=UNSET, alias="dsseEnvelope")
-
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial(
-    ExtraGitHubModel
-):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
-    pVerificationMaterial
-    """
-
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope(
-    ExtraGitHubModel
-):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
-    pDsseEnvelope
-    """
-
-
-model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200)
-model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems)
-model_rebuild(
-    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
-)
-model_rebuild(
-    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
-)
-model_rebuild(
-    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
-)
-
-__all__ = (
-    "OrgsOrgAttestationsSubjectDigestGetResponse200",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
-)
+__all__ = ("OrgsOrgActionsOidcCustomizationSubPutBody",)

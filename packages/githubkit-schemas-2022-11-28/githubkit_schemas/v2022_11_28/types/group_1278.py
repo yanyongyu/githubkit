@@ -11,24 +11,30 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
-
-    reviewers: NotRequired[list[str]]
-    team_reviewers: list[str]
+from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
+class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
 
-    reviewers: NotRequired[list[str]]
-    team_reviewers: list[str]
+    config: NotRequired[WebhookConfigType]
+    events: NotRequired[list[str]]
+    add_events: NotRequired[list[str]]
+    remove_events: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
+
+    config: NotRequired[WebhookConfigTypeForResponse]
+    events: NotRequired[list[str]]
+    add_events: NotRequired[list[str]]
+    remove_events: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type",
-    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoHooksHookIdPatchBodyType",
+    "ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse",
 )

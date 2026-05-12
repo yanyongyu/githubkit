@@ -9,28 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class TeamMembership(GitHubModel):
-    """Team Membership
+class NetworkSettings(GitHubModel):
+    """Hosted compute network settings resource
 
-    Team Membership
+    A hosted compute network settings resource.
     """
 
-    url: str = Field()
-    role: Literal["member", "maintainer"] = Field(
-        default="member", description="The role of the user in the team."
+    id: str = Field(
+        description="The unique identifier of the network settings resource."
     )
-    state: Literal["active", "pending"] = Field(
-        description="The state of the user's membership in the team."
+    network_configuration_id: Missing[str] = Field(
+        default=UNSET,
+        description="The identifier of the network configuration that is using this settings resource.",
+    )
+    name: str = Field(description="The name of the network settings resource.")
+    subnet_id: str = Field(
+        description="The subnet this network settings resource is configured for."
+    )
+    region: str = Field(
+        description="The location of the subnet this network settings resource is configured for."
     )
 
 
-model_rebuild(TeamMembership)
+model_rebuild(NetworkSettings)
 
-__all__ = ("TeamMembership",)
+__all__ = ("NetworkSettings",)

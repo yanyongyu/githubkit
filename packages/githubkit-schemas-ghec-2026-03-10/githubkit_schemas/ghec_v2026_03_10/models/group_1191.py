@@ -14,21 +14,16 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersPutBody(GitHubModel):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
 
-    default_for_new_repos: Missing[
-        Literal["all", "none", "private_and_internal", "public"]
-    ] = Field(
-        default=UNSET,
-        description="Specify which types of repository this security configuration should be applied to by default.",
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy that controls whether self-hosted runners can be used in the organization"
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody)
+model_rebuild(OrgsOrgActionsPermissionsSelfHostedRunnersPutBody)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",)
+__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersPutBody",)

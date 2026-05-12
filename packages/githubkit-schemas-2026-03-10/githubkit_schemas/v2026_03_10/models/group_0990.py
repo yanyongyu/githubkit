@@ -13,16 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0119 import Runner
+
+class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody"""
+
+    usernames: list[str] = Field(
+        description="The GitHub user handles to be removed from the team."
+    )
 
 
-class OrgsOrgActionsRunnersGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnersGetResponse200"""
+model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody)
 
-    total_count: int = Field()
-    runners: list[Runner] = Field()
-
-
-model_rebuild(OrgsOrgActionsRunnersGetResponse200)
-
-__all__ = ("OrgsOrgActionsRunnersGetResponse200",)
+__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody",)

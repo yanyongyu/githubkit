@@ -9,30 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_1314 import (
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+)
 
 
-class UserEmailsPostBodyOneof0Type(TypedDict):
-    """UserEmailsPostBodyOneof0
+class ReposOwnerRepoPagesPutBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof1"""
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: Union[
+        Literal["gh-pages", "master", "master /docs"],
+        ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ]
 
-    emails: list[str]
 
+class ReposOwnerRepoPagesPutBodyAnyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof1"""
 
-class UserEmailsPostBodyOneof0TypeForResponse(TypedDict):
-    """UserEmailsPostBodyOneof0
-
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str]
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: Union[
+        Literal["gh-pages", "master", "master /docs"],
+        ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+    ]
 
 
 __all__ = (
-    "UserEmailsPostBodyOneof0Type",
-    "UserEmailsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof1Type",
+    "ReposOwnerRepoPagesPutBodyAnyof1TypeForResponse",
 )

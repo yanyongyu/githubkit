@@ -13,33 +13,79 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse422Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse422
 
-    name: str
-    visibility: NotRequired[Literal["selected", "all"]]
-    selected_organization_ids: NotRequired[list[int]]
-    runners: NotRequired[list[int]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
-    network_configuration_id: NotRequired[str]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsType]
+    ]
+    documentation_url: str
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse422TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse422
 
-    name: str
-    visibility: NotRequired[Literal["selected", "all"]]
-    selected_organization_ids: NotRequired[list[int]]
-    runners: NotRequired[list[int]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
-    network_configuration_id: NotRequired[str]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse
+        ]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsPostBodyType",
-    "EnterprisesEnterpriseActionsRunnerGroupsPostBodyTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse422Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse422TypeForResponse",
 )

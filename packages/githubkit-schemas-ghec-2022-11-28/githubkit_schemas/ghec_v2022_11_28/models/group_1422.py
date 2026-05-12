@@ -16,17 +16,59 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoKeysPostBody(GitHubModel):
-    """ReposOwnerRepoKeysPostBody"""
+class ReposOwnerRepoContentsPathDeleteBody(GitHubModel):
+    """ReposOwnerRepoContentsPathDeleteBody"""
 
-    title: Missing[str] = Field(default=UNSET, description="A name for the key.")
-    key: str = Field(description="The contents of the key.")
-    read_only: Missing[bool] = Field(
+    message: str = Field(description="The commit message.")
+    sha: str = Field(description="The blob SHA of the file being deleted.")
+    branch: Missing[str] = Field(
         default=UNSET,
-        description='If `true`, the key will only be able to read repository contents. Otherwise, the key will be able to read and write.  \n  \nDeploy keys with write access can perform the same actions as an organization member with admin access, or a collaborator on a personal repository. For more information, see "[Repository permission levels for an organization](https://docs.github.com/enterprise-cloud@latest/articles/repository-permission-levels-for-an-organization/)" and "[Permission levels for a user account repository](https://docs.github.com/enterprise-cloud@latest/articles/permission-levels-for-a-user-account-repository/)."',
+        description="The branch name. Default: the repository’s default branch",
+    )
+    committer: Missing[ReposOwnerRepoContentsPathDeleteBodyPropCommitter] = Field(
+        default=UNSET, description="object containing information about the committer."
+    )
+    author: Missing[ReposOwnerRepoContentsPathDeleteBodyPropAuthor] = Field(
+        default=UNSET, description="object containing information about the author."
     )
 
 
-model_rebuild(ReposOwnerRepoKeysPostBody)
+class ReposOwnerRepoContentsPathDeleteBodyPropCommitter(GitHubModel):
+    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
 
-__all__ = ("ReposOwnerRepoKeysPostBody",)
+    object containing information about the committer.
+    """
+
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the author (or committer) of the commit"
+    )
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="The email of the author (or committer) of the commit",
+    )
+
+
+class ReposOwnerRepoContentsPathDeleteBodyPropAuthor(GitHubModel):
+    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
+
+    object containing information about the author.
+    """
+
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the author (or committer) of the commit"
+    )
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="The email of the author (or committer) of the commit",
+    )
+
+
+model_rebuild(ReposOwnerRepoContentsPathDeleteBody)
+model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropCommitter)
+model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropAuthor)
+
+__all__ = (
+    "ReposOwnerRepoContentsPathDeleteBody",
+    "ReposOwnerRepoContentsPathDeleteBodyPropAuthor",
+    "ReposOwnerRepoContentsPathDeleteBodyPropCommitter",
+)

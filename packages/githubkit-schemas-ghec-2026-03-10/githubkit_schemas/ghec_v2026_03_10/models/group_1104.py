@@ -9,63 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
-
-    budget_amount: Missing[int] = Field(
-        default=UNSET,
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
-    )
-    prevent_further_usage: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to prevent additional spending once the budget is exceeded",
-    )
-    budget_alerting: Missing[
-        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
-    ] = Field(default=UNSET)
-    budget_scope: Missing[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ] = Field(default=UNSET, description="The scope of the budget")
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET, description="The name of the entity to apply the budget to"
-    )
-    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
-        default=UNSET, description="The type of pricing for the budget"
-    )
-    budget_product_sku: Missing[str] = Field(
-        default=UNSET,
-        description="A single product or SKU that will be covered in the budget",
-    )
-
-
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
-
-    will_alert: Missing[bool] = Field(
-        default=UNSET, description="Whether alerts are enabled for this budget"
-    )
-    alert_recipients: Missing[list[str]] = Field(
-        default=UNSET, description="Array of user login names who will receive alerts"
-    )
-
-
-model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody)
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+from .group_0065 import (
+    AmazonS3AccessKeysConfig,
+    AzureBlobConfig,
+    AzureHubConfig,
+    DatadogConfig,
+    HecConfig,
 )
+from .group_0066 import AmazonS3OidcConfig, SplunkConfig
+from .group_0067 import GoogleCloudConfig
 
-__all__ = (
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody",
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
-)
+
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody(GitHubModel):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
+
+    enabled: bool = Field(description="This setting pauses or resumes a stream.")
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+    ] = Field(
+        description="The audit log streaming provider. The name is case sensitive."
+    )
+    vendor_specific: Union[
+        AzureBlobConfig,
+        AzureHubConfig,
+        AmazonS3OidcConfig,
+        AmazonS3AccessKeysConfig,
+        SplunkConfig,
+        HecConfig,
+        GoogleCloudConfig,
+        DatadogConfig,
+    ] = Field()
+
+
+model_rebuild(EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody)
+
+__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody",)

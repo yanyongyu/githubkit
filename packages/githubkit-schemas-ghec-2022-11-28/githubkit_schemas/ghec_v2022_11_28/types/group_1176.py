@@ -9,67 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
-
-    total_count: int
-    storage_records: NotRequired[
-        list[
-            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType
-        ]
-    ]
+from .group_0246 import (
+    OrganizationCustomRepositoryRoleType,
+    OrganizationCustomRepositoryRoleTypeForResponse,
+)
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
+class OrganizationsOrganizationIdCustomRolesGetResponse200Type(TypedDict):
+    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
 
-    total_count: int
-    storage_records: NotRequired[
-        list[
-            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse
-        ]
-    ]
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
+class OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse(TypedDict):
+    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    artifact_url: NotRequired[Union[str, None]]
-    registry_url: NotRequired[str]
-    repository: NotRequired[Union[str, None]]
-    status: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-
-
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    artifact_url: NotRequired[Union[str, None]]
-    registry_url: NotRequired[str]
-    repository: NotRequired[Union[str, None]]
-    status: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse",
+    "OrganizationsOrganizationIdCustomRolesGetResponse200Type",
+    "OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse",
 )

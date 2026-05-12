@@ -9,39 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgTeamsPostBodyType(TypedDict):
-    """OrgsOrgTeamsPostBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
 
-    name: str
-    description: NotRequired[str]
-    maintainers: NotRequired[list[str]]
-    repo_names: NotRequired[list[str]]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    parent_team_id: NotRequired[int]
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int
 
 
-class OrgsOrgTeamsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsPostBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
 
-    name: str
-    description: NotRequired[str]
-    maintainers: NotRequired[list[str]]
-    repo_names: NotRequired[list[str]]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    parent_team_id: NotRequired[int]
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int
 
 
 __all__ = (
-    "OrgsOrgTeamsPostBodyType",
-    "OrgsOrgTeamsPostBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse",
 )

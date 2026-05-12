@@ -9,23 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0125 import (
+    ArtifactDeploymentRecordType,
+    ArtifactDeploymentRecordTypeForResponse,
+)
 
 
-class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
 
-    default_level: Literal["public", "internal"]
+    total_count: int
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
 
 
-class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
 
-    default_level: Literal["public", "internal"]
+    total_count: int
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
-    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse",
 )

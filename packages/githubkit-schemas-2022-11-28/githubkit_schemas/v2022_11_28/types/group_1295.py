@@ -9,37 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type(TypedDict):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2"""
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
 
-    state: NotRequired[Literal["open", "resolved"]]
-    resolution: NotRequired[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    issue_field_values: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
+        ]
     ]
-    resolution_comment: NotRequired[Union[str, None]]
-    assignee: NotRequired[Union[str, None]]
-    validity: Union[None, Literal["active", "inactive"]]
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2TypeForResponse(
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
+
+    issue_field_values: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType(
     TypedDict
 ):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2"""
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
 
-    state: NotRequired[Literal["open", "resolved"]]
-    resolution: NotRequired[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
-    ]
-    resolution_comment: NotRequired[Union[str, None]]
-    assignee: NotRequired[Union[str, None]]
-    validity: Union[None, Literal["active", "inactive"]]
+    field_id: int
+    value: Union[str, float]
+
+
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type",
-    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse",
 )

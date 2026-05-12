@@ -9,49 +9,175 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0190 import (
+    RepositoryRulesetBypassActorType,
+    RepositoryRulesetBypassActorTypeForResponse,
+)
+from .group_0191 import (
+    RepositoryRulesetConditionsType,
+    RepositoryRulesetConditionsTypeForResponse,
+)
+from .group_0202 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleCreationTypeForResponse,
+    RepositoryRuleDeletionType,
+    RepositoryRuleDeletionTypeForResponse,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleNonFastForwardTypeForResponse,
+    RepositoryRuleRequiredSignaturesType,
+    RepositoryRuleRequiredSignaturesTypeForResponse,
+)
+from .group_0203 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
+from .group_0205 import (
+    RepositoryRuleRequiredLinearHistoryType,
+    RepositoryRuleRequiredLinearHistoryTypeForResponse,
+)
+from .group_0206 import (
+    RepositoryRuleMergeQueueType,
+    RepositoryRuleMergeQueueTypeForResponse,
+)
+from .group_0208 import (
+    RepositoryRuleRequiredDeploymentsType,
+    RepositoryRuleRequiredDeploymentsTypeForResponse,
+)
+from .group_0210 import (
+    RepositoryRulePullRequestType,
+    RepositoryRulePullRequestTypeForResponse,
+)
+from .group_0212 import (
+    RepositoryRuleRequiredStatusChecksType,
+    RepositoryRuleRequiredStatusChecksTypeForResponse,
+)
+from .group_0214 import (
+    RepositoryRuleCommitMessagePatternType,
+    RepositoryRuleCommitMessagePatternTypeForResponse,
+)
+from .group_0216 import (
+    RepositoryRuleCommitAuthorEmailPatternType,
+    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+)
+from .group_0218 import (
+    RepositoryRuleCommitterEmailPatternType,
+    RepositoryRuleCommitterEmailPatternTypeForResponse,
+)
+from .group_0220 import (
+    RepositoryRuleBranchNamePatternType,
+    RepositoryRuleBranchNamePatternTypeForResponse,
+)
+from .group_0222 import (
+    RepositoryRuleTagNamePatternType,
+    RepositoryRuleTagNamePatternTypeForResponse,
+)
+from .group_0224 import (
+    RepositoryRuleFilePathRestrictionType,
+    RepositoryRuleFilePathRestrictionTypeForResponse,
+)
+from .group_0226 import (
+    RepositoryRuleMaxFilePathLengthType,
+    RepositoryRuleMaxFilePathLengthTypeForResponse,
+)
+from .group_0228 import (
+    RepositoryRuleFileExtensionRestrictionType,
+    RepositoryRuleFileExtensionRestrictionTypeForResponse,
+)
+from .group_0230 import (
+    RepositoryRuleMaxFileSizeType,
+    RepositoryRuleMaxFileSizeTypeForResponse,
+)
+from .group_0233 import (
+    RepositoryRuleWorkflowsType,
+    RepositoryRuleWorkflowsTypeForResponse,
+)
+from .group_0235 import (
+    RepositoryRuleCodeScanningType,
+    RepositoryRuleCodeScanningTypeForResponse,
+)
+from .group_0237 import (
+    RepositoryRuleCopilotCodeReviewType,
+    RepositoryRuleCopilotCodeReviewTypeForResponse,
+)
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
+class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
+    """ReposOwnerRepoRulesetsPostBody"""
 
-    fields: list[
-        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType
+    name: str
+    target: NotRequired[Literal["branch", "tag", "push"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[RepositoryRulesetConditionsType]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleMergeQueueType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+                RepositoryRuleCopilotCodeReviewType,
+            ]
+        ]
     ]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
+class ReposOwnerRepoRulesetsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoRulesetsPostBody"""
 
-    fields: list[
-        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
+    name: str
+    target: NotRequired[Literal["branch", "tag", "push"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
+    conditions: NotRequired[RepositoryRulesetConditionsTypeForResponse]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationTypeForResponse,
+                RepositoryRuleUpdateTypeForResponse,
+                RepositoryRuleDeletionTypeForResponse,
+                RepositoryRuleRequiredLinearHistoryTypeForResponse,
+                RepositoryRuleMergeQueueTypeForResponse,
+                RepositoryRuleRequiredDeploymentsTypeForResponse,
+                RepositoryRuleRequiredSignaturesTypeForResponse,
+                RepositoryRulePullRequestTypeForResponse,
+                RepositoryRuleRequiredStatusChecksTypeForResponse,
+                RepositoryRuleNonFastForwardTypeForResponse,
+                RepositoryRuleCommitMessagePatternTypeForResponse,
+                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+                RepositoryRuleCommitterEmailPatternTypeForResponse,
+                RepositoryRuleBranchNamePatternTypeForResponse,
+                RepositoryRuleTagNamePatternTypeForResponse,
+                RepositoryRuleFilePathRestrictionTypeForResponse,
+                RepositoryRuleMaxFilePathLengthTypeForResponse,
+                RepositoryRuleFileExtensionRestrictionTypeForResponse,
+                RepositoryRuleMaxFileSizeTypeForResponse,
+                RepositoryRuleWorkflowsTypeForResponse,
+                RepositoryRuleCodeScanningTypeForResponse,
+                RepositoryRuleCopilotCodeReviewTypeForResponse,
+            ]
+        ]
     ]
-
-
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
-
-    id: int
-    value: Union[str, float, None]
-
-
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
-
-    id: int
-    value: Union[str, float, None]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoRulesetsPostBodyType",
+    "ReposOwnerRepoRulesetsPostBodyTypeForResponse",
 )

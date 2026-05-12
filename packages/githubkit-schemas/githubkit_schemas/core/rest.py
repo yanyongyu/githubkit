@@ -135,7 +135,22 @@ class RestVersionSwitcher(_VersionProxy):
         cache = self._cached_namespaces.setdefault(g, {})
         if version in cache:
             return cache[version]
-        module = importlib.import_module(f"githubkit_schemas.{VERSIONS[version]}.rest")
+
+        if version not in VERSIONS:
+            raise ValueError(
+                f"Version {version!r} is not a valid version. "
+                f"Valid versions are: {', '.join(VERSIONS.keys())}"
+            )
+
+        try:
+            module = importlib.import_module(
+                f"githubkit_schemas.{VERSIONS[version]}.rest"
+            )
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                f"Version {version!r} is not installed. "
+                f"Please install it via 'pip install githubkit-schemas[{version}]'"
+            )
         namespace = module.RestNamespace(g)
         cache[version] = namespace
         return namespace

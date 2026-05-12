@@ -9,81 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
-
-    organization: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType,
-        None,
-    ]
-    repository: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType,
-        None,
-    ]
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse(
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
 
-    organization: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse,
-        None,
-    ]
-    repository: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse,
-        None,
-    ]
+    disable_self_hosted_runners_for_all_orgs: bool
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType(
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
 
-    id: int
-    login: str
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
-
-    id: int
-    login: str
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
-
-    id: int
-    name: str
-    full_name: str
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
-
-    id: int
-    name: str
-    full_name: str
+    disable_self_hosted_runners_for_all_orgs: bool
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200Type",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse",
 )

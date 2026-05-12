@@ -13,47 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0175 import RepositoryRulesetType, RepositoryRulesetTypeForResponse
-from .group_0568 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0569 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0570 import (
+from .group_0573 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0574 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0575 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0571 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0952 import (
-    WebhookRepositoryRulesetEditedPropChangesType,
-    WebhookRepositoryRulesetEditedPropChangesTypeForResponse,
-)
+from .group_0576 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryRulesetEditedType(TypedDict):
-    """repository ruleset edited event"""
+class WebhookRepositoryPrivatizedType(TypedDict):
+    """repository privatized event"""
 
-    action: Literal["edited"]
+    action: Literal["privatized"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_ruleset: RepositoryRulesetType
-    changes: NotRequired[WebhookRepositoryRulesetEditedPropChangesType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookRepositoryRulesetEditedTypeForResponse(TypedDict):
-    """repository ruleset edited event"""
+class WebhookRepositoryPrivatizedTypeForResponse(TypedDict):
+    """repository privatized event"""
 
-    action: Literal["edited"]
+    action: Literal["privatized"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    repository_ruleset: RepositoryRulesetTypeForResponse
-    changes: NotRequired[WebhookRepositoryRulesetEditedPropChangesTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedType",
-    "WebhookRepositoryRulesetEditedTypeForResponse",
+    "WebhookRepositoryPrivatizedType",
+    "WebhookRepositoryPrivatizedTypeForResponse",
 )

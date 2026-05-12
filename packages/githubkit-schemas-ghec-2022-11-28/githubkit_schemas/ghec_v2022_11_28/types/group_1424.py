@@ -9,26 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoLabelsNamePatchBodyType(TypedDict):
-    """ReposOwnerRepoLabelsNamePatchBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
 
-    new_name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[str]
+    state: NotRequired[Literal["dismissed", "open"]]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
+    dismissed_comment: NotRequired[str]
+    assignees: list[str]
 
 
-class ReposOwnerRepoLabelsNamePatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoLabelsNamePatchBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
 
-    new_name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[str]
+    state: NotRequired[Literal["dismissed", "open"]]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
+    dismissed_comment: NotRequired[str]
+    assignees: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoLabelsNamePatchBodyType",
-    "ReposOwnerRepoLabelsNamePatchBodyTypeForResponse",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
 )

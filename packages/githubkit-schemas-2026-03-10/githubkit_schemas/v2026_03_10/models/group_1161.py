@@ -18,108 +18,33 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCheckRunsPostBodyPropOutput(GitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutput
+class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody(GitHubModel):
+    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    Check runs can accept a variety of data in the `output` object, including a
-    `title` and `summary` and can optionally provide descriptive details about the
-    run.
-    """
-
-    title: str = Field(description="The title of the check run.")
-    summary: str = Field(
-        max_length=65535,
-        description="The summary of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters.",
-    )
-    text: Missing[str] = Field(
-        max_length=65535,
+    name: Missing[str] = Field(
         default=UNSET,
-        description="The details of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters.",
+        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
     )
-    annotations: Missing[
-        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems]
-    ] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
+    compute_service: Missing[Literal["none", "actions"]] = Field(
         default=UNSET,
-        description='Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the **Checks** and **Files changed** tab of the pull request. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/checks/runs#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. GitHub Actions are limited to 10 warning annotations and 10 error annotations per step. For details about how you can view annotations on GitHub, see "[About status checks](https://docs.github.com/articles/about-status-checks#checks)".',
+        description="The hosted compute service to use for the network configuration.",
     )
-    images: Missing[list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems]] = (
-        Field(
-            default=UNSET,
-            description="Adds images to the output displayed in the GitHub pull request UI.",
-        )
-    )
-
-
-class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems(GitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
-
-    path: str = Field(
-        description="The path of the file to add an annotation to. For example, `assets/css/main.css`."
-    )
-    start_line: int = Field(
-        description="The start line of the annotation. Line numbers start at 1."
-    )
-    end_line: int = Field(description="The end line of the annotation.")
-    start_column: Missing[int] = Field(
+    network_settings_ids: Missing[list[str]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The start column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values. Column numbers start at 1.",
+        description="A list of identifiers of the network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
     )
-    end_column: Missing[int] = Field(
+    failover_network_settings_ids: Missing[list[str]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The end column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values.",
+        description="A list of identifiers of the failover network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
     )
-    annotation_level: Literal["notice", "warning", "failure"] = Field(
-        description="The level of the annotation."
-    )
-    message: str = Field(
-        description="A short description of the feedback for these lines of code. The maximum size is 64 KB."
-    )
-    title: Missing[str] = Field(
+    failover_network_enabled: Missing[bool] = Field(
         default=UNSET,
-        description="The title that represents the annotation. The maximum size is 255 characters.",
-    )
-    raw_details: Missing[str] = Field(
-        default=UNSET,
-        description="Details about this annotation. The maximum size is 64 KB.",
+        description="Indicates whether the failover network resource is enabled.",
     )
 
 
-class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems(GitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
+model_rebuild(OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody)
 
-    alt: str = Field(description="The alternative text for the image.")
-    image_url: str = Field(description="The full URL of the image.")
-    caption: Missing[str] = Field(
-        default=UNSET, description="A short image description."
-    )
-
-
-class ReposOwnerRepoCheckRunsPostBodyPropActionsItems(GitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
-
-    label: str = Field(
-        max_length=20,
-        description="The text to be displayed on a button in the web UI. The maximum size is 20 characters.",
-    )
-    description: str = Field(
-        max_length=40,
-        description="A short explanation of what this action would do. The maximum size is 40 characters.",
-    )
-    identifier: str = Field(
-        max_length=20,
-        description="A reference for the action on the integrator's system. The maximum size is 20 characters.",
-    )
-
-
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropOutput)
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems)
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems)
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropActionsItems)
-
-__all__ = (
-    "ReposOwnerRepoCheckRunsPostBodyPropActionsItems",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutput",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems",
-)
+__all__ = ("OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody",)

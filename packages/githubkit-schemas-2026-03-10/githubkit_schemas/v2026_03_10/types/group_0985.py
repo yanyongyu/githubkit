@@ -9,28 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0104 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200"""
-
-    total_count: float
-    runners: list[ActionsHostedRunnerType]
-
-
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType(
     TypedDict
 ):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200"""
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
 
-    total_count: float
-    runners: list[ActionsHostedRunnerTypeForResponse]
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType
+        ]
+    ]
+
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
+
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse
+        ]
+    ]
+
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
+    PropertiesItems
+    """
+
+    property_name: str
+    values: list[str]
+
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
+    PropertiesItems
+    """
+
+    property_name: str
+    values: list[str]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse",
 )

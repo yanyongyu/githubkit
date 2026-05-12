@@ -9,50 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0017 import AppPermissions
 
-class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody(GitHubModel):
-    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
 
-    advanced_security_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether GitHub Advanced Security is automatically enabled for new repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest/get-started/learning-about-github/about-github-advanced-security)."',
+class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
+    """ApplicationsClientIdTokenScopedPostBody"""
+
+    access_token: str = Field(
+        description="The access token used to authenticate to the GitHub API."
     )
-    advanced_security_enabled_new_user_namespace_repos: Missing[bool] = Field(
+    target: Missing[str] = Field(
         default=UNSET,
-        description='Whether GitHub Advanced Security is automatically enabled for new user namespace repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest/get-started/learning-about-github/about-github-advanced-security)."',
+        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
     )
-    dependabot_alerts_enabled_for_new_repositories: Missing[bool] = Field(
+    target_id: Missing[int] = Field(
         default=UNSET,
-        description='Whether Dependabot alerts are automatically enabled for new repositories. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."',
+        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
     )
-    secret_scanning_enabled_for_new_repositories: Missing[bool] = Field(
+    repositories: Missing[list[str]] = Field(
         default=UNSET,
-        description='Whether secret scanning is automatically enabled for new repositories. For more information, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/about-secret-scanning)."',
+        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
     )
-    secret_scanning_push_protection_enabled_for_new_repositories: Missing[bool] = Field(
+    repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description='Whether secret scanning push protection is automatically enabled for new repositories. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."',
+        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
     )
-    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
+    permissions: Missing[AppPermissions] = Field(
         default=UNSET,
-        description='The URL that will be displayed to contributors who are blocked from pushing a secret. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."\nTo disable this functionality, set this field to `null`.',
-    )
-    secret_scanning_non_provider_patterns_enabled_for_new_repositories: Missing[
-        Union[bool, None]
-    ] = Field(
-        default=UNSET,
-        description="Whether secret scanning of non-provider patterns is enabled for new repositories under this enterprise.",
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody)
+model_rebuild(ApplicationsClientIdTokenScopedPostBody)
 
-__all__ = ("EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody",)
+__all__ = ("ApplicationsClientIdTokenScopedPostBody",)

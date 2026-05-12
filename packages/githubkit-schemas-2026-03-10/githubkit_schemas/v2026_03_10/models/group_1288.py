@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,36 +18,69 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoReleasesReleaseIdPatchBody(GitHubModel):
-    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
+class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
 
-    tag_name: Missing[str] = Field(default=UNSET, description="The name of the tag.")
-    target_commitish: Missing[str] = Field(
-        default=UNSET,
-        description="Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.",
+    title: Missing[Union[str, int, None]] = Field(
+        default=UNSET, description="The title of the issue."
     )
-    name: Missing[str] = Field(default=UNSET, description="The name of the release.")
-    body: Missing[str] = Field(
-        default=UNSET, description="Text describing the contents of the tag."
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contents of the issue."
     )
-    draft: Missing[bool] = Field(
-        default=UNSET,
-        description="`true` makes the release a draft, and `false` publishes the release.",
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET, description="The open or closed state of the issue."
     )
-    prerelease: Missing[bool] = Field(
+    state_reason: Missing[
+        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+    ] = Field(
         default=UNSET,
-        description="`true` to identify the release as a prerelease, `false` to identify the release as a full release.",
+        description="The reason for the state change. Ignored unless `state` is changed.",
     )
-    make_latest: Missing[Literal["true", "false", "legacy"]] = Field(
+    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
+    labels: Missing[
+        list[Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1]]
+    ] = Field(
         default=UNSET,
-        description="Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.",
+        description="Labels to associate with this issue. Pass one or more labels to _replace_ the set of labels on this issue. Send an empty array (`[]`) to clear all labels from the issue. Only users with push access can set labels for issues. Without push access to the repository, label changes are silently dropped.",
     )
-    discussion_category_name: Missing[str] = Field(
+    assignees: Missing[list[str]] = Field(
         default=UNSET,
-        description='If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored. For more information, see "[Managing categories for discussions in your repository](https://docs.github.com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository)."',
+        description="Usernames to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this issue. Send an empty array (`[]`) to clear all assignees from the issue. Only users with push access can set assignees for new issues. Without push access to the repository, assignee changes are silently dropped.",
+    )
+    issue_field_values: Missing[
+        list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems]
+    ] = Field(
+        default=UNSET,
+        description="An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Only users with push access can set field values for issues",
+    )
+    type: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The name of the issue type to associate with this issue or use `null` to remove the current issue type. Only users with push access can set the type for issues. Without push access to the repository, type changes are silently dropped.",
     )
 
 
-model_rebuild(ReposOwnerRepoReleasesReleaseIdPatchBody)
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
 
-__all__ = ("ReposOwnerRepoReleasesReleaseIdPatchBody",)
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    color: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
+
+    field_id: int = Field(description="The ID of the issue field to set")
+    value: Union[str, float] = Field(description="The value to set for the field")
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberPatchBody",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1",
+)

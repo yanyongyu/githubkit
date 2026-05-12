@@ -13,59 +13,73 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+class AgentsTasksTaskIdGetResponse401Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse401
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[list[AgentsTasksTaskIdGetResponse401PropErrorsItemsType]]
+    documentation_url: str
+
+
+class AgentsTasksTaskIdGetResponse401TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse401
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse]
     ]
-    budget_scope: NotRequired[
-        Literal["enterprise", "organization", "repository", "cost_center"]
+    documentation_url: str
+
+
+class AgentsTasksTaskIdGetResponse401PropErrorsItemsType(TypedDict):
+    """AgentsTasksTaskIdGetResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
     ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
+    message: NotRequired[str]
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+class AgentsTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse401PropErrorsItems
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
     ]
-    budget_scope: NotRequired[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse",
+    "AgentsTasksTaskIdGetResponse401PropErrorsItemsType",
+    "AgentsTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse",
+    "AgentsTasksTaskIdGetResponse401Type",
+    "AgentsTasksTaskIdGetResponse401TypeForResponse",
 )

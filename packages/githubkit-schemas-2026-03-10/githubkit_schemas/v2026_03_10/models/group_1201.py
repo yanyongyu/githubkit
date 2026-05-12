@@ -9,51 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+class ReposOwnerRepoAttestationsPostBody(GitHubModel):
+    """ReposOwnerRepoAttestationsPostBody"""
 
-    total_count: int = Field(
-        description="The number of deployment branch policies for the environment."
+    bundle: ReposOwnerRepoAttestationsPostBodyPropBundle = Field(
+        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information."
     )
-    branch_policies: list[DeploymentBranchPolicy] = Field()
 
 
-class DeploymentBranchPolicy(GitHubModel):
-    """Deployment branch policy
+class ReposOwnerRepoAttestationsPostBodyPropBundle(GitHubModel):
+    """ReposOwnerRepoAttestationsPostBodyPropBundle
 
-    Details of a deployment branch or tag policy.
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the branch or tag policy."
-    )
-    node_id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name pattern that branches or tags must match in order to deploy to the environment.",
-    )
-    type: Missing[Literal["branch", "tag"]] = Field(
-        default=UNSET, description="Whether this rule targets a branch or tag."
-    )
+    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
+    verification_material: Missing[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
+    ] = Field(default=UNSET, alias="verificationMaterial")
+    dsse_envelope: Missing[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
+    ] = Field(default=UNSET, alias="dsseEnvelope")
 
 
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
-)
-model_rebuild(DeploymentBranchPolicy)
+class ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial"""
+
+
+class ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope(ExtraGitHubModel):
+    """ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope"""
+
+
+model_rebuild(ReposOwnerRepoAttestationsPostBody)
+model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundle)
+model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial)
+model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope)
 
 __all__ = (
-    "DeploymentBranchPolicy",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200",
+    "ReposOwnerRepoAttestationsPostBody",
+    "ReposOwnerRepoAttestationsPostBodyPropBundle",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial",
 )

@@ -9,24 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0110 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
-
-
-class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
-
-    properties: list[CustomPropertyValueType]
+from .group_0433 import (
+    CustomDeploymentRuleAppType,
+    CustomDeploymentRuleAppTypeForResponse,
+)
 
 
-class ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
+    """
 
-    properties: list[CustomPropertyValueTypeForResponse]
+    total_count: NotRequired[int]
+    available_custom_deployment_protection_rule_integrations: NotRequired[
+        list[CustomDeploymentRuleAppType]
+    ]
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
+    """
+
+    total_count: NotRequired[int]
+    available_custom_deployment_protection_rule_integrations: NotRequired[
+        list[CustomDeploymentRuleAppTypeForResponse]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoPropertiesValuesPatchBodyType",
-    "ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse",
 )

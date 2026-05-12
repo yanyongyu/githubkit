@@ -13,25 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsVariablesPostBodyType(TypedDict):
-    """OrgsOrgActionsVariablesPostBody"""
+class MarkdownPostBodyType(TypedDict):
+    """MarkdownPostBody"""
 
-    name: str
-    value: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    text: str
+    mode: NotRequired[Literal["markdown", "gfm"]]
+    context: NotRequired[str]
 
 
-class OrgsOrgActionsVariablesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesPostBody"""
+class MarkdownPostBodyTypeForResponse(TypedDict):
+    """MarkdownPostBody"""
 
-    name: str
-    value: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    text: str
+    mode: NotRequired[Literal["markdown", "gfm"]]
+    context: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesPostBodyType",
-    "OrgsOrgActionsVariablesPostBodyTypeForResponse",
+    "MarkdownPostBodyType",
+    "MarkdownPostBodyTypeForResponse",
 )

@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,23 +18,31 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoLabelsNamePatchBody(GitHubModel):
-    """ReposOwnerRepoLabelsNamePatchBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
 
-    new_name: Missing[str] = Field(
+    state: Missing[Literal["dismissed", "open"]] = Field(
         default=UNSET,
-        description='The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."',
+        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`.",
     )
-    color: Missing[str] = Field(
+    dismissed_reason: Missing[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ] = Field(
         default=UNSET,
-        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
+        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
     )
-    description: Missing[str] = Field(
+    dismissed_comment: Missing[str] = Field(
+        max_length=280,
         default=UNSET,
-        description="A short description of the label. Must be 100 characters or fewer.",
+        description="An optional comment associated with dismissing the alert.",
+    )
+    assignees: list[str] = Field(
+        description="Usernames to assign to this Dependabot Alert.\nPass one or more user logins to _replace_ the set of assignees on this alert.\nSend an empty array (`[]`) to clear all assignees from the alert."
     )
 
 
-model_rebuild(ReposOwnerRepoLabelsNamePatchBody)
+model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoLabelsNamePatchBody",)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1",)

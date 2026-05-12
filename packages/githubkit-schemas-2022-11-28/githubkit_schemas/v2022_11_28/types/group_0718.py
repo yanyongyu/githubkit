@@ -9,48 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0051 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0486 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0487 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0488 import (
+from .group_0491 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0492 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0493 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0489 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0505 import WebhooksIssueType, WebhooksIssueTypeForResponse
+from .group_0494 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0719 import (
+    WebhookIssuesReopenedPropIssueType,
+    WebhookIssuesReopenedPropIssueTypeForResponse,
+)
 
 
-class WebhookIssuesTypedType(TypedDict):
-    """issues typed event"""
+class WebhookIssuesReopenedType(TypedDict):
+    """issues reopened event"""
 
-    action: Literal["typed"]
+    action: Literal["reopened"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
-    type: Union[IssueTypeType, None]
+    issue: WebhookIssuesReopenedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesTypedTypeForResponse(TypedDict):
-    """issues typed event"""
+class WebhookIssuesReopenedTypeForResponse(TypedDict):
+    """issues reopened event"""
 
-    action: Literal["typed"]
+    action: Literal["reopened"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhooksIssueTypeForResponse
-    type: Union[IssueTypeTypeForResponse, None]
+    issue: WebhookIssuesReopenedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesTypedType",
-    "WebhookIssuesTypedTypeForResponse",
+    "WebhookIssuesReopenedType",
+    "WebhookIssuesReopenedTypeForResponse",
 )

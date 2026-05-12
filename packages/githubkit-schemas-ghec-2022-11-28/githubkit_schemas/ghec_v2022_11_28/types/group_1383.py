@@ -11,26 +11,30 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0340 import ActionsVariableType, ActionsVariableTypeForResponse
+
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody
+
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: list[str]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
-
-    total_count: int
-    variables: list[ActionsVariableType]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody
 
-    total_count: int
-    variables: list[ActionsVariableTypeForResponse]
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyTypeForResponse",
 )

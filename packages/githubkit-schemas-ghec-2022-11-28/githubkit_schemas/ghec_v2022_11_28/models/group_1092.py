@@ -9,21 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
-    """EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
 
-    default_level: Literal["public", "internal"] = Field(
-        description="The default repository access level for Dependabot updates."
+    runners: list[int] = Field(
+        description="List of runner IDs to add to the runner group."
     )
 
 
-model_rebuild(EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody)
+model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody)
 
-__all__ = ("EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody",)
+__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody",)

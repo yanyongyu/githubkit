@@ -11,22 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0112 import CustomPropertyType, CustomPropertyTypeForResponse
+from .group_0053 import RunnerLabelType, RunnerLabelTypeForResponse
 
 
-class EnterprisesEnterprisePropertiesSchemaPatchBodyType(TypedDict):
-    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
 
-    properties: list[CustomPropertyType]
+    total_count: int
+    labels: list[RunnerLabelType]
 
 
-class EnterprisesEnterprisePropertiesSchemaPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
 
-    properties: list[CustomPropertyTypeForResponse]
+    total_count: int
+    labels: list[RunnerLabelTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterprisePropertiesSchemaPatchBodyType",
-    "EnterprisesEnterprisePropertiesSchemaPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse",
 )

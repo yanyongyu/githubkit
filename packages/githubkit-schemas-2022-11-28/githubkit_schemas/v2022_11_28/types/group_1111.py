@@ -9,37 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgTeamsTeamSlugPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugPatchBody"""
+class OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
 
-class OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugPatchBody"""
+class OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugPatchBodyType",
-    "OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse",
+    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200Type",
+    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse",
 )

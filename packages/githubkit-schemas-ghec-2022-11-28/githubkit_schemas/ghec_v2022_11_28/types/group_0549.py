@@ -9,73 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0361 import GitUserType, GitUserTypeForResponse
-from .group_0362 import VerificationType, VerificationTypeForResponse
+from .group_0544 import UserRoleItemsType, UserRoleItemsTypeForResponse
 
 
-class CommitSearchResultItemPropCommitType(TypedDict):
-    """CommitSearchResultItemPropCommit"""
+class UserType(TypedDict):
+    """User"""
 
-    author: CommitSearchResultItemPropCommitPropAuthorType
-    committer: Union[None, GitUserType]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeType
-    url: str
-    verification: NotRequired[VerificationType]
-
-
-class CommitSearchResultItemPropCommitTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommit"""
-
-    author: CommitSearchResultItemPropCommitPropAuthorTypeForResponse
-    committer: Union[None, GitUserTypeForResponse]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeTypeForResponse
-    url: str
-    verification: NotRequired[VerificationTypeForResponse]
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: str
+    active: bool
+    user_name: str
+    name: NotRequired[UserNameType]
+    display_name: str
+    emails: list[UserEmailsItemsType]
+    roles: NotRequired[list[UserRoleItemsType]]
 
 
-class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
+class UserTypeForResponse(TypedDict):
+    """User"""
 
-    name: str
-    email: str
-    date: _dt.datetime
-
-
-class CommitSearchResultItemPropCommitPropAuthorTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
-
-    name: str
-    email: str
-    date: str
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: str
+    active: bool
+    user_name: str
+    name: NotRequired[UserNameTypeForResponse]
+    display_name: str
+    emails: list[UserEmailsItemsTypeForResponse]
+    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
 
 
-class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
+class UserNameType(TypedDict):
+    """UserName"""
 
-    sha: str
-    url: str
+    formatted: NotRequired[str]
+    family_name: str
+    given_name: str
+    middle_name: NotRequired[str]
 
 
-class CommitSearchResultItemPropCommitPropTreeTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
+class UserNameTypeForResponse(TypedDict):
+    """UserName"""
 
-    sha: str
-    url: str
+    formatted: NotRequired[str]
+    family_name: str
+    given_name: str
+    middle_name: NotRequired[str]
+
+
+class UserEmailsItemsType(TypedDict):
+    """UserEmailsItems"""
+
+    value: str
+    type: str
+    primary: bool
+
+
+class UserEmailsItemsTypeForResponse(TypedDict):
+    """UserEmailsItems"""
+
+    value: str
+    type: str
+    primary: bool
 
 
 __all__ = (
-    "CommitSearchResultItemPropCommitPropAuthorType",
-    "CommitSearchResultItemPropCommitPropAuthorTypeForResponse",
-    "CommitSearchResultItemPropCommitPropTreeType",
-    "CommitSearchResultItemPropCommitPropTreeTypeForResponse",
-    "CommitSearchResultItemPropCommitType",
-    "CommitSearchResultItemPropCommitTypeForResponse",
+    "UserEmailsItemsType",
+    "UserEmailsItemsTypeForResponse",
+    "UserNameType",
+    "UserNameTypeForResponse",
+    "UserType",
+    "UserTypeForResponse",
 )

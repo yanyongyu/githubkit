@@ -9,44 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
 
-    labels: NotRequired[
-        list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
+class ReposOwnerRepoCodespacesNewGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200"""
+
+    billable_owner: NotRequired[SimpleUserType]
+    defaults: NotRequired[ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType]
+
+
+class ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200"""
+
+    billable_owner: NotRequired[SimpleUserTypeForResponse]
+    defaults: NotRequired[
+        ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse
     ]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
 
-    labels: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse
-        ]
-    ]
+    location: str
+    devcontainer_path: Union[str, None]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
 
-    name: str
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
-
-    name: str
+    location: str
+    devcontainer_path: Union[str, None]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2TypeForResponse",
+    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType",
+    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse",
+    "ReposOwnerRepoCodespacesNewGetResponse200Type",
+    "ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse",
 )

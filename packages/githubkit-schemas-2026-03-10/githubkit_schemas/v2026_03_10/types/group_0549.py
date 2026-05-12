@@ -13,48 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0485 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0486 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0487 import (
+from .group_0490 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0491 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0492 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0488 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0550 import (
-    WebhookCodeScanningAlertAppearedInBranchPropAlertType,
-    WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse,
+from .group_0493 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0496 import (
+    CheckRunWithSimpleCheckSuiteType,
+    CheckRunWithSimpleCheckSuiteTypeForResponse,
 )
 
 
-class WebhookCodeScanningAlertAppearedInBranchType(TypedDict):
-    """code_scanning_alert appeared_in_branch event"""
+class WebhookCheckRunRerequestedType(TypedDict):
+    """Check Run Re-Requested Event"""
 
-    action: Literal["appeared_in_branch"]
-    alert: WebhookCodeScanningAlertAppearedInBranchPropAlertType
-    commit_oid: str
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["rerequested"]
+    check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: str
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertAppearedInBranchTypeForResponse(TypedDict):
-    """code_scanning_alert appeared_in_branch event"""
+class WebhookCheckRunRerequestedTypeForResponse(TypedDict):
+    """Check Run Re-Requested Event"""
 
-    action: Literal["appeared_in_branch"]
-    alert: WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse
-    commit_oid: str
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["rerequested"]
+    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    ref: str
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCodeScanningAlertAppearedInBranchType",
-    "WebhookCodeScanningAlertAppearedInBranchTypeForResponse",
+    "WebhookCheckRunRerequestedType",
+    "WebhookCheckRunRerequestedTypeForResponse",
 )

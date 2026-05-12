@@ -14,22 +14,21 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
-    actor_type: Literal["User", "Team"] = Field(
-        description="The type of actor (must be `User` for user-owned spaces; `Team` will be rejected)."
+    body: Missing[str] = Field(
+        default=UNSET, description="The body text of the pull request review"
     )
-    actor_identifier: str = Field(
-        description="The username of the collaborator. The numeric user ID is also accepted."
-    )
-    role: Literal["reader", "writer", "admin"] = Field(
-        description="The role to grant to the collaborator."
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"] = Field(
+        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. When you leave this blank, the API returns _HTTP 422 (Unrecognizable entity)_ and sets the review action state to `PENDING`, which means you will need to re-submit the pull request review using a review action."
     )
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody)
 
-__all__ = ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody",)

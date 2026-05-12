@@ -9,21 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0110 import CustomPropertyValue
 
-class UserMembershipsOrgsOrgPatchBody(GitHubModel):
-    """UserMembershipsOrgsOrgPatchBody"""
 
-    state: Literal["active"] = Field(
-        description='The state that the membership should be in. Only `"active"` will be accepted.'
+class ReposOwnerRepoPropertiesValuesPatchBody(GitHubModel):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
+
+    properties: list[CustomPropertyValue] = Field(
+        description="A list of custom property names and associated values to apply to the repositories."
     )
 
 
-model_rebuild(UserMembershipsOrgsOrgPatchBody)
+model_rebuild(ReposOwnerRepoPropertiesValuesPatchBody)
 
-__all__ = ("UserMembershipsOrgsOrgPatchBody",)
+__all__ = ("ReposOwnerRepoPropertiesValuesPatchBody",)

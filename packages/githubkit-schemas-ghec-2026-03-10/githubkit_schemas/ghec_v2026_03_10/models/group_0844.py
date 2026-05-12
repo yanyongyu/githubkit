@@ -18,20 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0567 import EnterpriseWebhooks
-from .group_0568 import SimpleInstallation
-from .group_0569 import OrganizationSimpleWebhooks
-from .group_0570 import RepositoryWebhooks
-from .group_0597 import WebhooksMembership
+from .group_0110 import CustomPropertyValue
+from .group_0572 import EnterpriseWebhooks
+from .group_0573 import SimpleInstallation
+from .group_0574 import OrganizationSimpleWebhooks
 
 
-class WebhookOrganizationRenamed(GitHubModel):
-    """organization renamed event"""
+class WebhookOrganizationCustomPropertyValuesUpdated(GitHubModel):
+    """Custom property values updated event"""
 
-    action: Literal["renamed"] = Field()
-    changes: Missing[WebhookOrganizationRenamedPropChanges] = Field(default=UNSET)
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
+    action: Literal["updated"] = Field()
+    enterprise: EnterpriseWebhooks = Field(
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
     )
@@ -40,43 +37,21 @@ class WebhookOrganizationRenamed(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    membership: Missing[WebhooksMembership] = Field(
-        default=UNSET,
-        title="Membership",
-        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
-    )
     organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-
-
-class WebhookOrganizationRenamedPropChanges(GitHubModel):
-    """WebhookOrganizationRenamedPropChanges"""
-
-    login: Missing[WebhookOrganizationRenamedPropChangesPropLogin] = Field(
-        default=UNSET
+    new_property_values: list[CustomPropertyValue] = Field(
+        description="The new custom property values."
+    )
+    old_property_values: list[CustomPropertyValue] = Field(
+        description="The old custom property values."
     )
 
 
-class WebhookOrganizationRenamedPropChangesPropLogin(GitHubModel):
-    """WebhookOrganizationRenamedPropChangesPropLogin"""
+model_rebuild(WebhookOrganizationCustomPropertyValuesUpdated)
 
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-model_rebuild(WebhookOrganizationRenamed)
-model_rebuild(WebhookOrganizationRenamedPropChanges)
-model_rebuild(WebhookOrganizationRenamedPropChangesPropLogin)
-
-__all__ = (
-    "WebhookOrganizationRenamed",
-    "WebhookOrganizationRenamedPropChanges",
-    "WebhookOrganizationRenamedPropChangesPropLogin",
-)
+__all__ = ("WebhookOrganizationCustomPropertyValuesUpdated",)

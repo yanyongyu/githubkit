@@ -19,16 +19,16 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0202 import Discussion
-from .group_0568 import EnterpriseWebhooks
-from .group_0569 import SimpleInstallation
-from .group_0570 import OrganizationSimpleWebhooks
-from .group_0571 import RepositoryWebhooks
+from .group_0573 import EnterpriseWebhooks
+from .group_0574 import SimpleInstallation
+from .group_0575 import OrganizationSimpleWebhooks
+from .group_0576 import RepositoryWebhooks
 
 
-class WebhookDiscussionPinned(GitHubModel):
-    """discussion pinned event"""
+class WebhookDiscussionCreated(GitHubModel):
+    """discussion created event"""
 
-    action: Literal["pinned"] = Field()
+    action: Literal["created"] = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -54,6 +54,6 @@ class WebhookDiscussionPinned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionPinned)
+model_rebuild(WebhookDiscussionCreated)
 
-__all__ = ("WebhookDiscussionPinned",)
+__all__ = ("WebhookDiscussionCreated",)

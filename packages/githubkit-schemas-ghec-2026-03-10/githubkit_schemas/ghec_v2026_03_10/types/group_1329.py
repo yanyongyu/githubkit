@@ -9,121 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCheckRunsPostBodyPropOutputType(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutput
+class OrgsOrgTeamsTeamSlugPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugPatchBody"""
 
-    Check runs can accept a variety of data in the `output` object, including a
-    `title` and `summary` and can optionally provide descriptive details about the
-    run.
-    """
-
-    title: str
-    summary: str
-    text: NotRequired[str]
-    annotations: NotRequired[
-        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
-    images: NotRequired[
-        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
+
+
+class OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugPatchBody"""
+
+    name: NotRequired[str]
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
-
-
-class ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutput
-
-    Check runs can accept a variety of data in the `output` object, including a
-    `title` and `summary` and can optionally provide descriptive details about the
-    run.
-    """
-
-    title: str
-    summary: str
-    text: NotRequired[str]
-    annotations: NotRequired[
-        list[
-            ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsTypeForResponse
-        ]
-    ]
-    images: NotRequired[
-        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsTypeForResponse]
-    ]
-
-
-class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
-
-    path: str
-    start_line: int
-    end_line: int
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
-    annotation_level: Literal["notice", "warning", "failure"]
-    message: str
-    title: NotRequired[str]
-    raw_details: NotRequired[str]
-
-
-class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
-
-    path: str
-    start_line: int
-    end_line: int
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
-    annotation_level: Literal["notice", "warning", "failure"]
-    message: str
-    title: NotRequired[str]
-    raw_details: NotRequired[str]
-
-
-class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
-
-    alt: str
-    image_url: str
-    caption: NotRequired[str]
-
-
-class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
-
-    alt: str
-    image_url: str
-    caption: NotRequired[str]
-
-
-class ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
-
-    label: str
-    description: str
-    identifier: str
-
-
-class ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
-
-    label: str
-    description: str
-    identifier: str
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
 
 
 __all__ = (
-    "ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType",
-    "ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsTypeForResponse",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsTypeForResponse",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputType",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse",
+    "OrgsOrgTeamsTeamSlugPatchBodyType",
+    "OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse",
 )

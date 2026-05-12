@@ -9,59 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoIssuesPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesPostBody"""
-
-    title: Union[str, int]
-    body: NotRequired[str]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
-        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
-    ]
-    assignees: NotRequired[list[str]]
-    type: NotRequired[Union[str, None]]
+from .group_1224 import (
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse,
+)
 
 
-class ReposOwnerRepoIssuesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesPostBody"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
 
-    title: Union[str, int]
-    body: NotRequired[str]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
-        list[
-            Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse]
-        ]
-    ]
-    assignees: NotRequired[list[str]]
-    type: NotRequired[Union[str, None]]
-
-
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
-
-    id: NotRequired[int]
     name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    started_at: NotRequired[_dt.datetime]
+    status: NotRequired[Literal["completed"]]
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
+    ]
+    completed_at: NotRequired[_dt.datetime]
+    output: NotRequired[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType]
+    actions: NotRequired[
+        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
+    ]
 
 
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0TypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
 
-    id: NotRequired[int]
     name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    started_at: NotRequired[str]
+    status: NotRequired[Literal["completed"]]
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
+    ]
+    completed_at: NotRequired[str]
+    output: NotRequired[
+        ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse
+    ]
+    actions: NotRequired[
+        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type",
-    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse",
-    "ReposOwnerRepoIssuesPostBodyType",
-    "ReposOwnerRepoIssuesPostBodyTypeForResponse",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0TypeForResponse",
 )

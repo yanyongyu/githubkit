@@ -9,35 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0243 import MinimalRepository
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
+class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ] = Field(description="The type of resource to create.")
-    metadata: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata = Field(
-        description="Resource-specific metadata."
-    )
+    total_count: int = Field()
+    repositories: list[MinimalRepository] = Field()
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata(ExtraGitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+model_rebuild(OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200)
 
-    Resource-specific metadata.
-    """
-
-
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody)
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata)
-
-__all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
-)
+__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200",)

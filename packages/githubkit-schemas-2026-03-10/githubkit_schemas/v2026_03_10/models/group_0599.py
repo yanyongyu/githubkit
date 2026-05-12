@@ -19,16 +19,16 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0049 import Discussion
-from .group_0485 import EnterpriseWebhooks
-from .group_0486 import SimpleInstallation
-from .group_0487 import OrganizationSimpleWebhooks
-from .group_0488 import RepositoryWebhooks
+from .group_0490 import EnterpriseWebhooks
+from .group_0491 import SimpleInstallation
+from .group_0492 import OrganizationSimpleWebhooks
+from .group_0493 import RepositoryWebhooks
 
 
-class WebhookDiscussionReopened(GitHubModel):
-    """discussion reopened event"""
+class WebhookDiscussionDeleted(GitHubModel):
+    """discussion deleted event"""
 
-    action: Literal["reopened"] = Field()
+    action: Literal["deleted"] = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -54,6 +54,6 @@ class WebhookDiscussionReopened(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionReopened)
+model_rebuild(WebhookDiscussionDeleted)
 
-__all__ = ("WebhookDiscussionReopened",)
+__all__ = ("WebhookDiscussionDeleted",)

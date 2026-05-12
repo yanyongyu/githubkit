@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -44,6 +44,12 @@ class EnterpriseTeam(GitHubModel):
     members_url: str = Field()
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
+        default=UNSET,
+        description="Whether team members will receive notifications when the team is mentioned.",
+    )
 
 
 model_rebuild(EnterpriseTeam)

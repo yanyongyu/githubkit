@@ -9,21 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
+class OrgsOrgPersonalAccessTokensPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokensPostBody"""
 
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#get-a-repository-public-key) endpoint.",
+    action: Literal["revoke"] = Field(
+        description="Action to apply to the fine-grained personal access token."
     )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+    pat_ids: list[int] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The IDs of the fine-grained personal access tokens.",
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsSecretsSecretNamePutBody)
+model_rebuild(OrgsOrgPersonalAccessTokensPostBody)
 
-__all__ = ("ReposOwnerRepoActionsSecretsSecretNamePutBody",)
+__all__ = ("OrgsOrgPersonalAccessTokensPostBody",)

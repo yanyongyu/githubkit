@@ -9,49 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    fields: list[
-        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
     ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    validity: NotRequired[Union[None, Literal["active", "inactive"]]]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
     TypedDict
 ):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    fields: list[
-        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
     ]
-
-
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
-
-    id: int
-    value: Union[str, float, None]
-
-
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
-
-    id: int
-    value: Union[str, float, None]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    validity: NotRequired[Union[None, Literal["active", "inactive"]]]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
 )

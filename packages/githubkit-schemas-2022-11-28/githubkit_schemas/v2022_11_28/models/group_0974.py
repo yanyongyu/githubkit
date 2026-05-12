@@ -14,13 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsHostedRunnersPlatformsGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
+class ApplicationsClientIdTokenDeleteBody(GitHubModel):
+    """ApplicationsClientIdTokenDeleteBody"""
 
-    total_count: int = Field()
-    platforms: list[str] = Field()
+    access_token: str = Field(
+        description="The OAuth access token used to authenticate to the GitHub API."
+    )
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersPlatformsGetResponse200)
+model_rebuild(ApplicationsClientIdTokenDeleteBody)
 
-__all__ = ("OrgsOrgActionsHostedRunnersPlatformsGetResponse200",)
+__all__ = ("ApplicationsClientIdTokenDeleteBody",)

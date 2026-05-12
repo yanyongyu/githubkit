@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,31 +18,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsTeamSlugPatchBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse422(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse422
 
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A new name for the team."
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A new description for the team."
-    )
-    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
+    errors: Missing[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems]
+    ] = Field(
         default=UNSET,
-        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be changed.\n",
+        description="List of validation errors (present only for 422 responses)",
     )
-    organization_selection_type: Missing[Literal["disabled", "selected", "all"]] = (
-        Field(
-            default=UNSET,
-            description="Specifies which organizations in the enterprise should have access to this team. Can be one of `disabled`, `selected`, or `all`.\n`disabled`: The team is not assigned to any organizations. This is the default when you create a new team.\n`selected`: The team is assigned to specific organizations. You can then use the [add organization assignments API](https://docs.github.com/rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments).\n`all`: The team is assigned to all current and future organizations in the enterprise.\n",
-        )
-    )
-    group_id: Missing[Union[str, None]] = Field(
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
         default=UNSET,
-        description="The ID of the IdP group to assign team membership with. The new IdP group will replace the existing one, or replace existing direct members if the team isn't currently linked to an IdP group.",
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsTeamSlugPatchBody)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse422)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems)
 
-__all__ = ("EnterprisesEnterpriseTeamsTeamSlugPatchBody",)
+__all__ = (
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse422",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems",
+)

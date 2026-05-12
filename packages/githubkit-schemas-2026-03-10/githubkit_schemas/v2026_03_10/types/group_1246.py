@@ -12,23 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoLabelsPostBodyType(TypedDict):
-    """ReposOwnerRepoLabelsPostBody"""
+class ReposOwnerRepoCommitsCommitShaCommentsPostBodyType(TypedDict):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
-    name: str
-    color: NotRequired[str]
-    description: NotRequired[str]
+    body: str
+    path: NotRequired[str]
+    position: NotRequired[int]
+    line: NotRequired[int]
 
 
-class ReposOwnerRepoLabelsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoLabelsPostBody"""
+class ReposOwnerRepoCommitsCommitShaCommentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
-    name: str
-    color: NotRequired[str]
-    description: NotRequired[str]
+    body: str
+    path: NotRequired[str]
+    position: NotRequired[int]
+    line: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoLabelsPostBodyType",
-    "ReposOwnerRepoLabelsPostBodyTypeForResponse",
+    "ReposOwnerRepoCommitsCommitShaCommentsPostBodyType",
+    "ReposOwnerRepoCommitsCommitShaCommentsPostBodyTypeForResponse",
 )

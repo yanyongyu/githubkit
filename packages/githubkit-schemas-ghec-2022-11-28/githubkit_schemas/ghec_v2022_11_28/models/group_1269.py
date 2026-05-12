@@ -12,18 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200(GitHubModel):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    pattern_config_version: Missing[str] = Field(
-        default=UNSET, description="The updated pattern configuration version."
-    )
+    The total number of seats created for members of the specified team(s).
+    """
+
+    seats_created: int = Field()
 
 
-model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchResponse200)
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostResponse201)
 
-__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201",)

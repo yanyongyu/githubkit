@@ -9,24 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse400Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse400
 
-    usernames: list[str]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType]
+    ]
+    documentation_url: str
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyTypeForResponse(
+class AgentsReposOwnerRepoTasksTaskIdGetResponse400TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse400
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse
+        ]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems
 
-    usernames: list[str]
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType",
-    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse400Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse400TypeForResponse",
 )

@@ -13,44 +13,71 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0486 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0487 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0488 import (
+from .group_0491 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0492 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0493 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0489 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0758 import (
-    WebhookPackageUpdatedPropPackageType,
-    WebhookPackageUpdatedPropPackageTypeForResponse,
-)
+from .group_0494 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0519 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
 
 
-class WebhookPackageUpdatedType(TypedDict):
-    """package updated event"""
+class WebhookOrganizationRenamedType(TypedDict):
+    """organization renamed event"""
 
-    action: Literal["updated"]
+    action: Literal["renamed"]
+    changes: NotRequired[WebhookOrganizationRenamedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    package: WebhookPackageUpdatedPropPackageType
-    repository: RepositoryWebhooksType
+    membership: NotRequired[WebhooksMembershipType]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookPackageUpdatedTypeForResponse(TypedDict):
-    """package updated event"""
+class WebhookOrganizationRenamedTypeForResponse(TypedDict):
+    """organization renamed event"""
 
-    action: Literal["updated"]
+    action: Literal["renamed"]
+    changes: NotRequired[WebhookOrganizationRenamedPropChangesTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    package: WebhookPackageUpdatedPropPackageTypeForResponse
-    repository: RepositoryWebhooksTypeForResponse
+    membership: NotRequired[WebhooksMembershipTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
+class WebhookOrganizationRenamedPropChangesType(TypedDict):
+    """WebhookOrganizationRenamedPropChanges"""
+
+    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginType]
+
+
+class WebhookOrganizationRenamedPropChangesTypeForResponse(TypedDict):
+    """WebhookOrganizationRenamedPropChanges"""
+
+    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse]
+
+
+class WebhookOrganizationRenamedPropChangesPropLoginType(TypedDict):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
+
+    from_: NotRequired[str]
+
+
+class WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse(TypedDict):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
+
+    from_: NotRequired[str]
+
+
 __all__ = (
-    "WebhookPackageUpdatedType",
-    "WebhookPackageUpdatedTypeForResponse",
+    "WebhookOrganizationRenamedPropChangesPropLoginType",
+    "WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse",
+    "WebhookOrganizationRenamedPropChangesType",
+    "WebhookOrganizationRenamedPropChangesTypeForResponse",
+    "WebhookOrganizationRenamedType",
+    "WebhookOrganizationRenamedTypeForResponse",
 )

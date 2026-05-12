@@ -11,15 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class GistsGistIdCommentsPostBody(GitHubModel):
-    """GistsGistIdCommentsPostBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
 
-    body: str = Field(max_length=65535, description="The comment text.")
+    selected_usernames: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The usernames of the enterprise members for which to revoke access to GitHub Copilot.",
+    )
 
 
-model_rebuild(GistsGistIdCommentsPostBody)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody)
 
-__all__ = ("GistsGistIdCommentsPostBody",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody",)

@@ -9,18 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
+class OrgsOrgCampaignsCampaignNumberPatchBodyType(TypedDict):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+
+    name: NotRequired[str]
+    description: NotRequired[str]
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: NotRequired[_dt.datetime]
+    contact_link: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
+class OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+
+    name: NotRequired[str]
+    description: NotRequired[str]
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: NotRequired[str]
+    contact_link: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
 
 
 __all__ = (
-    "OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type",
-    "OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse",
+    "OrgsOrgCampaignsCampaignNumberPatchBodyType",
+    "OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse",
 )

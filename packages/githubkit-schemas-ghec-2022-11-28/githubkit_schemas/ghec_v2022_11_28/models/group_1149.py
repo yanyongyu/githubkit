@@ -12,16 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody(GitHubModel):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
 
-    selected_repository_ids: list[int] = Field(
-        description="IDs of repositories that can use repository-level self-hosted runners"
+    pattern_config_version: Missing[str] = Field(
+        default=UNSET, description="The updated pattern configuration version."
     )
 
 
-model_rebuild(OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody)
+model_rebuild(EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200)
 
-__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody",)
+__all__ = ("EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200",)

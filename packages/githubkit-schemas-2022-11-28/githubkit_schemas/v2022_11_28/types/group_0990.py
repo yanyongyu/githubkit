@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
+class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType(TypedDict):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
 
-    runners: list[int]
+    usernames: list[str]
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
+class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
 
-    runners: list[int]
+    usernames: list[str]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyTypeForResponse",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyTypeForResponse",
 )

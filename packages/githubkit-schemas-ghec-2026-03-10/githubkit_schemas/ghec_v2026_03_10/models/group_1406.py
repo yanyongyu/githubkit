@@ -13,15 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
-
-    issue_id: int = Field(
-        description="The id of the issue that blocks the current issue"
-    )
+from .group_0258 import Codespace
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody)
+class ReposOwnerRepoCodespacesGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesGetResponse200"""
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody",)
+    total_count: int = Field()
+    codespaces: list[Codespace] = Field()
+
+
+model_rebuild(ReposOwnerRepoCodespacesGetResponse200)
+
+__all__ = ("ReposOwnerRepoCodespacesGetResponse200",)

@@ -12,14 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCommentsCommentIdPatchBody(GitHubModel):
-    """ReposOwnerRepoCommentsCommentIdPatchBody"""
+class ReposOwnerRepoActionsRunsRunIdRerunPostBody(GitHubModel):
+    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
 
-    body: str = Field(description="The contents of the comment")
+    enable_debug_logging: Missing[bool] = Field(
+        default=UNSET, description="Whether to enable debug logging for the re-run."
+    )
 
 
-model_rebuild(ReposOwnerRepoCommentsCommentIdPatchBody)
+model_rebuild(ReposOwnerRepoActionsRunsRunIdRerunPostBody)
 
-__all__ = ("ReposOwnerRepoCommentsCommentIdPatchBody",)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunPostBody",)

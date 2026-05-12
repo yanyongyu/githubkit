@@ -9,22 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_1238 import (
+    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
+    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse,
+)
 
-class OrgsOrgOutsideCollaboratorsUsernamePutBodyType(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
-    async_: NotRequired[bool]
+class OrgsOrgCampaignsPostBodyOneof1Type(TypedDict):
+    """OrgsOrgCampaignsPostBodyOneof1"""
+
+    name: str
+    description: str
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: _dt.datetime
+    contact_link: NotRequired[Union[str, None]]
+    code_scanning_alerts: NotRequired[
+        Union[list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None]
+    ]
+    generate_issues: NotRequired[bool]
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
+class OrgsOrgCampaignsPostBodyOneof1TypeForResponse(TypedDict):
+    """OrgsOrgCampaignsPostBodyOneof1"""
 
-    async_: NotRequired[bool]
+    name: str
+    description: str
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: str
+    contact_link: NotRequired[Union[str, None]]
+    code_scanning_alerts: NotRequired[
+        Union[
+            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse],
+            None,
+        ]
+    ]
+    generate_issues: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgOutsideCollaboratorsUsernamePutBodyType",
-    "OrgsOrgOutsideCollaboratorsUsernamePutBodyTypeForResponse",
+    "OrgsOrgCampaignsPostBodyOneof1Type",
+    "OrgsOrgCampaignsPostBodyOneof1TypeForResponse",
 )

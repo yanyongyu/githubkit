@@ -9,56 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoGitTagsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitTagsPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
 
-    tag: str
-    message: str
-    object_: str
-    type: Literal["commit", "tree", "blob"]
-    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerType]
-
-
-class ReposOwnerRepoGitTagsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitTagsPostBody"""
-
-    tag: str
-    message: str
-    object_: str
-    type: Literal["commit", "tree", "blob"]
-    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse]
-
-
-class ReposOwnerRepoGitTagsPostBodyPropTaggerType(TypedDict):
-    """ReposOwnerRepoGitTagsPostBodyPropTagger
-
-    An object with information about the individual creating the tag.
+    Examples:
+        {'teams': ['justice-league']}
     """
 
-    name: str
-    email: str
-    date: NotRequired[_dt.datetime]
+    teams: list[str]
 
 
-class ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitTagsPostBodyPropTagger
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
 
-    An object with information about the individual creating the tag.
+    Examples:
+        {'teams': ['justice-league']}
     """
 
-    name: str
-    email: str
-    date: NotRequired[str]
+    teams: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoGitTagsPostBodyPropTaggerType",
-    "ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse",
-    "ReposOwnerRepoGitTagsPostBodyType",
-    "ReposOwnerRepoGitTagsPostBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0TypeForResponse",
 )

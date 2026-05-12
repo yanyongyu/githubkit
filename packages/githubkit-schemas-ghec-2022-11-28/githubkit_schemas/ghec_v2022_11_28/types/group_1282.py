@@ -9,23 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0246 import (
+    OrganizationCustomRepositoryRoleType,
+    OrganizationCustomRepositoryRoleTypeForResponse,
+)
 
-class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
-    """OrgsOrgSecurityProductEnablementPostBody"""
 
-    query_suite: NotRequired[Literal["default", "extended"]]
+class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
 
 
-class OrgsOrgSecurityProductEnablementPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgSecurityProductEnablementPostBody"""
+class OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
 
-    query_suite: NotRequired[Literal["default", "extended"]]
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgSecurityProductEnablementPostBodyType",
-    "OrgsOrgSecurityProductEnablementPostBodyTypeForResponse",
+    "OrgsOrgCustomRepositoryRolesGetResponse200Type",
+    "OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse",
 )

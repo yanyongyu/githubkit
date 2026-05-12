@@ -9,67 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
+class OrgsOrgActionsHostedRunnersPostBodyType(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBody"""
 
-    total_count: int
-    storage_records: NotRequired[
-        list[
-            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType
-        ]
-    ]
-
-
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
-
-    total_count: int
-    storage_records: NotRequired[
-        list[
-            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse
-        ]
-    ]
+    name: str
+    image: OrgsOrgActionsHostedRunnersPostBodyPropImageType
+    size: str
+    runner_group_id: int
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    image_gen: NotRequired[bool]
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
+class OrgsOrgActionsHostedRunnersPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBody"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    artifact_url: NotRequired[Union[str, None]]
-    registry_url: NotRequired[str]
-    repository: NotRequired[Union[str, None]]
-    status: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    name: str
+    image: OrgsOrgActionsHostedRunnersPostBodyPropImageTypeForResponse
+    size: str
+    runner_group_id: int
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    image_gen: NotRequired[bool]
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
+class OrgsOrgActionsHostedRunnersPostBodyPropImageType(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBodyPropImage
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    artifact_url: NotRequired[Union[str, None]]
-    registry_url: NotRequired[str]
-    repository: NotRequired[Union[str, None]]
-    status: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
+
+    id: NotRequired[str]
+    source: NotRequired[Literal["github", "partner", "custom"]]
+    version: NotRequired[Union[str, None]]
+
+
+class OrgsOrgActionsHostedRunnersPostBodyPropImageTypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBodyPropImage
+
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
+
+    id: NotRequired[str]
+    source: NotRequired[Literal["github", "partner", "custom"]]
+    version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse",
+    "OrgsOrgActionsHostedRunnersPostBodyPropImageType",
+    "OrgsOrgActionsHostedRunnersPostBodyPropImageTypeForResponse",
+    "OrgsOrgActionsHostedRunnersPostBodyType",
+    "OrgsOrgActionsHostedRunnersPostBodyTypeForResponse",
 )

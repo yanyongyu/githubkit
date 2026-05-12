@@ -12,19 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
+class OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody(GitHubModel):
+    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody"""
 
-    permission: Missing[str] = Field(
-        default=UNSET,
-        description="The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
+    selected_repository_ids: list[int] = Field(
+        description="List of repository IDs to enable for Copilot cloud agent."
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody)
+model_rebuild(OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",)
+__all__ = ("OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody",)

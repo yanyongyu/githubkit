@@ -9,48 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
+class AppHookConfigPatchBody(GitHubModel):
+    """AppHookConfigPatchBody"""
 
-    total_count: int = Field()
-    images: list[ActionsHostedRunnerCustomImage] = Field()
-
-
-class ActionsHostedRunnerCustomImage(GitHubModel):
-    """GitHub-hosted runner custom image details
-
-    Provides details of a custom runner image
-    """
-
-    id: int = Field(
-        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to which the payloads will be delivered."
     )
-    platform: str = Field(description="The operating system of the image.")
-    total_versions_size: int = Field(
-        description="Total size of all the image versions in GB."
+    content_type: Missing[str] = Field(
+        default=UNSET,
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
     )
-    name: str = Field(description="Display name for this image.")
-    source: str = Field(description="The image provider.")
-    versions_count: int = Field(
-        description="The number of image versions associated with the image."
+    secret: Missing[str] = Field(
+        default=UNSET,
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
     )
-    latest_version: str = Field(
-        description="The latest image version associated with the image."
-    )
-    state: str = Field(
-        description="The number of image versions associated with the image."
-    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersImagesCustomGetResponse200)
-model_rebuild(ActionsHostedRunnerCustomImage)
+model_rebuild(AppHookConfigPatchBody)
 
-__all__ = (
-    "ActionsHostedRunnerCustomImage",
-    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200",
-)
+__all__ = ("AppHookConfigPatchBody",)

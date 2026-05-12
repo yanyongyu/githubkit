@@ -11,17 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0112 import CustomProperty
 
 
-class OrgsOrgActionsPermissionsRepositoriesPutBody(GitHubModel):
-    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
+class EnterprisesEnterprisePropertiesSchemaPatchBody(GitHubModel):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="List of repository IDs to enable for GitHub Actions."
+    properties: list[CustomProperty] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The array of custom properties to create or update.",
     )
 
 
-model_rebuild(OrgsOrgActionsPermissionsRepositoriesPutBody)
+model_rebuild(EnterprisesEnterprisePropertiesSchemaPatchBody)
 
-__all__ = ("OrgsOrgActionsPermissionsRepositoriesPutBody",)
+__all__ = ("EnterprisesEnterprisePropertiesSchemaPatchBody",)

@@ -13,41 +13,42 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0344 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0486 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0487 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0488 import (
+from .group_0491 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0492 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0493 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0489 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0494 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertDismissedType(TypedDict):
-    """Dependabot alert dismissed event"""
+class WebhookDeleteType(TypedDict):
+    """delete event"""
 
-    action: Literal["dismissed"]
-    alert: DependabotAlertType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    pusher_type: str
+    ref: str
+    ref_type: Literal["tag", "branch"]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertDismissedTypeForResponse(TypedDict):
-    """Dependabot alert dismissed event"""
+class WebhookDeleteTypeForResponse(TypedDict):
+    """delete event"""
 
-    action: Literal["dismissed"]
-    alert: DependabotAlertTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    pusher_type: str
+    ref: str
+    ref_type: Literal["tag", "branch"]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDependabotAlertDismissedType",
-    "WebhookDependabotAlertDismissedTypeForResponse",
+    "WebhookDeleteType",
+    "WebhookDeleteTypeForResponse",
 )

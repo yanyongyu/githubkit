@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0567 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0568 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0569 import (
+from .group_0572 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0573 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0574 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0570 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0612 import (
+from .group_0575 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0617 import (
     SecretScanningAlertWebhookType,
     SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecretScanningAlertResolvedType(TypedDict):
-    """secret_scanning_alert resolved event"""
+class WebhookSecretScanningAlertCreatedType(TypedDict):
+    """secret_scanning_alert created event"""
 
-    action: Literal["resolved"]
+    action: Literal["created"]
     alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -38,10 +38,10 @@ class WebhookSecretScanningAlertResolvedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningAlertResolvedTypeForResponse(TypedDict):
-    """secret_scanning_alert resolved event"""
+class WebhookSecretScanningAlertCreatedTypeForResponse(TypedDict):
+    """secret_scanning_alert created event"""
 
-    action: Literal["resolved"]
+    action: Literal["created"]
     alert: SecretScanningAlertWebhookTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookSecretScanningAlertResolvedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSecretScanningAlertResolvedType",
-    "WebhookSecretScanningAlertResolvedTypeForResponse",
+    "WebhookSecretScanningAlertCreatedType",
+    "WebhookSecretScanningAlertCreatedTypeForResponse",
 )

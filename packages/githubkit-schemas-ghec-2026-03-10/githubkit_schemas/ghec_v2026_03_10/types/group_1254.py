@@ -9,32 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0312 import (
-    ProjectsV2FieldSingleSelectOptionType,
-    ProjectsV2FieldSingleSelectOptionTypeForResponse,
-)
+from .group_0243 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-    name: str
-    data_type: Literal["single_select"]
-    single_select_options: list[ProjectsV2FieldSingleSelectOptionType]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-    name: str
-    data_type: Literal["single_select"]
-    single_select_options: list[ProjectsV2FieldSingleSelectOptionTypeForResponse]
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type",
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse",
+    "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
+    "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
 )

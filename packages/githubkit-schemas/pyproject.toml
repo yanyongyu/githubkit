@@ -10,10 +10,10 @@ requires-python = ">=3.9, <4.0"
 dependencies = ["githubkit >=0.16.0", "githubkit-schemas-2026-03-10 ==26.5.7"]
 
 [project.optional-dependencies]
-v2022-11-28 = ["githubkit-schemas-2022-11-28 ==26.5.7"]
-v2026-03-10 = ["githubkit-schemas-2026-03-10 ==26.5.7"]
-ghec-v2022-11-28 = ["githubkit-schemas-ghec-2022-11-28 ==26.5.7"]
-ghec-v2026-03-10 = ["githubkit-schemas-ghec-2026-03-10 ==26.5.7"]
+2022-11-28 = ["githubkit-schemas-2022-11-28 ==26.5.7"]
+2026-03-10 = ["githubkit-schemas-2026-03-10 ==26.5.7"]
+ghec-2022-11-28 = ["githubkit-schemas-ghec-2022-11-28 ==26.5.7"]
+ghec-2026-03-10 = ["githubkit-schemas-ghec-2026-03-10 ==26.5.7"]
 ghec = ["githubkit-schemas-ghec-2026-03-10 ==26.5.7"]
 
 all-gh = [

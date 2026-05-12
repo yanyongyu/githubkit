@@ -10,94 +10,50 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Any, Literal
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import TypeAlias, TypedDict
 
 
-class OrgsOrgReposPostBodyType(TypedDict):
-    """OrgsOrgReposPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
 
-    name: str
-    description: NotRequired[str]
-    homepage: NotRequired[str]
-    private: NotRequired[bool]
-    visibility: NotRequired[Literal["public", "private", "internal"]]
-    has_issues: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    has_downloads: NotRequired[bool]
-    is_template: NotRequired[bool]
-    team_id: NotRequired[int]
-    auto_init: NotRequired[bool]
-    gitignore_template: NotRequired[str]
-    license_template: NotRequired[str]
-    allow_squash_merge: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_auto_merge: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    use_squash_pr_title_as_default: NotRequired[bool]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    resource_type: Literal[
+        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
     ]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    custom_properties: NotRequired[OrgsOrgReposPostBodyPropCustomPropertiesType]
+    metadata: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType
 
 
-class OrgsOrgReposPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgReposPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
 
-    name: str
-    description: NotRequired[str]
-    homepage: NotRequired[str]
-    private: NotRequired[bool]
-    visibility: NotRequired[Literal["public", "private", "internal"]]
-    has_issues: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    has_downloads: NotRequired[bool]
-    is_template: NotRequired[bool]
-    team_id: NotRequired[int]
-    auto_init: NotRequired[bool]
-    gitignore_template: NotRequired[str]
-    license_template: NotRequired[str]
-    allow_squash_merge: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_auto_merge: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    use_squash_pr_title_as_default: NotRequired[bool]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    resource_type: Literal[
+        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
     ]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    custom_properties: NotRequired[
-        OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse
-    ]
+    metadata: (
+        OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse
+    )
 
 
-OrgsOrgReposPostBodyPropCustomPropertiesType: TypeAlias = dict[str, Any]
-"""OrgsOrgReposPostBodyPropCustomProperties
+OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
 
-The custom properties for the new repository. The keys are the custom property
-names, and the values are the corresponding custom property values.
+Resource-specific metadata.
 """
 
 
-OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse: TypeAlias = dict[str, Any]
-"""OrgsOrgReposPostBodyPropCustomProperties
+OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
 
-The custom properties for the new repository. The keys are the custom property
-names, and the values are the corresponding custom property values.
+Resource-specific metadata.
 """
 
 
 __all__ = (
-    "OrgsOrgReposPostBodyPropCustomPropertiesType",
-    "OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse",
-    "OrgsOrgReposPostBodyType",
-    "OrgsOrgReposPostBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse",
 )

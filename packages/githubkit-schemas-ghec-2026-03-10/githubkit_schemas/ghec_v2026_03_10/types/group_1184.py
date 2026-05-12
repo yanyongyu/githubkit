@@ -9,47 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_1183 import (
-    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
-    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse,
+from .group_0034 import (
+    ActionsHostedRunnerMachineSpecType,
+    ActionsHostedRunnerMachineSpecTypeForResponse,
 )
 
 
-class OrgsOrgCampaignsPostBodyOneof0Type(TypedDict):
-    """OrgsOrgCampaignsPostBodyOneof0"""
+class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
 
-    name: str
-    description: str
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: _dt.datetime
-    contact_link: NotRequired[Union[str, None]]
-    code_scanning_alerts: Union[
-        list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None
-    ]
-    generate_issues: NotRequired[bool]
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecType]
 
 
-class OrgsOrgCampaignsPostBodyOneof0TypeForResponse(TypedDict):
-    """OrgsOrgCampaignsPostBodyOneof0"""
+class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
 
-    name: str
-    description: str
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: str
-    contact_link: NotRequired[Union[str, None]]
-    code_scanning_alerts: Union[
-        list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse], None
-    ]
-    generate_issues: NotRequired[bool]
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCampaignsPostBodyOneof0Type",
-    "OrgsOrgCampaignsPostBodyOneof0TypeForResponse",
+    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
 )

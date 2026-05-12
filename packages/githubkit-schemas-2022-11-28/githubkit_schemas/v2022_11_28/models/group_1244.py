@@ -16,18 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
+class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubModel):
+    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
 
-    sub_issue_id: int = Field(
-        description="The id of the sub-issue to add. The sub-issue must belong to the same repository owner as the parent issue"
-    )
-    replace_parent: Missing[bool] = Field(
+    permission: Missing[str] = Field(
         default=UNSET,
-        description="Option that, when true, instructs the operation to replace the sub-issues current parent issue",
+        description="The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any.",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody)
+model_rebuild(ReposOwnerRepoCollaboratorsUsernamePutBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody",)
+__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBody",)

@@ -9,60 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0049 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
 
-    organizations: NotRequired[list[str]]
-    custom_properties: NotRequired[
-        list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType
-        ]
-    ]
+    total_count: float
+    organizations: list[OrganizationSimpleType]
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyTypeForResponse(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
 
-    organizations: NotRequired[list[str]]
-    custom_properties: NotRequired[
-        list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse
-        ]
-    ]
-
-
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPr
-    opertiesItems
-    """
-
-    property_name: str
-    values: list[str]
-
-
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPr
-    opertiesItems
-    """
-
-    property_name: str
-    values: list[str]
+    total_count: float
+    organizations: list[OrganizationSimpleTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200TypeForResponse",
 )

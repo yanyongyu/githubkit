@@ -9,26 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0018 import InstallationType, InstallationTypeForResponse
-
-
-class UserInstallationsGetResponse200Type(TypedDict):
-    """UserInstallationsGetResponse200"""
-
-    total_count: int
-    installations: list[InstallationType]
+from .group_1496 import (
+    ReposOwnerRepoPagesPostBodyPropSourceType,
+    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
+)
 
 
-class UserInstallationsGetResponse200TypeForResponse(TypedDict):
-    """UserInstallationsGetResponse200"""
+class ReposOwnerRepoPagesPostBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
 
-    total_count: int
-    installations: list[InstallationTypeForResponse]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: ReposOwnerRepoPagesPostBodyPropSourceType
+
+
+class ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
+
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse
 
 
 __all__ = (
-    "UserInstallationsGetResponse200Type",
-    "UserInstallationsGetResponse200TypeForResponse",
+    "ReposOwnerRepoPagesPostBodyAnyof0Type",
+    "ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse",
 )

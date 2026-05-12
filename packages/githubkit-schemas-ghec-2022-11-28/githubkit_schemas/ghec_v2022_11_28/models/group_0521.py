@@ -12,19 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CommitActivity(GitHubModel):
-    """Commit Activity
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1(GitHubModel):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    Commit Activity
-    """
+    pattern_name: Missing[str] = Field(
+        default=UNSET, description="Name of the custom pattern for custom pattern scans"
+    )
+    pattern_scope: Missing[str] = Field(
+        default=UNSET,
+        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
+    )
 
-    days: list[int] = Field()
-    total: int = Field()
-    week: int = Field()
 
+model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1)
 
-model_rebuild(CommitActivity)
-
-__all__ = ("CommitActivity",)
+__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1",)

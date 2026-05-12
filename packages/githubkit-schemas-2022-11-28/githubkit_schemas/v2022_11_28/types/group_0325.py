@@ -9,55 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeownersErrorsType(TypedDict):
-    """CODEOWNERS errors
+class CodeScanningDefaultSetupUpdateType(TypedDict):
+    """CodeScanningDefaultSetupUpdate
 
-    A list of errors found in a repo's CODEOWNERS file
+    Configuration for code scanning default setup.
     """
 
-    errors: list[CodeownersErrorsPropErrorsItemsType]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ]
 
 
-class CodeownersErrorsTypeForResponse(TypedDict):
-    """CODEOWNERS errors
+class CodeScanningDefaultSetupUpdateTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetupUpdate
 
-    A list of errors found in a repo's CODEOWNERS file
+    Configuration for code scanning default setup.
     """
 
-    errors: list[CodeownersErrorsPropErrorsItemsTypeForResponse]
-
-
-class CodeownersErrorsPropErrorsItemsType(TypedDict):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int
-    column: int
-    source: NotRequired[str]
-    kind: str
-    suggestion: NotRequired[Union[str, None]]
-    message: str
-    path: str
-
-
-class CodeownersErrorsPropErrorsItemsTypeForResponse(TypedDict):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int
-    column: int
-    source: NotRequired[str]
-    kind: str
-    suggestion: NotRequired[Union[str, None]]
-    message: str
-    path: str
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "CodeownersErrorsPropErrorsItemsType",
-    "CodeownersErrorsPropErrorsItemsTypeForResponse",
-    "CodeownersErrorsType",
-    "CodeownersErrorsTypeForResponse",
+    "CodeScanningDefaultSetupUpdateType",
+    "CodeScanningDefaultSetupUpdateTypeForResponse",
 )

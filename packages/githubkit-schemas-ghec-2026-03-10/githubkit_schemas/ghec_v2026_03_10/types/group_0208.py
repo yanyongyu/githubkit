@@ -48,7 +48,7 @@ class IssueCommentType(TypedDict):
             "OWNER",
         ]
     ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType]]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
     reactions: NotRequired[ReactionRollupType]
     pin: NotRequired[Union[None, PinnedIssueCommentType]]
 
@@ -82,7 +82,7 @@ class IssueCommentTypeForResponse(TypedDict):
             "OWNER",
         ]
     ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse]]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
     reactions: NotRequired[ReactionRollupTypeForResponse]
     pin: NotRequired[Union[None, PinnedIssueCommentTypeForResponse]]
 

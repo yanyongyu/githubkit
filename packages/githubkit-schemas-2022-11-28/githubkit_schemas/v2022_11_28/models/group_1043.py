@@ -14,22 +14,27 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class OrgsOrgActionsSecretsSecretNamePutBody(GitHubModel):
+    """OrgsOrgActionsSecretsSecretNamePutBody"""
 
-    actor_type: Literal["User", "Team"] = Field(
-        description="The type of actor (user or team)."
+    encrypted_value: str = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/actions/secrets#get-an-organization-public-key) endpoint.",
     )
-    actor_identifier: str = Field(
-        description="The username (for users) or team slug (for teams). The numeric ID of a user or team is also accepted."
+    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret."
     )
-    role: Literal["reader", "writer", "admin"] = Field(
-        description="The role to grant to the collaborator."
+    selected_repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/actions/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/actions/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
     )
 
 
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody)
+model_rebuild(OrgsOrgActionsSecretsSecretNamePutBody)
 
-__all__ = ("OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody",)
+__all__ = ("OrgsOrgActionsSecretsSecretNamePutBody",)

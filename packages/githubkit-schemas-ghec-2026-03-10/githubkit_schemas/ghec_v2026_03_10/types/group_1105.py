@@ -9,22 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
 
-    name: str
+    errors: NotRequired[list[str]]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
 
-    name: str
+    errors: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse",
 )

@@ -18,18 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0175 import RepositoryRuleset
-from .group_0568 import EnterpriseWebhooks
-from .group_0569 import SimpleInstallation
-from .group_0570 import OrganizationSimpleWebhooks
-from .group_0571 import RepositoryWebhooks
-from .group_0952 import WebhookRepositoryRulesetEditedPropChanges
+from .group_0573 import EnterpriseWebhooks
+from .group_0574 import SimpleInstallation
+from .group_0575 import OrganizationSimpleWebhooks
+from .group_0576 import RepositoryWebhooks
 
 
-class WebhookRepositoryRulesetEdited(GitHubModel):
-    """repository ruleset edited event"""
+class WebhookRepositoryPrivatized(GitHubModel):
+    """repository privatized event"""
 
-    action: Literal["edited"] = Field()
+    action: Literal["privatized"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,19 +43,13 @@ class WebhookRepositoryRulesetEdited(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    repository_ruleset: RepositoryRuleset = Field(
-        title="Repository ruleset",
-        description="A set of rules to apply when specified conditions are met.",
-    )
-    changes: Missing[WebhookRepositoryRulesetEditedPropChanges] = Field(default=UNSET)
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryRulesetEdited)
+model_rebuild(WebhookRepositoryPrivatized)
 
-__all__ = ("WebhookRepositoryRulesetEdited",)
+__all__ = ("WebhookRepositoryPrivatized",)

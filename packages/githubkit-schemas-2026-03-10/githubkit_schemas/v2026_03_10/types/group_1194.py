@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0270 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type(TypedDict):
-    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
+class ReposOwnerRepoAgentsOrganizationSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoAgentsOrganizationSecretsGetResponse200"""
 
-    sbom_url: NotRequired[str]
+    total_count: int
+    secrets: list[ActionsSecretType]
 
 
-class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
+class ReposOwnerRepoAgentsOrganizationSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoAgentsOrganizationSecretsGetResponse200"""
 
-    sbom_url: NotRequired[str]
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type",
-    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse",
+    "ReposOwnerRepoAgentsOrganizationSecretsGetResponse200Type",
+    "ReposOwnerRepoAgentsOrganizationSecretsGetResponse200TypeForResponse",
 )

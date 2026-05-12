@@ -11,26 +11,27 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
-
-    The total number of seats set to "pending cancellation" for the specified users.
-    """
-
-    seats_cancelled: int
+from .group_0124 import (
+    OrganizationActionsVariableType,
+    OrganizationActionsVariableTypeForResponse,
+)
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+class OrgsOrgAgentsVariablesGetResponse200Type(TypedDict):
+    """OrgsOrgAgentsVariablesGetResponse200"""
 
-    The total number of seats set to "pending cancellation" for the specified users.
-    """
+    total_count: int
+    variables: list[OrganizationActionsVariableType]
 
-    seats_cancelled: int
+
+class OrgsOrgAgentsVariablesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAgentsVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[OrganizationActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",
-    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse",
+    "OrgsOrgAgentsVariablesGetResponse200Type",
+    "OrgsOrgAgentsVariablesGetResponse200TypeForResponse",
 )

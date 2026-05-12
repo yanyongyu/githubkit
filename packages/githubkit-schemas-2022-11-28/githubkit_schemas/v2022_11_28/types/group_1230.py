@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0305 import CheckRunType, CheckRunTypeForResponse
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
+class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
 
-    assignees: NotRequired[list[str]]
+    total_count: int
+    check_runs: list[CheckRunType]
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
+class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
 
-    assignees: NotRequired[list[str]]
+    total_count: int
+    check_runs: list[CheckRunTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyTypeForResponse",
+    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type",
+    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse",
 )

@@ -11,28 +11,32 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC Subject customization
-
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
 
 
-class OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
-    """Actions OIDC Subject customization
+class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
+    """ApplicationsClientIdTokenScopedPostBody"""
 
-    Actions OIDC Subject customization
-    """
+    access_token: str
+    target: NotRequired[str]
+    target_id: NotRequired[int]
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsType]
 
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+
+class ApplicationsClientIdTokenScopedPostBodyTypeForResponse(TypedDict):
+    """ApplicationsClientIdTokenScopedPostBody"""
+
+    access_token: str
+    target: NotRequired[str]
+    target_id: NotRequired[int]
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsOidcCustomizationSubPutBodyType",
-    "OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse",
+    "ApplicationsClientIdTokenScopedPostBodyType",
+    "ApplicationsClientIdTokenScopedPostBodyTypeForResponse",
 )

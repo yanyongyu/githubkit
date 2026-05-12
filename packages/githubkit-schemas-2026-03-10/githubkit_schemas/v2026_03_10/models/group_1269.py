@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,29 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberPatchBody"""
+class ReposOwnerRepoForksPostBody(GitHubModel):
+    """ReposOwnerRepoForksPostBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The title of the pull request."
-    )
-    body: Missing[str] = Field(
-        default=UNSET, description="The contents of the pull request."
-    )
-    state: Missing[Literal["open", "closed"]] = Field(
+    organization: Missing[str] = Field(
         default=UNSET,
-        description="State of this Pull Request. Either `open` or `closed`.",
+        description="Optional parameter to specify the organization name if forking into an organization.",
     )
-    base: Missing[str] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="The name of the branch you want your changes pulled into. This should be an existing branch on the current repository. You cannot update the base branch on a pull request to point to another repository.",
+        description="When forking from an existing repository, a new name for the fork.",
     )
-    maintainer_can_modify: Missing[bool] = Field(
+    default_branch_only: Missing[bool] = Field(
         default=UNSET,
-        description="Indicates whether [maintainers can modify](https://docs.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
+        description="When forking from an existing repository, fork with only the default branch.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberPatchBody)
+model_rebuild(ReposOwnerRepoForksPostBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberPatchBody",)
+__all__ = ("ReposOwnerRepoForksPostBody",)

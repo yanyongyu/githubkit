@@ -11,34 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
-    f0
-
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str]
+from .group_0110 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
-    f0
+class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
+    repository_names: list[str]
+    properties: list[CustomPropertyValueType]
 
-    contexts: list[str]
+
+class OrgsOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesValuesPatchBody"""
+
+    repository_names: list[str]
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0TypeForResponse",
+    "OrgsOrgPropertiesValuesPatchBodyType",
+    "OrgsOrgPropertiesValuesPatchBodyTypeForResponse",
 )

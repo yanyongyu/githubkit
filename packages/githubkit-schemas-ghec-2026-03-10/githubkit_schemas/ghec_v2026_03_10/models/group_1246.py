@@ -14,16 +14,21 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgPersonalAccessTokensPatIdPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-    action: Literal["revoke"] = Field(
-        description="Action to apply to the fine-grained personal access token."
+    default_for_new_repos: Missing[
+        Literal["all", "none", "private_and_internal", "public"]
+    ] = Field(
+        default=UNSET,
+        description="Specify which types of repository this security configuration should be applied to by default.",
     )
 
 
-model_rebuild(OrgsOrgPersonalAccessTokensPatIdPostBody)
+model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody)
 
-__all__ = ("OrgsOrgPersonalAccessTokensPatIdPostBody",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",)

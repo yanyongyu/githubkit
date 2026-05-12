@@ -9,27 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeScanningAnalysisDeletion(GitHubModel):
-    """Analysis deletion
+class CodeScanningAutofix(GitHubModel):
+    """CodeScanningAutofix"""
 
-    Successful deletion of a code scanning analysis
-    """
-
-    next_analysis_url: Union[str, None] = Field(
-        description="Next deletable analysis in chain, without last analysis deletion confirmation"
+    status: Literal["pending", "error", "success", "outdated"] = Field(
+        description="The status of an autofix."
     )
-    confirm_delete_url: Union[str, None] = Field(
-        description="Next deletable analysis in chain, with last analysis deletion confirmation"
+    description: Union[str, None] = Field(description="The description of an autofix.")
+    started_at: _dt.datetime = Field(
+        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
 
 
-model_rebuild(CodeScanningAnalysisDeletion)
+model_rebuild(CodeScanningAutofix)
 
-__all__ = ("CodeScanningAnalysisDeletion",)
+__all__ = ("CodeScanningAutofix",)

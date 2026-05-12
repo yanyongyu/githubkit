@@ -12,23 +12,43 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ScimEnterpriseUserResponseAllof1PropGroupsItemsType(TypedDict):
-    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
+class UserNameResponseType(TypedDict):
+    """UserNameResponse"""
 
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
+    formatted: NotRequired[str]
+    family_name: NotRequired[str]
+    given_name: NotRequired[str]
+    middle_name: NotRequired[str]
 
 
-class ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse(TypedDict):
-    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
+class UserNameResponseTypeForResponse(TypedDict):
+    """UserNameResponse"""
 
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
+    formatted: NotRequired[str]
+    family_name: NotRequired[str]
+    given_name: NotRequired[str]
+    middle_name: NotRequired[str]
+
+
+class UserEmailsResponseItemsType(TypedDict):
+    """UserEmailsResponseItems"""
+
+    value: str
+    type: NotRequired[str]
+    primary: NotRequired[bool]
+
+
+class UserEmailsResponseItemsTypeForResponse(TypedDict):
+    """UserEmailsResponseItems"""
+
+    value: str
+    type: NotRequired[str]
+    primary: NotRequired[bool]
 
 
 __all__ = (
-    "ScimEnterpriseUserResponseAllof1PropGroupsItemsType",
-    "ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse",
+    "UserEmailsResponseItemsType",
+    "UserEmailsResponseItemsTypeForResponse",
+    "UserNameResponseType",
+    "UserNameResponseTypeForResponse",
 )

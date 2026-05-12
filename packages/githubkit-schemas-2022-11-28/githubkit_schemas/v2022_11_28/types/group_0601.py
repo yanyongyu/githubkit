@@ -14,24 +14,20 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0049 import DiscussionType, DiscussionTypeForResponse
-from .group_0486 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0487 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0488 import (
+from .group_0491 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0492 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0493 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0489 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0602 import (
-    WebhookDiscussionTransferredPropChangesType,
-    WebhookDiscussionTransferredPropChangesTypeForResponse,
-)
+from .group_0494 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionTransferredType(TypedDict):
-    """discussion transferred event"""
+class WebhookDiscussionEditedType(TypedDict):
+    """discussion edited event"""
 
-    action: Literal["transferred"]
-    changes: WebhookDiscussionTransferredPropChangesType
+    action: Literal["edited"]
+    changes: NotRequired[WebhookDiscussionEditedPropChangesType]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -40,11 +36,11 @@ class WebhookDiscussionTransferredType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionTransferredTypeForResponse(TypedDict):
-    """discussion transferred event"""
+class WebhookDiscussionEditedTypeForResponse(TypedDict):
+    """discussion edited event"""
 
-    action: Literal["transferred"]
-    changes: WebhookDiscussionTransferredPropChangesTypeForResponse
+    action: Literal["edited"]
+    changes: NotRequired[WebhookDiscussionEditedPropChangesTypeForResponse]
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -53,7 +49,51 @@ class WebhookDiscussionTransferredTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
+class WebhookDiscussionEditedPropChangesType(TypedDict):
+    """WebhookDiscussionEditedPropChanges"""
+
+    body: NotRequired[WebhookDiscussionEditedPropChangesPropBodyType]
+    title: NotRequired[WebhookDiscussionEditedPropChangesPropTitleType]
+
+
+class WebhookDiscussionEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookDiscussionEditedPropChanges"""
+
+    body: NotRequired[WebhookDiscussionEditedPropChangesPropBodyTypeForResponse]
+    title: NotRequired[WebhookDiscussionEditedPropChangesPropTitleTypeForResponse]
+
+
+class WebhookDiscussionEditedPropChangesPropBodyType(TypedDict):
+    """WebhookDiscussionEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookDiscussionEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookDiscussionEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookDiscussionEditedPropChangesPropTitleType(TypedDict):
+    """WebhookDiscussionEditedPropChangesPropTitle"""
+
+    from_: str
+
+
+class WebhookDiscussionEditedPropChangesPropTitleTypeForResponse(TypedDict):
+    """WebhookDiscussionEditedPropChangesPropTitle"""
+
+    from_: str
+
+
 __all__ = (
-    "WebhookDiscussionTransferredType",
-    "WebhookDiscussionTransferredTypeForResponse",
+    "WebhookDiscussionEditedPropChangesPropBodyType",
+    "WebhookDiscussionEditedPropChangesPropBodyTypeForResponse",
+    "WebhookDiscussionEditedPropChangesPropTitleType",
+    "WebhookDiscussionEditedPropChangesPropTitleTypeForResponse",
+    "WebhookDiscussionEditedPropChangesType",
+    "WebhookDiscussionEditedPropChangesTypeForResponse",
+    "WebhookDiscussionEditedType",
+    "WebhookDiscussionEditedTypeForResponse",
 )

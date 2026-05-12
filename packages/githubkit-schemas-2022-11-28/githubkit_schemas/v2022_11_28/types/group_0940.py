@@ -9,33 +9,121 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0942 import (
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse,
+)
+from .group_0943 import (
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse,
+)
+from .group_0945 import (
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200"""
 
-    policy_state: Literal[
-        "enabled_for_all_orgs",
-        "disabled_for_all_orgs",
-        "enabled_for_selected_orgs",
-        "configured_by_org_admins",
+    id: str
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    name: NotRequired[str]
+    creator: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type
+    ]
+    creator_type: NotRequired[Literal["user", "organization"]]
+    user_collaborators: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType
+        ]
+    ]
+    owner: NotRequired[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerType]
+    repository: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType
+    ]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    session_count: NotRequired[int]
+    artifacts: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsType]
+    ]
+    archived_at: NotRequired[Union[_dt.datetime, None]]
+    updated_at: NotRequired[_dt.datetime]
+    created_at: _dt.datetime
+    sessions: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
     ]
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200"""
 
-    policy_state: Literal[
-        "enabled_for_all_orgs",
-        "disabled_for_all_orgs",
-        "enabled_for_selected_orgs",
-        "configured_by_org_admins",
+    id: str
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    name: NotRequired[str]
+    creator: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse
+    ]
+    creator_type: NotRequired[Literal["user", "organization"]]
+    user_collaborators: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse
+        ]
+    ]
+    owner: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse
+    ]
+    repository: NotRequired[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse
+    ]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    session_count: NotRequired[int]
+    artifacts: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse
+        ]
+    ]
+    archived_at: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    created_at: str
+    sessions: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse
+        ]
     ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200TypeForResponse",
 )

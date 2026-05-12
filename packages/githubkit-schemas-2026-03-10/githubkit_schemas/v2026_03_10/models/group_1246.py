@@ -16,22 +16,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoLabelsPostBody(GitHubModel):
-    """ReposOwnerRepoLabelsPostBody"""
+class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubModel):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
-    name: str = Field(
-        description='The name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."'
+    body: str = Field(description="The contents of the comment.")
+    path: Missing[str] = Field(
+        default=UNSET, description="Relative path of the file to comment on."
     )
-    color: Missing[str] = Field(
+    position: Missing[int] = Field(
+        default=UNSET, description="Line index in the diff to comment on."
+    )
+    line: Missing[int] = Field(
         default=UNSET,
-        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
-    )
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description of the label. Must be 100 characters or fewer.",
+        description="**Closing down notice**. Use **position** parameter instead. Line number in the file to comment on.",
     )
 
 
-model_rebuild(ReposOwnerRepoLabelsPostBody)
+model_rebuild(ReposOwnerRepoCommitsCommitShaCommentsPostBody)
 
-__all__ = ("ReposOwnerRepoLabelsPostBody",)
+__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",)

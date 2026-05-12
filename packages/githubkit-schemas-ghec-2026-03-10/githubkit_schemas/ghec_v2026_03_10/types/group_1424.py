@@ -9,30 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoMilestonesPostBodyType(TypedDict):
-    """ReposOwnerRepoMilestonesPostBody"""
+class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type(TypedDict):
+    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
 
-    title: str
-    state: NotRequired[Literal["open", "closed"]]
-    description: NotRequired[str]
-    due_on: NotRequired[_dt.datetime]
+    sbom_url: NotRequired[str]
 
 
-class ReposOwnerRepoMilestonesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoMilestonesPostBody"""
+class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
 
-    title: str
-    state: NotRequired[Literal["open", "closed"]]
-    description: NotRequired[str]
-    due_on: NotRequired[str]
+    sbom_url: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoMilestonesPostBodyType",
-    "ReposOwnerRepoMilestonesPostBodyTypeForResponse",
+    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type",
+    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse",
 )

@@ -11,24 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0133 import CodespaceType, CodespaceTypeForResponse
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgCodespacesGetResponse200"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
 
-    total_count: int
-    codespaces: list[CodespaceType]
+    total_count: float
+    repositories: list[MinimalRepositoryType]
 
 
-class OrgsOrgCodespacesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCodespacesGetResponse200"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
 
-    total_count: int
-    codespaces: list[CodespaceTypeForResponse]
+    total_count: float
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCodespacesGetResponse200Type",
-    "OrgsOrgCodespacesGetResponse200TypeForResponse",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200TypeForResponse",
 )

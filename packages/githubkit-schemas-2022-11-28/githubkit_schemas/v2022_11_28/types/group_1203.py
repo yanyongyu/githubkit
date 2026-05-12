@@ -12,23 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+class ReposOwnerRepoAttestationsPostResponse201Type(TypedDict):
+    """ReposOwnerRepoAttestationsPostResponse201"""
 
-    integration_id: NotRequired[int]
+    id: NotRequired[int]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+class ReposOwnerRepoAttestationsPostResponse201TypeForResponse(TypedDict):
+    """ReposOwnerRepoAttestationsPostResponse201"""
 
-    integration_id: NotRequired[int]
+    id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyTypeForResponse",
+    "ReposOwnerRepoAttestationsPostResponse201Type",
+    "ReposOwnerRepoAttestationsPostResponse201TypeForResponse",
 )

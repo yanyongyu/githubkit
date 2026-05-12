@@ -9,26 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0087 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
-
-
-class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
-
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsType]]
+from .group_0255 import (
+    OrganizationActionsVariableType,
+    OrganizationActionsVariableTypeForResponse,
+)
 
 
-class OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsVariablesGetResponse200"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
+    total_count: int
+    variables: list[OrganizationActionsVariableType]
+
+
+class OrgsOrgActionsVariablesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[OrganizationActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSeatsGetResponse200Type",
-    "OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse",
+    "OrgsOrgActionsVariablesGetResponse200Type",
+    "OrgsOrgActionsVariablesGetResponse200TypeForResponse",
 )

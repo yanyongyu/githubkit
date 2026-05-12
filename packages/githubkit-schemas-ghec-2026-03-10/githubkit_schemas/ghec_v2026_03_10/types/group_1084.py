@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
 
-    organization_id: int
-    create_ruleset: NotRequired[bool]
+    disable_self_hosted_runners_for_all_orgs: bool
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
 
-    organization_id: int
-    create_ruleset: NotRequired[bool]
+    disable_self_hosted_runners_for_all_orgs: bool
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse",
 )

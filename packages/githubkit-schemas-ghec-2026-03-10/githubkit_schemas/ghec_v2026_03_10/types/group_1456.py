@@ -13,23 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
+class ReposOwnerRepoImportPatchBodyType(TypedDict):
+    """ReposOwnerRepoImportPatchBody"""
 
-    body: NotRequired[str]
-    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
+    tfvc_project: NotRequired[str]
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
+class ReposOwnerRepoImportPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportPatchBody"""
 
-    body: NotRequired[str]
-    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
+    tfvc_project: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType",
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyTypeForResponse",
+    "ReposOwnerRepoImportPatchBodyType",
+    "ReposOwnerRepoImportPatchBodyTypeForResponse",
 )

@@ -9,29 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoHooksHookIdConfigPatchBodyType(TypedDict):
-    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str]
 
 
-class ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoHooksHookIdConfigPatchBodyType",
-    "ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyTypeForResponse",
 )

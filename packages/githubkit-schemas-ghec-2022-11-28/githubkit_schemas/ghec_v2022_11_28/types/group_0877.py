@@ -13,35 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0303 import ProjectsV2Type, ProjectsV2TypeForResponse
-from .group_0569 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0570 import (
+from .group_0573 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0574 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0575 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0576 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0607 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
 
 
-class WebhookProjectsV2ProjectClosedType(TypedDict):
-    """Projects v2 Project Closed Event"""
+class WebhookProjectColumnMovedType(TypedDict):
+    """project_column moved event"""
 
-    action: Literal["closed"]
+    action: Literal["moved"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_column: WebhooksProjectColumnType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ProjectClosedTypeForResponse(TypedDict):
-    """Projects v2 Project Closed Event"""
+class WebhookProjectColumnMovedTypeForResponse(TypedDict):
+    """project_column moved event"""
 
-    action: Literal["closed"]
+    action: Literal["moved"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2: ProjectsV2TypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project_column: WebhooksProjectColumnTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectsV2ProjectClosedType",
-    "WebhookProjectsV2ProjectClosedTypeForResponse",
+    "WebhookProjectColumnMovedType",
+    "WebhookProjectColumnMovedTypeForResponse",
 )

@@ -12,27 +12,29 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReleaseNotesContentType(TypedDict):
-    """Generated Release Notes Content
+class PullRequestMergeResultType(TypedDict):
+    """Pull Request Merge Result
 
-    Generated name and body describing a release
+    Pull Request Merge Result
     """
 
-    name: str
-    body: str
+    sha: str
+    merged: bool
+    message: str
 
 
-class ReleaseNotesContentTypeForResponse(TypedDict):
-    """Generated Release Notes Content
+class PullRequestMergeResultTypeForResponse(TypedDict):
+    """Pull Request Merge Result
 
-    Generated name and body describing a release
+    Pull Request Merge Result
     """
 
-    name: str
-    body: str
+    sha: str
+    merged: bool
+    message: str
 
 
 __all__ = (
-    "ReleaseNotesContentType",
-    "ReleaseNotesContentTypeForResponse",
+    "PullRequestMergeResultType",
+    "PullRequestMergeResultTypeForResponse",
 )

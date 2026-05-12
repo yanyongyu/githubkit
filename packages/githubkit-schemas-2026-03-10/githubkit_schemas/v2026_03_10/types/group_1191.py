@@ -9,39 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoActionsWorkflowsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
-    state: NotRequired[Literal["dismissed", "open"]]
-    dismissed_reason: NotRequired[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
+    total_count: int
+    workflows: list[WorkflowType]
+
+
+class ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
+
+    total_count: int
+    workflows: list[WorkflowTypeForResponse]
+
+
+class WorkflowType(TypedDict):
+    """Workflow
+
+    A GitHub Actions workflow
+    """
+
+    id: int
+    node_id: str
+    name: str
+    path: str
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
     ]
-    dismissed_comment: NotRequired[str]
-    assignees: list[str]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    url: str
+    html_url: str
+    badge_url: str
+    deleted_at: NotRequired[_dt.datetime]
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
+class WorkflowTypeForResponse(TypedDict):
+    """Workflow
 
-    state: NotRequired[Literal["dismissed", "open"]]
-    dismissed_reason: NotRequired[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
+    A GitHub Actions workflow
+    """
+
+    id: int
+    node_id: str
+    name: str
+    path: str
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
     ]
-    dismissed_comment: NotRequired[str]
-    assignees: list[str]
+    created_at: str
+    updated_at: str
+    url: str
+    html_url: str
+    badge_url: str
+    deleted_at: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type",
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoActionsWorkflowsGetResponse200Type",
+    "ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse",
+    "WorkflowType",
+    "WorkflowTypeForResponse",
 )

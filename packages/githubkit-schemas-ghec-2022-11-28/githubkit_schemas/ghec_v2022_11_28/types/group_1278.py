@@ -11,20 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
-
-    group_id: int
+from .group_0243 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
+class OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200"""
 
-    group_id: int
+    total_count: int
+    repositories: list[MinimalRepositoryType]
+
+
+class OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType",
-    "OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyTypeForResponse",
+    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200Type",
+    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse",
 )

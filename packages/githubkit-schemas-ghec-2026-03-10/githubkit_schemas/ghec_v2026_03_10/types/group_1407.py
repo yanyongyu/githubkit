@@ -9,51 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody"""
+class ReposOwnerRepoCodespacesPostBodyType(TypedDict):
+    """ReposOwnerRepoCodespacesPostBody"""
 
-    issue_field_values: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
-        ]
-    ]
-
-
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody"""
-
-    issue_field_values: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse
-        ]
-    ]
+    ref: NotRequired[str]
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    client_ip: NotRequired[str]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    multi_repo_permissions_opt_out: NotRequired[bool]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+    display_name: NotRequired[str]
+    retention_period_minutes: NotRequired[int]
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems"""
+class ReposOwnerRepoCodespacesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesPostBody"""
 
-    field_id: int
-    value: Union[str, float]
-
-
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems"""
-
-    field_id: int
-    value: Union[str, float]
+    ref: NotRequired[str]
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    client_ip: NotRequired[str]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    multi_repo_permissions_opt_out: NotRequired[bool]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+    display_name: NotRequired[str]
+    retention_period_minutes: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse",
+    "ReposOwnerRepoCodespacesPostBodyType",
+    "ReposOwnerRepoCodespacesPostBodyTypeForResponse",
 )

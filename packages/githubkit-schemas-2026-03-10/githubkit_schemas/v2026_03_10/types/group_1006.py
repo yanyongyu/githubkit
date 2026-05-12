@@ -9,85 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from githubkit.typing import UniqueList
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType(TypedDict):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    name: str
-    digest: str
-    version: NotRequired[str]
-    status: Literal["deployed", "decommissioned"]
-    logical_environment: str
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: str
-    tags: NotRequired[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
     ]
-    github_repository: NotRequired[str]
-    return_records: NotRequired[bool]
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
-
-    name: str
-    digest: str
-    version: NotRequired[str]
-    status: Literal["deployed", "decommissioned"]
-    logical_environment: str
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: str
-    tags: NotRequired[
-        OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse
+    budget_scope: NotRequired[
+        Literal["enterprise", "organization", "repository", "cost_center"]
     ]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse(TypedDict):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse
     ]
-    github_repository: NotRequired[str]
-    return_records: NotRequired[bool]
+    budget_scope: NotRequired[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
 
 
-OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType: TypeAlias = dict[str, Any]
-"""OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
 
-The tags associated with the deployment.
-"""
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
-OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse: TypeAlias = (
-    dict[str, Any]
-)
-"""OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
 
-The tags associated with the deployment.
-"""
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyTypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse",
 )

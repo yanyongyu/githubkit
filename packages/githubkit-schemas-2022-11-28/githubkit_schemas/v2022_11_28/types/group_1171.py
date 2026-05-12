@@ -9,37 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0"""
+class ReposOwnerRepoActionsJobsJobIdRerunPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
 
-    state: Literal["open", "dismissed"]
-    dismissed_reason: NotRequired[
-        Union[None, Literal["false positive", "won't fix", "used in tests"]]
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    create_request: NotRequired[bool]
-    assignees: NotRequired[list[str]]
+    enable_debug_logging: NotRequired[bool]
+    enable_debugger: NotRequired[bool]
 
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0"""
+class ReposOwnerRepoActionsJobsJobIdRerunPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
 
-    state: Literal["open", "dismissed"]
-    dismissed_reason: NotRequired[
-        Union[None, Literal["false positive", "won't fix", "used in tests"]]
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    create_request: NotRequired[bool]
-    assignees: NotRequired[list[str]]
+    enable_debug_logging: NotRequired[bool]
+    enable_debugger: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type",
-    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
+    "ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",
+    "ReposOwnerRepoActionsJobsJobIdRerunPostBodyTypeForResponse",
 )

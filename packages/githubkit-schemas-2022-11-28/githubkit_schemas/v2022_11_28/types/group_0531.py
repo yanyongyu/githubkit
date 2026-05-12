@@ -9,237 +9,264 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksSponsorshipType(TypedDict):
-    """WebhooksSponsorship"""
+class WebhooksReleaseType(TypedDict):
+    """Release
 
-    created_at: str
-    maintainer: NotRequired[WebhooksSponsorshipPropMaintainerType]
-    node_id: str
-    privacy_level: str
-    sponsor: Union[WebhooksSponsorshipPropSponsorType, None]
-    sponsorable: Union[WebhooksSponsorshipPropSponsorableType, None]
-    tier: WebhooksSponsorshipPropTierType
-
-
-class WebhooksSponsorshipTypeForResponse(TypedDict):
-    """WebhooksSponsorship"""
-
-    created_at: str
-    maintainer: NotRequired[WebhooksSponsorshipPropMaintainerTypeForResponse]
-    node_id: str
-    privacy_level: str
-    sponsor: Union[WebhooksSponsorshipPropSponsorTypeForResponse, None]
-    sponsorable: Union[WebhooksSponsorshipPropSponsorableTypeForResponse, None]
-    tier: WebhooksSponsorshipPropTierTypeForResponse
-
-
-class WebhooksSponsorshipPropMaintainerType(TypedDict):
-    """WebhooksSponsorshipPropMaintainer"""
-
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksSponsorshipPropMaintainerTypeForResponse(TypedDict):
-    """WebhooksSponsorshipPropMaintainer"""
-
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksSponsorshipPropSponsorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksSponsorshipPropSponsorTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksSponsorshipPropSponsorableType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksSponsorshipPropSponsorableTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksSponsorshipPropTierType(TypedDict):
-    """Sponsorship Tier
-
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
+    The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
+    object.
     """
 
-    created_at: str
-    description: str
-    is_custom_ammount: NotRequired[bool]
-    is_custom_amount: NotRequired[bool]
-    is_one_time: bool
-    monthly_price_in_cents: int
-    monthly_price_in_dollars: int
-    name: str
+    assets: list[WebhooksReleasePropAssetsItemsType]
+    assets_url: str
+    author: Union[WebhooksReleasePropAuthorType, None]
+    body: Union[str, None]
+    created_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    discussion_url: NotRequired[str]
+    draft: bool
+    html_url: str
+    id: int
+    immutable: bool
+    name: Union[str, None]
     node_id: str
+    prerelease: bool
+    published_at: Union[_dt.datetime, None]
+    reactions: NotRequired[WebhooksReleasePropReactionsType]
+    tag_name: str
+    tarball_url: Union[str, None]
+    target_commitish: str
+    upload_url: str
+    url: str
+    zipball_url: Union[str, None]
 
 
-class WebhooksSponsorshipPropTierTypeForResponse(TypedDict):
-    """Sponsorship Tier
+class WebhooksReleaseTypeForResponse(TypedDict):
+    """Release
 
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
+    The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
+    object.
     """
 
-    created_at: str
-    description: str
-    is_custom_ammount: NotRequired[bool]
-    is_custom_amount: NotRequired[bool]
-    is_one_time: bool
-    monthly_price_in_cents: int
-    monthly_price_in_dollars: int
+    assets: list[WebhooksReleasePropAssetsItemsTypeForResponse]
+    assets_url: str
+    author: Union[WebhooksReleasePropAuthorTypeForResponse, None]
+    body: Union[str, None]
+    created_at: Union[str, None]
+    updated_at: Union[str, None]
+    discussion_url: NotRequired[str]
+    draft: bool
+    html_url: str
+    id: int
+    immutable: bool
+    name: Union[str, None]
+    node_id: str
+    prerelease: bool
+    published_at: Union[str, None]
+    reactions: NotRequired[WebhooksReleasePropReactionsTypeForResponse]
+    tag_name: str
+    tarball_url: Union[str, None]
+    target_commitish: str
+    upload_url: str
+    url: str
+    zipball_url: Union[str, None]
+
+
+class WebhooksReleasePropAuthorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksReleasePropAuthorTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksReleasePropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhooksReleasePropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhooksReleasePropAssetsItemsType(TypedDict):
+    """Release Asset
+
+    Data related to a release.
+    """
+
+    browser_download_url: str
+    content_type: str
+    created_at: _dt.datetime
+    download_count: int
+    id: int
+    label: Union[str, None]
     name: str
     node_id: str
+    size: int
+    digest: Union[str, None]
+    state: Literal["uploaded"]
+    updated_at: _dt.datetime
+    uploader: NotRequired[Union[WebhooksReleasePropAssetsItemsPropUploaderType, None]]
+    url: str
+
+
+class WebhooksReleasePropAssetsItemsTypeForResponse(TypedDict):
+    """Release Asset
+
+    Data related to a release.
+    """
+
+    browser_download_url: str
+    content_type: str
+    created_at: str
+    download_count: int
+    id: int
+    label: Union[str, None]
+    name: str
+    node_id: str
+    size: int
+    digest: Union[str, None]
+    state: Literal["uploaded"]
+    updated_at: str
+    uploader: NotRequired[
+        Union[WebhooksReleasePropAssetsItemsPropUploaderTypeForResponse, None]
+    ]
+    url: str
+
+
+class WebhooksReleasePropAssetsItemsPropUploaderType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhooksReleasePropAssetsItemsPropUploaderTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksSponsorshipPropMaintainerType",
-    "WebhooksSponsorshipPropMaintainerTypeForResponse",
-    "WebhooksSponsorshipPropSponsorType",
-    "WebhooksSponsorshipPropSponsorTypeForResponse",
-    "WebhooksSponsorshipPropSponsorableType",
-    "WebhooksSponsorshipPropSponsorableTypeForResponse",
-    "WebhooksSponsorshipPropTierType",
-    "WebhooksSponsorshipPropTierTypeForResponse",
-    "WebhooksSponsorshipType",
-    "WebhooksSponsorshipTypeForResponse",
+    "WebhooksReleasePropAssetsItemsPropUploaderType",
+    "WebhooksReleasePropAssetsItemsPropUploaderTypeForResponse",
+    "WebhooksReleasePropAssetsItemsType",
+    "WebhooksReleasePropAssetsItemsTypeForResponse",
+    "WebhooksReleasePropAuthorType",
+    "WebhooksReleasePropAuthorTypeForResponse",
+    "WebhooksReleasePropReactionsType",
+    "WebhooksReleasePropReactionsTypeForResponse",
+    "WebhooksReleaseType",
+    "WebhooksReleaseTypeForResponse",
 )

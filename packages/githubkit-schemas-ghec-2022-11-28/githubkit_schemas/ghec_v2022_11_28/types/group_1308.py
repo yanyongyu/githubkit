@@ -9,57 +9,125 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
+class OrgsOrgPrivateRegistriesSecretNamePatchBodyType(TypedDict):
+    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
 
-    ref: str
-    inputs: NotRequired[
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
+    registry_type: NotRequired[
+        Literal[
+            "maven_repository",
+            "nuget_feed",
+            "goproxy_server",
+            "npm_registry",
+            "rubygems_server",
+            "cargo_registry",
+            "composer_repository",
+            "docker_registry",
+            "git_source",
+            "helm_registry",
+            "hex_organization",
+            "hex_repository",
+            "pub_repository",
+            "python_index",
+            "terraform_registry",
+        ]
     ]
-    return_run_details: NotRequired[bool]
-
-
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
-
-    ref: str
-    inputs: NotRequired[
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse
+    url: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: NotRequired[Literal["all", "private", "selected"]]
+    selected_repository_ids: NotRequired[list[int]]
+    auth_type: NotRequired[
+        Literal[
+            "token",
+            "username_password",
+            "oidc_azure",
+            "oidc_aws",
+            "oidc_jfrog",
+            "oidc_cloudsmith",
+            "oidc_gcp",
+        ]
     ]
-    return_run_details: NotRequired[bool]
+    tenant_id: NotRequired[str]
+    client_id: NotRequired[str]
+    aws_region: NotRequired[str]
+    account_id: NotRequired[str]
+    role_name: NotRequired[str]
+    domain: NotRequired[str]
+    domain_owner: NotRequired[str]
+    jfrog_oidc_provider_name: NotRequired[str]
+    audience: NotRequired[str]
+    identity_mapping_name: NotRequired[str]
+    namespace: NotRequired[str]
+    service_slug: NotRequired[str]
+    api_host: NotRequired[str]
+    workload_identity_provider: NotRequired[str]
+    service_account: NotRequired[str]
 
 
-ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType: TypeAlias = (
-    dict[str, Any]
-)
-"""ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+class OrgsOrgPrivateRegistriesSecretNamePatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
 
-Input keys and values configured in the workflow file. The maximum number of
-properties is 25. Any default properties configured in the workflow file will be
-used when `inputs` are omitted.
-"""
-
-
-ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
-
-Input keys and values configured in the workflow file. The maximum number of
-properties is 25. Any default properties configured in the workflow file will be
-used when `inputs` are omitted.
-"""
+    registry_type: NotRequired[
+        Literal[
+            "maven_repository",
+            "nuget_feed",
+            "goproxy_server",
+            "npm_registry",
+            "rubygems_server",
+            "cargo_registry",
+            "composer_repository",
+            "docker_registry",
+            "git_source",
+            "helm_registry",
+            "hex_organization",
+            "hex_repository",
+            "pub_repository",
+            "python_index",
+            "terraform_registry",
+        ]
+    ]
+    url: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: NotRequired[Literal["all", "private", "selected"]]
+    selected_repository_ids: NotRequired[list[int]]
+    auth_type: NotRequired[
+        Literal[
+            "token",
+            "username_password",
+            "oidc_azure",
+            "oidc_aws",
+            "oidc_jfrog",
+            "oidc_cloudsmith",
+            "oidc_gcp",
+        ]
+    ]
+    tenant_id: NotRequired[str]
+    client_id: NotRequired[str]
+    aws_region: NotRequired[str]
+    account_id: NotRequired[str]
+    role_name: NotRequired[str]
+    domain: NotRequired[str]
+    domain_owner: NotRequired[str]
+    jfrog_oidc_provider_name: NotRequired[str]
+    audience: NotRequired[str]
+    identity_mapping_name: NotRequired[str]
+    namespace: NotRequired[str]
+    service_slug: NotRequired[str]
+    api_host: NotRequired[str]
+    workload_identity_provider: NotRequired[str]
+    service_account: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyTypeForResponse",
+    "OrgsOrgPrivateRegistriesSecretNamePatchBodyType",
+    "OrgsOrgPrivateRegistriesSecretNamePatchBodyTypeForResponse",
 )

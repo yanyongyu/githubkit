@@ -9,51 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0536 import MetaType, MetaTypeForResponse
 
-class UserRoleItemsType(TypedDict):
-    """UserRoleItems"""
 
-    display: NotRequired[str]
-    type: NotRequired[str]
-    value: Literal[
-        "user",
-        "27d9891d-2c17-4f45-a262-781a0e55c80a",
-        "guest_collaborator",
-        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
-        "enterprise_owner",
-        "981df190-8801-4618-a08a-d91f6206c954",
-        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
-        "billing_manager",
-        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
-        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
+class ScimEnterpriseGroupResponseType(TypedDict):
+    """ScimEnterpriseGroupResponse"""
+
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
     ]
-    primary: NotRequired[bool]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[ScimEnterpriseGroupResponseMergedMembersType]]
+    id: NotRequired[str]
+    meta: NotRequired[MetaType]
 
 
-class UserRoleItemsTypeForResponse(TypedDict):
-    """UserRoleItems"""
+class ScimEnterpriseGroupResponseTypeForResponse(TypedDict):
+    """ScimEnterpriseGroupResponse"""
 
-    display: NotRequired[str]
-    type: NotRequired[str]
-    value: Literal[
-        "user",
-        "27d9891d-2c17-4f45-a262-781a0e55c80a",
-        "guest_collaborator",
-        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
-        "enterprise_owner",
-        "981df190-8801-4618-a08a-d91f6206c954",
-        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
-        "billing_manager",
-        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
-        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
     ]
-    primary: NotRequired[bool]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[ScimEnterpriseGroupResponseMergedMembersTypeForResponse]]
+    id: NotRequired[str]
+    meta: NotRequired[MetaTypeForResponse]
+
+
+class ScimEnterpriseGroupResponseMergedMembersType(TypedDict):
+    """ScimEnterpriseGroupResponseMergedMembers"""
+
+    value: str
+    ref: str
+    display: NotRequired[str]
+
+
+class ScimEnterpriseGroupResponseMergedMembersTypeForResponse(TypedDict):
+    """ScimEnterpriseGroupResponseMergedMembers"""
+
+    value: str
+    ref: str
+    display: NotRequired[str]
+
+
+class ScimEnterpriseGroupListType(TypedDict):
+    """ScimEnterpriseGroupList"""
+
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: list[ScimEnterpriseGroupResponseType]
+    start_index: int
+    items_per_page: int
+
+
+class ScimEnterpriseGroupListTypeForResponse(TypedDict):
+    """ScimEnterpriseGroupList"""
+
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: list[ScimEnterpriseGroupResponseTypeForResponse]
+    start_index: int
+    items_per_page: int
 
 
 __all__ = (
-    "UserRoleItemsType",
-    "UserRoleItemsTypeForResponse",
+    "ScimEnterpriseGroupListType",
+    "ScimEnterpriseGroupListTypeForResponse",
+    "ScimEnterpriseGroupResponseMergedMembersType",
+    "ScimEnterpriseGroupResponseMergedMembersTypeForResponse",
+    "ScimEnterpriseGroupResponseType",
+    "ScimEnterpriseGroupResponseTypeForResponse",
 )

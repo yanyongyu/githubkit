@@ -9,27 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    name: NotRequired[str]
+    value: NotRequired[str]
 
 
-class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    name: NotRequired[str]
+    value: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType",
-    "ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyTypeForResponse",
 )

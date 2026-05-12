@@ -12,27 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoForksPostBody(GitHubModel):
-    """ReposOwnerRepoForksPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
 
-    organization: Missing[str] = Field(
-        default=UNSET,
-        description="Optional parameter to specify the organization name if forking into an organization.",
-    )
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="When forking from an existing repository, a new name for the fork.",
-    )
-    default_branch_only: Missing[bool] = Field(
-        default=UNSET,
-        description="When forking from an existing repository, fork with only the default branch.",
-    )
+    Examples:
+        {'teams': ['my-team']}
+    """
+
+    teams: list[str] = Field(description="The slug values for teams")
 
 
-model_rebuild(ReposOwnerRepoForksPostBody)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0)
 
-__all__ = ("ReposOwnerRepoForksPostBody",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0",)

@@ -18,39 +18,54 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnerGroupsPostBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsPostBody"""
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    name: str = Field(description="Name of the runner group.")
-    visibility: Missing[Literal["selected", "all", "private"]] = Field(
+    budget_amount: Missing[int] = Field(
         default=UNSET,
-        description="Visibility of a runner group. You can select all repositories, select individual repositories, or limit access to private repositories.",
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    prevent_further_usage: Missing[bool] = Field(
         default=UNSET,
-        description="List of repository IDs that can access the runner group.",
+        description="Whether to prevent additional spending once the budget is exceeded",
     )
-    runners: Missing[list[int]] = Field(
-        default=UNSET, description="List of runner IDs to add to the runner group."
+    budget_alerting: Missing[
+        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+    ] = Field(default=UNSET)
+    budget_scope: Missing[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ] = Field(default=UNSET, description="The scope of the budget")
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
     )
-    allows_public_repositories: Missing[bool] = Field(
+    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
+        default=UNSET, description="The type of pricing for the budget"
+    )
+    budget_product_sku: Missing[str] = Field(
         default=UNSET,
-        description="Whether the runner group can be used by `public` repositories.",
-    )
-    restricted_to_workflows: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-    )
-    selected_workflows: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
-    )
-    network_configuration_id: Missing[str] = Field(
-        default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
+        description="A single product or SKU that will be covered in the budget",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsPostBody)
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
 
-__all__ = ("OrgsOrgActionsRunnerGroupsPostBody",)
+    will_alert: Missing[bool] = Field(
+        default=UNSET, description="Whether alerts are enabled for this budget"
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET, description="Array of user login names who will receive alerts"
+    )
+
+
+model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+)
+
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
+)

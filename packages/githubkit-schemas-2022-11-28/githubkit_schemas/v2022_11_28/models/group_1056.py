@@ -18,18 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotCodingAgentPermissionsGetResponse200(GitHubModel):
-    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
+class OrgsOrgAgentsVariablesPostBody(GitHubModel):
+    """OrgsOrgAgentsVariablesPostBody"""
 
-    enabled_repositories: Literal["all", "selected", "none"] = Field(
-        description="The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`."
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable."
     )
-    selected_repositories_url: Missing[str] = Field(
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="The URL for the selected repositories endpoint. Only present when `enabled_repositories` is `selected`.",
+        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
     )
 
 
-model_rebuild(OrgsOrgCopilotCodingAgentPermissionsGetResponse200)
+model_rebuild(OrgsOrgAgentsVariablesPostBody)
 
-__all__ = ("OrgsOrgCopilotCodingAgentPermissionsGetResponse200",)
+__all__ = ("OrgsOrgAgentsVariablesPostBody",)

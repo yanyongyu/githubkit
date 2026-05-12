@@ -13,19 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
-from .group_0107 import OrganizationCustomProperty
 
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
 
-class EnterprisesEnterpriseOrgPropertiesSchemaPatchBody(GitHubModel):
-    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
-
-    properties: list[OrganizationCustomProperty] = Field(
+    labels: list[str] = Field(
         max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The array of organization custom properties to create or update.",
+        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseOrgPropertiesSchemaPatchBody)
+model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody)
 
-__all__ = ("EnterprisesEnterpriseOrgPropertiesSchemaPatchBody",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody",)

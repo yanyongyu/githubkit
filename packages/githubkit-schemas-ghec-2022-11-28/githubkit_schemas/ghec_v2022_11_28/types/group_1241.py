@@ -9,23 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_1240 import (
+    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
+    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse,
+)
 
-class OrgsOrgMembershipsUsernamePutBodyType(TypedDict):
-    """OrgsOrgMembershipsUsernamePutBody"""
 
-    role: NotRequired[Literal["admin", "member"]]
+class OrgsOrgCampaignsPostBodyOneof0Type(TypedDict):
+    """OrgsOrgCampaignsPostBodyOneof0"""
+
+    name: str
+    description: str
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: _dt.datetime
+    contact_link: NotRequired[Union[str, None]]
+    code_scanning_alerts: Union[
+        list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None
+    ]
+    generate_issues: NotRequired[bool]
 
 
-class OrgsOrgMembershipsUsernamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgMembershipsUsernamePutBody"""
+class OrgsOrgCampaignsPostBodyOneof0TypeForResponse(TypedDict):
+    """OrgsOrgCampaignsPostBodyOneof0"""
 
-    role: NotRequired[Literal["admin", "member"]]
+    name: str
+    description: str
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: str
+    contact_link: NotRequired[Union[str, None]]
+    code_scanning_alerts: Union[
+        list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse], None
+    ]
+    generate_issues: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgMembershipsUsernamePutBodyType",
-    "OrgsOrgMembershipsUsernamePutBodyTypeForResponse",
+    "OrgsOrgCampaignsPostBodyOneof0Type",
+    "OrgsOrgCampaignsPostBodyOneof0TypeForResponse",
 )

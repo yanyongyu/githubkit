@@ -9,29 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
+    name: str
+    visibility: NotRequired[Literal["selected", "all", "private"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[Union[str, None]]
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
+    name: str
+    visibility: NotRequired[Literal["selected", "all", "private"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse",
 )

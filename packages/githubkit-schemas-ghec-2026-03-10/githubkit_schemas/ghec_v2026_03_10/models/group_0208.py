@@ -59,7 +59,9 @@ class IssueComment(GitHubModel):
         title="author_association",
         description="How the author is associated with the repository.",
     )
-    performed_via_github_app: Missing[Union[None, Integration]] = Field(default=UNSET)
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
     reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
     pin: Missing[Union[None, PinnedIssueComment]] = Field(default=UNSET)
 

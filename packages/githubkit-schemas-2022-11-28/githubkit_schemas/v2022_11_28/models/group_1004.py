@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
@@ -18,21 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsVariablesNamePatchBody(GitHubModel):
-    """OrgsOrgActionsVariablesNamePatchBody"""
+class NotificationsPutBody(GitHubModel):
+    """NotificationsPutBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
-    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
-    visibility: Missing[Literal["all", "private", "selected"]] = Field(
+    last_read_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.",
+        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
     )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
+    read: Missing[bool] = Field(
+        default=UNSET, description="Whether the notification has been read."
     )
 
 
-model_rebuild(OrgsOrgActionsVariablesNamePatchBody)
+model_rebuild(NotificationsPutBody)
 
-__all__ = ("OrgsOrgActionsVariablesNamePatchBody",)
+__all__ = ("NotificationsPutBody",)

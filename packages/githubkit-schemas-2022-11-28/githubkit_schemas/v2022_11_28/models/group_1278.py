@@ -15,18 +15,35 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0011 import WebhookConfig
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
 
-    reviewers: Missing[list[str]] = Field(
-        default=UNSET, description="An array of user `login`s that will be requested."
+class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
+
+    config: Missing[WebhookConfig] = Field(
+        default=UNSET,
+        title="Webhook Configuration",
+        description="Configuration object of the webhook",
     )
-    team_reviewers: list[str] = Field(
-        description="An array of team `slug`s that will be requested."
+    events: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.",
+    )
+    add_events: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Determines a list of events to be added to the list of events that the Hook triggers for.",
+    )
+    remove_events: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Determines a list of events to be removed from the list of events that the Hook triggers for.",
+    )
+    active: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1)
+model_rebuild(ReposOwnerRepoHooksHookIdPatchBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1",)
+__all__ = ("ReposOwnerRepoHooksHookIdPatchBody",)

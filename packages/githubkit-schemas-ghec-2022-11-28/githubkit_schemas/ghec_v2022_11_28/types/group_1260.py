@@ -13,27 +13,107 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyType(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: NotRequired[int]
-    owner: str
-    repo: str
-    number: int
+    name: NotRequired[str]
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
+    resources_attributes: NotRequired[
+        list[OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType]
+    ]
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: NotRequired[int]
-    owner: str
-    repo: str
-    number: int
+    name: NotRequired[str]
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
+    resources_attributes: NotRequired[
+        list[
+            OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse
+        ]
+    ]
+
+
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType
+    ]
+
+
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
+    ]
+
+
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
+
+
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type",
-    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyType",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyTypeForResponse",
 )

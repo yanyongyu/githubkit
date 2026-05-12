@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
+class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType(TypedDict):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
 
-    labels: list[str]
+    usernames: list[str]
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
+class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
 
-    labels: list[str]
+    usernames: list[str]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType",
-    "OrgsOrgActionsRunnersRunnerIdLabelsPutBodyTypeForResponse",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyTypeForResponse",
 )

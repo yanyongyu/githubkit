@@ -13,15 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200(GitHubModel):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
-
-    enabled: bool = Field(
-        description="Whether or not private vulnerability reporting is enabled for the repository."
-    )
+from .group_0272 import ActionsSecret
 
 
-model_rebuild(ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200)
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
 
-__all__ = ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",)
+    total_count: int = Field()
+    secrets: list[ActionsSecret] = Field()
+
+
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200)
+
+__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200",)

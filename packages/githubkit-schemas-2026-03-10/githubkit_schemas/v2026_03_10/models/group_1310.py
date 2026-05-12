@@ -9,20 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0090 import MinimalRepository
-
-
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int = Field()
-    repositories: list[MinimalRepository] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(UserCodespacesSecretsSecretNameRepositoriesGetResponse200)
+class ReposOwnerRepoMilestonesPostBody(GitHubModel):
+    """ReposOwnerRepoMilestonesPostBody"""
 
-__all__ = ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200",)
+    title: str = Field(description="The title of the milestone.")
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET,
+        description="The state of the milestone. Either `open` or `closed`.",
+    )
+    description: Missing[str] = Field(
+        default=UNSET, description="A description of the milestone."
+    )
+    due_on: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+
+
+model_rebuild(ReposOwnerRepoMilestonesPostBody)
+
+__all__ = ("ReposOwnerRepoMilestonesPostBody",)

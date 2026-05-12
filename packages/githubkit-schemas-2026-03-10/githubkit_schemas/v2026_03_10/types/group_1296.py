@@ -9,29 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoStatusesShaPostBodyType(TypedDict):
-    """ReposOwnerRepoStatusesShaPostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
 
-    state: Literal["error", "failure", "pending", "success"]
-    target_url: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    context: NotRequired[str]
+    labels: NotRequired[
+        list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
+    ]
 
 
-class ReposOwnerRepoStatusesShaPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoStatusesShaPostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2TypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
 
-    state: Literal["error", "failure", "pending", "success"]
-    target_url: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    context: NotRequired[str]
+    labels: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
+
+    name: str
+
+
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
+
+    name: str
 
 
 __all__ = (
-    "ReposOwnerRepoStatusesShaPostBodyType",
-    "ReposOwnerRepoStatusesShaPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2TypeForResponse",
 )

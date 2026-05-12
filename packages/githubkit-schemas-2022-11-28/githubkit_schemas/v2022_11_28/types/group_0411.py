@@ -9,38 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0170 import LinkType, LinkTypeForResponse
-
-
-class PullRequestPropLinksType(TypedDict):
-    """PullRequestPropLinks"""
-
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestPropLinksTypeForResponse(TypedDict):
-    """PullRequestPropLinks"""
+class PagesDeploymentStatusType(TypedDict):
+    """GitHub Pages deployment status"""
 
-    comments: LinkTypeForResponse
-    commits: LinkTypeForResponse
-    statuses: LinkTypeForResponse
-    html: LinkTypeForResponse
-    issue: LinkTypeForResponse
-    review_comments: LinkTypeForResponse
-    review_comment: LinkTypeForResponse
-    self_: LinkTypeForResponse
+    status: NotRequired[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+            "deployment_queued",
+        ]
+    ]
+
+
+class PagesDeploymentStatusTypeForResponse(TypedDict):
+    """GitHub Pages deployment status"""
+
+    status: NotRequired[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+            "deployment_queued",
+        ]
+    ]
 
 
 __all__ = (
-    "PullRequestPropLinksType",
-    "PullRequestPropLinksTypeForResponse",
+    "PagesDeploymentStatusType",
+    "PagesDeploymentStatusTypeForResponse",
 )

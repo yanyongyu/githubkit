@@ -9,24 +9,121 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsVariablesNamePatchBodyType(TypedDict):
-    """ReposOwnerRepoActionsVariablesNamePatchBody"""
+class OrgsOrgPrivateRegistriesPostBodyType(TypedDict):
+    """OrgsOrgPrivateRegistriesPostBody"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ]
+    url: str
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
+    auth_type: NotRequired[
+        Literal[
+            "token",
+            "username_password",
+            "oidc_azure",
+            "oidc_aws",
+            "oidc_jfrog",
+            "oidc_cloudsmith",
+            "oidc_gcp",
+        ]
+    ]
+    tenant_id: NotRequired[str]
+    client_id: NotRequired[str]
+    aws_region: NotRequired[str]
+    account_id: NotRequired[str]
+    role_name: NotRequired[str]
+    domain: NotRequired[str]
+    domain_owner: NotRequired[str]
+    jfrog_oidc_provider_name: NotRequired[str]
+    audience: NotRequired[str]
+    identity_mapping_name: NotRequired[str]
+    namespace: NotRequired[str]
+    service_slug: NotRequired[str]
+    api_host: NotRequired[str]
+    workload_identity_provider: NotRequired[str]
+    service_account: NotRequired[str]
 
 
-class ReposOwnerRepoActionsVariablesNamePatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsVariablesNamePatchBody"""
+class OrgsOrgPrivateRegistriesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesPostBody"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ]
+    url: str
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
+    auth_type: NotRequired[
+        Literal[
+            "token",
+            "username_password",
+            "oidc_azure",
+            "oidc_aws",
+            "oidc_jfrog",
+            "oidc_cloudsmith",
+            "oidc_gcp",
+        ]
+    ]
+    tenant_id: NotRequired[str]
+    client_id: NotRequired[str]
+    aws_region: NotRequired[str]
+    account_id: NotRequired[str]
+    role_name: NotRequired[str]
+    domain: NotRequired[str]
+    domain_owner: NotRequired[str]
+    jfrog_oidc_provider_name: NotRequired[str]
+    audience: NotRequired[str]
+    identity_mapping_name: NotRequired[str]
+    namespace: NotRequired[str]
+    service_slug: NotRequired[str]
+    api_host: NotRequired[str]
+    workload_identity_provider: NotRequired[str]
+    service_account: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsVariablesNamePatchBodyType",
-    "ReposOwnerRepoActionsVariablesNamePatchBodyTypeForResponse",
+    "OrgsOrgPrivateRegistriesPostBodyType",
+    "OrgsOrgPrivateRegistriesPostBodyTypeForResponse",
 )

@@ -9,29 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0261 import (
+    CopilotSpaceCollaboratorAnyof0Type,
+    CopilotSpaceCollaboratorAnyof0TypeForResponse,
+    CopilotSpaceCollaboratorAnyof1Type,
+    CopilotSpaceCollaboratorAnyof1TypeForResponse,
+)
 
 
-class OrgsOrgProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    collaborators: list[
+        Union[CopilotSpaceCollaboratorAnyof0Type, CopilotSpaceCollaboratorAnyof1Type]
+    ]
 
 
-class OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    collaborators: list[
+        Union[
+            CopilotSpaceCollaboratorAnyof0TypeForResponse,
+            CopilotSpaceCollaboratorAnyof1TypeForResponse,
+        ]
+    ]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyType",
-    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse",
 )

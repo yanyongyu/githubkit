@@ -9,35 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
-    TypedDict
-):
-    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
 
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int
 
 
-class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
 
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int
 
 
 __all__ = (
-    "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
-    "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse",
 )

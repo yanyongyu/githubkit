@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,26 +18,49 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GistsGistIdGetResponse403(GitHubModel):
-    """GistsGistIdGetResponse403"""
+class AgentsTasksGetResponse401(GitHubModel):
+    """AgentsTasksGetResponse401
 
-    block: Missing[GistsGistIdGetResponse403PropBlock] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[list[AgentsTasksGetResponse401PropErrorsItems]] = Field(
+        default=UNSET,
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-class GistsGistIdGetResponse403PropBlock(GitHubModel):
-    """GistsGistIdGetResponse403PropBlock"""
+class AgentsTasksGetResponse401PropErrorsItems(GitHubModel):
+    """AgentsTasksGetResponse401PropErrorsItems
 
-    reason: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    html_url: Missing[Union[str, None]] = Field(default=UNSET)
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
+    )
 
 
-model_rebuild(GistsGistIdGetResponse403)
-model_rebuild(GistsGistIdGetResponse403PropBlock)
+model_rebuild(AgentsTasksGetResponse401)
+model_rebuild(AgentsTasksGetResponse401PropErrorsItems)
 
 __all__ = (
-    "GistsGistIdGetResponse403",
-    "GistsGistIdGetResponse403PropBlock",
+    "AgentsTasksGetResponse401",
+    "AgentsTasksGetResponse401PropErrorsItems",
 )

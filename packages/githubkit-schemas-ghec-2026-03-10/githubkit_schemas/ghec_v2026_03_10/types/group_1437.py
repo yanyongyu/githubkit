@@ -9,36 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPagesDeploymentsPostBodyType(TypedDict):
-    """ReposOwnerRepoPagesDeploymentsPostBody
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
 
-    The object used to create GitHub Pages deployment
+    total_count: int
+    branch_policies: list[DeploymentBranchPolicyType]
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+
+    total_count: int
+    branch_policies: list[DeploymentBranchPolicyTypeForResponse]
+
+
+class DeploymentBranchPolicyType(TypedDict):
+    """Deployment branch policy
+
+    Details of a deployment branch or tag policy.
     """
 
-    artifact_id: NotRequired[int]
-    artifact_url: NotRequired[str]
-    environment: NotRequired[str]
-    pages_build_version: str
-    oidc_token: str
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[Literal["branch", "tag"]]
 
 
-class ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesDeploymentsPostBody
+class DeploymentBranchPolicyTypeForResponse(TypedDict):
+    """Deployment branch policy
 
-    The object used to create GitHub Pages deployment
+    Details of a deployment branch or tag policy.
     """
 
-    artifact_id: NotRequired[int]
-    artifact_url: NotRequired[str]
-    environment: NotRequired[str]
-    pages_build_version: str
-    oidc_token: str
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[Literal["branch", "tag"]]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesDeploymentsPostBodyType",
-    "ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse",
+    "DeploymentBranchPolicyType",
+    "DeploymentBranchPolicyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse",
 )

@@ -12,23 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
+class ReposOwnerRepoAutolinksPostBodyType(TypedDict):
+    """ReposOwnerRepoAutolinksPostBody"""
 
-    dismissal_review_id: NotRequired[int]
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: NotRequired[bool]
 
 
-class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
+class ReposOwnerRepoAutolinksPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoAutolinksPostBody"""
 
-    dismissal_review_id: NotRequired[int]
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type",
-    "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse",
+    "ReposOwnerRepoAutolinksPostBodyType",
+    "ReposOwnerRepoAutolinksPostBodyTypeForResponse",
 )

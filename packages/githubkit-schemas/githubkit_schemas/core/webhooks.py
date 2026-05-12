@@ -13,14 +13,18 @@ from typing import TYPE_CHECKING, Any, ClassVar, Literal, overload
 from . import LATEST_VERSION, VERSION_TYPE, VERSIONS
 
 if TYPE_CHECKING:
-    from .ghec_v2022_11_28.webhooks import (
+    from githubkit_schemas.ghec_v2022_11_28.webhooks import (
         WebhookNamespace as GhecV20221128WebhookNamespace,
     )
-    from .ghec_v2026_03_10.webhooks import (
+    from githubkit_schemas.ghec_v2026_03_10.webhooks import (
         WebhookNamespace as GhecV20260310WebhookNamespace,
     )
-    from .v2022_11_28.webhooks import WebhookNamespace as V20221128WebhookNamespace
-    from .v2026_03_10.webhooks import WebhookNamespace as V20260310WebhookNamespace
+    from githubkit_schemas.v2022_11_28.webhooks import (
+        WebhookNamespace as V20221128WebhookNamespace,
+    )
+    from githubkit_schemas.v2026_03_10.webhooks import (
+        WebhookNamespace as V20260310WebhookNamespace,
+    )
 
 if TYPE_CHECKING:
 
@@ -66,7 +70,22 @@ class WebhooksVersionSwitcher(_VersionProxy):
     def __call__(self, version: VERSION_TYPE = LATEST_VERSION) -> Any:
         if version in self._cached_namespaces:
             return self._cached_namespaces[version]
-        module = importlib.import_module(f".{VERSIONS[version]}.webhooks", __package__)
+
+        if version not in VERSIONS:
+            raise ValueError(
+                f"Version {version!r} is not a valid version. "
+                f"Valid versions are: {', '.join(VERSIONS.keys())}"
+            )
+
+        try:
+            module = importlib.import_module(
+                f"githubkit_schemas.{VERSIONS[version]}.webhooks"
+            )
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                f"Version {version!r} is not installed. "
+                f"Please install it via 'pip install githubkit-schemas[{version}]'"
+            )
         namespace = module.WebhookNamespace()
         self._cached_namespaces[version] = namespace
         return namespace

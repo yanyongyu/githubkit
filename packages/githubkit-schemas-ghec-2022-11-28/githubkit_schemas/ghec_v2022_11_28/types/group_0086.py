@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -33,6 +33,9 @@ class EnterpriseTeamType(TypedDict):
     members_url: str
     created_at: _dt.datetime
     updated_at: _dt.datetime
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
 class EnterpriseTeamTypeForResponse(TypedDict):
@@ -54,6 +57,9 @@ class EnterpriseTeamTypeForResponse(TypedDict):
     members_url: str
     created_at: str
     updated_at: str
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
 __all__ = (

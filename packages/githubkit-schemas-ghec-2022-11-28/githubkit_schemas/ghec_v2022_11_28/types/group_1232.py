@@ -9,28 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0243 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-
-
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+from .group_0256 import (
+    ArtifactDeploymentRecordType,
+    ArtifactDeploymentRecordTypeForResponse,
+)
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200Type(
     TypedDict
 ):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
+    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    total_count: NotRequired[int]
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
+
+
+class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
+
+    total_count: NotRequired[int]
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",
-    "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200Type",
+    "OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse",
 )
