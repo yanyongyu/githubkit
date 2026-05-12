@@ -1,4 +1,4 @@
-from githubkit_schemas import LATEST_VERSION
+from githubkit_schemas.core import LATEST_VERSION
 
 from githubkit import GitHub
 
