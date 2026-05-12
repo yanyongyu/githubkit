@@ -15,7 +15,7 @@ To use the `code` once, replace `<code>` with the code you get from the callback
 === "Sync"
 
     ```python hl_lines="8"
-    from githubkit.versions.latest.models import PublicUser, PrivateUser
+    from githubkit_schemas.latest.models import PublicUser, PrivateUser
     from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
 
     github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
@@ -36,7 +36,7 @@ To use the `code` once, replace `<code>` with the code you get from the callback
 === "Async"
 
     ```python hl_lines="8"
-    from githubkit.versions.latest.models import PublicUser, PrivateUser
+    from githubkit_schemas.latest.models import PublicUser, PrivateUser
     from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
 
     github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
@@ -61,7 +61,7 @@ If you are developing an OAuth APP or a GitHub APP without user-to-server token 
 === "Sync"
 
     ```python hl_lines="8-11 13-15"
-    from githubkit.versions.latest.models import PublicUser, PrivateUser
+    from githubkit_schemas.latest.models import PublicUser, PrivateUser
     from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
 
     github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
@@ -92,7 +92,7 @@ If you are developing an OAuth APP or a GitHub APP without user-to-server token 
 === "Async"
 
     ```python hl_lines="8-11 13-15"
-    from githubkit.versions.latest.models import PublicUser, PrivateUser
+    from githubkit_schemas.latest.models import PublicUser, PrivateUser
     from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
 
     github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
@@ -127,7 +127,7 @@ If you are developing a GitHub APP with user-to-server token expiration, you nee
 === "Sync"
 
     ```python hl_lines="8-11 13-19"
-    from githubkit.versions.latest.models import PublicUser, PrivateUser
+    from githubkit_schemas.latest.models import PublicUser, PrivateUser
     from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
 
     github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
@@ -163,7 +163,7 @@ If you are developing a GitHub APP with user-to-server token expiration, you nee
 === "Async"
 
     ```python hl_lines="8-11 13-19"
-    from githubkit.versions.latest.models import PublicUser, PrivateUser
+    from githubkit_schemas.latest.models import PublicUser, PrivateUser
     from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
 
     github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))

@@ -10,7 +10,7 @@ This tells the client where to send REST and GraphQL requests rather than the pu
 
 ```python hl_lines="4 7"
 from githubkit import GitHub
-from githubkit.versions.latest.models import PublicUser, PrivateUser
+from githubkit_schemas.latest.models import PublicUser, PrivateUser
 
 github = GitHub("<your_token_here>", base_url="https://example.ghe.com/api/v3/")
 ```

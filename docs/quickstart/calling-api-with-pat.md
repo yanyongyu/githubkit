@@ -14,7 +14,7 @@ Once you have your token, you can initialize the `GitHub` client and start makin
 
     ```python
     from githubkit import GitHub
-    from githubkit.versions.latest.models import PublicUser, PrivateUser
+    from githubkit_schemas.latest.models import PublicUser, PrivateUser
 
     # Initialize the client with your Personal Access Token
     github = GitHub("<your_token_here>")
@@ -31,7 +31,7 @@ Once you have your token, you can initialize the `GitHub` client and start makin
 
     ```python
     from githubkit import GitHub
-    from githubkit.versions.latest.models import PublicUser, PrivateUser
+    from githubkit_schemas.latest.models import PublicUser, PrivateUser
 
     # Initialize the client with your Personal Access Token
     github = GitHub("<your_token_here>")

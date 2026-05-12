@@ -16,7 +16,7 @@ Wrapping your `GitHub` instance in a `with` (sync) or `async with` (async) block
 
     ```python hl_lines="4"
     from githubkit import GitHub, Response
-    from githubkit.versions.latest.models import FullRepository
+    from githubkit_schemas.latest.models import FullRepository
 
     with GitHub("<your_token_here>") as github:
         resp: Response[FullRepository] = github.rest.repos.get(owner="owner", repo="repo")
@@ -27,7 +27,7 @@ Wrapping your `GitHub` instance in a `with` (sync) or `async with` (async) block
 
     ```python hl_lines="4"
     from githubkit import GitHub, Response
-    from githubkit.versions.latest.models import FullRepository
+    from githubkit_schemas.latest.models import FullRepository
 
     async with GitHub("<your_token_here>") as github:
         resp: Response[FullRepository] = await github.rest.repos.async_get(owner="owner", repo="repo")
