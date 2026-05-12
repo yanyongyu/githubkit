@@ -48,7 +48,10 @@ class AliasModuleLoader(SourceFileLoader):
         if self.name in sys.modules:
             return sys.modules[self.name]
 
-        alias_module = importlib.import_module(self.alias_fullname)
+        try:
+            alias_module = importlib.import_module(self.alias_fullname)
+        except ModuleNotFoundError:
+            raise ModuleNotFoundError(f"No module named {self.name!r}")
         module = AliasModule(self.name)
         module.__alias_fullname__ = self.alias_fullname
         module.__alias_module__ = alias_module
