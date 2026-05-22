@@ -1,11 +1,11 @@
 from functools import partial
 
+from githubkit_schemas.core import LATEST_VERSION
+from githubkit_schemas.latest.models import FullRepository, Issue
 import httpx
 import pytest
 
 from githubkit import GitHub
-from githubkit.versions import LATEST_VERSION
-from githubkit.versions.latest.models import FullRepository, Issue
 from tests.utils import get_mock_github
 
 OWNER = "yanyongyu"

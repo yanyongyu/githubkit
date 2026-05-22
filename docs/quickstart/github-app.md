@@ -29,7 +29,7 @@ If your app needs to act on a specific repository, you can find its installation
 
     ```python
     from githubkit import GitHub, AppAuthStrategy
-    from githubkit.versions.latest.models import Installation, IssueComment
+    from githubkit_schemas.latest.models import Installation, IssueComment
 
     app_github = GitHub(
         AppAuthStrategy(
@@ -58,7 +58,7 @@ If your app needs to act on a specific repository, you can find its installation
 
     ```python
     from githubkit import GitHub, AppAuthStrategy
-    from githubkit.versions.latest.models import Installation, IssueComment
+    from githubkit_schemas.latest.models import Installation, IssueComment
 
     app_github = GitHub(
         AppAuthStrategy(
@@ -93,7 +93,7 @@ API requests made by an app on behalf of a user will be attributed to that user.
 
     ```python
     from githubkit import GitHub, AppAuthStrategy
-    from githubkit.versions.latest.models import Installation, IssueComment
+    from githubkit_schemas.latest.models import Installation, IssueComment
 
     app_github = GitHub(
         AppAuthStrategy(
@@ -122,7 +122,7 @@ API requests made by an app on behalf of a user will be attributed to that user.
 
     ```python
     from githubkit import GitHub, AppAuthStrategy
-    from githubkit.versions.latest.models import Installation, IssueComment
+    from githubkit_schemas.latest.models import Installation, IssueComment
 
     app_github = GitHub(
         AppAuthStrategy(

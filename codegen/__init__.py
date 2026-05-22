@@ -205,73 +205,59 @@ def build_latest_version(
     logger.info("Successfully generated latest version!")
 
 
-def build_legacy_rest_models(
-    file: Path, output_module: str, latest_version_module: str, model_names: list[str]
+def build_core(
+    dir: Path, output_module: str, versions: dict[str, str], latest_version: str
 ):
-    logger.info("Start generating legacy rest models...")
-    models_template = env.get_template("latest/models.py.jinja")
-    file.write_text(
-        models_template.render(
-            output_module=output_module,
-            latest_version_module=latest_version_module,
-            model_names=model_names,
-        )
-    )
-    logger.info("Successfully generated legacy rest models!")
-
-
-def build_versions(dir: Path, versions: dict[str, str], latest_version: str):
-    logger.info("Start generating versions...")
+    logger.info("Start generating core...")
 
     # build __init__.py
-    logger.info("Building versions __init__.py...")
-    init_template = env.get_template("versions/__init__.py.jinja")
+    logger.info("Building core __init__.py...")
+    init_template = env.get_template("core/__init__.py.jinja")
     init_path = dir / "__init__.py"
     init_path.write_text(
-        init_template.render(versions=versions, latest_version=latest_version)
+        init_template.render(
+            output_module=output_module,
+            versions=versions,
+            latest_version=latest_version,
+        )
     )
 
     # build rest.py
-    logger.info("Building versions rest.py...")
-    rest_template = env.get_template("versions/rest.py.jinja")
+    logger.info("Building core rest.py...")
+    rest_template = env.get_template("core/rest.py.jinja")
     rest_path = dir / "rest.py"
     rest_path.write_text(
-        rest_template.render(versions=versions, latest_version=latest_version)
+        rest_template.render(
+            output_module=output_module,
+            versions=versions,
+            latest_version=latest_version,
+        )
     )
 
     # build webhooks.py
-    logger.info("Building versions webhooks.py...")
-    webhooks_template = env.get_template("versions/webhooks.py.jinja")
+    logger.info("Building core webhooks.py...")
+    webhooks_template = env.get_template("core/webhooks.py.jinja")
     webhooks_path = dir / "webhooks.py"
     webhooks_path.write_text(
-        webhooks_template.render(versions=versions, latest_version=latest_version)
+        webhooks_template.render(
+            output_module=output_module,
+            versions=versions,
+            latest_version=latest_version,
+        )
     )
 
-    logger.info("Successfully generated versions!")
+    logger.info("Successfully generated core!")
 
 
 def build_lock_file(file: Path, lock_data: tomlkit.TOMLDocument):
     file.write_text(lock_data.as_string())
+    logger.info("Successfully generated lock file!")
 
 
 def build():
     config = load_config()
     logger.info(f"Loaded config: {config!r}")
 
-    # clean output dir
-    if config.output_dir.exists():
-        logger.warning(f"Output dir {config.output_dir} already exists, deleting...")
-        shutil.rmtree(config.output_dir)
-        config.output_dir.mkdir(parents=True, exist_ok=True)
-    # clean legacy rest models
-    if config.legacy_rest_models.exists():
-        logger.warning(
-            f"Legacy rest models {config.legacy_rest_models} "
-            "already exists, deleting..."
-        )
-        config.legacy_rest_models.unlink()
-
-    output_module = ".".join(config.output_dir.parts)
     versions: dict[str, str] = {}
     latest_version: str | None = None
     latest_model_names: list[str] = []
@@ -279,6 +265,16 @@ def build():
 
     for description in config.descriptions:
         logger.info(f"Start getting OpenAPI source for {description.identifier}...")
+
+        version_path = description.output_dir / description.module
+        if version_path.exists():
+            logger.warning(
+                f"Description {description.identifier} "
+                f"output path {version_path} already exists, deleting..."
+            )
+            shutil.rmtree(version_path)
+            version_path.mkdir(parents=True, exist_ok=True)
+
         source = get_source(description.source)
         description._actual_source = str(source.uri.copy_with(fragment=None))
         logger.info(f"Getting schema from {source.uri} succeeded!")
@@ -305,9 +301,6 @@ def build():
             latest_version = description.identifier
             latest_model_names = [model.class_name for model in parsed_data.models]
             latest_event_names = list(parsed_data.webhooks_by_event.keys())
-
-        version_path = config.output_dir / description.module
-        version_path.mkdir(parents=True, exist_ok=True)
 
         # generate __init__.py
         init_template = env.get_template("__init__.py.jinja")
@@ -340,20 +333,24 @@ def build():
     if latest_version is None:
         raise RuntimeError("No latest version found!")
 
-    latest_path = config.output_dir / "latest"
-    latest_path.mkdir(parents=True, exist_ok=True)
+    latest_path = config.schemas_output_dir / "latest"
+    if latest_path.exists():
+        logger.warning(f"Latest version path {latest_path} already exists, deleting...")
+        shutil.rmtree(latest_path)
+        latest_path.mkdir(parents=True, exist_ok=True)
     build_latest_version(
         latest_path,
-        output_module,
+        config.schemas_output_dir.name,
         versions[latest_version],
         latest_model_names,
         latest_event_names,
     )
-    build_versions(config.output_dir, versions, latest_version)
-    build_legacy_rest_models(
-        config.legacy_rest_models,
-        output_module,
-        versions[latest_version],
-        latest_model_names,
-    )
-    build_lock_file(config.output_dir / LOCK_FILE_NAME, config.to_lock())
+
+    core_path = config.schemas_output_dir / "core"
+    if core_path.exists():
+        logger.warning(f"Schema core path {core_path} already exists, deleting...")
+        shutil.rmtree(core_path)
+        core_path.mkdir(parents=True, exist_ok=True)
+    build_core(core_path, config.schemas_output_dir.name, versions, latest_version)
+
+    build_lock_file(config.schemas_output_dir / LOCK_FILE_NAME, config.to_lock())

@@ -1,11 +1,11 @@
 import json
 from pathlib import Path
 
+from githubkit_schemas.latest.models import FullRepository
 import httpx
 import pytest
 
 from githubkit import GitHub
-from githubkit.versions.latest.models import FullRepository
 
 FAKE_RESPONSE = json.loads((Path(__file__).parent / "fake_response.json").read_text())
 

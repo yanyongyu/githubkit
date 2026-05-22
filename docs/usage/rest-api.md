@@ -12,7 +12,7 @@ Calling REST API is simple with githubkit. You just need to create a `GitHub` in
 
     ```python hl_lines="5"
     from githubkit import GitHub, Response
-    from githubkit.versions.latest.models import FullRepository
+    from githubkit_schemas.latest.models import FullRepository
 
     github = GitHub("<your_token_here>")
     resp: Response[FullRepository] = github.rest.repos.get("owner", "repo")
@@ -23,7 +23,7 @@ Calling REST API is simple with githubkit. You just need to create a `GitHub` in
 
     ```python hl_lines="5"
     from githubkit import Response
-    from githubkit.versions.latest.models import FullRepository
+    from githubkit_schemas.latest.models import FullRepository
 
     github = GitHub("<your_token_here>")
     resp: Response[FullRepository] = await github.rest.repos.async_get("owner", "repo")
@@ -36,7 +36,7 @@ If you are calling an API that requires request body parameters, you can pass th
 
     ```python hl_lines="5-10"
     from githubkit import GitHub, Response
-    from githubkit.versions.latest.models import Issue
+    from githubkit_schemas.latest.models import Issue
 
     github = GitHub("<your_token_here>")
     resp: Response[Issue] = github.rest.issues.create(
@@ -52,7 +52,7 @@ If you are calling an API that requires request body parameters, you can pass th
 
     ```python hl_lines="5-10"
     from githubkit import GitHub, Response
-    from githubkit.versions.latest.models import Issue
+    from githubkit_schemas.latest.models import Issue
 
     github = GitHub("<your_token_here>")
     resp: Response[Issue] = await github.rest.issues.async_create(
@@ -74,7 +74,7 @@ Or you can pass the json request body as a dictionary:
 
     ```python hl_lines="8"
     from githubkit import GitHub, Response
-    from githubkit.versions.latest.models import Issue
+    from githubkit_schemas.latest.models import Issue
 
     github = GitHub("<your_token_here>")
     resp: Response[Issue] = github.rest.issues.create(
@@ -89,7 +89,7 @@ Or you can pass the json request body as a dictionary:
 
     ```python hl_lines="8"
     from githubkit import GitHub, Response
-    from githubkit.versions.latest.models import Issue
+    from githubkit_schemas.latest.models import Issue
 
     github = GitHub("<your_token_here>")
     resp: Response[Issue] = await github.rest.issues.async_create(
@@ -186,8 +186,8 @@ As shown above, the response data is parsed and validated by accessing the `resp
 ```python hl_lines="7"
 from typing import Any
 from githubkit import Response
-from githubkit.versions.latest.models import FullRepository
-from githubkit.versions.latest.types import FullRepositoryType
+from githubkit_schemas.latest.models import FullRepository
+from githubkit_schemas.latest.types import FullRepositoryType
 
 resp: Response[FullRepository, FullRepositoryType] = github.rest.repos.get("owner", "repo")
 repo: FullRepositoryType = resp.json()
@@ -200,7 +200,7 @@ repo: FullRepositoryType = resp.json()
     ```python hl_lines="8-9"
     from typing import Any
     from githubkit import Response
-    from githubkit.versions.latest.models import FullRepository
+    from githubkit_schemas.latest.models import FullRepository
 
     resp: Response[FullRepository] = github.rest.repos.get("owner", "repo")
     repo: FullRepository = resp.parsed_data
@@ -216,7 +216,7 @@ repo: FullRepositoryType = resp.json()
     ```python hl_lines="8-11"
     from typing import Any
     from githubkit import Response
-    from githubkit.versions.latest.models import FullRepository
+    from githubkit_schemas.latest.models import FullRepository
 
     resp: Response[FullRepository] = github.rest.repos.get("owner", "repo")
     repo: FullRepository = resp.parsed_data
@@ -269,16 +269,16 @@ github.rest("2022-11-28").repos.get("owner", "repo")
 
 The code above uses the `2022-11-28` version of the GitHub API.
 
-Besides the REST API methods, the versioned models can also be imported from `githubkit.versions.<version>.models` module. For example:
+Besides the REST API methods, the versioned models can also be imported from `githubkit_schemas.<version>.models` module. For example:
 
 ```python
-from githubkit.versions.v2022_11_28.models import FullRepository
+from githubkit_schemas.v2022_11_28.models import FullRepository
 ```
 
 Specially, the `latest` module is always linked to the latest version of GitHub API:
 
 ```python
-from githubkit.versions.latest.models import FullRepository
+from githubkit_schemas.latest.models import FullRepository
 ```
 
 !!! note
@@ -292,7 +292,7 @@ from githubkit.versions.latest.models import FullRepository
 You can also get the latest version name of GitHub API and version-module mapping of GitHub API:
 
 ```python
-from githubkit.versions import LATEST_VERSION, VERSIONS
+from githubkit_schemas import LATEST_VERSION, VERSIONS
 ```
 
 Current supported versions are: (you can also find it in the section `[[descriptions]]` of the `githubkit/versions/versions.lock` file)
@@ -313,7 +313,7 @@ githubkit provides a built-in pagination feature to handle this. You can use the
 === "Sync"
 
     ```python hl_lines="3-5"
-    from githubkit.versions.latest.models import Issue
+    from githubkit_schemas.latest.models import Issue
 
     for issue in github.rest.paginate(
         github.rest.issues.list_for_repo, owner="owner", repo="repo", state="open"
@@ -325,7 +325,7 @@ githubkit provides a built-in pagination feature to handle this. You can use the
 === "Async"
 
     ```python hl_lines="3-5"
-    from githubkit.versions.latest.models import Issue
+    from githubkit_schemas.latest.models import Issue
 
     async for issue in github.rest.paginate(
         github.rest.issues.async_list_for_repo, owner="owner", repo="repo", state="open"
@@ -339,7 +339,7 @@ You can also provide a custom map function to handle complex pagination (such as
 === "Sync"
 
     ```python hl_lines="5"
-    from githubkit.versions.latest.models import Repository
+    from githubkit_schemas.latest.models import Repository
 
     for accessible_repo in github.rest.paginate(
         github.rest.apps.list_installation_repos_for_authenticated_user,
@@ -353,7 +353,7 @@ You can also provide a custom map function to handle complex pagination (such as
 === "Async"
 
     ```python hl_lines="5"
-    from githubkit.versions.latest.models import Repository
+    from githubkit_schemas.latest.models import Repository
 
     async for accessible_repo in github.rest.paginate(
         github.rest.apps.async_list_installation_repos_for_authenticated_user,
@@ -374,7 +374,7 @@ For example, to upload a release asset:
 
     ```python hl_lines="11-18"
     from githubkit import GitHub
-    from githubkit.versions.latest.models import Release, ReleaseAsset
+    from githubkit_schemas.latest.models import Release, ReleaseAsset
 
     github = GitHub()
 
@@ -400,7 +400,7 @@ For example, to upload a release asset:
 
     ```python hl_lines="11-18"
     from githubkit import GitHub
-    from githubkit.versions.latest.models import Release, ReleaseAsset
+    from githubkit_schemas.latest.models import Release, ReleaseAsset
 
     github = GitHub()
 

@@ -1,0 +1,120 @@
+{% from "header.jinja" import header %}
+
+"""{{ header() }}"""
+
+import importlib
+from weakref import WeakKeyDictionary, ref
+from typing import TYPE_CHECKING, Any, Union, Literal, TypeVar, Callable, Optional, Awaitable, overload
+from typing_extensions import ParamSpec
+
+from githubkit.rest.paginator import Paginator
+
+from . import VERSIONS, LATEST_VERSION, VERSION_TYPE
+
+if TYPE_CHECKING:
+    from githubkit import GitHubCore, Response
+    {% for version, module in versions.items() %}
+    from {{ output_module }}.{{ module }}.rest import RestNamespace as {{ pascal_case(module) }}RestNamespace
+    {% endfor %}
+
+
+CP = ParamSpec("CP")
+CT = TypeVar("CT")
+RT = TypeVar("RT")
+
+R = Union[
+    Callable[CP, "Response[RT]"],
+    Callable[CP, Awaitable["Response[RT]"]],
+]
+
+if TYPE_CHECKING:
+
+    class _VersionProxy({{ pascal_case(versions[latest_version]) }}RestNamespace):
+        ...
+
+else:
+    _VersionProxy = object
+
+class RestVersionSwitcher(_VersionProxy):
+    _cached_namespaces: "WeakKeyDictionary[GitHubCore, dict[VERSION_TYPE, Any]]" = WeakKeyDictionary()
+
+    if not TYPE_CHECKING:
+        def __getattr__(self, name: str) -> Any:
+            if name.startswith("_"):
+                raise AttributeError(
+                    f"'{self.__class__.__name__}' object has no attribute '{name}'"
+                )
+            namespace = self()
+            return getattr(namespace, name)
+
+    def __init__(self, github: "GitHubCore"):
+        self._github_ref = ref(github)
+
+    @property
+    def _github(self) -> "GitHubCore":
+        if g := self._github_ref():
+            return g
+        raise RuntimeError(
+            "GitHub client has already been collected. "
+            "Do not use the namespace after the client has been collected."
+        )
+
+    @overload
+    def paginate(
+        self,
+        request: "R[CP, list[RT]]",
+        map_func: None = None,
+        *args: CP.args,
+        **kwargs: CP.kwargs,
+    ) -> "Paginator[RT]": ...
+
+    @overload
+    def paginate(
+        self,
+        request: "R[CP, CT]",
+        map_func: Callable[["Response[CT]"], list[RT]],
+        *args: CP.args,
+        **kwargs: CP.kwargs,
+    ) -> "Paginator[RT]": ...
+
+    def paginate(
+        self,
+        request: "R[CP, CT]",
+        map_func: Optional[Callable[["Response[CT]"], list[RT]]] = None,
+        *args: CP.args,
+        **kwargs: CP.kwargs,
+    ) -> "Paginator[RT]":
+        return Paginator(self, request, map_func, *args, **kwargs)  # type: ignore
+
+    {% for version, module in versions.items() %}
+    @overload
+    def __call__(self, version: Literal["{{ version }}"]) -> "{{ pascal_case(module) }}RestNamespace":
+        ...
+    {% endfor %}
+
+    @overload
+    def __call__(self) -> "{{ pascal_case(versions[latest_version]) }}RestNamespace":
+        ...
+
+    def __call__(self, version: VERSION_TYPE = LATEST_VERSION) -> Any:
+        g = self._github
+        cache = self._cached_namespaces.setdefault(g, {})
+        if version in cache:
+            return cache[version]
+
+        if version not in VERSIONS:
+            raise ValueError(
+                f"Version {version!r} is not a valid version. "
+                f"Valid versions are: {', '.join(VERSIONS.keys())}"
+            )
+
+        try:
+            module = importlib.import_module(f"{{ output_module }}.{VERSIONS[version]}.rest")
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                f"Version {version!r} is not installed. "
+                f"Please install it via 'pip install githubkit-schemas[{version}]'"
+            )
+        namespace = module.RestNamespace(g)
+        cache[version] = namespace
+        return namespace

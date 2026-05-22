@@ -20,9 +20,10 @@ except ImportError:
     jwt = None
 
 if TYPE_CHECKING:
+    from githubkit_schemas.latest.models import InstallationToken
+    from githubkit_schemas.latest.types import AppPermissionsType
+
     from githubkit import GitHubCore, Response
-    from githubkit.versions.latest.models import InstallationToken
-    from githubkit.versions.latest.types import AppPermissionsType
 
 
 @dataclass
@@ -104,7 +105,7 @@ class AppAuth(httpx.Auth):
         return token
 
     def _build_installation_auth_request(self) -> httpx.Request:
-        from githubkit.versions.latest.models import (
+        from githubkit_schemas.latest.models import (
             AppInstallationsInstallationIdAccessTokensPostBody,
         )
 
@@ -142,7 +143,7 @@ class AppAuth(httpx.Auth):
     def _parse_installation_auth_response(
         self, response: httpx.Response
     ) -> "Response[InstallationToken]":
-        from githubkit.versions.latest.models import (
+        from githubkit_schemas.latest.models import (
             BasicError,
             InstallationToken,
             ValidationError,
