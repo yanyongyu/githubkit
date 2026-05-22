@@ -302,6 +302,10 @@ Current supported versions are: (you can also find it in the section `[[descript
 - 2022-11-28
 - ghec-2022-11-28
 
+!!! note "Installing extra schema versions"
+
+    Only the `latest` schema is installed by default. To use a non-default version such as `2022-11-28` or `ghec-2026-03-10`, install the corresponding extra first. See [Install Extra Schema Versions](../installation.md#install-extra-schema-versions) for instructions.
+
 ## REST API Pagination
 
 When a response from the REST API would include many results, GitHub will paginate the results and return a subset of the results. In this case, some APIs provide `page` and `per_page` parameters to control the pagination. See [GitHub Docs - Using pagination in the REST API](https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api) for more information.
