@@ -18,6 +18,7 @@ class Response(Generic[MT, JT]):
     def __init__(self, response: httpx.Response, data_model: type[MT]):
         self._response = response
         self._data_model = data_model
+        self._cached_parsed_data: Optional[MT] = None
 
     def __repr__(self) -> str:
         return f"Response({self._status_reason}, data_model={self._data_model})"
@@ -94,7 +95,11 @@ class Response(Generic[MT, JT]):
 
     @property
     def parsed_data(self) -> MT:
-        return type_validate_json(self._data_model, self.content)
+        if self._cached_parsed_data is None:
+            self._cached_parsed_data = type_validate_json(
+                self._data_model, self.content
+            )
+        return self._cached_parsed_data
 
     @contextmanager
     def _catch_and_close(self):
