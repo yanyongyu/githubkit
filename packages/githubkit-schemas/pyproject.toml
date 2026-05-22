@@ -6,7 +6,7 @@ authors = [{ name = "yanyongyu", email = "yyy@yyydl.top" }]
 license = "MIT"
 readme = "README.md"
 keywords = ["github", "octokit"]
-requires-python = ">=3.9, <4.0"
+requires-python = ">=3.10, <4.0"
 dependencies = ["githubkit >=0.16.0", "githubkit-schemas-2026-03-10 ==26.5.12"]
 
 [project.optional-dependencies]
