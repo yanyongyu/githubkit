@@ -10,8 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0422 import MetadataType, MetadataTypeForResponse
 

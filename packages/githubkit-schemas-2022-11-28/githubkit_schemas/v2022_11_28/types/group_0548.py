@@ -13,68 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0491 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0492 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0493 import (
+from .group_0497 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0498 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0499 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0494 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0497 import (
-    CheckRunWithSimpleCheckSuiteType,
-    CheckRunWithSimpleCheckSuiteTypeForResponse,
-)
+from .group_0500 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0501 import WebhooksRuleType, WebhooksRuleTypeForResponse
 
 
-class WebhookCheckRunRequestedActionType(TypedDict):
-    """Check Run Requested Action Event"""
+class WebhookBranchProtectionRuleDeletedType(TypedDict):
+    """branch protection rule deleted event"""
 
-    action: Literal["requested_action"]
-    check_run: CheckRunWithSimpleCheckSuiteType
-    installation: NotRequired[SimpleInstallationType]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    requested_action: NotRequired[WebhookCheckRunRequestedActionPropRequestedActionType]
+    rule: WebhooksRuleType
     sender: SimpleUserType
 
 
-class WebhookCheckRunRequestedActionTypeForResponse(TypedDict):
-    """Check Run Requested Action Event"""
+class WebhookBranchProtectionRuleDeletedTypeForResponse(TypedDict):
+    """branch protection rule deleted event"""
 
-    action: Literal["requested_action"]
-    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    requested_action: NotRequired[
-        WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse
-    ]
+    rule: WebhooksRuleTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookCheckRunRequestedActionPropRequestedActionType(TypedDict):
-    """WebhookCheckRunRequestedActionPropRequestedAction
-
-    The action requested by the user.
-    """
-
-    identifier: NotRequired[str]
-
-
-class WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse(TypedDict):
-    """WebhookCheckRunRequestedActionPropRequestedAction
-
-    The action requested by the user.
-    """
-
-    identifier: NotRequired[str]
-
-
 __all__ = (
-    "WebhookCheckRunRequestedActionPropRequestedActionType",
-    "WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse",
-    "WebhookCheckRunRequestedActionType",
-    "WebhookCheckRunRequestedActionTypeForResponse",
+    "WebhookBranchProtectionRuleDeletedType",
+    "WebhookBranchProtectionRuleDeletedTypeForResponse",
 )

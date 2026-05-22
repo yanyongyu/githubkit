@@ -208,6 +208,7 @@ class SearchIssuesGetResponse200Type(TypedDict):
                 "no_accessible_repos",
                 "server_error",
                 "only_non_semantic_fields_requested",
+                "service_unavailable",
             ]
         ]
     ]
@@ -230,6 +231,7 @@ class SearchIssuesGetResponse200TypeForResponse(TypedDict):
                 "no_accessible_repos",
                 "server_error",
                 "only_non_semantic_fields_requested",
+                "service_unavailable",
             ]
         ]
     ]

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -54,6 +54,7 @@ if TYPE_CHECKING:
         OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
         OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
         OrgsOrgCopilotContentExclusionPutResponse200,
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200,
     )
     from ..types import (
         CopilotEnterpriseContentExclusionDetailsTypeForResponse,
@@ -99,6 +100,7 @@ if TYPE_CHECKING:
         OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType,
         OrgsOrgCopilotContentExclusionPutBodyType,
         OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse,
     )
 
 
@@ -123,7 +125,7 @@ class CopilotClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
@@ -187,7 +189,7 @@ class CopilotClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
@@ -250,7 +252,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType,
     ) -> Response[
@@ -264,7 +266,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_enterprise_teams: list[str],
     ) -> Response[
@@ -276,7 +278,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType
@@ -345,7 +347,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType,
     ) -> Response[
@@ -359,7 +361,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_enterprise_teams: list[str],
     ) -> Response[
@@ -371,7 +373,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType
@@ -440,7 +442,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType,
     ) -> Response[
@@ -454,7 +456,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_enterprise_teams: list[str],
     ) -> Response[
@@ -466,7 +468,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType
@@ -537,7 +539,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType,
     ) -> Response[
@@ -551,7 +553,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_enterprise_teams: list[str],
     ) -> Response[
@@ -563,7 +565,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType
@@ -634,7 +636,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType,
     ) -> Response[
@@ -648,7 +650,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_usernames: list[str],
     ) -> Response[
@@ -660,7 +662,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType
@@ -730,7 +732,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType,
     ) -> Response[
@@ -744,7 +746,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_usernames: list[str],
     ) -> Response[
@@ -756,7 +758,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType
@@ -826,7 +828,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType,
     ) -> Response[
@@ -840,7 +842,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_usernames: list[str],
     ) -> Response[
@@ -852,7 +854,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType
@@ -922,7 +924,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType,
     ) -> Response[
@@ -936,7 +938,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_usernames: list[str],
     ) -> Response[
@@ -948,7 +950,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType
@@ -1017,7 +1019,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotEnterpriseContentExclusionDetails,
@@ -1069,7 +1071,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotEnterpriseContentExclusionDetails,
@@ -1122,7 +1124,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotContentExclusionPutBodyType,
     ) -> Response[
@@ -1136,7 +1138,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
@@ -1147,7 +1149,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseCopilotContentExclusionPutBodyType] = UNSET,
         **kwargs,
@@ -1221,7 +1223,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotContentExclusionPutBodyType,
     ) -> Response[
@@ -1235,7 +1237,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
@@ -1246,7 +1248,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseCopilotContentExclusionPutBodyType] = UNSET,
         **kwargs,
@@ -1321,7 +1323,7 @@ class CopilotClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseCopilotCustomAgentsGetResponse200,
@@ -1378,7 +1380,7 @@ class CopilotClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseCopilotCustomAgentsGetResponse200,
@@ -1433,7 +1435,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200,
@@ -1483,7 +1485,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200,
@@ -1534,7 +1536,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType,
     ) -> Response[
@@ -1548,7 +1550,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         organization_id: int,
         create_ruleset: Missing[bool] = UNSET,
@@ -1561,7 +1563,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType
@@ -1632,7 +1634,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType,
     ) -> Response[
@@ -1646,7 +1648,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         organization_id: int,
         create_ruleset: Missing[bool] = UNSET,
@@ -1659,7 +1661,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType
@@ -1729,7 +1731,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot/delete-copilot-custom-agents-source-for-enterprise
@@ -1772,7 +1774,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot/delete-copilot-custom-agents-source-for-enterprise
@@ -1819,7 +1821,7 @@ class CopilotClient:
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
@@ -1878,7 +1880,7 @@ class CopilotClient:
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
@@ -1934,7 +1936,7 @@ class CopilotClient:
         enterprise: str,
         *,
         day: _dt.date,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
@@ -1983,7 +1985,7 @@ class CopilotClient:
         enterprise: str,
         *,
         day: _dt.date,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
@@ -2031,7 +2033,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
@@ -2074,7 +2076,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
@@ -2113,12 +2115,110 @@ class CopilotClient:
             },
         )
 
+    def copilot_enterprise_user_teams_one_day_report(
+        self,
+        enterprise: str,
+        *,
+        day: _dt.date,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-enterprise-user-teams-one-day-report
+
+        GET /enterprises/{enterprise}/copilot/metrics/reports/user-teams-1-day
+
+        Use this endpoint to retrieve download links for the Copilot enterprise user-teams report for a specific day. The report provides user-team join data for Copilot across the enterprise, with one entry per user-team pair.
+
+        The report contains user-team membership data for the specified day, enabling consumers to join with the existing enterprise user reports to compute team-level usage metrics. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed.
+
+        Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-enterprise-user-teams-report-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/enterprises/{enterprise}/copilot/metrics/reports/user-teams-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_enterprise_user_teams_one_day_report(
+        self,
+        enterprise: str,
+        *,
+        day: _dt.date,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-enterprise-user-teams-one-day-report
+
+        GET /enterprises/{enterprise}/copilot/metrics/reports/user-teams-1-day
+
+        Use this endpoint to retrieve download links for the Copilot enterprise user-teams report for a specific day. The report provides user-team join data for Copilot across the enterprise, with one entry per user-team pair.
+
+        The report contains user-team membership data for the specified day, enabling consumers to join with the existing enterprise user reports to compute team-level usage metrics. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed.
+
+        Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-enterprise-user-teams-report-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/enterprises/{enterprise}/copilot/metrics/reports/user-teams-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
     def copilot_users_one_day_usage_metrics(
         self,
         enterprise: str,
         *,
         day: _dt.date,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
@@ -2167,7 +2267,7 @@ class CopilotClient:
         enterprise: str,
         *,
         day: _dt.date,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
@@ -2215,7 +2315,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
@@ -2258,7 +2358,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
@@ -2302,7 +2402,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType,
     ) -> Response: ...
@@ -2313,7 +2413,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         policy_state: Literal[
             "enabled_for_all_orgs",
@@ -2327,7 +2427,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType
@@ -2387,7 +2487,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType,
     ) -> Response: ...
@@ -2398,7 +2498,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         policy_state: Literal[
             "enabled_for_all_orgs",
@@ -2412,7 +2512,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType
@@ -2472,7 +2572,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType,
     ) -> Response: ...
@@ -2483,7 +2583,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         organizations: Missing[list[str]] = UNSET,
         custom_properties: Missing[
@@ -2497,7 +2597,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType
@@ -2559,7 +2659,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType,
     ) -> Response: ...
@@ -2570,7 +2670,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         organizations: Missing[list[str]] = UNSET,
         custom_properties: Missing[
@@ -2584,7 +2684,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType
@@ -2646,7 +2746,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType,
     ) -> Response: ...
@@ -2657,7 +2757,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         organizations: Missing[list[str]] = UNSET,
         custom_properties: Missing[
@@ -2671,7 +2771,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType
@@ -2733,7 +2833,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType,
     ) -> Response: ...
@@ -2744,7 +2844,7 @@ class CopilotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         organizations: Missing[list[str]] = UNSET,
         custom_properties: Missing[
@@ -2758,7 +2858,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType
@@ -2820,7 +2920,7 @@ class CopilotClient:
         enterprise: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseMembersUsernameCopilotGetResponse200,
@@ -2872,7 +2972,7 @@ class CopilotClient:
         enterprise: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseMembersUsernameCopilotGetResponse200,
@@ -2928,7 +3028,7 @@ class CopilotClient:
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
@@ -2994,7 +3094,7 @@ class CopilotClient:
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
@@ -3055,7 +3155,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotOrganizationDetails, CopilotOrganizationDetailsTypeForResponse
@@ -3102,7 +3202,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotOrganizationDetails, CopilotOrganizationDetailsTypeForResponse
@@ -3151,7 +3251,7 @@ class CopilotClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotBillingSeatsGetResponse200,
@@ -3207,7 +3307,7 @@ class CopilotClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotBillingSeatsGetResponse200,
@@ -3262,7 +3362,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
     ) -> Response[
@@ -3276,7 +3376,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_teams: list[str],
     ) -> Response[
@@ -3288,7 +3388,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsPostBodyType] = UNSET,
         **kwargs,
@@ -3358,7 +3458,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
     ) -> Response[
@@ -3372,7 +3472,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_teams: list[str],
     ) -> Response[
@@ -3384,7 +3484,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsPostBodyType] = UNSET,
         **kwargs,
@@ -3454,7 +3554,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
     ) -> Response[
@@ -3468,7 +3568,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_teams: list[str],
     ) -> Response[
@@ -3480,7 +3580,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType] = UNSET,
         **kwargs,
@@ -3549,7 +3649,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
     ) -> Response[
@@ -3563,7 +3663,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_teams: list[str],
     ) -> Response[
@@ -3575,7 +3675,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType] = UNSET,
         **kwargs,
@@ -3644,7 +3744,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotBillingSelectedUsersPostBodyType,
     ) -> Response[
@@ -3658,7 +3758,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_usernames: list[str],
     ) -> Response[
@@ -3670,7 +3770,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersPostBodyType] = UNSET,
         **kwargs,
@@ -3740,7 +3840,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotBillingSelectedUsersPostBodyType,
     ) -> Response[
@@ -3754,7 +3854,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_usernames: list[str],
     ) -> Response[
@@ -3766,7 +3866,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersPostBodyType] = UNSET,
         **kwargs,
@@ -3836,7 +3936,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
     ) -> Response[
@@ -3850,7 +3950,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_usernames: list[str],
     ) -> Response[
@@ -3862,7 +3962,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
@@ -3931,7 +4031,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
     ) -> Response[
@@ -3945,7 +4045,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_usernames: list[str],
     ) -> Response[
@@ -3957,7 +4057,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
@@ -4025,7 +4125,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
@@ -4076,7 +4176,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
@@ -4128,7 +4228,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotCodingAgentPermissionsPutBodyType,
     ) -> Response: ...
@@ -4139,7 +4239,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         enabled_repositories: Literal["all", "selected", "none"],
     ) -> Response: ...
@@ -4148,7 +4248,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotCodingAgentPermissionsPutBodyType] = UNSET,
         **kwargs,
@@ -4211,7 +4311,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotCodingAgentPermissionsPutBodyType,
     ) -> Response: ...
@@ -4222,7 +4322,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         enabled_repositories: Literal["all", "selected", "none"],
     ) -> Response: ...
@@ -4231,7 +4331,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotCodingAgentPermissionsPutBodyType] = UNSET,
         **kwargs,
@@ -4295,7 +4395,7 @@ class CopilotClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
@@ -4354,7 +4454,7 @@ class CopilotClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
@@ -4412,7 +4512,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType,
     ) -> Response: ...
@@ -4423,7 +4523,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
@@ -4432,7 +4532,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType
@@ -4497,7 +4597,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType,
     ) -> Response: ...
@@ -4508,7 +4608,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
@@ -4517,7 +4617,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType
@@ -4582,7 +4682,7 @@ class CopilotClient:
         org: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot/enable-copilot-coding-agent-for-repository-in-organization
@@ -4629,7 +4729,7 @@ class CopilotClient:
         org: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot/enable-copilot-coding-agent-for-repository-in-organization
@@ -4676,7 +4776,7 @@ class CopilotClient:
         org: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot/disable-copilot-coding-agent-for-repository-in-organization
@@ -4722,7 +4822,7 @@ class CopilotClient:
         org: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot/disable-copilot-coding-agent-for-repository-in-organization
@@ -4767,7 +4867,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotOrganizationContentExclusionDetails,
@@ -4819,7 +4919,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotOrganizationContentExclusionDetails,
@@ -4872,7 +4972,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotContentExclusionPutBodyType,
     ) -> Response[
@@ -4886,7 +4986,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotContentExclusionPutResponse200,
@@ -4897,7 +4997,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotContentExclusionPutBodyType] = UNSET,
         **kwargs,
@@ -4969,7 +5069,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotContentExclusionPutBodyType,
     ) -> Response[
@@ -4983,7 +5083,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotContentExclusionPutResponse200,
@@ -4994,7 +5094,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotContentExclusionPutBodyType] = UNSET,
         **kwargs,
@@ -5069,7 +5169,7 @@ class CopilotClient:
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
@@ -5131,7 +5231,7 @@ class CopilotClient:
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
@@ -5190,7 +5290,7 @@ class CopilotClient:
         org: str,
         *,
         day: _dt.date,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
@@ -5241,7 +5341,7 @@ class CopilotClient:
         org: str,
         *,
         day: _dt.date,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
@@ -5291,7 +5391,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
@@ -5336,7 +5436,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
@@ -5377,12 +5477,114 @@ class CopilotClient:
             },
         )
 
+    def copilot_organization_user_teams_one_day_report(
+        self,
+        org: str,
+        *,
+        day: _dt.date,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-user-teams-one-day-report
+
+        GET /orgs/{org}/copilot/metrics/reports/user-teams-1-day
+
+        Use this endpoint to retrieve download links for the Copilot organization user-teams report for a specific day. The report provides user-team join data for Copilot across the organization, with one entry per user-team pair.
+
+        The report contains user-team membership data for the specified day, enabling consumers to join with the existing organization user reports to compute team-level usage metrics. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-organization-user-teams-report-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/user-teams-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_organization_user_teams_one_day_report(
+        self,
+        org: str,
+        *,
+        day: _dt.date,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-user-teams-one-day-report
+
+        GET /orgs/{org}/copilot/metrics/reports/user-teams-1-day
+
+        Use this endpoint to retrieve download links for the Copilot organization user-teams report for a specific day. The report provides user-team join data for Copilot across the organization, with one entry per user-team pair.
+
+        The report contains user-team membership data for the specified day, enabling consumers to join with the existing organization user reports to compute team-level usage metrics. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-organization-user-teams-report-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/user-teams-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
     def copilot_organization_users_one_day_usage_metrics(
         self,
         org: str,
         *,
         day: _dt.date,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
@@ -5433,7 +5635,7 @@ class CopilotClient:
         org: str,
         *,
         day: _dt.date,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
@@ -5483,7 +5685,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
@@ -5528,7 +5730,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
@@ -5574,7 +5776,7 @@ class CopilotClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CopilotSeatDetails, CopilotSeatDetailsTypeForResponse]:
         """copilot/get-copilot-seat-details-for-user
@@ -5621,7 +5823,7 @@ class CopilotClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CopilotSeatDetails, CopilotSeatDetailsTypeForResponse]:
         """copilot/get-copilot-seat-details-for-user
@@ -5672,7 +5874,7 @@ class CopilotClient:
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
@@ -5735,7 +5937,7 @@ class CopilotClient:
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
@@ -5786,5 +5988,105 @@ class CopilotClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": BasicError,
+            },
+        )
+
+    def get_copilot_cloud_agent_configuration(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200,
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-copilot-cloud-agent-configuration
+
+        GET /repos/{owner}/{repo}/copilot/cloud-agent/configuration
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets the Copilot cloud agent configuration for a repository, including MCP server
+        configuration, enabled review tools, Actions workflow approval settings, and firewall
+        configuration.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-cloud-agent-management#get-copilot-cloud-agent-configuration-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200,
+        )
+
+        url = f"/repos/{owner}/{repo}/copilot/cloud-agent/configuration"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_copilot_cloud_agent_configuration(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200,
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-copilot-cloud-agent-configuration
+
+        GET /repos/{owner}/{repo}/copilot/cloud-agent/configuration
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets the Copilot cloud agent configuration for a repository, including MCP server
+        configuration, enabled review tools, Actions workflow approval settings, and firewall
+        configuration.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-cloud-agent-management#get-copilot-cloud-agent-configuration-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200,
+        )
+
+        url = f"/repos/{owner}/{repo}/copilot/cloud-agent/configuration"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
             },
         )

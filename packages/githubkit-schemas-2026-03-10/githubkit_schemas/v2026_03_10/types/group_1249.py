@@ -9,76 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoContentsPathDeleteBodyType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBody"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
-    message: str
-    sha: str
-    branch: NotRequired[str]
-    committer: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropCommitterType]
-    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType]
+    total_count: int
+    secrets: list[RepoCodespacesSecretType]
 
 
-class ReposOwnerRepoContentsPathDeleteBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBody"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
-    message: str
-    sha: str
-    branch: NotRequired[str]
-    committer: NotRequired[
-        ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse
-    ]
-    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse]
+    total_count: int
+    secrets: list[RepoCodespacesSecretTypeForResponse]
 
 
-class ReposOwnerRepoContentsPathDeleteBodyPropCommitterType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
+class RepoCodespacesSecretType(TypedDict):
+    """Codespaces Secret
 
-    object containing information about the committer.
+    Set repository secrets for GitHub Codespaces.
     """
 
-    name: NotRequired[str]
-    email: NotRequired[str]
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
+class RepoCodespacesSecretTypeForResponse(TypedDict):
+    """Codespaces Secret
 
-    object containing information about the committer.
+    Set repository secrets for GitHub Codespaces.
     """
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class ReposOwnerRepoContentsPathDeleteBodyPropAuthorType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
-
-    object containing information about the author.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
-
-    object containing information about the author.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
+    name: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
-    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse",
-    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
-    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse",
-    "ReposOwnerRepoContentsPathDeleteBodyType",
-    "ReposOwnerRepoContentsPathDeleteBodyTypeForResponse",
+    "RepoCodespacesSecretType",
+    "RepoCodespacesSecretTypeForResponse",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse",
 )

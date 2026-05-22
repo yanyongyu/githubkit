@@ -12,25 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0"""
 
-    sub_issue_id: int
-    after_id: NotRequired[int]
-    before_id: NotRequired[int]
+    labels: NotRequired[list[str]]
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0TypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0"""
 
-    sub_issue_id: int
-    after_id: NotRequired[int]
-    before_id: NotRequired[int]
+    labels: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType",
-    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0TypeForResponse",
 )

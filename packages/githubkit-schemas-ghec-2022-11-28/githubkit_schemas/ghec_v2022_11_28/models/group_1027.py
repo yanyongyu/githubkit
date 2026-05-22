@@ -30,6 +30,10 @@ class AgentsReposOwnerRepoTasksPostBody(GitHubModel):
     base_ref: Missing[str] = Field(
         default=UNSET, description="Base ref for new branch/PR"
     )
+    head_ref: Missing[str] = Field(
+        default=UNSET,
+        description="Head ref for existing branch/PR. If provided with `base_ref`, the agent looks up open PR context for `head_ref` targeting `base_ref` and commits to `head_ref` instead of creating a new branch.",
+    )
 
 
 model_rebuild(AgentsReposOwnerRepoTasksPostBody)

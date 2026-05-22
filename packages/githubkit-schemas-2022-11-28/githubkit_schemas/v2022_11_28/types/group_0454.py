@@ -10,33 +10,27 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class StargazerType(TypedDict):
-    """Stargazer
+class SecretScanningPushProtectionBypassType(TypedDict):
+    """SecretScanningPushProtectionBypass"""
 
-    Stargazer
-    """
-
-    starred_at: _dt.datetime
-    user: Union[None, SimpleUserType]
+    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
+    expire_at: NotRequired[Union[_dt.datetime, None]]
+    token_type: NotRequired[str]
 
 
-class StargazerTypeForResponse(TypedDict):
-    """Stargazer
+class SecretScanningPushProtectionBypassTypeForResponse(TypedDict):
+    """SecretScanningPushProtectionBypass"""
 
-    Stargazer
-    """
-
-    starred_at: str
-    user: Union[None, SimpleUserTypeForResponse]
+    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
+    expire_at: NotRequired[Union[str, None]]
+    token_type: NotRequired[str]
 
 
 __all__ = (
-    "StargazerType",
-    "StargazerTypeForResponse",
+    "SecretScanningPushProtectionBypassType",
+    "SecretScanningPushProtectionBypassTypeForResponse",
 )

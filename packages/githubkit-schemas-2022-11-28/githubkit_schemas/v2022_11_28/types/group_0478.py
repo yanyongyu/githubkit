@@ -14,171 +14,252 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0134 import CodespaceMachineType, CodespaceMachineTypeForResponse
-from .group_0189 import FullRepositoryType, FullRepositoryTypeForResponse
+from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
+from .group_0472 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
-class CodespaceWithFullRepositoryType(TypedDict):
-    """Codespace
+class RepoSearchResultItemType(TypedDict):
+    """Repo Search Result Item
 
-    A codespace.
+    Repo Search Result Item
     """
 
     id: int
+    node_id: str
     name: str
-    display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserType
-    billable_owner: SimpleUserType
-    repository: FullRepositoryType
-    machine: Union[None, CodespaceMachineType]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
+    full_name: str
+    owner: Union[None, SimpleUserType]
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    last_used_at: _dt.datetime
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
-    ]
-    url: str
-    git_status: CodespaceWithFullRepositoryPropGitStatusType
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[
-        CodespaceWithFullRepositoryPropRuntimeConstraintsType
-    ]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[_dt.datetime, None]]
+    pushed_at: _dt.datetime
+    homepage: Union[str, None]
+    size: int
+    stargazers_count: int
+    watchers_count: int
+    language: Union[str, None]
+    forks_count: int
+    open_issues_count: int
+    master_branch: NotRequired[str]
+    default_branch: str
+    score: float
+    forks_url: str
+    keys_url: str
+    collaborators_url: str
+    teams_url: str
+    hooks_url: str
+    issue_events_url: str
+    events_url: str
+    assignees_url: str
+    branches_url: str
+    tags_url: str
+    blobs_url: str
+    git_tags_url: str
+    git_refs_url: str
+    trees_url: str
+    statuses_url: str
+    languages_url: str
+    stargazers_url: str
+    contributors_url: str
+    subscribers_url: str
+    subscription_url: str
+    commits_url: str
+    git_commits_url: str
+    comments_url: str
+    issue_comment_url: str
+    contents_url: str
+    compare_url: str
+    merges_url: str
+    archive_url: str
+    downloads_url: str
+    issues_url: str
+    pulls_url: str
+    milestones_url: str
+    notifications_url: str
+    labels_url: str
+    releases_url: str
+    deployments_url: str
+    git_url: str
+    ssh_url: str
+    clone_url: str
+    svn_url: str
+    forks: int
+    open_issues: int
+    watchers: int
+    topics: NotRequired[list[str]]
+    mirror_url: Union[str, None]
+    has_issues: bool
+    has_projects: bool
+    has_pages: bool
+    has_wiki: bool
+    has_downloads: NotRequired[bool]
+    has_discussions: NotRequired[bool]
+    has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
+    archived: bool
+    disabled: bool
+    visibility: NotRequired[str]
+    license_: Union[None, LicenseSimpleType]
+    permissions: NotRequired[RepoSearchResultItemPropPermissionsType]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    temp_clone_token: NotRequired[Union[str, None]]
+    allow_merge_commit: NotRequired[bool]
+    allow_squash_merge: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    allow_forking: NotRequired[bool]
+    is_template: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
 
 
-class CodespaceWithFullRepositoryTypeForResponse(TypedDict):
-    """Codespace
+class RepoSearchResultItemTypeForResponse(TypedDict):
+    """Repo Search Result Item
 
-    A codespace.
+    Repo Search Result Item
     """
 
     id: int
+    node_id: str
     name: str
-    display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserTypeForResponse
-    billable_owner: SimpleUserTypeForResponse
-    repository: FullRepositoryTypeForResponse
-    machine: Union[None, CodespaceMachineTypeForResponse]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
+    full_name: str
+    owner: Union[None, SimpleUserTypeForResponse]
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
     created_at: str
     updated_at: str
-    last_used_at: str
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
-    ]
-    url: str
-    git_status: CodespaceWithFullRepositoryPropGitStatusTypeForResponse
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[
-        CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse
-    ]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[str, None]]
+    pushed_at: str
+    homepage: Union[str, None]
+    size: int
+    stargazers_count: int
+    watchers_count: int
+    language: Union[str, None]
+    forks_count: int
+    open_issues_count: int
+    master_branch: NotRequired[str]
+    default_branch: str
+    score: float
+    forks_url: str
+    keys_url: str
+    collaborators_url: str
+    teams_url: str
+    hooks_url: str
+    issue_events_url: str
+    events_url: str
+    assignees_url: str
+    branches_url: str
+    tags_url: str
+    blobs_url: str
+    git_tags_url: str
+    git_refs_url: str
+    trees_url: str
+    statuses_url: str
+    languages_url: str
+    stargazers_url: str
+    contributors_url: str
+    subscribers_url: str
+    subscription_url: str
+    commits_url: str
+    git_commits_url: str
+    comments_url: str
+    issue_comment_url: str
+    contents_url: str
+    compare_url: str
+    merges_url: str
+    archive_url: str
+    downloads_url: str
+    issues_url: str
+    pulls_url: str
+    milestones_url: str
+    notifications_url: str
+    labels_url: str
+    releases_url: str
+    deployments_url: str
+    git_url: str
+    ssh_url: str
+    clone_url: str
+    svn_url: str
+    forks: int
+    open_issues: int
+    watchers: int
+    topics: NotRequired[list[str]]
+    mirror_url: Union[str, None]
+    has_issues: bool
+    has_projects: bool
+    has_pages: bool
+    has_wiki: bool
+    has_downloads: NotRequired[bool]
+    has_discussions: NotRequired[bool]
+    has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
+    archived: bool
+    disabled: bool
+    visibility: NotRequired[str]
+    license_: Union[None, LicenseSimpleTypeForResponse]
+    permissions: NotRequired[RepoSearchResultItemPropPermissionsTypeForResponse]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    temp_clone_token: NotRequired[Union[str, None]]
+    allow_merge_commit: NotRequired[bool]
+    allow_squash_merge: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    allow_forking: NotRequired[bool]
+    is_template: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
 
 
-class CodespaceWithFullRepositoryPropGitStatusType(TypedDict):
-    """CodespaceWithFullRepositoryPropGitStatus
+class RepoSearchResultItemPropPermissionsType(TypedDict):
+    """RepoSearchResultItemPropPermissions"""
 
-    Details about the codespace's git repository.
-    """
-
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
+    admin: bool
+    maintain: NotRequired[bool]
+    push: bool
+    triage: NotRequired[bool]
+    pull: bool
 
 
-class CodespaceWithFullRepositoryPropGitStatusTypeForResponse(TypedDict):
-    """CodespaceWithFullRepositoryPropGitStatus
+class RepoSearchResultItemPropPermissionsTypeForResponse(TypedDict):
+    """RepoSearchResultItemPropPermissions"""
 
-    Details about the codespace's git repository.
-    """
-
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
+    admin: bool
+    maintain: NotRequired[bool]
+    push: bool
+    triage: NotRequired[bool]
+    pull: bool
 
 
-class CodespaceWithFullRepositoryPropRuntimeConstraintsType(TypedDict):
-    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
+class SearchRepositoriesGetResponse200Type(TypedDict):
+    """SearchRepositoriesGetResponse200"""
 
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
+    total_count: int
+    incomplete_results: bool
+    items: list[RepoSearchResultItemType]
 
 
-class CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse(TypedDict):
-    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
+class SearchRepositoriesGetResponse200TypeForResponse(TypedDict):
+    """SearchRepositoriesGetResponse200"""
 
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
+    total_count: int
+    incomplete_results: bool
+    items: list[RepoSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "CodespaceWithFullRepositoryPropGitStatusType",
-    "CodespaceWithFullRepositoryPropGitStatusTypeForResponse",
-    "CodespaceWithFullRepositoryPropRuntimeConstraintsType",
-    "CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse",
-    "CodespaceWithFullRepositoryType",
-    "CodespaceWithFullRepositoryTypeForResponse",
+    "RepoSearchResultItemPropPermissionsType",
+    "RepoSearchResultItemPropPermissionsTypeForResponse",
+    "RepoSearchResultItemType",
+    "RepoSearchResultItemTypeForResponse",
+    "SearchRepositoriesGetResponse200Type",
+    "SearchRepositoriesGetResponse200TypeForResponse",
 )

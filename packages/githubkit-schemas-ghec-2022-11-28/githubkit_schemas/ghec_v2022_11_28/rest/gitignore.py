@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING
 from weakref import ref
 
 from githubkit.utils import exclude_unset
@@ -41,7 +41,7 @@ class GitignoreClient:
     def get_all_templates(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[str], list[str]]:
         """gitignore/get-all-templates
@@ -68,7 +68,7 @@ class GitignoreClient:
     async def async_get_all_templates(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[str], list[str]]:
         """gitignore/get-all-templates
@@ -96,7 +96,7 @@ class GitignoreClient:
         self,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GitignoreTemplate, GitignoreTemplateTypeForResponse]:
         """gitignore/get-template
@@ -130,7 +130,7 @@ class GitignoreClient:
         self,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GitignoreTemplate, GitignoreTemplateTypeForResponse]:
         """gitignore/get-template

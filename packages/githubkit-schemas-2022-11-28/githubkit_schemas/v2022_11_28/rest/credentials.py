@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Optional, overload
+from typing import TYPE_CHECKING, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -49,7 +49,7 @@ class CredentialsClient:
     def revoke(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: CredentialsRevokePostBodyType,
     ) -> Response[
@@ -62,7 +62,7 @@ class CredentialsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         credentials: list[str],
     ) -> Response[
@@ -73,7 +73,7 @@ class CredentialsClient:
     def revoke(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[CredentialsRevokePostBodyType] = UNSET,
         **kwargs,
@@ -143,7 +143,7 @@ class CredentialsClient:
     async def async_revoke(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: CredentialsRevokePostBodyType,
     ) -> Response[
@@ -156,7 +156,7 @@ class CredentialsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         credentials: list[str],
     ) -> Response[
@@ -167,7 +167,7 @@ class CredentialsClient:
     async def async_revoke(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[CredentialsRevokePostBodyType] = UNSET,
         **kwargs,

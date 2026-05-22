@@ -9,43 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0305 import CheckRunType, CheckRunTypeForResponse
 
 
-class ReposOwnerRepoCodespacesPostBodyType(TypedDict):
-    """ReposOwnerRepoCodespacesPostBody"""
+class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
 
-    ref: NotRequired[str]
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    client_ip: NotRequired[str]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    multi_repo_permissions_opt_out: NotRequired[bool]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
-    display_name: NotRequired[str]
-    retention_period_minutes: NotRequired[int]
+    total_count: int
+    check_runs: list[CheckRunType]
 
 
-class ReposOwnerRepoCodespacesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesPostBody"""
+class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
 
-    ref: NotRequired[str]
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    client_ip: NotRequired[str]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    multi_repo_permissions_opt_out: NotRequired[bool]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
-    display_name: NotRequired[str]
-    retention_period_minutes: NotRequired[int]
+    total_count: int
+    check_runs: list[CheckRunTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesPostBodyType",
-    "ReposOwnerRepoCodespacesPostBodyTypeForResponse",
+    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type",
+    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse",
 )

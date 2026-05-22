@@ -14,9 +14,12 @@ from githubkit.versions.latest.models import (  # noqa: F401
 from githubkit.versions.v2022_11_28.models import (  # noqa: F401
     SimpleUser as BackportSimpleUserV2022_11_28,
 )
+
 from githubkit.versions.v2026_03_10.models import (  # noqa: F401
     SimpleUser as BackportSimpleUserV2026_03_10,
 )
+
+# isort: split
 
 # direct
 from githubkit_schemas.ghec_v2022_11_28.models import (  # noqa: F401
@@ -51,9 +54,12 @@ from githubkit.versions.latest.models import (  # noqa: F401
 from githubkit.versions.v2022_11_28.models import (  # noqa: F401
     Repository as BackportRepositoryV2022_11_28,
 )
+
 from githubkit.versions.v2026_03_10.models import (  # noqa: F401
     Repository as BackportRepositoryV2026_03_10,
 )
+
+# isort: split
 
 # direct
 from githubkit_schemas.ghec_v2022_11_28.models import (  # noqa: F401
@@ -88,9 +94,12 @@ from githubkit.versions.latest.models import (  # noqa: F401
 from githubkit.versions.v2022_11_28.models import (  # noqa: F401
     OrganizationFull as BackportOrganizationFullV2022_11_28,
 )
+
 from githubkit.versions.v2026_03_10.models import (  # noqa: F401
     OrganizationFull as BackportOrganizationFullV2026_03_10,
 )
+
+# isort: split
 
 # direct
 from githubkit_schemas.ghec_v2022_11_28.models import (  # noqa: F401
@@ -125,9 +134,12 @@ from githubkit.versions.latest.models import (  # noqa: F401
 from githubkit.versions.v2022_11_28.models import (  # noqa: F401
     CustomProperty as BackportCustomPropertyV2022_11_28,
 )
+
 from githubkit.versions.v2026_03_10.models import (  # noqa: F401
     CustomProperty as BackportCustomPropertyV2026_03_10,
 )
+
+# isort: split
 
 # direct
 from githubkit_schemas.ghec_v2022_11_28.models import (  # noqa: F401

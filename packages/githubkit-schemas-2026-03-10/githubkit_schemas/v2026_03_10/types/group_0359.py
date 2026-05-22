@@ -9,30 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0127 import TeamType, TeamTypeForResponse
+from .group_0357 import MetadataType, MetadataTypeForResponse
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+class ManifestType(TypedDict):
+    """Manifest"""
 
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
+    name: str
+    file: NotRequired[ManifestPropFileType]
+    metadata: NotRequired[MetadataType]
+    resolved: NotRequired[ManifestPropResolvedType]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse(
-    TypedDict
-):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+class ManifestTypeForResponse(TypedDict):
+    """Manifest"""
 
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserTypeForResponse, TeamTypeForResponse]]
+    name: str
+    file: NotRequired[ManifestPropFileTypeForResponse]
+    metadata: NotRequired[MetadataTypeForResponse]
+    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
+
+
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+class ManifestPropFileTypeForResponse(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+ManifestPropResolvedType: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
+"""
+
+
+ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
+"""
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType",
-    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse",
+    "ManifestPropFileType",
+    "ManifestPropFileTypeForResponse",
+    "ManifestPropResolvedType",
+    "ManifestPropResolvedTypeForResponse",
+    "ManifestType",
+    "ManifestTypeForResponse",
 )

@@ -9,40 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0316 import (
-    CodeScanningVariantAnalysisRepositoryType,
-    CodeScanningVariantAnalysisRepositoryTypeForResponse,
+from .group_0130 import (
+    CodeScanningAnalysisToolType,
+    CodeScanningAnalysisToolTypeForResponse,
 )
 
 
-class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+class CodeScanningAnalysisType(TypedDict):
+    """CodeScanningAnalysis"""
 
-    repository: CodeScanningVariantAnalysisRepositoryType
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ]
-    result_count: NotRequired[int]
-    artifact_size_in_bytes: NotRequired[int]
-    failure_message: NotRequired[str]
+    ref: str
+    commit_sha: str
+    analysis_key: str
+    environment: str
+    category: NotRequired[str]
+    error: str
+    created_at: _dt.datetime
+    results_count: int
+    rules_count: int
+    id: int
+    url: str
+    sarif_id: str
+    tool: CodeScanningAnalysisToolType
+    deletable: bool
+    warning: str
 
 
-class CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+class CodeScanningAnalysisTypeForResponse(TypedDict):
+    """CodeScanningAnalysis"""
 
-    repository: CodeScanningVariantAnalysisRepositoryTypeForResponse
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ]
-    result_count: NotRequired[int]
-    artifact_size_in_bytes: NotRequired[int]
-    failure_message: NotRequired[str]
+    ref: str
+    commit_sha: str
+    analysis_key: str
+    environment: str
+    category: NotRequired[str]
+    error: str
+    created_at: str
+    results_count: int
+    rules_count: int
+    id: int
+    url: str
+    sarif_id: str
+    tool: CodeScanningAnalysisToolTypeForResponse
+    deletable: bool
+    warning: str
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",
-    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse",
+    "CodeScanningAnalysisType",
+    "CodeScanningAnalysisTypeForResponse",
 )

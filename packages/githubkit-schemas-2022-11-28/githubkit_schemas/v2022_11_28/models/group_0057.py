@@ -75,7 +75,9 @@ class Issue(GitHubModel):
     body_text: Missing[Union[str, None]] = Field(default=UNSET)
     timeline_url: Missing[str] = Field(default=UNSET)
     type: Missing[Union[IssueType, None]] = Field(
-        default=UNSET, title="Issue Type", description="The type of issue."
+        default=UNSET,
+        title="Issue Type",
+        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
     )
     repository: Missing[Repository] = Field(
         default=UNSET, title="Repository", description="A repository on GitHub."

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -72,8 +72,8 @@ class AgentTasksClient:
         state: Missing[str] = UNSET,
         is_archived: Missing[bool] = UNSET,
         since: Missing[_dt.datetime] = UNSET,
-        creator_id: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        creator_id: Missing[list[int]] = UNSET,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AgentsReposOwnerRepoTasksGetResponse200,
@@ -157,8 +157,8 @@ class AgentTasksClient:
         state: Missing[str] = UNSET,
         is_archived: Missing[bool] = UNSET,
         since: Missing[_dt.datetime] = UNSET,
-        creator_id: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        creator_id: Missing[list[int]] = UNSET,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AgentsReposOwnerRepoTasksGetResponse200,
@@ -236,7 +236,7 @@ class AgentTasksClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: AgentsReposOwnerRepoTasksPostBodyType,
     ) -> Response[
@@ -251,12 +251,13 @@ class AgentTasksClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         prompt: str,
         model: Missing[str] = UNSET,
         create_pull_request: Missing[bool] = UNSET,
         base_ref: Missing[str] = UNSET,
+        head_ref: Missing[str] = UNSET,
     ) -> Response[
         AgentsReposOwnerRepoTasksPostResponse201,
         AgentsReposOwnerRepoTasksPostResponse201TypeForResponse,
@@ -267,7 +268,7 @@ class AgentTasksClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[AgentsReposOwnerRepoTasksPostBodyType] = UNSET,
         **kwargs,
@@ -346,7 +347,7 @@ class AgentTasksClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: AgentsReposOwnerRepoTasksPostBodyType,
     ) -> Response[
@@ -361,12 +362,13 @@ class AgentTasksClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         prompt: str,
         model: Missing[str] = UNSET,
         create_pull_request: Missing[bool] = UNSET,
         base_ref: Missing[str] = UNSET,
+        head_ref: Missing[str] = UNSET,
     ) -> Response[
         AgentsReposOwnerRepoTasksPostResponse201,
         AgentsReposOwnerRepoTasksPostResponse201TypeForResponse,
@@ -377,7 +379,7 @@ class AgentTasksClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[AgentsReposOwnerRepoTasksPostBodyType] = UNSET,
         **kwargs,
@@ -456,7 +458,7 @@ class AgentTasksClient:
         repo: str,
         task_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AgentsReposOwnerRepoTasksTaskIdGetResponse200,
@@ -522,7 +524,7 @@ class AgentTasksClient:
         repo: str,
         task_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AgentsReposOwnerRepoTasksTaskIdGetResponse200,
@@ -592,7 +594,7 @@ class AgentTasksClient:
         state: Missing[str] = UNSET,
         is_archived: Missing[bool] = UNSET,
         since: Missing[_dt.datetime] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[AgentsTasksGetResponse200, AgentsTasksGetResponse200TypeForResponse]:
         """agent-tasks/list-tasks
@@ -668,7 +670,7 @@ class AgentTasksClient:
         state: Missing[str] = UNSET,
         is_archived: Missing[bool] = UNSET,
         since: Missing[_dt.datetime] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[AgentsTasksGetResponse200, AgentsTasksGetResponse200TypeForResponse]:
         """agent-tasks/list-tasks
@@ -738,7 +740,7 @@ class AgentTasksClient:
         self,
         task_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AgentsTasksTaskIdGetResponse200, AgentsTasksTaskIdGetResponse200TypeForResponse
@@ -801,7 +803,7 @@ class AgentTasksClient:
         self,
         task_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AgentsTasksTaskIdGetResponse200, AgentsTasksTaskIdGetResponse200TypeForResponse

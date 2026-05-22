@@ -13,130 +13,69 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0295 import GitUserType, GitUserTypeForResponse
+from .group_0296 import VerificationType, VerificationTypeForResponse
 
-class PrivateUserType(TypedDict):
-    """Private User
 
-    Private User
-    """
+class CommitSearchResultItemPropCommitType(TypedDict):
+    """CommitSearchResultItemPropCommit"""
 
-    login: str
-    id: int
-    user_view_type: NotRequired[str]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
+    author: CommitSearchResultItemPropCommitPropAuthorType
+    committer: Union[None, GitUserType]
+    comment_count: int
+    message: str
+    tree: CommitSearchResultItemPropCommitPropTreeType
     url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    name: Union[str, None]
-    company: Union[str, None]
-    blog: Union[str, None]
-    location: Union[str, None]
-    email: Union[str, None]
-    notification_email: NotRequired[Union[str, None]]
-    hireable: Union[bool, None]
-    bio: Union[str, None]
-    twitter_username: NotRequired[Union[str, None]]
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    private_gists: int
-    total_private_repos: int
-    owned_private_repos: int
-    disk_usage: int
-    collaborators: int
-    two_factor_authentication: bool
-    plan: NotRequired[PrivateUserPropPlanType]
-    business_plus: NotRequired[bool]
-    ldap_dn: NotRequired[str]
+    verification: NotRequired[VerificationType]
 
 
-class PrivateUserTypeForResponse(TypedDict):
-    """Private User
+class CommitSearchResultItemPropCommitTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommit"""
 
-    Private User
-    """
-
-    login: str
-    id: int
-    user_view_type: NotRequired[str]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
+    author: CommitSearchResultItemPropCommitPropAuthorTypeForResponse
+    committer: Union[None, GitUserTypeForResponse]
+    comment_count: int
+    message: str
+    tree: CommitSearchResultItemPropCommitPropTreeTypeForResponse
     url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    name: Union[str, None]
-    company: Union[str, None]
-    blog: Union[str, None]
-    location: Union[str, None]
-    email: Union[str, None]
-    notification_email: NotRequired[Union[str, None]]
-    hireable: Union[bool, None]
-    bio: Union[str, None]
-    twitter_username: NotRequired[Union[str, None]]
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    created_at: str
-    updated_at: str
-    private_gists: int
-    total_private_repos: int
-    owned_private_repos: int
-    disk_usage: int
-    collaborators: int
-    two_factor_authentication: bool
-    plan: NotRequired[PrivateUserPropPlanTypeForResponse]
-    business_plus: NotRequired[bool]
-    ldap_dn: NotRequired[str]
+    verification: NotRequired[VerificationTypeForResponse]
 
 
-class PrivateUserPropPlanType(TypedDict):
-    """PrivateUserPropPlan"""
+class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
+    """CommitSearchResultItemPropCommitPropAuthor"""
 
-    collaborators: int
     name: str
-    space: int
-    private_repos: int
+    email: str
+    date: _dt.datetime
 
 
-class PrivateUserPropPlanTypeForResponse(TypedDict):
-    """PrivateUserPropPlan"""
+class CommitSearchResultItemPropCommitPropAuthorTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommitPropAuthor"""
 
-    collaborators: int
     name: str
-    space: int
-    private_repos: int
+    email: str
+    date: str
+
+
+class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class CommitSearchResultItemPropCommitPropTreeTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "PrivateUserPropPlanType",
-    "PrivateUserPropPlanTypeForResponse",
-    "PrivateUserType",
-    "PrivateUserTypeForResponse",
+    "CommitSearchResultItemPropCommitPropAuthorType",
+    "CommitSearchResultItemPropCommitPropAuthorTypeForResponse",
+    "CommitSearchResultItemPropCommitPropTreeType",
+    "CommitSearchResultItemPropCommitPropTreeTypeForResponse",
+    "CommitSearchResultItemPropCommitType",
+    "CommitSearchResultItemPropCommitTypeForResponse",
 )

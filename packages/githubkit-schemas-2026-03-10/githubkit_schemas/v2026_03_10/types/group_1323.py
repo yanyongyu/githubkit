@@ -9,36 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPagesDeploymentsPostBodyType(TypedDict):
-    """ReposOwnerRepoPagesDeploymentsPostBody
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    The object used to create GitHub Pages deployment
+    Update the source for the repository. Must include the branch name and path.
     """
 
-    artifact_id: NotRequired[int]
-    artifact_url: NotRequired[str]
-    environment: NotRequired[str]
-    pages_build_version: str
-    oidc_token: str
+    branch: str
+    path: Literal["/", "/docs"]
 
 
-class ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesDeploymentsPostBody
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    The object used to create GitHub Pages deployment
+    Update the source for the repository. Must include the branch name and path.
     """
 
-    artifact_id: NotRequired[int]
-    artifact_url: NotRequired[str]
-    environment: NotRequired[str]
-    pages_build_version: str
-    oidc_token: str
+    branch: str
+    path: Literal["/", "/docs"]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesDeploymentsPostBodyType",
-    "ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse",
+    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",
+    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse",
 )

@@ -12,35 +12,32 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0209 import (
-    RepositoryRuleRequiredDeploymentsPropParametersType,
-    RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse,
-)
 
+class RepositoryRuleRulesetInfoType(TypedDict):
+    """repository ruleset data for rule
 
-class RepositoryRuleDetailedOneof5Type(TypedDict):
-    """RepositoryRuleDetailedOneof5"""
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
 
-    type: Literal["required_deployments"]
-    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof5TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof5"""
+class RepositoryRuleRulesetInfoTypeForResponse(TypedDict):
+    """repository ruleset data for rule
 
-    type: Literal["required_deployments"]
-    parameters: NotRequired[
-        RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse
-    ]
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
+
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof5Type",
-    "RepositoryRuleDetailedOneof5TypeForResponse",
+    "RepositoryRuleRulesetInfoType",
+    "RepositoryRuleRulesetInfoTypeForResponse",
 )

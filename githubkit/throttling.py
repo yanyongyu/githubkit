@@ -2,7 +2,7 @@ import abc
 from collections.abc import AsyncGenerator, Generator
 from contextlib import asynccontextmanager, contextmanager
 import threading
-from typing import Any, Optional
+from typing import Any
 from typing_extensions import override
 
 import anyio
@@ -37,8 +37,8 @@ class LocalThrottler(BaseThrottler):
 
     def __init__(self, max_concurrency: int) -> None:
         self.max_concurrency = max_concurrency
-        self._semaphore: Optional[threading.Semaphore] = None
-        self._async_semaphore: Optional[anyio.Semaphore] = None
+        self._semaphore: threading.Semaphore | None = None
+        self._async_semaphore: anyio.Semaphore | None = None
 
     @property
     def semaphore(self) -> threading.Semaphore:

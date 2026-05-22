@@ -18,56 +18,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesPostBody"""
+class ReposOwnerRepoHooksPostBody(GitHubModel):
+    """ReposOwnerRepoHooksPostBody"""
 
-    title: Union[str, int] = Field(description="The title of the issue.")
-    body: Missing[str] = Field(default=UNSET, description="The contents of the issue.")
-    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
-    labels: Missing[
-        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1]]
-    ] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._",
+        description="Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.",
     )
-    assignees: Missing[list[str]] = Field(
+    config: Missing[ReposOwnerRepoHooksPostBodyPropConfig] = Field(
         default=UNSET,
-        description="Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._",
+        description="Key/value pairs to provide settings for this webhook.",
     )
-    issue_field_values: Missing[
-        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems]
-    ] = Field(
+    events: Missing[list[str]] = Field(
         default=UNSET,
-        description="An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Issue fields are only available for organization-owned repositories with the feature enabled. Field values are silently dropped otherwise.",
+        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for.",
     )
-    type: Missing[Union[str, None]] = Field(
+    active: Missing[bool] = Field(
         default=UNSET,
-        description="The name of the issue type to associate with this issue. _NOTE: Only users with push access can set the type for new issues. The type is silently dropped otherwise._",
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
     )
 
 
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1(GitHubModel):
-    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+class ReposOwnerRepoHooksPostBodyPropConfig(GitHubModel):
+    """ReposOwnerRepoHooksPostBodyPropConfig
 
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    color: Missing[Union[str, None]] = Field(default=UNSET)
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to which the payloads will be delivered."
+    )
+    content_type: Missing[str] = Field(
+        default=UNSET,
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+    )
+    secret: Missing[str] = Field(
+        default=UNSET,
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
+    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems(GitHubModel):
-    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
-
-    field_id: int = Field(description="The ID of the issue field to set")
-    value: Union[str, float] = Field(description="The value to set for the field")
-
-
-model_rebuild(ReposOwnerRepoIssuesPostBody)
-model_rebuild(ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1)
-model_rebuild(ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems)
+model_rebuild(ReposOwnerRepoHooksPostBody)
+model_rebuild(ReposOwnerRepoHooksPostBodyPropConfig)
 
 __all__ = (
-    "ReposOwnerRepoIssuesPostBody",
-    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems",
-    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1",
+    "ReposOwnerRepoHooksPostBody",
+    "ReposOwnerRepoHooksPostBodyPropConfig",
 )

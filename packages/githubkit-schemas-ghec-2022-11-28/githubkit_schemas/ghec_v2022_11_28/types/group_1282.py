@@ -9,29 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
 
-from .group_0246 import (
-    OrganizationCustomRepositoryRoleType,
-    OrganizationCustomRepositoryRoleTypeForResponse,
-)
-
-
-class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
+OrgsOrgCopilotContentExclusionPutBodyType: TypeAlias = dict[str, Any]
+"""OrgsOrgCopilotContentExclusionPutBody
+"""
 
 
-class OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
+OrgsOrgCopilotContentExclusionPutBodyTypeForResponse: TypeAlias = dict[str, Any]
+"""OrgsOrgCopilotContentExclusionPutBody
+"""
 
 
 __all__ = (
-    "OrgsOrgCustomRepositoryRolesGetResponse200Type",
-    "OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse",
+    "OrgsOrgCopilotContentExclusionPutBodyType",
+    "OrgsOrgCopilotContentExclusionPutBodyTypeForResponse",
 )

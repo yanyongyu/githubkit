@@ -9,31 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType(
+    TypedDict
+):
+    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: NotRequired[int]
-    owner: str
-    repo: str
-    number: int
+    metadata: NotRequired[
+        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType
+    ]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: NotRequired[int]
-    owner: str
-    repo: str
-    number: int
+    metadata: NotRequired[
+        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse
+    ]
+
+
+UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType: TypeAlias = dict[
+    str, Any
+]
+"""UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+
+Updated resource-specific metadata.
+"""
+
+
+UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+
+Updated resource-specific metadata.
+"""
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type",
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse",
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType",
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse",
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType",
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse",
 )

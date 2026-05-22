@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Annotated, Literal, Optional, overload
+from typing import TYPE_CHECKING, Annotated, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel, Field
@@ -157,7 +157,7 @@ class IssuesClient:
         pulls: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list
@@ -232,7 +232,7 @@ class IssuesClient:
         pulls: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list
@@ -305,7 +305,7 @@ class IssuesClient:
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-org
@@ -372,7 +372,7 @@ class IssuesClient:
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-org
@@ -431,7 +431,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """issues/list-assignees
@@ -473,7 +473,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """issues/list-assignees
@@ -514,7 +514,7 @@ class IssuesClient:
         repo: str,
         assignee: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/check-user-can-be-assigned
@@ -552,7 +552,7 @@ class IssuesClient:
         repo: str,
         assignee: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/check-user-can-be-assigned
@@ -595,13 +595,14 @@ class IssuesClient:
         type: Missing[str] = UNSET,
         creator: Missing[str] = UNSET,
         mentioned: Missing[str] = UNSET,
+        issue_field_values: Missing[str] = UNSET,
         labels: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-repo
@@ -634,6 +635,7 @@ class IssuesClient:
             "type": type,
             "creator": creator,
             "mentioned": mentioned,
+            "issue_field_values": issue_field_values,
             "labels": labels,
             "sort": sort,
             "direction": direction,
@@ -668,13 +670,14 @@ class IssuesClient:
         type: Missing[str] = UNSET,
         creator: Missing[str] = UNSET,
         mentioned: Missing[str] = UNSET,
+        issue_field_values: Missing[str] = UNSET,
         labels: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-repo
@@ -707,6 +710,7 @@ class IssuesClient:
             "type": type,
             "creator": creator,
             "mentioned": mentioned,
+            "issue_field_values": issue_field_values,
             "labels": labels,
             "sort": sort,
             "direction": direction,
@@ -736,7 +740,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesPostBodyType,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -748,7 +752,7 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: Union[str, int],
         body: Missing[str] = UNSET,
@@ -768,7 +772,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
@@ -836,7 +840,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesPostBodyType,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -848,7 +852,7 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: Union[str, int],
         body: Missing[str] = UNSET,
@@ -868,7 +872,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
@@ -940,7 +944,7 @@ class IssuesClient:
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[IssueComment], list[IssueCommentTypeForResponse]]:
         """issues/list-comments-for-repo
@@ -998,7 +1002,7 @@ class IssuesClient:
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[IssueComment], list[IssueCommentTypeForResponse]]:
         """issues/list-comments-for-repo
@@ -1052,7 +1056,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[IssueComment, IssueCommentTypeForResponse]:
         """issues/get-comment
@@ -1094,7 +1098,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[IssueComment, IssueCommentTypeForResponse]:
         """issues/get-comment
@@ -1136,7 +1140,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/delete-comment
@@ -1165,7 +1169,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/delete-comment
@@ -1195,7 +1199,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
     ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
@@ -1208,7 +1212,7 @@ class IssuesClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         body: str,
     ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
@@ -1219,7 +1223,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
@@ -1280,7 +1284,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
     ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
@@ -1293,7 +1297,7 @@ class IssuesClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         body: str,
     ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
@@ -1304,7 +1308,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
@@ -1364,7 +1368,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[IssueComment, IssueCommentTypeForResponse]:
         """issues/pin-comment
@@ -1410,7 +1414,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[IssueComment, IssueCommentTypeForResponse]:
         """issues/pin-comment
@@ -1456,7 +1460,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/unpin-comment
@@ -1494,7 +1498,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/unpin-comment
@@ -1533,7 +1537,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[IssueEvent], list[IssueEventTypeForResponse]]:
         """issues/list-events-for-repo
@@ -1575,7 +1579,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[IssueEvent], list[IssueEventTypeForResponse]]:
         """issues/list-events-for-repo
@@ -1616,7 +1620,7 @@ class IssuesClient:
         repo: str,
         event_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[IssueEvent, IssueEventTypeForResponse]:
         """issues/get-event
@@ -1653,7 +1657,7 @@ class IssuesClient:
         repo: str,
         event_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[IssueEvent, IssueEventTypeForResponse]:
         """issues/get-event
@@ -1690,7 +1694,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Issue, IssueTypeForResponse]:
         """issues/get
@@ -1741,7 +1745,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Issue, IssueTypeForResponse]:
         """issues/get
@@ -1793,7 +1797,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -1806,7 +1810,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: Missing[Union[str, int, None]] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
@@ -1836,7 +1840,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
@@ -1901,7 +1905,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -1914,7 +1918,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: Missing[Union[str, int, None]] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
@@ -1944,7 +1948,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
@@ -2009,7 +2013,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -2022,7 +2026,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -2033,7 +2037,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
@@ -2080,7 +2084,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -2093,7 +2097,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -2104,7 +2108,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
@@ -2151,7 +2155,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -2164,7 +2168,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -2175,7 +2179,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
@@ -2222,7 +2226,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -2235,7 +2239,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -2246,7 +2250,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
@@ -2293,7 +2297,7 @@ class IssuesClient:
         issue_number: int,
         assignee: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/check-user-can-be-assigned-to-issue
@@ -2332,7 +2336,7 @@ class IssuesClient:
         issue_number: int,
         assignee: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/check-user-can-be-assigned-to-issue
@@ -2373,7 +2377,7 @@ class IssuesClient:
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[IssueComment], list[IssueCommentTypeForResponse]]:
         """issues/list-comments
@@ -2428,7 +2432,7 @@ class IssuesClient:
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[IssueComment], list[IssueCommentTypeForResponse]]:
         """issues/list-comments
@@ -2481,7 +2485,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
     ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
@@ -2494,7 +2498,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         body: str,
     ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
@@ -2505,7 +2509,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
@@ -2575,7 +2579,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
     ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
@@ -2588,7 +2592,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         body: str,
     ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
@@ -2599,7 +2603,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
@@ -2670,7 +2674,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-dependencies-blocked-by
@@ -2721,7 +2725,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-dependencies-blocked-by
@@ -2771,7 +2775,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -2784,7 +2788,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         issue_id: int,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -2795,7 +2799,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType
@@ -2866,7 +2870,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -2879,7 +2883,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         issue_id: int,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -2890,7 +2894,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType
@@ -2961,7 +2965,7 @@ class IssuesClient:
         issue_number: int,
         issue_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Issue, IssueTypeForResponse]:
         """issues/remove-dependency-blocked-by
@@ -3011,7 +3015,7 @@ class IssuesClient:
         issue_number: int,
         issue_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Issue, IssueTypeForResponse]:
         """issues/remove-dependency-blocked-by
@@ -3062,7 +3066,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-dependencies-blocking
@@ -3113,7 +3117,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-dependencies-blocking
@@ -3164,7 +3168,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[
@@ -3283,7 +3287,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[
@@ -3402,7 +3406,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
         """issues/list-issue-field-values-for-issue
@@ -3446,7 +3450,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]:
         """issues/list-issue-field-values-for-issue
@@ -3489,7 +3493,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType,
     ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
@@ -3502,7 +3506,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         issue_field_values: Missing[
             list[
@@ -3517,7 +3521,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType
@@ -3592,7 +3596,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType,
     ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
@@ -3605,7 +3609,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         issue_field_values: Missing[
             list[
@@ -3620,7 +3624,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType
@@ -3695,7 +3699,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType,
     ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
@@ -3708,7 +3712,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         issue_field_values: Missing[
             list[
@@ -3723,7 +3727,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType
@@ -3797,7 +3801,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType,
     ) -> Response[list[IssueFieldValue], list[IssueFieldValueTypeForResponse]]: ...
@@ -3810,7 +3814,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         issue_field_values: Missing[
             list[
@@ -3825,7 +3829,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType
@@ -3899,7 +3903,7 @@ class IssuesClient:
         issue_number: int,
         issue_field_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/delete-issue-field-value
@@ -3944,7 +3948,7 @@ class IssuesClient:
         issue_number: int,
         issue_field_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/delete-issue-field-value
@@ -3990,7 +3994,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-on-issue
@@ -4034,7 +4038,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-on-issue
@@ -4077,7 +4081,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -4098,7 +4102,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         labels: Missing[list[str]] = UNSET,
     ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
@@ -4111,7 +4115,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
@@ -4124,7 +4128,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -4205,7 +4209,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -4226,7 +4230,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         labels: Missing[list[str]] = UNSET,
     ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
@@ -4239,7 +4243,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
@@ -4252,7 +4256,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -4333,7 +4337,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -4352,7 +4356,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         labels: Missing[list[str]] = UNSET,
     ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
@@ -4363,7 +4367,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -4434,7 +4438,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -4453,7 +4457,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         labels: Missing[list[str]] = UNSET,
     ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
@@ -4464,7 +4468,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -4534,7 +4538,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/remove-all-labels
@@ -4569,7 +4573,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/remove-all-labels
@@ -4605,7 +4609,7 @@ class IssuesClient:
         issue_number: int,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/remove-label
@@ -4642,7 +4646,7 @@ class IssuesClient:
         issue_number: int,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/remove-label
@@ -4679,7 +4683,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
@@ -4694,7 +4698,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         lock_reason: Missing[
             Literal["off-topic", "too heated", "resolved", "spam"]
@@ -4707,7 +4711,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
@@ -4769,7 +4773,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
@@ -4784,7 +4788,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         lock_reason: Missing[
             Literal["off-topic", "too heated", "resolved", "spam"]
@@ -4797,7 +4801,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
@@ -4858,7 +4862,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/unlock
@@ -4893,7 +4897,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/unlock
@@ -4928,7 +4932,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Issue, IssueTypeForResponse]:
         """issues/get-parent
@@ -4971,7 +4975,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Issue, IssueTypeForResponse]:
         """issues/get-parent
@@ -5015,7 +5019,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -5028,7 +5032,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         sub_issue_id: int,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -5039,7 +5043,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType] = UNSET,
         **kwargs,
@@ -5102,7 +5106,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -5115,7 +5119,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         sub_issue_id: int,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -5126,7 +5130,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType] = UNSET,
         **kwargs,
@@ -5190,7 +5194,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-sub-issues
@@ -5241,7 +5245,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-sub-issues
@@ -5291,7 +5295,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -5304,7 +5308,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         sub_issue_id: int,
         replace_parent: Missing[bool] = UNSET,
@@ -5316,7 +5320,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType] = UNSET,
         **kwargs,
@@ -5385,7 +5389,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -5398,7 +5402,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         sub_issue_id: int,
         replace_parent: Missing[bool] = UNSET,
@@ -5410,7 +5414,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType] = UNSET,
         **kwargs,
@@ -5479,7 +5483,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -5492,7 +5496,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         sub_issue_id: int,
         after_id: Missing[int] = UNSET,
@@ -5505,7 +5509,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType
@@ -5566,7 +5570,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType,
     ) -> Response[Issue, IssueTypeForResponse]: ...
@@ -5579,7 +5583,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         sub_issue_id: int,
         after_id: Missing[int] = UNSET,
@@ -5592,7 +5596,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType
@@ -5654,7 +5658,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[
@@ -5802,7 +5806,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[
@@ -5949,7 +5953,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-for-repo
@@ -5991,7 +5995,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-for-repo
@@ -6032,7 +6036,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoLabelsPostBodyType,
     ) -> Response[Label, LabelTypeForResponse]: ...
@@ -6044,7 +6048,7 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         color: Missing[str] = UNSET,
@@ -6056,7 +6060,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
@@ -6109,7 +6113,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoLabelsPostBodyType,
     ) -> Response[Label, LabelTypeForResponse]: ...
@@ -6121,7 +6125,7 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         color: Missing[str] = UNSET,
@@ -6133,7 +6137,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
@@ -6186,7 +6190,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Label, LabelTypeForResponse]:
         """issues/get-label
@@ -6221,7 +6225,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Label, LabelTypeForResponse]:
         """issues/get-label
@@ -6256,7 +6260,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/delete-label
@@ -6285,7 +6289,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/delete-label
@@ -6315,7 +6319,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
     ) -> Response[Label, LabelTypeForResponse]: ...
@@ -6328,7 +6332,7 @@ class IssuesClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
@@ -6341,7 +6345,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
@@ -6386,7 +6390,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
     ) -> Response[Label, LabelTypeForResponse]: ...
@@ -6399,7 +6403,7 @@ class IssuesClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
@@ -6412,7 +6416,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
@@ -6460,7 +6464,7 @@ class IssuesClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Milestone], list[MilestoneTypeForResponse]]:
         """issues/list-milestones
@@ -6508,7 +6512,7 @@ class IssuesClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Milestone], list[MilestoneTypeForResponse]]:
         """issues/list-milestones
@@ -6552,7 +6556,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoMilestonesPostBodyType,
     ) -> Response[Milestone, MilestoneTypeForResponse]: ...
@@ -6564,7 +6568,7 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: str,
         state: Missing[Literal["open", "closed"]] = UNSET,
@@ -6577,7 +6581,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
@@ -6630,7 +6634,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoMilestonesPostBodyType,
     ) -> Response[Milestone, MilestoneTypeForResponse]: ...
@@ -6642,7 +6646,7 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: str,
         state: Missing[Literal["open", "closed"]] = UNSET,
@@ -6655,7 +6659,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
@@ -6708,7 +6712,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Milestone, MilestoneTypeForResponse]:
         """issues/get-milestone
@@ -6743,7 +6747,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Milestone, MilestoneTypeForResponse]:
         """issues/get-milestone
@@ -6778,7 +6782,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/delete-milestone
@@ -6812,7 +6816,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """issues/delete-milestone
@@ -6847,7 +6851,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
     ) -> Response[Milestone, MilestoneTypeForResponse]: ...
@@ -6860,7 +6864,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
@@ -6874,7 +6878,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
@@ -6919,7 +6923,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
     ) -> Response[Milestone, MilestoneTypeForResponse]: ...
@@ -6932,7 +6936,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
@@ -6946,7 +6950,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
@@ -6992,7 +6996,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-for-milestone
@@ -7032,7 +7036,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-for-milestone
@@ -7077,7 +7081,7 @@ class IssuesClient:
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-authenticated-user
@@ -7141,7 +7145,7 @@ class IssuesClient:
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-authenticated-user

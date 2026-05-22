@@ -14,26 +14,21 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CustomDeploymentRuleApp(GitHubModel):
-    """Custom deployment protection rule app
+class DeploymentBranchPolicySettings(GitHubModel):
+    """DeploymentBranchPolicySettings
 
-    A GitHub App that is providing a custom deployment protection rule.
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
     """
 
-    id: int = Field(
-        description="The unique identifier of the deployment protection rule integration."
+    protected_branches: bool = Field(
+        description="Whether only branches with branch protection rules can deploy to this environment. If `protected_branches` is `true`, `custom_branch_policies` must be `false`; if `protected_branches` is `false`, `custom_branch_policies` must be `true`."
     )
-    slug: str = Field(
-        description="The slugified name of the deployment protection rule integration."
-    )
-    integration_url: str = Field(
-        description="The URL for the endpoint to get details about the app."
-    )
-    node_id: str = Field(
-        description="The node ID for the deployment protection rule integration."
+    custom_branch_policies: bool = Field(
+        description="Whether only branches that match the specified name patterns can deploy to this environment.  If `custom_branch_policies` is `true`, `protected_branches` must be `false`; if `custom_branch_policies` is `false`, `protected_branches` must be `true`."
     )
 
 
-model_rebuild(CustomDeploymentRuleApp)
+model_rebuild(DeploymentBranchPolicySettings)
 
-__all__ = ("CustomDeploymentRuleApp",)
+__all__ = ("DeploymentBranchPolicySettings",)

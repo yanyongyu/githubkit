@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,15 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamsTeamIdReposOwnerRepoPutBody(GitHubModel):
-    """TeamsTeamIdReposOwnerRepoPutBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2(GitHubModel):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2"""
 
-    permission: Missing[Literal["pull", "push", "admin"]] = Field(
+    state: Missing[Literal["open", "resolved"]] = Field(
         default=UNSET,
-        description="The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
+    )
+    resolution: Missing[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ] = Field(
+        default=UNSET,
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+    )
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
+    )
+    assignee: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The username of the user to assign to the alert. Set to `null` to unassign the alert.",
+    )
+    validity: Union[None, Literal["active", "inactive"]] = Field(
+        description="Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override."
     )
 
 
-model_rebuild(TeamsTeamIdReposOwnerRepoPutBody)
+model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2)
 
-__all__ = ("TeamsTeamIdReposOwnerRepoPutBody",)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2",)

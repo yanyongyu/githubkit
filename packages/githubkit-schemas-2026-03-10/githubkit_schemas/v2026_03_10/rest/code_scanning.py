@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -104,7 +104,7 @@ class CodeScanningClient:
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
         assignees: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeScanningOrganizationAlertItems],
@@ -177,7 +177,7 @@ class CodeScanningClient:
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
         assignees: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeScanningOrganizationAlertItems],
@@ -253,7 +253,7 @@ class CodeScanningClient:
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
         assignees: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeScanningAlertItems], list[CodeScanningAlertItemsTypeForResponse]
@@ -329,7 +329,7 @@ class CodeScanningClient:
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
         assignees: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeScanningAlertItems], list[CodeScanningAlertItemsTypeForResponse]
@@ -391,7 +391,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]:
         """code-scanning/get-alert
@@ -430,7 +430,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]:
         """code-scanning/get-alert
@@ -470,7 +470,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type,
@@ -486,7 +486,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Literal["open", "dismissed"],
         dismissed_reason: Missing[
@@ -505,7 +505,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Missing[Literal["open", "dismissed"]] = UNSET,
         dismissed_reason: Missing[
@@ -522,7 +522,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -593,7 +593,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type,
@@ -609,7 +609,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Literal["open", "dismissed"],
         dismissed_reason: Missing[
@@ -628,7 +628,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Missing[Literal["open", "dismissed"]] = UNSET,
         dismissed_reason: Missing[
@@ -645,7 +645,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -715,14 +715,14 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeScanningAutofix, CodeScanningAutofixTypeForResponse]:
         """code-scanning/get-autofix
 
         GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix
 
-        Gets the status and description of an autofix for a code scanning alert.
+        Gets the status and description of an autofix for a code scanning alert on the repository's default branch.
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
@@ -755,14 +755,14 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeScanningAutofix, CodeScanningAutofixTypeForResponse]:
         """code-scanning/get-autofix
 
         GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix
 
-        Gets the status and description of an autofix for a code scanning alert.
+        Gets the status and description of an autofix for a code scanning alert on the repository's default branch.
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
 
@@ -795,7 +795,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeScanningAutofix, CodeScanningAutofixTypeForResponse]:
         """code-scanning/create-autofix
@@ -839,7 +839,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeScanningAutofix, CodeScanningAutofixTypeForResponse]:
         """code-scanning/create-autofix
@@ -884,7 +884,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
     ) -> Response[
@@ -900,7 +900,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         target_ref: Missing[str] = UNSET,
         message: Missing[str] = UNSET,
@@ -915,7 +915,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
         **kwargs,
@@ -927,7 +927,7 @@ class CodeScanningClient:
 
         POST /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix/commits
 
-        Commits an autofix for a code scanning alert.
+        Commits an autofix for a code scanning alert from the repository's default branch.
 
         If an autofix is committed as a result of this request, then this endpoint will return a 201 Created response.
 
@@ -982,7 +982,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
     ) -> Response[
@@ -998,7 +998,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         target_ref: Missing[str] = UNSET,
         message: Missing[str] = UNSET,
@@ -1013,7 +1013,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
         **kwargs,
@@ -1025,7 +1025,7 @@ class CodeScanningClient:
 
         POST /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix/commits
 
-        Commits an autofix for a code scanning alert.
+        Commits an autofix for a code scanning alert from the repository's default branch.
 
         If an autofix is committed as a result of this request, then this endpoint will return a 201 Created response.
 
@@ -1083,7 +1083,7 @@ class CodeScanningClient:
         per_page: Missing[int] = UNSET,
         ref: Missing[str] = UNSET,
         pr: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeScanningAlertInstanceList],
@@ -1141,7 +1141,7 @@ class CodeScanningClient:
         per_page: Missing[int] = UNSET,
         ref: Missing[str] = UNSET,
         pr: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeScanningAlertInstanceList],
@@ -1203,7 +1203,7 @@ class CodeScanningClient:
         sarif_id: Missing[str] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[Literal["created"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeScanningAnalysis], list[CodeScanningAnalysisTypeForResponse]
@@ -1277,7 +1277,7 @@ class CodeScanningClient:
         sarif_id: Missing[str] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[Literal["created"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeScanningAnalysis], list[CodeScanningAnalysisTypeForResponse]
@@ -1343,7 +1343,7 @@ class CodeScanningClient:
         repo: str,
         analysis_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeScanningAnalysis, CodeScanningAnalysisTypeForResponse]:
         """code-scanning/get-analysis
@@ -1397,7 +1397,7 @@ class CodeScanningClient:
         repo: str,
         analysis_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeScanningAnalysis, CodeScanningAnalysisTypeForResponse]:
         """code-scanning/get-analysis
@@ -1452,7 +1452,7 @@ class CodeScanningClient:
         analysis_id: int,
         *,
         confirm_delete: Missing[Union[str, None]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CodeScanningAnalysisDeletion, CodeScanningAnalysisDeletionTypeForResponse
@@ -1565,7 +1565,7 @@ class CodeScanningClient:
         analysis_id: int,
         *,
         confirm_delete: Missing[Union[str, None]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CodeScanningAnalysisDeletion, CodeScanningAnalysisDeletionTypeForResponse
@@ -1676,7 +1676,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeScanningCodeqlDatabase],
@@ -1721,7 +1721,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeScanningCodeqlDatabase],
@@ -1767,7 +1767,7 @@ class CodeScanningClient:
         repo: str,
         language: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CodeScanningCodeqlDatabase, CodeScanningCodeqlDatabaseTypeForResponse
@@ -1818,7 +1818,7 @@ class CodeScanningClient:
         repo: str,
         language: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CodeScanningCodeqlDatabase, CodeScanningCodeqlDatabaseTypeForResponse
@@ -1869,7 +1869,7 @@ class CodeScanningClient:
         repo: str,
         language: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """code-scanning/delete-codeql-database
@@ -1907,7 +1907,7 @@ class CodeScanningClient:
         repo: str,
         language: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """code-scanning/delete-codeql-database
@@ -1945,7 +1945,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
@@ -1963,7 +1963,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         language: Literal[
             "actions",
@@ -1992,7 +1992,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         language: Literal[
             "actions",
@@ -2021,7 +2021,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         language: Literal[
             "actions",
@@ -2048,7 +2048,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -2128,7 +2128,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
@@ -2146,7 +2146,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         language: Literal[
             "actions",
@@ -2175,7 +2175,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         language: Literal[
             "actions",
@@ -2204,7 +2204,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         language: Literal[
             "actions",
@@ -2231,7 +2231,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -2311,7 +2311,7 @@ class CodeScanningClient:
         repo: str,
         codeql_variant_analysis_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CodeScanningVariantAnalysis, CodeScanningVariantAnalysisTypeForResponse
@@ -2355,7 +2355,7 @@ class CodeScanningClient:
         repo: str,
         codeql_variant_analysis_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CodeScanningVariantAnalysis, CodeScanningVariantAnalysisTypeForResponse
@@ -2401,7 +2401,7 @@ class CodeScanningClient:
         repo_owner: str,
         repo_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CodeScanningVariantAnalysisRepoTask,
@@ -2448,7 +2448,7 @@ class CodeScanningClient:
         repo_owner: str,
         repo_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CodeScanningVariantAnalysisRepoTask,
@@ -2492,7 +2492,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeScanningDefaultSetup, CodeScanningDefaultSetupTypeForResponse]:
         """code-scanning/get-default-setup
@@ -2530,7 +2530,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeScanningDefaultSetup, CodeScanningDefaultSetupTypeForResponse]:
         """code-scanning/get-default-setup
@@ -2569,7 +2569,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: CodeScanningDefaultSetupUpdateType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -2581,7 +2581,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Missing[Literal["configured", "not-configured"]] = UNSET,
         runner_type: Missing[Literal["standard", "labeled"]] = UNSET,
@@ -2610,7 +2610,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
@@ -2668,7 +2668,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: CodeScanningDefaultSetupUpdateType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -2680,7 +2680,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Missing[Literal["configured", "not-configured"]] = UNSET,
         runner_type: Missing[Literal["standard", "labeled"]] = UNSET,
@@ -2709,7 +2709,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
@@ -2767,7 +2767,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
     ) -> Response[
@@ -2781,7 +2781,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         commit_sha: str,
         ref: str,
@@ -2799,7 +2799,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
@@ -2886,7 +2886,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
     ) -> Response[
@@ -2900,7 +2900,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         commit_sha: str,
         ref: str,
@@ -2918,7 +2918,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
@@ -3005,7 +3005,7 @@ class CodeScanningClient:
         repo: str,
         sarif_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeScanningSarifsStatus, CodeScanningSarifsStatusTypeForResponse]:
         """code-scanning/get-sarif
@@ -3042,7 +3042,7 @@ class CodeScanningClient:
         repo: str,
         sarif_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeScanningSarifsStatus, CodeScanningSarifsStatusTypeForResponse]:
         """code-scanning/get-sarif

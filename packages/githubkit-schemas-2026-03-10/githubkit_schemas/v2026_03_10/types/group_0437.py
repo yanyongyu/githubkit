@@ -12,35 +12,26 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0225 import (
-    RepositoryRuleFilePathRestrictionPropParametersType,
-    RepositoryRuleFilePathRestrictionPropParametersTypeForResponse,
-)
 
+class RepositoryRuleDetailedOneof9Type(TypedDict):
+    """RepositoryRuleDetailedOneof9"""
 
-class RepositoryRuleDetailedOneof15Type(TypedDict):
-    """RepositoryRuleDetailedOneof15"""
-
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
+    type: Literal["non_fast_forward"]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof15TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof15"""
+class RepositoryRuleDetailedOneof9TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof9"""
 
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[
-        RepositoryRuleFilePathRestrictionPropParametersTypeForResponse
-    ]
+    type: Literal["non_fast_forward"]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof15Type",
-    "RepositoryRuleDetailedOneof15TypeForResponse",
+    "RepositoryRuleDetailedOneof9Type",
+    "RepositoryRuleDetailedOneof9TypeForResponse",
 )

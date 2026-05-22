@@ -12,17 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0271 import ActionsVariable
-
-
-class ReposOwnerRepoAgentsVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoAgentsVariablesGetResponse200"""
-
-    total_count: int = Field()
-    variables: list[ActionsVariable] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoAgentsVariablesGetResponse200)
+class ReposOwnerRepoActionsVariablesNamePatchBody(GitHubModel):
+    """ReposOwnerRepoActionsVariablesNamePatchBody"""
 
-__all__ = ("ReposOwnerRepoAgentsVariablesGetResponse200",)
+    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
+    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
+
+
+model_rebuild(ReposOwnerRepoActionsVariablesNamePatchBody)
+
+__all__ = ("ReposOwnerRepoActionsVariablesNamePatchBody",)

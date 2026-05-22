@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -62,7 +62,7 @@ class CampaignsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
         sort: Missing[Literal["created", "updated", "ends_at", "published"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[CampaignSummary], list[CampaignSummaryTypeForResponse]]:
         """campaigns/list-org-campaigns
@@ -114,7 +114,7 @@ class CampaignsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
         sort: Missing[Literal["created", "updated", "ends_at", "published"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[CampaignSummary], list[CampaignSummaryTypeForResponse]]:
         """campaigns/list-org-campaigns
@@ -162,7 +162,7 @@ class CampaignsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             OrgsOrgCampaignsPostBodyOneof0Type, OrgsOrgCampaignsPostBodyOneof1Type
@@ -175,7 +175,7 @@ class CampaignsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: str,
@@ -195,7 +195,7 @@ class CampaignsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: str,
@@ -213,7 +213,7 @@ class CampaignsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -284,7 +284,7 @@ class CampaignsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             OrgsOrgCampaignsPostBodyOneof0Type, OrgsOrgCampaignsPostBodyOneof1Type
@@ -297,7 +297,7 @@ class CampaignsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: str,
@@ -317,7 +317,7 @@ class CampaignsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: str,
@@ -335,7 +335,7 @@ class CampaignsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -406,7 +406,7 @@ class CampaignsClient:
         org: str,
         campaign_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]:
         """campaigns/get-campaign-summary
@@ -446,7 +446,7 @@ class CampaignsClient:
         org: str,
         campaign_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]:
         """campaigns/get-campaign-summary
@@ -486,7 +486,7 @@ class CampaignsClient:
         org: str,
         campaign_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """campaigns/delete-campaign
@@ -524,7 +524,7 @@ class CampaignsClient:
         org: str,
         campaign_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """campaigns/delete-campaign
@@ -563,7 +563,7 @@ class CampaignsClient:
         org: str,
         campaign_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCampaignsCampaignNumberPatchBodyType,
     ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]: ...
@@ -575,7 +575,7 @@ class CampaignsClient:
         campaign_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -591,7 +591,7 @@ class CampaignsClient:
         org: str,
         campaign_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCampaignsCampaignNumberPatchBodyType] = UNSET,
         **kwargs,
@@ -650,7 +650,7 @@ class CampaignsClient:
         org: str,
         campaign_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCampaignsCampaignNumberPatchBodyType,
     ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]: ...
@@ -662,7 +662,7 @@ class CampaignsClient:
         campaign_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -678,7 +678,7 @@ class CampaignsClient:
         org: str,
         campaign_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCampaignsCampaignNumberPatchBodyType] = UNSET,
         **kwargs,

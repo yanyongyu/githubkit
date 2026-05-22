@@ -9,70 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0358 import (
-    DeploymentBranchPolicySettingsType,
-    DeploymentBranchPolicySettingsTypeForResponse,
-)
 
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
-
-    wait_timer: NotRequired[int]
-    prevent_self_review: NotRequired[bool]
-    reviewers: NotRequired[
-        Union[
-            list[
-                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType
-            ],
-            None,
+    state: NotRequired[Literal["dismissed", "open"]]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
         ]
     ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
-    ]
+    dismissed_comment: NotRequired[str]
+    assignees: list[str]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
-
-    wait_timer: NotRequired[int]
-    prevent_self_review: NotRequired[bool]
-    reviewers: NotRequired[
-        Union[
-            list[
-                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse
-            ],
-            None,
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
-    ]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
-
-    type: NotRequired[Literal["User", "Team"]]
-    id: NotRequired[int]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse(
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
 
-    type: NotRequired[Literal["User", "Team"]]
-    id: NotRequired[int]
+    state: NotRequired[Literal["dismissed", "open"]]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
+    dismissed_comment: NotRequired[str]
+    assignees: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
 )

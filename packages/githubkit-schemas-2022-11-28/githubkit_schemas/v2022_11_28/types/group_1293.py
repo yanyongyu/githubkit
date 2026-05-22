@@ -12,21 +12,15 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
-
-    issue_id: int
+class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
 
 
-class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
-
-    issue_id: int
+class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyTypeForResponse",
+    "ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type",
+    "ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse",
 )

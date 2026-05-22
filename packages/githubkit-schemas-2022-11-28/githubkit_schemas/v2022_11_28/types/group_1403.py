@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0140 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
+class UsersUsernameAttestationsBulkListPostBodyType(TypedDict):
+    """UsersUsernameAttestationsBulkListPostBody"""
 
-    resources: list[CopilotSpaceResourceType]
+    subject_digests: list[str]
+    predicate_type: NotRequired[str]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
+class UsersUsernameAttestationsBulkListPostBodyTypeForResponse(TypedDict):
+    """UsersUsernameAttestationsBulkListPostBody"""
 
-    resources: list[CopilotSpaceResourceTypeForResponse]
+    subject_digests: list[str]
+    predicate_type: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse",
+    "UsersUsernameAttestationsBulkListPostBodyType",
+    "UsersUsernameAttestationsBulkListPostBodyTypeForResponse",
 )

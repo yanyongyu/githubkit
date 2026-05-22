@@ -1,4 +1,4 @@
-from typing import Any, Optional, Union
+from typing import Any
 
 from githubkit.compat import GitHubModel, model_before_validator
 
@@ -11,17 +11,17 @@ class SourceLocation(GitHubModel):
 class GraphQLError(GitHubModel):
     # https://github.com/octokit/graphql.js/pull/314
     # https://github.com/yanyongyu/githubkit/issues/159
-    type: Optional[str] = None
+    type: str | None = None
     message: str
-    locations: Optional[list[SourceLocation]] = None
-    path: Optional[list[Union[int, str]]] = None
-    extensions: Optional[dict[str, Any]] = None
+    locations: list[SourceLocation] | None = None
+    path: list[int | str] | None = None
+    extensions: dict[str, Any] | None = None
 
 
 class GraphQLResponse(GitHubModel):
-    data: Optional[dict[str, Any]] = None
-    errors: Optional[list[GraphQLError]] = None
-    extensions: Optional[dict[str, Any]] = None
+    data: dict[str, Any] | None = None
+    errors: list[GraphQLError] | None = None
+    extensions: dict[str, Any] | None = None
 
     @model_before_validator
     @classmethod

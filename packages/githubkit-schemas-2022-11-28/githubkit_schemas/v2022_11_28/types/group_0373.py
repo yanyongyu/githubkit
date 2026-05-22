@@ -9,56 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
-from .group_0372 import HookResponseType, HookResponseTypeForResponse
 
+class BlobType(TypedDict):
+    """Blob
 
-class HookType(TypedDict):
-    """Webhook
-
-    Webhooks for repositories.
+    Blob
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigType
-    updated_at: _dt.datetime
-    created_at: _dt.datetime
+    content: str
+    encoding: str
     url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseType
+    sha: str
+    size: Union[int, None]
+    node_id: str
+    highlighted_content: NotRequired[str]
 
 
-class HookTypeForResponse(TypedDict):
-    """Webhook
+class BlobTypeForResponse(TypedDict):
+    """Blob
 
-    Webhooks for repositories.
+    Blob
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigTypeForResponse
-    updated_at: str
-    created_at: str
+    content: str
+    encoding: str
     url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseTypeForResponse
+    sha: str
+    size: Union[int, None]
+    node_id: str
+    highlighted_content: NotRequired[str]
 
 
 __all__ = (
-    "HookType",
-    "HookTypeForResponse",
+    "BlobType",
+    "BlobTypeForResponse",
 )

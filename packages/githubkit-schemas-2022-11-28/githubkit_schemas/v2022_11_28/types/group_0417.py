@@ -9,32 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestMergeResultType(TypedDict):
-    """Pull Request Merge Result
+class PagesDeploymentStatusType(TypedDict):
+    """GitHub Pages deployment status"""
 
-    Pull Request Merge Result
-    """
+    status: NotRequired[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+            "deployment_queued",
+        ]
+    ]
 
-    sha: str
-    merged: bool
-    message: str
 
+class PagesDeploymentStatusTypeForResponse(TypedDict):
+    """GitHub Pages deployment status"""
 
-class PullRequestMergeResultTypeForResponse(TypedDict):
-    """Pull Request Merge Result
-
-    Pull Request Merge Result
-    """
-
-    sha: str
-    merged: bool
-    message: str
+    status: NotRequired[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+            "deployment_queued",
+        ]
+    ]
 
 
 __all__ = (
-    "PullRequestMergeResultType",
-    "PullRequestMergeResultTypeForResponse",
+    "PagesDeploymentStatusType",
+    "PagesDeploymentStatusTypeForResponse",
 )

@@ -14,16 +14,13 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoAgentsSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoAgentsSecretsSecretNamePutBody"""
+class ReposOwnerRepoActionsVariablesPostBody(GitHubModel):
+    """ReposOwnerRepoActionsVariablesPostBody"""
 
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/agents/secrets#get-a-repository-public-key) endpoint.",
-    )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
 
 
-model_rebuild(ReposOwnerRepoAgentsSecretsSecretNamePutBody)
+model_rebuild(ReposOwnerRepoActionsVariablesPostBody)
 
-__all__ = ("ReposOwnerRepoAgentsSecretsSecretNamePutBody",)
+__all__ = ("ReposOwnerRepoActionsVariablesPostBody",)

@@ -17,23 +17,20 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0238 import RepositoryRuleCopilotCodeReviewPropParameters
+from .group_0238 import RepositoryRuleMaxFileSizePropParameters
 
 
-class RepositoryRuleCopilotCodeReview(GitHubModel):
-    """copilot_code_review
+class RepositoryRuleMaxFileSize(GitHubModel):
+    """max_file_size
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and their premium requests quota has not
-    reached the limit.
+    Prevent commits with individual files that exceed the specified limit from being
+    pushed to the commit graph.
     """
 
-    type: Literal["copilot_code_review"] = Field()
-    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["max_file_size"] = Field()
+    parameters: Missing[RepositoryRuleMaxFileSizePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleCopilotCodeReview)
+model_rebuild(RepositoryRuleMaxFileSize)
 
-__all__ = ("RepositoryRuleCopilotCodeReview",)
+__all__ = ("RepositoryRuleMaxFileSize",)

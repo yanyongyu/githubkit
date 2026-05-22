@@ -17,20 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0234 import RepositoryRuleWorkflowsPropParameters
+from .group_0234 import RepositoryRuleMaxFilePathLengthPropParameters
 
 
-class RepositoryRuleWorkflows(GitHubModel):
-    """workflows
+class RepositoryRuleMaxFilePathLength(GitHubModel):
+    """max_file_path_length
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    Prevent commits that include file paths that exceed the specified character
+    limit from being pushed to the commit graph.
     """
 
-    type: Literal["workflows"] = Field()
-    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
+    type: Literal["max_file_path_length"] = Field()
+    parameters: Missing[RepositoryRuleMaxFilePathLengthPropParameters] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(RepositoryRuleWorkflows)
+model_rebuild(RepositoryRuleMaxFilePathLength)
 
-__all__ = ("RepositoryRuleWorkflows",)
+__all__ = ("RepositoryRuleMaxFilePathLength",)

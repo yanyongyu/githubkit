@@ -102,7 +102,9 @@ class WebhookIssuesDemilestonedPropIssue(GitHubModel):
     timeline_url: Missing[str] = Field(default=UNSET)
     title: str = Field(description="Title of the issue")
     type: Missing[Union[IssueType, None]] = Field(
-        default=UNSET, title="Issue Type", description="The type of issue."
+        default=UNSET,
+        title="Issue Type",
+        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
     )
     updated_at: _dt.datetime = Field()
     url: str = Field(description="URL for the issue")

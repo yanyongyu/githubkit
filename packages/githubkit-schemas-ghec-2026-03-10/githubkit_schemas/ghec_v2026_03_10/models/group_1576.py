@@ -11,19 +11,25 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0260 import CopilotSpace
 
+class UsersUsernameAttestationsBulkListPostBody(GitHubModel):
+    """UsersUsernameAttestationsBulkListPostBody"""
 
-class UsersUsernameCopilotSpacesGetResponse200(GitHubModel):
-    """UsersUsernameCopilotSpacesGetResponse200"""
-
-    spaces: list[CopilotSpace] = Field(
-        description="The list of Copilot Spaces on this page of results."
+    subject_digests: list[str] = Field(
+        max_length=1024 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of subject digests to fetch attestations for.",
+    )
+    predicate_type: Missing[str] = Field(
+        default=UNSET,
+        description="Optional filter for fetching attestations with a given predicate type.\nThis option accepts `provenance`, `sbom`, `release`, or freeform text\nfor custom predicate types.",
     )
 
 
-model_rebuild(UsersUsernameCopilotSpacesGetResponse200)
+model_rebuild(UsersUsernameAttestationsBulkListPostBody)
 
-__all__ = ("UsersUsernameCopilotSpacesGetResponse200",)
+__all__ = ("UsersUsernameAttestationsBulkListPostBody",)

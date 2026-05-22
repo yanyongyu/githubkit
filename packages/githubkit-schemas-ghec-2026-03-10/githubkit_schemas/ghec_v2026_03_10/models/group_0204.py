@@ -22,7 +22,8 @@ from githubkit.utils import UNSET
 class IssueType(GitHubModel):
     """Issue Type
 
-    The type of issue.
+    The type assigned to the issue. This is only present for issues in repositories
+    where issue types are supported.
     """
 
     id: int = Field(description="The unique identifier of the issue type.")

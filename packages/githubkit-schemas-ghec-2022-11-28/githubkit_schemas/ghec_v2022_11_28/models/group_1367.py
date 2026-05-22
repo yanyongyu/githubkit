@@ -16,13 +16,13 @@ from githubkit.compat import GitHubModel, model_rebuild
 from .group_0343 import ActionsSecret
 
 
-class ReposOwnerRepoAgentsSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoAgentsSecretsGetResponse200"""
+class ReposOwnerRepoAgentsOrganizationSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoAgentsOrganizationSecretsGetResponse200"""
 
     total_count: int = Field()
     secrets: list[ActionsSecret] = Field()
 
 
-model_rebuild(ReposOwnerRepoAgentsSecretsGetResponse200)
+model_rebuild(ReposOwnerRepoAgentsOrganizationSecretsGetResponse200)
 
-__all__ = ("ReposOwnerRepoAgentsSecretsGetResponse200",)
+__all__ = ("ReposOwnerRepoAgentsOrganizationSecretsGetResponse200",)

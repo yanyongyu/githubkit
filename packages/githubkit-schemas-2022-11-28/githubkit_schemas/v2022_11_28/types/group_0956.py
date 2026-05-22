@@ -9,109 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0958 import (
-    AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type,
-    AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse,
-    AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType,
-    AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse,
-    AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType,
-    AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse,
-)
-from .group_0959 import (
-    AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsType,
-    AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse,
-    AgentsTasksTaskIdGetResponse200Allof0PropOwnerType,
-    AgentsTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse,
-)
-from .group_0961 import (
-    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
-    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
-)
 
+class AgentsReposOwnerRepoTasksTaskIdGetResponse422Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse422
 
-class AgentsTasksTaskIdGetResponse200Type(TypedDict):
-    """AgentsTasksTaskIdGetResponse200"""
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
 
-    id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
-        list[AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType]
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsType]
     ]
-    owner: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropOwnerType]
-    repository: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsType]
-    ]
-    archived_at: NotRequired[Union[_dt.datetime, None]]
-    updated_at: NotRequired[_dt.datetime]
-    created_at: _dt.datetime
-    sessions: NotRequired[
-        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
-    ]
+    documentation_url: str
 
 
-class AgentsTasksTaskIdGetResponse200TypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse200"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse422TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse422
 
-    id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[
-        AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse
-    ]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
         list[
-            AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse
+            AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse
         ]
     ]
-    owner: NotRequired[AgentsTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse]
-    repository: NotRequired[
-        AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
     ]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
     ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse]
-    ]
-    archived_at: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
-    created_at: str
-    sessions: NotRequired[
-        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse]
-    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse200Type",
-    "AgentsTasksTaskIdGetResponse200TypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse422Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse422TypeForResponse",
 )

@@ -9,24 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoAgentsVariablesNamePatchBodyType(TypedDict):
-    """ReposOwnerRepoAgentsVariablesNamePatchBody"""
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
+    ref: str
+    inputs: NotRequired[
+        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
+    ]
 
 
-class ReposOwnerRepoAgentsVariablesNamePatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoAgentsVariablesNamePatchBody"""
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
+    ref: str
+    inputs: NotRequired[
+        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse
+    ]
+
+
+ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType: TypeAlias = (
+    dict[str, Any]
+)
+"""ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+
+Input keys and values configured in the workflow file. The maximum number of
+properties is 25. Any default properties configured in the workflow file will be
+used when `inputs` are omitted.
+"""
+
+
+ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+
+Input keys and values configured in the workflow file. The maximum number of
+properties is 25. Any default properties configured in the workflow file will be
+used when `inputs` are omitted.
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoAgentsVariablesNamePatchBodyType",
-    "ReposOwnerRepoAgentsVariablesNamePatchBodyTypeForResponse",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyTypeForResponse",
 )

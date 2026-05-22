@@ -9,26 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
+class ReposOwnerRepoBranchesBranchRenamePostBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchRenamePostBody"""
 
-    bypass_review_id: NotRequired[int]
+    new_name: str
 
 
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
+class ReposOwnerRepoBranchesBranchRenamePostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoBranchesBranchRenamePostBody"""
 
-    bypass_review_id: NotRequired[int]
+    new_name: str
 
 
 __all__ = (
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type",
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse",
+    "ReposOwnerRepoBranchesBranchRenamePostBodyType",
+    "ReposOwnerRepoBranchesBranchRenamePostBodyTypeForResponse",
 )

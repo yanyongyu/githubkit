@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0268 import JobType, JobTypeForResponse
-
-
-class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
-
-    total_count: int
-    jobs: list[JobType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
+class ReposOwnerRepoActionsPermissionsPutBodyType(TypedDict):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
 
-    total_count: int
-    jobs: list[JobTypeForResponse]
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
+
+
+class ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
+
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",
-    "ReposOwnerRepoActionsRunsRunIdJobsGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsPermissionsPutBodyType",
+    "ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse",
 )

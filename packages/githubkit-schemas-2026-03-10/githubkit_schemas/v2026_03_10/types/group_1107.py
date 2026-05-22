@@ -9,28 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
 
-    The total number of seats set to "pending cancellation" for the specified users.
-    """
+    metadata: NotRequired[
+        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType
+    ]
 
-    seats_cancelled: int
+
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+
+    metadata: NotRequired[
+        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse
+    ]
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
 
-    The total number of seats set to "pending cancellation" for the specified users.
-    """
+Updated resource-specific metadata.
+"""
 
-    seats_cancelled: int
+
+OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+
+Updated resource-specific metadata.
+"""
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",
-    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse",
 )

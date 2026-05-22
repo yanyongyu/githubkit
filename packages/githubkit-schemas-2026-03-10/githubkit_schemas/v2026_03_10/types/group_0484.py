@@ -9,33 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
+class EmailType(TypedDict):
+    """Email
 
-class StarredRepositoryType(TypedDict):
-    """Starred Repository
-
-    Starred Repository
+    Email
     """
 
-    starred_at: _dt.datetime
-    repo: RepositoryType
+    email: str
+    primary: bool
+    verified: bool
+    visibility: Union[str, None]
 
 
-class StarredRepositoryTypeForResponse(TypedDict):
-    """Starred Repository
+class EmailTypeForResponse(TypedDict):
+    """Email
 
-    Starred Repository
+    Email
     """
 
-    starred_at: str
-    repo: RepositoryTypeForResponse
+    email: str
+    primary: bool
+    verified: bool
+    visibility: Union[str, None]
 
 
 __all__ = (
-    "StarredRepositoryType",
-    "StarredRepositoryTypeForResponse",
+    "EmailType",
+    "EmailTypeForResponse",
 )

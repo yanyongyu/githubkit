@@ -9,27 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class OrgsOrgCodespacesSecretsGetResponse200(GitHubModel):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
 
-    actor_type: Literal["User", "Team"] = Field(
-        description="The type of actor (user or team)."
+    total_count: int = Field()
+    secrets: list[CodespacesOrgSecret] = Field()
+
+
+class CodespacesOrgSecret(GitHubModel):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str = Field(description="The name of the secret")
+    created_at: _dt.datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    actor_identifier: str = Field(
-        description="The username (for users) or team slug (for teams). The numeric ID of a user or team is also accepted."
+    updated_at: _dt.datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    role: Literal["reader", "writer", "admin"] = Field(
-        description="The role to grant to the collaborator."
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that the secret is visible to"
+    )
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
     )
 
 
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody)
+model_rebuild(OrgsOrgCodespacesSecretsGetResponse200)
+model_rebuild(CodespacesOrgSecret)
 
-__all__ = ("OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody",)
+__all__ = (
+    "CodespacesOrgSecret",
+    "OrgsOrgCodespacesSecretsGetResponse200",
+)

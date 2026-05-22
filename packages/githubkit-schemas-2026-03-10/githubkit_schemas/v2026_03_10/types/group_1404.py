@@ -9,51 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type(TypedDict):
+    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
 
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType
-    ]
+    subject_digests: list[str]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse(TypedDict):
+    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
 
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse
-    ]
-
-
-UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-
-Updated resource-specific metadata.
-"""
-
-
-UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-
-Updated resource-specific metadata.
-"""
+    subject_digests: list[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse",
+    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type",
+    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse",
 )

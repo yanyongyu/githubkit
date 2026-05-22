@@ -13,33 +13,33 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdPatchBodyType(TypedDict):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
     ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    validity: NotRequired[Union[None, Literal["active", "inactive"]]]
 
 
-class TeamsTeamIdPatchBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
     ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    validity: NotRequired[Union[None, Literal["active", "inactive"]]]
 
 
 __all__ = (
-    "TeamsTeamIdPatchBodyType",
-    "TeamsTeamIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
 )

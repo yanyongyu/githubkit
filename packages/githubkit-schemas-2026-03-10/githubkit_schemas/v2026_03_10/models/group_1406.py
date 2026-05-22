@@ -9,25 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0180 import ProjectsV2FieldSingleSelectOption
-
-
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
-
-    name: str = Field(description="The name of the field.")
-    data_type: Literal["single_select"] = Field(description="The field's data type.")
-    single_select_options: list[ProjectsV2FieldSingleSelectOption] = Field(
-        description="The options available for single select fields. At least one option must be provided when creating a single select field."
-    )
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1)
+class UsersUsernameAttestationsSubjectDigestGetResponse200(GitHubModel):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1",)
+    attestations: Missing[
+        list[UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+    ] = Field(default=UNSET)
+
+
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems(
+    GitHubModel
+):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    repository_id: Missing[int] = Field(default=UNSET)
+    bundle_url: Missing[str] = Field(default=UNSET)
+    initiator: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200)
+model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems)
+
+__all__ = (
+    "UsersUsernameAttestationsSubjectDigestGetResponse200",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+)

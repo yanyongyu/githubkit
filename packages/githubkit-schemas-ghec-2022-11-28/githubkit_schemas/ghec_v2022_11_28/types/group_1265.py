@@ -9,51 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal
-from typing_extensions import TypeAlias, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody"""
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ]
-    metadata: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType
-
-
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
-
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ]
-    metadata: (
-        OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse
-    )
+    role: Literal["reader", "writer", "admin", "no_access"]
 
 
-OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody"""
 
-Resource-specific metadata.
-"""
-
-
-OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
-
-Resource-specific metadata.
-"""
+    role: Literal["reader", "writer", "admin", "no_access"]
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse",
 )

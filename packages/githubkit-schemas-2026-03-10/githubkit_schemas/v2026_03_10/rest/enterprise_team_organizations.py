@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Optional, overload
+from typing import TYPE_CHECKING, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -55,7 +55,7 @@ class EnterpriseTeamOrganizationsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """enterprise-team-organizations/get-assignments
@@ -94,7 +94,7 @@ class EnterpriseTeamOrganizationsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """enterprise-team-organizations/get-assignments
@@ -132,7 +132,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise: str,
         enterprise_team: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType,
     ) -> Response[
@@ -146,7 +146,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise_team: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         organization_slugs: list[str],
     ) -> Response[
@@ -158,7 +158,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise: str,
         enterprise_team: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType
@@ -209,7 +209,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise: str,
         enterprise_team: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType,
     ) -> Response[
@@ -223,7 +223,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise_team: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         organization_slugs: list[str],
     ) -> Response[
@@ -235,7 +235,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise: str,
         enterprise_team: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType
@@ -286,7 +286,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise: str,
         enterprise_team: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType,
     ) -> Response: ...
@@ -298,7 +298,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise_team: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         organization_slugs: list[str],
     ) -> Response: ...
@@ -308,7 +308,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise: str,
         enterprise_team: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType
@@ -358,7 +358,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise: str,
         enterprise_team: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType,
     ) -> Response: ...
@@ -370,7 +370,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise_team: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         organization_slugs: list[str],
     ) -> Response: ...
@@ -380,7 +380,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise: str,
         enterprise_team: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType
@@ -430,7 +430,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise_team: str,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OrganizationSimple, OrganizationSimpleTypeForResponse]:
         """enterprise-team-organizations/get-assignment
@@ -463,7 +463,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise_team: str,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OrganizationSimple, OrganizationSimpleTypeForResponse]:
         """enterprise-team-organizations/get-assignment
@@ -496,7 +496,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise_team: str,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OrganizationSimple, OrganizationSimpleTypeForResponse]:
         """enterprise-team-organizations/add
@@ -528,7 +528,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise_team: str,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OrganizationSimple, OrganizationSimpleTypeForResponse]:
         """enterprise-team-organizations/add
@@ -560,7 +560,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise_team: str,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-team-organizations/delete
@@ -589,7 +589,7 @@ class EnterpriseTeamOrganizationsClient:
         enterprise_team: str,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-team-organizations/delete

@@ -18,19 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0491 import EnterpriseWebhooks
-from .group_0492 import SimpleInstallation
-from .group_0493 import OrganizationSimpleWebhooks
-from .group_0494 import RepositoryWebhooks
-from .group_0568 import WebhookCodeScanningAlertUpdatedAssignmentPropAlert
+from .group_0497 import EnterpriseWebhooks
+from .group_0498 import SimpleInstallation
+from .group_0499 import OrganizationSimpleWebhooks
+from .group_0500 import RepositoryWebhooks
+from .group_0568 import WebhookCodeScanningAlertFixedPropAlert
 
 
-class WebhookCodeScanningAlertUpdatedAssignment(GitHubModel):
-    """code_scanning_alert updated_assignment event"""
+class WebhookCodeScanningAlertFixed(GitHubModel):
+    """code_scanning_alert fixed event"""
 
-    action: Literal["updated_assignment"] = Field()
-    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlert = Field(
+    action: Literal["fixed"] = Field()
+    alert: WebhookCodeScanningAlertFixedPropAlert = Field(
         description="The code scanning alert involved in the event."
+    )
+    commit_oid: str = Field(
+        description="The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -47,6 +50,9 @@ class WebhookCodeScanningAlertUpdatedAssignment(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    ref: str = Field(
+        description="The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -54,6 +60,6 @@ class WebhookCodeScanningAlertUpdatedAssignment(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCodeScanningAlertUpdatedAssignment)
+model_rebuild(WebhookCodeScanningAlertFixed)
 
-__all__ = ("WebhookCodeScanningAlertUpdatedAssignment",)
+__all__ = ("WebhookCodeScanningAlertFixed",)

@@ -19,16 +19,16 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0018 import Installation
-from .group_0491 import EnterpriseWebhooks
-from .group_0493 import OrganizationSimpleWebhooks
-from .group_0494 import RepositoryWebhooks
-from .group_0506 import WebhooksRepositoriesItems
+from .group_0497 import EnterpriseWebhooks
+from .group_0499 import OrganizationSimpleWebhooks
+from .group_0500 import RepositoryWebhooks
+from .group_0512 import WebhooksRepositoriesItems
 
 
-class WebhookInstallationUnsuspend(GitHubModel):
-    """installation unsuspend event"""
+class WebhookInstallationDeleted(GitHubModel):
+    """installation deleted event"""
 
-    action: Literal["unsuspend"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,6 +53,6 @@ class WebhookInstallationUnsuspend(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookInstallationUnsuspend)
+model_rebuild(WebhookInstallationDeleted)
 
-__all__ = ("WebhookInstallationUnsuspend",)
+__all__ = ("WebhookInstallationDeleted",)

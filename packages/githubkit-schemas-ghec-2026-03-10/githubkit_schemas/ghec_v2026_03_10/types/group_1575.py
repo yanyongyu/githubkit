@@ -9,52 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200Type(TypedDict):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
+class UsersUserIdProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
+    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
 
-    attestations: NotRequired[
-        list[
-            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
-        ]
-    ]
-
-
-class UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
-
-    attestations: NotRequired[
-        list[
-            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
-        ]
-    ]
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    filter_: NotRequired[str]
+    visible_fields: NotRequired[list[int]]
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
-    TypedDict
-):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+class UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
+    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
 
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
-
-
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    filter_: NotRequired[str]
+    visible_fields: NotRequired[list[int]]
 
 
 __all__ = (
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse",
+    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyType",
+    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
 )

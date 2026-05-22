@@ -21,6 +21,9 @@ from githubkit.utils import UNSET
 from .group_0003 import SimpleUser
 from .group_0019 import LicenseSimple
 from .group_0021 import RepositoryPropCodeSearchIndexStatus, RepositoryPropPermissions
+from .group_1173 import (
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties,
+)
 
 
 class InstallationRepositoriesGetResponse200PropRepositoriesItems(GitHubModel):
@@ -193,6 +196,12 @@ class InstallationRepositoriesGetResponse200PropRepositoriesItems(GitHubModel):
     code_search_index_status: Missing[RepositoryPropCodeSearchIndexStatus] = Field(
         default=UNSET,
         description="The status of the code search index for this repository",
+    )
+    custom_properties: Missing[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
+    ] = Field(
+        default=UNSET,
+        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only.",
     )
 
 

@@ -9,19 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
-
-    issue_id: int = Field(
-        description="The id of the issue that blocks the current issue"
-    )
+class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1(GitHubModel):
+    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody)
+model_rebuild(ReposOwnerRepoInteractionLimitsGetResponse200Anyof1)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody",)
+__all__ = ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1",)

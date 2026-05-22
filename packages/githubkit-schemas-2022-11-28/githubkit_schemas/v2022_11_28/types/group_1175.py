@@ -13,23 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsPermissionsPutBodyType(TypedDict):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
+class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
+    """OrgsOrgSecurityProductEnablementPostBody"""
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    query_suite: NotRequired[Literal["default", "extended"]]
 
 
-class ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
+class OrgsOrgSecurityProductEnablementPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgSecurityProductEnablementPostBody"""
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    query_suite: NotRequired[Literal["default", "extended"]]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsPermissionsPutBodyType",
-    "ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse",
+    "OrgsOrgSecurityProductEnablementPostBodyType",
+    "OrgsOrgSecurityProductEnablementPostBodyTypeForResponse",
 )

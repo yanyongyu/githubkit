@@ -9,23 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLockPutBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
+class ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberCommentsPostBody"""
 
-    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
+    body: str
 
 
-class ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
+class ReposOwnerRepoIssuesIssueNumberCommentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberCommentsPostBody"""
 
-    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
+    body: str
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLockPutBodyType",
-    "ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberCommentsPostBodyTypeForResponse",
 )

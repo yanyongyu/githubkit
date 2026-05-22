@@ -9,28 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class OrgsOrgDependabotRepositoryAccessPatchBody(GitHubModel):
-    """OrgsOrgDependabotRepositoryAccessPatchBody
-
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to add."
-    )
-    repository_ids_to_remove: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to remove."
-    )
+class OrgsOrgCopilotContentExclusionPutBody(ExtraGitHubModel):
+    """OrgsOrgCopilotContentExclusionPutBody"""
 
 
-model_rebuild(OrgsOrgDependabotRepositoryAccessPatchBody)
+model_rebuild(OrgsOrgCopilotContentExclusionPutBody)
 
-__all__ = ("OrgsOrgDependabotRepositoryAccessPatchBody",)
+__all__ = ("OrgsOrgCopilotContentExclusionPutBody",)

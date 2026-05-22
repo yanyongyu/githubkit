@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING
 from weakref import ref
 
 from githubkit.typing import Missing
@@ -51,7 +51,7 @@ class LicensesClient:
         featured: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[LicenseSimple], list[LicenseSimpleTypeForResponse]]:
         """licenses/get-all-commonly-used
@@ -90,7 +90,7 @@ class LicensesClient:
         featured: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[LicenseSimple], list[LicenseSimpleTypeForResponse]]:
         """licenses/get-all-commonly-used
@@ -127,7 +127,7 @@ class LicensesClient:
         self,
         license_: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[License, LicenseTypeForResponse]:
         """licenses/get
@@ -161,7 +161,7 @@ class LicensesClient:
         self,
         license_: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[License, LicenseTypeForResponse]:
         """licenses/get
@@ -197,7 +197,7 @@ class LicensesClient:
         repo: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[LicenseContent, LicenseContentTypeForResponse]:
         """licenses/get-for-repo
@@ -242,7 +242,7 @@ class LicensesClient:
         repo: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[LicenseContent, LicenseContentTypeForResponse]:
         """licenses/get-for-repo

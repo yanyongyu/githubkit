@@ -11,8 +11,7 @@ from collections.abc import Mapping
 import hmac
 import importlib
 import json
-from typing import TYPE_CHECKING, Any, Literal, Union, overload
-from typing_extensions import TypeAlias
+from typing import TYPE_CHECKING, Any, Literal, TypeAlias, Union, overload
 
 from githubkit.compat import (
     GitHubModel,

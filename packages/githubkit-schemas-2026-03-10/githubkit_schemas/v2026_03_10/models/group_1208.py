@@ -12,24 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
+class ReposOwnerRepoAgentsVariablesNamePatchBody(GitHubModel):
+    """ReposOwnerRepoAgentsVariablesNamePatchBody"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str] = Field(description="The name of the status checks")
+    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
+    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
 
 
-model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
-)
+model_rebuild(ReposOwnerRepoAgentsVariablesNamePatchBody)
 
-__all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0",
-)
+__all__ = ("ReposOwnerRepoAgentsVariablesNamePatchBody",)

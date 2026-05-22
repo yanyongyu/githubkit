@@ -13,25 +13,55 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgHooksHookIdConfigPatchBodyType(TypedDict):
-    """OrgsOrgHooksHookIdConfigPatchBody"""
+class OrgsOrgHooksPostBodyType(TypedDict):
+    """OrgsOrgHooksPostBody"""
 
-    url: NotRequired[str]
+    name: str
+    config: OrgsOrgHooksPostBodyPropConfigType
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class OrgsOrgHooksPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgHooksPostBody"""
+
+    name: str
+    config: OrgsOrgHooksPostBodyPropConfigTypeForResponse
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class OrgsOrgHooksPostBodyPropConfigType(TypedDict):
+    """OrgsOrgHooksPostBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: str
     content_type: NotRequired[str]
     secret: NotRequired[str]
     insecure_ssl: NotRequired[Union[str, float]]
+    username: NotRequired[str]
+    password: NotRequired[str]
 
 
-class OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgHooksHookIdConfigPatchBody"""
+class OrgsOrgHooksPostBodyPropConfigTypeForResponse(TypedDict):
+    """OrgsOrgHooksPostBodyPropConfig
 
-    url: NotRequired[str]
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: str
     content_type: NotRequired[str]
     secret: NotRequired[str]
     insecure_ssl: NotRequired[Union[str, float]]
+    username: NotRequired[str]
+    password: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgHooksHookIdConfigPatchBodyType",
-    "OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse",
+    "OrgsOrgHooksPostBodyPropConfigType",
+    "OrgsOrgHooksPostBodyPropConfigTypeForResponse",
+    "OrgsOrgHooksPostBodyType",
+    "OrgsOrgHooksPostBodyTypeForResponse",
 )

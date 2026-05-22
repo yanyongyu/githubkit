@@ -9,38 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0231 import (
-    RepositoryRuleMaxFileSizePropParametersType,
-    RepositoryRuleMaxFileSizePropParametersTypeForResponse,
-)
+
+class RepositoryRuleCopilotCodeReviewPropParametersType(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
+
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
-class RepositoryRuleMaxFileSizeType(TypedDict):
-    """max_file_size
+class RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    Prevent commits with individual files that exceed the specified limit from being
-    pushed to the commit graph.
-    """
-
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
-
-
-class RepositoryRuleMaxFileSizeTypeForResponse(TypedDict):
-    """max_file_size
-
-    Prevent commits with individual files that exceed the specified limit from being
-    pushed to the commit graph.
-    """
-
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersTypeForResponse]
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
 __all__ = (
-    "RepositoryRuleMaxFileSizeType",
-    "RepositoryRuleMaxFileSizeTypeForResponse",
+    "RepositoryRuleCopilotCodeReviewPropParametersType",
+    "RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse",
 )

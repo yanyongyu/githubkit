@@ -9,24 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoAgentsVariablesPostBodyType(TypedDict):
-    """ReposOwnerRepoAgentsVariablesPostBody"""
+class ReposOwnerRepoActionsWorkflowsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
+    total_count: int
+    workflows: list[WorkflowType]
+
+
+class ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
+
+    total_count: int
+    workflows: list[WorkflowTypeForResponse]
+
+
+class WorkflowType(TypedDict):
+    """Workflow
+
+    A GitHub Actions workflow
+    """
+
+    id: int
+    node_id: str
     name: str
-    value: str
+    path: str
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    ]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    url: str
+    html_url: str
+    badge_url: str
+    deleted_at: NotRequired[_dt.datetime]
 
 
-class ReposOwnerRepoAgentsVariablesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoAgentsVariablesPostBody"""
+class WorkflowTypeForResponse(TypedDict):
+    """Workflow
 
+    A GitHub Actions workflow
+    """
+
+    id: int
+    node_id: str
     name: str
-    value: str
+    path: str
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    ]
+    created_at: str
+    updated_at: str
+    url: str
+    html_url: str
+    badge_url: str
+    deleted_at: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoAgentsVariablesPostBodyType",
-    "ReposOwnerRepoAgentsVariablesPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsWorkflowsGetResponse200Type",
+    "ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse",
+    "WorkflowType",
+    "WorkflowTypeForResponse",
 )

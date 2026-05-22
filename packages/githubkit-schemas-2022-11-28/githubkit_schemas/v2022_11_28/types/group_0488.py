@@ -9,84 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class BillingPremiumRequestUsageReportUserType(TypedDict):
-    """BillingPremiumRequestUsageReportUser"""
-
-    time_period: BillingPremiumRequestUsageReportUserPropTimePeriodType
-    user: str
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingPremiumRequestUsageReportUserPropUsageItemsItemsType]
+from .group_0085 import (
+    MarketplaceListingPlanType,
+    MarketplaceListingPlanTypeForResponse,
+)
 
 
-class BillingPremiumRequestUsageReportUserTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportUser"""
+class UserMarketplacePurchaseType(TypedDict):
+    """User Marketplace Purchase
 
-    time_period: BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse
-    user: str
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[
-        BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse
-    ]
+    User Marketplace Purchase
+    """
 
-
-class BillingPremiumRequestUsageReportUserPropTimePeriodType(TypedDict):
-    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    billing_cycle: str
+    next_billing_date: Union[_dt.datetime, None]
+    unit_count: Union[int, None]
+    on_free_trial: bool
+    free_trial_ends_on: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    account: MarketplaceAccountType
+    plan: MarketplaceListingPlanType
 
 
-class BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
+class UserMarketplacePurchaseTypeForResponse(TypedDict):
+    """User Marketplace Purchase
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    User Marketplace Purchase
+    """
 
-
-class BillingPremiumRequestUsageReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    billing_cycle: str
+    next_billing_date: Union[str, None]
+    unit_count: Union[int, None]
+    on_free_trial: bool
+    free_trial_ends_on: Union[str, None]
+    updated_at: Union[str, None]
+    account: MarketplaceAccountTypeForResponse
+    plan: MarketplaceListingPlanTypeForResponse
 
 
-class BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
+class MarketplaceAccountType(TypedDict):
+    """Marketplace Account"""
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    url: str
+    id: int
+    type: str
+    node_id: NotRequired[str]
+    login: str
+    email: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[Union[str, None]]
+
+
+class MarketplaceAccountTypeForResponse(TypedDict):
+    """Marketplace Account"""
+
+    url: str
+    id: int
+    type: str
+    node_id: NotRequired[str]
+    login: str
+    email: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "BillingPremiumRequestUsageReportUserPropTimePeriodType",
-    "BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse",
-    "BillingPremiumRequestUsageReportUserPropUsageItemsItemsType",
-    "BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse",
-    "BillingPremiumRequestUsageReportUserType",
-    "BillingPremiumRequestUsageReportUserTypeForResponse",
+    "MarketplaceAccountType",
+    "MarketplaceAccountTypeForResponse",
+    "UserMarketplacePurchaseType",
+    "UserMarketplacePurchaseTypeForResponse",
 )

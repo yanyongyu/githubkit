@@ -9,39 +9,76 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoContentsPathDeleteBodyType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBody"""
 
-    state: NotRequired[Literal["dismissed", "open"]]
-    dismissed_reason: NotRequired[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
+    message: str
+    sha: str
+    branch: NotRequired[str]
+    committer: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropCommitterType]
+    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType]
+
+
+class ReposOwnerRepoContentsPathDeleteBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBody"""
+
+    message: str
+    sha: str
+    branch: NotRequired[str]
+    committer: NotRequired[
+        ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse
     ]
-    dismissed_comment: NotRequired[str]
-    assignees: list[str]
+    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse]
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoContentsPathDeleteBodyPropCommitterType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
 
-    state: NotRequired[Literal["dismissed", "open"]]
-    dismissed_reason: NotRequired[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ]
-    dismissed_comment: NotRequired[str]
-    assignees: list[str]
+    object containing information about the committer.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
+
+    object containing information about the committer.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathDeleteBodyPropAuthorType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
+
+    object containing information about the author.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
+
+    object containing information about the author.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type",
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
+    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse",
+    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
+    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse",
+    "ReposOwnerRepoContentsPathDeleteBodyType",
+    "ReposOwnerRepoContentsPathDeleteBodyTypeForResponse",
 )

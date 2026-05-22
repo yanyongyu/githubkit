@@ -13,34 +13,36 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0234 import (
-    RepositoryRuleWorkflowsPropParametersType,
-    RepositoryRuleWorkflowsPropParametersTypeForResponse,
+    RepositoryRuleMaxFilePathLengthPropParametersType,
+    RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleWorkflowsType(TypedDict):
-    """workflows
+class RepositoryRuleMaxFilePathLengthType(TypedDict):
+    """max_file_path_length
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    Prevent commits that include file paths that exceed the specified character
+    limit from being pushed to the commit graph.
     """
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
 
 
-class RepositoryRuleWorkflowsTypeForResponse(TypedDict):
-    """workflows
+class RepositoryRuleMaxFilePathLengthTypeForResponse(TypedDict):
+    """max_file_path_length
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    Prevent commits that include file paths that exceed the specified character
+    limit from being pushed to the commit graph.
     """
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersTypeForResponse]
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[
+        RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleWorkflowsType",
-    "RepositoryRuleWorkflowsTypeForResponse",
+    "RepositoryRuleMaxFilePathLengthType",
+    "RepositoryRuleMaxFilePathLengthTypeForResponse",
 )

@@ -12,158 +12,119 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0249 import (
+    SecretScanningLocationCommitType,
+    SecretScanningLocationCommitTypeForResponse,
+    SecretScanningLocationDiscussionCommentType,
+    SecretScanningLocationDiscussionCommentTypeForResponse,
+    SecretScanningLocationDiscussionTitleType,
+    SecretScanningLocationDiscussionTitleTypeForResponse,
+    SecretScanningLocationIssueBodyType,
+    SecretScanningLocationIssueBodyTypeForResponse,
+    SecretScanningLocationPullRequestBodyType,
+    SecretScanningLocationPullRequestBodyTypeForResponse,
+    SecretScanningLocationPullRequestReviewType,
+    SecretScanningLocationPullRequestReviewTypeForResponse,
+    SecretScanningLocationWikiCommitType,
+    SecretScanningLocationWikiCommitTypeForResponse,
+)
+from .group_0250 import (
+    SecretScanningLocationIssueCommentType,
+    SecretScanningLocationIssueCommentTypeForResponse,
+    SecretScanningLocationIssueTitleType,
+    SecretScanningLocationIssueTitleTypeForResponse,
+    SecretScanningLocationPullRequestReviewCommentType,
+    SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+    SecretScanningLocationPullRequestTitleType,
+    SecretScanningLocationPullRequestTitleTypeForResponse,
+)
+from .group_0251 import (
+    SecretScanningLocationDiscussionBodyType,
+    SecretScanningLocationDiscussionBodyTypeForResponse,
+    SecretScanningLocationPullRequestCommentType,
+    SecretScanningLocationPullRequestCommentTypeForResponse,
+)
 
-class RepositoryAdvisoryUpdateType(TypedDict):
-    """RepositoryAdvisoryUpdate"""
 
-    summary: NotRequired[str]
-    description: NotRequired[str]
-    cve_id: NotRequired[Union[str, None]]
-    vulnerabilities: NotRequired[
-        list[RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType]
+class SecretScanningLocationType(TypedDict):
+    """SecretScanningLocation"""
+
+    type: NotRequired[
+        Literal[
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
+        ]
     ]
-    cwe_ids: NotRequired[Union[list[str], None]]
-    credits_: NotRequired[
-        Union[list[RepositoryAdvisoryUpdatePropCreditsItemsType], None]
-    ]
-    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
-    cvss_vector_string: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["published", "closed", "draft"]]
-    collaborating_users: NotRequired[Union[list[str], None]]
-    collaborating_teams: NotRequired[Union[list[str], None]]
-
-
-class RepositoryAdvisoryUpdateTypeForResponse(TypedDict):
-    """RepositoryAdvisoryUpdate"""
-
-    summary: NotRequired[str]
-    description: NotRequired[str]
-    cve_id: NotRequired[Union[str, None]]
-    vulnerabilities: NotRequired[
-        list[RepositoryAdvisoryUpdatePropVulnerabilitiesItemsTypeForResponse]
-    ]
-    cwe_ids: NotRequired[Union[list[str], None]]
-    credits_: NotRequired[
-        Union[list[RepositoryAdvisoryUpdatePropCreditsItemsTypeForResponse], None]
-    ]
-    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
-    cvss_vector_string: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["published", "closed", "draft"]]
-    collaborating_users: NotRequired[Union[list[str], None]]
-    collaborating_teams: NotRequired[Union[list[str], None]]
-
-
-class RepositoryAdvisoryUpdatePropCreditsItemsType(TypedDict):
-    """RepositoryAdvisoryUpdatePropCreditsItems"""
-
-    login: str
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ]
-
-
-class RepositoryAdvisoryUpdatePropCreditsItemsTypeForResponse(TypedDict):
-    """RepositoryAdvisoryUpdatePropCreditsItems"""
-
-    login: str
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
+    details: NotRequired[
+        Union[
+            SecretScanningLocationCommitType,
+            SecretScanningLocationWikiCommitType,
+            SecretScanningLocationIssueTitleType,
+            SecretScanningLocationIssueBodyType,
+            SecretScanningLocationIssueCommentType,
+            SecretScanningLocationDiscussionTitleType,
+            SecretScanningLocationDiscussionBodyType,
+            SecretScanningLocationDiscussionCommentType,
+            SecretScanningLocationPullRequestTitleType,
+            SecretScanningLocationPullRequestBodyType,
+            SecretScanningLocationPullRequestCommentType,
+            SecretScanningLocationPullRequestReviewType,
+            SecretScanningLocationPullRequestReviewCommentType,
+        ]
     ]
 
 
-class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType(TypedDict):
-    """RepositoryAdvisoryUpdatePropVulnerabilitiesItems"""
+class SecretScanningLocationTypeForResponse(TypedDict):
+    """SecretScanningLocation"""
 
-    package: RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType
-    vulnerable_version_range: NotRequired[Union[str, None]]
-    patched_versions: NotRequired[Union[str, None]]
-    vulnerable_functions: NotRequired[Union[list[str], None]]
-
-
-class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsTypeForResponse(TypedDict):
-    """RepositoryAdvisoryUpdatePropVulnerabilitiesItems"""
-
-    package: RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageTypeForResponse
-    vulnerable_version_range: NotRequired[Union[str, None]]
-    patched_versions: NotRequired[Union[str, None]]
-    vulnerable_functions: NotRequired[Union[list[str], None]]
-
-
-class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType(TypedDict):
-    """RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
+    type: NotRequired[
+        Literal[
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
+        ]
     ]
-    name: NotRequired[Union[str, None]]
-
-
-class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageTypeForResponse(
-    TypedDict
-):
-    """RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
+    details: NotRequired[
+        Union[
+            SecretScanningLocationCommitTypeForResponse,
+            SecretScanningLocationWikiCommitTypeForResponse,
+            SecretScanningLocationIssueTitleTypeForResponse,
+            SecretScanningLocationIssueBodyTypeForResponse,
+            SecretScanningLocationIssueCommentTypeForResponse,
+            SecretScanningLocationDiscussionTitleTypeForResponse,
+            SecretScanningLocationDiscussionBodyTypeForResponse,
+            SecretScanningLocationDiscussionCommentTypeForResponse,
+            SecretScanningLocationPullRequestTitleTypeForResponse,
+            SecretScanningLocationPullRequestBodyTypeForResponse,
+            SecretScanningLocationPullRequestCommentTypeForResponse,
+            SecretScanningLocationPullRequestReviewTypeForResponse,
+            SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+        ]
     ]
-    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "RepositoryAdvisoryUpdatePropCreditsItemsType",
-    "RepositoryAdvisoryUpdatePropCreditsItemsTypeForResponse",
-    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType",
-    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageTypeForResponse",
-    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType",
-    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsTypeForResponse",
-    "RepositoryAdvisoryUpdateType",
-    "RepositoryAdvisoryUpdateTypeForResponse",
+    "SecretScanningLocationType",
+    "SecretScanningLocationTypeForResponse",
 )

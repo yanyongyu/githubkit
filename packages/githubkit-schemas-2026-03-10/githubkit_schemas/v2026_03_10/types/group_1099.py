@@ -9,49 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0137 import CopilotSpaceType, CopilotSpaceTypeForResponse
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class OrgsOrgCopilotSpacesGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotSpacesGetResponse200"""
 
-    metadata: NotRequired[
-        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType
-    ]
+    spaces: list[CopilotSpaceType]
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class OrgsOrgCopilotSpacesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesGetResponse200"""
 
-    metadata: NotRequired[
-        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse
-    ]
-
-
-OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-
-Updated resource-specific metadata.
-"""
-
-
-OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-
-Updated resource-specific metadata.
-"""
+    spaces: list[CopilotSpaceTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesGetResponse200Type",
+    "OrgsOrgCopilotSpacesGetResponse200TypeForResponse",
 )

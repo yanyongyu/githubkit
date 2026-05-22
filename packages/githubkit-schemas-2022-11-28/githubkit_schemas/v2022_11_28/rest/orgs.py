@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from typing_extensions import deprecated
 from weakref import ref
 
@@ -175,7 +175,7 @@ class OrgsClient:
         *,
         since: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list
@@ -215,7 +215,7 @@ class OrgsClient:
         *,
         since: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list
@@ -254,7 +254,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]:
         """orgs/get
@@ -295,7 +295,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]:
         """orgs/get
@@ -336,7 +336,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -382,7 +382,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -429,7 +429,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
     ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]: ...
@@ -440,7 +440,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         billing_email: Missing[str] = UNSET,
         company: Missing[str] = UNSET,
@@ -484,7 +484,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
         **kwargs,
@@ -549,7 +549,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
     ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]: ...
@@ -560,7 +560,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         billing_email: Missing[str] = UNSET,
         company: Missing[str] = UNSET,
@@ -604,7 +604,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
         **kwargs,
@@ -669,7 +669,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType,
     ) -> Response[
@@ -683,7 +683,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         digest: str,
@@ -717,7 +717,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType] = UNSET,
         **kwargs,
@@ -785,7 +785,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType,
     ) -> Response[
@@ -799,7 +799,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         digest: str,
@@ -833,7 +833,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType] = UNSET,
         **kwargs,
@@ -902,7 +902,7 @@ class OrgsClient:
         org: str,
         cluster: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType,
     ) -> Response[
@@ -917,7 +917,7 @@ class OrgsClient:
         cluster: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         logical_environment: str,
         physical_environment: Missing[str] = UNSET,
@@ -935,7 +935,7 @@ class OrgsClient:
         org: str,
         cluster: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType
@@ -1001,7 +1001,7 @@ class OrgsClient:
         org: str,
         cluster: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType,
     ) -> Response[
@@ -1016,7 +1016,7 @@ class OrgsClient:
         cluster: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         logical_environment: str,
         physical_environment: Missing[str] = UNSET,
@@ -1034,7 +1034,7 @@ class OrgsClient:
         org: str,
         cluster: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType
@@ -1099,7 +1099,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgArtifactsMetadataStorageRecordPostBodyType,
     ) -> Response[
@@ -1113,7 +1113,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         digest: str,
@@ -1134,7 +1134,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgArtifactsMetadataStorageRecordPostBodyType] = UNSET,
         **kwargs,
@@ -1192,7 +1192,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgArtifactsMetadataStorageRecordPostBodyType,
     ) -> Response[
@@ -1206,7 +1206,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         digest: str,
@@ -1227,7 +1227,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgArtifactsMetadataStorageRecordPostBodyType] = UNSET,
         **kwargs,
@@ -1285,7 +1285,7 @@ class OrgsClient:
         org: str,
         subject_digest: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
@@ -1321,7 +1321,7 @@ class OrgsClient:
         org: str,
         subject_digest: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
@@ -1357,7 +1357,7 @@ class OrgsClient:
         org: str,
         subject_digest: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
@@ -1395,7 +1395,7 @@ class OrgsClient:
         org: str,
         subject_digest: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
@@ -1436,7 +1436,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgAttestationsBulkListPostBodyType,
     ) -> Response[
@@ -1453,7 +1453,7 @@ class OrgsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         subject_digests: list[str],
         predicate_type: Missing[str] = UNSET,
@@ -1469,7 +1469,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgAttestationsBulkListPostBodyType] = UNSET,
         **kwargs,
@@ -1532,7 +1532,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgAttestationsBulkListPostBodyType,
     ) -> Response[
@@ -1549,7 +1549,7 @@ class OrgsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         subject_digests: list[str],
         predicate_type: Missing[str] = UNSET,
@@ -1565,7 +1565,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgAttestationsBulkListPostBodyType] = UNSET,
         **kwargs,
@@ -1625,7 +1625,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type,
@@ -1639,7 +1639,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         subject_digests: list[str],
     ) -> Response: ...
@@ -1650,7 +1650,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         attestation_ids: list[int],
     ) -> Response: ...
@@ -1659,7 +1659,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -1721,7 +1721,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type,
@@ -1735,7 +1735,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         subject_digests: list[str],
     ) -> Response: ...
@@ -1746,7 +1746,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         attestation_ids: list[int],
     ) -> Response: ...
@@ -1755,7 +1755,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -1817,7 +1817,7 @@ class OrgsClient:
         org: str,
         subject_digest: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/delete-attestations-by-subject-digest
@@ -1850,7 +1850,7 @@ class OrgsClient:
         org: str,
         subject_digest: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/delete-attestations-by-subject-digest
@@ -1886,7 +1886,7 @@ class OrgsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         predicate_type: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrgsOrgAttestationsRepositoriesGetResponse200Items],
@@ -1932,7 +1932,7 @@ class OrgsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         predicate_type: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrgsOrgAttestationsRepositoriesGetResponse200Items],
@@ -1975,7 +1975,7 @@ class OrgsClient:
         org: str,
         attestation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/delete-attestations-by-id
@@ -2009,7 +2009,7 @@ class OrgsClient:
         org: str,
         attestation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/delete-attestations-by-id
@@ -2047,7 +2047,7 @@ class OrgsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         predicate_type: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgAttestationsSubjectDigestGetResponse200,
@@ -2097,7 +2097,7 @@ class OrgsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         predicate_type: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgAttestationsSubjectDigestGetResponse200,
@@ -2144,7 +2144,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-blocked-users
@@ -2182,7 +2182,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-blocked-users
@@ -2219,7 +2219,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/check-blocked-user
@@ -2252,7 +2252,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/check-blocked-user
@@ -2285,7 +2285,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/block-user
@@ -2318,7 +2318,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/block-user
@@ -2351,7 +2351,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/unblock-user
@@ -2379,7 +2379,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/unblock-user
@@ -2408,7 +2408,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
@@ -2451,7 +2451,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
@@ -2494,7 +2494,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[OrgHook], list[OrgHookTypeForResponse]]:
         """orgs/list-webhooks
@@ -2540,7 +2540,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[OrgHook], list[OrgHookTypeForResponse]]:
         """orgs/list-webhooks
@@ -2585,7 +2585,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgHooksPostBodyType,
     ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
@@ -2596,7 +2596,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         config: OrgsOrgHooksPostBodyPropConfigType,
@@ -2608,7 +2608,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
         **kwargs,
@@ -2660,7 +2660,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgHooksPostBodyType,
     ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
@@ -2671,7 +2671,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         config: OrgsOrgHooksPostBodyPropConfigType,
@@ -2683,7 +2683,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
         **kwargs,
@@ -2735,7 +2735,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OrgHook, OrgHookTypeForResponse]:
         """orgs/get-webhook
@@ -2775,7 +2775,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OrgHook, OrgHookTypeForResponse]:
         """orgs/get-webhook
@@ -2815,7 +2815,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/delete-webhook
@@ -2853,7 +2853,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/delete-webhook
@@ -2892,7 +2892,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
     ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
@@ -2904,7 +2904,7 @@ class OrgsClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
@@ -2917,7 +2917,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
@@ -2979,7 +2979,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
     ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
@@ -2991,7 +2991,7 @@ class OrgsClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
@@ -3004,7 +3004,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
@@ -3065,7 +3065,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """orgs/get-webhook-config-for-org
@@ -3101,7 +3101,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """orgs/get-webhook-config-for-org
@@ -3138,7 +3138,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
@@ -3150,7 +3150,7 @@ class OrgsClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
@@ -3163,7 +3163,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
@@ -3212,7 +3212,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
@@ -3224,7 +3224,7 @@ class OrgsClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
@@ -3237,7 +3237,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
@@ -3288,7 +3288,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         status: Missing[Literal["success", "failure"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
         """orgs/list-webhook-deliveries
@@ -3338,7 +3338,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         status: Missing[Literal["success", "failure"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
         """orgs/list-webhook-deliveries
@@ -3386,7 +3386,7 @@ class OrgsClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[HookDelivery, HookDeliveryTypeForResponse]:
         """orgs/get-webhook-delivery
@@ -3427,7 +3427,7 @@ class OrgsClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[HookDelivery, HookDeliveryTypeForResponse]:
         """orgs/get-webhook-delivery
@@ -3468,7 +3468,7 @@ class OrgsClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -3516,7 +3516,7 @@ class OrgsClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -3563,7 +3563,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/ping-webhook
@@ -3602,7 +3602,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/ping-webhook
@@ -3666,7 +3666,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         api_route_substring: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ApiInsightsRouteStatsItems],
@@ -3736,7 +3736,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         api_route_substring: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ApiInsightsRouteStatsItems],
@@ -3797,7 +3797,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         subject_name_substring: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ApiInsightsSubjectStatsItems],
@@ -3858,7 +3858,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         subject_name_substring: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ApiInsightsSubjectStatsItems],
@@ -3904,7 +3904,7 @@ class OrgsClient:
         *,
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats
@@ -3942,7 +3942,7 @@ class OrgsClient:
         *,
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats
@@ -3981,7 +3981,7 @@ class OrgsClient:
         *,
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats-by-user
@@ -4020,7 +4020,7 @@ class OrgsClient:
         *,
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats-by-user
@@ -4066,7 +4066,7 @@ class OrgsClient:
         *,
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats-by-actor
@@ -4112,7 +4112,7 @@ class OrgsClient:
         *,
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats-by-actor
@@ -4151,7 +4151,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
@@ -4193,7 +4193,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
@@ -4236,7 +4236,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
@@ -4279,7 +4279,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
@@ -4329,7 +4329,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
@@ -4379,7 +4379,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
@@ -4436,7 +4436,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         actor_name_substring: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsTypeForResponse]
@@ -4497,7 +4497,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         actor_name_substring: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsTypeForResponse]
@@ -4542,7 +4542,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgInstallationsGetResponse200,
@@ -4588,7 +4588,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgInstallationsGetResponse200,
@@ -4640,7 +4640,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         invitation_source: Missing[Literal["all", "member", "scim"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
@@ -4694,7 +4694,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         invitation_source: Missing[Literal["all", "member", "scim"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
@@ -4741,7 +4741,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
     ) -> Response[OrganizationInvitation, OrganizationInvitationTypeForResponse]: ...
@@ -4752,7 +4752,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         invitee_id: Missing[int] = UNSET,
         email: Missing[str] = UNSET,
@@ -4766,7 +4766,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
@@ -4821,7 +4821,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
     ) -> Response[OrganizationInvitation, OrganizationInvitationTypeForResponse]: ...
@@ -4832,7 +4832,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         invitee_id: Missing[int] = UNSET,
         email: Missing[str] = UNSET,
@@ -4846,7 +4846,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
@@ -4901,7 +4901,7 @@ class OrgsClient:
         org: str,
         invitation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/cancel-invitation
@@ -4937,7 +4937,7 @@ class OrgsClient:
         org: str,
         invitation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/cancel-invitation
@@ -4975,7 +4975,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """orgs/list-invitation-teams
@@ -5017,7 +5017,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """orgs/list-invitation-teams
@@ -5056,7 +5056,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[Union[IssueField, None]], list[Union[IssueFieldTypeForResponse, None]]
@@ -5093,7 +5093,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[Union[IssueField, None]], list[Union[IssueFieldTypeForResponse, None]]
@@ -5131,7 +5131,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrganizationCreateIssueFieldType,
     ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
@@ -5142,7 +5142,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: Missing[Union[str, None]] = UNSET,
@@ -5157,7 +5157,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrganizationCreateIssueFieldType] = UNSET,
         **kwargs,
@@ -5216,7 +5216,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrganizationCreateIssueFieldType,
     ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
@@ -5227,7 +5227,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: Missing[Union[str, None]] = UNSET,
@@ -5242,7 +5242,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrganizationCreateIssueFieldType] = UNSET,
         **kwargs,
@@ -5301,7 +5301,7 @@ class OrgsClient:
         org: str,
         issue_field_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/delete-issue-field
@@ -5340,7 +5340,7 @@ class OrgsClient:
         org: str,
         issue_field_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/delete-issue-field
@@ -5380,7 +5380,7 @@ class OrgsClient:
         org: str,
         issue_field_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrganizationUpdateIssueFieldType,
     ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
@@ -5392,7 +5392,7 @@ class OrgsClient:
         issue_field_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -5407,7 +5407,7 @@ class OrgsClient:
         org: str,
         issue_field_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrganizationUpdateIssueFieldType] = UNSET,
         **kwargs,
@@ -5467,7 +5467,7 @@ class OrgsClient:
         org: str,
         issue_field_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrganizationUpdateIssueFieldType,
     ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
@@ -5479,7 +5479,7 @@ class OrgsClient:
         issue_field_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -5494,7 +5494,7 @@ class OrgsClient:
         org: str,
         issue_field_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrganizationUpdateIssueFieldType] = UNSET,
         **kwargs,
@@ -5552,7 +5552,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[Union[IssueType, None]], list[Union[IssueTypeTypeForResponse, None]]
@@ -5589,7 +5589,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[Union[IssueType, None]], list[Union[IssueTypeTypeForResponse, None]]
@@ -5627,7 +5627,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrganizationCreateIssueTypeType,
     ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
@@ -5638,7 +5638,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         is_enabled: bool,
@@ -5657,7 +5657,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrganizationCreateIssueTypeType] = UNSET,
         **kwargs,
@@ -5716,7 +5716,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrganizationCreateIssueTypeType,
     ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
@@ -5727,7 +5727,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         is_enabled: bool,
@@ -5746,7 +5746,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrganizationCreateIssueTypeType] = UNSET,
         **kwargs,
@@ -5806,7 +5806,7 @@ class OrgsClient:
         org: str,
         issue_type_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrganizationUpdateIssueTypeType,
     ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
@@ -5818,7 +5818,7 @@ class OrgsClient:
         issue_type_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         is_enabled: bool,
@@ -5838,7 +5838,7 @@ class OrgsClient:
         org: str,
         issue_type_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrganizationUpdateIssueTypeType] = UNSET,
         **kwargs,
@@ -5898,7 +5898,7 @@ class OrgsClient:
         org: str,
         issue_type_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrganizationUpdateIssueTypeType,
     ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
@@ -5910,7 +5910,7 @@ class OrgsClient:
         issue_type_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         is_enabled: bool,
@@ -5930,7 +5930,7 @@ class OrgsClient:
         org: str,
         issue_type_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrganizationUpdateIssueTypeType] = UNSET,
         **kwargs,
@@ -5989,7 +5989,7 @@ class OrgsClient:
         org: str,
         issue_type_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/delete-issue-type
@@ -6028,7 +6028,7 @@ class OrgsClient:
         org: str,
         issue_type_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/delete-issue-type
@@ -6070,7 +6070,7 @@ class OrgsClient:
         role: Missing[Literal["all", "admin", "member"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-members
@@ -6115,7 +6115,7 @@ class OrgsClient:
         role: Missing[Literal["all", "admin", "member"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-members
@@ -6157,7 +6157,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/check-membership-for-user
@@ -6186,7 +6186,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/check-membership-for-user
@@ -6215,7 +6215,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/remove-member
@@ -6251,7 +6251,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/remove-member
@@ -6287,7 +6287,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/get-membership-for-user
@@ -6322,7 +6322,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/get-membership-for-user
@@ -6358,7 +6358,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
     ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
@@ -6370,7 +6370,7 @@ class OrgsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         role: Missing[Literal["admin", "member"]] = UNSET,
     ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
@@ -6380,7 +6380,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
@@ -6441,7 +6441,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
     ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
@@ -6453,7 +6453,7 @@ class OrgsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         role: Missing[Literal["admin", "member"]] = UNSET,
     ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
@@ -6463,7 +6463,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
@@ -6523,7 +6523,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/remove-membership-for-user
@@ -6562,7 +6562,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/remove-membership-for-user
@@ -6600,7 +6600,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgOrganizationRolesGetResponse200,
@@ -6648,7 +6648,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgOrganizationRolesGetResponse200,
@@ -6697,7 +6697,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/revoke-all-org-roles-team
@@ -6729,7 +6729,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/revoke-all-org-roles-team
@@ -6762,7 +6762,7 @@ class OrgsClient:
         team_slug: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/assign-team-to-org-role
@@ -6796,7 +6796,7 @@ class OrgsClient:
         team_slug: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/assign-team-to-org-role
@@ -6830,7 +6830,7 @@ class OrgsClient:
         team_slug: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/revoke-org-role-team
@@ -6863,7 +6863,7 @@ class OrgsClient:
         team_slug: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/revoke-org-role-team
@@ -6895,7 +6895,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/revoke-all-org-roles-user
@@ -6927,7 +6927,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/revoke-all-org-roles-user
@@ -6960,7 +6960,7 @@ class OrgsClient:
         username: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/assign-user-to-org-role
@@ -6994,7 +6994,7 @@ class OrgsClient:
         username: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/assign-user-to-org-role
@@ -7028,7 +7028,7 @@ class OrgsClient:
         username: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/revoke-org-role-user
@@ -7061,7 +7061,7 @@ class OrgsClient:
         username: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/revoke-org-role-user
@@ -7093,7 +7093,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]:
         """orgs/get-org-role
@@ -7135,7 +7135,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]:
         """orgs/get-org-role
@@ -7179,7 +7179,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[TeamRoleAssignment], list[TeamRoleAssignmentTypeForResponse]]:
         """orgs/list-org-role-teams
@@ -7223,7 +7223,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[TeamRoleAssignment], list[TeamRoleAssignmentTypeForResponse]]:
         """orgs/list-org-role-teams
@@ -7267,7 +7267,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[UserRoleAssignment], list[UserRoleAssignmentTypeForResponse]]:
         """orgs/list-org-role-users
@@ -7311,7 +7311,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[UserRoleAssignment], list[UserRoleAssignmentTypeForResponse]]:
         """orgs/list-org-role-users
@@ -7355,7 +7355,7 @@ class OrgsClient:
         filter_: Missing[Literal["2fa_disabled", "2fa_insecure", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-outside-collaborators
@@ -7395,7 +7395,7 @@ class OrgsClient:
         filter_: Missing[Literal["2fa_disabled", "2fa_insecure", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-outside-collaborators
@@ -7434,7 +7434,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[
@@ -7449,7 +7449,7 @@ class OrgsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         async_: Missing[bool] = UNSET,
     ) -> Response[
@@ -7462,7 +7462,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
@@ -7518,7 +7518,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[
@@ -7533,7 +7533,7 @@ class OrgsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         async_: Missing[bool] = UNSET,
     ) -> Response[
@@ -7546,7 +7546,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
@@ -7601,7 +7601,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/remove-outside-collaborator
@@ -7634,7 +7634,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/remove-outside-collaborator
@@ -7676,7 +7676,7 @@ class OrgsClient:
         last_used_before: Missing[_dt.datetime] = UNSET,
         last_used_after: Missing[_dt.datetime] = UNSET,
         token_id: Missing[list[str]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrantRequest],
@@ -7745,7 +7745,7 @@ class OrgsClient:
         last_used_before: Missing[_dt.datetime] = UNSET,
         last_used_after: Missing[_dt.datetime] = UNSET,
         token_id: Missing[list[str]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrantRequest],
@@ -7805,7 +7805,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
     ) -> Response[
@@ -7819,7 +7819,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         pat_request_ids: Missing[list[int]] = UNSET,
         action: Literal["approve", "deny"],
@@ -7833,7 +7833,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
@@ -7894,7 +7894,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
     ) -> Response[
@@ -7908,7 +7908,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         pat_request_ids: Missing[list[int]] = UNSET,
         action: Literal["approve", "deny"],
@@ -7922,7 +7922,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
@@ -7984,7 +7984,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
     ) -> Response: ...
@@ -7996,7 +7996,7 @@ class OrgsClient:
         pat_request_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
@@ -8007,7 +8007,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
@@ -8066,7 +8066,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
     ) -> Response: ...
@@ -8078,7 +8078,7 @@ class OrgsClient:
         pat_request_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
@@ -8089,7 +8089,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
@@ -8149,7 +8149,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """orgs/list-pat-grant-request-repositories
@@ -8197,7 +8197,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """orgs/list-pat-grant-request-repositories
@@ -8252,7 +8252,7 @@ class OrgsClient:
         last_used_before: Missing[_dt.datetime] = UNSET,
         last_used_after: Missing[_dt.datetime] = UNSET,
         token_id: Missing[list[str]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrant],
@@ -8321,7 +8321,7 @@ class OrgsClient:
         last_used_before: Missing[_dt.datetime] = UNSET,
         last_used_after: Missing[_dt.datetime] = UNSET,
         token_id: Missing[list[str]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrant],
@@ -8381,7 +8381,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgPersonalAccessTokensPostBodyType,
     ) -> Response[
@@ -8395,7 +8395,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         action: Literal["revoke"],
         pat_ids: list[int],
@@ -8408,7 +8408,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
@@ -8467,7 +8467,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgPersonalAccessTokensPostBodyType,
     ) -> Response[
@@ -8481,7 +8481,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         action: Literal["revoke"],
         pat_ids: list[int],
@@ -8494,7 +8494,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
@@ -8554,7 +8554,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgPersonalAccessTokensPatIdPostBodyType,
     ) -> Response: ...
@@ -8566,7 +8566,7 @@ class OrgsClient:
         pat_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         action: Literal["revoke"],
     ) -> Response: ...
@@ -8576,7 +8576,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
         **kwargs,
@@ -8631,7 +8631,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgPersonalAccessTokensPatIdPostBodyType,
     ) -> Response: ...
@@ -8643,7 +8643,7 @@ class OrgsClient:
         pat_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         action: Literal["revoke"],
     ) -> Response: ...
@@ -8653,7 +8653,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
         **kwargs,
@@ -8709,7 +8709,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """orgs/list-pat-grant-repositories
@@ -8755,7 +8755,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """orgs/list-pat-grant-repositories
@@ -8798,7 +8798,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
         """orgs/custom-properties-for-repos-get-organization-definitions
@@ -8833,7 +8833,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
         """orgs/custom-properties-for-repos-get-organization-definitions
@@ -8869,7 +8869,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
     ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
@@ -8880,7 +8880,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         properties: list[CustomPropertyType],
     ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
@@ -8889,7 +8889,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
@@ -8948,7 +8948,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
     ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
@@ -8959,7 +8959,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         properties: list[CustomPropertyType],
     ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
@@ -8968,7 +8968,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
@@ -9027,7 +9027,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
         """orgs/custom-properties-for-repos-get-organization-definition
@@ -9063,7 +9063,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
         """orgs/custom-properties-for-repos-get-organization-definition
@@ -9100,7 +9100,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: CustomPropertySetPayloadType,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
@@ -9112,7 +9112,7 @@ class OrgsClient:
         custom_property_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         value_type: Literal[
             "string", "single_select", "multi_select", "true_false", "url"
@@ -9132,7 +9132,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
@@ -9184,7 +9184,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: CustomPropertySetPayloadType,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
@@ -9196,7 +9196,7 @@ class OrgsClient:
         custom_property_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         value_type: Literal[
             "string", "single_select", "multi_select", "true_false", "url"
@@ -9216,7 +9216,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
@@ -9267,7 +9267,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/custom-properties-for-repos-delete-organization-definition
@@ -9305,7 +9305,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/custom-properties-for-repos-delete-organization-definition
@@ -9345,7 +9345,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         repository_query: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrgRepoCustomPropertyValues],
@@ -9393,7 +9393,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         repository_query: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrgRepoCustomPropertyValues],
@@ -9439,7 +9439,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgPropertiesValuesPatchBodyType,
     ) -> Response: ...
@@ -9450,7 +9450,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         repository_names: list[str],
         properties: list[CustomPropertyValueType],
@@ -9460,7 +9460,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
@@ -9520,7 +9520,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgPropertiesValuesPatchBodyType,
     ) -> Response: ...
@@ -9531,7 +9531,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         repository_names: list[str],
         properties: list[CustomPropertyValueType],
@@ -9541,7 +9541,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
@@ -9602,7 +9602,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-public-members
@@ -9640,7 +9640,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-public-members
@@ -9677,7 +9677,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/check-public-membership-for-user
@@ -9706,7 +9706,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/check-public-membership-for-user
@@ -9735,7 +9735,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/set-public-membership-for-authenticated-user
@@ -9770,7 +9770,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/set-public-membership-for-authenticated-user
@@ -9805,7 +9805,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/remove-public-membership-for-authenticated-user
@@ -9833,7 +9833,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/remove-public-membership-for-authenticated-user
@@ -9863,7 +9863,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RulesetVersion], list[RulesetVersionTypeForResponse]]:
         """orgs/get-org-ruleset-history
@@ -9906,7 +9906,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RulesetVersion], list[RulesetVersionTypeForResponse]]:
         """orgs/get-org-ruleset-history
@@ -9948,7 +9948,7 @@ class OrgsClient:
         ruleset_id: int,
         version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RulesetVersionWithState, RulesetVersionWithStateTypeForResponse]:
         """orgs/get-org-ruleset-version
@@ -9984,7 +9984,7 @@ class OrgsClient:
         ruleset_id: int,
         version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RulesetVersionWithState, RulesetVersionWithStateTypeForResponse]:
         """orgs/get-org-ruleset-version
@@ -10019,7 +10019,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[TeamSimple], list[TeamSimpleTypeForResponse]]:
         """DEPRECATED orgs/list-security-manager-teams
@@ -10051,7 +10051,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[TeamSimple], list[TeamSimpleTypeForResponse]]:
         """DEPRECATED orgs/list-security-manager-teams
@@ -10084,7 +10084,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED orgs/add-security-manager-team
@@ -10114,7 +10114,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED orgs/add-security-manager-team
@@ -10144,7 +10144,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED orgs/remove-security-manager-team
@@ -10174,7 +10174,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED orgs/remove-security-manager-team
@@ -10202,7 +10202,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ImmutableReleasesOrganizationSettings,
@@ -10237,7 +10237,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ImmutableReleasesOrganizationSettings,
@@ -10273,7 +10273,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgSettingsImmutableReleasesPutBodyType,
     ) -> Response: ...
@@ -10284,7 +10284,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         enforced_repositories: Literal["all", "none", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
@@ -10294,7 +10294,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgSettingsImmutableReleasesPutBodyType] = UNSET,
         **kwargs,
@@ -10338,7 +10338,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgSettingsImmutableReleasesPutBodyType,
     ) -> Response: ...
@@ -10349,7 +10349,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         enforced_repositories: Literal["all", "none", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
@@ -10359,7 +10359,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgSettingsImmutableReleasesPutBodyType] = UNSET,
         **kwargs,
@@ -10404,7 +10404,7 @@ class OrgsClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200,
@@ -10447,7 +10447,7 @@ class OrgsClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200,
@@ -10489,7 +10489,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType,
     ) -> Response: ...
@@ -10500,7 +10500,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
@@ -10509,7 +10509,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType] = UNSET,
         **kwargs,
@@ -10555,7 +10555,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType,
     ) -> Response: ...
@@ -10566,7 +10566,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
@@ -10575,7 +10575,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType] = UNSET,
         **kwargs,
@@ -10621,7 +10621,7 @@ class OrgsClient:
         org: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/enable-selected-repository-immutable-releases-organization
@@ -10651,7 +10651,7 @@ class OrgsClient:
         org: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/enable-selected-repository-immutable-releases-organization
@@ -10681,7 +10681,7 @@ class OrgsClient:
         org: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/disable-selected-repository-immutable-releases-organization
@@ -10711,7 +10711,7 @@ class OrgsClient:
         org: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """orgs/disable-selected-repository-immutable-releases-organization
@@ -10752,7 +10752,7 @@ class OrgsClient:
         ],
         enablement: Literal["enable_all", "disable_all"],
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
     ) -> Response: ...
@@ -10774,7 +10774,7 @@ class OrgsClient:
         enablement: Literal["enable_all", "disable_all"],
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> Response: ...
@@ -10794,7 +10794,7 @@ class OrgsClient:
         ],
         enablement: Literal["enable_all", "disable_all"],
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
         **kwargs,
@@ -10855,7 +10855,7 @@ class OrgsClient:
         ],
         enablement: Literal["enable_all", "disable_all"],
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
     ) -> Response: ...
@@ -10877,7 +10877,7 @@ class OrgsClient:
         enablement: Literal["enable_all", "disable_all"],
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> Response: ...
@@ -10897,7 +10897,7 @@ class OrgsClient:
         ],
         enablement: Literal["enable_all", "disable_all"],
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
         **kwargs,
@@ -10948,7 +10948,7 @@ class OrgsClient:
         state: Missing[Literal["active", "pending"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[OrgMembership], list[OrgMembershipTypeForResponse]]:
         """orgs/list-memberships-for-authenticated-user
@@ -10992,7 +10992,7 @@ class OrgsClient:
         state: Missing[Literal["active", "pending"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[OrgMembership], list[OrgMembershipTypeForResponse]]:
         """orgs/list-memberships-for-authenticated-user
@@ -11034,7 +11034,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/get-membership-for-authenticated-user
@@ -11068,7 +11068,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/get-membership-for-authenticated-user
@@ -11103,7 +11103,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserMembershipsOrgsOrgPatchBodyType,
     ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
@@ -11114,7 +11114,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Literal["active"],
     ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
@@ -11123,7 +11123,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
@@ -11176,7 +11176,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserMembershipsOrgsOrgPatchBodyType,
     ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
@@ -11187,7 +11187,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Literal["active"],
     ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
@@ -11196,7 +11196,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
@@ -11249,7 +11249,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list-for-authenticated-user
@@ -11295,7 +11295,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list-for-authenticated-user
@@ -11342,7 +11342,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list-for-user
@@ -11382,7 +11382,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list-for-user

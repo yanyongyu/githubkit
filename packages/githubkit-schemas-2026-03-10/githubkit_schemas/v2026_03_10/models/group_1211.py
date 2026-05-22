@@ -12,20 +12,34 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200(GitHubModel):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: list[str] = Field(
-        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items."
-    )
+    attestations: Missing[
+        list[ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody)
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems(
+    GitHubModel
+):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody",)
+    repository_id: Missing[int] = Field(default=UNSET)
+    bundle_url: Missing[str] = Field(default=UNSET)
+    initiator: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoAttestationsSubjectDigestGetResponse200)
+model_rebuild(
+    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems
+)
+
+__all__ = (
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+)

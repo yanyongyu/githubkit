@@ -26,7 +26,7 @@ class RepositoryRulesetBypassActor(GitHubModel):
 
     actor_id: Missing[Union[int, None]] = Field(
         default=UNSET,
-        description="The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, and `Team` actor types. If `actor_type` is `OrganizationAdmin`, `actor_id` is ignored. If `actor_type` is `DeployKey`, this should be null. If `actor_type` is `EnterpriseOwner`, `actor_id` is ignored. `OrganizationAdmin`, `EnterpriseOwner` and `EnterpriseRole` are not applicable for personal repositories.",
+        description="The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, `Team`, and `User` actor types. If `actor_type` is `OrganizationAdmin`, `actor_id` is ignored. If `actor_type` is `DeployKey`, this should be null. If `actor_type` is `EnterpriseOwner`, `actor_id` is ignored. `OrganizationAdmin`, `EnterpriseOwner` and `EnterpriseRole` are not applicable for personal repositories.",
     )
     actor_type: Literal[
         "Integration",
@@ -36,6 +36,7 @@ class RepositoryRulesetBypassActor(GitHubModel):
         "DeployKey",
         "EnterpriseOwner",
         "EnterpriseRole",
+        "User",
     ] = Field(description="The type of actor that can bypass a ruleset")
     bypass_mode: Missing[Literal["always", "pull_request", "exempt"]] = Field(
         default=UNSET,

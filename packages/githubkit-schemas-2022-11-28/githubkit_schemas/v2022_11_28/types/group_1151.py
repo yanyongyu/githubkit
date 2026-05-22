@@ -9,26 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0186 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+
+    name: str
+    data_type: Literal["text", "number", "date"]
 
 
-class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
 
-    repository_names: list[str]
-    properties: list[CustomPropertyValueType]
-
-
-class OrgsOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: list[str]
-    properties: list[CustomPropertyValueTypeForResponse]
+    name: str
+    data_type: Literal["text", "number", "date"]
 
 
 __all__ = (
-    "OrgsOrgPropertiesValuesPatchBodyType",
-    "OrgsOrgPropertiesValuesPatchBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse",
 )

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Optional, overload
+from typing import TYPE_CHECKING, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -55,7 +55,7 @@ class EnterpriseTeamMembershipsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """enterprise-team-memberships/list
@@ -94,7 +94,7 @@ class EnterpriseTeamMembershipsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """enterprise-team-memberships/list
@@ -132,7 +132,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise: str,
         enterprise_team: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -144,7 +144,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise_team: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         usernames: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -154,7 +154,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise: str,
         enterprise_team: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType
@@ -205,7 +205,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise: str,
         enterprise_team: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -217,7 +217,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise_team: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         usernames: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -227,7 +227,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise: str,
         enterprise_team: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType
@@ -278,7 +278,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise: str,
         enterprise_team: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -290,7 +290,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise_team: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         usernames: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -300,7 +300,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise: str,
         enterprise_team: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType
@@ -351,7 +351,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise: str,
         enterprise_team: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -363,7 +363,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise_team: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         usernames: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -373,7 +373,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise: str,
         enterprise_team: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType
@@ -424,7 +424,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise_team: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[SimpleUser, SimpleUserTypeForResponse]:
         """enterprise-team-memberships/get
@@ -458,7 +458,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise_team: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[SimpleUser, SimpleUserTypeForResponse]:
         """enterprise-team-memberships/get
@@ -492,7 +492,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise_team: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[SimpleUser, SimpleUserTypeForResponse]:
         """enterprise-team-memberships/add
@@ -526,7 +526,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise_team: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[SimpleUser, SimpleUserTypeForResponse]:
         """enterprise-team-memberships/add
@@ -560,7 +560,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise_team: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-team-memberships/remove
@@ -596,7 +596,7 @@ class EnterpriseTeamMembershipsClient:
         enterprise_team: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-team-memberships/remove

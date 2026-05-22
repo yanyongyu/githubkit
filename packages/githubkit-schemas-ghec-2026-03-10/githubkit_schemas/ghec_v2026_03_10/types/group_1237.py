@@ -9,50 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200Type(TypedDict):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
 
-    attestations: NotRequired[
-        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType]
-    ]
+    attestation_ids: list[int]
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse(TypedDict):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
 
-    attestations: NotRequired[
-        list[
-            OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
-        ]
-    ]
-
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
-    TypedDict
-):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
-
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
+    attestation_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200Type",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse",
+    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",
+    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse",
 )

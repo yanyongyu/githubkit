@@ -12,29 +12,15 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class UserSocialAccountsPostBodyType(TypedDict):
-    """UserSocialAccountsPostBody
-
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str]
+class UserInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """UserInteractionLimitsGetResponse200Anyof1"""
 
 
-class UserSocialAccountsPostBodyTypeForResponse(TypedDict):
-    """UserSocialAccountsPostBody
-
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str]
+class UserInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
+    """UserInteractionLimitsGetResponse200Anyof1"""
 
 
 __all__ = (
-    "UserSocialAccountsPostBodyType",
-    "UserSocialAccountsPostBodyTypeForResponse",
+    "UserInteractionLimitsGetResponse200Anyof1Type",
+    "UserInteractionLimitsGetResponse200Anyof1TypeForResponse",
 )

@@ -13,21 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSettingsImmutableReleasesPutBodyType(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    filter_: NotRequired[str]
+    visible_fields: NotRequired[list[int]]
 
 
-class OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    filter_: NotRequired[str]
+    visible_fields: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgSettingsImmutableReleasesPutBodyType",
-    "OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyType",
+    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
 )

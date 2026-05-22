@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0158 import (
-    RepositoryRuleFileExtensionRestrictionPropParametersType,
-    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
+from .group_0167 import (
+    RepositoryRuleCopilotCodeReviewPropParametersType,
+    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
 )
 
 
 class RepositoryRuleDetailedOneof17Type(TypedDict):
     """RepositoryRuleDetailedOneof17"""
 
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
+    type: Literal["copilot_code_review"]
+    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
@@ -31,9 +31,9 @@ class RepositoryRuleDetailedOneof17Type(TypedDict):
 class RepositoryRuleDetailedOneof17TypeForResponse(TypedDict):
     """RepositoryRuleDetailedOneof17"""
 
-    type: Literal["file_extension_restriction"]
+    type: Literal["copilot_code_review"]
     parameters: NotRequired[
-        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
+        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
     ]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]

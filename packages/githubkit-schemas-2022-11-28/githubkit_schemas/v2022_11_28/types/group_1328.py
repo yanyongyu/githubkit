@@ -9,22 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_1324 import (
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+)
 
 
-class ReposOwnerRepoPullsCommentsCommentIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoPullsCommentsCommentIdPatchBody"""
+class ReposOwnerRepoPagesPutBodyAnyof3Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof3"""
 
-    body: str
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
 
 
-class ReposOwnerRepoPullsCommentsCommentIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsCommentsCommentIdPatchBody"""
+class ReposOwnerRepoPagesPutBodyAnyof3TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof3"""
 
-    body: str
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+        ]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsCommentsCommentIdPatchBodyType",
-    "ReposOwnerRepoPullsCommentsCommentIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof3Type",
+    "ReposOwnerRepoPagesPutBodyAnyof3TypeForResponse",
 )

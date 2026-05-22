@@ -9,22 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0228 import (
+    RepositoryRuleCodeScanningPropParametersType,
+    RepositoryRuleCodeScanningPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleMaxFilePathLengthPropParametersType(TypedDict):
-    """RepositoryRuleMaxFilePathLengthPropParameters"""
+class RepositoryRuleCodeScanningType(TypedDict):
+    """code_scanning
 
-    max_file_path_length: int
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
+    """
+
+    type: Literal["code_scanning"]
+    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
 
 
-class RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleMaxFilePathLengthPropParameters"""
+class RepositoryRuleCodeScanningTypeForResponse(TypedDict):
+    """code_scanning
 
-    max_file_path_length: int
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
+    """
+
+    type: Literal["code_scanning"]
+    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleMaxFilePathLengthPropParametersType",
-    "RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse",
+    "RepositoryRuleCodeScanningType",
+    "RepositoryRuleCodeScanningTypeForResponse",
 )

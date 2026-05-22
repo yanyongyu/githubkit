@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -102,7 +102,7 @@ class AppsClient:
     def get_authenticated(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Union[Integration, None], Union[IntegrationTypeForResponse, None]]:
         """apps/get-authenticated
@@ -135,7 +135,7 @@ class AppsClient:
     async def async_get_authenticated(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Union[Integration, None], Union[IntegrationTypeForResponse, None]]:
         """apps/get-authenticated
@@ -169,7 +169,7 @@ class AppsClient:
         self,
         code: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AppManifestsCodeConversionsPostResponse201,
@@ -210,7 +210,7 @@ class AppsClient:
         self,
         code: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AppManifestsCodeConversionsPostResponse201,
@@ -250,7 +250,7 @@ class AppsClient:
     def get_webhook_config_for_app(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """apps/get-webhook-config-for-app
@@ -281,7 +281,7 @@ class AppsClient:
     async def async_get_webhook_config_for_app(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """apps/get-webhook-config-for-app
@@ -313,7 +313,7 @@ class AppsClient:
     def update_webhook_config_for_app(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: AppHookConfigPatchBodyType,
     ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
@@ -323,7 +323,7 @@ class AppsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
@@ -334,7 +334,7 @@ class AppsClient:
     def update_webhook_config_for_app(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
@@ -378,7 +378,7 @@ class AppsClient:
     async def async_update_webhook_config_for_app(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: AppHookConfigPatchBodyType,
     ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
@@ -388,7 +388,7 @@ class AppsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
@@ -399,7 +399,7 @@ class AppsClient:
     async def async_update_webhook_config_for_app(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
@@ -445,7 +445,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         status: Missing[Literal["success", "failure"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
         """apps/list-webhook-deliveries
@@ -490,7 +490,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         status: Missing[Literal["success", "failure"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
         """apps/list-webhook-deliveries
@@ -533,7 +533,7 @@ class AppsClient:
         self,
         delivery_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[HookDelivery, HookDeliveryTypeForResponse]:
         """apps/get-webhook-delivery
@@ -569,7 +569,7 @@ class AppsClient:
         self,
         delivery_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[HookDelivery, HookDeliveryTypeForResponse]:
         """apps/get-webhook-delivery
@@ -605,7 +605,7 @@ class AppsClient:
         self,
         delivery_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -648,7 +648,7 @@ class AppsClient:
         self,
         delivery_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -692,7 +692,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[IntegrationInstallationRequest],
@@ -735,7 +735,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[IntegrationInstallationRequest],
@@ -780,7 +780,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         since: Missing[_dt.datetime] = UNSET,
         outdated: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Installation], list[InstallationTypeForResponse]]:
         """apps/list-installations
@@ -823,7 +823,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         since: Missing[_dt.datetime] = UNSET,
         outdated: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Installation], list[InstallationTypeForResponse]]:
         """apps/list-installations
@@ -863,7 +863,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-installation
@@ -898,7 +898,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-installation
@@ -933,7 +933,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """apps/delete-installation
@@ -967,7 +967,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """apps/delete-installation
@@ -1002,7 +1002,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
     ) -> Response[InstallationToken, InstallationTokenTypeForResponse]: ...
@@ -1013,7 +1013,7 @@ class AppsClient:
         installation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
@@ -1024,7 +1024,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
@@ -1088,7 +1088,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
     ) -> Response[InstallationToken, InstallationTokenTypeForResponse]: ...
@@ -1099,7 +1099,7 @@ class AppsClient:
         installation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
@@ -1110,7 +1110,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
@@ -1173,7 +1173,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """apps/suspend-installation
@@ -1207,7 +1207,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """apps/suspend-installation
@@ -1241,7 +1241,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """apps/unsuspend-installation
@@ -1275,7 +1275,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """apps/unsuspend-installation
@@ -1310,7 +1310,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ApplicationsClientIdGrantDeleteBodyType,
     ) -> Response: ...
@@ -1321,7 +1321,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         access_token: str,
     ) -> Response: ...
@@ -1330,7 +1330,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ApplicationsClientIdGrantDeleteBodyType] = UNSET,
         **kwargs,
@@ -1376,7 +1376,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ApplicationsClientIdGrantDeleteBodyType,
     ) -> Response: ...
@@ -1387,7 +1387,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         access_token: str,
     ) -> Response: ...
@@ -1396,7 +1396,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ApplicationsClientIdGrantDeleteBodyType] = UNSET,
         **kwargs,
@@ -1442,7 +1442,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenPostBodyType,
     ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
@@ -1453,7 +1453,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         access_token: str,
     ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
@@ -1462,7 +1462,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
@@ -1514,7 +1514,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenPostBodyType,
     ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
@@ -1525,7 +1525,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         access_token: str,
     ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
@@ -1534,7 +1534,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
@@ -1586,7 +1586,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenDeleteBodyType,
     ) -> Response: ...
@@ -1597,7 +1597,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         access_token: str,
     ) -> Response: ...
@@ -1606,7 +1606,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenDeleteBodyType] = UNSET,
         **kwargs,
@@ -1651,7 +1651,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenDeleteBodyType,
     ) -> Response: ...
@@ -1662,7 +1662,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         access_token: str,
     ) -> Response: ...
@@ -1671,7 +1671,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenDeleteBodyType] = UNSET,
         **kwargs,
@@ -1716,7 +1716,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenPatchBodyType,
     ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
@@ -1727,7 +1727,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         access_token: str,
     ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
@@ -1736,7 +1736,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
@@ -1786,7 +1786,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenPatchBodyType,
     ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
@@ -1797,7 +1797,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         access_token: str,
     ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
@@ -1806,7 +1806,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
@@ -1856,7 +1856,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenScopedPostBodyType,
     ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
@@ -1867,7 +1867,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         access_token: str,
         target: Missing[str] = UNSET,
@@ -1881,7 +1881,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
@@ -1939,7 +1939,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenScopedPostBodyType,
     ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
@@ -1950,7 +1950,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         access_token: str,
         target: Missing[str] = UNSET,
@@ -1964,7 +1964,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
@@ -2021,7 +2021,7 @@ class AppsClient:
         self,
         app_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Union[Integration, None], Union[IntegrationTypeForResponse, None]]:
         """apps/get-by-slug
@@ -2058,7 +2058,7 @@ class AppsClient:
         self,
         app_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Union[Integration, None], Union[IntegrationTypeForResponse, None]]:
         """apps/get-by-slug
@@ -2097,7 +2097,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[InstallableOrganization], list[InstallableOrganizationTypeForResponse]
@@ -2139,7 +2139,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[InstallableOrganization], list[InstallableOrganizationTypeForResponse]
@@ -2182,7 +2182,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
@@ -2225,7 +2225,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
@@ -2268,7 +2268,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[EnterpriseOrganizationInstallation],
@@ -2312,7 +2312,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[EnterpriseOrganizationInstallation],
@@ -2355,7 +2355,7 @@ class AppsClient:
         enterprise: str,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType,
     ) -> Response[Installation, InstallationTypeForResponse]: ...
@@ -2367,7 +2367,7 @@ class AppsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         client_id: str,
         repository_selection: Literal["all", "selected", "none"],
@@ -2379,7 +2379,7 @@ class AppsClient:
         enterprise: str,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType
@@ -2435,7 +2435,7 @@ class AppsClient:
         enterprise: str,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType,
     ) -> Response[Installation, InstallationTypeForResponse]: ...
@@ -2447,7 +2447,7 @@ class AppsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         client_id: str,
         repository_selection: Literal["all", "selected", "none"],
@@ -2459,7 +2459,7 @@ class AppsClient:
         enterprise: str,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType
@@ -2515,7 +2515,7 @@ class AppsClient:
         org: str,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-apps/enterprise-delete-installation
@@ -2552,7 +2552,7 @@ class AppsClient:
         org: str,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-apps/enterprise-delete-installation
@@ -2591,7 +2591,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
@@ -2635,7 +2635,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
@@ -2678,7 +2678,7 @@ class AppsClient:
         org: str,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType,
     ) -> Response[Installation, InstallationTypeForResponse]: ...
@@ -2691,7 +2691,7 @@ class AppsClient:
         installation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         repository_selection: Literal["all", "selected"],
         repositories: Missing[list[str]] = UNSET,
@@ -2703,7 +2703,7 @@ class AppsClient:
         org: str,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType
@@ -2758,7 +2758,7 @@ class AppsClient:
         org: str,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType,
     ) -> Response[Installation, InstallationTypeForResponse]: ...
@@ -2771,7 +2771,7 @@ class AppsClient:
         installation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         repository_selection: Literal["all", "selected"],
         repositories: Missing[list[str]] = UNSET,
@@ -2783,7 +2783,7 @@ class AppsClient:
         org: str,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType
@@ -2838,7 +2838,7 @@ class AppsClient:
         org: str,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType,
     ) -> Response[
@@ -2853,7 +2853,7 @@ class AppsClient:
         installation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         repositories: list[str],
     ) -> Response[
@@ -2866,7 +2866,7 @@ class AppsClient:
         org: str,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType
@@ -2923,7 +2923,7 @@ class AppsClient:
         org: str,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType,
     ) -> Response[
@@ -2938,7 +2938,7 @@ class AppsClient:
         installation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         repositories: list[str],
     ) -> Response[
@@ -2951,7 +2951,7 @@ class AppsClient:
         org: str,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType
@@ -3008,7 +3008,7 @@ class AppsClient:
         org: str,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType,
     ) -> Response[
@@ -3023,7 +3023,7 @@ class AppsClient:
         installation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         repositories: list[str],
     ) -> Response[
@@ -3036,7 +3036,7 @@ class AppsClient:
         org: str,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType
@@ -3097,7 +3097,7 @@ class AppsClient:
         org: str,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType,
     ) -> Response[
@@ -3112,7 +3112,7 @@ class AppsClient:
         installation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         repositories: list[str],
     ) -> Response[
@@ -3125,7 +3125,7 @@ class AppsClient:
         org: str,
         installation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType
@@ -3183,7 +3183,7 @@ class AppsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-enterprise-installation
@@ -3215,7 +3215,7 @@ class AppsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-enterprise-installation
@@ -3248,7 +3248,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         InstallationRepositoriesGetResponse200,
@@ -3292,7 +3292,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         InstallationRepositoriesGetResponse200,
@@ -3334,7 +3334,7 @@ class AppsClient:
     def revoke_installation_access_token(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """apps/revoke-installation-access-token
@@ -3362,7 +3362,7 @@ class AppsClient:
     async def async_revoke_installation_access_token(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """apps/revoke-installation-access-token
@@ -3391,7 +3391,7 @@ class AppsClient:
         self,
         account_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[MarketplacePurchase, MarketplacePurchaseTypeForResponse]:
         """apps/get-subscription-plan-for-account
@@ -3427,7 +3427,7 @@ class AppsClient:
         self,
         account_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[MarketplacePurchase, MarketplacePurchaseTypeForResponse]:
         """apps/get-subscription-plan-for-account
@@ -3464,7 +3464,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[MarketplaceListingPlan], list[MarketplaceListingPlanTypeForResponse]
@@ -3509,7 +3509,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[MarketplaceListingPlan], list[MarketplaceListingPlanTypeForResponse]
@@ -3557,7 +3557,7 @@ class AppsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseTypeForResponse]]:
         """apps/list-accounts-for-plan
@@ -3606,7 +3606,7 @@ class AppsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseTypeForResponse]]:
         """apps/list-accounts-for-plan
@@ -3651,7 +3651,7 @@ class AppsClient:
         self,
         account_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[MarketplacePurchase, MarketplacePurchaseTypeForResponse]:
         """apps/get-subscription-plan-for-account-stubbed
@@ -3686,7 +3686,7 @@ class AppsClient:
         self,
         account_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[MarketplacePurchase, MarketplacePurchaseTypeForResponse]:
         """apps/get-subscription-plan-for-account-stubbed
@@ -3722,7 +3722,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[MarketplaceListingPlan], list[MarketplaceListingPlanTypeForResponse]
@@ -3766,7 +3766,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[MarketplaceListingPlan], list[MarketplaceListingPlanTypeForResponse]
@@ -3813,7 +3813,7 @@ class AppsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseTypeForResponse]]:
         """apps/list-accounts-for-plan-stubbed
@@ -3860,7 +3860,7 @@ class AppsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseTypeForResponse]]:
         """apps/list-accounts-for-plan-stubbed
@@ -3903,7 +3903,7 @@ class AppsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-org-installation
@@ -3935,7 +3935,7 @@ class AppsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-org-installation
@@ -3968,7 +3968,7 @@ class AppsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-repo-installation
@@ -4004,7 +4004,7 @@ class AppsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-repo-installation
@@ -4040,7 +4040,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UserInstallationsGetResponse200, UserInstallationsGetResponse200TypeForResponse
@@ -4087,7 +4087,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UserInstallationsGetResponse200, UserInstallationsGetResponse200TypeForResponse
@@ -4135,7 +4135,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UserInstallationsInstallationIdRepositoriesGetResponse200,
@@ -4187,7 +4187,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UserInstallationsInstallationIdRepositoriesGetResponse200,
@@ -4238,7 +4238,7 @@ class AppsClient:
         installation_id: int,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """apps/add-repo-to-installation-for-authenticated-user
@@ -4274,7 +4274,7 @@ class AppsClient:
         installation_id: int,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """apps/add-repo-to-installation-for-authenticated-user
@@ -4310,7 +4310,7 @@ class AppsClient:
         installation_id: int,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """apps/remove-repo-from-installation-for-authenticated-user
@@ -4346,7 +4346,7 @@ class AppsClient:
         installation_id: int,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """apps/remove-repo-from-installation-for-authenticated-user
@@ -4382,7 +4382,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[UserMarketplacePurchase], list[UserMarketplacePurchaseTypeForResponse]
@@ -4425,7 +4425,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[UserMarketplacePurchase], list[UserMarketplacePurchaseTypeForResponse]
@@ -4468,7 +4468,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[UserMarketplacePurchase], list[UserMarketplacePurchaseTypeForResponse]
@@ -4510,7 +4510,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[UserMarketplacePurchase], list[UserMarketplacePurchaseTypeForResponse]
@@ -4551,7 +4551,7 @@ class AppsClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-user-installation
@@ -4583,7 +4583,7 @@ class AppsClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-user-installation

@@ -9,24 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
 
-    sub_issue_id: int
-    replace_parent: NotRequired[bool]
+    issue_field_values: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
+        ]
+    ]
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
 
-    sub_issue_id: int
-    replace_parent: NotRequired[bool]
+    issue_field_values: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float]
+
+
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse",
 )

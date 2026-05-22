@@ -9,38 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0172 import LinkType, LinkTypeForResponse
-
-
-class PullRequestPropLinksType(TypedDict):
-    """PullRequestPropLinks"""
-
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestPropLinksTypeForResponse(TypedDict):
-    """PullRequestPropLinks"""
+class PageDeploymentType(TypedDict):
+    """GitHub Pages
 
-    comments: LinkTypeForResponse
-    commits: LinkTypeForResponse
-    statuses: LinkTypeForResponse
-    html: LinkTypeForResponse
-    issue: LinkTypeForResponse
-    review_comments: LinkTypeForResponse
-    review_comment: LinkTypeForResponse
-    self_: LinkTypeForResponse
+    The GitHub Pages deployment status.
+    """
+
+    id: Union[int, str]
+    status_url: str
+    page_url: str
+    preview_url: NotRequired[str]
+
+
+class PageDeploymentTypeForResponse(TypedDict):
+    """GitHub Pages
+
+    The GitHub Pages deployment status.
+    """
+
+    id: Union[int, str]
+    status_url: str
+    page_url: str
+    preview_url: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestPropLinksType",
-    "PullRequestPropLinksTypeForResponse",
+    "PageDeploymentType",
+    "PageDeploymentTypeForResponse",
 )

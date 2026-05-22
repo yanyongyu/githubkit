@@ -8873,1513 +8873,1534 @@ if TYPE_CHECKING or is_lazy_disabled():
     from .group_1170 import (
         InstallationRepositoriesGetResponse200PropRepositoriesItems as InstallationRepositoriesGetResponse200PropRepositoriesItems,
     )
-    from .group_1171 import MarkdownPostBody as MarkdownPostBody
-    from .group_1172 import NotificationsPutBody as NotificationsPutBody
-    from .group_1173 import NotificationsPutResponse202 as NotificationsPutResponse202
-    from .group_1174 import (
+    from .group_1171 import (
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1 as InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1,
+    )
+    from .group_1172 import (
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties as InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties,
+    )
+    from .group_1173 import MarkdownPostBody as MarkdownPostBody
+    from .group_1174 import NotificationsPutBody as NotificationsPutBody
+    from .group_1175 import NotificationsPutResponse202 as NotificationsPutResponse202
+    from .group_1176 import (
         NotificationsThreadsThreadIdSubscriptionPutBody as NotificationsThreadsThreadIdSubscriptionPutBody,
     )
-    from .group_1175 import (
+    from .group_1177 import (
         OrganizationsOrgOrgPropertiesValuesPatchBody as OrganizationsOrgOrgPropertiesValuesPatchBody,
     )
-    from .group_1176 import OrgsOrgPatchBody as OrgsOrgPatchBody
-    from .group_1177 import (
+    from .group_1178 import OrgsOrgPatchBody as OrgsOrgPatchBody
+    from .group_1179 import (
         ActionsCacheUsageByRepository as ActionsCacheUsageByRepository,
     )
-    from .group_1177 import (
+    from .group_1179 import (
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200 as OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
     )
-    from .group_1178 import (
+    from .group_1180 import (
         OrgsOrgActionsHostedRunnersGetResponse200 as OrgsOrgActionsHostedRunnersGetResponse200,
     )
-    from .group_1179 import (
+    from .group_1181 import (
         OrgsOrgActionsHostedRunnersPostBody as OrgsOrgActionsHostedRunnersPostBody,
     )
-    from .group_1179 import (
+    from .group_1181 import (
         OrgsOrgActionsHostedRunnersPostBodyPropImage as OrgsOrgActionsHostedRunnersPostBodyPropImage,
     )
-    from .group_1180 import (
+    from .group_1182 import (
         OrgsOrgActionsHostedRunnersImagesCustomGetResponse200 as OrgsOrgActionsHostedRunnersImagesCustomGetResponse200,
     )
-    from .group_1181 import (
+    from .group_1183 import (
         OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200 as OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200,
     )
-    from .group_1182 import (
+    from .group_1184 import (
         OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200 as OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
     )
-    from .group_1183 import (
+    from .group_1185 import (
         OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200 as OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200,
     )
-    from .group_1184 import (
+    from .group_1186 import (
         OrgsOrgActionsHostedRunnersMachineSizesGetResponse200 as OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
     )
-    from .group_1185 import (
+    from .group_1187 import (
         OrgsOrgActionsHostedRunnersPlatformsGetResponse200 as OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
     )
-    from .group_1186 import (
+    from .group_1188 import (
         OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody as OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody,
     )
-    from .group_1187 import (
+    from .group_1189 import (
         OrgsOrgActionsOidcCustomizationSubPutBody as OrgsOrgActionsOidcCustomizationSubPutBody,
     )
-    from .group_1188 import (
+    from .group_1190 import (
         OrgsOrgActionsPermissionsPutBody as OrgsOrgActionsPermissionsPutBody,
     )
-    from .group_1189 import (
+    from .group_1191 import (
         OrgsOrgActionsPermissionsRepositoriesGetResponse200 as OrgsOrgActionsPermissionsRepositoriesGetResponse200,
     )
-    from .group_1190 import (
+    from .group_1192 import (
         OrgsOrgActionsPermissionsRepositoriesPutBody as OrgsOrgActionsPermissionsRepositoriesPutBody,
     )
-    from .group_1191 import (
+    from .group_1193 import (
         OrgsOrgActionsPermissionsSelfHostedRunnersPutBody as OrgsOrgActionsPermissionsSelfHostedRunnersPutBody,
     )
-    from .group_1192 import (
+    from .group_1194 import (
         OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200 as OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200,
     )
-    from .group_1193 import (
+    from .group_1195 import (
         OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody as OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody,
     )
-    from .group_1194 import (
+    from .group_1196 import (
         OrgsOrgActionsRunnerGroupsGetResponse200 as OrgsOrgActionsRunnerGroupsGetResponse200,
     )
-    from .group_1194 import RunnerGroupsOrg as RunnerGroupsOrg
-    from .group_1195 import (
+    from .group_1196 import RunnerGroupsOrg as RunnerGroupsOrg
+    from .group_1197 import (
         OrgsOrgActionsRunnerGroupsPostBody as OrgsOrgActionsRunnerGroupsPostBody,
     )
-    from .group_1196 import (
+    from .group_1198 import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody as OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody,
     )
-    from .group_1197 import (
+    from .group_1199 import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200 as OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
     )
-    from .group_1198 import (
+    from .group_1200 import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200 as OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
     )
-    from .group_1199 import (
+    from .group_1201 import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody as OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody,
     )
-    from .group_1200 import (
+    from .group_1202 import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200 as OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
     )
-    from .group_1201 import (
+    from .group_1203 import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody as OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody,
     )
-    from .group_1202 import (
+    from .group_1204 import (
         OrgsOrgActionsRunnersGetResponse200 as OrgsOrgActionsRunnersGetResponse200,
     )
-    from .group_1203 import (
+    from .group_1205 import (
         OrgsOrgActionsRunnersGenerateJitconfigPostBody as OrgsOrgActionsRunnersGenerateJitconfigPostBody,
     )
-    from .group_1204 import (
+    from .group_1206 import (
         OrgsOrgActionsRunnersRunnerIdLabelsPutBody as OrgsOrgActionsRunnersRunnerIdLabelsPutBody,
     )
-    from .group_1205 import (
+    from .group_1207 import (
         OrgsOrgActionsRunnersRunnerIdLabelsPostBody as OrgsOrgActionsRunnersRunnerIdLabelsPostBody,
     )
-    from .group_1206 import (
+    from .group_1208 import (
         OrgsOrgActionsSecretsGetResponse200 as OrgsOrgActionsSecretsGetResponse200,
     )
-    from .group_1207 import (
+    from .group_1209 import (
         OrgsOrgActionsSecretsSecretNamePutBody as OrgsOrgActionsSecretsSecretNamePutBody,
     )
-    from .group_1208 import (
+    from .group_1210 import (
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200 as OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
     )
-    from .group_1209 import (
+    from .group_1211 import (
         OrgsOrgActionsSecretsSecretNameRepositoriesPutBody as OrgsOrgActionsSecretsSecretNameRepositoriesPutBody,
     )
-    from .group_1210 import (
+    from .group_1212 import (
         OrgsOrgActionsVariablesGetResponse200 as OrgsOrgActionsVariablesGetResponse200,
     )
-    from .group_1211 import (
+    from .group_1213 import (
         OrgsOrgActionsVariablesPostBody as OrgsOrgActionsVariablesPostBody,
     )
-    from .group_1212 import (
+    from .group_1214 import (
         OrgsOrgActionsVariablesNamePatchBody as OrgsOrgActionsVariablesNamePatchBody,
     )
-    from .group_1213 import (
+    from .group_1215 import (
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200 as OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
     )
-    from .group_1214 import (
+    from .group_1216 import (
         OrgsOrgActionsVariablesNameRepositoriesPutBody as OrgsOrgActionsVariablesNameRepositoriesPutBody,
     )
-    from .group_1215 import (
+    from .group_1217 import (
         OrgsOrgAgentsSecretsGetResponse200 as OrgsOrgAgentsSecretsGetResponse200,
     )
-    from .group_1216 import (
+    from .group_1218 import (
         OrgsOrgAgentsSecretsSecretNamePutBody as OrgsOrgAgentsSecretsSecretNamePutBody,
     )
-    from .group_1217 import (
+    from .group_1219 import (
         OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200 as OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200,
     )
-    from .group_1218 import (
+    from .group_1220 import (
         OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody as OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody,
     )
-    from .group_1219 import (
+    from .group_1221 import (
         OrgsOrgAgentsVariablesGetResponse200 as OrgsOrgAgentsVariablesGetResponse200,
     )
-    from .group_1220 import (
+    from .group_1222 import (
         OrgsOrgAgentsVariablesPostBody as OrgsOrgAgentsVariablesPostBody,
     )
-    from .group_1221 import (
+    from .group_1223 import (
         OrgsOrgAgentsVariablesNamePatchBody as OrgsOrgAgentsVariablesNamePatchBody,
     )
-    from .group_1222 import (
+    from .group_1224 import (
         OrgsOrgAgentsVariablesNameRepositoriesGetResponse200 as OrgsOrgAgentsVariablesNameRepositoriesGetResponse200,
     )
-    from .group_1223 import (
+    from .group_1225 import (
         OrgsOrgAgentsVariablesNameRepositoriesPutBody as OrgsOrgAgentsVariablesNameRepositoriesPutBody,
     )
-    from .group_1224 import (
+    from .group_1226 import (
         OrgsOrgArtifactsMetadataDeploymentRecordPostBody as OrgsOrgArtifactsMetadataDeploymentRecordPostBody,
     )
-    from .group_1224 import (
+    from .group_1226 import (
         OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags as OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags,
     )
-    from .group_1225 import (
+    from .group_1227 import (
         OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200 as OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
     )
-    from .group_1226 import (
+    from .group_1228 import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody,
     )
-    from .group_1226 import (
+    from .group_1228 import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems,
     )
-    from .group_1226 import (
+    from .group_1228 import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags,
     )
-    from .group_1227 import (
+    from .group_1229 import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200 as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
     )
-    from .group_1228 import (
+    from .group_1230 import (
         OrgsOrgArtifactsMetadataStorageRecordPostBody as OrgsOrgArtifactsMetadataStorageRecordPostBody,
     )
-    from .group_1229 import (
+    from .group_1231 import (
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200 as OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
     )
-    from .group_1229 import (
+    from .group_1231 import (
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems as OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems,
     )
-    from .group_1230 import (
+    from .group_1232 import (
         OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200 as OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
     )
-    from .group_1231 import (
+    from .group_1233 import (
         OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200 as OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
     )
-    from .group_1231 import (
+    from .group_1233 import (
         OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems as OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems,
     )
-    from .group_1232 import (
+    from .group_1234 import (
         OrgsOrgAttestationsBulkListPostBody as OrgsOrgAttestationsBulkListPostBody,
     )
-    from .group_1233 import (
+    from .group_1235 import (
         OrgsOrgAttestationsBulkListPostResponse200 as OrgsOrgAttestationsBulkListPostResponse200,
     )
-    from .group_1233 import (
+    from .group_1235 import (
         OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests as OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests,
     )
-    from .group_1233 import (
+    from .group_1235 import (
         OrgsOrgAttestationsBulkListPostResponse200PropPageInfo as OrgsOrgAttestationsBulkListPostResponse200PropPageInfo,
     )
-    from .group_1234 import (
+    from .group_1236 import (
         OrgsOrgAttestationsDeleteRequestPostBodyOneof0 as OrgsOrgAttestationsDeleteRequestPostBodyOneof0,
     )
-    from .group_1235 import (
+    from .group_1237 import (
         OrgsOrgAttestationsDeleteRequestPostBodyOneof1 as OrgsOrgAttestationsDeleteRequestPostBodyOneof1,
     )
-    from .group_1236 import (
+    from .group_1238 import (
         OrgsOrgAttestationsRepositoriesGetResponse200Items as OrgsOrgAttestationsRepositoriesGetResponse200Items,
     )
-    from .group_1237 import (
+    from .group_1239 import (
         OrgsOrgAttestationsSubjectDigestGetResponse200 as OrgsOrgAttestationsSubjectDigestGetResponse200,
     )
-    from .group_1237 import (
+    from .group_1239 import (
         OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems,
     )
-    from .group_1238 import (
+    from .group_1240 import (
         OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems as OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems,
     )
-    from .group_1239 import (
+    from .group_1241 import (
         OrgsOrgCampaignsPostBodyOneof0 as OrgsOrgCampaignsPostBodyOneof0,
     )
-    from .group_1240 import (
+    from .group_1242 import (
         OrgsOrgCampaignsPostBodyOneof1 as OrgsOrgCampaignsPostBodyOneof1,
     )
-    from .group_1241 import (
+    from .group_1243 import (
         OrgsOrgCampaignsCampaignNumberPatchBody as OrgsOrgCampaignsCampaignNumberPatchBody,
     )
-    from .group_1242 import (
+    from .group_1244 import (
         OrgsOrgCodeSecurityConfigurationsPostBody as OrgsOrgCodeSecurityConfigurationsPostBody,
     )
-    from .group_1242 import (
+    from .group_1244 import (
         OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions as OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions,
     )
-    from .group_1242 import (
+    from .group_1244 import (
         OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions as OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions,
     )
-    from .group_1242 import (
+    from .group_1244 import (
         OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems as OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems,
     )
-    from .group_1243 import (
+    from .group_1245 import (
         OrgsOrgCodeSecurityConfigurationsDetachDeleteBody as OrgsOrgCodeSecurityConfigurationsDetachDeleteBody,
     )
-    from .group_1244 import (
+    from .group_1246 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody as OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody,
     )
-    from .group_1244 import (
+    from .group_1246 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions as OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions,
     )
-    from .group_1244 import (
+    from .group_1246 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions as OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions,
     )
-    from .group_1244 import (
+    from .group_1246 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems as OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems,
     )
-    from .group_1245 import (
+    from .group_1247 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody as OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody,
     )
-    from .group_1246 import (
+    from .group_1248 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody as OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody,
     )
-    from .group_1247 import (
+    from .group_1249 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200 as OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
     )
-    from .group_1248 import (
+    from .group_1250 import (
         OrgsOrgCodespacesGetResponse200 as OrgsOrgCodespacesGetResponse200,
     )
-    from .group_1249 import (
+    from .group_1251 import (
         OrgsOrgCodespacesAccessPutBody as OrgsOrgCodespacesAccessPutBody,
     )
-    from .group_1250 import (
+    from .group_1252 import (
         OrgsOrgCodespacesAccessSelectedUsersPostBody as OrgsOrgCodespacesAccessSelectedUsersPostBody,
     )
-    from .group_1251 import (
+    from .group_1253 import (
         OrgsOrgCodespacesAccessSelectedUsersDeleteBody as OrgsOrgCodespacesAccessSelectedUsersDeleteBody,
     )
-    from .group_1252 import CodespacesOrgSecret as CodespacesOrgSecret
-    from .group_1252 import (
+    from .group_1254 import CodespacesOrgSecret as CodespacesOrgSecret
+    from .group_1254 import (
         OrgsOrgCodespacesSecretsGetResponse200 as OrgsOrgCodespacesSecretsGetResponse200,
     )
-    from .group_1253 import (
+    from .group_1255 import (
         OrgsOrgCodespacesSecretsSecretNamePutBody as OrgsOrgCodespacesSecretsSecretNamePutBody,
     )
-    from .group_1254 import (
+    from .group_1256 import (
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200 as OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
     )
-    from .group_1255 import (
+    from .group_1257 import (
         OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody as OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody,
     )
-    from .group_1256 import (
+    from .group_1258 import (
         OrgsOrgCopilotSpacesGetResponse200 as OrgsOrgCopilotSpacesGetResponse200,
     )
-    from .group_1257 import OrgsOrgCopilotSpacesPostBody as OrgsOrgCopilotSpacesPostBody
-    from .group_1257 import (
+    from .group_1259 import OrgsOrgCopilotSpacesPostBody as OrgsOrgCopilotSpacesPostBody
+    from .group_1259 import (
         OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems as OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems,
     )
-    from .group_1257 import (
+    from .group_1259 import (
         OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata as OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata,
     )
-    from .group_1258 import (
+    from .group_1260 import (
         OrgsOrgCopilotSpacesSpaceNumberPutBody as OrgsOrgCopilotSpacesSpaceNumberPutBody,
     )
-    from .group_1258 import (
+    from .group_1260 import (
         OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems as OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems,
     )
-    from .group_1258 import (
+    from .group_1260 import (
         OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata as OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata,
     )
-    from .group_1259 import (
+    from .group_1261 import (
         OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200 as OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200,
     )
-    from .group_1260 import (
+    from .group_1262 import (
         OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody as OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody,
     )
-    from .group_1261 import (
+    from .group_1263 import (
         OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody as OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody,
     )
-    from .group_1262 import (
+    from .group_1264 import (
         OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200 as OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200,
     )
-    from .group_1263 import (
+    from .group_1265 import (
         OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody as OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody,
     )
-    from .group_1263 import (
+    from .group_1265 import (
         OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata as OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata,
     )
-    from .group_1264 import (
+    from .group_1266 import (
         OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody as OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody,
     )
-    from .group_1264 import (
+    from .group_1266 import (
         OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata as OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata,
     )
-    from .group_1265 import (
+    from .group_1267 import (
         OrgsOrgCopilotBillingSeatsGetResponse200 as OrgsOrgCopilotBillingSeatsGetResponse200,
     )
-    from .group_1266 import (
+    from .group_1268 import (
         OrgsOrgCopilotBillingSelectedTeamsPostBody as OrgsOrgCopilotBillingSelectedTeamsPostBody,
     )
-    from .group_1267 import (
+    from .group_1269 import (
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201 as OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
     )
-    from .group_1268 import (
+    from .group_1270 import (
         OrgsOrgCopilotBillingSelectedTeamsDeleteBody as OrgsOrgCopilotBillingSelectedTeamsDeleteBody,
     )
-    from .group_1269 import (
+    from .group_1271 import (
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200 as OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
     )
-    from .group_1270 import (
+    from .group_1272 import (
         OrgsOrgCopilotBillingSelectedUsersPostBody as OrgsOrgCopilotBillingSelectedUsersPostBody,
     )
-    from .group_1271 import (
+    from .group_1273 import (
         OrgsOrgCopilotBillingSelectedUsersPostResponse201 as OrgsOrgCopilotBillingSelectedUsersPostResponse201,
     )
-    from .group_1272 import (
+    from .group_1274 import (
         OrgsOrgCopilotBillingSelectedUsersDeleteBody as OrgsOrgCopilotBillingSelectedUsersDeleteBody,
     )
-    from .group_1273 import (
+    from .group_1275 import (
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200 as OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
     )
-    from .group_1274 import (
+    from .group_1276 import (
         OrgsOrgCopilotCodingAgentPermissionsGetResponse200 as OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
     )
-    from .group_1275 import (
+    from .group_1277 import (
         OrgsOrgCopilotCodingAgentPermissionsPutBody as OrgsOrgCopilotCodingAgentPermissionsPutBody,
     )
-    from .group_1276 import (
+    from .group_1278 import (
         OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200 as OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
     )
-    from .group_1277 import (
+    from .group_1279 import (
         OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody as OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody,
     )
-    from .group_1278 import (
+    from .group_1280 import (
         OrgsOrgCopilotContentExclusionPutBody as OrgsOrgCopilotContentExclusionPutBody,
     )
-    from .group_1279 import (
+    from .group_1281 import (
         OrgsOrgCopilotContentExclusionPutResponse200 as OrgsOrgCopilotContentExclusionPutResponse200,
     )
-    from .group_1280 import (
+    from .group_1282 import (
         OrgsOrgDependabotRepositoryAccessPatchBody as OrgsOrgDependabotRepositoryAccessPatchBody,
     )
-    from .group_1281 import (
+    from .group_1283 import (
         OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody as OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody,
     )
-    from .group_1282 import OrganizationDependabotSecret as OrganizationDependabotSecret
-    from .group_1282 import (
+    from .group_1284 import OrganizationDependabotSecret as OrganizationDependabotSecret
+    from .group_1284 import (
         OrgsOrgDependabotSecretsGetResponse200 as OrgsOrgDependabotSecretsGetResponse200,
     )
-    from .group_1283 import (
+    from .group_1285 import (
         OrgsOrgDependabotSecretsSecretNamePutBody as OrgsOrgDependabotSecretsSecretNamePutBody,
     )
-    from .group_1284 import (
+    from .group_1286 import (
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200 as OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
     )
-    from .group_1285 import (
+    from .group_1287 import (
         OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody as OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody,
     )
-    from .group_1286 import OrgsOrgHooksPostBody as OrgsOrgHooksPostBody
-    from .group_1286 import (
+    from .group_1288 import OrgsOrgHooksPostBody as OrgsOrgHooksPostBody
+    from .group_1288 import (
         OrgsOrgHooksPostBodyPropConfig as OrgsOrgHooksPostBodyPropConfig,
     )
-    from .group_1287 import OrgsOrgHooksHookIdPatchBody as OrgsOrgHooksHookIdPatchBody
-    from .group_1287 import (
+    from .group_1289 import OrgsOrgHooksHookIdPatchBody as OrgsOrgHooksHookIdPatchBody
+    from .group_1289 import (
         OrgsOrgHooksHookIdPatchBodyPropConfig as OrgsOrgHooksHookIdPatchBodyPropConfig,
     )
-    from .group_1288 import (
+    from .group_1290 import (
         OrgsOrgHooksHookIdConfigPatchBody as OrgsOrgHooksHookIdConfigPatchBody,
     )
-    from .group_1289 import (
+    from .group_1291 import (
         OrgsOrgInstallationsGetResponse200 as OrgsOrgInstallationsGetResponse200,
     )
-    from .group_1290 import (
+    from .group_1292 import (
         OrgsOrgInteractionLimitsGetResponse200Anyof1 as OrgsOrgInteractionLimitsGetResponse200Anyof1,
     )
-    from .group_1291 import OrgsOrgInvitationsPostBody as OrgsOrgInvitationsPostBody
-    from .group_1292 import (
+    from .group_1293 import OrgsOrgInvitationsPostBody as OrgsOrgInvitationsPostBody
+    from .group_1294 import (
         OrgsOrgMembersUsernameCodespacesGetResponse200 as OrgsOrgMembersUsernameCodespacesGetResponse200,
     )
-    from .group_1293 import (
+    from .group_1295 import (
         OrgsOrgMembershipsUsernamePutBody as OrgsOrgMembershipsUsernamePutBody,
     )
-    from .group_1294 import OrgsOrgMigrationsPostBody as OrgsOrgMigrationsPostBody
-    from .group_1295 import (
+    from .group_1296 import OrgsOrgMigrationsPostBody as OrgsOrgMigrationsPostBody
+    from .group_1297 import (
         OrgsOrgOutsideCollaboratorsUsernamePutBody as OrgsOrgOutsideCollaboratorsUsernamePutBody,
     )
-    from .group_1296 import (
+    from .group_1298 import (
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202 as OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
     )
-    from .group_1297 import (
+    from .group_1299 import (
         OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422 as OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422,
     )
-    from .group_1298 import (
+    from .group_1300 import (
         OrgsOrgPersonalAccessTokenRequestsPostBody as OrgsOrgPersonalAccessTokenRequestsPostBody,
     )
-    from .group_1299 import (
+    from .group_1301 import (
         OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody as OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody,
     )
-    from .group_1300 import (
+    from .group_1302 import (
         OrgsOrgPersonalAccessTokensPostBody as OrgsOrgPersonalAccessTokensPostBody,
     )
-    from .group_1301 import (
+    from .group_1303 import (
         OrgsOrgPersonalAccessTokensPatIdPostBody as OrgsOrgPersonalAccessTokensPatIdPostBody,
     )
-    from .group_1302 import (
+    from .group_1304 import (
         OrgPrivateRegistryConfiguration as OrgPrivateRegistryConfiguration,
     )
-    from .group_1302 import (
+    from .group_1304 import (
         OrgsOrgPrivateRegistriesGetResponse200 as OrgsOrgPrivateRegistriesGetResponse200,
     )
-    from .group_1303 import (
+    from .group_1305 import (
         OrgsOrgPrivateRegistriesPostBody as OrgsOrgPrivateRegistriesPostBody,
     )
-    from .group_1304 import (
+    from .group_1306 import (
         OrgsOrgPrivateRegistriesPublicKeyGetResponse200 as OrgsOrgPrivateRegistriesPublicKeyGetResponse200,
     )
-    from .group_1305 import (
+    from .group_1307 import (
         OrgsOrgPrivateRegistriesSecretNamePatchBody as OrgsOrgPrivateRegistriesSecretNamePatchBody,
     )
-    from .group_1306 import (
+    from .group_1308 import (
         OrgsOrgProjectsV2ProjectNumberDraftsPostBody as OrgsOrgProjectsV2ProjectNumberDraftsPostBody,
     )
-    from .group_1307 import (
+    from .group_1309 import (
         OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0 as OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0,
     )
-    from .group_1308 import (
+    from .group_1310 import (
         OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1 as OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1,
     )
-    from .group_1309 import (
+    from .group_1311 import (
         OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2 as OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2,
     )
-    from .group_1310 import (
+    from .group_1312 import (
         OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3 as OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3,
     )
-    from .group_1311 import (
+    from .group_1313 import (
         OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0 as OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0,
     )
-    from .group_1312 import (
+    from .group_1314 import (
         OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1 as OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1,
     )
-    from .group_1313 import (
+    from .group_1315 import (
         OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody as OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody,
     )
-    from .group_1313 import (
+    from .group_1315 import (
         OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems as OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems,
     )
-    from .group_1314 import (
+    from .group_1316 import (
         OrgsOrgProjectsV2ProjectNumberViewsPostBody as OrgsOrgProjectsV2ProjectNumberViewsPostBody,
     )
-    from .group_1315 import (
+    from .group_1317 import (
         OrgsOrgPropertiesSchemaPatchBody as OrgsOrgPropertiesSchemaPatchBody,
     )
-    from .group_1316 import (
+    from .group_1318 import (
         OrgsOrgPropertiesValuesPatchBody as OrgsOrgPropertiesValuesPatchBody,
     )
-    from .group_1317 import OrgsOrgReposPostBody as OrgsOrgReposPostBody
-    from .group_1317 import (
+    from .group_1319 import OrgsOrgReposPostBody as OrgsOrgReposPostBody
+    from .group_1319 import (
         OrgsOrgReposPostBodyPropCustomProperties as OrgsOrgReposPostBodyPropCustomProperties,
     )
-    from .group_1318 import OrgsOrgRulesetsPostBody as OrgsOrgRulesetsPostBody
-    from .group_1319 import (
+    from .group_1320 import OrgsOrgRulesetsPostBody as OrgsOrgRulesetsPostBody
+    from .group_1321 import (
         OrgsOrgRulesetsRulesetIdPutBody as OrgsOrgRulesetsRulesetIdPutBody,
     )
-    from .group_1320 import (
+    from .group_1322 import (
         OrgsOrgSecretScanningPatternConfigurationsPatchBody as OrgsOrgSecretScanningPatternConfigurationsPatchBody,
     )
-    from .group_1320 import (
+    from .group_1322 import (
         OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems as OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems,
     )
-    from .group_1320 import (
+    from .group_1322 import (
         OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems as OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems,
     )
-    from .group_1321 import (
+    from .group_1323 import (
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200 as OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
     )
-    from .group_1322 import (
+    from .group_1324 import (
         OrgsOrgSettingsImmutableReleasesPutBody as OrgsOrgSettingsImmutableReleasesPutBody,
     )
-    from .group_1323 import (
+    from .group_1325 import (
         OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200 as OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200,
     )
-    from .group_1324 import (
+    from .group_1326 import (
         OrgsOrgSettingsImmutableReleasesRepositoriesPutBody as OrgsOrgSettingsImmutableReleasesRepositoriesPutBody,
     )
-    from .group_1325 import (
+    from .group_1327 import (
         OrgsOrgSettingsNetworkConfigurationsGetResponse200 as OrgsOrgSettingsNetworkConfigurationsGetResponse200,
     )
-    from .group_1326 import (
+    from .group_1328 import (
         OrgsOrgSettingsNetworkConfigurationsPostBody as OrgsOrgSettingsNetworkConfigurationsPostBody,
     )
-    from .group_1327 import (
+    from .group_1329 import (
         OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody as OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody,
     )
-    from .group_1328 import OrgsOrgTeamsPostBody as OrgsOrgTeamsPostBody
-    from .group_1329 import (
+    from .group_1330 import OrgsOrgTeamsPostBody as OrgsOrgTeamsPostBody
+    from .group_1331 import (
         OrgsOrgTeamsTeamSlugPatchBody as OrgsOrgTeamsTeamSlugPatchBody,
     )
-    from .group_1330 import (
+    from .group_1332 import (
         OrgsOrgTeamsTeamSlugExternalGroupsPatchBody as OrgsOrgTeamsTeamSlugExternalGroupsPatchBody,
     )
-    from .group_1331 import (
+    from .group_1333 import (
         OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody as OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody,
     )
-    from .group_1332 import (
+    from .group_1334 import (
         OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody as OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody,
     )
-    from .group_1333 import (
+    from .group_1335 import (
         OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody as OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody,
     )
-    from .group_1333 import (
+    from .group_1335 import (
         OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems as OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems,
     )
-    from .group_1334 import (
+    from .group_1336 import (
         OrgsOrgSecurityProductEnablementPostBody as OrgsOrgSecurityProductEnablementPostBody,
     )
-    from .group_1335 import (
+    from .group_1337 import (
         ReposOwnerRepoDeleteResponse403 as ReposOwnerRepoDeleteResponse403,
     )
-    from .group_1336 import ReposOwnerRepoPatchBody as ReposOwnerRepoPatchBody
-    from .group_1336 import (
+    from .group_1338 import ReposOwnerRepoPatchBody as ReposOwnerRepoPatchBody
+    from .group_1338 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysis as ReposOwnerRepoPatchBodyPropSecurityAndAnalysis,
     )
-    from .group_1336 import (
+    from .group_1338 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity,
     )
-    from .group_1336 import (
+    from .group_1338 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity,
     )
-    from .group_1336 import (
+    from .group_1338 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning,
     )
-    from .group_1336 import (
+    from .group_1338 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection,
     )
-    from .group_1336 import (
+    from .group_1338 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal,
     )
-    from .group_1336 import (
+    from .group_1338 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypass as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypass,
     )
-    from .group_1336 import (
+    from .group_1338 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptions as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptions,
     )
-    from .group_1336 import (
+    from .group_1338 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems,
     )
-    from .group_1336 import (
+    from .group_1338 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns,
     )
-    from .group_1336 import (
+    from .group_1338 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection,
     )
-    from .group_1336 import (
+    from .group_1338 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningValidityChecks as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningValidityChecks,
     )
-    from .group_1337 import (
+    from .group_1339 import (
         ReposOwnerRepoActionsArtifactsGetResponse200 as ReposOwnerRepoActionsArtifactsGetResponse200,
     )
-    from .group_1338 import (
+    from .group_1340 import (
         ReposOwnerRepoActionsJobsJobIdRerunPostBody as ReposOwnerRepoActionsJobsJobIdRerunPostBody,
     )
-    from .group_1339 import (
+    from .group_1341 import (
         ReposOwnerRepoActionsOidcCustomizationSubPutBody as ReposOwnerRepoActionsOidcCustomizationSubPutBody,
     )
-    from .group_1340 import (
+    from .group_1342 import (
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200 as ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
     )
-    from .group_1341 import (
+    from .group_1343 import (
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200 as ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
     )
-    from .group_1342 import (
+    from .group_1344 import (
         ReposOwnerRepoActionsPermissionsPutBody as ReposOwnerRepoActionsPermissionsPutBody,
     )
-    from .group_1343 import (
+    from .group_1345 import (
         ReposOwnerRepoActionsRunnersGetResponse200 as ReposOwnerRepoActionsRunnersGetResponse200,
     )
-    from .group_1344 import (
+    from .group_1346 import (
         ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody as ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody,
     )
-    from .group_1345 import (
+    from .group_1347 import (
         ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody as ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody,
     )
-    from .group_1346 import (
+    from .group_1348 import (
         ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody as ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody,
     )
-    from .group_1347 import (
+    from .group_1349 import (
         ReposOwnerRepoActionsRunsGetResponse200 as ReposOwnerRepoActionsRunsGetResponse200,
     )
-    from .group_1348 import (
+    from .group_1350 import (
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200 as ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
     )
-    from .group_1349 import (
+    from .group_1351 import (
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200 as ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
     )
-    from .group_1350 import (
+    from .group_1352 import (
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200 as ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
     )
-    from .group_1351 import (
+    from .group_1353 import (
         ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody as ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody,
     )
-    from .group_1352 import (
+    from .group_1354 import (
         ReposOwnerRepoActionsRunsRunIdRerunPostBody as ReposOwnerRepoActionsRunsRunIdRerunPostBody,
     )
-    from .group_1353 import (
+    from .group_1355 import (
         ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody as ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody,
     )
-    from .group_1354 import (
+    from .group_1356 import (
         ReposOwnerRepoActionsSecretsGetResponse200 as ReposOwnerRepoActionsSecretsGetResponse200,
     )
-    from .group_1355 import (
+    from .group_1357 import (
         ReposOwnerRepoActionsSecretsSecretNamePutBody as ReposOwnerRepoActionsSecretsSecretNamePutBody,
     )
-    from .group_1356 import (
+    from .group_1358 import (
         ReposOwnerRepoActionsVariablesGetResponse200 as ReposOwnerRepoActionsVariablesGetResponse200,
     )
-    from .group_1357 import (
+    from .group_1359 import (
         ReposOwnerRepoActionsVariablesPostBody as ReposOwnerRepoActionsVariablesPostBody,
     )
-    from .group_1358 import (
+    from .group_1360 import (
         ReposOwnerRepoActionsVariablesNamePatchBody as ReposOwnerRepoActionsVariablesNamePatchBody,
     )
-    from .group_1359 import (
+    from .group_1361 import (
         ReposOwnerRepoActionsWorkflowsGetResponse200 as ReposOwnerRepoActionsWorkflowsGetResponse200,
     )
-    from .group_1359 import Workflow as Workflow
-    from .group_1360 import (
+    from .group_1361 import Workflow as Workflow
+    from .group_1362 import (
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody as ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody,
     )
-    from .group_1360 import (
+    from .group_1362 import (
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs as ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs,
     )
-    from .group_1361 import (
+    from .group_1363 import (
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200 as ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
     )
-    from .group_1362 import (
+    from .group_1364 import (
         ReposOwnerRepoAgentsOrganizationSecretsGetResponse200 as ReposOwnerRepoAgentsOrganizationSecretsGetResponse200,
     )
-    from .group_1363 import (
+    from .group_1365 import (
         ReposOwnerRepoAgentsOrganizationVariablesGetResponse200 as ReposOwnerRepoAgentsOrganizationVariablesGetResponse200,
     )
-    from .group_1364 import (
+    from .group_1366 import (
         ReposOwnerRepoAgentsSecretsGetResponse200 as ReposOwnerRepoAgentsSecretsGetResponse200,
     )
-    from .group_1365 import (
+    from .group_1367 import (
         ReposOwnerRepoAgentsSecretsSecretNamePutBody as ReposOwnerRepoAgentsSecretsSecretNamePutBody,
     )
-    from .group_1366 import (
+    from .group_1368 import (
         ReposOwnerRepoAgentsVariablesGetResponse200 as ReposOwnerRepoAgentsVariablesGetResponse200,
     )
-    from .group_1367 import (
+    from .group_1369 import (
         ReposOwnerRepoAgentsVariablesPostBody as ReposOwnerRepoAgentsVariablesPostBody,
     )
-    from .group_1368 import (
+    from .group_1370 import (
         ReposOwnerRepoAgentsVariablesNamePatchBody as ReposOwnerRepoAgentsVariablesNamePatchBody,
     )
-    from .group_1369 import (
+    from .group_1371 import (
         ReposOwnerRepoAttestationsPostBody as ReposOwnerRepoAttestationsPostBody,
     )
-    from .group_1369 import (
+    from .group_1371 import (
         ReposOwnerRepoAttestationsPostBodyPropBundle as ReposOwnerRepoAttestationsPostBodyPropBundle,
     )
-    from .group_1369 import (
+    from .group_1371 import (
         ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope as ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope,
     )
-    from .group_1369 import (
+    from .group_1371 import (
         ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial as ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial,
     )
-    from .group_1370 import (
+    from .group_1372 import (
         ReposOwnerRepoAttestationsPostResponse201 as ReposOwnerRepoAttestationsPostResponse201,
     )
-    from .group_1371 import (
+    from .group_1373 import (
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200 as ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
     )
-    from .group_1371 import (
+    from .group_1373 import (
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems,
     )
-    from .group_1372 import (
+    from .group_1374 import (
         ReposOwnerRepoAutolinksPostBody as ReposOwnerRepoAutolinksPostBody,
     )
-    from .group_1373 import (
+    from .group_1375 import (
         ReposOwnerRepoBranchesBranchProtectionPutBody as ReposOwnerRepoBranchesBranchProtectionPutBody,
     )
-    from .group_1373 import (
+    from .group_1375 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews,
     )
-    from .group_1373 import (
+    from .group_1375 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
     )
-    from .group_1373 import (
+    from .group_1375 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions,
     )
-    from .group_1373 import (
+    from .group_1375 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks,
     )
-    from .group_1373 import (
+    from .group_1375 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems,
     )
-    from .group_1373 import (
+    from .group_1375 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions,
     )
-    from .group_1374 import (
+    from .group_1376 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody as ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
     )
-    from .group_1374 import (
+    from .group_1376 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances as ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances,
     )
-    from .group_1374 import (
+    from .group_1376 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions as ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions,
     )
-    from .group_1375 import (
+    from .group_1377 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody,
     )
-    from .group_1375 import (
+    from .group_1377 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems,
     )
-    from .group_1376 import (
+    from .group_1378 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
     )
-    from .group_1377 import (
+    from .group_1379 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
     )
-    from .group_1378 import (
+    from .group_1380 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
     )
-    from .group_1379 import (
+    from .group_1381 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody,
     )
-    from .group_1380 import (
+    from .group_1382 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody,
     )
-    from .group_1381 import (
+    from .group_1383 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody,
     )
-    from .group_1382 import (
+    from .group_1384 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
     )
-    from .group_1383 import (
+    from .group_1385 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
     )
-    from .group_1384 import (
+    from .group_1386 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
     )
-    from .group_1385 import (
+    from .group_1387 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody,
     )
-    from .group_1386 import (
+    from .group_1388 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody,
     )
-    from .group_1387 import (
+    from .group_1389 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody,
     )
-    from .group_1388 import (
+    from .group_1390 import (
         ReposOwnerRepoBranchesBranchRenamePostBody as ReposOwnerRepoBranchesBranchRenamePostBody,
     )
-    from .group_1389 import (
+    from .group_1391 import (
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody as ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody,
     )
-    from .group_1390 import (
+    from .group_1392 import (
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200 as ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
     )
-    from .group_1391 import (
+    from .group_1393 import (
         ReposOwnerRepoCheckRunsPostBodyPropActionsItems as ReposOwnerRepoCheckRunsPostBodyPropActionsItems,
     )
-    from .group_1391 import (
+    from .group_1393 import (
         ReposOwnerRepoCheckRunsPostBodyPropOutput as ReposOwnerRepoCheckRunsPostBodyPropOutput,
     )
-    from .group_1391 import (
+    from .group_1393 import (
         ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems as ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems,
     )
-    from .group_1391 import (
+    from .group_1393 import (
         ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems as ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems,
     )
-    from .group_1392 import (
+    from .group_1394 import (
         ReposOwnerRepoCheckRunsPostBodyOneof0 as ReposOwnerRepoCheckRunsPostBodyOneof0,
     )
-    from .group_1393 import (
+    from .group_1395 import (
         ReposOwnerRepoCheckRunsPostBodyOneof1 as ReposOwnerRepoCheckRunsPostBodyOneof1,
     )
-    from .group_1394 import (
+    from .group_1396 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems,
     )
-    from .group_1394 import (
+    from .group_1396 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput,
     )
-    from .group_1394 import (
+    from .group_1396 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems,
     )
-    from .group_1394 import (
+    from .group_1396 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems,
     )
-    from .group_1395 import (
+    from .group_1397 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0 as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0,
     )
-    from .group_1396 import (
+    from .group_1398 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1 as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1,
     )
-    from .group_1397 import (
+    from .group_1399 import (
         ReposOwnerRepoCheckSuitesPostBody as ReposOwnerRepoCheckSuitesPostBody,
     )
-    from .group_1398 import (
+    from .group_1400 import (
         ReposOwnerRepoCheckSuitesPreferencesPatchBody as ReposOwnerRepoCheckSuitesPreferencesPatchBody,
     )
-    from .group_1398 import (
+    from .group_1400 import (
         ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems as ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems,
     )
-    from .group_1399 import (
+    from .group_1401 import (
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200 as ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
     )
-    from .group_1400 import (
+    from .group_1402 import (
         ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0 as ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0,
     )
-    from .group_1401 import (
+    from .group_1403 import (
         ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1 as ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1,
     )
-    from .group_1402 import (
+    from .group_1404 import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0 as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0,
     )
-    from .group_1403 import (
+    from .group_1405 import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1 as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1,
     )
-    from .group_1404 import (
+    from .group_1406 import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2 as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2,
     )
-    from .group_1405 import (
+    from .group_1407 import (
         ReposOwnerRepoCodeScanningSarifsPostBody as ReposOwnerRepoCodeScanningSarifsPostBody,
     )
-    from .group_1406 import (
+    from .group_1408 import (
         ReposOwnerRepoCodespacesGetResponse200 as ReposOwnerRepoCodespacesGetResponse200,
     )
-    from .group_1407 import (
+    from .group_1409 import (
         ReposOwnerRepoCodespacesPostBody as ReposOwnerRepoCodespacesPostBody,
     )
-    from .group_1408 import (
+    from .group_1410 import (
         ReposOwnerRepoCodespacesDevcontainersGetResponse200 as ReposOwnerRepoCodespacesDevcontainersGetResponse200,
     )
-    from .group_1408 import (
+    from .group_1410 import (
         ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems as ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems,
     )
-    from .group_1409 import (
+    from .group_1411 import (
         ReposOwnerRepoCodespacesMachinesGetResponse200 as ReposOwnerRepoCodespacesMachinesGetResponse200,
     )
-    from .group_1410 import (
+    from .group_1412 import (
         ReposOwnerRepoCodespacesNewGetResponse200 as ReposOwnerRepoCodespacesNewGetResponse200,
     )
-    from .group_1410 import (
+    from .group_1412 import (
         ReposOwnerRepoCodespacesNewGetResponse200PropDefaults as ReposOwnerRepoCodespacesNewGetResponse200PropDefaults,
     )
-    from .group_1411 import RepoCodespacesSecret as RepoCodespacesSecret
-    from .group_1411 import (
+    from .group_1413 import RepoCodespacesSecret as RepoCodespacesSecret
+    from .group_1413 import (
         ReposOwnerRepoCodespacesSecretsGetResponse200 as ReposOwnerRepoCodespacesSecretsGetResponse200,
     )
-    from .group_1412 import (
+    from .group_1414 import (
         ReposOwnerRepoCodespacesSecretsSecretNamePutBody as ReposOwnerRepoCodespacesSecretsSecretNamePutBody,
     )
-    from .group_1413 import (
+    from .group_1415 import (
         ReposOwnerRepoCollaboratorsUsernamePutBody as ReposOwnerRepoCollaboratorsUsernamePutBody,
     )
-    from .group_1414 import (
+    from .group_1416 import (
         ReposOwnerRepoCommentsCommentIdPatchBody as ReposOwnerRepoCommentsCommentIdPatchBody,
     )
-    from .group_1415 import (
+    from .group_1417 import (
         ReposOwnerRepoCommentsCommentIdReactionsPostBody as ReposOwnerRepoCommentsCommentIdReactionsPostBody,
     )
-    from .group_1416 import (
+    from .group_1418 import (
         ReposOwnerRepoCommitsCommitShaCommentsPostBody as ReposOwnerRepoCommitsCommitShaCommentsPostBody,
     )
-    from .group_1417 import (
+    from .group_1419 import (
         ReposOwnerRepoCommitsRefCheckRunsGetResponse200 as ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
     )
-    from .group_1418 import (
+    from .group_1420 import (
         ReposOwnerRepoContentsPathPutBody as ReposOwnerRepoContentsPathPutBody,
     )
-    from .group_1418 import (
+    from .group_1420 import (
         ReposOwnerRepoContentsPathPutBodyPropAuthor as ReposOwnerRepoContentsPathPutBodyPropAuthor,
     )
-    from .group_1418 import (
+    from .group_1420 import (
         ReposOwnerRepoContentsPathPutBodyPropCommitter as ReposOwnerRepoContentsPathPutBodyPropCommitter,
     )
-    from .group_1419 import (
+    from .group_1421 import (
         ReposOwnerRepoContentsPathDeleteBody as ReposOwnerRepoContentsPathDeleteBody,
     )
-    from .group_1419 import (
+    from .group_1421 import (
         ReposOwnerRepoContentsPathDeleteBodyPropAuthor as ReposOwnerRepoContentsPathDeleteBodyPropAuthor,
     )
-    from .group_1419 import (
+    from .group_1421 import (
         ReposOwnerRepoContentsPathDeleteBodyPropCommitter as ReposOwnerRepoContentsPathDeleteBodyPropCommitter,
     )
-    from .group_1420 import (
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0 as ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0,
-    )
-    from .group_1421 import (
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1 as ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1,
-    )
-    from .group_1422 import DependabotSecret as DependabotSecret
     from .group_1422 import (
-        ReposOwnerRepoDependabotSecretsGetResponse200 as ReposOwnerRepoDependabotSecretsGetResponse200,
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200 as ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200,
+    )
+    from .group_1422 import (
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools as ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools,
+    )
+    from .group_1422 import (
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration as ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration,
     )
     from .group_1423 import (
-        ReposOwnerRepoDependabotSecretsSecretNamePutBody as ReposOwnerRepoDependabotSecretsSecretNamePutBody,
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0 as ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0,
     )
     from .group_1424 import (
-        ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201 as ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201,
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1 as ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1,
     )
+    from .group_1425 import DependabotSecret as DependabotSecret
     from .group_1425 import (
-        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201 as ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
+        ReposOwnerRepoDependabotSecretsGetResponse200 as ReposOwnerRepoDependabotSecretsGetResponse200,
     )
     from .group_1426 import (
-        ReposOwnerRepoDeploymentsPostBody as ReposOwnerRepoDeploymentsPostBody,
-    )
-    from .group_1426 import (
-        ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0 as ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0,
+        ReposOwnerRepoDependabotSecretsSecretNamePutBody as ReposOwnerRepoDependabotSecretsSecretNamePutBody,
     )
     from .group_1427 import (
-        ReposOwnerRepoDeploymentsPostResponse202 as ReposOwnerRepoDeploymentsPostResponse202,
+        ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201 as ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201,
     )
     from .group_1428 import (
-        ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody as ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201 as ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
     )
     from .group_1429 import (
-        ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody as ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody,
+        ReposOwnerRepoDeploymentsPostBody as ReposOwnerRepoDeploymentsPostBody,
+    )
+    from .group_1429 import (
+        ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0 as ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0,
     )
     from .group_1430 import (
-        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody as ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody,
+        ReposOwnerRepoDeploymentsPostResponse202 as ReposOwnerRepoDeploymentsPostResponse202,
     )
     from .group_1431 import (
-        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody as ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody,
+        ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody as ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody,
     )
     from .group_1432 import (
-        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200 as ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody as ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody,
     )
     from .group_1433 import (
-        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody as ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody as ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody,
     )
     from .group_1434 import (
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody as ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody,
+    )
+    from .group_1435 import (
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200 as ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+    )
+    from .group_1436 import (
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody as ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody,
+    )
+    from .group_1437 import (
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200 as ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
     )
-    from .group_1435 import (
+    from .group_1438 import (
         ReposOwnerRepoDispatchesPostBody as ReposOwnerRepoDispatchesPostBody,
     )
-    from .group_1435 import (
+    from .group_1438 import (
         ReposOwnerRepoDispatchesPostBodyPropClientPayload as ReposOwnerRepoDispatchesPostBodyPropClientPayload,
     )
-    from .group_1436 import (
+    from .group_1439 import (
         ReposOwnerRepoEnvironmentsEnvironmentNamePutBody as ReposOwnerRepoEnvironmentsEnvironmentNamePutBody,
     )
-    from .group_1436 import (
+    from .group_1439 import (
         ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems as ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems,
     )
-    from .group_1437 import DeploymentBranchPolicy as DeploymentBranchPolicy
-    from .group_1437 import (
+    from .group_1440 import DeploymentBranchPolicy as DeploymentBranchPolicy
+    from .group_1440 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
     )
-    from .group_1438 import (
+    from .group_1441 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody,
     )
-    from .group_1439 import (
+    from .group_1442 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
     )
-    from .group_1440 import (
+    from .group_1443 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
     )
-    from .group_1441 import (
+    from .group_1444 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
     )
-    from .group_1442 import (
+    from .group_1445 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
     )
-    from .group_1443 import (
+    from .group_1446 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody,
     )
-    from .group_1444 import (
+    from .group_1447 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody,
     )
-    from .group_1445 import ReposOwnerRepoForksPostBody as ReposOwnerRepoForksPostBody
-    from .group_1446 import (
+    from .group_1448 import ReposOwnerRepoForksPostBody as ReposOwnerRepoForksPostBody
+    from .group_1449 import (
         ReposOwnerRepoGitBlobsPostBody as ReposOwnerRepoGitBlobsPostBody,
     )
-    from .group_1447 import (
+    from .group_1450 import (
         ReposOwnerRepoGitCommitsPostBody as ReposOwnerRepoGitCommitsPostBody,
     )
-    from .group_1447 import (
+    from .group_1450 import (
         ReposOwnerRepoGitCommitsPostBodyPropAuthor as ReposOwnerRepoGitCommitsPostBodyPropAuthor,
     )
-    from .group_1447 import (
+    from .group_1450 import (
         ReposOwnerRepoGitCommitsPostBodyPropCommitter as ReposOwnerRepoGitCommitsPostBodyPropCommitter,
     )
-    from .group_1448 import (
+    from .group_1451 import (
         ReposOwnerRepoGitRefsPostBody as ReposOwnerRepoGitRefsPostBody,
     )
-    from .group_1449 import (
+    from .group_1452 import (
         ReposOwnerRepoGitRefsRefPatchBody as ReposOwnerRepoGitRefsRefPatchBody,
     )
-    from .group_1450 import (
+    from .group_1453 import (
         ReposOwnerRepoGitTagsPostBody as ReposOwnerRepoGitTagsPostBody,
     )
-    from .group_1450 import (
+    from .group_1453 import (
         ReposOwnerRepoGitTagsPostBodyPropTagger as ReposOwnerRepoGitTagsPostBodyPropTagger,
     )
-    from .group_1451 import (
+    from .group_1454 import (
         ReposOwnerRepoGitTreesPostBody as ReposOwnerRepoGitTreesPostBody,
     )
-    from .group_1451 import (
+    from .group_1454 import (
         ReposOwnerRepoGitTreesPostBodyPropTreeItems as ReposOwnerRepoGitTreesPostBodyPropTreeItems,
     )
-    from .group_1452 import ReposOwnerRepoHooksPostBody as ReposOwnerRepoHooksPostBody
-    from .group_1452 import (
+    from .group_1455 import ReposOwnerRepoHooksPostBody as ReposOwnerRepoHooksPostBody
+    from .group_1455 import (
         ReposOwnerRepoHooksPostBodyPropConfig as ReposOwnerRepoHooksPostBodyPropConfig,
     )
-    from .group_1453 import (
+    from .group_1456 import (
         ReposOwnerRepoHooksHookIdPatchBody as ReposOwnerRepoHooksHookIdPatchBody,
     )
-    from .group_1454 import (
+    from .group_1457 import (
         ReposOwnerRepoHooksHookIdConfigPatchBody as ReposOwnerRepoHooksHookIdConfigPatchBody,
     )
-    from .group_1455 import ReposOwnerRepoImportPutBody as ReposOwnerRepoImportPutBody
-    from .group_1456 import (
+    from .group_1458 import ReposOwnerRepoImportPutBody as ReposOwnerRepoImportPutBody
+    from .group_1459 import (
         ReposOwnerRepoImportPatchBody as ReposOwnerRepoImportPatchBody,
     )
-    from .group_1457 import (
+    from .group_1460 import (
         ReposOwnerRepoImportAuthorsAuthorIdPatchBody as ReposOwnerRepoImportAuthorsAuthorIdPatchBody,
     )
-    from .group_1458 import (
+    from .group_1461 import (
         ReposOwnerRepoImportLfsPatchBody as ReposOwnerRepoImportLfsPatchBody,
     )
-    from .group_1459 import (
+    from .group_1462 import (
         ReposOwnerRepoInteractionLimitsGetResponse200Anyof1 as ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
     )
-    from .group_1460 import (
+    from .group_1463 import (
         ReposOwnerRepoInvitationsInvitationIdPatchBody as ReposOwnerRepoInvitationsInvitationIdPatchBody,
     )
-    from .group_1461 import ReposOwnerRepoIssuesPostBody as ReposOwnerRepoIssuesPostBody
-    from .group_1461 import (
+    from .group_1464 import ReposOwnerRepoIssuesPostBody as ReposOwnerRepoIssuesPostBody
+    from .group_1464 import (
         ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems as ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems,
     )
-    from .group_1461 import (
+    from .group_1464 import (
         ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1 as ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1,
     )
-    from .group_1462 import (
+    from .group_1465 import (
         ReposOwnerRepoIssuesCommentsCommentIdPatchBody as ReposOwnerRepoIssuesCommentsCommentIdPatchBody,
     )
-    from .group_1463 import (
+    from .group_1466 import (
         ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody as ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody,
     )
-    from .group_1464 import (
+    from .group_1467 import (
         ReposOwnerRepoIssuesIssueNumberPatchBody as ReposOwnerRepoIssuesIssueNumberPatchBody,
     )
-    from .group_1464 import (
+    from .group_1467 import (
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems as ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems,
     )
-    from .group_1464 import (
+    from .group_1467 import (
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1 as ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1,
     )
-    from .group_1465 import (
+    from .group_1468 import (
         ReposOwnerRepoIssuesIssueNumberAssigneesPostBody as ReposOwnerRepoIssuesIssueNumberAssigneesPostBody,
     )
-    from .group_1466 import (
+    from .group_1469 import (
         ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody as ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody,
     )
-    from .group_1467 import (
+    from .group_1470 import (
         ReposOwnerRepoIssuesIssueNumberCommentsPostBody as ReposOwnerRepoIssuesIssueNumberCommentsPostBody,
     )
-    from .group_1468 import (
+    from .group_1471 import (
         ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody as ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody,
     )
-    from .group_1469 import (
+    from .group_1472 import (
         ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody as ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody,
     )
-    from .group_1469 import (
+    from .group_1472 import (
         ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems as ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems,
     )
-    from .group_1470 import (
+    from .group_1473 import (
         ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody as ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody,
     )
-    from .group_1470 import (
+    from .group_1473 import (
         ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems as ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems,
     )
-    from .group_1471 import (
+    from .group_1474 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0 as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0,
     )
-    from .group_1472 import (
+    from .group_1475 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2 as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2,
     )
-    from .group_1472 import (
+    from .group_1475 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems,
     )
-    from .group_1473 import (
+    from .group_1476 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items,
     )
-    from .group_1474 import (
+    from .group_1477 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0 as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
     )
-    from .group_1475 import (
+    from .group_1478 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items,
     )
-    from .group_1476 import (
+    from .group_1479 import (
         ReposOwnerRepoIssuesIssueNumberLockPutBody as ReposOwnerRepoIssuesIssueNumberLockPutBody,
     )
-    from .group_1477 import (
+    from .group_1480 import (
         ReposOwnerRepoIssuesIssueNumberReactionsPostBody as ReposOwnerRepoIssuesIssueNumberReactionsPostBody,
     )
-    from .group_1478 import (
+    from .group_1481 import (
         ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody as ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody,
     )
-    from .group_1479 import (
+    from .group_1482 import (
         ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody as ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody,
     )
-    from .group_1480 import (
+    from .group_1483 import (
         ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody as ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody,
     )
-    from .group_1481 import ReposOwnerRepoKeysPostBody as ReposOwnerRepoKeysPostBody
-    from .group_1482 import ReposOwnerRepoLabelsPostBody as ReposOwnerRepoLabelsPostBody
-    from .group_1483 import (
+    from .group_1484 import ReposOwnerRepoKeysPostBody as ReposOwnerRepoKeysPostBody
+    from .group_1485 import ReposOwnerRepoLabelsPostBody as ReposOwnerRepoLabelsPostBody
+    from .group_1486 import (
         ReposOwnerRepoLabelsNamePatchBody as ReposOwnerRepoLabelsNamePatchBody,
     )
-    from .group_1484 import (
+    from .group_1487 import (
         ReposOwnerRepoMergeUpstreamPostBody as ReposOwnerRepoMergeUpstreamPostBody,
     )
-    from .group_1485 import ReposOwnerRepoMergesPostBody as ReposOwnerRepoMergesPostBody
-    from .group_1486 import (
+    from .group_1488 import ReposOwnerRepoMergesPostBody as ReposOwnerRepoMergesPostBody
+    from .group_1489 import (
         ReposOwnerRepoMilestonesPostBody as ReposOwnerRepoMilestonesPostBody,
     )
-    from .group_1487 import (
+    from .group_1490 import (
         ReposOwnerRepoMilestonesMilestoneNumberPatchBody as ReposOwnerRepoMilestonesMilestoneNumberPatchBody,
     )
-    from .group_1488 import (
+    from .group_1491 import (
         ReposOwnerRepoNotificationsPutBody as ReposOwnerRepoNotificationsPutBody,
     )
-    from .group_1489 import (
+    from .group_1492 import (
         ReposOwnerRepoNotificationsPutResponse202 as ReposOwnerRepoNotificationsPutResponse202,
     )
-    from .group_1490 import (
+    from .group_1493 import (
         ReposOwnerRepoPagesPutBodyPropSourceAnyof1 as ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
     )
-    from .group_1491 import (
+    from .group_1494 import (
         ReposOwnerRepoPagesPutBodyAnyof0 as ReposOwnerRepoPagesPutBodyAnyof0,
     )
-    from .group_1492 import (
+    from .group_1495 import (
         ReposOwnerRepoPagesPutBodyAnyof1 as ReposOwnerRepoPagesPutBodyAnyof1,
     )
-    from .group_1493 import (
+    from .group_1496 import (
         ReposOwnerRepoPagesPutBodyAnyof2 as ReposOwnerRepoPagesPutBodyAnyof2,
     )
-    from .group_1494 import (
+    from .group_1497 import (
         ReposOwnerRepoPagesPutBodyAnyof3 as ReposOwnerRepoPagesPutBodyAnyof3,
     )
-    from .group_1495 import (
+    from .group_1498 import (
         ReposOwnerRepoPagesPutBodyAnyof4 as ReposOwnerRepoPagesPutBodyAnyof4,
     )
-    from .group_1496 import (
+    from .group_1499 import (
         ReposOwnerRepoPagesPostBodyPropSource as ReposOwnerRepoPagesPostBodyPropSource,
     )
-    from .group_1497 import (
+    from .group_1500 import (
         ReposOwnerRepoPagesPostBodyAnyof0 as ReposOwnerRepoPagesPostBodyAnyof0,
     )
-    from .group_1498 import (
+    from .group_1501 import (
         ReposOwnerRepoPagesPostBodyAnyof1 as ReposOwnerRepoPagesPostBodyAnyof1,
     )
-    from .group_1499 import (
+    from .group_1502 import (
         ReposOwnerRepoPagesDeploymentsPostBody as ReposOwnerRepoPagesDeploymentsPostBody,
     )
-    from .group_1500 import (
+    from .group_1503 import (
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200 as ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
     )
-    from .group_1501 import (
+    from .group_1504 import (
         ReposOwnerRepoPropertiesValuesPatchBody as ReposOwnerRepoPropertiesValuesPatchBody,
     )
-    from .group_1502 import ReposOwnerRepoPullsPostBody as ReposOwnerRepoPullsPostBody
-    from .group_1503 import (
+    from .group_1505 import ReposOwnerRepoPullsPostBody as ReposOwnerRepoPullsPostBody
+    from .group_1506 import (
         ReposOwnerRepoPullsCommentsCommentIdPatchBody as ReposOwnerRepoPullsCommentsCommentIdPatchBody,
     )
-    from .group_1504 import (
+    from .group_1507 import (
         ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody as ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody,
     )
-    from .group_1505 import (
+    from .group_1508 import (
         ReposOwnerRepoPullsPullNumberPatchBody as ReposOwnerRepoPullsPullNumberPatchBody,
     )
-    from .group_1506 import (
+    from .group_1509 import (
         ReposOwnerRepoPullsPullNumberCodespacesPostBody as ReposOwnerRepoPullsPullNumberCodespacesPostBody,
     )
-    from .group_1507 import (
+    from .group_1510 import (
         ReposOwnerRepoPullsPullNumberCommentsPostBody as ReposOwnerRepoPullsPullNumberCommentsPostBody,
     )
-    from .group_1508 import (
+    from .group_1511 import (
         ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody as ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody,
     )
-    from .group_1509 import (
+    from .group_1512 import (
         ReposOwnerRepoPullsPullNumberMergePutBody as ReposOwnerRepoPullsPullNumberMergePutBody,
     )
-    from .group_1510 import (
+    from .group_1513 import (
         ReposOwnerRepoPullsPullNumberMergePutResponse405 as ReposOwnerRepoPullsPullNumberMergePutResponse405,
     )
-    from .group_1511 import (
+    from .group_1514 import (
         ReposOwnerRepoPullsPullNumberMergePutResponse409 as ReposOwnerRepoPullsPullNumberMergePutResponse409,
     )
-    from .group_1512 import (
+    from .group_1515 import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0 as ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0,
     )
-    from .group_1513 import (
+    from .group_1516 import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1 as ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1,
     )
-    from .group_1514 import (
+    from .group_1517 import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody as ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody,
     )
-    from .group_1515 import (
+    from .group_1518 import (
         ReposOwnerRepoPullsPullNumberReviewsPostBody as ReposOwnerRepoPullsPullNumberReviewsPostBody,
     )
-    from .group_1515 import (
+    from .group_1518 import (
         ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems as ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems,
     )
-    from .group_1516 import (
+    from .group_1519 import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody as ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody,
     )
-    from .group_1517 import (
+    from .group_1520 import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody as ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody,
     )
-    from .group_1518 import (
+    from .group_1521 import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody as ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody,
     )
-    from .group_1519 import (
+    from .group_1522 import (
         ReposOwnerRepoPullsPullNumberUpdateBranchPutBody as ReposOwnerRepoPullsPullNumberUpdateBranchPutBody,
     )
-    from .group_1520 import (
+    from .group_1523 import (
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202 as ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
     )
-    from .group_1521 import (
+    from .group_1524 import (
         ReposOwnerRepoReleasesPostBody as ReposOwnerRepoReleasesPostBody,
     )
-    from .group_1522 import (
+    from .group_1525 import (
         ReposOwnerRepoReleasesAssetsAssetIdPatchBody as ReposOwnerRepoReleasesAssetsAssetIdPatchBody,
     )
-    from .group_1523 import (
+    from .group_1526 import (
         ReposOwnerRepoReleasesGenerateNotesPostBody as ReposOwnerRepoReleasesGenerateNotesPostBody,
     )
-    from .group_1524 import (
+    from .group_1527 import (
         ReposOwnerRepoReleasesReleaseIdPatchBody as ReposOwnerRepoReleasesReleaseIdPatchBody,
     )
-    from .group_1525 import (
+    from .group_1528 import (
         ReposOwnerRepoReleasesReleaseIdReactionsPostBody as ReposOwnerRepoReleasesReleaseIdReactionsPostBody,
     )
-    from .group_1526 import (
+    from .group_1529 import (
         ReposOwnerRepoRulesetsPostBody as ReposOwnerRepoRulesetsPostBody,
     )
-    from .group_1527 import (
+    from .group_1530 import (
         ReposOwnerRepoRulesetsRulesetIdPutBody as ReposOwnerRepoRulesetsRulesetIdPutBody,
     )
-    from .group_1528 import (
+    from .group_1531 import (
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0 as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
     )
-    from .group_1529 import (
+    from .group_1532 import (
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1 as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
     )
-    from .group_1530 import (
+    from .group_1533 import (
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2 as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2,
     )
-    from .group_1531 import (
+    from .group_1534 import (
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody as ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody,
     )
-    from .group_1532 import (
+    from .group_1535 import (
         ReposOwnerRepoStatusesShaPostBody as ReposOwnerRepoStatusesShaPostBody,
     )
-    from .group_1533 import (
+    from .group_1536 import (
         ReposOwnerRepoSubscriptionPutBody as ReposOwnerRepoSubscriptionPutBody,
     )
-    from .group_1534 import ReposOwnerRepoTopicsPutBody as ReposOwnerRepoTopicsPutBody
-    from .group_1535 import (
+    from .group_1537 import ReposOwnerRepoTopicsPutBody as ReposOwnerRepoTopicsPutBody
+    from .group_1538 import (
         ReposOwnerRepoTransferPostBody as ReposOwnerRepoTransferPostBody,
     )
-    from .group_1536 import (
+    from .group_1539 import (
         ReposTemplateOwnerTemplateRepoGeneratePostBody as ReposTemplateOwnerTemplateRepoGeneratePostBody,
     )
-    from .group_1537 import (
+    from .group_1540 import (
         ScimV2OrganizationsOrgUsersPostBody as ScimV2OrganizationsOrgUsersPostBody,
     )
-    from .group_1537 import (
+    from .group_1540 import (
         ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems as ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems,
     )
-    from .group_1537 import (
+    from .group_1540 import (
         ScimV2OrganizationsOrgUsersPostBodyPropName as ScimV2OrganizationsOrgUsersPostBodyPropName,
     )
-    from .group_1538 import (
+    from .group_1541 import (
         ScimV2OrganizationsOrgUsersScimUserIdPutBody as ScimV2OrganizationsOrgUsersScimUserIdPutBody,
     )
-    from .group_1538 import (
+    from .group_1541 import (
         ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems as ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems,
     )
-    from .group_1538 import (
+    from .group_1541 import (
         ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName as ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName,
     )
-    from .group_1539 import (
+    from .group_1542 import (
         ScimV2OrganizationsOrgUsersScimUserIdPatchBody as ScimV2OrganizationsOrgUsersScimUserIdPatchBody,
     )
-    from .group_1539 import (
+    from .group_1542 import (
         ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems as ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems,
     )
-    from .group_1539 import (
+    from .group_1542 import (
         ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0 as ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0,
     )
-    from .group_1539 import (
+    from .group_1542 import (
         ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items as ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items,
     )
-    from .group_1540 import TeamsTeamIdPatchBody as TeamsTeamIdPatchBody
-    from .group_1541 import (
+    from .group_1543 import TeamsTeamIdPatchBody as TeamsTeamIdPatchBody
+    from .group_1544 import (
         TeamsTeamIdMembershipsUsernamePutBody as TeamsTeamIdMembershipsUsernamePutBody,
     )
-    from .group_1542 import (
+    from .group_1545 import (
         TeamsTeamIdReposOwnerRepoPutBody as TeamsTeamIdReposOwnerRepoPutBody,
     )
-    from .group_1543 import (
+    from .group_1546 import (
         TeamsTeamIdTeamSyncGroupMappingsPatchBody as TeamsTeamIdTeamSyncGroupMappingsPatchBody,
     )
-    from .group_1543 import (
+    from .group_1546 import (
         TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems as TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems,
     )
-    from .group_1544 import UserPatchBody as UserPatchBody
-    from .group_1545 import UserCodespacesGetResponse200 as UserCodespacesGetResponse200
-    from .group_1546 import UserCodespacesPostBodyOneof0 as UserCodespacesPostBodyOneof0
-    from .group_1547 import UserCodespacesPostBodyOneof1 as UserCodespacesPostBodyOneof1
-    from .group_1547 import (
+    from .group_1547 import UserPatchBody as UserPatchBody
+    from .group_1548 import UserCodespacesGetResponse200 as UserCodespacesGetResponse200
+    from .group_1549 import UserCodespacesPostBodyOneof0 as UserCodespacesPostBodyOneof0
+    from .group_1550 import UserCodespacesPostBodyOneof1 as UserCodespacesPostBodyOneof1
+    from .group_1550 import (
         UserCodespacesPostBodyOneof1PropPullRequest as UserCodespacesPostBodyOneof1PropPullRequest,
     )
-    from .group_1548 import CodespacesSecret as CodespacesSecret
-    from .group_1548 import (
+    from .group_1551 import CodespacesSecret as CodespacesSecret
+    from .group_1551 import (
         UserCodespacesSecretsGetResponse200 as UserCodespacesSecretsGetResponse200,
     )
-    from .group_1549 import (
+    from .group_1552 import (
         UserCodespacesSecretsSecretNamePutBody as UserCodespacesSecretsSecretNamePutBody,
     )
-    from .group_1550 import (
+    from .group_1553 import (
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200 as UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
     )
-    from .group_1551 import (
+    from .group_1554 import (
         UserCodespacesSecretsSecretNameRepositoriesPutBody as UserCodespacesSecretsSecretNameRepositoriesPutBody,
     )
-    from .group_1552 import (
+    from .group_1555 import (
         UserCodespacesCodespaceNamePatchBody as UserCodespacesCodespaceNamePatchBody,
     )
-    from .group_1553 import (
+    from .group_1556 import (
         UserCodespacesCodespaceNameMachinesGetResponse200 as UserCodespacesCodespaceNameMachinesGetResponse200,
     )
-    from .group_1554 import (
+    from .group_1557 import (
         UserCodespacesCodespaceNamePublishPostBody as UserCodespacesCodespaceNamePublishPostBody,
     )
-    from .group_1555 import UserEmailVisibilityPatchBody as UserEmailVisibilityPatchBody
-    from .group_1556 import UserEmailsPostBodyOneof0 as UserEmailsPostBodyOneof0
-    from .group_1557 import UserEmailsDeleteBodyOneof0 as UserEmailsDeleteBodyOneof0
-    from .group_1558 import UserGpgKeysPostBody as UserGpgKeysPostBody
-    from .group_1559 import (
+    from .group_1558 import UserEmailVisibilityPatchBody as UserEmailVisibilityPatchBody
+    from .group_1559 import UserEmailsPostBodyOneof0 as UserEmailsPostBodyOneof0
+    from .group_1560 import UserEmailsDeleteBodyOneof0 as UserEmailsDeleteBodyOneof0
+    from .group_1561 import UserGpgKeysPostBody as UserGpgKeysPostBody
+    from .group_1562 import (
         UserInstallationsGetResponse200 as UserInstallationsGetResponse200,
     )
-    from .group_1560 import (
+    from .group_1563 import (
         UserInstallationsInstallationIdRepositoriesGetResponse200 as UserInstallationsInstallationIdRepositoriesGetResponse200,
     )
-    from .group_1560 import (
+    from .group_1563 import (
         UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems as UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems,
     )
-    from .group_1561 import (
+    from .group_1564 import (
+        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1 as UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1,
+    )
+    from .group_1565 import (
+        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties as UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties,
+    )
+    from .group_1566 import (
         UserInteractionLimitsGetResponse200Anyof1 as UserInteractionLimitsGetResponse200Anyof1,
     )
-    from .group_1562 import UserKeysPostBody as UserKeysPostBody
-    from .group_1563 import (
+    from .group_1567 import UserKeysPostBody as UserKeysPostBody
+    from .group_1568 import (
         UserMembershipsOrgsOrgPatchBody as UserMembershipsOrgsOrgPatchBody,
     )
-    from .group_1564 import UserMigrationsPostBody as UserMigrationsPostBody
-    from .group_1565 import UserReposPostBody as UserReposPostBody
-    from .group_1566 import UserSocialAccountsPostBody as UserSocialAccountsPostBody
-    from .group_1567 import UserSocialAccountsDeleteBody as UserSocialAccountsDeleteBody
-    from .group_1568 import UserSshSigningKeysPostBody as UserSshSigningKeysPostBody
-    from .group_1569 import (
+    from .group_1569 import UserMigrationsPostBody as UserMigrationsPostBody
+    from .group_1570 import UserReposPostBody as UserReposPostBody
+    from .group_1571 import UserSocialAccountsPostBody as UserSocialAccountsPostBody
+    from .group_1572 import UserSocialAccountsDeleteBody as UserSocialAccountsDeleteBody
+    from .group_1573 import UserSshSigningKeysPostBody as UserSshSigningKeysPostBody
+    from .group_1574 import (
         UserUserIdProjectsV2ProjectNumberDraftsPostBody as UserUserIdProjectsV2ProjectNumberDraftsPostBody,
     )
-    from .group_1570 import (
+    from .group_1575 import (
         UsersUserIdProjectsV2ProjectNumberViewsPostBody as UsersUserIdProjectsV2ProjectNumberViewsPostBody,
     )
-    from .group_1571 import (
+    from .group_1576 import (
         UsersUsernameAttestationsBulkListPostBody as UsersUsernameAttestationsBulkListPostBody,
     )
-    from .group_1572 import (
+    from .group_1577 import (
         UsersUsernameAttestationsBulkListPostResponse200 as UsersUsernameAttestationsBulkListPostResponse200,
     )
-    from .group_1572 import (
+    from .group_1577 import (
         UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests as UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests,
     )
-    from .group_1572 import (
+    from .group_1577 import (
         UsersUsernameAttestationsBulkListPostResponse200PropPageInfo as UsersUsernameAttestationsBulkListPostResponse200PropPageInfo,
     )
-    from .group_1573 import (
+    from .group_1578 import (
         UsersUsernameAttestationsDeleteRequestPostBodyOneof0 as UsersUsernameAttestationsDeleteRequestPostBodyOneof0,
     )
-    from .group_1574 import (
+    from .group_1579 import (
         UsersUsernameAttestationsDeleteRequestPostBodyOneof1 as UsersUsernameAttestationsDeleteRequestPostBodyOneof1,
     )
-    from .group_1575 import (
+    from .group_1580 import (
         UsersUsernameAttestationsSubjectDigestGetResponse200 as UsersUsernameAttestationsSubjectDigestGetResponse200,
     )
-    from .group_1575 import (
+    from .group_1580 import (
         UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems,
     )
-    from .group_1576 import (
+    from .group_1581 import (
         UsersUsernameCopilotSpacesGetResponse200 as UsersUsernameCopilotSpacesGetResponse200,
     )
-    from .group_1577 import (
+    from .group_1582 import (
         UsersUsernameCopilotSpacesPostBody as UsersUsernameCopilotSpacesPostBody,
     )
-    from .group_1577 import (
+    from .group_1582 import (
         UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems as UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems,
     )
-    from .group_1577 import (
+    from .group_1582 import (
         UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata as UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata,
     )
-    from .group_1578 import (
+    from .group_1583 import (
         UsersUsernameCopilotSpacesSpaceNumberPutBody as UsersUsernameCopilotSpacesSpaceNumberPutBody,
     )
-    from .group_1578 import (
+    from .group_1583 import (
         UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems as UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems,
     )
-    from .group_1578 import (
+    from .group_1583 import (
         UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata as UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata,
     )
-    from .group_1579 import (
+    from .group_1584 import (
         UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200 as UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200,
     )
-    from .group_1580 import (
+    from .group_1585 import (
         UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody as UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody,
     )
-    from .group_1581 import (
+    from .group_1586 import (
         UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody as UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody,
     )
-    from .group_1582 import (
+    from .group_1587 import (
         UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200 as UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200,
     )
-    from .group_1583 import (
+    from .group_1588 import (
         UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody as UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody,
     )
-    from .group_1583 import (
+    from .group_1588 import (
         UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata as UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata,
     )
-    from .group_1584 import (
+    from .group_1589 import (
         UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody as UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody,
     )
-    from .group_1584 import (
+    from .group_1589 import (
         UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata as UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata,
     )
-    from .group_1585 import (
+    from .group_1590 import (
         UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0 as UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0,
     )
-    from .group_1586 import (
+    from .group_1591 import (
         UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1 as UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1,
     )
-    from .group_1587 import (
+    from .group_1592 import (
         UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2 as UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2,
     )
-    from .group_1588 import (
+    from .group_1593 import (
         UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0 as UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0,
     )
-    from .group_1589 import (
+    from .group_1594 import (
         UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1 as UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1,
     )
-    from .group_1590 import (
+    from .group_1595 import (
         UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody as UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody,
     )
-    from .group_1590 import (
+    from .group_1595 import (
         UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems as UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems,
     )
 else:
@@ -14957,285 +14978,291 @@ else:
             "InstallationRepositoriesGetResponse200PropRepositoriesItems",
             "InstallationRepositoriesGetResponse200",
         ),
-        ".group_1171": ("MarkdownPostBody",),
-        ".group_1172": ("NotificationsPutBody",),
-        ".group_1173": ("NotificationsPutResponse202",),
-        ".group_1174": ("NotificationsThreadsThreadIdSubscriptionPutBody",),
-        ".group_1175": ("OrganizationsOrgOrgPropertiesValuesPatchBody",),
-        ".group_1176": ("OrgsOrgPatchBody",),
-        ".group_1177": (
+        ".group_1171": (
+            "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1",
+        ),
+        ".group_1172": (
+            "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties",
+        ),
+        ".group_1173": ("MarkdownPostBody",),
+        ".group_1174": ("NotificationsPutBody",),
+        ".group_1175": ("NotificationsPutResponse202",),
+        ".group_1176": ("NotificationsThreadsThreadIdSubscriptionPutBody",),
+        ".group_1177": ("OrganizationsOrgOrgPropertiesValuesPatchBody",),
+        ".group_1178": ("OrgsOrgPatchBody",),
+        ".group_1179": (
             "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
             "ActionsCacheUsageByRepository",
         ),
-        ".group_1178": ("OrgsOrgActionsHostedRunnersGetResponse200",),
-        ".group_1179": (
+        ".group_1180": ("OrgsOrgActionsHostedRunnersGetResponse200",),
+        ".group_1181": (
             "OrgsOrgActionsHostedRunnersPostBody",
             "OrgsOrgActionsHostedRunnersPostBodyPropImage",
         ),
-        ".group_1180": ("OrgsOrgActionsHostedRunnersImagesCustomGetResponse200",),
-        ".group_1181": (
+        ".group_1182": ("OrgsOrgActionsHostedRunnersImagesCustomGetResponse200",),
+        ".group_1183": (
             "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200",
         ),
-        ".group_1182": ("OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200",),
-        ".group_1183": ("OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200",),
-        ".group_1184": ("OrgsOrgActionsHostedRunnersMachineSizesGetResponse200",),
-        ".group_1185": ("OrgsOrgActionsHostedRunnersPlatformsGetResponse200",),
-        ".group_1186": ("OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody",),
-        ".group_1187": ("OrgsOrgActionsOidcCustomizationSubPutBody",),
-        ".group_1188": ("OrgsOrgActionsPermissionsPutBody",),
-        ".group_1189": ("OrgsOrgActionsPermissionsRepositoriesGetResponse200",),
-        ".group_1190": ("OrgsOrgActionsPermissionsRepositoriesPutBody",),
-        ".group_1191": ("OrgsOrgActionsPermissionsSelfHostedRunnersPutBody",),
-        ".group_1192": (
+        ".group_1184": ("OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200",),
+        ".group_1185": ("OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200",),
+        ".group_1186": ("OrgsOrgActionsHostedRunnersMachineSizesGetResponse200",),
+        ".group_1187": ("OrgsOrgActionsHostedRunnersPlatformsGetResponse200",),
+        ".group_1188": ("OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody",),
+        ".group_1189": ("OrgsOrgActionsOidcCustomizationSubPutBody",),
+        ".group_1190": ("OrgsOrgActionsPermissionsPutBody",),
+        ".group_1191": ("OrgsOrgActionsPermissionsRepositoriesGetResponse200",),
+        ".group_1192": ("OrgsOrgActionsPermissionsRepositoriesPutBody",),
+        ".group_1193": ("OrgsOrgActionsPermissionsSelfHostedRunnersPutBody",),
+        ".group_1194": (
             "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200",
         ),
-        ".group_1193": (
+        ".group_1195": (
             "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody",
         ),
-        ".group_1194": (
+        ".group_1196": (
             "OrgsOrgActionsRunnerGroupsGetResponse200",
             "RunnerGroupsOrg",
         ),
-        ".group_1195": ("OrgsOrgActionsRunnerGroupsPostBody",),
-        ".group_1196": ("OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody",),
-        ".group_1197": (
+        ".group_1197": ("OrgsOrgActionsRunnerGroupsPostBody",),
+        ".group_1198": ("OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody",),
+        ".group_1199": (
             "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200",
         ),
-        ".group_1198": (
+        ".group_1200": (
             "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200",
         ),
-        ".group_1199": ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody",),
-        ".group_1200": (
+        ".group_1201": ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody",),
+        ".group_1202": (
             "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200",
         ),
-        ".group_1201": ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody",),
-        ".group_1202": ("OrgsOrgActionsRunnersGetResponse200",),
-        ".group_1203": ("OrgsOrgActionsRunnersGenerateJitconfigPostBody",),
-        ".group_1204": ("OrgsOrgActionsRunnersRunnerIdLabelsPutBody",),
-        ".group_1205": ("OrgsOrgActionsRunnersRunnerIdLabelsPostBody",),
-        ".group_1206": ("OrgsOrgActionsSecretsGetResponse200",),
-        ".group_1207": ("OrgsOrgActionsSecretsSecretNamePutBody",),
-        ".group_1208": ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200",),
-        ".group_1209": ("OrgsOrgActionsSecretsSecretNameRepositoriesPutBody",),
-        ".group_1210": ("OrgsOrgActionsVariablesGetResponse200",),
-        ".group_1211": ("OrgsOrgActionsVariablesPostBody",),
-        ".group_1212": ("OrgsOrgActionsVariablesNamePatchBody",),
-        ".group_1213": ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200",),
-        ".group_1214": ("OrgsOrgActionsVariablesNameRepositoriesPutBody",),
-        ".group_1215": ("OrgsOrgAgentsSecretsGetResponse200",),
-        ".group_1216": ("OrgsOrgAgentsSecretsSecretNamePutBody",),
-        ".group_1217": ("OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200",),
-        ".group_1218": ("OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody",),
-        ".group_1219": ("OrgsOrgAgentsVariablesGetResponse200",),
-        ".group_1220": ("OrgsOrgAgentsVariablesPostBody",),
-        ".group_1221": ("OrgsOrgAgentsVariablesNamePatchBody",),
-        ".group_1222": ("OrgsOrgAgentsVariablesNameRepositoriesGetResponse200",),
-        ".group_1223": ("OrgsOrgAgentsVariablesNameRepositoriesPutBody",),
-        ".group_1224": (
+        ".group_1203": ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody",),
+        ".group_1204": ("OrgsOrgActionsRunnersGetResponse200",),
+        ".group_1205": ("OrgsOrgActionsRunnersGenerateJitconfigPostBody",),
+        ".group_1206": ("OrgsOrgActionsRunnersRunnerIdLabelsPutBody",),
+        ".group_1207": ("OrgsOrgActionsRunnersRunnerIdLabelsPostBody",),
+        ".group_1208": ("OrgsOrgActionsSecretsGetResponse200",),
+        ".group_1209": ("OrgsOrgActionsSecretsSecretNamePutBody",),
+        ".group_1210": ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200",),
+        ".group_1211": ("OrgsOrgActionsSecretsSecretNameRepositoriesPutBody",),
+        ".group_1212": ("OrgsOrgActionsVariablesGetResponse200",),
+        ".group_1213": ("OrgsOrgActionsVariablesPostBody",),
+        ".group_1214": ("OrgsOrgActionsVariablesNamePatchBody",),
+        ".group_1215": ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200",),
+        ".group_1216": ("OrgsOrgActionsVariablesNameRepositoriesPutBody",),
+        ".group_1217": ("OrgsOrgAgentsSecretsGetResponse200",),
+        ".group_1218": ("OrgsOrgAgentsSecretsSecretNamePutBody",),
+        ".group_1219": ("OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200",),
+        ".group_1220": ("OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody",),
+        ".group_1221": ("OrgsOrgAgentsVariablesGetResponse200",),
+        ".group_1222": ("OrgsOrgAgentsVariablesPostBody",),
+        ".group_1223": ("OrgsOrgAgentsVariablesNamePatchBody",),
+        ".group_1224": ("OrgsOrgAgentsVariablesNameRepositoriesGetResponse200",),
+        ".group_1225": ("OrgsOrgAgentsVariablesNameRepositoriesPutBody",),
+        ".group_1226": (
             "OrgsOrgArtifactsMetadataDeploymentRecordPostBody",
             "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags",
         ),
-        ".group_1225": ("OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200",),
-        ".group_1226": (
+        ".group_1227": ("OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200",),
+        ".group_1228": (
             "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody",
             "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems",
             "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags",
         ),
-        ".group_1227": (
+        ".group_1229": (
             "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200",
         ),
-        ".group_1228": ("OrgsOrgArtifactsMetadataStorageRecordPostBody",),
-        ".group_1229": (
+        ".group_1230": ("OrgsOrgArtifactsMetadataStorageRecordPostBody",),
+        ".group_1231": (
             "OrgsOrgArtifactsMetadataStorageRecordPostResponse200",
             "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems",
         ),
-        ".group_1230": (
+        ".group_1232": (
             "OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200",
         ),
-        ".group_1231": (
+        ".group_1233": (
             "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200",
             "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems",
         ),
-        ".group_1232": ("OrgsOrgAttestationsBulkListPostBody",),
-        ".group_1233": (
+        ".group_1234": ("OrgsOrgAttestationsBulkListPostBody",),
+        ".group_1235": (
             "OrgsOrgAttestationsBulkListPostResponse200",
             "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
             "OrgsOrgAttestationsBulkListPostResponse200PropPageInfo",
         ),
-        ".group_1234": ("OrgsOrgAttestationsDeleteRequestPostBodyOneof0",),
-        ".group_1235": ("OrgsOrgAttestationsDeleteRequestPostBodyOneof1",),
-        ".group_1236": ("OrgsOrgAttestationsRepositoriesGetResponse200Items",),
-        ".group_1237": (
+        ".group_1236": ("OrgsOrgAttestationsDeleteRequestPostBodyOneof0",),
+        ".group_1237": ("OrgsOrgAttestationsDeleteRequestPostBodyOneof1",),
+        ".group_1238": ("OrgsOrgAttestationsRepositoriesGetResponse200Items",),
+        ".group_1239": (
             "OrgsOrgAttestationsSubjectDigestGetResponse200",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems",
         ),
-        ".group_1238": ("OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems",),
-        ".group_1239": ("OrgsOrgCampaignsPostBodyOneof0",),
-        ".group_1240": ("OrgsOrgCampaignsPostBodyOneof1",),
-        ".group_1241": ("OrgsOrgCampaignsCampaignNumberPatchBody",),
-        ".group_1242": (
+        ".group_1240": ("OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems",),
+        ".group_1241": ("OrgsOrgCampaignsPostBodyOneof0",),
+        ".group_1242": ("OrgsOrgCampaignsPostBodyOneof1",),
+        ".group_1243": ("OrgsOrgCampaignsCampaignNumberPatchBody",),
+        ".group_1244": (
             "OrgsOrgCodeSecurityConfigurationsPostBody",
             "OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions",
             "OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions",
             "OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
         ),
-        ".group_1243": ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",),
-        ".group_1244": (
+        ".group_1245": ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",),
+        ".group_1246": (
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody",
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions",
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions",
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
         ),
-        ".group_1245": (
+        ".group_1247": (
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody",
         ),
-        ".group_1246": (
+        ".group_1248": (
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",
         ),
-        ".group_1247": (
+        ".group_1249": (
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",
         ),
-        ".group_1248": ("OrgsOrgCodespacesGetResponse200",),
-        ".group_1249": ("OrgsOrgCodespacesAccessPutBody",),
-        ".group_1250": ("OrgsOrgCodespacesAccessSelectedUsersPostBody",),
-        ".group_1251": ("OrgsOrgCodespacesAccessSelectedUsersDeleteBody",),
-        ".group_1252": (
+        ".group_1250": ("OrgsOrgCodespacesGetResponse200",),
+        ".group_1251": ("OrgsOrgCodespacesAccessPutBody",),
+        ".group_1252": ("OrgsOrgCodespacesAccessSelectedUsersPostBody",),
+        ".group_1253": ("OrgsOrgCodespacesAccessSelectedUsersDeleteBody",),
+        ".group_1254": (
             "OrgsOrgCodespacesSecretsGetResponse200",
             "CodespacesOrgSecret",
         ),
-        ".group_1253": ("OrgsOrgCodespacesSecretsSecretNamePutBody",),
-        ".group_1254": (
+        ".group_1255": ("OrgsOrgCodespacesSecretsSecretNamePutBody",),
+        ".group_1256": (
             "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200",
         ),
-        ".group_1255": ("OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",),
-        ".group_1256": ("OrgsOrgCopilotSpacesGetResponse200",),
-        ".group_1257": (
+        ".group_1257": ("OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",),
+        ".group_1258": ("OrgsOrgCopilotSpacesGetResponse200",),
+        ".group_1259": (
             "OrgsOrgCopilotSpacesPostBody",
             "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems",
             "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata",
         ),
-        ".group_1258": (
+        ".group_1260": (
             "OrgsOrgCopilotSpacesSpaceNumberPutBody",
             "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems",
             "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata",
         ),
-        ".group_1259": ("OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200",),
-        ".group_1260": ("OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody",),
-        ".group_1261": (
+        ".group_1261": ("OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200",),
+        ".group_1262": ("OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody",),
+        ".group_1263": (
             "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody",
         ),
-        ".group_1262": ("OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200",),
-        ".group_1263": (
+        ".group_1264": ("OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200",),
+        ".group_1265": (
             "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody",
             "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
         ),
-        ".group_1264": (
+        ".group_1266": (
             "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody",
             "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata",
         ),
-        ".group_1265": ("OrgsOrgCopilotBillingSeatsGetResponse200",),
-        ".group_1266": ("OrgsOrgCopilotBillingSelectedTeamsPostBody",),
-        ".group_1267": ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201",),
-        ".group_1268": ("OrgsOrgCopilotBillingSelectedTeamsDeleteBody",),
-        ".group_1269": ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200",),
-        ".group_1270": ("OrgsOrgCopilotBillingSelectedUsersPostBody",),
-        ".group_1271": ("OrgsOrgCopilotBillingSelectedUsersPostResponse201",),
-        ".group_1272": ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",),
-        ".group_1273": ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",),
-        ".group_1274": ("OrgsOrgCopilotCodingAgentPermissionsGetResponse200",),
-        ".group_1275": ("OrgsOrgCopilotCodingAgentPermissionsPutBody",),
-        ".group_1276": (
+        ".group_1267": ("OrgsOrgCopilotBillingSeatsGetResponse200",),
+        ".group_1268": ("OrgsOrgCopilotBillingSelectedTeamsPostBody",),
+        ".group_1269": ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201",),
+        ".group_1270": ("OrgsOrgCopilotBillingSelectedTeamsDeleteBody",),
+        ".group_1271": ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200",),
+        ".group_1272": ("OrgsOrgCopilotBillingSelectedUsersPostBody",),
+        ".group_1273": ("OrgsOrgCopilotBillingSelectedUsersPostResponse201",),
+        ".group_1274": ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",),
+        ".group_1275": ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",),
+        ".group_1276": ("OrgsOrgCopilotCodingAgentPermissionsGetResponse200",),
+        ".group_1277": ("OrgsOrgCopilotCodingAgentPermissionsPutBody",),
+        ".group_1278": (
             "OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200",
         ),
-        ".group_1277": ("OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody",),
-        ".group_1278": ("OrgsOrgCopilotContentExclusionPutBody",),
-        ".group_1279": ("OrgsOrgCopilotContentExclusionPutResponse200",),
-        ".group_1280": ("OrgsOrgDependabotRepositoryAccessPatchBody",),
-        ".group_1281": ("OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody",),
-        ".group_1282": (
+        ".group_1279": ("OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody",),
+        ".group_1280": ("OrgsOrgCopilotContentExclusionPutBody",),
+        ".group_1281": ("OrgsOrgCopilotContentExclusionPutResponse200",),
+        ".group_1282": ("OrgsOrgDependabotRepositoryAccessPatchBody",),
+        ".group_1283": ("OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody",),
+        ".group_1284": (
             "OrgsOrgDependabotSecretsGetResponse200",
             "OrganizationDependabotSecret",
         ),
-        ".group_1283": ("OrgsOrgDependabotSecretsSecretNamePutBody",),
-        ".group_1284": (
+        ".group_1285": ("OrgsOrgDependabotSecretsSecretNamePutBody",),
+        ".group_1286": (
             "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200",
         ),
-        ".group_1285": ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody",),
-        ".group_1286": (
+        ".group_1287": ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody",),
+        ".group_1288": (
             "OrgsOrgHooksPostBody",
             "OrgsOrgHooksPostBodyPropConfig",
         ),
-        ".group_1287": (
+        ".group_1289": (
             "OrgsOrgHooksHookIdPatchBody",
             "OrgsOrgHooksHookIdPatchBodyPropConfig",
         ),
-        ".group_1288": ("OrgsOrgHooksHookIdConfigPatchBody",),
-        ".group_1289": ("OrgsOrgInstallationsGetResponse200",),
-        ".group_1290": ("OrgsOrgInteractionLimitsGetResponse200Anyof1",),
-        ".group_1291": ("OrgsOrgInvitationsPostBody",),
-        ".group_1292": ("OrgsOrgMembersUsernameCodespacesGetResponse200",),
-        ".group_1293": ("OrgsOrgMembershipsUsernamePutBody",),
-        ".group_1294": ("OrgsOrgMigrationsPostBody",),
-        ".group_1295": ("OrgsOrgOutsideCollaboratorsUsernamePutBody",),
-        ".group_1296": ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202",),
-        ".group_1297": ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",),
-        ".group_1298": ("OrgsOrgPersonalAccessTokenRequestsPostBody",),
-        ".group_1299": ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",),
-        ".group_1300": ("OrgsOrgPersonalAccessTokensPostBody",),
-        ".group_1301": ("OrgsOrgPersonalAccessTokensPatIdPostBody",),
-        ".group_1302": (
+        ".group_1290": ("OrgsOrgHooksHookIdConfigPatchBody",),
+        ".group_1291": ("OrgsOrgInstallationsGetResponse200",),
+        ".group_1292": ("OrgsOrgInteractionLimitsGetResponse200Anyof1",),
+        ".group_1293": ("OrgsOrgInvitationsPostBody",),
+        ".group_1294": ("OrgsOrgMembersUsernameCodespacesGetResponse200",),
+        ".group_1295": ("OrgsOrgMembershipsUsernamePutBody",),
+        ".group_1296": ("OrgsOrgMigrationsPostBody",),
+        ".group_1297": ("OrgsOrgOutsideCollaboratorsUsernamePutBody",),
+        ".group_1298": ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202",),
+        ".group_1299": ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",),
+        ".group_1300": ("OrgsOrgPersonalAccessTokenRequestsPostBody",),
+        ".group_1301": ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",),
+        ".group_1302": ("OrgsOrgPersonalAccessTokensPostBody",),
+        ".group_1303": ("OrgsOrgPersonalAccessTokensPatIdPostBody",),
+        ".group_1304": (
             "OrgsOrgPrivateRegistriesGetResponse200",
             "OrgPrivateRegistryConfiguration",
         ),
-        ".group_1303": ("OrgsOrgPrivateRegistriesPostBody",),
-        ".group_1304": ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200",),
-        ".group_1305": ("OrgsOrgPrivateRegistriesSecretNamePatchBody",),
-        ".group_1306": ("OrgsOrgProjectsV2ProjectNumberDraftsPostBody",),
-        ".group_1307": ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0",),
-        ".group_1308": ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1",),
-        ".group_1309": ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2",),
-        ".group_1310": ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3",),
-        ".group_1311": ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0",),
-        ".group_1312": ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1",),
-        ".group_1313": (
+        ".group_1305": ("OrgsOrgPrivateRegistriesPostBody",),
+        ".group_1306": ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200",),
+        ".group_1307": ("OrgsOrgPrivateRegistriesSecretNamePatchBody",),
+        ".group_1308": ("OrgsOrgProjectsV2ProjectNumberDraftsPostBody",),
+        ".group_1309": ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0",),
+        ".group_1310": ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1",),
+        ".group_1311": ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2",),
+        ".group_1312": ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3",),
+        ".group_1313": ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0",),
+        ".group_1314": ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1",),
+        ".group_1315": (
             "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody",
             "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
         ),
-        ".group_1314": ("OrgsOrgProjectsV2ProjectNumberViewsPostBody",),
-        ".group_1315": ("OrgsOrgPropertiesSchemaPatchBody",),
-        ".group_1316": ("OrgsOrgPropertiesValuesPatchBody",),
-        ".group_1317": (
+        ".group_1316": ("OrgsOrgProjectsV2ProjectNumberViewsPostBody",),
+        ".group_1317": ("OrgsOrgPropertiesSchemaPatchBody",),
+        ".group_1318": ("OrgsOrgPropertiesValuesPatchBody",),
+        ".group_1319": (
             "OrgsOrgReposPostBody",
             "OrgsOrgReposPostBodyPropCustomProperties",
         ),
-        ".group_1318": ("OrgsOrgRulesetsPostBody",),
-        ".group_1319": ("OrgsOrgRulesetsRulesetIdPutBody",),
-        ".group_1320": (
+        ".group_1320": ("OrgsOrgRulesetsPostBody",),
+        ".group_1321": ("OrgsOrgRulesetsRulesetIdPutBody",),
+        ".group_1322": (
             "OrgsOrgSecretScanningPatternConfigurationsPatchBody",
             "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems",
             "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems",
         ),
-        ".group_1321": ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",),
-        ".group_1322": ("OrgsOrgSettingsImmutableReleasesPutBody",),
-        ".group_1323": ("OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200",),
-        ".group_1324": ("OrgsOrgSettingsImmutableReleasesRepositoriesPutBody",),
-        ".group_1325": ("OrgsOrgSettingsNetworkConfigurationsGetResponse200",),
-        ".group_1326": ("OrgsOrgSettingsNetworkConfigurationsPostBody",),
-        ".group_1327": (
+        ".group_1323": ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",),
+        ".group_1324": ("OrgsOrgSettingsImmutableReleasesPutBody",),
+        ".group_1325": ("OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200",),
+        ".group_1326": ("OrgsOrgSettingsImmutableReleasesRepositoriesPutBody",),
+        ".group_1327": ("OrgsOrgSettingsNetworkConfigurationsGetResponse200",),
+        ".group_1328": ("OrgsOrgSettingsNetworkConfigurationsPostBody",),
+        ".group_1329": (
             "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody",
         ),
-        ".group_1328": ("OrgsOrgTeamsPostBody",),
-        ".group_1329": ("OrgsOrgTeamsTeamSlugPatchBody",),
-        ".group_1330": ("OrgsOrgTeamsTeamSlugExternalGroupsPatchBody",),
-        ".group_1331": ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody",),
-        ".group_1332": ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",),
-        ".group_1333": (
+        ".group_1330": ("OrgsOrgTeamsPostBody",),
+        ".group_1331": ("OrgsOrgTeamsTeamSlugPatchBody",),
+        ".group_1332": ("OrgsOrgTeamsTeamSlugExternalGroupsPatchBody",),
+        ".group_1333": ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody",),
+        ".group_1334": ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",),
+        ".group_1335": (
             "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody",
             "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems",
         ),
-        ".group_1334": ("OrgsOrgSecurityProductEnablementPostBody",),
-        ".group_1335": ("ReposOwnerRepoDeleteResponse403",),
-        ".group_1336": (
+        ".group_1336": ("OrgsOrgSecurityProductEnablementPostBody",),
+        ".group_1337": ("ReposOwnerRepoDeleteResponse403",),
+        ".group_1338": (
             "ReposOwnerRepoPatchBody",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysis",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity",
@@ -15250,59 +15277,59 @@ else:
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptions",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
         ),
-        ".group_1337": ("ReposOwnerRepoActionsArtifactsGetResponse200",),
-        ".group_1338": ("ReposOwnerRepoActionsJobsJobIdRerunPostBody",),
-        ".group_1339": ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",),
-        ".group_1340": ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200",),
-        ".group_1341": ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200",),
-        ".group_1342": ("ReposOwnerRepoActionsPermissionsPutBody",),
-        ".group_1343": ("ReposOwnerRepoActionsRunnersGetResponse200",),
-        ".group_1344": ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody",),
-        ".group_1345": ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",),
-        ".group_1346": ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",),
-        ".group_1347": ("ReposOwnerRepoActionsRunsGetResponse200",),
-        ".group_1348": ("ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200",),
-        ".group_1349": (
+        ".group_1339": ("ReposOwnerRepoActionsArtifactsGetResponse200",),
+        ".group_1340": ("ReposOwnerRepoActionsJobsJobIdRerunPostBody",),
+        ".group_1341": ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",),
+        ".group_1342": ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200",),
+        ".group_1343": ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200",),
+        ".group_1344": ("ReposOwnerRepoActionsPermissionsPutBody",),
+        ".group_1345": ("ReposOwnerRepoActionsRunnersGetResponse200",),
+        ".group_1346": ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody",),
+        ".group_1347": ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",),
+        ".group_1348": ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",),
+        ".group_1349": ("ReposOwnerRepoActionsRunsGetResponse200",),
+        ".group_1350": ("ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200",),
+        ".group_1351": (
             "ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200",
         ),
-        ".group_1350": ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200",),
-        ".group_1351": ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",),
-        ".group_1352": ("ReposOwnerRepoActionsRunsRunIdRerunPostBody",),
-        ".group_1353": ("ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody",),
-        ".group_1354": ("ReposOwnerRepoActionsSecretsGetResponse200",),
-        ".group_1355": ("ReposOwnerRepoActionsSecretsSecretNamePutBody",),
-        ".group_1356": ("ReposOwnerRepoActionsVariablesGetResponse200",),
-        ".group_1357": ("ReposOwnerRepoActionsVariablesPostBody",),
-        ".group_1358": ("ReposOwnerRepoActionsVariablesNamePatchBody",),
-        ".group_1359": (
+        ".group_1352": ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200",),
+        ".group_1353": ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",),
+        ".group_1354": ("ReposOwnerRepoActionsRunsRunIdRerunPostBody",),
+        ".group_1355": ("ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody",),
+        ".group_1356": ("ReposOwnerRepoActionsSecretsGetResponse200",),
+        ".group_1357": ("ReposOwnerRepoActionsSecretsSecretNamePutBody",),
+        ".group_1358": ("ReposOwnerRepoActionsVariablesGetResponse200",),
+        ".group_1359": ("ReposOwnerRepoActionsVariablesPostBody",),
+        ".group_1360": ("ReposOwnerRepoActionsVariablesNamePatchBody",),
+        ".group_1361": (
             "ReposOwnerRepoActionsWorkflowsGetResponse200",
             "Workflow",
         ),
-        ".group_1360": (
+        ".group_1362": (
             "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
             "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
         ),
-        ".group_1361": ("ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200",),
-        ".group_1362": ("ReposOwnerRepoAgentsOrganizationSecretsGetResponse200",),
-        ".group_1363": ("ReposOwnerRepoAgentsOrganizationVariablesGetResponse200",),
-        ".group_1364": ("ReposOwnerRepoAgentsSecretsGetResponse200",),
-        ".group_1365": ("ReposOwnerRepoAgentsSecretsSecretNamePutBody",),
-        ".group_1366": ("ReposOwnerRepoAgentsVariablesGetResponse200",),
-        ".group_1367": ("ReposOwnerRepoAgentsVariablesPostBody",),
-        ".group_1368": ("ReposOwnerRepoAgentsVariablesNamePatchBody",),
-        ".group_1369": (
+        ".group_1363": ("ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200",),
+        ".group_1364": ("ReposOwnerRepoAgentsOrganizationSecretsGetResponse200",),
+        ".group_1365": ("ReposOwnerRepoAgentsOrganizationVariablesGetResponse200",),
+        ".group_1366": ("ReposOwnerRepoAgentsSecretsGetResponse200",),
+        ".group_1367": ("ReposOwnerRepoAgentsSecretsSecretNamePutBody",),
+        ".group_1368": ("ReposOwnerRepoAgentsVariablesGetResponse200",),
+        ".group_1369": ("ReposOwnerRepoAgentsVariablesPostBody",),
+        ".group_1370": ("ReposOwnerRepoAgentsVariablesNamePatchBody",),
+        ".group_1371": (
             "ReposOwnerRepoAttestationsPostBody",
             "ReposOwnerRepoAttestationsPostBodyPropBundle",
             "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial",
             "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope",
         ),
-        ".group_1370": ("ReposOwnerRepoAttestationsPostResponse201",),
-        ".group_1371": (
+        ".group_1372": ("ReposOwnerRepoAttestationsPostResponse201",),
+        ".group_1373": (
             "ReposOwnerRepoAttestationsSubjectDigestGetResponse200",
             "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems",
         ),
-        ".group_1372": ("ReposOwnerRepoAutolinksPostBody",),
-        ".group_1373": (
+        ".group_1374": ("ReposOwnerRepoAutolinksPostBody",),
+        ".group_1375": (
             "ReposOwnerRepoBranchesBranchProtectionPutBody",
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks",
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems",
@@ -15311,438 +15338,449 @@ else:
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions",
         ),
-        ".group_1374": (
+        ".group_1376": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody",
             "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions",
             "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances",
         ),
-        ".group_1375": (
+        ".group_1377": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody",
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems",
         ),
-        ".group_1376": (
+        ".group_1378": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0",
         ),
-        ".group_1377": (
+        ".group_1379": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0",
         ),
-        ".group_1378": (
+        ".group_1380": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0",
         ),
-        ".group_1379": (
+        ".group_1381": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody",
         ),
-        ".group_1380": (
+        ".group_1382": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody",
         ),
-        ".group_1381": (
+        ".group_1383": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody",
         ),
-        ".group_1382": (
+        ".group_1384": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0",
         ),
-        ".group_1383": (
+        ".group_1385": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0",
         ),
-        ".group_1384": (
+        ".group_1386": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0",
         ),
-        ".group_1385": (
+        ".group_1387": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody",
         ),
-        ".group_1386": (
+        ".group_1388": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody",
         ),
-        ".group_1387": (
+        ".group_1389": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody",
         ),
-        ".group_1388": ("ReposOwnerRepoBranchesBranchRenamePostBody",),
-        ".group_1389": (
+        ".group_1390": ("ReposOwnerRepoBranchesBranchRenamePostBody",),
+        ".group_1391": (
             "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody",
         ),
-        ".group_1390": (
+        ".group_1392": (
             "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200",
         ),
-        ".group_1391": (
+        ".group_1393": (
             "ReposOwnerRepoCheckRunsPostBodyPropOutput",
             "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems",
             "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems",
             "ReposOwnerRepoCheckRunsPostBodyPropActionsItems",
         ),
-        ".group_1392": ("ReposOwnerRepoCheckRunsPostBodyOneof0",),
-        ".group_1393": ("ReposOwnerRepoCheckRunsPostBodyOneof1",),
-        ".group_1394": (
+        ".group_1394": ("ReposOwnerRepoCheckRunsPostBodyOneof0",),
+        ".group_1395": ("ReposOwnerRepoCheckRunsPostBodyOneof1",),
+        ".group_1396": (
             "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput",
             "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems",
             "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems",
             "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems",
         ),
-        ".group_1395": ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0",),
-        ".group_1396": ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1",),
-        ".group_1397": ("ReposOwnerRepoCheckSuitesPostBody",),
-        ".group_1398": (
+        ".group_1397": ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0",),
+        ".group_1398": ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1",),
+        ".group_1399": ("ReposOwnerRepoCheckSuitesPostBody",),
+        ".group_1400": (
             "ReposOwnerRepoCheckSuitesPreferencesPatchBody",
             "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems",
         ),
-        ".group_1399": (
+        ".group_1401": (
             "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200",
         ),
-        ".group_1400": ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0",),
-        ".group_1401": ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1",),
-        ".group_1402": (
+        ".group_1402": ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0",),
+        ".group_1403": ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1",),
+        ".group_1404": (
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0",
         ),
-        ".group_1403": (
+        ".group_1405": (
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1",
         ),
-        ".group_1404": (
+        ".group_1406": (
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2",
         ),
-        ".group_1405": ("ReposOwnerRepoCodeScanningSarifsPostBody",),
-        ".group_1406": ("ReposOwnerRepoCodespacesGetResponse200",),
-        ".group_1407": ("ReposOwnerRepoCodespacesPostBody",),
-        ".group_1408": (
+        ".group_1407": ("ReposOwnerRepoCodeScanningSarifsPostBody",),
+        ".group_1408": ("ReposOwnerRepoCodespacesGetResponse200",),
+        ".group_1409": ("ReposOwnerRepoCodespacesPostBody",),
+        ".group_1410": (
             "ReposOwnerRepoCodespacesDevcontainersGetResponse200",
             "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems",
         ),
-        ".group_1409": ("ReposOwnerRepoCodespacesMachinesGetResponse200",),
-        ".group_1410": (
+        ".group_1411": ("ReposOwnerRepoCodespacesMachinesGetResponse200",),
+        ".group_1412": (
             "ReposOwnerRepoCodespacesNewGetResponse200",
             "ReposOwnerRepoCodespacesNewGetResponse200PropDefaults",
         ),
-        ".group_1411": (
+        ".group_1413": (
             "ReposOwnerRepoCodespacesSecretsGetResponse200",
             "RepoCodespacesSecret",
         ),
-        ".group_1412": ("ReposOwnerRepoCodespacesSecretsSecretNamePutBody",),
-        ".group_1413": ("ReposOwnerRepoCollaboratorsUsernamePutBody",),
-        ".group_1414": ("ReposOwnerRepoCommentsCommentIdPatchBody",),
-        ".group_1415": ("ReposOwnerRepoCommentsCommentIdReactionsPostBody",),
-        ".group_1416": ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",),
-        ".group_1417": ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200",),
-        ".group_1418": (
+        ".group_1414": ("ReposOwnerRepoCodespacesSecretsSecretNamePutBody",),
+        ".group_1415": ("ReposOwnerRepoCollaboratorsUsernamePutBody",),
+        ".group_1416": ("ReposOwnerRepoCommentsCommentIdPatchBody",),
+        ".group_1417": ("ReposOwnerRepoCommentsCommentIdReactionsPostBody",),
+        ".group_1418": ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",),
+        ".group_1419": ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200",),
+        ".group_1420": (
             "ReposOwnerRepoContentsPathPutBody",
             "ReposOwnerRepoContentsPathPutBodyPropCommitter",
             "ReposOwnerRepoContentsPathPutBodyPropAuthor",
         ),
-        ".group_1419": (
+        ".group_1421": (
             "ReposOwnerRepoContentsPathDeleteBody",
             "ReposOwnerRepoContentsPathDeleteBodyPropCommitter",
             "ReposOwnerRepoContentsPathDeleteBodyPropAuthor",
         ),
-        ".group_1420": ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0",),
-        ".group_1421": ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1",),
         ".group_1422": (
+            "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200",
+            "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration",
+            "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools",
+        ),
+        ".group_1423": ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0",),
+        ".group_1424": ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1",),
+        ".group_1425": (
             "ReposOwnerRepoDependabotSecretsGetResponse200",
             "DependabotSecret",
         ),
-        ".group_1423": ("ReposOwnerRepoDependabotSecretsSecretNamePutBody",),
-        ".group_1424": (
+        ".group_1426": ("ReposOwnerRepoDependabotSecretsSecretNamePutBody",),
+        ".group_1427": (
             "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201",
         ),
-        ".group_1425": ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201",),
-        ".group_1426": (
+        ".group_1428": ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201",),
+        ".group_1429": (
             "ReposOwnerRepoDeploymentsPostBody",
             "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0",
         ),
-        ".group_1427": ("ReposOwnerRepoDeploymentsPostResponse202",),
-        ".group_1428": ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody",),
-        ".group_1429": (
+        ".group_1430": ("ReposOwnerRepoDeploymentsPostResponse202",),
+        ".group_1431": ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody",),
+        ".group_1432": (
             "ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody",
         ),
-        ".group_1430": (
+        ".group_1433": (
             "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody",
         ),
-        ".group_1431": (
+        ".group_1434": (
             "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody",
         ),
-        ".group_1432": (
+        ".group_1435": (
             "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200",
         ),
-        ".group_1433": (
+        ".group_1436": (
             "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody",
         ),
-        ".group_1434": (
+        ".group_1437": (
             "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200",
         ),
-        ".group_1435": (
+        ".group_1438": (
             "ReposOwnerRepoDispatchesPostBody",
             "ReposOwnerRepoDispatchesPostBodyPropClientPayload",
         ),
-        ".group_1436": (
+        ".group_1439": (
             "ReposOwnerRepoEnvironmentsEnvironmentNamePutBody",
             "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems",
         ),
-        ".group_1437": (
+        ".group_1440": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200",
             "DeploymentBranchPolicy",
         ),
-        ".group_1438": (
+        ".group_1441": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody",
         ),
-        ".group_1439": (
+        ".group_1442": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200",
         ),
-        ".group_1440": (
+        ".group_1443": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200",
         ),
-        ".group_1441": (
+        ".group_1444": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody",
         ),
-        ".group_1442": (
+        ".group_1445": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200",
         ),
-        ".group_1443": ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody",),
-        ".group_1444": (
+        ".group_1446": ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody",),
+        ".group_1447": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody",
         ),
-        ".group_1445": ("ReposOwnerRepoForksPostBody",),
-        ".group_1446": ("ReposOwnerRepoGitBlobsPostBody",),
-        ".group_1447": (
+        ".group_1448": ("ReposOwnerRepoForksPostBody",),
+        ".group_1449": ("ReposOwnerRepoGitBlobsPostBody",),
+        ".group_1450": (
             "ReposOwnerRepoGitCommitsPostBody",
             "ReposOwnerRepoGitCommitsPostBodyPropAuthor",
             "ReposOwnerRepoGitCommitsPostBodyPropCommitter",
         ),
-        ".group_1448": ("ReposOwnerRepoGitRefsPostBody",),
-        ".group_1449": ("ReposOwnerRepoGitRefsRefPatchBody",),
-        ".group_1450": (
+        ".group_1451": ("ReposOwnerRepoGitRefsPostBody",),
+        ".group_1452": ("ReposOwnerRepoGitRefsRefPatchBody",),
+        ".group_1453": (
             "ReposOwnerRepoGitTagsPostBody",
             "ReposOwnerRepoGitTagsPostBodyPropTagger",
         ),
-        ".group_1451": (
+        ".group_1454": (
             "ReposOwnerRepoGitTreesPostBody",
             "ReposOwnerRepoGitTreesPostBodyPropTreeItems",
         ),
-        ".group_1452": (
+        ".group_1455": (
             "ReposOwnerRepoHooksPostBody",
             "ReposOwnerRepoHooksPostBodyPropConfig",
         ),
-        ".group_1453": ("ReposOwnerRepoHooksHookIdPatchBody",),
-        ".group_1454": ("ReposOwnerRepoHooksHookIdConfigPatchBody",),
-        ".group_1455": ("ReposOwnerRepoImportPutBody",),
-        ".group_1456": ("ReposOwnerRepoImportPatchBody",),
-        ".group_1457": ("ReposOwnerRepoImportAuthorsAuthorIdPatchBody",),
-        ".group_1458": ("ReposOwnerRepoImportLfsPatchBody",),
-        ".group_1459": ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1",),
-        ".group_1460": ("ReposOwnerRepoInvitationsInvitationIdPatchBody",),
-        ".group_1461": (
+        ".group_1456": ("ReposOwnerRepoHooksHookIdPatchBody",),
+        ".group_1457": ("ReposOwnerRepoHooksHookIdConfigPatchBody",),
+        ".group_1458": ("ReposOwnerRepoImportPutBody",),
+        ".group_1459": ("ReposOwnerRepoImportPatchBody",),
+        ".group_1460": ("ReposOwnerRepoImportAuthorsAuthorIdPatchBody",),
+        ".group_1461": ("ReposOwnerRepoImportLfsPatchBody",),
+        ".group_1462": ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1",),
+        ".group_1463": ("ReposOwnerRepoInvitationsInvitationIdPatchBody",),
+        ".group_1464": (
             "ReposOwnerRepoIssuesPostBody",
             "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1",
             "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems",
         ),
-        ".group_1462": ("ReposOwnerRepoIssuesCommentsCommentIdPatchBody",),
-        ".group_1463": ("ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody",),
-        ".group_1464": (
+        ".group_1465": ("ReposOwnerRepoIssuesCommentsCommentIdPatchBody",),
+        ".group_1466": ("ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody",),
+        ".group_1467": (
             "ReposOwnerRepoIssuesIssueNumberPatchBody",
             "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1",
             "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems",
         ),
-        ".group_1465": ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",),
-        ".group_1466": ("ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody",),
-        ".group_1467": ("ReposOwnerRepoIssuesIssueNumberCommentsPostBody",),
-        ".group_1468": (
+        ".group_1468": ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",),
+        ".group_1469": ("ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody",),
+        ".group_1470": ("ReposOwnerRepoIssuesIssueNumberCommentsPostBody",),
+        ".group_1471": (
             "ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody",
         ),
-        ".group_1469": (
+        ".group_1472": (
             "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody",
             "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems",
         ),
-        ".group_1470": (
+        ".group_1473": (
             "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody",
             "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems",
         ),
-        ".group_1471": ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0",),
-        ".group_1472": (
+        ".group_1474": ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0",),
+        ".group_1475": (
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2",
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems",
         ),
-        ".group_1473": ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items",),
-        ".group_1474": ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0",),
-        ".group_1475": ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items",),
-        ".group_1476": ("ReposOwnerRepoIssuesIssueNumberLockPutBody",),
-        ".group_1477": ("ReposOwnerRepoIssuesIssueNumberReactionsPostBody",),
-        ".group_1478": ("ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody",),
-        ".group_1479": ("ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody",),
-        ".group_1480": ("ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody",),
-        ".group_1481": ("ReposOwnerRepoKeysPostBody",),
-        ".group_1482": ("ReposOwnerRepoLabelsPostBody",),
-        ".group_1483": ("ReposOwnerRepoLabelsNamePatchBody",),
-        ".group_1484": ("ReposOwnerRepoMergeUpstreamPostBody",),
-        ".group_1485": ("ReposOwnerRepoMergesPostBody",),
-        ".group_1486": ("ReposOwnerRepoMilestonesPostBody",),
-        ".group_1487": ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",),
-        ".group_1488": ("ReposOwnerRepoNotificationsPutBody",),
-        ".group_1489": ("ReposOwnerRepoNotificationsPutResponse202",),
-        ".group_1490": ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1",),
-        ".group_1491": ("ReposOwnerRepoPagesPutBodyAnyof0",),
-        ".group_1492": ("ReposOwnerRepoPagesPutBodyAnyof1",),
-        ".group_1493": ("ReposOwnerRepoPagesPutBodyAnyof2",),
-        ".group_1494": ("ReposOwnerRepoPagesPutBodyAnyof3",),
-        ".group_1495": ("ReposOwnerRepoPagesPutBodyAnyof4",),
-        ".group_1496": ("ReposOwnerRepoPagesPostBodyPropSource",),
-        ".group_1497": ("ReposOwnerRepoPagesPostBodyAnyof0",),
-        ".group_1498": ("ReposOwnerRepoPagesPostBodyAnyof1",),
-        ".group_1499": ("ReposOwnerRepoPagesDeploymentsPostBody",),
-        ".group_1500": ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",),
-        ".group_1501": ("ReposOwnerRepoPropertiesValuesPatchBody",),
-        ".group_1502": ("ReposOwnerRepoPullsPostBody",),
-        ".group_1503": ("ReposOwnerRepoPullsCommentsCommentIdPatchBody",),
-        ".group_1504": ("ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody",),
-        ".group_1505": ("ReposOwnerRepoPullsPullNumberPatchBody",),
-        ".group_1506": ("ReposOwnerRepoPullsPullNumberCodespacesPostBody",),
-        ".group_1507": ("ReposOwnerRepoPullsPullNumberCommentsPostBody",),
-        ".group_1508": (
+        ".group_1476": ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items",),
+        ".group_1477": ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0",),
+        ".group_1478": ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items",),
+        ".group_1479": ("ReposOwnerRepoIssuesIssueNumberLockPutBody",),
+        ".group_1480": ("ReposOwnerRepoIssuesIssueNumberReactionsPostBody",),
+        ".group_1481": ("ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody",),
+        ".group_1482": ("ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody",),
+        ".group_1483": ("ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody",),
+        ".group_1484": ("ReposOwnerRepoKeysPostBody",),
+        ".group_1485": ("ReposOwnerRepoLabelsPostBody",),
+        ".group_1486": ("ReposOwnerRepoLabelsNamePatchBody",),
+        ".group_1487": ("ReposOwnerRepoMergeUpstreamPostBody",),
+        ".group_1488": ("ReposOwnerRepoMergesPostBody",),
+        ".group_1489": ("ReposOwnerRepoMilestonesPostBody",),
+        ".group_1490": ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",),
+        ".group_1491": ("ReposOwnerRepoNotificationsPutBody",),
+        ".group_1492": ("ReposOwnerRepoNotificationsPutResponse202",),
+        ".group_1493": ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1",),
+        ".group_1494": ("ReposOwnerRepoPagesPutBodyAnyof0",),
+        ".group_1495": ("ReposOwnerRepoPagesPutBodyAnyof1",),
+        ".group_1496": ("ReposOwnerRepoPagesPutBodyAnyof2",),
+        ".group_1497": ("ReposOwnerRepoPagesPutBodyAnyof3",),
+        ".group_1498": ("ReposOwnerRepoPagesPutBodyAnyof4",),
+        ".group_1499": ("ReposOwnerRepoPagesPostBodyPropSource",),
+        ".group_1500": ("ReposOwnerRepoPagesPostBodyAnyof0",),
+        ".group_1501": ("ReposOwnerRepoPagesPostBodyAnyof1",),
+        ".group_1502": ("ReposOwnerRepoPagesDeploymentsPostBody",),
+        ".group_1503": ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",),
+        ".group_1504": ("ReposOwnerRepoPropertiesValuesPatchBody",),
+        ".group_1505": ("ReposOwnerRepoPullsPostBody",),
+        ".group_1506": ("ReposOwnerRepoPullsCommentsCommentIdPatchBody",),
+        ".group_1507": ("ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody",),
+        ".group_1508": ("ReposOwnerRepoPullsPullNumberPatchBody",),
+        ".group_1509": ("ReposOwnerRepoPullsPullNumberCodespacesPostBody",),
+        ".group_1510": ("ReposOwnerRepoPullsPullNumberCommentsPostBody",),
+        ".group_1511": (
             "ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody",
         ),
-        ".group_1509": ("ReposOwnerRepoPullsPullNumberMergePutBody",),
-        ".group_1510": ("ReposOwnerRepoPullsPullNumberMergePutResponse405",),
-        ".group_1511": ("ReposOwnerRepoPullsPullNumberMergePutResponse409",),
-        ".group_1512": (
+        ".group_1512": ("ReposOwnerRepoPullsPullNumberMergePutBody",),
+        ".group_1513": ("ReposOwnerRepoPullsPullNumberMergePutResponse405",),
+        ".group_1514": ("ReposOwnerRepoPullsPullNumberMergePutResponse409",),
+        ".group_1515": (
             "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0",
         ),
-        ".group_1513": (
+        ".group_1516": (
             "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1",
         ),
-        ".group_1514": ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",),
-        ".group_1515": (
+        ".group_1517": ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",),
+        ".group_1518": (
             "ReposOwnerRepoPullsPullNumberReviewsPostBody",
             "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems",
         ),
-        ".group_1516": ("ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody",),
-        ".group_1517": (
+        ".group_1519": ("ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody",),
+        ".group_1520": (
             "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody",
         ),
-        ".group_1518": ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody",),
-        ".group_1519": ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBody",),
-        ".group_1520": ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202",),
-        ".group_1521": ("ReposOwnerRepoReleasesPostBody",),
-        ".group_1522": ("ReposOwnerRepoReleasesAssetsAssetIdPatchBody",),
-        ".group_1523": ("ReposOwnerRepoReleasesGenerateNotesPostBody",),
-        ".group_1524": ("ReposOwnerRepoReleasesReleaseIdPatchBody",),
-        ".group_1525": ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",),
-        ".group_1526": ("ReposOwnerRepoRulesetsPostBody",),
-        ".group_1527": ("ReposOwnerRepoRulesetsRulesetIdPutBody",),
-        ".group_1528": (
+        ".group_1521": ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody",),
+        ".group_1522": ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBody",),
+        ".group_1523": ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202",),
+        ".group_1524": ("ReposOwnerRepoReleasesPostBody",),
+        ".group_1525": ("ReposOwnerRepoReleasesAssetsAssetIdPatchBody",),
+        ".group_1526": ("ReposOwnerRepoReleasesGenerateNotesPostBody",),
+        ".group_1527": ("ReposOwnerRepoReleasesReleaseIdPatchBody",),
+        ".group_1528": ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",),
+        ".group_1529": ("ReposOwnerRepoRulesetsPostBody",),
+        ".group_1530": ("ReposOwnerRepoRulesetsRulesetIdPutBody",),
+        ".group_1531": (
             "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0",
         ),
-        ".group_1529": (
+        ".group_1532": (
             "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1",
         ),
-        ".group_1530": (
+        ".group_1533": (
             "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2",
         ),
-        ".group_1531": ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",),
-        ".group_1532": ("ReposOwnerRepoStatusesShaPostBody",),
-        ".group_1533": ("ReposOwnerRepoSubscriptionPutBody",),
-        ".group_1534": ("ReposOwnerRepoTopicsPutBody",),
-        ".group_1535": ("ReposOwnerRepoTransferPostBody",),
-        ".group_1536": ("ReposTemplateOwnerTemplateRepoGeneratePostBody",),
-        ".group_1537": (
+        ".group_1534": ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",),
+        ".group_1535": ("ReposOwnerRepoStatusesShaPostBody",),
+        ".group_1536": ("ReposOwnerRepoSubscriptionPutBody",),
+        ".group_1537": ("ReposOwnerRepoTopicsPutBody",),
+        ".group_1538": ("ReposOwnerRepoTransferPostBody",),
+        ".group_1539": ("ReposTemplateOwnerTemplateRepoGeneratePostBody",),
+        ".group_1540": (
             "ScimV2OrganizationsOrgUsersPostBody",
             "ScimV2OrganizationsOrgUsersPostBodyPropName",
             "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems",
         ),
-        ".group_1538": (
+        ".group_1541": (
             "ScimV2OrganizationsOrgUsersScimUserIdPutBody",
             "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName",
             "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems",
         ),
-        ".group_1539": (
+        ".group_1542": (
             "ScimV2OrganizationsOrgUsersScimUserIdPatchBody",
             "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems",
             "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0",
             "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items",
         ),
-        ".group_1540": ("TeamsTeamIdPatchBody",),
-        ".group_1541": ("TeamsTeamIdMembershipsUsernamePutBody",),
-        ".group_1542": ("TeamsTeamIdReposOwnerRepoPutBody",),
-        ".group_1543": (
+        ".group_1543": ("TeamsTeamIdPatchBody",),
+        ".group_1544": ("TeamsTeamIdMembershipsUsernamePutBody",),
+        ".group_1545": ("TeamsTeamIdReposOwnerRepoPutBody",),
+        ".group_1546": (
             "TeamsTeamIdTeamSyncGroupMappingsPatchBody",
             "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems",
         ),
-        ".group_1544": ("UserPatchBody",),
-        ".group_1545": ("UserCodespacesGetResponse200",),
-        ".group_1546": ("UserCodespacesPostBodyOneof0",),
-        ".group_1547": (
+        ".group_1547": ("UserPatchBody",),
+        ".group_1548": ("UserCodespacesGetResponse200",),
+        ".group_1549": ("UserCodespacesPostBodyOneof0",),
+        ".group_1550": (
             "UserCodespacesPostBodyOneof1",
             "UserCodespacesPostBodyOneof1PropPullRequest",
         ),
-        ".group_1548": (
+        ".group_1551": (
             "UserCodespacesSecretsGetResponse200",
             "CodespacesSecret",
         ),
-        ".group_1549": ("UserCodespacesSecretsSecretNamePutBody",),
-        ".group_1550": ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200",),
-        ".group_1551": ("UserCodespacesSecretsSecretNameRepositoriesPutBody",),
-        ".group_1552": ("UserCodespacesCodespaceNamePatchBody",),
-        ".group_1553": ("UserCodespacesCodespaceNameMachinesGetResponse200",),
-        ".group_1554": ("UserCodespacesCodespaceNamePublishPostBody",),
-        ".group_1555": ("UserEmailVisibilityPatchBody",),
-        ".group_1556": ("UserEmailsPostBodyOneof0",),
-        ".group_1557": ("UserEmailsDeleteBodyOneof0",),
-        ".group_1558": ("UserGpgKeysPostBody",),
-        ".group_1559": ("UserInstallationsGetResponse200",),
-        ".group_1560": (
+        ".group_1552": ("UserCodespacesSecretsSecretNamePutBody",),
+        ".group_1553": ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200",),
+        ".group_1554": ("UserCodespacesSecretsSecretNameRepositoriesPutBody",),
+        ".group_1555": ("UserCodespacesCodespaceNamePatchBody",),
+        ".group_1556": ("UserCodespacesCodespaceNameMachinesGetResponse200",),
+        ".group_1557": ("UserCodespacesCodespaceNamePublishPostBody",),
+        ".group_1558": ("UserEmailVisibilityPatchBody",),
+        ".group_1559": ("UserEmailsPostBodyOneof0",),
+        ".group_1560": ("UserEmailsDeleteBodyOneof0",),
+        ".group_1561": ("UserGpgKeysPostBody",),
+        ".group_1562": ("UserInstallationsGetResponse200",),
+        ".group_1563": (
             "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems",
             "UserInstallationsInstallationIdRepositoriesGetResponse200",
         ),
-        ".group_1561": ("UserInteractionLimitsGetResponse200Anyof1",),
-        ".group_1562": ("UserKeysPostBody",),
-        ".group_1563": ("UserMembershipsOrgsOrgPatchBody",),
-        ".group_1564": ("UserMigrationsPostBody",),
-        ".group_1565": ("UserReposPostBody",),
-        ".group_1566": ("UserSocialAccountsPostBody",),
-        ".group_1567": ("UserSocialAccountsDeleteBody",),
-        ".group_1568": ("UserSshSigningKeysPostBody",),
-        ".group_1569": ("UserUserIdProjectsV2ProjectNumberDraftsPostBody",),
-        ".group_1570": ("UsersUserIdProjectsV2ProjectNumberViewsPostBody",),
-        ".group_1571": ("UsersUsernameAttestationsBulkListPostBody",),
-        ".group_1572": (
+        ".group_1564": (
+            "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1",
+        ),
+        ".group_1565": (
+            "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties",
+        ),
+        ".group_1566": ("UserInteractionLimitsGetResponse200Anyof1",),
+        ".group_1567": ("UserKeysPostBody",),
+        ".group_1568": ("UserMembershipsOrgsOrgPatchBody",),
+        ".group_1569": ("UserMigrationsPostBody",),
+        ".group_1570": ("UserReposPostBody",),
+        ".group_1571": ("UserSocialAccountsPostBody",),
+        ".group_1572": ("UserSocialAccountsDeleteBody",),
+        ".group_1573": ("UserSshSigningKeysPostBody",),
+        ".group_1574": ("UserUserIdProjectsV2ProjectNumberDraftsPostBody",),
+        ".group_1575": ("UsersUserIdProjectsV2ProjectNumberViewsPostBody",),
+        ".group_1576": ("UsersUsernameAttestationsBulkListPostBody",),
+        ".group_1577": (
             "UsersUsernameAttestationsBulkListPostResponse200",
             "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
             "UsersUsernameAttestationsBulkListPostResponse200PropPageInfo",
         ),
-        ".group_1573": ("UsersUsernameAttestationsDeleteRequestPostBodyOneof0",),
-        ".group_1574": ("UsersUsernameAttestationsDeleteRequestPostBodyOneof1",),
-        ".group_1575": (
+        ".group_1578": ("UsersUsernameAttestationsDeleteRequestPostBodyOneof0",),
+        ".group_1579": ("UsersUsernameAttestationsDeleteRequestPostBodyOneof1",),
+        ".group_1580": (
             "UsersUsernameAttestationsSubjectDigestGetResponse200",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
         ),
-        ".group_1576": ("UsersUsernameCopilotSpacesGetResponse200",),
-        ".group_1577": (
+        ".group_1581": ("UsersUsernameCopilotSpacesGetResponse200",),
+        ".group_1582": (
             "UsersUsernameCopilotSpacesPostBody",
             "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems",
             "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata",
         ),
-        ".group_1578": (
+        ".group_1583": (
             "UsersUsernameCopilotSpacesSpaceNumberPutBody",
             "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems",
             "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata",
         ),
-        ".group_1579": (
+        ".group_1584": (
             "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200",
         ),
-        ".group_1580": ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody",),
-        ".group_1581": (
+        ".group_1585": ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody",),
+        ".group_1586": (
             "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody",
         ),
-        ".group_1582": (
+        ".group_1587": (
             "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200",
         ),
-        ".group_1583": (
+        ".group_1588": (
             "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody",
             "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
         ),
-        ".group_1584": (
+        ".group_1589": (
             "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody",
             "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata",
         ),
-        ".group_1585": ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0",),
-        ".group_1586": ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1",),
-        ".group_1587": ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2",),
-        ".group_1588": ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0",),
-        ".group_1589": ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1",),
-        ".group_1590": (
+        ".group_1590": ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0",),
+        ".group_1591": ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1",),
+        ".group_1592": ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2",),
+        ".group_1593": ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0",),
+        ".group_1594": ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1",),
+        ".group_1595": (
             "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody",
             "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
         ),

@@ -12,19 +12,73 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDeploymentsPostResponse202Type(TypedDict):
-    """ReposOwnerRepoDeploymentsPostResponse202"""
+class ReposOwnerRepoContentsPathDeleteBodyType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBody"""
 
-    message: NotRequired[str]
+    message: str
+    sha: str
+    branch: NotRequired[str]
+    committer: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropCommitterType]
+    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType]
 
 
-class ReposOwnerRepoDeploymentsPostResponse202TypeForResponse(TypedDict):
-    """ReposOwnerRepoDeploymentsPostResponse202"""
+class ReposOwnerRepoContentsPathDeleteBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBody"""
 
-    message: NotRequired[str]
+    message: str
+    sha: str
+    branch: NotRequired[str]
+    committer: NotRequired[
+        ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse
+    ]
+    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse]
+
+
+class ReposOwnerRepoContentsPathDeleteBodyPropCommitterType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
+
+    object containing information about the committer.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
+
+    object containing information about the committer.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathDeleteBodyPropAuthorType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
+
+    object containing information about the author.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
+
+    object containing information about the author.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoDeploymentsPostResponse202Type",
-    "ReposOwnerRepoDeploymentsPostResponse202TypeForResponse",
+    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
+    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse",
+    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
+    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse",
+    "ReposOwnerRepoContentsPathDeleteBodyType",
+    "ReposOwnerRepoContentsPathDeleteBodyTypeForResponse",
 )

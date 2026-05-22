@@ -12,23 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
 
-    name: NotRequired[str]
-    label: NotRequired[str]
-    state: NotRequired[str]
+    reviewers: NotRequired[list[str]]
+    team_reviewers: list[str]
 
 
-class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
 
-    name: NotRequired[str]
-    label: NotRequired[str]
-    state: NotRequired[str]
+    reviewers: NotRequired[list[str]]
+    team_reviewers: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType",
-    "ReposOwnerRepoReleasesAssetsAssetIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1TypeForResponse",
 )

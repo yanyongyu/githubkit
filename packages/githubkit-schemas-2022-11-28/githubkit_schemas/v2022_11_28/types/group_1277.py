@@ -9,55 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoHooksPostBodyType(TypedDict):
-    """ReposOwnerRepoHooksPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody"""
 
-    name: NotRequired[str]
-    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigType]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
+    name: str
+    value: str
 
 
-class ReposOwnerRepoHooksPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody"""
 
-    name: NotRequired[str]
-    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-
-
-class ReposOwnerRepoHooksPostBodyPropConfigType(TypedDict):
-    """ReposOwnerRepoHooksPostBodyPropConfig
-
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-
-
-class ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksPostBodyPropConfig
-
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    name: str
+    value: str
 
 
 __all__ = (
-    "ReposOwnerRepoHooksPostBodyPropConfigType",
-    "ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse",
-    "ReposOwnerRepoHooksPostBodyType",
-    "ReposOwnerRepoHooksPostBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyTypeForResponse",
 )

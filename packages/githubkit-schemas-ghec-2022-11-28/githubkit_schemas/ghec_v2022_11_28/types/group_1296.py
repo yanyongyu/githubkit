@@ -13,19 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgMembershipsUsernamePutBodyType(TypedDict):
-    """OrgsOrgMembershipsUsernamePutBody"""
+class OrgsOrgInvitationsPostBodyType(TypedDict):
+    """OrgsOrgInvitationsPostBody"""
 
-    role: NotRequired[Literal["admin", "member"]]
+    invitee_id: NotRequired[int]
+    email: NotRequired[str]
+    role: NotRequired[Literal["admin", "direct_member", "billing_manager", "reinstate"]]
+    team_ids: NotRequired[list[int]]
 
 
-class OrgsOrgMembershipsUsernamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgMembershipsUsernamePutBody"""
+class OrgsOrgInvitationsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgInvitationsPostBody"""
 
-    role: NotRequired[Literal["admin", "member"]]
+    invitee_id: NotRequired[int]
+    email: NotRequired[str]
+    role: NotRequired[Literal["admin", "direct_member", "billing_manager", "reinstate"]]
+    team_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgMembershipsUsernamePutBodyType",
-    "OrgsOrgMembershipsUsernamePutBodyTypeForResponse",
+    "OrgsOrgInvitationsPostBodyType",
+    "OrgsOrgInvitationsPostBodyTypeForResponse",
 )

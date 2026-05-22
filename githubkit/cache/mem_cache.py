@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
-from typing import Optional
 from typing_extensions import override
 
 from hishel import AsyncInMemoryStorage, InMemoryStorage
@@ -11,7 +10,7 @@ from .base import AsyncBaseCache, BaseCache, BaseCacheStrategy
 @dataclass(frozen=True)
 class _Item:
     value: str
-    expire_at: Optional[datetime] = None
+    expire_at: datetime | None = None
 
 
 class MemCache(AsyncBaseCache, BaseCache):
@@ -27,12 +26,12 @@ class MemCache(AsyncBaseCache, BaseCache):
                 self._cache.pop(key, None)
 
     @override
-    def get(self, key: str) -> Optional[str]:
+    def get(self, key: str) -> str | None:
         self.expire()
         return (item := self._cache.get(key, None)) and item.value
 
     @override
-    async def aget(self, key: str) -> Optional[str]:
+    async def aget(self, key: str) -> str | None:
         return self.get(key)
 
     @override
@@ -47,9 +46,9 @@ class MemCache(AsyncBaseCache, BaseCache):
 
 class MemCacheStrategy(BaseCacheStrategy):
     def __init__(self) -> None:
-        self._cache: Optional[MemCache] = None
-        self._hishel_storage: Optional[InMemoryStorage] = None
-        self._hishel_async_storage: Optional[AsyncInMemoryStorage] = None
+        self._cache: MemCache | None = None
+        self._hishel_storage: InMemoryStorage | None = None
+        self._hishel_async_storage: AsyncInMemoryStorage | None = None
 
     @override
     def get_cache_storage(self) -> MemCache:

@@ -9,29 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoStatusesShaPostBodyType(TypedDict):
-    """ReposOwnerRepoStatusesShaPostBody"""
+class ReposOwnerRepoReleasesGenerateNotesPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
 
-    state: Literal["error", "failure", "pending", "success"]
-    target_url: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    context: NotRequired[str]
+    tag_name: str
+    target_commitish: NotRequired[str]
+    previous_tag_name: NotRequired[str]
+    configuration_file_path: NotRequired[str]
 
 
-class ReposOwnerRepoStatusesShaPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoStatusesShaPostBody"""
+class ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
 
-    state: Literal["error", "failure", "pending", "success"]
-    target_url: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    context: NotRequired[str]
+    tag_name: str
+    target_commitish: NotRequired[str]
+    previous_tag_name: NotRequired[str]
+    configuration_file_path: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoStatusesShaPostBodyType",
-    "ReposOwnerRepoStatusesShaPostBodyTypeForResponse",
+    "ReposOwnerRepoReleasesGenerateNotesPostBodyType",
+    "ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse",
 )

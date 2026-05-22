@@ -13,19 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
+class OrgsOrgSettingsImmutableReleasesPutBodyType(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesPutBody"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
+class OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesPutBody"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType",
-    "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyTypeForResponse",
+    "OrgsOrgSettingsImmutableReleasesPutBodyType",
+    "OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse",
 )

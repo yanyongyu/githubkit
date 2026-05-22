@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING
 from weakref import ref
 
 from githubkit.typing import Missing
@@ -46,7 +46,7 @@ class MetaClient:
     def root(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Root, RootTypeForResponse]:
         """meta/root
@@ -75,7 +75,7 @@ class MetaClient:
     async def async_root(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Root, RootTypeForResponse]:
         """meta/root
@@ -104,7 +104,7 @@ class MetaClient:
     def get(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ApiOverview, ApiOverviewTypeForResponse]:
         """meta/get
@@ -140,7 +140,7 @@ class MetaClient:
     async def async_get(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ApiOverview, ApiOverviewTypeForResponse]:
         """meta/get
@@ -177,7 +177,7 @@ class MetaClient:
         self,
         *,
         s: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[str, str]:
         """meta/get-octocat
@@ -210,7 +210,7 @@ class MetaClient:
         self,
         *,
         s: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[str, str]:
         """meta/get-octocat
@@ -242,7 +242,7 @@ class MetaClient:
     def get_all_versions(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[_dt.date], list[str]]:
         """meta/get-all-versions
@@ -276,7 +276,7 @@ class MetaClient:
     async def async_get_all_versions(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[_dt.date], list[str]]:
         """meta/get-all-versions
@@ -310,7 +310,7 @@ class MetaClient:
     def get_zen(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[str, str]:
         """meta/get-zen
@@ -337,7 +337,7 @@ class MetaClient:
     async def async_get_zen(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[str, str]:
         """meta/get-zen

@@ -11,24 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0272 import ActionsSecretType, ActionsSecretTypeForResponse
+
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
+
+    labels: list[str]
 
 
-class ReposOwnerRepoActionsSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsSecretsGetResponse200"""
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
 
-    total_count: int
-    secrets: list[ActionsSecretType]
-
-
-class ReposOwnerRepoActionsSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[ActionsSecretTypeForResponse]
+    labels: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsSecretsGetResponse200Type",
-    "ReposOwnerRepoActionsSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType",
+    "ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyTypeForResponse",
 )

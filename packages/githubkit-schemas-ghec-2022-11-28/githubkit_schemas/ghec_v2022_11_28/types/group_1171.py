@@ -21,6 +21,10 @@ from .group_0021 import (
     RepositoryPropPermissionsType,
     RepositoryPropPermissionsTypeForResponse,
 )
+from .group_1173 import (
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
+)
 
 
 class InstallationRepositoriesGetResponse200PropRepositoriesItemsType(TypedDict):
@@ -126,6 +130,9 @@ class InstallationRepositoriesGetResponse200PropRepositoriesItemsType(TypedDict)
     starred_at: NotRequired[str]
     anonymous_access_enabled: NotRequired[bool]
     code_search_index_status: NotRequired[RepositoryPropCodeSearchIndexStatusType]
+    custom_properties: NotRequired[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
+    ]
 
 
 class InstallationRepositoriesGetResponse200PropRepositoriesItemsTypeForResponse(
@@ -234,6 +241,9 @@ class InstallationRepositoriesGetResponse200PropRepositoriesItemsTypeForResponse
     anonymous_access_enabled: NotRequired[bool]
     code_search_index_status: NotRequired[
         RepositoryPropCodeSearchIndexStatusTypeForResponse
+    ]
+    custom_properties: NotRequired[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
     ]
 
 

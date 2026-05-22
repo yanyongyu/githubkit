@@ -18,68 +18,43 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0293 import GitUser
+from .group_0294 import Verification
 
-class PublicUser(GitHubModel):
-    """Public User
 
-    Public User
-    """
+class CommitSearchResultItemPropCommit(GitHubModel):
+    """CommitSearchResultItemPropCommit"""
 
-    login: str = Field()
-    id: int = Field()
-    user_view_type: Missing[str] = Field(default=UNSET)
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
+    author: CommitSearchResultItemPropCommitPropAuthor = Field()
+    committer: Union[None, GitUser] = Field()
+    comment_count: int = Field()
+    message: str = Field()
+    tree: CommitSearchResultItemPropCommitPropTree = Field()
     url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    name: Union[str, None] = Field()
-    company: Union[str, None] = Field()
-    blog: Union[str, None] = Field()
-    location: Union[str, None] = Field()
-    email: Union[str, None] = Field()
-    notification_email: Missing[Union[str, None]] = Field(default=UNSET)
-    hireable: Union[bool, None] = Field()
-    bio: Union[str, None] = Field()
-    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
-    public_repos: int = Field()
-    public_gists: int = Field()
-    followers: int = Field()
-    following: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    plan: Missing[PublicUserPropPlan] = Field(default=UNSET)
-    private_gists: Missing[int] = Field(default=UNSET)
-    total_private_repos: Missing[int] = Field(default=UNSET)
-    owned_private_repos: Missing[int] = Field(default=UNSET)
-    disk_usage: Missing[int] = Field(default=UNSET)
-    collaborators: Missing[int] = Field(default=UNSET)
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
 
 
-class PublicUserPropPlan(GitHubModel):
-    """PublicUserPropPlan"""
+class CommitSearchResultItemPropCommitPropAuthor(GitHubModel):
+    """CommitSearchResultItemPropCommitPropAuthor"""
 
-    collaborators: int = Field()
     name: str = Field()
-    space: int = Field()
-    private_repos: int = Field()
+    email: str = Field()
+    date: _dt.datetime = Field()
 
 
-model_rebuild(PublicUser)
-model_rebuild(PublicUserPropPlan)
+class CommitSearchResultItemPropCommitPropTree(GitHubModel):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(CommitSearchResultItemPropCommit)
+model_rebuild(CommitSearchResultItemPropCommitPropAuthor)
+model_rebuild(CommitSearchResultItemPropCommitPropTree)
 
 __all__ = (
-    "PublicUser",
-    "PublicUserPropPlan",
+    "CommitSearchResultItemPropCommit",
+    "CommitSearchResultItemPropCommitPropAuthor",
+    "CommitSearchResultItemPropCommitPropTree",
 )

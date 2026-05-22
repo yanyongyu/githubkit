@@ -9,55 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
     total_count: int
-    branch_policies: list[DeploymentBranchPolicyType]
+    secrets: list[DependabotSecretType]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+class ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
     total_count: int
-    branch_policies: list[DeploymentBranchPolicyTypeForResponse]
+    secrets: list[DependabotSecretTypeForResponse]
 
 
-class DeploymentBranchPolicyType(TypedDict):
-    """Deployment branch policy
+class DependabotSecretType(TypedDict):
+    """Dependabot Secret
 
-    Details of a deployment branch or tag policy.
+    Set secrets for Dependabot.
     """
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[Literal["branch", "tag"]]
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class DeploymentBranchPolicyTypeForResponse(TypedDict):
-    """Deployment branch policy
+class DependabotSecretTypeForResponse(TypedDict):
+    """Dependabot Secret
 
-    Details of a deployment branch or tag policy.
+    Set secrets for Dependabot.
     """
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[Literal["branch", "tag"]]
+    name: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "DeploymentBranchPolicyType",
-    "DeploymentBranchPolicyTypeForResponse",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse",
+    "DependabotSecretType",
+    "DependabotSecretTypeForResponse",
+    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
+    "ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse",
 )

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -79,7 +79,7 @@ class BillingClient:
         scope: Missing[
             Literal["enterprise", "organization", "repository", "cost_center"]
         ] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
         """billing/get-all-budgets-org
@@ -130,7 +130,7 @@ class BillingClient:
         scope: Missing[
             Literal["enterprise", "organization", "repository", "cost_center"]
         ] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
         """billing/get-all-budgets-org
@@ -177,7 +177,7 @@ class BillingClient:
         org: str,
         budget_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetBudget, GetBudgetTypeForResponse]:
         """billing/get-budget-org
@@ -218,7 +218,7 @@ class BillingClient:
         org: str,
         budget_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetBudget, GetBudgetTypeForResponse]:
         """billing/get-budget-org
@@ -259,7 +259,7 @@ class BillingClient:
         org: str,
         budget_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DeleteBudget, DeleteBudgetTypeForResponse]:
         """billing/delete-budget-org
@@ -300,7 +300,7 @@ class BillingClient:
         org: str,
         budget_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DeleteBudget, DeleteBudgetTypeForResponse]:
         """billing/delete-budget-org
@@ -342,7 +342,7 @@ class BillingClient:
         org: str,
         budget_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType,
     ) -> Response[
@@ -357,7 +357,7 @@ class BillingClient:
         budget_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         budget_amount: Missing[int] = UNSET,
         prevent_further_usage: Missing[bool] = UNSET,
@@ -380,7 +380,7 @@ class BillingClient:
         org: str,
         budget_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType
@@ -447,7 +447,7 @@ class BillingClient:
         org: str,
         budget_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType,
     ) -> Response[
@@ -462,7 +462,7 @@ class BillingClient:
         budget_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         budget_amount: Missing[int] = UNSET,
         prevent_further_usage: Missing[bool] = UNSET,
@@ -485,7 +485,7 @@ class BillingClient:
         org: str,
         budget_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType
@@ -556,7 +556,7 @@ class BillingClient:
         user: Missing[str] = UNSET,
         model: Missing[str] = UNSET,
         product: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         BillingPremiumRequestUsageReportOrg,
@@ -618,7 +618,7 @@ class BillingClient:
         user: Missing[str] = UNSET,
         model: Missing[str] = UNSET,
         product: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         BillingPremiumRequestUsageReportOrg,
@@ -677,7 +677,7 @@ class BillingClient:
         year: Missing[int] = UNSET,
         month: Missing[int] = UNSET,
         day: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[BillingUsageReport, BillingUsageReportTypeForResponse]:
         """billing/get-github-billing-usage-report-org
@@ -725,7 +725,7 @@ class BillingClient:
         year: Missing[int] = UNSET,
         month: Missing[int] = UNSET,
         day: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[BillingUsageReport, BillingUsageReportTypeForResponse]:
         """billing/get-github-billing-usage-report-org
@@ -776,7 +776,7 @@ class BillingClient:
         repository: Missing[str] = UNSET,
         product: Missing[str] = UNSET,
         sku: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         BillingUsageSummaryReportOrg, BillingUsageSummaryReportOrgTypeForResponse
@@ -839,7 +839,7 @@ class BillingClient:
         repository: Missing[str] = UNSET,
         product: Missing[str] = UNSET,
         sku: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         BillingUsageSummaryReportOrg, BillingUsageSummaryReportOrgTypeForResponse
@@ -901,7 +901,7 @@ class BillingClient:
         day: Missing[int] = UNSET,
         model: Missing[str] = UNSET,
         product: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         BillingPremiumRequestUsageReportUser,
@@ -961,7 +961,7 @@ class BillingClient:
         day: Missing[int] = UNSET,
         model: Missing[str] = UNSET,
         product: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         BillingPremiumRequestUsageReportUser,
@@ -1019,7 +1019,7 @@ class BillingClient:
         year: Missing[int] = UNSET,
         month: Missing[int] = UNSET,
         day: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[BillingUsageReportUser, BillingUsageReportUserTypeForResponse]:
         """billing/get-github-billing-usage-report-user
@@ -1067,7 +1067,7 @@ class BillingClient:
         year: Missing[int] = UNSET,
         month: Missing[int] = UNSET,
         day: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[BillingUsageReportUser, BillingUsageReportUserTypeForResponse]:
         """billing/get-github-billing-usage-report-user
@@ -1118,7 +1118,7 @@ class BillingClient:
         repository: Missing[str] = UNSET,
         product: Missing[str] = UNSET,
         sku: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         BillingUsageSummaryReportUser, BillingUsageSummaryReportUserTypeForResponse
@@ -1182,7 +1182,7 @@ class BillingClient:
         repository: Missing[str] = UNSET,
         product: Missing[str] = UNSET,
         sku: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         BillingUsageSummaryReportUser, BillingUsageSummaryReportUserTypeForResponse

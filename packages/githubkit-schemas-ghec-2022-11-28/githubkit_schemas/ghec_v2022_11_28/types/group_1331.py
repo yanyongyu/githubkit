@@ -13,37 +13,27 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsPostBodyType(TypedDict):
-    """OrgsOrgTeamsPostBody"""
+class OrgsOrgSettingsNetworkConfigurationsPostBodyType(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
 
     name: str
-    description: NotRequired[str]
-    maintainers: NotRequired[list[str]]
-    repo_names: NotRequired[list[str]]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push"]]
-    parent_team_id: NotRequired[int]
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
-class OrgsOrgTeamsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsPostBody"""
+class OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
 
     name: str
-    description: NotRequired[str]
-    maintainers: NotRequired[list[str]]
-    repo_names: NotRequired[list[str]]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push"]]
-    parent_team_id: NotRequired[int]
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgTeamsPostBodyType",
-    "OrgsOrgTeamsPostBodyTypeForResponse",
+    "OrgsOrgSettingsNetworkConfigurationsPostBodyType",
+    "OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse",
 )

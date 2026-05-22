@@ -9,49 +9,117 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal
-from typing_extensions import TypeAlias, TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
+class UsersUsernameCopilotSpacesSpaceNumberPutBodyType(TypedDict):
+    """UsersUsernameCopilotSpacesSpaceNumberPutBody"""
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
+    name: NotRequired[str]
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "no_access"]]
+    resources_attributes: NotRequired[
+        list[
+            UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType
+        ]
     ]
-    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
+class UsersUsernameCopilotSpacesSpaceNumberPutBodyTypeForResponse(TypedDict):
+    """UsersUsernameCopilotSpacesSpaceNumberPutBody"""
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
+    name: NotRequired[str]
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "no_access"]]
+    resources_attributes: NotRequired[
+        list[
+            UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse
+        ]
     ]
-    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse
 
 
-UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType: TypeAlias = (
-    dict[str, Any]
-)
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType(
+    TypedDict
+):
+    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
 
-Resource-specific metadata.
-"""
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType
+    ]
 
 
-UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
 
-Resource-specific metadata.
-"""
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
+    ]
+
+
+class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType(
+    TypedDict
+):
+    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
+    data
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
+
+
+class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
+    data
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse",
+    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType",
+    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
+    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType",
+    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse",
+    "UsersUsernameCopilotSpacesSpaceNumberPutBodyType",
+    "UsersUsernameCopilotSpacesSpaceNumberPutBodyTypeForResponse",
 )

@@ -18,18 +18,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSettingsImmutableReleasesPutBody(GitHubModel):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgProjectsV2ProjectNumberViewsPostBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
-    enforced_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls how immutable releases are enforced in the organization."
+    name: str = Field(description="The name of the view.")
+    layout: Literal["table", "board", "roadmap"] = Field(
+        description="The layout of the view."
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    filter_: Missing[str] = Field(
         default=UNSET,
-        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints.",
+        alias="filter",
+        description="The filter query for the view. See [Filtering projects](https://docs.github.com/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
+    )
+    visible_fields: Missing[list[int]] = Field(
+        default=UNSET,
+        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
     )
 
 
-model_rebuild(OrgsOrgSettingsImmutableReleasesPutBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberViewsPostBody)
 
-__all__ = ("OrgsOrgSettingsImmutableReleasesPutBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberViewsPostBody",)

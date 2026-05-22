@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING
 from weakref import ref
 
 from githubkit.typing import Missing
@@ -59,7 +59,7 @@ class ClassroomClient:
         self,
         assignment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ClassroomAssignment, ClassroomAssignmentTypeForResponse]:
         """classroom/get-an-assignment
@@ -92,7 +92,7 @@ class ClassroomClient:
         self,
         assignment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ClassroomAssignment, ClassroomAssignmentTypeForResponse]:
         """classroom/get-an-assignment
@@ -127,7 +127,7 @@ class ClassroomClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ClassroomAcceptedAssignment],
@@ -168,7 +168,7 @@ class ClassroomClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ClassroomAcceptedAssignment],
@@ -207,7 +207,7 @@ class ClassroomClient:
         self,
         assignment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ClassroomAssignmentGrade], list[ClassroomAssignmentGradeTypeForResponse]
@@ -242,7 +242,7 @@ class ClassroomClient:
         self,
         assignment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ClassroomAssignmentGrade], list[ClassroomAssignmentGradeTypeForResponse]
@@ -278,7 +278,7 @@ class ClassroomClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleClassroom], list[SimpleClassroomTypeForResponse]]:
         """classroom/list-classrooms
@@ -315,7 +315,7 @@ class ClassroomClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleClassroom], list[SimpleClassroomTypeForResponse]]:
         """classroom/list-classrooms
@@ -351,7 +351,7 @@ class ClassroomClient:
         self,
         classroom_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Classroom, ClassroomTypeForResponse]:
         """classroom/get-a-classroom
@@ -384,7 +384,7 @@ class ClassroomClient:
         self,
         classroom_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Classroom, ClassroomTypeForResponse]:
         """classroom/get-a-classroom
@@ -419,7 +419,7 @@ class ClassroomClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentTypeForResponse]
@@ -459,7 +459,7 @@ class ClassroomClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentTypeForResponse]

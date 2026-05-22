@@ -14,26 +14,62 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0050 import MilestoneType, MilestoneTypeForResponse
+from .group_0126 import TeamSimpleType, TeamSimpleTypeForResponse
+from .group_0173 import AutoMergeType, AutoMergeTypeForResponse
+from .group_0418 import (
+    PullRequestPropLabelsItemsType,
+    PullRequestPropLabelsItemsTypeForResponse,
+)
+from .group_0419 import (
+    PullRequestPropBaseType,
+    PullRequestPropBaseTypeForResponse,
+    PullRequestPropHeadType,
+    PullRequestPropHeadTypeForResponse,
+)
+from .group_0420 import PullRequestPropLinksType, PullRequestPropLinksTypeForResponse
 
 
-class PullRequestReviewType(TypedDict):
-    """Pull Request Review
+class PullRequestType(TypedDict):
+    """Pull Request
 
-    Pull Request Reviews are reviews on pull requests.
+    Pull requests let you tell others about changes you've pushed to a repository on
+    GitHub. Once a pull request is sent, interested parties can review the set of
+    changes, discuss potential modifications, and even push follow-up commits if
+    necessary.
     """
 
+    url: str
     id: int
     node_id: str
-    user: Union[None, SimpleUserType]
-    body: str
-    state: str
     html_url: str
-    pull_request_url: str
-    links: PullRequestReviewPropLinksType
-    submitted_at: NotRequired[_dt.datetime]
-    commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: Literal["open", "closed"]
+    locked: bool
+    title: str
+    user: SimpleUserType
+    body: Union[str, None]
+    labels: list[PullRequestPropLabelsItemsType]
+    milestone: Union[None, MilestoneType]
+    active_lock_reason: NotRequired[Union[str, None]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    closed_at: Union[_dt.datetime, None]
+    merged_at: Union[_dt.datetime, None]
+    assignees: NotRequired[list[SimpleUserType]]
+    requested_reviewers: NotRequired[list[SimpleUserType]]
+    requested_teams: NotRequired[list[TeamSimpleType]]
+    head: PullRequestPropHeadType
+    base: PullRequestPropBaseType
+    links: PullRequestPropLinksType
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -44,26 +80,62 @@ class PullRequestReviewType(TypedDict):
         "NONE",
         "OWNER",
     ]
+    auto_merge: Union[AutoMergeType, None]
+    draft: NotRequired[bool]
+    merged: bool
+    mergeable: Union[bool, None]
+    rebaseable: NotRequired[Union[bool, None]]
+    mergeable_state: str
+    merged_by: Union[None, SimpleUserType]
+    comments: int
+    review_comments: int
+    maintainer_can_modify: bool
+    commits: int
+    additions: int
+    deletions: int
+    changed_files: int
 
 
-class PullRequestReviewTypeForResponse(TypedDict):
-    """Pull Request Review
+class PullRequestTypeForResponse(TypedDict):
+    """Pull Request
 
-    Pull Request Reviews are reviews on pull requests.
+    Pull requests let you tell others about changes you've pushed to a repository on
+    GitHub. Once a pull request is sent, interested parties can review the set of
+    changes, discuss potential modifications, and even push follow-up commits if
+    necessary.
     """
 
+    url: str
     id: int
     node_id: str
-    user: Union[None, SimpleUserTypeForResponse]
-    body: str
-    state: str
     html_url: str
-    pull_request_url: str
-    links: PullRequestReviewPropLinksTypeForResponse
-    submitted_at: NotRequired[str]
-    commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: Literal["open", "closed"]
+    locked: bool
+    title: str
+    user: SimpleUserTypeForResponse
+    body: Union[str, None]
+    labels: list[PullRequestPropLabelsItemsTypeForResponse]
+    milestone: Union[None, MilestoneTypeForResponse]
+    active_lock_reason: NotRequired[Union[str, None]]
+    created_at: str
+    updated_at: str
+    closed_at: Union[str, None]
+    merged_at: Union[str, None]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    requested_reviewers: NotRequired[list[SimpleUserTypeForResponse]]
+    requested_teams: NotRequired[list[TeamSimpleTypeForResponse]]
+    head: PullRequestPropHeadTypeForResponse
+    base: PullRequestPropBaseTypeForResponse
+    links: PullRequestPropLinksTypeForResponse
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -74,53 +146,23 @@ class PullRequestReviewTypeForResponse(TypedDict):
         "NONE",
         "OWNER",
     ]
-
-
-class PullRequestReviewPropLinksType(TypedDict):
-    """PullRequestReviewPropLinks"""
-
-    html: PullRequestReviewPropLinksPropHtmlType
-    pull_request: PullRequestReviewPropLinksPropPullRequestType
-
-
-class PullRequestReviewPropLinksTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinks"""
-
-    html: PullRequestReviewPropLinksPropHtmlTypeForResponse
-    pull_request: PullRequestReviewPropLinksPropPullRequestTypeForResponse
-
-
-class PullRequestReviewPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewPropLinksPropHtmlTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
-
-    href: str
-
-
-class PullRequestReviewPropLinksPropPullRequestTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
-
-    href: str
+    auto_merge: Union[AutoMergeTypeForResponse, None]
+    draft: NotRequired[bool]
+    merged: bool
+    mergeable: Union[bool, None]
+    rebaseable: NotRequired[Union[bool, None]]
+    mergeable_state: str
+    merged_by: Union[None, SimpleUserTypeForResponse]
+    comments: int
+    review_comments: int
+    maintainer_can_modify: bool
+    commits: int
+    additions: int
+    deletions: int
+    changed_files: int
 
 
 __all__ = (
-    "PullRequestReviewPropLinksPropHtmlType",
-    "PullRequestReviewPropLinksPropHtmlTypeForResponse",
-    "PullRequestReviewPropLinksPropPullRequestType",
-    "PullRequestReviewPropLinksPropPullRequestTypeForResponse",
-    "PullRequestReviewPropLinksType",
-    "PullRequestReviewPropLinksTypeForResponse",
-    "PullRequestReviewType",
-    "PullRequestReviewTypeForResponse",
+    "PullRequestType",
+    "PullRequestTypeForResponse",
 )

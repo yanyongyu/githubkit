@@ -13,44 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0491 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0492 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0493 import (
+from .group_0453 import (
+    SecretScanningLocationType,
+    SecretScanningLocationTypeForResponse,
+)
+from .group_0498 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0499 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0494 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0534 import (
+from .group_0500 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0540 import (
     SecretScanningAlertWebhookType,
     SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecretScanningAlertValidatedType(TypedDict):
-    """secret_scanning_alert validated event"""
+class WebhookSecretScanningAlertLocationCreatedType(TypedDict):
+    """Secret Scanning Alert Location Created Event"""
 
-    action: Literal["validated"]
+    action: Literal["created"]
     alert: SecretScanningAlertWebhookType
-    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    location: SecretScanningLocationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookSecretScanningAlertValidatedTypeForResponse(TypedDict):
-    """secret_scanning_alert validated event"""
+class WebhookSecretScanningAlertLocationCreatedTypeForResponse(TypedDict):
+    """Secret Scanning Alert Location Created Event"""
 
-    action: Literal["validated"]
+    action: Literal["created"]
     alert: SecretScanningAlertWebhookTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    location: SecretScanningLocationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookSecretScanningAlertValidatedType",
-    "WebhookSecretScanningAlertValidatedTypeForResponse",
+    "WebhookSecretScanningAlertLocationCreatedType",
+    "WebhookSecretScanningAlertLocationCreatedTypeForResponse",
 )

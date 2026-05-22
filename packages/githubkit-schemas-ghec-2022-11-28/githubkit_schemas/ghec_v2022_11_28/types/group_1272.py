@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedUsersPostBodyType(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
 
-    selected_usernames: list[str]
+    selected_teams: list[str]
 
 
-class OrgsOrgCopilotBillingSelectedUsersPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
 
-    selected_usernames: list[str]
+    selected_teams: list[str]
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedUsersPostBodyType",
-    "OrgsOrgCopilotBillingSelectedUsersPostBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteBodyTypeForResponse",
 )

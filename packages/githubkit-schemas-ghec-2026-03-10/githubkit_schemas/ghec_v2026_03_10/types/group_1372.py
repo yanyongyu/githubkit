@@ -12,23 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoAutolinksPostBodyType(TypedDict):
-    """ReposOwnerRepoAutolinksPostBody"""
+class ReposOwnerRepoAttestationsPostResponse201Type(TypedDict):
+    """ReposOwnerRepoAttestationsPostResponse201"""
 
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: NotRequired[bool]
+    id: NotRequired[int]
 
 
-class ReposOwnerRepoAutolinksPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoAutolinksPostBody"""
+class ReposOwnerRepoAttestationsPostResponse201TypeForResponse(TypedDict):
+    """ReposOwnerRepoAttestationsPostResponse201"""
 
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: NotRequired[bool]
+    id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoAutolinksPostBodyType",
-    "ReposOwnerRepoAutolinksPostBodyTypeForResponse",
+    "ReposOwnerRepoAttestationsPostResponse201Type",
+    "ReposOwnerRepoAttestationsPostResponse201TypeForResponse",
 )

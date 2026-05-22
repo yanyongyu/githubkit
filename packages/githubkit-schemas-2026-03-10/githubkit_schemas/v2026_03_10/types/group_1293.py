@@ -9,51 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody"""
+class ReposOwnerRepoInvitationsInvitationIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
 
-    issue_field_values: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
-        ]
-    ]
+    permissions: NotRequired[Literal["read", "write", "maintain", "triage", "admin"]]
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody"""
+class ReposOwnerRepoInvitationsInvitationIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
 
-    issue_field_values: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse
-        ]
-    ]
-
-
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems"""
-
-    field_id: int
-    value: Union[str, float]
-
-
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems"""
-
-    field_id: int
-    value: Union[str, float]
+    permissions: NotRequired[Literal["read", "write", "maintain", "triage", "admin"]]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse",
+    "ReposOwnerRepoInvitationsInvitationIdPatchBodyType",
+    "ReposOwnerRepoInvitationsInvitationIdPatchBodyTypeForResponse",
 )

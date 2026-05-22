@@ -11,26 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type(TypedDict):
-    """ReposOwnerRepoDependencyGraphSnapshotsPostResponse201"""
-
-    id: int
-    created_at: str
-    result: str
-    message: str
+from .group_0303 import CheckRunType, CheckRunTypeForResponse
 
 
-class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse(TypedDict):
-    """ReposOwnerRepoDependencyGraphSnapshotsPostResponse201"""
+class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
 
-    id: int
-    created_at: str
-    result: str
-    message: str
+    total_count: int
+    check_runs: list[CheckRunType]
+
+
+class ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
+
+    total_count: int
+    check_runs: list[CheckRunTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type",
-    "ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse",
+    "ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",
+    "ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse",
 )

@@ -9,93 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyType(TypedDict):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_settings: NotRequired[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
-        ]
-    ]
-    custom_pattern_settings: NotRequired[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
-        ]
-    ]
+    type: Literal["Issue", "PullRequest"]
+    id: NotRequired[int]
+    owner: str
+    repo: str
+    number: int
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_settings: NotRequired[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse
-        ]
-    ]
-    custom_pattern_settings: NotRequired[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse
-        ]
-    ]
-
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
-    ems
-    """
-
-    token_type: NotRequired[str]
-    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
-
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
-    ems
-    """
-
-    token_type: NotRequired[str]
-    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
-
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
-    s
-    """
-
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
-
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
-    s
-    """
-
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
+    type: Literal["Issue", "PullRequest"]
+    id: NotRequired[int]
+    owner: str
+    repo: str
+    number: int
 
 
 __all__ = (
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyType",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse",
 )

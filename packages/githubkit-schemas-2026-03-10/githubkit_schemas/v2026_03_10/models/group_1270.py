@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,16 +18,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoGitBlobsPostBody(GitHubModel):
-    """ReposOwnerRepoGitBlobsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
 
-    content: str = Field(description="The new blob's content.")
-    encoding: Missing[str] = Field(
+    total_count: int = Field(
+        description="The number of deployment branch policies for the environment."
+    )
+    branch_policies: list[DeploymentBranchPolicy] = Field()
+
+
+class DeploymentBranchPolicy(GitHubModel):
+    """Deployment branch policy
+
+    Details of a deployment branch or tag policy.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the branch or tag policy."
+    )
+    node_id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(
         default=UNSET,
-        description='The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported.',
+        description="The name pattern that branches or tags must match in order to deploy to the environment.",
+    )
+    type: Missing[Literal["branch", "tag"]] = Field(
+        default=UNSET, description="Whether this rule targets a branch or tag."
     )
 
 
-model_rebuild(ReposOwnerRepoGitBlobsPostBody)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
+)
+model_rebuild(DeploymentBranchPolicy)
 
-__all__ = ("ReposOwnerRepoGitBlobsPostBody",)
+__all__ = (
+    "DeploymentBranchPolicy",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200",
+)

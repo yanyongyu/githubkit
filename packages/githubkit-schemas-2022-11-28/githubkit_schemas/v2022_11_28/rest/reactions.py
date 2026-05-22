@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -66,7 +66,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-commit-comment
@@ -115,7 +115,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-commit-comment
@@ -158,7 +158,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
@@ -171,7 +171,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -184,7 +184,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
@@ -238,7 +238,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
@@ -251,7 +251,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -264,7 +264,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
@@ -318,7 +318,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """reactions/delete-for-commit-comment
@@ -351,7 +351,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """reactions/delete-for-commit-comment
@@ -390,7 +390,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-issue-comment
@@ -439,7 +439,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-issue-comment
@@ -482,7 +482,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
@@ -495,7 +495,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -508,7 +508,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
@@ -564,7 +564,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
@@ -577,7 +577,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -590,7 +590,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
@@ -646,7 +646,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """reactions/delete-for-issue-comment
@@ -679,7 +679,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """reactions/delete-for-issue-comment
@@ -718,7 +718,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-issue
@@ -768,7 +768,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-issue
@@ -812,7 +812,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
@@ -825,7 +825,7 @@ class ReactionsClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -838,7 +838,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
@@ -892,7 +892,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
@@ -905,7 +905,7 @@ class ReactionsClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -918,7 +918,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
@@ -972,7 +972,7 @@ class ReactionsClient:
         issue_number: int,
         reaction_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """reactions/delete-for-issue
@@ -1005,7 +1005,7 @@ class ReactionsClient:
         issue_number: int,
         reaction_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """reactions/delete-for-issue
@@ -1044,7 +1044,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-pull-request-review-comment
@@ -1093,7 +1093,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-pull-request-review-comment
@@ -1136,7 +1136,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
@@ -1149,7 +1149,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -1162,7 +1162,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
@@ -1218,7 +1218,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
@@ -1231,7 +1231,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -1244,7 +1244,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
@@ -1300,7 +1300,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """reactions/delete-for-pull-request-comment
@@ -1335,7 +1335,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """reactions/delete-for-pull-request-comment
@@ -1374,7 +1374,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-release
@@ -1421,7 +1421,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-release
@@ -1464,7 +1464,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
@@ -1477,7 +1477,7 @@ class ReactionsClient:
         release_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
@@ -1488,7 +1488,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
@@ -1542,7 +1542,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
@@ -1555,7 +1555,7 @@ class ReactionsClient:
         release_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
@@ -1566,7 +1566,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
@@ -1620,7 +1620,7 @@ class ReactionsClient:
         release_id: int,
         reaction_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """reactions/delete-for-release
@@ -1653,7 +1653,7 @@ class ReactionsClient:
         release_id: int,
         reaction_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """reactions/delete-for-release

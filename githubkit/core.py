@@ -4,7 +4,7 @@ from contextvars import ContextVar
 from datetime import datetime, timedelta, timezone
 import time
 from types import TracebackType
-from typing import TYPE_CHECKING, Any, Generic, Optional, TypeVar, Union, cast, overload
+from typing import TYPE_CHECKING, Any, Generic, TypeVar, cast, overload
 
 import anyio
 import hishel
@@ -80,23 +80,23 @@ class GitHubCore(Generic[A]):
         self: "GitHubCore[UnauthAuthStrategy]",
         auth: None = None,
         *,
-        base_url: Optional[Union[str, httpx.URL]] = None,
-        accept_format: Optional[str] = None,
-        previews: Optional[Sequence[str]] = None,
-        user_agent: Optional[str] = None,
+        base_url: str | httpx.URL | None = None,
+        accept_format: str | None = None,
+        previews: Sequence[str] | None = None,
+        user_agent: str | None = None,
         follow_redirects: bool = True,
-        timeout: Optional[Union[float, httpx.Timeout]] = None,
-        ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
+        timeout: float | httpx.Timeout | None = None,
+        ssl_verify: "bool | ssl.SSLContext" = ...,
         trust_env: bool = True,
-        proxy: Optional[ProxyTypes] = None,
-        transport: Optional[httpx.BaseTransport] = None,
-        async_transport: Optional[httpx.AsyncBaseTransport] = None,
-        event_hooks: Optional[EventHookTypes] = None,
-        async_event_hooks: Optional[EventHookTypes] = None,
-        cache_strategy: Optional[BaseCacheStrategy] = None,
+        proxy: ProxyTypes | None = None,
+        transport: httpx.BaseTransport | None = None,
+        async_transport: httpx.AsyncBaseTransport | None = None,
+        event_hooks: EventHookTypes | None = None,
+        async_event_hooks: EventHookTypes | None = None,
+        cache_strategy: BaseCacheStrategy | None = None,
         http_cache: bool = True,
-        throttler: Optional[BaseThrottler] = None,
-        auto_retry: Union[bool, RetryDecisionFunc] = True,
+        throttler: BaseThrottler | None = None,
+        auto_retry: bool | RetryDecisionFunc = True,
         rest_api_validate_body: bool = True,
     ): ...
 
@@ -106,23 +106,23 @@ class GitHubCore(Generic[A]):
         self: "GitHubCore[TokenAuthStrategy]",
         auth: str,
         *,
-        base_url: Optional[Union[str, httpx.URL]] = None,
-        accept_format: Optional[str] = None,
-        previews: Optional[Sequence[str]] = None,
-        user_agent: Optional[str] = None,
+        base_url: str | httpx.URL | None = None,
+        accept_format: str | None = None,
+        previews: Sequence[str] | None = None,
+        user_agent: str | None = None,
         follow_redirects: bool = True,
-        timeout: Optional[Union[float, httpx.Timeout]] = None,
-        ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
+        timeout: float | httpx.Timeout | None = None,
+        ssl_verify: "bool | ssl.SSLContext" = ...,
         trust_env: bool = True,
-        proxy: Optional[ProxyTypes] = None,
-        transport: Optional[httpx.BaseTransport] = None,
-        async_transport: Optional[httpx.AsyncBaseTransport] = None,
-        event_hooks: Optional[EventHookTypes] = None,
-        async_event_hooks: Optional[EventHookTypes] = None,
-        cache_strategy: Optional[BaseCacheStrategy] = None,
+        proxy: ProxyTypes | None = None,
+        transport: httpx.BaseTransport | None = None,
+        async_transport: httpx.AsyncBaseTransport | None = None,
+        event_hooks: EventHookTypes | None = None,
+        async_event_hooks: EventHookTypes | None = None,
+        cache_strategy: BaseCacheStrategy | None = None,
         http_cache: bool = True,
-        throttler: Optional[BaseThrottler] = None,
-        auto_retry: Union[bool, RetryDecisionFunc] = True,
+        throttler: BaseThrottler | None = None,
+        auto_retry: bool | RetryDecisionFunc = True,
         rest_api_validate_body: bool = True,
     ): ...
 
@@ -132,48 +132,48 @@ class GitHubCore(Generic[A]):
         self: "GitHubCore[AS]",
         auth: AS,
         *,
-        base_url: Optional[Union[str, httpx.URL]] = None,
-        accept_format: Optional[str] = None,
-        previews: Optional[Sequence[str]] = None,
-        user_agent: Optional[str] = None,
+        base_url: str | httpx.URL | None = None,
+        accept_format: str | None = None,
+        previews: Sequence[str] | None = None,
+        user_agent: str | None = None,
         follow_redirects: bool = True,
-        timeout: Optional[Union[float, httpx.Timeout]] = None,
-        ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
+        timeout: float | httpx.Timeout | None = None,
+        ssl_verify: "bool | ssl.SSLContext" = ...,
         trust_env: bool = True,
-        proxy: Optional[ProxyTypes] = None,
-        transport: Optional[httpx.BaseTransport] = None,
-        async_transport: Optional[httpx.AsyncBaseTransport] = None,
-        event_hooks: Optional[EventHookTypes] = None,
-        async_event_hooks: Optional[EventHookTypes] = None,
-        cache_strategy: Optional[BaseCacheStrategy] = None,
+        proxy: ProxyTypes | None = None,
+        transport: httpx.BaseTransport | None = None,
+        async_transport: httpx.AsyncBaseTransport | None = None,
+        event_hooks: EventHookTypes | None = None,
+        async_event_hooks: EventHookTypes | None = None,
+        cache_strategy: BaseCacheStrategy | None = None,
         http_cache: bool = True,
-        throttler: Optional[BaseThrottler] = None,
-        auto_retry: Union[bool, RetryDecisionFunc] = True,
+        throttler: BaseThrottler | None = None,
+        auto_retry: bool | RetryDecisionFunc = True,
         rest_api_validate_body: bool = True,
     ): ...
 
     def __init__(
         self,
-        auth: Optional[Union[A, str]] = None,
+        auth: A | str | None = None,
         *,
-        config: Optional[Config] = None,
-        base_url: Optional[Union[str, httpx.URL]] = None,
-        accept_format: Optional[str] = None,
-        previews: Optional[Sequence[str]] = None,
-        user_agent: Optional[str] = None,
+        config: Config | None = None,
+        base_url: str | httpx.URL | None = None,
+        accept_format: str | None = None,
+        previews: Sequence[str] | None = None,
+        user_agent: str | None = None,
         follow_redirects: bool = True,
-        timeout: Optional[Union[float, httpx.Timeout]] = None,
-        ssl_verify: Union[bool, "ssl.SSLContext"] = True,
+        timeout: float | httpx.Timeout | None = None,
+        ssl_verify: "bool | ssl.SSLContext" = True,
         trust_env: bool = True,
-        proxy: Optional[ProxyTypes] = None,
-        transport: Optional[httpx.BaseTransport] = None,
-        async_transport: Optional[httpx.AsyncBaseTransport] = None,
-        event_hooks: Optional[EventHookTypes] = None,
-        async_event_hooks: Optional[EventHookTypes] = None,
-        cache_strategy: Optional[BaseCacheStrategy] = None,
+        proxy: ProxyTypes | None = None,
+        transport: httpx.BaseTransport | None = None,
+        async_transport: httpx.AsyncBaseTransport | None = None,
+        event_hooks: EventHookTypes | None = None,
+        async_event_hooks: EventHookTypes | None = None,
+        cache_strategy: BaseCacheStrategy | None = None,
         http_cache: bool = True,
-        throttler: Optional[BaseThrottler] = None,
-        auto_retry: Union[bool, RetryDecisionFunc] = True,
+        throttler: BaseThrottler | None = None,
+        auto_retry: bool | RetryDecisionFunc = True,
         rest_api_validate_body: bool = True,
     ):
         auth = auth or UnauthAuthStrategy()  # type: ignore
@@ -202,10 +202,10 @@ class GitHubCore(Generic[A]):
             rest_api_validate_body=rest_api_validate_body,
         )
 
-        self.__sync_client: ContextVar[Optional[httpx.Client]] = ContextVar(
+        self.__sync_client: ContextVar[httpx.Client | None] = ContextVar(
             "sync_client", default=None
         )
-        self.__async_client: ContextVar[Optional[httpx.AsyncClient]] = ContextVar(
+        self.__async_client: ContextVar[httpx.AsyncClient | None] = ContextVar(
             "async_client", default=None
         )
 
@@ -218,9 +218,9 @@ class GitHubCore(Generic[A]):
 
     def __exit__(
         self,
-        exc_type: Optional[type[BaseException]] = None,
-        exc_value: Optional[BaseException] = None,
-        traceback: Optional[TracebackType] = None,
+        exc_type: type[BaseException] | None = None,
+        exc_value: BaseException | None = None,
+        traceback: TracebackType | None = None,
     ):
         cast(httpx.Client, self.__sync_client.get()).close()
         self.__sync_client.set(None)
@@ -234,9 +234,9 @@ class GitHubCore(Generic[A]):
 
     async def __aexit__(
         self,
-        exc_type: Optional[type[BaseException]] = None,
-        exc_value: Optional[BaseException] = None,
-        traceback: Optional[TracebackType] = None,
+        exc_type: type[BaseException] | None = None,
+        exc_value: BaseException | None = None,
+        traceback: TracebackType | None = None,
     ):
         await cast(httpx.AsyncClient, self.__async_client.get()).aclose()
         self.__async_client.set(None)
@@ -320,13 +320,13 @@ class GitHubCore(Generic[A]):
         method: str,
         url: URLTypes,
         *,
-        params: Optional[QueryParamTypes] = None,
-        content: Optional[ContentTypes] = None,
-        data: Optional[dict] = None,
-        files: Optional[RequestFiles] = None,
-        json: Optional[Any] = None,
-        headers: Optional[HeaderTypes] = None,
-        cookies: Optional[CookieTypes] = None,
+        params: QueryParamTypes | None = None,
+        content: ContentTypes | None = None,
+        data: dict | None = None,
+        files: RequestFiles | None = None,
+        json: Any | None = None,
+        headers: HeaderTypes | None = None,
+        cookies: CookieTypes | None = None,
         stream: bool = False,
     ) -> httpx.Response:
         with self.get_sync_client() as client:
@@ -355,13 +355,13 @@ class GitHubCore(Generic[A]):
         method: str,
         url: URLTypes,
         *,
-        params: Optional[QueryParamTypes] = None,
-        content: Optional[ContentTypes] = None,
-        data: Optional[dict] = None,
-        files: Optional[RequestFiles] = None,
-        json: Optional[Any] = None,
-        headers: Optional[HeaderTypes] = None,
-        cookies: Optional[CookieTypes] = None,
+        params: QueryParamTypes | None = None,
+        content: ContentTypes | None = None,
+        data: dict | None = None,
+        files: RequestFiles | None = None,
+        json: Any | None = None,
+        headers: HeaderTypes | None = None,
+        cookies: CookieTypes | None = None,
         stream: bool = False,
     ) -> httpx.Response:
         async with (
@@ -392,7 +392,7 @@ class GitHubCore(Generic[A]):
         self,
         response: httpx.Response,
         response_model: type[T],
-        error_models: Optional[Mapping[str, type]] = None,
+        error_models: Mapping[str, type] | None = None,
     ) -> Response[T]: ...
 
     @overload
@@ -400,7 +400,7 @@ class GitHubCore(Generic[A]):
         self,
         response: httpx.Response,
         response_model: UnsetType = UNSET,
-        error_models: Optional[Mapping[str, type]] = None,
+        error_models: Mapping[str, type] | None = None,
     ) -> Response[Any]: ...
 
     def _check_is_error(self, response: httpx.Response) -> bool:
@@ -410,9 +410,9 @@ class GitHubCore(Generic[A]):
     def _check(
         self,
         response: httpx.Response,
-        response_model: Union[type[T], UnsetType] = UNSET,
-        error_models: Optional[Mapping[str, Any]] = None,
-    ) -> Union[Response[T], Response[Any]]:
+        response_model: type[T] | UnsetType = UNSET,
+        error_models: Mapping[str, Any] | None = None,
+    ) -> Response[T] | Response[Any]:
         if self._check_is_error(response):
             error_models = error_models or {}
             status_code = str(response.status_code)
@@ -493,16 +493,16 @@ class GitHubCore(Generic[A]):
         method: str,
         url: URLTypes,
         *,
-        params: Optional[QueryParamTypes] = None,
-        content: Optional[ContentTypes] = None,
-        data: Optional[dict] = None,
-        files: Optional[RequestFiles] = None,
-        json: Optional[Any] = None,
-        headers: Optional[HeaderTypes] = None,
-        cookies: Optional[CookieTypes] = None,
+        params: QueryParamTypes | None = None,
+        content: ContentTypes | None = None,
+        data: dict | None = None,
+        files: RequestFiles | None = None,
+        json: Any | None = None,
+        headers: HeaderTypes | None = None,
+        cookies: CookieTypes | None = None,
         stream: bool = False,
         response_model: type[T],
-        error_models: Optional[Mapping[str, Any]] = None,
+        error_models: Mapping[str, Any] | None = None,
     ) -> Response[T]: ...
 
     @overload
@@ -511,16 +511,16 @@ class GitHubCore(Generic[A]):
         method: str,
         url: URLTypes,
         *,
-        params: Optional[QueryParamTypes] = None,
-        content: Optional[ContentTypes] = None,
-        data: Optional[dict] = None,
-        files: Optional[RequestFiles] = None,
-        json: Optional[Any] = None,
-        headers: Optional[HeaderTypes] = None,
-        cookies: Optional[CookieTypes] = None,
+        params: QueryParamTypes | None = None,
+        content: ContentTypes | None = None,
+        data: dict | None = None,
+        files: RequestFiles | None = None,
+        json: Any | None = None,
+        headers: HeaderTypes | None = None,
+        cookies: CookieTypes | None = None,
         stream: bool = False,
         response_model: UnsetType = UNSET,
-        error_models: Optional[Mapping[str, Any]] = None,
+        error_models: Mapping[str, Any] | None = None,
     ) -> Response[Any]: ...
 
     def request(
@@ -528,17 +528,17 @@ class GitHubCore(Generic[A]):
         method: str,
         url: URLTypes,
         *,
-        params: Optional[QueryParamTypes] = None,
-        content: Optional[ContentTypes] = None,
-        data: Optional[dict] = None,
-        files: Optional[RequestFiles] = None,
-        json: Optional[Any] = None,
-        headers: Optional[HeaderTypes] = None,
-        cookies: Optional[CookieTypes] = None,
+        params: QueryParamTypes | None = None,
+        content: ContentTypes | None = None,
+        data: dict | None = None,
+        files: RequestFiles | None = None,
+        json: Any | None = None,
+        headers: HeaderTypes | None = None,
+        cookies: CookieTypes | None = None,
         stream: bool = False,
-        response_model: Union[type[T], UnsetType] = UNSET,
-        error_models: Optional[Mapping[str, Any]] = None,
-    ) -> Union[Response[T], Response[Any]]:
+        response_model: type[T] | UnsetType = UNSET,
+        error_models: Mapping[str, Any] | None = None,
+    ) -> Response[T] | Response[Any]:
         """Send a request.
 
         Response will be checked and the request will be retried if necessary.
@@ -583,16 +583,16 @@ class GitHubCore(Generic[A]):
         method: str,
         url: URLTypes,
         *,
-        params: Optional[QueryParamTypes] = None,
-        content: Optional[ContentTypes] = None,
-        data: Optional[dict] = None,
-        files: Optional[RequestFiles] = None,
-        json: Optional[Any] = None,
-        headers: Optional[HeaderTypes] = None,
-        cookies: Optional[CookieTypes] = None,
+        params: QueryParamTypes | None = None,
+        content: ContentTypes | None = None,
+        data: dict | None = None,
+        files: RequestFiles | None = None,
+        json: Any | None = None,
+        headers: HeaderTypes | None = None,
+        cookies: CookieTypes | None = None,
         stream: bool = False,
         response_model: type[T],
-        error_models: Optional[Mapping[str, Any]] = None,
+        error_models: Mapping[str, Any] | None = None,
     ) -> Response[T]: ...
 
     @overload
@@ -601,16 +601,16 @@ class GitHubCore(Generic[A]):
         method: str,
         url: URLTypes,
         *,
-        params: Optional[QueryParamTypes] = None,
-        content: Optional[ContentTypes] = None,
-        data: Optional[dict] = None,
-        files: Optional[RequestFiles] = None,
-        json: Optional[Any] = None,
-        headers: Optional[HeaderTypes] = None,
-        cookies: Optional[CookieTypes] = None,
+        params: QueryParamTypes | None = None,
+        content: ContentTypes | None = None,
+        data: dict | None = None,
+        files: RequestFiles | None = None,
+        json: Any | None = None,
+        headers: HeaderTypes | None = None,
+        cookies: CookieTypes | None = None,
         stream: bool = False,
         response_model: UnsetType = UNSET,
-        error_models: Optional[Mapping[str, Any]] = None,
+        error_models: Mapping[str, Any] | None = None,
     ) -> Response[Any]: ...
 
     async def arequest(
@@ -618,17 +618,17 @@ class GitHubCore(Generic[A]):
         method: str,
         url: URLTypes,
         *,
-        params: Optional[QueryParamTypes] = None,
-        content: Optional[ContentTypes] = None,
-        data: Optional[dict] = None,
-        files: Optional[RequestFiles] = None,
-        json: Optional[Any] = None,
-        headers: Optional[HeaderTypes] = None,
-        cookies: Optional[CookieTypes] = None,
+        params: QueryParamTypes | None = None,
+        content: ContentTypes | None = None,
+        data: dict | None = None,
+        files: RequestFiles | None = None,
+        json: Any | None = None,
+        headers: HeaderTypes | None = None,
+        cookies: CookieTypes | None = None,
         stream: bool = False,
-        response_model: Union[type[T], UnsetType] = UNSET,
-        error_models: Optional[Mapping[str, Any]] = None,
-    ) -> Union[Response[T], Response[Any]]:
+        response_model: type[T] | UnsetType = UNSET,
+        error_models: Mapping[str, Any] | None = None,
+    ) -> Response[T] | Response[Any]:
         """Asynchronously send a request.
 
         Response will be checked and the request will be retried if necessary.

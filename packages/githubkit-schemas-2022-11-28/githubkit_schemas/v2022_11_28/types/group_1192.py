@@ -9,70 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoActionsWorkflowsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
+class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
 
-    total_count: int
-    workflows: list[WorkflowType]
-
-
-class ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
-
-    total_count: int
-    workflows: list[WorkflowTypeForResponse]
+    environment_ids: list[int]
+    state: Literal["approved", "rejected"]
+    comment: str
 
 
-class WorkflowType(TypedDict):
-    """Workflow
+class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
 
-    A GitHub Actions workflow
-    """
-
-    id: int
-    node_id: str
-    name: str
-    path: str
-    state: Literal[
-        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
-    ]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    url: str
-    html_url: str
-    badge_url: str
-    deleted_at: NotRequired[_dt.datetime]
-
-
-class WorkflowTypeForResponse(TypedDict):
-    """Workflow
-
-    A GitHub Actions workflow
-    """
-
-    id: int
-    node_id: str
-    name: str
-    path: str
-    state: Literal[
-        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
-    ]
-    created_at: str
-    updated_at: str
-    url: str
-    html_url: str
-    badge_url: str
-    deleted_at: NotRequired[str]
+    environment_ids: list[int]
+    state: Literal["approved", "rejected"]
+    comment: str
 
 
 __all__ = (
-    "ReposOwnerRepoActionsWorkflowsGetResponse200Type",
-    "ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse",
-    "WorkflowType",
-    "WorkflowTypeForResponse",
+    "ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType",
+    "ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyTypeForResponse",
 )

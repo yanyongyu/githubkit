@@ -13,38 +13,34 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0238 import (
-    RepositoryRuleCopilotCodeReviewPropParametersType,
-    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
+    RepositoryRuleMaxFileSizePropParametersType,
+    RepositoryRuleMaxFileSizePropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleCopilotCodeReviewType(TypedDict):
-    """copilot_code_review
+class RepositoryRuleMaxFileSizeType(TypedDict):
+    """max_file_size
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and their premium requests quota has not
-    reached the limit.
+    Prevent commits with individual files that exceed the specified limit from being
+    pushed to the commit graph.
     """
 
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
 
 
-class RepositoryRuleCopilotCodeReviewTypeForResponse(TypedDict):
-    """copilot_code_review
+class RepositoryRuleMaxFileSizeTypeForResponse(TypedDict):
+    """max_file_size
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and their premium requests quota has not
-    reached the limit.
+    Prevent commits with individual files that exceed the specified limit from being
+    pushed to the commit graph.
     """
 
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[
-        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
-    ]
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleCopilotCodeReviewType",
-    "RepositoryRuleCopilotCodeReviewTypeForResponse",
+    "RepositoryRuleMaxFileSizeType",
+    "RepositoryRuleMaxFileSizeTypeForResponse",
 )

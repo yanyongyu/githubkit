@@ -14,19 +14,19 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0050 import MilestoneType, MilestoneTypeForResponse
-from .group_0491 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0493 import (
+from .group_0497 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0499 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0494 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0528 import WebhooksPullRequest5Type, WebhooksPullRequest5TypeForResponse
+from .group_0500 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0534 import WebhooksPullRequest5Type, WebhooksPullRequest5TypeForResponse
 
 
-class WebhookPullRequestMilestonedType(TypedDict):
-    """pull_request milestoned event"""
+class WebhookPullRequestDemilestonedType(TypedDict):
+    """pull_request demilestoned event"""
 
-    action: Literal["milestoned"]
+    action: Literal["demilestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     milestone: NotRequired[MilestoneType]
     number: int
@@ -36,10 +36,10 @@ class WebhookPullRequestMilestonedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookPullRequestMilestonedTypeForResponse(TypedDict):
-    """pull_request milestoned event"""
+class WebhookPullRequestDemilestonedTypeForResponse(TypedDict):
+    """pull_request demilestoned event"""
 
-    action: Literal["milestoned"]
+    action: Literal["demilestoned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     milestone: NotRequired[MilestoneTypeForResponse]
     number: int
@@ -50,6 +50,6 @@ class WebhookPullRequestMilestonedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookPullRequestMilestonedType",
-    "WebhookPullRequestMilestonedTypeForResponse",
+    "WebhookPullRequestDemilestonedType",
+    "WebhookPullRequestDemilestonedTypeForResponse",
 )

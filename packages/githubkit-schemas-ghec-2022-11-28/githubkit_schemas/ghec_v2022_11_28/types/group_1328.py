@@ -11,24 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0104 import NetworkConfigurationType, NetworkConfigurationTypeForResponse
+from .group_0243 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
-
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
-
-
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
 
     total_count: int
-    network_configurations: list[NetworkConfigurationTypeForResponse]
+    repositories: list[MinimalRepositoryType]
+
+
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse",
+    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type",
+    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse",
 )

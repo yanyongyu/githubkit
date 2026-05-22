@@ -9,56 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+
+class PageBuildStatusType(TypedDict):
+    """Page Build Status
+
+    Page Build Status
+    """
+
+    url: str
+    status: str
 
 
-class PullRequestPropHeadType(TypedDict):
-    """PullRequestPropHead"""
+class PageBuildStatusTypeForResponse(TypedDict):
+    """Page Build Status
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryType]
-    sha: str
-    user: Union[None, SimpleUserType]
+    Page Build Status
+    """
 
-
-class PullRequestPropHeadTypeForResponse(TypedDict):
-    """PullRequestPropHead"""
-
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryTypeForResponse]
-    sha: str
-    user: Union[None, SimpleUserTypeForResponse]
-
-
-class PullRequestPropBaseType(TypedDict):
-    """PullRequestPropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: SimpleUserType
-
-
-class PullRequestPropBaseTypeForResponse(TypedDict):
-    """PullRequestPropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryTypeForResponse
-    sha: str
-    user: SimpleUserTypeForResponse
+    url: str
+    status: str
 
 
 __all__ = (
-    "PullRequestPropBaseType",
-    "PullRequestPropBaseTypeForResponse",
-    "PullRequestPropHeadType",
-    "PullRequestPropHeadTypeForResponse",
+    "PageBuildStatusType",
+    "PageBuildStatusTypeForResponse",
 )

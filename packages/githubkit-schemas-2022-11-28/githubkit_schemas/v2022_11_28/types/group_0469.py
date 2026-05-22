@@ -9,73 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0295 import GitUserType, GitUserTypeForResponse
-from .group_0296 import VerificationType, VerificationTypeForResponse
+from typing_extensions import TypedDict
 
 
-class CommitSearchResultItemPropCommitType(TypedDict):
-    """CommitSearchResultItemPropCommit"""
+class ContentTrafficType(TypedDict):
+    """Content Traffic
 
-    author: CommitSearchResultItemPropCommitPropAuthorType
-    committer: Union[None, GitUserType]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeType
-    url: str
-    verification: NotRequired[VerificationType]
+    Content Traffic
+    """
 
-
-class CommitSearchResultItemPropCommitTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommit"""
-
-    author: CommitSearchResultItemPropCommitPropAuthorTypeForResponse
-    committer: Union[None, GitUserTypeForResponse]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeTypeForResponse
-    url: str
-    verification: NotRequired[VerificationTypeForResponse]
+    path: str
+    title: str
+    count: int
+    uniques: int
 
 
-class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
+class ContentTrafficTypeForResponse(TypedDict):
+    """Content Traffic
 
-    name: str
-    email: str
-    date: _dt.datetime
+    Content Traffic
+    """
 
-
-class CommitSearchResultItemPropCommitPropAuthorTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
-
-    name: str
-    email: str
-    date: str
-
-
-class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
-
-    sha: str
-    url: str
-
-
-class CommitSearchResultItemPropCommitPropTreeTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
-
-    sha: str
-    url: str
+    path: str
+    title: str
+    count: int
+    uniques: int
 
 
 __all__ = (
-    "CommitSearchResultItemPropCommitPropAuthorType",
-    "CommitSearchResultItemPropCommitPropAuthorTypeForResponse",
-    "CommitSearchResultItemPropCommitPropTreeType",
-    "CommitSearchResultItemPropCommitPropTreeTypeForResponse",
-    "CommitSearchResultItemPropCommitType",
-    "CommitSearchResultItemPropCommitTypeForResponse",
+    "ContentTrafficType",
+    "ContentTrafficTypeForResponse",
 )

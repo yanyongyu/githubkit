@@ -9,31 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoImportPutBodyType(TypedDict):
-    """ReposOwnerRepoImportPutBody"""
+class ReposOwnerRepoGitBlobsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitBlobsPostBody"""
 
-    vcs_url: str
-    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
-    vcs_username: NotRequired[str]
-    vcs_password: NotRequired[str]
-    tfvc_project: NotRequired[str]
+    content: str
+    encoding: NotRequired[str]
 
 
-class ReposOwnerRepoImportPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoImportPutBody"""
+class ReposOwnerRepoGitBlobsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitBlobsPostBody"""
 
-    vcs_url: str
-    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
-    vcs_username: NotRequired[str]
-    vcs_password: NotRequired[str]
-    tfvc_project: NotRequired[str]
+    content: str
+    encoding: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoImportPutBodyType",
-    "ReposOwnerRepoImportPutBodyTypeForResponse",
+    "ReposOwnerRepoGitBlobsPostBodyType",
+    "ReposOwnerRepoGitBlobsPostBodyTypeForResponse",
 )

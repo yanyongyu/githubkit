@@ -9,48 +9,165 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0490 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0491 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0492 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0493 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0688 import (
-    WebhookIssuesClosedPropIssueType,
-    WebhookIssuesClosedPropIssueTypeForResponse,
+from .group_0683 import (
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
 )
 
 
-class WebhookIssuesClosedType(TypedDict):
-    """issues closed event"""
+class WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppType(TypedDict):
+    """WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubApp"""
 
-    action: Literal["closed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesClosedPropIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    created_at: Union[_dt.datetime, None]
+    description: Union[str, None]
+    events: NotRequired[
+        list[
+            Literal[
+                "branch_protection_rule",
+                "check_run",
+                "check_suite",
+                "code_scanning_alert",
+                "commit_comment",
+                "content_reference",
+                "create",
+                "delete",
+                "deployment",
+                "deployment_review",
+                "deployment_status",
+                "deploy_key",
+                "discussion",
+                "discussion_comment",
+                "fork",
+                "gollum",
+                "issues",
+                "issue_comment",
+                "label",
+                "member",
+                "membership",
+                "milestone",
+                "organization",
+                "org_block",
+                "page_build",
+                "project",
+                "project_card",
+                "project_column",
+                "public",
+                "pull_request",
+                "pull_request_review",
+                "pull_request_review_comment",
+                "push",
+                "registry_package",
+                "release",
+                "repository",
+                "repository_dispatch",
+                "secret_scanning_alert",
+                "star",
+                "status",
+                "team",
+                "team_add",
+                "watch",
+                "workflow_dispatch",
+                "workflow_run",
+            ]
+        ]
+    ]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
 
 
-class WebhookIssuesClosedTypeForResponse(TypedDict):
-    """issues closed event"""
+class WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppTypeForResponse(
+    TypedDict
+):
+    """WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubApp"""
 
-    action: Literal["closed"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesClosedPropIssueTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    created_at: Union[str, None]
+    description: Union[str, None]
+    events: NotRequired[
+        list[
+            Literal[
+                "branch_protection_rule",
+                "check_run",
+                "check_suite",
+                "code_scanning_alert",
+                "commit_comment",
+                "content_reference",
+                "create",
+                "delete",
+                "deployment",
+                "deployment_review",
+                "deployment_status",
+                "deploy_key",
+                "discussion",
+                "discussion_comment",
+                "fork",
+                "gollum",
+                "issues",
+                "issue_comment",
+                "label",
+                "member",
+                "membership",
+                "milestone",
+                "organization",
+                "org_block",
+                "page_build",
+                "project",
+                "project_card",
+                "project_column",
+                "public",
+                "pull_request",
+                "pull_request_review",
+                "pull_request_review_comment",
+                "push",
+                "registry_package",
+                "release",
+                "repository",
+                "repository_dispatch",
+                "secret_scanning_alert",
+                "star",
+                "status",
+                "team",
+                "team_add",
+                "watch",
+                "workflow_dispatch",
+                "workflow_run",
+            ]
+        ]
+    ]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookIssuesClosedType",
-    "WebhookIssuesClosedTypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppType",
+    "WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppTypeForResponse",
 )

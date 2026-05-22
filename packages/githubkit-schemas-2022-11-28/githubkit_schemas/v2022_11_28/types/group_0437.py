@@ -12,35 +12,33 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0221 import (
-    RepositoryRuleBranchNamePatternPropParametersType,
-    RepositoryRuleBranchNamePatternPropParametersTypeForResponse,
+from .group_0211 import (
+    RepositoryRulePullRequestPropParametersType,
+    RepositoryRulePullRequestPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof13Type(TypedDict):
-    """RepositoryRuleDetailedOneof13"""
+class RepositoryRuleDetailedOneof7Type(TypedDict):
+    """RepositoryRuleDetailedOneof7"""
 
-    type: Literal["branch_name_pattern"]
-    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof13TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof13"""
+class RepositoryRuleDetailedOneof7TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof7"""
 
-    type: Literal["branch_name_pattern"]
-    parameters: NotRequired[
-        RepositoryRuleBranchNamePatternPropParametersTypeForResponse
-    ]
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersTypeForResponse]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof13Type",
-    "RepositoryRuleDetailedOneof13TypeForResponse",
+    "RepositoryRuleDetailedOneof7Type",
+    "RepositoryRuleDetailedOneof7TypeForResponse",
 )

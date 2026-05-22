@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,26 +18,39 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200(GitHubModel):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200(GitHubModel):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
 
-    attestations: Missing[
-        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+    total_count: int = Field()
+    storage_records: Missing[
+        list[
+            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
+        ]
     ] = Field(default=UNSET)
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems(GitHubModel):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
 
-    repository_id: Missing[int] = Field(default=UNSET)
-    bundle_url: Missing[str] = Field(default=UNSET)
-    initiator: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    digest: Missing[str] = Field(default=UNSET)
+    artifact_url: Missing[Union[str, None]] = Field(default=UNSET)
+    registry_url: Missing[str] = Field(default=UNSET)
+    repository: Missing[Union[str, None]] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200)
-model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems)
+model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostResponse200)
+model_rebuild(
+    OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
+)
 
 __all__ = (
-    "OrgsOrgAttestationsSubjectDigestGetResponse200",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems",
 )

@@ -12,22 +12,15 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200(GitHubModel):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
 
-    title: str = Field(
-        description="The title of the draft issue item to create in the project."
-    )
-    body: Missing[str] = Field(
-        default=UNSET,
-        description="The body content of the draft issue item to create in the project.",
-    )
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberDraftsPostBody)
+model_rebuild(OrgsOrgPrivateRegistriesPublicKeyGetResponse200)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberDraftsPostBody",)
+__all__ = ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200",)

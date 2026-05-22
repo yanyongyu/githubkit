@@ -9,45 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
 
-class ReposOwnerRepoCodespacesNewGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200"""
-
-    billable_owner: NotRequired[SimpleUserType]
-    defaults: NotRequired[ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType]
-
-
-class ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200"""
-
-    billable_owner: NotRequired[SimpleUserTypeForResponse]
-    defaults: NotRequired[
-        ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse
+    total_count: int
+    devcontainers: list[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType
     ]
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
 
-    location: str
-    devcontainer_path: Union[str, None]
+    total_count: int
+    devcontainers: list[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse
+    ]
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
 
-    location: str
-    devcontainer_path: Union[str, None]
+    path: str
+    name: NotRequired[str]
+    display_name: NotRequired[str]
+
+
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
+
+    path: str
+    name: NotRequired[str]
+    display_name: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType",
-    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse",
-    "ReposOwnerRepoCodespacesNewGetResponse200Type",
-    "ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200Type",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200TypeForResponse",
 )

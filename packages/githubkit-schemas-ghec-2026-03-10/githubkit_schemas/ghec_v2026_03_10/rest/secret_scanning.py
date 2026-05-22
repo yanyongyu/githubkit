@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -106,7 +106,7 @@ class SecretScanningClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[SecretScanningBypassRequest],
@@ -175,7 +175,7 @@ class SecretScanningClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[SecretScanningBypassRequest],
@@ -237,7 +237,7 @@ class SecretScanningClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[SecretScanningDismissalRequest],
@@ -300,7 +300,7 @@ class SecretScanningClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[SecretScanningDismissalRequest],
@@ -369,7 +369,7 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
         is_bypassed: Missing[bool] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationSecretScanningAlert],
@@ -449,7 +449,7 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
         is_bypassed: Missing[bool] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationSecretScanningAlert],
@@ -512,7 +512,7 @@ class SecretScanningClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SecretScanningPatternConfiguration,
@@ -551,7 +551,7 @@ class SecretScanningClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SecretScanningPatternConfiguration,
@@ -591,7 +591,7 @@ class SecretScanningClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType,
     ) -> Response[
@@ -605,7 +605,7 @@ class SecretScanningClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         pattern_config_version: Missing[Union[str, None]] = UNSET,
         provider_pattern_settings: Missing[
@@ -627,7 +627,7 @@ class SecretScanningClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType
@@ -691,7 +691,7 @@ class SecretScanningClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType,
     ) -> Response[
@@ -705,7 +705,7 @@ class SecretScanningClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         pattern_config_version: Missing[Union[str, None]] = UNSET,
         provider_pattern_settings: Missing[
@@ -727,7 +727,7 @@ class SecretScanningClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType
@@ -808,7 +808,7 @@ class SecretScanningClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[SecretScanningBypassRequest],
@@ -877,7 +877,7 @@ class SecretScanningClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[SecretScanningBypassRequest],
@@ -939,7 +939,7 @@ class SecretScanningClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[SecretScanningDismissalRequest],
@@ -1002,7 +1002,7 @@ class SecretScanningClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[SecretScanningDismissalRequest],
@@ -1072,7 +1072,7 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
         is_bypassed: Missing[bool] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationSecretScanningAlert],
@@ -1157,7 +1157,7 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
         is_bypassed: Missing[bool] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationSecretScanningAlert],
@@ -1224,7 +1224,7 @@ class SecretScanningClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SecretScanningPatternConfiguration,
@@ -1263,7 +1263,7 @@ class SecretScanningClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SecretScanningPatternConfiguration,
@@ -1303,7 +1303,7 @@ class SecretScanningClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgSecretScanningPatternConfigurationsPatchBodyType,
     ) -> Response[
@@ -1317,7 +1317,7 @@ class SecretScanningClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         pattern_config_version: Missing[Union[str, None]] = UNSET,
         provider_pattern_settings: Missing[
@@ -1339,7 +1339,7 @@ class SecretScanningClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgSecretScanningPatternConfigurationsPatchBodyType] = UNSET,
         **kwargs,
@@ -1401,7 +1401,7 @@ class SecretScanningClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgSecretScanningPatternConfigurationsPatchBodyType,
     ) -> Response[
@@ -1415,7 +1415,7 @@ class SecretScanningClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         pattern_config_version: Missing[Union[str, None]] = UNSET,
         provider_pattern_settings: Missing[
@@ -1437,7 +1437,7 @@ class SecretScanningClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgSecretScanningPatternConfigurationsPatchBodyType] = UNSET,
         **kwargs,
@@ -1516,7 +1516,7 @@ class SecretScanningClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[SecretScanningBypassRequest],
@@ -1585,7 +1585,7 @@ class SecretScanningClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[SecretScanningBypassRequest],
@@ -1638,7 +1638,7 @@ class SecretScanningClient:
         repo: str,
         bypass_request_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SecretScanningBypassRequest, SecretScanningBypassRequestTypeForResponse
@@ -1680,7 +1680,7 @@ class SecretScanningClient:
         repo: str,
         bypass_request_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SecretScanningBypassRequest, SecretScanningBypassRequestTypeForResponse
@@ -1723,7 +1723,7 @@ class SecretScanningClient:
         repo: str,
         bypass_request_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType,
     ) -> Response[
@@ -1739,7 +1739,7 @@ class SecretScanningClient:
         bypass_request_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         status: Literal["approve", "reject"],
         message: str,
@@ -1754,7 +1754,7 @@ class SecretScanningClient:
         repo: str,
         bypass_request_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType
@@ -1821,7 +1821,7 @@ class SecretScanningClient:
         repo: str,
         bypass_request_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType,
     ) -> Response[
@@ -1837,7 +1837,7 @@ class SecretScanningClient:
         bypass_request_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         status: Literal["approve", "reject"],
         message: str,
@@ -1852,7 +1852,7 @@ class SecretScanningClient:
         repo: str,
         bypass_request_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType
@@ -1918,7 +1918,7 @@ class SecretScanningClient:
         repo: str,
         bypass_response_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """secret-scanning/dismiss-bypass-response
@@ -1958,7 +1958,7 @@ class SecretScanningClient:
         repo: str,
         bypass_response_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """secret-scanning/dismiss-bypass-response
@@ -2007,7 +2007,7 @@ class SecretScanningClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[SecretScanningDismissalRequest],
@@ -2069,7 +2069,7 @@ class SecretScanningClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[SecretScanningDismissalRequest],
@@ -2122,7 +2122,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SecretScanningDismissalRequest, SecretScanningDismissalRequestTypeForResponse
@@ -2165,7 +2165,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SecretScanningDismissalRequest, SecretScanningDismissalRequestTypeForResponse
@@ -2209,7 +2209,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType,
     ) -> Response[
@@ -2225,7 +2225,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         status: Literal["approve", "deny"],
         message: str,
@@ -2240,7 +2240,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType
@@ -2307,7 +2307,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType,
     ) -> Response[
@@ -2323,7 +2323,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         status: Literal["approve", "deny"],
         message: str,
@@ -2338,7 +2338,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType
@@ -2421,7 +2421,7 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
         is_bypassed: Missing[bool] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertTypeForResponse]]:
         """secret-scanning/list-alerts-for-repo
@@ -2502,7 +2502,7 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
         is_bypassed: Missing[bool] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertTypeForResponse]]:
         """secret-scanning/list-alerts-for-repo
@@ -2567,7 +2567,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         hide_secret: Missing[bool] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]:
         """secret-scanning/get-alert
@@ -2615,7 +2615,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         hide_secret: Missing[bool] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]:
         """secret-scanning/get-alert
@@ -2663,7 +2663,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
@@ -2680,7 +2680,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Literal["open", "resolved"],
         resolution: Missing[
@@ -2701,7 +2701,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         resolution: Missing[
@@ -2722,7 +2722,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         resolution: Missing[
@@ -2741,7 +2741,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -2816,7 +2816,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
@@ -2833,7 +2833,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Literal["open", "resolved"],
         resolution: Missing[
@@ -2854,7 +2854,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         resolution: Missing[
@@ -2875,7 +2875,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         resolution: Missing[
@@ -2894,7 +2894,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -2970,7 +2970,7 @@ class SecretScanningClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[SecretScanningLocation], list[SecretScanningLocationTypeForResponse]
@@ -3022,7 +3022,7 @@ class SecretScanningClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[SecretScanningLocation], list[SecretScanningLocationTypeForResponse]
@@ -3072,7 +3072,7 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
     ) -> Response[
@@ -3087,7 +3087,7 @@ class SecretScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         reason: Literal["false_positive", "used_in_tests", "will_fix_later"],
         placeholder_id: str,
@@ -3101,7 +3101,7 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType
@@ -3163,7 +3163,7 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
     ) -> Response[
@@ -3178,7 +3178,7 @@ class SecretScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         reason: Literal["false_positive", "used_in_tests", "will_fix_later"],
         placeholder_id: str,
@@ -3192,7 +3192,7 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType
@@ -3253,7 +3253,7 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryTypeForResponse]:
         """secret-scanning/get-scan-history
@@ -3295,7 +3295,7 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryTypeForResponse]:
         """secret-scanning/get-scan-history

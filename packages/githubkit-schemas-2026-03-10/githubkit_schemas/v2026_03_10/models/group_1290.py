@@ -16,15 +16,13 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody"""
+class ReposOwnerRepoImportAuthorsAuthorIdPatchBody(GitHubModel):
+    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
 
-    assignees: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove assignees from an issue. Assignees are silently ignored otherwise._",
-    )
+    email: Missing[str] = Field(default=UNSET, description="The new Git author email.")
+    name: Missing[str] = Field(default=UNSET, description="The new Git author name.")
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody)
+model_rebuild(ReposOwnerRepoImportAuthorsAuthorIdPatchBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody",)
+__all__ = ("ReposOwnerRepoImportAuthorsAuthorIdPatchBody",)

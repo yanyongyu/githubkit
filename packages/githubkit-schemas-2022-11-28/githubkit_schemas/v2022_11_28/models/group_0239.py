@@ -40,13 +40,13 @@ from .group_0216 import RepositoryRuleCommitAuthorEmailPattern
 from .group_0218 import RepositoryRuleCommitterEmailPattern
 from .group_0220 import RepositoryRuleBranchNamePattern
 from .group_0222 import RepositoryRuleTagNamePattern
-from .group_0224 import RepositoryRuleFilePathRestriction
-from .group_0226 import RepositoryRuleMaxFilePathLength
-from .group_0228 import RepositoryRuleFileExtensionRestriction
-from .group_0230 import RepositoryRuleMaxFileSize
-from .group_0233 import RepositoryRuleWorkflows
-from .group_0235 import RepositoryRuleCodeScanning
-from .group_0237 import RepositoryRuleCopilotCodeReview
+from .group_0225 import RepositoryRuleWorkflows
+from .group_0227 import RepositoryRuleCodeScanning
+from .group_0229 import RepositoryRuleCopilotCodeReview
+from .group_0231 import RepositoryRuleFilePathRestriction
+from .group_0233 import RepositoryRuleMaxFilePathLength
+from .group_0235 import RepositoryRuleFileExtensionRestriction
+from .group_0237 import RepositoryRuleMaxFileSize
 
 
 class RepositoryRuleset(GitHubModel):
@@ -106,13 +106,13 @@ class RepositoryRuleset(GitHubModel):
                 RepositoryRuleCommitterEmailPattern,
                 RepositoryRuleBranchNamePattern,
                 RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
                 RepositoryRuleFilePathRestriction,
                 RepositoryRuleMaxFilePathLength,
                 RepositoryRuleFileExtensionRestriction,
                 RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
             ]
         ]
     ] = Field(default=UNSET)

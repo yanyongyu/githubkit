@@ -9,51 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleCodeScanningPropParametersType(TypedDict):
-    """RepositoryRuleCodeScanningPropParameters"""
+class RepositoryRuleFileExtensionRestrictionPropParametersType(TypedDict):
+    """RepositoryRuleFileExtensionRestrictionPropParameters"""
 
-    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolType]
-
-
-class RepositoryRuleCodeScanningPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCodeScanningPropParameters"""
-
-    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolTypeForResponse]
+    restricted_file_extensions: list[str]
 
 
-class RepositoryRuleParamsCodeScanningToolType(TypedDict):
-    """CodeScanningTool
+class RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleFileExtensionRestrictionPropParameters"""
 
-    A tool that must provide code scanning results for this rule to pass.
-    """
-
-    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
-    security_alerts_threshold: Literal[
-        "none", "critical", "high_or_higher", "medium_or_higher", "all"
-    ]
-    tool: str
-
-
-class RepositoryRuleParamsCodeScanningToolTypeForResponse(TypedDict):
-    """CodeScanningTool
-
-    A tool that must provide code scanning results for this rule to pass.
-    """
-
-    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
-    security_alerts_threshold: Literal[
-        "none", "critical", "high_or_higher", "medium_or_higher", "all"
-    ]
-    tool: str
+    restricted_file_extensions: list[str]
 
 
 __all__ = (
-    "RepositoryRuleCodeScanningPropParametersType",
-    "RepositoryRuleCodeScanningPropParametersTypeForResponse",
-    "RepositoryRuleParamsCodeScanningToolType",
-    "RepositoryRuleParamsCodeScanningToolTypeForResponse",
+    "RepositoryRuleFileExtensionRestrictionPropParametersType",
+    "RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse",
 )

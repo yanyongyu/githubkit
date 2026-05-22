@@ -9,29 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class UsersUserIdProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
-
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+from .group_1391 import (
+    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
+    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
+)
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(
+    TypedDict
+):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
+    lof1
+    """
 
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    custom_properties: NotRequired[
+        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
+    ]
+
+
+class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
+    TypedDict
+):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
+    lof1
+    """
+
+    custom_properties: NotRequired[
+        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
+    ]
 
 
 __all__ = (
-    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyType",
-    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
+    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
+    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
 )

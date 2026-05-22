@@ -11,22 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0260 import CopilotSpaceType, CopilotSpaceTypeForResponse
+from .group_0243 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgCopilotSpacesGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotSpacesGetResponse200"""
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-    spaces: list[CopilotSpaceType]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
 
-class OrgsOrgCopilotSpacesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotSpacesGetResponse200"""
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-    spaces: list[CopilotSpaceTypeForResponse]
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesGetResponse200Type",
-    "OrgsOrgCopilotSpacesGetResponse200TypeForResponse",
+    "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
+    "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
 )

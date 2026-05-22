@@ -9,24 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAutofixCommitsResponseType(TypedDict):
-    """CodeScanningAutofixCommitsResponse"""
+class CodeQualitySetupUpdateAnyof3Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof3"""
 
-    target_ref: NotRequired[str]
-    sha: NotRequired[str]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    languages: list[
+        Literal[
+            "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+        ]
+    ]
 
 
-class CodeScanningAutofixCommitsResponseTypeForResponse(TypedDict):
-    """CodeScanningAutofixCommitsResponse"""
+class CodeQualitySetupUpdateAnyof3TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof3"""
 
-    target_ref: NotRequired[str]
-    sha: NotRequired[str]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    languages: list[
+        Literal[
+            "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+        ]
+    ]
 
 
 __all__ = (
-    "CodeScanningAutofixCommitsResponseType",
-    "CodeScanningAutofixCommitsResponseTypeForResponse",
+    "CodeQualitySetupUpdateAnyof3Type",
+    "CodeQualitySetupUpdateAnyof3TypeForResponse",
 )

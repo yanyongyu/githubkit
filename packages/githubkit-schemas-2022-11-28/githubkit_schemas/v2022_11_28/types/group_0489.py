@@ -9,56 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class BillingUsageReportUserType(TypedDict):
-    """BillingUsageReportUser"""
+class SocialAccountType(TypedDict):
+    """Social account
 
-    usage_items: NotRequired[list[BillingUsageReportUserPropUsageItemsItemsType]]
+    Social media account
+    """
 
-
-class BillingUsageReportUserTypeForResponse(TypedDict):
-    """BillingUsageReportUser"""
-
-    usage_items: NotRequired[
-        list[BillingUsageReportUserPropUsageItemsItemsTypeForResponse]
-    ]
+    provider: str
+    url: str
 
 
-class BillingUsageReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportUserPropUsageItemsItems"""
+class SocialAccountTypeForResponse(TypedDict):
+    """Social account
 
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    repository_name: NotRequired[str]
+    Social media account
+    """
 
-
-class BillingUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageReportUserPropUsageItemsItems"""
-
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    repository_name: NotRequired[str]
+    provider: str
+    url: str
 
 
 __all__ = (
-    "BillingUsageReportUserPropUsageItemsItemsType",
-    "BillingUsageReportUserPropUsageItemsItemsTypeForResponse",
-    "BillingUsageReportUserType",
-    "BillingUsageReportUserTypeForResponse",
+    "SocialAccountType",
+    "SocialAccountTypeForResponse",
 )

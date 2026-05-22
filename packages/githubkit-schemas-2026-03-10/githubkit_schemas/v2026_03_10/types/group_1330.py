@@ -12,38 +12,27 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoPullsPullNumberCodespacesPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
-
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    client_ip: NotRequired[str]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    multi_repo_permissions_opt_out: NotRequired[bool]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
-    display_name: NotRequired[str]
-    retention_period_minutes: NotRequired[int]
+from .group_1329 import (
+    ReposOwnerRepoPagesPostBodyPropSourceType,
+    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
+)
 
 
-class ReposOwnerRepoPullsPullNumberCodespacesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
+class ReposOwnerRepoPagesPostBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
 
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    client_ip: NotRequired[str]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    multi_repo_permissions_opt_out: NotRequired[bool]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
-    display_name: NotRequired[str]
-    retention_period_minutes: NotRequired[int]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: ReposOwnerRepoPagesPostBodyPropSourceType
+
+
+class ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
+
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberCodespacesPostBodyType",
-    "ReposOwnerRepoPullsPullNumberCodespacesPostBodyTypeForResponse",
+    "ReposOwnerRepoPagesPostBodyAnyof0Type",
+    "ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse",
 )

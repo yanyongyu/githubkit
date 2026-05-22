@@ -9,42 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0225 import (
-    RepositoryRuleFilePathRestrictionPropParametersType,
-    RepositoryRuleFilePathRestrictionPropParametersTypeForResponse,
-)
 
+class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
+    """RestrictedCommits
 
-class RepositoryRuleFilePathRestrictionType(TypedDict):
-    """file_path_restriction
-
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
+    Restricted commit
     """
 
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
+    oid: str
+    reason: NotRequired[str]
 
 
-class RepositoryRuleFilePathRestrictionTypeForResponse(TypedDict):
-    """file_path_restriction
+class RepositoryRuleParamsRestrictedCommitsTypeForResponse(TypedDict):
+    """RestrictedCommits
 
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
+    Restricted commit
     """
 
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[
-        RepositoryRuleFilePathRestrictionPropParametersTypeForResponse
-    ]
+    oid: str
+    reason: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRuleFilePathRestrictionType",
-    "RepositoryRuleFilePathRestrictionTypeForResponse",
+    "RepositoryRuleParamsRestrictedCommitsType",
+    "RepositoryRuleParamsRestrictedCommitsTypeForResponse",
 )

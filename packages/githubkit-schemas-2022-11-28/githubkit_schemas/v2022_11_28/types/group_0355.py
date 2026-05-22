@@ -9,61 +9,94 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0353 import MetadataType, MetadataTypeForResponse
-
-
-class ManifestType(TypedDict):
-    """Manifest"""
-
-    name: str
-    file: NotRequired[ManifestPropFileType]
-    metadata: NotRequired[MetadataType]
-    resolved: NotRequired[ManifestPropResolvedType]
-
-
-class ManifestTypeForResponse(TypedDict):
-    """Manifest"""
-
-    name: str
-    file: NotRequired[ManifestPropFileTypeForResponse]
-    metadata: NotRequired[MetadataTypeForResponse]
-    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
-
-
-class ManifestPropFileType(TypedDict):
-    """ManifestPropFile"""
-
-    source_location: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0041 import (
+    DependabotAlertSecurityVulnerabilityType,
+    DependabotAlertSecurityVulnerabilityTypeForResponse,
+)
+from .group_0042 import (
+    DependabotAlertSecurityAdvisoryType,
+    DependabotAlertSecurityAdvisoryTypeForResponse,
+)
+from .group_0043 import (
+    DependabotAlertDismissalRequestSimpleType,
+    DependabotAlertDismissalRequestSimpleTypeForResponse,
+)
+from .group_0356 import (
+    DependabotAlertPropDependencyType,
+    DependabotAlertPropDependencyTypeForResponse,
+)
 
 
-class ManifestPropFileTypeForResponse(TypedDict):
-    """ManifestPropFile"""
+class DependabotAlertType(TypedDict):
+    """DependabotAlert
 
-    source_location: NotRequired[str]
+    A Dependabot alert.
+    """
+
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
+    html_url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    dismissed_at: Union[_dt.datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[_dt.datetime, None]
+    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
+    dismissal_request: NotRequired[
+        Union[DependabotAlertDismissalRequestSimpleType, None]
+    ]
+    assignees: NotRequired[list[SimpleUserType]]
 
 
-ManifestPropResolvedType: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
+class DependabotAlertTypeForResponse(TypedDict):
+    """DependabotAlert
 
-A collection of resolved package dependencies.
-"""
+    A Dependabot alert.
+    """
 
-
-ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
-
-A collection of resolved package dependencies.
-"""
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertPropDependencyTypeForResponse
+    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
+    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
+    url: str
+    html_url: str
+    created_at: str
+    updated_at: str
+    dismissed_at: Union[str, None]
+    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[str, None]
+    auto_dismissed_at: NotRequired[Union[str, None]]
+    dismissal_request: NotRequired[
+        Union[DependabotAlertDismissalRequestSimpleTypeForResponse, None]
+    ]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
 
 
 __all__ = (
-    "ManifestPropFileType",
-    "ManifestPropFileTypeForResponse",
-    "ManifestPropResolvedType",
-    "ManifestPropResolvedTypeForResponse",
-    "ManifestType",
-    "ManifestTypeForResponse",
+    "DependabotAlertType",
+    "DependabotAlertTypeForResponse",
 )

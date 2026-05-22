@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoNotificationsPutBodyType(TypedDict):
-    """ReposOwnerRepoNotificationsPutBody"""
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
 
-    last_read_at: NotRequired[_dt.datetime]
+    sub_issue_id: int
+    replace_parent: NotRequired[bool]
 
 
-class ReposOwnerRepoNotificationsPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoNotificationsPutBody"""
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
 
-    last_read_at: NotRequired[str]
+    sub_issue_id: int
+    replace_parent: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoNotificationsPutBodyType",
-    "ReposOwnerRepoNotificationsPutBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyTypeForResponse",
 )

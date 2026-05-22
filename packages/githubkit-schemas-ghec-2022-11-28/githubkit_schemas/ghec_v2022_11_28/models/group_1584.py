@@ -9,29 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0261 import CopilotSpace
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody(
-    GitHubModel
-):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBod
-    y
-    """
 
-    role: Literal["reader", "writer", "admin", "no_access"] = Field(
-        description="The new role to grant to the collaborator. Use `no_access` to remove the collaborator."
+class UsersUsernameCopilotSpacesGetResponse200(GitHubModel):
+    """UsersUsernameCopilotSpacesGetResponse200"""
+
+    spaces: list[CopilotSpace] = Field(
+        description="The list of Copilot Spaces on this page of results."
     )
 
 
-model_rebuild(
-    UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody
-)
+model_rebuild(UsersUsernameCopilotSpacesGetResponse200)
 
-__all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody",
-)
+__all__ = ("UsersUsernameCopilotSpacesGetResponse200",)

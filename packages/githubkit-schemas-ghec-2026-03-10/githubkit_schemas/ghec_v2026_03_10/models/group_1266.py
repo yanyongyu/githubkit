@@ -11,18 +11,34 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotBillingSelectedTeamsPostBody(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
 
-    selected_teams: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of team names within the organization to which to grant access to GitHub Copilot.",
-    )
+    metadata: Missing[
+        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+    ] = Field(default=UNSET, description="Updated resource-specific metadata.")
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostBody)
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata(
+    ExtraGitHubModel
+):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostBody",)
+    Updated resource-specific metadata.
+    """
+
+
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody)
+model_rebuild(
+    OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+)
+
+__all__ = (
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata",
+)

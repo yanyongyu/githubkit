@@ -9,27 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoHooksHookIdConfigPatchBodyType(TypedDict):
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType",
-    "ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyTypeForResponse",
+    "ReposOwnerRepoHooksHookIdConfigPatchBodyType",
+    "ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse",
 )

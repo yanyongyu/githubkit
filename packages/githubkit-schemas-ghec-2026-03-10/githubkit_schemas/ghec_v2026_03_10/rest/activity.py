@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -82,7 +82,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-public-events
@@ -128,7 +128,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-public-events
@@ -172,7 +172,7 @@ class ActivityClient:
     def get_feeds(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Feed, FeedTypeForResponse]:
         """activity/get-feeds
@@ -214,7 +214,7 @@ class ActivityClient:
     async def async_get_feeds(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Feed, FeedTypeForResponse]:
         """activity/get-feeds
@@ -260,7 +260,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-public-events-for-repo-network
@@ -304,7 +304,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-public-events-for-repo-network
@@ -350,7 +350,7 @@ class ActivityClient:
         before: Missing[_dt.datetime] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Thread], list[ThreadTypeForResponse]]:
         """activity/list-notifications-for-authenticated-user
@@ -400,7 +400,7 @@ class ActivityClient:
         before: Missing[_dt.datetime] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Thread], list[ThreadTypeForResponse]]:
         """activity/list-notifications-for-authenticated-user
@@ -445,7 +445,7 @@ class ActivityClient:
     def mark_notifications_as_read(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[NotificationsPutBodyType] = UNSET,
     ) -> Response[
@@ -457,7 +457,7 @@ class ActivityClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         last_read_at: Missing[_dt.datetime] = UNSET,
         read: Missing[bool] = UNSET,
@@ -468,7 +468,7 @@ class ActivityClient:
     def mark_notifications_as_read(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[NotificationsPutBodyType] = UNSET,
         **kwargs,
@@ -520,7 +520,7 @@ class ActivityClient:
     async def async_mark_notifications_as_read(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[NotificationsPutBodyType] = UNSET,
     ) -> Response[
@@ -532,7 +532,7 @@ class ActivityClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         last_read_at: Missing[_dt.datetime] = UNSET,
         read: Missing[bool] = UNSET,
@@ -543,7 +543,7 @@ class ActivityClient:
     async def async_mark_notifications_as_read(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[NotificationsPutBodyType] = UNSET,
         **kwargs,
@@ -595,7 +595,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Thread, ThreadTypeForResponse]:
         """activity/get-thread
@@ -629,7 +629,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Thread, ThreadTypeForResponse]:
         """activity/get-thread
@@ -663,7 +663,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """activity/mark-thread-as-done
@@ -690,7 +690,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """activity/mark-thread-as-done
@@ -717,7 +717,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """activity/mark-thread-as-read
@@ -749,7 +749,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """activity/mark-thread-as-read
@@ -781,7 +781,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ThreadSubscription, ThreadSubscriptionTypeForResponse]:
         """activity/get-thread-subscription-for-authenticated-user
@@ -817,7 +817,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ThreadSubscription, ThreadSubscriptionTypeForResponse]:
         """activity/get-thread-subscription-for-authenticated-user
@@ -854,7 +854,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
     ) -> Response[ThreadSubscription, ThreadSubscriptionTypeForResponse]: ...
@@ -865,7 +865,7 @@ class ActivityClient:
         thread_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         ignored: Missing[bool] = UNSET,
     ) -> Response[ThreadSubscription, ThreadSubscriptionTypeForResponse]: ...
@@ -874,7 +874,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
@@ -931,7 +931,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
     ) -> Response[ThreadSubscription, ThreadSubscriptionTypeForResponse]: ...
@@ -942,7 +942,7 @@ class ActivityClient:
         thread_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         ignored: Missing[bool] = UNSET,
     ) -> Response[ThreadSubscription, ThreadSubscriptionTypeForResponse]: ...
@@ -951,7 +951,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
@@ -1007,7 +1007,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """activity/delete-thread-subscription
@@ -1040,7 +1040,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """activity/delete-thread-subscription
@@ -1075,7 +1075,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-public-org-events
@@ -1114,7 +1114,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-public-org-events
@@ -1154,7 +1154,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-repo-events
@@ -1194,7 +1194,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-repo-events
@@ -1238,7 +1238,7 @@ class ActivityClient:
         before: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Thread], list[ThreadTypeForResponse]]:
         """activity/list-repo-notifications-for-authenticated-user
@@ -1285,7 +1285,7 @@ class ActivityClient:
         before: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Thread], list[ThreadTypeForResponse]]:
         """activity/list-repo-notifications-for-authenticated-user
@@ -1327,7 +1327,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
     ) -> Response[
@@ -1342,7 +1342,7 @@ class ActivityClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         last_read_at: Missing[_dt.datetime] = UNSET,
     ) -> Response[
@@ -1355,7 +1355,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
         **kwargs,
@@ -1405,7 +1405,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
     ) -> Response[
@@ -1420,7 +1420,7 @@ class ActivityClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         last_read_at: Missing[_dt.datetime] = UNSET,
     ) -> Response[
@@ -1433,7 +1433,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
         **kwargs,
@@ -1484,7 +1484,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[list[SimpleUser], list[Stargazer]],
@@ -1535,7 +1535,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[list[SimpleUser], list[Stargazer]],
@@ -1586,7 +1586,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """activity/list-watchers-for-repo
@@ -1625,7 +1625,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """activity/list-watchers-for-repo
@@ -1662,7 +1662,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RepositorySubscription, RepositorySubscriptionTypeForResponse]:
         """activity/get-repo-subscription
@@ -1696,7 +1696,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RepositorySubscription, RepositorySubscriptionTypeForResponse]:
         """activity/get-repo-subscription
@@ -1731,7 +1731,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
     ) -> Response[RepositorySubscription, RepositorySubscriptionTypeForResponse]: ...
@@ -1743,7 +1743,7 @@ class ActivityClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
@@ -1754,7 +1754,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
@@ -1798,7 +1798,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
     ) -> Response[RepositorySubscription, RepositorySubscriptionTypeForResponse]: ...
@@ -1810,7 +1810,7 @@ class ActivityClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
@@ -1821,7 +1821,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
@@ -1864,7 +1864,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """activity/delete-repo-subscription
@@ -1892,7 +1892,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """activity/delete-repo-subscription
@@ -1922,7 +1922,7 @@ class ActivityClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Repository], list[RepositoryTypeForResponse]]:
         """activity/list-repos-starred-by-authenticated-user
@@ -1971,7 +1971,7 @@ class ActivityClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Repository], list[RepositoryTypeForResponse]]:
         """activity/list-repos-starred-by-authenticated-user
@@ -2018,7 +2018,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """activity/check-repo-is-starred-by-authenticated-user
@@ -2053,7 +2053,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """activity/check-repo-is-starred-by-authenticated-user
@@ -2088,7 +2088,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """activity/star-repo-for-authenticated-user
@@ -2123,7 +2123,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """activity/star-repo-for-authenticated-user
@@ -2158,7 +2158,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """activity/unstar-repo-for-authenticated-user
@@ -2193,7 +2193,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """activity/unstar-repo-for-authenticated-user
@@ -2228,7 +2228,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """activity/list-watched-repos-for-authenticated-user
@@ -2269,7 +2269,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """activity/list-watched-repos-for-authenticated-user
@@ -2311,7 +2311,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-events-for-authenticated-user
@@ -2352,7 +2352,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-events-for-authenticated-user
@@ -2394,7 +2394,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-org-events-for-authenticated-user
@@ -2436,7 +2436,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-org-events-for-authenticated-user
@@ -2477,7 +2477,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-public-events-for-user
@@ -2516,7 +2516,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-public-events-for-user
@@ -2555,7 +2555,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-received-events-for-user
@@ -2597,7 +2597,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-received-events-for-user
@@ -2639,7 +2639,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-received-public-events-for-user
@@ -2678,7 +2678,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Event], list[EventTypeForResponse]]:
         """activity/list-received-public-events-for-user
@@ -2719,7 +2719,7 @@ class ActivityClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[list[StarredRepository], list[Repository]],
@@ -2770,7 +2770,7 @@ class ActivityClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[list[StarredRepository], list[Repository]],
@@ -2819,7 +2819,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """activity/list-repos-watched-by-user
@@ -2857,7 +2857,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """activity/list-repos-watched-by-user

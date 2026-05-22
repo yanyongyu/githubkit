@@ -9,27 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0261 import (
+    CopilotSpaceCollaboratorAnyof0Type,
+    CopilotSpaceCollaboratorAnyof0TypeForResponse,
+    CopilotSpaceCollaboratorAnyof1Type,
+    CopilotSpaceCollaboratorAnyof1TypeForResponse,
+)
 
-class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType(
+
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
+
+    collaborators: list[
+        Union[CopilotSpaceCollaboratorAnyof0Type, CopilotSpaceCollaboratorAnyof1Type]
+    ]
+
+
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody"""
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-    role: Literal["reader", "writer", "admin", "no_access"]
-
-
-class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody"""
-
-    role: Literal["reader", "writer", "admin", "no_access"]
+    collaborators: list[
+        Union[
+            CopilotSpaceCollaboratorAnyof0TypeForResponse,
+            CopilotSpaceCollaboratorAnyof1TypeForResponse,
+        ]
+    ]
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType",
-    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse",
 )

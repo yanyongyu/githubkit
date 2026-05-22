@@ -9,48 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, TypeAlias
+
+InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType: TypeAlias = dict[
+    str, Any
+]
+"""InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
+rties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values. Present for org repos only.
+"""
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
+rties
 
-    total_count: int
-    repository_cache_usages: list[ActionsCacheUsageByRepositoryType]
-
-
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
-
-    total_count: int
-    repository_cache_usages: list[ActionsCacheUsageByRepositoryTypeForResponse]
-
-
-class ActionsCacheUsageByRepositoryType(TypedDict):
-    """Actions Cache Usage by repository
-
-    GitHub Actions Cache Usage by repository.
-    """
-
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
-
-
-class ActionsCacheUsageByRepositoryTypeForResponse(TypedDict):
-    """Actions Cache Usage by repository
-
-    GitHub Actions Cache Usage by repository.
-    """
-
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values. Present for org repos only.
+"""
 
 
 __all__ = (
-    "ActionsCacheUsageByRepositoryType",
-    "ActionsCacheUsageByRepositoryTypeForResponse",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse",
 )

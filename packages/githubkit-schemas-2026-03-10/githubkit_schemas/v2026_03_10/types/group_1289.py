@@ -9,22 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
+class ReposOwnerRepoImportPatchBodyType(TypedDict):
+    """ReposOwnerRepoImportPatchBody"""
 
-    assignees: NotRequired[list[str]]
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
+    tfvc_project: NotRequired[str]
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
+class ReposOwnerRepoImportPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportPatchBody"""
 
-    assignees: NotRequired[list[str]]
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
+    tfvc_project: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyTypeForResponse",
+    "ReposOwnerRepoImportPatchBodyType",
+    "ReposOwnerRepoImportPatchBodyTypeForResponse",
 )

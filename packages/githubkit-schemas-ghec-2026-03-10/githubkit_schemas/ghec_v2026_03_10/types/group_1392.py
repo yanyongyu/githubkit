@@ -9,69 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1391 import (
-    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
-    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse,
-    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
-    ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse,
-)
+
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
+
+    bypass_review_id: NotRequired[int]
 
 
-class ReposOwnerRepoCheckRunsPostBodyOneof0Type(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
 
-    name: str
-    head_sha: str
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    status: Literal["completed"]
-    started_at: NotRequired[_dt.datetime]
-    conclusion: Literal[
-        "action_required",
-        "cancelled",
-        "failure",
-        "neutral",
-        "success",
-        "skipped",
-        "stale",
-        "timed_out",
-    ]
-    completed_at: NotRequired[_dt.datetime]
-    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
-    actions: NotRequired[list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
-
-
-class ReposOwnerRepoCheckRunsPostBodyOneof0TypeForResponse(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
-
-    name: str
-    head_sha: str
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    status: Literal["completed"]
-    started_at: NotRequired[str]
-    conclusion: Literal[
-        "action_required",
-        "cancelled",
-        "failure",
-        "neutral",
-        "success",
-        "skipped",
-        "stale",
-        "timed_out",
-    ]
-    completed_at: NotRequired[str]
-    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse]
-    actions: NotRequired[
-        list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse]
-    ]
+    bypass_review_id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoCheckRunsPostBodyOneof0Type",
-    "ReposOwnerRepoCheckRunsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type",
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse",
 )

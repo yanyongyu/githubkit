@@ -9,79 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBody(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
+class ReposTemplateOwnerTemplateRepoGeneratePostBody(GitHubModel):
+    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
-    schemas: Missing[list[str]] = Field(default=UNSET)
-    operations: list[
-        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems
-    ] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        alias="Operations",
-        description="Set of operations to be performed",
+    owner: Missing[str] = Field(
+        default=UNSET,
+        description="The organization or person who will own the new repository. To create a new repository in an organization, the authenticated user must be a member of the specified organization.",
+    )
+    name: str = Field(description="The name of the new repository.")
+    description: Missing[str] = Field(
+        default=UNSET, description="A short description of the new repository."
+    )
+    include_all_branches: Missing[bool] = Field(
+        default=UNSET,
+        description="Set to `true` to include the directory structure and files from all branches in the template repository, and not just the default branch. Default: `false`.",
+    )
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Either `true` to create a new private repository or `false` to create a new public one.",
     )
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
+model_rebuild(ReposTemplateOwnerTemplateRepoGeneratePostBody)
 
-    op: Literal["add", "remove", "replace"] = Field()
-    path: Missing[str] = Field(default=UNSET)
-    value: Missing[
-        Union[
-            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0,
-            list[
-                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items
-            ],
-            str,
-        ]
-    ] = Field(default=UNSET)
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0(
-    GitHubModel
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
-
-    active: Missing[Union[bool, None]] = Field(default=UNSET)
-    user_name: Missing[Union[str, None]] = Field(default=UNSET, alias="userName")
-    external_id: Missing[Union[str, None]] = Field(default=UNSET, alias="externalId")
-    given_name: Missing[Union[str, None]] = Field(default=UNSET, alias="givenName")
-    family_name: Missing[Union[str, None]] = Field(default=UNSET, alias="familyName")
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items(
-    GitHubModel
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
-    Items
-    """
-
-    value: Missing[str] = Field(default=UNSET)
-    primary: Missing[bool] = Field(default=UNSET)
-
-
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPatchBody)
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems)
-model_rebuild(
-    ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0
-)
-model_rebuild(
-    ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items
-)
-
-__all__ = (
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBody",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items",
-)
+__all__ = ("ReposTemplateOwnerTemplateRepoGeneratePostBody",)

@@ -9,68 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0464 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
+from .group_0465 import TrafficType, TrafficTypeForResponse
 
 
-class LabelSearchResultItemType(TypedDict):
-    """Label Search Result Item
+class ViewTrafficType(TypedDict):
+    """View Traffic
 
-    Label Search Result Item
+    View Traffic
     """
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    count: int
+    uniques: int
+    views: list[TrafficType]
 
 
-class LabelSearchResultItemTypeForResponse(TypedDict):
-    """Label Search Result Item
+class ViewTrafficTypeForResponse(TypedDict):
+    """View Traffic
 
-    Label Search Result Item
+    View Traffic
     """
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
-
-
-class SearchLabelsGetResponse200Type(TypedDict):
-    """SearchLabelsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemType]
-
-
-class SearchLabelsGetResponse200TypeForResponse(TypedDict):
-    """SearchLabelsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemTypeForResponse]
+    count: int
+    uniques: int
+    views: list[TrafficTypeForResponse]
 
 
 __all__ = (
-    "LabelSearchResultItemType",
-    "LabelSearchResultItemTypeForResponse",
-    "SearchLabelsGetResponse200Type",
-    "SearchLabelsGetResponse200TypeForResponse",
+    "ViewTrafficType",
+    "ViewTrafficTypeForResponse",
 )

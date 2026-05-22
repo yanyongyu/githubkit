@@ -14,14 +14,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody(GitHubModel):
-    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
 
-    selected_repository_ids: list[int] = Field(
-        description="List of repository IDs to enable for Copilot cloud agent."
-    )
+    The total number of seats set to "pending cancellation" for members of the
+    specified team(s).
+    """
+
+    seats_cancelled: int = Field()
 
 
-model_rebuild(OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody)
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200)
 
-__all__ = ("OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200",)

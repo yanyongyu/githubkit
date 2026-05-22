@@ -78,7 +78,7 @@ members = ["packages/*"]
 module-root = ""
 
 [build-system]
-requires = ["uv_build >=0.8.3, <0.10.0"]
+requires = ["uv_build >=0.8.3, <0.12.0"]
 build-backend = "uv_build"
 
 [tool.pytest.ini_options]
@@ -139,11 +139,12 @@ ignore = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"packages/githubkit-schemas-**/**" = ["E501", "PYI016", "TID"]
+"packages/githubkit-schemas-**/**" = ["E501", "PYI016", "TID", "UP007"]
 "packages/githubkit-schemas/githubkit_schemas/latest/**" = [
   "E501",
   "PYI016",
   "TID",
+  "UP007",
 ]
 
 [tool.ruff.lint.isort]

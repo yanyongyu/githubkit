@@ -9,29 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0124 import (
-    OrganizationActionsVariableType,
-    OrganizationActionsVariableTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgAgentsVariablesGetResponse200Type(TypedDict):
-    """OrgsOrgAgentsVariablesGetResponse200"""
+class OrgsOrgActionsVariablesPostBodyType(TypedDict):
+    """OrgsOrgActionsVariablesPostBody"""
 
-    total_count: int
-    variables: list[OrganizationActionsVariableType]
+    name: str
+    value: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgAgentsVariablesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgAgentsVariablesGetResponse200"""
+class OrgsOrgActionsVariablesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsVariablesPostBody"""
 
-    total_count: int
-    variables: list[OrganizationActionsVariableTypeForResponse]
+    name: str
+    value: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgAgentsVariablesGetResponse200Type",
-    "OrgsOrgAgentsVariablesGetResponse200TypeForResponse",
+    "OrgsOrgActionsVariablesPostBodyType",
+    "OrgsOrgActionsVariablesPostBodyTypeForResponse",
 )

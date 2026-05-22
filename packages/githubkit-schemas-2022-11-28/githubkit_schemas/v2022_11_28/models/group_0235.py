@@ -17,21 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0236 import RepositoryRuleCodeScanningPropParameters
+from .group_0236 import RepositoryRuleFileExtensionRestrictionPropParameters
 
 
-class RepositoryRuleCodeScanning(GitHubModel):
-    """code_scanning
+class RepositoryRuleFileExtensionRestriction(GitHubModel):
+    """file_extension_restriction
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
+    Prevent commits that include files with specified file extensions from being
+    pushed to the commit graph.
     """
 
-    type: Literal["code_scanning"] = Field()
-    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
+    type: Literal["file_extension_restriction"] = Field()
+    parameters: Missing[RepositoryRuleFileExtensionRestrictionPropParameters] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(RepositoryRuleCodeScanning)
+model_rebuild(RepositoryRuleFileExtensionRestriction)
 
-__all__ = ("RepositoryRuleCodeScanning",)
+__all__ = ("RepositoryRuleFileExtensionRestriction",)

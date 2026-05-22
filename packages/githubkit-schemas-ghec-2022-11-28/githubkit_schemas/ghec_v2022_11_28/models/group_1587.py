@@ -9,36 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0262 import CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200(GitHubModel):
+    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-    metadata: Missing[
-        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-    ] = Field(default=UNSET, description="Updated resource-specific metadata.")
-
-
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata(
-    ExtraGitHubModel
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-
-    Updated resource-specific metadata.
-    """
+    collaborators: list[
+        Union[CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1]
+    ] = Field(description="The list of collaborators for this Copilot Space.")
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody)
-model_rebuild(
-    UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-)
+model_rebuild(UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200)
 
-__all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata",
-)
+__all__ = ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200",)

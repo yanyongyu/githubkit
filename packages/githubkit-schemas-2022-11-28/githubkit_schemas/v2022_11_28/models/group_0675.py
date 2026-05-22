@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,7 +18,53 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropAssignee(GitHubModel):
+class WebhookIssueCommentPinnedPropIssueAllof1(GitHubModel):
+    """WebhookIssueCommentPinnedPropIssueAllof1"""
+
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    assignee: Union[WebhookIssueCommentPinnedPropIssueAllof1PropAssignee, None] = Field(
+        title="User"
+    )
+    assignees: Missing[
+        list[Union[WebhookIssueCommentPinnedPropIssueAllof1PropAssigneesItems, None]]
+    ] = Field(default=UNSET)
+    author_association: Missing[str] = Field(default=UNSET)
+    body: Missing[Union[str, None]] = Field(default=UNSET)
+    closed_at: Missing[Union[str, None]] = Field(default=UNSET)
+    comments: Missing[int] = Field(default=UNSET)
+    comments_url: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    labels: list[WebhookIssueCommentPinnedPropIssueAllof1PropLabelsItems] = Field()
+    labels_url: Missing[str] = Field(default=UNSET)
+    locked: bool = Field()
+    milestone: Missing[
+        Union[WebhookIssueCommentPinnedPropIssueAllof1PropMilestone, None]
+    ] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    number: Missing[int] = Field(default=UNSET)
+    performed_via_github_app: Missing[
+        Union[WebhookIssueCommentPinnedPropIssueAllof1PropPerformedViaGithubApp, None]
+    ] = Field(default=UNSET)
+    reactions: Missing[WebhookIssueCommentPinnedPropIssueAllof1PropReactions] = Field(
+        default=UNSET
+    )
+    repository_url: Missing[str] = Field(default=UNSET)
+    state: Literal["open", "closed"] = Field(
+        description="State of the issue; either 'open' or 'closed'"
+    )
+    timeline_url: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user: Missing[WebhookIssueCommentPinnedPropIssueAllof1PropUser] = Field(
+        default=UNSET
+    )
+
+
+class WebhookIssueCommentPinnedPropIssueAllof1PropAssignee(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -48,7 +93,11 @@ class WebhookIssueCommentUnpinnedPropIssueAllof0PropAssignee(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItems(GitHubModel):
+class WebhookIssueCommentPinnedPropIssueAllof1PropAssigneesItems(GitHubModel):
+    """WebhookIssueCommentPinnedPropIssueAllof1PropAssigneesItems"""
+
+
+class WebhookIssueCommentPinnedPropIssueAllof1PropLabelsItems(GitHubModel):
     """Label"""
 
     color: str = Field(
@@ -62,22 +111,69 @@ class WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItems(GitHubModel):
     url: str = Field(description="URL for the label")
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequest(GitHubModel):
-    """WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequest"""
+class WebhookIssueCommentPinnedPropIssueAllof1PropMilestone(GitHubModel):
+    """WebhookIssueCommentPinnedPropIssueAllof1PropMilestone"""
 
-    diff_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    patch_url: Missing[str] = Field(default=UNSET)
+
+class WebhookIssueCommentPinnedPropIssueAllof1PropPerformedViaGithubApp(GitHubModel):
+    """WebhookIssueCommentPinnedPropIssueAllof1PropPerformedViaGithubApp"""
+
+
+class WebhookIssueCommentPinnedPropIssueAllof1PropReactions(GitHubModel):
+    """WebhookIssueCommentPinnedPropIssueAllof1PropReactions"""
+
+    plus_one: Missing[int] = Field(default=UNSET, alias="+1")
+    minus_one: Missing[int] = Field(default=UNSET, alias="-1")
+    confused: Missing[int] = Field(default=UNSET)
+    eyes: Missing[int] = Field(default=UNSET)
+    heart: Missing[int] = Field(default=UNSET)
+    hooray: Missing[int] = Field(default=UNSET)
+    laugh: Missing[int] = Field(default=UNSET)
+    rocket: Missing[int] = Field(default=UNSET)
+    total_count: Missing[int] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssueCommentUnpinnedPropIssueAllof0PropAssignee)
-model_rebuild(WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItems)
-model_rebuild(WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequest)
+class WebhookIssueCommentPinnedPropIssueAllof1PropUser(GitHubModel):
+    """WebhookIssueCommentPinnedPropIssueAllof1PropUser"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookIssueCommentPinnedPropIssueAllof1)
+model_rebuild(WebhookIssueCommentPinnedPropIssueAllof1PropAssignee)
+model_rebuild(WebhookIssueCommentPinnedPropIssueAllof1PropAssigneesItems)
+model_rebuild(WebhookIssueCommentPinnedPropIssueAllof1PropLabelsItems)
+model_rebuild(WebhookIssueCommentPinnedPropIssueAllof1PropMilestone)
+model_rebuild(WebhookIssueCommentPinnedPropIssueAllof1PropPerformedViaGithubApp)
+model_rebuild(WebhookIssueCommentPinnedPropIssueAllof1PropReactions)
+model_rebuild(WebhookIssueCommentPinnedPropIssueAllof1PropUser)
 
 __all__ = (
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropAssignee",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItems",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequest",
+    "WebhookIssueCommentPinnedPropIssueAllof1",
+    "WebhookIssueCommentPinnedPropIssueAllof1PropAssignee",
+    "WebhookIssueCommentPinnedPropIssueAllof1PropAssigneesItems",
+    "WebhookIssueCommentPinnedPropIssueAllof1PropLabelsItems",
+    "WebhookIssueCommentPinnedPropIssueAllof1PropMilestone",
+    "WebhookIssueCommentPinnedPropIssueAllof1PropPerformedViaGithubApp",
+    "WebhookIssueCommentPinnedPropIssueAllof1PropReactions",
+    "WebhookIssueCommentPinnedPropIssueAllof1PropUser",
 )

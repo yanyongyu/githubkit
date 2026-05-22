@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Any, TypeAlias, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0573 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse

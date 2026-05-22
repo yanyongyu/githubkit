@@ -9,27 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class MarkdownPostBodyType(TypedDict):
-    """MarkdownPostBody"""
-
-    text: str
-    mode: NotRequired[Literal["markdown", "gfm"]]
-    context: NotRequired[str]
+from .group_1172 import (
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
+)
 
 
-class MarkdownPostBodyTypeForResponse(TypedDict):
-    """MarkdownPostBody"""
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(TypedDict):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
 
-    text: str
-    mode: NotRequired[Literal["markdown", "gfm"]]
-    context: NotRequired[str]
+    custom_properties: NotRequired[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
+    ]
+
+
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
+    TypedDict
+):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
+
+    custom_properties: NotRequired[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
+    ]
 
 
 __all__ = (
-    "MarkdownPostBodyType",
-    "MarkdownPostBodyTypeForResponse",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
 )

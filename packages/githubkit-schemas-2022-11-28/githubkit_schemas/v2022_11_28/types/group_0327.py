@@ -9,24 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeScanningSarifsReceiptType(TypedDict):
-    """CodeScanningSarifsReceipt"""
-
-    id: NotRequired[str]
-    url: NotRequired[str]
+from .group_0324 import (
+    CodeScanningVariantAnalysisRepositoryType,
+    CodeScanningVariantAnalysisRepositoryTypeForResponse,
+)
 
 
-class CodeScanningSarifsReceiptTypeForResponse(TypedDict):
-    """CodeScanningSarifsReceipt"""
+class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    id: NotRequired[str]
-    url: NotRequired[str]
+    repository: CodeScanningVariantAnalysisRepositoryType
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ]
+    result_count: NotRequired[int]
+    artifact_size_in_bytes: NotRequired[int]
+    failure_message: NotRequired[str]
+
+
+class CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+
+    repository: CodeScanningVariantAnalysisRepositoryTypeForResponse
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ]
+    result_count: NotRequired[int]
+    artifact_size_in_bytes: NotRequired[int]
+    failure_message: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningSarifsReceiptType",
-    "CodeScanningSarifsReceiptTypeForResponse",
+    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",
+    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse",
 )

@@ -18,50 +18,48 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
+class ReposOwnerRepoPullsPullNumberCodespacesPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
 
-    commit_id: Missing[str] = Field(
+    location: Missing[str] = Field(
         default=UNSET,
-        description="The SHA of the commit that needs a review. Not using the latest commit SHA may render your review comment outdated if a subsequent commit modifies the line you specify as the `position`. Defaults to the most recent commit in the pull request when you do not specify a value.",
+        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
     )
-    body: Missing[str] = Field(
+    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
         default=UNSET,
-        description="**Required** when using `REQUEST_CHANGES` or `COMMENT` for the `event` parameter. The body text of the pull request review.",
+        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
     )
-    event: Missing[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = Field(
+    client_ip: Missing[str] = Field(
         default=UNSET,
-        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request) when you are ready.",
+        description="IP for location auto-detection when proxying a request",
     )
-    comments: Missing[
-        list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems]
-    ] = Field(
+    machine: Missing[str] = Field(
+        default=UNSET, description="Machine type to use for this codespace"
+    )
+    devcontainer_path: Missing[str] = Field(
         default=UNSET,
-        description="Use the following table to specify the location, destination, and contents of the draft review comment.",
+        description="Path to devcontainer.json config to use for this codespace",
     )
-
-
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
-
-    path: str = Field(
-        description="The relative path to the file that necessitates a review comment."
-    )
-    position: Missing[int] = Field(
+    multi_repo_permissions_opt_out: Missing[bool] = Field(
         default=UNSET,
-        description='The position in the diff where you want to add a review comment. Note this value is not the same as the line number in the file. The `position` value equals the number of lines down from the first "@@" hunk header in the file you want to add a comment. The line just below the "@@" line is position 1, the next line is position 2, and so on. The position in the diff continues to increase through lines of whitespace and additional hunks until the beginning of a new file.',
+        description="Whether to authorize requested permissions from devcontainer.json",
     )
-    body: str = Field(description="Text of the review comment.")
-    line: Missing[int] = Field(default=UNSET)
-    side: Missing[str] = Field(default=UNSET)
-    start_line: Missing[int] = Field(default=UNSET)
-    start_side: Missing[str] = Field(default=UNSET)
+    working_directory: Missing[str] = Field(
+        default=UNSET, description="Working directory for this codespace"
+    )
+    idle_timeout_minutes: Missing[int] = Field(
+        default=UNSET,
+        description="Time in minutes before codespace stops from inactivity",
+    )
+    display_name: Missing[str] = Field(
+        default=UNSET, description="Display name for this codespace"
+    )
+    retention_period_minutes: Missing[int] = Field(
+        default=UNSET,
+        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+    )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberReviewsPostBody)
-model_rebuild(ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems)
+model_rebuild(ReposOwnerRepoPullsPullNumberCodespacesPostBody)
 
-__all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsPostBody",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberCodespacesPostBody",)

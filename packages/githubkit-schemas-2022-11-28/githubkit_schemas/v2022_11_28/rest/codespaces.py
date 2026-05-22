@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from typing_extensions import deprecated
 from weakref import ref
 
@@ -118,7 +118,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCodespacesGetResponse200, OrgsOrgCodespacesGetResponse200TypeForResponse
@@ -166,7 +166,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCodespacesGetResponse200, OrgsOrgCodespacesGetResponse200TypeForResponse
@@ -214,7 +214,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodespacesAccessPutBodyType,
     ) -> Response: ...
@@ -226,7 +226,7 @@ class CodespacesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         visibility: Literal[
             "disabled",
@@ -242,7 +242,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCodespacesAccessPutBodyType] = UNSET,
         **kwargs,
@@ -291,7 +291,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodespacesAccessPutBodyType,
     ) -> Response: ...
@@ -303,7 +303,7 @@ class CodespacesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         visibility: Literal[
             "disabled",
@@ -319,7 +319,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCodespacesAccessPutBodyType] = UNSET,
         **kwargs,
@@ -368,7 +368,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodespacesAccessSelectedUsersPostBodyType,
     ) -> Response: ...
@@ -380,7 +380,7 @@ class CodespacesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_usernames: list[str],
     ) -> Response: ...
@@ -390,7 +390,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersPostBodyType] = UNSET,
         **kwargs,
@@ -449,7 +449,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodespacesAccessSelectedUsersPostBodyType,
     ) -> Response: ...
@@ -461,7 +461,7 @@ class CodespacesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_usernames: list[str],
     ) -> Response: ...
@@ -471,7 +471,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersPostBodyType] = UNSET,
         **kwargs,
@@ -530,7 +530,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
     ) -> Response: ...
@@ -542,7 +542,7 @@ class CodespacesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_usernames: list[str],
     ) -> Response: ...
@@ -552,7 +552,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
@@ -611,7 +611,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
     ) -> Response: ...
@@ -623,7 +623,7 @@ class CodespacesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_usernames: list[str],
     ) -> Response: ...
@@ -633,7 +633,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
@@ -692,7 +692,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCodespacesSecretsGetResponse200,
@@ -736,7 +736,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCodespacesSecretsGetResponse200,
@@ -778,7 +778,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodespacesPublicKey, CodespacesPublicKeyTypeForResponse]:
         """codespaces/get-org-public-key
@@ -809,7 +809,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodespacesPublicKey, CodespacesPublicKeyTypeForResponse]:
         """codespaces/get-org-public-key
@@ -841,7 +841,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodespacesOrgSecret, CodespacesOrgSecretTypeForResponse]:
         """codespaces/get-org-secret
@@ -874,7 +874,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodespacesOrgSecret, CodespacesOrgSecretTypeForResponse]:
         """codespaces/get-org-secret
@@ -908,7 +908,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -920,7 +920,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
@@ -933,7 +933,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
@@ -989,7 +989,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -1001,7 +1001,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
@@ -1014,7 +1014,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
@@ -1069,7 +1069,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """codespaces/delete-org-secret
@@ -1104,7 +1104,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """codespaces/delete-org-secret
@@ -1141,7 +1141,7 @@ class CodespacesClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
@@ -1192,7 +1192,7 @@ class CodespacesClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
@@ -1242,7 +1242,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
@@ -1254,7 +1254,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
@@ -1264,7 +1264,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType
@@ -1321,7 +1321,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
@@ -1333,7 +1333,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
@@ -1343,7 +1343,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType
@@ -1400,7 +1400,7 @@ class CodespacesClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """codespaces/add-selected-repo-to-org-secret
@@ -1438,7 +1438,7 @@ class CodespacesClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """codespaces/add-selected-repo-to-org-secret
@@ -1476,7 +1476,7 @@ class CodespacesClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """codespaces/remove-selected-repo-from-org-secret
@@ -1517,7 +1517,7 @@ class CodespacesClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """codespaces/remove-selected-repo-from-org-secret
@@ -1559,7 +1559,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgMembersUsernameCodespacesGetResponse200,
@@ -1609,7 +1609,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgMembersUsernameCodespacesGetResponse200,
@@ -1658,7 +1658,7 @@ class CodespacesClient:
         username: str,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -1704,7 +1704,7 @@ class CodespacesClient:
         username: str,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -1750,7 +1750,7 @@ class CodespacesClient:
         username: str,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/stop-in-organization
@@ -1790,7 +1790,7 @@ class CodespacesClient:
         username: str,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/stop-in-organization
@@ -1831,7 +1831,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesGetResponse200,
@@ -1881,7 +1881,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesGetResponse200,
@@ -1930,7 +1930,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[ReposOwnerRepoCodespacesPostBodyType, None],
     ) -> Response[Codespace, CodespaceTypeForResponse]: ...
@@ -1942,7 +1942,7 @@ class CodespacesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
@@ -1964,7 +1964,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
@@ -2026,7 +2026,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[ReposOwnerRepoCodespacesPostBodyType, None],
     ) -> Response[Codespace, CodespaceTypeForResponse]: ...
@@ -2038,7 +2038,7 @@ class CodespacesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
@@ -2060,7 +2060,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
@@ -2123,7 +2123,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesDevcontainersGetResponse200,
@@ -2178,7 +2178,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesDevcontainersGetResponse200,
@@ -2234,7 +2234,7 @@ class CodespacesClient:
         location: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
         ref: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesMachinesGetResponse200,
@@ -2286,7 +2286,7 @@ class CodespacesClient:
         location: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
         ref: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesMachinesGetResponse200,
@@ -2337,7 +2337,7 @@ class CodespacesClient:
         *,
         ref: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesNewGetResponse200,
@@ -2386,7 +2386,7 @@ class CodespacesClient:
         *,
         ref: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesNewGetResponse200,
@@ -2435,7 +2435,7 @@ class CodespacesClient:
         *,
         ref: str,
         devcontainer_path: str,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CodespacesPermissionsCheckForDevcontainer,
@@ -2491,7 +2491,7 @@ class CodespacesClient:
         *,
         ref: str,
         devcontainer_path: str,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CodespacesPermissionsCheckForDevcontainer,
@@ -2547,7 +2547,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesSecretsGetResponse200,
@@ -2592,7 +2592,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesSecretsGetResponse200,
@@ -2635,7 +2635,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodespacesPublicKey, CodespacesPublicKeyTypeForResponse]:
         """codespaces/get-repo-public-key
@@ -2669,7 +2669,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodespacesPublicKey, CodespacesPublicKeyTypeForResponse]:
         """codespaces/get-repo-public-key
@@ -2704,7 +2704,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RepoCodespacesSecret, RepoCodespacesSecretTypeForResponse]:
         """codespaces/get-repo-secret
@@ -2738,7 +2738,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RepoCodespacesSecret, RepoCodespacesSecretTypeForResponse]:
         """codespaces/get-repo-secret
@@ -2773,7 +2773,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -2786,7 +2786,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
@@ -2798,7 +2798,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
@@ -2851,7 +2851,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -2864,7 +2864,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
@@ -2876,7 +2876,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
@@ -2928,7 +2928,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """codespaces/delete-repo-secret
@@ -2959,7 +2959,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """codespaces/delete-repo-secret
@@ -2991,7 +2991,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
     ) -> Response[Codespace, CodespaceTypeForResponse]: ...
@@ -3004,7 +3004,7 @@ class CodespacesClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         location: Missing[str] = UNSET,
         geo: Missing[
@@ -3026,7 +3026,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None]
@@ -3090,7 +3090,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
     ) -> Response[Codespace, CodespaceTypeForResponse]: ...
@@ -3103,7 +3103,7 @@ class CodespacesClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         location: Missing[str] = UNSET,
         geo: Missing[
@@ -3125,7 +3125,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None]
@@ -3188,7 +3188,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         repository_id: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UserCodespacesGetResponse200, UserCodespacesGetResponse200TypeForResponse
@@ -3237,7 +3237,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         repository_id: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UserCodespacesGetResponse200, UserCodespacesGetResponse200TypeForResponse
@@ -3284,7 +3284,7 @@ class CodespacesClient:
     def create_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
     ) -> Response[Codespace, CodespaceTypeForResponse]: ...
@@ -3294,7 +3294,7 @@ class CodespacesClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         repository_id: int,
         ref: Missing[str] = UNSET,
@@ -3317,7 +3317,7 @@ class CodespacesClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         pull_request: UserCodespacesPostBodyOneof1PropPullRequestType,
         location: Missing[str] = UNSET,
@@ -3333,7 +3333,7 @@ class CodespacesClient:
     def create_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type]
@@ -3397,7 +3397,7 @@ class CodespacesClient:
     async def async_create_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
     ) -> Response[Codespace, CodespaceTypeForResponse]: ...
@@ -3407,7 +3407,7 @@ class CodespacesClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         repository_id: int,
         ref: Missing[str] = UNSET,
@@ -3430,7 +3430,7 @@ class CodespacesClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         pull_request: UserCodespacesPostBodyOneof1PropPullRequestType,
         location: Missing[str] = UNSET,
@@ -3446,7 +3446,7 @@ class CodespacesClient:
     async def async_create_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type]
@@ -3511,7 +3511,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UserCodespacesSecretsGetResponse200,
@@ -3556,7 +3556,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UserCodespacesSecretsGetResponse200,
@@ -3599,7 +3599,7 @@ class CodespacesClient:
     def get_public_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodespacesUserPublicKey, CodespacesUserPublicKeyTypeForResponse]:
         """codespaces/get-public-key-for-authenticated-user
@@ -3632,7 +3632,7 @@ class CodespacesClient:
     async def async_get_public_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodespacesUserPublicKey, CodespacesUserPublicKeyTypeForResponse]:
         """codespaces/get-public-key-for-authenticated-user
@@ -3666,7 +3666,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodespacesSecret, CodespacesSecretTypeForResponse]:
         """codespaces/get-secret-for-authenticated-user
@@ -3700,7 +3700,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodespacesSecret, CodespacesSecretTypeForResponse]:
         """codespaces/get-secret-for-authenticated-user
@@ -3735,7 +3735,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -3746,7 +3746,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: str,
@@ -3757,7 +3757,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
@@ -3814,7 +3814,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -3825,7 +3825,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: str,
@@ -3836,7 +3836,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
@@ -3892,7 +3892,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """codespaces/delete-secret-for-authenticated-user
@@ -3923,7 +3923,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """codespaces/delete-secret-for-authenticated-user
@@ -3954,7 +3954,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
@@ -4000,7 +4000,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
@@ -4047,7 +4047,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
@@ -4058,7 +4058,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
@@ -4067,7 +4067,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserCodespacesSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
@@ -4124,7 +4124,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
@@ -4135,7 +4135,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
@@ -4144,7 +4144,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserCodespacesSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
@@ -4201,7 +4201,7 @@ class CodespacesClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """codespaces/add-repository-for-secret-for-authenticated-user
@@ -4241,7 +4241,7 @@ class CodespacesClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """codespaces/add-repository-for-secret-for-authenticated-user
@@ -4281,7 +4281,7 @@ class CodespacesClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """codespaces/remove-repository-for-secret-for-authenticated-user
@@ -4321,7 +4321,7 @@ class CodespacesClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """codespaces/remove-repository-for-secret-for-authenticated-user
@@ -4360,7 +4360,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/get-for-authenticated-user
@@ -4398,7 +4398,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/get-for-authenticated-user
@@ -4436,7 +4436,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -4480,7 +4480,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -4525,7 +4525,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
     ) -> Response[Codespace, CodespaceTypeForResponse]: ...
@@ -4536,7 +4536,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         machine: Missing[str] = UNSET,
         display_name: Missing[str] = UNSET,
@@ -4547,7 +4547,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
@@ -4599,7 +4599,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
     ) -> Response[Codespace, CodespaceTypeForResponse]: ...
@@ -4610,7 +4610,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         machine: Missing[str] = UNSET,
         display_name: Missing[str] = UNSET,
@@ -4621,7 +4621,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
@@ -4672,7 +4672,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsTypeForResponse]:
         """codespaces/export-for-authenticated-user
@@ -4713,7 +4713,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsTypeForResponse]:
         """codespaces/export-for-authenticated-user
@@ -4755,7 +4755,7 @@ class CodespacesClient:
         codespace_name: str,
         export_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsTypeForResponse]:
         """codespaces/get-export-details-for-authenticated-user
@@ -4791,7 +4791,7 @@ class CodespacesClient:
         codespace_name: str,
         export_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsTypeForResponse]:
         """codespaces/get-export-details-for-authenticated-user
@@ -4826,7 +4826,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UserCodespacesCodespaceNameMachinesGetResponse200,
@@ -4870,7 +4870,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UserCodespacesCodespaceNameMachinesGetResponse200,
@@ -4915,7 +4915,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserCodespacesCodespaceNamePublishPostBodyType,
     ) -> Response[
@@ -4928,7 +4928,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         private: Missing[bool] = UNSET,
@@ -4940,7 +4940,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
@@ -5004,7 +5004,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserCodespacesCodespaceNamePublishPostBodyType,
     ) -> Response[
@@ -5017,7 +5017,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         private: Missing[bool] = UNSET,
@@ -5029,7 +5029,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
@@ -5092,7 +5092,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/start-for-authenticated-user
@@ -5133,7 +5133,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/start-for-authenticated-user
@@ -5174,7 +5174,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/stop-for-authenticated-user
@@ -5212,7 +5212,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Codespace, CodespaceTypeForResponse]:
         """codespaces/stop-for-authenticated-user

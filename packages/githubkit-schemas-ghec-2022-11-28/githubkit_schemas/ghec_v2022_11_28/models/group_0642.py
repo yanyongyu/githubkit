@@ -184,6 +184,7 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissions(GitHubModel
     artifact_metadata: Missing[Literal["read", "write"]] = Field(default=UNSET)
     attestations: Missing[Literal["read", "write"]] = Field(default=UNSET)
     checks: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    code_quality: Missing[Literal["read", "write"]] = Field(default=UNSET)
     content_references: Missing[Literal["read", "write"]] = Field(default=UNSET)
     contents: Missing[Literal["read", "write"]] = Field(default=UNSET)
     copilot_requests: Missing[Literal["write"]] = Field(default=UNSET)

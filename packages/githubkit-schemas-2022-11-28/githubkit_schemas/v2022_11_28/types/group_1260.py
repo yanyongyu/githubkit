@@ -9,49 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDispatchesPostBodyType(TypedDict):
-    """ReposOwnerRepoDispatchesPostBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0"""
 
-    event_type: str
-    client_payload: NotRequired[ReposOwnerRepoDispatchesPostBodyPropClientPayloadType]
-
-
-class ReposOwnerRepoDispatchesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoDispatchesPostBody"""
-
-    event_type: str
-    client_payload: NotRequired[
-        ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse
+    state: Literal["dismissed", "open"]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
     ]
+    dismissed_comment: NotRequired[str]
+    assignees: NotRequired[list[str]]
 
 
-ReposOwnerRepoDispatchesPostBodyPropClientPayloadType: TypeAlias = dict[str, Any]
-"""ReposOwnerRepoDispatchesPostBodyPropClientPayload
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0"""
 
-JSON payload with extra information about the webhook event that your action or
-workflow may use. The maximum number of top-level properties is 10. The total
-size of the JSON payload must be less than 64KB.
-"""
-
-
-ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoDispatchesPostBodyPropClientPayload
-
-JSON payload with extra information about the webhook event that your action or
-workflow may use. The maximum number of top-level properties is 10. The total
-size of the JSON payload must be less than 64KB.
-"""
+    state: Literal["dismissed", "open"]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
+    dismissed_comment: NotRequired[str]
+    assignees: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadType",
-    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse",
-    "ReposOwnerRepoDispatchesPostBodyType",
-    "ReposOwnerRepoDispatchesPostBodyTypeForResponse",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
 )

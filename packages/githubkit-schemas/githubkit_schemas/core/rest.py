@@ -7,16 +7,13 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-from collections.abc import Awaitable
+from collections.abc import Awaitable, Callable
 import importlib
 from typing import (
     TYPE_CHECKING,
     Any,
-    Callable,
     Literal,
-    Optional,
     TypeVar,
-    Union,
     overload,
 )
 from typing_extensions import ParamSpec
@@ -47,10 +44,7 @@ CP = ParamSpec("CP")
 CT = TypeVar("CT")
 RT = TypeVar("RT")
 
-R = Union[
-    Callable[CP, "Response[RT]"],
-    Callable[CP, Awaitable["Response[RT]"]],
-]
+R = Callable[CP, "Response[RT]"] | Callable[CP, Awaitable["Response[RT]"]]
 
 if TYPE_CHECKING:
 
@@ -108,7 +102,7 @@ class RestVersionSwitcher(_VersionProxy):
     def paginate(
         self,
         request: "R[CP, CT]",
-        map_func: Optional[Callable[["Response[CT]"], list[RT]]] = None,
+        map_func: Callable[["Response[CT]"], list[RT]] | None = None,
         *args: CP.args,
         **kwargs: CP.kwargs,
     ) -> "Paginator[RT]":

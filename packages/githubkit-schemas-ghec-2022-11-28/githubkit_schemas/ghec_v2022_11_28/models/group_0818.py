@@ -45,7 +45,8 @@ class WebhookIssuesUntyped(GitHubModel):
         description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) itself.",
     )
     type: Union[IssueType, None] = Field(
-        title="Issue Type", description="The type of issue."
+        title="Issue Type",
+        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,

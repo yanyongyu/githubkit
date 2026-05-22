@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING
 from weakref import ref
 
 from githubkit.typing import Missing
@@ -47,7 +47,7 @@ class ServerStatisticsClient:
         *,
         date_start: Missing[str] = UNSET,
         date_end: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ServerStatisticsItems], list[ServerStatisticsItemsTypeForResponse]
@@ -93,7 +93,7 @@ class ServerStatisticsClient:
         *,
         date_start: Missing[str] = UNSET,
         date_end: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ServerStatisticsItems], list[ServerStatisticsItemsTypeForResponse]

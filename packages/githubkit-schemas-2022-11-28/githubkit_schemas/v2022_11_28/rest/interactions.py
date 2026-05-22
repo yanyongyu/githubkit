@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -61,7 +61,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1],
@@ -104,7 +104,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1],
@@ -148,7 +148,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: InteractionLimitType,
     ) -> Response[
@@ -161,7 +161,7 @@ class InteractionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
@@ -175,7 +175,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
@@ -221,7 +221,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: InteractionLimitType,
     ) -> Response[
@@ -234,7 +234,7 @@ class InteractionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
@@ -248,7 +248,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
@@ -293,7 +293,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """interactions/remove-restrictions-for-org
@@ -320,7 +320,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """interactions/remove-restrictions-for-org
@@ -348,7 +348,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[
@@ -396,7 +396,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[
@@ -445,7 +445,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: InteractionLimitType,
     ) -> Response[
@@ -459,7 +459,7 @@ class InteractionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
@@ -474,7 +474,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
@@ -519,7 +519,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: InteractionLimitType,
     ) -> Response[
@@ -533,7 +533,7 @@ class InteractionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
@@ -548,7 +548,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
@@ -592,7 +592,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """interactions/remove-restrictions-for-repo
@@ -621,7 +621,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """interactions/remove-restrictions-for-repo
@@ -648,7 +648,7 @@ class InteractionsClient:
     def get_restrictions_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1],
@@ -690,7 +690,7 @@ class InteractionsClient:
     async def async_get_restrictions_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1],
@@ -733,7 +733,7 @@ class InteractionsClient:
     def set_restrictions_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: InteractionLimitType,
     ) -> Response[
@@ -745,7 +745,7 @@ class InteractionsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
@@ -758,7 +758,7 @@ class InteractionsClient:
     def set_restrictions_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
@@ -803,7 +803,7 @@ class InteractionsClient:
     async def async_set_restrictions_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: InteractionLimitType,
     ) -> Response[
@@ -815,7 +815,7 @@ class InteractionsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
@@ -828,7 +828,7 @@ class InteractionsClient:
     async def async_set_restrictions_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
@@ -872,7 +872,7 @@ class InteractionsClient:
     def remove_restrictions_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """interactions/remove-restrictions-for-authenticated-user
@@ -898,7 +898,7 @@ class InteractionsClient:
     async def async_remove_restrictions_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """interactions/remove-restrictions-for-authenticated-user

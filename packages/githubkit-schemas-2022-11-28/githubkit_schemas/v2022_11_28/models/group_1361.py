@@ -9,34 +9,92 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0190 import RepositoryRulesetBypassActor
+from .group_0191 import RepositoryRulesetConditions
+from .group_0202 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0203 import RepositoryRuleUpdate
+from .group_0205 import RepositoryRuleRequiredLinearHistory
+from .group_0206 import RepositoryRuleMergeQueue
+from .group_0208 import RepositoryRuleRequiredDeployments
+from .group_0210 import RepositoryRulePullRequest
+from .group_0212 import RepositoryRuleRequiredStatusChecks
+from .group_0214 import RepositoryRuleCommitMessagePattern
+from .group_0216 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0218 import RepositoryRuleCommitterEmailPattern
+from .group_0220 import RepositoryRuleBranchNamePattern
+from .group_0222 import RepositoryRuleTagNamePattern
+from .group_0225 import RepositoryRuleWorkflows
+from .group_0227 import RepositoryRuleCodeScanning
+from .group_0229 import RepositoryRuleCopilotCodeReview
+from .group_0231 import RepositoryRuleFilePathRestriction
+from .group_0233 import RepositoryRuleMaxFilePathLength
+from .group_0235 import RepositoryRuleFileExtensionRestriction
+from .group_0237 import RepositoryRuleMaxFileSize
 
-class ReposTemplateOwnerTemplateRepoGeneratePostBody(GitHubModel):
-    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
-    owner: Missing[str] = Field(
+class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
+        default=UNSET, description="The target of the ruleset"
+    )
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
         default=UNSET,
-        description="The organization or person who will own the new repository. To create a new repository in an organization, the authenticated user must be a member of the specified organization.",
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
     )
-    name: str = Field(description="The name of the new repository.")
-    description: Missing[str] = Field(
-        default=UNSET, description="A short description of the new repository."
-    )
-    include_all_branches: Missing[bool] = Field(
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
-        description="Set to `true` to include the directory structure and files from all branches in the template repository, and not just the default branch. Default: `false`.",
+        description="The actors that can bypass the rules in this ruleset",
     )
-    private: Missing[bool] = Field(
+    conditions: Missing[RepositoryRulesetConditions] = Field(
         default=UNSET,
-        description="Either `true` to create a new private repository or `false` to create a new public one.",
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
     )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposTemplateOwnerTemplateRepoGeneratePostBody)
+model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
 
-__all__ = ("ReposTemplateOwnerTemplateRepoGeneratePostBody",)
+__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)

@@ -1,5 +1,5 @@
-from collections.abc import Awaitable
-from typing import Any, Callable, Generic, Optional, TypeVar, Union, cast, overload
+from collections.abc import Awaitable, Callable
+from typing import Any, Generic, TypeVar, cast, overload
 from typing_extensions import ParamSpec, Self, deprecated
 
 from .response import Response
@@ -10,10 +10,7 @@ CT = TypeVar("CT")
 RT = TypeVar("RT")
 RTS = TypeVar("RTS")
 
-R = Union[
-    Callable[CP, Response[RT]],
-    Callable[CP, Awaitable[Response[RT]]],
-]
+R = Callable[CP, Response[RT]] | Callable[CP, Awaitable[Response[RT]]]
 
 
 @deprecated(
@@ -50,7 +47,7 @@ class Paginator(Generic[RT]):
         request: R[CP, CT],
         page: int = 1,
         per_page: int = 100,
-        map_func: Optional[Callable[[Response[CT]], list[RT]]] = None,
+        map_func: Callable[[Response[CT]], list[RT]] | None = None,
         *args: CP.args,
         **kwargs: CP.kwargs,
     ):

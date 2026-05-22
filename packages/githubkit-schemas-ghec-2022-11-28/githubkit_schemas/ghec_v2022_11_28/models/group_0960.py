@@ -67,13 +67,13 @@ class WebhookRepositoryRulesetEditedPropChangesPropRules(GitHubModel):
                 RepositoryRuleCommitterEmailPattern,
                 RepositoryRuleBranchNamePattern,
                 RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
                 RepositoryRuleFilePathRestriction,
                 RepositoryRuleMaxFilePathLength,
                 RepositoryRuleFileExtensionRestriction,
                 RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
             ]
         ]
     ] = Field(default=UNSET)
@@ -95,13 +95,13 @@ class WebhookRepositoryRulesetEditedPropChangesPropRules(GitHubModel):
                 RepositoryRuleCommitterEmailPattern,
                 RepositoryRuleBranchNamePattern,
                 RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
                 RepositoryRuleFilePathRestriction,
                 RepositoryRuleMaxFilePathLength,
                 RepositoryRuleFileExtensionRestriction,
                 RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
             ]
         ]
     ] = Field(default=UNSET)

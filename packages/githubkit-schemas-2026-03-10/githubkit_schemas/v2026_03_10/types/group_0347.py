@@ -9,94 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0041 import (
-    DependabotAlertSecurityVulnerabilityType,
-    DependabotAlertSecurityVulnerabilityTypeForResponse,
-)
-from .group_0042 import (
-    DependabotAlertSecurityAdvisoryType,
-    DependabotAlertSecurityAdvisoryTypeForResponse,
-)
-from .group_0043 import (
-    DependabotAlertDismissalRequestSimpleType,
-    DependabotAlertDismissalRequestSimpleTypeForResponse,
-)
-from .group_0348 import (
-    DependabotAlertPropDependencyType,
-    DependabotAlertPropDependencyTypeForResponse,
-)
 
+class ContentFileType(TypedDict):
+    """Content File
 
-class DependabotAlertType(TypedDict):
-    """DependabotAlert
-
-    A Dependabot alert.
+    Content File
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertPropDependencyType
-    security_advisory: DependabotAlertSecurityAdvisoryType
-    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    type: Literal["file"]
+    encoding: str
+    size: int
+    name: str
+    path: str
+    content: str
+    sha: str
     url: str
-    html_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[_dt.datetime, None]
-    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissal_request: NotRequired[
-        Union[DependabotAlertDismissalRequestSimpleType, None]
-    ]
-    assignees: NotRequired[list[SimpleUserType]]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentFilePropLinksType
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
 
 
-class DependabotAlertTypeForResponse(TypedDict):
-    """DependabotAlert
+class ContentFileTypeForResponse(TypedDict):
+    """Content File
 
-    A Dependabot alert.
+    Content File
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertPropDependencyTypeForResponse
-    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
-    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
+    type: Literal["file"]
+    encoding: str
+    size: int
+    name: str
+    path: str
+    content: str
+    sha: str
     url: str
-    html_url: str
-    created_at: str
-    updated_at: str
-    dismissed_at: Union[str, None]
-    dismissed_by: Union[None, SimpleUserTypeForResponse]
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[str, None]
-    auto_dismissed_at: NotRequired[Union[str, None]]
-    dismissal_request: NotRequired[
-        Union[DependabotAlertDismissalRequestSimpleTypeForResponse, None]
-    ]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentFilePropLinksTypeForResponse
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
+
+
+class ContentFilePropLinksType(TypedDict):
+    """ContentFilePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentFilePropLinksTypeForResponse(TypedDict):
+    """ContentFilePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "DependabotAlertType",
-    "DependabotAlertTypeForResponse",
+    "ContentFilePropLinksType",
+    "ContentFilePropLinksTypeForResponse",
+    "ContentFileType",
+    "ContentFileTypeForResponse",
 )

@@ -9,28 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0231 import RepositoryRuleMaxFileSizePropParameters
+
+class RepositoryRuleCopilotCodeReviewPropParameters(GitHubModel):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
+
+    review_draft_pull_requests: Missing[bool] = Field(
+        default=UNSET,
+        description="Copilot automatically reviews draft pull requests before they are marked as ready for review.",
+    )
+    review_on_push: Missing[bool] = Field(
+        default=UNSET,
+        description="Copilot automatically reviews each new push to the pull request.",
+    )
 
 
-class RepositoryRuleMaxFileSize(GitHubModel):
-    """max_file_size
+model_rebuild(RepositoryRuleCopilotCodeReviewPropParameters)
 
-    Prevent commits with individual files that exceed the specified limit from being
-    pushed to the commit graph.
-    """
-
-    type: Literal["max_file_size"] = Field()
-    parameters: Missing[RepositoryRuleMaxFileSizePropParameters] = Field(default=UNSET)
-
-
-model_rebuild(RepositoryRuleMaxFileSize)
-
-__all__ = ("RepositoryRuleMaxFileSize",)
+__all__ = ("RepositoryRuleCopilotCodeReviewPropParameters",)

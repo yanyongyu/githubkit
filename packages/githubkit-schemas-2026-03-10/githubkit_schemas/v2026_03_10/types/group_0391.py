@@ -14,71 +14,50 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0127 import TeamType, TeamTypeForResponse
 
 
-class ConvertedNoteToIssueIssueEventType(TypedDict):
-    """Converted Note to Issue Issue Event
+class ReviewRequestRemovedIssueEventType(TypedDict):
+    """Review Request Removed Issue Event
 
-    Converted Note to Issue Issue Event
+    Review Request Removed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["converted_note_to_issue"]
+    event: Literal["review_request_removed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
-    project_card: NotRequired[ConvertedNoteToIssueIssueEventPropProjectCardType]
+    performed_via_github_app: Union[None, IntegrationType, None]
+    review_requester: SimpleUserType
+    requested_team: NotRequired[TeamType]
+    requested_reviewer: NotRequired[SimpleUserType]
 
 
-class ConvertedNoteToIssueIssueEventTypeForResponse(TypedDict):
-    """Converted Note to Issue Issue Event
+class ReviewRequestRemovedIssueEventTypeForResponse(TypedDict):
+    """Review Request Removed Issue Event
 
-    Converted Note to Issue Issue Event
+    Review Request Removed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["converted_note_to_issue"]
+    event: Literal["review_request_removed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[IntegrationTypeForResponse, None]
-    project_card: NotRequired[
-        ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse
-    ]
-
-
-class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
-
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
-
-
-class ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
-
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    review_requester: SimpleUserTypeForResponse
+    requested_team: NotRequired[TeamTypeForResponse]
+    requested_reviewer: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "ConvertedNoteToIssueIssueEventPropProjectCardType",
-    "ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse",
-    "ConvertedNoteToIssueIssueEventType",
-    "ConvertedNoteToIssueIssueEventTypeForResponse",
+    "ReviewRequestRemovedIssueEventType",
+    "ReviewRequestRemovedIssueEventTypeForResponse",
 )

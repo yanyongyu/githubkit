@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Any, Literal, TypeAlias, Union
+from typing_extensions import NotRequired, TypedDict
 
 from githubkit.typing import UniqueList
 

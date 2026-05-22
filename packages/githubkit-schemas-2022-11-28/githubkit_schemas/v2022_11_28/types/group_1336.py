@@ -12,21 +12,33 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse409Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
+class ReposOwnerRepoPullsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPostBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    title: NotRequired[str]
+    head: str
+    head_repo: NotRequired[str]
+    base: str
+    body: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
+    draft: NotRequired[bool]
+    issue: NotRequired[int]
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
+class ReposOwnerRepoPullsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPostBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    title: NotRequired[str]
+    head: str
+    head_repo: NotRequired[str]
+    base: str
+    body: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
+    draft: NotRequired[bool]
+    issue: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergePutResponse409Type",
-    "ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse",
+    "ReposOwnerRepoPullsPostBodyType",
+    "ReposOwnerRepoPullsPostBodyTypeForResponse",
 )

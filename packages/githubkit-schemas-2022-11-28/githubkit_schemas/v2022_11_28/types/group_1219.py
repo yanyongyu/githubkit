@@ -12,29 +12,33 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
-
-    Examples:
-        {'users': ['mona']}
-    """
-
-    users: list[str]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyTypeForResponse(
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
+    f0
 
     Examples:
-        {'users': ['mona']}
+        {'contexts': ['contexts']}
     """
 
-    users: list[str]
+    contexts: list[str]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
+    f0
+
+    Examples:
+        {'contexts': ['contexts']}
+    """
+
+    contexts: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0TypeForResponse",
 )

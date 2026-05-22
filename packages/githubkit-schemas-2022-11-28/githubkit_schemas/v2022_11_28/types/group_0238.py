@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleCopilotCodeReviewPropParametersType(TypedDict):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
+class RepositoryRuleMaxFileSizePropParametersType(TypedDict):
+    """RepositoryRuleMaxFileSizePropParameters"""
 
-    review_draft_pull_requests: NotRequired[bool]
-    review_on_push: NotRequired[bool]
+    max_file_size: int
 
 
-class RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
+class RepositoryRuleMaxFileSizePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleMaxFileSizePropParameters"""
 
-    review_draft_pull_requests: NotRequired[bool]
-    review_on_push: NotRequired[bool]
+    max_file_size: int
 
 
 __all__ = (
-    "RepositoryRuleCopilotCodeReviewPropParametersType",
-    "RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse",
+    "RepositoryRuleMaxFileSizePropParametersType",
+    "RepositoryRuleMaxFileSizePropParametersTypeForResponse",
 )

@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsTasksGetResponse403(GitHubModel):
-    """AgentsTasksGetResponse403
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -30,15 +30,17 @@ class AgentsTasksGetResponse403(GitHubModel):
     message: str = Field(
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    errors: Missing[list[AgentsTasksGetResponse403PropErrorsItems]] = Field(
+    errors: Missing[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems]
+    ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
     )
     documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-class AgentsTasksGetResponse403PropErrorsItems(GitHubModel):
-    """AgentsTasksGetResponse403PropErrorsItems
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems
 
     A single validation error
     """
@@ -57,10 +59,10 @@ class AgentsTasksGetResponse403PropErrorsItems(GitHubModel):
     )
 
 
-model_rebuild(AgentsTasksGetResponse403)
-model_rebuild(AgentsTasksGetResponse403PropErrorsItems)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse403)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems)
 
 __all__ = (
-    "AgentsTasksGetResponse403",
-    "AgentsTasksGetResponse403PropErrorsItems",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems",
 )

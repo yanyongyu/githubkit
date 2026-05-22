@@ -13,79 +13,51 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesPostBody"""
+class ReposOwnerRepoHooksPostBodyType(TypedDict):
+    """ReposOwnerRepoHooksPostBody"""
 
-    title: Union[str, int]
-    body: NotRequired[str]
-    assignee: NotRequired[Union[str, None]]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
-        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
-    ]
-    assignees: NotRequired[list[str]]
-    issue_field_values: NotRequired[
-        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType]
-    ]
-    type: NotRequired[Union[str, None]]
-
-
-class ReposOwnerRepoIssuesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesPostBody"""
-
-    title: Union[str, int]
-    body: NotRequired[str]
-    assignee: NotRequired[Union[str, None]]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
-        list[
-            Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse]
-        ]
-    ]
-    assignees: NotRequired[list[str]]
-    issue_field_values: NotRequired[
-        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsTypeForResponse]
-    ]
-    type: NotRequired[Union[str, None]]
-
-
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
-
-    id: NotRequired[int]
     name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
+    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigType]
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+class ReposOwnerRepoHooksPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksPostBody"""
 
-    id: NotRequired[int]
     name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
+    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse]
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
-class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
+class ReposOwnerRepoHooksPostBodyPropConfigType(TypedDict):
+    """ReposOwnerRepoHooksPostBodyPropConfig
 
-    field_id: int
-    value: Union[str, float]
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
+class ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksPostBodyPropConfig
 
-    field_id: int
-    value: Union[str, float]
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType",
-    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsTypeForResponse",
-    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type",
-    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse",
-    "ReposOwnerRepoIssuesPostBodyType",
-    "ReposOwnerRepoIssuesPostBodyTypeForResponse",
+    "ReposOwnerRepoHooksPostBodyPropConfigType",
+    "ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse",
+    "ReposOwnerRepoHooksPostBodyType",
+    "ReposOwnerRepoHooksPostBodyTypeForResponse",
 )

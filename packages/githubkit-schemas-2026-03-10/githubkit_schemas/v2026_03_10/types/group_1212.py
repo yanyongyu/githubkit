@@ -9,32 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody
+class ReposOwnerRepoAutolinksPostBodyType(TypedDict):
+    """ReposOwnerRepoAutolinksPostBody"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: list[str]
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: NotRequired[bool]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody
+class ReposOwnerRepoAutolinksPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoAutolinksPostBody"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: list[str]
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyTypeForResponse",
+    "ReposOwnerRepoAutolinksPostBodyType",
+    "ReposOwnerRepoAutolinksPostBodyTypeForResponse",
 )

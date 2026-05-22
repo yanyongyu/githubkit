@@ -9,31 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+class OrgsOrgAttestationsSubjectDigestGetResponse200Type(TypedDict):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
 
-    scope: Literal[
-        "all", "all_without_configurations", "public", "private_or_internal", "selected"
+    attestations: NotRequired[
+        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType]
     ]
-    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse(
+class OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
+
+    attestations: NotRequired[
+        list[
+            OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
+        ]
+    ]
+
+
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
     TypedDict
 ):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
 
-    scope: Literal[
-        "all", "all_without_configurations", "public", "private_or_internal", "selected"
-    ]
-    selected_repository_ids: NotRequired[list[int]]
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
+
+
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200Type",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse",
 )

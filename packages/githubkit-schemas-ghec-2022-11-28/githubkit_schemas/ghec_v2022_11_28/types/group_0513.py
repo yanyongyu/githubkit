@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0160 import (
-    RepositoryRuleMaxFileSizePropParametersType,
-    RepositoryRuleMaxFileSizePropParametersTypeForResponse,
+from .group_0154 import (
+    RepositoryRuleFilePathRestrictionPropParametersType,
+    RepositoryRuleFilePathRestrictionPropParametersTypeForResponse,
 )
 
 
 class RepositoryRuleDetailedOneof18Type(TypedDict):
     """RepositoryRuleDetailedOneof18"""
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
+    type: Literal["file_path_restriction"]
+    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
@@ -31,8 +31,10 @@ class RepositoryRuleDetailedOneof18Type(TypedDict):
 class RepositoryRuleDetailedOneof18TypeForResponse(TypedDict):
     """RepositoryRuleDetailedOneof18"""
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersTypeForResponse]
+    type: Literal["file_path_restriction"]
+    parameters: NotRequired[
+        RepositoryRuleFilePathRestrictionPropParametersTypeForResponse
+    ]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]

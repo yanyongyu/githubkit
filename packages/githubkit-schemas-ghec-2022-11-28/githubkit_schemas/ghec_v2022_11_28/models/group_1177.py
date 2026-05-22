@@ -12,18 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0110 import CustomPropertyValue
 
+class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
-class OrganizationsOrgOrgPropertiesValuesPatchBody(GitHubModel):
-    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
-
-    properties: list[CustomPropertyValue] = Field(
-        description="A list of custom property names and associated values to apply to the organization."
+    ignored: Missing[bool] = Field(
+        default=UNSET, description="Whether to block all notifications from a thread."
     )
 
 
-model_rebuild(OrganizationsOrgOrgPropertiesValuesPatchBody)
+model_rebuild(NotificationsThreadsThreadIdSubscriptionPutBody)
 
-__all__ = ("OrganizationsOrgOrgPropertiesValuesPatchBody",)
+__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBody",)

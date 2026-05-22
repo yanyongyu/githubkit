@@ -15,29 +15,15 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0364 import CustomDeploymentRuleApp
 
+class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201(GitHubModel):
+    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
-    """
-
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of custom deployment protection rule integrations available for this environment.",
+    sbom_url: Missing[str] = Field(
+        default=UNSET, description="URL to poll for the SBOM export result."
     )
-    available_custom_deployment_protection_rule_integrations: Missing[
-        list[CustomDeploymentRuleApp]
-    ] = Field(default=UNSET)
 
 
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200
-)
+model_rebuild(ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201)
 
-__all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200",
-)
+__all__ = ("ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201",)

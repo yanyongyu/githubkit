@@ -17,7 +17,8 @@ from typing_extensions import NotRequired, TypedDict
 class IssueTypeType(TypedDict):
     """Issue Type
 
-    The type of issue.
+    The type assigned to the issue. This is only present for issues in repositories
+    where issue types are supported.
     """
 
     id: int
@@ -40,7 +41,8 @@ class IssueTypeType(TypedDict):
 class IssueTypeTypeForResponse(TypedDict):
     """Issue Type
 
-    The type of issue.
+    The type assigned to the issue. This is only present for issues in repositories
+    where issue types are supported.
     """
 
     id: int

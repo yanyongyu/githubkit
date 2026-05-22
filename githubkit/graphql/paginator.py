@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, Optional, TypedDict
+from typing import TYPE_CHECKING, Any, TypedDict
 from typing_extensions import Self
 from weakref import ref
 
@@ -31,7 +31,7 @@ class Paginator:
         self,
         graphql: "GraphQLNamespace",
         query: str,
-        variables: Optional[Mapping[str, Any]] = None,
+        variables: Mapping[str, Any] | None = None,
     ) -> None:
         self._graphql_ref = ref(graphql)
         self.query = query
@@ -66,7 +66,7 @@ class Paginator:
     def __aiter__(self: Self) -> Self:
         return self
 
-    def _extract_page_info(self, data: dict[str, Any]) -> Optional[PageInfo]:
+    def _extract_page_info(self, data: dict[str, Any]) -> PageInfo | None:
         if "pageInfo" in data:
             return data["pageInfo"]
 

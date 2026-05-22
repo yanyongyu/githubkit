@@ -9,26 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodeScanningAutofix(GitHubModel):
-    """CodeScanningAutofix"""
+class CodeQualitySetupUpdateAnyof1(GitHubModel):
+    """CodeQualitySetupUpdateAnyof1"""
 
-    status: Literal["pending", "error", "success", "outdated"] = Field(
-        description="The status of an autofix."
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET, description="The desired state of code quality setup."
     )
-    description: Union[str, None] = Field(description="The description of an autofix.")
-    started_at: _dt.datetime = Field(
-        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    runner_type: Literal["standard", "labeled"] = Field(
+        description="Runner type to be used."
     )
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Runner label to be used if the runner type is labeled.",
+    )
+    languages: Missing[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ] = Field(default=UNSET, description="Languages to be analyzed.")
 
 
-model_rebuild(CodeScanningAutofix)
+model_rebuild(CodeQualitySetupUpdateAnyof1)
 
-__all__ = ("CodeScanningAutofix",)
+__all__ = ("CodeQualitySetupUpdateAnyof1",)

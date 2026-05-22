@@ -10,71 +10,39 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class CodeScanningDefaultSetupType(TypedDict):
-    """CodeScanningDefaultSetup
+class CodeScanningVariantAnalysisRepositoryType(TypedDict):
+    """Repository Identifier
 
-    Configuration for code scanning default setup.
+    Repository Identifier
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "swift",
-            ]
-        ]
-    ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    id: int
+    name: str
+    full_name: str
+    private: bool
+    stargazers_count: int
+    updated_at: Union[_dt.datetime, None]
 
 
-class CodeScanningDefaultSetupTypeForResponse(TypedDict):
-    """CodeScanningDefaultSetup
+class CodeScanningVariantAnalysisRepositoryTypeForResponse(TypedDict):
+    """Repository Identifier
 
-    Configuration for code scanning default setup.
+    Repository Identifier
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "swift",
-            ]
-        ]
-    ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    updated_at: NotRequired[Union[str, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    id: int
+    name: str
+    full_name: str
+    private: bool
+    stargazers_count: int
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "CodeScanningDefaultSetupType",
-    "CodeScanningDefaultSetupTypeForResponse",
+    "CodeScanningVariantAnalysisRepositoryType",
+    "CodeScanningVariantAnalysisRepositoryTypeForResponse",
 )

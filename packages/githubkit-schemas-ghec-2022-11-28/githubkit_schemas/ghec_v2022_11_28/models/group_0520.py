@@ -42,7 +42,7 @@ class SecretScanningScan(GitHubModel):
     type: Missing[str] = Field(default=UNSET, description="The type of scan")
     status: Missing[str] = Field(
         default=UNSET,
-        description='The state of the scan. Either "completed", "running", or "pending"',
+        description='The state of the scan. Either "completed", "running", "pending", "failed", or "unknown".\n\n"failed": this scan type has hit its retry limit and has been marked permanently failed.\nThis usually resolves on its own at the next scheduled scan attempt. If "failed" persists, contact Support.\n\n"unknown": the scan is in an unrecognized or currently unhandled state.',
     )
     completed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
@@ -60,7 +60,7 @@ class SecretScanningScanHistoryPropCustomPatternBackfillScansItems(GitHubModel):
     type: Missing[str] = Field(default=UNSET, description="The type of scan")
     status: Missing[str] = Field(
         default=UNSET,
-        description='The state of the scan. Either "completed", "running", or "pending"',
+        description='The state of the scan. Either "completed", "running", "pending", "failed", or "unknown".\n\n"failed": this scan type has hit its retry limit and has been marked permanently failed.\nThis usually resolves on its own at the next scheduled scan attempt. If "failed" persists, contact Support.\n\n"unknown": the scan is in an unrecognized or currently unhandled state.',
     )
     completed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,

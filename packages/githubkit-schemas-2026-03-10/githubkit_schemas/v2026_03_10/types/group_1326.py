@@ -9,36 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoPullsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPostBody"""
-
-    title: NotRequired[str]
-    head: str
-    head_repo: NotRequired[str]
-    base: str
-    body: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
-    draft: NotRequired[bool]
-    issue: NotRequired[int]
+from .group_1323 import (
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+)
 
 
-class ReposOwnerRepoPullsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPostBody"""
+class ReposOwnerRepoPagesPutBodyAnyof2Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof2"""
 
-    title: NotRequired[str]
-    head: str
-    head_repo: NotRequired[str]
-    base: str
-    body: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
-    draft: NotRequired[bool]
-    issue: NotRequired[int]
+    cname: Union[str, None]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
+
+
+class ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof2"""
+
+    cname: Union[str, None]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+        ]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPostBodyType",
-    "ReposOwnerRepoPullsPostBodyTypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof2Type",
+    "ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse",
 )

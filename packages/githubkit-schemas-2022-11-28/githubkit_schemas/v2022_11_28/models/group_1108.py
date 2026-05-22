@@ -11,18 +11,34 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
 
-    The total number of seats set to "pending cancellation" for the specified users.
+    metadata: Missing[
+        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+    ] = Field(default=UNSET, description="Updated resource-specific metadata.")
+
+
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata(
+    ExtraGitHubModel
+):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+
+    Updated resource-specific metadata.
     """
 
-    seats_cancelled: int = Field()
 
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody)
+model_rebuild(
+    OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+)
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteResponse200)
-
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",)
+__all__ = (
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata",
+)

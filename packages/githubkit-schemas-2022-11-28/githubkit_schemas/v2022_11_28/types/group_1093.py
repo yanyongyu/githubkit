@@ -13,105 +13,31 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotSpacesPostBodyType(TypedDict):
-    """OrgsOrgCopilotSpacesPostBody"""
+class OrgsOrgCodespacesAccessPutBodyType(TypedDict):
+    """OrgsOrgCodespacesAccessPutBody"""
 
-    name: str
-    description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
-    resources_attributes: NotRequired[
-        list[OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType]
+    visibility: Literal[
+        "disabled",
+        "selected_members",
+        "all_members",
+        "all_members_and_outside_collaborators",
     ]
+    selected_usernames: NotRequired[list[str]]
 
 
-class OrgsOrgCopilotSpacesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotSpacesPostBody"""
+class OrgsOrgCodespacesAccessPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodespacesAccessPutBody"""
 
-    name: str
-    description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
-    resources_attributes: NotRequired[
-        list[OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse]
+    visibility: Literal[
+        "disabled",
+        "selected_members",
+        "all_members",
+        "all_members_and_outside_collaborators",
     ]
-
-
-class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType(TypedDict):
-    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems"""
-
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    metadata: NotRequired[
-        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType
-    ]
-
-
-class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems"""
-
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    metadata: NotRequired[
-        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
-    ]
-
-
-class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType(
-    TypedDict
-):
-    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
-
-
-class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
+    selected_usernames: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType",
-    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
-    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType",
-    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse",
-    "OrgsOrgCopilotSpacesPostBodyType",
-    "OrgsOrgCopilotSpacesPostBodyTypeForResponse",
+    "OrgsOrgCodespacesAccessPutBodyType",
+    "OrgsOrgCodespacesAccessPutBodyTypeForResponse",
 )

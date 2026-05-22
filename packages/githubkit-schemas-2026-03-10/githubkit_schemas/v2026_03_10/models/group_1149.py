@@ -11,21 +11,17 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-
-from .group_0184 import CustomProperty
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
-    """OrgsOrgPropertiesSchemaPatchBody"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
 
-    properties: list[CustomProperty] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The array of custom properties to create or update.",
+    issue_field_id: int = Field(
+        description="The ID of the IssueField to create the field for."
     )
 
 
-model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0)
 
-__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0",)

@@ -9,50 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    total_count: int
-    devcontainers: list[
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType
+    state: Literal["open", "dismissed"]
+    dismissed_reason: NotRequired[
+        Union[None, Literal["false positive", "won't fix", "used in tests"]]
     ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    create_request: NotRequired[bool]
+    assignees: NotRequired[list[str]]
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
-
-    total_count: int
-    devcontainers: list[
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse
-    ]
-
-
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType(
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    path: str
-    name: NotRequired[str]
-    display_name: NotRequired[str]
-
-
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
-
-    path: str
-    name: NotRequired[str]
-    display_name: NotRequired[str]
+    state: Literal["open", "dismissed"]
+    dismissed_reason: NotRequired[
+        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    create_request: NotRequired[bool]
+    assignees: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType",
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse",
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200Type",
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200TypeForResponse",
+    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type",
+    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
 )

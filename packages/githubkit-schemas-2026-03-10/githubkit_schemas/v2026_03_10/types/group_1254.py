@@ -12,21 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type(TypedDict):
-    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
+class ReposOwnerRepoCommitsCommitShaCommentsPostBodyType(TypedDict):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
-    sbom_url: NotRequired[str]
+    body: str
+    path: NotRequired[str]
+    position: NotRequired[int]
+    line: NotRequired[int]
 
 
-class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
+class ReposOwnerRepoCommitsCommitShaCommentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
-    sbom_url: NotRequired[str]
+    body: str
+    path: NotRequired[str]
+    position: NotRequired[int]
+    line: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type",
-    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse",
+    "ReposOwnerRepoCommitsCommitShaCommentsPostBodyType",
+    "ReposOwnerRepoCommitsCommitShaCommentsPostBodyTypeForResponse",
 )

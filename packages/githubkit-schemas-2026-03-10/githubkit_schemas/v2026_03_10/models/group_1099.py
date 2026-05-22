@@ -11,34 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0137 import CopilotSpace
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class OrgsOrgCopilotSpacesGetResponse200(GitHubModel):
+    """OrgsOrgCopilotSpacesGetResponse200"""
 
-    metadata: Missing[
-        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-    ] = Field(default=UNSET, description="Updated resource-specific metadata.")
-
-
-class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata(
-    ExtraGitHubModel
-):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-
-    Updated resource-specific metadata.
-    """
+    spaces: list[CopilotSpace] = Field(
+        description="The list of Copilot Spaces on this page of results."
+    )
 
 
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody)
-model_rebuild(
-    OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-)
+model_rebuild(OrgsOrgCopilotSpacesGetResponse200)
 
-__all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata",
-)
+__all__ = ("OrgsOrgCopilotSpacesGetResponse200",)

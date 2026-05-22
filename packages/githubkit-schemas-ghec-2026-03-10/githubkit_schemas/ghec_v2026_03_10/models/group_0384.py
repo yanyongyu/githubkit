@@ -28,8 +28,8 @@ class CodeScanningAnalysis(GitHubModel):
     )
     commit_sha: str = Field(
         min_length=40,
-        max_length=40,
-        pattern="^[0-9a-fA-F]+$",
+        max_length=64,
+        pattern="^([0-9a-fA-F]{40}(?:[0-9a-fA-F]{24})?)$",
         description="The SHA of the commit to which the analysis you are uploading relates.",
     )
     analysis_key: str = Field(

@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0270 import JobType, JobTypeForResponse
 
 
-class ReposOwnerRepoActionsVariablesNamePatchBodyType(TypedDict):
-    """ReposOwnerRepoActionsVariablesNamePatchBody"""
+class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
+    total_count: int
+    jobs: list[JobType]
 
 
-class ReposOwnerRepoActionsVariablesNamePatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsVariablesNamePatchBody"""
+class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
+    total_count: int
+    jobs: list[JobTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsVariablesNamePatchBodyType",
-    "ReposOwnerRepoActionsVariablesNamePatchBodyTypeForResponse",
+    "ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",
+    "ReposOwnerRepoActionsRunsRunIdJobsGetResponse200TypeForResponse",
 )

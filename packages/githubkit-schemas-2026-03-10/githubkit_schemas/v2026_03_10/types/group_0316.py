@@ -9,40 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningVariantAnalysisRepositoryType(TypedDict):
-    """Repository Identifier
+class CodeScanningAutofixCommitsType(TypedDict):
+    """CodeScanningAutofixCommits
 
-    Repository Identifier
+    Commit an autofix for a code scanning alert
     """
 
-    id: int
-    name: str
-    full_name: str
-    private: bool
-    stargazers_count: int
-    updated_at: Union[_dt.datetime, None]
+    target_ref: NotRequired[str]
+    message: NotRequired[str]
 
 
-class CodeScanningVariantAnalysisRepositoryTypeForResponse(TypedDict):
-    """Repository Identifier
+class CodeScanningAutofixCommitsTypeForResponse(TypedDict):
+    """CodeScanningAutofixCommits
 
-    Repository Identifier
+    Commit an autofix for a code scanning alert
     """
 
-    id: int
-    name: str
-    full_name: str
-    private: bool
-    stargazers_count: int
-    updated_at: Union[str, None]
+    target_ref: NotRequired[str]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisRepositoryType",
-    "CodeScanningVariantAnalysisRepositoryTypeForResponse",
+    "CodeScanningAutofixCommitsType",
+    "CodeScanningAutofixCommitsTypeForResponse",
 )

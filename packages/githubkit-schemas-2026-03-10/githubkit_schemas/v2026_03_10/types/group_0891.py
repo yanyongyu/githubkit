@@ -13,41 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0490 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0491 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0492 import (
+from .group_0496 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0497 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0498 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0493 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0535 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0499 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0540 import (
+    WebhooksSecurityAdvisoryType,
+    WebhooksSecurityAdvisoryTypeForResponse,
+)
 
 
-class WebhookSponsorshipCancelledType(TypedDict):
-    """sponsorship cancelled event"""
+class WebhookSecurityAdvisoryUpdatedType(TypedDict):
+    """security_advisory updated event"""
 
-    action: Literal["cancelled"]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
+    security_advisory: WebhooksSecurityAdvisoryType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookSponsorshipCancelledTypeForResponse(TypedDict):
-    """sponsorship cancelled event"""
+class WebhookSecurityAdvisoryUpdatedTypeForResponse(TypedDict):
+    """security_advisory updated event"""
 
-    action: Literal["cancelled"]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
-    sponsorship: WebhooksSponsorshipTypeForResponse
+    security_advisory: WebhooksSecurityAdvisoryTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSponsorshipCancelledType",
-    "WebhookSponsorshipCancelledTypeForResponse",
+    "WebhookSecurityAdvisoryUpdatedType",
+    "WebhookSecurityAdvisoryUpdatedTypeForResponse",
 )

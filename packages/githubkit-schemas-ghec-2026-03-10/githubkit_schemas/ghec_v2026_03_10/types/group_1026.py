@@ -19,6 +19,7 @@ class AgentsReposOwnerRepoTasksPostBodyType(TypedDict):
     model: NotRequired[str]
     create_pull_request: NotRequired[bool]
     base_ref: NotRequired[str]
+    head_ref: NotRequired[str]
 
 
 class AgentsReposOwnerRepoTasksPostBodyTypeForResponse(TypedDict):
@@ -28,6 +29,7 @@ class AgentsReposOwnerRepoTasksPostBodyTypeForResponse(TypedDict):
     model: NotRequired[str]
     create_pull_request: NotRequired[bool]
     base_ref: NotRequired[str]
+    head_ref: NotRequired[str]
 
 
 __all__ = (

@@ -13,31 +13,23 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody(
+    GitHubModel
+):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody"""
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ] = Field(description="The type of resource to create.")
-    metadata: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata = Field(
-        description="Resource-specific metadata."
+    role: Literal["reader", "writer", "admin", "no_access"] = Field(
+        description="The new role to grant to the collaborator. Use `no_access` to remove the collaborator."
     )
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata(ExtraGitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
-
-    Resource-specific metadata.
-    """
-
-
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody)
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata)
+model_rebuild(
+    OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody
+)
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
+    "OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody",
 )

@@ -9,31 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPagesPostBodyPropSourceType(TypedDict):
-    """ReposOwnerRepoPagesPostBodyPropSource
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
-    The source branch and directory used to publish your Pages site.
-    """
+    title: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    description: NotRequired[str]
+    due_on: NotRequired[_dt.datetime]
 
-    branch: str
-    path: NotRequired[Literal["/", "/docs"]]
 
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
-class ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPostBodyPropSource
-
-    The source branch and directory used to publish your Pages site.
-    """
-
-    branch: str
-    path: NotRequired[Literal["/", "/docs"]]
+    title: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    description: NotRequired[str]
+    due_on: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPostBodyPropSourceType",
-    "ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse",
+    "ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType",
+    "ReposOwnerRepoMilestonesMilestoneNumberPatchBodyTypeForResponse",
 )

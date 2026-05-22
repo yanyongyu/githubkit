@@ -12,17 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoImportAuthorsAuthorIdPatchBody(GitHubModel):
-    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
+class ReposOwnerRepoGitRefsPostBody(GitHubModel):
+    """ReposOwnerRepoGitRefsPostBody"""
 
-    email: Missing[str] = Field(default=UNSET, description="The new Git author email.")
-    name: Missing[str] = Field(default=UNSET, description="The new Git author name.")
+    ref: str = Field(
+        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
+    )
+    sha: str = Field(description="The SHA1 value for this reference.")
 
 
-model_rebuild(ReposOwnerRepoImportAuthorsAuthorIdPatchBody)
+model_rebuild(ReposOwnerRepoGitRefsPostBody)
 
-__all__ = ("ReposOwnerRepoImportAuthorsAuthorIdPatchBody",)
+__all__ = ("ReposOwnerRepoGitRefsPostBody",)

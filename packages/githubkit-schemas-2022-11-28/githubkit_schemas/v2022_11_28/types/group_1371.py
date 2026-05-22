@@ -9,28 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-
-
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class TeamsTeamIdPatchBodyType(TypedDict):
+    """TeamsTeamIdPatchBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    name: str
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
+
+
+class TeamsTeamIdPatchBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdPatchBody"""
+
+    name: str
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "TeamsTeamIdPatchBodyType",
+    "TeamsTeamIdPatchBodyTypeForResponse",
 )

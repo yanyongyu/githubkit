@@ -11,26 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0184 import CustomPropertyType, CustomPropertyTypeForResponse
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
+class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+    properties: list[CustomPropertyType]
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
+class OrgsOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    properties: list[CustomPropertyTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type",
-    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse",
+    "OrgsOrgPropertiesSchemaPatchBodyType",
+    "OrgsOrgPropertiesSchemaPatchBodyTypeForResponse",
 )

@@ -9,50 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleWorkflowsPropParametersType(TypedDict):
-    """RepositoryRuleWorkflowsPropParameters"""
+class RepositoryRuleMaxFilePathLengthPropParametersType(TypedDict):
+    """RepositoryRuleMaxFilePathLengthPropParameters"""
 
-    do_not_enforce_on_create: NotRequired[bool]
-    workflows: list[RepositoryRuleParamsWorkflowFileReferenceType]
-
-
-class RepositoryRuleWorkflowsPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleWorkflowsPropParameters"""
-
-    do_not_enforce_on_create: NotRequired[bool]
-    workflows: list[RepositoryRuleParamsWorkflowFileReferenceTypeForResponse]
+    max_file_path_length: int
 
 
-class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
-    """WorkflowFileReference
+class RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleMaxFilePathLengthPropParameters"""
 
-    A workflow that must run for this rule to pass
-    """
-
-    path: str
-    ref: NotRequired[str]
-    repository_id: int
-    sha: NotRequired[str]
-
-
-class RepositoryRuleParamsWorkflowFileReferenceTypeForResponse(TypedDict):
-    """WorkflowFileReference
-
-    A workflow that must run for this rule to pass
-    """
-
-    path: str
-    ref: NotRequired[str]
-    repository_id: int
-    sha: NotRequired[str]
+    max_file_path_length: int
 
 
 __all__ = (
-    "RepositoryRuleParamsWorkflowFileReferenceType",
-    "RepositoryRuleParamsWorkflowFileReferenceTypeForResponse",
-    "RepositoryRuleWorkflowsPropParametersType",
-    "RepositoryRuleWorkflowsPropParametersTypeForResponse",
+    "RepositoryRuleMaxFilePathLengthPropParametersType",
+    "RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse",
 )

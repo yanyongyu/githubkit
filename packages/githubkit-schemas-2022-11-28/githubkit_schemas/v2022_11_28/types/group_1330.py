@@ -13,27 +13,27 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberPatchBody"""
+class ReposOwnerRepoPagesPostBodyPropSourceType(TypedDict):
+    """ReposOwnerRepoPagesPostBodyPropSource
 
-    title: NotRequired[str]
-    body: NotRequired[str]
-    state: NotRequired[Literal["open", "closed"]]
-    base: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
+    The source branch and directory used to publish your Pages site.
+    """
+
+    branch: str
+    path: NotRequired[Literal["/", "/docs"]]
 
 
-class ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberPatchBody"""
+class ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPostBodyPropSource
 
-    title: NotRequired[str]
-    body: NotRequired[str]
-    state: NotRequired[Literal["open", "closed"]]
-    base: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
+    The source branch and directory used to publish your Pages site.
+    """
+
+    branch: str
+    path: NotRequired[Literal["/", "/docs"]]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberPatchBodyType",
-    "ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse",
+    "ReposOwnerRepoPagesPostBodyPropSourceType",
+    "ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse",
 )

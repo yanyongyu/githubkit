@@ -9,44 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0472 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
-class CodespaceExportDetailsType(TypedDict):
-    """Fetches information about an export of a codespace.
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
+class LabelSearchResultItemType(TypedDict):
+    """Label Search Result Item
+
+    Label Search Result Item
     """
 
-    state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[_dt.datetime, None]]
-    branch: NotRequired[Union[str, None]]
-    sha: NotRequired[Union[str, None]]
-    id: NotRequired[str]
-    export_url: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    id: int
+    node_id: str
+    url: str
+    name: str
+    color: str
+    default: bool
+    description: Union[str, None]
+    score: float
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class CodespaceExportDetailsTypeForResponse(TypedDict):
-    """Fetches information about an export of a codespace.
+class LabelSearchResultItemTypeForResponse(TypedDict):
+    """Label Search Result Item
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
+    Label Search Result Item
     """
 
-    state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[str, None]]
-    branch: NotRequired[Union[str, None]]
-    sha: NotRequired[Union[str, None]]
-    id: NotRequired[str]
-    export_url: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    id: int
+    node_id: str
+    url: str
+    name: str
+    color: str
+    default: bool
+    description: Union[str, None]
+    score: float
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+
+
+class SearchLabelsGetResponse200Type(TypedDict):
+    """SearchLabelsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[LabelSearchResultItemType]
+
+
+class SearchLabelsGetResponse200TypeForResponse(TypedDict):
+    """SearchLabelsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[LabelSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "CodespaceExportDetailsType",
-    "CodespaceExportDetailsTypeForResponse",
+    "LabelSearchResultItemType",
+    "LabelSearchResultItemTypeForResponse",
+    "SearchLabelsGetResponse200Type",
+    "SearchLabelsGetResponse200TypeForResponse",
 )

@@ -103,7 +103,9 @@ class WebhookIssuesReopenedPropIssue(GitHubModel):
     url: str = Field(description="URL for the issue")
     user: Union[WebhookIssuesReopenedPropIssuePropUser, None] = Field(title="User")
     type: Missing[Union[IssueType, None]] = Field(
-        default=UNSET, title="Issue Type", description="The type of issue."
+        default=UNSET,
+        title="Issue Type",
+        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
     )
 
 

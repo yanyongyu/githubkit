@@ -4,7 +4,7 @@ import importlib.util
 import re
 import sys
 from types import ModuleType
-from typing import Any, Optional
+from typing import Any
 import warnings
 
 ALIAS_MODULES = {
@@ -44,7 +44,7 @@ class AliasModuleLoader(SourceFileLoader):
 
         self.alias_fullname = alias_fullname
 
-    def create_module(self, spec: ModuleSpec) -> Optional[ModuleType]:
+    def create_module(self, spec: ModuleSpec) -> ModuleType | None:
         if self.name in sys.modules:
             return sys.modules[self.name]
 
@@ -63,9 +63,9 @@ class AliasModuleFinder(PathFinder):
     def find_spec(
         cls,
         fullname: str,
-        path: Optional[Sequence[str]] = None,
-        target: Optional[ModuleType] = None,
-    ) -> Optional[ModuleSpec]:
+        path: Sequence[str] | None = None,
+        target: ModuleType | None = None,
+    ) -> ModuleSpec | None:
         # match if the module should be aliased
         for pattern, replacement in ALIAS_MODULES.items():
             alias_fullname, count = re.subn(pattern, replacement, fullname, count=1)

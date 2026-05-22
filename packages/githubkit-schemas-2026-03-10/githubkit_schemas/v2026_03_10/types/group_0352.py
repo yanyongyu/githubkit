@@ -9,33 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0351 import MetadataType, MetadataTypeForResponse
+
+class ContributorType(TypedDict):
+    """Contributor
+
+    Contributor
+    """
+
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[Union[str, None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: str
+    site_admin: NotRequired[bool]
+    contributions: int
+    email: NotRequired[str]
+    name: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class DependencyType(TypedDict):
-    """Dependency"""
+class ContributorTypeForResponse(TypedDict):
+    """Contributor
 
-    package_url: NotRequired[str]
-    metadata: NotRequired[MetadataType]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[list[str]]
+    Contributor
+    """
 
-
-class DependencyTypeForResponse(TypedDict):
-    """Dependency"""
-
-    package_url: NotRequired[str]
-    metadata: NotRequired[MetadataTypeForResponse]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[list[str]]
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[Union[str, None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: str
+    site_admin: NotRequired[bool]
+    contributions: int
+    email: NotRequired[str]
+    name: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "DependencyType",
-    "DependencyTypeForResponse",
+    "ContributorType",
+    "ContributorTypeForResponse",
 )

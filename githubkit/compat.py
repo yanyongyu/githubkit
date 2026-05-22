@@ -1,5 +1,5 @@
-from collections.abc import Generator
-from typing import TYPE_CHECKING, Any, Callable, Protocol, TypeVar, overload
+from collections.abc import Callable, Generator
+from typing import TYPE_CHECKING, Any, Protocol, TypeVar, overload
 
 from pydantic import VERSION
 

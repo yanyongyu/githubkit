@@ -14,21 +14,21 @@ from typing_extensions import TypedDict
 from .group_0343 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoAgentsSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoAgentsSecretsGetResponse200"""
+class ReposOwnerRepoAgentsOrganizationSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoAgentsOrganizationSecretsGetResponse200"""
 
     total_count: int
     secrets: list[ActionsSecretType]
 
 
-class ReposOwnerRepoAgentsSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoAgentsSecretsGetResponse200"""
+class ReposOwnerRepoAgentsOrganizationSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoAgentsOrganizationSecretsGetResponse200"""
 
     total_count: int
     secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoAgentsSecretsGetResponse200Type",
-    "ReposOwnerRepoAgentsSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoAgentsOrganizationSecretsGetResponse200Type",
+    "ReposOwnerRepoAgentsOrganizationSecretsGetResponse200TypeForResponse",
 )

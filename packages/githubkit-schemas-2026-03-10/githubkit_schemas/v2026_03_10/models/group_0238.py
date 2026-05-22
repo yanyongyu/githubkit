@@ -12,23 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RepositoryRuleCopilotCodeReviewPropParameters(GitHubModel):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
+class RepositoryRuleMaxFileSizePropParameters(GitHubModel):
+    """RepositoryRuleMaxFileSizePropParameters"""
 
-    review_draft_pull_requests: Missing[bool] = Field(
-        default=UNSET,
-        description="Copilot automatically reviews draft pull requests before they are marked as ready for review.",
-    )
-    review_on_push: Missing[bool] = Field(
-        default=UNSET,
-        description="Copilot automatically reviews each new push to the pull request.",
+    max_file_size: int = Field(
+        le=100.0,
+        ge=1.0,
+        description="The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
     )
 
 
-model_rebuild(RepositoryRuleCopilotCodeReviewPropParameters)
+model_rebuild(RepositoryRuleMaxFileSizePropParameters)
 
-__all__ = ("RepositoryRuleCopilotCodeReviewPropParameters",)
+__all__ = ("RepositoryRuleMaxFileSizePropParameters",)

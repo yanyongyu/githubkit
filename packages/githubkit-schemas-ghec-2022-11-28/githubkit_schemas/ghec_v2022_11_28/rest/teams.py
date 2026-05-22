@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from typing_extensions import deprecated
 from weakref import ref
 
@@ -88,7 +88,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ExternalGroup, ExternalGroupTypeForResponse]:
         """teams/external-idp-group-info-for-org
@@ -129,7 +129,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ExternalGroup, ExternalGroupTypeForResponse]:
         """teams/external-idp-group-info-for-org
@@ -170,7 +170,7 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ExternalGroups, ExternalGroupsTypeForResponse]:
         """teams/list-external-idp-groups-for-org
@@ -212,7 +212,7 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ExternalGroups, ExternalGroupsTypeForResponse]:
         """teams/list-external-idp-groups-for-org
@@ -254,7 +254,7 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[str] = UNSET,
         q: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GroupMapping, GroupMappingTypeForResponse]:
         """teams/list-idp-groups-for-org
@@ -294,7 +294,7 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[str] = UNSET,
         q: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GroupMapping, GroupMappingTypeForResponse]:
         """teams/list-idp-groups-for-org
@@ -334,7 +334,7 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         team_type: Missing[Literal["all", "enterprise", "organization"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """teams/list
@@ -377,7 +377,7 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         team_type: Missing[Literal["all", "enterprise", "organization"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """teams/list
@@ -418,7 +418,7 @@ class TeamsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgTeamsPostBodyType,
     ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
@@ -429,7 +429,7 @@ class TeamsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: Missing[str] = UNSET,
@@ -447,7 +447,7 @@ class TeamsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsPostBodyType] = UNSET,
         **kwargs,
@@ -496,7 +496,7 @@ class TeamsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgTeamsPostBodyType,
     ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
@@ -507,7 +507,7 @@ class TeamsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: Missing[str] = UNSET,
@@ -525,7 +525,7 @@ class TeamsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsPostBodyType] = UNSET,
         **kwargs,
@@ -574,7 +574,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """teams/get-by-name
@@ -611,7 +611,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """teams/get-by-name
@@ -648,7 +648,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """teams/delete-in-org
@@ -682,7 +682,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """teams/delete-in-org
@@ -717,7 +717,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
     ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
@@ -729,7 +729,7 @@ class TeamsClient:
         team_slug: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -746,7 +746,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
@@ -803,7 +803,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
     ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
@@ -815,7 +815,7 @@ class TeamsClient:
         team_slug: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -832,7 +832,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
@@ -888,7 +888,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ExternalGroups, ExternalGroupsTypeForResponse]:
         """teams/list-linked-external-idp-groups-to-team-for-org
@@ -922,7 +922,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ExternalGroups, ExternalGroupsTypeForResponse]:
         """teams/list-linked-external-idp-groups-to-team-for-org
@@ -956,7 +956,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """teams/unlink-external-idp-group-from-team-for-org
@@ -987,7 +987,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """teams/unlink-external-idp-group-from-team-for-org
@@ -1019,7 +1019,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType,
     ) -> Response[ExternalGroup, ExternalGroupTypeForResponse]: ...
@@ -1031,7 +1031,7 @@ class TeamsClient:
         team_slug: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         group_id: int,
     ) -> Response[ExternalGroup, ExternalGroupTypeForResponse]: ...
@@ -1041,7 +1041,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType] = UNSET,
         **kwargs,
@@ -1090,7 +1090,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType,
     ) -> Response[ExternalGroup, ExternalGroupTypeForResponse]: ...
@@ -1102,7 +1102,7 @@ class TeamsClient:
         team_slug: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         group_id: int,
     ) -> Response[ExternalGroup, ExternalGroupTypeForResponse]: ...
@@ -1112,7 +1112,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType] = UNSET,
         **kwargs,
@@ -1162,7 +1162,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
@@ -1207,7 +1207,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
@@ -1253,7 +1253,7 @@ class TeamsClient:
         role: Missing[Literal["member", "maintainer", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """teams/list-members-in-org
@@ -1296,7 +1296,7 @@ class TeamsClient:
         role: Missing[Literal["member", "maintainer", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """teams/list-members-in-org
@@ -1337,7 +1337,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """teams/get-membership-for-user-in-org
@@ -1380,7 +1380,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """teams/get-membership-for-user-in-org
@@ -1424,7 +1424,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
     ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
@@ -1437,7 +1437,7 @@ class TeamsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
     ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
@@ -1448,7 +1448,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
@@ -1511,7 +1511,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
     ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
@@ -1524,7 +1524,7 @@ class TeamsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
     ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
@@ -1535,7 +1535,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
@@ -1597,7 +1597,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """teams/remove-membership-for-user-in-org
@@ -1635,7 +1635,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """teams/remove-membership-for-user-in-org
@@ -1674,7 +1674,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """teams/list-repos-in-org
@@ -1716,7 +1716,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """teams/list-repos-in-org
@@ -1758,7 +1758,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[TeamRepository, TeamRepositoryTypeForResponse]:
         """teams/check-permissions-for-repo-in-org
@@ -1801,7 +1801,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[TeamRepository, TeamRepositoryTypeForResponse]:
         """teams/check-permissions-for-repo-in-org
@@ -1845,7 +1845,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
     ) -> Response: ...
@@ -1859,7 +1859,7 @@ class TeamsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         permission: Missing[str] = UNSET,
     ) -> Response: ...
@@ -1871,7 +1871,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
@@ -1921,7 +1921,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
     ) -> Response: ...
@@ -1935,7 +1935,7 @@ class TeamsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         permission: Missing[str] = UNSET,
     ) -> Response: ...
@@ -1947,7 +1947,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
@@ -1996,7 +1996,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """teams/remove-repo-in-org
@@ -2029,7 +2029,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """teams/remove-repo-in-org
@@ -2060,7 +2060,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GroupMapping, GroupMappingTypeForResponse]:
         """teams/list-idp-groups-in-org
@@ -2097,7 +2097,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GroupMapping, GroupMappingTypeForResponse]:
         """teams/list-idp-groups-in-org
@@ -2135,7 +2135,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType,
     ) -> Response[GroupMapping, GroupMappingTypeForResponse]: ...
@@ -2147,7 +2147,7 @@ class TeamsClient:
         team_slug: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         groups: Missing[
             list[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
@@ -2159,7 +2159,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType] = UNSET,
         **kwargs,
@@ -2214,7 +2214,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType,
     ) -> Response[GroupMapping, GroupMappingTypeForResponse]: ...
@@ -2226,7 +2226,7 @@ class TeamsClient:
         team_slug: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         groups: Missing[
             list[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
@@ -2238,7 +2238,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType] = UNSET,
         **kwargs,
@@ -2294,7 +2294,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """teams/list-child-in-org
@@ -2336,7 +2336,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """teams/list-child-in-org
@@ -2376,7 +2376,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """DEPRECATED teams/get-legacy
@@ -2411,7 +2411,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """DEPRECATED teams/get-legacy
@@ -2446,7 +2446,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED teams/delete-legacy
@@ -2485,7 +2485,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED teams/delete-legacy
@@ -2525,7 +2525,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: TeamsTeamIdPatchBodyType,
     ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
@@ -2537,7 +2537,7 @@ class TeamsClient:
         team_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: Missing[str] = UNSET,
@@ -2554,7 +2554,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdPatchBodyType] = UNSET,
         **kwargs,
@@ -2609,7 +2609,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: TeamsTeamIdPatchBodyType,
     ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
@@ -2621,7 +2621,7 @@ class TeamsClient:
         team_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: Missing[str] = UNSET,
@@ -2638,7 +2638,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdPatchBodyType] = UNSET,
         **kwargs,
@@ -2694,7 +2694,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
@@ -2738,7 +2738,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
@@ -2783,7 +2783,7 @@ class TeamsClient:
         role: Missing[Literal["member", "maintainer", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """DEPRECATED teams/list-members-legacy
@@ -2830,7 +2830,7 @@ class TeamsClient:
         role: Missing[Literal["member", "maintainer", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """DEPRECATED teams/list-members-legacy
@@ -2875,7 +2875,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED teams/get-member-legacy
@@ -2909,7 +2909,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED teams/get-member-legacy
@@ -2943,7 +2943,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED teams/add-member-legacy
@@ -2988,7 +2988,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED teams/add-member-legacy
@@ -3033,7 +3033,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED teams/remove-member-legacy
@@ -3072,7 +3072,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED teams/remove-member-legacy
@@ -3111,7 +3111,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """DEPRECATED teams/get-membership-for-user-legacy
@@ -3156,7 +3156,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """DEPRECATED teams/get-membership-for-user-legacy
@@ -3202,7 +3202,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
     ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
@@ -3215,7 +3215,7 @@ class TeamsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
     ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
@@ -3226,7 +3226,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
@@ -3290,7 +3290,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
     ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
@@ -3303,7 +3303,7 @@ class TeamsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
     ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
@@ -3314,7 +3314,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
@@ -3377,7 +3377,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED teams/remove-membership-for-user-legacy
@@ -3415,7 +3415,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED teams/remove-membership-for-user-legacy
@@ -3454,7 +3454,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """DEPRECATED teams/list-repos-legacy
@@ -3497,7 +3497,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """DEPRECATED teams/list-repos-legacy
@@ -3540,7 +3540,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[TeamRepository, TeamRepositoryTypeForResponse]:
         """DEPRECATED teams/check-permissions-for-repo-legacy
@@ -3580,7 +3580,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[TeamRepository, TeamRepositoryTypeForResponse]:
         """DEPRECATED teams/check-permissions-for-repo-legacy
@@ -3621,7 +3621,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
     ) -> Response: ...
@@ -3635,7 +3635,7 @@ class TeamsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
     ) -> Response: ...
@@ -3647,7 +3647,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
@@ -3705,7 +3705,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
     ) -> Response: ...
@@ -3719,7 +3719,7 @@ class TeamsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
     ) -> Response: ...
@@ -3731,7 +3731,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
@@ -3788,7 +3788,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED teams/remove-repo-legacy
@@ -3821,7 +3821,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED teams/remove-repo-legacy
@@ -3852,7 +3852,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GroupMapping, GroupMappingTypeForResponse]:
         """DEPRECATED teams/list-idp-groups-for-legacy
@@ -3892,7 +3892,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GroupMapping, GroupMappingTypeForResponse]:
         """DEPRECATED teams/list-idp-groups-for-legacy
@@ -3933,7 +3933,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: TeamsTeamIdTeamSyncGroupMappingsPatchBodyType,
     ) -> Response[GroupMapping, GroupMappingTypeForResponse]: ...
@@ -3945,7 +3945,7 @@ class TeamsClient:
         team_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
         synced_at: Missing[str] = UNSET,
@@ -3956,7 +3956,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdTeamSyncGroupMappingsPatchBodyType] = UNSET,
         **kwargs,
@@ -4014,7 +4014,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: TeamsTeamIdTeamSyncGroupMappingsPatchBodyType,
     ) -> Response[GroupMapping, GroupMappingTypeForResponse]: ...
@@ -4026,7 +4026,7 @@ class TeamsClient:
         team_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
         synced_at: Missing[str] = UNSET,
@@ -4037,7 +4037,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdTeamSyncGroupMappingsPatchBodyType] = UNSET,
         **kwargs,
@@ -4096,7 +4096,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """DEPRECATED teams/list-child-legacy
@@ -4141,7 +4141,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """DEPRECATED teams/list-child-legacy
@@ -4184,7 +4184,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[TeamFull], list[TeamFullTypeForResponse]]:
         """teams/list-for-authenticated-user
@@ -4230,7 +4230,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[TeamFull], list[TeamFullTypeForResponse]]:
         """teams/list-for-authenticated-user

@@ -18,17 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0490 import EnterpriseWebhooks
-from .group_0491 import SimpleInstallation
-from .group_0492 import OrganizationSimpleWebhooks
-from .group_0493 import RepositoryWebhooks
+from .group_0496 import EnterpriseWebhooks
+from .group_0497 import SimpleInstallation
+from .group_0498 import OrganizationSimpleWebhooks
+from .group_0499 import RepositoryWebhooks
 
 
-class WebhookRepositoryRenamed(GitHubModel):
-    """repository renamed event"""
+class WebhookRepositoryDeleted(GitHubModel):
+    """repository deleted event"""
 
-    action: Literal["renamed"] = Field()
-    changes: WebhookRepositoryRenamedPropChanges = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -51,32 +50,6 @@ class WebhookRepositoryRenamed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookRepositoryRenamedPropChanges(GitHubModel):
-    """WebhookRepositoryRenamedPropChanges"""
+model_rebuild(WebhookRepositoryDeleted)
 
-    repository: WebhookRepositoryRenamedPropChangesPropRepository = Field()
-
-
-class WebhookRepositoryRenamedPropChangesPropRepository(GitHubModel):
-    """WebhookRepositoryRenamedPropChangesPropRepository"""
-
-    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropName = Field()
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryPropName(GitHubModel):
-    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookRepositoryRenamed)
-model_rebuild(WebhookRepositoryRenamedPropChanges)
-model_rebuild(WebhookRepositoryRenamedPropChangesPropRepository)
-model_rebuild(WebhookRepositoryRenamedPropChangesPropRepositoryPropName)
-
-__all__ = (
-    "WebhookRepositoryRenamed",
-    "WebhookRepositoryRenamedPropChanges",
-    "WebhookRepositoryRenamedPropChangesPropRepository",
-    "WebhookRepositoryRenamedPropChangesPropRepositoryPropName",
-)
+__all__ = ("WebhookRepositoryDeleted",)

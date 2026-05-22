@@ -19,17 +19,16 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0049 import Discussion
-from .group_0491 import EnterpriseWebhooks
-from .group_0492 import SimpleInstallation
-from .group_0493 import OrganizationSimpleWebhooks
-from .group_0494 import RepositoryWebhooks
+from .group_0497 import EnterpriseWebhooks
+from .group_0498 import SimpleInstallation
+from .group_0499 import OrganizationSimpleWebhooks
+from .group_0500 import RepositoryWebhooks
 
 
-class WebhookDiscussionEdited(GitHubModel):
-    """discussion edited event"""
+class WebhookDiscussionClosed(GitHubModel):
+    """discussion closed event"""
 
-    action: Literal["edited"] = Field()
-    changes: Missing[WebhookDiscussionEditedPropChanges] = Field(default=UNSET)
+    action: Literal["closed"] = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -55,33 +54,6 @@ class WebhookDiscussionEdited(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookDiscussionEditedPropChanges(GitHubModel):
-    """WebhookDiscussionEditedPropChanges"""
+model_rebuild(WebhookDiscussionClosed)
 
-    body: Missing[WebhookDiscussionEditedPropChangesPropBody] = Field(default=UNSET)
-    title: Missing[WebhookDiscussionEditedPropChangesPropTitle] = Field(default=UNSET)
-
-
-class WebhookDiscussionEditedPropChangesPropBody(GitHubModel):
-    """WebhookDiscussionEditedPropChangesPropBody"""
-
-    from_: str = Field(alias="from")
-
-
-class WebhookDiscussionEditedPropChangesPropTitle(GitHubModel):
-    """WebhookDiscussionEditedPropChangesPropTitle"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookDiscussionEdited)
-model_rebuild(WebhookDiscussionEditedPropChanges)
-model_rebuild(WebhookDiscussionEditedPropChangesPropBody)
-model_rebuild(WebhookDiscussionEditedPropChangesPropTitle)
-
-__all__ = (
-    "WebhookDiscussionEdited",
-    "WebhookDiscussionEditedPropChanges",
-    "WebhookDiscussionEditedPropChangesPropBody",
-    "WebhookDiscussionEditedPropChangesPropTitle",
-)
+__all__ = ("WebhookDiscussionClosed",)

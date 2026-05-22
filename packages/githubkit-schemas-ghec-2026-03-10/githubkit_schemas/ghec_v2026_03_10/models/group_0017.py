@@ -48,6 +48,10 @@ class AppPermissions(GitHubModel):
         default=UNSET,
         description="The level of permission to grant the access token for checks on code.",
     )
+    code_quality: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to view and manage code quality data.",
+    )
     codespaces: Missing[Literal["read", "write"]] = Field(
         default=UNSET,
         description="The level of permission to grant the access token to create, edit, delete, and list Codespaces.",
@@ -160,7 +164,7 @@ class AppPermissions(GitHubModel):
         default=UNSET,
         description="The level of permission to grant the access token for repository custom properties management at the organization level.",
     )
-    organization_copilot_seat_management: Missing[Literal["write", "read"]] = Field(
+    organization_copilot_seat_management: Missing[Literal["read", "write"]] = Field(
         default=UNSET,
         description="The level of permission to grant the access token for managing access to GitHub Copilot for members of an organization with a Copilot Business subscription. This property is in public preview and is subject to change.",
     )
@@ -241,6 +245,10 @@ class AppPermissions(GitHubModel):
     starring: Missing[Literal["read", "write"]] = Field(
         default=UNSET,
         description="The level of permission to grant the access token to list and manage repositories a user is starring.",
+    )
+    enterprise_administration: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to administer an enterprise account.",
     )
     enterprise_custom_properties_for_organizations: Missing[
         Literal["read", "write", "admin"]

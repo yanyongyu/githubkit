@@ -13,88 +13,44 @@ from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200(GitHubModel):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200(GitHubModel):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
 
-    attestations: Missing[
-        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+    total_count: int = Field()
+    storage_records: Missing[
+        list[
+            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
+        ]
     ] = Field(default=UNSET)
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems(GitHubModel):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    bundle: Missing[
-        Union[
-            OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle,
-            None,
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information.",
-    )
-    repository_id: Missing[int] = Field(default=UNSET)
-    bundle_url: Missing[str] = Field(default=UNSET)
-    initiator: Missing[str] = Field(default=UNSET)
-
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle(
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems(
     GitHubModel
 ):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
 
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
-    """
-
-    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
-    verification_material: Missing[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
-    ] = Field(default=UNSET, alias="verificationMaterial")
-    dsse_envelope: Missing[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
-    ] = Field(default=UNSET, alias="dsseEnvelope")
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    digest: Missing[str] = Field(default=UNSET)
+    artifact_url: Missing[Union[str, None]] = Field(default=UNSET)
+    registry_url: Missing[str] = Field(default=UNSET)
+    repository: Missing[Union[str, None]] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial(
-    ExtraGitHubModel
-):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
-    pVerificationMaterial
-    """
-
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope(
-    ExtraGitHubModel
-):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
-    pDsseEnvelope
-    """
-
-
-model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200)
-model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems)
+model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostResponse200)
 model_rebuild(
-    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
-)
-model_rebuild(
-    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
-)
-model_rebuild(
-    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
+    OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
 )
 
 __all__ = (
-    "OrgsOrgAttestationsSubjectDigestGetResponse200",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems",
 )

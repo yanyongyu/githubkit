@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -86,7 +86,7 @@ class CodeSecurityClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityConfiguration], list[CodeSecurityConfigurationTypeForResponse]
@@ -136,7 +136,7 @@ class CodeSecurityClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityConfiguration], list[CodeSecurityConfigurationTypeForResponse]
@@ -184,7 +184,7 @@ class CodeSecurityClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType,
     ) -> Response[
@@ -197,7 +197,7 @@ class CodeSecurityClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: str,
@@ -258,7 +258,7 @@ class CodeSecurityClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType
@@ -318,7 +318,7 @@ class CodeSecurityClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType,
     ) -> Response[
@@ -331,7 +331,7 @@ class CodeSecurityClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: str,
@@ -392,7 +392,7 @@ class CodeSecurityClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType
@@ -451,7 +451,7 @@ class CodeSecurityClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityDefaultConfigurationsItems],
@@ -488,7 +488,7 @@ class CodeSecurityClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityDefaultConfigurationsItems],
@@ -526,7 +526,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse]:
         """code-security/get-single-configuration-for-enterprise
@@ -567,7 +567,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse]:
         """code-security/get-single-configuration-for-enterprise
@@ -608,7 +608,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """code-security/delete-configuration-for-enterprise
@@ -652,7 +652,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """code-security/delete-configuration-for-enterprise
@@ -697,7 +697,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType,
     ) -> Response[
@@ -711,7 +711,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -773,7 +773,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType
@@ -837,7 +837,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType,
     ) -> Response[
@@ -851,7 +851,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -913,7 +913,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType
@@ -977,7 +977,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     ) -> Response[
@@ -992,7 +992,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         scope: Literal["all", "all_without_configurations"],
     ) -> Response[
@@ -1005,7 +1005,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType
@@ -1072,7 +1072,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     ) -> Response[
@@ -1087,7 +1087,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         scope: Literal["all", "all_without_configurations"],
     ) -> Response[
@@ -1100,7 +1100,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType
@@ -1167,7 +1167,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
@@ -1182,7 +1182,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         default_for_new_repos: Missing[
             Literal["all", "none", "private_and_internal", "public"]
@@ -1197,7 +1197,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType
@@ -1263,7 +1263,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
@@ -1278,7 +1278,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         default_for_new_repos: Missing[
             Literal["all", "none", "private_and_internal", "public"]
@@ -1293,7 +1293,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType
@@ -1362,7 +1362,7 @@ class CodeSecurityClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         status: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],
@@ -1416,7 +1416,7 @@ class CodeSecurityClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         status: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],
@@ -1469,7 +1469,7 @@ class CodeSecurityClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityConfiguration], list[CodeSecurityConfigurationTypeForResponse]
@@ -1521,7 +1521,7 @@ class CodeSecurityClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityConfiguration], list[CodeSecurityConfigurationTypeForResponse]
@@ -1570,7 +1570,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsPostBodyType,
     ) -> Response[
@@ -1583,7 +1583,7 @@ class CodeSecurityClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: str,
@@ -1653,7 +1653,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCodeSecurityConfigurationsPostBodyType] = UNSET,
         **kwargs,
@@ -1703,7 +1703,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsPostBodyType,
     ) -> Response[
@@ -1716,7 +1716,7 @@ class CodeSecurityClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: str,
@@ -1786,7 +1786,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCodeSecurityConfigurationsPostBodyType] = UNSET,
         **kwargs,
@@ -1835,7 +1835,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityDefaultConfigurationsItems],
@@ -1876,7 +1876,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityDefaultConfigurationsItems],
@@ -1918,7 +1918,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType,
     ) -> Response: ...
@@ -1929,7 +1929,7 @@ class CodeSecurityClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
@@ -1938,7 +1938,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType] = UNSET,
         **kwargs,
@@ -1996,7 +1996,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType,
     ) -> Response: ...
@@ -2007,7 +2007,7 @@ class CodeSecurityClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
@@ -2016,7 +2016,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType] = UNSET,
         **kwargs,
@@ -2074,7 +2074,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse]:
         """code-security/get-configuration
@@ -2113,7 +2113,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse]:
         """code-security/get-configuration
@@ -2152,7 +2152,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """code-security/delete-configuration
@@ -2194,7 +2194,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """code-security/delete-configuration
@@ -2237,7 +2237,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
     ) -> Response[
@@ -2251,7 +2251,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -2322,7 +2322,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType
@@ -2377,7 +2377,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
     ) -> Response[
@@ -2391,7 +2391,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -2462,7 +2462,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType
@@ -2517,7 +2517,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     ) -> Response[
@@ -2532,7 +2532,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         scope: Literal[
             "all",
@@ -2552,7 +2552,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType
@@ -2612,7 +2612,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     ) -> Response[
@@ -2627,7 +2627,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         scope: Literal[
             "all",
@@ -2647,7 +2647,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType
@@ -2707,7 +2707,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
@@ -2722,7 +2722,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         default_for_new_repos: Missing[
             Literal["all", "none", "private_and_internal", "public"]
@@ -2737,7 +2737,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType
@@ -2802,7 +2802,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
@@ -2817,7 +2817,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         default_for_new_repos: Missing[
             Literal["all", "none", "private_and_internal", "public"]
@@ -2832,7 +2832,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType
@@ -2900,7 +2900,7 @@ class CodeSecurityClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         status: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],
@@ -2956,7 +2956,7 @@ class CodeSecurityClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         status: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],
@@ -3008,7 +3008,7 @@ class CodeSecurityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CodeSecurityConfigurationForRepository,
@@ -3050,7 +3050,7 @@ class CodeSecurityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CodeSecurityConfigurationForRepository,

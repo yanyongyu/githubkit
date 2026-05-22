@@ -9,87 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_1009 import (
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
+)
 
-class OrgsOrgPatchBodyType(TypedDict):
-    """OrgsOrgPatchBody"""
 
-    billing_email: NotRequired[str]
-    company: NotRequired[str]
-    email: NotRequired[str]
-    twitter_username: NotRequired[str]
-    location: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[str]
-    has_organization_projects: NotRequired[bool]
-    has_repository_projects: NotRequired[bool]
-    default_repository_permission: NotRequired[
-        Literal["read", "write", "admin", "none"]
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(TypedDict):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
+
+    custom_properties: NotRequired[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
     ]
-    members_can_create_repositories: NotRequired[bool]
-    members_can_create_internal_repositories: NotRequired[bool]
-    members_can_create_private_repositories: NotRequired[bool]
-    members_can_create_public_repositories: NotRequired[bool]
-    members_allowed_repository_creation_type: NotRequired[
-        Literal["all", "private", "none"]
-    ]
-    members_can_create_pages: NotRequired[bool]
-    members_can_create_public_pages: NotRequired[bool]
-    members_can_create_private_pages: NotRequired[bool]
-    members_can_fork_private_repositories: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    blog: NotRequired[str]
-    advanced_security_enabled_for_new_repositories: NotRequired[bool]
-    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
-    dependabot_security_updates_enabled_for_new_repositories: NotRequired[bool]
-    dependency_graph_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_custom_link: NotRequired[str]
-    deploy_keys_enabled_for_repositories: NotRequired[bool]
 
 
-class OrgsOrgPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPatchBody"""
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
+    TypedDict
+):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
 
-    billing_email: NotRequired[str]
-    company: NotRequired[str]
-    email: NotRequired[str]
-    twitter_username: NotRequired[str]
-    location: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[str]
-    has_organization_projects: NotRequired[bool]
-    has_repository_projects: NotRequired[bool]
-    default_repository_permission: NotRequired[
-        Literal["read", "write", "admin", "none"]
+    custom_properties: NotRequired[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
     ]
-    members_can_create_repositories: NotRequired[bool]
-    members_can_create_internal_repositories: NotRequired[bool]
-    members_can_create_private_repositories: NotRequired[bool]
-    members_can_create_public_repositories: NotRequired[bool]
-    members_allowed_repository_creation_type: NotRequired[
-        Literal["all", "private", "none"]
-    ]
-    members_can_create_pages: NotRequired[bool]
-    members_can_create_public_pages: NotRequired[bool]
-    members_can_create_private_pages: NotRequired[bool]
-    members_can_fork_private_repositories: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    blog: NotRequired[str]
-    advanced_security_enabled_for_new_repositories: NotRequired[bool]
-    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
-    dependabot_security_updates_enabled_for_new_repositories: NotRequired[bool]
-    dependency_graph_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_custom_link: NotRequired[str]
-    deploy_keys_enabled_for_repositories: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgPatchBodyType",
-    "OrgsOrgPatchBodyTypeForResponse",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
 )

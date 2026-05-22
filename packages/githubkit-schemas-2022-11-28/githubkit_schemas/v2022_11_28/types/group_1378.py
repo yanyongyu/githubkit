@@ -9,40 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class UserEmailsDeleteBodyOneof0Type(TypedDict):
-    """UserEmailsDeleteBodyOneof0
+class UserCodespacesSecretsGetResponse200Type(TypedDict):
+    """UserCodespacesSecretsGetResponse200"""
 
-    Deletes one or more email addresses from your GitHub account. Must contain at
-    least one email address. **Note:** Alternatively, you can pass a single email
-    address or an `array` of emails addresses directly, but we recommend that you
-    pass an object using the `emails` key.
+    total_count: int
+    secrets: list[CodespacesSecretType]
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
+
+class UserCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
+    """UserCodespacesSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[CodespacesSecretTypeForResponse]
+
+
+class CodespacesSecretType(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
     """
 
-    emails: list[str]
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: str
 
 
-class UserEmailsDeleteBodyOneof0TypeForResponse(TypedDict):
-    """UserEmailsDeleteBodyOneof0
+class CodespacesSecretTypeForResponse(TypedDict):
+    """Codespaces Secret
 
-    Deletes one or more email addresses from your GitHub account. Must contain at
-    least one email address. **Note:** Alternatively, you can pass a single email
-    address or an `array` of emails addresses directly, but we recommend that you
-    pass an object using the `emails` key.
-
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
+    Secrets for a GitHub Codespace.
     """
 
-    emails: list[str]
+    name: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: str
 
 
 __all__ = (
-    "UserEmailsDeleteBodyOneof0Type",
-    "UserEmailsDeleteBodyOneof0TypeForResponse",
+    "CodespacesSecretType",
+    "CodespacesSecretTypeForResponse",
+    "UserCodespacesSecretsGetResponse200Type",
+    "UserCodespacesSecretsGetResponse200TypeForResponse",
 )

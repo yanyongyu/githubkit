@@ -12,21 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoNotificationsPutResponse202Type(TypedDict):
-    """ReposOwnerRepoNotificationsPutResponse202"""
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
 
-    message: NotRequired[str]
-    url: NotRequired[str]
+    sub_issue_id: int
+    after_id: NotRequired[int]
+    before_id: NotRequired[int]
 
 
-class ReposOwnerRepoNotificationsPutResponse202TypeForResponse(TypedDict):
-    """ReposOwnerRepoNotificationsPutResponse202"""
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
 
-    message: NotRequired[str]
-    url: NotRequired[str]
+    sub_issue_id: int
+    after_id: NotRequired[int]
+    before_id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoNotificationsPutResponse202Type",
-    "ReposOwnerRepoNotificationsPutResponse202TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType",
+    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse",
 )

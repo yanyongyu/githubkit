@@ -9,60 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class PageBuildType(TypedDict):
-    """Page Build
+class StateChangeIssueEventType(TypedDict):
+    """State Change Issue Event
 
-    Page Build
+    State Change Issue Event
     """
 
+    id: int
+    node_id: str
     url: str
-    status: str
-    error: PageBuildPropErrorType
-    pusher: Union[None, SimpleUserType]
-    commit: str
-    duration: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-
-
-class PageBuildTypeForResponse(TypedDict):
-    """Page Build
-
-    Page Build
-    """
-
-    url: str
-    status: str
-    error: PageBuildPropErrorTypeForResponse
-    pusher: Union[None, SimpleUserTypeForResponse]
-    commit: str
-    duration: int
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
     created_at: str
-    updated_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    state_reason: NotRequired[Union[str, None]]
 
 
-class PageBuildPropErrorType(TypedDict):
-    """PageBuildPropError"""
+class StateChangeIssueEventTypeForResponse(TypedDict):
+    """State Change Issue Event
 
-    message: Union[str, None]
+    State Change Issue Event
+    """
 
-
-class PageBuildPropErrorTypeForResponse(TypedDict):
-    """PageBuildPropError"""
-
-    message: Union[str, None]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    state_reason: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "PageBuildPropErrorType",
-    "PageBuildPropErrorTypeForResponse",
-    "PageBuildType",
-    "PageBuildTypeForResponse",
+    "StateChangeIssueEventType",
+    "StateChangeIssueEventTypeForResponse",
 )

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Optional, overload
+from typing import TYPE_CHECKING, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -54,7 +54,7 @@ class OidcClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OidcCustomPropertyInclusion],
@@ -93,7 +93,7 @@ class OidcClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OidcCustomPropertyInclusion],
@@ -133,7 +133,7 @@ class OidcClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OidcCustomPropertyInclusionInputType,
     ) -> Response[
@@ -146,7 +146,7 @@ class OidcClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         custom_property_name: str,
     ) -> Response[
@@ -157,7 +157,7 @@ class OidcClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OidcCustomPropertyInclusionInputType] = UNSET,
         **kwargs,
@@ -211,7 +211,7 @@ class OidcClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OidcCustomPropertyInclusionInputType,
     ) -> Response[
@@ -224,7 +224,7 @@ class OidcClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         custom_property_name: str,
     ) -> Response[
@@ -235,7 +235,7 @@ class OidcClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OidcCustomPropertyInclusionInputType] = UNSET,
         **kwargs,
@@ -289,7 +289,7 @@ class OidcClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """oidc/delete-oidc-custom-property-inclusion-for-enterprise
@@ -324,7 +324,7 @@ class OidcClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """oidc/delete-oidc-custom-property-inclusion-for-enterprise
@@ -358,7 +358,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OidcCustomPropertyInclusion],
@@ -397,7 +397,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OidcCustomPropertyInclusion],
@@ -437,7 +437,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OidcCustomPropertyInclusionInputType,
     ) -> Response[
@@ -450,7 +450,7 @@ class OidcClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         custom_property_name: str,
     ) -> Response[
@@ -461,7 +461,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OidcCustomPropertyInclusionInputType] = UNSET,
         **kwargs,
@@ -515,7 +515,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OidcCustomPropertyInclusionInputType,
     ) -> Response[
@@ -528,7 +528,7 @@ class OidcClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         custom_property_name: str,
     ) -> Response[
@@ -539,7 +539,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OidcCustomPropertyInclusionInputType] = UNSET,
         **kwargs,
@@ -593,7 +593,7 @@ class OidcClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """oidc/delete-oidc-custom-property-inclusion-for-org
@@ -628,7 +628,7 @@ class OidcClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """oidc/delete-oidc-custom-property-inclusion-for-org
@@ -662,7 +662,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OidcCustomSub, OidcCustomSubTypeForResponse]:
         """oidc/get-oidc-custom-sub-template-for-org
@@ -694,7 +694,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OidcCustomSub, OidcCustomSubTypeForResponse]:
         """oidc/get-oidc-custom-sub-template-for-org
@@ -727,7 +727,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgActionsOidcCustomizationSubPutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -738,7 +738,7 @@ class OidcClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         include_claim_keys: Missing[list[str]] = UNSET,
         use_immutable_subject: Missing[bool] = UNSET,
@@ -748,7 +748,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
@@ -801,7 +801,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgActionsOidcCustomizationSubPutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -812,7 +812,7 @@ class OidcClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         include_claim_keys: Missing[list[str]] = UNSET,
         use_immutable_subject: Missing[bool] = UNSET,
@@ -822,7 +822,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,

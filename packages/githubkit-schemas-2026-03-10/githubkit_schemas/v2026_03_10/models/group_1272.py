@@ -12,17 +12,32 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0368 import CustomDeploymentRuleApp
 
 
-class ReposOwnerRepoGitRefsPostBody(GitHubModel):
-    """ReposOwnerRepoGitRefsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
+    """
 
-    ref: str = Field(
-        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of custom deployment protection rule integrations available for this environment.",
     )
-    sha: str = Field(description="The SHA1 value for this reference.")
+    available_custom_deployment_protection_rule_integrations: Missing[
+        list[CustomDeploymentRuleApp]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoGitRefsPostBody)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200
+)
 
-__all__ = ("ReposOwnerRepoGitRefsPostBody",)
+__all__ = (
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200",
+)

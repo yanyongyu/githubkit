@@ -18,32 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamsTeamIdPatchBody(GitHubModel):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    name: str = Field(description="The name of the team.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the team."
+    state: Literal["open", "resolved"] = Field(
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
     )
-    privacy: Missing[Literal["secret", "closed"]] = Field(
-        default=UNSET,
-        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
-    )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
+    resolution: Missing[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
     ] = Field(
         default=UNSET,
-        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
     )
-    permission: Missing[Literal["pull", "push", "admin"]] = Field(
+    resolution_comment: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
+        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
     )
-    parent_team_id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of a team to set as the parent team."
+    assignee: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The username of the user to assign to the alert. Set to `null` to unassign the alert.",
+    )
+    validity: Missing[Union[None, Literal["active", "inactive"]]] = Field(
+        default=UNSET,
+        description="Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override.",
     )
 
 
-model_rebuild(TeamsTeamIdPatchBody)
+model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0)
 
-__all__ = ("TeamsTeamIdPatchBody",)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0",)

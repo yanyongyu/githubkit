@@ -9,75 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class ContentTree(GitHubModel):
-    """Content Tree
+class Reaction(GitHubModel):
+    """Reaction
 
-    Content Tree
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    type: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    content: Missing[str] = Field(default=UNSET)
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    entries: Missing[list[ContentTreePropEntriesItems]] = Field(default=UNSET)
-    encoding: Missing[str] = Field(default=UNSET)
-    links: ContentTreePropLinks = Field(alias="_links")
+    id: int = Field()
+    node_id: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(description="The reaction to use")
+    created_at: _dt.datetime = Field()
 
 
-class ContentTreePropLinks(GitHubModel):
-    """ContentTreePropLinks"""
+model_rebuild(Reaction)
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-class ContentTreePropEntriesItems(GitHubModel):
-    """ContentTreePropEntriesItems"""
-
-    type: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentTreePropEntriesItemsPropLinks = Field(alias="_links")
-
-
-class ContentTreePropEntriesItemsPropLinks(GitHubModel):
-    """ContentTreePropEntriesItemsPropLinks"""
-
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(ContentTree)
-model_rebuild(ContentTreePropLinks)
-model_rebuild(ContentTreePropEntriesItems)
-model_rebuild(ContentTreePropEntriesItemsPropLinks)
-
-__all__ = (
-    "ContentTree",
-    "ContentTreePropEntriesItems",
-    "ContentTreePropEntriesItemsPropLinks",
-    "ContentTreePropLinks",
-)
+__all__ = ("Reaction",)

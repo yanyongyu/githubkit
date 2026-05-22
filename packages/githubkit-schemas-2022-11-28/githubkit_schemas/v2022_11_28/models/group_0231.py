@@ -9,21 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0232 import RepositoryRuleFilePathRestrictionPropParameters
 
 
-class RepositoryRuleMaxFileSizePropParameters(GitHubModel):
-    """RepositoryRuleMaxFileSizePropParameters"""
+class RepositoryRuleFilePathRestriction(GitHubModel):
+    """file_path_restriction
 
-    max_file_size: int = Field(
-        le=100.0,
-        ge=1.0,
-        description="The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
+    Prevent commits that include changes in specified file and folder paths from
+    being pushed to the commit graph. This includes absolute paths that contain file
+    names.
+    """
+
+    type: Literal["file_path_restriction"] = Field()
+    parameters: Missing[RepositoryRuleFilePathRestrictionPropParameters] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleMaxFileSizePropParameters)
+model_rebuild(RepositoryRuleFilePathRestriction)
 
-__all__ = ("RepositoryRuleMaxFileSizePropParameters",)
+__all__ = ("RepositoryRuleFilePathRestriction",)

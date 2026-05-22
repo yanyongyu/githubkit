@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -64,7 +64,7 @@ class GistsClient:
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[BaseGist], list[BaseGistTypeForResponse]]:
         """gists/list
@@ -106,7 +106,7 @@ class GistsClient:
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[BaseGist], list[BaseGistTypeForResponse]]:
         """gists/list
@@ -146,7 +146,7 @@ class GistsClient:
     def create(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: GistsPostBodyType,
     ) -> Response[GistSimple, GistSimpleTypeForResponse]: ...
@@ -156,7 +156,7 @@ class GistsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
@@ -166,7 +166,7 @@ class GistsClient:
     def create(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[GistsPostBodyType] = UNSET,
         **kwargs,
@@ -216,7 +216,7 @@ class GistsClient:
     async def async_create(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: GistsPostBodyType,
     ) -> Response[GistSimple, GistSimpleTypeForResponse]: ...
@@ -226,7 +226,7 @@ class GistsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
@@ -236,7 +236,7 @@ class GistsClient:
     async def async_create(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[GistsPostBodyType] = UNSET,
         **kwargs,
@@ -288,7 +288,7 @@ class GistsClient:
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[BaseGist], list[BaseGistTypeForResponse]]:
         """gists/list-public
@@ -333,7 +333,7 @@ class GistsClient:
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[BaseGist], list[BaseGistTypeForResponse]]:
         """gists/list-public
@@ -378,7 +378,7 @@ class GistsClient:
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[BaseGist], list[BaseGistTypeForResponse]]:
         """gists/list-starred
@@ -421,7 +421,7 @@ class GistsClient:
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[BaseGist], list[BaseGistTypeForResponse]]:
         """gists/list-starred
@@ -462,7 +462,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GistSimple, GistSimpleTypeForResponse]:
         """gists/get
@@ -500,7 +500,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GistSimple, GistSimpleTypeForResponse]:
         """gists/get
@@ -538,7 +538,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """gists/delete
@@ -569,7 +569,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """gists/delete
@@ -601,7 +601,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[GistsGistIdPatchBodyType, None],
     ) -> Response[GistSimple, GistSimpleTypeForResponse]: ...
@@ -612,7 +612,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         description: Missing[str] = UNSET,
         files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
@@ -622,7 +622,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[GistsGistIdPatchBodyType, None]] = UNSET,
         **kwargs,
@@ -684,7 +684,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[GistsGistIdPatchBodyType, None],
     ) -> Response[GistSimple, GistSimpleTypeForResponse]: ...
@@ -695,7 +695,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         description: Missing[str] = UNSET,
         files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
@@ -705,7 +705,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[GistsGistIdPatchBodyType, None]] = UNSET,
         **kwargs,
@@ -768,7 +768,7 @@ class GistsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[GistComment], list[GistCommentTypeForResponse]]:
         """gists/list-comments
@@ -814,7 +814,7 @@ class GistsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[GistComment], list[GistCommentTypeForResponse]]:
         """gists/list-comments
@@ -859,7 +859,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: GistsGistIdCommentsPostBodyType,
     ) -> Response[GistComment, GistCommentTypeForResponse]: ...
@@ -870,7 +870,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         body: str,
     ) -> Response[GistComment, GistCommentTypeForResponse]: ...
@@ -879,7 +879,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
@@ -930,7 +930,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: GistsGistIdCommentsPostBodyType,
     ) -> Response[GistComment, GistCommentTypeForResponse]: ...
@@ -941,7 +941,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         body: str,
     ) -> Response[GistComment, GistCommentTypeForResponse]: ...
@@ -950,7 +950,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
@@ -1001,7 +1001,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GistComment, GistCommentTypeForResponse]:
         """gists/get-comment
@@ -1040,7 +1040,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GistComment, GistCommentTypeForResponse]:
         """gists/get-comment
@@ -1079,7 +1079,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """gists/delete-comment
@@ -1111,7 +1111,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """gists/delete-comment
@@ -1144,7 +1144,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: GistsGistIdCommentsCommentIdPatchBodyType,
     ) -> Response[GistComment, GistCommentTypeForResponse]: ...
@@ -1156,7 +1156,7 @@ class GistsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         body: str,
     ) -> Response[GistComment, GistCommentTypeForResponse]: ...
@@ -1166,7 +1166,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
@@ -1221,7 +1221,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: GistsGistIdCommentsCommentIdPatchBodyType,
     ) -> Response[GistComment, GistCommentTypeForResponse]: ...
@@ -1233,7 +1233,7 @@ class GistsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         body: str,
     ) -> Response[GistComment, GistCommentTypeForResponse]: ...
@@ -1243,7 +1243,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
@@ -1298,7 +1298,7 @@ class GistsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[GistCommit], list[GistCommitTypeForResponse]]:
         """gists/list-commits
@@ -1338,7 +1338,7 @@ class GistsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[GistCommit], list[GistCommitTypeForResponse]]:
         """gists/list-commits
@@ -1378,7 +1378,7 @@ class GistsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[GistSimple], list[GistSimpleTypeForResponse]]:
         """gists/list-forks
@@ -1418,7 +1418,7 @@ class GistsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[GistSimple], list[GistSimpleTypeForResponse]]:
         """gists/list-forks
@@ -1456,7 +1456,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[BaseGist, BaseGistTypeForResponse]:
         """gists/fork
@@ -1489,7 +1489,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[BaseGist, BaseGistTypeForResponse]:
         """gists/fork
@@ -1522,7 +1522,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """gists/check-is-starred
@@ -1553,7 +1553,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """gists/check-is-starred
@@ -1584,7 +1584,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """gists/star
@@ -1617,7 +1617,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """gists/star
@@ -1650,7 +1650,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """gists/unstar
@@ -1681,7 +1681,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """gists/unstar
@@ -1713,7 +1713,7 @@ class GistsClient:
         gist_id: str,
         sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GistSimple, GistSimpleTypeForResponse]:
         """gists/get-revision
@@ -1753,7 +1753,7 @@ class GistsClient:
         gist_id: str,
         sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GistSimple, GistSimpleTypeForResponse]:
         """gists/get-revision
@@ -1795,7 +1795,7 @@ class GistsClient:
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[BaseGist], list[BaseGistTypeForResponse]]:
         """gists/list-for-user
@@ -1838,7 +1838,7 @@ class GistsClient:
         since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[BaseGist], list[BaseGistTypeForResponse]]:
         """gists/list-for-user

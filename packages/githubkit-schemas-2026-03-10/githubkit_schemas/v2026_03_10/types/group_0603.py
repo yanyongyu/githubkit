@@ -14,19 +14,22 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0049 import DiscussionType, DiscussionTypeForResponse
-from .group_0490 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0491 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0492 import (
+from .group_0496 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0497 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0498 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0493 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0499 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0509 import WebhooksCommentType, WebhooksCommentTypeForResponse
 
 
-class WebhookDiscussionPinnedType(TypedDict):
-    """discussion pinned event"""
+class WebhookDiscussionCommentEditedType(TypedDict):
+    """discussion_comment edited event"""
 
-    action: Literal["pinned"]
+    action: Literal["edited"]
+    changes: WebhookDiscussionCommentEditedPropChangesType
+    comment: WebhooksCommentType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -35,10 +38,12 @@ class WebhookDiscussionPinnedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionPinnedTypeForResponse(TypedDict):
-    """discussion pinned event"""
+class WebhookDiscussionCommentEditedTypeForResponse(TypedDict):
+    """discussion_comment edited event"""
 
-    action: Literal["pinned"]
+    action: Literal["edited"]
+    changes: WebhookDiscussionCommentEditedPropChangesTypeForResponse
+    comment: WebhooksCommentTypeForResponse
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -47,7 +52,35 @@ class WebhookDiscussionPinnedTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
+class WebhookDiscussionCommentEditedPropChangesType(TypedDict):
+    """WebhookDiscussionCommentEditedPropChanges"""
+
+    body: WebhookDiscussionCommentEditedPropChangesPropBodyType
+
+
+class WebhookDiscussionCommentEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookDiscussionCommentEditedPropChanges"""
+
+    body: WebhookDiscussionCommentEditedPropChangesPropBodyTypeForResponse
+
+
+class WebhookDiscussionCommentEditedPropChangesPropBodyType(TypedDict):
+    """WebhookDiscussionCommentEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookDiscussionCommentEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookDiscussionCommentEditedPropChangesPropBody"""
+
+    from_: str
+
+
 __all__ = (
-    "WebhookDiscussionPinnedType",
-    "WebhookDiscussionPinnedTypeForResponse",
+    "WebhookDiscussionCommentEditedPropChangesPropBodyType",
+    "WebhookDiscussionCommentEditedPropChangesPropBodyTypeForResponse",
+    "WebhookDiscussionCommentEditedPropChangesType",
+    "WebhookDiscussionCommentEditedPropChangesTypeForResponse",
+    "WebhookDiscussionCommentEditedType",
+    "WebhookDiscussionCommentEditedTypeForResponse",
 )

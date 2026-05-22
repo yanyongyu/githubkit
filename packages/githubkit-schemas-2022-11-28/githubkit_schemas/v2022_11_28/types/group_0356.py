@@ -9,106 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0353 import MetadataType, MetadataTypeForResponse
+from .group_0040 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
+)
 
 
-class SnapshotType(TypedDict):
-    """snapshot
+class DependabotAlertPropDependencyType(TypedDict):
+    """DependabotAlertPropDependency
 
-    Create a new snapshot of a repository's dependencies.
+    Details for the vulnerable dependency.
     """
 
-    version: int
-    job: SnapshotPropJobType
-    sha: str
-    ref: str
-    detector: SnapshotPropDetectorType
-    metadata: NotRequired[MetadataType]
-    manifests: NotRequired[SnapshotPropManifestsType]
-    scanned: _dt.datetime
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    relationship: NotRequired[
+        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
+    ]
 
 
-class SnapshotTypeForResponse(TypedDict):
-    """snapshot
+class DependabotAlertPropDependencyTypeForResponse(TypedDict):
+    """DependabotAlertPropDependency
 
-    Create a new snapshot of a repository's dependencies.
+    Details for the vulnerable dependency.
     """
 
-    version: int
-    job: SnapshotPropJobTypeForResponse
-    sha: str
-    ref: str
-    detector: SnapshotPropDetectorTypeForResponse
-    metadata: NotRequired[MetadataTypeForResponse]
-    manifests: NotRequired[SnapshotPropManifestsTypeForResponse]
-    scanned: str
-
-
-class SnapshotPropJobType(TypedDict):
-    """SnapshotPropJob"""
-
-    id: str
-    correlator: str
-    html_url: NotRequired[str]
-
-
-class SnapshotPropJobTypeForResponse(TypedDict):
-    """SnapshotPropJob"""
-
-    id: str
-    correlator: str
-    html_url: NotRequired[str]
-
-
-class SnapshotPropDetectorType(TypedDict):
-    """SnapshotPropDetector
-
-    A description of the detector used.
-    """
-
-    name: str
-    version: str
-    url: str
-
-
-class SnapshotPropDetectorTypeForResponse(TypedDict):
-    """SnapshotPropDetector
-
-    A description of the detector used.
-    """
-
-    name: str
-    version: str
-    url: str
-
-
-SnapshotPropManifestsType: TypeAlias = dict[str, Any]
-"""SnapshotPropManifests
-
-A collection of package manifests, which are a collection of related
-dependencies declared in a file or representing a logical group of dependencies.
-"""
-
-
-SnapshotPropManifestsTypeForResponse: TypeAlias = dict[str, Any]
-"""SnapshotPropManifests
-
-A collection of package manifests, which are a collection of related
-dependencies declared in a file or representing a logical group of dependencies.
-"""
+    package: NotRequired[DependabotAlertPackageTypeForResponse]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    relationship: NotRequired[
+        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
+    ]
 
 
 __all__ = (
-    "SnapshotPropDetectorType",
-    "SnapshotPropDetectorTypeForResponse",
-    "SnapshotPropJobType",
-    "SnapshotPropJobTypeForResponse",
-    "SnapshotPropManifestsType",
-    "SnapshotPropManifestsTypeForResponse",
-    "SnapshotType",
-    "SnapshotTypeForResponse",
+    "DependabotAlertPropDependencyType",
+    "DependabotAlertPropDependencyTypeForResponse",
 )

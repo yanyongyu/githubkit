@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Annotated, Literal, Optional, overload
+from typing import TYPE_CHECKING, Annotated, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel, Field
@@ -87,7 +87,7 @@ class UsersClient:
     def get_authenticated(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[PrivateUser, PublicUser],
@@ -125,7 +125,7 @@ class UsersClient:
     async def async_get_authenticated(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[PrivateUser, PublicUser],
@@ -164,7 +164,7 @@ class UsersClient:
     def update_authenticated(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserPatchBodyType] = UNSET,
     ) -> Response[PrivateUser, PrivateUserTypeForResponse]: ...
@@ -174,7 +174,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         email: Missing[str] = UNSET,
@@ -189,7 +189,7 @@ class UsersClient:
     def update_authenticated(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserPatchBodyType] = UNSET,
         **kwargs,
@@ -237,7 +237,7 @@ class UsersClient:
     async def async_update_authenticated(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserPatchBodyType] = UNSET,
     ) -> Response[PrivateUser, PrivateUserTypeForResponse]: ...
@@ -247,7 +247,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         email: Missing[str] = UNSET,
@@ -262,7 +262,7 @@ class UsersClient:
     async def async_update_authenticated(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserPatchBodyType] = UNSET,
         **kwargs,
@@ -311,7 +311,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-blocked-by-authenticated-user
@@ -353,7 +353,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-blocked-by-authenticated-user
@@ -394,7 +394,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/check-blocked
@@ -428,7 +428,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/check-blocked
@@ -462,7 +462,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/block
@@ -497,7 +497,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/block
@@ -532,7 +532,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/unblock
@@ -566,7 +566,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/unblock
@@ -600,7 +600,7 @@ class UsersClient:
     def set_primary_email_visibility_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserEmailVisibilityPatchBodyType,
     ) -> Response[list[Email], list[EmailTypeForResponse]]: ...
@@ -610,7 +610,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         visibility: Literal["public", "private"],
     ) -> Response[list[Email], list[EmailTypeForResponse]]: ...
@@ -618,7 +618,7 @@ class UsersClient:
     def set_primary_email_visibility_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserEmailVisibilityPatchBodyType] = UNSET,
         **kwargs,
@@ -671,7 +671,7 @@ class UsersClient:
     async def async_set_primary_email_visibility_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserEmailVisibilityPatchBodyType,
     ) -> Response[list[Email], list[EmailTypeForResponse]]: ...
@@ -681,7 +681,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         visibility: Literal["public", "private"],
     ) -> Response[list[Email], list[EmailTypeForResponse]]: ...
@@ -689,7 +689,7 @@ class UsersClient:
     async def async_set_primary_email_visibility_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserEmailVisibilityPatchBodyType] = UNSET,
         **kwargs,
@@ -743,7 +743,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Email], list[EmailTypeForResponse]]:
         """users/list-emails-for-authenticated-user
@@ -788,7 +788,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Email], list[EmailTypeForResponse]]:
         """users/list-emails-for-authenticated-user
@@ -832,7 +832,7 @@ class UsersClient:
     def add_email_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, list[str], str]] = UNSET,
     ) -> Response[list[Email], list[EmailTypeForResponse]]: ...
@@ -842,7 +842,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         emails: list[str],
     ) -> Response[list[Email], list[EmailTypeForResponse]]: ...
@@ -850,7 +850,7 @@ class UsersClient:
     def add_email_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, list[str], str]] = UNSET,
         **kwargs,
@@ -914,7 +914,7 @@ class UsersClient:
     async def async_add_email_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, list[str], str]] = UNSET,
     ) -> Response[list[Email], list[EmailTypeForResponse]]: ...
@@ -924,7 +924,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         emails: list[str],
     ) -> Response[list[Email], list[EmailTypeForResponse]]: ...
@@ -932,7 +932,7 @@ class UsersClient:
     async def async_add_email_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, list[str], str]] = UNSET,
         **kwargs,
@@ -996,7 +996,7 @@ class UsersClient:
     def delete_email_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[UserEmailsDeleteBodyOneof0Type, list[str], str]] = UNSET,
     ) -> Response: ...
@@ -1006,7 +1006,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         emails: list[str],
     ) -> Response: ...
@@ -1014,7 +1014,7 @@ class UsersClient:
     def delete_email_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[UserEmailsDeleteBodyOneof0Type, list[str], str]] = UNSET,
         **kwargs,
@@ -1072,7 +1072,7 @@ class UsersClient:
     async def async_delete_email_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[UserEmailsDeleteBodyOneof0Type, list[str], str]] = UNSET,
     ) -> Response: ...
@@ -1082,7 +1082,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         emails: list[str],
     ) -> Response: ...
@@ -1090,7 +1090,7 @@ class UsersClient:
     async def async_delete_email_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[UserEmailsDeleteBodyOneof0Type, list[str], str]] = UNSET,
         **kwargs,
@@ -1149,7 +1149,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-followers-for-authenticated-user
@@ -1190,7 +1190,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-followers-for-authenticated-user
@@ -1231,7 +1231,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-followed-by-authenticated-user
@@ -1272,7 +1272,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-followed-by-authenticated-user
@@ -1312,7 +1312,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/check-person-is-followed-by-authenticated
@@ -1344,7 +1344,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/check-person-is-followed-by-authenticated
@@ -1376,7 +1376,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/follow
@@ -1413,7 +1413,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/follow
@@ -1450,7 +1450,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/unfollow
@@ -1484,7 +1484,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/unfollow
@@ -1519,7 +1519,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[GpgKey], list[GpgKeyTypeForResponse]]:
         """users/list-gpg-keys-for-authenticated-user
@@ -1563,7 +1563,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[GpgKey], list[GpgKeyTypeForResponse]]:
         """users/list-gpg-keys-for-authenticated-user
@@ -1606,7 +1606,7 @@ class UsersClient:
     def create_gpg_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserGpgKeysPostBodyType,
     ) -> Response[GpgKey, GpgKeyTypeForResponse]: ...
@@ -1616,7 +1616,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         armored_public_key: str,
@@ -1625,7 +1625,7 @@ class UsersClient:
     def create_gpg_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserGpgKeysPostBodyType] = UNSET,
         **kwargs,
@@ -1675,7 +1675,7 @@ class UsersClient:
     async def async_create_gpg_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserGpgKeysPostBodyType,
     ) -> Response[GpgKey, GpgKeyTypeForResponse]: ...
@@ -1685,7 +1685,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         armored_public_key: str,
@@ -1694,7 +1694,7 @@ class UsersClient:
     async def async_create_gpg_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserGpgKeysPostBodyType] = UNSET,
         **kwargs,
@@ -1744,7 +1744,7 @@ class UsersClient:
         self,
         gpg_key_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GpgKey, GpgKeyTypeForResponse]:
         """users/get-gpg-key-for-authenticated-user
@@ -1781,7 +1781,7 @@ class UsersClient:
         self,
         gpg_key_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GpgKey, GpgKeyTypeForResponse]:
         """users/get-gpg-key-for-authenticated-user
@@ -1818,7 +1818,7 @@ class UsersClient:
         self,
         gpg_key_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/delete-gpg-key-for-authenticated-user
@@ -1855,7 +1855,7 @@ class UsersClient:
         self,
         gpg_key_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/delete-gpg-key-for-authenticated-user
@@ -1893,7 +1893,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Key], list[KeyTypeForResponse]]:
         """users/list-public-ssh-keys-for-authenticated-user
@@ -1937,7 +1937,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Key], list[KeyTypeForResponse]]:
         """users/list-public-ssh-keys-for-authenticated-user
@@ -1980,7 +1980,7 @@ class UsersClient:
     def create_public_ssh_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserKeysPostBodyType,
     ) -> Response[Key, KeyTypeForResponse]: ...
@@ -1990,7 +1990,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: Missing[str] = UNSET,
         key: str,
@@ -1999,7 +1999,7 @@ class UsersClient:
     def create_public_ssh_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserKeysPostBodyType] = UNSET,
         **kwargs,
@@ -2049,7 +2049,7 @@ class UsersClient:
     async def async_create_public_ssh_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserKeysPostBodyType,
     ) -> Response[Key, KeyTypeForResponse]: ...
@@ -2059,7 +2059,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: Missing[str] = UNSET,
         key: str,
@@ -2068,7 +2068,7 @@ class UsersClient:
     async def async_create_public_ssh_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserKeysPostBodyType] = UNSET,
         **kwargs,
@@ -2118,7 +2118,7 @@ class UsersClient:
         self,
         key_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Key, KeyTypeForResponse]:
         """users/get-public-ssh-key-for-authenticated-user
@@ -2155,7 +2155,7 @@ class UsersClient:
         self,
         key_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Key, KeyTypeForResponse]:
         """users/get-public-ssh-key-for-authenticated-user
@@ -2192,7 +2192,7 @@ class UsersClient:
         self,
         key_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/delete-public-ssh-key-for-authenticated-user
@@ -2228,7 +2228,7 @@ class UsersClient:
         self,
         key_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/delete-public-ssh-key-for-authenticated-user
@@ -2265,7 +2265,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Email], list[EmailTypeForResponse]]:
         """users/list-public-emails-for-authenticated-user
@@ -2311,7 +2311,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Email], list[EmailTypeForResponse]]:
         """users/list-public-emails-for-authenticated-user
@@ -2357,7 +2357,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]:
         """users/list-social-accounts-for-authenticated-user
@@ -2399,7 +2399,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]:
         """users/list-social-accounts-for-authenticated-user
@@ -2440,7 +2440,7 @@ class UsersClient:
     def add_social_account_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserSocialAccountsPostBodyType,
     ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]: ...
@@ -2450,7 +2450,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         account_urls: list[str],
     ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]: ...
@@ -2458,7 +2458,7 @@ class UsersClient:
     def add_social_account_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserSocialAccountsPostBodyType] = UNSET,
         **kwargs,
@@ -2513,7 +2513,7 @@ class UsersClient:
     async def async_add_social_account_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserSocialAccountsPostBodyType,
     ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]: ...
@@ -2523,7 +2523,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         account_urls: list[str],
     ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]: ...
@@ -2531,7 +2531,7 @@ class UsersClient:
     async def async_add_social_account_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserSocialAccountsPostBodyType] = UNSET,
         **kwargs,
@@ -2586,7 +2586,7 @@ class UsersClient:
     def delete_social_account_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserSocialAccountsDeleteBodyType,
     ) -> Response: ...
@@ -2596,7 +2596,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         account_urls: list[str],
     ) -> Response: ...
@@ -2604,7 +2604,7 @@ class UsersClient:
     def delete_social_account_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserSocialAccountsDeleteBodyType] = UNSET,
         **kwargs,
@@ -2653,7 +2653,7 @@ class UsersClient:
     async def async_delete_social_account_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserSocialAccountsDeleteBodyType,
     ) -> Response: ...
@@ -2663,7 +2663,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         account_urls: list[str],
     ) -> Response: ...
@@ -2671,7 +2671,7 @@ class UsersClient:
     async def async_delete_social_account_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserSocialAccountsDeleteBodyType] = UNSET,
         **kwargs,
@@ -2721,7 +2721,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SshSigningKey], list[SshSigningKeyTypeForResponse]]:
         """users/list-ssh-signing-keys-for-authenticated-user
@@ -2765,7 +2765,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SshSigningKey], list[SshSigningKeyTypeForResponse]]:
         """users/list-ssh-signing-keys-for-authenticated-user
@@ -2808,7 +2808,7 @@ class UsersClient:
     def create_ssh_signing_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserSshSigningKeysPostBodyType,
     ) -> Response[SshSigningKey, SshSigningKeyTypeForResponse]: ...
@@ -2818,7 +2818,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: Missing[str] = UNSET,
         key: str,
@@ -2827,7 +2827,7 @@ class UsersClient:
     def create_ssh_signing_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserSshSigningKeysPostBodyType] = UNSET,
         **kwargs,
@@ -2882,7 +2882,7 @@ class UsersClient:
     async def async_create_ssh_signing_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserSshSigningKeysPostBodyType,
     ) -> Response[SshSigningKey, SshSigningKeyTypeForResponse]: ...
@@ -2892,7 +2892,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: Missing[str] = UNSET,
         key: str,
@@ -2901,7 +2901,7 @@ class UsersClient:
     async def async_create_ssh_signing_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserSshSigningKeysPostBodyType] = UNSET,
         **kwargs,
@@ -2956,7 +2956,7 @@ class UsersClient:
         self,
         ssh_signing_key_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[SshSigningKey, SshSigningKeyTypeForResponse]:
         """users/get-ssh-signing-key-for-authenticated-user
@@ -2993,7 +2993,7 @@ class UsersClient:
         self,
         ssh_signing_key_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[SshSigningKey, SshSigningKeyTypeForResponse]:
         """users/get-ssh-signing-key-for-authenticated-user
@@ -3030,7 +3030,7 @@ class UsersClient:
         self,
         ssh_signing_key_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/delete-ssh-signing-key-for-authenticated-user
@@ -3066,7 +3066,7 @@ class UsersClient:
         self,
         ssh_signing_key_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/delete-ssh-signing-key-for-authenticated-user
@@ -3102,7 +3102,7 @@ class UsersClient:
         self,
         account_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[PrivateUser, PublicUser],
@@ -3146,7 +3146,7 @@ class UsersClient:
         self,
         account_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[PrivateUser, PublicUser],
@@ -3191,7 +3191,7 @@ class UsersClient:
         *,
         since: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list
@@ -3230,7 +3230,7 @@ class UsersClient:
         *,
         since: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list
@@ -3268,7 +3268,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[PrivateUser, PublicUser],
@@ -3312,7 +3312,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[PrivateUser, PublicUser],
@@ -3360,7 +3360,7 @@ class UsersClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUsernameAttestationsBulkListPostBodyType,
     ) -> Response[
@@ -3377,7 +3377,7 @@ class UsersClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         subject_digests: list[str],
         predicate_type: Missing[str] = UNSET,
@@ -3393,7 +3393,7 @@ class UsersClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UsersUsernameAttestationsBulkListPostBodyType] = UNSET,
         **kwargs,
@@ -3456,7 +3456,7 @@ class UsersClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUsernameAttestationsBulkListPostBodyType,
     ) -> Response[
@@ -3473,7 +3473,7 @@ class UsersClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         subject_digests: list[str],
         predicate_type: Missing[str] = UNSET,
@@ -3489,7 +3489,7 @@ class UsersClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UsersUsernameAttestationsBulkListPostBodyType] = UNSET,
         **kwargs,
@@ -3549,7 +3549,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type,
@@ -3563,7 +3563,7 @@ class UsersClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         subject_digests: list[str],
     ) -> Response: ...
@@ -3574,7 +3574,7 @@ class UsersClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         attestation_ids: list[int],
     ) -> Response: ...
@@ -3583,7 +3583,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -3645,7 +3645,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type,
@@ -3659,7 +3659,7 @@ class UsersClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         subject_digests: list[str],
     ) -> Response: ...
@@ -3670,7 +3670,7 @@ class UsersClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         attestation_ids: list[int],
     ) -> Response: ...
@@ -3679,7 +3679,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -3741,7 +3741,7 @@ class UsersClient:
         username: str,
         subject_digest: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/delete-attestations-by-subject-digest
@@ -3774,7 +3774,7 @@ class UsersClient:
         username: str,
         subject_digest: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/delete-attestations-by-subject-digest
@@ -3807,7 +3807,7 @@ class UsersClient:
         username: str,
         attestation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/delete-attestations-by-id
@@ -3841,7 +3841,7 @@ class UsersClient:
         username: str,
         attestation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/delete-attestations-by-id
@@ -3879,7 +3879,7 @@ class UsersClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         predicate_type: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UsersUsernameAttestationsSubjectDigestGetResponse200,
@@ -3935,7 +3935,7 @@ class UsersClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         predicate_type: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UsersUsernameAttestationsSubjectDigestGetResponse200,
@@ -3988,7 +3988,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-followers-for-user
@@ -4026,7 +4026,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-followers-for-user
@@ -4064,7 +4064,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-following-for-user
@@ -4102,7 +4102,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """users/list-following-for-user
@@ -4139,7 +4139,7 @@ class UsersClient:
         username: str,
         target_user: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/check-following-for-user
@@ -4166,7 +4166,7 @@ class UsersClient:
         username: str,
         target_user: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """users/check-following-for-user
@@ -4194,7 +4194,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[GpgKey], list[GpgKeyTypeForResponse]]:
         """users/list-gpg-keys-for-user
@@ -4232,7 +4232,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[GpgKey], list[GpgKeyTypeForResponse]]:
         """users/list-gpg-keys-for-user
@@ -4272,7 +4272,7 @@ class UsersClient:
             Literal["organization", "repository", "issue", "pull_request"]
         ] = UNSET,
         subject_id: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Hovercard, HovercardTypeForResponse]:
         """users/get-context-for-user
@@ -4320,7 +4320,7 @@ class UsersClient:
             Literal["organization", "repository", "issue", "pull_request"]
         ] = UNSET,
         subject_id: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Hovercard, HovercardTypeForResponse]:
         """users/get-context-for-user
@@ -4366,7 +4366,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[KeySimple], list[KeySimpleTypeForResponse]]:
         """users/list-public-keys-for-user
@@ -4404,7 +4404,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[KeySimple], list[KeySimpleTypeForResponse]]:
         """users/list-public-keys-for-user
@@ -4442,7 +4442,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]:
         """users/list-social-accounts-for-user
@@ -4480,7 +4480,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SocialAccount], list[SocialAccountTypeForResponse]]:
         """users/list-social-accounts-for-user
@@ -4518,7 +4518,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SshSigningKey], list[SshSigningKeyTypeForResponse]]:
         """users/list-ssh-signing-keys-for-user
@@ -4556,7 +4556,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SshSigningKey], list[SshSigningKeyTypeForResponse]]:
         """users/list-ssh-signing-keys-for-user

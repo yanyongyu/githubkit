@@ -12,16 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotContentExclusionPutResponse200(GitHubModel):
-    """OrgsOrgCopilotContentExclusionPutResponse200"""
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
 
-    message: Missing[str] = Field(default=UNSET)
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int = Field()
 
 
-model_rebuild(OrgsOrgCopilotContentExclusionPutResponse200)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersPostResponse201)
 
-__all__ = ("OrgsOrgCopilotContentExclusionPutResponse200",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostResponse201",)

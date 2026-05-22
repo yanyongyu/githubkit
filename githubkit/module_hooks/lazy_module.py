@@ -7,7 +7,7 @@ import os
 import re
 import sys
 from types import ModuleType
-from typing import Any, Optional
+from typing import Any
 
 GITHUBKIT_LAZY_DISABLE_FLAG = "GITHUBKIT_LAZY_DISABLE_FLAG"
 
@@ -27,7 +27,7 @@ LAZY_MODULES = (
 
 class LazyModule(ModuleType):
     __lazy_vars__: dict[str, list[str]]
-    __lazy_vars_validated__: Optional[dict[str, list[str]]]
+    __lazy_vars_validated__: dict[str, list[str]] | None
     __lazy_vars_mapping__: dict[str, str]
 
     @property
@@ -78,13 +78,13 @@ class LazyModule(ModuleType):
 
 class LazyModuleLoader(SourceFileLoader):
     def __init__(
-        self, fullname: str, path: str, origin_loader: Optional[Loader] = None
+        self, fullname: str, path: str, origin_loader: Loader | None = None
     ) -> None:
         super().__init__(fullname, path)
 
         self.origin_loader = origin_loader
 
-    def create_module(self, spec: ModuleSpec) -> Optional[ModuleType]:
+    def create_module(self, spec: ModuleSpec) -> ModuleType | None:
         if self.name in sys.modules:
             return sys.modules[self.name]
 
@@ -129,9 +129,9 @@ class LazyModuleFinder(PathFinder):
     def find_spec(
         cls,
         fullname: str,
-        path: Optional[Sequence[str]] = None,
-        target: Optional[ModuleType] = None,
-    ) -> Optional[ModuleSpec]:
+        path: Sequence[str] | None = None,
+        target: ModuleType | None = None,
+    ) -> ModuleSpec | None:
         # match if the module should be loaded lazily
         if any(re.match(pattern, fullname) for pattern in LAZY_MODULES):
             # find the module spec

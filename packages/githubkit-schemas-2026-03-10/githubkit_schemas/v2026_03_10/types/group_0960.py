@@ -9,182 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
+class AgentsTasksGetResponse422Type(TypedDict):
+    """AgentsTasksGetResponse422
 
-    Full session details within a task
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    id: str
-    name: NotRequired[str]
-    user: NotRequired[
-        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType
-    ]
-    owner: NotRequired[
-        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType
-    ]
-    repository: NotRequired[
-        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType
-    ]
-    task_id: NotRequired[str]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    created_at: _dt.datetime
-    updated_at: NotRequired[_dt.datetime]
-    completed_at: NotRequired[_dt.datetime]
-    prompt: NotRequired[str]
-    head_ref: NotRequired[str]
-    base_ref: NotRequired[str]
-    model: NotRequired[str]
-    error: NotRequired[
-        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType
-    ]
+    message: str
+    errors: NotRequired[list[AgentsTasksGetResponse422PropErrorsItemsType]]
+    documentation_url: str
 
 
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
+class AgentsTasksGetResponse422TypeForResponse(TypedDict):
+    """AgentsTasksGetResponse422
 
-    Full session details within a task
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    id: str
-    name: NotRequired[str]
-    user: NotRequired[
-        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse
+    message: str
+    errors: NotRequired[list[AgentsTasksGetResponse422PropErrorsItemsTypeForResponse]]
+    documentation_url: str
+
+
+class AgentsTasksGetResponse422PropErrorsItemsType(TypedDict):
+    """AgentsTasksGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
     ]
-    owner: NotRequired[
-        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse
-    ]
-    repository: NotRequired[
-        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse
-    ]
-    task_id: NotRequired[str]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    created_at: str
-    updated_at: NotRequired[str]
-    completed_at: NotRequired[str]
-    prompt: NotRequired[str]
-    head_ref: NotRequired[str]
-    base_ref: NotRequired[str]
-    model: NotRequired[str]
-    error: NotRequired[
-        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse
-    ]
-
-
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
-
-    The user who created this session
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse(
-    TypedDict
-):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
-
-    The user who created this session
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
-
-    The owner of the repository
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse(
-    TypedDict
-):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
-
-    The owner of the repository
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType(
-    TypedDict
-):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
-
-    The repository this session belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse(
-    TypedDict
-):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
-
-    The repository this session belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
-
-    Error details for a failed session
-    """
-
     message: NotRequired[str]
 
 
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse(
-    TypedDict
-):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
+class AgentsTasksGetResponse422PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsTasksGetResponse422PropErrorsItems
 
-    Error details for a failed session
+    A single validation error
     """
 
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
     message: NotRequired[str]
 
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse",
+    "AgentsTasksGetResponse422PropErrorsItemsType",
+    "AgentsTasksGetResponse422PropErrorsItemsTypeForResponse",
+    "AgentsTasksGetResponse422Type",
+    "AgentsTasksGetResponse422TypeForResponse",
 )

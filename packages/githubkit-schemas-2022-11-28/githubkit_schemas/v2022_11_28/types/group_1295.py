@@ -13,47 +13,79 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
+class ReposOwnerRepoIssuesPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesPostBody"""
 
+    title: Union[str, int]
+    body: NotRequired[str]
+    assignee: NotRequired[Union[str, None]]
+    milestone: NotRequired[Union[str, int, None]]
+    labels: NotRequired[
+        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
+    ]
+    assignees: NotRequired[list[str]]
     issue_field_values: NotRequired[
+        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType]
+    ]
+    type: NotRequired[Union[str, None]]
+
+
+class ReposOwnerRepoIssuesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesPostBody"""
+
+    title: Union[str, int]
+    body: NotRequired[str]
+    assignee: NotRequired[Union[str, None]]
+    milestone: NotRequired[Union[str, int, None]]
+    labels: NotRequired[
         list[
-            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
+            Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse]
         ]
     ]
-
-
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
-
+    assignees: NotRequired[list[str]]
     issue_field_values: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse
-        ]
+        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsTypeForResponse]
     ]
+    type: NotRequired[Union[str, None]]
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
+class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type(TypedDict):
+    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+
+
+class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+
+
+class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType(TypedDict):
+    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
 
     field_id: int
     value: Union[str, float]
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
+class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
 
     field_id: int
     value: Union[str, float]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsType",
+    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItemsTypeForResponse",
+    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type",
+    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse",
+    "ReposOwnerRepoIssuesPostBodyType",
+    "ReposOwnerRepoIssuesPostBodyTypeForResponse",
 )

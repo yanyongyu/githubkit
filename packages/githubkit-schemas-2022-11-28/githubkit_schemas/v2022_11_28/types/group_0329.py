@@ -12,55 +12,40 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0033 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
+from .group_0036 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class CodeSecurityConfigurationForRepositoryType(TypedDict):
-    """CodeSecurityConfigurationForRepository
+class CodeScanningVariantAnalysisRepoTaskType(TypedDict):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    Code security configuration associated with a repository and attachment status
-    """
-
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
+    repository: SimpleRepositoryType
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
     ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    artifact_size_in_bytes: NotRequired[int]
+    result_count: NotRequired[int]
+    failure_message: NotRequired[str]
+    database_commit_sha: NotRequired[str]
+    source_location_prefix: NotRequired[str]
+    artifact_url: NotRequired[str]
 
 
-class CodeSecurityConfigurationForRepositoryTypeForResponse(TypedDict):
-    """CodeSecurityConfigurationForRepository
+class CodeScanningVariantAnalysisRepoTaskTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    Code security configuration associated with a repository and attachment status
-    """
-
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
+    repository: SimpleRepositoryTypeForResponse
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
     ]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    artifact_size_in_bytes: NotRequired[int]
+    result_count: NotRequired[int]
+    failure_message: NotRequired[str]
+    database_commit_sha: NotRequired[str]
+    source_location_prefix: NotRequired[str]
+    artifact_url: NotRequired[str]
 
 
 __all__ = (
-    "CodeSecurityConfigurationForRepositoryType",
-    "CodeSecurityConfigurationForRepositoryTypeForResponse",
+    "CodeScanningVariantAnalysisRepoTaskType",
+    "CodeScanningVariantAnalysisRepoTaskTypeForResponse",
 )

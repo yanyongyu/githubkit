@@ -13,47 +13,40 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0057 import IssueType, IssueTypeForResponse
-from .group_0491 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0492 import (
+from .group_0496 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0497 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0498 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0493 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0499 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookSubIssuesParentIssueAddedType(TypedDict):
-    """parent issue added event"""
+class WebhookStarDeletedType(TypedDict):
+    """star deleted event"""
 
-    action: Literal["parent_issue_added"]
-    parent_issue_id: NotRequired[float]
-    parent_issue: NotRequired[IssueType]
-    parent_issue_repo: NotRequired[RepositoryType]
-    sub_issue_id: float
-    sub_issue: IssueType
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
+    starred_at: None
 
 
-class WebhookSubIssuesParentIssueAddedTypeForResponse(TypedDict):
-    """parent issue added event"""
+class WebhookStarDeletedTypeForResponse(TypedDict):
+    """star deleted event"""
 
-    action: Literal["parent_issue_added"]
-    parent_issue_id: NotRequired[float]
-    parent_issue: NotRequired[IssueTypeForResponse]
-    parent_issue_repo: NotRequired[RepositoryTypeForResponse]
-    sub_issue_id: float
-    sub_issue: IssueTypeForResponse
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
+    starred_at: None
 
 
 __all__ = (
-    "WebhookSubIssuesParentIssueAddedType",
-    "WebhookSubIssuesParentIssueAddedTypeForResponse",
+    "WebhookStarDeletedType",
+    "WebhookStarDeletedTypeForResponse",
 )

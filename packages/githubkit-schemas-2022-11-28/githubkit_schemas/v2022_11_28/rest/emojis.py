@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING
 from weakref import ref
 
 from githubkit.utils import exclude_unset
@@ -41,7 +41,7 @@ class EmojisClient:
     def get(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[EmojisGetResponse200, EmojisGetResponse200TypeForResponse]:
         """emojis/get
@@ -70,7 +70,7 @@ class EmojisClient:
     async def async_get(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[EmojisGetResponse200, EmojisGetResponse200TypeForResponse]:
         """emojis/get

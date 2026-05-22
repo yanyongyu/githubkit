@@ -9,35 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleRulesetInfoType(TypedDict):
-    """repository ruleset data for rule
+class PullRequestMergeResultType(TypedDict):
+    """Pull Request Merge Result
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    Pull Request Merge Result
     """
 
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    sha: str
+    merged: bool
+    message: str
 
 
-class RepositoryRuleRulesetInfoTypeForResponse(TypedDict):
-    """repository ruleset data for rule
+class PullRequestMergeResultTypeForResponse(TypedDict):
+    """Pull Request Merge Result
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    Pull Request Merge Result
     """
 
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    sha: str
+    merged: bool
+    message: str
 
 
 __all__ = (
-    "RepositoryRuleRulesetInfoType",
-    "RepositoryRuleRulesetInfoTypeForResponse",
+    "PullRequestMergeResultType",
+    "PullRequestMergeResultTypeForResponse",
 )

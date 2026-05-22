@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -87,7 +87,7 @@ class ProjectsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ProjectsV2], list[ProjectsV2TypeForResponse]]:
         """projects/list-for-org
@@ -133,7 +133,7 @@ class ProjectsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ProjectsV2], list[ProjectsV2TypeForResponse]]:
         """projects/list-for-org
@@ -176,7 +176,7 @@ class ProjectsClient:
         project_number: int,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ProjectsV2, ProjectsV2TypeForResponse]:
         """projects/get-for-org
@@ -211,7 +211,7 @@ class ProjectsClient:
         project_number: int,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ProjectsV2, ProjectsV2TypeForResponse]:
         """projects/get-for-org
@@ -247,7 +247,7 @@ class ProjectsClient:
         org: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType,
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
@@ -259,7 +259,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: str,
         body: Missing[str] = UNSET,
@@ -270,7 +270,7 @@ class ProjectsClient:
         org: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType] = UNSET,
         **kwargs,
@@ -324,7 +324,7 @@ class ProjectsClient:
         org: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType,
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
@@ -336,7 +336,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: str,
         body: Missing[str] = UNSET,
@@ -347,7 +347,7 @@ class ProjectsClient:
         org: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType] = UNSET,
         **kwargs,
@@ -403,7 +403,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ProjectsV2Field], list[ProjectsV2FieldTypeForResponse]]:
         """projects/list-fields-for-org
@@ -448,7 +448,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ProjectsV2Field], list[ProjectsV2FieldTypeForResponse]]:
         """projects/list-fields-for-org
@@ -491,7 +491,7 @@ class ProjectsClient:
         project_number: int,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
@@ -508,7 +508,7 @@ class ProjectsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         issue_field_id: int,
     ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
@@ -520,7 +520,7 @@ class ProjectsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         data_type: Literal["text", "number", "date"],
@@ -533,7 +533,7 @@ class ProjectsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         data_type: Literal["single_select"],
@@ -547,7 +547,7 @@ class ProjectsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         data_type: Literal["iteration"],
@@ -559,7 +559,7 @@ class ProjectsClient:
         project_number: int,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -633,7 +633,7 @@ class ProjectsClient:
         project_number: int,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
@@ -650,7 +650,7 @@ class ProjectsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         issue_field_id: int,
     ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
@@ -662,7 +662,7 @@ class ProjectsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         data_type: Literal["text", "number", "date"],
@@ -675,7 +675,7 @@ class ProjectsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         data_type: Literal["single_select"],
@@ -689,7 +689,7 @@ class ProjectsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         data_type: Literal["iteration"],
@@ -701,7 +701,7 @@ class ProjectsClient:
         project_number: int,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -775,7 +775,7 @@ class ProjectsClient:
         field_id: int,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]:
         """projects/get-field-for-org
@@ -811,7 +811,7 @@ class ProjectsClient:
         field_id: int,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]:
         """projects/get-field-for-org
@@ -851,7 +851,7 @@ class ProjectsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentTypeForResponse]
@@ -902,7 +902,7 @@ class ProjectsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentTypeForResponse]
@@ -949,7 +949,7 @@ class ProjectsClient:
         org: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type,
@@ -964,7 +964,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
         id: int,
@@ -980,7 +980,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
         id: Missing[int] = UNSET,
@@ -994,7 +994,7 @@ class ProjectsClient:
         org: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -1060,7 +1060,7 @@ class ProjectsClient:
         org: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type,
@@ -1075,7 +1075,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
         id: int,
@@ -1091,7 +1091,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
         id: Missing[int] = UNSET,
@@ -1105,7 +1105,7 @@ class ProjectsClient:
         org: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -1172,7 +1172,7 @@ class ProjectsClient:
         item_id: int,
         *,
         fields: Missing[Union[str, list[str]]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse]:
         """projects/get-org-item
@@ -1214,7 +1214,7 @@ class ProjectsClient:
         item_id: int,
         *,
         fields: Missing[Union[str, list[str]]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse]:
         """projects/get-org-item
@@ -1255,7 +1255,7 @@ class ProjectsClient:
         org: str,
         item_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """projects/delete-item-for-org
@@ -1290,7 +1290,7 @@ class ProjectsClient:
         org: str,
         item_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """projects/delete-item-for-org
@@ -1326,7 +1326,7 @@ class ProjectsClient:
         org: str,
         item_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType,
     ) -> Response[
@@ -1341,7 +1341,7 @@ class ProjectsClient:
         item_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         fields: list[
             OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType
@@ -1356,7 +1356,7 @@ class ProjectsClient:
         org: str,
         item_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType] = UNSET,
         **kwargs,
@@ -1414,7 +1414,7 @@ class ProjectsClient:
         org: str,
         item_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType,
     ) -> Response[
@@ -1429,7 +1429,7 @@ class ProjectsClient:
         item_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         fields: list[
             OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType
@@ -1444,7 +1444,7 @@ class ProjectsClient:
         org: str,
         item_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType] = UNSET,
         **kwargs,
@@ -1501,7 +1501,7 @@ class ProjectsClient:
         org: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgProjectsV2ProjectNumberViewsPostBodyType,
     ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]: ...
@@ -1513,7 +1513,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         layout: Literal["table", "board", "roadmap"],
@@ -1526,7 +1526,7 @@ class ProjectsClient:
         org: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgProjectsV2ProjectNumberViewsPostBodyType] = UNSET,
         **kwargs,
@@ -1584,7 +1584,7 @@ class ProjectsClient:
         org: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgProjectsV2ProjectNumberViewsPostBodyType,
     ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]: ...
@@ -1596,7 +1596,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         layout: Literal["table", "board", "roadmap"],
@@ -1609,7 +1609,7 @@ class ProjectsClient:
         org: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgProjectsV2ProjectNumberViewsPostBodyType] = UNSET,
         **kwargs,
@@ -1671,7 +1671,7 @@ class ProjectsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentTypeForResponse]
@@ -1722,7 +1722,7 @@ class ProjectsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentTypeForResponse]
@@ -1769,7 +1769,7 @@ class ProjectsClient:
         user_id: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserUserIdProjectsV2ProjectNumberDraftsPostBodyType,
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
@@ -1781,7 +1781,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: str,
         body: Missing[str] = UNSET,
@@ -1792,7 +1792,7 @@ class ProjectsClient:
         user_id: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserUserIdProjectsV2ProjectNumberDraftsPostBodyType] = UNSET,
         **kwargs,
@@ -1846,7 +1846,7 @@ class ProjectsClient:
         user_id: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserUserIdProjectsV2ProjectNumberDraftsPostBodyType,
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
@@ -1858,7 +1858,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: str,
         body: Missing[str] = UNSET,
@@ -1869,7 +1869,7 @@ class ProjectsClient:
         user_id: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserUserIdProjectsV2ProjectNumberDraftsPostBodyType] = UNSET,
         **kwargs,
@@ -1923,7 +1923,7 @@ class ProjectsClient:
         user_id: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUserIdProjectsV2ProjectNumberViewsPostBodyType,
     ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]: ...
@@ -1935,7 +1935,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         layout: Literal["table", "board", "roadmap"],
@@ -1948,7 +1948,7 @@ class ProjectsClient:
         user_id: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UsersUserIdProjectsV2ProjectNumberViewsPostBodyType] = UNSET,
         **kwargs,
@@ -2006,7 +2006,7 @@ class ProjectsClient:
         user_id: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUserIdProjectsV2ProjectNumberViewsPostBodyType,
     ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]: ...
@@ -2018,7 +2018,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         layout: Literal["table", "board", "roadmap"],
@@ -2031,7 +2031,7 @@ class ProjectsClient:
         user_id: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UsersUserIdProjectsV2ProjectNumberViewsPostBodyType] = UNSET,
         **kwargs,
@@ -2091,7 +2091,7 @@ class ProjectsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ProjectsV2], list[ProjectsV2TypeForResponse]]:
         """projects/list-for-user
@@ -2137,7 +2137,7 @@ class ProjectsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ProjectsV2], list[ProjectsV2TypeForResponse]]:
         """projects/list-for-user
@@ -2180,7 +2180,7 @@ class ProjectsClient:
         project_number: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ProjectsV2, ProjectsV2TypeForResponse]:
         """projects/get-for-user
@@ -2215,7 +2215,7 @@ class ProjectsClient:
         project_number: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ProjectsV2, ProjectsV2TypeForResponse]:
         """projects/get-for-user
@@ -2253,7 +2253,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ProjectsV2Field], list[ProjectsV2FieldTypeForResponse]]:
         """projects/list-fields-for-user
@@ -2298,7 +2298,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ProjectsV2Field], list[ProjectsV2FieldTypeForResponse]]:
         """projects/list-fields-for-user
@@ -2341,7 +2341,7 @@ class ProjectsClient:
         username: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
@@ -2357,7 +2357,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         data_type: Literal["text", "number", "date"],
@@ -2370,7 +2370,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         data_type: Literal["single_select"],
@@ -2384,7 +2384,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         data_type: Literal["iteration"],
@@ -2396,7 +2396,7 @@ class ProjectsClient:
         username: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -2467,7 +2467,7 @@ class ProjectsClient:
         username: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
@@ -2483,7 +2483,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         data_type: Literal["text", "number", "date"],
@@ -2496,7 +2496,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         data_type: Literal["single_select"],
@@ -2510,7 +2510,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         data_type: Literal["iteration"],
@@ -2522,7 +2522,7 @@ class ProjectsClient:
         username: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -2593,7 +2593,7 @@ class ProjectsClient:
         field_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]:
         """projects/get-field-for-user
@@ -2629,7 +2629,7 @@ class ProjectsClient:
         field_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]:
         """projects/get-field-for-user
@@ -2669,7 +2669,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         q: Missing[str] = UNSET,
         fields: Missing[Union[str, list[str]]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentTypeForResponse]
@@ -2720,7 +2720,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         q: Missing[str] = UNSET,
         fields: Missing[Union[str, list[str]]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentTypeForResponse]
@@ -2767,7 +2767,7 @@ class ProjectsClient:
         username: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type,
@@ -2782,7 +2782,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
         id: int,
@@ -2798,7 +2798,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
         id: Missing[int] = UNSET,
@@ -2812,7 +2812,7 @@ class ProjectsClient:
         username: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -2878,7 +2878,7 @@ class ProjectsClient:
         username: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type,
@@ -2893,7 +2893,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
         id: int,
@@ -2909,7 +2909,7 @@ class ProjectsClient:
         project_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
         id: Missing[int] = UNSET,
@@ -2923,7 +2923,7 @@ class ProjectsClient:
         username: str,
         project_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -2990,7 +2990,7 @@ class ProjectsClient:
         item_id: int,
         *,
         fields: Missing[Union[str, list[str]]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse]:
         """projects/get-user-item
@@ -3032,7 +3032,7 @@ class ProjectsClient:
         item_id: int,
         *,
         fields: Missing[Union[str, list[str]]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse]:
         """projects/get-user-item
@@ -3073,7 +3073,7 @@ class ProjectsClient:
         username: str,
         item_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """projects/delete-item-for-user
@@ -3108,7 +3108,7 @@ class ProjectsClient:
         username: str,
         item_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """projects/delete-item-for-user
@@ -3144,7 +3144,7 @@ class ProjectsClient:
         username: str,
         item_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType,
     ) -> Response[
@@ -3159,7 +3159,7 @@ class ProjectsClient:
         item_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         fields: list[
             UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType
@@ -3174,7 +3174,7 @@ class ProjectsClient:
         username: str,
         item_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType
@@ -3234,7 +3234,7 @@ class ProjectsClient:
         username: str,
         item_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType,
     ) -> Response[
@@ -3249,7 +3249,7 @@ class ProjectsClient:
         item_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         fields: list[
             UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType
@@ -3264,7 +3264,7 @@ class ProjectsClient:
         username: str,
         item_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType
@@ -3327,7 +3327,7 @@ class ProjectsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentTypeForResponse]
@@ -3378,7 +3378,7 @@ class ProjectsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentTypeForResponse]

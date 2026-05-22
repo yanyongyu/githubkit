@@ -11,56 +11,67 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0370 import (
+    CustomDeploymentRuleAppType,
+    CustomDeploymentRuleAppTypeForResponse,
+)
 
-class GitTreeType(TypedDict):
-    """Git Tree
 
-    The hierarchy between files in a Git repository.
+class DeploymentProtectionRuleType(TypedDict):
+    """Deployment protection rule
+
+    Deployment protection rule
     """
 
-    sha: str
-    url: NotRequired[str]
-    truncated: bool
-    tree: list[GitTreePropTreeItemsType]
+    id: int
+    node_id: str
+    enabled: bool
+    app: CustomDeploymentRuleAppType
 
 
-class GitTreeTypeForResponse(TypedDict):
-    """Git Tree
+class DeploymentProtectionRuleTypeForResponse(TypedDict):
+    """Deployment protection rule
 
-    The hierarchy between files in a Git repository.
+    Deployment protection rule
     """
 
-    sha: str
-    url: NotRequired[str]
-    truncated: bool
-    tree: list[GitTreePropTreeItemsTypeForResponse]
+    id: int
+    node_id: str
+    enabled: bool
+    app: CustomDeploymentRuleAppTypeForResponse
 
 
-class GitTreePropTreeItemsType(TypedDict):
-    """GitTreePropTreeItems"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
-    path: str
-    mode: str
-    type: str
-    sha: str
-    size: NotRequired[int]
-    url: NotRequired[str]
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[list[DeploymentProtectionRuleType]]
 
 
-class GitTreePropTreeItemsTypeForResponse(TypedDict):
-    """GitTreePropTreeItems"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
-    path: str
-    mode: str
-    type: str
-    sha: str
-    size: NotRequired[int]
-    url: NotRequired[str]
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[
+        list[DeploymentProtectionRuleTypeForResponse]
+    ]
 
 
 __all__ = (
-    "GitTreePropTreeItemsType",
-    "GitTreePropTreeItemsTypeForResponse",
-    "GitTreeType",
-    "GitTreeTypeForResponse",
+    "DeploymentProtectionRuleType",
+    "DeploymentProtectionRuleTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse",
 )

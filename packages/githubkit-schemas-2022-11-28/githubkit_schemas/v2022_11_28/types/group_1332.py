@@ -12,38 +12,27 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoPullsPullNumberCommentsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
-
-    body: str
-    commit_id: str
-    path: str
-    position: NotRequired[int]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    line: NotRequired[int]
-    start_line: NotRequired[int]
-    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
-    in_reply_to: NotRequired[int]
-    subject_type: NotRequired[Literal["line", "file"]]
+from .group_1330 import (
+    ReposOwnerRepoPagesPostBodyPropSourceType,
+    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
+)
 
 
-class ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
+class ReposOwnerRepoPagesPostBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
 
-    body: str
-    commit_id: str
-    path: str
-    position: NotRequired[int]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    line: NotRequired[int]
-    start_line: NotRequired[int]
-    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
-    in_reply_to: NotRequired[int]
-    subject_type: NotRequired[Literal["line", "file"]]
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceType]
+
+
+class ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
+
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberCommentsPostBodyType",
-    "ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse",
+    "ReposOwnerRepoPagesPostBodyAnyof1Type",
+    "ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse",
 )

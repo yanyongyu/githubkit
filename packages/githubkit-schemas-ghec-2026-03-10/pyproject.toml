@@ -1,13 +1,13 @@
 [project]
 name = "GitHubKit-schemas-ghec-2026-03-10"
-version = "26.5.12"
+version = "26.5.22"
 description = "GitHub Schemas for GitHubKit"
 authors = [{ name = "yanyongyu", email = "yyy@yyydl.top" }]
 license = "MIT"
 readme = "README.md"
 keywords = ["github", "octokit"]
 requires-python = ">=3.10, <4.0"
-dependencies = ["githubkit-schemas ==26.5.12"]
+dependencies = ["githubkit-schemas ==26.5.22"]
 
 [project.optional-dependencies]
 
@@ -28,5 +28,5 @@ module-root = ""
 module-name = "githubkit_schemas.ghec_v2026_03_10"
 
 [build-system]
-requires = ["uv_build >=0.8.3, <0.10.0"]
+requires = ["uv_build >=0.8.3, <0.12.0"]
 build-backend = "uv_build"

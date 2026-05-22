@@ -9,28 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class TopicType(TypedDict):
-    """Topic
 
-    A topic aggregates entities that are related to a subject.
+class StargazerType(TypedDict):
+    """Stargazer
+
+    Stargazer
     """
 
-    names: list[str]
+    starred_at: _dt.datetime
+    user: Union[None, SimpleUserType]
 
 
-class TopicTypeForResponse(TypedDict):
-    """Topic
+class StargazerTypeForResponse(TypedDict):
+    """Stargazer
 
-    A topic aggregates entities that are related to a subject.
+    Stargazer
     """
 
-    names: list[str]
+    starred_at: str
+    user: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "TopicType",
-    "TopicTypeForResponse",
+    "StargazerType",
+    "StargazerTypeForResponse",
 )

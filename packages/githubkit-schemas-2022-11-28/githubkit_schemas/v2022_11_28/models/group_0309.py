@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Annotated, Literal, Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,57 +18,44 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0129 import CodeScanningAlertRuleSummary
-from .group_0130 import CodeScanningAnalysisTool
-from .group_0132 import CodeScanningAlertInstance
 
+class CodeQualitySetup(GitHubModel):
+    """CodeQualitySetup
 
-class CodeScanningAlertItems(GitHubModel):
-    """CodeScanningAlertItems"""
+    Configuration for code quality setup.
+    """
 
-    number: int = Field(description="The security alert number.")
-    created_at: _dt.datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET, description="Code quality setup has been configured or not."
     )
-    updated_at: Missing[_dt.datetime] = Field(
+    languages: Missing[
+        list[
+            Literal[
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "rust",
+            ]
+        ]
+    ] = Field(default=UNSET, description="Languages to be analyzed.")
+    runner_type: Missing[Union[None, Literal["standard", "labeled"]]] = Field(
+        default=UNSET, description="Runner type to be used."
+    )
+    runner_label: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="Runner label to be used if the runner type is labeled.",
     )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    instances_url: str = Field(
-        description="The REST API URL for fetching the list of instances for an alert."
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET, description="Timestamp of latest configuration update."
     )
-    state: Union[None, Literal["open", "dismissed", "fixed"]] = Field(
-        description="State of a code scanning alert."
+    schedule: Missing[Union[None, Literal["weekly"]]] = Field(
+        default=UNSET, description="The frequency of the periodic analysis."
     )
-    fixed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    dismissed_by: Union[None, SimpleUser] = Field()
-    dismissed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
-    ] = Field(
-        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
-    )
-    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
-        Field(
-            default=UNSET,
-            description="The dismissal comment associated with the dismissal of the alert.",
-        )
-    )
-    rule: CodeScanningAlertRuleSummary = Field()
-    tool: CodeScanningAnalysisTool = Field()
-    most_recent_instance: CodeScanningAlertInstance = Field()
-    dismissal_approved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAlertItems)
+model_rebuild(CodeQualitySetup)
 
-__all__ = ("CodeScanningAlertItems",)
+__all__ = ("CodeQualitySetup",)

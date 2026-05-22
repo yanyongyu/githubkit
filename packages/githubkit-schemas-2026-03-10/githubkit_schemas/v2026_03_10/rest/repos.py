@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -375,7 +375,7 @@ class ReposClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """repos/list-for-org
@@ -424,7 +424,7 @@ class ReposClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """repos/list-for-org
@@ -467,7 +467,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgReposPostBodyType,
     ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
@@ -478,7 +478,7 @@ class ReposClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: Missing[str] = UNSET,
@@ -517,7 +517,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgReposPostBodyType] = UNSET,
         **kwargs,
@@ -572,7 +572,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgReposPostBodyType,
     ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
@@ -583,7 +583,7 @@ class ReposClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: Missing[str] = UNSET,
@@ -622,7 +622,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgReposPostBodyType] = UNSET,
         **kwargs,
@@ -679,7 +679,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         targets: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetTypeForResponse]]:
         """repos/get-org-rulesets
@@ -723,7 +723,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         targets: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetTypeForResponse]]:
         """repos/get-org-rulesets
@@ -765,7 +765,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
@@ -776,7 +776,7 @@ class ReposClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
@@ -822,7 +822,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgRulesetsPostBodyType] = UNSET,
         **kwargs,
@@ -875,7 +875,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
@@ -886,7 +886,7 @@ class ReposClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
@@ -932,7 +932,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgRulesetsPostBodyType] = UNSET,
         **kwargs,
@@ -991,7 +991,7 @@ class ReposClient:
         rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsTypeForResponse]]:
         """repos/get-org-rule-suites
@@ -1044,7 +1044,7 @@ class ReposClient:
         rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsTypeForResponse]]:
         """repos/get-org-rule-suites
@@ -1091,7 +1091,7 @@ class ReposClient:
         org: str,
         rule_suite_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RuleSuite, RuleSuiteTypeForResponse]:
         """repos/get-org-rule-suite
@@ -1127,7 +1127,7 @@ class ReposClient:
         org: str,
         rule_suite_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RuleSuite, RuleSuiteTypeForResponse]:
         """repos/get-org-rule-suite
@@ -1163,7 +1163,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/get-org-ruleset
@@ -1201,7 +1201,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/get-org-ruleset
@@ -1240,7 +1240,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
@@ -1252,7 +1252,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
@@ -1299,7 +1299,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
@@ -1353,7 +1353,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
@@ -1365,7 +1365,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
@@ -1412,7 +1412,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
@@ -1465,7 +1465,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-org-ruleset
@@ -1499,7 +1499,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-org-ruleset
@@ -1533,7 +1533,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """repos/get
@@ -1572,7 +1572,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """repos/get
@@ -1611,7 +1611,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete
@@ -1651,7 +1651,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete
@@ -1692,7 +1692,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
     ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
@@ -1704,7 +1704,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -1744,7 +1744,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
         **kwargs,
@@ -1798,7 +1798,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
     ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
@@ -1810,7 +1810,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -1850,7 +1850,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
         **kwargs,
@@ -1922,7 +1922,7 @@ class ReposClient:
                 "merge_queue_merge",
             ]
         ] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Activity], list[ActivityTypeForResponse]]:
         """repos/list-activities
@@ -1990,7 +1990,7 @@ class ReposClient:
                 "merge_queue_merge",
             ]
         ] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Activity], list[ActivityTypeForResponse]]:
         """repos/list-activities
@@ -2040,7 +2040,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoAttestationsPostBodyType,
     ) -> Response[
@@ -2055,7 +2055,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType,
     ) -> Response[
@@ -2068,7 +2068,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoAttestationsPostBodyType] = UNSET,
         **kwargs,
@@ -2128,7 +2128,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoAttestationsPostBodyType,
     ) -> Response[
@@ -2143,7 +2143,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType,
     ) -> Response[
@@ -2156,7 +2156,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoAttestationsPostBodyType] = UNSET,
         **kwargs,
@@ -2220,7 +2220,7 @@ class ReposClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         predicate_type: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
@@ -2271,7 +2271,7 @@ class ReposClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         predicate_type: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
@@ -2317,7 +2317,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Autolink], list[AutolinkTypeForResponse]]:
         """repos/list-autolinks
@@ -2350,7 +2350,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Autolink], list[AutolinkTypeForResponse]]:
         """repos/list-autolinks
@@ -2384,7 +2384,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoAutolinksPostBodyType,
     ) -> Response[Autolink, AutolinkTypeForResponse]: ...
@@ -2396,7 +2396,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         key_prefix: str,
         url_template: str,
@@ -2408,7 +2408,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
         **kwargs,
@@ -2455,7 +2455,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoAutolinksPostBodyType,
     ) -> Response[Autolink, AutolinkTypeForResponse]: ...
@@ -2467,7 +2467,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         key_prefix: str,
         url_template: str,
@@ -2479,7 +2479,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
         **kwargs,
@@ -2526,7 +2526,7 @@ class ReposClient:
         repo: str,
         autolink_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Autolink, AutolinkTypeForResponse]:
         """repos/get-autolink
@@ -2563,7 +2563,7 @@ class ReposClient:
         repo: str,
         autolink_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Autolink, AutolinkTypeForResponse]:
         """repos/get-autolink
@@ -2600,7 +2600,7 @@ class ReposClient:
         repo: str,
         autolink_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-autolink
@@ -2636,7 +2636,7 @@ class ReposClient:
         repo: str,
         autolink_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-autolink
@@ -2671,7 +2671,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CheckAutomatedSecurityFixes, CheckAutomatedSecurityFixesTypeForResponse
@@ -2705,7 +2705,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         CheckAutomatedSecurityFixes, CheckAutomatedSecurityFixesTypeForResponse
@@ -2739,7 +2739,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/enable-automated-security-fixes
@@ -2767,7 +2767,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/enable-automated-security-fixes
@@ -2795,7 +2795,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/disable-automated-security-fixes
@@ -2823,7 +2823,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/disable-automated-security-fixes
@@ -2854,7 +2854,7 @@ class ReposClient:
         protected: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ShortBranch], list[ShortBranchTypeForResponse]]:
         """repos/list-branches
@@ -2896,7 +2896,7 @@ class ReposClient:
         protected: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ShortBranch], list[ShortBranchTypeForResponse]]:
         """repos/list-branches
@@ -2936,7 +2936,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[BranchWithProtection, BranchWithProtectionTypeForResponse]:
         """repos/get-branch
@@ -2969,7 +2969,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[BranchWithProtection, BranchWithProtectionTypeForResponse]:
         """repos/get-branch
@@ -3002,7 +3002,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[BranchProtection, BranchProtectionTypeForResponse]:
         """repos/get-branch-protection
@@ -3037,7 +3037,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[BranchProtection, BranchProtectionTypeForResponse]:
         """repos/get-branch-protection
@@ -3073,7 +3073,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionPutBodyType,
     ) -> Response[ProtectedBranch, ProtectedBranchTypeForResponse]: ...
@@ -3086,7 +3086,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         required_status_checks: Union[
             ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
@@ -3115,7 +3115,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
         **kwargs,
@@ -3180,7 +3180,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionPutBodyType,
     ) -> Response[ProtectedBranch, ProtectedBranchTypeForResponse]: ...
@@ -3193,7 +3193,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         required_status_checks: Union[
             ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
@@ -3222,7 +3222,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
         **kwargs,
@@ -3286,7 +3286,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-branch-protection
@@ -3320,7 +3320,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-branch-protection
@@ -3354,7 +3354,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedTypeForResponse
@@ -3388,7 +3388,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedTypeForResponse
@@ -3422,7 +3422,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedTypeForResponse
@@ -3458,7 +3458,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedTypeForResponse
@@ -3494,7 +3494,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-admin-branch-protection
@@ -3530,7 +3530,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-admin-branch-protection
@@ -3566,7 +3566,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ProtectedBranchPullRequestReview,
@@ -3601,7 +3601,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ProtectedBranchPullRequestReview,
@@ -3636,7 +3636,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-pull-request-review-protection
@@ -3670,7 +3670,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-pull-request-review-protection
@@ -3705,7 +3705,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
@@ -3723,7 +3723,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         dismissal_restrictions: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType
@@ -3746,7 +3746,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
@@ -3811,7 +3811,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
@@ -3829,7 +3829,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         dismissal_restrictions: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType
@@ -3852,7 +3852,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
@@ -3916,7 +3916,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedTypeForResponse
@@ -3958,7 +3958,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedTypeForResponse
@@ -4000,7 +4000,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedTypeForResponse
@@ -4039,7 +4039,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedTypeForResponse
@@ -4078,7 +4078,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-commit-signature-protection
@@ -4114,7 +4114,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-commit-signature-protection
@@ -4150,7 +4150,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[StatusCheckPolicy, StatusCheckPolicyTypeForResponse]:
         """repos/get-status-checks-protection
@@ -4187,7 +4187,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[StatusCheckPolicy, StatusCheckPolicyTypeForResponse]:
         """repos/get-status-checks-protection
@@ -4224,7 +4224,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/remove-status-check-protection
@@ -4255,7 +4255,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/remove-status-check-protection
@@ -4287,7 +4287,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
@@ -4302,7 +4302,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         strict: Missing[bool] = UNSET,
         contexts: Missing[list[str]] = UNSET,
@@ -4319,7 +4319,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
@@ -4382,7 +4382,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
@@ -4397,7 +4397,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         strict: Missing[bool] = UNSET,
         contexts: Missing[list[str]] = UNSET,
@@ -4414,7 +4414,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
@@ -4476,7 +4476,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[str], list[str]]:
         """repos/get-all-status-check-contexts
@@ -4511,7 +4511,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[str], list[str]]:
         """repos/get-all-status-check-contexts
@@ -4547,7 +4547,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -4565,7 +4565,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
@@ -4576,7 +4576,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -4642,7 +4642,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -4660,7 +4660,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
@@ -4671,7 +4671,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -4737,7 +4737,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -4755,7 +4755,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
@@ -4766,7 +4766,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -4833,7 +4833,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -4851,7 +4851,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
@@ -4862,7 +4862,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -4929,7 +4929,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -4947,7 +4947,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
@@ -4958,7 +4958,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -5024,7 +5024,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -5042,7 +5042,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
@@ -5053,7 +5053,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -5118,7 +5118,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[BranchRestrictionPolicy, BranchRestrictionPolicyTypeForResponse]:
         """repos/get-access-restrictions
@@ -5158,7 +5158,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[BranchRestrictionPolicy, BranchRestrictionPolicyTypeForResponse]:
         """repos/get-access-restrictions
@@ -5198,7 +5198,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-access-restrictions
@@ -5229,7 +5229,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-access-restrictions
@@ -5260,7 +5260,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
@@ -5301,7 +5301,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
@@ -5343,7 +5343,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
     ) -> Response[
@@ -5358,7 +5358,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         apps: list[str],
     ) -> Response[
@@ -5371,7 +5371,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType
@@ -5433,7 +5433,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
     ) -> Response[
@@ -5448,7 +5448,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         apps: list[str],
     ) -> Response[
@@ -5461,7 +5461,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType
@@ -5523,7 +5523,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
     ) -> Response[
@@ -5538,7 +5538,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         apps: list[str],
     ) -> Response[
@@ -5551,7 +5551,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType
@@ -5613,7 +5613,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
     ) -> Response[
@@ -5628,7 +5628,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         apps: list[str],
     ) -> Response[
@@ -5641,7 +5641,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType
@@ -5703,7 +5703,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
     ) -> Response[
@@ -5718,7 +5718,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         apps: list[str],
     ) -> Response[
@@ -5731,7 +5731,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType
@@ -5793,7 +5793,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
     ) -> Response[
@@ -5808,7 +5808,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         apps: list[str],
     ) -> Response[
@@ -5821,7 +5821,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType
@@ -5882,7 +5882,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """repos/get-teams-with-access-to-protected-branch
@@ -5919,7 +5919,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """repos/get-teams-with-access-to-protected-branch
@@ -5957,7 +5957,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -5975,7 +5975,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         teams: list[str],
     ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
@@ -5986,7 +5986,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -6053,7 +6053,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -6071,7 +6071,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         teams: list[str],
     ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
@@ -6082,7 +6082,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -6149,7 +6149,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -6167,7 +6167,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         teams: list[str],
     ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
@@ -6178,7 +6178,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -6245,7 +6245,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -6263,7 +6263,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         teams: list[str],
     ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
@@ -6274,7 +6274,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -6341,7 +6341,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -6359,7 +6359,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         teams: list[str],
     ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
@@ -6370,7 +6370,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -6437,7 +6437,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -6455,7 +6455,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         teams: list[str],
     ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
@@ -6466,7 +6466,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -6532,7 +6532,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """repos/get-users-with-access-to-protected-branch
@@ -6569,7 +6569,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """repos/get-users-with-access-to-protected-branch
@@ -6607,7 +6607,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -6620,7 +6620,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -6631,7 +6631,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType
@@ -6693,7 +6693,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -6706,7 +6706,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -6717,7 +6717,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType
@@ -6779,7 +6779,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -6792,7 +6792,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -6803,7 +6803,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType
@@ -6865,7 +6865,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -6878,7 +6878,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -6889,7 +6889,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType
@@ -6951,7 +6951,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -6964,7 +6964,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -6975,7 +6975,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType
@@ -7037,7 +7037,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -7050,7 +7050,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
@@ -7061,7 +7061,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType
@@ -7123,7 +7123,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchRenamePostBodyType,
     ) -> Response[BranchWithProtection, BranchWithProtectionTypeForResponse]: ...
@@ -7136,7 +7136,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         new_name: str,
     ) -> Response[BranchWithProtection, BranchWithProtectionTypeForResponse]: ...
@@ -7147,7 +7147,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
         **kwargs,
@@ -7211,7 +7211,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchRenamePostBodyType,
     ) -> Response[BranchWithProtection, BranchWithProtectionTypeForResponse]: ...
@@ -7224,7 +7224,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         new_name: str,
     ) -> Response[BranchWithProtection, BranchWithProtectionTypeForResponse]: ...
@@ -7235,7 +7235,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
         **kwargs,
@@ -7298,7 +7298,7 @@ class ReposClient:
         repo: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeownersErrors, CodeownersErrorsTypeForResponse]:
         """repos/codeowners-errors
@@ -7340,7 +7340,7 @@ class ReposClient:
         repo: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CodeownersErrors, CodeownersErrorsTypeForResponse]:
         """repos/codeowners-errors
@@ -7387,7 +7387,7 @@ class ReposClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Collaborator], list[CollaboratorTypeForResponse]]:
         """repos/list-collaborators
@@ -7442,7 +7442,7 @@ class ReposClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Collaborator], list[CollaboratorTypeForResponse]]:
         """repos/list-collaborators
@@ -7492,7 +7492,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/check-collaborator
@@ -7528,7 +7528,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/check-collaborator
@@ -7565,7 +7565,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]: ...
@@ -7578,7 +7578,7 @@ class ReposClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         permission: Missing[str] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]: ...
@@ -7589,7 +7589,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
@@ -7669,7 +7669,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]: ...
@@ -7682,7 +7682,7 @@ class ReposClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         permission: Missing[str] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]: ...
@@ -7693,7 +7693,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
@@ -7772,7 +7772,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/remove-collaborator
@@ -7828,7 +7828,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/remove-collaborator
@@ -7884,7 +7884,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         RepositoryCollaboratorPermission,
@@ -7930,7 +7930,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         RepositoryCollaboratorPermission,
@@ -7977,7 +7977,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[CommitComment], list[CommitCommentTypeForResponse]]:
         """repos/list-commit-comments-for-repo
@@ -8023,7 +8023,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[CommitComment], list[CommitCommentTypeForResponse]]:
         """repos/list-commit-comments-for-repo
@@ -8068,7 +8068,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CommitComment, CommitCommentTypeForResponse]:
         """repos/get-commit-comment
@@ -8110,7 +8110,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CommitComment, CommitCommentTypeForResponse]:
         """repos/get-commit-comment
@@ -8152,7 +8152,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-commit-comment
@@ -8184,7 +8184,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-commit-comment
@@ -8217,7 +8217,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoCommentsCommentIdPatchBodyType,
     ) -> Response[CommitComment, CommitCommentTypeForResponse]: ...
@@ -8230,7 +8230,7 @@ class ReposClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         body: str,
     ) -> Response[CommitComment, CommitCommentTypeForResponse]: ...
@@ -8241,7 +8241,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
@@ -8300,7 +8300,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoCommentsCommentIdPatchBodyType,
     ) -> Response[CommitComment, CommitCommentTypeForResponse]: ...
@@ -8313,7 +8313,7 @@ class ReposClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         body: str,
     ) -> Response[CommitComment, CommitCommentTypeForResponse]: ...
@@ -8324,7 +8324,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
@@ -8389,7 +8389,7 @@ class ReposClient:
         until: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Commit], list[CommitTypeForResponse]]:
         """repos/list-commits
@@ -8474,7 +8474,7 @@ class ReposClient:
         until: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Commit], list[CommitTypeForResponse]]:
         """repos/list-commits
@@ -8552,7 +8552,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[BranchShort], list[BranchShortTypeForResponse]]:
         """repos/list-branches-for-head-commit
@@ -8590,7 +8590,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[BranchShort], list[BranchShortTypeForResponse]]:
         """repos/list-branches-for-head-commit
@@ -8630,7 +8630,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[CommitComment], list[CommitCommentTypeForResponse]]:
         """repos/list-comments-for-commit
@@ -8677,7 +8677,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[CommitComment], list[CommitCommentTypeForResponse]]:
         """repos/list-comments-for-commit
@@ -8723,7 +8723,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
     ) -> Response[CommitComment, CommitCommentTypeForResponse]: ...
@@ -8736,7 +8736,7 @@ class ReposClient:
         commit_sha: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         body: str,
         path: Missing[str] = UNSET,
@@ -8750,7 +8750,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
         **kwargs,
@@ -8815,7 +8815,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
     ) -> Response[CommitComment, CommitCommentTypeForResponse]: ...
@@ -8828,7 +8828,7 @@ class ReposClient:
         commit_sha: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         body: str,
         path: Missing[str] = UNSET,
@@ -8842,7 +8842,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
         **kwargs,
@@ -8908,7 +8908,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[PullRequestSimple], list[PullRequestSimpleTypeForResponse]]:
         """repos/list-pull-requests-associated-with-commit
@@ -8953,7 +8953,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[PullRequestSimple], list[PullRequestSimpleTypeForResponse]]:
         """repos/list-pull-requests-associated-with-commit
@@ -8998,7 +8998,7 @@ class ReposClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Commit, CommitTypeForResponse]:
         """repos/get-commit
@@ -9084,7 +9084,7 @@ class ReposClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Commit, CommitTypeForResponse]:
         """repos/get-commit
@@ -9170,7 +9170,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CombinedCommitStatus, CombinedCommitStatusTypeForResponse]:
         """repos/get-combined-status-for-ref
@@ -9220,7 +9220,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CombinedCommitStatus, CombinedCommitStatusTypeForResponse]:
         """repos/get-combined-status-for-ref
@@ -9270,7 +9270,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Status], list[StatusTypeForResponse]]:
         """repos/list-commit-statuses-for-ref
@@ -9312,7 +9312,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Status], list[StatusTypeForResponse]]:
         """repos/list-commit-statuses-for-ref
@@ -9351,7 +9351,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CommunityProfile, CommunityProfileTypeForResponse]:
         r"""repos/get-community-profile-metrics
@@ -9392,7 +9392,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CommunityProfile, CommunityProfileTypeForResponse]:
         r"""repos/get-community-profile-metrics
@@ -9436,7 +9436,7 @@ class ReposClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CommitComparison, CommitComparisonTypeForResponse]:
         """repos/compare-commits
@@ -9531,7 +9531,7 @@ class ReposClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CommitComparison, CommitComparisonTypeForResponse]:
         """repos/compare-commits
@@ -9625,7 +9625,7 @@ class ReposClient:
         path: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[
@@ -9714,7 +9714,7 @@ class ReposClient:
         path: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         Union[
@@ -9803,7 +9803,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoContentsPathPutBodyType,
     ) -> Response[FileCommit, FileCommitTypeForResponse]: ...
@@ -9816,7 +9816,7 @@ class ReposClient:
         path: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         message: str,
         content: str,
@@ -9832,7 +9832,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
         **kwargs,
@@ -9895,7 +9895,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoContentsPathPutBodyType,
     ) -> Response[FileCommit, FileCommitTypeForResponse]: ...
@@ -9908,7 +9908,7 @@ class ReposClient:
         path: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         message: str,
         content: str,
@@ -9924,7 +9924,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
         **kwargs,
@@ -9987,7 +9987,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoContentsPathDeleteBodyType,
     ) -> Response[FileCommit, FileCommitTypeForResponse]: ...
@@ -10000,7 +10000,7 @@ class ReposClient:
         path: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         message: str,
         sha: str,
@@ -10017,7 +10017,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
         **kwargs,
@@ -10083,7 +10083,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoContentsPathDeleteBodyType,
     ) -> Response[FileCommit, FileCommitTypeForResponse]: ...
@@ -10096,7 +10096,7 @@ class ReposClient:
         path: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         message: str,
         sha: str,
@@ -10113,7 +10113,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
         **kwargs,
@@ -10180,7 +10180,7 @@ class ReposClient:
         anon: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Contributor], list[ContributorTypeForResponse]]:
         """repos/list-contributors
@@ -10227,7 +10227,7 @@ class ReposClient:
         anon: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Contributor], list[ContributorTypeForResponse]]:
         """repos/list-contributors
@@ -10277,7 +10277,7 @@ class ReposClient:
         environment: Missing[Union[str, None]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Deployment], list[DeploymentTypeForResponse]]:
         """repos/list-deployments
@@ -10324,7 +10324,7 @@ class ReposClient:
         environment: Missing[Union[str, None]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Deployment], list[DeploymentTypeForResponse]]:
         """repos/list-deployments
@@ -10366,7 +10366,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoDeploymentsPostBodyType,
     ) -> Response[Deployment, DeploymentTypeForResponse]: ...
@@ -10378,7 +10378,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         ref: str,
         task: Missing[str] = UNSET,
@@ -10398,7 +10398,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
         **kwargs,
@@ -10496,7 +10496,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoDeploymentsPostBodyType,
     ) -> Response[Deployment, DeploymentTypeForResponse]: ...
@@ -10508,7 +10508,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         ref: str,
         task: Missing[str] = UNSET,
@@ -10528,7 +10528,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
         **kwargs,
@@ -10626,7 +10626,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Deployment, DeploymentTypeForResponse]:
         """repos/get-deployment
@@ -10659,7 +10659,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Deployment, DeploymentTypeForResponse]:
         """repos/get-deployment
@@ -10692,7 +10692,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-deployment
@@ -10736,7 +10736,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-deployment
@@ -10782,7 +10782,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[DeploymentStatus], list[DeploymentStatusTypeForResponse]]:
         """repos/list-deployment-statuses
@@ -10825,7 +10825,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[DeploymentStatus], list[DeploymentStatusTypeForResponse]]:
         """repos/list-deployment-statuses
@@ -10867,7 +10867,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
     ) -> Response[DeploymentStatus, DeploymentStatusTypeForResponse]: ...
@@ -10880,7 +10880,7 @@ class ReposClient:
         deployment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Literal[
             "error",
@@ -10905,7 +10905,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType
@@ -10963,7 +10963,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
     ) -> Response[DeploymentStatus, DeploymentStatusTypeForResponse]: ...
@@ -10976,7 +10976,7 @@ class ReposClient:
         deployment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Literal[
             "error",
@@ -11001,7 +11001,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType
@@ -11059,7 +11059,7 @@ class ReposClient:
         deployment_id: int,
         status_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DeploymentStatus, DeploymentStatusTypeForResponse]:
         """repos/get-deployment-status
@@ -11095,7 +11095,7 @@ class ReposClient:
         deployment_id: int,
         status_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DeploymentStatus, DeploymentStatusTypeForResponse]:
         """repos/get-deployment-status
@@ -11130,7 +11130,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoDispatchesPostBodyType,
     ) -> Response: ...
@@ -11142,7 +11142,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         event_type: str,
         client_payload: Missing[
@@ -11155,7 +11155,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoDispatchesPostBodyType] = UNSET,
         **kwargs,
@@ -11212,7 +11212,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoDispatchesPostBodyType,
     ) -> Response: ...
@@ -11224,7 +11224,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         event_type: str,
         client_payload: Missing[
@@ -11237,7 +11237,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoDispatchesPostBodyType] = UNSET,
         **kwargs,
@@ -11295,7 +11295,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsGetResponse200,
@@ -11341,7 +11341,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsGetResponse200,
@@ -11386,7 +11386,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Environment, EnvironmentTypeForResponse]:
         """repos/get-environment
@@ -11423,7 +11423,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Environment, EnvironmentTypeForResponse]:
         """repos/get-environment
@@ -11461,7 +11461,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
@@ -11476,7 +11476,7 @@ class ReposClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         wait_timer: Missing[int] = UNSET,
         prevent_self_review: Missing[bool] = UNSET,
@@ -11499,7 +11499,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
@@ -11565,7 +11565,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
@@ -11580,7 +11580,7 @@ class ReposClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         wait_timer: Missing[int] = UNSET,
         prevent_self_review: Missing[bool] = UNSET,
@@ -11603,7 +11603,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
@@ -11668,7 +11668,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-an-environment
@@ -11697,7 +11697,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-an-environment
@@ -11728,7 +11728,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
@@ -11777,7 +11777,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
@@ -11825,7 +11825,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: DeploymentBranchPolicyNamePatternWithTypeType,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]: ...
@@ -11838,7 +11838,7 @@ class ReposClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         type: Missing[Literal["branch", "tag"]] = UNSET,
@@ -11850,7 +11850,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[DeploymentBranchPolicyNamePatternWithTypeType] = UNSET,
         **kwargs,
@@ -11901,7 +11901,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: DeploymentBranchPolicyNamePatternWithTypeType,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]: ...
@@ -11914,7 +11914,7 @@ class ReposClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         type: Missing[Literal["branch", "tag"]] = UNSET,
@@ -11926,7 +11926,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[DeploymentBranchPolicyNamePatternWithTypeType] = UNSET,
         **kwargs,
@@ -11977,7 +11977,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]:
         """repos/get-deployment-branch-policy
@@ -12014,7 +12014,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]:
         """repos/get-deployment-branch-policy
@@ -12052,7 +12052,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: DeploymentBranchPolicyNamePatternType,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]: ...
@@ -12066,7 +12066,7 @@ class ReposClient:
         branch_policy_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]: ...
@@ -12078,7 +12078,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
@@ -12126,7 +12126,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: DeploymentBranchPolicyNamePatternType,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]: ...
@@ -12140,7 +12140,7 @@ class ReposClient:
         branch_policy_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]: ...
@@ -12152,7 +12152,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
@@ -12199,7 +12199,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-deployment-branch-policy
@@ -12231,7 +12231,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-deployment-branch-policy
@@ -12262,7 +12262,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
@@ -12303,7 +12303,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
@@ -12345,7 +12345,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
     ) -> Response[
@@ -12360,7 +12360,7 @@ class ReposClient:
         owner: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         integration_id: Missing[int] = UNSET,
     ) -> Response[
@@ -12373,7 +12373,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType
@@ -12432,7 +12432,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
     ) -> Response[
@@ -12447,7 +12447,7 @@ class ReposClient:
         owner: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         integration_id: Missing[int] = UNSET,
     ) -> Response[
@@ -12460,7 +12460,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType
@@ -12520,7 +12520,7 @@ class ReposClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
@@ -12573,7 +12573,7 @@ class ReposClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
@@ -12625,7 +12625,7 @@ class ReposClient:
         environment_name: str,
         protection_rule_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleTypeForResponse]:
         """repos/get-custom-deployment-protection-rule
@@ -12662,7 +12662,7 @@ class ReposClient:
         environment_name: str,
         protection_rule_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleTypeForResponse]:
         """repos/get-custom-deployment-protection-rule
@@ -12699,7 +12699,7 @@ class ReposClient:
         owner: str,
         protection_rule_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/disable-deployment-protection-rule
@@ -12733,7 +12733,7 @@ class ReposClient:
         owner: str,
         protection_rule_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/disable-deployment-protection-rule
@@ -12768,7 +12768,7 @@ class ReposClient:
         sort: Missing[Literal["newest", "oldest", "stargazers", "watchers"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """repos/list-forks
@@ -12810,7 +12810,7 @@ class ReposClient:
         sort: Missing[Literal["newest", "oldest", "stargazers", "watchers"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """repos/list-forks
@@ -12850,7 +12850,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
     ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
@@ -12862,7 +12862,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         organization: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
@@ -12874,7 +12874,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
         **kwargs,
@@ -12937,7 +12937,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
     ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
@@ -12949,7 +12949,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         organization: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
@@ -12961,7 +12961,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
         **kwargs,
@@ -13025,7 +13025,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Hook], list[HookTypeForResponse]]:
         """repos/list-webhooks
@@ -13067,7 +13067,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Hook], list[HookTypeForResponse]]:
         """repos/list-webhooks
@@ -13108,7 +13108,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
     ) -> Response[Hook, HookTypeForResponse]: ...
@@ -13120,7 +13120,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         config: Missing[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
@@ -13133,7 +13133,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
         **kwargs,
@@ -13190,7 +13190,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
     ) -> Response[Hook, HookTypeForResponse]: ...
@@ -13202,7 +13202,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         config: Missing[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
@@ -13215,7 +13215,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
         **kwargs,
@@ -13272,7 +13272,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Hook, HookTypeForResponse]:
         """repos/get-webhook
@@ -13307,7 +13307,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Hook, HookTypeForResponse]:
         """repos/get-webhook
@@ -13342,7 +13342,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-webhook
@@ -13378,7 +13378,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-webhook
@@ -13415,7 +13415,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoHooksHookIdPatchBodyType,
     ) -> Response[Hook, HookTypeForResponse]: ...
@@ -13428,7 +13428,7 @@ class ReposClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         config: Missing[WebhookConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
@@ -13443,7 +13443,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
@@ -13497,7 +13497,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoHooksHookIdPatchBodyType,
     ) -> Response[Hook, HookTypeForResponse]: ...
@@ -13510,7 +13510,7 @@ class ReposClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         config: Missing[WebhookConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
@@ -13525,7 +13525,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
@@ -13578,7 +13578,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """repos/get-webhook-config-for-repo
@@ -13612,7 +13612,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """repos/get-webhook-config-for-repo
@@ -13647,7 +13647,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
@@ -13660,7 +13660,7 @@ class ReposClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
@@ -13674,7 +13674,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
@@ -13721,7 +13721,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
@@ -13734,7 +13734,7 @@ class ReposClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
@@ -13748,7 +13748,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
@@ -13797,7 +13797,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         status: Missing[Literal["success", "failure"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
         """repos/list-webhook-deliveries
@@ -13843,7 +13843,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         status: Missing[Literal["success", "failure"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
         """repos/list-webhook-deliveries
@@ -13887,7 +13887,7 @@ class ReposClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[HookDelivery, HookDeliveryTypeForResponse]:
         """repos/get-webhook-delivery
@@ -13924,7 +13924,7 @@ class ReposClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[HookDelivery, HookDeliveryTypeForResponse]:
         """repos/get-webhook-delivery
@@ -13961,7 +13961,7 @@ class ReposClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -14005,7 +14005,7 @@ class ReposClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -14048,7 +14048,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/ping-webhook
@@ -14082,7 +14082,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/ping-webhook
@@ -14116,7 +14116,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/test-push-webhook
@@ -14153,7 +14153,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/test-push-webhook
@@ -14189,7 +14189,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CheckImmutableReleases, CheckImmutableReleasesTypeForResponse]:
         """repos/check-immutable-releases
@@ -14222,7 +14222,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CheckImmutableReleases, CheckImmutableReleasesTypeForResponse]:
         """repos/check-immutable-releases
@@ -14255,7 +14255,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/enable-immutable-releases
@@ -14288,7 +14288,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/enable-immutable-releases
@@ -14321,7 +14321,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/disable-immutable-releases
@@ -14354,7 +14354,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/disable-immutable-releases
@@ -14389,7 +14389,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[RepositoryInvitation], list[RepositoryInvitationTypeForResponse]
@@ -14430,7 +14430,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[RepositoryInvitation], list[RepositoryInvitationTypeForResponse]
@@ -14470,7 +14470,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-invitation
@@ -14497,7 +14497,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-invitation
@@ -14525,7 +14525,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]: ...
@@ -14538,7 +14538,7 @@ class ReposClient:
         invitation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         permissions: Missing[
             Literal["read", "write", "maintain", "triage", "admin"]
@@ -14551,7 +14551,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
         **kwargs,
@@ -14599,7 +14599,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]: ...
@@ -14612,7 +14612,7 @@ class ReposClient:
         invitation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         permissions: Missing[
             Literal["read", "write", "maintain", "triage", "admin"]
@@ -14625,7 +14625,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
         **kwargs,
@@ -14673,7 +14673,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[DeployKey], list[DeployKeyTypeForResponse]]:
         """repos/list-deploy-keys
@@ -14710,7 +14710,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[DeployKey], list[DeployKeyTypeForResponse]]:
         """repos/list-deploy-keys
@@ -14746,7 +14746,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoKeysPostBodyType,
     ) -> Response[DeployKey, DeployKeyTypeForResponse]: ...
@@ -14758,7 +14758,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: Missing[str] = UNSET,
         key: str,
@@ -14770,7 +14770,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoKeysPostBodyType] = UNSET,
         **kwargs,
@@ -14817,7 +14817,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoKeysPostBodyType,
     ) -> Response[DeployKey, DeployKeyTypeForResponse]: ...
@@ -14829,7 +14829,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         title: Missing[str] = UNSET,
         key: str,
@@ -14841,7 +14841,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoKeysPostBodyType] = UNSET,
         **kwargs,
@@ -14888,7 +14888,7 @@ class ReposClient:
         repo: str,
         key_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DeployKey, DeployKeyTypeForResponse]:
         """repos/get-deploy-key
@@ -14921,7 +14921,7 @@ class ReposClient:
         repo: str,
         key_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DeployKey, DeployKeyTypeForResponse]:
         """repos/get-deploy-key
@@ -14954,7 +14954,7 @@ class ReposClient:
         repo: str,
         key_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-deploy-key
@@ -14983,7 +14983,7 @@ class ReposClient:
         repo: str,
         key_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-deploy-key
@@ -15011,7 +15011,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Language, LanguageTypeForResponse]:
         """repos/list-languages
@@ -15042,7 +15042,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Language, LanguageTypeForResponse]:
         """repos/list-languages
@@ -15074,7 +15074,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoMergeUpstreamPostBodyType,
     ) -> Response[MergedUpstream, MergedUpstreamTypeForResponse]: ...
@@ -15086,7 +15086,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         branch: str,
     ) -> Response[MergedUpstream, MergedUpstreamTypeForResponse]: ...
@@ -15096,7 +15096,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
         **kwargs,
@@ -15141,7 +15141,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoMergeUpstreamPostBodyType,
     ) -> Response[MergedUpstream, MergedUpstreamTypeForResponse]: ...
@@ -15153,7 +15153,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         branch: str,
     ) -> Response[MergedUpstream, MergedUpstreamTypeForResponse]: ...
@@ -15163,7 +15163,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
         **kwargs,
@@ -15208,7 +15208,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoMergesPostBodyType,
     ) -> Response[Commit, CommitTypeForResponse]: ...
@@ -15220,7 +15220,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         base: str,
         head: str,
@@ -15232,7 +15232,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoMergesPostBodyType] = UNSET,
         **kwargs,
@@ -15283,7 +15283,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoMergesPostBodyType,
     ) -> Response[Commit, CommitTypeForResponse]: ...
@@ -15295,7 +15295,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         base: str,
         head: str,
@@ -15307,7 +15307,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoMergesPostBodyType] = UNSET,
         **kwargs,
@@ -15357,7 +15357,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Page, PageTypeForResponse]:
         """repos/get-pages
@@ -15393,7 +15393,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Page, PageTypeForResponse]:
         """repos/get-pages
@@ -15430,7 +15430,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             ReposOwnerRepoPagesPutBodyAnyof0Type,
@@ -15448,7 +15448,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
@@ -15468,7 +15468,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
@@ -15486,7 +15486,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         cname: Union[str, None],
         https_enforced: Missing[bool] = UNSET,
@@ -15506,7 +15506,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
@@ -15526,7 +15526,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: bool,
@@ -15544,7 +15544,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -15623,7 +15623,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             ReposOwnerRepoPagesPutBodyAnyof0Type,
@@ -15641,7 +15641,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
@@ -15661,7 +15661,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
@@ -15679,7 +15679,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         cname: Union[str, None],
         https_enforced: Missing[bool] = UNSET,
@@ -15699,7 +15699,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
@@ -15719,7 +15719,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: bool,
@@ -15737,7 +15737,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -15816,7 +15816,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             ReposOwnerRepoPagesPostBodyAnyof0Type,
@@ -15833,7 +15833,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: ReposOwnerRepoPagesPostBodyPropSourceType,
@@ -15846,7 +15846,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         build_type: Literal["legacy", "workflow"],
         source: Missing[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
@@ -15857,7 +15857,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -15932,7 +15932,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             ReposOwnerRepoPagesPostBodyAnyof0Type,
@@ -15949,7 +15949,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: ReposOwnerRepoPagesPostBodyPropSourceType,
@@ -15962,7 +15962,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         build_type: Literal["legacy", "workflow"],
         source: Missing[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
@@ -15973,7 +15973,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -16047,7 +16047,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-pages-site
@@ -16086,7 +16086,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-pages-site
@@ -16127,7 +16127,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[PageBuild], list[PageBuildTypeForResponse]]:
         """repos/list-pages-builds
@@ -16168,7 +16168,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[PageBuild], list[PageBuildTypeForResponse]]:
         """repos/list-pages-builds
@@ -16207,7 +16207,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[PageBuildStatus, PageBuildStatusTypeForResponse]:
         """repos/request-pages-build
@@ -16240,7 +16240,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[PageBuildStatus, PageBuildStatusTypeForResponse]:
         """repos/request-pages-build
@@ -16273,7 +16273,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[PageBuild, PageBuildTypeForResponse]:
         """repos/get-latest-pages-build
@@ -16306,7 +16306,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[PageBuild, PageBuildTypeForResponse]:
         """repos/get-latest-pages-build
@@ -16340,7 +16340,7 @@ class ReposClient:
         repo: str,
         build_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[PageBuild, PageBuildTypeForResponse]:
         """repos/get-pages-build
@@ -16374,7 +16374,7 @@ class ReposClient:
         repo: str,
         build_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[PageBuild, PageBuildTypeForResponse]:
         """repos/get-pages-build
@@ -16408,7 +16408,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoPagesDeploymentsPostBodyType,
     ) -> Response[PageDeployment, PageDeploymentTypeForResponse]: ...
@@ -16420,7 +16420,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         artifact_id: Missing[int] = UNSET,
         artifact_url: Missing[str] = UNSET,
@@ -16434,7 +16434,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoPagesDeploymentsPostBodyType] = UNSET,
         **kwargs,
@@ -16490,7 +16490,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoPagesDeploymentsPostBodyType,
     ) -> Response[PageDeployment, PageDeploymentTypeForResponse]: ...
@@ -16502,7 +16502,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         artifact_id: Missing[int] = UNSET,
         artifact_url: Missing[str] = UNSET,
@@ -16516,7 +16516,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoPagesDeploymentsPostBodyType] = UNSET,
         **kwargs,
@@ -16572,7 +16572,7 @@ class ReposClient:
         repo: str,
         pages_deployment_id: Union[int, str],
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[PagesDeploymentStatus, PagesDeploymentStatusTypeForResponse]:
         """repos/get-pages-deployment
@@ -16609,7 +16609,7 @@ class ReposClient:
         repo: str,
         pages_deployment_id: Union[int, str],
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[PagesDeploymentStatus, PagesDeploymentStatusTypeForResponse]:
         """repos/get-pages-deployment
@@ -16646,7 +16646,7 @@ class ReposClient:
         repo: str,
         pages_deployment_id: Union[int, str],
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/cancel-pages-deployment
@@ -16682,7 +16682,7 @@ class ReposClient:
         repo: str,
         pages_deployment_id: Union[int, str],
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/cancel-pages-deployment
@@ -16717,7 +16717,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[PagesHealthCheck, PagesHealthCheckTypeForResponse]:
         """repos/get-pages-health-check
@@ -16757,7 +16757,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[PagesHealthCheck, PagesHealthCheckTypeForResponse]:
         """repos/get-pages-health-check
@@ -16797,7 +16797,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
@@ -16837,7 +16837,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
@@ -16877,7 +16877,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/enable-private-vulnerability-reporting
@@ -16910,7 +16910,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/enable-private-vulnerability-reporting
@@ -16943,7 +16943,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/disable-private-vulnerability-reporting
@@ -16976,7 +16976,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/disable-private-vulnerability-reporting
@@ -17009,7 +17009,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueTypeForResponse]]:
         """repos/custom-properties-for-repos-get-repository-values
@@ -17045,7 +17045,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueTypeForResponse]]:
         """repos/custom-properties-for-repos-get-repository-values
@@ -17082,7 +17082,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoPropertiesValuesPatchBodyType,
     ) -> Response: ...
@@ -17094,7 +17094,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         properties: list[CustomPropertyValueType],
     ) -> Response: ...
@@ -17104,7 +17104,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
@@ -17159,7 +17159,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoPropertiesValuesPatchBodyType,
     ) -> Response: ...
@@ -17171,7 +17171,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         properties: list[CustomPropertyValueType],
     ) -> Response: ...
@@ -17181,7 +17181,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
@@ -17236,7 +17236,7 @@ class ReposClient:
         repo: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ContentFile, ContentFileTypeForResponse]:
         """repos/get-readme
@@ -17282,7 +17282,7 @@ class ReposClient:
         repo: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ContentFile, ContentFileTypeForResponse]:
         """repos/get-readme
@@ -17329,7 +17329,7 @@ class ReposClient:
         dir_: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ContentFile, ContentFileTypeForResponse]:
         """repos/get-readme-in-directory
@@ -17376,7 +17376,7 @@ class ReposClient:
         dir_: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ContentFile, ContentFileTypeForResponse]:
         """repos/get-readme-in-directory
@@ -17423,7 +17423,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Release], list[ReleaseTypeForResponse]]:
         """repos/list-releases
@@ -17467,7 +17467,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Release], list[ReleaseTypeForResponse]]:
         """repos/list-releases
@@ -17510,7 +17510,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoReleasesPostBodyType,
     ) -> Response[Release, ReleaseTypeForResponse]: ...
@@ -17522,7 +17522,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         tag_name: str,
         target_commitish: Missing[str] = UNSET,
@@ -17540,7 +17540,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesPostBodyType] = UNSET,
         **kwargs,
@@ -17595,7 +17595,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoReleasesPostBodyType,
     ) -> Response[Release, ReleaseTypeForResponse]: ...
@@ -17607,7 +17607,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         tag_name: str,
         target_commitish: Missing[str] = UNSET,
@@ -17625,7 +17625,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesPostBodyType] = UNSET,
         **kwargs,
@@ -17680,7 +17680,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ReleaseAsset, ReleaseAssetTypeForResponse]:
         """repos/get-release-asset
@@ -17721,7 +17721,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ReleaseAsset, ReleaseAssetTypeForResponse]:
         """repos/get-release-asset
@@ -17762,7 +17762,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-release-asset
@@ -17794,7 +17794,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-release-asset
@@ -17827,7 +17827,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
     ) -> Response[ReleaseAsset, ReleaseAssetTypeForResponse]: ...
@@ -17840,7 +17840,7 @@ class ReposClient:
         asset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         label: Missing[str] = UNSET,
@@ -17853,7 +17853,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
         **kwargs,
@@ -17900,7 +17900,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
     ) -> Response[ReleaseAsset, ReleaseAssetTypeForResponse]: ...
@@ -17913,7 +17913,7 @@ class ReposClient:
         asset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         label: Missing[str] = UNSET,
@@ -17926,7 +17926,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
         **kwargs,
@@ -17972,7 +17972,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoReleasesGenerateNotesPostBodyType,
     ) -> Response[ReleaseNotesContent, ReleaseNotesContentTypeForResponse]: ...
@@ -17984,7 +17984,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         tag_name: str,
         target_commitish: Missing[str] = UNSET,
@@ -17997,7 +17997,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
         **kwargs,
@@ -18050,7 +18050,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoReleasesGenerateNotesPostBodyType,
     ) -> Response[ReleaseNotesContent, ReleaseNotesContentTypeForResponse]: ...
@@ -18062,7 +18062,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         tag_name: str,
         target_commitish: Missing[str] = UNSET,
@@ -18075,7 +18075,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
         **kwargs,
@@ -18127,7 +18127,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Release, ReleaseTypeForResponse]:
         """repos/get-latest-release
@@ -18163,7 +18163,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Release, ReleaseTypeForResponse]:
         """repos/get-latest-release
@@ -18200,7 +18200,7 @@ class ReposClient:
         repo: str,
         tag: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Release, ReleaseTypeForResponse]:
         """repos/get-release-by-tag
@@ -18235,7 +18235,7 @@ class ReposClient:
         repo: str,
         tag: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Release, ReleaseTypeForResponse]:
         """repos/get-release-by-tag
@@ -18270,7 +18270,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Release, ReleaseTypeForResponse]:
         """repos/get-release
@@ -18306,7 +18306,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Release, ReleaseTypeForResponse]:
         """repos/get-release
@@ -18342,7 +18342,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-release
@@ -18376,7 +18376,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-release
@@ -18411,7 +18411,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
     ) -> Response[Release, ReleaseTypeForResponse]: ...
@@ -18424,7 +18424,7 @@ class ReposClient:
         release_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         tag_name: Missing[str] = UNSET,
         target_commitish: Missing[str] = UNSET,
@@ -18442,7 +18442,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
         **kwargs,
@@ -18494,7 +18494,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
     ) -> Response[Release, ReleaseTypeForResponse]: ...
@@ -18507,7 +18507,7 @@ class ReposClient:
         release_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         tag_name: Missing[str] = UNSET,
         target_commitish: Missing[str] = UNSET,
@@ -18525,7 +18525,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
         **kwargs,
@@ -18578,7 +18578,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ReleaseAsset], list[ReleaseAssetTypeForResponse]]:
         """repos/list-release-assets
@@ -18616,7 +18616,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ReleaseAsset], list[ReleaseAssetTypeForResponse]]:
         """repos/list-release-assets
@@ -18654,7 +18654,7 @@ class ReposClient:
         *,
         name: str,
         label: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: FileTypes,
     ) -> Response[ReleaseAsset, ReleaseAssetTypeForResponse]:
@@ -18721,7 +18721,7 @@ class ReposClient:
         *,
         name: str,
         label: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: FileTypes,
     ) -> Response[ReleaseAsset, ReleaseAssetTypeForResponse]:
@@ -18788,7 +18788,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[
@@ -18934,7 +18934,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[
@@ -19081,7 +19081,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         includes_parents: Missing[bool] = UNSET,
         targets: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetTypeForResponse]]:
         """repos/get-repo-rulesets
@@ -19128,7 +19128,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         includes_parents: Missing[bool] = UNSET,
         targets: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetTypeForResponse]]:
         """repos/get-repo-rulesets
@@ -19172,7 +19172,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
@@ -19184,7 +19184,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
@@ -19209,13 +19209,13 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleWorkflowsType,
+                    RepositoryRuleCodeScanningType,
+                    RepositoryRuleCopilotCodeReviewType,
                     RepositoryRuleFilePathRestrictionType,
                     RepositoryRuleMaxFilePathLengthType,
                     RepositoryRuleFileExtensionRestrictionType,
                     RepositoryRuleMaxFileSizeType,
-                    RepositoryRuleWorkflowsType,
-                    RepositoryRuleCodeScanningType,
-                    RepositoryRuleCopilotCodeReviewType,
                 ]
             ]
         ] = UNSET,
@@ -19226,7 +19226,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsPostBodyType] = UNSET,
         **kwargs,
@@ -19280,7 +19280,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
@@ -19292,7 +19292,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
@@ -19317,13 +19317,13 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleWorkflowsType,
+                    RepositoryRuleCodeScanningType,
+                    RepositoryRuleCopilotCodeReviewType,
                     RepositoryRuleFilePathRestrictionType,
                     RepositoryRuleMaxFilePathLengthType,
                     RepositoryRuleFileExtensionRestrictionType,
                     RepositoryRuleMaxFileSizeType,
-                    RepositoryRuleWorkflowsType,
-                    RepositoryRuleCodeScanningType,
-                    RepositoryRuleCopilotCodeReviewType,
                 ]
             ]
         ] = UNSET,
@@ -19334,7 +19334,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsPostBodyType] = UNSET,
         **kwargs,
@@ -19393,7 +19393,7 @@ class ReposClient:
         rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsTypeForResponse]]:
         """repos/get-repo-rule-suites
@@ -19445,7 +19445,7 @@ class ReposClient:
         rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsTypeForResponse]]:
         """repos/get-repo-rule-suites
@@ -19492,7 +19492,7 @@ class ReposClient:
         repo: str,
         rule_suite_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RuleSuite, RuleSuiteTypeForResponse]:
         """repos/get-repo-rule-suite
@@ -19529,7 +19529,7 @@ class ReposClient:
         repo: str,
         rule_suite_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RuleSuite, RuleSuiteTypeForResponse]:
         """repos/get-repo-rule-suite
@@ -19567,7 +19567,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         includes_parents: Missing[bool] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/get-repo-ruleset
@@ -19612,7 +19612,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         includes_parents: Missing[bool] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/get-repo-ruleset
@@ -19657,7 +19657,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
@@ -19670,7 +19670,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
@@ -19695,13 +19695,13 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleWorkflowsType,
+                    RepositoryRuleCodeScanningType,
+                    RepositoryRuleCopilotCodeReviewType,
                     RepositoryRuleFilePathRestrictionType,
                     RepositoryRuleMaxFilePathLengthType,
                     RepositoryRuleFileExtensionRestrictionType,
                     RepositoryRuleMaxFileSizeType,
-                    RepositoryRuleWorkflowsType,
-                    RepositoryRuleCodeScanningType,
-                    RepositoryRuleCopilotCodeReviewType,
                 ]
             ]
         ] = UNSET,
@@ -19713,7 +19713,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
@@ -19768,7 +19768,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
@@ -19781,7 +19781,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
@@ -19806,13 +19806,13 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleWorkflowsType,
+                    RepositoryRuleCodeScanningType,
+                    RepositoryRuleCopilotCodeReviewType,
                     RepositoryRuleFilePathRestrictionType,
                     RepositoryRuleMaxFilePathLengthType,
                     RepositoryRuleFileExtensionRestrictionType,
                     RepositoryRuleMaxFileSizeType,
-                    RepositoryRuleWorkflowsType,
-                    RepositoryRuleCodeScanningType,
-                    RepositoryRuleCopilotCodeReviewType,
                 ]
             ]
         ] = UNSET,
@@ -19824,7 +19824,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
@@ -19878,7 +19878,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-repo-ruleset
@@ -19913,7 +19913,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/delete-repo-ruleset
@@ -19950,7 +19950,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RulesetVersion], list[RulesetVersionTypeForResponse]]:
         """repos/get-repo-ruleset-history
@@ -19994,7 +19994,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RulesetVersion], list[RulesetVersionTypeForResponse]]:
         """repos/get-repo-ruleset-history
@@ -20037,7 +20037,7 @@ class ReposClient:
         ruleset_id: int,
         version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RulesetVersionWithState, RulesetVersionWithStateTypeForResponse]:
         """repos/get-repo-ruleset-version
@@ -20074,7 +20074,7 @@ class ReposClient:
         ruleset_id: int,
         version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RulesetVersionWithState, RulesetVersionWithStateTypeForResponse]:
         """repos/get-repo-ruleset-version
@@ -20109,7 +20109,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[list[int]], list[list[int]]]:
         """repos/get-code-frequency-stats
@@ -20142,7 +20142,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[list[int]], list[list[int]]]:
         """repos/get-code-frequency-stats
@@ -20175,7 +20175,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[CommitActivity], list[CommitActivityTypeForResponse]]:
         """repos/get-commit-activity-stats
@@ -20206,7 +20206,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[CommitActivity], list[CommitActivityTypeForResponse]]:
         """repos/get-commit-activity-stats
@@ -20237,7 +20237,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ContributorActivity], list[ContributorActivityTypeForResponse]]:
         """repos/get-contributors-stats
@@ -20277,7 +20277,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ContributorActivity], list[ContributorActivityTypeForResponse]]:
         """repos/get-contributors-stats
@@ -20317,7 +20317,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ParticipationStats, ParticipationStatsTypeForResponse]:
         """repos/get-participation-stats
@@ -20355,7 +20355,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ParticipationStats, ParticipationStatsTypeForResponse]:
         """repos/get-participation-stats
@@ -20393,7 +20393,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[list[int]], list[list[int]]]:
         """repos/get-punch-card-stats
@@ -20428,7 +20428,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[list[int]], list[list[int]]]:
         """repos/get-punch-card-stats
@@ -20465,7 +20465,7 @@ class ReposClient:
         repo: str,
         sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoStatusesShaPostBodyType,
     ) -> Response[Status, StatusTypeForResponse]: ...
@@ -20478,7 +20478,7 @@ class ReposClient:
         sha: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Literal["error", "failure", "pending", "success"],
         target_url: Missing[Union[str, None]] = UNSET,
@@ -20492,7 +20492,7 @@ class ReposClient:
         repo: str,
         sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
         **kwargs,
@@ -20539,7 +20539,7 @@ class ReposClient:
         repo: str,
         sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoStatusesShaPostBodyType,
     ) -> Response[Status, StatusTypeForResponse]: ...
@@ -20552,7 +20552,7 @@ class ReposClient:
         sha: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Literal["error", "failure", "pending", "success"],
         target_url: Missing[Union[str, None]] = UNSET,
@@ -20566,7 +20566,7 @@ class ReposClient:
         repo: str,
         sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
         **kwargs,
@@ -20613,7 +20613,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Tag], list[TagTypeForResponse]]:
         """repos/list-tags
@@ -20650,7 +20650,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Tag], list[TagTypeForResponse]]:
         """repos/list-tags
@@ -20686,7 +20686,7 @@ class ReposClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/download-tarball-archive
@@ -20720,7 +20720,7 @@ class ReposClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/download-tarball-archive
@@ -20755,7 +20755,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """repos/list-teams
@@ -20801,7 +20801,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """repos/list-teams
@@ -20847,7 +20847,7 @@ class ReposClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Topic, TopicTypeForResponse]:
         """repos/get-all-topics
@@ -20887,7 +20887,7 @@ class ReposClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Topic, TopicTypeForResponse]:
         """repos/get-all-topics
@@ -20926,7 +20926,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoTopicsPutBodyType,
     ) -> Response[Topic, TopicTypeForResponse]: ...
@@ -20938,7 +20938,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         names: list[str],
     ) -> Response[Topic, TopicTypeForResponse]: ...
@@ -20948,7 +20948,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoTopicsPutBodyType] = UNSET,
         **kwargs,
@@ -20999,7 +20999,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoTopicsPutBodyType,
     ) -> Response[Topic, TopicTypeForResponse]: ...
@@ -21011,7 +21011,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         names: list[str],
     ) -> Response[Topic, TopicTypeForResponse]: ...
@@ -21021,7 +21021,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoTopicsPutBodyType] = UNSET,
         **kwargs,
@@ -21072,7 +21072,7 @@ class ReposClient:
         repo: str,
         *,
         per: Missing[Literal["day", "week"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CloneTraffic, CloneTrafficTypeForResponse]:
         """repos/get-clones
@@ -21112,7 +21112,7 @@ class ReposClient:
         repo: str,
         *,
         per: Missing[Literal["day", "week"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CloneTraffic, CloneTrafficTypeForResponse]:
         """repos/get-clones
@@ -21151,7 +21151,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ContentTraffic], list[ContentTrafficTypeForResponse]]:
         """repos/get-top-paths
@@ -21185,7 +21185,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ContentTraffic], list[ContentTrafficTypeForResponse]]:
         """repos/get-top-paths
@@ -21219,7 +21219,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ReferrerTraffic], list[ReferrerTrafficTypeForResponse]]:
         """repos/get-top-referrers
@@ -21253,7 +21253,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[ReferrerTraffic], list[ReferrerTrafficTypeForResponse]]:
         """repos/get-top-referrers
@@ -21288,7 +21288,7 @@ class ReposClient:
         repo: str,
         *,
         per: Missing[Literal["day", "week"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ViewTraffic, ViewTrafficTypeForResponse]:
         """repos/get-views
@@ -21328,7 +21328,7 @@ class ReposClient:
         repo: str,
         *,
         per: Missing[Literal["day", "week"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ViewTraffic, ViewTrafficTypeForResponse]:
         """repos/get-views
@@ -21368,7 +21368,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoTransferPostBodyType,
     ) -> Response[MinimalRepository, MinimalRepositoryTypeForResponse]: ...
@@ -21380,7 +21380,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         new_owner: str,
         new_name: Missing[str] = UNSET,
@@ -21392,7 +21392,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoTransferPostBodyType] = UNSET,
         **kwargs,
@@ -21436,7 +21436,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoTransferPostBodyType,
     ) -> Response[MinimalRepository, MinimalRepositoryTypeForResponse]: ...
@@ -21448,7 +21448,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         new_owner: str,
         new_name: Missing[str] = UNSET,
@@ -21460,7 +21460,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoTransferPostBodyType] = UNSET,
         **kwargs,
@@ -21503,7 +21503,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/check-vulnerability-alerts
@@ -21532,7 +21532,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/check-vulnerability-alerts
@@ -21561,7 +21561,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/enable-vulnerability-alerts
@@ -21589,7 +21589,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/enable-vulnerability-alerts
@@ -21617,7 +21617,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/disable-vulnerability-alerts
@@ -21647,7 +21647,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/disable-vulnerability-alerts
@@ -21678,7 +21678,7 @@ class ReposClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/download-zipball-archive
@@ -21712,7 +21712,7 @@ class ReposClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/download-zipball-archive
@@ -21746,7 +21746,7 @@ class ReposClient:
         template_owner: str,
         template_repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
     ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
@@ -21758,7 +21758,7 @@ class ReposClient:
         template_repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         owner: Missing[str] = UNSET,
         name: str,
@@ -21772,7 +21772,7 @@ class ReposClient:
         template_owner: str,
         template_repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
@@ -21823,7 +21823,7 @@ class ReposClient:
         template_owner: str,
         template_repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
     ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
@@ -21835,7 +21835,7 @@ class ReposClient:
         template_repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         owner: Missing[str] = UNSET,
         name: str,
@@ -21849,7 +21849,7 @@ class ReposClient:
         template_owner: str,
         template_repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
@@ -21898,7 +21898,7 @@ class ReposClient:
         self,
         *,
         since: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """repos/list-public
@@ -21940,7 +21940,7 @@ class ReposClient:
         self,
         *,
         since: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """repos/list-public
@@ -21990,7 +21990,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         since: Missing[_dt.datetime] = UNSET,
         before: Missing[_dt.datetime] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Repository], list[RepositoryTypeForResponse]]:
         """repos/list-for-authenticated-user
@@ -22048,7 +22048,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         since: Missing[_dt.datetime] = UNSET,
         before: Missing[_dt.datetime] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Repository], list[RepositoryTypeForResponse]]:
         """repos/list-for-authenticated-user
@@ -22098,7 +22098,7 @@ class ReposClient:
     def create_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserReposPostBodyType,
     ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
@@ -22108,7 +22108,7 @@ class ReposClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: Missing[str] = UNSET,
@@ -22142,7 +22142,7 @@ class ReposClient:
     def create_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserReposPostBodyType] = UNSET,
         **kwargs,
@@ -22199,7 +22199,7 @@ class ReposClient:
     async def async_create_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserReposPostBodyType,
     ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
@@ -22209,7 +22209,7 @@ class ReposClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: Missing[str] = UNSET,
@@ -22243,7 +22243,7 @@ class ReposClient:
     async def async_create_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserReposPostBodyType] = UNSET,
         **kwargs,
@@ -22301,7 +22301,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[RepositoryInvitation], list[RepositoryInvitationTypeForResponse]
@@ -22345,7 +22345,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[RepositoryInvitation], list[RepositoryInvitationTypeForResponse]
@@ -22388,7 +22388,7 @@ class ReposClient:
         self,
         invitation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/decline-invitation-for-authenticated-user
@@ -22420,7 +22420,7 @@ class ReposClient:
         self,
         invitation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/decline-invitation-for-authenticated-user
@@ -22452,7 +22452,7 @@ class ReposClient:
         self,
         invitation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/accept-invitation-for-authenticated-user
@@ -22485,7 +22485,7 @@ class ReposClient:
         self,
         invitation_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """repos/accept-invitation-for-authenticated-user
@@ -22523,7 +22523,7 @@ class ReposClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """repos/list-for-user
@@ -22567,7 +22567,7 @@ class ReposClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """repos/list-for-user

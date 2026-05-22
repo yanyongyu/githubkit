@@ -668,6 +668,24 @@ if TYPE_CHECKING or is_lazy_disabled():
         CodeownersErrorsPropErrorsItems as CodeownersErrorsPropErrorsItems,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        CodeQualitySetup as CodeQualitySetup,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        CodeQualitySetupUpdateAnyof0 as CodeQualitySetupUpdateAnyof0,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        CodeQualitySetupUpdateAnyof1 as CodeQualitySetupUpdateAnyof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        CodeQualitySetupUpdateAnyof2 as CodeQualitySetupUpdateAnyof2,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        CodeQualitySetupUpdateAnyof3 as CodeQualitySetupUpdateAnyof3,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        CodeQualitySetupUpdateResponse as CodeQualitySetupUpdateResponse,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAlert as CodeScanningAlert,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -1440,6 +1458,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         InstallationRepositoriesGetResponse200PropRepositoriesItems as InstallationRepositoriesGetResponse200PropRepositoriesItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1 as InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties as InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties,
     )
     from githubkit_schemas.v2026_03_10.models import (
         InstallationToken as InstallationToken,
@@ -3357,6 +3381,15 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoContentsPathPutBodyPropCommitter as ReposOwnerRepoContentsPathPutBodyPropCommitter,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200 as ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools as ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration as ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoDeleteResponse403 as ReposOwnerRepoDeleteResponse403,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -4235,6 +4268,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems as UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1 as UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties as UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties,
     )
     from githubkit_schemas.v2026_03_10.models import (
         UserInteractionLimitsGetResponse200Anyof1 as UserInteractionLimitsGetResponse200Anyof1,
@@ -11250,14 +11289,6 @@ else:
             "RepositoryRuleBranchNamePatternPropParameters",
             "RepositoryRuleTagNamePattern",
             "RepositoryRuleTagNamePatternPropParameters",
-            "RepositoryRuleFilePathRestriction",
-            "RepositoryRuleFilePathRestrictionPropParameters",
-            "RepositoryRuleMaxFilePathLength",
-            "RepositoryRuleMaxFilePathLengthPropParameters",
-            "RepositoryRuleFileExtensionRestriction",
-            "RepositoryRuleFileExtensionRestrictionPropParameters",
-            "RepositoryRuleMaxFileSize",
-            "RepositoryRuleMaxFileSizePropParameters",
             "RepositoryRuleParamsRestrictedCommits",
             "RepositoryRuleWorkflows",
             "RepositoryRuleWorkflowsPropParameters",
@@ -11267,6 +11298,14 @@ else:
             "RepositoryRuleParamsCodeScanningTool",
             "RepositoryRuleCopilotCodeReview",
             "RepositoryRuleCopilotCodeReviewPropParameters",
+            "RepositoryRuleFilePathRestriction",
+            "RepositoryRuleFilePathRestrictionPropParameters",
+            "RepositoryRuleMaxFilePathLength",
+            "RepositoryRuleMaxFilePathLengthPropParameters",
+            "RepositoryRuleFileExtensionRestriction",
+            "RepositoryRuleFileExtensionRestrictionPropParameters",
+            "RepositoryRuleMaxFileSize",
+            "RepositoryRuleMaxFileSizePropParameters",
             "RepositoryRuleset",
             "RepositoryRulesetPropLinks",
             "RepositoryRulesetPropLinksPropSelf",
@@ -11432,6 +11471,12 @@ else:
             "CheckSuitePreference",
             "CheckSuitePreferencePropPreferences",
             "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems",
+            "CodeQualitySetup",
+            "CodeQualitySetupUpdateAnyof0",
+            "CodeQualitySetupUpdateAnyof1",
+            "CodeQualitySetupUpdateAnyof2",
+            "CodeQualitySetupUpdateAnyof3",
+            "CodeQualitySetupUpdateResponse",
             "CodeScanningAlertItems",
             "CodeScanningAlert",
             "CodeScanningAlertRule",
@@ -14091,6 +14136,8 @@ else:
             "GistsGistIdStarGetResponse404",
             "InstallationRepositoriesGetResponse200PropRepositoriesItems",
             "InstallationRepositoriesGetResponse200",
+            "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1",
+            "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties",
             "MarkdownPostBody",
             "NotificationsPutBody",
             "NotificationsPutResponse202",
@@ -14417,6 +14464,9 @@ else:
             "ReposOwnerRepoContentsPathDeleteBody",
             "ReposOwnerRepoContentsPathDeleteBodyPropCommitter",
             "ReposOwnerRepoContentsPathDeleteBodyPropAuthor",
+            "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200",
+            "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration",
+            "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools",
             "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0",
             "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1",
             "ReposOwnerRepoDependabotSecretsGetResponse200",
@@ -14569,6 +14619,8 @@ else:
             "UserInstallationsGetResponse200",
             "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems",
             "UserInstallationsInstallationIdRepositoriesGetResponse200",
+            "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1",
+            "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties",
             "UserInteractionLimitsGetResponse200Anyof1",
             "UserKeysPostBody",
             "UserMembershipsOrgsOrgPatchBody",

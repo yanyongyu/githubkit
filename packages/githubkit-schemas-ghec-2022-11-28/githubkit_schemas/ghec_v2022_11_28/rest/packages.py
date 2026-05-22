@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional
+from typing import TYPE_CHECKING, Literal
 from weakref import ref
 
 from githubkit.typing import Missing
@@ -47,7 +47,7 @@ class PackagesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-docker-migration-conflicting-packages-for-organization
@@ -83,7 +83,7 @@ class PackagesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-docker-migration-conflicting-packages-for-organization
@@ -125,7 +125,7 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-packages-for-organization
@@ -175,7 +175,7 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-packages-for-organization
@@ -223,7 +223,7 @@ class PackagesClient:
         package_name: str,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Package, PackageTypeForResponse]:
         """packages/get-package-for-organization
@@ -259,7 +259,7 @@ class PackagesClient:
         package_name: str,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Package, PackageTypeForResponse]:
         """packages/get-package-for-organization
@@ -295,7 +295,7 @@ class PackagesClient:
         package_name: str,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/delete-package-for-org
@@ -337,7 +337,7 @@ class PackagesClient:
         package_name: str,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/delete-package-for-org
@@ -380,7 +380,7 @@ class PackagesClient:
         org: str,
         *,
         token: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/restore-package-for-org
@@ -432,7 +432,7 @@ class PackagesClient:
         org: str,
         *,
         token: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/restore-package-for-org
@@ -486,7 +486,7 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[PackageVersion], list[PackageVersionTypeForResponse]]:
         """packages/get-all-package-versions-for-package-owned-by-org
@@ -537,7 +537,7 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[PackageVersion], list[PackageVersionTypeForResponse]]:
         """packages/get-all-package-versions-for-package-owned-by-org
@@ -586,7 +586,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[PackageVersion, PackageVersionTypeForResponse]:
         """packages/get-package-version-for-organization
@@ -623,7 +623,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[PackageVersion, PackageVersionTypeForResponse]:
         """packages/get-package-version-for-organization
@@ -660,7 +660,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/delete-package-version-for-org
@@ -703,7 +703,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/delete-package-version-for-org
@@ -746,7 +746,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/restore-package-version-for-org
@@ -793,7 +793,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/restore-package-version-for-org
@@ -834,7 +834,7 @@ class PackagesClient:
     def list_docker_migration_conflicting_packages_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-docker-migration-conflicting-packages-for-authenticated-user
@@ -865,7 +865,7 @@ class PackagesClient:
     async def async_list_docker_migration_conflicting_packages_for_authenticated_user(
         self,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-docker-migration-conflicting-packages-for-authenticated-user
@@ -902,7 +902,7 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-packages-for-authenticated-user
@@ -948,7 +948,7 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-packages-for-authenticated-user
@@ -992,7 +992,7 @@ class PackagesClient:
         ],
         package_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Package, PackageTypeForResponse]:
         """packages/get-package-for-authenticated-user
@@ -1027,7 +1027,7 @@ class PackagesClient:
         ],
         package_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Package, PackageTypeForResponse]:
         """packages/get-package-for-authenticated-user
@@ -1062,7 +1062,7 @@ class PackagesClient:
         ],
         package_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/delete-package-for-authenticated-user
@@ -1101,7 +1101,7 @@ class PackagesClient:
         ],
         package_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/delete-package-for-authenticated-user
@@ -1141,7 +1141,7 @@ class PackagesClient:
         package_name: str,
         *,
         token: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/restore-package-for-authenticated-user
@@ -1190,7 +1190,7 @@ class PackagesClient:
         package_name: str,
         *,
         token: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/restore-package-for-authenticated-user
@@ -1241,7 +1241,7 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[PackageVersion], list[PackageVersionTypeForResponse]]:
         """packages/get-all-package-versions-for-package-owned-by-authenticated-user
@@ -1291,7 +1291,7 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[PackageVersion], list[PackageVersionTypeForResponse]]:
         """packages/get-all-package-versions-for-package-owned-by-authenticated-user
@@ -1339,7 +1339,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[PackageVersion, PackageVersionTypeForResponse]:
         """packages/get-package-version-for-authenticated-user
@@ -1375,7 +1375,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[PackageVersion, PackageVersionTypeForResponse]:
         """packages/get-package-version-for-authenticated-user
@@ -1411,7 +1411,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/delete-package-version-for-authenticated-user
@@ -1453,7 +1453,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/delete-package-version-for-authenticated-user
@@ -1495,7 +1495,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/restore-package-version-for-authenticated-user
@@ -1539,7 +1539,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/restore-package-version-for-authenticated-user
@@ -1579,7 +1579,7 @@ class PackagesClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-docker-migration-conflicting-packages-for-user
@@ -1615,7 +1615,7 @@ class PackagesClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-docker-migration-conflicting-packages-for-user
@@ -1657,7 +1657,7 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-packages-for-user
@@ -1707,7 +1707,7 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[Package], list[PackageTypeForResponse]]:
         """packages/list-packages-for-user
@@ -1755,7 +1755,7 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Package, PackageTypeForResponse]:
         """packages/get-package-for-user
@@ -1791,7 +1791,7 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Package, PackageTypeForResponse]:
         """packages/get-package-for-user
@@ -1827,7 +1827,7 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/delete-package-for-user
@@ -1869,7 +1869,7 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/delete-package-for-user
@@ -1912,7 +1912,7 @@ class PackagesClient:
         username: str,
         *,
         token: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/restore-package-for-user
@@ -1964,7 +1964,7 @@ class PackagesClient:
         username: str,
         *,
         token: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/restore-package-for-user
@@ -2015,7 +2015,7 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[PackageVersion], list[PackageVersionTypeForResponse]]:
         """packages/get-all-package-versions-for-package-owned-by-user
@@ -2056,7 +2056,7 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[PackageVersion], list[PackageVersionTypeForResponse]]:
         """packages/get-all-package-versions-for-package-owned-by-user
@@ -2098,7 +2098,7 @@ class PackagesClient:
         package_version_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[PackageVersion, PackageVersionTypeForResponse]:
         """packages/get-package-version-for-user
@@ -2135,7 +2135,7 @@ class PackagesClient:
         package_version_id: int,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[PackageVersion, PackageVersionTypeForResponse]:
         """packages/get-package-version-for-user
@@ -2172,7 +2172,7 @@ class PackagesClient:
         username: str,
         package_version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/delete-package-version-for-user
@@ -2215,7 +2215,7 @@ class PackagesClient:
         username: str,
         package_version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/delete-package-version-for-user
@@ -2258,7 +2258,7 @@ class PackagesClient:
         username: str,
         package_version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/restore-package-version-for-user
@@ -2305,7 +2305,7 @@ class PackagesClient:
         username: str,
         package_version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """packages/restore-package-version-for-user

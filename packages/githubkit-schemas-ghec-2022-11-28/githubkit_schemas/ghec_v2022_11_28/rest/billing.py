@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -103,7 +103,7 @@ class BillingClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AdvancedSecurityActiveCommitters,
@@ -152,7 +152,7 @@ class BillingClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AdvancedSecurityActiveCommitters,
@@ -201,7 +201,7 @@ class BillingClient:
         scope: Missing[
             Literal["enterprise", "organization", "repository", "cost_center"]
         ] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
         """billing/get-all-budgets
@@ -251,7 +251,7 @@ class BillingClient:
         scope: Missing[
             Literal["enterprise", "organization", "repository", "cost_center"]
         ] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
         """billing/get-all-budgets
@@ -297,7 +297,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType,
     ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
@@ -308,7 +308,7 @@ class BillingClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         budget_amount: int,
         prevent_further_usage: bool,
@@ -325,7 +325,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType] = UNSET,
         **kwargs,
@@ -386,7 +386,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType,
     ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
@@ -397,7 +397,7 @@ class BillingClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         budget_amount: int,
         prevent_further_usage: bool,
@@ -414,7 +414,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType] = UNSET,
         **kwargs,
@@ -475,7 +475,7 @@ class BillingClient:
         enterprise: str,
         budget_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetBudget, GetBudgetTypeForResponse]:
         """billing/get-budget
@@ -520,7 +520,7 @@ class BillingClient:
         enterprise: str,
         budget_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetBudget, GetBudgetTypeForResponse]:
         """billing/get-budget
@@ -565,7 +565,7 @@ class BillingClient:
         enterprise: str,
         budget_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DeleteBudget, DeleteBudgetTypeForResponse]:
         """billing/delete-budget
@@ -610,7 +610,7 @@ class BillingClient:
         enterprise: str,
         budget_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DeleteBudget, DeleteBudgetTypeForResponse]:
         """billing/delete-budget
@@ -656,7 +656,7 @@ class BillingClient:
         enterprise: str,
         budget_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType,
     ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
@@ -668,7 +668,7 @@ class BillingClient:
         budget_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         budget_amount: Missing[int] = UNSET,
         prevent_further_usage: Missing[bool] = UNSET,
@@ -688,7 +688,7 @@ class BillingClient:
         enterprise: str,
         budget_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType
@@ -753,7 +753,7 @@ class BillingClient:
         enterprise: str,
         budget_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType,
     ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
@@ -765,7 +765,7 @@ class BillingClient:
         budget_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         budget_amount: Missing[int] = UNSET,
         prevent_further_usage: Missing[bool] = UNSET,
@@ -785,7 +785,7 @@ class BillingClient:
         enterprise: str,
         budget_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType
@@ -849,7 +849,7 @@ class BillingClient:
         enterprise: str,
         *,
         state: Missing[Literal["active", "deleted"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetAllCostCenters, GetAllCostCentersTypeForResponse]:
         """billing/get-all-cost-centers
@@ -895,7 +895,7 @@ class BillingClient:
         enterprise: str,
         *,
         state: Missing[Literal["active", "deleted"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetAllCostCenters, GetAllCostCentersTypeForResponse]:
         """billing/get-all-cost-centers
@@ -941,7 +941,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType,
     ) -> Response[
@@ -955,7 +955,7 @@ class BillingClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
     ) -> Response[
@@ -967,7 +967,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType
@@ -1021,7 +1021,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType,
     ) -> Response[
@@ -1035,7 +1035,7 @@ class BillingClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
     ) -> Response[
@@ -1047,7 +1047,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType
@@ -1103,7 +1103,7 @@ class BillingClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]:
         """billing/get-cost-center
@@ -1154,7 +1154,7 @@ class BillingClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]:
         """billing/get-cost-center
@@ -1203,7 +1203,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DeleteCostCenter, DeleteCostCenterTypeForResponse]:
         """billing/delete-cost-center
@@ -1247,7 +1247,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DeleteCostCenter, DeleteCostCenterTypeForResponse]:
         """billing/delete-cost-center
@@ -1292,7 +1292,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType,
     ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]: ...
@@ -1304,7 +1304,7 @@ class BillingClient:
         cost_center_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
     ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]: ...
@@ -1314,7 +1314,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType
@@ -1378,7 +1378,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType,
     ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]: ...
@@ -1390,7 +1390,7 @@ class BillingClient:
         cost_center_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
     ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]: ...
@@ -1400,7 +1400,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType
@@ -1464,7 +1464,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType,
     ) -> Response[
@@ -1479,7 +1479,7 @@ class BillingClient:
         cost_center_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         users: Missing[list[str]] = UNSET,
         organizations: Missing[list[str]] = UNSET,
@@ -1494,7 +1494,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType
@@ -1560,7 +1560,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType,
     ) -> Response[
@@ -1575,7 +1575,7 @@ class BillingClient:
         cost_center_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         users: Missing[list[str]] = UNSET,
         organizations: Missing[list[str]] = UNSET,
@@ -1590,7 +1590,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType
@@ -1656,7 +1656,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType,
     ) -> Response[
@@ -1671,7 +1671,7 @@ class BillingClient:
         cost_center_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         users: Missing[list[str]] = UNSET,
         organizations: Missing[list[str]] = UNSET,
@@ -1686,7 +1686,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType
@@ -1751,7 +1751,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType,
     ) -> Response[
@@ -1766,7 +1766,7 @@ class BillingClient:
         cost_center_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         users: Missing[list[str]] = UNSET,
         organizations: Missing[list[str]] = UNSET,
@@ -1781,7 +1781,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType
@@ -1852,7 +1852,7 @@ class BillingClient:
         model: Missing[str] = UNSET,
         product: Missing[str] = UNSET,
         cost_center_id: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         BillingPremiumRequestUsageReportGhe,
@@ -1918,7 +1918,7 @@ class BillingClient:
         model: Missing[str] = UNSET,
         product: Missing[str] = UNSET,
         cost_center_id: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         BillingPremiumRequestUsageReportGhe,
@@ -1976,7 +1976,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[UsageReportExportList, UsageReportExportListTypeForResponse]:
         """billing/list-usage-report-exports
@@ -2020,7 +2020,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[UsageReportExportList, UsageReportExportListTypeForResponse]:
         """billing/list-usage-report-exports
@@ -2065,7 +2065,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsageReportExportRequestType,
     ) -> Response[UsageReportExport, UsageReportExportTypeForResponse]: ...
@@ -2076,7 +2076,7 @@ class BillingClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         report_type: Literal["detailed", "summarized", "premium_request"],
         start_date: _dt.date,
@@ -2088,7 +2088,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UsageReportExportRequestType] = UNSET,
         **kwargs,
@@ -2148,7 +2148,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsageReportExportRequestType,
     ) -> Response[UsageReportExport, UsageReportExportTypeForResponse]: ...
@@ -2159,7 +2159,7 @@ class BillingClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         report_type: Literal["detailed", "summarized", "premium_request"],
         start_date: _dt.date,
@@ -2171,7 +2171,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UsageReportExportRequestType] = UNSET,
         **kwargs,
@@ -2231,7 +2231,7 @@ class BillingClient:
         enterprise: str,
         report_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[UsageReportExport, UsageReportExportTypeForResponse]:
         """billing/get-usage-report-export
@@ -2276,7 +2276,7 @@ class BillingClient:
         enterprise: str,
         report_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[UsageReportExport, UsageReportExportTypeForResponse]:
         """billing/get-usage-report-export
@@ -2324,7 +2324,7 @@ class BillingClient:
         month: Missing[int] = UNSET,
         day: Missing[int] = UNSET,
         cost_center_id: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[BillingUsageReport, BillingUsageReportTypeForResponse]:
         """billing/get-github-billing-usage-report-ghe
@@ -2378,7 +2378,7 @@ class BillingClient:
         month: Missing[int] = UNSET,
         day: Missing[int] = UNSET,
         cost_center_id: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[BillingUsageReport, BillingUsageReportTypeForResponse]:
         """billing/get-github-billing-usage-report-ghe
@@ -2436,7 +2436,7 @@ class BillingClient:
         product: Missing[str] = UNSET,
         sku: Missing[str] = UNSET,
         cost_center_id: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         BillingUsageSummaryReportGhe, BillingUsageSummaryReportGheTypeForResponse
@@ -2503,7 +2503,7 @@ class BillingClient:
         product: Missing[str] = UNSET,
         sku: Missing[str] = UNSET,
         cost_center_id: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         BillingUsageSummaryReportGhe, BillingUsageSummaryReportGheTypeForResponse
@@ -2567,7 +2567,7 @@ class BillingClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AdvancedSecurityActiveCommitters,
@@ -2618,7 +2618,7 @@ class BillingClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AdvancedSecurityActiveCommitters,

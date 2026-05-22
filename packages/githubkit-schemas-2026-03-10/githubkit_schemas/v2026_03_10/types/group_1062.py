@@ -9,33 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0125 import (
-    ArtifactDeploymentRecordType,
-    ArtifactDeploymentRecordTypeForResponse,
+from .group_0124 import (
+    OrganizationActionsVariableType,
+    OrganizationActionsVariableTypeForResponse,
 )
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
+class OrgsOrgAgentsVariablesGetResponse200Type(TypedDict):
+    """OrgsOrgAgentsVariablesGetResponse200"""
 
     total_count: int
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
+    variables: list[OrganizationActionsVariableType]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
+class OrgsOrgAgentsVariablesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAgentsVariablesGetResponse200"""
 
     total_count: int
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
+    variables: list[OrganizationActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse",
+    "OrgsOrgAgentsVariablesGetResponse200Type",
+    "OrgsOrgAgentsVariablesGetResponse200TypeForResponse",
 )

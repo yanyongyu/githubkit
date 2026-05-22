@@ -9,22 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0226 import (
+    RepositoryRuleWorkflowsPropParametersType,
+    RepositoryRuleWorkflowsPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleFilePathRestrictionPropParametersType(TypedDict):
-    """RepositoryRuleFilePathRestrictionPropParameters"""
+class RepositoryRuleWorkflowsType(TypedDict):
+    """workflows
 
-    restricted_file_paths: list[str]
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
+    """
+
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
 
 
-class RepositoryRuleFilePathRestrictionPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleFilePathRestrictionPropParameters"""
+class RepositoryRuleWorkflowsTypeForResponse(TypedDict):
+    """workflows
 
-    restricted_file_paths: list[str]
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
+    """
+
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleFilePathRestrictionPropParametersType",
-    "RepositoryRuleFilePathRestrictionPropParametersTypeForResponse",
+    "RepositoryRuleWorkflowsType",
+    "RepositoryRuleWorkflowsTypeForResponse",
 )

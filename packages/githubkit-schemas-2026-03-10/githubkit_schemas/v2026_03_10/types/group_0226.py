@@ -9,40 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0227 import (
-    RepositoryRuleMaxFilePathLengthPropParametersType,
-    RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse,
-)
+
+class RepositoryRuleWorkflowsPropParametersType(TypedDict):
+    """RepositoryRuleWorkflowsPropParameters"""
+
+    do_not_enforce_on_create: NotRequired[bool]
+    workflows: list[RepositoryRuleParamsWorkflowFileReferenceType]
 
 
-class RepositoryRuleMaxFilePathLengthType(TypedDict):
-    """max_file_path_length
+class RepositoryRuleWorkflowsPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleWorkflowsPropParameters"""
 
-    Prevent commits that include file paths that exceed the specified character
-    limit from being pushed to the commit graph.
+    do_not_enforce_on_create: NotRequired[bool]
+    workflows: list[RepositoryRuleParamsWorkflowFileReferenceTypeForResponse]
+
+
+class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
+    """WorkflowFileReference
+
+    A workflow that must run for this rule to pass
     """
 
-    type: Literal["max_file_path_length"]
-    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
+    path: str
+    ref: NotRequired[str]
+    repository_id: int
+    sha: NotRequired[str]
 
 
-class RepositoryRuleMaxFilePathLengthTypeForResponse(TypedDict):
-    """max_file_path_length
+class RepositoryRuleParamsWorkflowFileReferenceTypeForResponse(TypedDict):
+    """WorkflowFileReference
 
-    Prevent commits that include file paths that exceed the specified character
-    limit from being pushed to the commit graph.
+    A workflow that must run for this rule to pass
     """
 
-    type: Literal["max_file_path_length"]
-    parameters: NotRequired[
-        RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse
-    ]
+    path: str
+    ref: NotRequired[str]
+    repository_id: int
+    sha: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRuleMaxFilePathLengthType",
-    "RepositoryRuleMaxFilePathLengthTypeForResponse",
+    "RepositoryRuleParamsWorkflowFileReferenceType",
+    "RepositoryRuleParamsWorkflowFileReferenceTypeForResponse",
+    "RepositoryRuleWorkflowsPropParametersType",
+    "RepositoryRuleWorkflowsPropParametersTypeForResponse",
 )

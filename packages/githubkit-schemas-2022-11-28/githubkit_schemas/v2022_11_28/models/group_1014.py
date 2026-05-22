@@ -12,36 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200(
-    GitHubModel
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
-    total_count: int = Field()
-    image_versions: list[ActionsHostedRunnerCustomImageVersion] = Field()
-
-
-class ActionsHostedRunnerCustomImageVersion(GitHubModel):
-    """GitHub-hosted runner custom image version details.
-
-    Provides details of a hosted runner custom image version
-    """
-
-    version: str = Field(description="The version of image.")
-    state: str = Field(description="The state of image version.")
-    size_gb: int = Field(description="Image version size in GB.")
-    created_on: str = Field(description="The creation date time of the image version.")
-    state_details: str = Field(description="The image version status details.")
+    ignored: Missing[bool] = Field(
+        default=UNSET, description="Whether to block all notifications from a thread."
+    )
 
 
-model_rebuild(
-    OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200
-)
-model_rebuild(ActionsHostedRunnerCustomImageVersion)
+model_rebuild(NotificationsThreadsThreadIdSubscriptionPutBody)
 
-__all__ = (
-    "ActionsHostedRunnerCustomImageVersion",
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200",
-)
+__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBody",)

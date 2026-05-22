@@ -9,37 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class UserPatchBodyType(TypedDict):
-    """UserPatchBody"""
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType(TypedDict):
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    blog: NotRequired[str]
-    twitter_username: NotRequired[Union[str, None]]
-    company: NotRequired[str]
-    location: NotRequired[str]
-    hireable: NotRequired[bool]
-    bio: NotRequired[str]
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
+    placeholder_id: str
 
 
-class UserPatchBodyTypeForResponse(TypedDict):
-    """UserPatchBody"""
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    blog: NotRequired[str]
-    twitter_username: NotRequired[Union[str, None]]
-    company: NotRequired[str]
-    location: NotRequired[str]
-    hireable: NotRequired[bool]
-    bio: NotRequired[str]
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
+    placeholder_id: str
 
 
 __all__ = (
-    "UserPatchBodyType",
-    "UserPatchBodyTypeForResponse",
+    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",
+    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse",
 )

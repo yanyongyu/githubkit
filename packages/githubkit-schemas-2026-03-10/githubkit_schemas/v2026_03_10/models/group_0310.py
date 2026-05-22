@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,21 +18,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningAutofixCommits(GitHubModel):
-    """CodeScanningAutofixCommits
+class CodeQualitySetupUpdateAnyof2(GitHubModel):
+    """CodeQualitySetupUpdateAnyof2"""
 
-    Commit an autofix for a code scanning alert
-    """
-
-    target_ref: Missing[str] = Field(
-        default=UNSET,
-        description='The Git reference of target branch for the commit. Branch needs to already exist.  For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET, description="The desired state of code quality setup."
     )
-    message: Missing[str] = Field(
-        default=UNSET, description="Commit message to be used."
+    runner_type: Missing[Literal["standard", "labeled"]] = Field(
+        default=UNSET, description="Runner type to be used."
     )
+    runner_label: Union[str, None] = Field(
+        description="Runner label to be used if the runner type is labeled."
+    )
+    languages: Missing[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ] = Field(default=UNSET, description="Languages to be analyzed.")
 
 
-model_rebuild(CodeScanningAutofixCommits)
+model_rebuild(CodeQualitySetupUpdateAnyof2)
 
-__all__ = ("CodeScanningAutofixCommits",)
+__all__ = ("CodeQualitySetupUpdateAnyof2",)

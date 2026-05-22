@@ -12,35 +12,26 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0213 import (
-    RepositoryRuleRequiredStatusChecksPropParametersType,
-    RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse,
-)
 
+class RepositoryRuleDetailedOneof2Type(TypedDict):
+    """RepositoryRuleDetailedOneof2"""
 
-class RepositoryRuleDetailedOneof8Type(TypedDict):
-    """RepositoryRuleDetailedOneof8"""
-
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
+    type: Literal["deletion"]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof8TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof8"""
+class RepositoryRuleDetailedOneof2TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof2"""
 
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[
-        RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse
-    ]
+    type: Literal["deletion"]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof8Type",
-    "RepositoryRuleDetailedOneof8TypeForResponse",
+    "RepositoryRuleDetailedOneof2Type",
+    "RepositoryRuleDetailedOneof2TypeForResponse",
 )

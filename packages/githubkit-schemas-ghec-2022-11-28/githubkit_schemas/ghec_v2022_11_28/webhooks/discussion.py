@@ -7,8 +7,7 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-from typing import Annotated, Union
-from typing_extensions import TypeAlias
+from typing import Annotated, TypeAlias, Union
 
 from pydantic import Field
 

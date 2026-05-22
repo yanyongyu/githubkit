@@ -9,39 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class UserMigrationsPostBodyType(TypedDict):
-    """UserMigrationsPostBody"""
-
-    lock_repositories: NotRequired[bool]
-    exclude_metadata: NotRequired[bool]
-    exclude_git_data: NotRequired[bool]
-    exclude_attachments: NotRequired[bool]
-    exclude_releases: NotRequired[bool]
-    exclude_owner_projects: NotRequired[bool]
-    org_metadata_only: NotRequired[bool]
-    exclude: NotRequired[list[Literal["repositories"]]]
-    repositories: list[str]
+from .group_1568 import (
+    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
+    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
+)
 
 
-class UserMigrationsPostBodyTypeForResponse(TypedDict):
-    """UserMigrationsPostBody"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(
+    TypedDict
+):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
+    lof1
+    """
 
-    lock_repositories: NotRequired[bool]
-    exclude_metadata: NotRequired[bool]
-    exclude_git_data: NotRequired[bool]
-    exclude_attachments: NotRequired[bool]
-    exclude_releases: NotRequired[bool]
-    exclude_owner_projects: NotRequired[bool]
-    org_metadata_only: NotRequired[bool]
-    exclude: NotRequired[list[Literal["repositories"]]]
-    repositories: list[str]
+    custom_properties: NotRequired[
+        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
+    ]
+
+
+class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
+    TypedDict
+):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
+    lof1
+    """
+
+    custom_properties: NotRequired[
+        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
+    ]
 
 
 __all__ = (
-    "UserMigrationsPostBodyType",
-    "UserMigrationsPostBodyTypeForResponse",
+    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
+    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
 )

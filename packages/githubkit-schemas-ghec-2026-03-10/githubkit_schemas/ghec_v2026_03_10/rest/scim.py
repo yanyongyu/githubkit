@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Optional, overload
+from typing import TYPE_CHECKING, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -62,7 +62,7 @@ class ScimClient:
         start_index: Missing[int] = UNSET,
         count: Missing[int] = UNSET,
         filter_: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ScimUserList, ScimUserListTypeForResponse]:
         """scim/list-provisioned-identities
@@ -112,7 +112,7 @@ class ScimClient:
         start_index: Missing[int] = UNSET,
         count: Missing[int] = UNSET,
         filter_: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ScimUserList, ScimUserListTypeForResponse]:
         """scim/list-provisioned-identities
@@ -160,7 +160,7 @@ class ScimClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ScimV2OrganizationsOrgUsersPostBodyType,
     ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
@@ -171,7 +171,7 @@ class ScimClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         user_name: str,
         display_name: Missing[str] = UNSET,
@@ -187,7 +187,7 @@ class ScimClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersPostBodyType] = UNSET,
         **kwargs,
@@ -237,7 +237,7 @@ class ScimClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ScimV2OrganizationsOrgUsersPostBodyType,
     ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
@@ -248,7 +248,7 @@ class ScimClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         user_name: str,
         display_name: Missing[str] = UNSET,
@@ -264,7 +264,7 @@ class ScimClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersPostBodyType] = UNSET,
         **kwargs,
@@ -314,7 +314,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ScimUser, ScimUserTypeForResponse]:
         """scim/get-provisioning-information-for-user
@@ -349,7 +349,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ScimUser, ScimUserTypeForResponse]:
         """scim/get-provisioning-information-for-user
@@ -385,7 +385,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
     ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
@@ -397,7 +397,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         schemas: Missing[list[str]] = UNSET,
         display_name: Missing[str] = UNSET,
@@ -414,7 +414,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPutBodyType] = UNSET,
         **kwargs,
@@ -473,7 +473,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
     ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
@@ -485,7 +485,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         schemas: Missing[list[str]] = UNSET,
         display_name: Missing[str] = UNSET,
@@ -502,7 +502,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPutBodyType] = UNSET,
         **kwargs,
@@ -560,7 +560,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """scim/delete-user-from-org
@@ -594,7 +594,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """scim/delete-user-from-org
@@ -629,7 +629,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType,
     ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
@@ -641,7 +641,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         schemas: Missing[list[str]] = UNSET,
         operations: list[
@@ -654,7 +654,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType] = UNSET,
         **kwargs,
@@ -727,7 +727,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType,
     ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
@@ -739,7 +739,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         schemas: Missing[list[str]] = UNSET,
         operations: list[
@@ -752,7 +752,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType] = UNSET,
         **kwargs,

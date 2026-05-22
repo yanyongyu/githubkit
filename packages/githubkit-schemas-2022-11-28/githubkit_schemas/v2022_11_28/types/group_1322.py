@@ -9,30 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1321 import (
-    ReposOwnerRepoPagesPostBodyPropSourceType,
-    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
-)
+
+class ReposOwnerRepoNotificationsPutBodyType(TypedDict):
+    """ReposOwnerRepoNotificationsPutBody"""
+
+    last_read_at: NotRequired[_dt.datetime]
 
 
-class ReposOwnerRepoPagesPostBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof0"""
+class ReposOwnerRepoNotificationsPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoNotificationsPutBody"""
 
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: ReposOwnerRepoPagesPostBodyPropSourceType
-
-
-class ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof0"""
-
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse
+    last_read_at: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPostBodyAnyof0Type",
-    "ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse",
+    "ReposOwnerRepoNotificationsPutBodyType",
+    "ReposOwnerRepoNotificationsPutBodyTypeForResponse",
 )

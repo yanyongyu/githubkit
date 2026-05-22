@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoReleasesAssetsAssetIdPatchBody(GitHubModel):
+    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"] = Field(
-        description="The reason for bypassing push protection."
+    name: Missing[str] = Field(default=UNSET, description="The file name of the asset.")
+    label: Missing[str] = Field(
+        default=UNSET,
+        description="An alternate short description of the asset. Used in place of the filename.",
     )
-    placeholder_id: str = Field(
-        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes."
-    )
+    state: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody)
+model_rebuild(ReposOwnerRepoReleasesAssetsAssetIdPatchBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",)
+__all__ = ("ReposOwnerRepoReleasesAssetsAssetIdPatchBody",)

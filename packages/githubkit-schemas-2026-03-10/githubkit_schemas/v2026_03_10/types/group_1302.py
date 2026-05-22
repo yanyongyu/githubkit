@@ -9,22 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody"""
 
-    sub_issue_id: int
+    issue_field_values: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
+        ]
+    ]
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody"""
 
-    sub_issue_id: int
+    issue_field_values: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float]
+
+
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType",
-    "ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyType",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse",
 )

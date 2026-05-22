@@ -9,43 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0036 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CodeScanningVariantAnalysisRepoTaskType(TypedDict):
-    """CodeScanningVariantAnalysisRepoTask"""
+class CodeScanningCodeqlDatabaseType(TypedDict):
+    """CodeQL Database
 
-    repository: SimpleRepositoryType
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ]
-    artifact_size_in_bytes: NotRequired[int]
-    result_count: NotRequired[int]
-    failure_message: NotRequired[str]
-    database_commit_sha: NotRequired[str]
-    source_location_prefix: NotRequired[str]
-    artifact_url: NotRequired[str]
+    A CodeQL database.
+    """
+
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserType
+    content_type: str
+    size: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
-class CodeScanningVariantAnalysisRepoTaskTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisRepoTask"""
+class CodeScanningCodeqlDatabaseTypeForResponse(TypedDict):
+    """CodeQL Database
 
-    repository: SimpleRepositoryTypeForResponse
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ]
-    artifact_size_in_bytes: NotRequired[int]
-    result_count: NotRequired[int]
-    failure_message: NotRequired[str]
-    database_commit_sha: NotRequired[str]
-    source_location_prefix: NotRequired[str]
-    artifact_url: NotRequired[str]
+    A CodeQL database.
+    """
+
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserTypeForResponse
+    content_type: str
+    size: int
+    created_at: str
+    updated_at: str
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisRepoTaskType",
-    "CodeScanningVariantAnalysisRepoTaskTypeForResponse",
+    "CodeScanningCodeqlDatabaseType",
+    "CodeScanningCodeqlDatabaseTypeForResponse",
 )

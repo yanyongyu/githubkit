@@ -1,6 +1,5 @@
 import abc
 from datetime import timedelta
-from typing import Optional
 
 from hishel import AsyncBaseStorage, BaseStorage, Controller
 
@@ -9,7 +8,7 @@ from githubkit.typing import HishelControllerOptions
 
 class BaseCache(abc.ABC):
     @abc.abstractmethod
-    def get(self, key: str) -> Optional[str]:
+    def get(self, key: str) -> str | None:
         raise NotImplementedError
 
     @abc.abstractmethod
@@ -19,7 +18,7 @@ class BaseCache(abc.ABC):
 
 class AsyncBaseCache(abc.ABC):
     @abc.abstractmethod
-    async def aget(self, key: str) -> Optional[str]:
+    async def aget(self, key: str) -> str | None:
         raise NotImplementedError
 
     @abc.abstractmethod

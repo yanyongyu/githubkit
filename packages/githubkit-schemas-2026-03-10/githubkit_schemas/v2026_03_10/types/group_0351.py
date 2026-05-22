@@ -9,26 +9,100 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import TypeAlias
-
-MetadataType: TypeAlias = dict[str, Any]
-"""metadata
-
-User-defined metadata to store domain-specific information limited to 8 keys
-with scalar values.
-"""
+from typing_extensions import NotRequired, TypedDict
 
 
-MetadataTypeForResponse: TypeAlias = dict[str, Any]
-"""metadata
+class RepositoryRuleViolationErrorType(TypedDict):
+    """RepositoryRuleViolationError
 
-User-defined metadata to store domain-specific information limited to 8 keys
-with scalar values.
-"""
+    Repository rule violation was detected
+    """
+
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataType]
+
+
+class RepositoryRuleViolationErrorTypeForResponse(TypedDict):
+    """RepositoryRuleViolationError
+
+    Repository rule violation was detected
+    """
+
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataTypeForResponse]
+
+
+class RepositoryRuleViolationErrorPropMetadataType(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadata"""
+
+    secret_scanning: NotRequired[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanningType
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataTypeForResponse(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadata"""
+
+    secret_scanning: NotRequired[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningType(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+
+    bypass_placeholders: NotRequired[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType
+        ]
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse(
+    TypedDict
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+
+    bypass_placeholders: NotRequired[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse
+        ]
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType(
+    TypedDict
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
+    """
+
+    placeholder_id: NotRequired[str]
+    token_type: NotRequired[str]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse(
+    TypedDict
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
+    """
+
+    placeholder_id: NotRequired[str]
+    token_type: NotRequired[str]
 
 
 __all__ = (
-    "MetadataType",
-    "MetadataTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningType",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataType",
+    "RepositoryRuleViolationErrorPropMetadataTypeForResponse",
+    "RepositoryRuleViolationErrorType",
+    "RepositoryRuleViolationErrorTypeForResponse",
 )

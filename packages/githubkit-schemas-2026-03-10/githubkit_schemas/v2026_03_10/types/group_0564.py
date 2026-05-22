@@ -13,24 +13,24 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0490 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0491 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0492 import (
+from .group_0496 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0497 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0498 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0493 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0499 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 from .group_0565 import (
-    WebhookCodeScanningAlertReopenedByUserPropAlertType,
-    WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse,
+    WebhookCodeScanningAlertCreatedPropAlertType,
+    WebhookCodeScanningAlertCreatedPropAlertTypeForResponse,
 )
 
 
-class WebhookCodeScanningAlertReopenedByUserType(TypedDict):
-    """code_scanning_alert reopened_by_user event"""
+class WebhookCodeScanningAlertCreatedType(TypedDict):
+    """code_scanning_alert created event"""
 
-    action: Literal["reopened_by_user"]
-    alert: WebhookCodeScanningAlertReopenedByUserPropAlertType
+    action: Literal["created"]
+    alert: WebhookCodeScanningAlertCreatedPropAlertType
     commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -40,11 +40,11 @@ class WebhookCodeScanningAlertReopenedByUserType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertReopenedByUserTypeForResponse(TypedDict):
-    """code_scanning_alert reopened_by_user event"""
+class WebhookCodeScanningAlertCreatedTypeForResponse(TypedDict):
+    """code_scanning_alert created event"""
 
-    action: Literal["reopened_by_user"]
-    alert: WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse
+    action: Literal["created"]
+    alert: WebhookCodeScanningAlertCreatedPropAlertTypeForResponse
     commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -55,6 +55,6 @@ class WebhookCodeScanningAlertReopenedByUserTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookCodeScanningAlertReopenedByUserType",
-    "WebhookCodeScanningAlertReopenedByUserTypeForResponse",
+    "WebhookCodeScanningAlertCreatedType",
+    "WebhookCodeScanningAlertCreatedTypeForResponse",
 )

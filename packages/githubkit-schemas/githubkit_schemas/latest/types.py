@@ -682,6 +682,24 @@ if TYPE_CHECKING or is_lazy_disabled():
         CodeownersErrorsType as CodeownersErrorsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        CodeQualitySetupType as CodeQualitySetupType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        CodeQualitySetupUpdateAnyof0Type as CodeQualitySetupUpdateAnyof0Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        CodeQualitySetupUpdateAnyof1Type as CodeQualitySetupUpdateAnyof1Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        CodeQualitySetupUpdateAnyof2Type as CodeQualitySetupUpdateAnyof2Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        CodeQualitySetupUpdateAnyof3Type as CodeQualitySetupUpdateAnyof3Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        CodeQualitySetupUpdateResponseType as CodeQualitySetupUpdateResponseType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         CodeScanningAlertInstanceListPropMessageType as CodeScanningAlertInstanceListPropMessageType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -1482,6 +1500,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         ImportPropProjectChoicesItemsType as ImportPropProjectChoicesItemsType,
     )
     from githubkit_schemas.v2026_03_10.types import ImportType as ImportType
+    from githubkit_schemas.v2026_03_10.types import (
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType as InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type as InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type,
+    )
     from githubkit_schemas.v2026_03_10.types import (
         InstallationRepositoriesGetResponse200PropRepositoriesItemsType as InstallationRepositoriesGetResponse200PropRepositoriesItemsType,
     )
@@ -3443,6 +3467,15 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoContentsPathPutBodyType as ReposOwnerRepoContentsPathPutBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType as ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType as ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type as ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoDeleteResponse403Type as ReposOwnerRepoDeleteResponse403Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -4339,6 +4372,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         UserInstallationsGetResponse200Type as UserInstallationsGetResponse200Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType as UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1Type as UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
         UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsType as UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsType,
@@ -11404,14 +11443,6 @@ else:
             "RepositoryRuleBranchNamePatternPropParametersType",
             "RepositoryRuleTagNamePatternType",
             "RepositoryRuleTagNamePatternPropParametersType",
-            "RepositoryRuleFilePathRestrictionType",
-            "RepositoryRuleFilePathRestrictionPropParametersType",
-            "RepositoryRuleMaxFilePathLengthType",
-            "RepositoryRuleMaxFilePathLengthPropParametersType",
-            "RepositoryRuleFileExtensionRestrictionType",
-            "RepositoryRuleFileExtensionRestrictionPropParametersType",
-            "RepositoryRuleMaxFileSizeType",
-            "RepositoryRuleMaxFileSizePropParametersType",
             "RepositoryRuleParamsRestrictedCommitsType",
             "RepositoryRuleWorkflowsType",
             "RepositoryRuleWorkflowsPropParametersType",
@@ -11421,6 +11452,14 @@ else:
             "RepositoryRuleParamsCodeScanningToolType",
             "RepositoryRuleCopilotCodeReviewType",
             "RepositoryRuleCopilotCodeReviewPropParametersType",
+            "RepositoryRuleFilePathRestrictionType",
+            "RepositoryRuleFilePathRestrictionPropParametersType",
+            "RepositoryRuleMaxFilePathLengthType",
+            "RepositoryRuleMaxFilePathLengthPropParametersType",
+            "RepositoryRuleFileExtensionRestrictionType",
+            "RepositoryRuleFileExtensionRestrictionPropParametersType",
+            "RepositoryRuleMaxFileSizeType",
+            "RepositoryRuleMaxFileSizePropParametersType",
             "RepositoryRulesetType",
             "RepositoryRulesetPropLinksType",
             "RepositoryRulesetPropLinksPropSelfType",
@@ -11586,6 +11625,12 @@ else:
             "CheckSuitePreferenceType",
             "CheckSuitePreferencePropPreferencesType",
             "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
+            "CodeQualitySetupType",
+            "CodeQualitySetupUpdateAnyof0Type",
+            "CodeQualitySetupUpdateAnyof1Type",
+            "CodeQualitySetupUpdateAnyof2Type",
+            "CodeQualitySetupUpdateAnyof3Type",
+            "CodeQualitySetupUpdateResponseType",
             "CodeScanningAlertItemsType",
             "CodeScanningAlertType",
             "CodeScanningAlertRuleType",
@@ -14245,6 +14290,8 @@ else:
             "GistsGistIdStarGetResponse404Type",
             "InstallationRepositoriesGetResponse200PropRepositoriesItemsType",
             "InstallationRepositoriesGetResponse200Type",
+            "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
+            "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType",
             "MarkdownPostBodyType",
             "NotificationsPutBodyType",
             "NotificationsPutResponse202Type",
@@ -14571,6 +14618,9 @@ else:
             "ReposOwnerRepoContentsPathDeleteBodyType",
             "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
             "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
+            "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type",
+            "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType",
+            "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType",
             "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type",
             "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type",
             "ReposOwnerRepoDependabotSecretsGetResponse200Type",
@@ -14723,6 +14773,8 @@ else:
             "UserInstallationsGetResponse200Type",
             "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsType",
             "UserInstallationsInstallationIdRepositoriesGetResponse200Type",
+            "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
+            "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType",
             "UserInteractionLimitsGetResponse200Anyof1Type",
             "UserKeysPostBodyType",
             "UserMembershipsOrgsOrgPatchBodyType",

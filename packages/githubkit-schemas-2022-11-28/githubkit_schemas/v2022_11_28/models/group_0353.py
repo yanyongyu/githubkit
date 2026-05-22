@@ -9,17 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Metadata(ExtraGitHubModel):
-    """metadata
+class RepositoryRuleViolationError(GitHubModel):
+    """RepositoryRuleViolationError
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    Repository rule violation was detected
     """
 
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    metadata: Missing[RepositoryRuleViolationErrorPropMetadata] = Field(default=UNSET)
 
-model_rebuild(Metadata)
 
-__all__ = ("Metadata",)
+class RepositoryRuleViolationErrorPropMetadata(GitHubModel):
+    """RepositoryRuleViolationErrorPropMetadata"""
+
+    secret_scanning: Missing[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanning
+    ] = Field(default=UNSET)
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanning(GitHubModel):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+
+    bypass_placeholders: Missing[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
+        ]
+    ] = Field(default=UNSET)
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems(
+    GitHubModel
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
+    """
+
+    placeholder_id: Missing[str] = Field(
+        default=UNSET,
+        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes.",
+    )
+    token_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(RepositoryRuleViolationError)
+model_rebuild(RepositoryRuleViolationErrorPropMetadata)
+model_rebuild(RepositoryRuleViolationErrorPropMetadataPropSecretScanning)
+model_rebuild(
+    RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
+)
+
+__all__ = (
+    "RepositoryRuleViolationError",
+    "RepositoryRuleViolationErrorPropMetadata",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanning",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems",
+)

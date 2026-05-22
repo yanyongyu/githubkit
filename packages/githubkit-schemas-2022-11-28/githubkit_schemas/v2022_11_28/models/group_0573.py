@@ -18,19 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0184 import CustomProperty
-from .group_0491 import EnterpriseWebhooks
-from .group_0492 import SimpleInstallation
-from .group_0493 import OrganizationSimpleWebhooks
+from .group_0497 import EnterpriseWebhooks
+from .group_0498 import SimpleInstallation
+from .group_0499 import OrganizationSimpleWebhooks
+from .group_0500 import RepositoryWebhooks
+from .group_0574 import WebhookCodeScanningAlertUpdatedAssignmentPropAlert
 
 
-class WebhookCustomPropertyPromotedToEnterprise(GitHubModel):
-    """custom property promoted to business event"""
+class WebhookCodeScanningAlertUpdatedAssignment(GitHubModel):
+    """code_scanning_alert updated_assignment event"""
 
-    action: Literal["promote_to_enterprise"] = Field()
-    definition: CustomProperty = Field(
-        title="Organization Custom Property",
-        description="Custom property defined on an organization",
+    action: Literal["updated_assignment"] = Field()
+    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlert = Field(
+        description="The code scanning alert involved in the event."
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -47,11 +47,13 @@ class WebhookCustomPropertyPromotedToEnterprise(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCustomPropertyPromotedToEnterprise)
+model_rebuild(WebhookCodeScanningAlertUpdatedAssignment)
 
-__all__ = ("WebhookCustomPropertyPromotedToEnterprise",)
+__all__ = ("WebhookCodeScanningAlertUpdatedAssignment",)

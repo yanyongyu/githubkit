@@ -9,32 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class OrgsOrgTeamsTeamSlugPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugPatchBody"""
 
-    Actions OIDC subject customization for a repository
-    """
+    name: NotRequired[str]
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
 
+class OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugPatchBody"""
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
-    """Actions OIDC subject customization for a repository
-
-    Actions OIDC subject customization for a repository
-    """
-
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
-    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse",
+    "OrgsOrgTeamsTeamSlugPatchBodyType",
+    "OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse",
 )

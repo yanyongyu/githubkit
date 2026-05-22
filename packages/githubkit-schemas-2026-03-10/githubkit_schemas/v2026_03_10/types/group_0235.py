@@ -13,36 +13,36 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0236 import (
-    RepositoryRuleCodeScanningPropParametersType,
-    RepositoryRuleCodeScanningPropParametersTypeForResponse,
+    RepositoryRuleFileExtensionRestrictionPropParametersType,
+    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleCodeScanningType(TypedDict):
-    """code_scanning
+class RepositoryRuleFileExtensionRestrictionType(TypedDict):
+    """file_extension_restriction
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
+    Prevent commits that include files with specified file extensions from being
+    pushed to the commit graph.
     """
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
 
 
-class RepositoryRuleCodeScanningTypeForResponse(TypedDict):
-    """code_scanning
+class RepositoryRuleFileExtensionRestrictionTypeForResponse(TypedDict):
+    """file_extension_restriction
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
+    Prevent commits that include files with specified file extensions from being
+    pushed to the commit graph.
     """
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersTypeForResponse]
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[
+        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleCodeScanningType",
-    "RepositoryRuleCodeScanningTypeForResponse",
+    "RepositoryRuleFileExtensionRestrictionType",
+    "RepositoryRuleFileExtensionRestrictionTypeForResponse",
 )

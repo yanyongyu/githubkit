@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,83 +17,16 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0190 import RepositoryRulesetBypassActor
-from .group_0191 import RepositoryRulesetConditions
-from .group_0202 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0203 import RepositoryRuleUpdate
-from .group_0205 import RepositoryRuleRequiredLinearHistory
-from .group_0206 import RepositoryRuleMergeQueue
-from .group_0208 import RepositoryRuleRequiredDeployments
-from .group_0210 import RepositoryRulePullRequest
-from .group_0212 import RepositoryRuleRequiredStatusChecks
-from .group_0214 import RepositoryRuleCommitMessagePattern
-from .group_0216 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0218 import RepositoryRuleCommitterEmailPattern
-from .group_0220 import RepositoryRuleBranchNamePattern
-from .group_0222 import RepositoryRuleTagNamePattern
-from .group_0224 import RepositoryRuleFilePathRestriction
-from .group_0226 import RepositoryRuleMaxFilePathLength
-from .group_0228 import RepositoryRuleFileExtensionRestriction
-from .group_0230 import RepositoryRuleMaxFileSize
-from .group_0233 import RepositoryRuleWorkflows
-from .group_0235 import RepositoryRuleCodeScanning
-from .group_0237 import RepositoryRuleCopilotCodeReview
 
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-class ReposOwnerRepoRulesetsPostBody(GitHubModel):
-    """ReposOwnerRepoRulesetsPostBody"""
-
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET, description="The target of the ruleset"
+    message: str = Field(
+        description="The message for the pull request review dismissal"
     )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
-        default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
-    )
-    conditions: Missing[RepositoryRulesetConditions] = Field(
-        default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
-    )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    event: Missing[Literal["DISMISS"]] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoRulesetsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody)
 
-__all__ = ("ReposOwnerRepoRulesetsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody",)

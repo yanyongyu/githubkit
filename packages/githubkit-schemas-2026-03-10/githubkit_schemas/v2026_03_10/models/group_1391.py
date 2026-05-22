@@ -9,27 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class UsersUsernameAttestationsBulkListPostBody(GitHubModel):
-    """UsersUsernameAttestationsBulkListPostBody"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties(
+    ExtraGitHubModel
+):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
+    lof1PropCustomProperties
 
-    subject_digests: list[str] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of subject digests to fetch attestations for.",
-    )
-    predicate_type: Missing[str] = Field(
-        default=UNSET,
-        description="Optional filter for fetching attestations with a given predicate type.\nThis option accepts `provenance`, `sbom`, `release`, or freeform text\nfor custom predicate types.",
-    )
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values. Present for org repos only.
+    """
 
 
-model_rebuild(UsersUsernameAttestationsBulkListPostBody)
+model_rebuild(
+    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
+)
 
-__all__ = ("UsersUsernameAttestationsBulkListPostBody",)
+__all__ = (
+    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties",
+)

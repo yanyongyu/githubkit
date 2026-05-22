@@ -11,27 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0255 import (
-    OrganizationActionsVariableType,
-    OrganizationActionsVariableTypeForResponse,
-)
+from .group_0243 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgAgentsVariablesGetResponse200Type(TypedDict):
-    """OrgsOrgAgentsVariablesGetResponse200"""
+class OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200"""
 
     total_count: int
-    variables: list[OrganizationActionsVariableType]
+    repositories: list[MinimalRepositoryType]
 
 
-class OrgsOrgAgentsVariablesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgAgentsVariablesGetResponse200"""
+class OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200"""
 
     total_count: int
-    variables: list[OrganizationActionsVariableTypeForResponse]
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgAgentsVariablesGetResponse200Type",
-    "OrgsOrgAgentsVariablesGetResponse200TypeForResponse",
+    "OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200Type",
+    "OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
 )

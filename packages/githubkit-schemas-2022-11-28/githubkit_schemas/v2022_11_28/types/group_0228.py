@@ -10,39 +10,50 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0229 import (
-    RepositoryRuleFileExtensionRestrictionPropParametersType,
-    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleFileExtensionRestrictionType(TypedDict):
-    """file_extension_restriction
+class RepositoryRuleCodeScanningPropParametersType(TypedDict):
+    """RepositoryRuleCodeScanningPropParameters"""
 
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolType]
+
+
+class RepositoryRuleCodeScanningPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCodeScanningPropParameters"""
+
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolTypeForResponse]
+
+
+class RepositoryRuleParamsCodeScanningToolType(TypedDict):
+    """CodeScanningTool
+
+    A tool that must provide code scanning results for this rule to pass.
     """
 
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
-
-
-class RepositoryRuleFileExtensionRestrictionTypeForResponse(TypedDict):
-    """file_extension_restriction
-
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
-    """
-
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[
-        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
     ]
+    tool: str
+
+
+class RepositoryRuleParamsCodeScanningToolTypeForResponse(TypedDict):
+    """CodeScanningTool
+
+    A tool that must provide code scanning results for this rule to pass.
+    """
+
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    ]
+    tool: str
 
 
 __all__ = (
-    "RepositoryRuleFileExtensionRestrictionType",
-    "RepositoryRuleFileExtensionRestrictionTypeForResponse",
+    "RepositoryRuleCodeScanningPropParametersType",
+    "RepositoryRuleCodeScanningPropParametersTypeForResponse",
+    "RepositoryRuleParamsCodeScanningToolType",
+    "RepositoryRuleParamsCodeScanningToolTypeForResponse",
 )

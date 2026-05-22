@@ -9,72 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0131 import (
-    CodeScanningAlertLocationType,
-    CodeScanningAlertLocationTypeForResponse,
-)
+
+class CodeQualitySetupUpdateResponseType(TypedDict):
+    """CodeQualitySetupUpdateResponse
+
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
+    """
+
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
-class CodeScanningAlertInstanceListType(TypedDict):
-    """CodeScanningAlertInstanceList"""
+class CodeQualitySetupUpdateResponseTypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateResponse
 
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Union[None, Literal["open", "fixed"]]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstanceListPropMessageType]
-    location: NotRequired[CodeScanningAlertLocationType]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
-        list[
-            Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
-            ]
-        ]
-    ]
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
+    """
 
-
-class CodeScanningAlertInstanceListTypeForResponse(TypedDict):
-    """CodeScanningAlertInstanceList"""
-
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Union[None, Literal["open", "fixed"]]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstanceListPropMessageTypeForResponse]
-    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
-        list[
-            Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
-            ]
-        ]
-    ]
-
-
-class CodeScanningAlertInstanceListPropMessageType(TypedDict):
-    """CodeScanningAlertInstanceListPropMessage"""
-
-    text: NotRequired[str]
-
-
-class CodeScanningAlertInstanceListPropMessageTypeForResponse(TypedDict):
-    """CodeScanningAlertInstanceListPropMessage"""
-
-    text: NotRequired[str]
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningAlertInstanceListPropMessageType",
-    "CodeScanningAlertInstanceListPropMessageTypeForResponse",
-    "CodeScanningAlertInstanceListType",
-    "CodeScanningAlertInstanceListTypeForResponse",
+    "CodeQualitySetupUpdateResponseType",
+    "CodeQualitySetupUpdateResponseTypeForResponse",
 )

@@ -9,51 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0262 import (
+    CopilotSpaceCollaboratorAnyof0Type,
+    CopilotSpaceCollaboratorAnyof0TypeForResponse,
+    CopilotSpaceCollaboratorAnyof1Type,
+    CopilotSpaceCollaboratorAnyof1TypeForResponse,
+)
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type(TypedDict):
+    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType
+    collaborators: list[
+        Union[CopilotSpaceCollaboratorAnyof0Type, CopilotSpaceCollaboratorAnyof1Type]
     ]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse(
+class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse
+    collaborators: list[
+        Union[
+            CopilotSpaceCollaboratorAnyof0TypeForResponse,
+            CopilotSpaceCollaboratorAnyof1TypeForResponse,
+        ]
     ]
-
-
-UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-
-Updated resource-specific metadata.
-"""
-
-
-UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-
-Updated resource-specific metadata.
-"""
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse",
+    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type",
+    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse",
 )

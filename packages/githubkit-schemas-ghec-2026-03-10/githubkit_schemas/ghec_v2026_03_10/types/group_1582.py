@@ -9,26 +9,111 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0263 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
-
-
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
-
-    resources: list[CopilotSpaceResourceType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse(
+class UsersUsernameCopilotSpacesPostBodyType(TypedDict):
+    """UsersUsernameCopilotSpacesPostBody"""
+
+    name: str
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "no_access"]]
+    resources_attributes: NotRequired[
+        list[UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType]
+    ]
+
+
+class UsersUsernameCopilotSpacesPostBodyTypeForResponse(TypedDict):
+    """UsersUsernameCopilotSpacesPostBody"""
+
+    name: str
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "no_access"]]
+    resources_attributes: NotRequired[
+        list[
+            UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse
+        ]
+    ]
+
+
+class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType(TypedDict):
+    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems"""
+
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType
+    ]
+
+
+class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
+    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems"""
 
-    resources: list[CopilotSpaceResourceTypeForResponse]
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
+    ]
+
+
+class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType(
+    TypedDict
+):
+    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
+
+
+class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse",
+    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType",
+    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
+    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType",
+    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse",
+    "UsersUsernameCopilotSpacesPostBodyType",
+    "UsersUsernameCopilotSpacesPostBodyTypeForResponse",
 )

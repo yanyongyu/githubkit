@@ -9,89 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0941 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
-)
-from .group_0942 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner,
-)
-from .group_0944 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems,
-)
 
+class AgentsReposOwnerRepoTasksPostBody(GitHubModel):
+    """AgentsReposOwnerRepoTasksPostBody"""
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200"""
-
-    id: str = Field(description="Unique task identifier")
-    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
-    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
-    name: Missing[str] = Field(
-        default=UNSET, description="Human-readable name derived from the task prompt"
-    )
-    creator: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-    ] = Field(default=UNSET, description="The entity who created this task")
-    creator_type: Missing[Literal["user", "organization"]] = Field(
-        default=UNSET, description="Type of the task creator"
-    )
-    user_collaborators: Missing[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-        ]
-    ] = Field(default=UNSET, description="User objects of collaborators on this task")
-    owner: Missing[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner] = (
-        Field(default=UNSET, description="The owner of the repository")
-    )
-    repository: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-    ] = Field(default=UNSET, description="The repository this task belongs to")
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ] = Field(
-        description="Current state of the task, derived from its most recent session"
-    )
-    session_count: Missing[int] = Field(
-        default=UNSET, description="Number of sessions in this task"
-    )
-    artifacts: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems]
-    ] = Field(
+    prompt: str = Field(description="The user's prompt for the agent")
+    model: Missing[str] = Field(
         default=UNSET,
-        description="Resources created by this task (PRs, branches, etc.)",
+        description="The model to use for this task. The allowed models may change over time and depend on the user's GitHub Copilot plan and organization policies. Currently supported values: `claude-sonnet-4.6`, `claude-opus-4.6`, `gpt-5.2-codex`, `gpt-5.3-codex`, `gpt-5.4`, `claude-sonnet-4.5`, `claude-opus-4.5`",
     )
-    archived_at: Missing[Union[_dt.datetime, None]] = Field(
+    create_pull_request: Missing[bool] = Field(
+        default=UNSET, description="Whether to create a PR."
+    )
+    base_ref: Missing[str] = Field(
+        default=UNSET, description="Base ref for new branch/PR"
+    )
+    head_ref: Missing[str] = Field(
         default=UNSET,
-        description="Timestamp when the task was archived, null if not archived",
+        description="Head ref for existing branch/PR. If provided with `base_ref`, the agent looks up open PR context for `head_ref` targeting `base_ref` and commits to `head_ref` instead of creating a new branch.",
     )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Timestamp of the most recent update"
-    )
-    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
-    sessions: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems]
-    ] = Field(default=UNSET, description="Sessions associated with this task")
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200)
+model_rebuild(AgentsReposOwnerRepoTasksPostBody)
 
-__all__ = ("AgentsReposOwnerRepoTasksTaskIdGetResponse200",)
+__all__ = ("AgentsReposOwnerRepoTasksPostBody",)

@@ -13,27 +13,113 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class UsersUsernameCopilotSpacesSpaceNumberPutBodyType(TypedDict):
+    """UsersUsernameCopilotSpacesSpaceNumberPutBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: NotRequired[int]
-    owner: str
-    repo: str
-    number: int
+    name: NotRequired[str]
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "no_access"]]
+    resources_attributes: NotRequired[
+        list[
+            UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType
+        ]
+    ]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class UsersUsernameCopilotSpacesSpaceNumberPutBodyTypeForResponse(TypedDict):
+    """UsersUsernameCopilotSpacesSpaceNumberPutBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: NotRequired[int]
-    owner: str
-    repo: str
-    number: int
+    name: NotRequired[str]
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "no_access"]]
+    resources_attributes: NotRequired[
+        list[
+            UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse
+        ]
+    ]
+
+
+class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType(
+    TypedDict
+):
+    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType
+    ]
+
+
+class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
+    ]
+
+
+class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType(
+    TypedDict
+):
+    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
+    data
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
+
+
+class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
+    data
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type",
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse",
+    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType",
+    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
+    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType",
+    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse",
+    "UsersUsernameCopilotSpacesSpaceNumberPutBodyType",
+    "UsersUsernameCopilotSpacesSpaceNumberPutBodyTypeForResponse",
 )

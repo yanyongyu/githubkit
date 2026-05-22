@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -101,7 +101,7 @@ class DependabotClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[DependabotAlertWithRepository],
@@ -181,7 +181,7 @@ class DependabotClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[DependabotAlertWithRepository],
@@ -249,7 +249,7 @@ class DependabotClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         DependabotRepositoryAccessDetails,
@@ -296,7 +296,7 @@ class DependabotClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         DependabotRepositoryAccessDetails,
@@ -342,7 +342,7 @@ class DependabotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType,
     ) -> Response: ...
@@ -353,7 +353,7 @@ class DependabotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         repository_ids_to_add: Missing[list[int]] = UNSET,
         repository_ids_to_remove: Missing[list[int]] = UNSET,
@@ -363,7 +363,7 @@ class DependabotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType
@@ -426,7 +426,7 @@ class DependabotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType,
     ) -> Response: ...
@@ -437,7 +437,7 @@ class DependabotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         repository_ids_to_add: Missing[list[int]] = UNSET,
         repository_ids_to_remove: Missing[list[int]] = UNSET,
@@ -447,7 +447,7 @@ class DependabotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType
@@ -510,7 +510,7 @@ class DependabotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType,
     ) -> Response: ...
@@ -521,7 +521,7 @@ class DependabotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         default_level: Literal["public", "internal"],
     ) -> Response: ...
@@ -530,7 +530,7 @@ class DependabotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType
@@ -587,7 +587,7 @@ class DependabotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType,
     ) -> Response: ...
@@ -598,7 +598,7 @@ class DependabotClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         default_level: Literal["public", "internal"],
     ) -> Response: ...
@@ -607,7 +607,7 @@ class DependabotClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType
@@ -680,7 +680,7 @@ class DependabotClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[DependabotAlertWithRepository],
@@ -765,7 +765,7 @@ class DependabotClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[DependabotAlertWithRepository],
@@ -835,7 +835,7 @@ class DependabotClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         DependabotRepositoryAccessDetails,
@@ -883,7 +883,7 @@ class DependabotClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         DependabotRepositoryAccessDetails,
@@ -930,7 +930,7 @@ class DependabotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgDependabotRepositoryAccessPatchBodyType,
     ) -> Response: ...
@@ -941,7 +941,7 @@ class DependabotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         repository_ids_to_add: Missing[list[int]] = UNSET,
         repository_ids_to_remove: Missing[list[int]] = UNSET,
@@ -951,7 +951,7 @@ class DependabotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgDependabotRepositoryAccessPatchBodyType] = UNSET,
         **kwargs,
@@ -1011,7 +1011,7 @@ class DependabotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgDependabotRepositoryAccessPatchBodyType,
     ) -> Response: ...
@@ -1022,7 +1022,7 @@ class DependabotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         repository_ids_to_add: Missing[list[int]] = UNSET,
         repository_ids_to_remove: Missing[list[int]] = UNSET,
@@ -1032,7 +1032,7 @@ class DependabotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgDependabotRepositoryAccessPatchBodyType] = UNSET,
         **kwargs,
@@ -1092,7 +1092,7 @@ class DependabotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
     ) -> Response: ...
@@ -1103,7 +1103,7 @@ class DependabotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         default_level: Literal["public", "internal"],
     ) -> Response: ...
@@ -1112,7 +1112,7 @@ class DependabotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType] = UNSET,
         **kwargs,
@@ -1169,7 +1169,7 @@ class DependabotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
     ) -> Response: ...
@@ -1180,7 +1180,7 @@ class DependabotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         default_level: Literal["public", "internal"],
     ) -> Response: ...
@@ -1189,7 +1189,7 @@ class DependabotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType] = UNSET,
         **kwargs,
@@ -1247,7 +1247,7 @@ class DependabotClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgDependabotSecretsGetResponse200,
@@ -1291,7 +1291,7 @@ class DependabotClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgDependabotSecretsGetResponse200,
@@ -1333,7 +1333,7 @@ class DependabotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DependabotPublicKey, DependabotPublicKeyTypeForResponse]:
         """dependabot/get-org-public-key
@@ -1366,7 +1366,7 @@ class DependabotClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DependabotPublicKey, DependabotPublicKeyTypeForResponse]:
         """dependabot/get-org-public-key
@@ -1400,7 +1400,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrganizationDependabotSecret, OrganizationDependabotSecretTypeForResponse
@@ -1435,7 +1435,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrganizationDependabotSecret, OrganizationDependabotSecretTypeForResponse
@@ -1471,7 +1471,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -1483,7 +1483,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
@@ -1496,7 +1496,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
@@ -1543,7 +1543,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -1555,7 +1555,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
@@ -1568,7 +1568,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
@@ -1614,7 +1614,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """dependabot/delete-org-secret
@@ -1644,7 +1644,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """dependabot/delete-org-secret
@@ -1676,7 +1676,7 @@ class DependabotClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
@@ -1723,7 +1723,7 @@ class DependabotClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
@@ -1769,7 +1769,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
@@ -1781,7 +1781,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
@@ -1791,7 +1791,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType
@@ -1842,7 +1842,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
@@ -1854,7 +1854,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
@@ -1864,7 +1864,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType
@@ -1915,7 +1915,7 @@ class DependabotClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """dependabot/add-selected-repo-to-org-secret
@@ -1951,7 +1951,7 @@ class DependabotClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """dependabot/add-selected-repo-to-org-secret
@@ -1987,7 +1987,7 @@ class DependabotClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """dependabot/remove-selected-repo-from-org-secret
@@ -2023,7 +2023,7 @@ class DependabotClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """dependabot/remove-selected-repo-from-org-secret
@@ -2068,7 +2068,7 @@ class DependabotClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[DependabotAlertDismissalRequest],
@@ -2132,7 +2132,7 @@ class DependabotClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[DependabotAlertDismissalRequest],
@@ -2201,7 +2201,7 @@ class DependabotClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[DependabotAlert], list[DependabotAlertTypeForResponse]]:
         """dependabot/list-alerts-for-repo
@@ -2272,7 +2272,7 @@ class DependabotClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[DependabotAlert], list[DependabotAlertTypeForResponse]]:
         """dependabot/list-alerts-for-repo
@@ -2329,7 +2329,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]:
         """dependabot/get-alert
@@ -2365,7 +2365,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]:
         """dependabot/get-alert
@@ -2402,7 +2402,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type,
@@ -2418,7 +2418,7 @@ class DependabotClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Literal["dismissed", "open"],
         dismissed_reason: Missing[
@@ -2442,7 +2442,7 @@ class DependabotClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Missing[Literal["dismissed", "open"]] = UNSET,
         dismissed_reason: Missing[
@@ -2464,7 +2464,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -2537,7 +2537,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Union[
             ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type,
@@ -2553,7 +2553,7 @@ class DependabotClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Literal["dismissed", "open"],
         dismissed_reason: Missing[
@@ -2577,7 +2577,7 @@ class DependabotClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         state: Missing[Literal["dismissed", "open"]] = UNSET,
         dismissed_reason: Missing[
@@ -2599,7 +2599,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             Union[
@@ -2672,7 +2672,7 @@ class DependabotClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoDependabotSecretsGetResponse200,
@@ -2717,7 +2717,7 @@ class DependabotClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoDependabotSecretsGetResponse200,
@@ -2760,7 +2760,7 @@ class DependabotClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DependabotPublicKey, DependabotPublicKeyTypeForResponse]:
         """dependabot/get-repo-public-key
@@ -2795,7 +2795,7 @@ class DependabotClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DependabotPublicKey, DependabotPublicKeyTypeForResponse]:
         """dependabot/get-repo-public-key
@@ -2831,7 +2831,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DependabotSecret, DependabotSecretTypeForResponse]:
         """dependabot/get-repo-secret
@@ -2865,7 +2865,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DependabotSecret, DependabotSecretTypeForResponse]:
         """dependabot/get-repo-secret
@@ -2900,7 +2900,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -2913,7 +2913,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
@@ -2925,7 +2925,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
@@ -2978,7 +2978,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -2991,7 +2991,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
@@ -3003,7 +3003,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
@@ -3055,7 +3055,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """dependabot/delete-repo-secret
@@ -3086,7 +3086,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """dependabot/delete-repo-secret
@@ -3124,7 +3124,7 @@ class DependabotClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[DependabotAlertDismissalRequest],
@@ -3184,7 +3184,7 @@ class DependabotClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[DependabotAlertDismissalRequest],
@@ -3237,7 +3237,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
@@ -3279,7 +3279,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
@@ -3322,7 +3322,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType,
     ) -> Response[
@@ -3337,7 +3337,7 @@ class DependabotClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         dismissed_reason: Literal[
             "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
@@ -3353,7 +3353,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType
@@ -3418,7 +3418,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType,
     ) -> Response[
@@ -3433,7 +3433,7 @@ class DependabotClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         dismissed_reason: Literal[
             "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
@@ -3449,7 +3449,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType
@@ -3513,7 +3513,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """dependabot/cancel-dismissal-request-for-repo
@@ -3553,7 +3553,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """dependabot/cancel-dismissal-request-for-repo
@@ -3594,7 +3594,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType,
     ) -> Response[
@@ -3610,7 +3610,7 @@ class DependabotClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         status: Literal["approve", "deny"],
         message: str,
@@ -3625,7 +3625,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType
@@ -3691,7 +3691,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType,
     ) -> Response[
@@ -3707,7 +3707,7 @@ class DependabotClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         status: Literal["approve", "deny"],
         message: str,
@@ -3722,7 +3722,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType

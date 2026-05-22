@@ -12,46 +12,36 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0138 import (
+    CopilotSpaceCollaboratorAnyof0Type,
+    CopilotSpaceCollaboratorAnyof0TypeForResponse,
+    CopilotSpaceCollaboratorAnyof1Type,
+    CopilotSpaceCollaboratorAnyof1TypeForResponse,
+)
 
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    fields: list[
-        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType
+class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type(TypedDict):
+    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
+
+    collaborators: list[
+        Union[CopilotSpaceCollaboratorAnyof0Type, CopilotSpaceCollaboratorAnyof1Type]
     ]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(
+class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
+    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-    fields: list[
-        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
+    collaborators: list[
+        Union[
+            CopilotSpaceCollaboratorAnyof0TypeForResponse,
+            CopilotSpaceCollaboratorAnyof1TypeForResponse,
+        ]
     ]
-
-
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
-
-    id: int
-    value: Union[str, float, None]
-
-
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
-
-    id: int
-    value: Union[str, float, None]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
+    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type",
+    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse",
 )

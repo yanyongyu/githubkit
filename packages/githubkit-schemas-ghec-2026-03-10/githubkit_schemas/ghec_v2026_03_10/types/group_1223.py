@@ -9,22 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgAgentsVariablesNameRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgAgentsVariablesNameRepositoriesPutBody"""
+class OrgsOrgAgentsVariablesNamePatchBodyType(TypedDict):
+    """OrgsOrgAgentsVariablesNamePatchBody"""
 
-    selected_repository_ids: list[int]
+    name: NotRequired[str]
+    value: NotRequired[str]
+    visibility: NotRequired[Literal["all", "private", "selected"]]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgAgentsVariablesNameRepositoriesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgAgentsVariablesNameRepositoriesPutBody"""
+class OrgsOrgAgentsVariablesNamePatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgAgentsVariablesNamePatchBody"""
 
-    selected_repository_ids: list[int]
+    name: NotRequired[str]
+    value: NotRequired[str]
+    visibility: NotRequired[Literal["all", "private", "selected"]]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgAgentsVariablesNameRepositoriesPutBodyType",
-    "OrgsOrgAgentsVariablesNameRepositoriesPutBodyTypeForResponse",
+    "OrgsOrgAgentsVariablesNamePatchBodyType",
+    "OrgsOrgAgentsVariablesNamePatchBodyTypeForResponse",
 )

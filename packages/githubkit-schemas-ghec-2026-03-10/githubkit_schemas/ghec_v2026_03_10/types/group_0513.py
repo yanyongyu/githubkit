@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0165 import (
-    RepositoryRuleCodeScanningPropParametersType,
-    RepositoryRuleCodeScanningPropParametersTypeForResponse,
+from .group_0158 import (
+    RepositoryRuleFileExtensionRestrictionPropParametersType,
+    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
 )
 
 
 class RepositoryRuleDetailedOneof20Type(TypedDict):
     """RepositoryRuleDetailedOneof20"""
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
@@ -31,8 +31,10 @@ class RepositoryRuleDetailedOneof20Type(TypedDict):
 class RepositoryRuleDetailedOneof20TypeForResponse(TypedDict):
     """RepositoryRuleDetailedOneof20"""
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersTypeForResponse]
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[
+        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
+    ]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]

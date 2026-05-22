@@ -9,23 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
 
-    default_level: Literal["public", "internal"]
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int
 
 
-class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
 
-    default_level: Literal["public", "internal"]
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int
 
 
 __all__ = (
-    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
-    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse",
 )

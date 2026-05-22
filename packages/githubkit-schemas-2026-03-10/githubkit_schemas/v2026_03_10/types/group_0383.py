@@ -16,59 +16,59 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class RenamedIssueEventType(TypedDict):
-    """Renamed Issue Event
+class LabeledIssueEventType(TypedDict):
+    """Labeled Issue Event
 
-    Renamed Issue Event
+    Labeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["renamed"]
+    event: Literal["labeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    rename: RenamedIssueEventPropRenameType
+    label: LabeledIssueEventPropLabelType
 
 
-class RenamedIssueEventTypeForResponse(TypedDict):
-    """Renamed Issue Event
+class LabeledIssueEventTypeForResponse(TypedDict):
+    """Labeled Issue Event
 
-    Renamed Issue Event
+    Labeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["renamed"]
+    event: Literal["labeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    rename: RenamedIssueEventPropRenameTypeForResponse
+    label: LabeledIssueEventPropLabelTypeForResponse
 
 
-class RenamedIssueEventPropRenameType(TypedDict):
-    """RenamedIssueEventPropRename"""
+class LabeledIssueEventPropLabelType(TypedDict):
+    """LabeledIssueEventPropLabel"""
 
-    from_: str
-    to: str
+    name: str
+    color: str
 
 
-class RenamedIssueEventPropRenameTypeForResponse(TypedDict):
-    """RenamedIssueEventPropRename"""
+class LabeledIssueEventPropLabelTypeForResponse(TypedDict):
+    """LabeledIssueEventPropLabel"""
 
-    from_: str
-    to: str
+    name: str
+    color: str
 
 
 __all__ = (
-    "RenamedIssueEventPropRenameType",
-    "RenamedIssueEventPropRenameTypeForResponse",
-    "RenamedIssueEventType",
-    "RenamedIssueEventTypeForResponse",
+    "LabeledIssueEventPropLabelType",
+    "LabeledIssueEventPropLabelTypeForResponse",
+    "LabeledIssueEventType",
+    "LabeledIssueEventTypeForResponse",
 )

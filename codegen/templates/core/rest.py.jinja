@@ -4,7 +4,7 @@
 
 import importlib
 from weakref import WeakKeyDictionary, ref
-from typing import TYPE_CHECKING, Any, Union, Literal, TypeVar, Callable, Optional, Awaitable, overload
+from typing import TYPE_CHECKING, Any, Literal, TypeVar, Callable, Optional, Awaitable, overload
 from typing_extensions import ParamSpec
 
 from githubkit.rest.paginator import Paginator
@@ -22,10 +22,7 @@ CP = ParamSpec("CP")
 CT = TypeVar("CT")
 RT = TypeVar("RT")
 
-R = Union[
-    Callable[CP, "Response[RT]"],
-    Callable[CP, Awaitable["Response[RT]"]],
-]
+R = Callable[CP, "Response[RT]"] | Callable[CP, Awaitable["Response[RT]"]]
 
 if TYPE_CHECKING:
 

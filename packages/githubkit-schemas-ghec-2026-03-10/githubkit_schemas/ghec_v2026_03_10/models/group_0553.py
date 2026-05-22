@@ -92,7 +92,9 @@ class IssueSearchResultItem(GitHubModel):
     body_text: Missing[str] = Field(default=UNSET)
     timeline_url: Missing[str] = Field(default=UNSET)
     type: Missing[Union[IssueType, None]] = Field(
-        default=UNSET, title="Issue Type", description="The type of issue."
+        default=UNSET,
+        title="Issue Type",
+        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
     )
     performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
         default=UNSET
@@ -142,6 +144,7 @@ class SearchIssuesGetResponse200(GitHubModel):
                 "no_accessible_repos",
                 "server_error",
                 "only_non_semantic_fields_requested",
+                "service_unavailable",
             ]
         ]
     ] = Field(

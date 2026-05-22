@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0491 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0492 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0493 import (
+from .group_0497 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0498 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0499 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0494 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0500 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDeleteType(TypedDict):
-    """delete event"""
+class WebhookCreateType(TypedDict):
+    """create event"""
 
+    description: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    master_branch: str
     organization: NotRequired[OrganizationSimpleWebhooksType]
     pusher_type: str
     ref: str
@@ -35,11 +37,13 @@ class WebhookDeleteType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDeleteTypeForResponse(TypedDict):
-    """delete event"""
+class WebhookCreateTypeForResponse(TypedDict):
+    """create event"""
 
+    description: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    master_branch: str
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     pusher_type: str
     ref: str
@@ -49,6 +53,6 @@ class WebhookDeleteTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDeleteType",
-    "WebhookDeleteTypeForResponse",
+    "WebhookCreateType",
+    "WebhookCreateTypeForResponse",
 )

@@ -19,16 +19,19 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0049 import Discussion
-from .group_0491 import EnterpriseWebhooks
-from .group_0492 import SimpleInstallation
-from .group_0493 import OrganizationSimpleWebhooks
-from .group_0494 import RepositoryWebhooks
+from .group_0497 import EnterpriseWebhooks
+from .group_0498 import SimpleInstallation
+from .group_0499 import OrganizationSimpleWebhooks
+from .group_0500 import RepositoryWebhooks
+from .group_0510 import WebhooksComment
 
 
-class WebhookDiscussionPinned(GitHubModel):
-    """discussion pinned event"""
+class WebhookDiscussionCommentEdited(GitHubModel):
+    """discussion_comment edited event"""
 
-    action: Literal["pinned"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookDiscussionCommentEditedPropChanges = Field()
+    comment: WebhooksComment = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -54,6 +57,24 @@ class WebhookDiscussionPinned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionPinned)
+class WebhookDiscussionCommentEditedPropChanges(GitHubModel):
+    """WebhookDiscussionCommentEditedPropChanges"""
 
-__all__ = ("WebhookDiscussionPinned",)
+    body: WebhookDiscussionCommentEditedPropChangesPropBody = Field()
+
+
+class WebhookDiscussionCommentEditedPropChangesPropBody(GitHubModel):
+    """WebhookDiscussionCommentEditedPropChangesPropBody"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookDiscussionCommentEdited)
+model_rebuild(WebhookDiscussionCommentEditedPropChanges)
+model_rebuild(WebhookDiscussionCommentEditedPropChangesPropBody)
+
+__all__ = (
+    "WebhookDiscussionCommentEdited",
+    "WebhookDiscussionCommentEditedPropChanges",
+    "WebhookDiscussionCommentEditedPropChangesPropBody",
+)

@@ -9,50 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0052 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0054 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
 
 
-class TimelineAssignedIssueEventType(TypedDict):
-    """Timeline Assigned Issue Event
+class TimelineCommentEventType(TypedDict):
+    """Timeline Comment Event
 
-    Timeline Assigned Issue Event
+    Timeline Comment Event
     """
 
-    id: int
-    node_id: str
-    url: str
+    event: Literal["commented"]
     actor: SimpleUserType
-    event: Literal["assigned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
-
-
-class TimelineAssignedIssueEventTypeForResponse(TypedDict):
-    """Timeline Assigned Issue Event
-
-    Timeline Assigned Issue Event
-    """
-
     id: int
     node_id: str
     url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: SimpleUserType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
+    pin: NotRequired[Union[None, PinnedIssueCommentType]]
+
+
+class TimelineCommentEventTypeForResponse(TypedDict):
+    """Timeline Comment Event
+
+    Timeline Comment Event
+    """
+
+    event: Literal["commented"]
     actor: SimpleUserTypeForResponse
-    event: Literal["assigned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
+    id: int
+    node_id: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: SimpleUserTypeForResponse
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    assignee: SimpleUserTypeForResponse
+    updated_at: str
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    pin: NotRequired[Union[None, PinnedIssueCommentTypeForResponse]]
 
 
 __all__ = (
-    "TimelineAssignedIssueEventType",
-    "TimelineAssignedIssueEventTypeForResponse",
+    "TimelineCommentEventType",
+    "TimelineCommentEventTypeForResponse",
 )

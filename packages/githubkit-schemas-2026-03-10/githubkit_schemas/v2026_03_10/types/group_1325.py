@@ -9,24 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0186 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
-
-
-class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
-
-    properties: list[CustomPropertyValueType]
+from .group_1323 import (
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+)
 
 
-class ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
+class ReposOwnerRepoPagesPutBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof1"""
 
-    properties: list[CustomPropertyValueTypeForResponse]
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: Union[
+        Literal["gh-pages", "master", "master /docs"],
+        ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ]
+
+
+class ReposOwnerRepoPagesPutBodyAnyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof1"""
+
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: Union[
+        Literal["gh-pages", "master", "master /docs"],
+        ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoPropertiesValuesPatchBodyType",
-    "ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof1Type",
+    "ReposOwnerRepoPagesPutBodyAnyof1TypeForResponse",
 )

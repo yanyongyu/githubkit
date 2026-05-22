@@ -9,49 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodespacesSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type(TypedDict):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1"""
 
-    total_count: int
-    secrets: list[RepoCodespacesSecretType]
-
-
-class ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[RepoCodespacesSecretTypeForResponse]
-
-
-class RepoCodespacesSecretType(TypedDict):
-    """Codespaces Secret
-
-    Set repository secrets for GitHub Codespaces.
-    """
-
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ]
+    query_pack: str
+    repositories: NotRequired[list[str]]
+    repository_lists: list[str]
+    repository_owners: NotRequired[list[str]]
 
 
-class RepoCodespacesSecretTypeForResponse(TypedDict):
-    """Codespaces Secret
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1"""
 
-    Set repository secrets for GitHub Codespaces.
-    """
-
-    name: str
-    created_at: str
-    updated_at: str
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ]
+    query_pack: str
+    repositories: NotRequired[list[str]]
+    repository_lists: list[str]
+    repository_owners: NotRequired[list[str]]
 
 
 __all__ = (
-    "RepoCodespacesSecretType",
-    "RepoCodespacesSecretTypeForResponse",
-    "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
-    "ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1TypeForResponse",
 )

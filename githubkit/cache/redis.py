@@ -1,6 +1,6 @@
 from datetime import timedelta
 from functools import partial
-from typing import TYPE_CHECKING, Any, NoReturn, Optional
+from typing import TYPE_CHECKING, Any, NoReturn
 from typing_extensions import override
 
 from hishel import AsyncBaseStorage, AsyncRedisStorage, RedisStorage
@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     from redis.asyncio import Redis as AsyncRedis
 
 
-def _ensure_str_or_none(value: Any) -> Optional[str]:
+def _ensure_str_or_none(value: Any) -> str | None:
     if isinstance(value, str):
         return value
     elif isinstance(value, bytes):
@@ -28,7 +28,7 @@ def _ensure_str_or_none(value: Any) -> Optional[str]:
 
 
 class RedisCache(BaseCache):
-    def __init__(self, client: "Redis", prefix: Optional[str] = None) -> None:
+    def __init__(self, client: "Redis", prefix: str | None = None) -> None:
         self.client = client
         self.prefix = prefix
 
@@ -38,7 +38,7 @@ class RedisCache(BaseCache):
         return key
 
     @override
-    def get(self, key: str) -> Optional[str]:
+    def get(self, key: str) -> str | None:
         data = self.client.get(self._get_key(key))
         return _ensure_str_or_none(data)
 
@@ -48,7 +48,7 @@ class RedisCache(BaseCache):
 
 
 class AsyncRedisCache(AsyncBaseCache):
-    def __init__(self, client: "AsyncRedis", prefix: Optional[str] = None) -> None:
+    def __init__(self, client: "AsyncRedis", prefix: str | None = None) -> None:
         self.client = client
         self.prefix = prefix
 
@@ -58,7 +58,7 @@ class AsyncRedisCache(AsyncBaseCache):
         return key
 
     @override
-    async def aget(self, key: str) -> Optional[str]:
+    async def aget(self, key: str) -> str | None:
         data = await self.client.get(self._get_key(key))
         return _ensure_str_or_none(data)
 
@@ -68,7 +68,7 @@ class AsyncRedisCache(AsyncBaseCache):
 
 
 class RedisCacheStrategy(BaseCacheStrategy):
-    def __init__(self, client: "Redis", prefix: Optional[str] = None) -> None:
+    def __init__(self, client: "Redis", prefix: str | None = None) -> None:
         self.client = client
         self.prefix = prefix
 
@@ -105,7 +105,7 @@ class RedisCacheStrategy(BaseCacheStrategy):
 
 
 class AsyncRedisCacheStrategy(BaseCacheStrategy):
-    def __init__(self, client: "AsyncRedis", prefix: Optional[str] = None) -> None:
+    def __init__(self, client: "AsyncRedis", prefix: str | None = None) -> None:
         self.client = client
         self.prefix = prefix
 

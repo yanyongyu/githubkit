@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Optional, overload
+from typing import TYPE_CHECKING, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -68,7 +68,7 @@ class DependencyGraphClient:
         basehead: str,
         *,
         name: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsTypeForResponse]
@@ -82,7 +82,7 @@ class DependencyGraphClient:
         See also: https://docs.github.com/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits
         """
 
-        from ..models import BasicError, DependencyGraphDiffItems
+        from ..models import BasicError, DependencyGraphDiffItems, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/dependency-graph/compare/{basehead}"
 
@@ -102,6 +102,9 @@ class DependencyGraphClient:
             error_models={
                 "404": BasicError,
                 "403": BasicError,
+                "400": BasicError,
+                "500": BasicError,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -112,7 +115,7 @@ class DependencyGraphClient:
         basehead: str,
         *,
         name: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsTypeForResponse]
@@ -126,7 +129,7 @@ class DependencyGraphClient:
         See also: https://docs.github.com/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits
         """
 
-        from ..models import BasicError, DependencyGraphDiffItems
+        from ..models import BasicError, DependencyGraphDiffItems, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/dependency-graph/compare/{basehead}"
 
@@ -146,6 +149,9 @@ class DependencyGraphClient:
             error_models={
                 "404": BasicError,
                 "403": BasicError,
+                "400": BasicError,
+                "500": BasicError,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -154,7 +160,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomTypeForResponse]:
         """dependency-graph/export-sbom
@@ -189,7 +195,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomTypeForResponse]:
         """dependency-graph/export-sbom
@@ -225,7 +231,7 @@ class DependencyGraphClient:
         repo: str,
         sbom_uuid: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """dependency-graph/fetch-sbom-report
@@ -263,7 +269,7 @@ class DependencyGraphClient:
         repo: str,
         sbom_uuid: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """dependency-graph/fetch-sbom-report
@@ -300,7 +306,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201,
@@ -341,7 +347,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201,
@@ -383,7 +389,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: SnapshotType,
     ) -> Response[
@@ -398,7 +404,7 @@ class DependencyGraphClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         version: int,
         job: SnapshotPropJobType,
@@ -418,7 +424,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[SnapshotType] = UNSET,
         **kwargs,
@@ -472,7 +478,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: SnapshotType,
     ) -> Response[
@@ -487,7 +493,7 @@ class DependencyGraphClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         version: int,
         job: SnapshotPropJobType,
@@ -507,7 +513,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[SnapshotType] = UNSET,
         **kwargs,

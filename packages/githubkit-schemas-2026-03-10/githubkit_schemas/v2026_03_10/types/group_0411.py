@@ -13,156 +13,114 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0050 import MilestoneType, MilestoneTypeForResponse
-from .group_0126 import TeamSimpleType, TeamSimpleTypeForResponse
-from .group_0173 import AutoMergeType, AutoMergeTypeForResponse
-from .group_0412 import (
-    PullRequestPropLabelsItemsType,
-    PullRequestPropLabelsItemsTypeForResponse,
-)
-from .group_0413 import (
-    PullRequestPropBaseType,
-    PullRequestPropBaseTypeForResponse,
-    PullRequestPropHeadType,
-    PullRequestPropHeadTypeForResponse,
-)
-from .group_0414 import PullRequestPropLinksType, PullRequestPropLinksTypeForResponse
 
+class PageType(TypedDict):
+    """GitHub Pages
 
-class PullRequestType(TypedDict):
-    """Pull Request
-
-    Pull requests let you tell others about changes you've pushed to a repository on
-    GitHub. Once a pull request is sent, interested parties can review the set of
-    changes, discuss potential modifications, and even push follow-up commits if
-    necessary.
+    The configuration for GitHub Pages for a repository.
     """
 
     url: str
-    id: int
-    node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: Literal["open", "closed"]
-    locked: bool
-    title: str
-    user: SimpleUserType
-    body: Union[str, None]
-    labels: list[PullRequestPropLabelsItemsType]
-    milestone: Union[None, MilestoneType]
-    active_lock_reason: NotRequired[Union[str, None]]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    merged_at: Union[_dt.datetime, None]
-    assignees: NotRequired[list[SimpleUserType]]
-    requested_reviewers: NotRequired[list[SimpleUserType]]
-    requested_teams: NotRequired[list[TeamSimpleType]]
-    head: PullRequestPropHeadType
-    base: PullRequestPropBaseType
-    links: PullRequestPropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    status: Union[None, Literal["built", "building", "errored"]]
+    cname: Union[str, None]
+    protected_domain_state: NotRequired[
+        Union[None, Literal["pending", "verified", "unverified"]]
     ]
-    auto_merge: Union[AutoMergeType, None]
-    draft: NotRequired[bool]
-    merged: bool
-    mergeable: Union[bool, None]
-    rebaseable: NotRequired[Union[bool, None]]
-    mergeable_state: str
-    merged_by: Union[None, SimpleUserType]
-    comments: int
-    review_comments: int
-    maintainer_can_modify: bool
-    commits: int
-    additions: int
-    deletions: int
-    changed_files: int
+    pending_domain_unverified_at: NotRequired[Union[_dt.datetime, None]]
+    custom_404: bool
+    html_url: NotRequired[str]
+    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
+    source: NotRequired[PagesSourceHashType]
+    public: bool
+    https_certificate: NotRequired[PagesHttpsCertificateType]
+    https_enforced: NotRequired[bool]
 
 
-class PullRequestTypeForResponse(TypedDict):
-    """Pull Request
+class PageTypeForResponse(TypedDict):
+    """GitHub Pages
 
-    Pull requests let you tell others about changes you've pushed to a repository on
-    GitHub. Once a pull request is sent, interested parties can review the set of
-    changes, discuss potential modifications, and even push follow-up commits if
-    necessary.
+    The configuration for GitHub Pages for a repository.
     """
 
     url: str
-    id: int
-    node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: Literal["open", "closed"]
-    locked: bool
-    title: str
-    user: SimpleUserTypeForResponse
-    body: Union[str, None]
-    labels: list[PullRequestPropLabelsItemsTypeForResponse]
-    milestone: Union[None, MilestoneTypeForResponse]
-    active_lock_reason: NotRequired[Union[str, None]]
-    created_at: str
-    updated_at: str
-    closed_at: Union[str, None]
-    merged_at: Union[str, None]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    requested_reviewers: NotRequired[list[SimpleUserTypeForResponse]]
-    requested_teams: NotRequired[list[TeamSimpleTypeForResponse]]
-    head: PullRequestPropHeadTypeForResponse
-    base: PullRequestPropBaseTypeForResponse
-    links: PullRequestPropLinksTypeForResponse
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    status: Union[None, Literal["built", "building", "errored"]]
+    cname: Union[str, None]
+    protected_domain_state: NotRequired[
+        Union[None, Literal["pending", "verified", "unverified"]]
     ]
-    auto_merge: Union[AutoMergeTypeForResponse, None]
-    draft: NotRequired[bool]
-    merged: bool
-    mergeable: Union[bool, None]
-    rebaseable: NotRequired[Union[bool, None]]
-    mergeable_state: str
-    merged_by: Union[None, SimpleUserTypeForResponse]
-    comments: int
-    review_comments: int
-    maintainer_can_modify: bool
-    commits: int
-    additions: int
-    deletions: int
-    changed_files: int
+    pending_domain_unverified_at: NotRequired[Union[str, None]]
+    custom_404: bool
+    html_url: NotRequired[str]
+    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
+    source: NotRequired[PagesSourceHashTypeForResponse]
+    public: bool
+    https_certificate: NotRequired[PagesHttpsCertificateTypeForResponse]
+    https_enforced: NotRequired[bool]
+
+
+class PagesSourceHashType(TypedDict):
+    """Pages Source Hash"""
+
+    branch: str
+    path: str
+
+
+class PagesSourceHashTypeForResponse(TypedDict):
+    """Pages Source Hash"""
+
+    branch: str
+    path: str
+
+
+class PagesHttpsCertificateType(TypedDict):
+    """Pages Https Certificate"""
+
+    state: Literal[
+        "new",
+        "authorization_created",
+        "authorization_pending",
+        "authorized",
+        "authorization_revoked",
+        "issued",
+        "uploaded",
+        "approved",
+        "errored",
+        "bad_authz",
+        "destroy_pending",
+        "dns_changed",
+    ]
+    description: str
+    domains: list[str]
+    expires_at: NotRequired[_dt.date]
+
+
+class PagesHttpsCertificateTypeForResponse(TypedDict):
+    """Pages Https Certificate"""
+
+    state: Literal[
+        "new",
+        "authorization_created",
+        "authorization_pending",
+        "authorized",
+        "authorization_revoked",
+        "issued",
+        "uploaded",
+        "approved",
+        "errored",
+        "bad_authz",
+        "destroy_pending",
+        "dns_changed",
+    ]
+    description: str
+    domains: list[str]
+    expires_at: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestType",
-    "PullRequestTypeForResponse",
+    "PageType",
+    "PageTypeForResponse",
+    "PagesHttpsCertificateType",
+    "PagesHttpsCertificateTypeForResponse",
+    "PagesSourceHashType",
+    "PagesSourceHashTypeForResponse",
 )

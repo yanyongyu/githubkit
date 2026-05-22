@@ -14,43 +14,40 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0049 import DiscussionType, DiscussionTypeForResponse
-from .group_0490 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0491 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0492 import (
+from .group_0496 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0497 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0498 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0493 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0504 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_0499 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionUnlabeledType(TypedDict):
-    """discussion unlabeled event"""
+class WebhookDiscussionLockedType(TypedDict):
+    """discussion locked event"""
 
-    action: Literal["unlabeled"]
+    action: Literal["locked"]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDiscussionUnlabeledTypeForResponse(TypedDict):
-    """discussion unlabeled event"""
+class WebhookDiscussionLockedTypeForResponse(TypedDict):
+    """discussion locked event"""
 
-    action: Literal["unlabeled"]
+    action: Literal["locked"]
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    label: WebhooksLabelTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDiscussionUnlabeledType",
-    "WebhookDiscussionUnlabeledTypeForResponse",
+    "WebhookDiscussionLockedType",
+    "WebhookDiscussionLockedTypeForResponse",
 )

@@ -9,58 +9,95 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Any, Literal, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgReposPostBodyType(TypedDict):
+    """OrgsOrgReposPostBody"""
 
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
-
-
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
-
-    total_count: int
-    network_configurations: list[NetworkConfigurationTypeForResponse]
-
-
-class NetworkConfigurationType(TypedDict):
-    """Hosted compute network configuration
-
-    A hosted compute network configuration.
-    """
-
-    id: str
     name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
-    created_on: Union[_dt.datetime, None]
+    description: NotRequired[str]
+    homepage: NotRequired[str]
+    private: NotRequired[bool]
+    visibility: NotRequired[Literal["public", "private"]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    is_template: NotRequired[bool]
+    team_id: NotRequired[int]
+    auto_init: NotRequired[bool]
+    gitignore_template: NotRequired[str]
+    license_template: NotRequired[str]
+    allow_squash_merge: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    custom_properties: NotRequired[OrgsOrgReposPostBodyPropCustomPropertiesType]
 
 
-class NetworkConfigurationTypeForResponse(TypedDict):
-    """Hosted compute network configuration
+class OrgsOrgReposPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgReposPostBody"""
 
-    A hosted compute network configuration.
-    """
-
-    id: str
     name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
-    created_on: Union[str, None]
+    description: NotRequired[str]
+    homepage: NotRequired[str]
+    private: NotRequired[bool]
+    visibility: NotRequired[Literal["public", "private"]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    is_template: NotRequired[bool]
+    team_id: NotRequired[int]
+    auto_init: NotRequired[bool]
+    gitignore_template: NotRequired[str]
+    license_template: NotRequired[str]
+    allow_squash_merge: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    custom_properties: NotRequired[
+        OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse
+    ]
+
+
+OrgsOrgReposPostBodyPropCustomPropertiesType: TypeAlias = dict[str, Any]
+"""OrgsOrgReposPostBodyPropCustomProperties
+
+The custom properties for the new repository. The keys are the custom property
+names, and the values are the corresponding custom property values.
+"""
+
+
+OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse: TypeAlias = dict[str, Any]
+"""OrgsOrgReposPostBodyPropCustomProperties
+
+The custom properties for the new repository. The keys are the custom property
+names, and the values are the corresponding custom property values.
+"""
 
 
 __all__ = (
-    "NetworkConfigurationType",
-    "NetworkConfigurationTypeForResponse",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse",
+    "OrgsOrgReposPostBodyPropCustomPropertiesType",
+    "OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse",
+    "OrgsOrgReposPostBodyType",
+    "OrgsOrgReposPostBodyTypeForResponse",
 )

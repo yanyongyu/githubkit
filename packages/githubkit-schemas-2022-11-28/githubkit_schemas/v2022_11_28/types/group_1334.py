@@ -9,29 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberMergePutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutBody"""
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type(TypedDict):
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
 
-    commit_title: NotRequired[str]
-    commit_message: NotRequired[str]
-    sha: NotRequired[str]
-    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
+    enabled: bool
 
 
-class ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutBody"""
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
 
-    commit_title: NotRequired[str]
-    commit_message: NotRequired[str]
-    sha: NotRequired[str]
-    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
+    enabled: bool
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergePutBodyType",
-    "ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse",
+    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",
+    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse",
 )

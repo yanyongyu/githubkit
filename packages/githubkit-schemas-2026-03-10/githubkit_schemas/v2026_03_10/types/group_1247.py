@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0303 import CheckRunType, CheckRunTypeForResponse
+from .group_0134 import CodespaceMachineType, CodespaceMachineTypeForResponse
 
 
-class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
-
-    total_count: int
-    check_runs: list[CheckRunType]
-
-
-class ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
+class ReposOwnerRepoCodespacesMachinesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
 
     total_count: int
-    check_runs: list[CheckRunTypeForResponse]
+    machines: list[CodespaceMachineType]
+
+
+class ReposOwnerRepoCodespacesMachinesGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
+
+    total_count: int
+    machines: list[CodespaceMachineTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",
-    "ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse",
+    "ReposOwnerRepoCodespacesMachinesGetResponse200Type",
+    "ReposOwnerRepoCodespacesMachinesGetResponse200TypeForResponse",
 )

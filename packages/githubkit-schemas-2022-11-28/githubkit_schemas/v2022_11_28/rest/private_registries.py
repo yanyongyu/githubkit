@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -64,7 +64,7 @@ class PrivateRegistriesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgPrivateRegistriesGetResponse200,
@@ -113,7 +113,7 @@ class PrivateRegistriesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgPrivateRegistriesGetResponse200,
@@ -161,7 +161,7 @@ class PrivateRegistriesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgPrivateRegistriesPostBodyType,
     ) -> Response[
@@ -175,7 +175,7 @@ class PrivateRegistriesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         registry_type: Literal[
             "maven_repository",
@@ -236,7 +236,7 @@ class PrivateRegistriesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPrivateRegistriesPostBodyType] = UNSET,
         **kwargs,
@@ -295,7 +295,7 @@ class PrivateRegistriesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgPrivateRegistriesPostBodyType,
     ) -> Response[
@@ -309,7 +309,7 @@ class PrivateRegistriesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         registry_type: Literal[
             "maven_repository",
@@ -370,7 +370,7 @@ class PrivateRegistriesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPrivateRegistriesPostBodyType] = UNSET,
         **kwargs,
@@ -428,7 +428,7 @@ class PrivateRegistriesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgPrivateRegistriesPublicKeyGetResponse200,
@@ -467,7 +467,7 @@ class PrivateRegistriesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgPrivateRegistriesPublicKeyGetResponse200,
@@ -507,7 +507,7 @@ class PrivateRegistriesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgPrivateRegistryConfiguration, OrgPrivateRegistryConfigurationTypeForResponse
@@ -546,7 +546,7 @@ class PrivateRegistriesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgPrivateRegistryConfiguration, OrgPrivateRegistryConfigurationTypeForResponse
@@ -585,7 +585,7 @@ class PrivateRegistriesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """private-registries/delete-org-private-registry
@@ -622,7 +622,7 @@ class PrivateRegistriesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """private-registries/delete-org-private-registry
@@ -660,7 +660,7 @@ class PrivateRegistriesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgPrivateRegistriesSecretNamePatchBodyType,
     ) -> Response: ...
@@ -672,7 +672,7 @@ class PrivateRegistriesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         registry_type: Missing[
             Literal[
@@ -733,7 +733,7 @@ class PrivateRegistriesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPrivateRegistriesSecretNamePatchBodyType] = UNSET,
         **kwargs,
@@ -790,7 +790,7 @@ class PrivateRegistriesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgPrivateRegistriesSecretNamePatchBodyType,
     ) -> Response: ...
@@ -802,7 +802,7 @@ class PrivateRegistriesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         registry_type: Missing[
             Literal[
@@ -863,7 +863,7 @@ class PrivateRegistriesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgPrivateRegistriesSecretNamePatchBodyType] = UNSET,
         **kwargs,

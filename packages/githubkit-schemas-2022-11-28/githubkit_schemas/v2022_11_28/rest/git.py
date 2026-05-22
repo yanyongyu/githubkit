@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -69,7 +69,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoGitBlobsPostBodyType,
     ) -> Response[ShortBlob, ShortBlobTypeForResponse]: ...
@@ -81,7 +81,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         content: str,
         encoding: Missing[str] = UNSET,
@@ -92,7 +92,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
@@ -148,7 +148,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoGitBlobsPostBodyType,
     ) -> Response[ShortBlob, ShortBlobTypeForResponse]: ...
@@ -160,7 +160,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         content: str,
         encoding: Missing[str] = UNSET,
@@ -171,7 +171,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
@@ -227,7 +227,7 @@ class GitClient:
         repo: str,
         file_sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Blob, BlobTypeForResponse]:
         """git/get-blob
@@ -272,7 +272,7 @@ class GitClient:
         repo: str,
         file_sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Blob, BlobTypeForResponse]:
         """git/get-blob
@@ -317,7 +317,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoGitCommitsPostBodyType,
     ) -> Response[GitCommit, GitCommitTypeForResponse]: ...
@@ -329,7 +329,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         message: str,
         tree: str,
@@ -344,7 +344,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
@@ -428,7 +428,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoGitCommitsPostBodyType,
     ) -> Response[GitCommit, GitCommitTypeForResponse]: ...
@@ -440,7 +440,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         message: str,
         tree: str,
@@ -455,7 +455,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
@@ -539,7 +539,7 @@ class GitClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GitCommit, GitCommitTypeForResponse]:
         """git/get-commit
@@ -607,7 +607,7 @@ class GitClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GitCommit, GitCommitTypeForResponse]:
         """git/get-commit
@@ -675,7 +675,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[GitRef], list[GitRefTypeForResponse]]:
         """git/list-matching-refs
@@ -717,7 +717,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[GitRef], list[GitRefTypeForResponse]]:
         """git/list-matching-refs
@@ -759,7 +759,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GitRef, GitRefTypeForResponse]:
         """git/get-ref
@@ -798,7 +798,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GitRef, GitRefTypeForResponse]:
         """git/get-ref
@@ -837,7 +837,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoGitRefsPostBodyType,
     ) -> Response[GitRef, GitRefTypeForResponse]: ...
@@ -849,7 +849,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         ref: str,
         sha: str,
@@ -860,7 +860,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
@@ -913,7 +913,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoGitRefsPostBodyType,
     ) -> Response[GitRef, GitRefTypeForResponse]: ...
@@ -925,7 +925,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         ref: str,
         sha: str,
@@ -936,7 +936,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
@@ -989,7 +989,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """git/delete-ref
@@ -1023,7 +1023,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """git/delete-ref
@@ -1058,7 +1058,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoGitRefsRefPatchBodyType,
     ) -> Response[GitRef, GitRefTypeForResponse]: ...
@@ -1071,7 +1071,7 @@ class GitClient:
         ref: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         sha: str,
         force: Missing[bool] = UNSET,
@@ -1083,7 +1083,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
@@ -1137,7 +1137,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoGitRefsRefPatchBodyType,
     ) -> Response[GitRef, GitRefTypeForResponse]: ...
@@ -1150,7 +1150,7 @@ class GitClient:
         ref: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         sha: str,
         force: Missing[bool] = UNSET,
@@ -1162,7 +1162,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
@@ -1215,7 +1215,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoGitTagsPostBodyType,
     ) -> Response[GitTag, GitTagTypeForResponse]: ...
@@ -1227,7 +1227,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         tag: str,
         message: str,
@@ -1241,7 +1241,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
@@ -1324,7 +1324,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoGitTagsPostBodyType,
     ) -> Response[GitTag, GitTagTypeForResponse]: ...
@@ -1336,7 +1336,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         tag: str,
         message: str,
@@ -1350,7 +1350,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
@@ -1433,7 +1433,7 @@ class GitClient:
         repo: str,
         tag_sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GitTag, GitTagTypeForResponse]:
         """git/get-tag
@@ -1497,7 +1497,7 @@ class GitClient:
         repo: str,
         tag_sha: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GitTag, GitTagTypeForResponse]:
         """git/get-tag
@@ -1561,7 +1561,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoGitTreesPostBodyType,
     ) -> Response[GitTree, GitTreeTypeForResponse]: ...
@@ -1573,7 +1573,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Missing[str] = UNSET,
@@ -1584,7 +1584,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
@@ -1643,7 +1643,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoGitTreesPostBodyType,
     ) -> Response[GitTree, GitTreeTypeForResponse]: ...
@@ -1655,7 +1655,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Missing[str] = UNSET,
@@ -1666,7 +1666,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
@@ -1726,7 +1726,7 @@ class GitClient:
         tree_sha: str,
         *,
         recursive: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GitTree, GitTreeTypeForResponse]:
         """git/get-tree
@@ -1774,7 +1774,7 @@ class GitClient:
         tree_sha: str,
         *,
         recursive: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GitTree, GitTreeTypeForResponse]:
         """git/get-tree

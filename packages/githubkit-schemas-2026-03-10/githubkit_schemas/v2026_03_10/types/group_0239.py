@@ -84,33 +84,33 @@ from .group_0222 import (
     RepositoryRuleTagNamePatternType,
     RepositoryRuleTagNamePatternTypeForResponse,
 )
-from .group_0224 import (
-    RepositoryRuleFilePathRestrictionType,
-    RepositoryRuleFilePathRestrictionTypeForResponse,
-)
-from .group_0226 import (
-    RepositoryRuleMaxFilePathLengthType,
-    RepositoryRuleMaxFilePathLengthTypeForResponse,
-)
-from .group_0228 import (
-    RepositoryRuleFileExtensionRestrictionType,
-    RepositoryRuleFileExtensionRestrictionTypeForResponse,
-)
-from .group_0230 import (
-    RepositoryRuleMaxFileSizeType,
-    RepositoryRuleMaxFileSizeTypeForResponse,
-)
-from .group_0233 import (
+from .group_0225 import (
     RepositoryRuleWorkflowsType,
     RepositoryRuleWorkflowsTypeForResponse,
 )
-from .group_0235 import (
+from .group_0227 import (
     RepositoryRuleCodeScanningType,
     RepositoryRuleCodeScanningTypeForResponse,
 )
-from .group_0237 import (
+from .group_0229 import (
     RepositoryRuleCopilotCodeReviewType,
     RepositoryRuleCopilotCodeReviewTypeForResponse,
+)
+from .group_0231 import (
+    RepositoryRuleFilePathRestrictionType,
+    RepositoryRuleFilePathRestrictionTypeForResponse,
+)
+from .group_0233 import (
+    RepositoryRuleMaxFilePathLengthType,
+    RepositoryRuleMaxFilePathLengthTypeForResponse,
+)
+from .group_0235 import (
+    RepositoryRuleFileExtensionRestrictionType,
+    RepositoryRuleFileExtensionRestrictionTypeForResponse,
+)
+from .group_0237 import (
+    RepositoryRuleMaxFileSizeType,
+    RepositoryRuleMaxFileSizeTypeForResponse,
 )
 
 
@@ -159,13 +159,13 @@ class RepositoryRulesetType(TypedDict):
                 RepositoryRuleCommitterEmailPatternType,
                 RepositoryRuleBranchNamePatternType,
                 RepositoryRuleTagNamePatternType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+                RepositoryRuleCopilotCodeReviewType,
                 RepositoryRuleFilePathRestrictionType,
                 RepositoryRuleMaxFilePathLengthType,
                 RepositoryRuleFileExtensionRestrictionType,
                 RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-                RepositoryRuleCopilotCodeReviewType,
             ]
         ]
     ]
@@ -218,13 +218,13 @@ class RepositoryRulesetTypeForResponse(TypedDict):
                 RepositoryRuleCommitterEmailPatternTypeForResponse,
                 RepositoryRuleBranchNamePatternTypeForResponse,
                 RepositoryRuleTagNamePatternTypeForResponse,
+                RepositoryRuleWorkflowsTypeForResponse,
+                RepositoryRuleCodeScanningTypeForResponse,
+                RepositoryRuleCopilotCodeReviewTypeForResponse,
                 RepositoryRuleFilePathRestrictionTypeForResponse,
                 RepositoryRuleMaxFilePathLengthTypeForResponse,
                 RepositoryRuleFileExtensionRestrictionTypeForResponse,
                 RepositoryRuleMaxFileSizeTypeForResponse,
-                RepositoryRuleWorkflowsTypeForResponse,
-                RepositoryRuleCodeScanningTypeForResponse,
-                RepositoryRuleCopilotCodeReviewTypeForResponse,
             ]
         ]
     ]

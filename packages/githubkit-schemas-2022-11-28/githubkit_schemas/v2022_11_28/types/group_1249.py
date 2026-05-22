@@ -9,84 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoContentsPathPutBodyType(TypedDict):
-    """ReposOwnerRepoContentsPathPutBody"""
-
-    message: str
-    content: str
-    sha: NotRequired[str]
-    branch: NotRequired[str]
-    committer: NotRequired[ReposOwnerRepoContentsPathPutBodyPropCommitterType]
-    author: NotRequired[ReposOwnerRepoContentsPathPutBodyPropAuthorType]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ReposOwnerRepoContentsPathPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathPutBody"""
+class ReposOwnerRepoCodespacesNewGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200"""
 
-    message: str
-    content: str
-    sha: NotRequired[str]
-    branch: NotRequired[str]
-    committer: NotRequired[
-        ReposOwnerRepoContentsPathPutBodyPropCommitterTypeForResponse
+    billable_owner: NotRequired[SimpleUserType]
+    defaults: NotRequired[ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType]
+
+
+class ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200"""
+
+    billable_owner: NotRequired[SimpleUserTypeForResponse]
+    defaults: NotRequired[
+        ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse
     ]
-    author: NotRequired[ReposOwnerRepoContentsPathPutBodyPropAuthorTypeForResponse]
 
 
-class ReposOwnerRepoContentsPathPutBodyPropCommitterType(TypedDict):
-    """ReposOwnerRepoContentsPathPutBodyPropCommitter
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
 
-    The person that committed the file. Default: the authenticated user.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[str]
+    location: str
+    devcontainer_path: Union[str, None]
 
 
-class ReposOwnerRepoContentsPathPutBodyPropCommitterTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathPutBodyPropCommitter
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
 
-    The person that committed the file. Default: the authenticated user.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[str]
-
-
-class ReposOwnerRepoContentsPathPutBodyPropAuthorType(TypedDict):
-    """ReposOwnerRepoContentsPathPutBodyPropAuthor
-
-    The author of the file. Default: The `committer` or the authenticated user if
-    you omit `committer`.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[str]
-
-
-class ReposOwnerRepoContentsPathPutBodyPropAuthorTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathPutBodyPropAuthor
-
-    The author of the file. Default: The `committer` or the authenticated user if
-    you omit `committer`.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[str]
+    location: str
+    devcontainer_path: Union[str, None]
 
 
 __all__ = (
-    "ReposOwnerRepoContentsPathPutBodyPropAuthorType",
-    "ReposOwnerRepoContentsPathPutBodyPropAuthorTypeForResponse",
-    "ReposOwnerRepoContentsPathPutBodyPropCommitterType",
-    "ReposOwnerRepoContentsPathPutBodyPropCommitterTypeForResponse",
-    "ReposOwnerRepoContentsPathPutBodyType",
-    "ReposOwnerRepoContentsPathPutBodyTypeForResponse",
+    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType",
+    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse",
+    "ReposOwnerRepoCodespacesNewGetResponse200Type",
+    "ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse",
 )

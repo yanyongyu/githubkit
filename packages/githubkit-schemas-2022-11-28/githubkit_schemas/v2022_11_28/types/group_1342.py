@@ -9,27 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
+class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
 
-    message: str
-    event: NotRequired[Literal["DISMISS"]]
+    body: str
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse(
+class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
+    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
 
-    message: str
-    event: NotRequired[Literal["DISMISS"]]
+    body: str
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType",
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType",
+    "ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyTypeForResponse",
 )

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -95,7 +95,7 @@ class CopilotSpacesClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotSpacesGetResponse200,
@@ -110,6 +110,8 @@ class CopilotSpacesClient:
         Only Spaces that are readable by the authenticated user are returned. This includes public Spaces and internal Spaces if the user is a member of the organization.
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in a space; spaces with inaccessible resources are omitted from the response.
 
         See also: https://docs.github.com/rest/copilot-spaces/copilot-spaces#list-organization-copilot-spaces
         """
@@ -146,7 +148,7 @@ class CopilotSpacesClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotSpacesGetResponse200,
@@ -161,6 +163,8 @@ class CopilotSpacesClient:
         Only Spaces that are readable by the authenticated user are returned. This includes public Spaces and internal Spaces if the user is a member of the organization.
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in a space; spaces with inaccessible resources are omitted from the response.
 
         See also: https://docs.github.com/rest/copilot-spaces/copilot-spaces#list-organization-copilot-spaces
         """
@@ -195,7 +199,7 @@ class CopilotSpacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotSpacesPostBodyType,
     ) -> Response[CopilotSpace, CopilotSpaceTypeForResponse]: ...
@@ -206,7 +210,7 @@ class CopilotSpacesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: Missing[str] = UNSET,
@@ -221,7 +225,7 @@ class CopilotSpacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotSpacesPostBodyType] = UNSET,
         **kwargs,
@@ -235,6 +239,8 @@ class CopilotSpacesClient:
         Organization members with appropriate permissions can create Copilot Spaces to be shared within their organization.
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by the submitted resources.
 
         See also: https://docs.github.com/rest/copilot-spaces/copilot-spaces#create-an-organization-copilot-space
         """
@@ -278,7 +284,7 @@ class CopilotSpacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotSpacesPostBodyType,
     ) -> Response[CopilotSpace, CopilotSpaceTypeForResponse]: ...
@@ -289,7 +295,7 @@ class CopilotSpacesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: Missing[str] = UNSET,
@@ -304,7 +310,7 @@ class CopilotSpacesClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotSpacesPostBodyType] = UNSET,
         **kwargs,
@@ -318,6 +324,8 @@ class CopilotSpacesClient:
         Organization members with appropriate permissions can create Copilot Spaces to be shared within their organization.
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by the submitted resources.
 
         See also: https://docs.github.com/rest/copilot-spaces/copilot-spaces#create-an-organization-copilot-space
         """
@@ -361,7 +369,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CopilotSpace, CopilotSpaceTypeForResponse]:
         """copilot-spaces/get-for-org
@@ -373,6 +381,8 @@ class CopilotSpacesClient:
         Internal Spaces require the authenticated user to be a member of the organization or have been granted read permissions.
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/copilot-spaces#get-an-organization-copilot-space
         """
@@ -400,7 +410,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CopilotSpace, CopilotSpaceTypeForResponse]:
         """copilot-spaces/get-for-org
@@ -412,6 +422,8 @@ class CopilotSpacesClient:
         Internal Spaces require the authenticated user to be a member of the organization or have been granted read permissions.
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/copilot-spaces#get-an-organization-copilot-space
         """
@@ -440,7 +452,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotSpacesSpaceNumberPutBodyType,
     ) -> Response[CopilotSpace, CopilotSpaceTypeForResponse]: ...
@@ -452,7 +464,7 @@ class CopilotSpacesClient:
         space_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -468,7 +480,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotSpacesSpaceNumberPutBodyType] = UNSET,
         **kwargs,
@@ -482,6 +494,8 @@ class CopilotSpacesClient:
         Organization members with appropriate permissions can update Copilot Spaces owned by their organization.
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space, including any being added or updated.
 
         See also: https://docs.github.com/rest/copilot-spaces/copilot-spaces#set-an-organization-copilot-space
         """
@@ -526,7 +540,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotSpacesSpaceNumberPutBodyType,
     ) -> Response[CopilotSpace, CopilotSpaceTypeForResponse]: ...
@@ -538,7 +552,7 @@ class CopilotSpacesClient:
         space_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -554,7 +568,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotSpacesSpaceNumberPutBodyType] = UNSET,
         **kwargs,
@@ -568,6 +582,8 @@ class CopilotSpacesClient:
         Organization members with appropriate permissions can update Copilot Spaces owned by their organization.
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space, including any being added or updated.
 
         See also: https://docs.github.com/rest/copilot-spaces/copilot-spaces#set-an-organization-copilot-space
         """
@@ -611,7 +627,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot-spaces/delete-for-org
@@ -625,6 +641,8 @@ class CopilotSpacesClient:
         Organization members with appropriate permissions can delete Copilot Spaces owned by their organization.
 
         OAuth app tokens and personal access tokens (classic) need both the `read:org` and `repo` scopes to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/copilot-spaces#delete-an-organization-copilot-space
         """
@@ -651,7 +669,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot-spaces/delete-for-org
@@ -665,6 +683,8 @@ class CopilotSpacesClient:
         Organization members with appropriate permissions can delete Copilot Spaces owned by their organization.
 
         OAuth app tokens and personal access tokens (classic) need both the `read:org` and `repo` scopes to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/copilot-spaces#delete-an-organization-copilot-space
         """
@@ -691,7 +711,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200,
@@ -708,6 +728,8 @@ class CopilotSpacesClient:
         **Note:** Team collaborators listed here are teams that are defined in the organization.
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/collaborators#list-collaborators-for-an-organization-copilot-space
         """
@@ -738,7 +760,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200,
@@ -755,6 +777,8 @@ class CopilotSpacesClient:
         **Note:** Team collaborators listed here are teams that are defined in the organization.
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/collaborators#list-collaborators-for-an-organization-copilot-space
         """
@@ -786,7 +810,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyType,
     ) -> Response[
@@ -804,7 +828,7 @@ class CopilotSpacesClient:
         space_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         actor_type: Literal["User", "Team"],
         actor_identifier: str,
@@ -822,7 +846,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyType] = UNSET,
         **kwargs,
@@ -843,6 +867,8 @@ class CopilotSpacesClient:
         When adding teams as collaborators, they must be defined in the organization.
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/collaborators#add-a-collaborator-to-an-organization-copilot-space
         """
@@ -894,7 +920,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyType,
     ) -> Response[
@@ -912,7 +938,7 @@ class CopilotSpacesClient:
         space_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         actor_type: Literal["User", "Team"],
         actor_identifier: str,
@@ -930,7 +956,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBodyType] = UNSET,
         **kwargs,
@@ -951,6 +977,8 @@ class CopilotSpacesClient:
         When adding teams as collaborators, they must be defined in the organization.
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/collaborators#add-a-collaborator-to-an-organization-copilot-space
         """
@@ -1004,7 +1032,7 @@ class CopilotSpacesClient:
         actor_type: Literal["User", "Team"],
         actor_identifier: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType,
     ) -> Response[
@@ -1024,7 +1052,7 @@ class CopilotSpacesClient:
         actor_identifier: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         role: Literal["reader", "writer", "admin", "no_access"],
     ) -> Response[
@@ -1042,7 +1070,7 @@ class CopilotSpacesClient:
         actor_type: Literal["User", "Team"],
         actor_identifier: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType
@@ -1062,6 +1090,8 @@ class CopilotSpacesClient:
         Updates the role of a collaborator for a specific Copilot Space owned by an organization. The authenticated user must have appropriate permissions to manage collaborators.
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/collaborators#set-a-collaborator-role-for-an-organization-copilot-space
         """
@@ -1116,7 +1146,7 @@ class CopilotSpacesClient:
         actor_type: Literal["User", "Team"],
         actor_identifier: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType,
     ) -> Response[
@@ -1136,7 +1166,7 @@ class CopilotSpacesClient:
         actor_identifier: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         role: Literal["reader", "writer", "admin", "no_access"],
     ) -> Response[
@@ -1154,7 +1184,7 @@ class CopilotSpacesClient:
         actor_type: Literal["User", "Team"],
         actor_identifier: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType
@@ -1174,6 +1204,8 @@ class CopilotSpacesClient:
         Updates the role of a collaborator for a specific Copilot Space owned by an organization. The authenticated user must have appropriate permissions to manage collaborators.
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/collaborators#set-a-collaborator-role-for-an-organization-copilot-space
         """
@@ -1227,7 +1259,7 @@ class CopilotSpacesClient:
         actor_type: Literal["User", "Team"],
         actor_identifier: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot-spaces/remove-collaborator-for-org
@@ -1237,6 +1269,8 @@ class CopilotSpacesClient:
         Removes a collaborator from a specific Copilot Space owned by an organization. The authenticated user must have appropriate permissions to manage collaborators.
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/collaborators#remove-a-collaborator-from-an-organization-copilot-space
         """
@@ -1265,7 +1299,7 @@ class CopilotSpacesClient:
         actor_type: Literal["User", "Team"],
         actor_identifier: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot-spaces/remove-collaborator-for-org
@@ -1275,6 +1309,8 @@ class CopilotSpacesClient:
         Removes a collaborator from a specific Copilot Space owned by an organization. The authenticated user must have appropriate permissions to manage collaborators.
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/collaborators#remove-a-collaborator-from-an-organization-copilot-space
         """
@@ -1301,7 +1337,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200,
@@ -1315,6 +1351,8 @@ class CopilotSpacesClient:
         The authenticated user must have appropriate permissions to view the space.
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/resources#list-resources-for-an-organization-copilot-space
         """
@@ -1345,7 +1383,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200,
@@ -1359,6 +1397,8 @@ class CopilotSpacesClient:
         The authenticated user must have appropriate permissions to view the space.
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/resources#list-resources-for-an-organization-copilot-space
         """
@@ -1390,7 +1430,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType,
     ) -> Response[CopilotSpaceResource, CopilotSpaceResourceTypeForResponse]: ...
@@ -1402,7 +1442,7 @@ class CopilotSpacesClient:
         space_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         resource_type: Literal[
             "repository",
@@ -1419,7 +1459,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType] = UNSET,
         **kwargs,
@@ -1437,6 +1477,8 @@ class CopilotSpacesClient:
         For `github_file` resources, if a resource with the same repository, file path, and SHA already exists, the existing resource is returned with a `200` status.
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space, including the resource being created.
 
         See also: https://docs.github.com/rest/copilot-spaces/resources#create-a-resource-for-an-organization-copilot-space
         """
@@ -1483,7 +1525,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType,
     ) -> Response[CopilotSpaceResource, CopilotSpaceResourceTypeForResponse]: ...
@@ -1495,7 +1537,7 @@ class CopilotSpacesClient:
         space_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         resource_type: Literal[
             "repository",
@@ -1512,7 +1554,7 @@ class CopilotSpacesClient:
         org: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType] = UNSET,
         **kwargs,
@@ -1530,6 +1572,8 @@ class CopilotSpacesClient:
         For `github_file` resources, if a resource with the same repository, file path, and SHA already exists, the existing resource is returned with a `200` status.
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space, including the resource being created.
 
         See also: https://docs.github.com/rest/copilot-spaces/resources#create-a-resource-for-an-organization-copilot-space
         """
@@ -1576,7 +1620,7 @@ class CopilotSpacesClient:
         space_number: int,
         space_resource_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CopilotSpaceResource, CopilotSpaceResourceTypeForResponse]:
         """copilot-spaces/get-resource-for-org
@@ -1587,6 +1631,8 @@ class CopilotSpacesClient:
         The authenticated user must have appropriate permissions to view the space.
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/resources#get-a-resource-for-an-organization-copilot-space
         """
@@ -1615,7 +1661,7 @@ class CopilotSpacesClient:
         space_number: int,
         space_resource_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CopilotSpaceResource, CopilotSpaceResourceTypeForResponse]:
         """copilot-spaces/get-resource-for-org
@@ -1626,6 +1672,8 @@ class CopilotSpacesClient:
         The authenticated user must have appropriate permissions to view the space.
 
         OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/resources#get-a-resource-for-an-organization-copilot-space
         """
@@ -1655,7 +1703,7 @@ class CopilotSpacesClient:
         space_number: int,
         space_resource_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType,
     ) -> Response[CopilotSpaceResource, CopilotSpaceResourceTypeForResponse]: ...
@@ -1668,7 +1716,7 @@ class CopilotSpacesClient:
         space_resource_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         metadata: Missing[
             OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType
@@ -1681,7 +1729,7 @@ class CopilotSpacesClient:
         space_number: int,
         space_resource_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType
@@ -1696,6 +1744,8 @@ class CopilotSpacesClient:
         The authenticated user must have write permissions on the space.
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space, including the resource being updated.
 
         See also: https://docs.github.com/rest/copilot-spaces/resources#set-a-resource-for-an-organization-copilot-space
         """
@@ -1743,7 +1793,7 @@ class CopilotSpacesClient:
         space_number: int,
         space_resource_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType,
     ) -> Response[CopilotSpaceResource, CopilotSpaceResourceTypeForResponse]: ...
@@ -1756,7 +1806,7 @@ class CopilotSpacesClient:
         space_resource_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         metadata: Missing[
             OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType
@@ -1769,7 +1819,7 @@ class CopilotSpacesClient:
         space_number: int,
         space_resource_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType
@@ -1784,6 +1834,8 @@ class CopilotSpacesClient:
         The authenticated user must have write permissions on the space.
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space, including the resource being updated.
 
         See also: https://docs.github.com/rest/copilot-spaces/resources#set-a-resource-for-an-organization-copilot-space
         """
@@ -1830,7 +1882,7 @@ class CopilotSpacesClient:
         space_number: int,
         space_resource_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot-spaces/delete-resource-for-org
@@ -1841,6 +1893,8 @@ class CopilotSpacesClient:
         The authenticated user must have write permissions on the space.
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/resources#delete-a-resource-from-an-organization-copilot-space
         """
@@ -1868,7 +1922,7 @@ class CopilotSpacesClient:
         space_number: int,
         space_resource_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot-spaces/delete-resource-for-org
@@ -1879,6 +1933,8 @@ class CopilotSpacesClient:
         The authenticated user must have write permissions on the space.
 
         OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
 
         See also: https://docs.github.com/rest/copilot-spaces/resources#delete-a-resource-from-an-organization-copilot-space
         """
@@ -1907,7 +1963,7 @@ class CopilotSpacesClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UsersUsernameCopilotSpacesGetResponse200,
@@ -1958,7 +2014,7 @@ class CopilotSpacesClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UsersUsernameCopilotSpacesGetResponse200,
@@ -2007,7 +2063,7 @@ class CopilotSpacesClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUsernameCopilotSpacesPostBodyType,
     ) -> Response[CopilotSpace, CopilotSpaceTypeForResponse]: ...
@@ -2018,7 +2074,7 @@ class CopilotSpacesClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: Missing[str] = UNSET,
@@ -2033,7 +2089,7 @@ class CopilotSpacesClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UsersUsernameCopilotSpacesPostBodyType] = UNSET,
         **kwargs,
@@ -2090,7 +2146,7 @@ class CopilotSpacesClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUsernameCopilotSpacesPostBodyType,
     ) -> Response[CopilotSpace, CopilotSpaceTypeForResponse]: ...
@@ -2101,7 +2157,7 @@ class CopilotSpacesClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: Missing[str] = UNSET,
@@ -2116,7 +2172,7 @@ class CopilotSpacesClient:
         self,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UsersUsernameCopilotSpacesPostBodyType] = UNSET,
         **kwargs,
@@ -2173,7 +2229,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CopilotSpace, CopilotSpaceTypeForResponse]:
         """copilot-spaces/get-for-user
@@ -2213,7 +2269,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CopilotSpace, CopilotSpaceTypeForResponse]:
         """copilot-spaces/get-for-user
@@ -2254,7 +2310,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUsernameCopilotSpacesSpaceNumberPutBodyType,
     ) -> Response[CopilotSpace, CopilotSpaceTypeForResponse]: ...
@@ -2266,7 +2322,7 @@ class CopilotSpacesClient:
         space_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -2284,7 +2340,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UsersUsernameCopilotSpacesSpaceNumberPutBodyType] = UNSET,
         **kwargs,
@@ -2344,7 +2400,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUsernameCopilotSpacesSpaceNumberPutBodyType,
     ) -> Response[CopilotSpace, CopilotSpaceTypeForResponse]: ...
@@ -2356,7 +2412,7 @@ class CopilotSpacesClient:
         space_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -2374,7 +2430,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UsersUsernameCopilotSpacesSpaceNumberPutBodyType] = UNSET,
         **kwargs,
@@ -2433,7 +2489,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot-spaces/delete-for-user
@@ -2471,7 +2527,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot-spaces/delete-for-user
@@ -2509,7 +2565,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200,
@@ -2556,7 +2612,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200,
@@ -2604,7 +2660,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType,
     ) -> Response[
@@ -2622,7 +2678,7 @@ class CopilotSpacesClient:
         space_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         actor_type: Literal["User", "Team"],
         actor_identifier: str,
@@ -2640,7 +2696,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType
@@ -2713,7 +2769,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType,
     ) -> Response[
@@ -2731,7 +2787,7 @@ class CopilotSpacesClient:
         space_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         actor_type: Literal["User", "Team"],
         actor_identifier: str,
@@ -2749,7 +2805,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType
@@ -2824,7 +2880,7 @@ class CopilotSpacesClient:
         actor_type: Literal["User", "Team"],
         actor_identifier: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType,
     ) -> Response[
@@ -2844,7 +2900,7 @@ class CopilotSpacesClient:
         actor_identifier: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         role: Literal["reader", "writer", "admin", "no_access"],
     ) -> Response[
@@ -2862,7 +2918,7 @@ class CopilotSpacesClient:
         actor_type: Literal["User", "Team"],
         actor_identifier: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType
@@ -2936,7 +2992,7 @@ class CopilotSpacesClient:
         actor_type: Literal["User", "Team"],
         actor_identifier: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType,
     ) -> Response[
@@ -2956,7 +3012,7 @@ class CopilotSpacesClient:
         actor_identifier: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         role: Literal["reader", "writer", "admin", "no_access"],
     ) -> Response[
@@ -2974,7 +3030,7 @@ class CopilotSpacesClient:
         actor_type: Literal["User", "Team"],
         actor_identifier: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType
@@ -3047,7 +3103,7 @@ class CopilotSpacesClient:
         actor_type: Literal["User", "Team"],
         actor_identifier: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot-spaces/remove-collaborator-for-user
@@ -3085,7 +3141,7 @@ class CopilotSpacesClient:
         actor_type: Literal["User", "Team"],
         actor_identifier: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot-spaces/remove-collaborator-for-user
@@ -3121,7 +3177,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200,
@@ -3165,7 +3221,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200,
@@ -3210,7 +3266,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType,
     ) -> Response[CopilotSpaceResource, CopilotSpaceResourceTypeForResponse]: ...
@@ -3222,7 +3278,7 @@ class CopilotSpacesClient:
         space_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         resource_type: Literal[
             "repository",
@@ -3239,7 +3295,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType
@@ -3305,7 +3361,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType,
     ) -> Response[CopilotSpaceResource, CopilotSpaceResourceTypeForResponse]: ...
@@ -3317,7 +3373,7 @@ class CopilotSpacesClient:
         space_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         resource_type: Literal[
             "repository",
@@ -3334,7 +3390,7 @@ class CopilotSpacesClient:
         username: str,
         space_number: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType
@@ -3400,7 +3456,7 @@ class CopilotSpacesClient:
         space_number: int,
         space_resource_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CopilotSpaceResource, CopilotSpaceResourceTypeForResponse]:
         """copilot-spaces/get-resource-for-user
@@ -3439,7 +3495,7 @@ class CopilotSpacesClient:
         space_number: int,
         space_resource_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CopilotSpaceResource, CopilotSpaceResourceTypeForResponse]:
         """copilot-spaces/get-resource-for-user
@@ -3479,7 +3535,7 @@ class CopilotSpacesClient:
         space_number: int,
         space_resource_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType,
     ) -> Response[CopilotSpaceResource, CopilotSpaceResourceTypeForResponse]: ...
@@ -3492,7 +3548,7 @@ class CopilotSpacesClient:
         space_resource_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         metadata: Missing[
             UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType
@@ -3505,7 +3561,7 @@ class CopilotSpacesClient:
         space_number: int,
         space_resource_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType
@@ -3568,7 +3624,7 @@ class CopilotSpacesClient:
         space_number: int,
         space_resource_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType,
     ) -> Response[CopilotSpaceResource, CopilotSpaceResourceTypeForResponse]: ...
@@ -3581,7 +3637,7 @@ class CopilotSpacesClient:
         space_resource_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         metadata: Missing[
             UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType
@@ -3594,7 +3650,7 @@ class CopilotSpacesClient:
         space_number: int,
         space_resource_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType
@@ -3656,7 +3712,7 @@ class CopilotSpacesClient:
         space_number: int,
         space_resource_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot-spaces/delete-resource-for-user
@@ -3694,7 +3750,7 @@ class CopilotSpacesClient:
         space_number: int,
         space_resource_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """copilot-spaces/delete-resource-for-user

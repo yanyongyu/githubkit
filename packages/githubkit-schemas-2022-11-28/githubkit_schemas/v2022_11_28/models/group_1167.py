@@ -9,24 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgSecurityProductEnablementPostBody(GitHubModel):
-    """OrgsOrgSecurityProductEnablementPostBody"""
+class OrgsOrgSettingsImmutableReleasesRepositoriesPutBody(GitHubModel):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
 
-    query_suite: Missing[Literal["default", "extended"]] = Field(
-        default=UNSET,
-        description="CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured.\nIf you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.",
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints."
     )
 
 
-model_rebuild(OrgsOrgSecurityProductEnablementPostBody)
+model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesPutBody)
 
-__all__ = ("OrgsOrgSecurityProductEnablementPostBody",)
+__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesPutBody",)

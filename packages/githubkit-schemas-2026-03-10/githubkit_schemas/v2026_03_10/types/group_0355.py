@@ -9,65 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from typing_extensions import TypedDict
 
 
-class DeploymentStatusType(TypedDict):
-    """Deployment Status
+class DependencyGraphDiffItemsType(TypedDict):
+    """DependencyGraphDiffItems"""
 
-    The status of a deployment.
-    """
+    change_type: Literal["added", "removed"]
+    manifest: str
+    ecosystem: str
+    name: str
+    version: str
+    package_url: Union[str, None]
+    license_: Union[str, None]
+    source_repository_url: Union[str, None]
+    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItemsType]
+    scope: Literal["unknown", "runtime", "development"]
 
-    url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
+
+class DependencyGraphDiffItemsTypeForResponse(TypedDict):
+    """DependencyGraphDiffItems"""
+
+    change_type: Literal["added", "removed"]
+    manifest: str
+    ecosystem: str
+    name: str
+    version: str
+    package_url: Union[str, None]
+    license_: Union[str, None]
+    source_repository_url: Union[str, None]
+    vulnerabilities: list[
+        DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse
     ]
-    creator: Union[None, SimpleUserType]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    scope: Literal["unknown", "runtime", "development"]
 
 
-class DeploymentStatusTypeForResponse(TypedDict):
-    """Deployment Status
+class DependencyGraphDiffItemsPropVulnerabilitiesItemsType(TypedDict):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
 
-    The status of a deployment.
-    """
+    severity: str
+    advisory_ghsa_id: str
+    advisory_summary: str
+    advisory_url: str
 
-    url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ]
-    creator: Union[None, SimpleUserTypeForResponse]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: str
-    updated_at: str
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+
+class DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse(TypedDict):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+
+    severity: str
+    advisory_ghsa_id: str
+    advisory_summary: str
+    advisory_url: str
 
 
 __all__ = (
-    "DeploymentStatusType",
-    "DeploymentStatusTypeForResponse",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse",
+    "DependencyGraphDiffItemsType",
+    "DependencyGraphDiffItemsTypeForResponse",
 )

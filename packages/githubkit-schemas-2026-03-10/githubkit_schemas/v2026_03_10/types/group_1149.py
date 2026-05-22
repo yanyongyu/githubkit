@@ -11,22 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0184 import CustomPropertyType, CustomPropertyTypeForResponse
+
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+
+    issue_field_id: int
 
 
-class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesSchemaPatchBody"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
 
-    properties: list[CustomPropertyType]
-
-
-class OrgsOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesSchemaPatchBody"""
-
-    properties: list[CustomPropertyTypeForResponse]
+    issue_field_id: int
 
 
 __all__ = (
-    "OrgsOrgPropertiesSchemaPatchBodyType",
-    "OrgsOrgPropertiesSchemaPatchBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
 )

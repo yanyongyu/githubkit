@@ -9,56 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoGitTagsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitTagsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
 
-    tag: str
-    message: str
-    object_: str
-    type: Literal["commit", "tree", "blob"]
-    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerType]
+    encrypted_value: str
+    key_id: str
 
 
-class ReposOwnerRepoGitTagsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitTagsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
 
-    tag: str
-    message: str
-    object_: str
-    type: Literal["commit", "tree", "blob"]
-    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse]
-
-
-class ReposOwnerRepoGitTagsPostBodyPropTaggerType(TypedDict):
-    """ReposOwnerRepoGitTagsPostBodyPropTagger
-
-    An object with information about the individual creating the tag.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[_dt.datetime]
-
-
-class ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitTagsPostBodyPropTagger
-
-    An object with information about the individual creating the tag.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[str]
+    encrypted_value: str
+    key_id: str
 
 
 __all__ = (
-    "ReposOwnerRepoGitTagsPostBodyPropTaggerType",
-    "ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse",
-    "ReposOwnerRepoGitTagsPostBodyType",
-    "ReposOwnerRepoGitTagsPostBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyTypeForResponse",
 )

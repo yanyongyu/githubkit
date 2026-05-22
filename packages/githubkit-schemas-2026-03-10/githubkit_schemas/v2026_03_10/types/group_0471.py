@@ -13,159 +13,74 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0464 import (
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0470 import (
     SearchResultTextMatchesItemsType,
     SearchResultTextMatchesItemsTypeForResponse,
 )
 
 
-class TopicSearchResultItemType(TypedDict):
-    """Topic Search Result Item
+class CodeSearchResultItemType(TypedDict):
+    """Code Search Result Item
 
-    Topic Search Result Item
+    Code Search Result Item
     """
 
     name: str
-    display_name: Union[str, None]
-    short_description: Union[str, None]
-    description: Union[str, None]
-    created_by: Union[str, None]
-    released: Union[str, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    featured: bool
-    curated: bool
+    path: str
+    sha: str
+    url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryType
     score: float
-    repository_count: NotRequired[Union[int, None]]
-    logo_url: NotRequired[Union[str, None]]
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[_dt.datetime]
+    line_numbers: NotRequired[list[str]]
     text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
-    related: NotRequired[Union[list[TopicSearchResultItemPropRelatedItemsType], None]]
-    aliases: NotRequired[Union[list[TopicSearchResultItemPropAliasesItemsType], None]]
 
 
-class TopicSearchResultItemTypeForResponse(TypedDict):
-    """Topic Search Result Item
+class CodeSearchResultItemTypeForResponse(TypedDict):
+    """Code Search Result Item
 
-    Topic Search Result Item
+    Code Search Result Item
     """
 
     name: str
-    display_name: Union[str, None]
-    short_description: Union[str, None]
-    description: Union[str, None]
-    created_by: Union[str, None]
-    released: Union[str, None]
-    created_at: str
-    updated_at: str
-    featured: bool
-    curated: bool
+    path: str
+    sha: str
+    url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryTypeForResponse
     score: float
-    repository_count: NotRequired[Union[int, None]]
-    logo_url: NotRequired[Union[str, None]]
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[str]
+    line_numbers: NotRequired[list[str]]
     text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
-    related: NotRequired[
-        Union[list[TopicSearchResultItemPropRelatedItemsTypeForResponse], None]
-    ]
-    aliases: NotRequired[
-        Union[list[TopicSearchResultItemPropAliasesItemsTypeForResponse], None]
-    ]
 
 
-class TopicSearchResultItemPropRelatedItemsType(TypedDict):
-    """TopicSearchResultItemPropRelatedItems"""
-
-    topic_relation: NotRequired[
-        TopicSearchResultItemPropRelatedItemsPropTopicRelationType
-    ]
-
-
-class TopicSearchResultItemPropRelatedItemsTypeForResponse(TypedDict):
-    """TopicSearchResultItemPropRelatedItems"""
-
-    topic_relation: NotRequired[
-        TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse
-    ]
-
-
-class TopicSearchResultItemPropRelatedItemsPropTopicRelationType(TypedDict):
-    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    topic_id: NotRequired[int]
-    relation_type: NotRequired[str]
-
-
-class TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse(TypedDict):
-    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    topic_id: NotRequired[int]
-    relation_type: NotRequired[str]
-
-
-class TopicSearchResultItemPropAliasesItemsType(TypedDict):
-    """TopicSearchResultItemPropAliasesItems"""
-
-    topic_relation: NotRequired[
-        TopicSearchResultItemPropAliasesItemsPropTopicRelationType
-    ]
-
-
-class TopicSearchResultItemPropAliasesItemsTypeForResponse(TypedDict):
-    """TopicSearchResultItemPropAliasesItems"""
-
-    topic_relation: NotRequired[
-        TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse
-    ]
-
-
-class TopicSearchResultItemPropAliasesItemsPropTopicRelationType(TypedDict):
-    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    topic_id: NotRequired[int]
-    relation_type: NotRequired[str]
-
-
-class TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse(TypedDict):
-    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    topic_id: NotRequired[int]
-    relation_type: NotRequired[str]
-
-
-class SearchTopicsGetResponse200Type(TypedDict):
-    """SearchTopicsGetResponse200"""
+class SearchCodeGetResponse200Type(TypedDict):
+    """SearchCodeGetResponse200"""
 
     total_count: int
     incomplete_results: bool
-    items: list[TopicSearchResultItemType]
+    items: list[CodeSearchResultItemType]
 
 
-class SearchTopicsGetResponse200TypeForResponse(TypedDict):
-    """SearchTopicsGetResponse200"""
+class SearchCodeGetResponse200TypeForResponse(TypedDict):
+    """SearchCodeGetResponse200"""
 
     total_count: int
     incomplete_results: bool
-    items: list[TopicSearchResultItemTypeForResponse]
+    items: list[CodeSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "SearchTopicsGetResponse200Type",
-    "SearchTopicsGetResponse200TypeForResponse",
-    "TopicSearchResultItemPropAliasesItemsPropTopicRelationType",
-    "TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse",
-    "TopicSearchResultItemPropAliasesItemsType",
-    "TopicSearchResultItemPropAliasesItemsTypeForResponse",
-    "TopicSearchResultItemPropRelatedItemsPropTopicRelationType",
-    "TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse",
-    "TopicSearchResultItemPropRelatedItemsType",
-    "TopicSearchResultItemPropRelatedItemsTypeForResponse",
-    "TopicSearchResultItemType",
-    "TopicSearchResultItemTypeForResponse",
+    "CodeSearchResultItemType",
+    "CodeSearchResultItemTypeForResponse",
+    "SearchCodeGetResponse200Type",
+    "SearchCodeGetResponse200TypeForResponse",
 )

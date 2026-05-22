@@ -9,65 +9,94 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0058 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
-class WebhooksUserType(TypedDict):
-    """User"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
+class SimpleCheckSuiteType(TypedDict):
+    """SimpleCheckSuite
+
+    A suite of checks performed on the code of a given code change
+    """
+
+    after: NotRequired[Union[str, None]]
+    app: NotRequired[Union[IntegrationType, None]]
+    before: NotRequired[Union[str, None]]
+    conclusion: NotRequired[
+        Union[
+            None,
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+        ]
+    ]
+    created_at: NotRequired[_dt.datetime]
+    head_branch: NotRequired[Union[str, None]]
+    head_sha: NotRequired[str]
+    id: NotRequired[int]
     node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    pull_requests: NotRequired[list[PullRequestMinimalType]]
+    repository: NotRequired[MinimalRepositoryType]
+    status: NotRequired[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    ]
+    updated_at: NotRequired[_dt.datetime]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
-class WebhooksUserTypeForResponse(TypedDict):
-    """User"""
+class SimpleCheckSuiteTypeForResponse(TypedDict):
+    """SimpleCheckSuite
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
+    A suite of checks performed on the code of a given code change
+    """
+
+    after: NotRequired[Union[str, None]]
+    app: NotRequired[Union[IntegrationTypeForResponse, None]]
+    before: NotRequired[Union[str, None]]
+    conclusion: NotRequired[
+        Union[
+            None,
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+        ]
+    ]
+    created_at: NotRequired[str]
+    head_branch: NotRequired[Union[str, None]]
+    head_sha: NotRequired[str]
+    id: NotRequired[int]
     node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    pull_requests: NotRequired[list[PullRequestMinimalTypeForResponse]]
+    repository: NotRequired[MinimalRepositoryTypeForResponse]
+    status: NotRequired[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    ]
+    updated_at: NotRequired[str]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksUserType",
-    "WebhooksUserTypeForResponse",
+    "SimpleCheckSuiteType",
+    "SimpleCheckSuiteTypeForResponse",
 )

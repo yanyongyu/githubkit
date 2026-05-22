@@ -9,26 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-
-from .group_0186 import CustomPropertyValue
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
-    """OrgsOrgPropertiesValuesPatchBody"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
 
-    repository_names: list[str] = Field(
-        max_length=30 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of repositories that the custom property values will be applied to.",
-    )
-    properties: list[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values to apply to the repositories."
+    name: str = Field(description="The name of the field.")
+    data_type: Literal["text", "number", "date"] = Field(
+        description="The field's data type."
     )
 
 
-model_rebuild(OrgsOrgPropertiesValuesPatchBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1)
 
-__all__ = ("OrgsOrgPropertiesValuesPatchBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1",)

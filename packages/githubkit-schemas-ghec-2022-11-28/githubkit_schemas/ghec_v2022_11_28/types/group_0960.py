@@ -118,13 +118,13 @@ class WebhookRepositoryRulesetEditedPropChangesPropRulesType(TypedDict):
                 RepositoryRuleCommitterEmailPatternType,
                 RepositoryRuleBranchNamePatternType,
                 RepositoryRuleTagNamePatternType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+                RepositoryRuleCopilotCodeReviewType,
                 RepositoryRuleFilePathRestrictionType,
                 RepositoryRuleMaxFilePathLengthType,
                 RepositoryRuleFileExtensionRestrictionType,
                 RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-                RepositoryRuleCopilotCodeReviewType,
             ]
         ]
     ]
@@ -146,13 +146,13 @@ class WebhookRepositoryRulesetEditedPropChangesPropRulesType(TypedDict):
                 RepositoryRuleCommitterEmailPatternType,
                 RepositoryRuleBranchNamePatternType,
                 RepositoryRuleTagNamePatternType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+                RepositoryRuleCopilotCodeReviewType,
                 RepositoryRuleFilePathRestrictionType,
                 RepositoryRuleMaxFilePathLengthType,
                 RepositoryRuleFileExtensionRestrictionType,
                 RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-                RepositoryRuleCopilotCodeReviewType,
             ]
         ]
     ]
@@ -182,13 +182,13 @@ class WebhookRepositoryRulesetEditedPropChangesPropRulesTypeForResponse(TypedDic
                 RepositoryRuleCommitterEmailPatternTypeForResponse,
                 RepositoryRuleBranchNamePatternTypeForResponse,
                 RepositoryRuleTagNamePatternTypeForResponse,
+                RepositoryRuleWorkflowsTypeForResponse,
+                RepositoryRuleCodeScanningTypeForResponse,
+                RepositoryRuleCopilotCodeReviewTypeForResponse,
                 RepositoryRuleFilePathRestrictionTypeForResponse,
                 RepositoryRuleMaxFilePathLengthTypeForResponse,
                 RepositoryRuleFileExtensionRestrictionTypeForResponse,
                 RepositoryRuleMaxFileSizeTypeForResponse,
-                RepositoryRuleWorkflowsTypeForResponse,
-                RepositoryRuleCodeScanningTypeForResponse,
-                RepositoryRuleCopilotCodeReviewTypeForResponse,
             ]
         ]
     ]
@@ -210,13 +210,13 @@ class WebhookRepositoryRulesetEditedPropChangesPropRulesTypeForResponse(TypedDic
                 RepositoryRuleCommitterEmailPatternTypeForResponse,
                 RepositoryRuleBranchNamePatternTypeForResponse,
                 RepositoryRuleTagNamePatternTypeForResponse,
+                RepositoryRuleWorkflowsTypeForResponse,
+                RepositoryRuleCodeScanningTypeForResponse,
+                RepositoryRuleCopilotCodeReviewTypeForResponse,
                 RepositoryRuleFilePathRestrictionTypeForResponse,
                 RepositoryRuleMaxFilePathLengthTypeForResponse,
                 RepositoryRuleFileExtensionRestrictionTypeForResponse,
                 RepositoryRuleMaxFileSizeTypeForResponse,
-                RepositoryRuleWorkflowsTypeForResponse,
-                RepositoryRuleCodeScanningTypeForResponse,
-                RepositoryRuleCopilotCodeReviewTypeForResponse,
             ]
         ]
     ]

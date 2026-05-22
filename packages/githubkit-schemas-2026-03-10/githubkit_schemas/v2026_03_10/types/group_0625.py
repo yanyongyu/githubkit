@@ -14,22 +14,22 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0490 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0492 import (
+from .group_0496 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0498 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0493 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0505 import (
+from .group_0499 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0511 import (
     WebhooksRepositoriesItemsType,
     WebhooksRepositoriesItemsTypeForResponse,
 )
 
 
-class WebhookInstallationUnsuspendType(TypedDict):
-    """installation unsuspend event"""
+class WebhookInstallationDeletedType(TypedDict):
+    """installation deleted event"""
 
-    action: Literal["unsuspend"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -39,10 +39,10 @@ class WebhookInstallationUnsuspendType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookInstallationUnsuspendTypeForResponse(TypedDict):
-    """installation unsuspend event"""
+class WebhookInstallationDeletedTypeForResponse(TypedDict):
+    """installation deleted event"""
 
-    action: Literal["unsuspend"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: InstallationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -53,6 +53,6 @@ class WebhookInstallationUnsuspendTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookInstallationUnsuspendType",
-    "WebhookInstallationUnsuspendTypeForResponse",
+    "WebhookInstallationDeletedType",
+    "WebhookInstallationDeletedTypeForResponse",
 )

@@ -9,24 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type(TypedDict):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    pattern_config_version: NotRequired[str]
+    fields: list[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType]
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
+
+    fields: list[
+        OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
+    ]
+
+
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+
+    id: int
+    value: Union[str, float, None]
+
+
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
 
-    pattern_config_version: NotRequired[str]
+    id: int
+    value: Union[str, float, None]
 
 
 __all__ = (
-    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
 )

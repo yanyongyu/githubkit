@@ -9,24 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoGitBlobsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitBlobsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
 
-    content: str
-    encoding: NotRequired[str]
+    total_count: int
+    branch_policies: list[DeploymentBranchPolicyType]
 
 
-class ReposOwnerRepoGitBlobsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitBlobsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
 
-    content: str
-    encoding: NotRequired[str]
+    total_count: int
+    branch_policies: list[DeploymentBranchPolicyTypeForResponse]
+
+
+class DeploymentBranchPolicyType(TypedDict):
+    """Deployment branch policy
+
+    Details of a deployment branch or tag policy.
+    """
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[Literal["branch", "tag"]]
+
+
+class DeploymentBranchPolicyTypeForResponse(TypedDict):
+    """Deployment branch policy
+
+    Details of a deployment branch or tag policy.
+    """
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[Literal["branch", "tag"]]
 
 
 __all__ = (
-    "ReposOwnerRepoGitBlobsPostBodyType",
-    "ReposOwnerRepoGitBlobsPostBodyTypeForResponse",
+    "DeploymentBranchPolicyType",
+    "DeploymentBranchPolicyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse",
 )

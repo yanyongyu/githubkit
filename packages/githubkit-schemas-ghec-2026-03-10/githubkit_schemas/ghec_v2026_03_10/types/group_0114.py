@@ -28,6 +28,7 @@ class RepositoryRulesetBypassActorType(TypedDict):
         "DeployKey",
         "EnterpriseOwner",
         "EnterpriseRole",
+        "User",
     ]
     bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
 
@@ -47,6 +48,7 @@ class RepositoryRulesetBypassActorTypeForResponse(TypedDict):
         "DeployKey",
         "EnterpriseOwner",
         "EnterpriseRole",
+        "User",
     ]
     bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
 

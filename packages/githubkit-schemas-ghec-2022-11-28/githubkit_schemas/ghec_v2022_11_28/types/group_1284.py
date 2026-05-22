@@ -9,23 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0246 import (
+    OrganizationCustomRepositoryRoleType,
+    OrganizationCustomRepositoryRoleTypeForResponse,
+)
 
 
-class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
 
-    default_level: Literal["public", "internal"]
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
 
 
-class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
 
-    default_level: Literal["public", "internal"]
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
-    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
+    "OrgsOrgCustomRepositoryRolesGetResponse200Type",
+    "OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse",
 )

@@ -9,49 +9,101 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Any, TypeAlias, Union
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
 
-    total_count: int
-    secrets: list[DependabotSecretType]
+    mcp_configuration: Union[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType,
+        None,
+    ]
+    enabled_tools: (
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType
+    )
+    require_actions_workflow_approval: bool
+    is_firewall_enabled: bool
+    is_firewall_recommended_allowlist_enabled: bool
+    custom_allowlist: list[str]
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
 
-    total_count: int
-    secrets: list[DependabotSecretTypeForResponse]
+    mcp_configuration: Union[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse,
+        None,
+    ]
+    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse
+    require_actions_workflow_approval: bool
+    is_firewall_enabled: bool
+    is_firewall_recommended_allowlist_enabled: bool
+    custom_allowlist: list[str]
 
 
-class DependabotSecretType(TypedDict):
-    """Dependabot Secret
+ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
 
-    Set secrets for Dependabot.
+The user-supplied MCP server configuration for the repository, as a free-form
+JSON object. This will be set to `null` if no configuration has been set.
+
+The shape of a valid MCP configuration may evolve over time, so this property is
+intentionally not strictly typed. Clients should not assume a fixed schema.
+"""
+
+
+ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
+
+The user-supplied MCP server configuration for the repository, as a free-form
+JSON object. This will be set to `null` if no configuration has been set.
+
+The shape of a valid MCP configuration may evolve over time, so this property is
+intentionally not strictly typed. Clients should not assume a fixed schema.
+"""
+
+
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType(
+    TypedDict
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+
+    The enabled review tools for Copilot cloud agent.
     """
 
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    codeql: bool
+    copilot_code_review: bool
+    secret_scanning: bool
+    dependency_vulnerability_checks: bool
 
 
-class DependabotSecretTypeForResponse(TypedDict):
-    """Dependabot Secret
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
 
-    Set secrets for Dependabot.
+    The enabled review tools for Copilot cloud agent.
     """
 
-    name: str
-    created_at: str
-    updated_at: str
+    codeql: bool
+    copilot_code_review: bool
+    secret_scanning: bool
+    dependency_vulnerability_checks: bool
 
 
 __all__ = (
-    "DependabotSecretType",
-    "DependabotSecretTypeForResponse",
-    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
-    "ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse",
 )

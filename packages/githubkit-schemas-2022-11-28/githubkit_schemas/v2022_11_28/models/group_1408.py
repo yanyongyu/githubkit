@@ -9,25 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0181 import ProjectsV2FieldIterationConfiguration
+from .group_0137 import CopilotSpace
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+class UsersUsernameCopilotSpacesGetResponse200(GitHubModel):
+    """UsersUsernameCopilotSpacesGetResponse200"""
 
-    name: str = Field(description="The name of the field.")
-    data_type: Literal["iteration"] = Field(description="The field's data type.")
-    iteration_configuration: ProjectsV2FieldIterationConfiguration = Field(
-        description="The configuration for iteration fields."
+    spaces: list[CopilotSpace] = Field(
+        description="The list of Copilot Spaces on this page of results."
     )
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2)
+model_rebuild(UsersUsernameCopilotSpacesGetResponse200)
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2",)
+__all__ = ("UsersUsernameCopilotSpacesGetResponse200",)

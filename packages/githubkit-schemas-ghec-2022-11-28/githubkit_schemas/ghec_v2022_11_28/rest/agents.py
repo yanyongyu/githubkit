@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -90,7 +90,7 @@ class AgentsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgAgentsSecretsGetResponse200,
@@ -136,7 +136,7 @@ class AgentsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgAgentsSecretsGetResponse200,
@@ -180,7 +180,7 @@ class AgentsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyTypeForResponse]:
         """agents/get-org-public-key
@@ -215,7 +215,7 @@ class AgentsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyTypeForResponse]:
         """agents/get-org-public-key
@@ -251,7 +251,7 @@ class AgentsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OrganizationActionsSecret, OrganizationActionsSecretTypeForResponse]:
         """agents/get-org-secret
@@ -286,7 +286,7 @@ class AgentsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[OrganizationActionsSecret, OrganizationActionsSecretTypeForResponse]:
         """agents/get-org-secret
@@ -322,7 +322,7 @@ class AgentsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgAgentsSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -334,7 +334,7 @@ class AgentsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         encrypted_value: str,
         key_id: str,
@@ -347,7 +347,7 @@ class AgentsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgAgentsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
@@ -396,7 +396,7 @@ class AgentsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgAgentsSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -408,7 +408,7 @@ class AgentsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         encrypted_value: str,
         key_id: str,
@@ -421,7 +421,7 @@ class AgentsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgAgentsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
@@ -469,7 +469,7 @@ class AgentsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """agents/delete-org-secret
@@ -501,7 +501,7 @@ class AgentsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """agents/delete-org-secret
@@ -535,7 +535,7 @@ class AgentsClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200,
@@ -582,7 +582,7 @@ class AgentsClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200,
@@ -628,7 +628,7 @@ class AgentsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgAgentsSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
@@ -640,7 +640,7 @@ class AgentsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
@@ -650,7 +650,7 @@ class AgentsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgAgentsSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
@@ -701,7 +701,7 @@ class AgentsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgAgentsSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
@@ -713,7 +713,7 @@ class AgentsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
@@ -723,7 +723,7 @@ class AgentsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgAgentsSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
@@ -774,7 +774,7 @@ class AgentsClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """agents/add-selected-repo-to-org-secret
@@ -810,7 +810,7 @@ class AgentsClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """agents/add-selected-repo-to-org-secret
@@ -846,7 +846,7 @@ class AgentsClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """agents/remove-selected-repo-from-org-secret
@@ -882,7 +882,7 @@ class AgentsClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """agents/remove-selected-repo-from-org-secret
@@ -918,7 +918,7 @@ class AgentsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgAgentsVariablesGetResponse200,
@@ -964,7 +964,7 @@ class AgentsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgAgentsVariablesGetResponse200,
@@ -1009,7 +1009,7 @@ class AgentsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgAgentsVariablesPostBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -1020,7 +1020,7 @@ class AgentsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         value: str,
@@ -1032,7 +1032,7 @@ class AgentsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgAgentsVariablesPostBodyType] = UNSET,
         **kwargs,
@@ -1079,7 +1079,7 @@ class AgentsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgAgentsVariablesPostBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -1090,7 +1090,7 @@ class AgentsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         value: str,
@@ -1102,7 +1102,7 @@ class AgentsClient:
         self,
         org: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgAgentsVariablesPostBodyType] = UNSET,
         **kwargs,
@@ -1149,7 +1149,7 @@ class AgentsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrganizationActionsVariable, OrganizationActionsVariableTypeForResponse
@@ -1186,7 +1186,7 @@ class AgentsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrganizationActionsVariable, OrganizationActionsVariableTypeForResponse
@@ -1223,7 +1223,7 @@ class AgentsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """agents/delete-org-variable
@@ -1255,7 +1255,7 @@ class AgentsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """agents/delete-org-variable
@@ -1288,7 +1288,7 @@ class AgentsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgAgentsVariablesNamePatchBodyType,
     ) -> Response: ...
@@ -1300,7 +1300,7 @@ class AgentsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         value: Missing[str] = UNSET,
         visibility: Missing[Literal["all", "private", "selected"]] = UNSET,
@@ -1312,7 +1312,7 @@ class AgentsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgAgentsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
@@ -1359,7 +1359,7 @@ class AgentsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgAgentsVariablesNamePatchBodyType,
     ) -> Response: ...
@@ -1371,7 +1371,7 @@ class AgentsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         value: Missing[str] = UNSET,
         visibility: Missing[Literal["all", "private", "selected"]] = UNSET,
@@ -1383,7 +1383,7 @@ class AgentsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgAgentsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
@@ -1431,7 +1431,7 @@ class AgentsClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgAgentsVariablesNameRepositoriesGetResponse200,
@@ -1479,7 +1479,7 @@ class AgentsClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrgsOrgAgentsVariablesNameRepositoriesGetResponse200,
@@ -1526,7 +1526,7 @@ class AgentsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgAgentsVariablesNameRepositoriesPutBodyType,
     ) -> Response: ...
@@ -1538,7 +1538,7 @@ class AgentsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
@@ -1548,7 +1548,7 @@ class AgentsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgAgentsVariablesNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
@@ -1600,7 +1600,7 @@ class AgentsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrgsOrgAgentsVariablesNameRepositoriesPutBodyType,
     ) -> Response: ...
@@ -1612,7 +1612,7 @@ class AgentsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
@@ -1622,7 +1622,7 @@ class AgentsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrgsOrgAgentsVariablesNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
@@ -1674,7 +1674,7 @@ class AgentsClient:
         name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """agents/add-selected-repo-to-org-variable
@@ -1709,7 +1709,7 @@ class AgentsClient:
         name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """agents/add-selected-repo-to-org-variable
@@ -1744,7 +1744,7 @@ class AgentsClient:
         name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """agents/remove-selected-repo-from-org-variable
@@ -1780,7 +1780,7 @@ class AgentsClient:
         name: str,
         repository_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """agents/remove-selected-repo-from-org-variable
@@ -1817,7 +1817,7 @@ class AgentsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoAgentsOrganizationSecretsGetResponse200,
@@ -1864,7 +1864,7 @@ class AgentsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoAgentsOrganizationSecretsGetResponse200,
@@ -1911,7 +1911,7 @@ class AgentsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoAgentsOrganizationVariablesGetResponse200,
@@ -1957,7 +1957,7 @@ class AgentsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoAgentsOrganizationVariablesGetResponse200,
@@ -2003,7 +2003,7 @@ class AgentsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoAgentsSecretsGetResponse200,
@@ -2050,7 +2050,7 @@ class AgentsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoAgentsSecretsGetResponse200,
@@ -2095,7 +2095,7 @@ class AgentsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyTypeForResponse]:
         """agents/get-repo-public-key
@@ -2131,7 +2131,7 @@ class AgentsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyTypeForResponse]:
         """agents/get-repo-public-key
@@ -2168,7 +2168,7 @@ class AgentsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ActionsSecret, ActionsSecretTypeForResponse]:
         """agents/get-repo-secret
@@ -2204,7 +2204,7 @@ class AgentsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ActionsSecret, ActionsSecretTypeForResponse]:
         """agents/get-repo-secret
@@ -2241,7 +2241,7 @@ class AgentsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoAgentsSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -2254,7 +2254,7 @@ class AgentsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         encrypted_value: str,
         key_id: str,
@@ -2266,7 +2266,7 @@ class AgentsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoAgentsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
@@ -2318,7 +2318,7 @@ class AgentsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoAgentsSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -2331,7 +2331,7 @@ class AgentsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         encrypted_value: str,
         key_id: str,
@@ -2343,7 +2343,7 @@ class AgentsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoAgentsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
@@ -2394,7 +2394,7 @@ class AgentsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """agents/delete-repo-secret
@@ -2427,7 +2427,7 @@ class AgentsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """agents/delete-repo-secret
@@ -2461,7 +2461,7 @@ class AgentsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoAgentsVariablesGetResponse200,
@@ -2507,7 +2507,7 @@ class AgentsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoAgentsVariablesGetResponse200,
@@ -2552,7 +2552,7 @@ class AgentsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoAgentsVariablesPostBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -2564,7 +2564,7 @@ class AgentsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         value: str,
@@ -2575,7 +2575,7 @@ class AgentsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoAgentsVariablesPostBodyType] = UNSET,
         **kwargs,
@@ -2623,7 +2623,7 @@ class AgentsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoAgentsVariablesPostBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
@@ -2635,7 +2635,7 @@ class AgentsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         value: str,
@@ -2646,7 +2646,7 @@ class AgentsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoAgentsVariablesPostBodyType] = UNSET,
         **kwargs,
@@ -2694,7 +2694,7 @@ class AgentsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ActionsVariable, ActionsVariableTypeForResponse]:
         """agents/get-repo-variable
@@ -2730,7 +2730,7 @@ class AgentsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ActionsVariable, ActionsVariableTypeForResponse]:
         """agents/get-repo-variable
@@ -2766,7 +2766,7 @@ class AgentsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """agents/delete-repo-variable
@@ -2799,7 +2799,7 @@ class AgentsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """agents/delete-repo-variable
@@ -2833,7 +2833,7 @@ class AgentsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoAgentsVariablesNamePatchBodyType,
     ) -> Response: ...
@@ -2846,7 +2846,7 @@ class AgentsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         value: Missing[str] = UNSET,
     ) -> Response: ...
@@ -2857,7 +2857,7 @@ class AgentsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoAgentsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
@@ -2907,7 +2907,7 @@ class AgentsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ReposOwnerRepoAgentsVariablesNamePatchBodyType,
     ) -> Response: ...
@@ -2920,7 +2920,7 @@ class AgentsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         value: Missing[str] = UNSET,
     ) -> Response: ...
@@ -2931,7 +2931,7 @@ class AgentsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoAgentsVariablesNamePatchBodyType] = UNSET,
         **kwargs,

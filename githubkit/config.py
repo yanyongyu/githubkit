@@ -1,6 +1,6 @@
 from collections.abc import Sequence
 from dataclasses import dataclass, fields
-from typing import TYPE_CHECKING, Any, Optional, Union
+from typing import TYPE_CHECKING, Any
 from typing_extensions import Self
 
 import httpx
@@ -21,17 +21,17 @@ class Config:
     user_agent: str
     follow_redirects: bool
     timeout: httpx.Timeout
-    ssl_verify: Union[bool, "ssl.SSLContext"]
+    ssl_verify: "bool | ssl.SSLContext"
     trust_env: bool  # effects the `httpx` proxy and ssl cert
-    proxy: Optional[ProxyTypes]
-    transport: Optional[httpx.BaseTransport]
-    async_transport: Optional[httpx.AsyncBaseTransport]
-    event_hooks: Optional[EventHookTypes]
-    async_event_hooks: Optional[EventHookTypes]
+    proxy: ProxyTypes | None
+    transport: httpx.BaseTransport | None
+    async_transport: httpx.AsyncBaseTransport | None
+    event_hooks: EventHookTypes | None
+    async_event_hooks: EventHookTypes | None
     cache_strategy: BaseCacheStrategy
     http_cache: bool
     throttler: BaseThrottler
-    auto_retry: Optional[RetryDecisionFunc]
+    auto_retry: RetryDecisionFunc | None
     rest_api_validate_body: bool
 
     def dict(self) -> dict[str, Any]:
@@ -43,7 +43,7 @@ class Config:
         return self.__class__(**self.dict())
 
 
-def build_base_url(base_url: Optional[Union[str, httpx.URL]]) -> httpx.URL:
+def build_base_url(base_url: str | httpx.URL | None) -> httpx.URL:
     base_url = base_url or httpx.URL("https://api.github.com/")
     base_url = base_url if isinstance(base_url, httpx.URL) else httpx.URL(base_url)
     # enforce trailing slash
@@ -53,7 +53,7 @@ def build_base_url(base_url: Optional[Union[str, httpx.URL]]) -> httpx.URL:
 
 
 def build_accept(
-    accept_format: Optional[str] = None, previews: Optional[Sequence[str]] = None
+    accept_format: str | None = None, previews: Sequence[str] | None = None
 ) -> str:
     if accept_format:
         accept_format = (
@@ -71,24 +71,24 @@ def build_accept(
     return ",".join(accepts)
 
 
-def build_user_agent(user_agent: Optional[str] = None) -> str:
+def build_user_agent(user_agent: str | None = None) -> str:
     return user_agent or "GitHubKit/Python"
 
 
 def build_timeout(
-    timeout: Optional[Union[float, httpx.Timeout]] = None,
+    timeout: float | httpx.Timeout | None = None,
 ) -> httpx.Timeout:
     return timeout if isinstance(timeout, httpx.Timeout) else httpx.Timeout(timeout)
 
 
 def build_cache_strategy(
-    cache_strategy: Optional[BaseCacheStrategy],
+    cache_strategy: BaseCacheStrategy | None,
 ) -> BaseCacheStrategy:
     return cache_strategy or DEFAULT_CACHE_STRATEGY
 
 
 def build_throttler(
-    throttler: Optional[BaseThrottler],
+    throttler: BaseThrottler | None,
 ) -> BaseThrottler:
     # https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits
     # > No more than 100 concurrent requests are allowed
@@ -96,8 +96,8 @@ def build_throttler(
 
 
 def build_auto_retry(
-    auto_retry: Union[bool, RetryDecisionFunc] = True,
-) -> Optional[RetryDecisionFunc]:
+    auto_retry: bool | RetryDecisionFunc = True,
+) -> RetryDecisionFunc | None:
     if auto_retry is True:
         return RETRY_DEFAULT
     elif auto_retry:
@@ -108,23 +108,23 @@ def build_auto_retry(
 
 def get_config(
     *,
-    base_url: Optional[Union[str, httpx.URL]] = None,
-    accept_format: Optional[str] = None,
-    previews: Optional[Sequence[str]] = None,
-    user_agent: Optional[str] = None,
+    base_url: str | httpx.URL | None = None,
+    accept_format: str | None = None,
+    previews: Sequence[str] | None = None,
+    user_agent: str | None = None,
     follow_redirects: bool = True,
-    timeout: Optional[Union[float, httpx.Timeout]] = None,
-    ssl_verify: Union[bool, "ssl.SSLContext"] = True,
+    timeout: float | httpx.Timeout | None = None,
+    ssl_verify: "bool | ssl.SSLContext" = True,
     trust_env: bool = True,
-    proxy: Optional[ProxyTypes] = None,
-    transport: Optional[httpx.BaseTransport] = None,
-    async_transport: Optional[httpx.AsyncBaseTransport] = None,
-    event_hooks: Optional[EventHookTypes] = None,
-    async_event_hooks: Optional[EventHookTypes] = None,
-    cache_strategy: Optional[BaseCacheStrategy] = None,
+    proxy: ProxyTypes | None = None,
+    transport: httpx.BaseTransport | None = None,
+    async_transport: httpx.AsyncBaseTransport | None = None,
+    event_hooks: EventHookTypes | None = None,
+    async_event_hooks: EventHookTypes | None = None,
+    cache_strategy: BaseCacheStrategy | None = None,
     http_cache: bool = True,
-    throttler: Optional[BaseThrottler] = None,
-    auto_retry: Union[bool, RetryDecisionFunc] = True,
+    throttler: BaseThrottler | None = None,
+    auto_retry: bool | RetryDecisionFunc = True,
     rest_api_validate_body: bool = True,
 ) -> Config:
     """Build the configs from the given options."""

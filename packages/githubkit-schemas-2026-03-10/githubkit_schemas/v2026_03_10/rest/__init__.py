@@ -23,6 +23,7 @@ if TYPE_CHECKING:
     from .campaigns import CampaignsClient
     from .checks import ChecksClient
     from .classroom import ClassroomClient
+    from .code_quality import CodeQualityClient
     from .code_scanning import CodeScanningClient
     from .code_security import CodeSecurityClient
     from .codes_of_conduct import CodesOfConductClient
@@ -314,6 +315,12 @@ class RestNamespace:
         from .checks import ChecksClient
 
         return ChecksClient(self._github)
+
+    @cached_property
+    def code_quality(self) -> "CodeQualityClient":
+        from .code_quality import CodeQualityClient
+
+        return CodeQualityClient(self._github)
 
     @cached_property
     def reactions(self) -> "ReactionsClient":

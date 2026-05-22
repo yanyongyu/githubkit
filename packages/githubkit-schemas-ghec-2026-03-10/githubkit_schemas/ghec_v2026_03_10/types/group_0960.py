@@ -113,13 +113,13 @@ class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType(Typ
             RepositoryRuleCommitterEmailPatternType,
             RepositoryRuleBranchNamePatternType,
             RepositoryRuleTagNamePatternType,
+            RepositoryRuleWorkflowsType,
+            RepositoryRuleCodeScanningType,
+            RepositoryRuleCopilotCodeReviewType,
             RepositoryRuleFilePathRestrictionType,
             RepositoryRuleMaxFilePathLengthType,
             RepositoryRuleFileExtensionRestrictionType,
             RepositoryRuleMaxFileSizeType,
-            RepositoryRuleWorkflowsType,
-            RepositoryRuleCodeScanningType,
-            RepositoryRuleCopilotCodeReviewType,
         ]
     ]
     changes: NotRequired[
@@ -149,13 +149,13 @@ class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsTypeForR
             RepositoryRuleCommitterEmailPatternTypeForResponse,
             RepositoryRuleBranchNamePatternTypeForResponse,
             RepositoryRuleTagNamePatternTypeForResponse,
+            RepositoryRuleWorkflowsTypeForResponse,
+            RepositoryRuleCodeScanningTypeForResponse,
+            RepositoryRuleCopilotCodeReviewTypeForResponse,
             RepositoryRuleFilePathRestrictionTypeForResponse,
             RepositoryRuleMaxFilePathLengthTypeForResponse,
             RepositoryRuleFileExtensionRestrictionTypeForResponse,
             RepositoryRuleMaxFileSizeTypeForResponse,
-            RepositoryRuleWorkflowsTypeForResponse,
-            RepositoryRuleCodeScanningTypeForResponse,
-            RepositoryRuleCopilotCodeReviewTypeForResponse,
         ]
     ]
     changes: NotRequired[

@@ -13,41 +13,71 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0491 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0492 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0493 import (
+from .group_0497 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0498 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0499 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0494 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0523 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
+from .group_0500 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0527 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
 
 
-class WebhookProjectColumnDeletedType(TypedDict):
-    """project_column deleted event"""
+class WebhookProjectCardEditedType(TypedDict):
+    """project_card edited event"""
 
-    action: Literal["deleted"]
+    action: Literal["edited"]
+    changes: WebhookProjectCardEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
-    sender: NotRequired[SimpleUserType]
+    project_card: WebhooksProjectCardType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-class WebhookProjectColumnDeletedTypeForResponse(TypedDict):
-    """project_column deleted event"""
+class WebhookProjectCardEditedTypeForResponse(TypedDict):
+    """project_card edited event"""
 
-    action: Literal["deleted"]
+    action: Literal["edited"]
+    changes: WebhookProjectCardEditedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_column: WebhooksProjectColumnTypeForResponse
-    repository: NotRequired[Union[None, RepositoryWebhooksTypeForResponse]]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    project_card: WebhooksProjectCardTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookProjectCardEditedPropChangesType(TypedDict):
+    """WebhookProjectCardEditedPropChanges"""
+
+    note: WebhookProjectCardEditedPropChangesPropNoteType
+
+
+class WebhookProjectCardEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectCardEditedPropChanges"""
+
+    note: WebhookProjectCardEditedPropChangesPropNoteTypeForResponse
+
+
+class WebhookProjectCardEditedPropChangesPropNoteType(TypedDict):
+    """WebhookProjectCardEditedPropChangesPropNote"""
+
+    from_: Union[str, None]
+
+
+class WebhookProjectCardEditedPropChangesPropNoteTypeForResponse(TypedDict):
+    """WebhookProjectCardEditedPropChangesPropNote"""
+
+    from_: Union[str, None]
 
 
 __all__ = (
-    "WebhookProjectColumnDeletedType",
-    "WebhookProjectColumnDeletedTypeForResponse",
+    "WebhookProjectCardEditedPropChangesPropNoteType",
+    "WebhookProjectCardEditedPropChangesPropNoteTypeForResponse",
+    "WebhookProjectCardEditedPropChangesType",
+    "WebhookProjectCardEditedPropChangesTypeForResponse",
+    "WebhookProjectCardEditedType",
+    "WebhookProjectCardEditedTypeForResponse",
 )

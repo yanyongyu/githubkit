@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    labels: NotRequired[list[str]]
+    assignees: NotRequired[list[str]]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    labels: NotRequired[list[str]]
+    assignees: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyTypeForResponse",
 )

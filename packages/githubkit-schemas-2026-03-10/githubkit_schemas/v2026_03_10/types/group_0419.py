@@ -9,28 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0172 import LinkType, LinkTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class ReviewCommentPropLinksType(TypedDict):
-    """ReviewCommentPropLinks"""
+class PullRequestPropHeadType(TypedDict):
+    """PullRequestPropHead"""
 
-    self_: LinkType
-    html: LinkType
-    pull_request: LinkType
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
+    sha: str
+    user: Union[None, SimpleUserType]
 
 
-class ReviewCommentPropLinksTypeForResponse(TypedDict):
-    """ReviewCommentPropLinks"""
+class PullRequestPropHeadTypeForResponse(TypedDict):
+    """PullRequestPropHead"""
 
-    self_: LinkTypeForResponse
-    html: LinkTypeForResponse
-    pull_request: LinkTypeForResponse
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryTypeForResponse]
+    sha: str
+    user: Union[None, SimpleUserTypeForResponse]
+
+
+class PullRequestPropBaseType(TypedDict):
+    """PullRequestPropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: SimpleUserType
+
+
+class PullRequestPropBaseTypeForResponse(TypedDict):
+    """PullRequestPropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryTypeForResponse
+    sha: str
+    user: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "ReviewCommentPropLinksType",
-    "ReviewCommentPropLinksTypeForResponse",
+    "PullRequestPropBaseType",
+    "PullRequestPropBaseTypeForResponse",
+    "PullRequestPropHeadType",
+    "PullRequestPropHeadTypeForResponse",
 )

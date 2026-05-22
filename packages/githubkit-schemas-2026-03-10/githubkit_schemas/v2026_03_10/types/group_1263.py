@@ -11,39 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0362 import (
-    CustomDeploymentRuleAppType,
-    CustomDeploymentRuleAppTypeForResponse,
-)
+
+class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type(TypedDict):
+    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
+
+    sbom_url: NotRequired[str]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type(
+class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
-    """
+    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
 
-    total_count: NotRequired[int]
-    available_custom_deployment_protection_rule_integrations: NotRequired[
-        list[CustomDeploymentRuleAppType]
-    ]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
-    """
-
-    total_count: NotRequired[int]
-    available_custom_deployment_protection_rule_integrations: NotRequired[
-        list[CustomDeploymentRuleAppTypeForResponse]
-    ]
+    sbom_url: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse",
+    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type",
+    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse",
 )

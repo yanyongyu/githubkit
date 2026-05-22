@@ -13,42 +13,61 @@ from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
+class ReposOwnerRepoIssuesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesPostBody"""
 
-    issue_field_values: Missing[
-        list[
-            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
-        ]
+    title: Union[str, int] = Field(description="The title of the issue.")
+    body: Missing[str] = Field(default=UNSET, description="The contents of the issue.")
+    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
+    labels: Missing[
+        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1]]
     ] = Field(
-        max_length=25 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="An array of issue field values to add to this issue. Each field value must include the field ID and the value to set.",
+        description="Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._",
+    )
+    assignees: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._",
+    )
+    issue_field_values: Missing[
+        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems]
+    ] = Field(
+        default=UNSET,
+        description="An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Issue fields are only available for organization-owned repositories with the feature enabled. Field values are silently dropped otherwise.",
+    )
+    type: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The name of the issue type to associate with this issue. _NOTE: Only users with push access can set the type for new issues. The type is silently dropped otherwise._",
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
+class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1(GitHubModel):
+    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    color: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems(GitHubModel):
+    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
 
     field_id: int = Field(description="The ID of the issue field to set")
-    value: Union[str, float] = Field(
-        description="The value to set for the field. The type depends on the field's data type:\n- For text fields: provide a string value\n- For single_select fields: provide the option name as a string (must match an existing option)\n- For number fields: provide a numeric value\n- For date fields: provide an ISO 8601 date string"
-    )
+    value: Union[str, float] = Field(description="The value to set for the field")
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
-)
+model_rebuild(ReposOwnerRepoIssuesPostBody)
+model_rebuild(ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1)
+model_rebuild(ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems)
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody",
-    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems",
+    "ReposOwnerRepoIssuesPostBody",
+    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems",
+    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1",
 )

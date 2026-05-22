@@ -63,13 +63,13 @@ class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems(GitHubM
             RepositoryRuleCommitterEmailPattern,
             RepositoryRuleBranchNamePattern,
             RepositoryRuleTagNamePattern,
+            RepositoryRuleWorkflows,
+            RepositoryRuleCodeScanning,
+            RepositoryRuleCopilotCodeReview,
             RepositoryRuleFilePathRestriction,
             RepositoryRuleMaxFilePathLength,
             RepositoryRuleFileExtensionRestriction,
             RepositoryRuleMaxFileSize,
-            RepositoryRuleWorkflows,
-            RepositoryRuleCodeScanning,
-            RepositoryRuleCopilotCodeReview,
         ]
     ] = Field(default=UNSET, title="Repository Rule", description="A repository rule.")
     changes: Missing[

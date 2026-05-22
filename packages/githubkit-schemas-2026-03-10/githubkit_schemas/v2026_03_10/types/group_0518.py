@@ -13,39 +13,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksMembershipType(TypedDict):
-    """Membership
-
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
-    """
-
-    organization_url: str
-    role: str
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    state: str
-    url: str
-    user: Union[WebhooksMembershipPropUserType, None]
-
-
-class WebhooksMembershipTypeForResponse(TypedDict):
-    """Membership
-
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
-    """
-
-    organization_url: str
-    role: str
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    state: str
-    url: str
-    user: Union[WebhooksMembershipPropUserTypeForResponse, None]
-
-
-class WebhooksMembershipPropUserType(TypedDict):
+class WebhooksUserMannequinType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -67,12 +35,12 @@ class WebhooksMembershipPropUserType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhooksMembershipPropUserTypeForResponse(TypedDict):
+class WebhooksUserMannequinTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -94,14 +62,12 @@ class WebhooksMembershipPropUserTypeForResponse(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksMembershipPropUserType",
-    "WebhooksMembershipPropUserTypeForResponse",
-    "WebhooksMembershipType",
-    "WebhooksMembershipTypeForResponse",
+    "WebhooksUserMannequinType",
+    "WebhooksUserMannequinTypeForResponse",
 )

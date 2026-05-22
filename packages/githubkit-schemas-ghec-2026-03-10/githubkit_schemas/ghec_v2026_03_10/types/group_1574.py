@@ -9,22 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof1"""
+class UserUserIdProjectsV2ProjectNumberDraftsPostBodyType(TypedDict):
+    """UserUserIdProjectsV2ProjectNumberDraftsPostBody"""
 
-    attestation_ids: list[int]
+    title: str
+    body: NotRequired[str]
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof1TypeForResponse(TypedDict):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof1"""
+class UserUserIdProjectsV2ProjectNumberDraftsPostBodyTypeForResponse(TypedDict):
+    """UserUserIdProjectsV2ProjectNumberDraftsPostBody"""
 
-    attestation_ids: list[int]
+    title: str
+    body: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type",
-    "UsersUsernameAttestationsDeleteRequestPostBodyOneof1TypeForResponse",
+    "UserUserIdProjectsV2ProjectNumberDraftsPostBodyType",
+    "UserUserIdProjectsV2ProjectNumberDraftsPostBodyTypeForResponse",
 )

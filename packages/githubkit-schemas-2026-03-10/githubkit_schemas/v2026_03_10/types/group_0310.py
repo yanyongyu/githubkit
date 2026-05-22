@@ -9,30 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAutofixCommitsType(TypedDict):
-    """CodeScanningAutofixCommits
+class CodeQualitySetupUpdateAnyof2Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof2"""
 
-    Commit an autofix for a code scanning alert
-    """
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: Union[str, None]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ]
 
-    target_ref: NotRequired[str]
-    message: NotRequired[str]
 
+class CodeQualitySetupUpdateAnyof2TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof2"""
 
-class CodeScanningAutofixCommitsTypeForResponse(TypedDict):
-    """CodeScanningAutofixCommits
-
-    Commit an autofix for a code scanning alert
-    """
-
-    target_ref: NotRequired[str]
-    message: NotRequired[str]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: Union[str, None]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "CodeScanningAutofixCommitsType",
-    "CodeScanningAutofixCommitsTypeForResponse",
+    "CodeQualitySetupUpdateAnyof2Type",
+    "CodeQualitySetupUpdateAnyof2TypeForResponse",
 )

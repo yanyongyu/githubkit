@@ -9,37 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
 
-    state: Literal["open", "resolved"]
-    resolution: NotRequired[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
-    ]
-    resolution_comment: NotRequired[Union[str, None]]
-    assignee: NotRequired[Union[str, None]]
-    validity: NotRequired[Union[None, Literal["active", "inactive"]]]
+    expected_head_sha: NotRequired[str]
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
 
-    state: Literal["open", "resolved"]
-    resolution: NotRequired[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
-    ]
-    resolution_comment: NotRequired[Union[str, None]]
-    assignee: NotRequired[Union[str, None]]
-    validity: NotRequired[Union[None, Literal["active", "inactive"]]]
+    expected_head_sha: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type",
-    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse",
 )

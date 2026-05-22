@@ -9,39 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0359 import (
-    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType,
-    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse,
-)
+from .group_0357 import MetadataType, MetadataTypeForResponse
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class DependencyType(TypedDict):
+    """Dependency"""
 
-    id: int
-    node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
-    ]
+    package_url: NotRequired[str]
+    metadata: NotRequired[MetadataType]
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[list[str]]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class DependencyTypeForResponse(TypedDict):
+    """Dependency"""
 
-    id: int
-    node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse]
-    ]
+    package_url: NotRequired[str]
+    metadata: NotRequired[MetadataTypeForResponse]
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof1Type",
-    "EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse",
+    "DependencyType",
+    "DependencyTypeForResponse",
 )

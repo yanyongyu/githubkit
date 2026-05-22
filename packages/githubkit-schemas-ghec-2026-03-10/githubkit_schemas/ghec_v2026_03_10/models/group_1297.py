@@ -16,13 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
+class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubModel):
+    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    async_: Missing[bool] = Field(
+        default=UNSET,
+        alias="async",
+        description="When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued.",
+    )
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422)
+model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutBody)
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",)
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBody",)

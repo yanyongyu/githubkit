@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from typing_extensions import deprecated
 from weakref import ref
 
@@ -186,7 +186,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsTypeForResponse
@@ -223,7 +223,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsTypeForResponse
@@ -260,7 +260,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsTypeForResponse
@@ -297,7 +297,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsTypeForResponse
@@ -334,7 +334,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ActionsEnterprisePermissions, ActionsEnterprisePermissionsTypeForResponse
@@ -368,7 +368,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ActionsEnterprisePermissions, ActionsEnterprisePermissionsTypeForResponse
@@ -403,7 +403,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsPermissionsPutBodyType,
     ) -> Response: ...
@@ -414,7 +414,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         enabled_organizations: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
@@ -425,7 +425,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
@@ -471,7 +471,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsPermissionsPutBodyType,
     ) -> Response: ...
@@ -482,7 +482,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         enabled_organizations: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
@@ -493,7 +493,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
@@ -538,7 +538,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ActionsArtifactAndLogRetentionResponse,
@@ -576,7 +576,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ActionsArtifactAndLogRetentionResponse,
@@ -615,7 +615,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ActionsArtifactAndLogRetentionType,
     ) -> Response: ...
@@ -626,7 +626,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         days: int,
     ) -> Response: ...
@@ -635,7 +635,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ActionsArtifactAndLogRetentionType] = UNSET,
         **kwargs,
@@ -683,7 +683,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ActionsArtifactAndLogRetentionType,
     ) -> Response: ...
@@ -694,7 +694,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         days: int,
     ) -> Response: ...
@@ -703,7 +703,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ActionsArtifactAndLogRetentionType] = UNSET,
         **kwargs,
@@ -750,7 +750,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ActionsForkPrContributorApproval,
@@ -786,7 +786,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ActionsForkPrContributorApproval,
@@ -823,7 +823,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ActionsForkPrContributorApprovalType,
     ) -> Response: ...
@@ -834,7 +834,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         approval_policy: Literal[
             "first_time_contributors_new_to_github",
@@ -847,7 +847,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ActionsForkPrContributorApprovalType] = UNSET,
         **kwargs,
@@ -897,7 +897,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ActionsForkPrContributorApprovalType,
     ) -> Response: ...
@@ -908,7 +908,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         approval_policy: Literal[
             "first_time_contributors_new_to_github",
@@ -921,7 +921,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ActionsForkPrContributorApprovalType] = UNSET,
         **kwargs,
@@ -970,7 +970,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ActionsForkPrWorkflowsPrivateRepos,
@@ -1006,7 +1006,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ActionsForkPrWorkflowsPrivateRepos,
@@ -1043,7 +1043,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ActionsForkPrWorkflowsPrivateReposRequestType,
     ) -> Response: ...
@@ -1054,7 +1054,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         run_workflows_from_fork_pull_requests: bool,
         send_write_tokens_to_workflows: Missing[bool] = UNSET,
@@ -1066,7 +1066,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ActionsForkPrWorkflowsPrivateReposRequestType] = UNSET,
         **kwargs,
@@ -1116,7 +1116,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: ActionsForkPrWorkflowsPrivateReposRequestType,
     ) -> Response: ...
@@ -1127,7 +1127,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         run_workflows_from_fork_pull_requests: bool,
         send_write_tokens_to_workflows: Missing[bool] = UNSET,
@@ -1139,7 +1139,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[ActionsForkPrWorkflowsPrivateReposRequestType] = UNSET,
         **kwargs,
@@ -1190,7 +1190,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
@@ -1235,7 +1235,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
@@ -1279,7 +1279,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType,
     ) -> Response: ...
@@ -1290,7 +1290,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_organization_ids: list[int],
     ) -> Response: ...
@@ -1299,7 +1299,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType
@@ -1347,7 +1347,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType,
     ) -> Response: ...
@@ -1358,7 +1358,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_organization_ids: list[int],
     ) -> Response: ...
@@ -1367,7 +1367,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType
@@ -1415,7 +1415,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         org_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/enable-selected-organization-github-actions-enterprise
@@ -1445,7 +1445,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         org_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/enable-selected-organization-github-actions-enterprise
@@ -1475,7 +1475,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         org_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/disable-selected-organization-github-actions-enterprise
@@ -1505,7 +1505,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         org_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/disable-selected-organization-github-actions-enterprise
@@ -1534,7 +1534,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[SelectedActions, SelectedActionsTypeForResponse]:
         """enterprise-admin/get-allowed-actions-enterprise
@@ -1566,7 +1566,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[SelectedActions, SelectedActionsTypeForResponse]:
         """enterprise-admin/get-allowed-actions-enterprise
@@ -1599,7 +1599,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: SelectedActionsType,
     ) -> Response: ...
@@ -1610,7 +1610,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
@@ -1621,7 +1621,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
@@ -1665,7 +1665,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: SelectedActionsType,
     ) -> Response: ...
@@ -1676,7 +1676,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
@@ -1687,7 +1687,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
@@ -1730,7 +1730,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200,
@@ -1769,7 +1769,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200,
@@ -1809,7 +1809,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType,
     ) -> Response: ...
@@ -1820,7 +1820,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         disable_self_hosted_runners_for_all_orgs: bool,
     ) -> Response: ...
@@ -1829,7 +1829,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType
@@ -1883,7 +1883,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType,
     ) -> Response: ...
@@ -1894,7 +1894,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         disable_self_hosted_runners_for_all_orgs: bool,
     ) -> Response: ...
@@ -1903,7 +1903,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType
@@ -1959,7 +1959,7 @@ class EnterpriseAdminClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         visible_to_organization: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
@@ -2004,7 +2004,7 @@ class EnterpriseAdminClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         visible_to_organization: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
@@ -2047,7 +2047,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
     ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
@@ -2058,7 +2058,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         visibility: Missing[Literal["selected", "all"]] = UNSET,
@@ -2074,7 +2074,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
@@ -2124,7 +2124,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
     ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
@@ -2135,7 +2135,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         visibility: Missing[Literal["selected", "all"]] = UNSET,
@@ -2151,7 +2151,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
@@ -2201,7 +2201,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_group_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]:
         """enterprise-admin/get-self-hosted-runner-group-for-enterprise
@@ -2234,7 +2234,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_group_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]:
         """enterprise-admin/get-self-hosted-runner-group-for-enterprise
@@ -2267,7 +2267,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_group_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/delete-self-hosted-runner-group-from-enterprise
@@ -2297,7 +2297,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_group_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/delete-self-hosted-runner-group-from-enterprise
@@ -2328,7 +2328,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_group_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
@@ -2342,7 +2342,7 @@ class EnterpriseAdminClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         visibility: Missing[Literal["selected", "all"]] = UNSET,
@@ -2357,7 +2357,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_group_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
@@ -2410,7 +2410,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_group_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
@@ -2424,7 +2424,7 @@ class EnterpriseAdminClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         visibility: Missing[Literal["selected", "all"]] = UNSET,
@@ -2439,7 +2439,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_group_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
@@ -2493,7 +2493,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
@@ -2539,7 +2539,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
@@ -2584,7 +2584,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_group_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType,
     ) -> Response: ...
@@ -2596,7 +2596,7 @@ class EnterpriseAdminClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_organization_ids: list[int],
     ) -> Response: ...
@@ -2606,7 +2606,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_group_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType
@@ -2658,7 +2658,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_group_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType,
     ) -> Response: ...
@@ -2670,7 +2670,7 @@ class EnterpriseAdminClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         selected_organization_ids: list[int],
     ) -> Response: ...
@@ -2680,7 +2680,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_group_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType
@@ -2732,7 +2732,7 @@ class EnterpriseAdminClient:
         runner_group_id: int,
         org_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise
@@ -2763,7 +2763,7 @@ class EnterpriseAdminClient:
         runner_group_id: int,
         org_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise
@@ -2794,7 +2794,7 @@ class EnterpriseAdminClient:
         runner_group_id: int,
         org_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise
@@ -2825,7 +2825,7 @@ class EnterpriseAdminClient:
         runner_group_id: int,
         org_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise
@@ -2857,7 +2857,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
@@ -2905,7 +2905,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
@@ -2952,7 +2952,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_group_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
     ) -> Response: ...
@@ -2964,7 +2964,7 @@ class EnterpriseAdminClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         runners: list[int],
     ) -> Response: ...
@@ -2974,7 +2974,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_group_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType
@@ -3028,7 +3028,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_group_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
     ) -> Response: ...
@@ -3040,7 +3040,7 @@ class EnterpriseAdminClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         runners: list[int],
     ) -> Response: ...
@@ -3050,7 +3050,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_group_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType
@@ -3104,7 +3104,7 @@ class EnterpriseAdminClient:
         runner_group_id: int,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/add-self-hosted-runner-to-group-for-enterprise
@@ -3135,7 +3135,7 @@ class EnterpriseAdminClient:
         runner_group_id: int,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/add-self-hosted-runner-to-group-for-enterprise
@@ -3166,7 +3166,7 @@ class EnterpriseAdminClient:
         runner_group_id: int,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise
@@ -3197,7 +3197,7 @@ class EnterpriseAdminClient:
         runner_group_id: int,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise
@@ -3229,7 +3229,7 @@ class EnterpriseAdminClient:
         name: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGetResponse200,
@@ -3274,7 +3274,7 @@ class EnterpriseAdminClient:
         name: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGetResponse200,
@@ -3316,7 +3316,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RunnerApplication], list[RunnerApplicationTypeForResponse]]:
         """enterprise-admin/list-runner-applications-for-enterprise
@@ -3348,7 +3348,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RunnerApplication], list[RunnerApplicationTypeForResponse]]:
         """enterprise-admin/list-runner-applications-for-enterprise
@@ -3380,7 +3380,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """enterprise-admin/create-registration-token-for-enterprise
@@ -3420,7 +3420,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """enterprise-admin/create-registration-token-for-enterprise
@@ -3460,7 +3460,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """enterprise-admin/create-remove-token-for-enterprise
@@ -3501,7 +3501,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """enterprise-admin/create-remove-token-for-enterprise
@@ -3543,7 +3543,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Runner, RunnerTypeForResponse]:
         """enterprise-admin/get-self-hosted-runner-for-enterprise
@@ -3576,7 +3576,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[Runner, RunnerTypeForResponse]:
         """enterprise-admin/get-self-hosted-runner-for-enterprise
@@ -3609,7 +3609,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/delete-self-hosted-runner-from-enterprise
@@ -3644,7 +3644,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/delete-self-hosted-runner-from-enterprise
@@ -3679,7 +3679,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
@@ -3721,7 +3721,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
@@ -3764,7 +3764,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
@@ -3779,7 +3779,7 @@ class EnterpriseAdminClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         labels: list[str],
     ) -> Response[
@@ -3792,7 +3792,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType
@@ -3855,7 +3855,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
@@ -3870,7 +3870,7 @@ class EnterpriseAdminClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         labels: list[str],
     ) -> Response[
@@ -3883,7 +3883,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType
@@ -3946,7 +3946,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
@@ -3961,7 +3961,7 @@ class EnterpriseAdminClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         labels: list[str],
     ) -> Response[
@@ -3974,7 +3974,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType
@@ -4036,7 +4036,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
@@ -4051,7 +4051,7 @@ class EnterpriseAdminClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         labels: list[str],
     ) -> Response[
@@ -4064,7 +4064,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType
@@ -4125,7 +4125,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
@@ -4170,7 +4170,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
@@ -4216,7 +4216,7 @@ class EnterpriseAdminClient:
         runner_id: int,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
@@ -4265,7 +4265,7 @@ class EnterpriseAdminClient:
         runner_id: int,
         name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
@@ -4312,7 +4312,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]:
         """announcement-banners/get-announcement-banner-for-enterprise
@@ -4342,7 +4342,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]:
         """announcement-banners/get-announcement-banner-for-enterprise
@@ -4372,7 +4372,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """announcement-banners/remove-announcement-banner-for-enterprise
@@ -4399,7 +4399,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """announcement-banners/remove-announcement-banner-for-enterprise
@@ -4427,7 +4427,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: AnnouncementType,
     ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]: ...
@@ -4438,7 +4438,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         announcement: Union[str, None],
         expires_at: Missing[Union[_dt.datetime, None]] = UNSET,
@@ -4449,7 +4449,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[AnnouncementType] = UNSET,
         **kwargs,
@@ -4492,7 +4492,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: AnnouncementType,
     ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]: ...
@@ -4503,7 +4503,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         announcement: Union[str, None],
         expires_at: Missing[Union[_dt.datetime, None]] = UNSET,
@@ -4514,7 +4514,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[AnnouncementType] = UNSET,
         **kwargs,
@@ -4563,7 +4563,7 @@ class EnterpriseAdminClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[AuditLogEvent], list[AuditLogEventTypeForResponse]]:
         """enterprise-admin/get-audit-log
@@ -4617,7 +4617,7 @@ class EnterpriseAdminClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[AuditLogEvent], list[AuditLogEventTypeForResponse]]:
         """enterprise-admin/get-audit-log
@@ -4664,7 +4664,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[AuditLogStreamKey, AuditLogStreamKeyTypeForResponse]:
         """enterprise-admin/get-audit-log-stream-key
@@ -4696,7 +4696,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[AuditLogStreamKey, AuditLogStreamKeyTypeForResponse]:
         """enterprise-admin/get-audit-log-stream-key
@@ -4728,7 +4728,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[GetAuditLogStreamConfigsItems],
@@ -4764,7 +4764,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[GetAuditLogStreamConfigsItems],
@@ -4801,7 +4801,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAuditLogStreamsPostBodyType,
     ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
@@ -4812,7 +4812,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         enabled: bool,
         stream_type: Literal[
@@ -4840,7 +4840,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseAuditLogStreamsPostBodyType] = UNSET,
         **kwargs,
@@ -4890,7 +4890,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAuditLogStreamsPostBodyType,
     ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
@@ -4901,7 +4901,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         enabled: bool,
         stream_type: Literal[
@@ -4929,7 +4929,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseAuditLogStreamsPostBodyType] = UNSET,
         **kwargs,
@@ -4979,7 +4979,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         stream_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]:
         """enterprise-admin/get-one-audit-log-stream
@@ -5012,7 +5012,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         stream_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]:
         """enterprise-admin/get-one-audit-log-stream
@@ -5046,7 +5046,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         stream_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
     ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
@@ -5058,7 +5058,7 @@ class EnterpriseAdminClient:
         stream_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         enabled: bool,
         stream_type: Literal[
@@ -5087,7 +5087,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         stream_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType] = UNSET,
         **kwargs,
@@ -5142,7 +5142,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         stream_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
     ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
@@ -5154,7 +5154,7 @@ class EnterpriseAdminClient:
         stream_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         enabled: bool,
         stream_type: Literal[
@@ -5183,7 +5183,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         stream_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType] = UNSET,
         **kwargs,
@@ -5237,7 +5237,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         stream_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/delete-audit-log-stream
@@ -5267,7 +5267,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         stream_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/delete-audit-log-stream
@@ -5314,7 +5314,7 @@ class EnterpriseAdminClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[PushRuleBypassRequest], list[PushRuleBypassRequestTypeForResponse]
@@ -5379,7 +5379,7 @@ class EnterpriseAdminClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[PushRuleBypassRequest], list[PushRuleBypassRequestTypeForResponse]
@@ -5427,7 +5427,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterpriseSecurityAnalysisSettings,
@@ -5471,7 +5471,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterpriseSecurityAnalysisSettings,
@@ -5516,7 +5516,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType
@@ -5530,7 +5530,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         advanced_security_enabled_for_new_repositories: Missing[bool] = UNSET,
         advanced_security_enabled_new_user_namespace_repos: Missing[bool] = UNSET,
@@ -5550,7 +5550,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType
@@ -5610,7 +5610,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType
@@ -5624,7 +5624,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         advanced_security_enabled_for_new_repositories: Missing[bool] = UNSET,
         advanced_security_enabled_new_user_namespace_repos: Missing[bool] = UNSET,
@@ -5644,7 +5644,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType
@@ -5704,7 +5704,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetConsumedLicenses, GetConsumedLicensesTypeForResponse]:
         """enterprise-admin/get-consumed-licenses
@@ -5746,7 +5746,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetConsumedLicenses, GetConsumedLicensesTypeForResponse]:
         """enterprise-admin/get-consumed-licenses
@@ -5787,7 +5787,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType
@@ -5803,7 +5803,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         revoke_credentials: Missing[bool] = UNSET,
     ) -> Response[
@@ -5815,7 +5815,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType
@@ -5890,7 +5890,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType
@@ -5906,7 +5906,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         revoke_credentials: Missing[bool] = UNSET,
     ) -> Response[
@@ -5918,7 +5918,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType
@@ -5992,7 +5992,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseEnterpriseRolesGetResponse200,
@@ -6039,7 +6039,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseEnterpriseRolesGetResponse200,
@@ -6087,7 +6087,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/revoke-all-enterprise-roles-team
@@ -6131,7 +6131,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/revoke-all-enterprise-roles-team
@@ -6176,7 +6176,7 @@ class EnterpriseAdminClient:
         team_slug: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/assign-team-to-enterprise-role
@@ -6221,7 +6221,7 @@ class EnterpriseAdminClient:
         team_slug: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/assign-team-to-enterprise-role
@@ -6266,7 +6266,7 @@ class EnterpriseAdminClient:
         team_slug: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/revoke-enterprise-role-team
@@ -6311,7 +6311,7 @@ class EnterpriseAdminClient:
         team_slug: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/revoke-enterprise-role-team
@@ -6355,7 +6355,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/remove-all-enterprise-roles-from-user
@@ -6396,7 +6396,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         username: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/remove-all-enterprise-roles-from-user
@@ -6438,7 +6438,7 @@ class EnterpriseAdminClient:
         username: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/assign-enterprise-role-to-user
@@ -6480,7 +6480,7 @@ class EnterpriseAdminClient:
         username: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/assign-enterprise-role-to-user
@@ -6522,7 +6522,7 @@ class EnterpriseAdminClient:
         username: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/remove-enterprise-user-role-assignment
@@ -6564,7 +6564,7 @@ class EnterpriseAdminClient:
         username: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/remove-enterprise-user-role-assignment
@@ -6605,7 +6605,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[EnterpriseRole, EnterpriseRoleTypeForResponse]:
         """enterprise-admin/get-enterprise-role
@@ -6647,7 +6647,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         role_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[EnterpriseRole, EnterpriseRoleTypeForResponse]:
         """enterprise-admin/get-enterprise-role
@@ -6691,7 +6691,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamTypeForResponse]]:
         """enterprise-admin/list-enterprise-role-teams
@@ -6744,7 +6744,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamTypeForResponse]]:
         """enterprise-admin/list-enterprise-role-teams
@@ -6797,7 +6797,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[EnterpriseUserRoleAssignment],
@@ -6850,7 +6850,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[EnterpriseUserRoleAssignment],
@@ -6900,7 +6900,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetLicenseSyncStatus, GetLicenseSyncStatusTypeForResponse]:
         """enterprise-admin/get-license-sync-status
@@ -6934,7 +6934,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetLicenseSyncStatus, GetLicenseSyncStatusTypeForResponse]:
         """enterprise-admin/get-license-sync-status
@@ -6970,7 +6970,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
@@ -7011,7 +7011,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
@@ -7051,7 +7051,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseNetworkConfigurationsPostBodyType,
     ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
@@ -7062,7 +7062,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
@@ -7075,7 +7075,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseNetworkConfigurationsPostBodyType] = UNSET,
         **kwargs,
@@ -7123,7 +7123,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseNetworkConfigurationsPostBodyType,
     ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
@@ -7134,7 +7134,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
@@ -7147,7 +7147,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseNetworkConfigurationsPostBodyType] = UNSET,
         **kwargs,
@@ -7195,7 +7195,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         network_configuration_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/get-network-configuration-for-enterprise
@@ -7226,7 +7226,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         network_configuration_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/get-network-configuration-for-enterprise
@@ -7257,7 +7257,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         network_configuration_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """hosted-compute/delete-network-configuration-from-enterprise
@@ -7285,7 +7285,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         network_configuration_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """hosted-compute/delete-network-configuration-from-enterprise
@@ -7314,7 +7314,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         network_configuration_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
     ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
@@ -7326,7 +7326,7 @@ class EnterpriseAdminClient:
         network_configuration_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
@@ -7340,7 +7340,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         network_configuration_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType
@@ -7392,7 +7392,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         network_configuration_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
     ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
@@ -7404,7 +7404,7 @@ class EnterpriseAdminClient:
         network_configuration_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[str] = UNSET,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
@@ -7418,7 +7418,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         network_configuration_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType
@@ -7469,7 +7469,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         network_settings_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[NetworkSettings, NetworkSettingsTypeForResponse]:
         """hosted-compute/get-network-settings-for-enterprise
@@ -7500,7 +7500,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         network_settings_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[NetworkSettings, NetworkSettingsTypeForResponse]:
         """hosted-compute/get-network-settings-for-enterprise
@@ -7530,7 +7530,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationCustomProperty],
@@ -7572,7 +7572,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[OrganizationCustomProperty],
@@ -7615,7 +7615,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType,
     ) -> Response[
@@ -7629,7 +7629,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         properties: list[OrganizationCustomPropertyType],
     ) -> Response[
@@ -7641,7 +7641,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
@@ -7707,7 +7707,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType,
     ) -> Response[
@@ -7721,7 +7721,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         properties: list[OrganizationCustomPropertyType],
     ) -> Response[
@@ -7733,7 +7733,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
@@ -7799,7 +7799,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
@@ -7841,7 +7841,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
@@ -7884,7 +7884,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrganizationCustomPropertyPayloadType,
     ) -> Response[
@@ -7898,7 +7898,7 @@ class EnterpriseAdminClient:
         custom_property_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         value_type: Literal[
             "string", "single_select", "multi_select", "true_false", "url"
@@ -7919,7 +7919,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrganizationCustomPropertyPayloadType] = UNSET,
         **kwargs,
@@ -7980,7 +7980,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrganizationCustomPropertyPayloadType,
     ) -> Response[
@@ -7994,7 +7994,7 @@ class EnterpriseAdminClient:
         custom_property_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         value_type: Literal[
             "string", "single_select", "multi_select", "true_false", "url"
@@ -8015,7 +8015,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[OrganizationCustomPropertyPayloadType] = UNSET,
         **kwargs,
@@ -8075,7 +8075,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/custom-properties-for-orgs-delete-enterprise-definition
@@ -8115,7 +8115,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/custom-properties-for-orgs-delete-enterprise-definition
@@ -8156,7 +8156,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CustomPropertiesForOrgsGetEnterprisePropertyValues],
@@ -8209,7 +8209,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         list[CustomPropertiesForOrgsGetEnterprisePropertyValues],
@@ -8261,7 +8261,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType,
     ) -> Response: ...
@@ -8272,7 +8272,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         organization_logins: list[str],
         properties: list[CustomPropertyValueType],
@@ -8282,7 +8282,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
@@ -8342,7 +8342,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType,
     ) -> Response: ...
@@ -8353,7 +8353,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         organization_logins: list[str],
         properties: list[CustomPropertyValueType],
@@ -8363,7 +8363,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
@@ -8422,7 +8422,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
         """enterprise-admin/custom-properties-for-repos-get-enterprise-definitions
@@ -8457,7 +8457,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
         """enterprise-admin/custom-properties-for-repos-get-enterprise-definitions
@@ -8493,7 +8493,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterprisePropertiesSchemaPatchBodyType,
     ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
@@ -8504,7 +8504,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         properties: list[CustomPropertyType],
     ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
@@ -8513,7 +8513,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterprisePropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
@@ -8572,7 +8572,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterprisePropertiesSchemaPatchBodyType,
     ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
@@ -8583,7 +8583,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         properties: list[CustomPropertyType],
     ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
@@ -8592,7 +8592,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterprisePropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
@@ -8652,7 +8652,7 @@ class EnterpriseAdminClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
         """enterprise-admin/custom-properties-for-repos-promote-definition-to-enterprise
@@ -8690,7 +8690,7 @@ class EnterpriseAdminClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
         """enterprise-admin/custom-properties-for-repos-promote-definition-to-enterprise
@@ -8727,7 +8727,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
         """enterprise-admin/custom-properties-for-repos-get-enterprise-definition
@@ -8763,7 +8763,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
         """enterprise-admin/custom-properties-for-repos-get-enterprise-definition
@@ -8800,7 +8800,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: CustomPropertySetPayloadType,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
@@ -8812,7 +8812,7 @@ class EnterpriseAdminClient:
         custom_property_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         value_type: Literal[
             "string", "single_select", "multi_select", "true_false", "url"
@@ -8832,7 +8832,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
@@ -8882,7 +8882,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: CustomPropertySetPayloadType,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
@@ -8894,7 +8894,7 @@ class EnterpriseAdminClient:
         custom_property_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         value_type: Literal[
             "string", "single_select", "multi_select", "true_false", "url"
@@ -8914,7 +8914,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
@@ -8963,7 +8963,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/custom-properties-for-repos-delete-enterprise-definition
@@ -8999,7 +8999,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         custom_property_name: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/custom-properties-for-repos-delete-enterprise-definition
@@ -9037,7 +9037,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RulesetVersion], list[RulesetVersionTypeForResponse]]:
         """enterprise-admin/get-enterprise-ruleset-history
@@ -9080,7 +9080,7 @@ class EnterpriseAdminClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RulesetVersion], list[RulesetVersionTypeForResponse]]:
         """enterprise-admin/get-enterprise-ruleset-history
@@ -9122,7 +9122,7 @@ class EnterpriseAdminClient:
         ruleset_id: int,
         version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RulesetVersionWithState, RulesetVersionWithStateTypeForResponse]:
         """enterprise-admin/get-enterprise-ruleset-version
@@ -9158,7 +9158,7 @@ class EnterpriseAdminClient:
         ruleset_id: int,
         version_id: int,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RulesetVersionWithState, RulesetVersionWithStateTypeForResponse]:
         """enterprise-admin/get-enterprise-ruleset-version
@@ -9202,7 +9202,7 @@ class EnterpriseAdminClient:
         ],
         enablement: Literal["enable_all", "disable_all"],
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED secret-scanning/post-security-product-enablement-for-enterprise
@@ -9251,7 +9251,7 @@ class EnterpriseAdminClient:
         ],
         enablement: Literal["enable_all", "disable_all"],
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """DEPRECATED secret-scanning/post-security-product-enablement-for-enterprise
@@ -9294,7 +9294,7 @@ class EnterpriseAdminClient:
         excluded_attributes: Missing[str] = UNSET,
         start_index: Missing[int] = UNSET,
         count: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ScimEnterpriseGroupList, ScimEnterpriseGroupListTypeForResponse]:
         """enterprise-admin/list-provisioned-groups-enterprise
@@ -9343,7 +9343,7 @@ class EnterpriseAdminClient:
         excluded_attributes: Missing[str] = UNSET,
         start_index: Missing[int] = UNSET,
         count: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ScimEnterpriseGroupList, ScimEnterpriseGroupListTypeForResponse]:
         """enterprise-admin/list-provisioned-groups-enterprise
@@ -9389,7 +9389,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: GroupType,
     ) -> Response[
@@ -9402,7 +9402,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]],
         external_id: str,
@@ -9416,7 +9416,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[GroupType] = UNSET,
         **kwargs,
@@ -9468,7 +9468,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: GroupType,
     ) -> Response[
@@ -9481,7 +9481,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]],
         external_id: str,
@@ -9495,7 +9495,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[GroupType] = UNSET,
         **kwargs,
@@ -9548,7 +9548,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         excluded_attributes: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
@@ -9593,7 +9593,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         excluded_attributes: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
@@ -9638,7 +9638,7 @@ class EnterpriseAdminClient:
         scim_group_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: GroupType,
     ) -> Response[
@@ -9652,7 +9652,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]],
         external_id: str,
@@ -9667,7 +9667,7 @@ class EnterpriseAdminClient:
         scim_group_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[GroupType] = UNSET,
         **kwargs,
@@ -9721,7 +9721,7 @@ class EnterpriseAdminClient:
         scim_group_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: GroupType,
     ) -> Response[
@@ -9735,7 +9735,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]],
         external_id: str,
@@ -9750,7 +9750,7 @@ class EnterpriseAdminClient:
         scim_group_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[GroupType] = UNSET,
         **kwargs,
@@ -9803,7 +9803,7 @@ class EnterpriseAdminClient:
         scim_group_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/delete-scim-group-from-enterprise
@@ -9839,7 +9839,7 @@ class EnterpriseAdminClient:
         scim_group_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/delete-scim-group-from-enterprise
@@ -9876,7 +9876,7 @@ class EnterpriseAdminClient:
         scim_group_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: PatchSchemaType,
     ) -> Response: ...
@@ -9888,7 +9888,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         operations: list[PatchSchemaPropOperationsItemsType],
         schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]],
@@ -9899,7 +9899,7 @@ class EnterpriseAdminClient:
         scim_group_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[PatchSchemaType] = UNSET,
         **kwargs,
@@ -9955,7 +9955,7 @@ class EnterpriseAdminClient:
         scim_group_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: PatchSchemaType,
     ) -> Response: ...
@@ -9967,7 +9967,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         operations: list[PatchSchemaPropOperationsItemsType],
         schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]],
@@ -9978,7 +9978,7 @@ class EnterpriseAdminClient:
         scim_group_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[PatchSchemaType] = UNSET,
         **kwargs,
@@ -10035,7 +10035,7 @@ class EnterpriseAdminClient:
         filter_: Missing[str] = UNSET,
         start_index: Missing[int] = UNSET,
         count: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ScimEnterpriseUserList, ScimEnterpriseUserListTypeForResponse]:
         """enterprise-admin/list-provisioned-identities-enterprise
@@ -10082,7 +10082,7 @@ class EnterpriseAdminClient:
         filter_: Missing[str] = UNSET,
         start_index: Missing[int] = UNSET,
         count: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[ScimEnterpriseUserList, ScimEnterpriseUserListTypeForResponse]:
         """enterprise-admin/list-provisioned-identities-enterprise
@@ -10127,7 +10127,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserType,
     ) -> Response[
@@ -10140,7 +10140,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]],
         external_id: str,
@@ -10158,7 +10158,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserType] = UNSET,
         **kwargs,
@@ -10210,7 +10210,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserType,
     ) -> Response[
@@ -10223,7 +10223,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]],
         external_id: str,
@@ -10241,7 +10241,7 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserType] = UNSET,
         **kwargs,
@@ -10293,7 +10293,7 @@ class EnterpriseAdminClient:
         scim_user_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
@@ -10332,7 +10332,7 @@ class EnterpriseAdminClient:
         scim_user_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
@@ -10372,7 +10372,7 @@ class EnterpriseAdminClient:
         scim_user_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserType,
     ) -> Response[
@@ -10386,7 +10386,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]],
         external_id: str,
@@ -10405,7 +10405,7 @@ class EnterpriseAdminClient:
         scim_user_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserType] = UNSET,
         **kwargs,
@@ -10491,7 +10491,7 @@ class EnterpriseAdminClient:
         scim_user_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: UserType,
     ) -> Response[
@@ -10505,7 +10505,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]],
         external_id: str,
@@ -10524,7 +10524,7 @@ class EnterpriseAdminClient:
         scim_user_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[UserType] = UNSET,
         **kwargs,
@@ -10609,7 +10609,7 @@ class EnterpriseAdminClient:
         scim_user_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/delete-user-from-enterprise
@@ -10645,7 +10645,7 @@ class EnterpriseAdminClient:
         scim_user_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-admin/delete-user-from-enterprise
@@ -10682,7 +10682,7 @@ class EnterpriseAdminClient:
         scim_user_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: PatchSchemaType,
     ) -> Response[
@@ -10696,7 +10696,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         operations: list[PatchSchemaPropOperationsItemsType],
         schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]],
@@ -10709,7 +10709,7 @@ class EnterpriseAdminClient:
         scim_user_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[PatchSchemaType] = UNSET,
         **kwargs,
@@ -10790,7 +10790,7 @@ class EnterpriseAdminClient:
         scim_user_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: PatchSchemaType,
     ) -> Response[
@@ -10804,7 +10804,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         operations: list[PatchSchemaPropOperationsItemsType],
         schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]],
@@ -10817,7 +10817,7 @@ class EnterpriseAdminClient:
         scim_user_id: str,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[PatchSchemaType] = UNSET,
         **kwargs,

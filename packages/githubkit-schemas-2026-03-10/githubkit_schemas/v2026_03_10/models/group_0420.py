@@ -13,19 +13,22 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReleaseNotesContent(GitHubModel):
-    """Generated Release Notes Content
-
-    Generated name and body describing a release
-    """
-
-    name: str = Field(description="The generated name of the release")
-    body: str = Field(
-        description="The generated body describing the contents of the release supporting markdown formatting"
-    )
+from .group_0172 import Link
 
 
-model_rebuild(ReleaseNotesContent)
+class PullRequestPropLinks(GitHubModel):
+    """PullRequestPropLinks"""
 
-__all__ = ("ReleaseNotesContent",)
+    comments: Link = Field(title="Link", description="Hypermedia Link")
+    commits: Link = Field(title="Link", description="Hypermedia Link")
+    statuses: Link = Field(title="Link", description="Hypermedia Link")
+    html: Link = Field(title="Link", description="Hypermedia Link")
+    issue: Link = Field(title="Link", description="Hypermedia Link")
+    review_comments: Link = Field(title="Link", description="Hypermedia Link")
+    review_comment: Link = Field(title="Link", description="Hypermedia Link")
+    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
+
+
+model_rebuild(PullRequestPropLinks)
+
+__all__ = ("PullRequestPropLinks",)

@@ -9,34 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
-
-from .group_0180 import (
-    ProjectsV2FieldSingleSelectOptionType,
-    ProjectsV2FieldSingleSelectOptionTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class UsersUsernameAttestationsSubjectDigestGetResponse200Type(TypedDict):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
 
-    name: str
-    data_type: Literal["single_select"]
-    single_select_options: list[ProjectsV2FieldSingleSelectOptionType]
+    attestations: NotRequired[
+        list[
+            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
+        ]
+    ]
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse(
+class UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
+
+    attestations: NotRequired[
+        list[
+            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
+        ]
+    ]
+
+
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
     TypedDict
 ):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
 
-    name: str
-    data_type: Literal["single_select"]
-    single_select_options: list[ProjectsV2FieldSingleSelectOptionTypeForResponse]
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
+
+
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse",
 )

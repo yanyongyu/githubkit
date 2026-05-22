@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -56,7 +56,7 @@ class EnterpriseTeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamTypeForResponse]]:
         """enterprise-teams/list
@@ -97,7 +97,7 @@ class EnterpriseTeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamTypeForResponse]]:
         """enterprise-teams/list
@@ -137,7 +137,7 @@ class EnterpriseTeamsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsPostBodyType,
     ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]: ...
@@ -148,7 +148,7 @@ class EnterpriseTeamsClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: Missing[Union[str, None]] = UNSET,
@@ -166,7 +166,7 @@ class EnterpriseTeamsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseTeamsPostBodyType] = UNSET,
         **kwargs,
@@ -209,7 +209,7 @@ class EnterpriseTeamsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsPostBodyType,
     ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]: ...
@@ -220,7 +220,7 @@ class EnterpriseTeamsClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
         description: Missing[Union[str, None]] = UNSET,
@@ -238,7 +238,7 @@ class EnterpriseTeamsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseTeamsPostBodyType] = UNSET,
         **kwargs,
@@ -281,7 +281,7 @@ class EnterpriseTeamsClient:
         enterprise: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]:
         """enterprise-teams/get
@@ -315,7 +315,7 @@ class EnterpriseTeamsClient:
         enterprise: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]:
         """enterprise-teams/get
@@ -349,7 +349,7 @@ class EnterpriseTeamsClient:
         enterprise: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-teams/delete
@@ -384,7 +384,7 @@ class EnterpriseTeamsClient:
         enterprise: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response:
         """enterprise-teams/delete
@@ -420,7 +420,7 @@ class EnterpriseTeamsClient:
         enterprise: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsTeamSlugPatchBodyType,
     ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]: ...
@@ -432,7 +432,7 @@ class EnterpriseTeamsClient:
         team_slug: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -451,7 +451,7 @@ class EnterpriseTeamsClient:
         enterprise: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
@@ -504,7 +504,7 @@ class EnterpriseTeamsClient:
         enterprise: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsTeamSlugPatchBodyType,
     ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]: ...
@@ -516,7 +516,7 @@ class EnterpriseTeamsClient:
         team_slug: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -535,7 +535,7 @@ class EnterpriseTeamsClient:
         enterprise: str,
         team_slug: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,

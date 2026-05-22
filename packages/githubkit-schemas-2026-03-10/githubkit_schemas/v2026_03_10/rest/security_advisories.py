@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -105,7 +105,7 @@ class SecurityAdvisoriesClient:
         sort: Missing[
             Literal["updated", "published", "epss_percentage", "epss_percentile"]
         ] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[GlobalAdvisory], list[GlobalAdvisoryTypeForResponse]]:
         """security-advisories/list-global-advisories
@@ -200,7 +200,7 @@ class SecurityAdvisoriesClient:
         sort: Missing[
             Literal["updated", "published", "epss_percentage", "epss_percentile"]
         ] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[GlobalAdvisory], list[GlobalAdvisoryTypeForResponse]]:
         """security-advisories/list-global-advisories
@@ -258,7 +258,7 @@ class SecurityAdvisoriesClient:
         self,
         ghsa_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GlobalAdvisory, GlobalAdvisoryTypeForResponse]:
         """security-advisories/get-global-advisory
@@ -291,7 +291,7 @@ class SecurityAdvisoriesClient:
         self,
         ghsa_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GlobalAdvisory, GlobalAdvisoryTypeForResponse]:
         """security-advisories/get-global-advisory
@@ -330,7 +330,7 @@ class SecurityAdvisoriesClient:
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryTypeForResponse]]:
         """security-advisories/list-org-repository-advisories
@@ -384,7 +384,7 @@ class SecurityAdvisoriesClient:
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryTypeForResponse]]:
         """security-advisories/list-org-repository-advisories
@@ -439,7 +439,7 @@ class SecurityAdvisoriesClient:
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryTypeForResponse]]:
         """security-advisories/list-repository-advisories
@@ -494,7 +494,7 @@ class SecurityAdvisoriesClient:
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryTypeForResponse]]:
         """security-advisories/list-repository-advisories
@@ -544,7 +544,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: RepositoryAdvisoryCreateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
@@ -556,7 +556,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         summary: str,
         description: str,
@@ -578,7 +578,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
@@ -636,7 +636,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: RepositoryAdvisoryCreateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
@@ -648,7 +648,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         summary: str,
         description: str,
@@ -670,7 +670,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
@@ -728,7 +728,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: PrivateVulnerabilityReportCreateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
@@ -740,7 +740,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         summary: str,
         description: str,
@@ -762,7 +762,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
@@ -817,7 +817,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: PrivateVulnerabilityReportCreateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
@@ -829,7 +829,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         summary: str,
         description: str,
@@ -851,7 +851,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
@@ -906,7 +906,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]:
         """security-advisories/get-repository-advisory
@@ -949,7 +949,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]:
         """security-advisories/get-repository-advisory
@@ -993,7 +993,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: RepositoryAdvisoryUpdateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
@@ -1006,7 +1006,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         summary: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -1033,7 +1033,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
@@ -1093,7 +1093,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: RepositoryAdvisoryUpdateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryTypeForResponse]: ...
@@ -1106,7 +1106,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         summary: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -1133,7 +1133,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
@@ -1192,7 +1192,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -1243,7 +1243,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -1294,7 +1294,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """security-advisories/create-fork
@@ -1335,7 +1335,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """security-advisories/create-fork

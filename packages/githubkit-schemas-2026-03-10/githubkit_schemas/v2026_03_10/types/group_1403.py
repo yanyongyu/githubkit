@@ -9,49 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal
-from typing_extensions import TypeAlias, TypedDict
+from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
+class UsersUsernameAttestationsBulkListPostResponse200Type(TypedDict):
+    """UsersUsernameAttestationsBulkListPostResponse200"""
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
+    attestations_subject_digests: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
     ]
-    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType
-
-
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
-
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
+    page_info: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType
     ]
-    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse
 
 
-UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType: TypeAlias = (
-    dict[str, Any]
-)
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+class UsersUsernameAttestationsBulkListPostResponse200TypeForResponse(TypedDict):
+    """UsersUsernameAttestationsBulkListPostResponse200"""
 
-Resource-specific metadata.
-"""
+    attestations_subject_digests: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse
+    ]
+    page_info: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse
+    ]
 
 
-UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse: TypeAlias = dict[
+UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
     str, Any
 ]
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
 
-Resource-specific metadata.
+Mapping of subject digest to bundles.
 """
+
+
+UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+
+Mapping of subject digest to bundles.
+"""
+
+
+class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
+    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
+
+
+class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse",
+    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
+    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse",
+    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType",
+    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse",
+    "UsersUsernameAttestationsBulkListPostResponse200Type",
+    "UsersUsernameAttestationsBulkListPostResponse200TypeForResponse",
 )

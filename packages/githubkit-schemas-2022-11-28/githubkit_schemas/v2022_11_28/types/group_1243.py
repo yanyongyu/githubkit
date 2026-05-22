@@ -9,24 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type(TypedDict):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ]
+    query_pack: str
+    repositories: NotRequired[list[str]]
+    repository_lists: NotRequired[list[str]]
+    repository_owners: list[str]
 
 
-class ReposOwnerRepoCodespacesSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ]
+    query_pack: str
+    repositories: NotRequired[list[str]]
+    repository_lists: NotRequired[list[str]]
+    repository_owners: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType",
-    "ReposOwnerRepoCodespacesSecretsSecretNamePutBodyTypeForResponse",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2TypeForResponse",
 )

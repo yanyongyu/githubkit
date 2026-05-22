@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, Optional
+from typing import TYPE_CHECKING, Literal
 from weakref import ref
 
 from githubkit.typing import Missing
@@ -67,7 +67,7 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[SearchCodeGetResponse200, SearchCodeGetResponse200TypeForResponse]:
         """search/code
@@ -142,7 +142,7 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[SearchCodeGetResponse200, SearchCodeGetResponse200TypeForResponse]:
         """search/code
@@ -217,7 +217,7 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SearchCommitsGetResponse200, SearchCommitsGetResponse200TypeForResponse
@@ -269,7 +269,7 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SearchCommitsGetResponse200, SearchCommitsGetResponse200TypeForResponse
@@ -337,7 +337,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         advanced_search: Missing[str] = UNSET,
         search_type: Missing[Literal["semantic", "hybrid"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SearchIssuesGetResponse200, SearchIssuesGetResponse200TypeForResponse
@@ -423,7 +423,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         advanced_search: Missing[str] = UNSET,
         search_type: Missing[Literal["semantic", "hybrid"]] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SearchIssuesGetResponse200, SearchIssuesGetResponse200TypeForResponse
@@ -494,7 +494,7 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SearchLabelsGetResponse200, SearchLabelsGetResponse200TypeForResponse
@@ -554,7 +554,7 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SearchLabelsGetResponse200, SearchLabelsGetResponse200TypeForResponse
@@ -615,7 +615,7 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SearchRepositoriesGetResponse200,
@@ -679,7 +679,7 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SearchRepositoriesGetResponse200,
@@ -739,7 +739,7 @@ class SearchClient:
         q: str,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SearchTopicsGetResponse200, SearchTopicsGetResponse200TypeForResponse
@@ -788,7 +788,7 @@ class SearchClient:
         q: str,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
         SearchTopicsGetResponse200, SearchTopicsGetResponse200TypeForResponse
@@ -839,7 +839,7 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[SearchUsersGetResponse200, SearchUsersGetResponse200TypeForResponse]:
         """search/users
@@ -900,7 +900,7 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
+        headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[SearchUsersGetResponse200, SearchUsersGetResponse200TypeForResponse]:
         """search/users
