@@ -11,7 +11,7 @@ from collections.abc import Mapping
 import hmac
 import importlib
 import json
-from typing import TYPE_CHECKING, Any, Literal, TypeAlias, Union, overload
+from typing import TYPE_CHECKING, Any, Literal, TypeAlias, overload
 
 from githubkit.compat import (
     GitHubModel,
@@ -258,7 +258,7 @@ VALID_EVENT_NAMES: set[EventNameType] = {
 
 class WebhookNamespace:
     @staticmethod
-    def parse_without_name(payload: Union[str, bytes]) -> "WebhookEvent":
+    def parse_without_name(payload: str | bytes) -> "WebhookEvent":
         """Parse the webhook payload without event name.
 
         Note:
@@ -268,7 +268,7 @@ class WebhookNamespace:
             the result may not be the correct type as expected.
 
         Args:
-            payload (Union[str, bytes]): webhook payload.
+            payload (str | bytes): webhook payload.
         """
         from ._types import WebhookEvent
 
@@ -277,366 +277,350 @@ class WebhookNamespace:
     @overload
     @staticmethod
     def parse(
-        name: Literal["branch_protection_configuration"], payload: Union[str, bytes]
+        name: Literal["branch_protection_configuration"], payload: str | bytes
     ) -> "BranchProtectionConfigurationEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["branch_protection_rule"], payload: Union[str, bytes]
+        name: Literal["branch_protection_rule"], payload: str | bytes
     ) -> "BranchProtectionRuleEvent": ...
     @overload
     @staticmethod
-    def parse(
-        name: Literal["check_run"], payload: Union[str, bytes]
-    ) -> "CheckRunEvent": ...
+    def parse(name: Literal["check_run"], payload: str | bytes) -> "CheckRunEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["check_suite"], payload: Union[str, bytes]
+        name: Literal["check_suite"], payload: str | bytes
     ) -> "CheckSuiteEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["code_scanning_alert"], payload: Union[str, bytes]
+        name: Literal["code_scanning_alert"], payload: str | bytes
     ) -> "CodeScanningAlertEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["commit_comment"], payload: Union[str, bytes]
+        name: Literal["commit_comment"], payload: str | bytes
     ) -> "CommitCommentEvent": ...
     @overload
     @staticmethod
-    def parse(name: Literal["create"], payload: Union[str, bytes]) -> "CreateEvent": ...
+    def parse(name: Literal["create"], payload: str | bytes) -> "CreateEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["custom_property"], payload: Union[str, bytes]
+        name: Literal["custom_property"], payload: str | bytes
     ) -> "CustomPropertyEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["custom_property_values"], payload: Union[str, bytes]
+        name: Literal["custom_property_values"], payload: str | bytes
     ) -> "CustomPropertyValuesEvent": ...
     @overload
     @staticmethod
-    def parse(name: Literal["delete"], payload: Union[str, bytes]) -> "DeleteEvent": ...
+    def parse(name: Literal["delete"], payload: str | bytes) -> "DeleteEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["dependabot_alert"], payload: Union[str, bytes]
+        name: Literal["dependabot_alert"], payload: str | bytes
     ) -> "DependabotAlertEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["deploy_key"], payload: Union[str, bytes]
+        name: Literal["deploy_key"], payload: str | bytes
     ) -> "DeployKeyEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["deployment"], payload: Union[str, bytes]
+        name: Literal["deployment"], payload: str | bytes
     ) -> "DeploymentEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["deployment_protection_rule"], payload: Union[str, bytes]
+        name: Literal["deployment_protection_rule"], payload: str | bytes
     ) -> "DeploymentProtectionRuleEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["deployment_review"], payload: Union[str, bytes]
+        name: Literal["deployment_review"], payload: str | bytes
     ) -> "DeploymentReviewEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["deployment_status"], payload: Union[str, bytes]
+        name: Literal["deployment_status"], payload: str | bytes
     ) -> "DeploymentStatusEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["discussion"], payload: Union[str, bytes]
+        name: Literal["discussion"], payload: str | bytes
     ) -> "DiscussionEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["discussion_comment"], payload: Union[str, bytes]
+        name: Literal["discussion_comment"], payload: str | bytes
     ) -> "DiscussionCommentEvent": ...
     @overload
     @staticmethod
-    def parse(name: Literal["fork"], payload: Union[str, bytes]) -> "ForkEvent": ...
+    def parse(name: Literal["fork"], payload: str | bytes) -> "ForkEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["github_app_authorization"], payload: Union[str, bytes]
+        name: Literal["github_app_authorization"], payload: str | bytes
     ) -> "GithubAppAuthorizationEvent": ...
     @overload
     @staticmethod
-    def parse(name: Literal["gollum"], payload: Union[str, bytes]) -> "GollumEvent": ...
+    def parse(name: Literal["gollum"], payload: str | bytes) -> "GollumEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["installation"], payload: Union[str, bytes]
+        name: Literal["installation"], payload: str | bytes
     ) -> "InstallationEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["installation_repositories"], payload: Union[str, bytes]
+        name: Literal["installation_repositories"], payload: str | bytes
     ) -> "InstallationRepositoriesEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["installation_target"], payload: Union[str, bytes]
+        name: Literal["installation_target"], payload: str | bytes
     ) -> "InstallationTargetEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["issue_comment"], payload: Union[str, bytes]
+        name: Literal["issue_comment"], payload: str | bytes
     ) -> "IssueCommentEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["issue_dependencies"], payload: Union[str, bytes]
+        name: Literal["issue_dependencies"], payload: str | bytes
     ) -> "IssueDependenciesEvent": ...
     @overload
     @staticmethod
-    def parse(name: Literal["issues"], payload: Union[str, bytes]) -> "IssuesEvent": ...
+    def parse(name: Literal["issues"], payload: str | bytes) -> "IssuesEvent": ...
     @overload
     @staticmethod
-    def parse(name: Literal["label"], payload: Union[str, bytes]) -> "LabelEvent": ...
+    def parse(name: Literal["label"], payload: str | bytes) -> "LabelEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["marketplace_purchase"], payload: Union[str, bytes]
+        name: Literal["marketplace_purchase"], payload: str | bytes
     ) -> "MarketplacePurchaseEvent": ...
     @overload
     @staticmethod
-    def parse(name: Literal["member"], payload: Union[str, bytes]) -> "MemberEvent": ...
+    def parse(name: Literal["member"], payload: str | bytes) -> "MemberEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["membership"], payload: Union[str, bytes]
+        name: Literal["membership"], payload: str | bytes
     ) -> "MembershipEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["merge_group"], payload: Union[str, bytes]
+        name: Literal["merge_group"], payload: str | bytes
     ) -> "MergeGroupEvent": ...
     @overload
     @staticmethod
-    def parse(name: Literal["meta"], payload: Union[str, bytes]) -> "MetaEvent": ...
+    def parse(name: Literal["meta"], payload: str | bytes) -> "MetaEvent": ...
+    @overload
+    @staticmethod
+    def parse(name: Literal["milestone"], payload: str | bytes) -> "MilestoneEvent": ...
+    @overload
+    @staticmethod
+    def parse(name: Literal["org_block"], payload: str | bytes) -> "OrgBlockEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["milestone"], payload: Union[str, bytes]
-    ) -> "MilestoneEvent": ...
-    @overload
-    @staticmethod
-    def parse(
-        name: Literal["org_block"], payload: Union[str, bytes]
-    ) -> "OrgBlockEvent": ...
-    @overload
-    @staticmethod
-    def parse(
-        name: Literal["organization"], payload: Union[str, bytes]
+        name: Literal["organization"], payload: str | bytes
     ) -> "OrganizationEvent": ...
     @overload
     @staticmethod
-    def parse(
-        name: Literal["package"], payload: Union[str, bytes]
-    ) -> "PackageEvent": ...
+    def parse(name: Literal["package"], payload: str | bytes) -> "PackageEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["page_build"], payload: Union[str, bytes]
+        name: Literal["page_build"], payload: str | bytes
     ) -> "PageBuildEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["personal_access_token_request"], payload: Union[str, bytes]
+        name: Literal["personal_access_token_request"], payload: str | bytes
     ) -> "PersonalAccessTokenRequestEvent": ...
     @overload
     @staticmethod
-    def parse(name: Literal["ping"], payload: Union[str, bytes]) -> "PingEvent": ...
+    def parse(name: Literal["ping"], payload: str | bytes) -> "PingEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["project_card"], payload: Union[str, bytes]
+        name: Literal["project_card"], payload: str | bytes
     ) -> "ProjectCardEvent": ...
     @overload
     @staticmethod
-    def parse(
-        name: Literal["project"], payload: Union[str, bytes]
-    ) -> "ProjectEvent": ...
+    def parse(name: Literal["project"], payload: str | bytes) -> "ProjectEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["project_column"], payload: Union[str, bytes]
+        name: Literal["project_column"], payload: str | bytes
     ) -> "ProjectColumnEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["projects_v2"], payload: Union[str, bytes]
+        name: Literal["projects_v2"], payload: str | bytes
     ) -> "ProjectsV2Event": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["projects_v2_item"], payload: Union[str, bytes]
+        name: Literal["projects_v2_item"], payload: str | bytes
     ) -> "ProjectsV2ItemEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["projects_v2_status_update"], payload: Union[str, bytes]
+        name: Literal["projects_v2_status_update"], payload: str | bytes
     ) -> "ProjectsV2StatusUpdateEvent": ...
     @overload
     @staticmethod
-    def parse(name: Literal["public"], payload: Union[str, bytes]) -> "PublicEvent": ...
+    def parse(name: Literal["public"], payload: str | bytes) -> "PublicEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["pull_request"], payload: Union[str, bytes]
+        name: Literal["pull_request"], payload: str | bytes
     ) -> "PullRequestEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["pull_request_review_comment"], payload: Union[str, bytes]
+        name: Literal["pull_request_review_comment"], payload: str | bytes
     ) -> "PullRequestReviewCommentEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["pull_request_review"], payload: Union[str, bytes]
+        name: Literal["pull_request_review"], payload: str | bytes
     ) -> "PullRequestReviewEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["pull_request_review_thread"], payload: Union[str, bytes]
+        name: Literal["pull_request_review_thread"], payload: str | bytes
     ) -> "PullRequestReviewThreadEvent": ...
     @overload
     @staticmethod
-    def parse(name: Literal["push"], payload: Union[str, bytes]) -> "PushEvent": ...
+    def parse(name: Literal["push"], payload: str | bytes) -> "PushEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["registry_package"], payload: Union[str, bytes]
+        name: Literal["registry_package"], payload: str | bytes
     ) -> "RegistryPackageEvent": ...
     @overload
     @staticmethod
-    def parse(
-        name: Literal["release"], payload: Union[str, bytes]
-    ) -> "ReleaseEvent": ...
+    def parse(name: Literal["release"], payload: str | bytes) -> "ReleaseEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["repository_advisory"], payload: Union[str, bytes]
+        name: Literal["repository_advisory"], payload: str | bytes
     ) -> "RepositoryAdvisoryEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["repository"], payload: Union[str, bytes]
+        name: Literal["repository"], payload: str | bytes
     ) -> "RepositoryEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["repository_dispatch"], payload: Union[str, bytes]
+        name: Literal["repository_dispatch"], payload: str | bytes
     ) -> "RepositoryDispatchEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["repository_import"], payload: Union[str, bytes]
+        name: Literal["repository_import"], payload: str | bytes
     ) -> "RepositoryImportEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["repository_ruleset"], payload: Union[str, bytes]
+        name: Literal["repository_ruleset"], payload: str | bytes
     ) -> "RepositoryRulesetEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["repository_vulnerability_alert"], payload: Union[str, bytes]
+        name: Literal["repository_vulnerability_alert"], payload: str | bytes
     ) -> "RepositoryVulnerabilityAlertEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["secret_scanning_alert"], payload: Union[str, bytes]
+        name: Literal["secret_scanning_alert"], payload: str | bytes
     ) -> "SecretScanningAlertEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["secret_scanning_alert_location"], payload: Union[str, bytes]
+        name: Literal["secret_scanning_alert_location"], payload: str | bytes
     ) -> "SecretScanningAlertLocationEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["secret_scanning_scan"], payload: Union[str, bytes]
+        name: Literal["secret_scanning_scan"], payload: str | bytes
     ) -> "SecretScanningScanEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["security_advisory"], payload: Union[str, bytes]
+        name: Literal["security_advisory"], payload: str | bytes
     ) -> "SecurityAdvisoryEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["security_and_analysis"], payload: Union[str, bytes]
+        name: Literal["security_and_analysis"], payload: str | bytes
     ) -> "SecurityAndAnalysisEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["sponsorship"], payload: Union[str, bytes]
+        name: Literal["sponsorship"], payload: str | bytes
     ) -> "SponsorshipEvent": ...
     @overload
     @staticmethod
-    def parse(name: Literal["star"], payload: Union[str, bytes]) -> "StarEvent": ...
+    def parse(name: Literal["star"], payload: str | bytes) -> "StarEvent": ...
     @overload
     @staticmethod
-    def parse(name: Literal["status"], payload: Union[str, bytes]) -> "StatusEvent": ...
+    def parse(name: Literal["status"], payload: str | bytes) -> "StatusEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["sub_issues"], payload: Union[str, bytes]
+        name: Literal["sub_issues"], payload: str | bytes
     ) -> "SubIssuesEvent": ...
     @overload
     @staticmethod
-    def parse(
-        name: Literal["team_add"], payload: Union[str, bytes]
-    ) -> "TeamAddEvent": ...
+    def parse(name: Literal["team_add"], payload: str | bytes) -> "TeamAddEvent": ...
     @overload
     @staticmethod
-    def parse(name: Literal["team"], payload: Union[str, bytes]) -> "TeamEvent": ...
+    def parse(name: Literal["team"], payload: str | bytes) -> "TeamEvent": ...
     @overload
     @staticmethod
-    def parse(name: Literal["watch"], payload: Union[str, bytes]) -> "WatchEvent": ...
+    def parse(name: Literal["watch"], payload: str | bytes) -> "WatchEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["workflow_dispatch"], payload: Union[str, bytes]
+        name: Literal["workflow_dispatch"], payload: str | bytes
     ) -> "WorkflowDispatchEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["workflow_job"], payload: Union[str, bytes]
+        name: Literal["workflow_job"], payload: str | bytes
     ) -> "WorkflowJobEvent": ...
     @overload
     @staticmethod
     def parse(
-        name: Literal["workflow_run"], payload: Union[str, bytes]
+        name: Literal["workflow_run"], payload: str | bytes
     ) -> "WorkflowRunEvent": ...
 
     @overload
     @staticmethod
-    def parse(name: EventNameType, payload: Union[str, bytes]) -> "WebhookEvent": ...
+    def parse(name: EventNameType, payload: str | bytes) -> "WebhookEvent": ...
 
     @overload
     @staticmethod
-    def parse(name: str, payload: Union[str, bytes]) -> "WebhookEvent": ...
+    def parse(name: str, payload: str | bytes) -> "WebhookEvent": ...
 
     @staticmethod
-    def parse(
-        name: Union[EventNameType, str], payload: Union[str, bytes]
-    ) -> "WebhookEvent":
+    def parse(name: EventNameType | str, payload: str | bytes) -> "WebhookEvent":
         """Parse the webhook payload with event name.
 
         Args:
             name (EventNameType): event name.
-            payload (Union[str, bytes]): webhook payload.
+            payload (str | bytes): webhook payload.
         """
         if name not in VALID_EVENT_NAMES:
             raise WebhookTypeNotFound(name)
@@ -1038,7 +1022,7 @@ class WebhookNamespace:
 
     @staticmethod
     def parse_obj(
-        name: Union[EventNameType, str], payload: Mapping[str, Any]
+        name: EventNameType | str, payload: Mapping[str, Any]
     ) -> "WebhookEvent":
         """Parse the webhook payload dict with event name.
 
@@ -1054,7 +1038,7 @@ class WebhookNamespace:
         return type_validate_python(Event, payload)
 
     @staticmethod
-    def normalize_payload(payload: Union[GitHubModel, dict[str, Any]]) -> str:
+    def normalize_payload(payload: GitHubModel | dict[str, Any]) -> str:
         """Normalize the webhook payload to string.
 
         Note:
@@ -1063,7 +1047,7 @@ class WebhookNamespace:
             Always use raw data posted by GitHub Webhooks.
 
         Args:
-            payload (Union[GitHubModel, dict[str, Any]]): webhook payload.
+            payload (GitHubModel | dict[str, Any]): webhook payload.
 
         Returns:
             str: normalized payload string.
@@ -1074,14 +1058,14 @@ class WebhookNamespace:
     @staticmethod
     def sign(
         secret: str,
-        payload: Union[GitHubModel, dict[str, Any], str, bytes],
+        payload: GitHubModel | dict[str, Any] | str | bytes,
         method: Literal["sha256", "sha1"] = "sha256",
     ) -> str:
         """Sign the webhook payload.
 
         Args:
             secret (str): webhook secret.
-            payload (Union[GitHubModel, dict[str, Any], str, bytes]): webhook payload.
+            payload (GitHubModel | dict[str, Any] | str | bytes): webhook payload.
             method (str): sha256 or sha1. Defaults to sha256.
 
         Returns:
@@ -1104,7 +1088,7 @@ class WebhookNamespace:
     @staticmethod
     def verify(
         secret: str,
-        payload: Union[GitHubModel, dict[str, Any], str, bytes],
+        payload: GitHubModel | dict[str, Any] | str | bytes,
         signature: str,
     ) -> bool:
         """Verify the webhook payload.
@@ -1116,7 +1100,7 @@ class WebhookNamespace:
 
         Args:
             secret (str): webhook secret.
-            payload (Union[GitHubModel, dict[str, Any], str, bytes]): webhook payload.
+            payload (GitHubModel | dict[str, Any] | str | bytes): webhook payload.
             signature (str): webhook signature.
 
         Returns:
