@@ -1,9 +1,7 @@
 import abc
 from datetime import timedelta
 
-from hishel import AsyncBaseStorage, BaseStorage, Controller
-
-from githubkit.typing import HishelControllerOptions
+from hishel import AsyncBaseStorage, CachePolicy, SpecificationPolicy, SyncBaseStorage
 
 
 class BaseCache(abc.ABC):
@@ -36,32 +34,23 @@ class BaseCacheStrategy(abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def get_async_cache_storage(self) -> AsyncBaseCache:
+    async def get_async_cache_storage(self) -> AsyncBaseCache:
         """Get the cache storage instance used in async context
 
         raise CacheUnsupportedError if the strategy does not support async usage
         """
         raise NotImplementedError
 
-    def get_hishel_controller_options(self) -> HishelControllerOptions:
-        """Get the hishel controller options"""
-        # set always revalidate by default
-        # See: https://hishel.com/examples/github/
-        return HishelControllerOptions(always_revalidate=True)
-
-    def get_hishel_controller(self) -> Controller:
-        """Get the hishel controller instance
-
-        Get the controller options from `get_hishel_controller_options` method
-        """
-        return Controller(**self.get_hishel_controller_options())
+    def get_hishel_policy(self) -> CachePolicy:
+        """Get the hishel cache policy instance"""
+        return SpecificationPolicy()
 
     @abc.abstractmethod
-    def get_hishel_storage(self) -> BaseStorage:
+    def get_hishel_storage(self) -> SyncBaseStorage:
         """Get the hishel storage instance used in sync context"""
         raise NotImplementedError
 
     @abc.abstractmethod
-    def get_async_hishel_storage(self) -> AsyncBaseStorage:
+    async def get_async_hishel_storage(self) -> AsyncBaseStorage:
         """Get the hishel storage instance used in async context"""
         raise NotImplementedError

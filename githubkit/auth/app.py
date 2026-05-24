@@ -97,7 +97,7 @@ class AppAuth(httpx.Auth):
         return token
 
     async def aget_jwt(self) -> str:
-        cache = self.github.config.cache_strategy.get_async_cache_storage()
+        cache = await self.github.config.cache_strategy.get_async_cache_storage()
         cache_key = self._get_jwt_cache_key()
         if not (token := await cache.aget(cache_key)):
             token = self._create_jwt()
@@ -246,7 +246,7 @@ class AppAuth(httpx.Auth):
                 yield request
             return
 
-        cache = self.github.config.cache_strategy.get_async_cache_storage()
+        cache = await self.github.config.cache_strategy.get_async_cache_storage()
         key = self._get_installation_cache_key()
         if not (token := await cache.aget(key)):
             token_request = self._build_installation_auth_request()

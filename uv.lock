@@ -569,7 +569,7 @@ source = { editable = "." }
 dependencies = [
     { name = "anyio" },
     { name = "githubkit-schemas" },
-    { name = "hishel" },
+    { name = "hishel", extra = ["httpx"] },
     { name = "httpx" },
     { name = "pydantic", version = "1.10.26", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-9-githubkit-pydantic-v1'" },
     { name = "pydantic", version = "2.13.4", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-9-githubkit-pydantic-v2' or extra != 'group-9-githubkit-pydantic-v1'" },
@@ -650,7 +650,7 @@ requires-dist = [
     { name = "githubkit-schemas", editable = "packages/githubkit-schemas" },
     { name = "githubkit-schemas", extras = ["all"], marker = "extra == 'all'", editable = "packages/githubkit-schemas" },
     { name = "githubkit-schemas", extras = ["all"], marker = "extra == 'all-schemas'", editable = "packages/githubkit-schemas" },
-    { name = "hishel", specifier = ">=0.0.21,<=0.2.0" },
+    { name = "hishel", extras = ["httpx"], specifier = ">=1.2.0,<=2.0.0" },
     { name = "httpx", specifier = ">=0.23.0,<1.0.0" },
     { name = "pydantic", specifier = ">=1.9.1,!=2.5.0,!=2.5.1,<3.0.0" },
     { name = "pyjwt", extras = ["crypto"], marker = "extra == 'all'", specifier = ">=2.4.0,<3.0.0" },
@@ -832,18 +832,22 @@ wheels = [
 
 [[package]]
 name = "hishel"
-version = "0.1.5"
+version = "1.2.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "anyio" },
-    { name = "anysqlite" },
-    { name = "httpx" },
     { name = "msgpack" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/e5/64/a104ccac48f123f853254483617b16e0efc1649bd7e35bcdc5a5a5ef0ae2/hishel-0.1.5.tar.gz", hash = "sha256:9d40c682cd94fd6e1394fb05713ae20a75ed8aeba6f5272380444039ce6257f2", size = 75468, upload-time = "2025-10-18T13:32:41.854Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/2d/7a/ef9231da56bc04000f7343831deb1946f5fc270213080fa212f61ddbfe0a/hishel-1.2.1.tar.gz", hash = "sha256:87212cd31a7a6904352ec5bd7119ed3b43d0ab1259d5995751a2a2b173d7c305", size = 814761, upload-time = "2026-04-27T16:16:42.35Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/70/83/4f8b77839e62114bb034375ee8e08cfb6af1164754b925b271d3f1ec06ee/hishel-0.1.5-py3-none-any.whl", hash = "sha256:0bfbe9a2b9342090eba82ba6de88258092e1c4c7b730cd4cb4b570e4b40e44a7", size = 92486, upload-time = "2025-10-18T13:32:40.333Z" },
+    { url = "https://files.pythonhosted.org/packages/c3/de/5f1bebcf644f2f350c39d2630f391399d0c39ff39fbfff98113889898827/hishel-1.2.1-py3-none-any.whl", hash = "sha256:5e1c1e38f4c970eeef69bc8528e85fd5c02eab15a22f9845d30fc880da32b881", size = 73223, upload-time = "2026-04-27T16:16:40.585Z" },
+]
+
+[package.optional-dependencies]
+httpx = [
+    { name = "anyio" },
+    { name = "anysqlite" },
+    { name = "httpx" },
 ]
 
 [[package]]
