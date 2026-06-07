@@ -250,6 +250,7 @@ class GitHubCore(Generic[A]):
             "headers": {
                 "User-Agent": self.config.user_agent,
                 "Accept": self.config.accept,
+                # tell hishel to always revalidate the request
                 "Cache-Control": "no-cache",
             },
             "timeout": self.config.timeout,
