@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,25 +16,95 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsageReportExportRequest(GitHubModel):
-    """UsageReportExportRequest"""
+class BillingPremiumRequestUsageReportGhe(GitHubModel):
+    """BillingPremiumRequestUsageReportGhe"""
 
-    report_type: Literal["detailed", "summarized", "premium_request"] = Field(
-        description="The type of usage report to generate"
+    time_period: BillingPremiumRequestUsageReportGhePropTimePeriod = Field(
+        alias="timePeriod"
     )
-    start_date: _dt.date = Field(
-        description="The start date for the report in YYYY-MM-DD format"
+    enterprise: str = Field(
+        description="The name of the enterprise for the usage report."
     )
-    end_date: Missing[_dt.date] = Field(
-        default=UNSET,
-        description="The end date for the report in YYYY-MM-DD format. Defaults to today (UTC) if not provided.",
+    user: Missing[str] = Field(
+        default=UNSET, description="The name of the user for the usage report."
     )
-    send_email: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to send an email notification to the requester when the report is ready. Defaults to false.",
+    organization: Missing[str] = Field(
+        default=UNSET, description="The name of the organization for the usage report."
+    )
+    product: Missing[str] = Field(
+        default=UNSET, description="The product for the usage report."
+    )
+    model: Missing[str] = Field(
+        default=UNSET, description="The model for the usage report."
+    )
+    cost_center: Missing[BillingPremiumRequestUsageReportGhePropCostCenter] = Field(
+        default=UNSET, alias="costCenter"
+    )
+    usage_items: list[BillingPremiumRequestUsageReportGhePropUsageItemsItems] = Field(
+        alias="usageItems"
     )
 
 
-model_rebuild(UsageReportExportRequest)
+class BillingPremiumRequestUsageReportGhePropTimePeriod(GitHubModel):
+    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
 
-__all__ = ("UsageReportExportRequest",)
+    year: int = Field(description="The year for the usage report.")
+    month: Missing[int] = Field(
+        default=UNSET, description="The month for the usage report."
+    )
+    day: Missing[int] = Field(
+        default=UNSET, description="The day for the usage report."
+    )
+
+
+class BillingPremiumRequestUsageReportGhePropCostCenter(GitHubModel):
+    """BillingPremiumRequestUsageReportGhePropCostCenter"""
+
+    id: str = Field(description="The unique identifier of the cost center.")
+    name: str = Field(description="The name of the cost center.")
+
+
+class BillingPremiumRequestUsageReportGhePropUsageItemsItems(GitHubModel):
+    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
+
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    model: str = Field(description="Model name.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_quantity: float = Field(
+        alias="grossQuantity", description="Gross quantity of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_quantity: float = Field(
+        alias="discountQuantity",
+        description="Discount quantity of the usage line item.",
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_quantity: float = Field(
+        alias="netQuantity", description="Net quantity of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+
+
+model_rebuild(BillingPremiumRequestUsageReportGhe)
+model_rebuild(BillingPremiumRequestUsageReportGhePropTimePeriod)
+model_rebuild(BillingPremiumRequestUsageReportGhePropCostCenter)
+model_rebuild(BillingPremiumRequestUsageReportGhePropUsageItemsItems)
+
+__all__ = (
+    "BillingPremiumRequestUsageReportGhe",
+    "BillingPremiumRequestUsageReportGhePropCostCenter",
+    "BillingPremiumRequestUsageReportGhePropTimePeriod",
+    "BillingPremiumRequestUsageReportGhePropUsageItemsItems",
+)

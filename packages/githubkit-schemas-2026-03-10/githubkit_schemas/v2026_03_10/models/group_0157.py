@@ -9,54 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrganizationCreateIssueField(GitHubModel):
-    """OrganizationCreateIssueField"""
+class InteractionLimitResponse(GitHubModel):
+    """Interaction Limits
 
-    name: str = Field(description="Name of the issue field.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the issue field."
+    Interaction limit settings.
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
+        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
     )
-    data_type: Literal["text", "date", "single_select", "number"] = Field(
-        description="The data type of the issue field."
-    )
-    visibility: Missing[Literal["organization_members_only", "all"]] = Field(
-        default=UNSET,
-        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled. Defaults to `organization_members_only`.",
-    )
-    options: Missing[
-        Union[list[OrganizationCreateIssueFieldPropOptionsItems], None]
-    ] = Field(
-        default=UNSET,
-        description="Options for single select fields. Required when data_type is 'single_select'.",
-    )
+    origin: str = Field()
+    expires_at: _dt.datetime = Field()
 
 
-class OrganizationCreateIssueFieldPropOptionsItems(GitHubModel):
-    """OrganizationCreateIssueFieldPropOptionsItems"""
+model_rebuild(InteractionLimitResponse)
 
-    name: str = Field(description="Name of the option.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the option."
-    )
-    color: Literal[
-        "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-    ] = Field(description="Color for the option.")
-    priority: int = Field(description="Priority of the option for ordering.")
-
-
-model_rebuild(OrganizationCreateIssueField)
-model_rebuild(OrganizationCreateIssueFieldPropOptionsItems)
-
-__all__ = (
-    "OrganizationCreateIssueField",
-    "OrganizationCreateIssueFieldPropOptionsItems",
-)
+__all__ = ("InteractionLimitResponse",)

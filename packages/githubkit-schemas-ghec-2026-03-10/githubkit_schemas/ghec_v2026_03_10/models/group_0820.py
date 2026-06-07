@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,21 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0572 import EnterpriseWebhooks
-from .group_0573 import SimpleInstallation
-from .group_0574 import OrganizationSimpleWebhooks
-from .group_0575 import RepositoryWebhooks
-from .group_0588 import WebhooksLabel
+from .group_0206 import IssueType
+from .group_0575 import EnterpriseWebhooks
+from .group_0576 import SimpleInstallation
+from .group_0577 import OrganizationSimpleWebhooks
+from .group_0578 import RepositoryWebhooks
+from .group_0596 import WebhooksIssue
 
 
-class WebhookLabelEdited(GitHubModel):
-    """label edited event"""
+class WebhookIssuesUntyped(GitHubModel):
+    """issues untyped event"""
 
-    action: Literal["edited"] = Field()
-    changes: Missing[WebhookLabelEditedPropChanges] = Field(
-        default=UNSET,
-        description="The changes to the label if the action was `edited`.",
-    )
+    action: Literal["untyped"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,7 +40,14 @@ class WebhookLabelEdited(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: WebhooksLabel = Field(title="Label")
+    issue: WebhooksIssue = Field(
+        title="Issue",
+        description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) itself.",
+    )
+    type: Union[IssueType, None] = Field(
+        title="Issue Type",
+        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -56,56 +60,6 @@ class WebhookLabelEdited(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookLabelEditedPropChanges(GitHubModel):
-    """WebhookLabelEditedPropChanges
+model_rebuild(WebhookIssuesUntyped)
 
-    The changes to the label if the action was `edited`.
-    """
-
-    color: Missing[WebhookLabelEditedPropChangesPropColor] = Field(default=UNSET)
-    description: Missing[WebhookLabelEditedPropChangesPropDescription] = Field(
-        default=UNSET
-    )
-    name: Missing[WebhookLabelEditedPropChangesPropName] = Field(default=UNSET)
-
-
-class WebhookLabelEditedPropChangesPropColor(GitHubModel):
-    """WebhookLabelEditedPropChangesPropColor"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the color if the action was `edited`.",
-    )
-
-
-class WebhookLabelEditedPropChangesPropDescription(GitHubModel):
-    """WebhookLabelEditedPropChangesPropDescription"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the description if the action was `edited`.",
-    )
-
-
-class WebhookLabelEditedPropChangesPropName(GitHubModel):
-    """WebhookLabelEditedPropChangesPropName"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the name if the action was `edited`.",
-    )
-
-
-model_rebuild(WebhookLabelEdited)
-model_rebuild(WebhookLabelEditedPropChanges)
-model_rebuild(WebhookLabelEditedPropChangesPropColor)
-model_rebuild(WebhookLabelEditedPropChangesPropDescription)
-model_rebuild(WebhookLabelEditedPropChangesPropName)
-
-__all__ = (
-    "WebhookLabelEdited",
-    "WebhookLabelEditedPropChanges",
-    "WebhookLabelEditedPropChangesPropColor",
-    "WebhookLabelEditedPropChangesPropDescription",
-    "WebhookLabelEditedPropChangesPropName",
-)
+__all__ = ("WebhookIssuesUntyped",)

@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PorterAuthor(GitHubModel):
-    """Porter Author
+class RepositoryHashAlgorithm(GitHubModel):
+    """Repository hash algorithm
 
-    Porter Author
+    Repository hash algorithm
     """
 
-    id: int = Field()
-    remote_id: str = Field()
-    remote_name: str = Field()
-    email: str = Field()
-    name: str = Field()
-    url: str = Field()
-    import_url: str = Field()
+    hash_algorithm: Literal["sha1", "sha256"] = Field(
+        description="The Git hash algorithm used by this repository."
+    )
 
 
-model_rebuild(PorterAuthor)
+model_rebuild(RepositoryHashAlgorithm)
 
-__all__ = ("PorterAuthor",)
+__all__ = ("RepositoryHashAlgorithm",)

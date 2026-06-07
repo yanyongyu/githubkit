@@ -16,20 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsPublicKey(GitHubModel):
-    """ActionsPublicKey
+class RunnerApplication(GitHubModel):
+    """Runner Application
 
-    The public key used for setting Actions Secrets.
+    Runner Application
     """
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
-    id: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
+    os: str = Field()
+    architecture: str = Field()
+    download_url: str = Field()
+    filename: str = Field()
+    temp_download_token: Missing[str] = Field(
+        default=UNSET,
+        description="A short lived bearer token used to download the runner, if needed.",
+    )
+    sha256_checksum: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ActionsPublicKey)
+model_rebuild(RunnerApplication)
 
-__all__ = ("ActionsPublicKey",)
+__all__ = ("RunnerApplication",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,18 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0051 import IssueType
-from .group_0497 import EnterpriseWebhooks
-from .group_0498 import SimpleInstallation
-from .group_0499 import OrganizationSimpleWebhooks
-from .group_0500 import RepositoryWebhooks
-from .group_0516 import WebhooksIssue
+from .group_0503 import EnterpriseWebhooks
+from .group_0504 import SimpleInstallation
+from .group_0505 import OrganizationSimpleWebhooks
+from .group_0506 import RepositoryWebhooks
+from .group_0524 import WebhooksIssue2
 
 
-class WebhookIssuesTyped(GitHubModel):
-    """issues typed event"""
+class WebhookIssuesPinned(GitHubModel):
+    """issues pinned event"""
 
-    action: Literal["typed"] = Field()
+    action: Literal["pinned"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,13 +39,9 @@ class WebhookIssuesTyped(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhooksIssue = Field(
+    issue: WebhooksIssue2 = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.",
-    )
-    type: Union[IssueType, None] = Field(
-        title="Issue Type",
-        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -60,6 +55,6 @@ class WebhookIssuesTyped(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesTyped)
+model_rebuild(WebhookIssuesPinned)
 
-__all__ = ("WebhookIssuesTyped",)
+__all__ = ("WebhookIssuesPinned",)

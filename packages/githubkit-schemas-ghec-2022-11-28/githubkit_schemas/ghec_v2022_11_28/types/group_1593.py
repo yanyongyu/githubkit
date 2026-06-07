@@ -9,27 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
-
-    name: str
-    data_type: Literal["text", "number", "date"]
+from .group_0266 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(
+class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type(TypedDict):
+    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
+
+    resources: list[CopilotSpaceResourceType]
+
+
+class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
 
-    name: str
-    data_type: Literal["text", "number", "date"]
+    resources: list[CopilotSpaceResourceTypeForResponse]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type",
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse",
 )

@@ -30,6 +30,7 @@ if TYPE_CHECKING:
 
     from ..models import (
         AdvancedSecurityActiveCommitters,
+        BillingAiCreditUsageReportGhe,
         BillingPremiumRequestUsageReportGhe,
         BillingUsageReport,
         BillingUsageSummaryReportGhe,
@@ -50,6 +51,7 @@ if TYPE_CHECKING:
     )
     from ..types import (
         AdvancedSecurityActiveCommittersTypeForResponse,
+        BillingAiCreditUsageReportGheTypeForResponse,
         BillingPremiumRequestUsageReportGheTypeForResponse,
         BillingUsageReportTypeForResponse,
         BillingUsageSummaryReportGheTypeForResponse,
@@ -192,6 +194,136 @@ class BillingClient:
             response_model=AdvancedSecurityActiveCommitters,
         )
 
+    def get_github_billing_ai_credit_usage_report_ghe(
+        self,
+        enterprise: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        organization: Missing[str] = UNSET,
+        user: Missing[str] = UNSET,
+        model: Missing[str] = UNSET,
+        product: Missing[str] = UNSET,
+        cost_center_id: Missing[str] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        BillingAiCreditUsageReportGhe, BillingAiCreditUsageReportGheTypeForResponse
+    ]:
+        """billing/get-github-billing-ai-credit-usage-report-ghe
+
+        GET /enterprises/{enterprise}/settings/billing/ai_credit/usage
+
+        Gets a report of AI credit usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise.
+
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage#get-billing-ai-credit-usage-report-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            BillingAiCreditUsageReportGhe,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/ai_credit/usage"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "organization": organization,
+            "user": user,
+            "model": model,
+            "product": product,
+            "cost_center_id": cost_center_id,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=BillingAiCreditUsageReportGhe,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_github_billing_ai_credit_usage_report_ghe(
+        self,
+        enterprise: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        organization: Missing[str] = UNSET,
+        user: Missing[str] = UNSET,
+        model: Missing[str] = UNSET,
+        product: Missing[str] = UNSET,
+        cost_center_id: Missing[str] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        BillingAiCreditUsageReportGhe, BillingAiCreditUsageReportGheTypeForResponse
+    ]:
+        """billing/get-github-billing-ai-credit-usage-report-ghe
+
+        GET /enterprises/{enterprise}/settings/billing/ai_credit/usage
+
+        Gets a report of AI credit usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise.
+
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage#get-billing-ai-credit-usage-report-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            BillingAiCreditUsageReportGhe,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/ai_credit/usage"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "organization": organization,
+            "user": user,
+            "model": model,
+            "product": product,
+            "cost_center_id": cost_center_id,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=BillingAiCreditUsageReportGhe,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
     def get_all_budgets(
         self,
         enterprise: str,
@@ -199,17 +331,22 @@ class BillingClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         scope: Missing[
-            Literal["enterprise", "organization", "repository", "cost_center"]
+            Literal[
+                "enterprise",
+                "organization",
+                "repository",
+                "cost_center",
+                "multi_user_customer",
+                "user",
+            ]
         ] = UNSET,
+        user: Missing[str] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
         """billing/get-all-budgets
 
         GET /enterprises/{enterprise}/settings/billing/budgets
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Gets all budgets for an enterprise. The authenticated user must be an enterprise admin or billing manager.
         Each page returns up to 10 budgets.
@@ -225,6 +362,7 @@ class BillingClient:
             "page": page,
             "per_page": per_page,
             "scope": scope,
+            "user": user,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -249,17 +387,22 @@ class BillingClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         scope: Missing[
-            Literal["enterprise", "organization", "repository", "cost_center"]
+            Literal[
+                "enterprise",
+                "organization",
+                "repository",
+                "cost_center",
+                "multi_user_customer",
+                "user",
+            ]
         ] = UNSET,
+        user: Missing[str] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
         """billing/get-all-budgets
 
         GET /enterprises/{enterprise}/settings/billing/budgets
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Gets all budgets for an enterprise. The authenticated user must be an enterprise admin or billing manager.
         Each page returns up to 10 budgets.
@@ -275,6 +418,7 @@ class BillingClient:
             "page": page,
             "per_page": per_page,
             "scope": scope,
+            "user": user,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -314,7 +458,12 @@ class BillingClient:
         prevent_further_usage: bool,
         budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType,
         budget_scope: Literal[
-            "enterprise", "organization", "repository", "cost_center"
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "user",
         ],
         budget_entity_name: Missing[str] = UNSET,
         budget_type: Literal["ProductPricing", "SkuPricing"],
@@ -333,9 +482,6 @@ class BillingClient:
         """billing/create-budget
 
         POST /enterprises/{enterprise}/settings/billing/budgets
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Creates a new budget for an enterprise. The authenticated user must be an enterprise admin, organization admin, or billing manager of the enterprise.
 
@@ -403,7 +549,12 @@ class BillingClient:
         prevent_further_usage: bool,
         budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType,
         budget_scope: Literal[
-            "enterprise", "organization", "repository", "cost_center"
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "user",
         ],
         budget_entity_name: Missing[str] = UNSET,
         budget_type: Literal["ProductPricing", "SkuPricing"],
@@ -422,9 +573,6 @@ class BillingClient:
         """billing/create-budget
 
         POST /enterprises/{enterprise}/settings/billing/budgets
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Creates a new budget for an enterprise. The authenticated user must be an enterprise admin, organization admin, or billing manager of the enterprise.
 
@@ -482,9 +630,6 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
 
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
         Gets a budget by ID. The authenticated user must be an enterprise admin or billing manager.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#get-a-budget-by-id
@@ -526,9 +671,6 @@ class BillingClient:
         """billing/get-budget
 
         GET /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Gets a budget by ID. The authenticated user must be an enterprise admin or billing manager.
 
@@ -572,9 +714,6 @@ class BillingClient:
 
         DELETE /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
 
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
         Deletes a budget by ID. The authenticated user must be an enterprise admin.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/budgets#delete-a-budget
@@ -616,9 +755,6 @@ class BillingClient:
         """billing/delete-budget
 
         DELETE /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Deletes a budget by ID. The authenticated user must be an enterprise admin.
 
@@ -676,7 +812,14 @@ class BillingClient:
             EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
         ] = UNSET,
         budget_scope: Missing[
-            Literal["enterprise", "organization", "repository", "cost_center"]
+            Literal[
+                "enterprise",
+                "organization",
+                "repository",
+                "cost_center",
+                "multi_user_customer",
+                "user",
+            ]
         ] = UNSET,
         budget_entity_name: Missing[str] = UNSET,
         budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = UNSET,
@@ -698,9 +841,6 @@ class BillingClient:
         """billing/update-budget
 
         PATCH /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Updates an existing budget for an enterprise. The authenticated user must be an enterprise admin, organization admin, or billing manager of the enterprise.
 
@@ -773,7 +913,14 @@ class BillingClient:
             EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
         ] = UNSET,
         budget_scope: Missing[
-            Literal["enterprise", "organization", "repository", "cost_center"]
+            Literal[
+                "enterprise",
+                "organization",
+                "repository",
+                "cost_center",
+                "multi_user_customer",
+                "user",
+            ]
         ] = UNSET,
         budget_entity_name: Missing[str] = UNSET,
         budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = UNSET,
@@ -795,9 +942,6 @@ class BillingClient:
         """billing/update-budget
 
         PATCH /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Updates an existing budget for an enterprise. The authenticated user must be an enterprise admin, organization admin, or billing manager of the enterprise.
 
@@ -1983,9 +2127,6 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/reports
 
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
         Lists all usage report exports for an enterprise. The authenticated user must be an enterprise admin or billing manager.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#list-usage-report-exports
@@ -2026,9 +2167,6 @@ class BillingClient:
         """billing/list-usage-report-exports
 
         GET /enterprises/{enterprise}/settings/billing/reports
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Lists all usage report exports for an enterprise. The authenticated user must be an enterprise admin or billing manager.
 
@@ -2078,7 +2216,7 @@ class BillingClient:
         data: UnsetType = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        report_type: Literal["detailed", "summarized", "premium_request"],
+        report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"],
         start_date: _dt.date,
         end_date: Missing[_dt.date] = UNSET,
         send_email: Missing[bool] = UNSET,
@@ -2096,9 +2234,6 @@ class BillingClient:
         """billing/create-usage-report-export
 
         POST /enterprises/{enterprise}/settings/billing/reports
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Initiates the generation of a usage report export for an enterprise. The report will be processed asynchronously
         and can be downloaded once completed. The authenticated user must be an enterprise admin or billing manager.
@@ -2161,7 +2296,7 @@ class BillingClient:
         data: UnsetType = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        report_type: Literal["detailed", "summarized", "premium_request"],
+        report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"],
         start_date: _dt.date,
         end_date: Missing[_dt.date] = UNSET,
         send_email: Missing[bool] = UNSET,
@@ -2179,9 +2314,6 @@ class BillingClient:
         """billing/create-usage-report-export
 
         POST /enterprises/{enterprise}/settings/billing/reports
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Initiates the generation of a usage report export for an enterprise. The report will be processed asynchronously
         and can be downloaded once completed. The authenticated user must be an enterprise admin or billing manager.
@@ -2238,9 +2370,6 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/reports/{report_id}
 
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
         Gets the status and details of a usage report export by ID. The authenticated user must be an enterprise admin or billing manager.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#get-a-usage-report-export
@@ -2282,9 +2411,6 @@ class BillingClient:
         """billing/get-usage-report-export
 
         GET /enterprises/{enterprise}/settings/billing/reports/{report_id}
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Gets the status and details of a usage report export by ID. The authenticated user must be an enterprise admin or billing manager.
 
@@ -2445,9 +2571,6 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/usage/summary
 
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
         Gets a summary report of usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise. By default, this endpoint will return usage across all cost centers in the enterprise.
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
@@ -2511,9 +2634,6 @@ class BillingClient:
         """billing/get-github-billing-usage-summary-report-ghe
 
         GET /enterprises/{enterprise}/settings/billing/usage/summary
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Gets a summary report of usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise. By default, this endpoint will return usage across all cost centers in the enterprise.
 

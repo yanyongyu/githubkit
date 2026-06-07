@@ -9,52 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class UsageReportExportListType(TypedDict):
-    """UsageReportExportList"""
+class DeleteCostCenterType(TypedDict):
+    """DeleteCostCenter"""
 
-    usage_report_exports: list[UsageReportExportType]
-
-
-class UsageReportExportListTypeForResponse(TypedDict):
-    """UsageReportExportList"""
-
-    usage_report_exports: list[UsageReportExportTypeForResponse]
-
-
-class UsageReportExportType(TypedDict):
-    """UsageReportExport"""
-
+    message: str
     id: str
-    report_type: Literal["detailed", "summarized", "premium_request"]
-    start_date: _dt.date
-    end_date: _dt.date
-    status: Literal["processing", "completed", "failed"]
-    download_urls: NotRequired[list[str]]
-    created_at: NotRequired[_dt.datetime]
-    actor: NotRequired[str]
+    name: str
+    cost_center_state: Literal["CostCenterArchived"]
 
 
-class UsageReportExportTypeForResponse(TypedDict):
-    """UsageReportExport"""
+class DeleteCostCenterTypeForResponse(TypedDict):
+    """DeleteCostCenter"""
 
+    message: str
     id: str
-    report_type: Literal["detailed", "summarized", "premium_request"]
-    start_date: str
-    end_date: str
-    status: Literal["processing", "completed", "failed"]
-    download_urls: NotRequired[list[str]]
-    created_at: NotRequired[str]
-    actor: NotRequired[str]
+    name: str
+    cost_center_state: Literal["CostCenterArchived"]
 
 
 __all__ = (
-    "UsageReportExportListType",
-    "UsageReportExportListTypeForResponse",
-    "UsageReportExportType",
-    "UsageReportExportTypeForResponse",
+    "DeleteCostCenterType",
+    "DeleteCostCenterTypeForResponse",
 )

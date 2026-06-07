@@ -19,16 +19,18 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0049 import Discussion
-from .group_0497 import EnterpriseWebhooks
-from .group_0498 import SimpleInstallation
-from .group_0499 import OrganizationSimpleWebhooks
-from .group_0500 import RepositoryWebhooks
+from .group_0503 import EnterpriseWebhooks
+from .group_0504 import SimpleInstallation
+from .group_0505 import OrganizationSimpleWebhooks
+from .group_0506 import RepositoryWebhooks
+from .group_0516 import WebhooksComment
 
 
-class WebhookDiscussionLocked(GitHubModel):
-    """discussion locked event"""
+class WebhookDiscussionCommentDeleted(GitHubModel):
+    """discussion_comment deleted event"""
 
-    action: Literal["locked"] = Field()
+    action: Literal["deleted"] = Field()
+    comment: WebhooksComment = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -54,6 +56,6 @@ class WebhookDiscussionLocked(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionLocked)
+model_rebuild(WebhookDiscussionCommentDeleted)
 
-__all__ = ("WebhookDiscussionLocked",)
+__all__ = ("WebhookDiscussionCommentDeleted",)

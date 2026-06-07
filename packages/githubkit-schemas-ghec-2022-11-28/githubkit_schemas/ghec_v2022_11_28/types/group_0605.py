@@ -14,43 +14,55 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectCardType(TypedDict):
-    """Project Card"""
+class WebhooksMilestone3Type(TypedDict):
+    """Milestone
 
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
     created_at: _dt.datetime
-    creator: Union[WebhooksProjectCardPropCreatorType, None]
+    creator: Union[WebhooksMilestone3PropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
+    html_url: str
     id: int
+    labels_url: str
     node_id: str
-    note: Union[str, None]
-    project_url: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
     updated_at: _dt.datetime
     url: str
 
 
-class WebhooksProjectCardTypeForResponse(TypedDict):
-    """Project Card"""
+class WebhooksMilestone3TypeForResponse(TypedDict):
+    """Milestone
 
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[str, None]
+    closed_issues: int
     created_at: str
-    creator: Union[WebhooksProjectCardPropCreatorTypeForResponse, None]
+    creator: Union[WebhooksMilestone3PropCreatorTypeForResponse, None]
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
     id: int
+    labels_url: str
     node_id: str
-    note: Union[str, None]
-    project_url: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
     updated_at: str
     url: str
 
 
-class WebhooksProjectCardPropCreatorType(TypedDict):
+class WebhooksMilestone3PropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -77,7 +89,7 @@ class WebhooksProjectCardPropCreatorType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksProjectCardPropCreatorTypeForResponse(TypedDict):
+class WebhooksMilestone3PropCreatorTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -105,8 +117,8 @@ class WebhooksProjectCardPropCreatorTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhooksProjectCardPropCreatorType",
-    "WebhooksProjectCardPropCreatorTypeForResponse",
-    "WebhooksProjectCardType",
-    "WebhooksProjectCardTypeForResponse",
+    "WebhooksMilestone3PropCreatorType",
+    "WebhooksMilestone3PropCreatorTypeForResponse",
+    "WebhooksMilestone3Type",
+    "WebhooksMilestone3TypeForResponse",
 )

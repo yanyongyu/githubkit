@@ -9,79 +9,93 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, TypeAlias, Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class ConcurrencyGroupRunListType(TypedDict):
+    """Concurrency Group Run List
 
-class DeploymentType(TypedDict):
-    """Deployment
-
-    A request for a specific ref(branch,sha,tag) to be deployed
+    A list of concurrency groups associated with a workflow run.
     """
 
-    url: str
-    id: int
-    node_id: str
-    sha: str
-    ref: str
-    task: str
-    payload: Union[DeploymentPropPayloadOneof0Type, str]
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    creator: Union[None, SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    total_count: int
+    concurrency_groups: list[ConcurrencyGroupRunListPropConcurrencyGroupsItemsType]
 
 
-class DeploymentTypeForResponse(TypedDict):
-    """Deployment
+class ConcurrencyGroupRunListTypeForResponse(TypedDict):
+    """Concurrency Group Run List
 
-    A request for a specific ref(branch,sha,tag) to be deployed
+    A list of concurrency groups associated with a workflow run.
     """
 
-    url: str
-    id: int
-    node_id: str
-    sha: str
-    ref: str
-    task: str
-    payload: Union[DeploymentPropPayloadOneof0TypeForResponse, str]
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    creator: Union[None, SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    total_count: int
+    concurrency_groups: list[
+        ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse
+    ]
 
 
-DeploymentPropPayloadOneof0Type: TypeAlias = dict[str, Any]
-"""DeploymentPropPayloadOneof0
-"""
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsType(TypedDict):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
+
+    group_name: str
+    group_url: str
+    group_members: list[
+        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType
+    ]
 
 
-DeploymentPropPayloadOneof0TypeForResponse: TypeAlias = dict[str, Any]
-"""DeploymentPropPayloadOneof0
-"""
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
+
+    group_name: str
+    group_url: str
+    group_members: list[
+        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse
+    ]
+
+
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType(
+    TypedDict
+):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
+
+    run_id: int
+    run_name: str
+    run_url: Union[str, None]
+    run_html_url: Union[str, None]
+    position: int
+    position_url: str
+    job_id: NotRequired[Union[int, None]]
+    job_name: NotRequired[Union[str, None]]
+    job_url: NotRequired[Union[str, None]]
+    job_html_url: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "pending"]
+
+
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse(
+    TypedDict
+):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
+
+    run_id: int
+    run_name: str
+    run_url: Union[str, None]
+    run_html_url: Union[str, None]
+    position: int
+    position_url: str
+    job_id: NotRequired[Union[int, None]]
+    job_name: NotRequired[Union[str, None]]
+    job_url: NotRequired[Union[str, None]]
+    job_html_url: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "pending"]
 
 
 __all__ = (
-    "DeploymentPropPayloadOneof0Type",
-    "DeploymentPropPayloadOneof0TypeForResponse",
-    "DeploymentType",
-    "DeploymentTypeForResponse",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsType",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse",
+    "ConcurrencyGroupRunListType",
+    "ConcurrencyGroupRunListTypeForResponse",
 )

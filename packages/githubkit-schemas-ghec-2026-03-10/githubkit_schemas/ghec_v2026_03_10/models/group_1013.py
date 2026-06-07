@@ -16,7 +16,7 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof0(GitHubModel):
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof0(GitHubModel):
     """Workflow Job
 
     The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
@@ -25,9 +25,18 @@ class WebhookWorkflowJobInProgressPropWorkflowJobAllof0(GitHubModel):
 
     check_run_url: str = Field()
     completed_at: Union[str, None] = Field()
-    conclusion: Union[None, Literal["success", "failure", "cancelled", "neutral"]] = (
-        Field()
-    )
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "skipped",
+            "cancelled",
+            "action_required",
+            "neutral",
+            "timed_out",
+        ],
+    ] = Field()
     created_at: str = Field(description="The time that the job created.")
     head_sha: str = Field()
     html_url: str = Field()
@@ -53,18 +62,18 @@ class WebhookWorkflowJobInProgressPropWorkflowJobAllof0(GitHubModel):
         description="The name of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
     started_at: str = Field()
-    status: Literal["queued", "in_progress", "completed"] = Field(
-        description="The current status of the job. Can be `queued`, `in_progress`, or `completed`."
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field(
+        description="The current status of the job. Can be `queued`, `in_progress`, `waiting`, or `completed`."
     )
     head_branch: Union[str, None] = Field(description="The name of the current branch.")
     workflow_name: Union[str, None] = Field(description="The name of the workflow.")
-    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems] = (
+    steps: list[WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems] = (
         Field()
     )
     url: str = Field()
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems(GitHubModel):
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems(GitHubModel):
     """Workflow Step"""
 
     completed_at: Union[str, None] = Field()
@@ -74,13 +83,13 @@ class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems(GitHubMode
     name: str = Field()
     number: int = Field()
     started_at: Union[str, None] = Field()
-    status: Literal["in_progress", "completed", "queued", "pending"] = Field()
+    status: Literal["in_progress", "completed", "queued"] = Field()
 
 
-model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof0)
-model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems)
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobAllof0)
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems)
 
 __all__ = (
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0",
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems",
 )

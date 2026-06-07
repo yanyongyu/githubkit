@@ -9,48 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class BranchShortType(TypedDict):
-    """Branch Short
+class RepositoryInvitationType(TypedDict):
+    """Repository Invitation
 
-    Branch Short
+    Repository invitations let you manage who you collaborate with.
     """
 
-    name: str
-    commit: BranchShortPropCommitType
-    protected: bool
+    id: int
+    repository: MinimalRepositoryType
+    invitee: Union[None, SimpleUserType]
+    inviter: Union[None, SimpleUserType]
+    permissions: Literal["read", "write", "admin", "triage", "maintain"]
+    created_at: _dt.datetime
+    expired: NotRequired[bool]
+    url: str
+    html_url: str
+    node_id: str
 
 
-class BranchShortTypeForResponse(TypedDict):
-    """Branch Short
+class RepositoryInvitationTypeForResponse(TypedDict):
+    """Repository Invitation
 
-    Branch Short
+    Repository invitations let you manage who you collaborate with.
     """
 
-    name: str
-    commit: BranchShortPropCommitTypeForResponse
-    protected: bool
-
-
-class BranchShortPropCommitType(TypedDict):
-    """BranchShortPropCommit"""
-
-    sha: str
+    id: int
+    repository: MinimalRepositoryTypeForResponse
+    invitee: Union[None, SimpleUserTypeForResponse]
+    inviter: Union[None, SimpleUserTypeForResponse]
+    permissions: Literal["read", "write", "admin", "triage", "maintain"]
+    created_at: str
+    expired: NotRequired[bool]
     url: str
-
-
-class BranchShortPropCommitTypeForResponse(TypedDict):
-    """BranchShortPropCommit"""
-
-    sha: str
-    url: str
+    html_url: str
+    node_id: str
 
 
 __all__ = (
-    "BranchShortPropCommitType",
-    "BranchShortPropCommitTypeForResponse",
-    "BranchShortType",
-    "BranchShortTypeForResponse",
+    "RepositoryInvitationType",
+    "RepositoryInvitationTypeForResponse",
 )

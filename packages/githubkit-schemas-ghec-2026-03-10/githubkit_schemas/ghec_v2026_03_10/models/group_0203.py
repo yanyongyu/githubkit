@@ -9,42 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
 
+class Label(GitHubModel):
+    """Label
 
-class Milestone(GitHubModel):
-    """Milestone
-
-    A collection of related issues and pull requests.
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    url: str = Field()
-    html_url: str = Field()
-    labels_url: str = Field()
-    id: int = Field()
+    id: int = Field(description="Unique identifier for the label.")
     node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    state: Literal["open", "closed"] = Field(
-        default="open", description="The state of the milestone."
+    url: str = Field(description="URL for the label")
+    name: str = Field(description="The name of the label.")
+    description: Union[str, None] = Field(
+        description="Optional description of the label, such as its purpose."
     )
-    title: str = Field(description="The title of the milestone.")
-    description: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
-    open_issues: int = Field()
-    closed_issues: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    closed_at: Union[_dt.datetime, None] = Field()
-    due_on: Union[_dt.datetime, None] = Field()
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field(
+        description="Whether this label comes by default in a new repository."
+    )
 
 
-model_rebuild(Milestone)
+model_rebuild(Label)
 
-__all__ = ("Milestone",)
+__all__ = ("Label",)

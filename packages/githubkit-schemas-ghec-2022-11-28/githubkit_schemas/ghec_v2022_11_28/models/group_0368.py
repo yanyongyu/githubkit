@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 
 from pydantic import Field
 
@@ -18,27 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class DiffEntry(GitHubModel):
-    """Diff Entry
+class GitUser(GitHubModel):
+    """Git User
 
-    Diff Entry
+    Metaproperties for Git author/committer information.
     """
 
-    sha: Union[str, None] = Field()
-    filename: str = Field()
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
-    ] = Field()
-    additions: int = Field()
-    deletions: int = Field()
-    changes: int = Field()
-    blob_url: Union[str, None] = Field()
-    raw_url: Union[str, None] = Field()
-    contents_url: str = Field()
-    patch: Missing[str] = Field(default=UNSET)
-    previous_filename: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    email: Missing[str] = Field(default=UNSET)
+    date: Missing[_dt.datetime] = Field(default=UNSET)
 
 
-model_rebuild(DiffEntry)
+model_rebuild(GitUser)
 
-__all__ = ("DiffEntry",)
+__all__ = ("GitUser",)

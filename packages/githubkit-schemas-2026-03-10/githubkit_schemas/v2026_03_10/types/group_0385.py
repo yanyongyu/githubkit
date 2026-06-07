@@ -9,52 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class PorterAuthorType(TypedDict):
+    """Porter Author
 
-class AssignedIssueEventType(TypedDict):
-    """Assigned Issue Event
-
-    Assigned Issue Event
+    Porter Author
     """
 
     id: int
-    node_id: str
+    remote_id: str
+    remote_name: str
+    email: str
+    name: str
     url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
-    assignee: SimpleUserType
-    assigner: SimpleUserType
+    import_url: str
 
 
-class AssignedIssueEventTypeForResponse(TypedDict):
-    """Assigned Issue Event
+class PorterAuthorTypeForResponse(TypedDict):
+    """Porter Author
 
-    Assigned Issue Event
+    Porter Author
     """
 
     id: int
-    node_id: str
+    remote_id: str
+    remote_name: str
+    email: str
+    name: str
     url: str
-    actor: SimpleUserTypeForResponse
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationTypeForResponse, None]
-    assignee: SimpleUserTypeForResponse
-    assigner: SimpleUserTypeForResponse
+    import_url: str
 
 
 __all__ = (
-    "AssignedIssueEventType",
-    "AssignedIssueEventTypeForResponse",
+    "PorterAuthorType",
+    "PorterAuthorTypeForResponse",
 )

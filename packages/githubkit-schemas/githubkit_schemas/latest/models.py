@@ -508,6 +508,24 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import BasicError as BasicError
     from githubkit_schemas.v2026_03_10.models import (
+        BillingAiCreditUsageReportOrg as BillingAiCreditUsageReportOrg,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        BillingAiCreditUsageReportOrgPropTimePeriod as BillingAiCreditUsageReportOrgPropTimePeriod,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        BillingAiCreditUsageReportOrgPropUsageItemsItems as BillingAiCreditUsageReportOrgPropUsageItemsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        BillingAiCreditUsageReportUser as BillingAiCreditUsageReportUser,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        BillingAiCreditUsageReportUserPropTimePeriod as BillingAiCreditUsageReportUserPropTimePeriod,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        BillingAiCreditUsageReportUserPropUsageItemsItems as BillingAiCreditUsageReportUserPropUsageItemsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         BillingPremiumRequestUsageReportOrg as BillingPremiumRequestUsageReportOrg,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -1043,6 +1061,13 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.models import (
         CopilotUsageMetricsDay as CopilotUsageMetricsDay,
     )
+    from githubkit_schemas.v2026_03_10.models import CreateBudget as CreateBudget
+    from githubkit_schemas.v2026_03_10.models import (
+        CreateBudgetPropBudget as CreateBudgetPropBudget,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        CreateBudgetPropBudgetPropBudgetAlerting as CreateBudgetPropBudgetPropBudgetAlerting,
+    )
     from githubkit_schemas.v2026_03_10.models import CreateEvent as CreateEvent
     from githubkit_schemas.v2026_03_10.models import (
         CredentialsRevokePostBody as CredentialsRevokePostBody,
@@ -1317,6 +1342,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         FullRepositoryPropPermissions as FullRepositoryPropPermissions,
     )
     from githubkit_schemas.v2026_03_10.models import GetAllBudgets as GetAllBudgets
+    from githubkit_schemas.v2026_03_10.models import (
+        GetAllBudgetsPropEffectiveBudget as GetAllBudgetsPropEffectiveBudget,
+    )
     from githubkit_schemas.v2026_03_10.models import GetBudget as GetBudget
     from githubkit_schemas.v2026_03_10.models import (
         GetBudgetPropBudgetAlerting as GetBudgetPropBudgetAlerting,
@@ -1710,13 +1738,10 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting,
     )
     from githubkit_schemas.v2026_03_10.models import (
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200 as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
+        OrganizationsOrgSettingsBillingBudgetsPostBody as OrganizationsOrgSettingsBillingBudgetsPostBody,
     )
     from githubkit_schemas.v2026_03_10.models import (
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting,
+        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting as OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting,
     )
     from githubkit_schemas.v2026_03_10.models import (
         OrganizationUpdateIssueField as OrganizationUpdateIssueField,
@@ -2766,6 +2791,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepositoryCollaboratorPermission as RepositoryCollaboratorPermission,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        RepositoryHashAlgorithm as RepositoryHashAlgorithm,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         RepositoryInvitation as RepositoryInvitation,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -2916,7 +2944,13 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepositoryRuleNonFastForward as RepositoryRuleNonFastForward,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        RepositoryRuleParamsActor as RepositoryRuleParamsActor,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleParamsCodeScanningTool as RepositoryRuleParamsCodeScanningTool,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        RepositoryRuleParamsDismissalRestriction as RepositoryRuleParamsDismissalRestriction,
     )
     from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleParamsRequiredReviewerConfiguration as RepositoryRuleParamsRequiredReviewerConfiguration,
@@ -4214,6 +4248,13 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         UnlabeledIssueEventPropLabel as UnlabeledIssueEventPropLabel,
+    )
+    from githubkit_schemas.v2026_03_10.models import UpdateBudget as UpdateBudget
+    from githubkit_schemas.v2026_03_10.models import (
+        UpdateBudgetPropBudget as UpdateBudgetPropBudget,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        UpdateBudgetPropBudgetPropBudgetAlerting as UpdateBudgetPropBudgetPropBudgetAlerting,
     )
     from githubkit_schemas.v2026_03_10.models import (
         UserCodespacesCodespaceNameMachinesGetResponse200 as UserCodespacesCodespaceNameMachinesGetResponse200,
@@ -11082,11 +11123,21 @@ else:
             "ThreadSubscription",
             "ActionsCacheRetentionLimitForOrganization",
             "ActionsCacheStorageLimitForOrganization",
+            "BillingAiCreditUsageReportOrg",
+            "BillingAiCreditUsageReportOrgPropTimePeriod",
+            "BillingAiCreditUsageReportOrgPropUsageItemsItems",
             "GetAllBudgets",
+            "GetAllBudgetsPropEffectiveBudget",
             "Budget",
             "BudgetPropBudgetAlerting",
+            "CreateBudget",
+            "CreateBudgetPropBudget",
+            "CreateBudgetPropBudgetPropBudgetAlerting",
             "GetBudget",
             "GetBudgetPropBudgetAlerting",
+            "UpdateBudget",
+            "UpdateBudgetPropBudget",
+            "UpdateBudgetPropBudgetPropBudgetAlerting",
             "DeleteBudget",
             "BillingPremiumRequestUsageReportOrg",
             "BillingPremiumRequestUsageReportOrgPropTimePeriod",
@@ -11272,6 +11323,8 @@ else:
             "RepositoryRuleMergeQueuePropParameters",
             "RepositoryRuleRequiredDeployments",
             "RepositoryRuleRequiredDeploymentsPropParameters",
+            "RepositoryRuleParamsDismissalRestriction",
+            "RepositoryRuleParamsActor",
             "RepositoryRulePullRequest",
             "RepositoryRulePullRequestPropParameters",
             "RepositoryRuleParamsRequiredReviewerConfiguration",
@@ -11593,6 +11646,7 @@ else:
             "GitTagPropObject",
             "GitTree",
             "GitTreePropTreeItems",
+            "RepositoryHashAlgorithm",
             "HookResponse",
             "Hook",
             "CheckImmutableReleases",
@@ -11788,6 +11842,9 @@ else:
             "Hovercard",
             "HovercardPropContextsItems",
             "KeySimple",
+            "BillingAiCreditUsageReportUser",
+            "BillingAiCreditUsageReportUserPropTimePeriod",
+            "BillingAiCreditUsageReportUserPropUsageItemsItems",
             "BillingPremiumRequestUsageReportUser",
             "BillingPremiumRequestUsageReportUserPropTimePeriod",
             "BillingPremiumRequestUsageReportUserPropUsageItemsItems",
@@ -14142,11 +14199,10 @@ else:
             "NotificationsPutBody",
             "NotificationsPutResponse202",
             "NotificationsThreadsThreadIdSubscriptionPutBody",
+            "OrganizationsOrgSettingsBillingBudgetsPostBody",
+            "OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting",
             "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody",
             "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
-            "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200",
-            "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget",
-            "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting",
             "OrgsOrgPatchBody",
             "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
             "ActionsCacheUsageByRepository",

@@ -16,49 +16,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RateLimitOverview(GitHubModel):
-    """Rate Limit Overview
+class NetworkSettings(GitHubModel):
+    """Hosted compute network settings resource
 
-    Rate Limit Overview
+    A hosted compute network settings resource.
     """
 
-    resources: RateLimitOverviewPropResources = Field()
-
-
-class RateLimitOverviewPropResources(GitHubModel):
-    """RateLimitOverviewPropResources"""
-
-    core: RateLimit = Field(title="Rate Limit")
-    graphql: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    search: RateLimit = Field(title="Rate Limit")
-    code_search: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    source_import: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    integration_manifest: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    code_scanning_upload: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    actions_runner_registration: Missing[RateLimit] = Field(
-        default=UNSET, title="Rate Limit"
+    id: str = Field(
+        description="The unique identifier of the network settings resource."
     )
-    scim: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    dependency_snapshots: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    dependency_sbom: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    code_scanning_autofix: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    network_configuration_id: Missing[str] = Field(
+        default=UNSET,
+        description="The identifier of the network configuration that is using this settings resource.",
+    )
+    name: str = Field(description="The name of the network settings resource.")
+    subnet_id: str = Field(
+        description="The subnet this network settings resource is configured for."
+    )
+    region: str = Field(
+        description="The location of the subnet this network settings resource is configured for."
+    )
 
 
-class RateLimit(GitHubModel):
-    """Rate Limit"""
+model_rebuild(NetworkSettings)
 
-    limit: int = Field()
-    remaining: int = Field()
-    reset: int = Field()
-    used: int = Field()
-
-
-model_rebuild(RateLimitOverview)
-model_rebuild(RateLimitOverviewPropResources)
-model_rebuild(RateLimit)
-
-__all__ = (
-    "RateLimit",
-    "RateLimitOverview",
-    "RateLimitOverviewPropResources",
-)
+__all__ = ("NetworkSettings",)

@@ -9,30 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class SelectedActions(GitHubModel):
-    """SelectedActions"""
+class ActionsForkPrContributorApproval(GitHubModel):
+    """ActionsForkPrContributorApproval"""
 
-    github_owned_allowed: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether GitHub-owned actions are allowed. For example, this includes the actions in the `actions` organization.",
-    )
-    verified_allowed: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether actions from GitHub Marketplace verified creators are allowed. Set to `true` to allow all actions by GitHub Marketplace verified creators.",
-    )
-    patterns_allowed: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Specifies a list of string-matching patterns to allow specific action(s) and reusable workflow(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`.\n\n> [!NOTE]\n> The `patterns_allowed` setting only applies to public repositories.",
+    approval_policy: Literal[
+        "first_time_contributors_new_to_github",
+        "first_time_contributors",
+        "all_external_contributors",
+    ] = Field(
+        description="The policy that controls when fork PR workflows require approval from a maintainer."
     )
 
 
-model_rebuild(SelectedActions)
+model_rebuild(ActionsForkPrContributorApproval)
 
-__all__ = ("SelectedActions",)
+__all__ = ("ActionsForkPrContributorApproval",)

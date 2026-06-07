@@ -9,52 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class GitRefType(TypedDict):
-    """Git Reference
+class BlobType(TypedDict):
+    """Blob
 
-    Git references within a repository
+    Blob
     """
 
-    ref: str
-    node_id: str
+    content: str
+    encoding: str
     url: str
-    object_: GitRefPropObjectType
+    sha: str
+    size: Union[int, None]
+    node_id: str
+    highlighted_content: NotRequired[str]
 
 
-class GitRefTypeForResponse(TypedDict):
-    """Git Reference
+class BlobTypeForResponse(TypedDict):
+    """Blob
 
-    Git references within a repository
+    Blob
     """
 
-    ref: str
+    content: str
+    encoding: str
+    url: str
+    sha: str
+    size: Union[int, None]
     node_id: str
-    url: str
-    object_: GitRefPropObjectTypeForResponse
-
-
-class GitRefPropObjectType(TypedDict):
-    """GitRefPropObject"""
-
-    type: str
-    sha: str
-    url: str
-
-
-class GitRefPropObjectTypeForResponse(TypedDict):
-    """GitRefPropObject"""
-
-    type: str
-    sha: str
-    url: str
+    highlighted_content: NotRequired[str]
 
 
 __all__ = (
-    "GitRefPropObjectType",
-    "GitRefPropObjectTypeForResponse",
-    "GitRefType",
-    "GitRefTypeForResponse",
+    "BlobType",
+    "BlobTypeForResponse",
 )

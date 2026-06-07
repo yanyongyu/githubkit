@@ -9,93 +9,131 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0213 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0245 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0347 import SimpleCommitType, SimpleCommitTypeForResponse
 
-class ConcurrencyGroupRunListType(TypedDict):
-    """Concurrency Group Run List
 
-    A list of concurrency groups associated with a workflow run.
+class WorkflowRunType(TypedDict):
+    """Workflow Run
+
+    An invocation of a workflow
     """
 
-    total_count: int
-    concurrency_groups: list[ConcurrencyGroupRunListPropConcurrencyGroupsItemsType]
+    id: int
+    name: NotRequired[Union[str, None]]
+    node_id: str
+    check_suite_id: NotRequired[int]
+    check_suite_node_id: NotRequired[str]
+    head_branch: Union[str, None]
+    head_sha: str
+    path: str
+    run_number: int
+    run_attempt: NotRequired[int]
+    referenced_workflows: NotRequired[Union[list[ReferencedWorkflowType], None]]
+    event: str
+    status: Union[str, None]
+    conclusion: Union[str, None]
+    workflow_id: int
+    url: str
+    html_url: str
+    pull_requests: Union[list[PullRequestMinimalType], None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    actor: NotRequired[SimpleUserType]
+    triggering_actor: NotRequired[SimpleUserType]
+    run_started_at: NotRequired[_dt.datetime]
+    jobs_url: str
+    logs_url: str
+    check_suite_url: str
+    artifacts_url: str
+    cancel_url: str
+    rerun_url: str
+    previous_attempt_url: NotRequired[Union[str, None]]
+    workflow_url: str
+    head_commit: Union[None, SimpleCommitType]
+    repository: MinimalRepositoryType
+    head_repository: MinimalRepositoryType
+    head_repository_id: NotRequired[int]
+    display_title: str
 
 
-class ConcurrencyGroupRunListTypeForResponse(TypedDict):
-    """Concurrency Group Run List
+class WorkflowRunTypeForResponse(TypedDict):
+    """Workflow Run
 
-    A list of concurrency groups associated with a workflow run.
+    An invocation of a workflow
     """
 
-    total_count: int
-    concurrency_groups: list[
-        ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse
+    id: int
+    name: NotRequired[Union[str, None]]
+    node_id: str
+    check_suite_id: NotRequired[int]
+    check_suite_node_id: NotRequired[str]
+    head_branch: Union[str, None]
+    head_sha: str
+    path: str
+    run_number: int
+    run_attempt: NotRequired[int]
+    referenced_workflows: NotRequired[
+        Union[list[ReferencedWorkflowTypeForResponse], None]
     ]
+    event: str
+    status: Union[str, None]
+    conclusion: Union[str, None]
+    workflow_id: int
+    url: str
+    html_url: str
+    pull_requests: Union[list[PullRequestMinimalTypeForResponse], None]
+    created_at: str
+    updated_at: str
+    actor: NotRequired[SimpleUserTypeForResponse]
+    triggering_actor: NotRequired[SimpleUserTypeForResponse]
+    run_started_at: NotRequired[str]
+    jobs_url: str
+    logs_url: str
+    check_suite_url: str
+    artifacts_url: str
+    cancel_url: str
+    rerun_url: str
+    previous_attempt_url: NotRequired[Union[str, None]]
+    workflow_url: str
+    head_commit: Union[None, SimpleCommitTypeForResponse]
+    repository: MinimalRepositoryTypeForResponse
+    head_repository: MinimalRepositoryTypeForResponse
+    head_repository_id: NotRequired[int]
+    display_title: str
 
 
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsType(TypedDict):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
+class ReferencedWorkflowType(TypedDict):
+    """Referenced workflow
 
-    group_name: str
-    group_url: str
-    group_members: list[
-        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType
-    ]
+    A workflow referenced/reused by the initial caller workflow
+    """
 
-
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
-
-    group_name: str
-    group_url: str
-    group_members: list[
-        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse
-    ]
+    path: str
+    sha: str
+    ref: NotRequired[str]
 
 
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType(
-    TypedDict
-):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
+class ReferencedWorkflowTypeForResponse(TypedDict):
+    """Referenced workflow
 
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    position: int
-    position_url: str
-    job_id: NotRequired[Union[int, None]]
-    job_name: NotRequired[Union[str, None]]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
+    A workflow referenced/reused by the initial caller workflow
+    """
 
-
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse(
-    TypedDict
-):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
-
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    position: int
-    position_url: str
-    job_id: NotRequired[Union[int, None]]
-    job_name: NotRequired[Union[str, None]]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
+    path: str
+    sha: str
+    ref: NotRequired[str]
 
 
 __all__ = (
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsType",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse",
-    "ConcurrencyGroupRunListType",
-    "ConcurrencyGroupRunListTypeForResponse",
+    "ReferencedWorkflowType",
+    "ReferencedWorkflowTypeForResponse",
+    "WorkflowRunType",
+    "WorkflowRunTypeForResponse",
 )

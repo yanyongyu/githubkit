@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0496 import EnterpriseWebhooks
-from .group_0497 import SimpleInstallation
-from .group_0498 import OrganizationSimpleWebhooks
-from .group_0499 import RepositoryWebhooks
-from .group_0567 import WebhookCodeScanningAlertFixedPropAlert
+from .group_0502 import EnterpriseWebhooks
+from .group_0503 import SimpleInstallation
+from .group_0504 import OrganizationSimpleWebhooks
+from .group_0505 import RepositoryWebhooks
+from .group_0567 import WebhookCodeScanningAlertAppearedInBranchPropAlert
 
 
-class WebhookCodeScanningAlertFixed(GitHubModel):
-    """code_scanning_alert fixed event"""
+class WebhookCodeScanningAlertAppearedInBranch(GitHubModel):
+    """code_scanning_alert appeared_in_branch event"""
 
-    action: Literal["fixed"] = Field()
-    alert: WebhookCodeScanningAlertFixedPropAlert = Field(
+    action: Literal["appeared_in_branch"] = Field()
+    alert: WebhookCodeScanningAlertAppearedInBranchPropAlert = Field(
         description="The code scanning alert involved in the event."
     )
     commit_oid: str = Field(
@@ -60,6 +60,6 @@ class WebhookCodeScanningAlertFixed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCodeScanningAlertFixed)
+model_rebuild(WebhookCodeScanningAlertAppearedInBranch)
 
-__all__ = ("WebhookCodeScanningAlertFixed",)
+__all__ = ("WebhookCodeScanningAlertAppearedInBranch",)

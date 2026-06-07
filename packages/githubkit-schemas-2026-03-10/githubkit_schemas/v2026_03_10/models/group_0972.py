@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,42 +18,109 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0008 import Enterprise
-from .group_0009 import IntegrationPropPermissions
 
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
 
-class AppManifestsCodeConversionsPostResponse201(GitHubModel):
-    """AppManifestsCodeConversionsPostResponse201"""
+    Full session details within a task
+    """
 
-    id: int = Field(description="Unique identifier of the GitHub app")
-    slug: Missing[str] = Field(
-        default=UNSET, description="The slug name of the GitHub app"
+    id: str = Field(description="Session ID")
+    name: Missing[str] = Field(default=UNSET, description="Session name")
+    user: Missing[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser] = (
+        Field(default=UNSET, description="The user who created this session")
     )
-    node_id: str = Field()
-    client_id: str = Field()
-    owner: Union[SimpleUser, Enterprise] = Field()
-    name: str = Field(description="The name of the GitHub app")
-    description: Union[str, None] = Field()
-    external_url: str = Field()
-    html_url: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    permissions: IntegrationPropPermissions = Field(
-        description="The set of permissions for the GitHub app"
+    owner: Missing[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner] = (
+        Field(default=UNSET, description="The owner of the repository")
     )
-    events: list[str] = Field(
-        description="The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation."
+    repository: Missing[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
+    ] = Field(default=UNSET, description="The repository this session belongs to")
+    task_id: Missing[str] = Field(
+        default=UNSET, description="Task ID this session belongs to"
     )
-    installations_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself.",
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ] = Field(description="Current state of a session")
+    created_at: _dt.datetime = Field(description="Creation timestamp")
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="Last update timestamp"
     )
-    client_secret: str = Field()
-    webhook_secret: Union[str, None] = Field()
-    pem: str = Field()
+    completed_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="Completion timestamp"
+    )
+    prompt: Missing[str] = Field(
+        default=UNSET, description="Content of the triggering event"
+    )
+    head_ref: Missing[str] = Field(default=UNSET, description="Head branch name")
+    base_ref: Missing[str] = Field(default=UNSET, description="Base branch name")
+    model: Missing[str] = Field(
+        default=UNSET, description="Model used for this session"
+    )
+    error: Missing[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError] = (
+        Field(default=UNSET, description="Error details for a failed session")
+    )
 
 
-model_rebuild(AppManifestsCodeConversionsPostResponse201)
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
 
-__all__ = ("AppManifestsCodeConversionsPostResponse201",)
+    The user who created this session
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
+
+    The owner of the repository
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
+
+    The repository this session belongs to
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the repository"
+    )
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
+
+    Error details for a failed session
+    """
+
+    message: Missing[str] = Field(default=UNSET, description="Error message")
+
+
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError)
+
+__all__ = (
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser",
+)

@@ -28,30 +28,38 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import (
+        BillingAiCreditUsageReportOrg,
+        BillingAiCreditUsageReportUser,
         BillingPremiumRequestUsageReportOrg,
         BillingPremiumRequestUsageReportUser,
         BillingUsageReport,
         BillingUsageReportUser,
         BillingUsageSummaryReportOrg,
         BillingUsageSummaryReportUser,
+        CreateBudget,
         DeleteBudget,
         GetAllBudgets,
         GetBudget,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
+        UpdateBudget,
     )
     from ..types import (
+        BillingAiCreditUsageReportOrgTypeForResponse,
+        BillingAiCreditUsageReportUserTypeForResponse,
         BillingPremiumRequestUsageReportOrgTypeForResponse,
         BillingPremiumRequestUsageReportUserTypeForResponse,
         BillingUsageReportTypeForResponse,
         BillingUsageReportUserTypeForResponse,
         BillingUsageSummaryReportOrgTypeForResponse,
         BillingUsageSummaryReportUserTypeForResponse,
+        CreateBudgetTypeForResponse,
         DeleteBudgetTypeForResponse,
         GetAllBudgetsTypeForResponse,
         GetBudgetTypeForResponse,
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType,
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
+        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType,
+        OrganizationsOrgSettingsBillingBudgetsPostBodyType,
+        UpdateBudgetTypeForResponse,
     )
 
 
@@ -70,6 +78,128 @@ class BillingClient:
             "Do not use this client after the client has been collected."
         )
 
+    def get_github_billing_ai_credit_usage_report_org(
+        self,
+        org: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        user: Missing[str] = UNSET,
+        model: Missing[str] = UNSET,
+        product: Missing[str] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        BillingAiCreditUsageReportOrg, BillingAiCreditUsageReportOrgTypeForResponse
+    ]:
+        """billing/get-github-billing-ai-credit-usage-report-org
+
+        GET /organizations/{org}/settings/billing/ai_credit/usage
+
+        Gets a report of AI credit usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
+
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
+
+        See also: https://docs.github.com/rest/billing/usage#get-billing-ai-credit-usage-report-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            BillingAiCreditUsageReportOrg,
+            EventsGetResponse503,
+        )
+
+        url = f"/organizations/{org}/settings/billing/ai_credit/usage"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "user": user,
+            "model": model,
+            "product": product,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=BillingAiCreditUsageReportOrg,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    async def async_get_github_billing_ai_credit_usage_report_org(
+        self,
+        org: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        user: Missing[str] = UNSET,
+        model: Missing[str] = UNSET,
+        product: Missing[str] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        BillingAiCreditUsageReportOrg, BillingAiCreditUsageReportOrgTypeForResponse
+    ]:
+        """billing/get-github-billing-ai-credit-usage-report-org
+
+        GET /organizations/{org}/settings/billing/ai_credit/usage
+
+        Gets a report of AI credit usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
+
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
+
+        See also: https://docs.github.com/rest/billing/usage#get-billing-ai-credit-usage-report-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            BillingAiCreditUsageReportOrg,
+            EventsGetResponse503,
+        )
+
+        url = f"/organizations/{org}/settings/billing/ai_credit/usage"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "user": user,
+            "model": model,
+            "product": product,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=BillingAiCreditUsageReportOrg,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EventsGetResponse503,
+            },
+        )
+
     def get_all_budgets_org(
         self,
         org: str,
@@ -77,17 +207,22 @@ class BillingClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         scope: Missing[
-            Literal["enterprise", "organization", "repository", "cost_center"]
+            Literal[
+                "enterprise",
+                "organization",
+                "repository",
+                "cost_center",
+                "multi_user_customer",
+                "user",
+            ]
         ] = UNSET,
+        user: Missing[str] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
         """billing/get-all-budgets-org
 
         GET /organizations/{org}/settings/billing/budgets
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Gets all budgets for an organization. The authenticated user must be an organization admin or billing manager.
         Each page returns up to 10 budgets.
@@ -103,6 +238,7 @@ class BillingClient:
             "page": page,
             "per_page": per_page,
             "scope": scope,
+            "user": user,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -128,17 +264,22 @@ class BillingClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         scope: Missing[
-            Literal["enterprise", "organization", "repository", "cost_center"]
+            Literal[
+                "enterprise",
+                "organization",
+                "repository",
+                "cost_center",
+                "multi_user_customer",
+                "user",
+            ]
         ] = UNSET,
+        user: Missing[str] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
         """billing/get-all-budgets-org
 
         GET /organizations/{org}/settings/billing/budgets
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Gets all budgets for an organization. The authenticated user must be an organization admin or billing manager.
         Each page returns up to 10 budgets.
@@ -154,6 +295,7 @@ class BillingClient:
             "page": page,
             "per_page": per_page,
             "scope": scope,
+            "user": user,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -172,6 +314,184 @@ class BillingClient:
             },
         )
 
+    @overload
+    def create_organization_budget(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrganizationsOrgSettingsBillingBudgetsPostBodyType] = UNSET,
+    ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
+
+    @overload
+    def create_organization_budget(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        budget_amount: Missing[int] = UNSET,
+        prevent_further_usage: Missing[bool] = UNSET,
+        budget_alerting: Missing[
+            OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType
+        ] = UNSET,
+        budget_scope: Missing[
+            Literal["organization", "repository", "multi_user_customer", "user"]
+        ] = UNSET,
+        budget_entity_name: Missing[str] = UNSET,
+        budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = UNSET,
+        budget_product_sku: Missing[str] = UNSET,
+    ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
+
+    def create_organization_budget(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrganizationsOrgSettingsBillingBudgetsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[CreateBudget, CreateBudgetTypeForResponse]:
+        """billing/create-organization-budget
+
+        POST /organizations/{org}/settings/billing/budgets
+
+        Creates a new budget for an organization. The authenticated user must be an
+        organization admin or billing manager.
+
+        See also: https://docs.github.com/rest/billing/budgets#create-a-budget-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            CreateBudget,
+            OrganizationsOrgSettingsBillingBudgetsPostBody,
+            ValidationError,
+        )
+
+        url = f"/organizations/{org}/settings/billing/budgets"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrganizationsOrgSettingsBillingBudgetsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CreateBudget,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_organization_budget(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrganizationsOrgSettingsBillingBudgetsPostBodyType] = UNSET,
+    ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
+
+    @overload
+    async def async_create_organization_budget(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        budget_amount: Missing[int] = UNSET,
+        prevent_further_usage: Missing[bool] = UNSET,
+        budget_alerting: Missing[
+            OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType
+        ] = UNSET,
+        budget_scope: Missing[
+            Literal["organization", "repository", "multi_user_customer", "user"]
+        ] = UNSET,
+        budget_entity_name: Missing[str] = UNSET,
+        budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = UNSET,
+        budget_product_sku: Missing[str] = UNSET,
+    ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
+
+    async def async_create_organization_budget(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrganizationsOrgSettingsBillingBudgetsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[CreateBudget, CreateBudgetTypeForResponse]:
+        """billing/create-organization-budget
+
+        POST /organizations/{org}/settings/billing/budgets
+
+        Creates a new budget for an organization. The authenticated user must be an
+        organization admin or billing manager.
+
+        See also: https://docs.github.com/rest/billing/budgets#create-a-budget-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            CreateBudget,
+            OrganizationsOrgSettingsBillingBudgetsPostBody,
+            ValidationError,
+        )
+
+        url = f"/organizations/{org}/settings/billing/budgets"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrganizationsOrgSettingsBillingBudgetsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CreateBudget,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
     def get_budget_org(
         self,
         org: str,
@@ -183,9 +503,6 @@ class BillingClient:
         """billing/get-budget-org
 
         GET /organizations/{org}/settings/billing/budgets/{budget_id}
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Gets a budget by ID. The authenticated user must be an organization admin or billing manager.
 
@@ -225,9 +542,6 @@ class BillingClient:
 
         GET /organizations/{org}/settings/billing/budgets/{budget_id}
 
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
         Gets a budget by ID. The authenticated user must be an organization admin or billing manager.
 
         See also: https://docs.github.com/rest/billing/budgets#get-a-budget-by-id-for-an-organization
@@ -265,9 +579,6 @@ class BillingClient:
         """billing/delete-budget-org
 
         DELETE /organizations/{org}/settings/billing/budgets/{budget_id}
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Deletes a budget by ID for an organization. The authenticated user must be an organization admin or billing manager.
 
@@ -307,9 +618,6 @@ class BillingClient:
 
         DELETE /organizations/{org}/settings/billing/budgets/{budget_id}
 
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
         Deletes a budget by ID for an organization. The authenticated user must be an organization admin or billing manager.
 
         See also: https://docs.github.com/rest/billing/budgets#delete-a-budget-for-an-organization
@@ -345,10 +653,7 @@ class BillingClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType,
-    ) -> Response[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
-    ]: ...
+    ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
     @overload
     def update_budget_org(
@@ -365,15 +670,19 @@ class BillingClient:
             OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
         ] = UNSET,
         budget_scope: Missing[
-            Literal["enterprise", "organization", "repository", "cost_center"]
+            Literal[
+                "enterprise",
+                "organization",
+                "repository",
+                "cost_center",
+                "multi_user_customer",
+                "user",
+            ]
         ] = UNSET,
         budget_entity_name: Missing[str] = UNSET,
         budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = UNSET,
         budget_product_sku: Missing[str] = UNSET,
-    ) -> Response[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
-    ]: ...
+    ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
     def update_budget_org(
         self,
@@ -386,16 +695,10 @@ class BillingClient:
             OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
-    ]:
+    ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]:
         """billing/update-budget-org
 
         PATCH /organizations/{org}/settings/billing/budgets/{budget_id}
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Updates an existing budget for an organization. The authenticated user must be an organization admin or billing manager.
 
@@ -405,7 +708,7 @@ class BillingClient:
         from ..models import (
             BasicError,
             OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody,
-            OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
+            UpdateBudget,
             ValidationError,
         )
 
@@ -430,7 +733,7 @@ class BillingClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
+            response_model=UpdateBudget,
             error_models={
                 "400": BasicError,
                 "401": BasicError,
@@ -450,10 +753,7 @@ class BillingClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType,
-    ) -> Response[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
-    ]: ...
+    ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
     @overload
     async def async_update_budget_org(
@@ -470,15 +770,19 @@ class BillingClient:
             OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
         ] = UNSET,
         budget_scope: Missing[
-            Literal["enterprise", "organization", "repository", "cost_center"]
+            Literal[
+                "enterprise",
+                "organization",
+                "repository",
+                "cost_center",
+                "multi_user_customer",
+                "user",
+            ]
         ] = UNSET,
         budget_entity_name: Missing[str] = UNSET,
         budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = UNSET,
         budget_product_sku: Missing[str] = UNSET,
-    ) -> Response[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
-    ]: ...
+    ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
     async def async_update_budget_org(
         self,
@@ -491,16 +795,10 @@ class BillingClient:
             OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
-    ]:
+    ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]:
         """billing/update-budget-org
 
         PATCH /organizations/{org}/settings/billing/budgets/{budget_id}
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Updates an existing budget for an organization. The authenticated user must be an organization admin or billing manager.
 
@@ -510,7 +808,7 @@ class BillingClient:
         from ..models import (
             BasicError,
             OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody,
-            OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
+            UpdateBudget,
             ValidationError,
         )
 
@@ -535,7 +833,7 @@ class BillingClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
+            response_model=UpdateBudget,
             error_models={
                 "400": BasicError,
                 "401": BasicError,
@@ -887,6 +1185,124 @@ class BillingClient:
             error_models={
                 "400": BasicError,
                 "403": BasicError,
+                "500": BasicError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    def get_github_billing_ai_credit_usage_report_user(
+        self,
+        username: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        model: Missing[str] = UNSET,
+        product: Missing[str] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        BillingAiCreditUsageReportUser, BillingAiCreditUsageReportUserTypeForResponse
+    ]:
+        """billing/get-github-billing-ai-credit-usage-report-user
+
+        GET /users/{username}/settings/billing/ai_credit/usage
+
+        Gets a report of AI credit usage for a user.
+
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
+
+        See also: https://docs.github.com/rest/billing/usage#get-billing-ai-credit-usage-report-for-a-user
+        """
+
+        from ..models import (
+            BasicError,
+            BillingAiCreditUsageReportUser,
+            EventsGetResponse503,
+        )
+
+        url = f"/users/{username}/settings/billing/ai_credit/usage"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "model": model,
+            "product": product,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=BillingAiCreditUsageReportUser,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    async def async_get_github_billing_ai_credit_usage_report_user(
+        self,
+        username: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        model: Missing[str] = UNSET,
+        product: Missing[str] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        BillingAiCreditUsageReportUser, BillingAiCreditUsageReportUserTypeForResponse
+    ]:
+        """billing/get-github-billing-ai-credit-usage-report-user
+
+        GET /users/{username}/settings/billing/ai_credit/usage
+
+        Gets a report of AI credit usage for a user.
+
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
+
+        See also: https://docs.github.com/rest/billing/usage#get-billing-ai-credit-usage-report-for-a-user
+        """
+
+        from ..models import (
+            BasicError,
+            BillingAiCreditUsageReportUser,
+            EventsGetResponse503,
+        )
+
+        url = f"/users/{username}/settings/billing/ai_credit/usage"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "model": model,
+            "product": product,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=BillingAiCreditUsageReportUser,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
                 "500": BasicError,
                 "503": EventsGetResponse503,
             },

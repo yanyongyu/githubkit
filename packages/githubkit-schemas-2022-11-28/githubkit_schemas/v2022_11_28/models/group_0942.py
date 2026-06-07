@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksPostResponse400(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse400
+class AgentsReposOwnerRepoTasksGetResponse401(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse401
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -30,7 +30,7 @@ class AgentsReposOwnerRepoTasksPostResponse400(GitHubModel):
     message: str = Field(
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    errors: Missing[list[AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems]] = (
+    errors: Missing[list[AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems]] = (
         Field(
             default=UNSET,
             description="List of validation errors (present only for 422 responses)",
@@ -39,8 +39,8 @@ class AgentsReposOwnerRepoTasksPostResponse400(GitHubModel):
     documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-class AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems
+class AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems
 
     A single validation error
     """
@@ -59,10 +59,10 @@ class AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems(GitHubModel):
     )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse400)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse401)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksPostResponse400",
-    "AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems",
+    "AgentsReposOwnerRepoTasksGetResponse401",
+    "AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems",
 )

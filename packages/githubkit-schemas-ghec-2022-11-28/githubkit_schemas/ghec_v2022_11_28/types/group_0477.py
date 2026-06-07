@@ -9,33 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class MergedUpstreamType(TypedDict):
-    """Merged upstream
+class DeployKeyType(TypedDict):
+    """Deploy Key
 
-    Results of a successful merge upstream request
+    An SSH key granting access to a single repository.
     """
 
-    message: NotRequired[str]
-    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
-    base_branch: NotRequired[str]
+    id: int
+    key: str
+    url: str
+    title: str
+    verified: bool
+    created_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[_dt.datetime, None]]
+    enabled: NotRequired[bool]
 
 
-class MergedUpstreamTypeForResponse(TypedDict):
-    """Merged upstream
+class DeployKeyTypeForResponse(TypedDict):
+    """Deploy Key
 
-    Results of a successful merge upstream request
+    An SSH key granting access to a single repository.
     """
 
-    message: NotRequired[str]
-    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
-    base_branch: NotRequired[str]
+    id: int
+    key: str
+    url: str
+    title: str
+    verified: bool
+    created_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[str, None]]
+    enabled: NotRequired[bool]
 
 
 __all__ = (
-    "MergedUpstreamType",
-    "MergedUpstreamTypeForResponse",
+    "DeployKeyType",
+    "DeployKeyTypeForResponse",
 )

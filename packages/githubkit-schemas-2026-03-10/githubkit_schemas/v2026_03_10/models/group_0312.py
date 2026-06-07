@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,22 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeQualitySetupUpdateResponse(GitHubModel):
-    """CodeQualitySetupUpdateResponse
+class CodeQualitySetupUpdateAnyof0(GitHubModel):
+    """CodeQualitySetupUpdateAnyof0"""
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
-    """
-
-    run_id: Missing[int] = Field(
-        default=UNSET, description="ID of the corresponding run."
+    state: Literal["configured", "not-configured"] = Field(
+        description="The desired state of code quality setup."
     )
-    run_url: Missing[str] = Field(
-        default=UNSET, description="URL of the corresponding run."
+    runner_type: Missing[Literal["standard", "labeled"]] = Field(
+        default=UNSET, description="Runner type to be used."
     )
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Runner label to be used if the runner type is labeled.",
+    )
+    languages: Missing[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ] = Field(default=UNSET, description="Languages to be analyzed.")
 
 
-model_rebuild(CodeQualitySetupUpdateResponse)
+model_rebuild(CodeQualitySetupUpdateAnyof0)
 
-__all__ = ("CodeQualitySetupUpdateResponse",)
+__all__ = ("CodeQualitySetupUpdateAnyof0",)

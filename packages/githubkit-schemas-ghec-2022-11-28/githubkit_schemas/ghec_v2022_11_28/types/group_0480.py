@@ -9,30 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class PageBuildStatusType(TypedDict):
-    """Page Build Status
+class MergedUpstreamType(TypedDict):
+    """Merged upstream
 
-    Page Build Status
+    Results of a successful merge upstream request
     """
 
-    url: str
-    status: str
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
-class PageBuildStatusTypeForResponse(TypedDict):
-    """Page Build Status
+class MergedUpstreamTypeForResponse(TypedDict):
+    """Merged upstream
 
-    Page Build Status
+    Results of a successful merge upstream request
     """
 
-    url: str
-    status: str
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
 __all__ = (
-    "PageBuildStatusType",
-    "PageBuildStatusTypeForResponse",
+    "MergedUpstreamType",
+    "MergedUpstreamTypeForResponse",
 )
