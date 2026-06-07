@@ -1,5 +1,6 @@
 import sqlite3
-from typing import Any, override
+from typing import Any
+from typing_extensions import override
 
 import anysqlite
 from hishel import (
