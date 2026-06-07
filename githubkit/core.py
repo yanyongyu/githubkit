@@ -11,7 +11,6 @@ import httpx
 
 from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
 from .cache import BaseCacheStrategy
-from .client import AsyncCacheClient, SyncCacheClient
 from .compat import to_jsonable_python
 from .config import Config, get_config
 from .exception import (
@@ -22,6 +21,7 @@ from .exception import (
     RequestTimeout,
     SecondaryRateLimitExceeded,
 )
+from .hishel import AsyncCacheClient, SyncCacheClient
 from .response import Response
 from .throttling import BaseThrottler
 from .typing import (

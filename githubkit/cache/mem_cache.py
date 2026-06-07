@@ -1,10 +1,8 @@
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
-import sqlite3
 from typing_extensions import override
 
-import anysqlite
-from hishel import AsyncSqliteStorage, SyncSqliteStorage
+from githubkit.hishel import AsyncMemoryStorage, SyncMemoryStorage
 
 from .base import AsyncBaseCache, BaseCache, BaseCacheStrategy
 
@@ -49,6 +47,8 @@ class MemCache(AsyncBaseCache, BaseCache):
 class MemCacheStrategy(BaseCacheStrategy):
     def __init__(self) -> None:
         self._cache: MemCache | None = None
+        self._hishel_storage: SyncMemoryStorage | None = None
+        self._hishel_async_storage: AsyncMemoryStorage | None = None
 
     @override
     def get_cache_storage(self) -> MemCache:
@@ -61,12 +61,13 @@ class MemCacheStrategy(BaseCacheStrategy):
         return self.get_cache_storage()
 
     @override
-    def get_hishel_storage(self) -> SyncSqliteStorage:
-        # NOTE: although it's possible to use in-memory sqlite for hishel,
-        # the connection can not be shared between clients.
-        # the storage is closed when the client transport is closed.
-        return SyncSqliteStorage(connection=sqlite3.connect(":memory:"))
+    def get_hishel_storage(self) -> SyncMemoryStorage:
+        if self._hishel_storage is None:
+            self._hishel_storage = SyncMemoryStorage(keep_unclosed=True)
+        return self._hishel_storage
 
     @override
-    async def get_async_hishel_storage(self) -> AsyncSqliteStorage:
-        return AsyncSqliteStorage(connection=await anysqlite.connect(":memory:"))
+    async def get_async_hishel_storage(self) -> AsyncMemoryStorage:
+        if self._hishel_async_storage is None:
+            self._hishel_async_storage = AsyncMemoryStorage(keep_unclosed=True)
+        return self._hishel_async_storage
