@@ -7,7 +7,6 @@ from types import TracebackType
 from typing import TYPE_CHECKING, Any, Generic, TypeVar, cast, overload
 
 import anyio
-import hishel
 import httpx
 
 from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
@@ -22,6 +21,7 @@ from .exception import (
     RequestTimeout,
     SecondaryRateLimitExceeded,
 )
+from .hishel import AsyncCacheClient, SyncCacheClient
 from .response import Response
 from .throttling import BaseThrottler
 from .typing import (
@@ -250,6 +250,8 @@ class GitHubCore(Generic[A]):
             "headers": {
                 "User-Agent": self.config.user_agent,
                 "Accept": self.config.accept,
+                # tell hishel to always revalidate the request
+                "Cache-Control": "no-cache",
             },
             "timeout": self.config.timeout,
             "follow_redirects": self.config.follow_redirects,
@@ -260,12 +262,12 @@ class GitHubCore(Generic[A]):
 
     def _create_sync_client(self) -> httpx.Client:
         if self.config.http_cache:
-            return hishel.CacheClient(
+            return SyncCacheClient(
                 **self._get_client_defaults(),
                 transport=self.config.transport,
                 event_hooks=self.config.event_hooks,
                 storage=self.config.cache_strategy.get_hishel_storage(),
-                controller=self.config.cache_strategy.get_hishel_controller(),
+                policy=self.config.cache_strategy.get_hishel_policy(),
             )
 
         return httpx.Client(
@@ -286,14 +288,14 @@ class GitHubCore(Generic[A]):
             finally:
                 client.close()
 
-    def _create_async_client(self) -> httpx.AsyncClient:
+    async def _create_async_client(self) -> httpx.AsyncClient:
         if self.config.http_cache:
-            return hishel.AsyncCacheClient(
+            return AsyncCacheClient(
                 **self._get_client_defaults(),
                 transport=self.config.async_transport,
                 event_hooks=self.config.async_event_hooks,
-                storage=self.config.cache_strategy.get_async_hishel_storage(),
-                controller=self.config.cache_strategy.get_hishel_controller(),
+                storage=await self.config.cache_strategy.get_async_hishel_storage(),
+                policy=self.config.cache_strategy.get_hishel_policy(),
             )
 
         return httpx.AsyncClient(
@@ -308,7 +310,7 @@ class GitHubCore(Generic[A]):
         if client := self.__async_client.get():
             yield client
         else:
-            client = self._create_async_client()
+            client = await self._create_async_client()
             try:
                 yield client
             finally:
