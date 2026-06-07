@@ -14,14 +14,13 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200(GitHubModel):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
 
-    issue_field_id: int = Field(
-        description="The ID of the IssueField to create the field for."
-    )
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0)
+model_rebuild(OrgsOrgPrivateRegistriesPublicKeyGetResponse200)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0",)
+__all__ = ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200",)

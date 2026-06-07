@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0573 import EnterpriseWebhooks
-from .group_0574 import SimpleInstallation
-from .group_0575 import OrganizationSimpleWebhooks
-from .group_0576 import RepositoryWebhooks
-from .group_0618 import SecretScanningAlertWebhook
+from .group_0576 import EnterpriseWebhooks
+from .group_0577 import SimpleInstallation
+from .group_0578 import OrganizationSimpleWebhooks
+from .group_0579 import RepositoryWebhooks
+from .group_0621 import SecretScanningAlertWebhook
 
 
-class WebhookSecretScanningAlertValidated(GitHubModel):
-    """secret_scanning_alert validated event"""
+class WebhookSecretScanningAlertReopened(GitHubModel):
+    """secret_scanning_alert reopened event"""
 
-    action: Literal["validated"] = Field()
+    action: Literal["reopened"] = Field()
     alert: SecretScanningAlertWebhook = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -54,6 +54,6 @@ class WebhookSecretScanningAlertValidated(GitHubModel):
     )
 
 
-model_rebuild(WebhookSecretScanningAlertValidated)
+model_rebuild(WebhookSecretScanningAlertReopened)
 
-__all__ = ("WebhookSecretScanningAlertValidated",)
+__all__ = ("WebhookSecretScanningAlertReopened",)

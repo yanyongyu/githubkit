@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,15 +19,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200(GitHubModel):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
 
-    permission: Missing[str] = Field(
+    total_count: int = Field()
+    network_configurations: list[NetworkConfiguration] = Field()
+
+
+class NetworkConfiguration(GitHubModel):
+    """Hosted compute network configuration
+
+    A hosted compute network configuration.
+    """
+
+    id: str = Field(description="The unique identifier of the network configuration.")
+    name: str = Field(description="The name of the network configuration.")
+    compute_service: Missing[Literal["none", "actions", "codespaces"]] = Field(
         default=UNSET,
-        description="The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
+        description="The hosted compute service the network configuration supports.",
+    )
+    network_settings_ids: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The unique identifier of each network settings in the configuration.",
+    )
+    failover_network_settings_ids: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The unique identifier of each failover network settings in the configuration.",
+    )
+    failover_network_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether the failover network resource is enabled.",
+    )
+    created_on: Union[_dt.datetime, None] = Field(
+        description="The time at which the network configuration was created, in ISO 8601 format."
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody)
+model_rebuild(OrgsOrgSettingsNetworkConfigurationsGetResponse200)
+model_rebuild(NetworkConfiguration)
 
-__all__ = ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",)
+__all__ = (
+    "NetworkConfiguration",
+    "OrgsOrgSettingsNetworkConfigurationsGetResponse200",
+)

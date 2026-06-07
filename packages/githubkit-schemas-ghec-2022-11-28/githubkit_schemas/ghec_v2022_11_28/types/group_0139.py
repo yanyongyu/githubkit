@@ -12,35 +12,50 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0140 import (
-    RepositoryRulePullRequestPropParametersType,
-    RepositoryRulePullRequestPropParametersTypeForResponse,
-)
 
+class RepositoryRuleParamsDismissalRestrictionType(TypedDict):
+    """DismissalRestriction
 
-class RepositoryRulePullRequestType(TypedDict):
-    """pull_request
-
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Specify people, teams, or apps allowed to dismiss pull request reviews.
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
+    allowed_actors: NotRequired[list[RepositoryRuleParamsActorType]]
+    enabled: bool
 
 
-class RepositoryRulePullRequestTypeForResponse(TypedDict):
-    """pull_request
+class RepositoryRuleParamsDismissalRestrictionTypeForResponse(TypedDict):
+    """DismissalRestriction
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Specify people, teams, or apps allowed to dismiss pull request reviews.
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersTypeForResponse]
+    allowed_actors: NotRequired[list[RepositoryRuleParamsActorTypeForResponse]]
+    enabled: bool
+
+
+class RepositoryRuleParamsActorType(TypedDict):
+    """Actor
+
+    An actor allowed to dismiss pull request reviews
+    """
+
+    id: int
+    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
+
+
+class RepositoryRuleParamsActorTypeForResponse(TypedDict):
+    """Actor
+
+    An actor allowed to dismiss pull request reviews
+    """
+
+    id: int
+    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
 
 
 __all__ = (
-    "RepositoryRulePullRequestType",
-    "RepositoryRulePullRequestTypeForResponse",
+    "RepositoryRuleParamsActorType",
+    "RepositoryRuleParamsActorTypeForResponse",
+    "RepositoryRuleParamsDismissalRestrictionType",
+    "RepositoryRuleParamsDismissalRestrictionTypeForResponse",
 )

@@ -9,48 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
+class OrganizationsOrgSettingsBillingBudgetsPostBody(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsPostBody"""
 
-    total_count: int = Field()
-    images: list[ActionsHostedRunnerCustomImage] = Field()
-
-
-class ActionsHostedRunnerCustomImage(GitHubModel):
-    """GitHub-hosted runner custom image details
-
-    Provides details of a custom runner image
-    """
-
-    id: int = Field(
-        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
+    budget_amount: Missing[int] = Field(
+        default=UNSET,
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
     )
-    platform: str = Field(description="The operating system of the image.")
-    total_versions_size: int = Field(
-        description="Total size of all the image versions in GB."
+    prevent_further_usage: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to prevent additional spending once the budget is exceeded. For `user` and `multi_user_customer` scopes, this must be `true`.",
     )
-    name: str = Field(description="Display name for this image.")
-    source: str = Field(description="The image provider.")
-    versions_count: int = Field(
-        description="The number of image versions associated with the image."
+    budget_alerting: Missing[
+        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting
+    ] = Field(default=UNSET)
+    budget_scope: Missing[
+        Literal["organization", "repository", "multi_user_customer", "user"]
+    ] = Field(
+        default=UNSET,
+        description="The scope of the budget for this organization. Use 'organization' for org-level budgets or 'repository' for repo-specific budgets within the organization. `user` and `multi_user_customer` scopes are only supported when `budget_product_sku` is `ai_credits` or `premium_requests`.",
     )
-    latest_version: str = Field(
-        description="The latest image version associated with the image."
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
     )
-    state: str = Field(
-        description="The number of image versions associated with the image."
+    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
+        default=UNSET, description="The type of pricing for the budget"
+    )
+    budget_product_sku: Missing[str] = Field(
+        default=UNSET,
+        description="A single product or SKU that will be covered in the budget",
     )
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersImagesCustomGetResponse200)
-model_rebuild(ActionsHostedRunnerCustomImage)
+class OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+
+    will_alert: Missing[bool] = Field(
+        default=UNSET, description="Whether alerts are enabled for this budget"
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET, description="Array of user login names who will receive alerts"
+    )
+
+
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsPostBody)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting)
 
 __all__ = (
-    "ActionsHostedRunnerCustomImage",
-    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200",
+    "OrganizationsOrgSettingsBillingBudgetsPostBody",
+    "OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting",
 )

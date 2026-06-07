@@ -9,46 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class SubIssuesSummaryType(TypedDict):
-    """Sub-issues Summary"""
+class IssueTypeType(TypedDict):
+    """Issue Type
 
-    total: int
-    completed: int
-    percent_completed: int
+    The type assigned to the issue. This is only present for issues in repositories
+    where issue types are supported.
+    """
+
+    id: int
+    node_id: str
+    name: str
+    description: Union[str, None]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    is_enabled: NotRequired[bool]
 
 
-class SubIssuesSummaryTypeForResponse(TypedDict):
-    """Sub-issues Summary"""
+class IssueTypeTypeForResponse(TypedDict):
+    """Issue Type
 
-    total: int
-    completed: int
-    percent_completed: int
+    The type assigned to the issue. This is only present for issues in repositories
+    where issue types are supported.
+    """
 
-
-class IssueDependenciesSummaryType(TypedDict):
-    """Issue Dependencies Summary"""
-
-    blocked_by: int
-    blocking: int
-    total_blocked_by: int
-    total_blocking: int
-
-
-class IssueDependenciesSummaryTypeForResponse(TypedDict):
-    """Issue Dependencies Summary"""
-
-    blocked_by: int
-    blocking: int
-    total_blocked_by: int
-    total_blocking: int
+    id: int
+    node_id: str
+    name: str
+    description: Union[str, None]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    is_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "IssueDependenciesSummaryType",
-    "IssueDependenciesSummaryTypeForResponse",
-    "SubIssuesSummaryType",
-    "SubIssuesSummaryTypeForResponse",
+    "IssueTypeType",
+    "IssueTypeTypeForResponse",
 )

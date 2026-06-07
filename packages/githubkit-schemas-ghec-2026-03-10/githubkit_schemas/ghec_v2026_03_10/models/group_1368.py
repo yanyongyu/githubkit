@@ -13,16 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0342 import ActionsVariable
+from .group_0344 import ActionsVariable
 
 
-class ReposOwnerRepoAgentsVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoAgentsVariablesGetResponse200"""
+class ReposOwnerRepoAgentsOrganizationVariablesGetResponse200(GitHubModel):
+    """ReposOwnerRepoAgentsOrganizationVariablesGetResponse200"""
 
     total_count: int = Field()
     variables: list[ActionsVariable] = Field()
 
 
-model_rebuild(ReposOwnerRepoAgentsVariablesGetResponse200)
+model_rebuild(ReposOwnerRepoAgentsOrganizationVariablesGetResponse200)
 
-__all__ = ("ReposOwnerRepoAgentsVariablesGetResponse200",)
+__all__ = ("ReposOwnerRepoAgentsOrganizationVariablesGetResponse200",)

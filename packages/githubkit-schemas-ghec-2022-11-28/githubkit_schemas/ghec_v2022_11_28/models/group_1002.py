@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,20 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0573 import EnterpriseWebhooks
-from .group_0574 import SimpleInstallation
-from .group_0575 import OrganizationSimpleWebhooks
-from .group_0576 import RepositoryWebhooks
-from .group_0622 import WebhooksTeam1
+from .group_0020 import Repository
+from .group_0212 import Issue
+from .group_0577 import SimpleInstallation
+from .group_0578 import OrganizationSimpleWebhooks
+from .group_0579 import RepositoryWebhooks
 
 
-class WebhookTeamAdd(GitHubModel):
-    """team_add event"""
+class WebhookSubIssuesParentIssueRemoved(GitHubModel):
+    """parent issue removed event"""
 
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    action: Literal["parent_issue_removed"] = Field()
+    parent_issue_id: Missing[float] = Field(
+        default=UNSET, description="The ID of the parent issue."
+    )
+    parent_issue: Missing[Issue] = Field(
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    parent_issue_repo: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
+    )
+    sub_issue_id: float = Field(description="The ID of the sub-issue.")
+    sub_issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -46,12 +60,8 @@ class WebhookTeamAdd(GitHubModel):
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    team: WebhooksTeam1 = Field(
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
-    )
 
 
-model_rebuild(WebhookTeamAdd)
+model_rebuild(WebhookSubIssuesParentIssueRemoved)
 
-__all__ = ("WebhookTeamAdd",)
+__all__ = ("WebhookSubIssuesParentIssueRemoved",)

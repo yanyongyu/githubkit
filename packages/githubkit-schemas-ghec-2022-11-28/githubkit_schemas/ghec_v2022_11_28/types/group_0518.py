@@ -9,122 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0181 import (
-    SecretScanningLocationCommitType,
-    SecretScanningLocationCommitTypeForResponse,
-    SecretScanningLocationDiscussionCommentType,
-    SecretScanningLocationDiscussionCommentTypeForResponse,
-    SecretScanningLocationDiscussionTitleType,
-    SecretScanningLocationDiscussionTitleTypeForResponse,
-    SecretScanningLocationIssueBodyType,
-    SecretScanningLocationIssueBodyTypeForResponse,
-    SecretScanningLocationPullRequestBodyType,
-    SecretScanningLocationPullRequestBodyTypeForResponse,
-    SecretScanningLocationPullRequestReviewType,
-    SecretScanningLocationPullRequestReviewTypeForResponse,
-    SecretScanningLocationWikiCommitType,
-    SecretScanningLocationWikiCommitTypeForResponse,
-)
-from .group_0182 import (
-    SecretScanningLocationIssueCommentType,
-    SecretScanningLocationIssueCommentTypeForResponse,
-    SecretScanningLocationIssueTitleType,
-    SecretScanningLocationIssueTitleTypeForResponse,
-    SecretScanningLocationPullRequestReviewCommentType,
-    SecretScanningLocationPullRequestReviewCommentTypeForResponse,
-    SecretScanningLocationPullRequestTitleType,
-    SecretScanningLocationPullRequestTitleTypeForResponse,
-)
-from .group_0183 import (
-    SecretScanningLocationDiscussionBodyType,
-    SecretScanningLocationDiscussionBodyTypeForResponse,
-    SecretScanningLocationPullRequestCommentType,
-    SecretScanningLocationPullRequestCommentTypeForResponse,
+from .group_0159 import (
+    RepositoryRuleFileExtensionRestrictionPropParametersType,
+    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
 )
 
 
-class SecretScanningLocationType(TypedDict):
-    """SecretScanningLocation"""
+class RepositoryRuleDetailedOneof20Type(TypedDict):
+    """RepositoryRuleDetailedOneof20"""
 
-    type: NotRequired[
-        Literal[
-            "commit",
-            "wiki_commit",
-            "issue_title",
-            "issue_body",
-            "issue_comment",
-            "discussion_title",
-            "discussion_body",
-            "discussion_comment",
-            "pull_request_title",
-            "pull_request_body",
-            "pull_request_comment",
-            "pull_request_review",
-            "pull_request_review_comment",
-        ]
-    ]
-    details: NotRequired[
-        Union[
-            SecretScanningLocationCommitType,
-            SecretScanningLocationWikiCommitType,
-            SecretScanningLocationIssueTitleType,
-            SecretScanningLocationIssueBodyType,
-            SecretScanningLocationIssueCommentType,
-            SecretScanningLocationDiscussionTitleType,
-            SecretScanningLocationDiscussionBodyType,
-            SecretScanningLocationDiscussionCommentType,
-            SecretScanningLocationPullRequestTitleType,
-            SecretScanningLocationPullRequestBodyType,
-            SecretScanningLocationPullRequestCommentType,
-            SecretScanningLocationPullRequestReviewType,
-            SecretScanningLocationPullRequestReviewCommentType,
-        ]
-    ]
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class SecretScanningLocationTypeForResponse(TypedDict):
-    """SecretScanningLocation"""
+class RepositoryRuleDetailedOneof20TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof20"""
 
-    type: NotRequired[
-        Literal[
-            "commit",
-            "wiki_commit",
-            "issue_title",
-            "issue_body",
-            "issue_comment",
-            "discussion_title",
-            "discussion_body",
-            "discussion_comment",
-            "pull_request_title",
-            "pull_request_body",
-            "pull_request_comment",
-            "pull_request_review",
-            "pull_request_review_comment",
-        ]
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[
+        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
     ]
-    details: NotRequired[
-        Union[
-            SecretScanningLocationCommitTypeForResponse,
-            SecretScanningLocationWikiCommitTypeForResponse,
-            SecretScanningLocationIssueTitleTypeForResponse,
-            SecretScanningLocationIssueBodyTypeForResponse,
-            SecretScanningLocationIssueCommentTypeForResponse,
-            SecretScanningLocationDiscussionTitleTypeForResponse,
-            SecretScanningLocationDiscussionBodyTypeForResponse,
-            SecretScanningLocationDiscussionCommentTypeForResponse,
-            SecretScanningLocationPullRequestTitleTypeForResponse,
-            SecretScanningLocationPullRequestBodyTypeForResponse,
-            SecretScanningLocationPullRequestCommentTypeForResponse,
-            SecretScanningLocationPullRequestReviewTypeForResponse,
-            SecretScanningLocationPullRequestReviewCommentTypeForResponse,
-        ]
-    ]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "SecretScanningLocationType",
-    "SecretScanningLocationTypeForResponse",
+    "RepositoryRuleDetailedOneof20Type",
+    "RepositoryRuleDetailedOneof20TypeForResponse",
 )

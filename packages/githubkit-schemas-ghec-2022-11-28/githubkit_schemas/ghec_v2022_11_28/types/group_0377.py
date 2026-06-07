@@ -9,47 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class CheckAnnotationType(TypedDict):
-    """Check Annotation
+class DeploymentSimpleType(TypedDict):
+    """Deployment
 
-    Check Annotation
+    A deployment created as the result of an Actions check run from a workflow that
+    references an environment
     """
 
-    path: str
-    start_line: int
-    end_line: int
-    start_column: Union[int, None]
-    end_column: Union[int, None]
-    annotation_level: Union[str, None]
-    title: Union[str, None]
-    message: Union[str, None]
-    raw_details: Union[str, None]
-    blob_href: str
+    url: str
+    id: int
+    node_id: str
+    task: str
+    original_environment: NotRequired[str]
+    environment: str
+    description: Union[str, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-class CheckAnnotationTypeForResponse(TypedDict):
-    """Check Annotation
+class DeploymentSimpleTypeForResponse(TypedDict):
+    """Deployment
 
-    Check Annotation
+    A deployment created as the result of an Actions check run from a workflow that
+    references an environment
     """
 
-    path: str
-    start_line: int
-    end_line: int
-    start_column: Union[int, None]
-    end_column: Union[int, None]
-    annotation_level: Union[str, None]
-    title: Union[str, None]
-    message: Union[str, None]
-    raw_details: Union[str, None]
-    blob_href: str
+    url: str
+    id: int
+    node_id: str
+    task: str
+    original_environment: NotRequired[str]
+    environment: str
+    description: Union[str, None]
+    created_at: str
+    updated_at: str
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
 
 
 __all__ = (
-    "CheckAnnotationType",
-    "CheckAnnotationTypeForResponse",
+    "DeploymentSimpleType",
+    "DeploymentSimpleTypeForResponse",
 )

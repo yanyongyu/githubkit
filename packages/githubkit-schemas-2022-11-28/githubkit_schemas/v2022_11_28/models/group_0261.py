@@ -12,17 +12,32 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RateLimit(GitHubModel):
-    """Rate Limit"""
+class NetworkSettings(GitHubModel):
+    """Hosted compute network settings resource
 
-    limit: int = Field()
-    remaining: int = Field()
-    reset: int = Field()
-    used: int = Field()
+    A hosted compute network settings resource.
+    """
+
+    id: str = Field(
+        description="The unique identifier of the network settings resource."
+    )
+    network_configuration_id: Missing[str] = Field(
+        default=UNSET,
+        description="The identifier of the network configuration that is using this settings resource.",
+    )
+    name: str = Field(description="The name of the network settings resource.")
+    subnet_id: str = Field(
+        description="The subnet this network settings resource is configured for."
+    )
+    region: str = Field(
+        description="The location of the subnet this network settings resource is configured for."
+    )
 
 
-model_rebuild(RateLimit)
+model_rebuild(NetworkSettings)
 
-__all__ = ("RateLimit",)
+__all__ = ("NetworkSettings",)

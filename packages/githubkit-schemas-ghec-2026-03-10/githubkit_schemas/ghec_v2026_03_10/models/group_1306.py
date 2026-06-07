@@ -9,18 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPrivateRegistriesPublicKeyGetResponse200(GitHubModel):
-    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
+class OrgsOrgPersonalAccessTokensPatIdPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
+    action: Literal["revoke"] = Field(
+        description="Action to apply to the fine-grained personal access token."
+    )
 
 
-model_rebuild(OrgsOrgPrivateRegistriesPublicKeyGetResponse200)
+model_rebuild(OrgsOrgPersonalAccessTokensPatIdPostBody)
 
-__all__ = ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200",)
+__all__ = ("OrgsOrgPersonalAccessTokensPatIdPostBody",)

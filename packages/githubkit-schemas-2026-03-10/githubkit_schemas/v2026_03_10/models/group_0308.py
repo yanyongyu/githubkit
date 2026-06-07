@@ -9,37 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CodeQualitySetupUpdateAnyof0(GitHubModel):
-    """CodeQualitySetupUpdateAnyof0"""
+class CheckAnnotation(GitHubModel):
+    """Check Annotation
 
-    state: Literal["configured", "not-configured"] = Field(
-        description="The desired state of code quality setup."
-    )
-    runner_type: Missing[Literal["standard", "labeled"]] = Field(
-        default=UNSET, description="Runner type to be used."
-    )
-    runner_label: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Runner label to be used if the runner type is labeled.",
-    )
-    languages: Missing[
-        list[
-            Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-            ]
-        ]
-    ] = Field(default=UNSET, description="Languages to be analyzed.")
+    Check Annotation
+    """
+
+    path: str = Field()
+    start_line: int = Field()
+    end_line: int = Field()
+    start_column: Union[int, None] = Field()
+    end_column: Union[int, None] = Field()
+    annotation_level: Union[str, None] = Field()
+    title: Union[str, None] = Field()
+    message: Union[str, None] = Field()
+    raw_details: Union[str, None] = Field()
+    blob_href: str = Field()
 
 
-model_rebuild(CodeQualitySetupUpdateAnyof0)
+model_rebuild(CheckAnnotation)
 
-__all__ = ("CodeQualitySetupUpdateAnyof0",)
+__all__ = ("CheckAnnotation",)

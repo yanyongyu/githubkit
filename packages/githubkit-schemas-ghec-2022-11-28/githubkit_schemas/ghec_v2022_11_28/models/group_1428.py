@@ -9,35 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200(GitHubModel):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
 
-    total_count: int = Field()
-    secrets: list[DependabotSecret] = Field()
+    mcp_configuration: Union[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration,
+        None,
+    ] = Field(
+        description="The user-supplied MCP server configuration for the repository, as a free-form JSON object. This will be set to `null` if no configuration has been set.\n\nThe shape of a valid MCP configuration may evolve over time, so this property is intentionally not strictly typed. Clients should not assume a fixed schema."
+    )
+    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools = Field(
+        description="The enabled review tools for Copilot cloud agent."
+    )
+    require_actions_workflow_approval: bool = Field(
+        description="Whether Actions workflow approval is required for Copilot cloud agent pull requests."
+    )
+    is_firewall_enabled: bool = Field(description="Whether the firewall is enabled.")
+    is_firewall_recommended_allowlist_enabled: bool = Field(
+        description="Whether the firewall recommended allowlist is enabled."
+    )
+    custom_allowlist: list[str] = Field(
+        description="A list of custom allowlist entries, as hosts or URLs, that the firewall will allow the Copilot cloud agent to access."
+    )
 
 
-class DependabotSecret(GitHubModel):
-    """Dependabot Secret
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
 
-    Set secrets for Dependabot.
+    The user-supplied MCP server configuration for the repository, as a free-form
+    JSON object. This will be set to `null` if no configuration has been set.
+
+    The shape of a valid MCP configuration may evolve over time, so this property is
+    intentionally not strictly typed. Clients should not assume a fixed schema.
     """
 
-    name: str = Field(description="The name of the secret.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools(
+    GitHubModel
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+
+    The enabled review tools for Copilot cloud agent.
+    """
+
+    codeql: bool = Field(
+        description="Whether the CodeQL tool is enabled for the Copilot cloud agent."
+    )
+    copilot_code_review: bool = Field(
+        description="Whether the Copilot code review tool is enabled for the Copilot cloud agent."
+    )
+    secret_scanning: bool = Field(
+        description="Whether the secret scanning tool is enabled for the Copilot cloud agent."
+    )
+    dependency_vulnerability_checks: bool = Field(
+        description="Whether the dependency vulnerability checks tool is enabled for the Copilot cloud agent."
+    )
 
 
-model_rebuild(ReposOwnerRepoDependabotSecretsGetResponse200)
-model_rebuild(DependabotSecret)
+model_rebuild(ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200)
+model_rebuild(
+    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
+)
+model_rebuild(
+    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+)
 
 __all__ = (
-    "DependabotSecret",
-    "ReposOwnerRepoDependabotSecretsGetResponse200",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration",
 )

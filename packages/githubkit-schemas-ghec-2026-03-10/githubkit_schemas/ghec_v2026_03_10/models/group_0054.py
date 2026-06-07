@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -34,6 +36,10 @@ class Runner(GitHubModel):
     busy: bool = Field()
     labels: list[RunnerLabel] = Field()
     ephemeral: Missing[bool] = Field(default=UNSET)
+    version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the GitHub Actions Runner software. This is only set if the runner has connected to the service at least once.",
+    )
 
 
 model_rebuild(Runner)

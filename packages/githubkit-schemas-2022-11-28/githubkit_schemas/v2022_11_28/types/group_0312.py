@@ -9,41 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
-class CodeQualitySetupUpdateAnyof2Type(TypedDict):
-    """CodeQualitySetupUpdateAnyof2"""
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: Union[str, None]
-    languages: NotRequired[
+class CheckSuitePreferenceType(TypedDict):
+    """Check Suite Preference
+
+    Check suite configuration preferences for a repository.
+    """
+
+    preferences: CheckSuitePreferencePropPreferencesType
+    repository: MinimalRepositoryType
+
+
+class CheckSuitePreferenceTypeForResponse(TypedDict):
+    """Check Suite Preference
+
+    Check suite configuration preferences for a repository.
+    """
+
+    preferences: CheckSuitePreferencePropPreferencesTypeForResponse
+    repository: MinimalRepositoryTypeForResponse
+
+
+class CheckSuitePreferencePropPreferencesType(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
+
+    auto_trigger_checks: NotRequired[
+        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
+    ]
+
+
+class CheckSuitePreferencePropPreferencesTypeForResponse(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
+
+    auto_trigger_checks: NotRequired[
         list[
-            Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-            ]
+            CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse
         ]
     ]
 
 
-class CodeQualitySetupUpdateAnyof2TypeForResponse(TypedDict):
-    """CodeQualitySetupUpdateAnyof2"""
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: Union[str, None]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-            ]
-        ]
-    ]
+    app_id: int
+    setting: bool
+
+
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse(
+    TypedDict
+):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
 
 
 __all__ = (
-    "CodeQualitySetupUpdateAnyof2Type",
-    "CodeQualitySetupUpdateAnyof2TypeForResponse",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse",
+    "CheckSuitePreferencePropPreferencesType",
+    "CheckSuitePreferencePropPreferencesTypeForResponse",
+    "CheckSuitePreferenceType",
+    "CheckSuitePreferenceTypeForResponse",
 )

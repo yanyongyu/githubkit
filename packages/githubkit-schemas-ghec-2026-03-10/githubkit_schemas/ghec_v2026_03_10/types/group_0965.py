@@ -13,21 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0572 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0573 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0574 import (
+from .group_0575 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0576 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0577 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0575 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0616 import WebhooksAlertType, WebhooksAlertTypeForResponse
+from .group_0578 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryVulnerabilityAlertReopenType(TypedDict):
-    """repository_vulnerability_alert reopen event"""
+class WebhookRepositoryUnarchivedType(TypedDict):
+    """repository unarchived event"""
 
-    action: Literal["reopen"]
-    alert: WebhooksAlertType
+    action: Literal["unarchived"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,11 +33,10 @@ class WebhookRepositoryVulnerabilityAlertReopenType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookRepositoryVulnerabilityAlertReopenTypeForResponse(TypedDict):
-    """repository_vulnerability_alert reopen event"""
+class WebhookRepositoryUnarchivedTypeForResponse(TypedDict):
+    """repository unarchived event"""
 
-    action: Literal["reopen"]
-    alert: WebhooksAlertTypeForResponse
+    action: Literal["unarchived"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -48,6 +45,6 @@ class WebhookRepositoryVulnerabilityAlertReopenTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookRepositoryVulnerabilityAlertReopenType",
-    "WebhookRepositoryVulnerabilityAlertReopenTypeForResponse",
+    "WebhookRepositoryUnarchivedType",
+    "WebhookRepositoryUnarchivedTypeForResponse",
 )

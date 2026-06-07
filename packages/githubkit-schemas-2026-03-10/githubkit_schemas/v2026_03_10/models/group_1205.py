@@ -9,21 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoAgentsSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoAgentsSecretsSecretNamePutBody"""
+class ReposOwnerRepoActionsWorkflowsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/agents/secrets#get-a-repository-public-key) endpoint.",
-    )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+    total_count: int = Field()
+    workflows: list[Workflow] = Field()
 
 
-model_rebuild(ReposOwnerRepoAgentsSecretsSecretNamePutBody)
+class Workflow(GitHubModel):
+    """Workflow
 
-__all__ = ("ReposOwnerRepoAgentsSecretsSecretNamePutBody",)
+    A GitHub Actions workflow
+    """
+
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    path: str = Field()
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    ] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    url: str = Field()
+    html_url: str = Field()
+    badge_url: str = Field()
+    deleted_at: Missing[_dt.datetime] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoActionsWorkflowsGetResponse200)
+model_rebuild(Workflow)
+
+__all__ = (
+    "ReposOwnerRepoActionsWorkflowsGetResponse200",
+    "Workflow",
+)

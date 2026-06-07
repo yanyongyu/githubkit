@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,25 +19,35 @@ from .group_0003 import SimpleUser
 from .group_0010 import Integration
 
 
-class UnassignedIssueEvent(GitHubModel):
-    """Unassigned Issue Event
+class LabeledIssueEvent(GitHubModel):
+    """Labeled Issue Event
 
-    Unassigned Issue Event
+    Labeled Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
+    event: Literal["labeled"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    label: LabeledIssueEventPropLabel = Field()
 
 
-model_rebuild(UnassignedIssueEvent)
+class LabeledIssueEventPropLabel(GitHubModel):
+    """LabeledIssueEventPropLabel"""
 
-__all__ = ("UnassignedIssueEvent",)
+    name: str = Field()
+    color: str = Field()
+
+
+model_rebuild(LabeledIssueEvent)
+model_rebuild(LabeledIssueEventPropLabel)
+
+__all__ = (
+    "LabeledIssueEvent",
+    "LabeledIssueEventPropLabel",
+)

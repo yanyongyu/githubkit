@@ -87,6 +87,7 @@ if TYPE_CHECKING:
         ReleaseNotesContent,
         Repository,
         RepositoryCollaboratorPermission,
+        RepositoryHashAlgorithm,
         RepositoryInvitation,
         RepositoryRuleDetailedOneof0,
         RepositoryRuleDetailedOneof1,
@@ -201,6 +202,7 @@ if TYPE_CHECKING:
         ReleaseNotesContentTypeForResponse,
         ReleaseTypeForResponse,
         RepositoryCollaboratorPermissionTypeForResponse,
+        RepositoryHashAlgorithmTypeForResponse,
         RepositoryInvitationTypeForResponse,
         RepositoryRuleBranchNamePatternType,
         RepositoryRuleCodeScanningType,
@@ -987,6 +989,7 @@ class ReposClient:
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
         actor_name: Missing[str] = UNSET,
         rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = UNSET,
+        evaluate_status: Missing[Literal["all", "active", "evaluate"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Mapping[str, str] | None = None,
@@ -1012,6 +1015,7 @@ class ReposClient:
             "time_period": time_period,
             "actor_name": actor_name,
             "rule_suite_result": rule_suite_result,
+            "evaluate_status": evaluate_status,
             "per_page": per_page,
             "page": page,
         }
@@ -1040,6 +1044,7 @@ class ReposClient:
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
         actor_name: Missing[str] = UNSET,
         rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = UNSET,
+        evaluate_status: Missing[Literal["all", "active", "evaluate"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Mapping[str, str] | None = None,
@@ -1065,6 +1070,7 @@ class ReposClient:
             "time_period": time_period,
             "actor_name": actor_name,
             "rule_suite_result": rule_suite_result,
+            "evaluate_status": evaluate_status,
             "per_page": per_page,
             "page": page,
         }
@@ -13016,6 +13022,76 @@ class ReposClient:
             },
         )
 
+    def get_hash_algorithm(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[RepositoryHashAlgorithm, RepositoryHashAlgorithmTypeForResponse]:
+        """repos/get-hash-algorithm
+
+        GET /repos/{owner}/{repo}/hash-algorithm
+
+        Returns the hash algorithm used to store repository objects.
+
+        See also: https://docs.github.com/rest/repos/repos#get-the-hash-algorithm-for-a-repository
+        """
+
+        from ..models import BasicError, RepositoryHashAlgorithm
+
+        url = f"/repos/{owner}/{repo}/hash-algorithm"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=RepositoryHashAlgorithm,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_hash_algorithm(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[RepositoryHashAlgorithm, RepositoryHashAlgorithmTypeForResponse]:
+        """repos/get-hash-algorithm
+
+        GET /repos/{owner}/{repo}/hash-algorithm
+
+        Returns the hash algorithm used to store repository objects.
+
+        See also: https://docs.github.com/rest/repos/repos#get-the-hash-algorithm-for-a-repository
+        """
+
+        from ..models import BasicError, RepositoryHashAlgorithm
+
+        url = f"/repos/{owner}/{repo}/hash-algorithm"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=RepositoryHashAlgorithm,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
     def list_webhooks(
         self,
         owner: str,
@@ -19389,6 +19465,7 @@ class ReposClient:
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
         actor_name: Missing[str] = UNSET,
         rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = UNSET,
+        evaluate_status: Missing[Literal["all", "active", "evaluate"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Mapping[str, str] | None = None,
@@ -19413,6 +19490,7 @@ class ReposClient:
             "time_period": time_period,
             "actor_name": actor_name,
             "rule_suite_result": rule_suite_result,
+            "evaluate_status": evaluate_status,
             "per_page": per_page,
             "page": page,
         }
@@ -19441,6 +19519,7 @@ class ReposClient:
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
         actor_name: Missing[str] = UNSET,
         rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = UNSET,
+        evaluate_status: Missing[Literal["all", "active", "evaluate"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Mapping[str, str] | None = None,
@@ -19465,6 +19544,7 @@ class ReposClient:
             "time_period": time_period,
             "actor_name": actor_name,
             "rule_suite_result": rule_suite_result,
+            "evaluate_status": evaluate_status,
             "per_page": per_page,
             "page": page,
         }

@@ -18,28 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0573 import EnterpriseWebhooks
-from .group_0574 import SimpleInstallation
-from .group_0575 import OrganizationSimpleWebhooks
-from .group_0604 import PersonalAccessTokenRequest
+from .group_0576 import EnterpriseWebhooks
+from .group_0577 import SimpleInstallation
+from .group_0578 import OrganizationSimpleWebhooks
+from .group_0607 import PersonalAccessTokenRequest
 
 
-class WebhookPersonalAccessTokenRequestDenied(GitHubModel):
-    """personal_access_token_request denied event"""
+class WebhookPersonalAccessTokenRequestApproved(GitHubModel):
+    """personal_access_token_request approved event"""
 
-    action: Literal["denied"] = Field()
+    action: Literal["approved"] = Field()
     personal_access_token_request: PersonalAccessTokenRequest = Field(
         title="Personal Access Token Request",
         description="Details of a Personal Access Token Request.",
-    )
-    organization: OrganizationSimpleWebhooks = Field(
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
+    )
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
     installation: SimpleInstallation = Field(
@@ -48,6 +48,6 @@ class WebhookPersonalAccessTokenRequestDenied(GitHubModel):
     )
 
 
-model_rebuild(WebhookPersonalAccessTokenRequestDenied)
+model_rebuild(WebhookPersonalAccessTokenRequestApproved)
 
-__all__ = ("WebhookPersonalAccessTokenRequestDenied",)
+__all__ = ("WebhookPersonalAccessTokenRequestApproved",)

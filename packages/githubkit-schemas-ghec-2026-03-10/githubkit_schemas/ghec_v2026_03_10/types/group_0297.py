@@ -9,33 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class OrganizationCustomOrganizationRoleUpdateSchemaType(TypedDict):
-    """OrganizationCustomOrganizationRoleUpdateSchema"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    permissions: NotRequired[list[str]]
+class OrganizationRoleType(TypedDict):
+    """Organization Role
+
+    Organization roles
+    """
+
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
     base_role: NotRequired[
-        Literal["none", "read", "triage", "write", "maintain", "admin"]
+        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
     ]
+    source: NotRequired[
+        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
+    ]
+    permissions: list[str]
+    organization: Union[None, SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class OrganizationCustomOrganizationRoleUpdateSchemaTypeForResponse(TypedDict):
-    """OrganizationCustomOrganizationRoleUpdateSchema"""
+class OrganizationRoleTypeForResponse(TypedDict):
+    """Organization Role
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    permissions: NotRequired[list[str]]
+    Organization roles
+    """
+
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
     base_role: NotRequired[
-        Literal["none", "read", "triage", "write", "maintain", "admin"]
+        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
     ]
+    source: NotRequired[
+        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
+    ]
+    permissions: list[str]
+    organization: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+
+
+class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[OrganizationRoleType]]
+
+
+class OrgsOrgOrganizationRolesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[OrganizationRoleTypeForResponse]]
 
 
 __all__ = (
-    "OrganizationCustomOrganizationRoleUpdateSchemaType",
-    "OrganizationCustomOrganizationRoleUpdateSchemaTypeForResponse",
+    "OrganizationRoleType",
+    "OrganizationRoleTypeForResponse",
+    "OrgsOrgOrganizationRolesGetResponse200Type",
+    "OrgsOrgOrganizationRolesGetResponse200TypeForResponse",
 )

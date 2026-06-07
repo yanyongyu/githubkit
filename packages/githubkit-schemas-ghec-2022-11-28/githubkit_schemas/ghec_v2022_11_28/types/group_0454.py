@@ -16,57 +16,59 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class MilestonedIssueEventType(TypedDict):
-    """Milestoned Issue Event
+class UnlabeledIssueEventType(TypedDict):
+    """Unlabeled Issue Event
 
-    Milestoned Issue Event
+    Unlabeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["milestoned"]
+    event: Literal["unlabeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    milestone: MilestonedIssueEventPropMilestoneType
+    label: UnlabeledIssueEventPropLabelType
 
 
-class MilestonedIssueEventTypeForResponse(TypedDict):
-    """Milestoned Issue Event
+class UnlabeledIssueEventTypeForResponse(TypedDict):
+    """Unlabeled Issue Event
 
-    Milestoned Issue Event
+    Unlabeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["milestoned"]
+    event: Literal["unlabeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    milestone: MilestonedIssueEventPropMilestoneTypeForResponse
+    label: UnlabeledIssueEventPropLabelTypeForResponse
 
 
-class MilestonedIssueEventPropMilestoneType(TypedDict):
-    """MilestonedIssueEventPropMilestone"""
+class UnlabeledIssueEventPropLabelType(TypedDict):
+    """UnlabeledIssueEventPropLabel"""
 
-    title: str
+    name: str
+    color: str
 
 
-class MilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
-    """MilestonedIssueEventPropMilestone"""
+class UnlabeledIssueEventPropLabelTypeForResponse(TypedDict):
+    """UnlabeledIssueEventPropLabel"""
 
-    title: str
+    name: str
+    color: str
 
 
 __all__ = (
-    "MilestonedIssueEventPropMilestoneType",
-    "MilestonedIssueEventPropMilestoneTypeForResponse",
-    "MilestonedIssueEventType",
-    "MilestonedIssueEventTypeForResponse",
+    "UnlabeledIssueEventPropLabelType",
+    "UnlabeledIssueEventPropLabelTypeForResponse",
+    "UnlabeledIssueEventType",
+    "UnlabeledIssueEventTypeForResponse",
 )

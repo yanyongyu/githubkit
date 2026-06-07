@@ -17,63 +17,44 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0131 import CodeScanningAlertLocation
 
+class CodeScanningAlertRuleSummary(GitHubModel):
+    """CodeScanningAlertRuleSummary"""
 
-class CodeScanningAlertInstance(GitHubModel):
-    """CodeScanningAlertInstance"""
-
-    ref: Missing[str] = Field(
+    id: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`.",
+        description="A unique identifier for the rule used to detect the alert.",
     )
-    analysis_key: Missing[str] = Field(
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the rule used to detect the alert."
+    )
+    severity: Missing[Union[None, Literal["none", "note", "warning", "error"]]] = Field(
+        default=UNSET, description="The severity of the alert."
+    )
+    security_severity_level: Missing[
+        Union[None, Literal["low", "medium", "high", "critical"]]
+    ] = Field(default=UNSET, description="The security severity of the alert.")
+    description: Missing[str] = Field(
         default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
+        description="A short description of the rule used to detect the alert.",
     )
-    environment: Missing[str] = Field(
+    full_description: Missing[str] = Field(
+        default=UNSET, description="A description of the rule used to detect the alert."
+    )
+    tags: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A set of tags applicable for the rule."
+    )
+    help_: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
+        alias="help",
+        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
     )
-    category: Missing[str] = Field(
+    help_uri: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
-    )
-    state: Missing[Union[None, Literal["open", "dismissed", "fixed"]]] = Field(
-        default=UNSET, description="State of a code scanning alert."
-    )
-    commit_sha: Missing[str] = Field(default=UNSET)
-    message: Missing[CodeScanningAlertInstancePropMessage] = Field(default=UNSET)
-    location: Missing[CodeScanningAlertLocation] = Field(
-        default=UNSET, description="Describe a region within a file for the alert."
-    )
-    html_url: Missing[str] = Field(default=UNSET)
-    classifications: Missing[
-        list[
-            Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
-            ]
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
+        description="A link to the documentation for the rule used to detect the alert.",
     )
 
 
-class CodeScanningAlertInstancePropMessage(GitHubModel):
-    """CodeScanningAlertInstancePropMessage"""
+model_rebuild(CodeScanningAlertRuleSummary)
 
-    text: Missing[str] = Field(default=UNSET)
-    markdown: Missing[str] = Field(
-        default=UNSET,
-        description="The message text as GitHub-flavored Markdown, with placeholder links for related locations replaced by links to the relevant code. Only populated when related locations are available for the alert instance.",
-    )
-
-
-model_rebuild(CodeScanningAlertInstance)
-model_rebuild(CodeScanningAlertInstancePropMessage)
-
-__all__ = (
-    "CodeScanningAlertInstance",
-    "CodeScanningAlertInstancePropMessage",
-)
+__all__ = ("CodeScanningAlertRuleSummary",)

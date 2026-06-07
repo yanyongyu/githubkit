@@ -9,38 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationActionsSecretType(TypedDict):
-    """Actions Secret for an Organization
+class ActionsOrganizationPermissionsType(TypedDict):
+    """ActionsOrganizationPermissions"""
 
-    Secrets for GitHub Actions for an organization.
-    """
-
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
+    enabled_repositories: Literal["all", "none", "selected"]
     selected_repositories_url: NotRequired[str]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
 
-class OrganizationActionsSecretTypeForResponse(TypedDict):
-    """Actions Secret for an Organization
+class ActionsOrganizationPermissionsTypeForResponse(TypedDict):
+    """ActionsOrganizationPermissions"""
 
-    Secrets for GitHub Actions for an organization.
-    """
-
-    name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
+    enabled_repositories: Literal["all", "none", "selected"]
     selected_repositories_url: NotRequired[str]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "OrganizationActionsSecretType",
-    "OrganizationActionsSecretTypeForResponse",
+    "ActionsOrganizationPermissionsType",
+    "ActionsOrganizationPermissionsTypeForResponse",
 )

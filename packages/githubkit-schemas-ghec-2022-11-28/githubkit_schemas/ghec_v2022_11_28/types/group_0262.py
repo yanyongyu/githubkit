@@ -9,113 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CopilotSpaceCollaboratorAnyof0Type(TypedDict):
-    """CopilotSpaceCollaboratorAnyof0"""
+class CodespacesPublicKeyType(TypedDict):
+    """CodespacesPublicKey
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
-    actor_type: Literal["User"]
-    role: Literal["reader", "writer", "admin"]
+    The public key used for setting Codespaces secrets.
+    """
 
-
-class CopilotSpaceCollaboratorAnyof0TypeForResponse(TypedDict):
-    """CopilotSpaceCollaboratorAnyof0"""
-
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
-    actor_type: Literal["User"]
-    role: Literal["reader", "writer", "admin"]
-
-
-class CopilotSpaceCollaboratorAnyof1Type(TypedDict):
-    """CopilotSpaceCollaboratorAnyof1"""
-
-    actor_type: Literal["Team"]
-    role: Literal["reader", "writer", "admin"]
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    type: Literal["Team"]
-    description: NotRequired[Union[str, None]]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
+    key_id: str
+    key: str
+    id: NotRequired[int]
     url: NotRequired[str]
-    html_url: NotRequired[str]
-    members_url: NotRequired[str]
-    repositories_url: NotRequired[str]
-    organization_id: NotRequired[int]
-    parent: NotRequired[None]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-class CopilotSpaceCollaboratorAnyof1TypeForResponse(TypedDict):
-    """CopilotSpaceCollaboratorAnyof1"""
+class CodespacesPublicKeyTypeForResponse(TypedDict):
+    """CodespacesPublicKey
 
-    actor_type: Literal["Team"]
-    role: Literal["reader", "writer", "admin"]
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    type: Literal["Team"]
-    description: NotRequired[Union[str, None]]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
+    The public key used for setting Codespaces secrets.
+    """
+
+    key_id: str
+    key: str
+    id: NotRequired[int]
     url: NotRequired[str]
-    html_url: NotRequired[str]
-    members_url: NotRequired[str]
-    repositories_url: NotRequired[str]
-    organization_id: NotRequired[int]
-    parent: NotRequired[None]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
 __all__ = (
-    "CopilotSpaceCollaboratorAnyof0Type",
-    "CopilotSpaceCollaboratorAnyof0TypeForResponse",
-    "CopilotSpaceCollaboratorAnyof1Type",
-    "CopilotSpaceCollaboratorAnyof1TypeForResponse",
+    "CodespacesPublicKeyType",
+    "CodespacesPublicKeyTypeForResponse",
 )

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,48 +16,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksPreviousMarketplacePurchase(GitHubModel):
-    """Marketplace Purchase"""
+class WebhooksChanges(GitHubModel):
+    """WebhooksChanges
 
-    account: WebhooksPreviousMarketplacePurchasePropAccount = Field()
-    billing_cycle: str = Field()
-    free_trial_ends_on: None = Field()
-    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
-    on_free_trial: bool = Field()
-    plan: WebhooksPreviousMarketplacePurchasePropPlan = Field()
-    unit_count: int = Field()
+    The changes to the comment.
+    """
+
+    body: Missing[WebhooksChangesPropBody] = Field(default=UNSET)
 
 
-class WebhooksPreviousMarketplacePurchasePropAccount(GitHubModel):
-    """WebhooksPreviousMarketplacePurchasePropAccount"""
+class WebhooksChangesPropBody(GitHubModel):
+    """WebhooksChangesPropBody"""
 
-    id: int = Field()
-    login: str = Field()
-    node_id: str = Field()
-    organization_billing_email: Union[str, None] = Field()
-    type: str = Field()
+    from_: str = Field(alias="from", description="The previous version of the body.")
 
 
-class WebhooksPreviousMarketplacePurchasePropPlan(GitHubModel):
-    """WebhooksPreviousMarketplacePurchasePropPlan"""
-
-    bullets: list[str] = Field()
-    description: str = Field()
-    has_free_trial: bool = Field()
-    id: int = Field()
-    monthly_price_in_cents: int = Field()
-    name: str = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    unit_name: Union[str, None] = Field()
-    yearly_price_in_cents: int = Field()
-
-
-model_rebuild(WebhooksPreviousMarketplacePurchase)
-model_rebuild(WebhooksPreviousMarketplacePurchasePropAccount)
-model_rebuild(WebhooksPreviousMarketplacePurchasePropPlan)
+model_rebuild(WebhooksChanges)
+model_rebuild(WebhooksChangesPropBody)
 
 __all__ = (
-    "WebhooksPreviousMarketplacePurchase",
-    "WebhooksPreviousMarketplacePurchasePropAccount",
-    "WebhooksPreviousMarketplacePurchasePropPlan",
+    "WebhooksChanges",
+    "WebhooksChangesPropBody",
 )

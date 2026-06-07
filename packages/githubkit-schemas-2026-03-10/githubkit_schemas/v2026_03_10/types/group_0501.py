@@ -9,94 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0058 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+
+class BillingUsageSummaryReportUserType(TypedDict):
+    """BillingUsageSummaryReportUser"""
+
+    time_period: BillingUsageSummaryReportUserPropTimePeriodType
+    user: str
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItemsType]
 
 
-class SimpleCheckSuiteType(TypedDict):
-    """SimpleCheckSuite
+class BillingUsageSummaryReportUserTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportUser"""
 
-    A suite of checks performed on the code of a given code change
-    """
-
-    after: NotRequired[Union[str, None]]
-    app: NotRequired[Union[IntegrationType, None]]
-    before: NotRequired[Union[str, None]]
-    conclusion: NotRequired[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-        ]
-    ]
-    created_at: NotRequired[_dt.datetime]
-    head_branch: NotRequired[Union[str, None]]
-    head_sha: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    pull_requests: NotRequired[list[PullRequestMinimalType]]
-    repository: NotRequired[MinimalRepositoryType]
-    status: NotRequired[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ]
-    updated_at: NotRequired[_dt.datetime]
-    url: NotRequired[str]
+    time_period: BillingUsageSummaryReportUserPropTimePeriodTypeForResponse
+    user: str
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse]
 
 
-class SimpleCheckSuiteTypeForResponse(TypedDict):
-    """SimpleCheckSuite
+class BillingUsageSummaryReportUserPropTimePeriodType(TypedDict):
+    """BillingUsageSummaryReportUserPropTimePeriod"""
 
-    A suite of checks performed on the code of a given code change
-    """
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
-    after: NotRequired[Union[str, None]]
-    app: NotRequired[Union[IntegrationTypeForResponse, None]]
-    before: NotRequired[Union[str, None]]
-    conclusion: NotRequired[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-        ]
-    ]
-    created_at: NotRequired[str]
-    head_branch: NotRequired[Union[str, None]]
-    head_sha: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    pull_requests: NotRequired[list[PullRequestMinimalTypeForResponse]]
-    repository: NotRequired[MinimalRepositoryTypeForResponse]
-    status: NotRequired[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
+
+class BillingUsageSummaryReportUserPropTimePeriodTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportUserPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingUsageSummaryReportUserPropUsageItemsItemsType(TypedDict):
+    """BillingUsageSummaryReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+class BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "SimpleCheckSuiteType",
-    "SimpleCheckSuiteTypeForResponse",
+    "BillingUsageSummaryReportUserPropTimePeriodType",
+    "BillingUsageSummaryReportUserPropTimePeriodTypeForResponse",
+    "BillingUsageSummaryReportUserPropUsageItemsItemsType",
+    "BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse",
+    "BillingUsageSummaryReportUserType",
+    "BillingUsageSummaryReportUserTypeForResponse",
 )

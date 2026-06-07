@@ -9,66 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0496 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0497 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0498 import (
+from .group_0502 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0503 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0504 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0499 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0505 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0624 import WebhookForkPropForkeeType, WebhookForkPropForkeeTypeForResponse
 
 
-class WebhookGollumType(TypedDict):
-    """gollum event"""
+class WebhookForkType(TypedDict):
+    """fork event
+
+    A user forks a repository.
+    """
 
     enterprise: NotRequired[EnterpriseWebhooksType]
+    forkee: WebhookForkPropForkeeType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pages: list[WebhookGollumPropPagesItemsType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookGollumTypeForResponse(TypedDict):
-    """gollum event"""
+class WebhookForkTypeForResponse(TypedDict):
+    """fork event
+
+    A user forks a repository.
+    """
 
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    forkee: WebhookForkPropForkeeTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pages: list[WebhookGollumPropPagesItemsTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookGollumPropPagesItemsType(TypedDict):
-    """WebhookGollumPropPagesItems"""
-
-    action: Literal["created", "edited"]
-    html_url: str
-    page_name: str
-    sha: str
-    summary: Union[str, None]
-    title: str
-
-
-class WebhookGollumPropPagesItemsTypeForResponse(TypedDict):
-    """WebhookGollumPropPagesItems"""
-
-    action: Literal["created", "edited"]
-    html_url: str
-    page_name: str
-    sha: str
-    summary: Union[str, None]
-    title: str
-
-
 __all__ = (
-    "WebhookGollumPropPagesItemsType",
-    "WebhookGollumPropPagesItemsTypeForResponse",
-    "WebhookGollumType",
-    "WebhookGollumTypeForResponse",
+    "WebhookForkType",
+    "WebhookForkTypeForResponse",
 )

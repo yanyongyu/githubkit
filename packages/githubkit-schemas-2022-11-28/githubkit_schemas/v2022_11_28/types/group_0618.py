@@ -9,41 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0497 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0498 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0499 import (
+from .group_0049 import DiscussionType, DiscussionTypeForResponse
+from .group_0503 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0504 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0505 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0500 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0619 import WebhookForkPropForkeeType, WebhookForkPropForkeeTypeForResponse
+from .group_0506 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0619 import (
+    WebhookDiscussionTransferredPropChangesType,
+    WebhookDiscussionTransferredPropChangesTypeForResponse,
+)
 
 
-class WebhookForkType(TypedDict):
-    """fork event
+class WebhookDiscussionTransferredType(TypedDict):
+    """discussion transferred event"""
 
-    A user forks a repository.
-    """
-
+    action: Literal["transferred"]
+    changes: WebhookDiscussionTransferredPropChangesType
+    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    forkee: WebhookForkPropForkeeType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookForkTypeForResponse(TypedDict):
-    """fork event
+class WebhookDiscussionTransferredTypeForResponse(TypedDict):
+    """discussion transferred event"""
 
-    A user forks a repository.
-    """
-
+    action: Literal["transferred"]
+    changes: WebhookDiscussionTransferredPropChangesTypeForResponse
+    discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    forkee: WebhookForkPropForkeeTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
@@ -51,6 +54,6 @@ class WebhookForkTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookForkType",
-    "WebhookForkTypeForResponse",
+    "WebhookDiscussionTransferredType",
+    "WebhookDiscussionTransferredTypeForResponse",
 )

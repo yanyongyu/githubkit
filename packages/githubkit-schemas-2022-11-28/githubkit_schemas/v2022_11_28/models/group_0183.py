@@ -9,94 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Annotated, Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsV2View(GitHubModel):
-    """Projects v2 View
+class ProjectsV2FieldSingleSelectOption(GitHubModel):
+    """ProjectsV2FieldSingleSelectOption"""
 
-    A view inside a projects v2 project
-    """
-
-    id: int = Field(description="The unique identifier of the view.")
-    number: int = Field(description="The number of the view within the project.")
-    name: str = Field(description="The name of the view.")
-    layout: Literal["table", "board", "roadmap"] = Field(
-        description="The layout of the view."
+    name: Missing[str] = Field(
+        default=UNSET, description="The display name of the option."
     )
-    node_id: str = Field(description="The node ID of the view.")
-    project_url: str = Field(
-        description="The API URL of the project that contains the view."
-    )
-    html_url: str = Field(description="The web URL of the view.")
-    creator: ProjectsV2ViewPropCreator = Field()
-    created_at: _dt.datetime = Field(description="The time when the view was created.")
-    updated_at: _dt.datetime = Field(
-        description="The time when the view was last updated."
-    )
-    filter_: Missing[Union[str, None]] = Field(
-        default=UNSET, alias="filter", description="The filter query for the view."
-    )
-    visible_fields: list[int] = Field(
-        description="The list of field IDs that are visible in the view."
-    )
-    sort_by: list[
-        Annotated[
-            list[Union[int, str]],
-            Field(
-                max_length=2 if PYDANTIC_V2 else None,
-                min_length=2 if PYDANTIC_V2 else None,
-            ),
-        ]
-    ] = Field(
-        description='The sorting configuration for the view. Each element is a tuple of [field_id, direction] where direction is "asc" or "desc".'
-    )
-    group_by: list[int] = Field(
-        description="The list of field IDs used for horizontal grouping."
-    )
-    vertical_group_by: list[int] = Field(
-        description="The list of field IDs used for vertical grouping (board layout)."
+    color: Missing[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ] = Field(default=UNSET, description="The color associated with the option.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the option."
     )
 
 
-class ProjectsV2ViewPropCreator(GitHubModel):
-    """ProjectsV2ViewPropCreator"""
+model_rebuild(ProjectsV2FieldSingleSelectOption)
 
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ProjectsV2View)
-model_rebuild(ProjectsV2ViewPropCreator)
-
-__all__ = (
-    "ProjectsV2View",
-    "ProjectsV2ViewPropCreator",
-)
+__all__ = ("ProjectsV2FieldSingleSelectOption",)

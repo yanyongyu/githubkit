@@ -9,50 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
+class RepositoryRuleParamsDismissalRestrictionType(TypedDict):
+    """DismissalRestriction
 
-    do_not_enforce_on_create: NotRequired[bool]
-    required_status_checks: list[RepositoryRuleParamsStatusCheckConfigurationType]
-    strict_required_status_checks_policy: bool
-
-
-class RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
-
-    do_not_enforce_on_create: NotRequired[bool]
-    required_status_checks: list[
-        RepositoryRuleParamsStatusCheckConfigurationTypeForResponse
-    ]
-    strict_required_status_checks_policy: bool
-
-
-class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
-    """StatusCheckConfiguration
-
-    Required status check
+    Specify people, teams, or apps allowed to dismiss pull request reviews.
     """
 
-    context: str
-    integration_id: NotRequired[int]
+    allowed_actors: NotRequired[list[RepositoryRuleParamsActorType]]
+    enabled: bool
 
 
-class RepositoryRuleParamsStatusCheckConfigurationTypeForResponse(TypedDict):
-    """StatusCheckConfiguration
+class RepositoryRuleParamsDismissalRestrictionTypeForResponse(TypedDict):
+    """DismissalRestriction
 
-    Required status check
+    Specify people, teams, or apps allowed to dismiss pull request reviews.
     """
 
-    context: str
-    integration_id: NotRequired[int]
+    allowed_actors: NotRequired[list[RepositoryRuleParamsActorTypeForResponse]]
+    enabled: bool
+
+
+class RepositoryRuleParamsActorType(TypedDict):
+    """Actor
+
+    An actor allowed to dismiss pull request reviews
+    """
+
+    id: int
+    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
+
+
+class RepositoryRuleParamsActorTypeForResponse(TypedDict):
+    """Actor
+
+    An actor allowed to dismiss pull request reviews
+    """
+
+    id: int
+    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
 
 
 __all__ = (
-    "RepositoryRuleParamsStatusCheckConfigurationType",
-    "RepositoryRuleParamsStatusCheckConfigurationTypeForResponse",
-    "RepositoryRuleRequiredStatusChecksPropParametersType",
-    "RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse",
+    "RepositoryRuleParamsActorType",
+    "RepositoryRuleParamsActorTypeForResponse",
+    "RepositoryRuleParamsDismissalRestrictionType",
+    "RepositoryRuleParamsDismissalRestrictionTypeForResponse",
 )

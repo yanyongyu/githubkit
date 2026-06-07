@@ -12,27 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OidcCustomSubType(TypedDict):
-    """Actions OIDC Subject customization
+class ActionsCacheStorageLimitForOrganizationType(TypedDict):
+    """Actions cache storage limit for an organization
 
-    Actions OIDC Subject customization
+    GitHub Actions cache storage policy for an organization.
     """
 
-    include_claim_keys: list[str]
-    use_immutable_subject: NotRequired[bool]
+    max_cache_size_gb: NotRequired[int]
 
 
-class OidcCustomSubTypeForResponse(TypedDict):
-    """Actions OIDC Subject customization
+class ActionsCacheStorageLimitForOrganizationTypeForResponse(TypedDict):
+    """Actions cache storage limit for an organization
 
-    Actions OIDC Subject customization
+    GitHub Actions cache storage policy for an organization.
     """
 
-    include_claim_keys: list[str]
-    use_immutable_subject: NotRequired[bool]
+    max_cache_size_gb: NotRequired[int]
 
 
 __all__ = (
-    "OidcCustomSubType",
-    "OidcCustomSubTypeForResponse",
+    "ActionsCacheStorageLimitForOrganizationType",
+    "ActionsCacheStorageLimitForOrganizationTypeForResponse",
 )

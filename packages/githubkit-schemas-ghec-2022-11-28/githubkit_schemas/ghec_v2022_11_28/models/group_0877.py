@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0573 import EnterpriseWebhooks
-from .group_0574 import SimpleInstallation
-from .group_0575 import OrganizationSimpleWebhooks
-from .group_0576 import RepositoryWebhooks
-from .group_0607 import WebhooksProjectColumn
+from .group_0576 import EnterpriseWebhooks
+from .group_0577 import SimpleInstallation
+from .group_0578 import OrganizationSimpleWebhooks
+from .group_0579 import RepositoryWebhooks
+from .group_0610 import WebhooksProjectColumn
 
 
-class WebhookProjectColumnMoved(GitHubModel):
-    """project_column moved event"""
+class WebhookProjectColumnCreated(GitHubModel):
+    """project_column created event"""
 
-    action: Literal["moved"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -50,9 +50,11 @@ class WebhookProjectColumnMoved(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookProjectColumnMoved)
+model_rebuild(WebhookProjectColumnCreated)
 
-__all__ = ("WebhookProjectColumnMoved",)
+__all__ = ("WebhookProjectColumnCreated",)

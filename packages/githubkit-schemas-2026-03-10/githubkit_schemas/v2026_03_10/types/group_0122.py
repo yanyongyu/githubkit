@@ -9,38 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0121 import RunnerLabelType, RunnerLabelTypeForResponse
 
-class OrganizationActionsSecretType(TypedDict):
-    """Actions Secret for an Organization
 
-    Secrets for GitHub Actions for an organization.
+class RunnerType(TypedDict):
+    """Self hosted runners
+
+    A self hosted runner
     """
 
+    id: int
+    runner_group_id: NotRequired[int]
     name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelType]
+    ephemeral: NotRequired[bool]
+    version: NotRequired[Union[str, None]]
 
 
-class OrganizationActionsSecretTypeForResponse(TypedDict):
-    """Actions Secret for an Organization
+class RunnerTypeForResponse(TypedDict):
+    """Self hosted runners
 
-    Secrets for GitHub Actions for an organization.
+    A self hosted runner
     """
 
+    id: int
+    runner_group_id: NotRequired[int]
     name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelTypeForResponse]
+    ephemeral: NotRequired[bool]
+    version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrganizationActionsSecretType",
-    "OrganizationActionsSecretTypeForResponse",
+    "RunnerType",
+    "RunnerTypeForResponse",
 )

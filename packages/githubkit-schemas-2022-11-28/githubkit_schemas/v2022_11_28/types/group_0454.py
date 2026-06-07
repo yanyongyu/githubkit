@@ -9,28 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class SecretScanningPushProtectionBypassType(TypedDict):
-    """SecretScanningPushProtectionBypass"""
-
-    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
-    expire_at: NotRequired[Union[_dt.datetime, None]]
-    token_type: NotRequired[str]
+from .group_0238 import (
+    RepositoryRuleMaxFilePathLengthPropParametersType,
+    RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse,
+)
 
 
-class SecretScanningPushProtectionBypassTypeForResponse(TypedDict):
-    """SecretScanningPushProtectionBypass"""
+class RepositoryRuleDetailedOneof19Type(TypedDict):
+    """RepositoryRuleDetailedOneof19"""
 
-    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
-    expire_at: NotRequired[Union[str, None]]
-    token_type: NotRequired[str]
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof19TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof19"""
+
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[
+        RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse
+    ]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "SecretScanningPushProtectionBypassType",
-    "SecretScanningPushProtectionBypassTypeForResponse",
+    "RepositoryRuleDetailedOneof19Type",
+    "RepositoryRuleDetailedOneof19TypeForResponse",
 )

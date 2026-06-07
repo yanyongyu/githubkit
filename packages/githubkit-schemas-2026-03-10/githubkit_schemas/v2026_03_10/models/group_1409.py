@@ -9,89 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBody"""
+class UsersUsernameAttestationsBulkListPostResponse200(GitHubModel):
+    """UsersUsernameAttestationsBulkListPostResponse200"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the Copilot Space."
+    attestations_subject_digests: Missing[
+        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+    ] = Field(default=UNSET, description="Mapping of subject digest to bundles.")
+    page_info: Missing[UsersUsernameAttestationsBulkListPostResponse200PropPageInfo] = (
+        Field(default=UNSET, description="Information about the current page.")
     )
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the Copilot Space."
-    )
-    general_instructions: Missing[str] = Field(
-        max_length=4000,
-        default=UNSET,
-        description="General instructions for the Copilot Space.",
-    )
-    base_role: Missing[Literal["reader", "no_access"]] = Field(
-        default=UNSET,
-        description="The base role that determines default permissions for the space. Changing this field requires admin permissions.\n- `no_access`: No default access (default)\n- `reader`: Makes the space publicly readable\nNote: User spaces do not support writer or admin base roles.",
-    )
-    resources_attributes: Missing[
-        list[UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems]
-    ] = Field(default=UNSET, description="Resources to attach to the space.")
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems(
-    GitHubModel
+class UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests(
+    ExtraGitHubModel
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+    """UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
 
-    resource_type: Missing[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ] = Field(default=UNSET, description="The type of resource.")
-    metadata: Missing[
-        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-    ] = Field(default=UNSET, description="Metadata specific to the resource type.")
-
-
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata(
-    GitHubModel
-):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
-    data
-
-    Metadata specific to the resource type.
+    Mapping of subject digest to bundles.
     """
 
-    repository_id: Missing[int] = Field(
-        default=UNSET, description="Repository ID for repository or file resources."
+
+class UsersUsernameAttestationsBulkListPostResponse200PropPageInfo(GitHubModel):
+    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: Missing[bool] = Field(
+        default=UNSET, description="Indicates whether there is a next page."
     )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="File path for file resources."
+    has_previous: Missing[bool] = Field(
+        default=UNSET, description="Indicates whether there is a previous page."
     )
-    text: Missing[str] = Field(
-        default=UNSET, description="Text content for free text resources."
+    next_: Missing[str] = Field(
+        default=UNSET, alias="next", description="The cursor to the next page."
     )
-    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
-    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
+    previous: Missing[str] = Field(
+        default=UNSET, description="The cursor to the previous page."
+    )
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberPutBody)
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems)
+model_rebuild(UsersUsernameAttestationsBulkListPostResponse200)
 model_rebuild(
-    UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+    UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
 )
+model_rebuild(UsersUsernameAttestationsBulkListPostResponse200PropPageInfo)
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberPutBody",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata",
+    "UsersUsernameAttestationsBulkListPostResponse200",
+    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
+    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfo",
 )

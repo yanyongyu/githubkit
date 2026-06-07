@@ -13,26 +13,33 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody(GitHubModel):
+    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
+    resource_type: Literal[
+        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
+    ] = Field(description="The type of resource to create.")
+    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata = (
+        Field(description="Resource-specific metadata.")
     )
-    id: Missing[int] = Field(
-        default=UNSET,
-        description="The unique identifier of the issue or pull request to add to the project.",
-    )
-    owner: str = Field(description="The repository owner login.")
-    repo: str = Field(description="The repository name.")
-    number: int = Field(description="The issue or pull request number.")
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1)
+class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata(
+    ExtraGitHubModel
+):
+    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1",)
+    Resource-specific metadata.
+    """
+
+
+model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody)
+model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata)
+
+__all__ = (
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody",
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
+)

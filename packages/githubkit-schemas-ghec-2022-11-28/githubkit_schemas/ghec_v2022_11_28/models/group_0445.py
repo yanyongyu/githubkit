@@ -9,25 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CheckImmutableReleases(GitHubModel):
-    """Check immutable releases
+class RepositoryHashAlgorithm(GitHubModel):
+    """Repository hash algorithm
 
-    Check immutable releases
+    Repository hash algorithm
     """
 
-    enabled: bool = Field(
-        description="Whether immutable releases are enabled for the repository."
-    )
-    enforced_by_owner: bool = Field(
-        description="Whether immutable releases are enforced by the repository owner."
+    hash_algorithm: Literal["sha1", "sha256"] = Field(
+        description="The Git hash algorithm used by this repository."
     )
 
 
-model_rebuild(CheckImmutableReleases)
+model_rebuild(RepositoryHashAlgorithm)
 
-__all__ = ("CheckImmutableReleases",)
+__all__ = ("RepositoryHashAlgorithm",)

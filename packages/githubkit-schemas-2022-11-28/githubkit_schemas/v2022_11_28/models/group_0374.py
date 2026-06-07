@@ -9,95 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GitCommit(GitHubModel):
-    """Git Commit
+class CustomDeploymentRuleApp(GitHubModel):
+    """Custom deployment protection rule app
 
-    Low-level Git commit operations within a repository
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
-    sha: str = Field(description="SHA for the commit")
-    node_id: str = Field()
-    url: str = Field()
-    author: GitCommitPropAuthor = Field(
-        description="Identifying information for the git-user"
+    id: int = Field(
+        description="The unique identifier of the deployment protection rule integration."
     )
-    committer: GitCommitPropCommitter = Field(
-        description="Identifying information for the git-user"
+    slug: str = Field(
+        description="The slugified name of the deployment protection rule integration."
     )
-    message: str = Field(description="Message describing the purpose of the commit")
-    tree: GitCommitPropTree = Field()
-    parents: list[GitCommitPropParentsItems] = Field()
-    verification: GitCommitPropVerification = Field()
-    html_url: str = Field()
+    integration_url: str = Field(
+        description="The URL for the endpoint to get details about the app."
+    )
+    node_id: str = Field(
+        description="The node ID for the deployment protection rule integration."
+    )
 
 
-class GitCommitPropAuthor(GitHubModel):
-    """GitCommitPropAuthor
+model_rebuild(CustomDeploymentRuleApp)
 
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class GitCommitPropCommitter(GitHubModel):
-    """GitCommitPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class GitCommitPropTree(GitHubModel):
-    """GitCommitPropTree"""
-
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-
-
-class GitCommitPropParentsItems(GitHubModel):
-    """GitCommitPropParentsItems"""
-
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-    html_url: str = Field()
-
-
-class GitCommitPropVerification(GitHubModel):
-    """GitCommitPropVerification"""
-
-    verified: bool = Field()
-    reason: str = Field()
-    signature: Union[str, None] = Field()
-    payload: Union[str, None] = Field()
-    verified_at: Union[str, None] = Field()
-
-
-model_rebuild(GitCommit)
-model_rebuild(GitCommitPropAuthor)
-model_rebuild(GitCommitPropCommitter)
-model_rebuild(GitCommitPropTree)
-model_rebuild(GitCommitPropParentsItems)
-model_rebuild(GitCommitPropVerification)
-
-__all__ = (
-    "GitCommit",
-    "GitCommitPropAuthor",
-    "GitCommitPropCommitter",
-    "GitCommitPropParentsItems",
-    "GitCommitPropTree",
-    "GitCommitPropVerification",
-)
+__all__ = ("CustomDeploymentRuleApp",)

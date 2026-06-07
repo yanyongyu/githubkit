@@ -14,57 +14,65 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksAlertType(TypedDict):
-    """Repository Vulnerability Alert Alert
+class WebhooksReviewType(TypedDict):
+    """WebhooksReview
 
-    The security alert of the vulnerable dependency.
+    The review that was affected.
     """
 
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_reason: NotRequired[str]
-    dismissed_at: NotRequired[str]
-    dismisser: NotRequired[Union[WebhooksAlertPropDismisserType, None]]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[_dt.datetime]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
+    links: WebhooksReviewPropLinksType
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[str, None]
+    commit_id: str
+    html_url: str
     id: int
     node_id: str
-    number: int
-    severity: str
-    state: Literal["auto_dismissed", "open"]
+    pull_request_url: str
+    state: str
+    submitted_at: Union[_dt.datetime, None]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    user: Union[WebhooksReviewPropUserType, None]
 
 
-class WebhooksAlertTypeForResponse(TypedDict):
-    """Repository Vulnerability Alert Alert
+class WebhooksReviewTypeForResponse(TypedDict):
+    """WebhooksReview
 
-    The security alert of the vulnerable dependency.
+    The review that was affected.
     """
 
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_reason: NotRequired[str]
-    dismissed_at: NotRequired[str]
-    dismisser: NotRequired[Union[WebhooksAlertPropDismisserTypeForResponse, None]]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[str]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
+    links: WebhooksReviewPropLinksTypeForResponse
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[str, None]
+    commit_id: str
+    html_url: str
     id: int
     node_id: str
-    number: int
-    severity: str
-    state: Literal["auto_dismissed", "open"]
+    pull_request_url: str
+    state: str
+    submitted_at: Union[str, None]
+    updated_at: NotRequired[Union[str, None]]
+    user: Union[WebhooksReviewPropUserTypeForResponse, None]
 
 
-class WebhooksAlertPropDismisserType(TypedDict):
+class WebhooksReviewPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -88,9 +96,10 @@ class WebhooksAlertPropDismisserType(TypedDict):
     subscriptions_url: NotRequired[str]
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhooksAlertPropDismisserTypeForResponse(TypedDict):
+class WebhooksReviewPropUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -114,11 +123,56 @@ class WebhooksAlertPropDismisserTypeForResponse(TypedDict):
     subscriptions_url: NotRequired[str]
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksReviewPropLinksType(TypedDict):
+    """WebhooksReviewPropLinks"""
+
+    html: WebhooksReviewPropLinksPropHtmlType
+    pull_request: WebhooksReviewPropLinksPropPullRequestType
+
+
+class WebhooksReviewPropLinksTypeForResponse(TypedDict):
+    """WebhooksReviewPropLinks"""
+
+    html: WebhooksReviewPropLinksPropHtmlTypeForResponse
+    pull_request: WebhooksReviewPropLinksPropPullRequestTypeForResponse
+
+
+class WebhooksReviewPropLinksPropHtmlType(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class WebhooksReviewPropLinksPropHtmlTypeForResponse(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class WebhooksReviewPropLinksPropPullRequestType(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class WebhooksReviewPropLinksPropPullRequestTypeForResponse(TypedDict):
+    """Link"""
+
+    href: str
 
 
 __all__ = (
-    "WebhooksAlertPropDismisserType",
-    "WebhooksAlertPropDismisserTypeForResponse",
-    "WebhooksAlertType",
-    "WebhooksAlertTypeForResponse",
+    "WebhooksReviewPropLinksPropHtmlType",
+    "WebhooksReviewPropLinksPropHtmlTypeForResponse",
+    "WebhooksReviewPropLinksPropPullRequestType",
+    "WebhooksReviewPropLinksPropPullRequestTypeForResponse",
+    "WebhooksReviewPropLinksType",
+    "WebhooksReviewPropLinksTypeForResponse",
+    "WebhooksReviewPropUserType",
+    "WebhooksReviewPropUserTypeForResponse",
+    "WebhooksReviewType",
+    "WebhooksReviewTypeForResponse",
 )

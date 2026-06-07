@@ -9,77 +9,113 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CopilotOrganizationDetailsType(TypedDict):
-    """Copilot Organization Details
+class CopilotSpaceCollaboratorAnyof0Type(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0"""
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
-    """
-
-    seat_breakdown: CopilotOrganizationSeatBreakdownType
-    public_code_suggestions: Literal["allow", "block", "unconfigured"]
-    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
-    ]
-    plan_type: NotRequired[Literal["business", "enterprise"]]
-
-
-class CopilotOrganizationDetailsTypeForResponse(TypedDict):
-    """Copilot Organization Details
-
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
-    """
-
-    seat_breakdown: CopilotOrganizationSeatBreakdownTypeForResponse
-    public_code_suggestions: Literal["allow", "block", "unconfigured"]
-    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
-    ]
-    plan_type: NotRequired[Literal["business", "enterprise"]]
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
 
 
-class CopilotOrganizationSeatBreakdownType(TypedDict):
-    """Copilot Seat Breakdown
+class CopilotSpaceCollaboratorAnyof0TypeForResponse(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0"""
 
-    The breakdown of Copilot Business seats for the organization.
-    """
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
 
-    total: NotRequired[int]
-    added_this_cycle: NotRequired[int]
-    pending_cancellation: NotRequired[int]
-    pending_invitation: NotRequired[int]
-    active_this_cycle: NotRequired[int]
-    inactive_this_cycle: NotRequired[int]
+
+class CopilotSpaceCollaboratorAnyof1Type(TypedDict):
+    """CopilotSpaceCollaboratorAnyof1"""
+
+    actor_type: Literal["Team"]
+    role: Literal["reader", "writer", "admin"]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    type: Literal["Team"]
+    description: NotRequired[Union[str, None]]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    members_url: NotRequired[str]
+    repositories_url: NotRequired[str]
+    organization_id: NotRequired[int]
+    parent: NotRequired[None]
 
 
-class CopilotOrganizationSeatBreakdownTypeForResponse(TypedDict):
-    """Copilot Seat Breakdown
+class CopilotSpaceCollaboratorAnyof1TypeForResponse(TypedDict):
+    """CopilotSpaceCollaboratorAnyof1"""
 
-    The breakdown of Copilot Business seats for the organization.
-    """
-
-    total: NotRequired[int]
-    added_this_cycle: NotRequired[int]
-    pending_cancellation: NotRequired[int]
-    pending_invitation: NotRequired[int]
-    active_this_cycle: NotRequired[int]
-    inactive_this_cycle: NotRequired[int]
+    actor_type: Literal["Team"]
+    role: Literal["reader", "writer", "admin"]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    type: Literal["Team"]
+    description: NotRequired[Union[str, None]]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    members_url: NotRequired[str]
+    repositories_url: NotRequired[str]
+    organization_id: NotRequired[int]
+    parent: NotRequired[None]
 
 
 __all__ = (
-    "CopilotOrganizationDetailsType",
-    "CopilotOrganizationDetailsTypeForResponse",
-    "CopilotOrganizationSeatBreakdownType",
-    "CopilotOrganizationSeatBreakdownTypeForResponse",
+    "CopilotSpaceCollaboratorAnyof0Type",
+    "CopilotSpaceCollaboratorAnyof0TypeForResponse",
+    "CopilotSpaceCollaboratorAnyof1Type",
+    "CopilotSpaceCollaboratorAnyof1TypeForResponse",
 )

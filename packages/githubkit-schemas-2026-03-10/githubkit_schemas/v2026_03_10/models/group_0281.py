@@ -9,63 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class ConcurrencyGroupRunList(GitHubModel):
+    """Concurrency Group Run List
 
-class Deployment(GitHubModel):
-    """Deployment
-
-    A request for a specific ref(branch,sha,tag) to be deployed
+    A list of concurrency groups associated with a workflow run.
     """
 
-    url: str = Field()
-    id: int = Field(description="Unique identifier of the deployment")
-    node_id: str = Field()
-    sha: str = Field()
-    ref: str = Field(
-        description="The ref to deploy. This can be a branch, tag, or sha."
+    total_count: int = Field(
+        description="The total number of concurrency groups this workflow run participates in,\nderived from the run's configuration. This count is not filtered by\nwhether the run currently holds or is waiting in each group, so it can\ninclude groups whose `group_members` array is empty (for example, when\nthe run has already released its lease in that group)."
     )
-    task: str = Field(description="Parameter to specify a task to execute")
-    payload: Union[DeploymentPropPayloadOneof0, str] = Field()
-    original_environment: Missing[str] = Field(default=UNSET)
-    environment: str = Field(description="Name for the target deployment environment.")
-    description: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    statuses_url: str = Field()
-    repository_url: str = Field()
-    transient_environment: Missing[bool] = Field(
+    concurrency_groups: list[ConcurrencyGroupRunListPropConcurrencyGroupsItems] = (
+        Field()
+    )
+
+
+class ConcurrencyGroupRunListPropConcurrencyGroupsItems(GitHubModel):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
+
+    group_name: str = Field(description="The name of the concurrency group.")
+    group_url: str = Field(
+        description="API URL for this concurrency group. May return 404 if the group\nhas no active items at the time it is requested, since the\nget-by-name endpoint reports the live repo-wide state of a group\nwhile this endpoint lists groups associated with a run by\nconfiguration."
+    )
+    group_members: list[
+        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems
+    ] = Field(
+        description="Items belonging to this workflow run that are either currently holding or\nwaiting for the concurrency group lease. May be empty if the run no\nlonger has any active or queued items in this group."
+    )
+
+
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems(
+    GitHubModel
+):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
+
+    run_id: int = Field(description="The ID of the workflow run.")
+    run_name: str = Field(description="The name of the workflow run.")
+    run_url: Union[str, None] = Field(description="API URL for the workflow run.")
+    run_html_url: Union[str, None] = Field(description="Web URL for the workflow run.")
+    position: int = Field(
+        description="Queue position. 0 means the item holds the concurrency lease (in_progress), 1 or higher means queued (pending)."
+    )
+    position_url: str = Field(
+        description="API URL to get items ahead of this item in the concurrency group."
+    )
+    job_id: Missing[Union[int, None]] = Field(
         default=UNSET,
-        description="Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
+        description="The ID of the job, when the item represents a job-level or reusable-workflow-level lease.",
     )
-    production_environment: Missing[bool] = Field(
+    job_name: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
+        description="The display name of the job, when the item represents a job-level or reusable-workflow-level lease.",
     )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    job_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="API URL for the job."
     )
+    job_html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Web URL for the job."
+    )
+    status: Literal["in_progress", "pending"] = Field()
 
 
-class DeploymentPropPayloadOneof0(ExtraGitHubModel):
-    """DeploymentPropPayloadOneof0"""
-
-
-model_rebuild(Deployment)
-model_rebuild(DeploymentPropPayloadOneof0)
+model_rebuild(ConcurrencyGroupRunList)
+model_rebuild(ConcurrencyGroupRunListPropConcurrencyGroupsItems)
+model_rebuild(ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems)
 
 __all__ = (
-    "Deployment",
-    "DeploymentPropPayloadOneof0",
+    "ConcurrencyGroupRunList",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItems",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems",
 )

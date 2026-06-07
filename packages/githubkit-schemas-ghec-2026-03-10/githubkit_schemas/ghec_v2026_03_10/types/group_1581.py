@@ -11,22 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0260 import CopilotSpaceType, CopilotSpaceTypeForResponse
+
+class UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type(TypedDict):
+    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
+
+    subject_digests: list[str]
 
 
-class UsersUsernameCopilotSpacesGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesGetResponse200"""
+class UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse(TypedDict):
+    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
 
-    spaces: list[CopilotSpaceType]
-
-
-class UsersUsernameCopilotSpacesGetResponse200TypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesGetResponse200"""
-
-    spaces: list[CopilotSpaceTypeForResponse]
+    subject_digests: list[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesGetResponse200Type",
-    "UsersUsernameCopilotSpacesGetResponse200TypeForResponse",
+    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type",
+    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse",
 )

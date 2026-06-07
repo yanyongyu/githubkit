@@ -9,57 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CopilotSpaceResource(GitHubModel):
-    """Copilot Space Resource
+class CopilotSpaceCollaboratorAnyof0(GitHubModel):
+    """CopilotSpaceCollaboratorAnyof0"""
 
-    A resource attached to a Copilot Space.
-    """
-
-    id: int = Field(description="The unique identifier of the resource.")
-    resource_type: Literal[
-        "repository",
-        "github_file",
-        "free_text",
-        "github_issue",
-        "github_pull_request",
-        "media_content",
-        "uploaded_text_file",
-    ] = Field(description="The type of the resource.")
-    copilot_chat_attachment_id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of the associated chat attachment, if any."
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+    actor_type: Literal["User"] = Field(description="The collaborator actor type.")
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role granted to the collaborator"
     )
-    metadata: CopilotSpaceResourcePropMetadata = Field(
-        description="Resource-specific metadata. The keys and values depend on the resource type."
+
+
+class CopilotSpaceCollaboratorAnyof1(GitHubModel):
+    """CopilotSpaceCollaboratorAnyof1"""
+
+    actor_type: Literal["Team"] = Field(description="The collaborator actor type.")
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role granted to the collaborator"
     )
-    created_at: _dt.datetime = Field(
-        description="The date and time the resource was created."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The date and time the resource was last updated."
-    )
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    slug: str = Field()
+    type: Literal["Team"] = Field()
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    members_url: Missing[str] = Field(default=UNSET)
+    repositories_url: Missing[str] = Field(default=UNSET)
+    organization_id: Missing[int] = Field(default=UNSET)
+    parent: Missing[None] = Field(default=UNSET)
 
 
-class CopilotSpaceResourcePropMetadata(ExtraGitHubModel):
-    """CopilotSpaceResourcePropMetadata
-
-    Resource-specific metadata. The keys and values depend on the resource type.
-    """
-
-
-model_rebuild(CopilotSpaceResource)
-model_rebuild(CopilotSpaceResourcePropMetadata)
+model_rebuild(CopilotSpaceCollaboratorAnyof0)
+model_rebuild(CopilotSpaceCollaboratorAnyof1)
 
 __all__ = (
-    "CopilotSpaceResource",
-    "CopilotSpaceResourcePropMetadata",
+    "CopilotSpaceCollaboratorAnyof0",
+    "CopilotSpaceCollaboratorAnyof1",
 )

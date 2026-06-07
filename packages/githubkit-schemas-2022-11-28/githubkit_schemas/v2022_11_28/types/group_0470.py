@@ -12,29 +12,49 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReferrerTrafficType(TypedDict):
-    """Referrer Traffic
+class TagType(TypedDict):
+    """Tag
 
-    Referrer Traffic
+    Tag
     """
 
-    referrer: str
-    count: int
-    uniques: int
+    name: str
+    commit: TagPropCommitType
+    zipball_url: str
+    tarball_url: str
+    node_id: str
 
 
-class ReferrerTrafficTypeForResponse(TypedDict):
-    """Referrer Traffic
+class TagTypeForResponse(TypedDict):
+    """Tag
 
-    Referrer Traffic
+    Tag
     """
 
-    referrer: str
-    count: int
-    uniques: int
+    name: str
+    commit: TagPropCommitTypeForResponse
+    zipball_url: str
+    tarball_url: str
+    node_id: str
+
+
+class TagPropCommitType(TypedDict):
+    """TagPropCommit"""
+
+    sha: str
+    url: str
+
+
+class TagPropCommitTypeForResponse(TypedDict):
+    """TagPropCommit"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "ReferrerTrafficType",
-    "ReferrerTrafficTypeForResponse",
+    "TagPropCommitType",
+    "TagPropCommitTypeForResponse",
+    "TagType",
+    "TagTypeForResponse",
 )

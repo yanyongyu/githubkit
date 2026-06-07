@@ -19,17 +19,17 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0051 import IssueType
-from .group_0496 import EnterpriseWebhooks
-from .group_0497 import SimpleInstallation
-from .group_0498 import OrganizationSimpleWebhooks
-from .group_0499 import RepositoryWebhooks
-from .group_0515 import WebhooksIssue
+from .group_0502 import EnterpriseWebhooks
+from .group_0503 import SimpleInstallation
+from .group_0504 import OrganizationSimpleWebhooks
+from .group_0505 import RepositoryWebhooks
+from .group_0521 import WebhooksIssue
 
 
-class WebhookIssuesUntyped(GitHubModel):
-    """issues untyped event"""
+class WebhookIssuesTyped(GitHubModel):
+    """issues typed event"""
 
-    action: Literal["untyped"] = Field()
+    action: Literal["typed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -60,6 +60,6 @@ class WebhookIssuesUntyped(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesUntyped)
+model_rebuild(WebhookIssuesTyped)
 
-__all__ = ("WebhookIssuesUntyped",)
+__all__ = ("WebhookIssuesTyped",)

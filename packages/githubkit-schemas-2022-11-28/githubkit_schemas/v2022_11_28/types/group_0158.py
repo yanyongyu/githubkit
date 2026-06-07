@@ -9,53 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationUpdateIssueFieldType(TypedDict):
-    """OrganizationUpdateIssueField"""
+class InteractionLimitType(TypedDict):
+    """Interaction Restrictions
 
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[list[OrganizationUpdateIssueFieldPropOptionsItemsType]]
+    Limit interactions to a specific type of user for a specified duration
+    """
 
-
-class OrganizationUpdateIssueFieldTypeForResponse(TypedDict):
-    """OrganizationUpdateIssueField"""
-
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[
-        list[OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
     ]
 
 
-class OrganizationUpdateIssueFieldPropOptionsItemsType(TypedDict):
-    """OrganizationUpdateIssueFieldPropOptionsItems"""
+class InteractionLimitTypeForResponse(TypedDict):
+    """Interaction Restrictions
 
-    id: NotRequired[int]
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
-    priority: int
+    Limit interactions to a specific type of user for a specified duration
+    """
 
-
-class OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
-    """OrganizationUpdateIssueFieldPropOptionsItems"""
-
-    id: NotRequired[int]
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
-    priority: int
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ]
 
 
 __all__ = (
-    "OrganizationUpdateIssueFieldPropOptionsItemsType",
-    "OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse",
-    "OrganizationUpdateIssueFieldType",
-    "OrganizationUpdateIssueFieldTypeForResponse",
+    "InteractionLimitType",
+    "InteractionLimitTypeForResponse",
 )

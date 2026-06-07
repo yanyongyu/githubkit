@@ -516,6 +516,24 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.types import BaseGistType as BaseGistType
     from githubkit_schemas.v2026_03_10.types import BasicErrorType as BasicErrorType
     from githubkit_schemas.v2026_03_10.types import (
+        BillingAiCreditUsageReportOrgPropTimePeriodType as BillingAiCreditUsageReportOrgPropTimePeriodType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        BillingAiCreditUsageReportOrgPropUsageItemsItemsType as BillingAiCreditUsageReportOrgPropUsageItemsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        BillingAiCreditUsageReportOrgType as BillingAiCreditUsageReportOrgType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        BillingAiCreditUsageReportUserPropTimePeriodType as BillingAiCreditUsageReportUserPropTimePeriodType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        BillingAiCreditUsageReportUserPropUsageItemsItemsType as BillingAiCreditUsageReportUserPropUsageItemsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        BillingAiCreditUsageReportUserType as BillingAiCreditUsageReportUserType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         BillingPremiumRequestUsageReportOrgPropTimePeriodType as BillingPremiumRequestUsageReportOrgPropTimePeriodType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -1069,6 +1087,13 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.types import (
         CopilotUsageMetricsDayType as CopilotUsageMetricsDayType,
     )
+    from githubkit_schemas.v2026_03_10.types import (
+        CreateBudgetPropBudgetPropBudgetAlertingType as CreateBudgetPropBudgetPropBudgetAlertingType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        CreateBudgetPropBudgetType as CreateBudgetPropBudgetType,
+    )
+    from githubkit_schemas.v2026_03_10.types import CreateBudgetType as CreateBudgetType
     from githubkit_schemas.v2026_03_10.types import CreateEventType as CreateEventType
     from githubkit_schemas.v2026_03_10.types import (
         CredentialsRevokePostBodyType as CredentialsRevokePostBodyType,
@@ -1357,6 +1382,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         FullRepositoryType as FullRepositoryType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        GetAllBudgetsPropEffectiveBudgetType as GetAllBudgetsPropEffectiveBudgetType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         GetAllBudgetsType as GetAllBudgetsType,
@@ -1772,13 +1800,10 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType,
+        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType as OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType,
     )
     from githubkit_schemas.v2026_03_10.types import (
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type,
+        OrganizationsOrgSettingsBillingBudgetsPostBodyType as OrganizationsOrgSettingsBillingBudgetsPostBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         OrganizationUpdateIssueFieldPropOptionsItemsType as OrganizationUpdateIssueFieldPropOptionsItemsType,
@@ -2851,6 +2876,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepositoryCollaboratorPermissionType as RepositoryCollaboratorPermissionType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        RepositoryHashAlgorithmType as RepositoryHashAlgorithmType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         RepositoryInvitationType as RepositoryInvitationType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -3001,7 +3029,13 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepositoryRuleNonFastForwardType as RepositoryRuleNonFastForwardType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        RepositoryRuleParamsActorType as RepositoryRuleParamsActorType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         RepositoryRuleParamsCodeScanningToolType as RepositoryRuleParamsCodeScanningToolType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        RepositoryRuleParamsDismissalRestrictionType as RepositoryRuleParamsDismissalRestrictionType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         RepositoryRuleParamsRequiredReviewerConfigurationType as RepositoryRuleParamsRequiredReviewerConfigurationType,
@@ -4325,6 +4359,13 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.types import (
         UnlabeledIssueEventType as UnlabeledIssueEventType,
     )
+    from githubkit_schemas.v2026_03_10.types import (
+        UpdateBudgetPropBudgetPropBudgetAlertingType as UpdateBudgetPropBudgetPropBudgetAlertingType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        UpdateBudgetPropBudgetType as UpdateBudgetPropBudgetType,
+    )
+    from githubkit_schemas.v2026_03_10.types import UpdateBudgetType as UpdateBudgetType
     from githubkit_schemas.v2026_03_10.types import (
         UserCodespacesCodespaceNameMachinesGetResponse200Type as UserCodespacesCodespaceNameMachinesGetResponse200Type,
     )
@@ -11236,11 +11277,21 @@ else:
             "ThreadSubscriptionType",
             "ActionsCacheRetentionLimitForOrganizationType",
             "ActionsCacheStorageLimitForOrganizationType",
+            "BillingAiCreditUsageReportOrgType",
+            "BillingAiCreditUsageReportOrgPropTimePeriodType",
+            "BillingAiCreditUsageReportOrgPropUsageItemsItemsType",
             "GetAllBudgetsType",
+            "GetAllBudgetsPropEffectiveBudgetType",
             "BudgetType",
             "BudgetPropBudgetAlertingType",
+            "CreateBudgetType",
+            "CreateBudgetPropBudgetType",
+            "CreateBudgetPropBudgetPropBudgetAlertingType",
             "GetBudgetType",
             "GetBudgetPropBudgetAlertingType",
+            "UpdateBudgetType",
+            "UpdateBudgetPropBudgetType",
+            "UpdateBudgetPropBudgetPropBudgetAlertingType",
             "DeleteBudgetType",
             "BillingPremiumRequestUsageReportOrgType",
             "BillingPremiumRequestUsageReportOrgPropTimePeriodType",
@@ -11426,6 +11477,8 @@ else:
             "RepositoryRuleMergeQueuePropParametersType",
             "RepositoryRuleRequiredDeploymentsType",
             "RepositoryRuleRequiredDeploymentsPropParametersType",
+            "RepositoryRuleParamsDismissalRestrictionType",
+            "RepositoryRuleParamsActorType",
             "RepositoryRulePullRequestType",
             "RepositoryRulePullRequestPropParametersType",
             "RepositoryRuleParamsRequiredReviewerConfigurationType",
@@ -11747,6 +11800,7 @@ else:
             "GitTagPropObjectType",
             "GitTreeType",
             "GitTreePropTreeItemsType",
+            "RepositoryHashAlgorithmType",
             "HookResponseType",
             "HookType",
             "CheckImmutableReleasesType",
@@ -11942,6 +11996,9 @@ else:
             "HovercardType",
             "HovercardPropContextsItemsType",
             "KeySimpleType",
+            "BillingAiCreditUsageReportUserType",
+            "BillingAiCreditUsageReportUserPropTimePeriodType",
+            "BillingAiCreditUsageReportUserPropUsageItemsItemsType",
             "BillingPremiumRequestUsageReportUserType",
             "BillingPremiumRequestUsageReportUserPropTimePeriodType",
             "BillingPremiumRequestUsageReportUserPropUsageItemsItemsType",
@@ -14296,11 +14353,10 @@ else:
             "NotificationsPutBodyType",
             "NotificationsPutResponse202Type",
             "NotificationsThreadsThreadIdSubscriptionPutBodyType",
+            "OrganizationsOrgSettingsBillingBudgetsPostBodyType",
+            "OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType",
             "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType",
             "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
-            "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type",
-            "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType",
-            "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType",
             "OrgsOrgPatchBodyType",
             "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
             "ActionsCacheUsageByRepositoryType",

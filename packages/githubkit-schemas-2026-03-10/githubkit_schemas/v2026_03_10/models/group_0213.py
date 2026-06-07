@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,40 +18,37 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleRequiredStatusChecksPropParameters(GitHubModel):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
+class RepositoryRuleParamsDismissalRestriction(GitHubModel):
+    """DismissalRestriction
 
-    do_not_enforce_on_create: Missing[bool] = Field(
-        default=UNSET,
-        description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
-    )
-    required_status_checks: list[RepositoryRuleParamsStatusCheckConfiguration] = Field(
-        description="Status checks that are required."
-    )
-    strict_required_status_checks_policy: bool = Field(
-        description="Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled."
-    )
-
-
-class RepositoryRuleParamsStatusCheckConfiguration(GitHubModel):
-    """StatusCheckConfiguration
-
-    Required status check
+    Specify people, teams, or apps allowed to dismiss pull request reviews.
     """
 
-    context: str = Field(
-        description="The status check context name that must be present on the commit."
-    )
-    integration_id: Missing[int] = Field(
+    allowed_actors: Missing[list[RepositoryRuleParamsActor]] = Field(
         default=UNSET,
-        description="The optional integration ID that this status check must originate from.",
+        description="Specify people, teams, or apps allowed to dismiss pull request reviews.",
+    )
+    enabled: bool = Field(
+        description="Whether to restrict review dismissal to specific actors."
     )
 
 
-model_rebuild(RepositoryRuleRequiredStatusChecksPropParameters)
-model_rebuild(RepositoryRuleParamsStatusCheckConfiguration)
+class RepositoryRuleParamsActor(GitHubModel):
+    """Actor
+
+    An actor allowed to dismiss pull request reviews
+    """
+
+    id: int = Field(description="ID of the actor that can dismiss reviews.")
+    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"] = Field(
+        description="The type of the actor"
+    )
+
+
+model_rebuild(RepositoryRuleParamsDismissalRestriction)
+model_rebuild(RepositoryRuleParamsActor)
 
 __all__ = (
-    "RepositoryRuleParamsStatusCheckConfiguration",
-    "RepositoryRuleRequiredStatusChecksPropParameters",
+    "RepositoryRuleParamsActor",
+    "RepositoryRuleParamsDismissalRestriction",
 )

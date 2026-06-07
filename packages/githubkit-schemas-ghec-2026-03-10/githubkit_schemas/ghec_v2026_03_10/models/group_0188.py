@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,60 +16,93 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CreateBudget(GitHubModel):
-    """CreateBudget"""
+class BillingAiCreditUsageReportGhe(GitHubModel):
+    """BillingAiCreditUsageReportGhe"""
 
-    message: str = Field(
-        description="A message indicating the result of the create operation"
+    time_period: BillingAiCreditUsageReportGhePropTimePeriod = Field(alias="timePeriod")
+    enterprise: str = Field(
+        description="The name of the enterprise for the usage report."
     )
-    budget: CreateBudgetPropBudget = Field()
-
-
-class CreateBudgetPropBudget(GitHubModel):
-    """CreateBudgetPropBudget"""
-
-    id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
-    budget_scope: Missing[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ] = Field(default=UNSET, description="The type of scope for the budget")
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET, description="The name of the entity to apply the budget to"
+    user: Missing[str] = Field(
+        default=UNSET, description="The name of the user for the usage report."
     )
-    budget_amount: Missing[float] = Field(
-        default=UNSET, description="The budget amount in dollars"
+    organization: Missing[str] = Field(
+        default=UNSET, description="The name of the organization for the usage report."
     )
-    prevent_further_usage: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to prevent additional spending once the budget is exceeded",
+    product: Missing[str] = Field(
+        default=UNSET, description="The product for the usage report."
     )
-    budget_product_sku: Missing[str] = Field(
-        default=UNSET, description="A single product or sku to apply the budget to."
+    model: Missing[str] = Field(
+        default=UNSET, description="The model for the usage report."
     )
-    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
-        default=UNSET, description="The type of pricing for the budget"
+    cost_center: Missing[BillingAiCreditUsageReportGhePropCostCenter] = Field(
+        default=UNSET, alias="costCenter"
     )
-    budget_alerting: Missing[CreateBudgetPropBudgetPropBudgetAlerting] = Field(
-        default=UNSET
+    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItems] = Field(
+        alias="usageItems"
     )
 
 
-class CreateBudgetPropBudgetPropBudgetAlerting(GitHubModel):
-    """CreateBudgetPropBudgetPropBudgetAlerting"""
+class BillingAiCreditUsageReportGhePropTimePeriod(GitHubModel):
+    """BillingAiCreditUsageReportGhePropTimePeriod"""
 
-    will_alert: Missing[bool] = Field(
-        default=UNSET, description="Whether alerts are enabled for this budget"
+    year: int = Field(description="The year for the usage report.")
+    month: Missing[int] = Field(
+        default=UNSET, description="The month for the usage report."
     )
-    alert_recipients: Missing[list[str]] = Field(
-        default=UNSET, description="Array of user login names who will receive alerts"
+    day: Missing[int] = Field(
+        default=UNSET, description="The day for the usage report."
     )
 
 
-model_rebuild(CreateBudget)
-model_rebuild(CreateBudgetPropBudget)
-model_rebuild(CreateBudgetPropBudgetPropBudgetAlerting)
+class BillingAiCreditUsageReportGhePropCostCenter(GitHubModel):
+    """BillingAiCreditUsageReportGhePropCostCenter"""
+
+    id: str = Field(description="The unique identifier of the cost center.")
+    name: str = Field(description="The name of the cost center.")
+
+
+class BillingAiCreditUsageReportGhePropUsageItemsItems(GitHubModel):
+    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
+
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    model: str = Field(description="Model name.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_quantity: float = Field(
+        alias="grossQuantity", description="Gross quantity of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_quantity: float = Field(
+        alias="discountQuantity",
+        description="Discount quantity of the usage line item.",
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_quantity: float = Field(
+        alias="netQuantity", description="Net quantity of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+
+
+model_rebuild(BillingAiCreditUsageReportGhe)
+model_rebuild(BillingAiCreditUsageReportGhePropTimePeriod)
+model_rebuild(BillingAiCreditUsageReportGhePropCostCenter)
+model_rebuild(BillingAiCreditUsageReportGhePropUsageItemsItems)
 
 __all__ = (
-    "CreateBudget",
-    "CreateBudgetPropBudget",
-    "CreateBudgetPropBudgetPropBudgetAlerting",
+    "BillingAiCreditUsageReportGhe",
+    "BillingAiCreditUsageReportGhePropCostCenter",
+    "BillingAiCreditUsageReportGhePropTimePeriod",
+    "BillingAiCreditUsageReportGhePropUsageItemsItems",
 )

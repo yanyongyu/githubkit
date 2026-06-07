@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,22 +17,31 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0121 import RunnerLabel
 
-class OrganizationActionsSecret(GitHubModel):
-    """Actions Secret for an Organization
 
-    Secrets for GitHub Actions for an organization.
+class Runner(GitHubModel):
+    """Self hosted runners
+
+    A self hosted runner
     """
 
-    name: str = Field(description="The name of the secret.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a secret"
+    id: int = Field(description="The ID of the runner.")
+    runner_group_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the runner group."
     )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
+    name: str = Field(description="The name of the runner.")
+    os: str = Field(description="The Operating System of the runner.")
+    status: str = Field(description="The status of the runner.")
+    busy: bool = Field()
+    labels: list[RunnerLabel] = Field()
+    ephemeral: Missing[bool] = Field(default=UNSET)
+    version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the GitHub Actions Runner software. This is only set if the runner has connected to the service at least once.",
+    )
 
 
-model_rebuild(OrganizationActionsSecret)
+model_rebuild(Runner)
 
-__all__ = ("OrganizationActionsSecret",)
+__all__ = ("Runner",)

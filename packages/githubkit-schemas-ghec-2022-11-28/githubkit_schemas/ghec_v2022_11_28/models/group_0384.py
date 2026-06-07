@@ -9,23 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CodeScanningAutofixCommitsResponse(GitHubModel):
-    """CodeScanningAutofixCommitsResponse"""
+class CodeScanningAutofix(GitHubModel):
+    """CodeScanningAutofix"""
 
-    target_ref: Missing[str] = Field(
-        default=UNSET,
-        description='The Git reference of target branch for the commit. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
+    status: Literal["pending", "error", "success", "outdated"] = Field(
+        description="The status of an autofix."
     )
-    sha: Missing[str] = Field(default=UNSET, description="SHA of commit with autofix.")
+    description: Union[str, None] = Field(description="The description of an autofix.")
+    started_at: _dt.datetime = Field(
+        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
 
 
-model_rebuild(CodeScanningAutofixCommitsResponse)
+model_rebuild(CodeScanningAutofix)
 
-__all__ = ("CodeScanningAutofixCommitsResponse",)
+__all__ = ("CodeScanningAutofix",)
