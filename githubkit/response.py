@@ -8,8 +8,8 @@ import httpx
 from .compat import type_validate_json
 from .exception import RequestError, RequestTimeout
 
-MT = TypeVar("MT", default=Any)
-JT = TypeVar("JT", default=Any)
+MT = TypeVar("MT", default=Any)  # pyright: ignore[reportGeneralTypeIssues]
+JT = TypeVar("JT", default=Any)  # pyright: ignore[reportGeneralTypeIssues]
 
 
 class Response(Generic[MT, JT]):

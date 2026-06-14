@@ -229,7 +229,7 @@ class GitHubCore(Generic[A]):
     async def __aenter__(self):
         if self.__async_client.get() is not None:
             raise RuntimeError("Cannot enter async context twice")
-        self.__async_client.set(self._create_async_client())
+        self.__async_client.set(await self._create_async_client())
         return self
 
     async def __aexit__(

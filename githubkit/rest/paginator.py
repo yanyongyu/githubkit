@@ -18,7 +18,7 @@ from githubkit.typing import HeaderTypes
 from githubkit.utils import is_async
 
 if TYPE_CHECKING:
-    from githubkit_schemas import RestVersionSwitcher
+    from githubkit_schemas.core import RestVersionSwitcher
 
 CP = ParamSpec("CP")
 CT = TypeVar("CT")
