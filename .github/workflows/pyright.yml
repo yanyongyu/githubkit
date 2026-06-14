@@ -48,6 +48,8 @@ jobs:
         with:
           pylance-version: latest-release
           extra-args: githubkit
+        env:
+          NODE_OPTIONS: --max-old-space-size=8192
 
   lint-codegen:
     name: Codegen Lint
@@ -68,5 +70,3 @@ jobs:
         with:
           working-directory: ./codegen
           pylance-version: latest-release
-        env:
-          NODE_OPTIONS: --max-old-space-size=8192
