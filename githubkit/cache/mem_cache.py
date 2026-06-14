@@ -72,15 +72,20 @@ class MemCacheStrategy(BaseCacheStrategy):
             self._hishel_async_storage = AsyncMemoryStorage(keep_unclosed=True)
         return self._hishel_async_storage
 
-    def cleanup(self) -> None:
+    def _cleanup_cache(self) -> None:
         if self._cache is not None:
             self._cache = None
+
+    def cleanup(self) -> None:
+        self._cleanup_cache()
         if self._hishel_storage is not None:
-            self._hishel_storage.force_close()
+            storage = self._hishel_storage
             self._hishel_storage = None
+            storage.force_close()
 
     async def acleanup(self) -> None:
-        self.cleanup()
+        self._cleanup_cache()
         if self._hishel_async_storage is not None:
-            await self._hishel_async_storage.force_close()
+            storage = self._hishel_async_storage
             self._hishel_async_storage = None
+            await storage.force_close()
