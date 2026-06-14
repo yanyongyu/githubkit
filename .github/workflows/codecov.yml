@@ -12,6 +12,8 @@ on:
       - ".github/workflows/codecov.yml"
       - "pyproject.toml"
       - "uv.lock"
+      - "packages/**/*.py"
+      - "packages/**/pyproject.toml"
 
 jobs:
   test:
