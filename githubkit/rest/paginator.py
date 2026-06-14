@@ -1,14 +1,11 @@
-from collections.abc import Awaitable
+from collections.abc import Awaitable, Callable
 import re
 from typing import (
     TYPE_CHECKING,
     Any,
-    Callable,
     Generic,
-    Optional,
     TypedDict,
     TypeVar,
-    Union,
     cast,
     overload,
 )
@@ -21,17 +18,14 @@ from githubkit.typing import HeaderTypes
 from githubkit.utils import is_async
 
 if TYPE_CHECKING:
-    from githubkit.versions import RestVersionSwitcher
+    from githubkit_schemas import RestVersionSwitcher
 
 CP = ParamSpec("CP")
 CT = TypeVar("CT")
 RT = TypeVar("RT")
 RTS = TypeVar("RTS")
 
-R = Union[
-    Callable[CP, Response[RT]],
-    Callable[CP, Awaitable[Response[RT]]],
-]
+R = Callable[CP, Response[RT]] | Callable[CP, Awaitable[Response[RT]]]
 
 # https://github.com/octokit/plugin-paginate-rest.js/blob/1f44b5469b31ddec9621000e6e1aee63c71ea8bf/src/iterator.ts#L40
 NEXT_LINK_PATTERN = r'<([^<>]+)>;\s*rel="next"'
@@ -39,7 +33,7 @@ NEXT_LINK_PATTERN = r'<([^<>]+)>;\s*rel="next"'
 
 class PaginatorState(TypedDict):
     response: Response[Any]
-    next_link: Optional[httpx.URL]
+    next_link: httpx.URL | None
     request_method: str
     response_model: Any
 
@@ -73,7 +67,7 @@ class Paginator(Generic[RT]):
         self,
         rest: "RestVersionSwitcher",
         request: R[CP, CT],
-        map_func: Optional[Callable[[Response[CT]], list[RT]]] = None,
+        map_func: Callable[[Response[CT]], list[RT]] | None = None,
         *args: CP.args,
         **kwargs: CP.kwargs,
     ):
@@ -85,13 +79,13 @@ class Paginator(Generic[RT]):
 
         self.map_func = map_func
 
-        self._state: Optional[PaginatorState] = None
+        self._state: PaginatorState | None = None
 
         self._index: int = 0
         self._cached_data: list[RT] = []
 
     @property
-    def latest_response(self) -> Optional[Response[Any]]:
+    def latest_response(self) -> Response[Any] | None:
         """The latest API response of the paginator."""
         return self._state["response"] if self._state is not None else None
 
@@ -101,7 +95,7 @@ class Paginator(Generic[RT]):
         return (self._state["next_link"] is None) if self._state is not None else False
 
     @property
-    def _headers(self) -> Optional[HeaderTypes]:
+    def _headers(self) -> HeaderTypes | None:
         return self.kwargs.get("headers")  # type: ignore
 
     def reset(self) -> None:
@@ -143,7 +137,7 @@ class Paginator(Generic[RT]):
             raise TypeError(f"Request method {self.request} is not an async function")
         return self
 
-    def _find_next_link(self, response: Response[Any]) -> Optional[httpx.URL]:
+    def _find_next_link(self, response: Response[Any]) -> httpx.URL | None:
         """Find the next link in the response headers."""
         if links := response.headers.get("link"):
             if match := re.search(NEXT_LINK_PATTERN, links):

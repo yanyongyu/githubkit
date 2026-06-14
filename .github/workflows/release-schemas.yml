@@ -1,0 +1,47 @@
+name: Release Schemas
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: ./.github/actions/setup-python
+
+      - name: Get Version
+        id: version
+        run: |
+          version=$(uv version --package githubkit-schemas --short)
+          echo "VERSION=${version}" >> $GITHUB_OUTPUT
+
+          version_correct=true
+          for pkg in packages/githubkit-schemas*; do
+            if [[ -d "${pkg}" ]]; then
+              pkg_name=$(basename "${pkg}")
+              pkg_version=$(uv version --package "${pkg_name}" --short)
+              if [[ "${pkg_version}" != "${version}" ]]; then
+                echo "Version mismatch: ${pkg_name} has version ${pkg_version}, expected ${version}"
+                version_correct=false
+              else
+                echo "Building package ${pkg_name} with version ${pkg_version}"
+                uv build --package "${pkg_name}"
+              fi
+            fi
+          done
+          echo "VERSION_CORRECT=${version_correct}" >> $GITHUB_OUTPUT
+
+      - name: Check Version
+        if: steps.version.outputs.VERSION_CORRECT != 'true'
+        run: exit 1
+
+      - name: Build and Publish Package
+        run: |
+          uv publish

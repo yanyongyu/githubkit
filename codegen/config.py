@@ -51,6 +51,8 @@ class DescriptionConfig(BaseModel):
     """If true, the description will be used as the default description."""
     source: str
     """Source link to the description file."""
+    output_dir: Path
+    """Output dir for the description file."""
 
     _actual_source: str | None = None
     """The actual source link after downloading, if applicable."""
@@ -121,5 +123,4 @@ class GenerationInfo(BaseModel):
 
 
 class Config(GenerationInfo):
-    output_dir: Path
-    legacy_rest_models: Path
+    schemas_output_dir: Path

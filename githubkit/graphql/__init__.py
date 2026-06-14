@@ -1,5 +1,5 @@
 import re
-from typing import TYPE_CHECKING, Any, Optional, cast
+from typing import TYPE_CHECKING, Any, cast
 from weakref import ref
 
 from githubkit.exception import GraphQLFailed, PrimaryRateLimitExceeded
@@ -29,7 +29,7 @@ class GraphQLNamespace:
 
     @staticmethod
     def build_graphql_request(
-        query: str, variables: Optional[dict[str, Any]] = None
+        query: str, variables: dict[str, Any] | None = None
     ) -> dict[str, Any]:
         json: dict[str, Any] = {"query": query}
         if variables:
@@ -71,7 +71,7 @@ class GraphQLNamespace:
         return cast(dict[str, Any], response_data.data)
 
     def _request(
-        self, query: str, variables: Optional[dict[str, Any]] = None
+        self, query: str, variables: dict[str, Any] | None = None
     ) -> "Response[GraphQLResponse]":
         json = self.build_graphql_request(query, variables)
 
@@ -83,12 +83,12 @@ class GraphQLNamespace:
         )
 
     def request(
-        self, query: str, variables: Optional[dict[str, Any]] = None
+        self, query: str, variables: dict[str, Any] | None = None
     ) -> dict[str, Any]:
         return self.parse_graphql_response(self._request(query, variables))
 
     async def _arequest(
-        self, query: str, variables: Optional[dict[str, Any]] = None
+        self, query: str, variables: dict[str, Any] | None = None
     ) -> "Response[GraphQLResponse]":
         json = self.build_graphql_request(query, variables)
 
@@ -100,17 +100,17 @@ class GraphQLNamespace:
         )
 
     async def arequest(
-        self, query: str, variables: Optional[dict[str, Any]] = None
+        self, query: str, variables: dict[str, Any] | None = None
     ) -> dict[str, Any]:
         return self.parse_graphql_response(await self._arequest(query, variables))
 
     # backport for calling graphql directly
     def __call__(
-        self, query: str, variables: Optional[dict[str, Any]] = None
+        self, query: str, variables: dict[str, Any] | None = None
     ) -> dict[str, Any]:
         return self.request(query, variables)
 
     def paginate(
-        self, query: str, variables: Optional[dict[str, Any]] = None
+        self, query: str, variables: dict[str, Any] | None = None
     ) -> Paginator:
         return Paginator(self, query, variables)

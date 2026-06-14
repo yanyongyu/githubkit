@@ -13,6 +13,8 @@ on:
       - ".github/workflows/pyright.yml"
       - "pyproject.toml"
       - "uv.lock"
+      - "packages/**/*.py"
+      - "packages/**/pyproject.toml"
 
 jobs:
   lint-githubkit:

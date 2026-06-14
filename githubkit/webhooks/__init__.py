@@ -1,4 +1,4 @@
-from githubkit.versions.latest.webhooks import WebhookNamespace
+from githubkit_schemas.latest.webhooks import WebhookNamespace
 
 parse_without_name = WebhookNamespace.parse_without_name
 

@@ -1,4 +1,6 @@
-from . import lazy_module
+from .module_hooks import alias_module, lazy_module
+
+alias_module.apply()
 
 if not lazy_module.is_lazy_disabled():
     lazy_module.apply()

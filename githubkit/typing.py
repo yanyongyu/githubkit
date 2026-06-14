@@ -1,21 +1,16 @@
-from collections.abc import Hashable, Mapping, Sequence
+from collections.abc import Callable, Hashable, Mapping, Sequence
 from datetime import timedelta
 from typing import (
     IO,
     TYPE_CHECKING,
     Annotated,
     Any,
-    Callable,
     Literal,
     NamedTuple,
-    Optional,
-    TypedDict,
+    TypeAlias,
     TypeVar,
-    Union,
 )
-from typing_extensions import TypeAlias
 
-import httpcore
 import httpx
 from pydantic import Field
 
@@ -24,49 +19,44 @@ from .exception import GitHubException
 from .utils import Unset
 
 if TYPE_CHECKING:
-    from hishel._utils import BaseClock
+    pass
 
 T = TypeVar("T")
 H = TypeVar("H", bound=Hashable)
 
-URLTypes: TypeAlias = Union[httpx.URL, str]
+URLTypes: TypeAlias = httpx.URL | str
 
-ProxyTypes: TypeAlias = Union[httpx.URL, str, httpx.Proxy]
+ProxyTypes: TypeAlias = httpx.URL | str | httpx.Proxy
 
-PrimitiveData: TypeAlias = Optional[Union[str, int, float, bool]]
-QueryParamTypes: TypeAlias = Union[
-    httpx.QueryParams,
-    Mapping[str, Union[PrimitiveData, Sequence[PrimitiveData]]],
-    list[tuple[str, PrimitiveData]],
-    tuple[tuple[str, PrimitiveData], ...],
-    str,
-    bytes,
-]
+PrimitiveData: TypeAlias = str | int | float | bool | None
+QueryParamTypes: TypeAlias = (
+    httpx.QueryParams
+    | Mapping[str, PrimitiveData | Sequence[PrimitiveData]]
+    | list[tuple[str, PrimitiveData]]
+    | tuple[tuple[str, PrimitiveData], ...]
+    | str
+    | bytes
+)
 
-HeaderTypes: TypeAlias = Union[
-    httpx.Headers,
-    Mapping[str, str],
-    Mapping[bytes, bytes],
-    Sequence[tuple[str, str]],
-    Sequence[tuple[bytes, bytes]],
-]
+HeaderTypes: TypeAlias = (
+    httpx.Headers
+    | Mapping[str, str]
+    | Mapping[bytes, bytes]
+    | Sequence[tuple[str, str]]
+    | Sequence[tuple[bytes, bytes]]
+)
 
-CookieTypes: TypeAlias = Union[httpx.Cookies, dict[str, str], list[tuple[str, str]]]
+CookieTypes: TypeAlias = httpx.Cookies | dict[str, str] | list[tuple[str, str]]
 
-ContentTypes: TypeAlias = Union[str, bytes]
+ContentTypes: TypeAlias = str | bytes
 
-FileContent: TypeAlias = Union[IO[bytes], bytes]
-FileTypes: TypeAlias = Union[
-    # file (or bytes)
-    FileContent,
-    # (filename, file (or bytes))
-    tuple[Optional[str], FileContent],
-    # (filename, file (or bytes), content_type)
-    tuple[Optional[str], FileContent, Optional[str]],
-]
-RequestFiles: TypeAlias = Union[
-    Mapping[str, FileTypes], Sequence[tuple[str, FileTypes]]
-]
+FileContent: TypeAlias = IO[bytes] | bytes
+FileTypes: TypeAlias = (
+    FileContent
+    | tuple[str | None, FileContent]
+    | tuple[str | None, FileContent, str | None]
+)
+RequestFiles: TypeAlias = Mapping[str, FileTypes] | Sequence[tuple[str, FileTypes]]
 
 if PYDANTIC_V2:  # pragma: pydantic-v2
     from pydantic import AfterValidator
@@ -89,29 +79,15 @@ UnsetType: TypeAlias = Literal[Unset._UNSET]
 
 # if the property is not required, we allow it to have the value null.
 # See https://github.com/yanyongyu/githubkit/issues/47
-Missing: TypeAlias = Union[UnsetType, T, None]
+Missing: TypeAlias = UnsetType | T | None
 
 
 class RetryOption(NamedTuple):
     do_retry: bool
-    retry_after: Optional[timedelta] = None
+    retry_after: timedelta | None = None
 
 
 RetryDecisionFunc: TypeAlias = Callable[[GitHubException, int], RetryOption]
 
 
 EventHookTypes: TypeAlias = Mapping[str, list[Callable[..., Any]]]
-
-
-class HishelControllerOptions(TypedDict, total=False):
-    """Options for the hishel controller."""
-
-    cacheable_methods: Optional[list[str]]
-    cacheable_status_codes: Optional[list[int]]
-    cache_private: bool
-    allow_heuristics: bool
-    clock: Optional["BaseClock"]
-    allow_stale: bool
-    always_revalidate: bool
-    force_cache: bool
-    key_generator: Optional[Callable[[httpcore.Request, Optional[bytes]], str]]

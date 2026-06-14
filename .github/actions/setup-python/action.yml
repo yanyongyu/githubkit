@@ -5,7 +5,7 @@ inputs:
   python-version:
     description: Python version
     required: false
-    default: "3.12"
+    default: "3.13"
   env-group:
     description: Environment group
     required: false
@@ -20,5 +20,5 @@ runs:
         cache-suffix: ${{ inputs.env-group }}
 
     - run: |
-        uv sync --all-extras --locked --group ${{ inputs.env-group }}
+        uv sync --all-extras --all-packages --locked --group ${{ inputs.env-group }}
       shell: bash

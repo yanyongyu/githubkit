@@ -1,8 +1,8 @@
-from collections.abc import AsyncGenerator, Coroutine, Generator, Sequence
+from collections.abc import AsyncGenerator, Callable, Coroutine, Generator, Sequence
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
 from time import sleep
-from typing import TYPE_CHECKING, Any, Callable, ClassVar, Optional, TypedDict, cast
+from typing import TYPE_CHECKING, Any, ClassVar, TypedDict, cast
 from typing_extensions import Self
 
 import httpx
@@ -29,7 +29,7 @@ if TYPE_CHECKING:
 
 
 def create_device_code(
-    github: "GitHubCore", client_id: str, scopes: Optional[Sequence[str]] = None
+    github: "GitHubCore", client_id: str, scopes: Sequence[str] | None = None
 ) -> Generator[httpx.Request, httpx.Response, dict[str, Any]]:
     """Create a device code for OAuth."""
     base_url = get_oauth_base_url(github.config.base_url)
@@ -55,7 +55,7 @@ def exchange_web_flow_code(
     client_id: str,
     client_secret: str,
     code: str,
-    redirect_uri: Optional[str] = None,
+    redirect_uri: str | None = None,
 ) -> Generator[httpx.Request, httpx.Response, dict[str, Any]]:
     """Exchange web flow code for token."""
     base_url = get_oauth_base_url(github.config.base_url)
@@ -106,7 +106,7 @@ def exchange_device_code(
 def refresh_token(
     github: "GitHubCore",
     client_id: str,
-    client_secret: Optional[str],  # client secret is optional in device flow
+    client_secret: str | None,  # client secret is optional in device flow
     refresh_token: str,
 ) -> Generator[httpx.Request, httpx.Response, dict[str, Any]]:
     """Refresh token."""
@@ -129,9 +129,9 @@ def refresh_token(
 
 class TokenExchangeResult(TypedDict):
     token: str
-    expire_time: Optional[datetime]
-    refresh_token: Optional[str]
-    refresh_token_expire_time: Optional[datetime]
+    expire_time: datetime | None
+    refresh_token: str | None
+    refresh_token_expire_time: datetime | None
 
 
 def _parse_token_exchange_response(data: dict[str, Any]) -> TokenExchangeResult:
@@ -222,11 +222,11 @@ class OAuthTokenAuth(httpx.Auth):
         return self.auth_strategy.client_id
 
     @property
-    def client_secret(self) -> Optional[str]:
+    def client_secret(self) -> str | None:
         return self.auth_strategy.client_secret
 
     @property
-    def token(self) -> Optional[str]:
+    def token(self) -> str | None:
         return self.auth_strategy.token
 
     @token.setter
@@ -234,27 +234,27 @@ class OAuthTokenAuth(httpx.Auth):
         self.auth_strategy.token = value
 
     @property
-    def expire_time(self) -> Optional[datetime]:
+    def expire_time(self) -> datetime | None:
         return self.auth_strategy.expire_time
 
     @expire_time.setter
-    def expire_time(self, value: Optional[datetime]) -> None:
+    def expire_time(self, value: datetime | None) -> None:
         self.auth_strategy.expire_time = value
 
     @property
-    def refresh_token(self) -> Optional[str]:
+    def refresh_token(self) -> str | None:
         return self.auth_strategy.refresh_token
 
     @refresh_token.setter
-    def refresh_token(self, value: Optional[str]) -> None:
+    def refresh_token(self, value: str | None) -> None:
         self.auth_strategy.refresh_token = value
 
     @property
-    def refresh_token_expire_time(self) -> Optional[datetime]:
+    def refresh_token_expire_time(self) -> datetime | None:
         return self.auth_strategy.refresh_token_expire_time
 
     @refresh_token_expire_time.setter
-    def refresh_token_expire_time(self, value: Optional[datetime]) -> None:
+    def refresh_token_expire_time(self, value: datetime | None) -> None:
         self.auth_strategy.refresh_token_expire_time = value
 
     def auth_flow(
@@ -321,11 +321,11 @@ class OAuthWebAuth(httpx.Auth):
         return self.auth_strategy.code
 
     @property
-    def redirect_uri(self) -> Optional[str]:
+    def redirect_uri(self) -> str | None:
         return self.auth_strategy.redirect_uri
 
     @property
-    def _token_auth_strategy(self) -> Optional["OAuthTokenAuthStrategy"]:
+    def _token_auth_strategy(self) -> "OAuthTokenAuthStrategy | None":
         return self.auth_strategy._token_auth
 
     @_token_auth_strategy.setter
@@ -421,15 +421,15 @@ class OAuthDeviceAuth(httpx.Auth):
         return self.auth_strategy.on_verification
 
     @property
-    def scopes(self) -> Optional[list[str]]:
+    def scopes(self) -> list[str] | None:
         return self.auth_strategy.scopes
 
     @property
-    def _token_auth_strategy(self) -> Optional["OAuthTokenAuthStrategy"]:
+    def _token_auth_strategy(self) -> "OAuthTokenAuthStrategy | None":
         return self.auth_strategy._token_auth
 
     @_token_auth_strategy.setter
-    def _token_auth_strategy(self, value: Optional["OAuthTokenAuthStrategy"]) -> None:
+    def _token_auth_strategy(self, value: "OAuthTokenAuthStrategy | None") -> None:
         self.auth_strategy._token_auth = value
 
     def sync_auth_flow(
@@ -564,7 +564,7 @@ class OAuthAppAuthStrategy(BaseAuthStrategy):
     client_secret: str
 
     def as_web_user(
-        self, code: str, redirect_uri: Optional[str] = None
+        self, code: str, redirect_uri: str | None = None
     ) -> "OAuthWebAuthStrategy":
         return OAuthWebAuthStrategy(
             client_id=self.client_id,
@@ -582,11 +582,11 @@ class OAuthTokenAuthStrategy(BaseAuthStrategy):
     """OAuth Token Authentication"""
 
     client_id: str
-    client_secret: Optional[str] = None  # client secret is optional in device flow
-    token: Optional[str] = None
-    expire_time: Optional[datetime] = None
-    refresh_token: Optional[str] = None
-    refresh_token_expire_time: Optional[datetime] = None
+    client_secret: str | None = None  # client secret is optional in device flow
+    token: str | None = None
+    expire_time: datetime | None = None
+    refresh_token: str | None = None
+    refresh_token_expire_time: datetime | None = None
 
     def __post_init__(self):
         # either token or refresh_token should be provided
@@ -672,9 +672,9 @@ class OAuthWebAuthStrategy(BaseAuthStrategy):
     client_id: str
     client_secret: str
     code: str
-    redirect_uri: Optional[str] = None
+    redirect_uri: str | None = None
 
-    _token_auth: Optional[OAuthTokenAuthStrategy] = field(
+    _token_auth: OAuthTokenAuthStrategy | None = field(
         default=None, init=False, repr=False
     )
 
@@ -685,19 +685,19 @@ class OAuthWebAuthStrategy(BaseAuthStrategy):
         return cast(str, self._token_auth.token)
 
     @property
-    def expire_time(self) -> Optional[datetime]:
+    def expire_time(self) -> datetime | None:
         if self._token_auth is None:
             raise RuntimeError("Token is not exchanged yet.")
         return self._token_auth.expire_time
 
     @property
-    def refresh_token(self) -> Optional[str]:
+    def refresh_token(self) -> str | None:
         if self._token_auth is None:
             raise RuntimeError("Token is not exchanged yet.")
         return self._token_auth.refresh_token
 
     @property
-    def refresh_token_expire_time(self) -> Optional[datetime]:
+    def refresh_token_expire_time(self) -> datetime | None:
         if self._token_auth is None:
             raise RuntimeError("Token is not exchanged yet.")
         return self._token_auth.refresh_token_expire_time
@@ -777,9 +777,9 @@ class OAuthDeviceAuthStrategy(BaseAuthStrategy):
 
     client_id: str
     on_verification: Callable[[Any], Any]
-    scopes: Optional[list[str]] = None
+    scopes: list[str] | None = None
 
-    _token_auth: Optional[OAuthTokenAuthStrategy] = field(
+    _token_auth: OAuthTokenAuthStrategy | None = field(
         default=None, init=False, repr=False
     )
 
@@ -790,19 +790,19 @@ class OAuthDeviceAuthStrategy(BaseAuthStrategy):
         return cast(str, self._token_auth.token)
 
     @property
-    def expire_time(self) -> Optional[datetime]:
+    def expire_time(self) -> datetime | None:
         if self._token_auth is None:
             raise RuntimeError("Token is not exchanged yet.")
         return self._token_auth.expire_time
 
     @property
-    def refresh_token(self) -> Optional[str]:
+    def refresh_token(self) -> str | None:
         if self._token_auth is None:
             raise RuntimeError("Token is not exchanged yet.")
         return self._token_auth.refresh_token
 
     @property
-    def refresh_token_expire_time(self) -> Optional[datetime]:
+    def refresh_token_expire_time(self) -> datetime | None:
         if self._token_auth is None:
             raise RuntimeError("Token is not exchanged yet.")
         return self._token_auth.refresh_token_expire_time

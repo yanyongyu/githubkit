@@ -2,12 +2,12 @@ import json
 from pathlib import Path
 from typing import Any
 
+from githubkit_schemas.core import LATEST_VERSION
+from githubkit_schemas.latest.models import WebhookPullRequestOpened, WebhookPush
+from githubkit_schemas.latest.webhooks import EventNameType
 import pytest
 
 from githubkit import GitHub, GitHubModel
-from githubkit.versions import LATEST_VERSION
-from githubkit.versions.latest.models import WebhookPullRequestOpened, WebhookPush
-from githubkit.versions.latest.webhooks import EventNameType
 from githubkit.webhooks import (
     parse,
     parse_obj,

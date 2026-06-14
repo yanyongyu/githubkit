@@ -4,7 +4,7 @@
 
 from typing import TYPE_CHECKING
 
-from githubkit.lazy_module import is_lazy_disabled
+from githubkit.module_hooks.lazy_module import is_lazy_disabled
 
 if TYPE_CHECKING or is_lazy_disabled():
     {% for name in event_names %}

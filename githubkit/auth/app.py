@@ -1,7 +1,7 @@
 from collections.abc import AsyncGenerator, Generator, Sequence
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
-from typing import TYPE_CHECKING, ClassVar, Optional, Union
+from typing import TYPE_CHECKING, ClassVar
 from typing_extensions import LiteralString
 
 import httpx
@@ -20,9 +20,10 @@ except ImportError:
     jwt = None
 
 if TYPE_CHECKING:
+    from githubkit_schemas.latest.models import InstallationToken
+    from githubkit_schemas.latest.types import AppPermissionsType
+
     from githubkit import GitHubCore, Response
-    from githubkit.versions.latest.models import InstallationToken
-    from githubkit.versions.latest.types import AppPermissionsType
 
 
 @dataclass
@@ -30,14 +31,14 @@ class AppAuth(httpx.Auth):
     """GitHub App or Installation Authentication Hook"""
 
     github: "GitHubCore"
-    app_id: Union[str, int, None]
+    app_id: str | int | None
     private_key: str
-    client_id: Optional[str] = None
-    client_secret: Optional[str] = None
-    installation_id: Union[Unset, int] = UNSET
-    repositories: Union[Unset, Sequence[str]] = UNSET
-    repository_ids: Union[Unset, Sequence[int]] = UNSET
-    permissions: Union[Unset, "AppPermissionsType"] = UNSET
+    client_id: str | None = None
+    client_secret: str | None = None
+    installation_id: Unset | int = UNSET
+    repositories: Unset | Sequence[str] = UNSET
+    repository_ids: Unset | Sequence[int] = UNSET
+    permissions: "Unset | AppPermissionsType" = UNSET
 
     JWT_CACHE_KEY: ClassVar[LiteralString] = "githubkit:auth:app:{issuer}:jwt"
     INSTALLATION_CACHE_KEY: ClassVar[LiteralString] = (
@@ -96,7 +97,7 @@ class AppAuth(httpx.Auth):
         return token
 
     async def aget_jwt(self) -> str:
-        cache = self.github.config.cache_strategy.get_async_cache_storage()
+        cache = await self.github.config.cache_strategy.get_async_cache_storage()
         cache_key = self._get_jwt_cache_key()
         if not (token := await cache.aget(cache_key)):
             token = self._create_jwt()
@@ -104,7 +105,7 @@ class AppAuth(httpx.Auth):
         return token
 
     def _build_installation_auth_request(self) -> httpx.Request:
-        from githubkit.versions.latest.models import (
+        from githubkit_schemas.latest.models import (
             AppInstallationsInstallationIdAccessTokensPostBody,
         )
 
@@ -142,7 +143,7 @@ class AppAuth(httpx.Auth):
     def _parse_installation_auth_response(
         self, response: httpx.Response
     ) -> "Response[InstallationToken]":
-        from githubkit.versions.latest.models import (
+        from githubkit_schemas.latest.models import (
             BasicError,
             InstallationToken,
             ValidationError,
@@ -245,7 +246,7 @@ class AppAuth(httpx.Auth):
                 yield request
             return
 
-        cache = self.github.config.cache_strategy.get_async_cache_storage()
+        cache = await self.github.config.cache_strategy.get_async_cache_storage()
         key = self._get_installation_cache_key()
         if not (token := await cache.aget(key)):
             token_request = self._build_installation_auth_request()
@@ -270,10 +271,10 @@ class AppAuth(httpx.Auth):
 class AppAuthStrategy(BaseAuthStrategy):
     """GitHub App Authentication"""
 
-    app_id: Union[str, int, None]
+    app_id: str | int | None
     private_key: str
-    client_id: Optional[str] = None
-    client_secret: Optional[str] = None
+    client_id: str | None = None
+    client_secret: str | None = None
 
     def __post_init__(self):
         # either app_id or client_id must be provided
@@ -285,9 +286,9 @@ class AppAuthStrategy(BaseAuthStrategy):
     def as_installation(
         self,
         installation_id: int,
-        repositories: Union[Unset, Sequence[str]] = UNSET,
-        repository_ids: Union[Unset, Sequence[int]] = UNSET,
-        permissions: Union[Unset, "AppPermissionsType"] = UNSET,
+        repositories: Unset | Sequence[str] = UNSET,
+        repository_ids: Unset | Sequence[int] = UNSET,
+        permissions: "Unset | AppPermissionsType" = UNSET,
     ) -> "AppInstallationAuthStrategy":
         return AppInstallationAuthStrategy(
             self.app_id,
@@ -321,14 +322,14 @@ class AppAuthStrategy(BaseAuthStrategy):
 class AppInstallationAuthStrategy(BaseAuthStrategy):
     """GitHub App Installation Authentication"""
 
-    app_id: Union[str, int, None]
+    app_id: str | int | None
     private_key: str
     installation_id: int
-    client_id: Optional[str] = None
-    client_secret: Optional[str] = None
-    repositories: Union[Unset, Sequence[str]] = UNSET
-    repository_ids: Union[Unset, Sequence[int]] = UNSET
-    permissions: Union[Unset, "AppPermissionsType"] = UNSET
+    client_id: str | None = None
+    client_secret: str | None = None
+    repositories: Unset | Sequence[str] = UNSET
+    repository_ids: Unset | Sequence[int] = UNSET
+    permissions: "Unset | AppPermissionsType" = UNSET
 
     def __post_init__(self):
         # either app_id or client_id must be provided
