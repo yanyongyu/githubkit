@@ -561,7 +561,7 @@ wheels = [
 
 [[package]]
 name = "githubkit"
-version = "0.16.0.dev0"
+version = "0.16.0"
 source = { editable = "." }
 dependencies = [
     { name = "anyio" },
