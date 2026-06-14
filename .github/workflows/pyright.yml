@@ -68,3 +68,5 @@ jobs:
         with:
           working-directory: ./codegen
           pylance-version: latest-release
+        env:
+          NODE_OPTIONS: --max-old-space-size=8192
