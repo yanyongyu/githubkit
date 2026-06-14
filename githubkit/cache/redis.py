@@ -1,13 +1,10 @@
 from datetime import timedelta
-from functools import partial
 from typing import TYPE_CHECKING, Any, NoReturn
 from typing_extensions import override
 
 from hishel import AsyncBaseStorage, AsyncRedisStorage, RedisStorage
 
 from githubkit.exception import CacheUnsupportedError
-from githubkit.typing import HishelControllerOptions
-from githubkit.utils import hishel_key_generator_with_prefix
 
 from .base import AsyncBaseCache, BaseCache, BaseCacheStrategy
 
@@ -34,7 +31,7 @@ class RedisCache(BaseCache):
 
     def _get_key(self, key: str) -> str:
         if self.prefix is not None:
-            return f"{self.prefix}{key}"
+            return f"{self.prefix}:{key}"
         return key
 
     @override
@@ -54,7 +51,7 @@ class AsyncRedisCache(AsyncBaseCache):
 
     def _get_key(self, key: str) -> str:
         if self.prefix is not None:
-            return f"{self.prefix}{key}"
+            return f"{self.prefix}:{key}"
         return key
 
     @override
@@ -70,35 +67,24 @@ class AsyncRedisCache(AsyncBaseCache):
 class RedisCacheStrategy(BaseCacheStrategy):
     def __init__(self, client: "Redis", prefix: str | None = None) -> None:
         self.client = client
-        self.prefix = prefix
+        self.prefix = prefix.removesuffix(":") if prefix else None
 
     @override
     def get_cache_storage(self) -> RedisCache:
         return RedisCache(self.client, self.prefix)
 
     @override
-    def get_async_cache_storage(self) -> NoReturn:
+    async def get_async_cache_storage(self) -> NoReturn:
         raise CacheUnsupportedError(
             "Sync redis cache strategy does not support async usage"
         )
 
     @override
-    def get_hishel_controller_options(self) -> HishelControllerOptions:
-        options = super().get_hishel_controller_options()
-
-        if self.prefix is not None:
-            options["key_generator"] = partial(
-                hishel_key_generator_with_prefix, prefix=self.prefix
-            )
-
-        return options
-
-    @override
     def get_hishel_storage(self) -> RedisStorage:
-        return RedisStorage(client=self.client)
+        return RedisStorage(client=self.client, key_prefix=self.prefix or "hishel")
 
     @override
-    def get_async_hishel_storage(self) -> NoReturn:
+    async def get_async_hishel_storage(self) -> NoReturn:
         raise CacheUnsupportedError(
             "Sync redis cache strategy does not support async usage"
         )
@@ -107,7 +93,7 @@ class RedisCacheStrategy(BaseCacheStrategy):
 class AsyncRedisCacheStrategy(BaseCacheStrategy):
     def __init__(self, client: "AsyncRedis", prefix: str | None = None) -> None:
         self.client = client
-        self.prefix = prefix
+        self.prefix = prefix.removesuffix(":") if prefix else None
 
     @override
     def get_cache_storage(self) -> NoReturn:
@@ -116,7 +102,7 @@ class AsyncRedisCacheStrategy(BaseCacheStrategy):
         )
 
     @override
-    def get_async_cache_storage(self) -> AsyncRedisCache:
+    async def get_async_cache_storage(self) -> AsyncRedisCache:
         return AsyncRedisCache(self.client, self.prefix)
 
     @override
@@ -126,5 +112,5 @@ class AsyncRedisCacheStrategy(BaseCacheStrategy):
         )
 
     @override
-    def get_async_hishel_storage(self) -> AsyncBaseStorage:
-        return AsyncRedisStorage(client=self.client)
+    async def get_async_hishel_storage(self) -> AsyncBaseStorage:
+        return AsyncRedisStorage(client=self.client, key_prefix=self.prefix or "hishel")

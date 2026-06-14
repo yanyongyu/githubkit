@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from typing_extensions import override
 
-from hishel import AsyncInMemoryStorage, InMemoryStorage
+from githubkit.hishel import AsyncMemoryStorage, SyncMemoryStorage
 
 from .base import AsyncBaseCache, BaseCache, BaseCacheStrategy
 
@@ -47,8 +47,8 @@ class MemCache(AsyncBaseCache, BaseCache):
 class MemCacheStrategy(BaseCacheStrategy):
     def __init__(self) -> None:
         self._cache: MemCache | None = None
-        self._hishel_storage: InMemoryStorage | None = None
-        self._hishel_async_storage: AsyncInMemoryStorage | None = None
+        self._hishel_storage: SyncMemoryStorage | None = None
+        self._hishel_async_storage: AsyncMemoryStorage | None = None
 
     @override
     def get_cache_storage(self) -> MemCache:
@@ -57,17 +57,30 @@ class MemCacheStrategy(BaseCacheStrategy):
         return self._cache
 
     @override
-    def get_async_cache_storage(self) -> MemCache:
+    async def get_async_cache_storage(self) -> MemCache:
         return self.get_cache_storage()
 
     @override
-    def get_hishel_storage(self) -> InMemoryStorage:
+    def get_hishel_storage(self) -> SyncMemoryStorage:
         if self._hishel_storage is None:
-            self._hishel_storage = InMemoryStorage()
+            self._hishel_storage = SyncMemoryStorage(keep_unclosed=True)
         return self._hishel_storage
 
     @override
-    def get_async_hishel_storage(self) -> AsyncInMemoryStorage:
+    async def get_async_hishel_storage(self) -> AsyncMemoryStorage:
         if self._hishel_async_storage is None:
-            self._hishel_async_storage = AsyncInMemoryStorage()
+            self._hishel_async_storage = AsyncMemoryStorage(keep_unclosed=True)
         return self._hishel_async_storage
+
+    def cleanup(self) -> None:
+        if self._cache is not None:
+            self._cache = None
+        if self._hishel_storage is not None:
+            self._hishel_storage.force_close()
+            self._hishel_storage = None
+
+    async def acleanup(self) -> None:
+        self.cleanup()
+        if self._hishel_async_storage is not None:
+            await self._hishel_async_storage.force_close()
+            self._hishel_async_storage = None

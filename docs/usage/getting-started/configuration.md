@@ -246,6 +246,10 @@ github = GitHub(cache_strategy=DEFAULT_CACHE_STRATEGY)
 github = GitHub(cache_strategy=MemCacheStrategy())
 ```
 
+!!! warning
+
+    `MemCacheStrategy` keeps cache data in process memory. In long-running processes, call `cleanup()` (sync) or `await acleanup()` (async) when the cache is no longer needed to release memory and close internal storage resources.
+
 **`RedisCacheStrategy`** — Redis cache (sync only)
 
 Stores tokens and HTTP responses in Redis. Requires the `redis` package.
@@ -258,7 +262,7 @@ from githubkit.cache import RedisCacheStrategy
 github = GitHub(
     cache_strategy=RedisCacheStrategy(
         client=Redis(host="localhost", port=6379),
-        prefix="githubkit:",
+        prefix="githubkit",
     )
 )
 ```
@@ -279,7 +283,7 @@ from githubkit.cache import AsyncRedisCacheStrategy
 github = GitHub(
     cache_strategy=AsyncRedisCacheStrategy(
         client=Redis(host="localhost", port=6379),
-        prefix="githubkit:",
+        prefix="githubkit",
     )
 )
 ```
@@ -290,7 +294,7 @@ github = GitHub(
 
 !!! tip
 
-    The `prefix` parameter adds a key namespace in Redis. Include a trailing colon (`:`) for readable key names (e.g., `"githubkit:"`). Both githubkit and [Hishel](https://hishel.com/) use this prefix.
+    The `prefix` parameter adds a key namespace in Redis. Both githubkit and [Hishel](https://hishel.com/) use this prefix.
 
 ### `http_cache`
 
