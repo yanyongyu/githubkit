@@ -81,6 +81,10 @@ class SyncMemoryStorage(SyncSqliteStorage):
             return
         return super().close()
 
+    def force_close(self) -> None:
+        """Force close the connection, even if keep_unclosed is True."""
+        return super().close()
+
 
 class AsyncMemoryStorage(AsyncSqliteStorage):
     def __init__(
@@ -115,4 +119,8 @@ class AsyncMemoryStorage(AsyncSqliteStorage):
             # Do not close the connection, but drain all pending writes
             async with self._write_lock:
                 return
+        return await super().close()
+
+    async def force_close(self) -> None:
+        """Force close the connection, even if keep_unclosed is True."""
         return await super().close()
