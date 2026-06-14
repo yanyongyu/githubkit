@@ -200,7 +200,7 @@ class CodeSecurityClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
-        description: str,
+        description: Missing[str] = UNSET,
         advanced_security: Missing[
             Literal["enabled", "disabled", "code_security", "secret_protection"]
         ] = UNSET,
@@ -334,7 +334,7 @@ class CodeSecurityClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
-        description: str,
+        description: Missing[str] = UNSET,
         advanced_security: Missing[
             Literal["enabled", "disabled", "code_security", "secret_protection"]
         ] = UNSET,
@@ -1586,7 +1586,7 @@ class CodeSecurityClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
-        description: str,
+        description: Missing[str] = UNSET,
         advanced_security: Missing[
             Literal["enabled", "disabled", "code_security", "secret_protection"]
         ] = UNSET,
@@ -1719,7 +1719,7 @@ class CodeSecurityClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         name: str,
-        description: str,
+        description: Missing[str] = UNSET,
         advanced_security: Missing[
             Literal["enabled", "disabled", "code_security", "secret_protection"]
         ] = UNSET,

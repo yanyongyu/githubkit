@@ -63,7 +63,9 @@ class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems(GitHubModel):
     """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
 
     field_id: int = Field(description="The ID of the issue field to set")
-    value: Union[str, float] = Field(description="The value to set for the field")
+    value: Union[str, float, list[str]] = Field(
+        description="The value to set for the field. For multi-select fields, provide an array of option names."
+    )
 
 
 model_rebuild(ReposOwnerRepoIssuesPostBody)

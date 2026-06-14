@@ -25,8 +25,8 @@ class OrganizationCreateIssueField(GitHubModel):
     description: Missing[Union[str, None]] = Field(
         default=UNSET, description="Description of the issue field."
     )
-    data_type: Literal["text", "date", "single_select", "number"] = Field(
-        description="The data type of the issue field."
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
+        Field(description="The data type of the issue field.")
     )
     visibility: Missing[Literal["organization_members_only", "all"]] = Field(
         default=UNSET,
@@ -36,7 +36,7 @@ class OrganizationCreateIssueField(GitHubModel):
         Union[list[OrganizationCreateIssueFieldPropOptionsItems], None]
     ] = Field(
         default=UNSET,
-        description="Options for single select fields. Required when data_type is 'single_select'.",
+        description="Options for select fields. Required when data_type is 'single_select' or 'multi_select'.",
     )
 
 

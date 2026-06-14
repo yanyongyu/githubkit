@@ -1585,6 +1585,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import IssueFieldType as IssueFieldType
     from githubkit_schemas.v2026_03_10.types import (
+        IssueFieldValuePropMultiSelectOptionsItemsType as IssueFieldValuePropMultiSelectOptionsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         IssueFieldValuePropSingleSelectOptionType as IssueFieldValuePropSingleSelectOptionType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -6102,6 +6105,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesEditedType as WebhookIssuesEditedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItemsType as WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionType as WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -6117,6 +6123,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesFieldAddedPropIssueFieldType as WebhookIssuesFieldAddedPropIssueFieldType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItemsType as WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesFieldAddedPropIssueFieldValuePropOptionType as WebhookIssuesFieldAddedPropIssueFieldValuePropOptionType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -6127,6 +6136,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesFieldRemovedPropIssueFieldType as WebhookIssuesFieldRemovedPropIssueFieldType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType as WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType as WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType,
@@ -11187,6 +11199,7 @@ else:
             "IssueCommentType",
             "IssueFieldValueType",
             "IssueFieldValuePropSingleSelectOptionType",
+            "IssueFieldValuePropMultiSelectOptionsItemsType",
             "IssueType",
             "IssuePropLabelsItemsOneof1Type",
             "IssuePropPullRequestType",
@@ -12695,14 +12708,17 @@ else:
             "WebhookIssuesFieldAddedPropIssueFieldType",
             "WebhookIssuesFieldAddedPropIssueFieldValueType",
             "WebhookIssuesFieldAddedPropIssueFieldValuePropOptionType",
+            "WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItemsType",
             "WebhookIssuesFieldAddedPropChangesType",
             "WebhookIssuesFieldAddedPropChangesPropIssueFieldValueType",
             "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromType",
             "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionType",
+            "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItemsType",
             "WebhookIssuesFieldRemovedType",
             "WebhookIssuesFieldRemovedPropIssueFieldType",
             "WebhookIssuesFieldRemovedPropIssueFieldValueType",
             "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType",
+            "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType",
             "WebhookIssuesLabeledType",
             "WebhookIssuesLabeledPropIssueType",
             "WebhookIssuesLabeledPropIssuePropAssigneeType",

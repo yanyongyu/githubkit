@@ -35,7 +35,7 @@ class CodeSecurityConfiguration(GitHubModel):
     target_type: Missing[Literal["global", "organization", "enterprise"]] = Field(
         default=UNSET, description="The type of the code security configuration."
     )
-    description: Missing[str] = Field(
+    description: Missing[Union[str, None]] = Field(
         default=UNSET, description="A description of the code security configuration"
     )
     advanced_security: Missing[

@@ -24,7 +24,7 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType(TypedDict):
     """EnterprisesEnterpriseCodeSecurityConfigurationsPostBody"""
 
     name: str
-    description: str
+    description: NotRequired[str]
     advanced_security: NotRequired[
         Literal["enabled", "disabled", "code_security", "secret_protection"]
     ]
@@ -76,7 +76,7 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyTypeForResponse(Typ
     """EnterprisesEnterpriseCodeSecurityConfigurationsPostBody"""
 
     name: str
-    description: str
+    description: NotRequired[str]
     advanced_security: NotRequired[
         Literal["enabled", "disabled", "code_security", "secret_protection"]
     ]

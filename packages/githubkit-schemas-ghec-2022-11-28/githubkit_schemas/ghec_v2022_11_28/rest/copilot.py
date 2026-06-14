@@ -1450,7 +1450,7 @@ class CopilotClient:
         Custom agents are enterprise-defined AI agents stored as markdown files in a special repository.
         An enterprise admin configures one organization as the "source" for custom agents and
         Copilot CLI client settings, and that org must have a repo named `.github-private` containing agent
-        definitions in `/agents/*.md`, or enterprise-managed AI standards in `.github/copilot/settings.json`. [Learn more about configuring enterprise-managed AI standards for Copilot clients](https://docs.github.com/enterprise-cloud@latest/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/configure-enterprise-plugin-standards).
+        definitions in `/agents/*.md`, or enterprise-managed AI standards in `copilot/managed-settings.json` (with fallback to `.github/copilot/settings.json`). [Learn more about configuring enterprise-managed AI standards for Copilot clients](https://docs.github.com/enterprise-cloud@latest/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/configure-enterprise-plugin-standards).
 
         Enterprise owners with read access to AI Controls can use this endpoint.
 
@@ -1500,7 +1500,7 @@ class CopilotClient:
         Custom agents are enterprise-defined AI agents stored as markdown files in a special repository.
         An enterprise admin configures one organization as the "source" for custom agents and
         Copilot CLI client settings, and that org must have a repo named `.github-private` containing agent
-        definitions in `/agents/*.md`, or enterprise-managed AI standards in `.github/copilot/settings.json`. [Learn more about configuring enterprise-managed AI standards for Copilot clients](https://docs.github.com/enterprise-cloud@latest/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/configure-enterprise-plugin-standards).
+        definitions in `/agents/*.md`, or enterprise-managed AI standards in `copilot/managed-settings.json` (with fallback to `.github/copilot/settings.json`). [Learn more about configuring enterprise-managed AI standards for Copilot clients](https://docs.github.com/enterprise-cloud@latest/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/configure-enterprise-plugin-standards).
 
         Enterprise owners with read access to AI Controls can use this endpoint.
 

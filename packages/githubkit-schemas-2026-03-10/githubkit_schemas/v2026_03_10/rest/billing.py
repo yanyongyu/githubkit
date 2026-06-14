@@ -225,7 +225,7 @@ class BillingClient:
         GET /organizations/{org}/settings/billing/budgets
 
         Gets all budgets for an organization. The authenticated user must be an organization admin or billing manager.
-        Each page returns up to 10 budgets.
+        Each page returns up to 100 budgets.
 
         See also: https://docs.github.com/rest/billing/budgets#get-all-budgets-for-an-organization
         """
@@ -282,7 +282,7 @@ class BillingClient:
         GET /organizations/{org}/settings/billing/budgets
 
         Gets all budgets for an organization. The authenticated user must be an organization admin or billing manager.
-        Each page returns up to 10 budgets.
+        Each page returns up to 100 budgets.
 
         See also: https://docs.github.com/rest/billing/budgets#get-all-budgets-for-an-organization
         """

@@ -1723,6 +1723,10 @@ class ReposClient:
         has_issues: Missing[bool] = UNSET,
         has_projects: Missing[bool] = UNSET,
         has_wiki: Missing[bool] = UNSET,
+        has_pull_requests: Missing[bool] = UNSET,
+        pull_request_creation_policy: Missing[
+            Literal["all", "collaborators_only"]
+        ] = UNSET,
         is_template: Missing[bool] = UNSET,
         default_branch: Missing[str] = UNSET,
         allow_squash_merge: Missing[bool] = UNSET,
@@ -1829,6 +1833,10 @@ class ReposClient:
         has_issues: Missing[bool] = UNSET,
         has_projects: Missing[bool] = UNSET,
         has_wiki: Missing[bool] = UNSET,
+        has_pull_requests: Missing[bool] = UNSET,
+        pull_request_creation_policy: Missing[
+            Literal["all", "collaborators_only"]
+        ] = UNSET,
         is_template: Missing[bool] = UNSET,
         default_branch: Missing[str] = UNSET,
         allow_squash_merge: Missing[bool] = UNSET,

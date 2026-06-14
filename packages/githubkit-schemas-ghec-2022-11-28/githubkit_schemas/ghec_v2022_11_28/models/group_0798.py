@@ -69,8 +69,8 @@ class WebhookIssuesFieldRemovedPropIssueField(GitHubModel):
 
     id: int = Field(description="The unique identifier of the issue field.")
     name: str = Field(description="The name of the issue field.")
-    field_type: Literal["text", "date", "single_select", "number"] = Field(
-        description="The data type of the issue field."
+    field_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
+        Field(description="The data type of the issue field.")
     )
 
 
@@ -93,6 +93,16 @@ class WebhookIssuesFieldRemovedPropIssueFieldValue(GitHubModel):
         default=UNSET,
         description="The selected option details. Present for single_select field types.",
     )
+    value_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="The identifiers of the selected options. Present for multi_select field types.",
+    )
+    options: Missing[
+        list[WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems]
+    ] = Field(
+        default=UNSET,
+        description="The selected option details. Present for multi_select field types.",
+    )
 
 
 class WebhookIssuesFieldRemovedPropIssueFieldValuePropOption(GitHubModel):
@@ -107,14 +117,25 @@ class WebhookIssuesFieldRemovedPropIssueFieldValuePropOption(GitHubModel):
     description: Missing[Union[str, None]] = Field(default=UNSET)
 
 
+class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems(GitHubModel):
+    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    color: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+
+
 model_rebuild(WebhookIssuesFieldRemoved)
 model_rebuild(WebhookIssuesFieldRemovedPropIssueField)
 model_rebuild(WebhookIssuesFieldRemovedPropIssueFieldValue)
 model_rebuild(WebhookIssuesFieldRemovedPropIssueFieldValuePropOption)
+model_rebuild(WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems)
 
 __all__ = (
     "WebhookIssuesFieldRemoved",
     "WebhookIssuesFieldRemovedPropIssueField",
     "WebhookIssuesFieldRemovedPropIssueFieldValue",
     "WebhookIssuesFieldRemovedPropIssueFieldValuePropOption",
+    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems",
 )

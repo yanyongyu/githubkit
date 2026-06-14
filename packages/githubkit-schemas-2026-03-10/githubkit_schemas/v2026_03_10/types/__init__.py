@@ -423,6 +423,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     from .group_0055 import IssueCommentType as IssueCommentType
     from .group_0055 import IssueCommentTypeForResponse as IssueCommentTypeForResponse
     from .group_0056 import (
+        IssueFieldValuePropMultiSelectOptionsItemsType as IssueFieldValuePropMultiSelectOptionsItemsType,
+    )
+    from .group_0056 import (
+        IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse as IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse,
+    )
+    from .group_0056 import (
         IssueFieldValuePropSingleSelectOptionType as IssueFieldValuePropSingleSelectOptionType,
     )
     from .group_0056 import (
@@ -8379,6 +8385,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesEditedPropIssueTypeForResponse as WebhookIssuesEditedPropIssueTypeForResponse,
     )
     from .group_0716 import (
+        WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItemsType as WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItemsType,
+    )
+    from .group_0716 import (
+        WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItemsTypeForResponse as WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItemsTypeForResponse,
+    )
+    from .group_0716 import (
         WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionType as WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionType,
     )
     from .group_0716 import (
@@ -8409,6 +8421,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesFieldAddedPropIssueFieldTypeForResponse as WebhookIssuesFieldAddedPropIssueFieldTypeForResponse,
     )
     from .group_0716 import (
+        WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItemsType as WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItemsType,
+    )
+    from .group_0716 import (
+        WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItemsTypeForResponse as WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItemsTypeForResponse,
+    )
+    from .group_0716 import (
         WebhookIssuesFieldAddedPropIssueFieldValuePropOptionType as WebhookIssuesFieldAddedPropIssueFieldValuePropOptionType,
     )
     from .group_0716 import (
@@ -8429,6 +8447,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from .group_0717 import (
         WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse as WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse,
+    )
+    from .group_0717 import (
+        WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType as WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType,
+    )
+    from .group_0717 import (
+        WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse as WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse,
     )
     from .group_0717 import (
         WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType as WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType,
@@ -21541,6 +21565,8 @@ else:
             "IssueFieldValueTypeForResponse",
             "IssueFieldValuePropSingleSelectOptionType",
             "IssueFieldValuePropSingleSelectOptionTypeForResponse",
+            "IssueFieldValuePropMultiSelectOptionsItemsType",
+            "IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse",
         ),
         ".group_0057": (
             "IssueType",
@@ -25877,6 +25903,8 @@ else:
             "WebhookIssuesFieldAddedPropIssueFieldValueTypeForResponse",
             "WebhookIssuesFieldAddedPropIssueFieldValuePropOptionType",
             "WebhookIssuesFieldAddedPropIssueFieldValuePropOptionTypeForResponse",
+            "WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItemsType",
+            "WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItemsTypeForResponse",
             "WebhookIssuesFieldAddedPropChangesType",
             "WebhookIssuesFieldAddedPropChangesTypeForResponse",
             "WebhookIssuesFieldAddedPropChangesPropIssueFieldValueType",
@@ -25885,6 +25913,8 @@ else:
             "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromTypeForResponse",
             "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionType",
             "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionTypeForResponse",
+            "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItemsType",
+            "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItemsTypeForResponse",
         ),
         ".group_0717": (
             "WebhookIssuesFieldRemovedType",
@@ -25895,6 +25925,8 @@ else:
             "WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse",
             "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType",
             "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse",
+            "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType",
+            "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse",
         ),
         ".group_0718": (
             "WebhookIssuesLabeledType",

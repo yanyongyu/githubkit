@@ -25,7 +25,7 @@ class IssueFieldType(TypedDict):
     node_id: str
     name: str
     description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "number"]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
     visibility: NotRequired[Literal["organization_members_only", "all"]]
     options: NotRequired[Union[list[IssueFieldPropOptionsItemsType], None]]
     created_at: NotRequired[_dt.datetime]
@@ -43,7 +43,7 @@ class IssueFieldTypeForResponse(TypedDict):
     node_id: str
     name: str
     description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "number"]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
     visibility: NotRequired[Literal["organization_members_only", "all"]]
     options: NotRequired[Union[list[IssueFieldPropOptionsItemsTypeForResponse], None]]
     created_at: NotRequired[str]

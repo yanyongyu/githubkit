@@ -21,10 +21,13 @@ class IssueFieldValueType(TypedDict):
 
     issue_field_id: int
     node_id: str
-    data_type: Literal["text", "single_select", "number", "date"]
+    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
     value: Union[str, float, int, None]
     single_select_option: NotRequired[
         Union[IssueFieldValuePropSingleSelectOptionType, None]
+    ]
+    multi_select_options: NotRequired[
+        Union[list[IssueFieldValuePropMultiSelectOptionsItemsType], None]
     ]
 
 
@@ -36,10 +39,13 @@ class IssueFieldValueTypeForResponse(TypedDict):
 
     issue_field_id: int
     node_id: str
-    data_type: Literal["text", "single_select", "number", "date"]
+    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
     value: Union[str, float, int, None]
     single_select_option: NotRequired[
         Union[IssueFieldValuePropSingleSelectOptionTypeForResponse, None]
+    ]
+    multi_select_options: NotRequired[
+        Union[list[IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse], None]
     ]
 
 
@@ -65,7 +71,25 @@ class IssueFieldValuePropSingleSelectOptionTypeForResponse(TypedDict):
     color: str
 
 
+class IssueFieldValuePropMultiSelectOptionsItemsType(TypedDict):
+    """IssueFieldValuePropMultiSelectOptionsItems"""
+
+    id: int
+    name: str
+    color: str
+
+
+class IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse(TypedDict):
+    """IssueFieldValuePropMultiSelectOptionsItems"""
+
+    id: int
+    name: str
+    color: str
+
+
 __all__ = (
+    "IssueFieldValuePropMultiSelectOptionsItemsType",
+    "IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse",
     "IssueFieldValuePropSingleSelectOptionType",
     "IssueFieldValuePropSingleSelectOptionTypeForResponse",
     "IssueFieldValueType",

@@ -7344,7 +7344,7 @@ class OrgsClient:
         stream: bool = False,
         name: str,
         description: Missing[Union[str, None]] = UNSET,
-        data_type: Literal["text", "date", "single_select", "number"],
+        data_type: Literal["text", "date", "single_select", "multi_select", "number"],
         visibility: Missing[Literal["organization_members_only", "all"]] = UNSET,
         options: Missing[
             Union[list[OrganizationCreateIssueFieldPropOptionsItemsType], None]
@@ -7429,7 +7429,7 @@ class OrgsClient:
         stream: bool = False,
         name: str,
         description: Missing[Union[str, None]] = UNSET,
-        data_type: Literal["text", "date", "single_select", "number"],
+        data_type: Literal["text", "date", "single_select", "multi_select", "number"],
         visibility: Missing[Literal["organization_members_only", "all"]] = UNSET,
         options: Missing[
             Union[list[OrganizationCreateIssueFieldPropOptionsItemsType], None]

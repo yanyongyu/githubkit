@@ -18,7 +18,7 @@ class OrganizationCreateIssueFieldType(TypedDict):
 
     name: str
     description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "number"]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
     visibility: NotRequired[Literal["organization_members_only", "all"]]
     options: NotRequired[
         Union[list[OrganizationCreateIssueFieldPropOptionsItemsType], None]
@@ -30,7 +30,7 @@ class OrganizationCreateIssueFieldTypeForResponse(TypedDict):
 
     name: str
     description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "number"]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
     visibility: NotRequired[Literal["organization_members_only", "all"]]
     options: NotRequired[
         Union[list[OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse], None]

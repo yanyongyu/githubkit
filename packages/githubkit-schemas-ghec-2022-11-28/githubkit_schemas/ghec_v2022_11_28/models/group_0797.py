@@ -74,8 +74,8 @@ class WebhookIssuesFieldAddedPropIssueField(GitHubModel):
 
     id: int = Field(description="The unique identifier of the issue field.")
     name: str = Field(description="The name of the issue field.")
-    field_type: Literal["text", "date", "single_select", "number"] = Field(
-        description="The data type of the issue field."
+    field_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
+        Field(description="The data type of the issue field.")
     )
 
 
@@ -99,6 +99,16 @@ class WebhookIssuesFieldAddedPropIssueFieldValue(GitHubModel):
         default=UNSET,
         description="The selected option details. Present for single_select field types.",
     )
+    value_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="The identifiers of the selected options. Present for multi_select field types.",
+    )
+    options: Missing[
+        list[WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItems]
+    ] = Field(
+        default=UNSET,
+        description="The selected option details. Present for multi_select field types.",
+    )
 
 
 class WebhookIssuesFieldAddedPropIssueFieldValuePropOption(GitHubModel):
@@ -106,6 +116,15 @@ class WebhookIssuesFieldAddedPropIssueFieldValuePropOption(GitHubModel):
 
     The selected option details. Present for single_select field types.
     """
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    color: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItems(GitHubModel):
+    """WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItems"""
 
     id: Missing[int] = Field(default=UNSET)
     name: Missing[str] = Field(default=UNSET)
@@ -157,6 +176,18 @@ class WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom(GitHubModel)
         default=UNSET,
         description="The previously selected option details. Present for single_select field types.",
     )
+    value_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="The identifiers of the previously selected options. Present for multi_select field types.",
+    )
+    options: Missing[
+        list[
+            WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The previously selected option details. Present for multi_select field types.",
+    )
 
 
 class WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption(
@@ -173,14 +204,29 @@ class WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption(
     description: Missing[Union[str, None]] = Field(default=UNSET)
 
 
+class WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItems(
+    GitHubModel
+):
+    """WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItems"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    color: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+
+
 model_rebuild(WebhookIssuesFieldAdded)
 model_rebuild(WebhookIssuesFieldAddedPropIssueField)
 model_rebuild(WebhookIssuesFieldAddedPropIssueFieldValue)
 model_rebuild(WebhookIssuesFieldAddedPropIssueFieldValuePropOption)
+model_rebuild(WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItems)
 model_rebuild(WebhookIssuesFieldAddedPropChanges)
 model_rebuild(WebhookIssuesFieldAddedPropChangesPropIssueFieldValue)
 model_rebuild(WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom)
 model_rebuild(WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption)
+model_rebuild(
+    WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItems
+)
 
 __all__ = (
     "WebhookIssuesFieldAdded",
@@ -188,7 +234,9 @@ __all__ = (
     "WebhookIssuesFieldAddedPropChangesPropIssueFieldValue",
     "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom",
     "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption",
+    "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItems",
     "WebhookIssuesFieldAddedPropIssueField",
     "WebhookIssuesFieldAddedPropIssueFieldValue",
     "WebhookIssuesFieldAddedPropIssueFieldValuePropOption",
+    "WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItems",
 )

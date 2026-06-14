@@ -88,7 +88,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType(Type
     """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
 
     field_id: int
-    value: Union[str, float]
+    value: Union[str, float, list[str]]
 
 
 class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse(
@@ -97,7 +97,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForRe
     """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
 
     field_id: int
-    value: Union[str, float]
+    value: Union[str, float, list[str]]
 
 
 __all__ = (

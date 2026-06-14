@@ -39,7 +39,7 @@ class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValue
     """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
 
     field_id: int
-    value: Union[str, float]
+    value: Union[str, float, list[str]]
 
 
 class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse(
@@ -48,7 +48,7 @@ class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValue
     """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
 
     field_id: int
-    value: Union[str, float]
+    value: Union[str, float, list[str]]
 
 
 __all__ = (

@@ -32,15 +32,16 @@ class IssueField(GitHubModel):
     description: Missing[Union[str, None]] = Field(
         default=UNSET, description="The description of the issue field."
     )
-    data_type: Literal["text", "date", "single_select", "number"] = Field(
-        description="The data type of the issue field."
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
+        Field(description="The data type of the issue field.")
     )
     visibility: Missing[Literal["organization_members_only", "all"]] = Field(
         default=UNSET,
         description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues).",
     )
     options: Missing[Union[list[IssueFieldPropOptionsItems], None]] = Field(
-        default=UNSET, description="Available options for single select fields."
+        default=UNSET,
+        description="Available options for single select and multi select fields.",
     )
     created_at: Missing[_dt.datetime] = Field(
         default=UNSET, description="The time the issue field was created."

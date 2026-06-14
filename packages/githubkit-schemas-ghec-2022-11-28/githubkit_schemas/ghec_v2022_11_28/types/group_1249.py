@@ -24,7 +24,7 @@ class OrgsOrgCodeSecurityConfigurationsPostBodyType(TypedDict):
     """OrgsOrgCodeSecurityConfigurationsPostBody"""
 
     name: str
-    description: str
+    description: NotRequired[str]
     advanced_security: NotRequired[
         Literal["enabled", "disabled", "code_security", "secret_protection"]
     ]
@@ -85,7 +85,7 @@ class OrgsOrgCodeSecurityConfigurationsPostBodyTypeForResponse(TypedDict):
     """OrgsOrgCodeSecurityConfigurationsPostBody"""
 
     name: str
-    description: str
+    description: NotRequired[str]
     advanced_security: NotRequired[
         Literal["enabled", "disabled", "code_security", "secret_protection"]
     ]

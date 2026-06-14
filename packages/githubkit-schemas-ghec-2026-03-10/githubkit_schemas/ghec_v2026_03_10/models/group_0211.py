@@ -26,8 +26,8 @@ class IssueFieldValue(GitHubModel):
 
     issue_field_id: int = Field(description="Unique identifier for the issue field.")
     node_id: str = Field()
-    data_type: Literal["text", "single_select", "number", "date"] = Field(
-        description="The data type of the issue field"
+    data_type: Literal["text", "single_select", "multi_select", "number", "date"] = (
+        Field(description="The data type of the issue field")
     )
     value: Union[str, float, int, None] = Field(
         description="The value of the issue field"
@@ -38,6 +38,9 @@ class IssueFieldValue(GitHubModel):
         default=UNSET,
         description="Details about the selected option (only present for single_select fields)",
     )
+    multi_select_options: Missing[
+        Union[list[IssueFieldValuePropMultiSelectOptionsItems], None]
+    ] = Field(default=UNSET, description="Details about the selected options")
 
 
 class IssueFieldValuePropSingleSelectOption(GitHubModel):
@@ -51,10 +54,20 @@ class IssueFieldValuePropSingleSelectOption(GitHubModel):
     color: str = Field(description="The color of the option")
 
 
+class IssueFieldValuePropMultiSelectOptionsItems(GitHubModel):
+    """IssueFieldValuePropMultiSelectOptionsItems"""
+
+    id: int = Field(description="Unique identifier for the option.")
+    name: str = Field(description="The name of the option")
+    color: str = Field(description="The color of the option")
+
+
 model_rebuild(IssueFieldValue)
 model_rebuild(IssueFieldValuePropSingleSelectOption)
+model_rebuild(IssueFieldValuePropMultiSelectOptionsItems)
 
 __all__ = (
     "IssueFieldValue",
+    "IssueFieldValuePropMultiSelectOptionsItems",
     "IssueFieldValuePropSingleSelectOption",
 )

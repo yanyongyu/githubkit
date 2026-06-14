@@ -61,7 +61,7 @@ class WebhookIssuesFieldRemovedPropIssueFieldType(TypedDict):
 
     id: int
     name: str
-    field_type: Literal["text", "date", "single_select", "number"]
+    field_type: Literal["text", "date", "single_select", "multi_select", "number"]
 
 
 class WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse(TypedDict):
@@ -72,7 +72,7 @@ class WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse(TypedDict):
 
     id: int
     name: str
-    field_type: Literal["text", "date", "single_select", "number"]
+    field_type: Literal["text", "date", "single_select", "multi_select", "number"]
 
 
 class WebhookIssuesFieldRemovedPropIssueFieldValueType(TypedDict):
@@ -85,6 +85,10 @@ class WebhookIssuesFieldRemovedPropIssueFieldValueType(TypedDict):
     value: NotRequired[Union[str, float, int, None]]
     value_id: NotRequired[int]
     option: NotRequired[WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType]
+    value_ids: NotRequired[list[int]]
+    options: NotRequired[
+        list[WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType]
+    ]
 
 
 class WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse(TypedDict):
@@ -98,6 +102,12 @@ class WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse(TypedDict):
     value_id: NotRequired[int]
     option: NotRequired[
         WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse
+    ]
+    value_ids: NotRequired[list[int]]
+    options: NotRequired[
+        list[
+            WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse
+        ]
     ]
 
 
@@ -125,11 +135,33 @@ class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse(Type
     description: NotRequired[Union[str, None]]
 
 
+class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType(TypedDict):
+    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+
+
+class WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+
+
 __all__ = (
     "WebhookIssuesFieldRemovedPropIssueFieldType",
     "WebhookIssuesFieldRemovedPropIssueFieldTypeForResponse",
     "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionType",
     "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionTypeForResponse",
+    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsType",
+    "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItemsTypeForResponse",
     "WebhookIssuesFieldRemovedPropIssueFieldValueType",
     "WebhookIssuesFieldRemovedPropIssueFieldValueTypeForResponse",
     "WebhookIssuesFieldRemovedType",

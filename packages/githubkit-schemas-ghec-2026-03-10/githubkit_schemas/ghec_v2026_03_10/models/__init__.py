@@ -767,6 +767,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     from .group_0210 import IssueComment as IssueComment
     from .group_0211 import IssueFieldValue as IssueFieldValue
     from .group_0211 import (
+        IssueFieldValuePropMultiSelectOptionsItems as IssueFieldValuePropMultiSelectOptionsItems,
+    )
+    from .group_0211 import (
         IssueFieldValuePropSingleSelectOption as IssueFieldValuePropSingleSelectOption,
     )
     from .group_0212 import Issue as Issue
@@ -3928,6 +3931,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption as WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption,
     )
     from .group_0796 import (
+        WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItems as WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItems,
+    )
+    from .group_0796 import (
         WebhookIssuesFieldAddedPropIssueField as WebhookIssuesFieldAddedPropIssueField,
     )
     from .group_0796 import (
@@ -3935,6 +3941,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from .group_0796 import (
         WebhookIssuesFieldAddedPropIssueFieldValuePropOption as WebhookIssuesFieldAddedPropIssueFieldValuePropOption,
+    )
+    from .group_0796 import (
+        WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItems as WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItems,
     )
     from .group_0797 import WebhookIssuesFieldRemoved as WebhookIssuesFieldRemoved
     from .group_0797 import (
@@ -3945,6 +3954,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from .group_0797 import (
         WebhookIssuesFieldRemovedPropIssueFieldValuePropOption as WebhookIssuesFieldRemovedPropIssueFieldValuePropOption,
+    )
+    from .group_0797 import (
+        WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems as WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems,
     )
     from .group_0798 import WebhookIssuesLabeled as WebhookIssuesLabeled
     from .group_0799 import (
@@ -10911,6 +10923,7 @@ else:
         ".group_0211": (
             "IssueFieldValue",
             "IssueFieldValuePropSingleSelectOption",
+            "IssueFieldValuePropMultiSelectOptionsItems",
         ),
         ".group_0212": (
             "Issue",
@@ -12860,16 +12873,19 @@ else:
             "WebhookIssuesFieldAddedPropIssueField",
             "WebhookIssuesFieldAddedPropIssueFieldValue",
             "WebhookIssuesFieldAddedPropIssueFieldValuePropOption",
+            "WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItems",
             "WebhookIssuesFieldAddedPropChanges",
             "WebhookIssuesFieldAddedPropChangesPropIssueFieldValue",
             "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom",
             "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption",
+            "WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItems",
         ),
         ".group_0797": (
             "WebhookIssuesFieldRemoved",
             "WebhookIssuesFieldRemovedPropIssueField",
             "WebhookIssuesFieldRemovedPropIssueFieldValue",
             "WebhookIssuesFieldRemovedPropIssueFieldValuePropOption",
+            "WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems",
         ),
         ".group_0798": ("WebhookIssuesLabeled",),
         ".group_0799": (

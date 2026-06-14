@@ -53,6 +53,14 @@ class ReposOwnerRepoPatchBody(GitHubModel):
         default=UNSET,
         description="Either `true` to enable the wiki for this repository or `false` to disable it.",
     )
+    has_pull_requests: Missing[bool] = Field(
+        default=UNSET,
+        description="Either `true` to allow pull requests for this repository or `false` to prevent pull requests.",
+    )
+    pull_request_creation_policy: Missing[Literal["all", "collaborators_only"]] = Field(
+        default=UNSET,
+        description="The policy that controls who can create pull requests for this repository: `all` or `collaborators_only`.",
+    )
     is_template: Missing[bool] = Field(
         default=UNSET,
         description="Either `true` to make this repo available as a template repository or `false` to prevent it.",

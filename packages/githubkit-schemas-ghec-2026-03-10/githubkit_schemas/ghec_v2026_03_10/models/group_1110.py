@@ -26,8 +26,10 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBody(GitHubModel):
     name: str = Field(
         description="The name of the code security configuration. Must be unique within the enterprise."
     )
-    description: str = Field(
-        max_length=255, description="A description of the code security configuration"
+    description: Missing[str] = Field(
+        max_length=255,
+        default=UNSET,
+        description="A description of the code security configuration",
     )
     advanced_security: Missing[
         Literal["enabled", "disabled", "code_security", "secret_protection"]

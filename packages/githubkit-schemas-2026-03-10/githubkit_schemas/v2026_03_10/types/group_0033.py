@@ -23,7 +23,7 @@ class CodeSecurityConfigurationType(TypedDict):
     id: NotRequired[int]
     name: NotRequired[str]
     target_type: NotRequired[Literal["global", "organization", "enterprise"]]
-    description: NotRequired[str]
+    description: NotRequired[Union[str, None]]
     advanced_security: NotRequired[
         Literal["enabled", "disabled", "code_security", "secret_protection"]
     ]
@@ -93,7 +93,7 @@ class CodeSecurityConfigurationTypeForResponse(TypedDict):
     id: NotRequired[int]
     name: NotRequired[str]
     target_type: NotRequired[Literal["global", "organization", "enterprise"]]
-    description: NotRequired[str]
+    description: NotRequired[Union[str, None]]
     advanced_security: NotRequired[
         Literal["enabled", "disabled", "code_security", "secret_protection"]
     ]
