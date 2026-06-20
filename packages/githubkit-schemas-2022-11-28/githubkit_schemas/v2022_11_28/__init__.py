@@ -6,3 +6,7 @@ bash ./scripts/run-codegen.sh
 
 See https://github.com/github/rest-api-description for more information.
 """
+
+# ensure the main package is imported
+# so the lazy hooks are registered
+import githubkit  # noqa: F401
